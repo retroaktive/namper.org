@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAMper</title>
+<meta name="description" content="NAMper turns your iPhone or iPad into a complete guitar rig: Neural Amp Modeler profiles of real amps, studio effects, a synced four-track looper, sampler pads, backing tracks and full MIDI control. Free, no ads, no subscriptions.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="NAMper — Guitar Amp &amp; Looper">
+<meta property="og:description" content="Thousands of free NAM amp tones, effects, a four-track looper, sampler pads, backing tracks and full MIDI control. A complete guitar rig — free, no ads, no subscriptions.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --stage:#0c0d11; --card:#14161c; --card2:#181a21; --line:#262931;
+    --ink:#eae7df; --dim:rgba(234,231,223,.58); --faint:rgba(234,231,223,.34);
+    --amp:#f2a93b; --power:#3fd07a; --drive:#f2793b; --gate:#8fa3c8;
+    --eq:#6fd08c; --cloud:#4fc9d0; --pitch:#d078d0;
+    --disp:ui-rounded,-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;
+    --body:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--stage);color:var(--ink);font-family:var(--body);
+       line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--amp);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--amp);outline-offset:3px;border-radius:4px}
+  img,video{max-width:100%;display:block}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;position:relative}
+
+  /* ---- the signal-chain spine ---- */
+  .spine{position:relative}
+  .spine::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:0;
+    border-left:2px dashed var(--line)}
+  .node{position:relative;padding-left:44px;margin:0 0 26px}
+  .node::before{content:"";position:absolute;left:2px;top:34px;width:18px;height:18px;
+    border-radius:50%;background:var(--stage);border:2px solid var(--nc,var(--amp));
+    box-shadow:0 0 14px color-mix(in srgb,var(--nc,var(--amp)) 55%, transparent)}
+  .node::after{content:"";position:absolute;left:8px;top:40px;width:6px;height:6px;
+    border-radius:50%;background:var(--nc,var(--amp))}
+  .jack{position:relative;padding-left:44px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.22em;color:var(--faint);margin:34px 0 22px}
+  .jack::before{content:"";position:absolute;left:5px;top:2px;width:12px;height:14px;
+    border:2px solid var(--faint);border-radius:3px}
+  .jack::after{content:"";position:absolute;left:10px;top:-8px;width:2px;height:10px;background:var(--faint)}
+
+  /* ---- cards, the app's SectionCard ---- */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:26px 28px;overflow:hidden}
+  .slab{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    color:var(--nc,var(--amp));text-transform:uppercase;margin-bottom:14px}
+  .slab small{color:var(--faint);letter-spacing:.16em}
+
+  /* ---- hero ---- */
+  header.hero{padding:54px 0 10px}
+  .brand{display:flex;align-items:center;gap:14px;margin-bottom:38px}
+  .brand img{width:44px;height:44px;border-radius:10px}
+  .brand .t{font-family:var(--disp);font-weight:900;font-size:27px;letter-spacing:-.02em}
+  .brand .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.3em;color:var(--faint)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  h1{font-family:var(--disp);font-weight:900;font-size:clamp(34px,5.4vw,56px);
+     line-height:1.05;letter-spacing:-.025em;text-wrap:balance;margin-bottom:18px}
+  h1 .a{color:var(--amp)}
+  .lede{color:var(--dim);font-size:17px;max-width:34em;margin-bottom:24px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--power);
+    border:1px solid color-mix(in srgb,var(--power) 45%,transparent);
+    padding:6px 13px;border-radius:99px;background:color-mix(in srgb,var(--power) 8%,transparent)}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
+    padding:13px 22px;border-radius:12px;border:1px solid var(--line);color:var(--ink)}
+  .btn:hover{text-decoration:none;border-color:var(--faint)}
+  .btn.primary{background:var(--amp);border-color:var(--amp);color:#151007;font-weight:700}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint)}
+
+  .phone{width:min(300px,72vw);margin:0 auto;background:#000;border-radius:42px;
+    border:2px solid #2c2f38;box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 0 6px #101116;
+    padding:10px}
+  .phone video,.phone img{border-radius:32px;width:100%}
+
+  /* ---- feature sections ---- */
+  section{margin:10px 0}
+  .feat{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+  .feat.flip{grid-template-columns:.8fr 1.2fr}
+  .feat.flip .txt{order:2}
+  .feat.flip .pic{order:1}
+  .feat h2{font-family:var(--disp);font-weight:900;font-size:clamp(22px,3vw,30px);
+    letter-spacing:-.02em;margin-bottom:10px;text-wrap:balance}
+  .feat ul{list-style:none;color:var(--dim);font-size:15px}
+  .feat li{padding:5px 0 5px 22px;position:relative}
+  .feat li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;
+    border-radius:50%;background:var(--nc,var(--amp));opacity:.85}
+  .shot{width:min(250px,66vw);margin:0 auto;border-radius:26px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.55)}
+
+  /* pedalboard chip grid (rig builder) */
+  .pedals{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .pedal{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--dim);
+    border:1px solid var(--line);border-radius:9px;padding:6px 11px;background:var(--card2)}
+  .pedal b{font-weight:400}
+  .pedal.g{color:var(--gate)} .pedal.d{color:var(--drive)} .pedal.e{color:var(--eq)}
+  .pedal.c{color:var(--cloud)} .pedal.p{color:var(--pitch)} .pedal.a{color:var(--amp)}
+
+  /* iPad band */
+  .band{padding:0}
+  .band .card{padding:0;background:var(--card2)}
+  .band img{width:100%}
+  .band .cap{padding:18px 26px;display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:8px;align-items:baseline}
+  .band .cap p{color:var(--dim);font-size:14px}
+
+  /* free forever */
+  .free{ text-align:center;padding:44px 28px}
+  .free h2{font-family:var(--disp);font-weight:900;font-size:clamp(24px,3.4vw,34px);
+    letter-spacing:-.02em;margin-bottom:10px}
+  .free p{color:var(--dim);max-width:44em;margin:0 auto}
+
+  /* footer */
+  footer{margin:30px 0 60px;color:var(--faint);font-size:13.5px}
+  footer .card{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center}
+  footer nav{display:flex;flex-wrap:wrap;gap:20px;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+  footer a{color:var(--dim)}
+  footer a:hover{color:var(--amp)}
+  .fine{margin-top:16px;font-size:12px;color:var(--faint);line-height:1.7}
+
+  @media (max-width:840px){
+    .hero-grid,.feat,.feat.flip{grid-template-columns:1fr}
+    .feat.flip .txt{order:1}.feat.flip .pic{order:2}
+    .pic{margin-top:18px}
+    .spine::before{left:8px}
+    .node{padding-left:34px}
+    .node::before{left:0;width:16px;height:16px}
+    .node::after{left:6px;width:5px;height:5px}
+    .jack{padding-left:34px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">
+      <img src="/assets/icon-64.png" alt="" width="44" height="44">
+      <div>
+        <div class="t">NAMper</div>
+        <div class="s">NAM&nbsp;·&nbsp;TONE3000</div>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Your iPhone is a<br>complete <span class="a">guitar&nbsp;rig</span>.</h1>
+        <p class="lede">Neural Amp Modeler profiles of real tube amps, a pedalboard of
+          studio effects, a synced four-track looper, sampler pads, backing tracks
+          and full MIDI control — on the phone already in your pocket.</p>
+        <div class="chips">
+          <span class="chip">FREE&nbsp;FOREVER</span>
+          <span class="chip">NO&nbsp;ADS</span>
+          <span class="chip">NO&nbsp;SUBSCRIPTIONS</span>
+        </div>
+        <div class="cta">
+          <span class="btn primary">APP&nbsp;STORE&nbsp;·&nbsp;COMING&nbsp;SOON</span>
+          <a class="btn" href="https://github.com/retroaktive/namper-support/issues">SUPPORT&nbsp;&amp;&nbsp;FEEDBACK</a>
+        </div>
+      </div>
+      <div class="phone">
+        <video autoplay muted loop playsinline poster="/assets/ph_rig.png"
+               aria-label="NAMper app preview">
+          <source src="/assets/preview.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </header>
+
+  <div class="spine">
+    <div class="jack">IN&nbsp;·&nbsp;GUITAR&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACE</div>
+
+    <section class="node" style="--nc:var(--amp)">
+      <div class="card feat flip">
+        <div class="txt">
+          <div class="slab">AMP&nbsp;·&nbsp;NAM&nbsp;ENGINE</div>
+          <h2>Real amps, captured.</h2>
+          <ul>
+            <li>Neural Amp Modeler engine — studio-grade captures of real tube amps</li>
+            <li>Thousands of free tones from the TONE3000 community</li>
+            <li>Built-in tube amp voicings and cab IRs work fully offline</li>
+            <li>Load your own .nam profiles and impulse responses</li>
+          </ul>
+        </div>
+        <div class="pic"><div class="shot"><img src="/assets/ph_rig.png" alt="The Rig tab: amp head, signal chain and presets" loading="lazy"></div></div>
+      </div>
+    </section><!-- amp -->
+
+    <section class="node" style="--nc:var(--drive)">
+      <div class="card">
+        <div class="slab" style="--nc:var(--drive)">CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER</div>
+        <div class="feat" style="grid-template-columns:1fr">
+          <div class="txt">
+            <h2>A pedalboard that routes like a patchbay.</h2>
+            <ul style="--nc:var(--drive)">
+              <li>Drag-and-drop signal chain with parallel branches</li>
+              <li>Up to four independent rigs — guitar and vocals at once, each on its own input and output</li>
+              <li>Master section: saturation, limiter, LUFS metering</li>
+              <li>Presets on MIDI program-change slots, sharable as files</li>
+            </ul>
+            <div class="pedals" aria-label="Included effects">
+              <span class="pedal g">GATE</span><span class="pedal">COMP</span>
+              <span class="pedal d">DRIVE</span><span class="pedal d">FUZZ</span>
+              <span class="pedal a">TUBE&nbsp;AMP</span><span class="pedal a">CAB&nbsp;IR</span>
+              <span class="pedal e">EQ</span><span class="pedal">WAH</span>
+              <span class="pedal p">OCTAVER</span><span class="pedal p">HARMONIZER</span>
+              <span class="pedal p">AUTOTUNE</span><span class="pedal p">PITCH</span>
+              <span class="pedal c">DELAY</span><span class="pedal c">CLOUD</span>
+              <span class="pedal c">HALL</span><span class="pedal c">PLATE</span>
+              <span class="pedal c">SPRING</span><span class="pedal c">CONVOLUTION</span>
+              <span class="pedal">ROTARY</span><span class="pedal">TREMOLO</span>
+              <span class="pedal">CHORUS</span><span class="pedal">PHASER</span>
+              <span class="pedal">FLANGER</span><span class="pedal">…</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="node" style="--nc:var(--power)">
+      <div class="card feat flip">
+        <div class="pic"><div class="shot"><img src="/assets/ph_loop.png" alt="The Loop tab: four synced loop tracks" loading="lazy"></div></div>
+        <div class="txt">
+          <div class="slab" style="--nc:var(--power)">LOOP&nbsp;·&nbsp;4&nbsp;TRACKS</div>
+          <h2>A looper that keeps time for you.</h2>
+          <ul style="--nc:var(--power)">
+            <li>The first loop sets the cycle — everything else lands on the bar grid</li>
+            <li>Tempo detection; metronome phase-locked to the loop</li>
+            <li>Overdubs with undo, per-track inputs and outputs, loop editor</li>
+            <li>Record post-FX, a raw input, another rig or the sampler</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="node" style="--nc:var(--pitch)">
+      <div class="card feat">
+        <div class="txt">
+          <div class="slab" style="--nc:var(--pitch)">SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM</div>
+          <h2>Pads, setlists and the whole show.</h2>
+          <ul style="--nc:var(--pitch)">
+            <li>16 pads: load files or record the input, trim, pitch, loop — with factory drum and FX kits</li>
+            <li>Setlists with backing tracks, automatic tempo and key detection</li>
+            <li>Preset markers on the song timeline, snapped to bars</li>
+            <li>Multitrack performance recording: mix, dry input and backing stems</li>
+          </ul>
+        </div>
+        <div class="pic"><div class="shot"><img src="/assets/ph_sample.png" alt="The Sample tab: 16 sampler pads" loading="lazy"></div></div>
+      </div>
+    </section>
+
+    <section class="node" style="--nc:var(--gate)">
+      <div class="card feat flip">
+        <div class="pic"><div class="shot"><img src="/assets/ph_control.png" alt="The Control tab: MIDI and input triggers" loading="lazy"></div></div>
+        <div class="txt">
+          <div class="slab" style="--nc:var(--gate)">CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGERS</div>
+          <h2>Hands on the strings, not the screen.</h2>
+          <ul style="--nc:var(--gate)">
+            <li>Bluetooth MIDI pairing built in; MIDI learn for any CC or note</li>
+            <li>Input triggers: knock on the guitar body, a held note, a chord</li>
+            <li>Chromatic and polyphonic (strum) tuner</li>
+            <li>Multichannel audio interfaces, per-channel trim and naming</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="jack">OUT&nbsp;·&nbsp;SPEAKERS&nbsp;/&nbsp;HEADPHONES&nbsp;/&nbsp;FOH</div>
+  </div>
+
+  <section class="band">
+    <div class="card">
+      <img src="/assets/ipad_rig.png" alt="NAMper on iPad: two-column rig layout with the preset rail" loading="lazy">
+      <div class="cap">
+        <div class="slab" style="margin:0">MADE&nbsp;FOR&nbsp;IPAD&nbsp;TOO</div>
+        <p>The full rig, edge to edge — with a preset rail built for stage tapping.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:26px">
+    <div class="card free">
+      <h2>Free. <span style="color:var(--power)">And it stays free.</span></h2>
+      <p>Every amp, every effect, every update — no ads, no locked features,
+         no subscriptions. If NAMper earns a place on your pedalboard,
+         there is a tip jar inside. That’s the whole business model.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="card">
+      <nav>
+        <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+        <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+        <a href="https://www.tone3000.com">TONE3000</a>
+        <a href="https://www.neuralampmodeler.com">NAM</a>
+      </nav>
+      <div>© 2026 Evgeny Stepanov</div>
+    </div>
+    <p class="fine">NAMper collects no data. Audio never leaves the device.
+      Neural Amp Modeler is an open-source project; amp captures on TONE3000
+      are published by their creators for free community use.</p>
+  </footer>
+</div>
+
+</body>
+</html>
