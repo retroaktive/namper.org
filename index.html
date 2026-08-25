@@ -128,6 +128,11 @@
   footer a{color:var(--dim)}
   footer a:hover{color:var(--amp)}
   .fine{margin-top:16px;font-size:12px;color:var(--faint);line-height:1.7}
+  #langs{margin-top:14px;display:flex;flex-wrap:wrap;gap:14px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+  #langs a{color:var(--faint);cursor:pointer}
+  #langs a:hover{color:var(--amp);text-decoration:none}
+  #langs a.on{color:var(--amp)}
 
   @media (max-width:840px){
     .hero-grid,.feat,.feat.flip{grid-template-columns:1fr}
@@ -158,19 +163,19 @@
 
     <div class="hero-grid">
       <div>
-        <h1>Your iPhone is a<br>complete <span class="a">guitar&nbsp;rig</span>.</h1>
-        <p class="lede">Neural Amp Modeler profiles of real tube amps, a pedalboard of
+        <h1 data-i="h1">Your iPhone is a<br>complete <span class="a">guitar&nbsp;rig</span>.</h1>
+        <p class="lede" data-i="lede">Neural Amp Modeler profiles of real tube amps, a pedalboard of
           studio effects, a synced four-track looper, sampler pads, backing tracks
           and full MIDI control — on the phone already in your pocket.</p>
         <div class="chips">
-          <span class="chip">FREE&nbsp;FOREVER</span>
-          <span class="chip">NO&nbsp;ADS</span>
-          <span class="chip">NO&nbsp;SUBSCRIPTIONS</span>
+          <span class="chip" data-i="chip_free">FREE&nbsp;FOREVER</span>
+          <span class="chip" data-i="chip_ads">NO&nbsp;ADS</span>
+          <span class="chip" data-i="chip_subs">NO&nbsp;SUBSCRIPTIONS</span>
         </div>
         <div class="cta">
-          <span class="btn primary">APP&nbsp;STORE&nbsp;·&nbsp;COMING&nbsp;SOON</span>
-          <a class="btn" href="https://t.me/namperapp">TELEGRAM&nbsp;COMMUNITY</a>
-          <a class="btn" href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+          <span class="btn primary" data-i="cta_store">APP&nbsp;STORE&nbsp;·&nbsp;COMING&nbsp;SOON</span>
+          <a class="btn" href="https://t.me/namperapp" data-i="cta_tg">TELEGRAM&nbsp;COMMUNITY</a>
+          <a class="btn" href="https://github.com/retroaktive/namper-support/issues" data-i="cta_support">SUPPORT</a>
         </div>
       </div>
       <div class="phone">
@@ -183,18 +188,18 @@
   </header>
 
   <div class="spine">
-    <div class="jack">IN&nbsp;·&nbsp;GUITAR&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACE</div>
+    <div class="jack" data-i="jack_in">IN&nbsp;·&nbsp;GUITAR&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACE</div>
 
     <section class="node" style="--nc:var(--amp)">
       <div class="card feat flip">
         <div class="txt">
-          <div class="slab">AMP&nbsp;·&nbsp;NAM&nbsp;ENGINE</div>
-          <h2>Real amps, captured.</h2>
+          <div class="slab" data-i="amp_slab">AMP&nbsp;·&nbsp;NAM&nbsp;ENGINE</div>
+          <h2 data-i="amp_h2">Real amps, captured.</h2>
           <ul>
-            <li>Neural Amp Modeler engine — studio-grade captures of real tube amps</li>
-            <li>Thousands of free tones from the TONE3000 community</li>
-            <li>Built-in tube amp voicings and cab IRs work fully offline</li>
-            <li>Load your own .nam profiles and impulse responses</li>
+            <li data-i="amp_li1">Neural Amp Modeler engine — studio-grade captures of real tube amps</li>
+            <li data-i="amp_li2">Thousands of free tones from the TONE3000 community</li>
+            <li data-i="amp_li3">Built-in tube amp voicings and cab IRs work fully offline</li>
+            <li data-i="amp_li4">Load your own .nam profiles and impulse responses</li>
           </ul>
         </div>
         <div class="pic"><div class="shot"><img src="/assets/ph_rig.png" alt="The Rig tab: amp head, signal chain and presets" loading="lazy"></div></div>
@@ -203,15 +208,15 @@
 
     <section class="node" style="--nc:var(--drive)">
       <div class="card">
-        <div class="slab" style="--nc:var(--drive)">CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER</div>
+        <div class="slab" style="--nc:var(--drive)" data-i="chain_slab">CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER</div>
         <div class="feat" style="grid-template-columns:1fr">
           <div class="txt">
-            <h2>A pedalboard that routes like a patchbay.</h2>
+            <h2 data-i="chain_h2">A pedalboard that routes like a patchbay.</h2>
             <ul style="--nc:var(--drive)">
-              <li>Drag-and-drop signal chain with parallel branches</li>
-              <li>Up to four independent rigs — guitar and vocals at once, each on its own input and output</li>
-              <li>Master section: saturation, limiter, LUFS metering</li>
-              <li>Presets on MIDI program-change slots, sharable as files</li>
+              <li data-i="chain_li1">Drag-and-drop signal chain with parallel branches</li>
+              <li data-i="chain_li2">Up to four independent rigs — guitar and vocals at once, each on its own input and output</li>
+              <li data-i="chain_li3">Master section: saturation, limiter, LUFS metering</li>
+              <li data-i="chain_li4">Presets on MIDI program-change slots, sharable as files</li>
             </ul>
             <div class="pedals" aria-label="Included effects">
               <span class="pedal g">GATE</span><span class="pedal">COMP</span>
@@ -236,13 +241,13 @@
       <div class="card feat flip">
         <div class="pic"><div class="shot"><img src="/assets/ph_loop.png" alt="The Loop tab: four synced loop tracks" loading="lazy"></div></div>
         <div class="txt">
-          <div class="slab" style="--nc:var(--power)">LOOP&nbsp;·&nbsp;4&nbsp;TRACKS</div>
-          <h2>A looper that keeps time for you.</h2>
+          <div class="slab" style="--nc:var(--power)" data-i="loop_slab">LOOP&nbsp;·&nbsp;4&nbsp;TRACKS</div>
+          <h2 data-i="loop_h2">A looper that keeps time for you.</h2>
           <ul style="--nc:var(--power)">
-            <li>The first loop sets the cycle — everything else lands on the bar grid</li>
-            <li>Tempo detection; metronome phase-locked to the loop</li>
-            <li>Overdubs with undo, per-track inputs and outputs, loop editor</li>
-            <li>Record post-FX, a raw input, another rig or the sampler</li>
+            <li data-i="loop_li1">The first loop sets the cycle — everything else lands on the bar grid</li>
+            <li data-i="loop_li2">Tempo detection; metronome phase-locked to the loop</li>
+            <li data-i="loop_li3">Overdubs with undo, per-track inputs and outputs, loop editor</li>
+            <li data-i="loop_li4">Record post-FX, a raw input, another rig or the sampler</li>
           </ul>
         </div>
       </div>
@@ -251,13 +256,13 @@
     <section class="node" style="--nc:var(--pitch)">
       <div class="card feat">
         <div class="txt">
-          <div class="slab" style="--nc:var(--pitch)">SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM</div>
-          <h2>Pads, setlists and the whole show.</h2>
+          <div class="slab" style="--nc:var(--pitch)" data-i="sample_slab">SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM</div>
+          <h2 data-i="sample_h2">Pads, setlists and the whole show.</h2>
           <ul style="--nc:var(--pitch)">
-            <li>16 pads: load files or record the input, trim, pitch, loop — with factory drum and FX kits</li>
-            <li>Setlists with backing tracks, automatic tempo and key detection</li>
-            <li>Preset markers on the song timeline, snapped to bars</li>
-            <li>Multitrack performance recording: mix, dry input and backing stems</li>
+            <li data-i="sample_li1">16 pads: load files or record the input, trim, pitch, loop — with factory drum and FX kits</li>
+            <li data-i="sample_li2">Setlists with backing tracks, automatic tempo and key detection</li>
+            <li data-i="sample_li3">Preset markers on the song timeline, snapped to bars</li>
+            <li data-i="sample_li4">Multitrack performance recording: mix, dry input and backing stems</li>
           </ul>
         </div>
         <div class="pic"><div class="shot"><img src="/assets/ph_sample.png" alt="The Sample tab: 16 sampler pads" loading="lazy"></div></div>
@@ -268,35 +273,35 @@
       <div class="card feat flip">
         <div class="pic"><div class="shot"><img src="/assets/ph_control.png" alt="The Control tab: MIDI and input triggers" loading="lazy"></div></div>
         <div class="txt">
-          <div class="slab" style="--nc:var(--gate)">CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGERS</div>
-          <h2>Hands on the strings, not the screen.</h2>
+          <div class="slab" style="--nc:var(--gate)" data-i="ctl_slab">CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGERS</div>
+          <h2 data-i="ctl_h2">Hands on the strings, not the screen.</h2>
           <ul style="--nc:var(--gate)">
-            <li>Bluetooth MIDI pairing built in; MIDI learn for any CC or note</li>
-            <li>Input triggers: knock on the guitar body, a held note, a chord</li>
-            <li>Chromatic and polyphonic (strum) tuner</li>
-            <li>Multichannel audio interfaces, per-channel trim and naming</li>
+            <li data-i="ctl_li1">Bluetooth MIDI pairing built in; MIDI learn for any CC or note</li>
+            <li data-i="ctl_li2">Input triggers: knock on the guitar body, a held note, a chord</li>
+            <li data-i="ctl_li3">Chromatic and polyphonic (strum) tuner</li>
+            <li data-i="ctl_li4">Multichannel audio interfaces, per-channel trim and naming</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <div class="jack">OUT&nbsp;·&nbsp;SPEAKERS&nbsp;/&nbsp;HEADPHONES&nbsp;/&nbsp;FOH</div>
+    <div class="jack" data-i="jack_out">OUT&nbsp;·&nbsp;SPEAKERS&nbsp;/&nbsp;HEADPHONES&nbsp;/&nbsp;FOH</div>
   </div>
 
   <section class="band">
     <div class="card">
       <img src="/assets/ipad_rig.png" alt="NAMper on iPad: two-column rig layout with the preset rail" loading="lazy">
       <div class="cap">
-        <div class="slab" style="margin:0">MADE&nbsp;FOR&nbsp;IPAD&nbsp;TOO</div>
-        <p>The full rig, edge to edge — with a preset rail built for stage tapping.</p>
+        <div class="slab" style="margin:0" data-i="ipad_slab">MADE&nbsp;FOR&nbsp;IPAD&nbsp;TOO</div>
+        <p data-i="ipad_p">The full rig, edge to edge — with a preset rail built for stage tapping.</p>
       </div>
     </div>
   </section>
 
   <section style="margin-top:26px">
     <div class="card free">
-      <h2>Free. <span style="color:var(--power)">And it stays free.</span></h2>
-      <p>Every amp, every effect, every update — no ads, no locked features,
+      <h2 data-i="free_h2">Free. <span style="color:var(--power)">And it stays free.</span></h2>
+      <p data-i="free_p">Every amp, every effect, every update — no ads, no locked features,
          no subscriptions. If NAMper earns a place on your pedalboard,
          there is a tip jar inside. That’s the whole business model.</p>
     </div>
@@ -306,18 +311,56 @@
     <div class="card">
       <nav>
         <a href="https://t.me/namperapp">TELEGRAM</a>
-        <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
-        <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+        <a href="https://github.com/retroaktive/namper-support/issues" data-i="foot_support">SUPPORT</a>
+        <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md" data-i="foot_privacy">PRIVACY</a>
         <a href="https://www.tone3000.com">TONE3000</a>
         <a href="https://www.neuralampmodeler.com">NAM</a>
       </nav>
       <div>© 2026 Evgeny Stepanov</div>
     </div>
-    <p class="fine">NAMper collects no data. Audio never leaves the device.
+    <p class="fine" data-i="fine">NAMper collects no data. Audio never leaves the device.
       Neural Amp Modeler is an open-source project; amp captures on TONE3000
       are published by their creators for free community use.</p>
+    <nav id="langs" aria-label="Language">
+      <a data-l="en">EN</a><a data-l="ru">RU</a><a data-l="de">DE</a><a data-l="es">ES</a>
+      <a data-l="fr">FR</a><a data-l="it">IT</a><a data-l="pt">PT</a>
+      <a data-l="ja">日本語</a><a data-l="ko">한국어</a><a data-l="zh">中文</a>
+    </nav>
   </footer>
 </div>
 
+<script>
+const I18N={"ru":{"h1":"Твой iPhone — это<br>полноценный <span class=\"a\">гитарный&nbsp;риг","lede":"Профили настоящих ламповых усилителей Neural Amp Modeler, педалборд со студийными эффектами, синхронизированный четырёхдорожечный лупер, сэмплерные пэды, бэкинг-треки и полное MIDI-управление — на телефоне, который уже лежит у тебя в кармане.","chip_free":"БЕСПЛАТНО&nbsp;НАВСЕГДА","chip_ads":"БЕЗ&nbsp;РЕКЛАМЫ","chip_subs":"БЕЗ&nbsp;ПОДПИСОК","cta_store":"СКОРО&nbsp;В&nbsp;APP&nbsp;STORE","cta_tg":"СООБЩЕСТВО&nbsp;В&nbsp;TELEGRAM","cta_support":"ПОДДЕРЖКА","jack_in":"ВХОД&nbsp;·&nbsp;ГИТАРА&nbsp;/&nbsp;МИКРОФОН&nbsp;/&nbsp;ИНТЕРФЕЙС","amp_slab":"УСИЛИТЕЛЬ&nbsp;·&nbsp;ДВИЖОК&nbsp;NAM","amp_h2":"Настоящие усилители, снятые в цифру.","amp_li1":"Движок Neural Amp Modeler — профили настоящих ламповых усилителей студийного качества","amp_li2":"Тысячи бесплатных тонов от сообщества TONE3000","amp_li3":"Встроенные ламповые усилители и IR кабинетов работают полностью офлайн","amp_li4":"Загружай собственные .nam-профили и импульсы кабинетов","chain_slab":"ЦЕПОЧКА&nbsp;·&nbsp;СБОРКА&nbsp;РИГА","chain_h2":"Педалборд с коммутацией, как у патчбея.","chain_li1":"Цепочка эффектов собирается перетаскиванием — с параллельными ветками","chain_li2":"До четырёх независимых ригов — гитара и вокал одновременно, каждый со своим входом и выходом","chain_li3":"Мастер-секция: сатурация, лимитер, измерение LUFS","chain_li4":"Пресеты на слотах MIDI Program Change — и ими можно делиться как файлами","loop_slab":"ЛУПЕР&nbsp;·&nbsp;4&nbsp;ДОРОЖКИ","loop_h2":"Лупер, который сам держит ритм.","loop_li1":"Первый луп задаёт цикл — всё остальное ложится точно по сетке тактов","loop_li2":"Определение темпа; метроном идёт строго в фазе с лупом","loop_li3":"Овердабы с отменой, свои входы и выходы у каждой дорожки, редактор лупов","loop_li4":"Пиши сигнал после эффектов, чистый вход, другой риг или сэмплер","sample_slab":"СЭМПЛЕР&nbsp;·&nbsp;16&nbsp;ПЭДОВ&nbsp;&nbsp;/&nbsp;&nbsp;СЦЕНА","sample_h2":"Пэды, сетлисты и всё шоу целиком.","sample_li1":"16 пэдов: загружай файлы или записывай вход, обрезка, питч, луп — плюс заводские наборы барабанов и эффектов","sample_li2":"Сетлисты с бэкинг-треками, автоматическое определение темпа и тональности","sample_li3":"Маркеры пресетов на таймлайне песни, привязанные к тактам","sample_li4":"Многодорожечная запись выступления: микс, чистый вход и стемы бэкинга","ctl_slab":"УПРАВЛЕНИЕ&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;ТРИГГЕРЫ","ctl_h2":"Руки на струнах, а не на экране.","ctl_li1":"Встроенное подключение Bluetooth MIDI; MIDI learn на любой CC или ноту","ctl_li2":"Триггеры со входа: стук по деке, выдержанная нота, аккорд","ctl_li3":"Хроматический и полифонический тюнер — просто ударь по всем струнам","ctl_li4":"Многоканальные аудиоинтерфейсы, свой уровень и имя для каждого канала","jack_out":"ВЫХОД&nbsp;·&nbsp;КОЛОНКИ&nbsp;/&nbsp;НАУШНИКИ&nbsp;/&nbsp;FOH","ipad_slab":"СОЗДАНО&nbsp;И&nbsp;ДЛЯ&nbsp;IPAD","ipad_p":"Весь риг от края до края экрана — и панель пресетов, сделанная для переключения пальцем прямо на сцене.","free_h2":"Бесплатно. <span style=\"color:var(--power)\">И останется бесплатным.","free_p":"Каждый усилитель, каждый эффект, каждое обновление — без рекламы, без закрытых функций, без подписок. Если NAMper заслужит место на твоём педалборде, внутри есть копилка для чаевых. Вот и вся бизнес-модель.","foot_support":"ПОДДЕРЖКА","foot_privacy":"ПРИВАТНОСТЬ","fine":"NAMper не собирает никаких данных. Аудио никогда не покидает устройство. Neural Amp Modeler — проект с открытым исходным кодом; профили усилителей на TONE3000 публикуются их авторами для свободного использования сообществом.","meta":"NAMper превращает iPhone или iPad в полноценный гитарный риг: профили настоящих усилителей Neural Amp Modeler, студийные эффекты, синхронизированный четырёхдорожечный лупер, сэмплерные пэды, бэкинг-треки и полное MIDI-управление. Бесплатно, без рекламы и без подписок."},"de":{"h1":"Dein iPhone ist ein<br>komplettes <span class=\"a\">Gitarren-Rig","lede":"Neural Amp Modeler Profile echter Röhrenamps, ein Pedalboard voller Studio-Effekte, ein synchronisierter Vierspur-Looper, Sampler-Pads, Backing Tracks und volle MIDI-Steuerung — auf dem Phone, das schon in deiner Tasche steckt.","chip_free":"FÜR&nbsp;IMMER&nbsp;GRATIS","chip_ads":"KEINE&nbsp;WERBUNG","chip_subs":"KEINE&nbsp;ABOS","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;BALD&nbsp;DA","cta_tg":"TELEGRAM&nbsp;COMMUNITY","cta_support":"SUPPORT","jack_in":"IN&nbsp;·&nbsp;GITARRE&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACE","amp_slab":"AMP&nbsp;·&nbsp;NAM&nbsp;ENGINE","amp_h2":"Echte Amps, eingefangen.","amp_li1":"Neural Amp Modeler Engine — Captures echter Röhrenamps in Studioqualität","amp_li2":"Tausende kostenlose Tones aus der TONE3000-Community","amp_li3":"Eingebaute Röhrenamp-Voicings und Cab-IRs laufen komplett offline","amp_li4":"Lade deine eigenen .nam-Profile und Impulse Responses","chain_slab":"CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER","chain_h2":"Ein Pedalboard, das routet wie eine Patchbay.","chain_li1":"Signalkette per Drag-and-drop, mit parallelen Signalwegen","chain_li2":"Bis zu vier unabhängige Rigs — Gitarre und Gesang gleichzeitig, jedes mit eigenem Ein- und Ausgang","chain_li3":"Master-Sektion: Sättigung, Limiter, LUFS-Metering","chain_li4":"Presets auf MIDI-Program-Change-Slots, als Dateien teilbar","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;SPUREN","loop_h2":"Ein Looper, der für dich den Takt hält.","loop_li1":"Der erste Loop setzt den Zyklus — alles Weitere landet sauber auf dem Taktraster","loop_li2":"Tempo-Erkennung; Metronom phasensynchron zum Loop","loop_li3":"Overdubs mit Undo, Ein- und Ausgänge pro Spur, Loop-Editor","loop_li4":"Nimm das Signal nach den Effekten auf, den trockenen Input, ein anderes Rig oder den Sampler","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM","sample_h2":"Pads, Setlists und die ganze Show.","sample_li1":"16 Pads: Dateien laden oder den Input aufnehmen, trimmen, pitchen, loopen — mit Werks-Drum- und FX-Kits","sample_li2":"Setlists mit Backing Tracks, automatische Tempo- und Tonart-Erkennung","sample_li3":"Preset-Marker auf der Song-Timeline, taktgenau eingerastet","sample_li4":"Mehrspur-Aufnahme deiner Performance: Mix, trockener Input und Backing-Stems","ctl_slab":"CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGER","ctl_h2":"Hände an den Saiten, nicht am Screen.","ctl_li1":"Bluetooth-MIDI-Pairing eingebaut; MIDI-Learn für jedes CC und jede Note","ctl_li2":"Input-Trigger: Klopfen auf den Gitarrenkorpus, ein gehaltener Ton, ein Akkord","ctl_li3":"Chromatischer und polyphoner (Strum-)Tuner","ctl_li4":"Mehrkanal-Audiointerfaces, Trim und Benennung pro Kanal","jack_out":"OUT&nbsp;·&nbsp;SPEAKER&nbsp;/&nbsp;KOPFHÖRER&nbsp;/&nbsp;FOH","ipad_slab":"AUCH&nbsp;FÜRS&nbsp;IPAD&nbsp;GEMACHT","ipad_p":"Das volle Rig, randlos auf dem Screen — mit einer Preset-Leiste, gebaut fürs Antippen auf der Bühne.","free_h2":"Gratis. <span style=\"color:var(--power)\">Und das bleibt so.","free_p":"Jeder Amp, jeder Effekt, jedes Update — keine Werbung, keine gesperrten Features, keine Abos. Wenn sich NAMper einen Platz auf deinem Pedalboard verdient, findest du in der App eine Trinkgeldkasse. Das ist das ganze Geschäftsmodell.","foot_support":"SUPPORT","foot_privacy":"DATENSCHUTZ","fine":"NAMper sammelt keine Daten. Audio verlässt nie dein Gerät. Neural Amp Modeler ist ein Open-Source-Projekt; die Amp-Captures auf TONE3000 werden von ihren Erstellern kostenlos für die Community veröffentlicht.","meta":"NAMper macht dein iPhone oder iPad zum kompletten Gitarren-Rig: Neural Amp Modeler Profile echter Amps, Studio-Effekte, ein synchronisierter Vierspur-Looper, Sampler-Pads, Backing Tracks und volle MIDI-Steuerung. Gratis, ohne Werbung, ohne Abos."},"es":{"h1":"Tu iPhone es un<br>completo <span class=\"a\">rig&nbsp;de&nbsp;guitarra","lede":"Perfiles Neural Amp Modeler de amplis valvulares reales, una pedalera de efectos de estudio, un looper de cuatro pistas sincronizado, pads de sampler, backing tracks y control MIDI total — en el teléfono que ya llevas en el bolsillo.","chip_free":"GRATIS&nbsp;PARA&nbsp;SIEMPRE","chip_ads":"SIN&nbsp;ANUNCIOS","chip_subs":"SIN&nbsp;SUSCRIPCIONES","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;MUY&nbsp;PRONTO","cta_tg":"COMUNIDAD&nbsp;EN&nbsp;TELEGRAM","cta_support":"SOPORTE","jack_in":"IN&nbsp;·&nbsp;GUITARRA&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFAZ","amp_slab":"AMPLI&nbsp;·&nbsp;MOTOR&nbsp;NAM","amp_h2":"Amplis reales, capturados.","amp_li1":"Motor Neural Amp Modeler — capturas con calidad de estudio de amplis valvulares reales","amp_li2":"Miles de tonos gratis de la comunidad TONE3000","amp_li3":"Voicings de ampli valvular e IRs de gabinete integrados que funcionan totalmente sin conexión","amp_li4":"Carga tus propios perfiles .nam y respuestas de impulso","chain_slab":"CADENA&nbsp;·&nbsp;ARMA&nbsp;TU&nbsp;RIG","chain_h2":"Una pedalera que se rutea como un patchbay.","chain_li1":"Arma la cadena de señal arrastrando y soltando, con ramas en paralelo","chain_li2":"Hasta cuatro rigs independientes — guitarra y voz a la vez, cada uno con su propia entrada y salida","chain_li3":"Sección master: saturación, limitador, medición LUFS","chain_li4":"Presets en slots de program change MIDI, compartibles como archivos","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;PISTAS","loop_h2":"Un looper que lleva el tempo por ti.","loop_li1":"El primer loop define el ciclo — todo lo demás cae en la rejilla de compases","loop_li2":"Detección de tempo; metrónomo sincronizado en fase con el loop","loop_li3":"Overdubs con deshacer, entradas y salidas por pista, editor de loops","loop_li4":"Graba post-FX, una entrada limpia, otro rig o el sampler","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;EN&nbsp;VIVO","sample_h2":"Pads, setlists y el show completo.","sample_li1":"16 pads: carga archivos o graba la entrada, recorta, cambia el pitch, haz loops — con kits de batería y FX de fábrica","sample_li2":"Setlists con backing tracks, detección automática de tempo y tonalidad","sample_li3":"Marcadores de preset en la línea de tiempo de la canción, ajustados al compás","sample_li4":"Grabación multipista de tu actuación: mezcla, entrada sin procesar y stems del backing","ctl_slab":"CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGERS","ctl_h2":"Las manos en las cuerdas, no en la pantalla.","ctl_li1":"Emparejamiento Bluetooth MIDI integrado; MIDI learn para cualquier CC o nota","ctl_li2":"Triggers desde la entrada: un golpe en el cuerpo de la guitarra, una nota sostenida, un acorde","ctl_li3":"Afinador cromático y polifónico (rasgueo)","ctl_li4":"Interfaces de audio multicanal, ganancia y nombre por canal","jack_out":"OUT&nbsp;·&nbsp;PARLANTES&nbsp;/&nbsp;AUDÍFONOS&nbsp;/&nbsp;FOH","ipad_slab":"HECHO&nbsp;TAMBIÉN&nbsp;PARA&nbsp;IPAD","ipad_p":"El rig completo, de borde a borde — con un riel de presets pensado para cambiar de un toque en el escenario.","free_h2":"Gratis. <span style=\"color:var(--power)\">Y seguirá siendo gratis.","free_p":"Cada ampli, cada efecto, cada actualización — sin anuncios, sin funciones bloqueadas, sin suscripciones. Si NAMper se gana un lugar en tu pedalera, adentro hay un bote de propinas. Ese es todo el modelo de negocio.","foot_support":"SOPORTE","foot_privacy":"PRIVACIDAD","fine":"NAMper no recopila datos. El audio nunca sale del dispositivo. Neural Amp Modeler es un proyecto open source; las capturas de amplis en TONE3000 las publican sus creadores para uso gratuito de la comunidad.","meta":"NAMper convierte tu iPhone o iPad en un rig de guitarra completo: perfiles Neural Amp Modeler de amplis reales, efectos de estudio, un looper de cuatro pistas sincronizado, pads de sampler, backing tracks y control MIDI total. Gratis, sin anuncios y sin suscripciones."},"fr":{"h1":"Votre iPhone est un<br>véritable <span class=\"a\">rig&nbsp;guitare","lede":"Des profils Neural Amp Modeler de vrais amplis à lampes, un pedalboard d’effets studio, un looper quatre pistes synchronisé, des pads sampler, des backing tracks et un contrôle MIDI complet — sur le téléphone déjà dans votre poche.","chip_free":"GRATUIT&nbsp;À&nbsp;VIE","chip_ads":"ZÉRO&nbsp;PUB","chip_subs":"ZÉRO&nbsp;ABONNEMENT","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;BIENTÔT&nbsp;DISPONIBLE","cta_tg":"COMMUNAUTÉ&nbsp;TELEGRAM","cta_support":"SUPPORT","jack_in":"IN&nbsp;·&nbsp;GUITARE&nbsp;/&nbsp;MICRO&nbsp;/&nbsp;INTERFACE","amp_slab":"AMPLI&nbsp;·&nbsp;MOTEUR&nbsp;NAM","amp_h2":"De vrais amplis, capturés.","amp_li1":"Moteur Neural Amp Modeler — des captures de qualité studio de vrais amplis à lampes","amp_li2":"Des milliers de sons gratuits grâce à la communauté TONE3000","amp_li3":"Amplis à lampes intégrés et IR de baffles, entièrement hors ligne","amp_li4":"Chargez vos propres profils .nam et vos réponses impulsionnelles","chain_slab":"CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER","chain_h2":"Un pedalboard qui se route comme un patchbay.","chain_li1":"Chaîne d’effets en glisser-déposer, avec branches parallèles","chain_li2":"Jusqu’à quatre rigs indépendants — guitare et voix en même temps, chacun avec sa propre entrée et sa propre sortie","chain_li3":"Section master&nbsp;: saturation, limiteur, mesure LUFS","chain_li4":"Des presets sur les slots de program change MIDI, partageables en fichiers","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;PISTES","loop_h2":"Un looper qui garde le tempo pour vous.","loop_li1":"Le premier loop fixe le cycle — tout le reste tombe pile sur la grille de mesures","loop_li2":"Détection du tempo&nbsp;; métronome calé en phase sur le loop","loop_li3":"Overdubs avec annulation, entrées et sorties par piste, éditeur de loops","loop_li4":"Enregistrez le signal post-FX, une entrée brute, un autre rig ou le sampler","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM","sample_h2":"Des pads, des setlists et tout le concert.","sample_li1":"16 pads&nbsp;: chargez des fichiers ou enregistrez l’entrée, trim, pitch, loop — avec des kits batterie et FX d’usine","sample_li2":"Setlists avec backing tracks, détection automatique du tempo et de la tonalité","sample_li3":"Marqueurs de presets sur la timeline du morceau, calés sur les mesures","sample_li4":"Enregistrement multipiste de vos performances&nbsp;: mix, entrée dry et stems des backing tracks","ctl_slab":"CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGERS","ctl_h2":"Les mains sur les cordes, pas sur l’écran.","ctl_li1":"Appairage MIDI Bluetooth intégré&nbsp;; MIDI learn sur n’importe quel CC ou note","ctl_li2":"Triggers à l’entrée&nbsp;: un coup sur la caisse de la guitare, une note tenue, un accord","ctl_li3":"Accordeur chromatique et polyphonique (toutes les cordes d’un coup)","ctl_li4":"Interfaces audio multicanaux, trim et nommage par canal","jack_out":"OUT&nbsp;·&nbsp;ENCEINTES&nbsp;/&nbsp;CASQUE&nbsp;/&nbsp;FOH","ipad_slab":"PENSÉ&nbsp;AUSSI&nbsp;POUR&nbsp;IPAD","ipad_p":"Le rig au complet, bord à bord — avec un rail de presets conçu pour être piloté sur scène.","free_h2":"Gratuit. <span style=\"color:var(--power)\">Et ça le reste.","free_p":"Chaque ampli, chaque effet, chaque mise à jour — sans pub, sans fonctions verrouillées, sans abonnement. Si NAMper gagne sa place sur votre pedalboard, une tirelire à pourboires vous attend dans l’app. C’est ça, tout le modèle économique.","foot_support":"SUPPORT","foot_privacy":"CONFIDENTIALITÉ","fine":"NAMper ne collecte aucune donnée. L’audio ne quitte jamais l’appareil. Neural Amp Modeler est un projet open source&nbsp;; les captures d’amplis sur TONE3000 sont publiées par leurs créateurs pour un usage communautaire gratuit.","meta":"NAMper transforme votre iPhone ou iPad en rig guitare complet : profils Neural Amp Modeler de vrais amplis, effets studio, looper quatre pistes synchronisé, pads sampler, backing tracks et contrôle MIDI complet. Gratuit, sans pub, sans abonnement."},"it":{"h1":"Il tuo iPhone è un<br>vero e proprio <span class=\"a\">rig&nbsp;da&nbsp;chitarra","lede":"Profili Neural Amp Modeler di veri ampli valvolari, una pedaliera di effetti da studio, un looper a quattro tracce sincronizzato, pad sampler, backing track e controllo MIDI completo — sul telefono che hai già in tasca.","chip_free":"GRATIS&nbsp;PER&nbsp;SEMPRE","chip_ads":"ZERO&nbsp;PUBBLICITÀ","chip_subs":"ZERO&nbsp;ABBONAMENTI","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;IN&nbsp;ARRIVO","cta_tg":"COMMUNITY&nbsp;TELEGRAM","cta_support":"SUPPORTO","jack_in":"IN&nbsp;·&nbsp;CHITARRA&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACCIA","amp_slab":"AMP&nbsp;·&nbsp;MOTORE&nbsp;NAM","amp_h2":"Ampli veri, catturati.","amp_li1":"Motore Neural Amp Modeler — capture di qualità da studio di veri ampli valvolari","amp_li2":"Migliaia di suoni gratuiti dalla community TONE3000","amp_li3":"Voicing valvolari e IR di cabinet integrati, funzionano completamente offline","amp_li4":"Carica i tuoi profili .nam e le tue risposte all'impulso","chain_slab":"CHAIN&nbsp;·&nbsp;RIG&nbsp;BUILDER","chain_h2":"Una pedaliera che si instrada come una patchbay.","chain_li1":"Catena del segnale drag-and-drop con rami in parallelo","chain_li2":"Fino a quattro rig indipendenti — chitarra e voce insieme, ognuno con il proprio ingresso e la propria uscita","chain_li3":"Sezione master: saturazione, limiter, misurazione LUFS","chain_li4":"Preset sugli slot program change MIDI, condivisibili come file","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;TRACCE","loop_h2":"Un looper che tiene il tempo per te.","loop_li1":"Il primo loop fissa il ciclo — tutto il resto cade sulla griglia delle battute","loop_li2":"Rilevamento del tempo; metronomo agganciato in fase al loop","loop_li3":"Overdub con undo, ingressi e uscite per traccia, editor dei loop","loop_li4":"Registra post-FX, il segnale pulito, un altro rig o il sampler","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;PAD&nbsp;&nbsp;/&nbsp;&nbsp;PERFORM","sample_h2":"Pad, scalette e lo show intero.","sample_li1":"16 pad: carica file o registra l'ingresso, taglia, intona, metti in loop — con kit di batteria ed effetti di fabbrica","sample_li2":"Scalette con backing track, rilevamento automatico di tempo e tonalità","sample_li3":"Marker dei preset sulla timeline del brano, allineati alle battute","sample_li4":"Registrazione multitraccia della performance: mix, segnale pulito e stem delle basi","ctl_slab":"CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;TRIGGER","ctl_h2":"Le mani sulle corde, non sullo schermo.","ctl_li1":"Abbinamento MIDI Bluetooth integrato; MIDI learn per qualsiasi CC o nota","ctl_li2":"Trigger dall'ingresso: un colpo sul body della chitarra, una nota tenuta, un accordo","ctl_li3":"Accordatore cromatico e polifonico (a pennata)","ctl_li4":"Interfacce audio multicanale, trim e nome per ogni canale","jack_out":"OUT&nbsp;·&nbsp;CASSE&nbsp;/&nbsp;CUFFIE&nbsp;/&nbsp;FOH","ipad_slab":"FATTO&nbsp;ANCHE&nbsp;PER&nbsp;IPAD","ipad_p":"Il rig completo, a tutto schermo — con una barra dei preset pensata per il palco, a colpo di dito.","free_h2":"Gratis. <span style=\"color:var(--power)\">E resta gratis.","free_p":"Ogni ampli, ogni effetto, ogni aggiornamento — niente pubblicità, niente funzioni bloccate, niente abbonamenti. Se NAMper si guadagna un posto sulla tua pedaliera, dentro c'è un barattolo delle mance. Tutto qui, questo è il business model.","foot_support":"SUPPORTO","foot_privacy":"PRIVACY","fine":"NAMper non raccoglie alcun dato. L'audio non lascia mai il dispositivo. Neural Amp Modeler è un progetto open source; le capture di ampli su TONE3000 sono pubblicate dai loro creatori per l'uso gratuito della community.","meta":"NAMper trasforma il tuo iPhone o iPad in un rig da chitarra completo: profili Neural Amp Modeler di veri ampli, effetti da studio, un looper a quattro tracce sincronizzato, pad sampler, backing track e controllo MIDI completo. Gratis, senza pubblicità, senza abbonamenti."},"pt":{"h1":"Seu iPhone é um<br>completo <span class=\"a\">rig&nbsp;de&nbsp;guitarra","lede":"Perfis Neural Amp Modeler de amps valvulados de verdade, um pedalboard de efeitos de estúdio, um looper de quatro faixas sincronizado, pads de sampler, backing tracks e controle MIDI completo — no celular que já está no seu bolso.","chip_free":"GRÁTIS&nbsp;PRA&nbsp;SEMPRE","chip_ads":"SEM&nbsp;ANÚNCIOS","chip_subs":"SEM&nbsp;ASSINATURA","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;EM&nbsp;BREVE","cta_tg":"COMUNIDADE&nbsp;NO&nbsp;TELEGRAM","cta_support":"SUPORTE","jack_in":"IN&nbsp;·&nbsp;GUITARRA&nbsp;/&nbsp;MIC&nbsp;/&nbsp;INTERFACE","amp_slab":"AMP&nbsp;·&nbsp;MOTOR&nbsp;NAM","amp_h2":"Amps de verdade, capturados.","amp_li1":"Motor Neural Amp Modeler — capturas com qualidade de estúdio de amps valvulados reais","amp_li2":"Milhares de timbres gratuitos da comunidade TONE3000","amp_li3":"Amps valvulados nativos e IRs de caixa funcionam totalmente offline","amp_li4":"Carregue seus próprios perfis .nam e respostas de impulso","chain_slab":"CADEIA&nbsp;·&nbsp;MONTE&nbsp;SEU&nbsp;RIG","chain_h2":"Um pedalboard que roteia como um patchbay.","chain_li1":"Monte a cadeia de sinal arrastando e soltando, com ramos paralelos","chain_li2":"Até quatro rigs independentes — guitarra e voz ao mesmo tempo, cada um com sua entrada e saída","chain_li3":"Seção master: saturação, limiter e medição de LUFS","chain_li4":"Presets em slots de program change MIDI, compartilháveis como arquivos","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;FAIXAS","loop_h2":"Um looper que segura o tempo por você.","loop_li1":"O primeiro loop define o ciclo — todo o resto cai certinho na grade de compassos","loop_li2":"Detecção de andamento; metrônomo travado em fase com o loop","loop_li3":"Overdubs com desfazer, entradas e saídas por faixa, editor de loop","loop_li4":"Grave o sinal pós-efeitos, a entrada crua, outro rig ou o sampler","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;PADS&nbsp;&nbsp;/&nbsp;&nbsp;SHOW","sample_h2":"Pads, setlists e o show inteiro.","sample_li1":"16 pads: carregue arquivos ou grave a entrada, corte, mude o pitch, coloque em loop — com kits de bateria e efeitos de fábrica","sample_li2":"Setlists com backing tracks, detecção automática de andamento e tom","sample_li3":"Marcadores de preset na linha do tempo da música, alinhados aos compassos","sample_li4":"Gravação multipista da performance: mix, entrada crua e stems do playback","ctl_slab":"CONTROLE&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;GATILHOS","ctl_h2":"As mãos nas cordas, não na tela.","ctl_li1":"Pareamento MIDI Bluetooth integrado; MIDI learn para qualquer CC ou nota","ctl_li2":"Gatilhos pela entrada: uma batida no corpo da guitarra, uma nota segurada, um acorde","ctl_li3":"Afinador cromático e polifônico (uma palhetada só)","ctl_li4":"Interfaces de áudio multicanal, com ganho e nome por canal","jack_out":"OUT&nbsp;·&nbsp;CAIXAS&nbsp;/&nbsp;FONES&nbsp;/&nbsp;FOH","ipad_slab":"FEITO&nbsp;PRO&nbsp;IPAD&nbsp;TAMBÉM","ipad_p":"O rig completo, de ponta a ponta da tela — com uma régua de presets feita pra acionar no palco.","free_h2":"Grátis. <span style=\"color:var(--power)\">E vai continuar grátis.","free_p":"Todos os amps, todos os efeitos, todas as atualizações — sem anúncios, sem recursos bloqueados, sem assinatura. Se o NAMper conquistar um lugar no seu pedalboard, tem uma caixinha de contribuições dentro do app. O modelo de negócio é só esse.","foot_support":"SUPORTE","foot_privacy":"PRIVACIDADE","fine":"O NAMper não coleta nenhum dado. O áudio nunca sai do aparelho. O Neural Amp Modeler é um projeto open source; as capturas de amp no TONE3000 são publicadas pelos próprios criadores para uso gratuito da comunidade.","meta":"O NAMper transforma seu iPhone ou iPad em um rig de guitarra completo: perfis Neural Amp Modeler de amps de verdade, efeitos de estúdio, looper de quatro faixas sincronizado, pads de sampler, backing tracks e controle MIDI total. Grátis, sem anúncios, sem assinatura."},"ja":{"h1":"iPhoneが、まるごと<br>1台の<span class=\"a\">ギターリグ","lede":"本物のチューブアンプをキャプチャしたNeural Amp Modelerプロファイル、スタジオ級エフェクトのペダルボード、同期する4トラックルーパー、サンプラーパッド、バッキングトラック、そしてフルMIDIコントロール — すべて、ポケットの中のiPhoneで。","chip_free":"ずっと無料","chip_ads":"広告なし","chip_subs":"サブスクなし","cta_store":"APP STORE · 近日公開","cta_tg":"TELEGRAMコミュニティ","cta_support":"サポート","jack_in":"IN · ギター / マイク / インターフェース","amp_slab":"AMP · NAMエンジン","amp_h2":"本物のアンプを、そのままキャプチャ。","amp_li1":"Neural Amp Modelerエンジン — 実機チューブアンプのスタジオ品質キャプチャ","amp_li2":"TONE3000コミュニティの何千もの無料トーン","amp_li3":"内蔵チューブアンプボイシングとキャビネットIRは完全オフラインで動作","amp_li4":"自分の.namプロファイルやインパルスレスポンスも読み込み可能","chain_slab":"CHAIN · リグビルダー","chain_h2":"パッチベイのように自在にルーティングできるペダルボード。","chain_li1":"ドラッグ＆ドロップのシグナルチェーン、パラレル分岐にも対応","chain_li2":"最大4系統の独立リグ — ギターとボーカルを同時に、それぞれ別の入出力で","chain_li3":"マスターセクション：サチュレーション、リミッター、LUFSメーター","chain_li4":"プリセットはMIDIプログラムチェンジのスロットに割り当て、ファイルとして共有可能","loop_slab":"LOOP · 4トラック","loop_h2":"テンポはルーパーにおまかせ。","loop_li1":"最初のループがサイクルを決め、あとはすべて小節グリッドにぴったり収まる","loop_li2":"テンポ自動検出、ループに位相同期するメトロノーム","loop_li3":"アンドゥ対応のオーバーダブ、トラックごとの入出力、ループエディタ","loop_li4":"エフェクト後の音、ドライ入力、別のリグ、サンプラー — どれでも録音可能","sample_slab":"SAMPLE · 16パッド / パフォーム","sample_h2":"パッドもセットリストも、ステージまるごと。","sample_li1":"16パッド：ファイル読み込みや入力の録音、トリム、ピッチ、ループ — ドラムとFXのファクトリーキット付き","sample_li2":"バッキングトラック付きセットリスト、テンポとキーを自動検出","sample_li3":"曲のタイムラインにプリセットマーカーを配置、小節にスナップ","sample_li4":"マルチトラックのライブ録音：ミックス、ドライ入力、バッキングのステムまで","ctl_slab":"CONTROL · MIDI＋トリガー","ctl_h2":"手は弦の上に。画面はいらない。","ctl_li1":"Bluetooth MIDIペアリング内蔵、任意のCCやノートにMIDIラーン","ctl_li2":"入力トリガー：ボディへのノック、伸ばした音、コードで操作","ctl_li3":"クロマチック＆ポリフォニック（ストラム）チューナー","ctl_li4":"マルチチャンネルのオーディオインターフェース、チャンネルごとのトリムと名前付け","jack_out":"OUT · スピーカー / ヘッドホン / FOH","ipad_slab":"iPadにも最適化","ipad_p":"画面いっぱいに広がるフルリグ — ステージで叩きやすいプリセットレールも搭載。","free_h2":"無料。<span style=\"color:var(--power)\">これからも、ずっと。","free_p":"全アンプ、全エフェクト、全アップデート — 広告なし、機能制限なし、サブスクなし。NAMperがあなたのペダルボードの一員になれたら、アプリ内のチップジャー（投げ銭）でご支援を。ビジネスモデルはそれだけです。","foot_support":"サポート","foot_privacy":"プライバシー","fine":"NAMperはデータを一切収集しません。オーディオがデバイスの外に出ることはありません。Neural Amp Modelerはオープンソースプロジェクトであり、TONE3000のアンプキャプチャは制作者がコミュニティの無料利用のために公開しているものです。","meta":"NAMperはiPhone/iPadをまるごと1台のギターリグに変えます。実機アンプのNeural Amp Modelerプロファイル、スタジオ級エフェクト、同期する4トラックルーパー、サンプラーパッド、バッキングトラック、フルMIDIコントロール。無料・広告なし・サブスクなし。"},"ko":{"h1":"당신의 iPhone은 이미<br>완벽한 <span class=\"a\">기타&nbsp;리그","lede":"실제 진공관 앰프를 담은 Neural Amp Modeler 프로파일, 스튜디오급 이펙트 페달보드, 싱크되는 4트랙 루퍼, 샘플러 패드, 백킹 트랙, 그리고 완전한 MIDI 컨트롤까지 — 이미 주머니 속에 있는 그 폰으로.","chip_free":"평생&nbsp;무료","chip_ads":"광고&nbsp;없음","chip_subs":"구독&nbsp;없음","cta_store":"APP&nbsp;STORE&nbsp;·&nbsp;출시&nbsp;예정","cta_tg":"TELEGRAM&nbsp;커뮤니티","cta_support":"지원","jack_in":"IN&nbsp;·&nbsp;기타&nbsp;/&nbsp;마이크&nbsp;/&nbsp;인터페이스","amp_slab":"AMP&nbsp;·&nbsp;NAM&nbsp;엔진","amp_h2":"진짜 앰프를, 그대로 담았어요.","amp_li1":"Neural Amp Modeler 엔진 — 실제 진공관 앰프의 스튜디오급 캡처","amp_li2":"TONE3000 커뮤니티가 공유하는 수천 개의 무료 톤","amp_li3":"내장 진공관 앰프 보이싱과 캐비닛 IR은 오프라인에서도 완벽 작동","amp_li4":"나만의 .nam 프로파일과 임펄스 리스폰스도 자유롭게 로드","chain_slab":"CHAIN&nbsp;·&nbsp;리그&nbsp;빌더","chain_h2":"패치베이처럼 라우팅되는 페달보드.","chain_li1":"드래그 앤 드롭 시그널 체인, 병렬 브랜치 지원","chain_li2":"독립 리그 최대 4개 — 기타와 보컬을 동시에, 각각 별도의 입출력으로","chain_li3":"마스터 섹션: 새추레이션, 리미터, LUFS 미터링","chain_li4":"MIDI 프로그램 체인지 슬롯에 프리셋 배치, 파일로 공유 가능","loop_slab":"LOOP&nbsp;·&nbsp;4&nbsp;트랙","loop_h2":"박자는 루퍼가 대신 지켜 드려요.","loop_li1":"첫 루프가 사이클을 정하면 — 나머지는 전부 마디 그리드에 착착 맞아요","loop_li2":"템포 자동 감지, 루프에 위상 고정된 메트로놈","loop_li3":"실행 취소 가능한 오버더빙, 트랙별 입출력, 루프 에디터","loop_li4":"이펙트 적용 후 사운드, 드라이 입력, 다른 리그나 샘플러까지 녹음","sample_slab":"SAMPLE&nbsp;·&nbsp;16&nbsp;패드&nbsp;&nbsp;/&nbsp;&nbsp;퍼포먼스","sample_h2":"패드, 세트리스트, 그리고 무대 전체.","sample_li1":"16개 패드: 파일 로드 또는 입력 녹음, 트림·피치·루프 — 팩토리 드럼·FX 키트 포함","sample_li2":"백킹 트랙 세트리스트, 템포와 키 자동 감지","sample_li3":"곡 타임라인 위의 프리셋 마커, 마디에 정확히 스냅","sample_li4":"멀티트랙 퍼포먼스 녹음: 믹스, 드라이 입력, 백킹 스템까지","ctl_slab":"CONTROL&nbsp;·&nbsp;MIDI&nbsp;+&nbsp;트리거","ctl_h2":"손은 화면이 아니라 기타 줄 위에.","ctl_li1":"Bluetooth MIDI 페어링 내장, 어떤 CC나 노트든 MIDI 러닝 지원","ctl_li2":"입력 트리거: 기타 바디를 두드리거나, 노트를 길게 유지하거나, 코드로","ctl_li3":"크로매틱 & 폴리포닉(스트럼) 튜너","ctl_li4":"멀티채널 오디오 인터페이스, 채널별 트림과 이름 지정","jack_out":"OUT&nbsp;·&nbsp;스피커&nbsp;/&nbsp;헤드폰&nbsp;/&nbsp;FOH","ipad_slab":"iPad에도&nbsp;최적화","ipad_p":"화면 끝까지 꽉 채운 풀 리그 — 무대에서 탭하기 좋게 설계된 프리셋 레일까지.","free_h2":"무료. <span style=\"color:var(--power)\">앞으로도 계속 무료.","free_p":"모든 앰프, 모든 이펙트, 모든 업데이트 — 광고도, 잠긴 기능도, 구독도 없어요. NAMper가 여러분의 페달보드에 한자리를 차지할 만하다면, 앱 안에 팁 상자가 있어요. 그게 비즈니스 모델의 전부예요.","foot_support":"지원","foot_privacy":"개인정보","fine":"NAMper는 어떤 데이터도 수집하지 않아요. 오디오는 절대 기기를 떠나지 않습니다. Neural Amp Modeler는 오픈 소스 프로젝트이며, TONE3000의 앰프 캡처는 제작자들이 커뮤니티의 무료 사용을 위해 직접 공개한 것입니다.","meta":"NAMper는 iPhone과 iPad를 완전한 기타 리그로 바꿔 줍니다: 실제 앰프의 Neural Amp Modeler 프로파일, 스튜디오 이펙트, 싱크되는 4트랙 루퍼, 샘플러 패드, 백킹 트랙, 완전한 MIDI 컨트롤. 무료, 광고 없음, 구독 없음."},"zh":{"h1":"你的 iPhone 就是<br>一整套<span class=\"a\">吉他音色系统","lede":"真实电子管音箱的 Neural Amp Modeler 模型、一整板录音室级效果、同步四轨循环、采样打击垫、伴奏音轨，外加完整 MIDI 控制——全都装进你口袋里的那台手机。","chip_free":"永久免费","chip_ads":"无广告","chip_subs":"无订阅","cta_store":"APP STORE · 即将上线","cta_tg":"TELEGRAM 社区","cta_support":"支持我们","jack_in":"输入 · 吉他 / 麦克风 / 声卡","amp_slab":"音箱 · NAM 引擎","amp_h2":"真实音箱，如实捕捉。","amp_li1":"Neural Amp Modeler 引擎——录音室级的真实电子管音箱采样","amp_li2":"TONE3000 社区数千款免费音色任你取用","amp_li3":"内置电子管音箱声底与箱体 IR，完全离线可用","amp_li4":"加载你自己的 .nam 模型与脉冲响应 IR","chain_slab":"效果链 · 系统搭建","chain_h2":"一块效果板，却有跳线盘般的自由路由。","chain_li1":"拖拽式信号链，支持并联分支","chain_li2":"最多四套独立系统——吉他与人声同时处理，各走各的输入输出","chain_li3":"总线部分：饱和、限制器、LUFS 电平表","chain_li4":"预设挂在 MIDI Program Change 槽位上，还能以文件形式分享","loop_slab":"循环 · 4 轨","loop_h2":"替你掌控节拍的乐句循环。","loop_li1":"第一段循环定下周期——之后的一切都自动对齐小节网格","loop_li2":"自动测速；节拍器与循环相位锁定","loop_li3":"叠录可撤销，每轨独立输入输出，还有循环编辑器","loop_li4":"可录制效果后信号、干声输入、另一套系统或采样器","sample_slab":"采样 · 16 打击垫 / 演出","sample_h2":"打击垫、歌单，整场演出全包。","sample_li1":"16 个打击垫：加载文件或录制输入，可裁剪、变调、循环——附带出厂鼓组与效果套件","sample_li2":"歌单配伴奏音轨，自动检测速度与调性","sample_li3":"歌曲时间线上的预设标记，自动吸附到小节","sample_li4":"多轨演出录音：总混音、干声输入与伴奏分轨一并保留","ctl_slab":"控制 · MIDI + 触发","ctl_h2":"手留在琴弦上，而不是屏幕上。","ctl_li1":"内置蓝牙 MIDI 配对；任意 CC 或音符均可 MIDI Learn","ctl_li2":"输入触发：敲击琴身、一个长音、一个和弦都能当开关","ctl_li3":"半音阶与复音（扫弦）调音器","ctl_li4":"支持多通道声卡，各通道独立增益与命名","jack_out":"输出 · 音箱 / 耳机 / FOH","ipad_slab":"同样为 iPad 打造","ipad_p":"整套系统铺满全屏——还有专为舞台点按设计的预设栏。","free_h2":"免费。<span style=\"color:var(--power)\">而且永远免费。","free_p":"每一台音箱、每一个效果、每一次更新——无广告、无锁定功能、无订阅。如果 NAMper 在你的效果板上占得一席之地，应用里有个打赏罐。这就是全部的商业模式。","foot_support":"支持我们","foot_privacy":"隐私","fine":"NAMper 不收集任何数据，音频永不离开设备。Neural Amp Modeler 是开源项目；TONE3000 上的音箱采样由创作者发布，供社区免费使用。","meta":"NAMper 把你的 iPhone 或 iPad 变成一整套吉他音色系统：真实音箱的 Neural Amp Modeler 模型、录音室级效果、同步四轨循环、采样打击垫、伴奏音轨与完整 MIDI 控制。免费，无广告，无订阅。"}};
+(function(){
+  function pick(){
+    const saved=localStorage.getItem('lang');
+    if(saved&&(saved==='en'||I18N[saved]))return saved;
+    for(const l of navigator.languages||[navigator.language||'en']){
+      const c=l.toLowerCase();
+      const m=c.startsWith('zh')?'zh':c.split('-')[0];
+      if(m==='en')return 'en';
+      if(I18N[m])return m;
+    }
+    return 'en';
+  }
+  function apply(l){
+    document.documentElement.lang=l==='zh'?'zh-Hans':l;
+    const t=l==='en'?null:I18N[l];
+    document.querySelectorAll('[data-i]').forEach(el=>{
+      if(!('en' in el.dataset))el.dataset.en=el.innerHTML;
+      const k=el.dataset.i;
+      el.innerHTML=t&&t[k]?t[k]:el.dataset.en;
+    });
+    const md=document.querySelector('meta[name=description]');
+    if(!('en' in md.dataset))md.dataset.en=md.content;
+    md.content=t&&t.meta?t.meta:md.dataset.en;
+    document.querySelectorAll('#langs a').forEach(a=>
+      a.classList.toggle('on',a.dataset.l===l));
+  }
+  document.querySelectorAll('#langs a').forEach(a=>
+    a.addEventListener('click',()=>{localStorage.setItem('lang',a.dataset.l);apply(a.dataset.l)}));
+  apply(pick());
+})();
+</script>
 </body>
 </html>
