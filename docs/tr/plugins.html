@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<title>AU eklentileri — NAMper Dokümantasyonu</title>
+<meta name="description" content="Bir NAMper zincirinin içinde Audio Unit efektlerini barındırmak, gömülü eklenti arayüzü, sınırlar, eklenti durumunun nasıl kaydedildiği — ve NAMper'ın kendisinin başka bir uygulamada bir AUv3 efekti olarak ne yaptığı.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
-<meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
+<meta property="og:title" content="AU eklentileri — NAMper Dokümantasyonu">
+<meta property="og:description" content="Bir zincirde AUv3 efektlerini barındırmak, eklenti durumu ve preset'ler, ve başka bir uygulamanın içinde bir eklenti olarak NAMper.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/plugins.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOKÜMANTASYON</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/tr/">← ALL DOCS</a>
+  <a class="home" href="/docs/tr/">← TÜM DOKÜMANLAR</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/tr/plugins.html" aria-current="page">Türkçe</a>
   </nav>
@@ -46,178 +46,182 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">İÇİNDEKİLER</div>
     <ol>
-      <li><a href="/docs/tr/setup.html">Getting started</a></li>
-      <li><a href="/docs/tr/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/tr/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/tr/setup.html">Başlarken</a></li>
+      <li><a href="/docs/tr/rig.html">Rig ve sinyal zinciri</a></li>
+      <li><a class="on" href="/docs/tr/plugins.html">AU eklentileri</a></li>
       <li><a href="/docs/tr/looper.html">Looper</a></li>
-      <li><a href="/docs/tr/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/tr/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/tr/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/tr/settings.html">Settings reference</a></li>
+      <li><a href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
+      <li><a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a></li>
+      <li><a href="/docs/tr/control.html">MIDI ve kontrol</a></li>
+      <li><a href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
-    <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU EKLENTİLERİ</div>
+    <h1>Başkalarının eklentileri.</h1>
+    <p class="lede">NAMper, zaten sahip olduğun AUv3 efektlerini bir zincirin herhangi bir
+      yerinde barındırır — ve NAMper'ın kendisi de başka uygulamalarda bir efekt olarak karşına
+      çıkar. Her iki yönün de bir gösteriden önce bilinmeye değer kuralları var.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">BU SAYFADA</div>
       <ul>
-        <li><a href="#hosting">Adding an AU effect</a></li>
-        <li><a href="#ui">The plugin interface</a></li>
-        <li><a href="#limits">Limits worth knowing</a></li>
-        <li><a href="#state">Settings and presets</a></li>
-        <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#hosting">Bir AU efekti eklemek</a></li>
+        <li><a href="#ui">Eklenti arayüzü</a></li>
+        <li><a href="#limits">Bilinmeye değer sınırlar</a></li>
+        <li><a href="#state">Ayarlar ve preset'ler</a></li>
+        <li><a href="#auv3">Bir eklenti olarak NAMper</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="hosting"><span class="n">03.1</span>Adding an AU effect</h2>
-      <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
-        the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
-        section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
-        needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
-        submenu.</p>
-      <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
-        ship AUv3 plugins make them appear here.</b> That is the normal state on a fresh device:
-        AUv3 plugins arrive as ordinary App Store apps, so you install the app and its plugin shows
-        up here on the next visit.</p>
-      <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
-        straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+      <h2 id="hosting"><span class="n">03.1</span>Bir AU efekti eklemek</h2>
+      <p>Blok paletini açmak için bir zincirdeki kesikli <b class="ui">ADD</b> çipine dokun.
+        Listenin en altında, <b class="ui">Yardımcı</b>'den sonra, tek bir girişi olan
+        <b class="ui">Eklentiler</b> bölümü oturur: <b class="ui">AU eklentileri</b> alt menüsü.</p>
+      <p>Onu aç, cihazda kurulu her Audio Unit efektini görürsün; eklenti adının ardından
+        üreticisi gelecek şekilde listelenir ve önce üreticiye, sonra ada göre sıralanır.
+        Hiçbir şeyi taramaya ya da etkinleştirmeye gerek yok — telefonundaki bir uygulama bir
+        AUv3 efekti sunuyorsa o alt menüdedir.</p>
+      <p>Alt menü boşsa şunu yazar: <b class="ui">Yüklü Audio Unit efekti yok. AUv3 eklentisi getiren uygulamalar burada görünür.</b> Bu, yeni bir cihazda normal durumdur: AUv3
+        eklentileri sıradan App Store uygulamaları olarak gelir; uygulamayı kurarsın, eklentisi
+        de bir sonraki ziyarette burada belirir.</p>
+      <p>Bir bileşen seç, NAMper o eklenti zaten yüklüyken bloğu oluşturur, sonra doğrudan
+        eklentinin kendi arayüzüne açılır — boş bir kabuk yok, ikinci bir adım yok. Zincirdeki
+        bloğun çipi <b class="ui">AU eklentisi</b> olarak adlandırılır ve diğer her blok gibi
+        davranır: bypass etmek için adın altındaki LED noktasına dokun, zincir boyunca taşımak
+        için sürükle, <b class="ui">Kaldır</b> için uzun bas.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
-             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
-        <figcaption>Apple's AUDelay hosted in a NAMper block, drawn with the generic sliders</figcaption>
+             alt="Bir NAMper bloğunun içinde barındırılan bir Audio Unit eklentisi: üstte eklenti adını taşıyan bir durum satırı, altında genel parametre kaydırıcılarından oluşan bir sütun.">
+        <figcaption>Bir NAMper bloğunda barındırılan Apple'ın AUDelay'i, genel kaydırıcılarla
+          çizilmiş</figcaption>
       </figure>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="ui"><span class="n">03.2</span>The plugin interface</h2>
-      <p>The block sheet puts a thin status row above the plugin: an hourglass while the component
-        is being instantiated, a green check once it is live and passing audio, and the plugin's
-        name beside it. Under the status row you also get the usual block
-        <b class="ui">IN</b> and <b class="ui">OUT</b> meters, so you can see what the plugin is
-        being fed and what it hands back.</p>
-      <p>Loading is not always instant. While a component starts up the sheet reads
-        <b class="ui">Loading the plugin…</b> — larger plugins take a moment on first use, and the
-        signal passes through untouched until the plugin is ready.</p>
+      <h2 id="ui"><span class="n">03.2</span>Eklenti arayüzü</h2>
+      <p>Blok sayfası eklentinin üstüne ince bir durum satırı koyar: bileşen oluşturulurken bir
+        kum saati, canlı olup ses geçirmeye başladığında yeşil bir onay işareti ve yanında
+        eklentinin adı. Durum satırının altında her zamanki blok <b class="ui">IN</b> ve
+        <b class="ui">OUT</b> göstergelerini de bulursun; eklentiye ne verildiğini ve ondan ne
+        geri geldiğini görebilirsin.</p>
+      <p>Yükleme her zaman anında olmaz. Bir bileşen başlarken sayfa
+        <b class="ui">Eklenti yükleniyor…</b> yazar — daha büyük eklentiler ilk kullanımda bir
+        an alır ve eklenti hazır olana kadar sinyal dokunulmadan geçer.</p>
 
-      <h3>Swapping the plugin</h3>
-      <p>The circular-arrows button in the sheet is <b class="ui">Replace plugin</b>. Its menu is
-        the same component list, and picking a different one swaps the plugin inside the existing
-        block, so the block keeps its place in the chain and its bypass state. Use it when you want
-        a different delay in the same slot rather than tearing the chain apart.</p>
+      <h3>Eklentiyi değiştirmek</h3>
+      <p>Sayfadaki dairesel-oklu düğme <b class="ui">Eklentiyi değiştir</b>'dir. Menüsü aynı bileşen
+        listesidir; farklı bir tane seçmek eklentiyi mevcut bloğun içinde değiştirir, yani blok
+        zincirdeki yerini ve bypass durumunu korur. Zinciri sökmeden aynı slotta farklı bir
+        delay istediğinde bunu kullan.</p>
 
-      <h3>When a plugin has no view of its own</h3>
-      <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
-        designed it. Some ship no view at all. For those, NAMper draws its own generic list —
-        up to 24 parameters, each as a label and a slider. That is what the screenshot above shows:
-        Apple's AUDelay has no custom panel, so you get named sliders instead.</p>
+      <h3>Bir eklentinin kendi görünümü olmadığında</h3>
+      <p>Çoğu eklenti kendi arayüzünü çizer ve NAMper onu tam olarak yazarının tasarladığı gibi
+        satır içinde gömer. Bazıları hiç görünüm sunmaz. Onlar için NAMper kendi genel listesini
+        çizer — her biri bir etiket ve bir kaydırıcı olan 24'e kadar parametre. Yukarıdaki ekran
+        görüntüsünün gösterdiği de budur: Apple'ın AUDelay'inin özel bir paneli yoktur, bu
+        yüzden onun yerine adlandırılmış kaydırıcılar alırsın.</p>
       <div class="note">
-        <div class="t">Why the fallback exists</div>
-        <p>iOS can improvise an editor for a viewless plugin, but some units crash inside it.
-          NAMper draws the parameter list itself instead, which is plainer to look at and far more
-          likely to survive a set.</p>
+        <div class="t">Bu yedek çözüm neden var</div>
+        <p>iOS, görünümsüz bir eklenti için doğaçlama bir editör oluşturabilir, ama bazı
+          birimler bunun içinde çöker. NAMper bunun yerine parametre listesini kendisi çizer;
+          bu, bakması daha sade ve bir seti atlatma ihtimali çok daha yüksek bir yoldur.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="limits"><span class="n">03.3</span>Limits worth knowing</h2>
+      <h2 id="limits"><span class="n">03.3</span>Bilinmeye değer sınırlar</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+          <thead><tr><th>Sınır</th><th>Ne anlama geldiği</th></tr></thead>
           <tbody>
-            <tr><td>Effects only</td>
-                <td>Only effect components are listed. AU instruments are not hostable, so a synth
-                    or a drum machine will never appear in the submenu.</td></tr>
-            <tr><td>16 plugins</td>
-                <td>Sixteen hosted plugins at once, counted across every rig and every branch. In
-                    practice you will run out of processor long before you run out of slots.</td></tr>
+            <tr><td>Sadece efektler</td>
+                <td>Sadece efekt bileşenleri listelenir. AU enstrümanları barındırılamaz, bu
+                    yüzden bir synth ya da bir drum machine alt menüde asla görünmez.</td></tr>
+            <tr><td>16 eklenti</td>
+                <td>Aynı anda on altı barındırılan eklenti, her rig ve her dal genelinde
+                    sayılır. Pratikte slotların bitmesinden çok önce işlemcin biter.</td></tr>
             <tr><td>Stereo</td>
-                <td>Plugin input and output run in stereo, at whatever sample rate the engine is
-                    on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+                <td>Eklenti girişi ve çıkışı, motorun bulunduğu her hangi bir örnekleme hızında
+                    stereo çalışır.</td></tr>
+            <tr><td>Sadece rig zincirleri</td>
+                <td>AU eklentileri rig zincirlerinin içine girer. <b class="ui">MASTER</b>
+                    bölümü sadece NAMper'ın kendi bloklarını alır.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If a plugin fails to render, NAMper leaves the signal dry for that block rather than
-        dropping out. You keep hearing your guitar, minus that one effect — which is the right
-        failure on stage, but it also means a plugin can go quiet without an obvious alarm. If an
-        effect stops doing anything, check the status row in its sheet.</p>
-      <p>Third-party plugins also cost processing power that NAMper cannot budget for. Watch the
-        <b class="ui">DSP load</b> chip in the Rig header after you add one; if it moves into amber
-        or red, step the buffer size up in Settings.</p>
+      <p>Bir eklenti render edilemezse NAMper sesi kesmek yerine o blok için sinyali kuru
+        bırakır. Gitarını duymaya devam edersin, sadece o efekt eksik — sahnede doğru olan
+        başarısızlık budur, ama bu aynı zamanda bir eklentinin belirgin bir alarm olmadan
+        sessizleşebileceği anlamına gelir. Bir efekt bir şey yapmayı bırakırsa, sayfasındaki
+        durum satırını kontrol et.</p>
+      <p>Üçüncü taraf eklentiler NAMper'ın önceden hesaba katamayacağı işlem gücüne de mal olur.
+        Bir tane ekledikten sonra Rig başlığındaki <b class="ui">DSP yükü</b> çipini izle;
+        kehribara ya da kırmızıya kayarsa Ayarlar'da buffer boyutunu bir kademe artır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="state"><span class="n">03.4</span>Settings and presets</h2>
-      <p>A hosted plugin's own settings — everything you changed inside its interface — are stored
-        with the block and travel inside your NAMper preset. Save the rig, load it tomorrow, and
-        the plugin comes back set the way you left it.</p>
+      <h2 id="state"><span class="n">03.4</span>Ayarlar ve preset'ler</h2>
+      <p>Barındırılan bir eklentinin kendi ayarları — arayüzünün içinde değiştirdiğin her şey —
+        blokla birlikte saklanır ve NAMper preset'inin içinde taşınır. Rig'i kaydet, yarın
+        yükle, eklenti bıraktığın gibi ayarlanmış olarak geri gelir.</p>
       <div class="note warn">
-        <div class="t">Close the sheet before you save</div>
-        <p>Plugin state is captured at the moment you <b>close the block sheet</b>. Tweak a plugin,
-          leave its sheet open, save the preset from behind it, and the preset stores the state
-          from before your edits. Make it a habit: close the plugin sheet first, then save.</p>
+        <div class="t">Kaydetmeden önce sayfayı kapat</div>
+        <p>Eklenti durumu, <b>blok sayfasını kapattığın</b> anda yakalanır. Bir eklentiyi
+          ayarla, sayfasını açık bırak, preset'i onun arkasından kaydet — preset,
+          düzenlemelerinden önceki durumu saklar. Bunu alışkanlık haline getir: önce eklenti
+          sayfasını kapat, sonra kaydet.</p>
       </div>
-      <p>The same applies to global snapshots and to sharing a preset with someone else — whatever
-        was captured on the last sheet close is what goes into the file. Note that the preset
-        carries the plugin's <em>settings</em>, not the plugin: whoever opens it needs the same
-        Audio Unit installed on their device.</p>
-      <p>One more thing to expect: using <b class="ui">Replace plugin</b> clears the stored state.
-        The settings belonged to the old component and mean nothing to the new one, so the swap
-        starts you at the new plugin's defaults.</p>
+      <p>Aynısı global snapshot'lar ve bir preset'i başka biriyle paylaşmak için de geçerlidir —
+        son sayfa kapanışında yakalanan ne ise dosyaya giren odur. Preset'in eklentinin
+        <em>ayarlarını</em> taşıdığını, eklentinin kendisini taşımadığını unutma: onu kim
+        açarsa kendi cihazında aynı Audio Unit'in kurulu olması gerekir.</p>
+      <p>Beklenecek bir şey daha: <b class="ui">Eklentiyi değiştir</b> kullanmak saklı durumu
+        temizler. Ayarlar eski bileşene aitti ve yenisi için bir anlam ifade etmez, yani değişim
+        seni yeni eklentinin varsayılanlarında başlatır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="auv3"><span class="n">03.5</span>NAMper as a plugin</h2>
-      <p>NAMper also ships as an AUv3 effect, so you can load it inside GarageBand, AUM, Logic or
-        any other AUv3 host and record it onto a track there. In a host's plugin browser it looks
-        like this:</p>
+      <h2 id="auv3"><span class="n">03.5</span>Bir eklenti olarak NAMper</h2>
+      <p>NAMper aynı zamanda bir AUv3 efekti olarak da gelir; bu yüzden onu GarageBand, AUM,
+        Logic ya da başka herhangi bir AUv3 host'unun içine yükleyip orada bir parçaya
+        kaydedebilirsin. Bir host'un eklenti tarayıcısında şöyle görünür:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <thead><tr><th>Alan</th><th>Değer</th></tr></thead>
           <tbody>
-            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
-            <tr><td>Manufacturer</td><td><b class="ui">retroaktive</b></td></tr>
-            <tr><td>Description</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
-            <tr><td>Type</td><td>Audio effect — not an instrument</td></tr>
+            <tr><td>Ad</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>Üretici</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>Açıklama</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>Tür</td><td>Ses efekti — bir enstrüman değil</td></tr>
           </tbody>
         </table>
       </div>
-      <p>It takes stereo in and gives stereo out, but the two input channels are summed to mono
-        inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
-        want for a DI'd guitar on a mono track.</p>
+      <p>Stereo giriş alır ve stereo çıkış verir, ama iki giriş kanalı içeride mono olarak
+        toplanır: bir amfiyi besleyen gitar tarzı mono bir ön uç. Bu bilerek yapılmıştır ve mono
+        bir parçadaki DI'lanmış bir gitar için istediğin şey de budur.</p>
 
-      <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <h3>18 parametre</h3>
+      <p>Eklentinin kendi paneli, <b class="ui">NAMper</b> ve <b class="ui">Amp &amp; FX
+        chain — tweak the parameters in the host</b> yazan küçük, markalı bir şerittir.
+        Gerçek kontrollerin hepsi host tarafından otomatikleştirilebilir parametrelerdir ve on
+        sekiz tanesi vardır:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
+          <thead><tr><th>Blok</th><th>Parametreler</th></tr></thead>
           <tbody>
             <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
             <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
               <b class="ui">Comp Ratio</b></td></tr>
             <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
               <b class="ui">Drive Level</b></td></tr>
-            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
-              <b class="ui">Treble</b></td></tr>
+            <tr><td>Tone</td><td><b class="ui">Bas</b>, <b class="ui">Orta</b>,
+              <b class="ui">Tiz</b></td></tr>
             <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
               <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
             <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
@@ -225,31 +229,32 @@
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>Bunların her biri host'tan otomatikleştirilebilir. Açma/kapama parametreleri 0 ile 1
+        arasında ondalıklı değerlerdir; bu yüzden çoğu host bunları anahtar yerine kaydırıcı
+        olarak çizer — yarının üzerindeki her şey açıktır. Host'a üç fabrika preset'i de
+        sunulur: <b class="ui">Clean</b>, <b class="ui">Crunch</b> ve <b class="ui">Lead</b>.</p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">Eklentinin taşımadığı şeyler</div>
+        <p>NAM modeli yok. Kabin IR'i yok. Modülasyon blokları yok. Rig belgesi hiç yok — host
+          sadece o 18 parametre değerini kaydeder, başka hiçbir şeyi; bu yüzden uygulamada
+          kurduğun bir rig eklentiye taşınmaz. Eklenti sürümünde ayrıca MIDI girişi de
+          yoktur.</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
+      <p>Bunu dürüstçe oku: bir host'un içinde NAMper, tüm uygulama değil, kompakt bir
+        amfi-ve-efekt kanalıdır. NAM capture'larını, kabinlerini, looper'ı ya da setlist'i
+        istiyorsan uygulamanın kendisini çalıştır ve oradan kaydet.</p>
       <div class="note tip">
-        <div class="t">Working with both</div>
-        <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/tr/perform.html">Perform &amp; lyrics</a>.</p>
+        <div class="t">İkisiyle birden çalışmak</div>
+        <p>Tam uygulamayı çalıştırıp çıkışını bir DAW'a yönlendirebilir, ya da bir host'ta zaten
+          kaydettiğin bir parçada hızlı bir gitar kanalı için eklentiyi kullanabilirsin. Perform
+          sekmesinin kaydedicisi ve DAWproject dışa aktarımı ilk yol için var — bkz.
+          <a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a>.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/tr/rig.html">← 02 · Rig &amp; signal chain</a>
+      <a href="/docs/tr/rig.html">← 02 · Rig ve sinyal zinciri</a>
       <span class="sp"></span>
       <a href="/docs/tr/looper.html">04 · Looper →</a>
     </nav>
@@ -266,7 +271,10 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper, herhangi bir ekipman üreticisiyle bağlantısı, onayı veya sponsorluğu
+      olmayan bağımsız bir uygulamadır. Tüm ürün adları, markalar ve ticari markalar ilgili
+      sahiplerinin mülkiyetindedir ve yalnızca bir capture'ın hangi ekipmandan alındığını
+      tanımlamak için kullanılır.</p>
   </div>
 </footer>
 

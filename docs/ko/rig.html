@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rig &amp; signal chain — NAMper Documentation</title>
-<meta name="description" content="Building a rig: the blocks palette, the five EQ models, NAM amp profiles and TONE3000, cab IRs, presets and MIDI PC slots, multiple rigs, parallel branches and the master section.">
+<title>리그와 시그널 체인 — NAMper 문서</title>
+<meta name="description" content="리그 만들기: 블록 팔레트, 다섯 가지 EQ 모델, NAM 앰프 프로필과 TONE3000, 캐비닛 IR, 프리셋과 MIDI PC 슬롯, 다중 리그, 병렬 브랜치, 마스터 섹션까지.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Rig &amp; signal chain — NAMper Documentation">
-<meta property="og:description" content="Blocks, EQ models, NAM profiles, TONE3000, cab IRs, presets, multiple rigs, parallel branches and the master section.">
+<meta property="og:title" content="리그와 시그널 체인 — NAMper 문서">
+<meta property="og:description" content="블록, EQ 모델, NAM 프로필, TONE3000, 캐비닛 IR, 프리셋, 다중 리그, 병렬 브랜치, 마스터 섹션까지.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/rig.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">문서</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/ko/">← ALL DOCS</a>
+  <a class="home" href="/docs/ko/">← 전체 문서</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/ko/rig.html" aria-current="page">한국어</a>
   </nav>
@@ -46,566 +46,569 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">목차</div>
     <ol>
-      <li><a href="/docs/ko/setup.html">Getting started</a></li>
-      <li><a class="on" href="/docs/ko/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/ko/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/ko/looper.html">Looper</a></li>
-      <li><a href="/docs/ko/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/ko/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/ko/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/ko/settings.html">Settings reference</a></li>
+      <li><a href="/docs/ko/setup.html">시작하기</a></li>
+      <li><a class="on" href="/docs/ko/rig.html">리그와 시그널 체인</a></li>
+      <li><a href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a href="/docs/ko/looper.html">루퍼</a></li>
+      <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
+      <li><a href="/docs/ko/perform.html">퍼폼과 가사</a></li>
+      <li><a href="/docs/ko/control.html">MIDI와 컨트롤</a></li>
+      <li><a href="/docs/ko/settings.html">설정 참조</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; SIGNAL CHAIN</div>
-    <h1>Building the sound.</h1>
-    <p class="lede">The <b class="ui a">Rig</b> tab is where your signal chain lives: blocks you add
-      and drag around, a NAM amp profile at the heart of it, a cab impulse response after it, and a
-      master section everything sums into. This page covers all of it — up to four rigs, four
-      parallel chains inside each one, and the presets that recall the lot.</p>
+    <div class="slab" style="--nc:var(--amp)">02 · 리그와 시그널 체인</div>
+    <h1>사운드 만들기.</h1>
+    <p class="lede"><b class="ui a">리그</b> 탭은 시그널 체인이 사는 곳입니다: 추가하고 끌어서
+      배치하는 블록들, 그 중심에 있는 NAM 앰프 프로필, 그 뒤를 잇는 캐비닛 임펄스 리스폰스,
+      그리고 모든 것이 합쳐지는 마스터 섹션까지. 이 페이지는 그 전부를 다룹니다 — 최대 4개의
+      리그, 각 리그 안의 4개 병렬 체인, 그리고 이 모든 것을 불러오는 프리셋까지.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">이 페이지에서</div>
       <ul>
-        <li><a href="#blocks">The blocks palette</a></li>
-        <li><a href="#models">Models inside blocks</a></li>
-        <li><a href="#eq">The five EQ models</a></li>
-        <li><a href="#nam">NAM amp profiles</a></li>
+        <li><a href="#blocks">블록 팔레트</a></li>
+        <li><a href="#models">블록 안의 모델</a></li>
+        <li><a href="#eq">다섯 가지 EQ 모델</a></li>
+        <li><a href="#nam">NAM 앰프 프로필</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
-        <li><a href="#cabs">Cabs and IRs</a></li>
-        <li><a href="#presets">Presets</a></li>
-        <li><a href="#rigs">Multiple rigs</a></li>
-        <li><a href="#branches">Parallel branches</a></li>
-        <li><a href="#master">The master section</a></li>
+        <li><a href="#cabs">캐비닛과 IR</a></li>
+        <li><a href="#presets">프리셋</a></li>
+        <li><a href="#rigs">다중 리그</a></li>
+        <li><a href="#branches">병렬 브랜치</a></li>
+        <li><a href="#master">마스터 섹션</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="blocks"><span class="n">02.1</span>The blocks palette</h2>
-      <p>A chain starts empty and you fill it. Tap the dashed <b class="ui">ADD</b> chip at the end
-        of a chain and the palette opens, grouped into sections. Pick a block and it drops into the
-        chain at that point — and its editor opens straight away, so you land on the knobs rather
-        than on an untouched chip.</p>
+      <h2 id="blocks"><span class="n">02.1</span>블록 팔레트</h2>
+      <p>체인은 빈 상태로 시작하고, 직접 채워 나갑니다. 체인 끝에 있는 점선
+        <b class="ui">ADD</b> 칩을 탭하면 섹션별로 묶인 팔레트가 열립니다. 블록을 고르면 그
+        자리에 바로 추가되고 — 에디터도 곧바로 열려서, 손대지 않은 칩이 아니라 곧장 노브 위에
+        서게 됩니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Blocks</th></tr></thead>
+          <thead><tr><th>섹션</th><th>블록</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
-            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
-            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
-            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
-            <tr><td><b class="ui">Plugins</b></td><td>the <b class="ui">AU Plugins</b> submenu</td></tr>
+            <tr><td><b class="ui">다이내믹스</b></td><td><b class="ui">게이트</b>, <b class="ui">컴프</b>, <b class="ui">디에서</b></td></tr>
+            <tr><td><b class="ui">드라이브</b></td><td><b class="ui">드라이브</b></td></tr>
+            <tr><td><b class="ui">앰프 &amp; 캐비닛</b></td><td><b class="ui">앰프</b>, <b class="ui">튜브 앰프</b>, <b class="ui">EQ</b>, <b class="ui">캐비닛</b></td></tr>
+            <tr><td><b class="ui">필터</b></td><td><b class="ui">와우</b></td></tr>
+            <tr><td><b class="ui">모듈레이션</b></td><td><b class="ui">페이저</b>, <b class="ui">플랜저</b>, <b class="ui">코러스</b>, <b class="ui">트렘</b>, <b class="ui">로터리</b></td></tr>
+            <tr><td><b class="ui">딜레이</b></td><td><b class="ui">딜레이</b></td></tr>
+            <tr><td><b class="ui">리버브</b></td><td><b class="ui">클라우드</b>, <b class="ui">홀</b>, <b class="ui">룸</b>, <b class="ui">플레이트</b>, <b class="ui">스프링</b>, <b class="ui">IR 리버브</b></td></tr>
+            <tr><td><b class="ui">피치</b></td><td><b class="ui">하모니</b>, <b class="ui">오토튠</b>, <b class="ui">피치</b>, <b class="ui">옥타버</b></td></tr>
+            <tr><td><b class="ui">유틸리티</b></td><td><b class="ui">볼륨</b>, <b class="ui">튜브 새츄</b>, <b class="ui">테이프 새츄</b>, <b class="ui">리미터</b>, <b class="ui">FB 가드</b></td></tr>
+            <tr><td><b class="ui">플러그인</b></td><td><b class="ui">AU 플러그인</b> 서브메뉴</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Nothing stops you adding the same block twice. Duplicates are numbered as they arrive —
-        <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — and block names are always drawn in
-        capitals on the chips. Two drives in a row, a gate at the front and another after the amp:
-        all fine.</p>
+      <p>같은 블록을 두 번 추가해도 막지 않습니다. 중복된 블록은 추가되는 순서대로 번호가
+        붙습니다 — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — 그리고 블록 이름은 칩
+        위에서 항상 대문자로 표시됩니다. 드라이브를 연달아 두 개 놓거나, 게이트를 앞에 하나 두고
+        앰프 뒤에 또 하나 두어도 전혀 문제없습니다.</p>
 
-      <h3>Working with a block</h3>
+      <h3>블록 다루기</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Action</th><th>How</th></tr></thead>
+          <thead><tr><th>동작</th><th>방법</th></tr></thead>
           <tbody>
-            <tr><td>Bypass</td><td>Tap the small LED dot under the block name on the chip. The touch
-              target is deliberately large — this is the control you hit mid-song. The footswitch
-              inside the block sheet does the same, as does long-press →
-              <b class="ui">Enable</b> / <b class="ui">Bypass</b></td></tr>
-            <tr><td>Open the editor</td><td>Tap the block chip</td></tr>
-            <tr><td>Reorder</td><td>Drag the chip along its chain, or long-press →
-              <b class="ui">Move left</b> / <b class="ui">Move right</b>. Reordering works within
-              one chain only</td></tr>
-            <tr><td>Remove</td><td>Long-press → <b class="ui">Remove</b></td></tr>
-            <tr><td>Reset a knob</td><td>Double-tap it</td></tr>
-            <tr><td>MIDI-learn a control</td><td>Long-press any knob or chip row →
-              <b class="ui">MIDI Learn “&lt;label&gt;”</b>. The control outlines itself and shows
-              <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel learn</b> backs out</td></tr>
+            <tr><td>바이패스</td><td>칩의 블록 이름 아래에 있는 작은 LED 점을 탭하세요. 터치
+              영역이 일부러 크게 되어 있는데, 곡 도중에 누르게 되는 컨트롤이기 때문입니다.
+              블록 시트 안의 풋스위치도 같은 역할을 하며, 길게 눌러 →
+              <b class="ui">켜기</b> / <b class="ui">바이패스</b>로도 가능합니다</td></tr>
+            <tr><td>에디터 열기</td><td>블록 칩을 탭하세요</td></tr>
+            <tr><td>순서 바꾸기</td><td>칩을 체인을 따라 드래그하거나, 길게 눌러 →
+              <b class="ui">왼쪽으로 이동</b> / <b class="ui">오른쪽으로 이동</b>를 사용하세요. 순서
+              바꾸기는 같은 체인 안에서만 가능합니다</td></tr>
+            <tr><td>제거</td><td>길게 눌러 → <b class="ui">제거</b></td></tr>
+            <tr><td>노브 초기화</td><td>두 번 탭하세요</td></tr>
+            <tr><td>컨트롤 MIDI 러닝</td><td>노브나 칩 행을 길게 눌러 →
+              <b class="ui">MIDI Learn “&lt;label&gt;”</b>를 선택하세요. 해당 컨트롤에 테두리가
+              생기고 <b class="ui">MIDI 컨트롤을 움직이세요…</b>가 표시됩니다;
+              <b class="ui">LEARN 취소</b>으로 취소할 수 있습니다</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A block that has no parameters of its own says so plainly when you open it:
-        <b class="ui">Nothing to tweak here</b>. That is the block working normally, not a
-        loading state.</p>
+      <p>고유한 파라미터가 없는 블록은 열었을 때 그 사실을 그대로 알려줍니다:
+        <b class="ui">조절할 항목이 없습니다</b>. 이는 블록이 정상적으로 작동 중이라는
+        뜻이지, 로딩 중이라는 뜻이 아닙니다.</p>
       <div class="note warn">
-        <div class="t">There is no duplicate</div>
-        <p>NAMper has no copy or duplicate action for blocks, anywhere. To get a second block with
-          the same settings, add a fresh one and dial it in. To reuse a whole chain, save it as a
-          preset and build the next rig from that preset instead.</p>
+        <div class="t">복제 기능은 없습니다</div>
+        <p>NAMper에는 어디에도 블록 복사나 복제 기능이 없습니다. 같은 설정의 블록을 하나 더
+          만들려면 새 블록을 추가해서 직접 값을 맞추세요. 체인 전체를 재사용하려면 프리셋으로
+          저장한 다음, 그 프리셋에서 다음 리그를 만드세요.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="models"><span class="n">02.2</span>Models inside blocks</h2>
-      <p>Several blocks are really a family of pedals or circuits behind one chip. Open the block
-        and the row of chips at the top picks the flavour — the knobs stay the same, the character
-        changes.</p>
+      <h2 id="models"><span class="n">02.2</span>블록 안의 모델</h2>
+      <p>몇몇 블록은 사실 하나의 칩 뒤에 여러 페달이나 회로가 묶여 있는 형태입니다. 블록을
+        열면 위쪽 칩 행에서 종류를 고를 수 있습니다 — 노브 구성은 그대로지만 성격이
+        달라집니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Chip row</th><th>Choices</th></tr></thead>
+          <thead><tr><th>블록</th><th>칩 행</th><th>선택지</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
-              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
-                <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
-            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
-                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
-            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
-              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
-                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>,
+            <tr><td><b class="ui">게이트</b></td><td><b class="ui">모델</b></td>
+              <td><b class="ui">클래식</b>, <b class="ui">스마트</b>, <b class="ui">3밴드</b>, <b class="ui">노이즈 제거</b></td></tr>
+            <tr><td><b class="ui">컴프</b></td><td><b class="ui">모델</b> · <b class="ui">사이드체인</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">옵토</b>, <b class="ui">FET</b>, <b class="ui">페달</b> · sidechain
+                <b class="ui">오프</b>, <b class="ui">입력 1</b>…<b class="ui">입력 4</b>, <b class="ui">SMP</b></td></tr>
+            <tr><td><b class="ui">드라이브</b></td><td><b class="ui">모델</b></td>
+              <td><b class="ui">튜브</b>, <b class="ui">블루스</b>, <b class="ui">디스트</b>, <b class="ui">퍼즈</b>, <b class="ui">서스테인</b></td></tr>
+            <tr><td><b class="ui">튜브 앰프</b></td><td><b class="ui">모델</b></td>
+              <td><b class="ui">클린</b>, <b class="ui">트위드</b>, <b class="ui">브릿</b>, <b class="ui">차임</b>,
+                <b class="ui">모던</b>, <b class="ui">베이스</b>, <b class="ui">어쿠스틱</b></td></tr>
+            <tr><td><b class="ui">와우</b></td><td><b class="ui">모드</b></td>
+              <td><b class="ui">자동</b>, <b class="ui">LFO</b>, <b class="ui">페달</b></td></tr>
+            <tr><td><b class="ui">딜레이</b></td><td><b class="ui">보이스</b> · <b class="ui">싱크</b></td>
+              <td><b class="ui">디지털</b>, <b class="ui">BBD</b>, <b class="ui">테이프</b> · sync
+                <b class="ui">오프</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">트렘</b></td><td><b class="ui">모드</b> · <b class="ui">싱크</b></td>
+              <td><b class="ui">트레몰로</b>, <b class="ui">비브라토</b> · sync <b class="ui">오프</b>,
                 <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
-              <td><b class="ui">Studio</b>, <b class="ui">Small</b>, <b class="ui">Chamber</b>, <b class="ui">Large</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Speed</b></td>
-              <td><b class="ui">Slow</b>, <b class="ui">Fast</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voices</b></td>
-              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
-            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Listen</b></td>
-              <td>12 notes plus <b class="ui">AUTO</b> and <b class="ui">TRACK</b> ·
-                <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>,
-                <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> ·
-                <b class="ui">OWN</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
-              <td>the same key list, plus <b class="ui">CHROM</b> and <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">룸</b></td><td><b class="ui">룸</b></td>
+              <td><b class="ui">스튜디오</b>, <b class="ui">스몰</b>, <b class="ui">챔버</b>, <b class="ui">라지</b></td></tr>
+            <tr><td><b class="ui">로터리</b></td><td><b class="ui">스피드</b></td>
+              <td><b class="ui">슬로우</b>, <b class="ui">패스트</b></td></tr>
+            <tr><td><b class="ui">피치</b></td><td><b class="ui">보이스</b></td>
+              <td><b class="ui">모노</b>, <b class="ui">폴리</b></td></tr>
+            <tr><td><b class="ui">하모니</b></td><td><b class="ui">키</b> · <b class="ui">음정</b> · <b class="ui">리슨</b></td>
+              <td>음계 12음에 <b class="ui">오토</b>와 <b class="ui">트랙</b> 추가 ·
+                <b class="ui">-8도</b>, <b class="ui">-5도</b>, <b class="ui">-3도</b>, <b class="ui">+3도</b>,
+                <b class="ui">+4도</b>, <b class="ui">+5도</b>, <b class="ui">+6도</b>, <b class="ui">+8도</b> ·
+                <b class="ui">자체</b>, <b class="ui">리그 1</b>…<b class="ui">리그 4</b></td></tr>
+            <tr><td><b class="ui">오토튠</b></td><td><b class="ui">키</b></td>
+              <td>같은 키 목록에 <b class="ui">크로마</b>과 <b class="ui">SET</b> 추가</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The <b class="ui">Tube Amp</b> block is NAMper's own amp simulation, and it carries the
-        knobs you expect: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>,
-        <b class="ui">Treble</b>, <b class="ui">Presence</b> and <b class="ui">Master</b>, all
-        running 0–10 with 5 as flat. It needs no download and no account, which is why it is the
-        thing that carries the show when you are offline.</p>
+      <p><b class="ui">튜브 앰프</b> 블록은 NAMper 자체의 앰프 시뮬레이션이며, 예상할 만한
+        노브를 모두 갖추고 있습니다: <b class="ui">게인</b>, <b class="ui">베이스</b>,
+        <b class="ui">미드</b>, <b class="ui">트레블</b>, <b class="ui">프레즌스</b>,
+        <b class="ui">마스터</b>가 모두 0–10 범위로 움직이며 5가 플랫입니다. 다운로드도
+        계정도 필요 없어서, 오프라인일 때 공연을 책임지는 것이 바로 이 블록입니다.</p>
       <div class="note tip">
-        <div class="t">Harmony that listens to another rig</div>
-        <p>Harmony's <b class="ui">Listen</b> row is not a routing control — it is what the
-          harmoniser takes its chord from. Leave it on <b class="ui">OWN</b> and it follows the
-          signal in its own chain; point it at <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> and a
-          vocal line can be harmonised against what the guitar rig is playing.</p>
+        <div class="t">다른 리그를 듣는 Harmony</div>
+        <p>Harmony의 <b class="ui">리슨</b> 항목은 라우팅 컨트롤이 아니라, 하모나이저가
+          코드를 가져오는 대상을 정하는 항목입니다. <b class="ui">자체</b>으로 두면 자신의
+          체인에 흐르는 신호를 따라가고, <b class="ui">리그 1</b>…<b class="ui">리그 4</b>로
+          지정하면 보컬 라인을 기타 리그가 연주하는 것에 맞춰 하모니화할 수 있습니다.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>The five EQ models</h2>
-      <p>There is one <b class="ui">EQ</b> block, and inside it five completely different
-        equalisers. Switching the model swaps the knob set as well as the sound, so pick the one
-        that matches the job — a quick tone tweak, a surgical cut, or a mastering-style shelf.</p>
+      <h2 id="eq"><span class="n">02.3</span>다섯 가지 EQ 모델</h2>
+      <p><b class="ui">EQ</b> 블록은 하나지만, 그 안에는 완전히 다른 다섯 개의 이퀄라이저가
+        들어 있습니다. 모델을 바꾸면 노브 구성과 소리가 함께 바뀌므로, 목적에 맞는 것을
+        고르세요 — 빠른 톤 조정, 정교한 컷, 또는 마스터링 스타일의 셸프까지.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Model</th><th>What it is</th><th>Knobs</th></tr></thead>
+          <thead><tr><th>모델</th><th>설명</th><th>노브</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Tone</b></td>
-              <td>Classic three-band — low shelf at 100 Hz, peak at 800 Hz, high shelf at 3 kHz.
-                These are the same filters as the old three-band EQ, so older rigs sound
-                unchanged.</td>
-              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, each ±12 dB</td></tr>
-            <tr><td><b class="ui">Para</b></td>
-              <td>Full parametric — the same three bands, but every frequency moves and the mid gets
-                a Q control.</td>
-              <td><b class="ui">Low</b>, <b class="ui">Mid</b>, <b class="ui">High</b>,
-                <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
-                <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
-            <tr><td><b class="ui">Passive</b></td>
-              <td>The classic passive program-EQ trick: a low shelf boost plus a slightly higher cut shelf, so you boost
-                and attenuate at once for a tight low end — with a wide high bell and a high shelf
-                cut on top.</td>
-              <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
-                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Width</b>,
-                <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
-            <tr><td><b class="ui">Console</b></td>
-              <td>A British console channel strip — a 12 dB/octave high-pass (0 turns it off), an LF
-                shelf, a low-mid bell with Q, and an HF shelf.</td>
-              <td><b class="ui">HPF</b> 0–300, <b class="ui">Low</b>, <b class="ui">Lo Freq</b>,
-                <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
-                <b class="ui">High</b>, <b class="ui">Hi Freq</b></td></tr>
-            <tr><td><b class="ui">Bax</b></td>
-              <td>Baxandall — two very wide, very gentle shelves. The one to reach for when you want
-                the whole sound a little darker or a little brighter.</td>
-              <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+            <tr><td><b class="ui">톤</b></td>
+              <td>클래식한 3밴드 구성 — 100 Hz에서의 로우 셸프, 800 Hz에서의 피크, 3 kHz에서의
+                하이 셸프입니다. 예전 3밴드 EQ와 동일한 필터라서 이전 리그의 소리는 그대로
+                유지됩니다.</td>
+              <td><b class="ui">베이스</b>, <b class="ui">미드</b>, <b class="ui">트레블</b>, 각각 ±12 dB</td></tr>
+            <tr><td><b class="ui">파라</b></td>
+              <td>완전한 파라메트릭 — 같은 3밴드지만 모든 주파수를 움직일 수 있고 미드에는 Q
+                컨트롤이 추가됩니다.</td>
+              <td><b class="ui">로우</b>, <b class="ui">미드</b>, <b class="ui">하이</b>,
+                <b class="ui">저역 주파수</b> 40–400, <b class="ui">중역 주파수</b> 200–5000,
+                <b class="ui">고역 주파수</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">패시브</b></td>
+              <td>클래식한 패시브 프로그램 EQ 트릭입니다: 로우 셸프 부스트에 살짝 더 높은
+                지점의 컷 셸프를 더해서, 로우 엔드를 조이면서 동시에 부스트와 감쇠를 함께
+                겁니다 — 여기에 넓은 하이 벨과 하이 셸프 컷이 위에 더해집니다.</td>
+              <td><b class="ui">로우 부스트</b>, <b class="ui">저역 감쇠</b>, <b class="ui">저역 주파수</b> 20–120,
+                <b class="ui">하이 부스트</b>, <b class="ui">고역 주파수</b> 2k–16k, <b class="ui">폭</b>,
+                <b class="ui">고역 감쇠</b>, <b class="ui">감쇠 Hz</b> 4k–20k</td></tr>
+            <tr><td><b class="ui">콘솔</b></td>
+              <td>영국식 콘솔 채널 스트립입니다 — 12 dB/옥타브 하이패스(0이면 꺼짐), LF 셸프,
+                Q가 있는 로우미드 벨, 그리고 HF 셸프로 구성됩니다.</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">로우</b>, <b class="ui">저역 주파수</b>,
+                <b class="ui">미드</b>, <b class="ui">중역 주파수</b>, <b class="ui">Q</b>,
+                <b class="ui">하이</b>, <b class="ui">고역 주파수</b></td></tr>
+            <tr><td><b class="ui">백스</b></td>
+              <td>백스앤달(Baxandall) 방식 — 매우 넓고 매우 완만한 두 개의 셸프입니다. 전체
+                사운드를 조금 더 어둡게, 혹은 조금 더 밝게 만들고 싶을 때 손이 가는
+                모델입니다.</td>
+              <td><b class="ui">베이스</b>, <b class="ui">트레블</b></td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
-             alt="The EQ block sheet with the Passive model selected, showing its eight knobs: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten and Atten Hz, with IN and OUT meters at the top.">
-        <figcaption>The EQ block on the Passive model</figcaption>
+             alt="Passive 모델이 선택된 EQ 블록 시트. 여덟 개의 노브 Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten, Atten Hz가 보이고 위쪽에 IN, OUT 미터가 있음.">
+        <figcaption>Passive 모델의 EQ 블록</figcaption>
       </figure>
-      <p>Every block sheet, this one included, has horizontal <b class="ui">IN</b> and
-        <b class="ui">OUT</b> meters. On an EQ they are worth watching: a few decibels of boost on
-        three bands adds up fast, and the meters tell you whether the next block is being hit
-        harder than you meant.</p>
+      <p>이 시트를 포함해 모든 블록 시트에는 가로형 <b class="ui">인</b>,
+        <b class="ui">아웃</b> 미터가 있습니다. EQ에서는 특히 눈여겨볼 만한데, 세 밴드에서
+        몇 dB씩만 부스트해도 금세 쌓이기 때문입니다. 미터를 보면 다음 블록에 의도한 것보다
+        더 세게 신호가 들어가고 있는지 알 수 있습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM amp profiles</h2>
-      <p>Two different blocks live under <b class="ui">Amp &amp; Cab</b> and it is worth being clear
-        about which is which. <b class="ui">Tube Amp</b> is NAMper's own amp simulation, with the
-        seven models listed above. <b class="ui">Amp</b> is the Neural Amp Modeler player: it loads
-        a <b class="ui">.nam</b> capture of a real amplifier and runs it.</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM 앰프 프로필</h2>
+      <p><b class="ui">앰프 &amp; 캐비닛</b> 안에는 서로 다른 두 개의 블록이 있으니 확실히
+        구분해 둘 필요가 있습니다. <b class="ui">튜브 앰프</b>는 위에서 소개한 일곱 가지
+        모델을 갖춘 NAMper 자체의 앰프 시뮬레이션입니다. <b class="ui">앰프</b>는 Neural
+        Amp Modeler 플레이어로, 실제 앰프를 캡처한 <b class="ui">.nam</b> 파일을 불러와
+        재생합니다.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="The Rig tab with a NAM profile loaded: cover art, tone title and author on the amp card, vertical IN and OUT meters either side of it, and the signal chain of blocks below.">
-        <figcaption>The amp card with a NAM profile loaded</figcaption>
+             alt="NAM 프로필이 로드된 Rig 탭: 앰프 카드에 커버 아트, 톤 제목, 작성자가 표시되고 양옆에 세로형 IN, OUT 미터, 아래에는 블록들의 시그널 체인이 있음.">
+        <figcaption>NAM 프로필이 로드된 앰프 카드</figcaption>
       </figure>
 
-      <h3>The amp card</h3>
-      <p>At the top of the Rig tab, between the <b class="ui">IN</b> and <b class="ui">OUT</b>
-        meters, the amp card shows what the <b class="ui">Amp</b> block is currently playing: the
-        cover art, the tone title, the <b class="ui">@author</b>, up to six metadata chips, a
-        download count, a <b class="ui">Browse TONE3000</b> button and a books icon
-        (<b class="ui">Open NAM library</b>). With nothing loaded it reads
-        <b class="ui">Built-in tube amp</b>. If a rig has more than one amp in it, chips
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> and so on choose which one the card
-        edits.</p>
+      <h3>앰프 카드</h3>
+      <p>Rig 탭 위쪽, <b class="ui">인</b> 미터와 <b class="ui">아웃</b> 미터 사이에 있는
+        앰프 카드는 현재 <b class="ui">앰프</b> 블록이 재생 중인 내용을 보여줍니다: 커버
+        아트, 톤 제목, <b class="ui">@author</b>, 최대 6개의 메타데이터 칩, 다운로드 수,
+        <b class="ui">TONE3000 둘러보기</b> 버튼, 그리고 책 모양 아이콘(<b class="ui">NAM 라이브러리 열기</b>)입니다. 아무것도 로드되지 않았을 때는 <b class="ui">내장 튜브 앰프</b>라고 표시됩니다. 리그에 앰프가 두 개 이상이면 <b class="ui">AMP 1</b>,
+        <b class="ui">AMP 2</b> 등의 칩으로 카드가 편집할 대상을 고를 수 있습니다.</p>
 
-      <h3>Input and Output</h3>
-      <p>The <b class="ui">Amp</b> block sheet is deliberately short: the profile title (or
-        <b class="ui">No model loaded</b>), a <b class="ui">Browse TONE3000</b> button, and two
-        knobs. <b class="ui">Input</b> and <b class="ui">Output</b> both run −20 to +20 dB and start
-        at 0. Input pushes the capture harder, which is how you get more or less breakup out of a
-        profile; Output trims the result afterwards.</p>
-      <p>NAM output is normalised automatically, using the loudness metadata inside the model, to a
-        −18 dB target. That is why swapping between profiles does not throw your levels around, and
-        it is not exposed as a control.</p>
+      <h3>Input과 Output</h3>
+      <p><b class="ui">앰프</b> 블록 시트는 일부러 짧게 되어 있습니다: 프로필 제목(또는
+        <b class="ui">모델이 로드되지 않음</b>), <b class="ui">TONE3000 둘러보기</b> 버튼, 그리고
+        노브 두 개뿐입니다. <b class="ui">입력</b>과 <b class="ui">출력</b> 모두 −20에서
+        +20 dB까지 움직이며 기본값은 0입니다. Input은 캡처를 더 세게 밀어 넣어 프로필에서
+        브레이크업을 더하거나 줄이는 역할을 하고, Output은 그 결과를 이후에 다듬습니다.</p>
+      <p>NAM 출력은 모델 안의 러프니스 메타데이터를 사용해 −18 dB 목표치로 자동 정규화됩니다.
+        그래서 프로필을 바꿔도 레벨이 크게 흔들리지 않으며, 이는 별도의 컨트롤로 노출되지
+        않습니다.</p>
       <div class="note">
-        <div class="t">The NAM amp is mono</div>
-        <p>A NAM capture is a mono device — a stereo signal arriving at the <b class="ui">Amp</b>
-          block is summed before it goes in. Put your stereo effects after the amp, not before it.</p>
+        <div class="t">NAM 앰프는 모노입니다</div>
+        <p>NAM 캡처는 모노 장치입니다 — <b class="ui">앰프</b> 블록에 도착한 스테레오 신호는
+          들어가기 전에 합쳐집니다. 스테레오 이펙트는 앰프 앞이 아니라 뒤에 두세요.</p>
       </div>
 
-      <h3>Three ways to load a profile</h3>
+      <h3>프로필을 불러오는 세 가지 방법</h3>
       <ol style="--nc:var(--amp)">
-        <li><b class="ui">Browse TONE3000</b> — the online library, covered in the next section.</li>
-        <li>The books icon, which opens a sheet titled <b class="ui">NAM Profiles</b>. Tap any row
-          to load it into the current amp.</li>
-        <li>Factory presets resolve their own profiles, so loading <b class="ui">Crunch</b> brings
-          its amp with it.</li>
+        <li><b class="ui">TONE3000 둘러보기</b> — 다음 섹션에서 다루는 온라인 라이브러리입니다.</li>
+        <li>책 모양 아이콘을 탭하면 <b class="ui">NAM 프로파일</b>라는 이름의 시트가 열립니다.
+          아무 행이나 탭하면 현재 앰프로 불러옵니다.</li>
+        <li>팩토리 프리셋은 각자의 프로필을 알아서 불러오므로, <b class="ui">크런치</b>를
+          불러오면 그 앰프도 함께 따라옵니다.</li>
       </ol>
-      <p>The <b class="ui">NAM Profiles</b> sheet is your local library. Empty, it reads
-        <b class="ui">Profiles you download from TONE3000 collect here.</b> Its toolbar menu has
-        <b class="ui">Import .nam files…</b> — a multi-select file picker that accepts
-        <b class="ui">.nam</b> files only — along with <b class="ui">Export all (N files)</b> and
-        <b class="ui">Update all</b>. Each row carries <b class="ui">Share .nam file</b>,
-        <b class="ui">Delete</b> and a refresh button
-        (<b class="ui">Refresh from TONE3000</b>).</p>
-      <p>If a model cannot be read you get <b class="ui r">Could not load amp model
-        {filename}.</b> — usually a file that was moved or deleted out from under the rig.</p>
+      <p><b class="ui">NAM 프로파일</b> 시트는 로컬 라이브러리입니다. 비어 있으면
+        <b class="ui">TONE3000에서 다운로드한 프로파일이 여기에 모입니다.</b>라고 표시됩니다.
+        툴바 메뉴에는 <b class="ui">.nam</b> 파일만 받는 다중 선택 파일 선택기인
+        <b class="ui">.nam 파일 가져오기…</b>와 함께 <b class="ui">Export all (N files)</b>,
+        <b class="ui">모두 업데이트</b>이 있습니다. 각 행에는 <b class="ui">.nam 파일 공유</b>, <b class="ui">삭제</b>, 그리고 새로고침 버튼(<b class="ui">TONE3000에서 새로고침</b>)이 있습니다.</p>
+      <p>모델을 읽을 수 없으면 <b class="ui r">Could not load amp model {filename}.</b>라는
+        메시지가 나타납니다 — 대개 리그 몰래 파일이 옮겨지거나 삭제된 경우입니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 is a free library of amp captures, and NAMper pulls from it directly. There is no
-        in-app browse screen: <b class="ui">Browse TONE3000</b> opens tone3000.com inside a secure
-        web sheet. You search and filter on the website itself, pick a tone, and the app takes it
-        from there — while it fetches, the button reads <b class="ui">Loading…</b> and is
-        disabled.</p>
+      <p>TONE3000은 앰프 캡처를 모아둔 무료 라이브러리이며, NAMper는 여기서 직접
+        가져옵니다. 앱 안에 별도의 탐색 화면은 없습니다: <b class="ui">TONE3000 둘러보기</b>을
+        누르면 안전한 웹 시트 안에서 tone3000.com이 열립니다. 검색과 필터링은 웹사이트
+        자체에서 하고, 톤을 고르면 그 다음은 앱이 알아서 처리합니다 — 가져오는 동안 버튼은
+        <b class="ui">불러오는 중…</b>으로 바뀌고 비활성화됩니다.</p>
       <figure>
         <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="The Connect TONE3000 sheet over the Rig tab, offering Sign in to TONE3000 and Play offline buttons with a Don't ask again toggle.">
-        <figcaption>The sign-in offer, shown once per launch while signed out</figcaption>
+             alt="Rig 탭 위에 뜬 Connect TONE3000 시트. Sign in to TONE3000과 Play offline 버튼, Don't ask again 토글이 있음.">
+        <figcaption>로그아웃 상태에서 실행할 때마다 한 번씩 뜨는 로그인 안내</figcaption>
       </figure>
-      <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
-        in to tone3000.com in the browser the app reuses that session. The library is filtered
-        server-side to A2-architecture NAM captures of amps, full rigs and pedals — that is fixed,
-        not a setting you can change.</p>
-      <p>Picking a tone downloads the first model of that tone — there is no model picker — together
-        with its cover art and metadata. Everything lands in the app's <b class="ui">tones/</b>
-        folder and appears in the <b class="ui">NAM Profiles</b> sheet.</p>
+      <p>로그인은 API 키를 붙여넣는 방식이 아니라 일반적인 웹 로그인이며, 브라우저에서 이미
+        tone3000.com에 로그인되어 있다면 앱이 그 세션을 그대로 사용합니다. 라이브러리는 서버
+        쪽에서 A2 아키텍처 NAM 캡처(앰프, 풀 리그, 페달)로 필터링되어 있으며, 이는
+        고정값이라 설정으로 바꿀 수 없습니다.</p>
+      <p>톤을 고르면 그 톤의 첫 번째 모델이 커버 아트와 메타데이터와 함께 다운로드됩니다 —
+        모델을 따로 고르는 화면은 없습니다. 모든 파일은 앱의 <b class="ui">tones/</b>
+        폴더에 저장되고 <b class="ui">NAM 프로파일</b> 시트에 나타납니다.</p>
 
-      <h3>The sign-in offer</h3>
-      <p>A sheet titled <b class="ui">Connect TONE3000</b> appears once per launch while you are
-        signed out, explaining that factory presets stream real amp captures from the free library.
-        It offers <b class="ui">Sign in to TONE3000</b> and <b class="ui">Play offline</b>, with a
-        <b class="ui">Don't ask again</b> toggle. You can also silence it for good in Settings →
-        <b class="ui">PROMPTS</b> → <b class="ui">Offer TONE3000 sign-in on launch</b>.</p>
+      <h3>로그인 안내</h3>
+      <p><b class="ui">TONE3000 연결</b>이라는 이름의 시트가 로그아웃 상태로 실행할
+        때마다 한 번씩 나타나, 팩토리 프리셋이 무료 라이브러리에서 실제 앰프 캡처를
+        스트리밍한다는 것을 설명해 줍니다. <b class="ui">TONE3000에 로그인</b>과
+        <b class="ui">오프라인으로 연주</b> 버튼, 그리고 <b class="ui">다시 묻지 않기</b>
+        토글이 있습니다. 설정 → <b class="ui">안내 메시지</b> → <b class="ui">실행 시 TONE3000 로그인 제안</b>에서 아예 끌 수도 있습니다.</p>
 
-      <h3>Playing offline</h3>
-      <p>Anything already downloaded keeps working with no network at all. A factory rig whose
-        profile is not cached falls back to its bypassed built-in <b class="ui">Tube Amp</b> and a
-        bundled cab, and the header reads <b class="ui">Built-in tube amp</b> so you know what you
-        are hearing. Sign in later and those rigs resolve to the real captures in place — you do not
-        have to rebuild anything.</p>
+      <h3>오프라인으로 사용하기</h3>
+      <p>이미 다운로드된 것은 네트워크가 전혀 없어도 그대로 동작합니다. 프로필이 캐시되지
+        않은 팩토리 리그는 바이패스된 내장 <b class="ui">튜브 앰프</b>와 번들 캐비닛으로
+        대체되며, 헤더에는 <b class="ui">내장 튜브 앰프</b>라고 표시되어 지금 듣고
+        있는 것이 무엇인지 알 수 있습니다. 나중에 로그인하면 그 리그들은 자리에서 그대로
+        실제 캡처로 바뀝니다 — 아무것도 다시 만들 필요가 없습니다.</p>
       <div class="note warn">
-        <div class="t">There is no sign-out</div>
-        <p>NAMper has no TONE3000 sign-out button. Once the session exists, the only way to clear it
-          is to delete the app. Worth knowing before you sign in on a borrowed device.</p>
+        <div class="t">로그아웃 기능은 없습니다</div>
+        <p>NAMper에는 TONE3000 로그아웃 버튼이 없습니다. 세션이 한 번 생기면 이를 지우는
+          유일한 방법은 앱을 삭제하는 것뿐입니다. 빌린 기기에서 로그인하기 전에 알아두면
+          좋습니다.</p>
       </div>
-      <p>When something goes wrong the app says which of the four things it is:
-        <b class="ui r">TONE3000: sign in to load %@.</b>,
-        <b class="ui r">TONE3000: the server had a problem (HTTP %lld) — try again later.</b>,
-        <b class="ui r">TONE3000: unexpected reply for %@.</b> and
-        <b class="ui r">TONE3000: no connection — check the network.</b></p>
+      <p>문제가 생기면 앱은 네 가지 중 어느 것인지 알려줍니다:
+        <b class="ui r">TONE3000: %@을(를) 불러오려면 로그인하세요.</b>,
+        <b class="ui r">TONE3000: 서버에 문제가 발생했습니다(HTTP %lld). 나중에 다시 시도하세요.</b>,
+        <b class="ui r">TONE3000: %@에 대한 예상치 못한 응답입니다.</b>,
+        <b class="ui r">TONE3000: 연결할 수 없습니다 — 네트워크를 확인하세요.</b></p>
       <div class="note tip">
-        <div class="t">Downloads and backups</div>
-        <p>The <b class="ui">tones/</b> folder is excluded from iCloud backup on purpose — a
-          restore-from-backup will not bring your downloaded profiles with it, because TONE3000 can
-          fetch them again. If a particular capture matters to you, export it from the
-          <b class="ui">NAM Profiles</b> sheet and keep the file.</p>
+        <div class="t">다운로드와 백업</div>
+        <p><b class="ui">tones/</b> 폴더는 일부러 iCloud 백업에서 제외되어 있습니다 —
+          백업에서 복원해도 다운로드한 프로필은 함께 돌아오지 않는데, TONE3000에서 다시
+          받을 수 있기 때문입니다. 특정 캡처가 중요하다면 <b class="ui">NAM 프로파일</b>
+          시트에서 내보내 파일로 보관하세요.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
-      <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with
-        a microphone. Its sheet shows the current IR name, a menu button labelled
-        <b class="ui">Cabinets</b>, a <b class="ui">Load file</b> button, and one knob:
-        <b class="ui">Level</b>, −12 to +12 dB. Once an IR is loaded, a <b class="ui">Clear IR</b>
-        button appears alongside.</p>
-      <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio;
-        whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays
-        available even if you delete the original. The same block, used as an
-        <b class="ui">IR Verb</b>, labels its menu <b class="ui">Spaces</b> instead and loads
-        reverb impulses rather than cabinets.</p>
+      <h2 id="cabs"><span class="n">02.6</span>캐비닛과 IR</h2>
+      <p><b class="ui">캐비닛</b> 블록은 임펄스 리스폰스 — 마이크로 캡처한 스피커 캐비닛 — 를
+        재생합니다. 시트에는 현재 IR 이름, <b class="ui">캐비닛</b>라는 메뉴 버튼,
+        <b class="ui">파일 불러오기</b> 버튼, 그리고 노브 하나 <b class="ui">레벨</b>
+        (−12에서 +12 dB)이 있습니다. IR을 불러오면 옆에 <b class="ui">IR 지우기</b>
+        버튼이 나타납니다.</p>
+      <p><b class="ui">파일 불러오기</b>은 <b class="ui">.wav</b>를 비롯한 오디오 파일
+        선택기를 엽니다. 무엇을 고르든 앱의 <b class="ui">irs/</b> 폴더에 복사되므로
+        원본을 지워도 그대로 남아 있습니다. 같은 블록을 <b class="ui">IR 리버브</b>로
+        사용하면 메뉴 이름이 <b class="ui">스페이스</b>로 바뀌고, 캐비닛 대신 리버브
+        임펄스를 불러옵니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Menu</th><th>Bundled impulse responses</th></tr></thead>
+          <thead><tr><th>메뉴</th><th>번들 임펄스 리스폰스</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Cabinets</b></td>
+            <tr><td><b class="ui">캐비닛</b></td>
               <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
                 <b class="ui">V30 412 SM57 - Cookie Monster</b>,
                 <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
-            <tr><td><b class="ui">Spaces</b></td>
+            <tr><td><b class="ui">스페이스</b></td>
               <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
                 <b class="ui">Plate 1.6s</b></td></tr>
           </tbody>
         </table>
       </div>
       <div class="note">
-        <div class="t">Not every amp needs a cab</div>
-        <p>An empty <b class="ui">Cab</b> block tells you why it might stay empty:
-          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. Plenty of TONE3000
-          captures are taken from the speaker output, cab and microphone included; putting another
-          cab after one of those makes the sound dull and boxy. An empty
-          <b class="ui">IR Verb</b> reads <b class="ui">No IR loaded — pick a space or a file</b>
-          instead.</p>
+        <div class="t">모든 앰프에 캐비닛이 필요한 것은 아닙니다</div>
+        <p>비어 있는 <b class="ui">캐비닛</b> 블록은 왜 비워둬도 되는지 그대로 알려줍니다:
+          <b class="ui">IR이 로드되지 않음 — 앰프+캐비닛 NAM 프로파일에는
+필요 없습니다</b>. 상당수의
+          TONE3000 캡처는 캐비닛과 마이크까지 포함된 스피커 출력에서 딴 것이라, 그런
+          캡처 뒤에 캐비닛을 또 두면 소리가 먹먹하고 답답해집니다. 비어 있는
+          <b class="ui">IR 리버브</b>는 대신 <b class="ui">IR이 로드되지 않음 — 스페이스나 파일을 선택하세요</b>라고 표시됩니다.</p>
       </div>
-      <p>IR problems show as <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> or
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>IR 관련 문제는 <b class="ui r">IR file missing: {name}</b>,
+        <b class="ui r">Could not read IR {name}.</b>, 또는
+        <b class="ui r">Could not import {name}.</b>로 표시됩니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>Presets</h2>
-      <p>A rig preset stores the whole chain — blocks, models, knob positions, the amp profile, the
-        cab. Save one from the <b class="ui">+</b> on the <b class="ui">PRESETS</b> card, or from
-        the preset manager. The prompt is an alert titled <b class="ui">Save preset</b> whose
-        message tells you what is about to happen:
-        <b class="ui">The current rig gets the next free MIDI PC slot.</b> Type a name and tap
-        <b class="ui">Save</b>. Leave the field empty and it saves as <b class="ui">Preset</b>.</p>
+      <h2 id="presets"><span class="n">02.7</span>프리셋</h2>
+      <p>리그 프리셋은 체인 전체 — 블록, 모델, 노브 위치, 앰프 프로필, 캐비닛 — 를
+        저장합니다. <b class="ui">프리셋</b> 카드의 <b class="ui">+</b>에서, 또는 프리셋
+        관리자에서 저장할 수 있습니다. <b class="ui">프리셋 저장</b>이라는 제목의
+        알림창에는 이제 일어날 일이 적혀 있습니다: <b class="ui">현재 리그가 다음 빈 MIDI PC 슬롯에 저장됩니다.</b> 이름을 입력하고 <b class="ui">저장</b>를 탭하세요.
+        필드를 비워두면 <b class="ui">프리셋</b>이라는 이름으로 저장됩니다.</p>
       <div class="note warn">
-        <div class="t">The PC slot is not editable</div>
-        <p>Every preset sits on a MIDI program-change slot, and NAMper assigns it for you: the four
-          factory presets hold PC 0–3, and user presets take the next free number from 4 upwards.
-          There is no way to change a slot by hand. Plan your footswitch layout around the order you
-          save presets in, not the other way round.</p>
+        <div class="t">PC 슬롯은 직접 수정할 수 없습니다</div>
+        <p>모든 프리셋은 MIDI 프로그램 체인지 슬롯 위에 자리하며, NAMper가 이를 대신
+          할당합니다: 4개의 팩토리 프리셋은 PC 0–3을 차지하고, 사용자 프리셋은 4번부터
+          다음 빈 번호를 차례로 받습니다. 슬롯을 직접 바꿀 방법은 없습니다. 풋스위치
+          배치는 프리셋을 저장하는 순서에 맞춰 계획하세요. 반대로는 안 됩니다.</p>
       </div>
 
-      <h3>Updating and managing</h3>
-      <p>Overwriting is always confirmed. <b class="ui">Update with current rig</b> raises a dialog
-        reading <b class="ui">Overwrite “{name}” with the current rig?</b> with
-        <b class="ui">Overwrite</b> and <b class="ui">Cancel</b>. The manager itself has the nav
-        title <b class="ui">Presets</b> and two sections: <b class="ui">Rigs · MIDI PC slots</b>,
-        and <b class="ui">Everything at once</b> → <b class="ui">Global snapshots</b>, described as
-        rig, looper, sampler, setlist and control map saved and restored together.</p>
-      <p>Each row's context menu offers <b class="ui">Rename</b>,
-        <b class="ui">Update with current rig</b>, <b class="ui">Share</b> and
-        <b class="ui">Delete</b>. Renaming lives in the manager only — the preset chip menu on the
-        Rig tab does not have it. Once you have more than eight presets, a
-        <b class="ui">Search presets</b> field appears at the top.</p>
+      <h3>업데이트와 관리</h3>
+      <p>덮어쓰기는 항상 확인을 거칩니다. <b class="ui">현재 리그로 업데이트</b>를
+        누르면 <b class="ui">Overwrite “{name}” with the current rig?</b>라는
+        대화상자가 뜨고 <b class="ui">덮어쓰기</b>와 <b class="ui">취소</b>이
+        있습니다. 관리자 화면 자체의 내비게이션 제목은 <b class="ui">프리셋</b>이며,
+        두 개의 섹션 <b class="ui">리그 · MIDI PC 슬롯</b>와
+        <b class="ui">모든 걸 한 번에</b> → <b class="ui">글로벌 스냅샷</b>로
+        나뉩니다. 후자는 리그, 루퍼, 샘플러, 세트리스트, 컨트롤 맵을 한꺼번에 저장하고
+        복원하는 기능입니다.</p>
+      <p>각 행의 컨텍스트 메뉴에는 <b class="ui">이름 변경</b>,
+        <b class="ui">현재 리그로 업데이트</b>, <b class="ui">공유</b>,
+        <b class="ui">삭제</b>가 있습니다. 이름 바꾸기는 관리자 화면에만 있으며, Rig
+        탭의 프리셋 칩 메뉴에는 없습니다. 프리셋이 8개를 넘으면 위쪽에
+        <b class="ui">프리셋 검색</b> 필드가 나타납니다.</p>
       <div class="note warn">
-        <div class="t">Delete is not confirmed</div>
-        <p><b class="ui">Delete</b> in the preset row menu takes effect immediately, with no
-          "are you sure". Export a backup before a clear-out.</p>
+        <div class="t">삭제는 확인 없이 바로 실행됩니다</div>
+        <p>프리셋 행 메뉴의 <b class="ui">삭제</b>는 "정말 삭제하시겠습니까" 같은
+          확인 없이 즉시 적용됩니다. 정리하기 전에 백업을 내보내 두세요.</p>
       </div>
 
-      <h3>Import and export</h3>
-      <p>The manager's import/export menu has <b class="ui">Import preset / bank / backup…</b>,
-        <b class="ui">Export rig presets</b> (which writes <b class="ui">NAMper Presets.namper</b>)
-        and <b class="ui">Export EVERYTHING (full backup)</b> (which writes
-        <b class="ui">NAMper Backup.namper</b>). Note that a full backup carries parameters and
-        references but not sampler kit audio.</p>
-      <p>The file extension is <b class="ui">.namper</b>. Tap one in Files, or receive one over
-        AirDrop, and NAMper imports it and opens the preset manager. Every imported preset gets a
-        fresh slot, so an import can never silently overwrite something you already had.</p>
+      <h3>가져오기와 내보내기</h3>
+      <p>관리자의 가져오기/내보내기 메뉴에는 <b class="ui">프리셋 / 뱅크 / 백업 가져오기…</b>, <b class="ui">리그 프리셋 내보내기</b>(<b class="ui">NAMper
+        Presets.namper</b> 파일을 생성), <b class="ui">전체 내보내기 (풀 백업)</b>(<b class="ui">NAMper Backup.namper</b> 파일을 생성)이 있습니다.
+        전체 백업은 파라미터와 참조는 담지만 샘플러 킷의 오디오는 포함하지 않는다는
+        점에 유의하세요.</p>
+      <p>파일 확장자는 <b class="ui">.namper</b>입니다. 파일 앱에서 탭하거나 AirDrop으로
+        받으면 NAMper가 가져와서 프리셋 관리자를 엽니다. 가져온 프리셋은 모두 새 슬롯을
+        받으므로, 가져오기 과정에서 기존 항목이 조용히 덮어써지는 일은 없습니다.</p>
 
-      <h3>The factory four</h3>
-      <p>NAMper ships with four rigs on PC 0–3, each built around a real capture:
-        <b class="ui">Clean</b> (an American blackface combo), <b class="ui">Crunch</b> (a 1969
-        British 50-watt head), <b class="ui">Lead</b> (a modern high-gain amp+cab) and
-        <b class="ui">Ambient</b> (a British class-A chime combo). The capture each one streams
-        carries its uploader's own title, which is what the amp block shows. Each rig also carries a bypassed
-        built-in <b class="ui">Tube Amp</b> and a bundled cab as its offline fallback, and each is
-        marked <b class="ui">FACTORY</b> in the manager. Bring them all back from Settings →
-        <b class="ui">RESET</b> → <b class="ui">Reset to factory presets</b>; the dialog warns
-        <b class="ui">Delete ALL user presets? The four factory rigs come back.</b></p>
-      <p>The other tabs have preset sheets of their own, reached from their
-        <b class="ui">PRESETS</b> chip and all sharing the same design:
-        <b class="ui">Looper Presets</b>, <b class="ui">Sampler Kits</b>,
-        <b class="ui">Perform Presets</b>, <b class="ui">Control Presets</b> and
-        <b class="ui">Global Snapshots</b>. Two of them cannot be shared, because they point at
-        files on this device — sampler kits carry their audio, and global snapshots reference
-        models, samples and backing tracks.</p>
+      <h3>네 가지 팩토리 프리셋</h3>
+      <p>NAMper는 PC 0–3 자리에 실제 캡처를 바탕으로 만든 네 개의 리그를 기본으로
+        제공합니다: <b class="ui">클린</b>(미국식 블랙페이스 콤보), <b class="ui">크런치</b>
+        (1969년 영국제 50와트 헤드), <b class="ui">리드</b>(모던 하이게인 앰프+캐비닛),
+        <b class="ui">Ambient</b>(영국식 클래스 A 챠임 콤보)입니다. 각각이 스트리밍하는
+        캡처는 업로더가 붙인 원래 제목을 그대로 가지고 있으며, 앰프 블록에 표시되는
+        것도 그 제목입니다. 각 리그는 오프라인 대체용으로 바이패스된 내장
+        <b class="ui">튜브 앰프</b>와 번들 캐비닛도 함께 가지고 있고, 관리자 화면에서
+        <b class="ui">팩토리</b>로 표시됩니다. 설정 → <b class="ui">RESET</b> →
+        <b class="ui">팩토리 프리셋으로 재설정</b>에서 전부 되돌릴 수 있으며,
+        대화상자에는 <b class="ui">모든 사용자 프리셋을 삭제할까요? 4개의 팩토리 리그가 다시 생성됩니다.</b>라는 경고가 뜹니다.</p>
+      <p>다른 탭에도 각자의 <b class="ui">프리셋</b> 칩에서 열리는 프리셋 시트가
+        있으며, 모두 같은 디자인을 공유합니다: <b class="ui">루퍼 프리셋</b>,
+        <b class="ui">샘플러 키트</b>, <b class="ui">퍼폼 프리셋</b>,
+        <b class="ui">컨트롤 프리셋</b>, <b class="ui">글로벌 스냅샷</b>. 이 중
+        두 개는 공유할 수 없는데, 이 기기 안의 파일을 가리키기 때문입니다 — 샘플러
+        킷은 오디오를 직접 담고 있고, 글로벌 스냅샷은 모델, 샘플, 백킹 트랙을
+        참조합니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>Multiple rigs</h2>
-      <p>NAMper runs up to four rigs at once — a guitar and a vocal, a guitar and a bass, or four
-        players through one interface. Add one from the <b class="ui">RIG</b> <b class="ui">+</b>
-        menu in the <b class="ui">SIGNAL CHAIN</b> header.</p>
+      <h2 id="rigs"><span class="n">02.8</span>다중 리그</h2>
+      <p>NAMper는 최대 4개의 리그를 동시에 돌릴 수 있습니다 — 기타와 보컬, 기타와
+        베이스, 또는 하나의 인터페이스로 4명의 연주자까지. <b class="ui">시그널 체인</b> 헤더의 <b class="ui">리그</b> <b class="ui">+</b> 메뉴에서
+        추가하세요.</p>
       <figure>
         <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
-             alt="The Rig tab with two rigs stacked side by side: the first carries a MIDI badge marking it as MIDI-focused, the second is pinned so presets leave it alone.">
-        <figcaption>Two rigs — one holding MIDI focus, one pinned</figcaption>
+             alt="두 개의 리그가 나란히 놓인 Rig 탭: 첫 번째는 MIDI 포커스를 나타내는 배지가 있고, 두 번째는 프리셋이 건드리지 않도록 고정(pin)되어 있음.">
+        <figcaption>리그 두 개 — 하나는 MIDI 포커스를 가지고, 하나는 고정됨</figcaption>
       </figure>
-      <p>The menu's <b class="ui">Templates</b> section starts you somewhere sensible:
-        <b class="ui">Guitar (gate · tube amp · cab)</b>,
-        <b class="ui">Bass (gate · comp · bass amp · cab)</b>,
-        <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> and
-        <b class="ui">Empty rig</b>. Below that, <b class="ui">From preset</b> lists your saved
-        presets by name — or opens a searchable <b class="ui">NEW RIG FROM PRESET</b> sheet once
-        there are more than eight of them.</p>
-      <p>Rigs are named <b class="ui">GUITAR</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b> or
-        <b class="ui">RIG n</b> depending on the template; a rig built from a preset takes the
-        preset's name. Headers only appear once you have more than one rig.</p>
+      <p>메뉴의 <b class="ui">템플릿</b> 섹션은 무난한 출발점을 제공합니다:
+        <b class="ui">기타 (게이트 · 튜브 앰프 · 캐비닛)</b>, <b class="ui">베이스 (게이트 · 컴프 · 베이스 앰프 · 캐비닛)</b>, <b class="ui">보컬 (게이트 · 디에서 · 컴프 · EQ · 플레이트)</b>, <b class="ui">빈 리그</b>입니다. 그 아래 <b class="ui">프리셋에서</b>은 저장된 프리셋을 이름으로 나열하며, 8개를 넘으면 검색 가능한
+        <b class="ui">프리셋에서 새 리그</b> 시트가 대신 열립니다.</p>
+      <p>리그는 템플릿에 따라 <b class="ui">기타</b>, <b class="ui">베이스</b>,
+        <b class="ui">보컬</b>, 또는 <b class="ui">RIG n</b>이라는 이름을 갖습니다.
+        프리셋에서 만든 리그는 그 프리셋의 이름을 그대로 씁니다. 헤더는 리그가 두 개
+        이상일 때만 나타납니다.</p>
 
-      <h3>Focus, pinning and removal</h3>
-      <p>Tap a rig's header to give it <b class="ui">MIDI</b> focus — a badge marks which rig your
-        controller is currently driving. The pin toggle
-        (<b class="ui">Pin rig</b> / <b class="ui">Unpin rig</b>, captioned "presets keep this rig")
-        makes a rig survive preset switches, which is how you keep a vocal chain intact while you
-        change guitar sounds from a footswitch. A trash button
-        (<b class="ui">Remove rig</b>) appears once there is more than one rig.</p>
-      <p>Layout follows the device: in landscape the rigs stack as rows with each chain running left
-        to right; in portrait they sit side by side with the chains running top to bottom.</p>
+      <h3>포커스, 고정, 제거</h3>
+      <p>리그의 헤더를 탭하면 <b class="ui">MIDI</b> 포커스를 줄 수 있습니다 —
+        배지가 지금 컨트롤러가 조작하는 리그를 표시합니다. 고정 토글
+        (<b class="ui">리그 고정</b> / <b class="ui">리그 고정 해제</b>, "presets keep this
+        rig"라는 설명이 붙음)을 켜면 프리셋을 바꿔도 그 리그는 그대로 유지되는데, 이
+        방법으로 풋스위치로 기타 사운드를 바꾸는 동안에도 보컬 체인을 그대로 둘 수
+        있습니다. 리그가 두 개 이상이면 휴지통 버튼(<b class="ui">리그 제거</b>)이
+        나타납니다.</p>
+      <p>레이아웃은 기기에 따라 달라집니다: 가로 모드에서는 리그가 행으로 쌓이고 각
+        체인은 왼쪽에서 오른쪽으로 흐르며, 세로 모드에서는 나란히 놓이고 체인이
+        위에서 아래로 흐릅니다.</p>
 
-      <h3>Each rig's input and output</h3>
-      <p>The IN connector at the head of a chain is a menu. Its
-        <b class="ui">Sound-card input</b> section lists your channels by name —
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on — and adds
-        <b class="ui">Sampler pads</b> and <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, so a
-        rig can process a loop or the sampler rather than a live input.</p>
-      <p>The OUT connector opens a sheet headed <b class="ui">RIG OUTPUT</b>, with
-        <b class="ui">Level</b> and <b class="ui">Pan</b> knobs, a
-        <b class="ui">Hardware output pair</b> menu (<b class="ui">Out 1-2</b>,
-        <b class="ui">Out 3-4</b>… — this needs <b class="ui">Use all interface outputs</b> switched
-        on in Settings), and <b class="ui">Record this rig into</b> →
-        <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. The summary row underneath
-        reads <b class="ui">Looper: not assigned</b> or, once you have picked some,
-        <b class="ui">Looper: track 1, 3</b>.</p>
+      <h3>각 리그의 입력과 출력</h3>
+      <p>체인 맨 앞의 IN 커넥터는 메뉴입니다. <b class="ui">사운드카드 입력</b>
+        섹션에는 채널이 이름으로 나열되고 — <b class="ui">In 1</b>, <b class="ui">In
+        2</b> 등 — 여기에 <b class="ui">샘플러 패드</b>와 <b class="ui">Loop
+        1</b>–<b class="ui">Loop 4</b>가 더해져서, 라이브 입력 대신 루프나 샘플러를
+        처리하는 리그도 만들 수 있습니다.</p>
+      <p>OUT 커넥터를 열면 <b class="ui">리그 출력</b>이라는 시트가 뜨며,
+        <b class="ui">레벨</b>과 <b class="ui">팬</b> 노브, <b class="ui">하드웨어 출력 페어</b> 메뉴(<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… —
+        설정에서 <b class="ui">인터페이스의 모든 출력 사용</b>를 켜야 사용 가능), 그리고
+        <b class="ui">이 리그를 녹음할 위치</b> → <b class="ui">Loop track
+        1</b>–<b class="ui">Loop track 4</b>가 있습니다. 아래쪽 요약 행에는
+        <b class="ui">Looper: not assigned</b>이라고 표시되거나, 트랙을 고른 뒤에는
+        <b class="ui">Looper: track 1, 3</b>처럼 표시됩니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>Parallel branches</h2>
-      <p>A rig is not limited to one line. Each rig can hold up to four chains — the main one plus
-        three branches — so you can split a signal, treat the halves differently and mix them back
-        together. Create one with the branch-icon button under the chain
-        (<b class="ui">Add parallel chain</b>).</p>
-      <p>Its menu has a single section, <b class="ui">Branch from</b>, listing each input channel,
-        <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, and
-        <b class="ui">After {Block}</b> for every block on the main chain. That last group is the
-        interesting one: branching after the amp gives you two different reverbs on the same amp
-        tone, branching before it gives you two different amps on the same guitar.</p>
+      <h2 id="branches"><span class="n">02.9</span>병렬 브랜치</h2>
+      <p>리그는 한 줄로 제한되지 않습니다. 각 리그는 최대 4개의 체인 — 메인 체인
+        하나와 브랜치 세 개 — 을 가질 수 있어서, 신호를 나눠 서로 다르게 처리한 다음
+        다시 섞을 수 있습니다. 체인 아래의 브랜치 아이콘 버튼(<b class="ui">병렬 체인 추가</b>)으로 만드세요.</p>
+      <p>이 메뉴에는 <b class="ui">분기 시작 위치</b>이라는 섹션 하나만 있으며, 각 입력
+        채널, <b class="ui">샘플러 패드</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop
+        4</b>, 그리고 메인 체인의 모든 블록에 대응하는 <b class="ui">After
+        {Block}</b>을 나열합니다. 이 마지막 그룹이 특히 흥미로운데, 앰프 뒤에서
+        브랜치를 만들면 같은 앰프 톤에 서로 다른 리버브 두 개를 걸 수 있고, 앰프
+        앞에서 만들면 같은 기타 소리에 서로 다른 앰프 두 개를 걸 수 있습니다.</p>
 
-      <h3>The two anchors</h3>
-      <p>A branch draws as a parallel column with an entry anchor where it leaves the main chain and
-        a merge anchor where it rejoins. The merge anchor shows that branch's level as a
-        percentage, so you can read the balance without opening anything.</p>
+      <h3>두 개의 앵커</h3>
+      <p>브랜치는 메인 체인에서 갈라지는 지점의 진입 앵커와 다시 합류하는 지점의
+        병합 앵커를 가진 병렬 열로 그려집니다. 병합 앵커에는 그 브랜치의 레벨이
+        퍼센트로 표시되어, 아무것도 열지 않고도 밸런스를 확인할 수 있습니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Gesture</th><th>What it does</th></tr></thead>
+          <thead><tr><th>동작</th><th>결과</th></tr></thead>
           <tbody>
-            <tr><td>Tap an anchor</td><td>Opens the mixer sheet headed <b class="ui">LANE {n} MIX</b>,
-              with <b class="ui">Level</b> and <b class="ui">Pan</b></td></tr>
-            <tr><td>Long-press the entry anchor</td><td>The <b class="ui">Branch input</b> menu:
-              own input, <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-              <b class="ui">Branch after {Block}</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Long-press the merge anchor</td><td>The <b class="ui">Branch output</b> menu:
-              <b class="ui">Into the main mix</b>, <b class="ui">Merge before {Block}</b>,
-              <b class="ui">Own output 1-2</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Drag an anchor</td><td>Re-attaches it at a different point along the main
-              chain</td></tr>
+            <tr><td>앵커 탭</td><td><b class="ui">LANE {n} MIX</b>라는 이름의 믹서
+              시트가 열리며, <b class="ui">레벨</b>과 <b class="ui">팬</b>이
+              있습니다</td></tr>
+            <tr><td>진입 앵커 길게 누르기</td><td><b class="ui">브랜치 입력</b> 메뉴가
+              열립니다: 자신의 입력, <b class="ui">샘플러 패드</b>, <b class="ui">Loop
+              1</b>–<b class="ui">Loop 4</b>, <b class="ui">Branch after {Block}</b>,
+              <b class="ui">브랜치 제거</b></td></tr>
+            <tr><td>병합 앵커 길게 누르기</td><td><b class="ui">브랜치 출력</b> 메뉴가
+              열립니다: <b class="ui">메인 믹스로</b>, <b class="ui">Merge before
+              {Block}</b>, <b class="ui">Own output 1-2</b>, <b class="ui">브랜치 제거</b></td></tr>
+            <tr><td>앵커 드래그</td><td>메인 체인의 다른 지점에 다시 붙입니다</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Dragging is the fast way to audition: hold the merge anchor, slide it earlier or later in
-        the chain, and hear the branch land before or after the delay without opening a menu.</p>
+      <p>드래그는 빠르게 들어보는 방법입니다: 병합 앵커를 잡고 체인 안에서 앞뒤로
+        밀어보면, 메뉴를 열지 않고도 브랜치가 딜레이 앞에 들어갈 때와 뒤에 들어갈
+        때의 차이를 들을 수 있습니다.</p>
       <div class="note tip">
-        <div class="t">Mixing several branches at once</div>
-        <p>Put a <b class="ui">Volume</b> block at the point where branches merge and it grows an
-          extra section, <b class="ui">INCOMING LINES</b>, with one knob per merging branch —
-          <b class="ui">Line 1</b>, <b class="ui">Line 2</b> and so on. That gives you a small mixer
-          in the middle of the rig instead of chasing individual anchor sheets.</p>
+        <div class="t">여러 브랜치를 한 번에 믹싱하기</div>
+        <p>브랜치들이 합류하는 지점에 <b class="ui">볼륨</b> 블록을 두면
+          <b class="ui">입력 라인</b>라는 추가 섹션이 생기고, 합류하는
+          브랜치마다 <b class="ui">Line 1</b>, <b class="ui">Line 2</b> 식으로
+          노브가 하나씩 붙습니다. 앵커 시트를 하나하나 찾아다니는 대신 리그
+          한가운데에 작은 믹서를 두는 셈입니다.</p>
       </div>
-      <p>A branch can also skip the main mix entirely: point its output at
-        <b class="ui">Own output 1-2</b> and it goes straight to its own hardware pair, which needs
-        <b class="ui">Use all interface outputs</b> enabled in Settings first.</p>
+      <p>브랜치는 메인 믹스를 완전히 건너뛸 수도 있습니다: 출력을 <b class="ui">Own
+        output 1-2</b>로 지정하면 자신만의 하드웨어 출력 페어로 바로 나가는데, 이를
+        위해서는 먼저 설정에서 <b class="ui">인터페이스의 모든 출력 사용</b>를 켜야
+        합니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>The master section</h2>
-      <p>The <b class="ui">MASTER</b> card at the bottom of the Rig tab is where everything meets:
-        every rig, the looper, the sampler pads and the backing track sum here before the hardware
-        output. Whatever you do to the master, you do to all of it.</p>
-      <p>The <b class="ui">FX</b> <b class="ui">+</b> menu adds master processing — up to six
-        blocks. You can choose from <b class="ui">Volume</b>, <b class="ui">EQ</b>,
-        <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
-        <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
-        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
-        <b class="ui">Room</b> and <b class="ui">Delay</b>. They behave like chain blocks: tap a
-        chip to edit it, long-press for <b class="ui">Enable</b> / <b class="ui">Bypass</b> and
-        <b class="ui">Remove</b>.</p>
+      <h2 id="master"><span class="n">02.10</span>마스터 섹션</h2>
+      <p>Rig 탭 맨 아래에 있는 <b class="ui">마스터</b> 카드는 모든 것이 만나는
+        곳입니다: 모든 리그, 루퍼, 샘플러 패드, 백킹 트랙이 하드웨어 출력 전에
+        이곳에서 합쳐집니다. 마스터에 하는 모든 조작은 이 전체에 적용됩니다.</p>
+      <p><b class="ui">FX</b> <b class="ui">+</b> 메뉴로 마스터 프로세싱을 추가할 수
+        있습니다 — 최대 6개 블록까지. <b class="ui">볼륨</b>, <b class="ui">EQ</b>,
+        <b class="ui">컴프</b>, <b class="ui">튜브 새츄</b>, <b class="ui">테이프 새츄</b>, <b class="ui">리미터</b>, <b class="ui">FB 가드</b>,
+        <b class="ui">디에서</b>, <b class="ui">클라우드</b>, <b class="ui">홀</b>,
+        <b class="ui">플레이트</b>, <b class="ui">룸</b>, <b class="ui">딜레이</b> 중에서
+        고를 수 있습니다. 이들은 체인 블록과 똑같이 동작합니다: 칩을 탭해서
+        편집하고, 길게 눌러 <b class="ui">켜기</b> / <b class="ui">바이패스</b>와
+        <b class="ui">제거</b>를 사용합니다.</p>
       <div class="note warn">
-        <div class="t">No AU plugins in the master</div>
-        <p>Hosted Audio Unit plugins can only go inside a rig chain. The master FX menu does not
-          offer them. If you want a third-party limiter across everything, that is not possible —
-          use the built-in <b class="ui">Limiter</b> block instead.</p>
+        <div class="t">마스터에는 AU 플러그인을 넣을 수 없습니다</div>
+        <p>호스팅되는 Audio Unit 플러그인은 리그 체인 안에만 넣을 수 있습니다. 마스터
+          FX 메뉴에는 제공되지 않습니다. 전체에 서드파티 리미터를 걸고 싶어도 그건
+          불가능합니다 — 대신 내장 <b class="ui">리미터</b> 블록을 사용하세요.</p>
       </div>
-      <p>There is no always-on master processor here. Saturation is a block you add —
-        <b class="ui">Tube Sat</b> or <b class="ui">Tape Sat</b>, both with
-        <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> and
-        <b class="ui">Level</b> — and limiting is the <b class="ui">Limiter</b> block, with
-        <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 to 0 dB, default −1) and
-        <b class="ui">Release</b>. If you have not added them, they are not in the signal path.</p>
+      <p>여기에 항상 켜져 있는 마스터 프로세서는 없습니다. 새츄레이션은 직접
+        추가하는 블록입니다 — <b class="ui">튜브 새츄</b> 또는 <b class="ui">테이프 새츄</b>이며 둘 다 <b class="ui">드라이브</b>, <b class="ui">톤</b>,
+        <b class="ui">믹스</b>, <b class="ui">레벨</b>을 가집니다 — 그리고
+        리미팅은 <b class="ui">리미터</b> 블록으로, <b class="ui">게인</b>,
+        <b class="ui">실링</b>(−12에서 0 dB, 기본값 −1), <b class="ui">릴리즈</b>가
+        있습니다. 추가하지 않았다면 시그널 경로에도 없습니다.</p>
 
-      <h3>Reading the master meters</h3>
-      <p>Stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> carry ticks at −12 and −6 dB.
-        Beside them sits a BS.1770 loudness reading: a large momentary <b class="ui">LUFS</b>
-        number with a smaller line below reading <b class="ui">LUFS</b> or
-        <b class="ui">LUFS · S &lt;n&gt;</b> for the short-term value. Below −70 LUFS it shows
-        <b class="ui">-inf</b>. The fader runs −60 to +12 dB.</p>
-      <p>Use the peak bars to stay out of clipping and the LUFS number to match your overall level
-        to something else — a backing track, a previous take, another player on the same desk.</p>
+      <h3>마스터 미터 읽는 법</h3>
+      <p>스테레오 피크 바 <b class="ui">L</b>, <b class="ui">R</b>에는 −12 dB와
+        −6 dB 지점에 눈금이 있습니다. 그 옆에는 BS.1770 러프니스 값이 표시됩니다:
+        큰 순간 <b class="ui">LUFS</b> 숫자 아래에 단기 값을 나타내는
+        <b class="ui">LUFS</b> 또는 <b class="ui">LUFS · S &lt;n&gt;</b>이 작게
+        표시됩니다. −70 LUFS 아래에서는 <b class="ui">-inf</b>로 표시됩니다.
+        페이더는 −60에서 +12 dB까지 움직입니다.</p>
+      <p>피크 바로는 클리핑을 피하고, LUFS 숫자로는 전체 레벨을 다른 무언가에
+        맞추세요 — 백킹 트랙, 이전 테이크, 같은 콘솔의 다른 연주자 등.</p>
       <div class="note">
-        <div class="t">The click stays clean</div>
-        <p>The metronome click is mixed in <b>after</b> the master FX chain, so master reverbs,
-          saturation and limiting never touch it. Set the click level in Settings →
-          <b class="ui">METRONOME</b>, and give it its own output pair there if you want it in the
-          in-ears and nowhere else.</p>
+        <div class="t">클릭은 항상 깨끗하게 유지됩니다</div>
+        <p>메트로놈 클릭은 마스터 FX 체인 <b>이후</b>에 믹스되므로, 마스터 리버브,
+          새츄레이션, 리미팅의 영향을 전혀 받지 않습니다. 클릭 레벨은 설정 →
+          <b class="ui">메트로놈</b>에서 조절할 수 있고, 인이어에만 보내고
+          싶다면 거기서 별도의 출력 페어를 지정하세요.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/ko/setup.html">← 01 · Getting started</a>
+      <a href="/docs/ko/setup.html">← 01 · 시작하기</a>
       <span class="sp"></span>
-      <a href="/docs/ko/plugins.html">03 · AU plugins →</a>
+      <a href="/docs/ko/plugins.html">03 · AU 플러그인 →</a>
     </nav>
   </main>
 </div>
@@ -620,7 +623,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper는 특정 장비 제조사와 제휴, 승인 또는 후원 관계가 전혀 없는 독립 앱입니다. 모든 제품명, 브랜드, 상표는 각 소유자의 자산이며, 캡처 대상이 된 장비를 설명하는 목적으로만 사용됩니다.</p>
   </div>
 </footer>
 

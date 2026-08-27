@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sampler pads — NAMper Documentation</title>
-<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, trigger quantize, MIDI notes 36–51 and where the pads go in the mix.">
+<title>Sampler pad'leri — NAMper Dokümantasyonu</title>
+<meta name="description" content="On altı sampler pad'i: ses yükleme ve kaydetme, trim ve ADSR'li pad editörü, kitler ve dört fabrika drum kiti, trigger quantize, MIDI notaları 36–51 ve pad'lerin miksde nereye gittiği.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Sampler pads — NAMper Documentation">
-<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, quantize and MIDI triggering.">
+<meta property="og:title" content="Sampler pad'leri — NAMper Dokümantasyonu">
+<meta property="og:description" content="On altı pad, kitler, trim ve ADSR, quantize ve MIDI tetikleme.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/sampler.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOKÜMANTASYON</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/tr/">← ALL DOCS</a>
+  <a class="home" href="/docs/tr/">← TÜM DOKÜMANLAR</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/tr/sampler.html" aria-current="page">Türkçe</a>
   </nav>
@@ -46,254 +46,260 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">İÇİNDEKİLER</div>
     <ol>
-      <li><a href="/docs/tr/setup.html">Getting started</a></li>
-      <li><a href="/docs/tr/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/tr/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/tr/setup.html">Başlarken</a></li>
+      <li><a href="/docs/tr/rig.html">Rig ve sinyal zinciri</a></li>
+      <li><a href="/docs/tr/plugins.html">AU eklentileri</a></li>
       <li><a href="/docs/tr/looper.html">Looper</a></li>
-      <li><a class="on" href="/docs/tr/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/tr/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/tr/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/tr/settings.html">Settings reference</a></li>
+      <li><a class="on" href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
+      <li><a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a></li>
+      <li><a href="/docs/tr/control.html">MIDI ve kontrol</a></li>
+      <li><a href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PADS</div>
-    <h1>Sixteen pads, one page.</h1>
-    <p class="lede">The <b class="ui a">Sample</b> tab is a drum machine you can play with your
-      thumbs or a MIDI pedal: sixteen pads, a kit library, trim and envelope per pad, and a
-      quantizer for when the timing has to be right.</p>
+    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PAD'LERİ</div>
+    <h1>On altı pad, tek sayfa.</h1>
+    <p class="lede"><b class="ui a">Sample</b> sekmesi, başparmaklarınla ya da bir MIDI pedalıyla
+      çalabileceğin bir drum machine'dir: on altı pad, bir kit kütüphanesi, pad başına trim ve
+      zarf, ve zamanlamanın tam olması gerektiğinde bir quantizer.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">BU SAYFADA</div>
       <ul>
-        <li><a href="#grid">The grid</a></li>
-        <li><a href="#loading">Getting sound into a pad</a></li>
-        <li><a href="#editor">The pad editor</a></li>
-        <li><a href="#kits">Kits</a></li>
+        <li><a href="#grid">Izgara</a></li>
+        <li><a href="#loading">Bir pad'e ses aktarmak</a></li>
+        <li><a href="#editor">Pad editörü</a></li>
+        <li><a href="#kits">Kitler</a></li>
         <li><a href="#quantize">Trigger quantize</a></li>
-        <li><a href="#trigger">Playing the pads</a></li>
-        <li><a href="#routing">Where the pads go</a></li>
+        <li><a href="#trigger">Pad'leri çalmak</a></li>
+        <li><a href="#routing">Pad'ler nereye gider</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="grid"><span class="n">05.1</span>The grid</h2>
-      <p>Sixteen pads in a fixed 4×4 grid. One page — there are no banks and no second page, so
-        everything you can play is on screen at once.</p>
+      <h2 id="grid"><span class="n">05.1</span>Izgara</h2>
+      <p>Sabit bir 4×4 ızgarada on altı pad. Tek sayfa — banka yok, ikinci sayfa yok; çalabileceğin
+        her şey aynı anda ekrandadır.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
-             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
-        <figcaption>The <b class="ui">Drums — Acoustic</b> factory kit loaded across all 16 pads</figcaption>
+             alt="Akustik davul fabrika kitinin on altı pad'in tamamına yüklü olduğu Sample sekmesi; her biri sample adını, uzunluğunu ve dalga formunu gösteriyor, başlıkta LEVEL ve QUANT düğmeleri ile quantize ızgara çipi var.">
+        <figcaption><b class="ui">Davul — akustik</b> fabrika kiti on altı pad'in tamamına
+          yüklü</figcaption>
       </figure>
-      <p>The header row carries, left to right: the word <b class="ui">SAMPLER</b>, a
-        <b class="ui">LEVEL</b> knob (0 to 2, default 1), a <b class="ui">QUANT</b> knob, the
-        quantize grid chip, the <b class="ui">PRESETS</b> chip for kits, a <b class="ui">REC</b>
-        indicator that lights while a pad is recording, and <b class="ui">STOP ALL</b>.</p>
-      <p>Along the bottom, the hint says it all:</p>
-      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
-        36–51</b></p>
-      <p>An <b>empty pad</b> splits into two halves — <b class="ui">LOAD</b> and
-        <b class="ui">REC</b>. A <b>loaded pad</b> shows the sample name, its length (for example
-        <b class="ui">1.4s</b>), a dimmed waveform with everything outside the trim faded back, and
-        a bright cursor sweeping through while it plays.</p>
-      <p>Long-press any pad for the menu: <b class="ui">Load sound…</b>,
-        <b class="ui">Record mix</b> or <b class="ui">Stop recording</b>, and — on a loaded pad —
-        <b class="ui">Edit…</b>, <b class="ui">Clear</b> and <b class="ui">MIDI Learn: pad N</b>.</p>
+      <p>Başlık satırı soldan sağa şunları taşır: <b class="ui">SAMPLER</b> kelimesi, bir
+        <b class="ui">SEVİYE</b> düğmesi (0'dan 2'ye, varsayılan 1), bir <b class="ui">KUANT</b>
+        düğmesi, quantize ızgara çipi, kitler için <b class="ui">PRESET’LER</b> çipi, bir pad kayıt
+        yaparken yanan bir <b class="ui">REC</b> göstergesi ve <b class="ui">HEPSİNİ DURDUR</b>.</p>
+      <p>En altta, ipucu her şeyi anlatıyor:</p>
+      <p><b class="ui">Boş pad: yükle ya da kaydet · dolu: dokun = çal/dur, düzenlemek için basılı tut · MIDI notaları 36–51</b></p>
+      <p><b>Boş bir pad</b> iki yarıya bölünür — <b class="ui">YÜKLE</b> ve <b class="ui">REC</b>.
+        <b>Yüklü bir pad</b> sample adını, uzunluğunu (örneğin <b class="ui">1.4s</b>), trim
+        dışındaki her şeyin soluklaştığı bir dalga formunu ve çalarken içinden geçen parlak bir
+        imleci gösterir.</p>
+      <p>Menü için herhangi bir pad'e uzun bas: <b class="ui">Ses yükle…</b>,
+        <b class="ui">Miksi kaydet</b> ya da <b class="ui">Kaydı durdur</b>, ve — yüklü bir
+        pad'de — <b class="ui">Düzenle…</b>, <b class="ui">Temizle</b> ve <b class="ui">MIDI Learn:
+        pad N</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="loading"><span class="n">05.2</span>Getting sound into a pad</h2>
-      <p>There are three ways to load a file, and they all open the same Files picker: the
-        <b class="ui">LOAD</b> half of an empty pad, <b class="ui">Load sound…</b> in the long-press
-        menu, and <b class="ui">Load file</b> inside the pad editor. Anything iOS can decode is
-        accepted.</p>
-      <p>Samples are capped at <b>12 seconds</b> — a longer file is truncated rather than refused.
-        And there is no drag and drop into NAMper: every import goes through the picker.</p>
+      <h2 id="loading"><span class="n">05.2</span>Bir pad'e ses aktarmak</h2>
+      <p>Bir dosya yüklemenin üç yolu var ve hepsi aynı Files seçicisini açar: boş bir pad'in
+        <b class="ui">YÜKLE</b> yarısı, uzun basma menüsündeki <b class="ui">Ses yükle…</b> ve
+        pad editörünün içindeki <b class="ui">Dosya yükle</b>. iOS'un çözebildiği her şey kabul
+        edilir.</p>
+      <p>Sample'lar <b>12 saniye</b> ile sınırlıdır — daha uzun bir dosya reddedilmez, kısaltılır.
+        Ve NAMper'a sürükle-bırak yoktur: her içe aktarma seçici üzerinden geçer.</p>
 
-      <h3>Recording into a pad</h3>
-      <p>The <b class="ui">REC</b> half of an empty pad records straight into it. Only one pad can
-        record at a time, and the take is named <b class="ui">Rec N</b>. With the engine stopped it
-        refuses with <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <h3>Bir pad'e kaydetmek</h3>
+      <p>Boş bir pad'in <b class="ui">REC</b> yarısı doğrudan içine kaydeder. Aynı anda sadece
+        bir pad kayıt yapabilir ve alım <b class="ui">Rec N</b> olarak adlandırılır. Motor
+        durduğunda şu mesajla reddeder:
+        <b class="ui r">Ses kapalı — kayıttan önce güç düğmesine dokun.</b></p>
       <div class="note warn">
-        <div class="t">The pad recorder captures what you hear</div>
-        <p>It records the <b>main output mix</b>, not the raw input — so the rig, the looper, the
-          other pads and any backing track all land in the sample. That is useful for grabbing a
-          chord straight off your processed tone, and a trap if you meant to capture a dry
-          source. Mute or stop everything else before you hit <b class="ui">REC</b>.</p>
+        <div class="t">Pad kaydedicisi duyduğun şeyi yakalar</div>
+        <p>Ham girişi değil, <b>ana çıkış miksini</b> kaydeder — yani rig, looper, diğer pad'ler
+          ve herhangi bir altyapı parçası hepsi sample'ın içine düşer. Bu, işlenmiş tonundan
+          doğrudan bir akor kapmak için işe yarar, ama kuru bir kaynağı yakalamak istiyorsan bir
+          tuzaktır. <b class="ui">REC</b>'e basmadan önce her şeyi sustur ya da durdur.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">05.3</span>The pad editor</h2>
-      <p>Long-press a loaded pad → <b class="ui">Edit…</b>. The sheet is headed
-        <b class="ui">PAD N</b> with the sample name and its length.</p>
-      <p>The waveform has <b>draggable trim handles</b> at the start and end — drag the start in to
-        cut off a slow attack, drag the end in to shorten a long tail.</p>
-      <p>The <b>ADSR envelope is drawn on top of the waveform</b> and edited by dragging three round
-        handles: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> and
-        <b class="ui">Release</b>. A readout above shows the values, like
+      <h2 id="editor"><span class="n">05.3</span>Pad editörü</h2>
+      <p>Yüklü bir pad'e uzun bas → <b class="ui">Düzenle…</b>. Sayfa, sample adı ve uzunluğuyla
+        birlikte <b class="ui">PAD N</b> başlığını taşır.</p>
+      <p>Dalga formunun başında ve sonunda <b>sürüklenebilir trim tutamaçları</b> vardır — yavaş
+        bir attack'ı kesmek için başlangıcı içeri sürükle, uzun bir kuyruğu kısaltmak için bitişi
+        içeri sürükle.</p>
+      <p><b>ADSR zarfı dalga formunun üzerine çizilir</b> ve üç yuvarlak tutamaç sürüklenerek
+        düzenlenir: <b class="ui">Attack</b>, <b class="ui">Decay ve sustain</b> ve
+        <b class="ui">Release</b>. Üstteki bir okuma değerleri gösterir, örneğin
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
-      <p>Two knobs: <b class="ui">Gain</b> (0 to 2) and <b class="ui">Pitch</b> (0.25 to 4, shown as
-        <b class="ui">1.00x</b>). Pitch is a resampling rate, so it changes <b>pitch and speed
-        together</b> — a tape-style shift, not a formant-preserving one. Half speed is an octave
-        down.</p>
+      <p>İki düğme: <b class="ui">Gain</b> (0'dan 2'ye) ve <b class="ui">Pitch</b> (0.25'ten
+        4'e, <b class="ui">1.00x</b> olarak gösterilir). Pitch bir yeniden örnekleme hızıdır,
+        yani <b>pitch'i ve hızı birlikte</b> değiştirir — formant koruyan değil, tape tarzı bir
+        kayma. Yarı hız bir oktav aşağıdır.</p>
 
-      <h3>MODE and TAP</h3>
-      <p>Two pairs of chips decide how a pad behaves under your finger.
-        <b class="ui">MODE</b> is <b class="ui">One-shot</b> or <b class="ui">Loop</b>;
-        <b class="ui">TAP</b> is <b class="ui">Retrig</b> or <b class="ui">Latch</b>. The rule is
-        simple: a pad set to <b class="ui">Loop</b> or to <b class="ui">Latch</b> toggles start and
-        stop on each tap, and a <b class="ui">One-shot</b> / <b class="ui">Retrig</b> pad restarts
-        from the trim start every time you hit it — ordinary drum-pad behaviour.</p>
+      <h3>MODE ve TAP</h3>
+      <p>İki çip çifti bir pad'in parmağının altında nasıl davranacağına karar verir.
+        <b class="ui">MOD</b>, <b class="ui">Tek atış</b> ya da <b class="ui">Loop</b>'tur;
+        <b class="ui">TAP</b>, <b class="ui">Retrig</b> ya da <b class="ui">Latch</b>'tir. Kural
+        basit: <b class="ui">Loop</b>'a ya da <b class="ui">Latch</b>'e ayarlı bir pad her
+        dokunuşta başlangıç ve durmayı değiştirir, bir <b class="ui">Tek atış</b> /
+        <b class="ui">Retrig</b> pad'i ise her vurduğunda trim başlangıcından yeniden başlar —
+        sıradan bir drum-pad davranışı.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>MODE</th><th>TAP</th><th>What a tap does</th></tr></thead>
+          <thead><tr><th>MODE</th><th>TAP</th><th>Bir dokunuş ne yapar</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
-                <td>Plays once from the trim start, restarting on every tap. Drums, hits, stabs.</td></tr>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
-                <td>Plays once; a second tap while it is still sounding stops it. Long one-shots you
-                    may need to cut short.</td></tr>
+            <tr><td><b class="ui">Tek atış</b></td><td><b class="ui">Retrig</b></td>
+                <td>Trim başlangıcından bir kez çalar, her dokunuşta yeniden başlar. Davullar,
+                    vuruşlar, stab'ler.</td></tr>
+            <tr><td><b class="ui">Tek atış</b></td><td><b class="ui">Latch</b></td>
+                <td>Bir kez çalar; hâlâ çalarken ikinci bir dokunuş onu durdurur. Kısaltman
+                    gerekebilecek uzun one-shot'lar için.</td></tr>
             <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
-                <td>Loops until you tap again to stop it.</td></tr>
+                <td>Tekrar dokunup durdurana kadar loop yapar.</td></tr>
             <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
-                <td>Loops until you tap again to stop it. Beds, drones, rain, vinyl crackle.</td></tr>
+                <td>Tekrar dokunup durdurana kadar loop yapar. Zemin sesleri, drone'lar, yağmur,
+                    vinil cızırtısı.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>At the bottom, <b class="ui">Preview</b> auditions the pad with your current settings and
-        <b class="ui">Load file</b> swaps the sound without leaving the editor.</p>
+      <p>En altta, <b class="ui">Önizleme</b> pad'i mevcut ayarlarınla dinletir ve
+        <b class="ui">Dosya yükle</b> editörden çıkmadan sesi değiştirir.</p>
       <div class="note">
-        <div class="t">What the sampler deliberately does not have</div>
-        <p>No choke groups (an open hat will not be cut by a closed one), no per-pad pan, no
-          reverse, no velocity layers, no per-pad output routing and no momentary
-          gate-while-held mode. Pads play at their set <b class="ui">Gain</b> and stop when the
-          sample or the envelope says so.</p>
+        <div class="t">Sampler'ın bilerek sahip olmadığı şeyler</div>
+        <p>Choke grupları yok (açık bir hi-hat kapalı biri tarafından kesilmez), pad başına pan
+          yok, ters çalma yok, velocity katmanları yok, pad başına çıkış yönlendirmesi yok ve
+          basılı tutulduğu sürece çalan bir gate modu yok. Pad'ler ayarlı <b class="ui">Gain</b>
+          değerinde çalar ve sample ya da zarf öyle söylediğinde durur.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="kits"><span class="n">05.4</span>Kits</h2>
-      <p>A kit is a snapshot of all sixteen pads — every trim, envelope, gain, pitch and mode
-        setting — <b>plus a private copy of every pad's audio</b>. That copy is the point: once a
-        kit is saved, importing over a pad, clearing it or deleting the original file cannot hollow
-        the kit out. Load it back in six months and it still plays.</p>
-      <p>Open the browser with the <b class="ui">PRESETS</b> chip; the sheet is titled
-        <b class="ui">Sampler Kits</b>. Tap a row to load it. The row menu has
-        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> and
-        <b class="ui">Delete</b>. Deleting a kit never removes audio that the loaded pads or another
-        saved kit are still using.</p>
+      <h2 id="kits"><span class="n">05.4</span>Kitler</h2>
+      <p>Bir kit, on altı pad'in tamamının bir anlık görüntüsüdür — her trim, zarf, gain, pitch
+        ve mod ayarı — <b>artı her pad'in sesinin özel bir kopyası</b>. O kopya asıl mesele: bir
+        kit kaydedildikten sonra bir pad'in üzerine bir şey içe aktarmak, onu temizlemek ya da
+        orijinal dosyayı silmek kiti boşaltamaz. Altı ay sonra geri yükle, yine çalar.</p>
+      <p>Tarayıcıyı <b class="ui">PRESET’LER</b> çipiyle aç; sayfanın başlığı
+        <b class="ui">Sampler kitleri</b>'tir. Yüklemek için bir satıra dokun. Satır menüsünde
+        <b class="ui">Yeniden adlandır</b>, <b class="ui">Update with current kit</b> ve
+        <b class="ui">Sil</b> vardır. Bir kiti silmek, yüklü pad'lerin ya da başka kayıtlı
+        bir kitin hâlâ kullandığı sesi asla kaldırmaz.</p>
       <div class="note warn">
-        <div class="t">Kits cannot be shared</div>
-        <p>The footer of the sheet says why: <b class="ui">Kits live on this device (they carry
-          their audio files).</b> There is no share or export for a kit, and the full backup export
-          leaves sampler kit audio out — it carries parameters and references only. Copy the
-          <b class="ui">samples/</b> folder in the Files app if you need the sounds on another
-          device.</p>
+        <div class="t">Kitler paylaşılamaz</div>
+        <p>Sayfanın alt bilgisi nedenini söyler: <b class="ui">Kits live on this device (they
+          carry their audio files).</b> Bir kit için paylaşma ya da dışa aktarma yoktur ve tam
+          yedek dışa aktarımı sampler kiti sesini dışarıda bırakır — sadece parametreleri ve
+          referansları taşır. Sesleri başka bir cihazda istiyorsan Files uygulamasında
+          <b class="ui">samples/</b> klasörünü kopyala.</p>
       </div>
 
-      <h3>The four factory kits</h3>
+      <h3>Dört fabrika kiti</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Kit</th><th>The sixteen pads</th></tr></thead>
+          <thead><tr><th>Kit</th><th>On altı pad</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Drums — Digital</b></td>
+            <tr><td><b class="ui">Davul — dijital</b></td>
                 <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
                     Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
-            <tr><td><b class="ui">Drums — Analog</b></td>
+            <tr><td><b class="ui">Davul — analog</b></td>
                 <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
                     Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
-            <tr><td><b class="ui">Drums — Acoustic</b></td>
+            <tr><td><b class="ui">Davul — akustik</b></td>
                 <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
                     Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
                     Tambourine</td></tr>
-            <tr><td><b class="ui">FX &amp; Textures</b></td>
+            <tr><td><b class="ui">FX ve dokular</b></td>
                 <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
                     Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A deleted factory kit stays deleted — it does not come back on the next launch. Rename or
-        update one rather than deleting it if you only want it out of the way.</p>
+      <p>Silinen bir fabrika kiti silinmiş kalır — bir sonraki açılışta geri gelmez. Sadece
+        yolundan çekilmesini istiyorsan silmek yerine yeniden adlandır ya da güncelle.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>The <b class="ui">QUANT</b> knob is a <b>strength</b>, not a switch. At zero it reads
-        <b class="ui">OFF</b>; above that it shows a percentage. At 100 % every hit lands exactly on
-        the grid; at 30 % only the slightly-early ones get pulled into line and your feel survives.
-        The default is 0, off.</p>
-      <p>The chip beside it sets the grid, cycling <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> and <b class="ui">1/32</b>. The default is
-        <b class="ui">1/16</b>.</p>
-      <p>Both settings are <b>global</b> — not per kit, not per pad. Loading a kit does not change
-        them.</p>
+      <p><b class="ui">KUANT</b> düğmesi bir anahtar değil, bir <b>güçtür</b>. Sıfırda
+        <b class="ui">KAPALI</b> yazar; üstünde bir yüzde gösterir. %100'de her vuruş tam olarak
+        ızgaraya oturur; %30'da sadece hafif erken olanlar hizaya çekilir ve feel'in hayatta
+        kalır. Varsayılan 0, kapalıdır.</p>
+      <p>Yanındaki çip ızgarayı ayarlar, <b class="ui">1/4</b>, <b class="ui">1/8</b>,
+        <b class="ui">1/16</b> ve <b class="ui">1/32</b> arasında döner. Varsayılan
+        <b class="ui">1/16</b>'dır.</p>
+      <p>Her iki ayar da <b>globaldir</b> — kit başına değil, pad başına değil. Bir kit yüklemek
+        onları değiştirmez.</p>
       <div class="note warn">
-        <div class="t">Three things must all be true</div>
-        <p>Quantize only does something audible when <b>all three</b> of these hold, and the screen
-          does not tell you so:</p>
+        <div class="t">Üç şeyin hepsi doğru olmalı</div>
+        <p>Quantize, ancak bunların <b>üçü de</b> geçerliyken duyulabilir bir şey yapar ve ekran
+          bunu sana söylemez:</p>
         <ul style="--nc:var(--drive)">
-          <li>a <b>tempo is set</b> — there is no grid otherwise;</li>
-          <li>a <b>loop is running</b> — the looper supplies the phase, so the grid knows where beat
-            one is;</li>
-          <li>you are <b>recording</b> — either the <b class="ui a">Perform</b> recorder, or a loop
-            track whose source is the sampler.</li>
+          <li>bir <b>tempo ayarlı</b> olmalı — aksi halde ızgara yoktur;</li>
+          <li>bir <b>loop çalıyor</b> olmalı — looper fazı sağlar, böylece ızgara birinci
+            vuruşun nerede olduğunu bilir;</li>
+          <li><b>kayıt yapıyor</b> olmalısın — ya <b class="ui a">Perform</b> kaydedicisi, ya da
+            kaynağı sampler olan bir loop parçası.</li>
         </ul>
-        <p>Turn the knob up while jamming over nothing and you will hear no difference. That is
-          deliberate: a pad that waits for the next sixteenth before it speaks feels broken under
-          your fingers, so free playing is always left unquantized and the correction is applied
-          only where it ends up on a recording.</p>
+        <p>Hiçbir şeyin üzerinde jam yaparken düğmeyi açarsan hiçbir fark duymazsın. Bu bilerek
+          böyle: konuşmadan önce bir sonraki on altılığı bekleyen bir pad parmaklarının altında
+          bozuk hissettirir; bu yüzden serbest çalma her zaman quantize edilmemiş bırakılır ve
+          düzeltme sadece bir kayda düştüğü yerde uygulanır.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="trigger"><span class="n">05.6</span>Playing the pads</h2>
-      <p>By touch: a tap plays or stops the pad according to its
-        <b class="ui">MODE</b> and <b class="ui">TAP</b> settings, and a long-press opens the
-        menu.</p>
-      <p>By MIDI: <b>notes 36 to 51 play pads 1 to 16</b>, following the GM drum convention — note
-        36 is pad 1. This is always active and needs no setup, on any MIDI channel, unless one of
-        your own mappings has claimed that note first.</p>
-      <p><b>Velocity is not used.</b> However hard you hit a controller pad, the sample plays at the
-        <b class="ui">Gain</b> you set in the editor. Set the levels once in the pad editor and they
-        stay put.</p>
+      <h2 id="trigger"><span class="n">05.6</span>Pad'leri çalmak</h2>
+      <p>Dokunarak: bir dokunuş, <b class="ui">MOD</b> ve <b class="ui">TAP</b> ayarlarına göre
+        pad'i çalar ya da durdurur, uzun bir basış menüyü açar.</p>
+      <p>MIDI ile: <b>36'dan 51'e kadar notalar 1'den 16'ya kadar pad'leri çalar</b>, GM drum
+        kuralını izleyerek — nota 36, pad 1'dir. Bu her zaman etkindir ve herhangi bir MIDI
+        kanalında kurulum gerektirmez, kendi eşleştirmelerinden biri o notayı önceden almadıkça.</p>
+      <p><b>Velocity kullanılmaz.</b> Bir kontrolcü pad'ine ne kadar sert vurursan vur, sample
+        editörde ayarladığın <b class="ui">Gain</b>'de çalar. Seviyeleri pad editöründe bir kez
+        ayarla, öyle kalırlar.</p>
       <div class="note tip">
-        <div class="t">Learned mappings behave better than raw notes</div>
-        <p>A mapping you create on the <b class="ui a">Control</b> tab calls play/stop, so it
-          respects <b class="ui">Loop</b> and <b class="ui">Latch</b> — one footswitch press starts
-          the loop, the next stops it. Raw MIDI notes 36–51 always retrigger from the start. If you
-          are driving looping pads from a pedal, learn the mapping rather than relying on the
-          built-in note range.</p>
+        <div class="t">Öğrenilmiş eşleştirmeler ham notalardan daha iyi davranır</div>
+        <p><b class="ui a">Kontrol</b> sekmesinde oluşturduğun bir eşleştirme play/stop çağırır,
+          bu yüzden <b class="ui">Loop</b> ve <b class="ui">Latch</b>'e saygı gösterir — bir
+          footswitch basışı loop'u başlatır, bir sonraki durdurur. Ham MIDI notaları 36–51 her
+          zaman baştan yeniden tetikler. Loop yapan pad'leri bir pedaldan sürüyorsan, dahili
+          nota aralığına güvenmek yerine eşleştirmeyi öğret.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="routing"><span class="n">05.7</span>Where the pads go</h2>
-      <p>Pads sum <b>straight into the main mix</b> — they do not run through the guitar chain, so
-        your amp's gain and your reverb never touch them. The <b class="ui">LEVEL</b> knob in the
-        header sets how loud the whole sampler sits against the rig.</p>
-      <p>They are also available elsewhere in the app as a source:</p>
+      <h2 id="routing"><span class="n">05.7</span>Pad'ler nereye gider</h2>
+      <p>Pad'ler <b>doğrudan ana mikse</b> toplanır — gitar zincirinden geçmezler, yani amfinin
+        gain'i ve reverb'in onlara asla dokunmaz. Başlıktaki <b class="ui">SEVİYE</b> düğmesi tüm
+        sampler'ın rig'e karşı ne kadar yüksek oturduğunu ayarlar.</p>
+      <p>Uygulamanın başka yerlerinde de bir kaynak olarak kullanılabilirler:</p>
       <ul style="--nc:var(--power)">
-        <li>As a <b>chain input</b> — pick <b class="ui">Sampler pads</b> on a rig's IN connector or
-          on a parallel branch (chip <b class="ui">SMPL</b>) and the pads run through that rig's
-          effects.</li>
-        <li>As a <b>loop track source</b> — set a looper track's <b class="ui">IN</b> to
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) and you can loop a beat you tap out
-          on the pads.</li>
-        <li>As a <b>compressor sidechain</b> — a Comp block's <b class="ui">Sidechain</b> menu
-          includes <b class="ui">SMP</b>, so the kick can duck the guitar.</li>
+        <li>Bir <b>zincir girişi</b> olarak — bir rig'in IN konektöründe ya da paralel bir dalda
+          (çip <b class="ui">SMPL</b>) <b class="ui">Sampler pad’leri</b>'i seç, pad'ler o rig'in
+          efektlerinden geçer.</li>
+        <li>Bir <b>loop parça kaynağı</b> olarak — bir looper parçasının <b class="ui">IN</b>'ini
+          <b class="ui">Sampler</b>'a ayarla (çip <b class="ui">SMP</b>), pad'lerde çaldığın bir
+          beat'i loop'layabilirsin.</li>
+        <li>Bir <b>compressor sidechain</b>'i olarak — bir Comp bloğunun
+          <b class="ui">Sidechain</b> menüsü <b class="ui">SMP</b>'yi içerir, yani kick gitarı
+          bastırabilir.</li>
       </ul>
-      <p><b class="ui">STOP ALL</b> in the header releases every playing pad at once — the panic
-        button for a latched drone or a loop you cannot find.</p>
+      <p>Başlıktaki <b class="ui">HEPSİNİ DURDUR</b>, çalan her pad'i aynı anda serbest bırakır —
+        kilitlenmiş bir drone ya da bulamadığın bir loop için panik düğmesi.</p>
     </section>
 
     <nav class="pager">
       <a href="/docs/tr/looper.html">← 04 · Looper</a>
       <span class="sp"></span>
-      <a href="/docs/tr/perform.html">06 · Perform &amp; lyrics →</a>
+      <a href="/docs/tr/perform.html">06 · Perform ve şarkı sözleri →</a>
     </nav>
   </main>
 </div>
@@ -308,7 +314,10 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper, herhangi bir ekipman üreticisiyle bağlantısı, onayı veya sponsorluğu
+      olmayan bağımsız bir uygulamadır. Tüm ürün adları, markalar ve ticari markalar ilgili
+      sahiplerinin mülkiyetindedir ve yalnızca bir capture'ın hangi ekipmandan alındığını
+      tanımlamak için kullanılır.</p>
   </div>
 </footer>
 

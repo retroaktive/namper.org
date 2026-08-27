@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perform &amp; lyrics — NAMper Documentation</title>
-<meta name="description" content="Backing tracks, the setlist and its sections, preset markers on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
+<title>演出与歌词 — NAMper 文档</title>
+<meta name="description" content="伴奏音轨、曲目单及其段落、时间线上的预设标记点、带锚点的全屏歌词提词器、多轨录音以及 DAWproject 导出。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Perform &amp; lyrics — NAMper Documentation">
-<meta property="og:description" content="Backing tracks, the setlist, preset markers, the lyrics teleprompter and multitrack recording.">
+<meta property="og:title" content="演出与歌词 — NAMper 文档">
+<meta property="og:description" content="伴奏音轨、曲目单、预设标记点、歌词提词器与多轨录音。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh/perform.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文档</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh/">← 所有文档</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh/perform.html" aria-current="page">简体中文</a>
   </nav>
@@ -46,353 +46,327 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目录</div>
     <ol>
-      <li><a href="/docs/zh/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/zh/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/zh/looper.html">Looper</a></li>
-      <li><a href="/docs/zh/sampler.html">Sampler pads</a></li>
-      <li><a class="on" href="/docs/zh/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/zh/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh/settings.html">Settings reference</a></li>
+      <li><a href="/docs/zh/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
+      <li><a href="/docs/zh/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
+      <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
+      <li><a class="on" href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
+      <li><a href="/docs/zh/settings.html">设置参考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
-    <h1>Playing the set.</h1>
-    <p class="lede">The <b class="ui a">Perform</b> tab is the one you look at on stage: backing
-      tracks, a setlist of sections, preset changes that fire themselves, a full-screen
-      teleprompter for your words, and a recorder that captures the whole night in stems.</p>
+    <div class="slab" style="--nc:var(--cloud)">06 · 演出与歌词</div>
+    <h1>演出这一套曲目。</h1>
+    <p class="lede"><b class="ui a">演出</b> 标签页是你在台上会盯着看的那一个:伴奏音轨、
+      由段落组成的曲目单、自动触发的预设切换、一个显示你词句的全屏提词器,还有一个把整晚演出
+      按音轨分别录下来的录音功能。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本页内容</div>
       <ul>
-        <li><a href="#tracks">Backing tracks</a></li>
-        <li><a href="#player">The player card</a></li>
-        <li><a href="#setlist">The setlist</a></li>
-        <li><a href="#sections">Building a section</a></li>
-        <li><a href="#markers">Preset markers</a></li>
-        <li><a href="#lyrics">Lyrics and the teleprompter</a></li>
-        <li><a href="#presets">Perform presets</a></li>
-        <li><a href="#recording">Recording</a></li>
-        <li><a href="#projects">Recording projects</a></li>
-        <li><a href="#dawproject">DAWproject export</a></li>
+        <li><a href="#tracks">伴奏音轨</a></li>
+        <li><a href="#player">播放器卡片</a></li>
+        <li><a href="#setlist">曲目单</a></li>
+        <li><a href="#sections">搭建段落</a></li>
+        <li><a href="#markers">预设标记点</a></li>
+        <li><a href="#lyrics">歌词与提词器</a></li>
+        <li><a href="#presets">演出预设</a></li>
+        <li><a href="#recording">录制</a></li>
+        <li><a href="#projects">录音工程</a></li>
+        <li><a href="#dawproject">DAWproject 导出</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="tracks"><span class="n">06.1</span>Backing tracks</h2>
-      <p>The <b class="ui">+</b> button in the <b class="ui">SETLIST</b> header
-        (<b class="ui">Import track</b>) opens the Files picker. It is multi-select, so bring in a
-        whole set at once, and it takes anything iOS can decode. Each file copies into
-        <b class="ui">backing/</b> and becomes a setlist section named after the file.</p>
-      <p>If a file cannot be read you get <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <h2 id="tracks"><span class="n">06.1</span>伴奏音轨</h2>
+      <p><b class="ui">曲目单</b> 页头的 <b class="ui">+</b> 按钮
+        (<b class="ui">导入音轨</b>)会打开文件选择器。它支持多选,可以一次性导入整套曲目,
+        并且能接受 iOS 能解码的任何格式。每个文件都会复制到 <b class="ui">backing/</b> 中,
+        并成为一个以该文件命名的曲目单段落。</p>
+      <p>如果文件无法读取,会显示 <b class="ui r">Could not import &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1304"
-             alt="The Perform tab: the player card with Test Song loaded, its waveform timeline, 120 BPM and key A, and the DIRECT routing chip; below it the SETLIST card with AUTO NEXT switched on, and the RECORDINGS card at the bottom.">
-        <figcaption>The Perform tab: player, setlist, recordings</figcaption>
+             alt="Perform 标签页:已加载 Test Song 的播放器卡片,显示其波形时间线、120 BPM 与 A 调,以及 DIRECT 路由芯片;下方是开启了 AUTO NEXT 的 SETLIST 卡片,底部是 RECORDINGS 卡片。">
+        <figcaption>Perform 标签页:播放器、曲目单、录音记录</figcaption>
       </figure>
       <div class="note tip">
-        <div class="t">Loading a set from a computer</div>
-        <p>Audio copied straight into <b class="ui">On My iPhone → NAMper → backing/</b> with the
-          Files app is adopted into the setlist the next time you launch NAMper — one paste on a
-          laptop instead of twenty trips through the picker. See
-          <a href="/docs/zh/setup.html#files">where your files live</a>.</p>
+        <div class="t">从电脑加载一整套曲目</div>
+        <p>用文件 App 直接复制到 <b class="ui">On My iPhone → NAMper → backing/</b> 中的音频,
+          会在你下次启动 NAMper 时被并入曲目单——在笔记本电脑上一次粘贴,胜过在选择器里来回二十次。
+          参见<a href="/docs/setup.html#files">文件存放位置</a>。</p>
       </div>
-      <p>Names matter: re-importing a file with the same name replaces the audio already in
-        <b class="ui">backing/</b>. Handy when you have re-bounced a track — and a trap if two
-        different songs are both called <b class="ui">Backing.wav</b>.</p>
+      <p>文件名很重要:用相同的名字重新导入文件,会替换掉 <b class="ui">backing/</b> 中已有的音频。
+        这在你重新缩混过一条音轨时很方便——但如果两首不同的歌都叫
+        <b class="ui">Backing.wav</b>,就会掉进陷阱。</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="player"><span class="n">06.2</span>The player card</h2>
-      <p>The top card is the transport. The name row shows the loaded track, or
-        <b class="ui">No track selected</b>, with the time as <b class="ui">m:ss / m:ss</b>. Once
-        NAMper has analysed the audio it adds the tempo — <b class="ui">120 BPM</b> — and the key.</p>
-      <p>That analysis is not decoration. <strong>Selecting a track re-tunes the whole rig</strong>:
-        the global tempo and key follow the song, so the delay and tremolo sync divisions, the
-        looper's bar grid, the harmoniser and the autotune all land on the right song without you
-        setting anything.</p>
-      <p>Five buttons sit under the name, left to right:</p>
+      <h2 id="player"><span class="n">06.2</span>播放器卡片</h2>
+      <p>顶部卡片就是传输控制。名称行显示已加载的音轨,或者显示
+        <b class="ui">未选择音轨</b>,时间显示为 <b class="ui">m:ss / m:ss</b>。
+        NAMper 分析完音频后,会加上速度——<b class="ui">120 BPM</b>——以及调性。</p>
+      <p>这项分析并不只是摆设。<strong>选择一条音轨会重新调整整个音色组</strong>:全局速度和调性
+        会跟随歌曲变化,这样延迟和颤音的同步分频、循环乐句器的小节网格、和声器与自动修音都会自动
+        对上这首歌,无需你手动设置。</p>
+      <p>名称下方有五个按钮,从左到右依次是:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Button</th><th>Does</th></tr></thead>
+          <thead><tr><th>按钮</th><th>作用</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Play</b></td><td>Play and pause the backing track</td></tr>
-            <tr><td><b class="ui">Stop</b></td><td>Stop and return to the start</td></tr>
-            <tr><td><b class="ui">Record</b></td><td>Start and stop the performance recorder (<a href="#recording">below</a>)</td></tr>
-            <tr><td><b class="ui">Add preset marker</b></td><td>Drop a rig-preset change at the playhead</td></tr>
-            <tr><td><b class="ui">Lyrics</b></td><td>Open the teleprompter, or load a lyrics file</td></tr>
+            <tr><td><b class="ui">播放</b></td><td>播放和暂停伴奏音轨</td></tr>
+            <tr><td><b class="ui">停止</b></td><td>停止并返回开头</td></tr>
+            <tr><td><b class="ui">录制</b></td><td>启动和停止演出录音功能(见<a href="#recording">下文</a>)</td></tr>
+            <tr><td><b class="ui">添加预设标记</b></td><td>在播放头位置放置一个音色组预设切换</td></tr>
+            <tr><td><b class="ui">歌词</b></td><td>打开提词器,或加载歌词文件</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Long-press <b class="ui">Play</b> or <b class="ui">Stop</b> to MIDI-learn them —
-        <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>,
-        <b class="ui">MIDI Learn: next section</b> and <b class="ui">MIDI Learn: previous
-        section</b> are all offered there. See <a href="/docs/zh/control.html">MIDI &amp; control</a>.</p>
-      <h3>Backing level and routing</h3>
-      <p>Below the buttons, a slider sets the backing level in dB from −60 to +12, reading
-        <b class="ui">-inf</b> at the bottom. The chip beside it is the routing:
-        <b class="ui">DIRECT</b> sends the track out after the master FX chain
-        (<b class="ui">Direct out (after master FX)</b>), which is what you want live — your reverb
-        and limiter never touch the backing. <b class="ui">PRE FX</b> (<b class="ui">Through master
-        FX</b>) puts the track through the master chain instead.</p>
-      <h3>The timeline</h3>
-      <p>The waveform under the card is a mirror-bar display with the played part lit and a cursor
-        at the playhead. <strong>Tap anywhere on it to seek.</strong> Seeking also re-applies the
-        newest <a href="#markers">preset marker</a> at or before that point, so jumping into the
-        last chorus still gets you the last chorus's sound.</p>
+      <p>长按 <b class="ui">播放</b> 或 <b class="ui">停止</b> 即可进行 MIDI 学习——
+        <b class="ui">MIDI 学习：播放/暂停</b>、<b class="ui">MIDI 学习：停止</b>、
+        <b class="ui">MIDI 学习：下一段落</b> 和
+        <b class="ui">MIDI 学习：上一段落</b> 都可以在那里设置。参见
+        <a href="/docs/control.html">MIDI 与控制</a>。</p>
+      <h3>伴奏电平与路由</h3>
+      <p>按钮下方,一个滑块以 dB 为单位设置伴奏电平,范围从 −60 到 +12,最低时显示为
+        <b class="ui">-inf</b>。旁边的芯片是路由选项:<b class="ui">直通</b> 让音轨在主效果链
+        之后直接输出(<b class="ui">直接输出（主效果之后）</b>),这是现场演出时你想要的
+        设置——你的混响和限制器永远不会碰到伴奏。<b class="ui">前置效果</b>
+        (<b class="ui">经过主效果</b>)则让音轨改为经过主效果链。</p>
+      <h3>时间线</h3>
+      <p>卡片下方的波形是一个镜像条形显示,已播放部分会点亮,并带有一个位于播放头处的光标。
+        <strong>点按其上任意位置即可跳转。</strong>跳转还会重新应用该位置或之前最新的
+        <a href="#markers">预设标记点</a>,所以直接跳到最后的副歌部分,仍然能得到最后副歌该有的音色。</p>
       <div class="note">
-        <div class="t">What the player does not do</div>
-        <p>There is no A/B loop region, no speed change and no pitch shift for backing tracks. If
-          you need a song in another key or at another tempo, bounce it that way before importing.</p>
+        <div class="t">播放器不具备的功能</div>
+        <p>没有 A/B 循环区间,也不能对伴奏音轨进行变速或变调。如果你需要另一个调性或速度的版本,
+          请先在导入前用那种方式缩混好。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>The setlist</h2>
-      <p>The unit of a NAMper set is a <strong>section</strong>: a name, an optional backing track,
-        and a bar-clocked list of steps. Importing a file makes one section per song, so in practice
-        one section is one song — but a section with no audio at all is just as valid, and that is
-        how you build a song out of loops and pads.</p>
-      <p>The header carries the <b class="ui">PRESETS</b> chip, an <b class="ui">AUTO NEXT</b>
-        toggle, <b class="ui">Add section</b> (which creates <b class="ui">Section N</b>) and
-        <b class="ui">Import track</b>. With <b class="ui">AUTO NEXT</b> on, the set walks itself
-        forward as each section finishes.</p>
-      <p>Before you have anything, the card reads <b class="ui">Add audio files, or a loop/sample
-        section — a section is an optional backing track plus a bar-clocked sequence of loops and
-        samples.</b></p>
-      <p>Each row shows a play button (<b class="ui">Play section</b>), the name, small badges —
-        <b class="ui">backing</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, and a live
-        <b class="ui">bar N</b> while it runs — and an edit button (<b class="ui">Edit
-        section</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>曲目单</h2>
+      <p>NAMper 曲目单的基本单位是<strong>段落</strong>:一个名称、一条可选的伴奏音轨,以及一份按
+        小节计时的步骤列表。导入一个文件会生成一个段落,所以实际上一个段落就对应一首歌——但完全
+        没有音频的段落同样有效,这正是你用循环和打击垫拼出一首歌的方式。</p>
+      <p>页头上有 <b class="ui">预设</b> 芯片、<b class="ui">自动切换</b> 开关、
+        <b class="ui">添加段落</b>(会创建 <b class="ui">Section N</b>)以及
+        <b class="ui">导入音轨</b>。开启 <b class="ui">自动切换</b> 后,每个段落结束时,
+        整套曲目会自动往下走。</p>
+      <p>在你添加任何内容之前,卡片会显示
+        <b class="ui">添加音频文件，或添加循环/采样段落——段落包含可选的伴奏，以及按小节时钟排列的循环与采样序列。</b></p>
+      <p>每一行显示一个播放按钮(<b class="ui">播放段落</b>)、名称、若干小徽章——
+        <b class="ui">伴奏</b>、<b class="ui">N steps</b>、<b class="ui">N bars</b>,运行时还会
+        实时显示 <b class="ui">bar N</b>——以及一个编辑按钮(<b class="ui">编辑段落</b>)。</p>
       <div class="note tip">
-        <div class="t">Tapping a row arms, it does not start</div>
-        <p>Tap a section and NAMper loads its backing track, applies that song's tempo and key to
-          the rig, and points the transport at it — <strong>without playing anything</strong>. Set
-          up between songs, talk to the room, then hit <b class="ui">Play</b> when you are ready.</p>
+        <div class="t">点按一行是待命,而不是启动</div>
+        <p>点按一个段落,NAMper 会加载它的伴奏音轨,把这首歌的速度和调性应用到音色组,并让传输
+          控制指向它——<strong>但不会播放任何内容</strong>。在歌曲之间做好准备、和观众说几句话,
+          再在准备好时按下 <b class="ui">播放</b>。</p>
       </div>
-      <p>The list is always in edit mode, so the drag handles are permanently visible: drag a row to
-        reorder the set, swipe a row to delete it. The row's context menu holds
-        <b class="ui">Load lyrics from file…</b> — see <a href="#lyrics">lyrics</a>.</p>
+      <p>列表始终处于编辑模式,所以拖动手柄一直可见:拖动一行可调整曲目顺序,滑动一行可将其删除。
+        行的上下文菜单中有 <b class="ui">从文件加载歌词…</b>——见<a href="#lyrics">歌词</a>
+        一节。</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Building a section</h2>
-      <p>The edit button opens the section editor. It has a <b class="ui">Section name</b> field, a
-        backing picker whose first entry is <b class="ui">None (loops/samples only)</b> and which
-        reads <b class="ui">No backing track</b> when nothing is chosen, and — when there is no
-        backing — a <b class="ui">N bars</b> stepper from 1 to 128 that sets how long the section
-        runs.</p>
-      <p>Then comes the <b class="ui">STEPS</b> list. <b class="ui">Add step</b> offers
-        <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b> or <b class="ui">Stop loop
-        1…4</b>, and <b class="ui">Sampler pad</b> → <b class="ui">Pad 1…16</b>. Step rows read
-        <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b>
-        or <b class="ui">Stop pad N</b>, each with its own <b class="ui">bar N</b> stepper. The hint
-        under the list says it exactly: <b class="ui">Steps fire on the bar clock: start/stop loop
-        tracks and trigger pads at the bars you set.</b></p>
-      <p>This is how NAMper plays a song with no backing track at all. Record your parts into the
-        <a href="/docs/zh/looper.html">looper</a>, load your hits onto
-        <a href="/docs/zh/sampler.html">pads</a>, then write the arrangement out in bars: drums in at
-        bar 1, bass at bar 5, the pad stab at bar 13, everything out at bar 33. It runs on the bar
-        clock, so it stays locked to your tempo instead of a rendered file.</p>
+      <h2 id="sections"><span class="n">06.4</span>搭建段落</h2>
+      <p>编辑按钮会打开段落编辑器。其中有一个 <b class="ui">段落名称</b> 字段,一个伴奏选择器
+        (第一项是 <b class="ui">无（仅循环/采样）</b>,未选择时显示为
+        <b class="ui">无伴奏</b>),以及——当没有伴奏音轨时——一个从 1 到 128 的
+        <b class="ui">N bars</b> 步进器,用来设定该段落的时长。</p>
+      <p>接下来是 <b class="ui">步骤</b> 列表。<b class="ui">添加步骤</b> 提供
+        <b class="ui">循环音轨</b> → <b class="ui">Start loop 1…4</b> 或
+        <b class="ui">Stop loop 1…4</b>,以及 <b class="ui">采样打击垫</b> →
+        <b class="ui">Pad 1…16</b>。步骤行显示为 <b class="ui">Start loop N</b>、
+        <b class="ui">Stop loop N</b>、<b class="ui">Play pad N</b> 或
+        <b class="ui">Stop pad N</b>,各自带有独立的 <b class="ui">bar N</b> 步进器。列表下方的
+        提示准确说明了这一点:<b class="ui">步骤按小节时钟触发：在设定的小节启动/停止循环音轨并触发打击垫。</b></p>
+      <p>这就是 NAMper 在完全没有伴奏音轨的情况下演奏一首歌的方式。把你的分部录进
+        <a href="/docs/zh/looper.html">循环乐句器</a>,把你的采样加载到
+        <a href="/docs/zh/sampler.html">打击垫</a>上,再按小节写出编曲:鼓在第 1 小节进入,
+        贝斯在第 5 小节,垫音在第 13 小节,所有声部在第 33 小节退出。它按小节时钟运行,因此始终
+        锁定在你的速度上,而不是依赖一段渲染好的文件。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Preset markers</h2>
-      <p>A preset marker is a rig change written onto the song's timeline. Clean verse, crunch
-        chorus, lead for the solo — placed once, then hands-free every time you play it.</p>
+      <h2 id="markers"><span class="n">06.5</span>预设标记点</h2>
+      <p>预设标记点是写在歌曲时间线上的一次音色组切换。清音的主歌、失真的副歌、独奏时的主音色——
+        放置一次,以后每次演奏都无需动手。</p>
       <ol style="--nc:var(--drive)">
-        <li>Arm the track and put the playhead where the switch belongs — tap the timeline to seek,
-          or let it play.</li>
-        <li>Tap the pin button (<b class="ui">Add preset marker</b>).</li>
-        <li>Pick a rig from the menu of every preset, each row reading
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. The marker drops at the current
-          playhead position.</li>
+        <li>让音轨待命,把播放头放到应该切换的位置——点按时间线跳转,或让它自然播放到那里。</li>
+        <li>点按图钉按钮(<b class="ui">添加预设标记</b>)。</li>
+        <li>从列出所有预设的菜单中选择一个音色组,每一行显示为
+          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>。标记点会放置在当前播放头位置。</li>
       </ol>
-      <p>Crossing a marker during playback fires that preset exactly as if a MIDI program change had
-        arrived from a pedalboard. Markers draw as amber dots on the timeline with a generous touch
-        area, and below the waveform a row of chips lists them as
-        <b class="ui">m:ss  &lt;preset name&gt;</b>. Long-press a chip for
-        <b class="ui">Delete marker</b>.</p>
+      <p>播放时经过一个标记点,会触发对应预设,效果与从踏板上收到一次 MIDI 程序变更完全一样。
+        标记点在时间线上显示为琥珀色圆点,并带有宽裕的点按区域;波形下方还有一行芯片将它们列出,
+        形式为 <b class="ui">m:ss  &lt;preset name&gt;</b>。长按一个芯片可执行
+        <b class="ui">删除标记</b>。</p>
       <div class="note">
-        <div class="t">Snapping</div>
-        <p>A marker you have just created sits at the raw playhead, wherever your finger left it.
-          <strong>Drag a marker and it snaps to the bar grid</strong> — so the way to tighten a
-          rough placement is to nudge it. With no detected tempo there is no grid, and placement
-          stays free.</p>
+        <div class="t">吸附</div>
+        <p>刚创建的标记点会停在手指离开时的原始播放头位置。<strong>拖动标记点则会吸附到小节
+          网格</strong>——所以微调一个粗略的位置,方法就是把它拖一下。如果没有检测到速度,就没有
+          网格,放置也就保持自由。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Lyrics and the teleprompter</h2>
-      <p>NAMper carries your words for you. Give a track a plain text file and it becomes a
-        full-screen teleprompter that opens by itself when the song starts and scrolls at the pace
-        you taught it.</p>
+      <h2 id="lyrics"><span class="n">06.6</span>歌词与提词器</h2>
+      <p>NAMper 会替你记住歌词。给一条音轨配上一个纯文本文件,它就会变成一个全屏提词器,在歌曲
+        开始时自动打开,并按你教给它的节奏滚动。</p>
 
-      <h3>Loading lyrics</h3>
-      <p>There are two ways in.</p>
-      <p><strong>The reliable one:</strong> <b class="ui">Load lyrics from file…</b>, either from the
-        lyrics button's long-press menu or from a setlist row's context menu. It takes plain text.
-        If the file cannot be read you get <b class="ui r">Could not read the lyrics file.</b></p>
-      <p><strong>The automatic one:</strong> when you import audio, NAMper looks for a plain
-        <b class="ui">.txt</b> (or <b class="ui">.text</b>) file with the same base name sitting
-        next to it — <b class="ui">Song.wav</b> and <b class="ui">Song.txt</b> — and picks the text
-        up as that song's lyrics. Prepare a folder that way on a computer and a whole set arrives
-        with its words attached.</p>
+      <h3>加载歌词</h3>
+      <p>有两种加载方式。</p>
+      <p><strong>可靠的方式:</strong><b class="ui">从文件加载歌词…</b>,可以从歌词按钮的
+        长按菜单进入,也可以从曲目单某一行的上下文菜单进入。它接受纯文本文件。如果文件无法读取,
+        会显示 <b class="ui r">无法读取歌词文件。</b></p>
+      <p><strong>自动的方式:</strong>当你导入音频时,NAMper 会查找与其同名、放在同一位置的纯文本
+        <b class="ui">.txt</b>(或 <b class="ui">.text</b>)文件——比如
+        <b class="ui">Song.wav</b> 和 <b class="ui">Song.txt</b>——并将其内容作为该歌曲的歌词
+        读取。在电脑上按这种方式准备好一个文件夹,整套曲目到手时就自带歌词。</p>
       <div class="note warn">
-        <div class="t">The sibling pickup is best-effort</div>
-        <p>The file picker's permission scope does not always cover the file next to the one you
-          chose. When it does not, nothing is picked up and no error appears — the track simply has
-          no lyrics. Check the lyrics button after importing, and fall back to
-          <b class="ui">Load lyrics from file…</b> for anything that came up empty.</p>
+        <div class="t">同名文件的自动获取并非总能成功</div>
+        <p>文件选择器的权限范围并不总能覆盖到你所选文件旁边的那个文件。如果没有覆盖到,系统不会
+          获取任何内容,也不会出现错误提示——那条音轨只是没有歌词。导入之后请检查一下歌词按钮,
+          对于没有获取到歌词的音轨,改用 <b class="ui">从文件加载歌词…</b>。</p>
       </div>
-      <p>The lyrics button carries a quote-mark icon and is tinted when the track has words. A
-        <strong>tap</strong> opens the full-screen lyrics if there are any and otherwise opens the
-        file picker; a <strong>long-press</strong> gives you <b class="ui">Show lyrics</b>,
-        <b class="ui">Load lyrics from file…</b> and <b class="ui">Remove lyrics</b>.</p>
+      <p>歌词按钮带有一个引号图标,当音轨已有歌词时会着色显示。<strong>点按</strong>会在有歌词时
+        打开全屏歌词,否则打开文件选择器;<strong>长按</strong>会给出 <b class="ui">显示歌词</b>、<b class="ui">从文件加载歌词…</b> 和
+        <b class="ui">删除歌词</b>。</p>
       <div class="note warn">
-        <div class="t">Loading resets the timing</div>
-        <p>Loading new lyrics onto a track resets the window to the whole song and
-          <strong>clears every anchor</strong>. Fix typos in the file before you spend a rehearsal
-          anchoring it, not after.</p>
+        <div class="t">重新加载会重置时间对齐</div>
+        <p>给一条音轨加载新歌词,会把窗口重置为整首歌,并<strong>清除全部锚点</strong>。请在花时间
+          排练对齐锚点之前,先修正文件里的错别字,而不是之后再改。</p>
       </div>
 
-      <h3>The lyrics strip</h3>
-      <p>Once a track has lyrics, a tinted band called <b class="ui">Lyrics range</b> appears under
-        the waveform. Its edges are the <strong>lyrics window</strong>: where the text starts
-        scrolling and where it finishes. Drag an edge to move one bound, drag the middle to slide
-        the whole span — useful when a song opens with a long instrumental intro.</p>
-      <p>Anchors are drawn on the same strip as small diamonds. Drag one to retime it; long-press
-        one for <b class="ui">Delete anchor</b>.</p>
+      <h3>歌词条带</h3>
+      <p>一条音轨有了歌词之后,波形下方会出现一条名为 <b class="ui">歌词范围</b> 的着色条带。
+        它的两端就是<strong>歌词窗口</strong>:文本从哪里开始滚动,到哪里结束。拖动一端可移动
+        对应边界,拖动中间部分可整体滑动这个区间——当一首歌以较长的纯音乐前奏开场时会很有用。</p>
+      <p>锚点在同一条带上以小菱形绘制。拖动一个锚点可重新定时;长按一个锚点可执行
+        <b class="ui">删除锚点</b>。</p>
 
-      <h3>The teleprompter</h3>
+      <h3>提词器</h3>
       <figure>
         <img class="phone" src="/docs/assets/lyrics.png" width="600" height="1304"
-             alt="The full-screen lyrics teleprompter mid-song, showing the track name and the time readout at the top with a pause button, the scrolling verse text, and the hint line: Hold a line to pin it to the current moment.">
-        <figcaption>The teleprompter, before the first anchor is placed</figcaption>
+             alt="演出中的全屏歌词提词器,顶部显示音轨名称和带暂停按钮的时间读数,中间是滚动的
+             歌词文本,底部提示行写着:按住一行可将其固定到当前时刻。">
+        <figcaption>提词器,在放置第一个锚点之前</figcaption>
       </figure>
-      <p>The teleprompter is a full screen, and it <strong>opens by itself when playback starts</strong>
-        on a track that has lyrics. Its header holds a back button, the track name, the
-        <b class="ui">m:ss / m:ss</b> readout and a play/pause button. <strong>Tapping anywhere on
-        the screen toggles play/pause</strong> — you do not have to find a small target with a
-        guitar in your hands.</p>
+      <p>提词器是一个全屏界面,当播放开始时,只要该音轨带有歌词,它就会<strong>自动打开</strong>。
+        它的页头包含一个返回按钮、音轨名称、<b class="ui">m:ss / m:ss</b> 读数以及一个播放/暂停
+        按钮。<strong>点按屏幕任意位置即可切换播放/暂停</strong>——手里拿着吉他时,你不必去找一个
+        很小的按钮。</p>
 
-      <h3>Anchors</h3>
-      <p>An anchor is how you teach the text your song. <strong>Hold a line for about a third of a
-        second and it is pinned to the current moment.</strong> Hold an already-anchored line to
-        remove the anchor. An anchored line is marked with a filled bar in its left margin.</p>
-      <p>An anchor means one thing: <em>at this time, put this line at the top of the screen</em>.
-        Between anchors the text glides at a constant speed from one to the next. It can never
-        scroll backwards, even if you place anchors out of order — a teleprompter that jumps back
-        mid-verse is worse than one that is slightly early.</p>
-      <p>In practice: play the song once in rehearsal and hold each section's first line as you
-        reach it. Four or five anchors are usually enough for a three-minute song, and they are
-        saved with the track.</p>
-      <p><strong>With no anchors</strong> the text glides at one constant speed: the first line at
-        the start of the lyrics window, fully scrolled at the end of it. A hint reads
-        <b class="ui">Hold a line to pin it to the current moment</b> until you place your first
-        one. If the text is shorter than the screen it does not scroll at all — it is centred.</p>
+      <h3>锚点</h3>
+      <p>锚点是你教会文本你这首歌节奏的方式。<strong>按住一行大约三分之一秒,它就会被固定到当前
+        时刻。</strong>按住一个已经设了锚点的行,则会移除该锚点。已设锚点的行左边会标有一个实心
+        竖条。</p>
+      <p>一个锚点只表示一件事:<em>到这个时刻,把这一行放到屏幕顶部</em>。锚点之间,文本以恒定速度
+        平滑过渡到下一个锚点。它永远不会向后滚动,即使你把锚点放置得顺序颠倒——一个会在唱到一半
+        往回跳的提词器,比一个稍微提前一点的提词器更糟。</p>
+      <p>实际操作:排练时完整播放一遍歌曲,在到达每个段落的第一行时按住它。对一首三分钟的歌来说,
+        通常四五个锚点就够了,它们会和音轨一起保存。</p>
+      <p><strong>没有任何锚点时</strong>,文本以恒定速度滚动:第一行对应歌词窗口的起点,到窗口
+        终点时正好滚完。在你放置第一个锚点之前,会有提示写着
+        <b class="ui">长按歌词行可将其固定到当前时刻</b>。如果文本比屏幕短,
+        它根本不会滚动——而是居中显示。</p>
 
-      <h3>Taking over by hand</h3>
-      <p>Drag the text and you take control: the auto-glide stops and the words follow your finger.
-        The moment that happens an <b class="ui">AUTO</b> chip appears in the header
-        (<b class="ui">Resume auto-scroll</b>); tap it to hand control back and the text re-aims at
-        the playhead. <strong>That chip is only visible while manual scroll is active</strong>, so
-        if you cannot see it, nothing is being held. Leaving the screen and coming back also resets
-        to automatic.</p>
+      <h3>手动接管</h3>
+      <p>拖动文本即可接管控制:自动滚动停止,文字跟随你的手指移动。发生这一情况的瞬间,页头会
+        出现一个 <b class="ui">自动</b> 芯片(<b class="ui">恢复自动滚动</b>);点按它可把
+        控制权交还,文本会重新对准播放头。<strong>这个芯片只有在手动滚动生效时才会出现</strong>,
+        所以如果你看不到它,就说明没有任何内容被人为固定。离开该界面再返回,也会重置为自动模式。</p>
 
-      <h3>Text size</h3>
-      <p>Settings → <b class="ui">LYRICS</b> holds a text-size slider from <b class="ui">16</b> to
-        <b class="ui">34 pt</b>, default <b class="ui">22 pt</b>, with a live preview reading
-        <b class="ui">This is how your lyrics will look</b>. Changing it re-aims the teleprompter
-        live. Set it for the distance the phone actually sits from your face on a mic stand. See
-        <a href="/docs/zh/settings.html#lyrics">the settings reference</a>.</p>
+      <h3>文字大小</h3>
+      <p>设置 → <b class="ui">歌词</b> 中有一个文字大小滑块,范围从 <b class="ui">16</b> 到
+        <b class="ui">34 pt</b>,默认 <b class="ui">22 pt</b>,并带有实时预览,显示为
+        <b class="ui">歌词将以此样式显示</b>。调整它会实时重新调整提词器。请
+        根据手机实际放在麦克风架上时与你脸部的距离来设定。参见
+        <a href="/docs/zh/settings.html#lyrics">设置参考</a>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Perform presets</h2>
-      <p>The <b class="ui">PRESETS</b> chip in the setlist header opens <b class="ui">Perform
-        Presets</b>. A saved perform preset carries the <strong>whole setlist</strong>: every
-        section with its steps and bars, the <b class="ui">AUTO NEXT</b> state, and the lyrics —
-        text, window and anchors — of every track that has them.</p>
-      <p>What it does not carry is the audio. Backing tracks are stored as <strong>file-name
-        references</strong>, so a preset stays small and can be shared. Load it on another device
-        and the sections whose backing file is not present fall back to steps only; the lyrics for
-        the tracks that <em>are</em> present are written back to disk as usual.</p>
+      <h2 id="presets"><span class="n">06.7</span>演出预设</h2>
+      <p>曲目单页头的 <b class="ui">预设</b> 芯片会打开 <b class="ui">演出预设</b>。
+        一个已保存的演出预设承载<strong>整份曲目单</strong>:每个段落及其步骤和小节数、
+        <b class="ui">自动切换</b> 状态,以及每条带歌词音轨的歌词——文本、窗口和锚点。</p>
+      <p>它不会承载音频本身。伴奏音轨以<strong>文件名引用</strong>的形式保存,所以预设体积很小,
+        也便于分享。在另一台设备上加载它时,伴奏文件不存在的段落会回退为仅有步骤;而<em>确实</em>
+        存在的音轨,其歌词照常写回磁盘。</p>
       <div class="note tip">
-        <div class="t">Moving a set to another device</div>
-        <p>Copy your <b class="ui">backing/</b> folder across first, then load the perform preset.
-          Same file names, same set.</p>
+        <div class="t">把一套曲目搬到另一台设备</div>
+        <p>先把你的 <b class="ui">backing/</b> 文件夹拷贝过去,再加载演出预设。相同的文件名,
+          就是同一套曲目。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Recording</h2>
-      <p>The record button in the player card captures the performance as <strong>three aligned
-        stems</strong>. It refuses with <b class="ui r">Audio is off — tap the power button before
-        recording.</b> if the engine is not running.</p>
+      <h2 id="recording"><span class="n">06.8</span>录制</h2>
+      <p>播放器卡片中的录制按钮会把整场演出捕捉为<strong>三条对齐的音轨</strong>。如果引擎尚未
+        运行,会拒绝执行并显示 <b class="ui r">音频已关闭——录音前请点按电源按钮。</b></p>
       <div class="tw">
         <table>
-          <thead><tr><th>Stem</th><th>What it holds</th></tr></thead>
+          <thead><tr><th>音轨</th><th>包含内容</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>The master: rig, looper, sampler pads and backing together</td></tr>
-            <tr><td><b class="ui">input</b></td><td>The dry sound-card input, at whatever channel count your interface delivers</td></tr>
-            <tr><td><b class="ui">backing</b></td><td>The backing track alone, when one is attached</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>主输出:音色组、循环乐句器、采样打击垫与伴奏合在一起</td></tr>
+            <tr><td><b class="ui">input</b></td><td>干声声卡输入,声道数取决于你的音频接口</td></tr>
+            <tr><td><b class="ui">伴奏</b></td><td>仅伴奏音轨本身,前提是已挂载伴奏</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The dry <b class="ui">input</b> stem is the one that saves a good take with a bad amp
-        choice — re-amp it later. <strong>Looper tracks are not separate stems</strong>; they are
-        inside the mix.</p>
-      <p>Files land in <b class="ui">recordings/</b> named
-        <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>, <b class="ui">… input</b> and
-        <b class="ui">… backing</b>. They are <b class="ui">.m4a</b> normally and
-        <b class="ui">.caf</b> for high-rate or multichannel material. Switching backing track
-        mid-take opens a numbered segment — <b class="ui">… backing 2</b>.</p>
-      <p>Three errors can stop a take: <b class="ui r">Recording could not start: the take file
-        could not be created.</b>, <b class="ui r">Recording stopped: the device is out of storage
-        space.</b> and <b class="ui r">Recording stopped: the take file could not be written.</b></p>
+      <p>干声 <b class="ui">input</b> 音轨,是能在你选错音箱音色时挽救一条好素材的关键——之后可以
+        重新过箱。<strong>循环乐句器的音轨不会单独输出</strong>;它们已经包含在 mix 里。</p>
+      <p>文件会保存到 <b class="ui">recordings/</b> 中,命名为
+        <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>、<b class="ui">… input</b> 和
+        <b class="ui">… backing</b>。通常是 <b class="ui">.m4a</b> 格式,对于高采样率或多声道
+        素材则是 <b class="ui">.caf</b> 格式。录制过程中切换伴奏音轨,会开启一个带编号的分段——
+        <b class="ui">… backing 2</b>。</p>
+      <p>有三种错误会中止录制:<b class="ui r">无法开始录音：无法创建录音文件。</b>、<b class="ui r">录音已停止：设备存储空间不足。</b> 以及 <b class="ui r">录音已停止：无法写入录音文件。</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Recording projects</h2>
-      <p>The <b class="ui">RECORDINGS</b> card groups the stems of one take into a
-        <strong>project</strong>, by their shared <b class="ui">Perf &lt;date&gt;</b> name. Newest
-        first, and the five newest projects are shown — older takes stay on disk in
-        <b class="ui">recordings/</b>, reachable through the Files app.</p>
-      <p>A project row has a preview button that plays the mix stem, the project name, a share
-        button (<b class="ui">Export DAWproject</b>), a delete button (<b class="ui">Delete
-        project</b>) and a chevron (<b class="ui">Show stems</b>). Tapping the row expands it too.</p>
-      <p>Expanded, each stem gets its own row labelled <b class="ui">mix</b>,
-        <b class="ui">input</b>, <b class="ui">backing</b> or <b class="ui">backing 2</b>, with
-        <b class="ui">Share recording</b> and <b class="ui">Delete recording</b>. Share a stem to
-        send someone a rough mix; share the project to open the take in a DAW.</p>
+      <h2 id="projects"><span class="n">06.9</span>录音工程</h2>
+      <p><b class="ui">录音</b> 卡片会把同一次录制的各条音轨归组为一个<strong>工程</strong>,
+        依据是它们共同的 <b class="ui">Perf &lt;date&gt;</b> 名称。按最新排序,并只显示最新的五个
+        工程——更早的录音仍保存在磁盘的 <b class="ui">recordings/</b> 中,可通过文件 App
+        访问。</p>
+      <p>一个工程行包含一个可播放 mix 音轨的预览按钮、工程名称、一个分享按钮
+        (<b class="ui">导出 DAWproject</b>)、一个删除按钮
+        (<b class="ui">删除项目</b>)以及一个展开箭头(<b class="ui">显示分轨</b>)。
+        点按该行同样可以展开。</p>
+      <p>展开后,每条音轨各占一行,标记为 <b class="ui">mix</b>、<b class="ui">input</b>、
+        <b class="ui">伴奏</b> 或 <b class="ui">backing 2</b>,并带有
+        <b class="ui">分享录音</b> 和 <b class="ui">删除录音</b>。分享单条音轨,
+        用于给别人发一个粗混;分享整个工程,则可以在 DAW 中打开这次录制。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject export</h2>
-      <p>The share button on a <strong>project row</strong> — not on an individual stem — exports
-        the whole take as a <b class="ui">.dawproject</b> file through the normal iOS share sheet:
-        Save to Files, AirDrop it to a Mac, drop it in a cloud folder. DAWproject is an open
-        interchange format, so any DAW that reads it will open the take without a converter.</p>
-      <p>Inside you get one track per stem, named after the stem, each with a single clip starting
-        at <strong>0</strong> — so everything lines up the moment the project opens. The audio is
-        written as <strong>24-bit WAV</strong> at the original sample rate and channel count.</p>
+      <h2 id="dawproject"><span class="n">06.10</span>DAWproject 导出</h2>
+      <p><strong>工程行</strong>上的分享按钮——而不是单条音轨上的——会通过常规的 iOS 分享菜单,
+        把整次录制导出为一个 <b class="ui">.dawproject</b> 文件:保存到文件 App、通过 AirDrop
+        发送到 Mac,或者放进云端文件夹。DAWproject 是一种开放的交换格式,任何支持读取它的 DAW
+        都能无需转换器直接打开这次录制。</p>
+      <p>文件内每条音轨对应一个 DAW 音轨,以该音轨命名,各自只有一个从 <strong>0</strong> 开始的
+        片段——这样一打开工程,所有内容就都对齐了。音频以原始采样率和声道数写为
+        <strong>24 位 WAV</strong>。</p>
       <div class="note warn">
-        <div class="t">What the export does not carry</div>
-        <p>No tempo and no time signature — the timeline is in <strong>seconds</strong>, not bars.
-          No preset markers, no setlist, no plugin state and no automation. It is a clean multitrack
-          of the audio you played, and you will set the session tempo yourself at the other end.</p>
+        <div class="t">导出不会包含的内容</div>
+        <p>没有速度,也没有拍号——时间线以<strong>秒</strong>为单位,而不是小节。没有预设标记点,
+          没有曲目单,没有插件状态,也没有自动化。这只是你所演奏音频的一份干净多轨记录,速度需要你
+          在对方那一端自行设定。</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh/sampler.html">← 05 · Sampler pads</a>
+      <a href="/docs/zh/sampler.html">← 05 · 采样打击垫</a>
       <span class="sp"></span>
-      <a href="/docs/zh/control.html">07 · MIDI &amp; control →</a>
+      <a href="/docs/zh/control.html">07 · MIDI 与控制 →</a>
     </nav>
   </main>
 </div>
@@ -401,13 +375,13 @@
   <div class="in">
     <nav>
       <a href="/">NAMPER.ORG</a>
-      <a href="/docs/zh/">DOCS</a>
+      <a href="/docs/">DOCS</a>
       <a href="https://t.me/namperapp">TELEGRAM</a>
       <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款独立应用,与任何设备制造商没有任何关联、认可或赞助关系。所有产品名称、品牌和商标均归其各自所有者所有,仅用于说明所使用的录制设备。</p>
   </div>
 </footer>
 

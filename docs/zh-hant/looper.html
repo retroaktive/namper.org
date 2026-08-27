@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Looper — NAMper Documentation</title>
-<meta name="description" content="The four-track sync looper: circular pads, the transport, AUTO arming and boundary snapping, tempo and the click, the loop editor, undo, per-track routing and what gets saved.">
+<title>循環樂句器 — NAMper 文檔</title>
+<meta name="description" content="四軌同步循環樂句器：圓形墊、傳輸控制、AUTO 待命與邊界對齊、速度與節拍器、循環編輯器、撤銷、逐軌路由,以及保存的內容。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Looper — NAMper Documentation">
-<meta property="og:description" content="Four synced tracks, AUTO arming, boundary snapping and the loop editor.">
+<meta property="og:title" content="循環樂句器 — NAMper 文檔">
+<meta property="og:description" content="四條同步音軌、AUTO 待命、邊界對齊與循環編輯器。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/looper.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文檔</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh-hant/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh-hant/">← 所有文檔</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh-hant/looper.html" aria-current="page">繁體中文</a>
   </nav>
@@ -46,337 +46,300 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目錄</div>
     <ol>
-      <li><a href="/docs/zh-hant/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh-hant/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/zh-hant/plugins.html">AU plugins</a></li>
-      <li><a class="on" href="/docs/zh-hant/looper.html">Looper</a></li>
-      <li><a href="/docs/zh-hant/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/zh-hant/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/zh-hant/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh-hant/settings.html">Settings reference</a></li>
+      <li><a href="/docs/zh-hant/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
+      <li><a href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a class="on" href="/docs/zh-hant/looper.html">循環樂句器</a></li>
+      <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
+      <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
+      <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--power)">04 · LOOPER</div>
-    <h1>Four tracks, one cycle.</h1>
-    <p class="lede">The <b class="ui a">Loop</b> tab is a four-track sync looper with an
-      analysis engine behind it. Lay down the first loop and everything else falls in behind it —
-      and with AUTO on, NAMper finds the bar lines for you.</p>
+    <div class="slab" style="--nc:var(--power)">04 · 循環樂句器</div>
+    <h1>四條音軌，一個循環。</h1>
+    <p class="lede"><b class="ui a">循環</b> 標籤頁是一個四軌同步循環樂句器,背後帶有分析引擎。錄下第一段循環,
+      其餘一切都會跟隨其後——開啟 AUTO 後,NAMper 會替你找到小節線。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本頁內容</div>
       <ul>
-        <li><a href="#basics">How the looper thinks</a></li>
-        <li><a href="#pads">The circular pads</a></li>
-        <li><a href="#transport">The transport</a></li>
-        <li><a href="#auto">AUTO mode</a></li>
-        <li><a href="#tempo">Tempo and the click</a></li>
-        <li><a href="#editor">The loop editor</a></li>
-        <li><a href="#undo">Undo</a></li>
-        <li><a href="#routing">Per-track routing</a></li>
-        <li><a href="#saving">What gets saved</a></li>
+        <li><a href="#basics">循環樂句器的工作原理</a></li>
+        <li><a href="#pads">圓形墊</a></li>
+        <li><a href="#transport">傳輸控制</a></li>
+        <li><a href="#auto">AUTO 模式</a></li>
+        <li><a href="#tempo">速度與節拍器</a></li>
+        <li><a href="#editor">循環編輯器</a></li>
+        <li><a href="#undo">撤銷</a></li>
+        <li><a href="#routing">逐軌路由</a></li>
+        <li><a href="#saving">保存的內容</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="basics"><span class="n">04.1</span>How the looper thinks</h2>
-      <p>One rule sits underneath everything else, and the app prints it along the bottom of the
-        screen:</p>
-      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
-        run/stop · 90 clear</b></p>
-      <p>Whichever track you record first defines the cycle. Every other track is fitted to it
-        rather than drifting off on its own, and nothing shifts that cycle afterwards except editing
-        the track that set it, or clearing everything and starting again.</p>
-      <p>There are four tracks, each holding up to <b>60 seconds</b>. In portrait the pads sit in a
-        2×2 grid; in landscape the transport moves to a left-hand column and the four pads line up
-        in a row.</p>
+      <h2 id="basics"><span class="n">04.1</span>循環樂句器的工作原理</h2>
+      <p>有一條規則貫穿始終,應用會把它印在屏幕底部:</p>
+      <p><b class="ui">第一個循環決定周期 · 其餘與之同步 · MIDI CC 85–88 觸發 · 89 運行/停止 · 90 清除</b></p>
+      <p>你最先錄製的音軌決定了循環周期。其餘每條音軌都會被調整以貼合它,而不是各自漂移;此後除非編輯
+        決定周期的那條音軌,或清空一切重新開始,否則周期不會改變。</p>
+      <p>共有四條音軌,每條最長可錄 <b>60 秒</b>。豎屏時四個墊呈 2×2 網格排列;橫屏時傳輸控制移到左側一列,
+        四個墊排成一行。</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1304"
-             alt="The Loop tab: track 1 playing with a green radial waveform and a spinning beam, track 2 armed with a dashed red border, tracks 3 and 4 empty, the AUTO chip lit green and the tempo reading 124 BPM.">
-        <figcaption>Track 1 playing, track 2 armed and waiting, AUTO on at 124 BPM</figcaption>
+             alt="Loop 標籤頁:音軌 1 正在播放,呈綠色放射狀波形並帶有旋轉光束;音軌 2 已待命,邊框為紅色虛線;音軌 3、4 為空;AUTO 晶片點亮為綠色,速度顯示為 124 BPM。">
+        <figcaption>音軌 1 正在播放,音軌 2 已待命等待錄製,AUTO 開啟,速度 124 BPM</figcaption>
       </figure>
-      <p>Every track card is laid out the same way: a header row with the big track number, the
-        state label and an LED dot; the circular pad; a 2×2 grid of chips — <b class="ui">IN</b> and
-        <b class="ui">LEN</b> over <b class="ui">DUB</b> and <b class="ui">OUT</b>; and a control
-        row underneath.</p>
+      <p>每張音軌卡片布局相同:頂部一行是大號音軌編號、狀態標籤和一個 LED 指示點;中間是圓形墊;下方是
+        2×2 排列的晶片——<b class="ui">入</b> 和 <b class="ui">長度</b> 在上,
+        <b class="ui">疊錄</b> 和 <b class="ui">出</b> 在下;再往下是一行控制按鈕。</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>The circular pads</h2>
-      <p>The pad draws the loop's waveform <em>radially</em> around the ring — one lap of the circle
-        is one lap of the cycle — with a spinning beam marking the play position. Attacks show up as
-        spikes on the ring, so you can read where you are from across a room.</p>
-      <p>While the very first loop records there is no cycle yet, so the ring behaves differently:
-        the whole circle maps to everything recorded <em>so far</em>. The waveform packs tighter as
-        the take grows, the beam holds still at 12 o'clock — that is the write head — and the centre
-        of the pad counts the elapsed seconds. Once the loop closes, the beam runs the cycle.</p>
+      <h2 id="pads"><span class="n">04.2</span>圓形墊</h2>
+      <p>圓形墊以<em>放射狀</em>沿圓環繪製循環的波形——轉一圈就是循環周期的一整圈——旋轉的光束標出播放
+        位置。瞬態會在圓環上呈現為尖峰,所以隔著房間也能看出當前播放到了哪裡。</p>
+      <p>錄製第一段循環時還沒有周期,所以圓環的表現方式不同:整個圓環對應的是<em>目前為止</em>已錄製的
+        全部內容。隨著錄音時長增加,波形會越排越密;光束固定停在 12 點方向——那就是錄音寫入頭——墊的
+        中心則計數經過的秒數。循環閉合後,光束才開始按周期運行。</p>
 
-      <h3>Tapping the pad</h3>
-      <p>One tap moves the track one rung up the ladder:</p>
+      <h3>點按圓形墊</h3>
+      <p>每點按一次,音軌就沿階梯上升一級:</p>
       <ul style="--nc:var(--eq)">
-        <li>empty → recording</li>
-        <li>recording → close the loop, and it starts playing</li>
-        <li>playing → overdub</li>
-        <li>overdub → back to playing</li>
-        <li>muted → unmute</li>
+        <li>空 → 錄製</li>
+        <li>錄製 → 閉合循環,並開始播放</li>
+        <li>播放 → 疊錄</li>
+        <li>疊錄 → 回到播放</li>
+        <li>靜音 → 取消靜音</li>
       </ul>
-      <p>With <b class="ui">AUTO</b> on, tapping an empty pad <b>arms</b> it instead of recording
-        immediately, and tapping an armed pad cancels the arm. That is the only change AUTO makes to
-        the ladder.</p>
+      <p>開啟 <b class="ui">自動</b> 後,點按一個空墊會讓它<b>待命</b>,而不是立即開始錄製;再次點按
+        已待命的墊則取消待命。這是 AUTO 對階梯流程唯一的改動。</p>
 
-      <h3>Long-press</h3>
-      <p>Long-press the round pad for <b class="ui">MIDI Learn: tap loop track 1</b> (and 2, 3, 4) —
-        that is how a footswitch gets bound to one track. Long-press the <em>card</em> around it and
-        you get the routing menu instead: <b class="ui">Input · …</b>, <b class="ui">Output · …</b>,
-        <b class="ui">Edit loop…</b>, plus <b class="ui">Length · Free</b> or
-        <b class="ui">Length · N bars</b> and <b class="ui">Overdubs · N</b>.</p>
+      <h3>長按</h3>
+      <p>長按圓形墊可進入 <b class="ui">MIDI Learn: tap loop track 1</b>(以及 2、3、4)——這是把踏板開關
+        綁定到某條音軌的方式。長按圓形墊<em>周圍的卡片</em>則會彈出路由菜單:
+        <b class="ui">Input · …</b>、<b class="ui">Output · …</b>、
+        <b class="ui">編輯循環…</b>,以及 <b class="ui">長度 · 自由</b> 或
+        <b class="ui">Length · N bars</b> 和 <b class="ui">Overdubs · N</b>。</p>
 
-      <h3>States</h3>
+      <h3>狀態</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>State</th><th>Label</th><th>Colour</th></tr></thead>
+          <thead><tr><th>狀態</th><th>標籤</th><th>顏色</th></tr></thead>
           <tbody>
-            <tr><td>Nothing recorded</td><td><b class="ui">empty</b></td><td>Dim</td></tr>
-            <tr><td>Capturing</td><td><b class="ui">recording</b></td><td>Red</td></tr>
-            <tr><td>Looping back</td><td><b class="ui">playing</b></td><td>Green</td></tr>
-            <tr><td>Layering</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
-            <tr><td>Silent, still running</td><td><b class="ui">muted</b></td><td>Yellow</td></tr>
-            <tr><td>Waiting (AUTO)</td><td><b class="ui">armed</b></td>
-                <td>Red, dashed border round the card</td></tr>
+            <tr><td>尚未錄製</td><td><b class="ui">空</b></td><td>暗淡</td></tr>
+            <tr><td>正在採集</td><td><b class="ui">錄音中</b></td><td>紅色</td></tr>
+            <tr><td>循環回放</td><td><b class="ui">播放中</b></td><td>綠色</td></tr>
+            <tr><td>疊加錄製</td><td><b class="ui">疊錄</b></td><td>橙色</td></tr>
+            <tr><td>靜音但仍在運行</td><td><b class="ui">已靜音</b></td><td>黃色</td></tr>
+            <tr><td>等待中(AUTO)</td><td><b class="ui">待錄</b></td>
+                <td>紅色,卡片帶虛線邊框</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The control row under each pad holds four things: mute
-        (<b class="ui">Mute track N</b>, which turns yellow), edit
-        (<b class="ui">Edit loop N</b>), clear (<b class="ui">Clear track N</b>) and a small level
-        knob (<b class="ui">Loop track N level</b>, 0 to 1.5).</p>
+      <p>每個墊下方的控制行包含四項:靜音(<b class="ui">Mute track N</b>,變為黃色)、編輯
+        (<b class="ui">Edit loop N</b>)、清除(<b class="ui">Clear track N</b>)以及一個小型電平旋鈕
+        (<b class="ui">Loop track N level</b>,範圍 0 至 1.5)。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="transport"><span class="n">04.3</span>The transport</h2>
-      <p>Next to the word <b class="ui">LOOPER</b> sits the transport row:</p>
+      <h2 id="transport"><span class="n">04.3</span>傳輸控制</h2>
+      <p><b class="ui">循環樂句</b> 字樣旁邊是傳輸控制行:</p>
       <ul style="--nc:var(--gate)">
-        <li>A <b>master ring</b> showing the cycle length in seconds, or <b class="ui">—</b> when
-          nothing is recorded yet.</li>
-        <li>A <b class="ui">PRESETS</b> chip — see <a href="#saving">what gets saved</a>.</li>
-        <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>, disabled until there is a
-          cycle.</li>
-        <li>An <b>undo</b> button, enabled only when there is something to undo.</li>
-        <li>A trash button, <b class="ui">Clear all loops</b>.</li>
+        <li>一個<b>主環</b>,顯示以秒為單位的循環周期長度;尚未錄製任何內容時顯示為
+          <b class="ui">—</b>。</li>
+        <li>一個 <b class="ui">預設</b> 晶片——見<a href="#saving">保存的內容</a>。</li>
+        <li><b class="ui">播放循環</b> / <b class="ui">停止循環</b>,在有循環周期之前禁用。</li>
+        <li>一個<b>撤銷</b>按鈕,僅在有可撤銷內容時啟用。</li>
+        <li>一個垃圾桶按鈕,<b class="ui">清除所有循環</b>。</li>
       </ul>
-      <p>Under it, one status line tells you where you are:
-        <b class="ui">recording the master loop…</b> while the first take runs, a running
-        <b class="ui">4.2 / 8.0 s</b> position once there is a cycle, <b class="ui">stopped</b>, or
-        <b class="ui">tap a track to record</b> when the looper is empty.</p>
+      <p>下方有一行狀態提示,告訴你當前所處的階段:第一段錄製運行期間顯示
+        <b class="ui">正在錄製主循環…</b>,有周期之後顯示實時進度
+        <b class="ui">4.2 / 8.0 s</b>,還有 <b class="ui">已停止</b>,或者循環樂句器為空時顯示
+        <b class="ui">點按音軌開始錄音</b>。</p>
       <div class="note">
-        <div class="t">Footswitch control</div>
-        <p>The built-in MIDI map covers the looper with no setup: <b class="ui">CC 85–88</b> tap
-          tracks 1 to 4, <b class="ui">CC 89</b> runs, <b class="ui">CC 90</b> clears. Note that
-          CC 89 sends a <em>play</em> command — it restarts the loops from the top rather than
-          toggling them off. For a true run/stop toggle on one switch, add a mapping on the
-          <b class="ui a">Control</b> tab and learn it to <b class="ui">Run / stop</b>, which reads
-          the current state.</p>
+        <div class="t">踏板開關控制</div>
+        <p>內置的 MIDI 映射無需設置即可覆蓋循環樂句器:<b class="ui">CC 85–88</b> 點按 1 至 4 號音軌,
+          <b class="ui">CC 89</b> 運行,<b class="ui">CC 90</b> 清除。注意 CC 89 發送的是
+          <em>播放</em>指令——它會讓所有循環從頭重新開始,而不是切換開關狀態。若想用一個開關實現真正的
+          運行/停止切換,請在 <b class="ui a">控制</b> 標籤頁添加一條映射,並將其學習為
+          <b class="ui">運行/停止</b>,該項會讀取當前狀態。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="auto"><span class="n">04.4</span>AUTO mode</h2>
-      <p><b class="ui">AUTO</b> — the wand chip, next to <b class="ui">CLICK</b> — does two jobs: it
-        starts and stops takes for you, and when the master loop closes it works out where the bar
-        lines actually are.</p>
+      <h2 id="auto"><span class="n">04.4</span>AUTO 模式</h2>
+      <p><b class="ui">自動</b>——魔杖圖標晶片,位於 <b class="ui">節拍器</b> 旁邊——承擔兩項工作:替你
+        啟動和停止錄製,並在主循環閉合時算出小節線實際的位置。</p>
 
-      <h3>Arming instead of recording</h3>
-      <p>With AUTO on, tapping an empty pad arms it: the card gets a dashed red border and reads
-        <b class="ui">armed</b>. What happens next depends on whether there is already a cycle:</p>
+      <h3>待命而非直接錄製</h3>
+      <p>開啟 AUTO 後,點按一個空墊會使其待命:卡片出現紅色虛線邊框,顯示為
+        <b class="ui">待錄</b>。接下來發生什麼,取決於是否已經存在循環周期:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>No cycle yet.</b> Recording begins <b>on your first note</b> above the arm threshold.
-          You can pick the guitar up, get comfortable, and the take starts when you play — not when
-          you tapped.</li>
-        <li><b>A cycle already running.</b> Recording begins on the <b>next cycle boundary</b>, so
-          the take starts exactly on the bar. A short grace window forgives an attack that lands
-          slightly late, so hitting the downbeat a hair behind the beam still counts.</li>
+        <li><b>還沒有周期。</b>錄製會在你<b>第一個超過待命閾值的音符</b>出現時開始。你可以先拿起吉他,
+          調整好姿勢,等你彈奏時錄製才開始——而不是在你點按的那一刻。</li>
+        <li><b>已有周期在運行。</b>錄製會在<b>下一個周期邊界</b>開始,這樣這段錄製正好從小節線開始。
+          一個短暫的寬限窗口會容忍稍微滯後的起音,所以即使重拍打在光束稍後一點的位置,也依然算數。</li>
       </ul>
-      <p>A free armed take — one recorded with no cycle in place — also <b>stops itself</b> after
-        about 1.2 seconds of silence, trimmed back to the audible part. The threshold is generous on
-        purpose: reverb tails and gaps between phrases do not count as silence, so a sparse riff is
-        not cut in half.</p>
-      <p>After each loop closes, AUTO <b>arms the next empty cell by itself</b>, so you can build up
-        all four tracks without touching the screen again.</p>
+      <p>一段自由待命錄製的循環——即在沒有周期存在的情況下錄製的——在大約 1.2 秒靜音後也會<b>自動
+        停止</b>,並裁剪回有聲音的部分。這個閾值特意設得比較寬鬆:混響尾音和樂句之間的間隙不算作靜音,
+        所以稀疏的即興段落不會被攔腰截斷。</p>
+      <p>每段循環閉合後,AUTO 會<b>自動讓下一個空音軌待命</b>,這樣你無需再觸碰屏幕就能建立起全部
+        四條音軌。</p>
 
-      <h3>Boundary snapping</h3>
-      <p>When the master loop closes, NAMper analyses the clean input — the signal before your
-        effects — and looks for attacks. It fits a bar grid to them, then:</p>
+      <h3>邊界對齊</h3>
+      <p>主循環閉合時,NAMper 會分析乾淨的輸入信號——也就是效果處理之前的信號——並尋找起音點。它會為
+        這些起音點擬合一套小節網格,然後:</p>
       <ol style="--nc:var(--amp)">
-        <li><b>Trims the end</b> to the bar that contains the last attack, so a take that ran a
-          beat and a half long becomes a whole number of bars.</li>
-        <li><b>Rotates the loop</b> so it begins on the first beat. The string noise, the breath and
-          the finger squeak that happened before your downbeat are moved round to the end of the
-          loop, where they belong musically.</li>
-        <li><b>Folds the detected tempo</b> into the 70–180 BPM range, so a fast strum is not read
-          as 240 BPM and a slow one is not read as 45.</li>
+        <li><b>裁剪結尾</b>,裁到包含最後一個起音的那個小節,這樣一段一拍半的多餘錄音就會變成整數個
+          小節。</li>
+        <li><b>旋轉循環</b>,使其從第一拍開始。你在重拍之前發出的琴弦噪音、呼吸聲和手指摩擦聲會被移到
+          循環的末尾,那才是它們在音樂上應處的位置。</li>
+        <li><b>把檢測到的速度折算</b>到 70–180 BPM 範圍內,這樣一段快速的掃弦不會被讀成 240 BPM,
+          慢速的也不會被讀成 45。</li>
       </ol>
-      <p>On screen it all happens in one moment: the ring re-draws, the length snaps to a clean
-        figure, and the BPM readout — blank until now — fills in. From there the click, the LEN
-        chips, the sampler's quantize and the setlist's bar clock all have a grid to work from.</p>
-      <p>With <b class="ui">CLICK</b> on, the tempo is <b>locked</b> to whatever tempo is set and
-        only the phase is fitted. That is the mode to use when you are playing to a click or to a
-        backing track and the tempo must not move.</p>
+      <p>屏幕上這一切都在同一瞬間完成:圓環重新繪製,長度對齊為整齊的數值,而 BPM 讀數——此前一直
+        空白——隨之填入。此後,節拍器、LEN 晶片、採樣器的量化以及曲目單的小節時鐘都有了可依據的網格。</p>
+      <p>開啟 <b class="ui">節拍器</b> 時,速度會被<b>鎖定</b>為已設定的數值,只對齊相位。當你跟著節拍器
+        或伴奏演奏、速度不能改變時,應使用這個模式。</p>
       <div class="note tip">
-        <div class="t">Drones and rubato</div>
-        <p>If there is no usable grid to find — a sustained pad, a freely-timed intro, a bowed
-          swell — NAMper does not force one. It falls back to trimming at the last attack and
-          picking a whole number of bars. You get a clean loop, just not a re-detected tempo.</p>
+        <div class="t">持續音與自由節奏</div>
+        <p>如果找不到可用的網格——比如持續的和音、自由節奏的前奏、弓弦漸強——NAMper 不會強行套用。
+          它會退回到在最後一個起音處裁剪,並選取整數個小節。你會得到一段乾淨的循環,只是沒有重新檢測
+          出的速度。</p>
       </div>
       <div class="note warn">
-        <div class="t">The first loop matters most</div>
-        <p>Snapping runs on the master loop, and everything recorded afterwards inherits its grid.
-          If the first take lands wrong, fix it in the <a href="#editor">loop editor</a> before
-          layering, or clear and record it again — nudging track 3 will not move the bar lines.</p>
+        <div class="t">第一段循環最重要</div>
+        <p>對齊運算作用於主循環,之後錄製的一切都會繼承它的網格。如果第一段錄音對得不對,請在
+          <a href="#editor">循環編輯器</a>中修正,再進行疊錄,或者清空重錄——微調音軌 3 不會移動小節線。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="tempo"><span class="n">04.5</span>Tempo and the click</h2>
-      <p>The tempo block on the Loop tab shows a big number captioned <b class="ui">BPM</b>. With no
-        tempo set it reads <b class="ui">SET TEMPO</b> over a <b class="ui">—</b>. Tap it for the
-        tempo sheet.</p>
-      <p>The sheet has a numeric field (placeholder <b class="ui">120</b>, range <b>20 to 300</b>)
-        with <b class="ui">BPM</b> beside it, a large <b class="ui">TAP</b> button that reads
-        <b class="ui">again…</b> after your first tap, plus
-        <b class="ui">Clear (AUTO re-detects)</b> and <b class="ui">Done</b>. Clear it when you want
-        AUTO to work the tempo out from your playing instead.</p>
-      <p>The same sheet is reachable from the <b class="ui a">Rig</b> header: the metronome chip
-        toggles the click on a <b>tap</b> and opens <b class="ui">SET TEMPO</b> on a
-        <b>long-press</b>.</p>
-      <p><b class="ui">CLICK</b> turns the metronome on. Turning it on with no tempo set
-        <b>forces 120 BPM</b> and restarts the bar, so switching the click on is never a neutral
-        act. Click level and the click's output bus live in Settings →
-        <b class="ui">METRONOME</b>, where it can have its own output pair for in-ear
-        monitoring.</p>
+      <h2 id="tempo"><span class="n">04.5</span>速度與節拍器</h2>
+      <p>Loop 標籤頁上的速度模塊顯示一個大號數字,標註為 <b class="ui">BPM</b>。未設置速度時顯示
+        <b class="ui">設置速度</b> 和一個 <b class="ui">—</b>。點按它可打開速度設置表。</p>
+      <p>該表包含一個數字輸入框(佔位符 <b class="ui">120</b>,範圍<b>20 至 300</b>),旁邊標著
+        <b class="ui">BPM</b>;一個大號 <b class="ui">打拍</b> 按鈕,首次點按後顯示為
+        <b class="ui">再次…</b>;此外還有 <b class="ui">清除（AUTO 重新檢測）</b> 和
+        <b class="ui">完成</b>。清除它,可以讓 AUTO 轉而根據你的演奏重新推算速度。</p>
+      <p>同一張表也可從 <b class="ui a">音色組</b> 頁頭進入:節拍器晶片<b>點按</b>可切換節拍器開關,
+        打開 <b class="ui">設置速度</b> 則需<b>長按</b>。</p>
+      <p><b class="ui">節拍器</b> 用於開啟節拍器。若在尚未設置速度時開啟,會<b>強制設為 120 BPM</b>
+        並重新開始計小節,所以打開節拍器絕不是一個中性的動作。節拍器的電平和輸出總線位於設置的
+        <b class="ui">節拍器</b> 中,可為其單獨指定一對輸出用於耳返監聽。</p>
       <div class="note warn">
-        <div class="t">There is no count-in</div>
-        <p>Tapping record starts recording. If you want a bar of click before you play, either arm
-          the pad with AUTO and let your first note start the take, or record the first loop against
-          a cycle that is already running.</p>
+        <div class="t">沒有預備拍</div>
+        <p>點按錄製即開始錄音。如果想在演奏前先聽一小節節拍器,可以開啟 AUTO 讓墊待命,讓你的第一個
+          音符觸發錄製,或者在一個已經運行的周期上錄製第一段循環。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">04.6</span>The loop editor</h2>
-      <p>Open it with the edit button in a pad's control row, or long-press the card →
-        <b class="ui">Edit loop…</b>. The sheet is headed <b class="ui">LOOP N</b> with a live length
-        label.</p>
+      <h2 id="editor"><span class="n">04.6</span>循環編輯器</h2>
+      <p>可通過墊控制行中的編輯按鈕打開,也可長按卡片 →
+        <b class="ui">編輯循環…</b>。表單標題為 <b class="ui">LOOP N</b>,並帶有實時的長度標籤。</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
-             alt="The loop editor sheet over the looper: a waveform with a bar and beat grid, draggable start and end handles, the START and LENGTH TEMPO KEPT button rows, Level and Pan knobs, and Mute, Undo and Clear buttons.">
-        <figcaption>The loop editor: grid, handles, nudge buttons and the bottom row</figcaption>
+             alt="覆蓋在循環樂句器上方的循環編輯器表單:帶有小節和節拍網格的波形、可拖動的起點和終點手柄、START 與 LENGTH TEMPO KEPT 按鈕行、Level 和 Pan 旋鈕,以及 Mute、Undo 和 Clear 按鈕。">
+        <figcaption>循環編輯器:網格、手柄、微調按鈕和底部按鈕行</figcaption>
       </figure>
-      <p>The label reads something like <b class="ui">8.00 s · 4.0 bars</b>. Dragging the end handle
-        adds the tempo that length would produce; dragging the start handle changes it to
-        <b class="ui">start +0.50 beats</b>.</p>
-      <p>The waveform carries a bar and beat <b>grid overlay</b> — beat ticks and numbered bar
-        lines, anchored at the loop start. Audio past the loop end is drawn dimmed: kept but silent,
-        which is what lets you push the end handle back out again later.</p>
+      <p>標籤顯示的內容類似 <b class="ui">8.00 s · 4.0 bars</b>。拖動終點手柄會加上該長度對應產生的
+        速度;拖動起點手柄會將其改為 <b class="ui">start +0.50 beats</b>。</p>
+      <p>波形上疊加著小節與節拍<b>網格</b>——節拍刻度和帶編號的小節線,以循環起點為基準。超出循環終點
+        的音頻以暗淡方式繪製:保留但靜音,這也是之後能把終點手柄再往外拖回去的原因。</p>
 
-      <h3>The two handles</h3>
+      <h3>兩個手柄</h3>
       <ul style="--nc:var(--pitch)">
-        <li><b>The start</b> (<b class="ui">Loop start handle</b>) rotates the phase: the loop
-          begins later and the skipped piece wraps round to the end. Length and tempo do not change.
-          This is the fix for a loop that starts half a beat early.</li>
-        <li><b>The end</b> (<b class="ui">Loop end handle</b>) resizes the loop, and works
-          <b>only on the track that defines the cycle</b>. The bar count is preserved and the set
-          tempo follows, so stretching the loop slows the whole set down. The sheet says as much:
-          <b class="ui">Drag the edges to move the start and resize the loop — resizing retunes the
-          set tempo.</b></li>
+        <li><b>起點</b>(<b class="ui">循環起點手柄</b>)旋轉相位:循環從更晚的位置開始,被跳過
+          的部分繞到末尾。長度和速度都不變。這是修復提前半拍開始的循環的方法。</li>
+        <li><b>終點</b>(<b class="ui">循環終點手柄</b>)調整循環大小,<b>僅對定義周期的那條音軌
+          有效</b>。小節數保持不變,設定的速度會隨之變化,所以拉長循環會讓整套素材變慢。表單上也這樣
+          寫明:<b class="ui">拖動邊緣可移動起點或調整循環長度——調整長度會重新校準整套速度。</b></li>
       </ul>
-      <p>An empty track shows <b class="ui">no audio</b> and nothing to drag.</p>
+      <p>空音軌會顯示 <b class="ui">無音頻</b>,沒有可拖動的內容。</p>
 
-      <h3>The button rows</h3>
-      <p>Under the waveform, <b class="ui">START</b> gives four phase nudges —
-        <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>,
-        <b class="ui">+BAR</b> — for when your thumb is less precise than the grid. They move the
-        start only.</p>
-      <p><b class="ui">LENGTH · TEMPO KEPT</b> gives six: the same four plus <b class="ui">÷2</b>
-        and <b class="ui">×2</b>. Halving turns an accidental eight-bar take into the four-bar loop
-        you meant to play; doubling gives room to overdub a phrase spanning twice the cycle.</p>
+      <h3>按鈕行</h3>
+      <p>波形下方,<b class="ui">開始</b> 提供四個相位微調按鈕——
+        <b class="ui">-小節</b>、<b class="ui">-拍</b>、<b class="ui">+拍</b>、
+        <b class="ui">+小節</b>——供拇指精度不及網格時使用。它們只移動起點。</p>
+      <p><b class="ui">長度 · 保持速度</b> 提供六個按鈕:同樣的四個,外加 <b class="ui">÷2</b>
+        和 <b class="ui">×2</b>。減半可以把意外錄成八小節的一段變回你原本想要的四小節循環;倍增則
+        為疊錄一個跨越兩倍周期的樂句留出空間。</p>
       <div class="note">
-        <div class="t">Why the length buttons are greyed out</div>
-        <p>All six <b class="ui">LENGTH · TEMPO KEPT</b> buttons are disabled unless the track you
-          are editing is the one that defines the cycle, and the sheet explains why:
-          <b class="ui">Only the track that defines the cycle can change its length.</b> If the
-          length is wrong on a follower track, the loop to edit is the master one.</p>
+        <div class="t">為什麼長度按鈕顯示為灰色</div>
+        <p>除非你正在編輯的音軌是定義周期的那一條,否則全部六個 <b class="ui">長度 · 保持速度</b>
+          按鈕都會被禁用,表單也說明了原因:
+          <b class="ui">只有定義周期的音軌才能更改長度。</b>
+          如果從屬音軌的長度不對,需要編輯的循環是主循環。</p>
       </div>
-      <p>The bottom row holds a <b class="ui">Level</b> knob (0 to 1.5), a <b class="ui">Pan</b> knob
-        reading <b class="ui">C</b>, <b class="ui">L50</b> or <b class="ui">R50</b>, and the buttons
-        <b class="ui">Mute</b>, <b class="ui">Undo</b> and <b class="ui">Clear</b>.</p>
-      <p>There is no reverse. Loops play forwards only.</p>
+      <p>底部一行包含 <b class="ui">電平</b> 旋鈕(0 至 1.5)、<b class="ui">聲像</b> 旋鈕(顯示為
+        <b class="ui">C</b>、<b class="ui">L50</b> 或 <b class="ui">R50</b>),以及
+        <b class="ui">靜音</b>、<b class="ui">撤銷</b> 和 <b class="ui">清除</b> 按鈕。</p>
+      <p>沒有反向播放。循環只能正向播放。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Undo</h2>
-      <p>Undo is a <b>toggle</b>, not a stack. Every overdub session snapshots the audio before the
-        dub goes on; undo swaps that snapshot back in, and pressing it again swaps your overdub
-        back. It is a compare button as much as an undo button.</p>
-      <p>Two limits: it is <b>one session deep</b>, so a second overdub replaces what undo was
-        holding, and it is <b>shared across tracks</b> — one snapshot for the whole looper, not one
-        per track. Overdub track 2 and the undo you were saving for track 1 is gone.</p>
+      <h2 id="undo"><span class="n">04.7</span>撤銷</h2>
+      <p>撤銷是一個<b>切換開關</b>,而不是一個堆棧。每次疊錄會話開始前都會對音頻進行快照;撤銷會把該
+        快照換回來,再按一次則把你的疊錄換回去。它既是撤銷按鈕,也是一個對比按鈕。</p>
+      <p>有兩個限制:它<b>只保留一層會話</b>,所以第二次疊錄會替換掉撤銷當時保存的內容;而且它是
+        <b>跨音軌共享</b>的——整個循環樂句器只有一份快照,而不是每條音軌各一份。疊錄音軌 2 之後,
+        你為音軌 1 保留的撤銷就沒了。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Per-track routing</h2>
-      <p><b class="ui">IN</b> and <b class="ui">OUT</b> decide where a track's audio comes from and
-        goes to; <b class="ui">LEN</b> and <b class="ui">DUB</b> decide how long and how many
-        passes.</p>
+      <h2 id="routing"><span class="n">04.8</span>逐軌路由</h2>
+      <p><b class="ui">入</b> 和 <b class="ui">出</b> 決定一條音軌的音頻從哪裡來、到哪裡去;
+        <b class="ui">長度</b> 和 <b class="ui">疊錄</b> 決定時長和疊錄次數。</p>
 
       <h3>IN</h3>
-      <p>The <b class="ui">IN</b> menu offers <b class="ui">Post FX (the rig)</b> — the processed
-        guitar, which is what you usually want. With several rigs it becomes
-        <b class="ui">Post FX · &lt;rig name&gt;</b> per rig and the chip reads
-        <b class="ui">FX · &lt;rig&gt;</b>. Below that, one entry per hardware input channel under
-        its own name — a dry vocal or a second player straight off the interface — and
-        <b class="ui">Sampler</b>, chip <b class="ui">SMP</b>, for looping the pads.</p>
+      <p><b class="ui">入</b> 菜單提供 <b class="ui">效果後（音色組）</b>——即處理過的吉他信號,
+        通常這就是你想要的。有多個音色組時,會變為每個音色組一項的
+        <b class="ui">Post FX · &lt;rig name&gt;</b>,晶片顯示為
+        <b class="ui">FX · &lt;rig&gt;</b>。此外還有每個硬體輸入通道各一項,以其自身名稱顯示——比如
+        一路幹聲人聲或直接接在音頻接口上的第二位演奏者——以及用於循環採樣打擊墊的
+        <b class="ui">採樣器</b>,晶片為 <b class="ui">SMP</b>。</p>
 
       <h3>OUT</h3>
-      <p>The <b class="ui">OUT</b> menu offers <b class="ui">Main mix</b> (chip
-        <b class="ui">MAIN</b>), one entry per extra hardware output pair —
-        <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> and so on, which need
-        <b class="ui">Use all interface outputs</b> switched on in Settings — and
-        <b class="ui">Into &lt;rig name&gt;</b>.</p>
-      <p>That last one is the interesting one: rather than going straight to the mix, the loop plays
-        <em>into</em> that rig, so the rig's effects process it live. Loop a clean part, send it into
-        a rig with a delay and a filter, and sweep the filter while the loop runs. A rig the track
-        records from is not offered — that would be a feedback path.</p>
+      <p><b class="ui">出</b> 菜單提供 <b class="ui">主混音</b>(晶片 <b class="ui">混音</b>)、
+        每對額外硬體輸出各一項——如 <b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b> 等,需要在
+        設置中開啟 <b class="ui">使用接口的所有輸出</b>——以及
+        <b class="ui">Into &lt;rig name&gt;</b>。</p>
+      <p>最後一項才是有意思的地方:循環不是直接進入混音,而是播放<em>進入</em>那個音色組,讓該音色組
+        的效果對其進行實時處理。可以循環一段乾淨的素材,把它送入一個帶延遲和濾波器的音色組,並在循環
+        播放時掃描濾波器。系統不會提供該音軌正在錄製的那個音色組作為選項——那樣會形成反饋迴路。</p>
 
-      <h3>LEN and DUB</h3>
-      <p>The <b class="ui">LEN</b> chip cycles 0, 1, 2, 4 and 8 bars. At 0 it reads
-        <b class="ui">FREE</b>; otherwise <b class="ui">N BAR</b>, and the take is fixed to that many
-        bars. With no tempo set the menu says
-        <b class="ui">No tempo yet — record the first loop with AUTO on</b>.</p>
-      <p>The <b class="ui">DUB</b> chip cycles 0, 1, 2 and 4 automatic overdub passes — the track
-        drops back to playing by itself after that many laps.</p>
+      <h3>LEN 和 DUB</h3>
+      <p><b class="ui">長度</b> 晶片在 0、1、2、4 和 8 小節之間循環切換。為 0 時顯示為
+        <b class="ui">自由</b>;否則顯示 <b class="ui">N BAR</b>,錄製內容會被固定為該小節數。
+        尚未設置速度時,菜單會顯示
+        <b class="ui">尚無速度——開啟 AUTO 後錄製第一個循環</b>。</p>
+      <p><b class="ui">疊錄</b> 晶片在 0、1、2 和 4 次自動疊錄之間循環切換——達到設定次數後,音軌會
+        自動回到單純播放狀態。</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>What gets saved</h2>
-      <p>The <b class="ui">PRESETS</b> chip opens <b class="ui">Looper Presets</b>, and they hold
-        <b>the setup only</b>: each track's IN, OUT, LEN, DUB and pan, plus the AUTO flag. A routing
-        template you recall at the start of a song — not a recording.</p>
+      <h2 id="saving"><span class="n">04.9</span>保存的內容</h2>
+      <p><b class="ui">預設</b> 晶片打開 <b class="ui">循環樂句預設</b>,其中只保存<b>設置本身</b>:
+        每條音軌的 IN、OUT、LEN、DUB 和聲像,以及 AUTO 標誌。這是一份可以在歌曲開始時調用的路由模板,
+        而不是錄音本身。</p>
       <div class="note warn">
-        <div class="t">Loop audio cannot be exported</div>
-        <p>There is no way to save a loop as a file — no export, no share sheet. The only way to
-          capture what the looper played is the <b class="ui a">Perform</b> tab's recorder, which
-          records the output mix (rig, looper, pads and backing together, plus a separate dry input
-          stem). If a loop is worth keeping, hit record on Perform and let it run.</p>
+        <div class="t">循環音頻無法導出</div>
+        <p>沒有辦法把一段循環保存為文件——沒有導出,也沒有分享菜單。捕獲循環樂句器所播放內容的唯一
+          方式是 <b class="ui a">演出</b> 標籤頁的錄音功能,它錄製的是輸出混音(音色組、循環樂句器、
+          打擊墊與伴奏一起,外加一條單獨的幹聲輸入音軌)。如果一段循環值得保留,就在 Perform 上按下
+          錄製並讓它運行。</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh-hant/plugins.html">← 03 · AU plugins</a>
+      <a href="/docs/zh-hant/plugins.html">← 03 · AU 插件</a>
       <span class="sp"></span>
-      <a href="/docs/zh-hant/sampler.html">05 · Sampler pads →</a>
+      <a href="/docs/zh-hant/sampler.html">05 · 採樣打擊墊 →</a>
     </nav>
   </main>
 </div>
@@ -385,13 +348,13 @@
   <div class="in">
     <nav>
       <a href="/">NAMPER.ORG</a>
-      <a href="/docs/zh-hant/">DOCS</a>
+      <a href="/docs/">DOCS</a>
       <a href="https://t.me/namperapp">TELEGRAM</a>
       <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款獨立應用,與任何設備製造商沒有任何關聯、認可或贊助關係。所有產品名稱、品牌和商標均歸其各自所有者所有,僅用於說明所使用的錄製設備。</p>
   </div>
 </footer>
 

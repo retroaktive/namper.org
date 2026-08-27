@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sampler pads — NAMper Documentation</title>
-<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, trigger quantize, MIDI notes 36–51 and where the pads go in the mix.">
+<title>採樣打擊墊 — NAMper 文檔</title>
+<meta name="description" content="十六個採樣打擊墊：加載與錄製聲音、帶裁剪和 ADSR 的打擊墊編輯器、音色包與四套出廠鼓組音色包、觸發量化、MIDI 音符 36–51，以及打擊墊在混音中的位置。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Sampler pads — NAMper Documentation">
-<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, quantize and MIDI triggering.">
+<meta property="og:title" content="採樣打擊墊 — NAMper 文檔">
+<meta property="og:description" content="十六個打擊墊、音色包、裁剪與 ADSR、量化與 MIDI 觸發。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/sampler.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文檔</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh-hant/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh-hant/">← 全部文檔</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh-hant/sampler.html" aria-current="page">繁體中文</a>
   </nav>
@@ -46,254 +46,248 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目錄</div>
     <ol>
-      <li><a href="/docs/zh-hant/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh-hant/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/zh-hant/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/zh-hant/looper.html">Looper</a></li>
-      <li><a class="on" href="/docs/zh-hant/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/zh-hant/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/zh-hant/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh-hant/settings.html">Settings reference</a></li>
+      <li><a href="/docs/zh-hant/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
+      <li><a href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
+      <li><a class="on" href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
+      <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
+      <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PADS</div>
-    <h1>Sixteen pads, one page.</h1>
-    <p class="lede">The <b class="ui a">Sample</b> tab is a drum machine you can play with your
-      thumbs or a MIDI pedal: sixteen pads, a kit library, trim and envelope per pad, and a
-      quantizer for when the timing has to be right.</p>
+    <div class="slab" style="--nc:var(--eq)">05 · 採樣打擊墊</div>
+    <h1>十六個打擊墊，一頁搞定。</h1>
+    <p class="lede"><b class="ui a">採樣</b> 標籤頁是一臺可以用拇指或 MIDI 踏板演奏的鼓機：
+      十六個打擊墊、一個音色包庫、每個打擊墊各自的裁剪與包絡，以及一個在節奏必須精準時
+      使用的量化器。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本頁內容</div>
       <ul>
-        <li><a href="#grid">The grid</a></li>
-        <li><a href="#loading">Getting sound into a pad</a></li>
-        <li><a href="#editor">The pad editor</a></li>
-        <li><a href="#kits">Kits</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
-        <li><a href="#trigger">Playing the pads</a></li>
-        <li><a href="#routing">Where the pads go</a></li>
+        <li><a href="#grid">網格</a></li>
+        <li><a href="#loading">把聲音放進打擊墊</a></li>
+        <li><a href="#editor">打擊墊編輯器</a></li>
+        <li><a href="#kits">音色包</a></li>
+        <li><a href="#quantize">觸發量化</a></li>
+        <li><a href="#trigger">演奏打擊墊</a></li>
+        <li><a href="#routing">打擊墊的信號去向</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="grid"><span class="n">05.1</span>The grid</h2>
-      <p>Sixteen pads in a fixed 4×4 grid. One page — there are no banks and no second page, so
-        everything you can play is on screen at once.</p>
+      <h2 id="grid"><span class="n">05.1</span>網格</h2>
+      <p>十六個打擊墊，固定為 4×4 的網格。只有一頁——沒有分組，也沒有第二頁，所以你能演奏的
+        一切都同時顯示在屏幕上。</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
-             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
-        <figcaption>The <b class="ui">Drums — Acoustic</b> factory kit loaded across all 16 pads</figcaption>
+             alt="Sample 標籤頁加載了原聲鼓出廠音色包，鋪滿全部十六個打擊墊，每個都顯示採樣名稱、時長和波形，頂部有 LEVEL 和 QUANT 旋鈕以及量化網格標籤。">
+        <figcaption><b class="ui">鼓 — 原聲</b> 出廠音色包鋪滿全部 16 個打擊墊</figcaption>
       </figure>
-      <p>The header row carries, left to right: the word <b class="ui">SAMPLER</b>, a
-        <b class="ui">LEVEL</b> knob (0 to 2, default 1), a <b class="ui">QUANT</b> knob, the
-        quantize grid chip, the <b class="ui">PRESETS</b> chip for kits, a <b class="ui">REC</b>
-        indicator that lights while a pad is recording, and <b class="ui">STOP ALL</b>.</p>
-      <p>Along the bottom, the hint says it all:</p>
-      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
-        36–51</b></p>
-      <p>An <b>empty pad</b> splits into two halves — <b class="ui">LOAD</b> and
-        <b class="ui">REC</b>. A <b>loaded pad</b> shows the sample name, its length (for example
-        <b class="ui">1.4s</b>), a dimmed waveform with everything outside the trim faded back, and
-        a bright cursor sweeping through while it plays.</p>
-      <p>Long-press any pad for the menu: <b class="ui">Load sound…</b>,
-        <b class="ui">Record mix</b> or <b class="ui">Stop recording</b>, and — on a loaded pad —
-        <b class="ui">Edit…</b>, <b class="ui">Clear</b> and <b class="ui">MIDI Learn: pad N</b>.</p>
+      <p>頂部一行從左到右依次是：<b class="ui">採樣器</b> 字樣、一個
+        <b class="ui">電平</b> 旋鈕（0 到 2，默認 1）、一個 <b class="ui">量化</b> 旋鈕、
+        量化網格標籤、用於音色包的 <b class="ui">預設</b> 標籤、一個在打擊墊錄音時
+        點亮的 <b class="ui">錄音</b> 指示燈，以及 <b class="ui">全部停止</b>。</p>
+      <p>底部的提示已經說明了一切：</p>
+      <p><b class="ui">空打擊墊：加載或錄製 · 已加載：點按播放/停止，長按編輯 · MIDI 音符 36–51</b></p>
+      <p>一個<b>空打擊墊</b>分成兩半——<b class="ui">加載</b> 和 <b class="ui">錄音</b>。
+        一個<b>已加載的打擊墊</b>會顯示採樣名稱、時長（例如 <b class="ui">1.4s</b>）、
+        一個變暗的波形（裁剪範圍之外的部分被淡化），以及播放時掃過的一條亮色光標。</p>
+      <p>長按任意打擊墊會打開菜單：<b class="ui">加載聲音…</b>、
+        <b class="ui">錄製混音</b> 或 <b class="ui">停止錄音</b>，而在已加載的
+        打擊墊上還有 <b class="ui">編輯…</b>、<b class="ui">清除</b> 和
+        <b class="ui">MIDI Learn: pad N</b>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="loading"><span class="n">05.2</span>Getting sound into a pad</h2>
-      <p>There are three ways to load a file, and they all open the same Files picker: the
-        <b class="ui">LOAD</b> half of an empty pad, <b class="ui">Load sound…</b> in the long-press
-        menu, and <b class="ui">Load file</b> inside the pad editor. Anything iOS can decode is
-        accepted.</p>
-      <p>Samples are capped at <b>12 seconds</b> — a longer file is truncated rather than refused.
-        And there is no drag and drop into NAMper: every import goes through the picker.</p>
+      <h2 id="loading"><span class="n">05.2</span>把聲音放進打擊墊</h2>
+      <p>加載文件有三種方式，它們打開的都是同一個"文件"選擇器：空打擊墊上的
+        <b class="ui">加載</b> 那一半、長按菜單裡的 <b class="ui">加載聲音…</b>，
+        以及打擊墊編輯器內的 <b class="ui">加載文件</b>。任何 iOS 能解碼的格式都可以
+        接受。</p>
+      <p>採樣上限為 <b>12 秒</b>——超出的文件會被截斷，而不是被拒絕。而且沒有拖放導入
+        NAMper 的方式：所有導入都要經過文件選擇器。</p>
 
-      <h3>Recording into a pad</h3>
-      <p>The <b class="ui">REC</b> half of an empty pad records straight into it. Only one pad can
-        record at a time, and the take is named <b class="ui">Rec N</b>. With the engine stopped it
-        refuses with <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <h3>錄製到打擊墊</h3>
+      <p>空打擊墊上 <b class="ui">錄音</b> 的那一半會直接錄製到該打擊墊。同一時刻只能有
+        一個打擊墊在錄製，錄下的素材會命名為 <b class="ui">Rec N</b>。引擎停止時會拒絕
+        並提示 <b class="ui r">音頻已關閉——錄音前請點按電源按鈕。</b></p>
       <div class="note warn">
-        <div class="t">The pad recorder captures what you hear</div>
-        <p>It records the <b>main output mix</b>, not the raw input — so the rig, the looper, the
-          other pads and any backing track all land in the sample. That is useful for grabbing a
-          chord straight off your processed tone, and a trap if you meant to capture a dry
-          source. Mute or stop everything else before you hit <b class="ui">REC</b>.</p>
+        <div class="t">打擊墊錄音捕獲的是你聽到的內容</div>
+        <p>它錄製的是<b>主輸出混音</b>，而不是原始輸入——所以音色組、循環樂句器、
+          其他打擊墊以及任何伴奏音軌都會一起錄進採樣裡。這對於直接抓取你已處理過的
+          音色中的一個和弦很有用，但如果你本來想採集一個幹聲源，就會掉進這個坑。
+          按下 <b class="ui">錄音</b> 之前，先把其他一切靜音或停止。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">05.3</span>The pad editor</h2>
-      <p>Long-press a loaded pad → <b class="ui">Edit…</b>. The sheet is headed
-        <b class="ui">PAD N</b> with the sample name and its length.</p>
-      <p>The waveform has <b>draggable trim handles</b> at the start and end — drag the start in to
-        cut off a slow attack, drag the end in to shorten a long tail.</p>
-      <p>The <b>ADSR envelope is drawn on top of the waveform</b> and edited by dragging three round
-        handles: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> and
-        <b class="ui">Release</b>. A readout above shows the values, like
-        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
-      <p>Two knobs: <b class="ui">Gain</b> (0 to 2) and <b class="ui">Pitch</b> (0.25 to 4, shown as
-        <b class="ui">1.00x</b>). Pitch is a resampling rate, so it changes <b>pitch and speed
-        together</b> — a tape-style shift, not a formant-preserving one. Half speed is an octave
-        down.</p>
+      <h2 id="editor"><span class="n">05.3</span>打擊墊編輯器</h2>
+      <p>長按一個已加載的打擊墊 → <b class="ui">編輯…</b>。面板標題為
+        <b class="ui">PAD N</b>，附帶採樣名稱和時長。</p>
+      <p>波形的起點和終點都有<b>可拖動的裁剪手柄</b>——把起點向內拖可以切掉緩慢的起音，
+        把終點向內拖可以縮短過長的尾音。</p>
+      <p><b>ADSR 包絡繪製在波形之上</b>，通過拖動三個圓形手柄來編輯：
+        <b class="ui">起音</b>、<b class="ui">衰減與延音</b> 和
+        <b class="ui">釋放</b>。上方的讀數會顯示具體數值，例如
+        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>。</p>
+      <p>兩個旋鈕：<b class="ui">增益</b>（0 到 2）和 <b class="ui">音高</b>（0.25 到 4，
+        顯示為 <b class="ui">1.00x</b>）。Pitch 是一個重採樣速率，所以它會<b>同時改變
+        音高和速度</b>——是磁帶式的變調，而不是保持共振峰的變調。半速即降低一個八度。</p>
 
-      <h3>MODE and TAP</h3>
-      <p>Two pairs of chips decide how a pad behaves under your finger.
-        <b class="ui">MODE</b> is <b class="ui">One-shot</b> or <b class="ui">Loop</b>;
-        <b class="ui">TAP</b> is <b class="ui">Retrig</b> or <b class="ui">Latch</b>. The rule is
-        simple: a pad set to <b class="ui">Loop</b> or to <b class="ui">Latch</b> toggles start and
-        stop on each tap, and a <b class="ui">One-shot</b> / <b class="ui">Retrig</b> pad restarts
-        from the trim start every time you hit it — ordinary drum-pad behaviour.</p>
+      <h3>MODE 與 TAP</h3>
+      <p>兩組標籤決定一個打擊墊在你手指下的表現。<b class="ui">模式</b> 是
+        <b class="ui">單次觸發</b> 或 <b class="ui">循環</b>；<b class="ui">打拍</b> 是
+        <b class="ui">重觸發</b> 或 <b class="ui">鎖定</b>。規則很簡單：設為
+        <b class="ui">循環</b> 或 <b class="ui">鎖定</b> 的打擊墊在每次點按時切換啟停，
+        而 <b class="ui">單次觸發</b> / <b class="ui">重觸發</b> 的打擊墊每次點按都會從
+        裁剪起點重新開始——普通的鼓打擊墊行為。</p>
       <div class="tw">
         <table>
-          <thead><tr><th>MODE</th><th>TAP</th><th>What a tap does</th></tr></thead>
+          <thead><tr><th>MODE</th><th>TAP</th><th>點按的效果</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
-                <td>Plays once from the trim start, restarting on every tap. Drums, hits, stabs.</td></tr>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
-                <td>Plays once; a second tap while it is still sounding stops it. Long one-shots you
-                    may need to cut short.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
-                <td>Loops until you tap again to stop it.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
-                <td>Loops until you tap again to stop it. Beds, drones, rain, vinyl crackle.</td></tr>
+            <tr><td><b class="ui">單次觸發</b></td><td><b class="ui">重觸發</b></td>
+                <td>從裁剪起點播放一次，每次點按都重新開始。適合鼓、打擊音、切音。</td></tr>
+            <tr><td><b class="ui">單次觸發</b></td><td><b class="ui">鎖定</b></td>
+                <td>播放一次；在它仍在發聲時再點按一次會停止播放。適合需要截斷的
+                    長單次音。</td></tr>
+            <tr><td><b class="ui">循環</b></td><td><b class="ui">重觸發</b></td>
+                <td>循環播放，直到再次點按才停止。</td></tr>
+            <tr><td><b class="ui">循環</b></td><td><b class="ui">鎖定</b></td>
+                <td>循環播放，直到再次點按才停止。適合鋪底音色、持續音、雨聲、
+                    黑膠噪聲。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>At the bottom, <b class="ui">Preview</b> auditions the pad with your current settings and
-        <b class="ui">Load file</b> swaps the sound without leaving the editor.</p>
+      <p>底部的 <b class="ui">試聽</b> 用當前設置試聽打擊墊，<b class="ui">加載文件</b>
+        可以在不離開編輯器的情況下更換聲音。</p>
       <div class="note">
-        <div class="t">What the sampler deliberately does not have</div>
-        <p>No choke groups (an open hat will not be cut by a closed one), no per-pad pan, no
-          reverse, no velocity layers, no per-pad output routing and no momentary
-          gate-while-held mode. Pads play at their set <b class="ui">Gain</b> and stop when the
-          sample or the envelope says so.</p>
+        <div class="t">採樣器刻意沒有的功能</div>
+        <p>沒有阻音組（打開的踩鑔不會被關閉的踩鑔切斷）、沒有單獨的打擊墊聲像、
+          沒有倒放、沒有力度分層、沒有單獨的打擊墊輸出路由，也沒有按住即通模式。
+          打擊墊按設定的 <b class="ui">增益</b> 播放，並在採樣或包絡結束時停止。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="kits"><span class="n">05.4</span>Kits</h2>
-      <p>A kit is a snapshot of all sixteen pads — every trim, envelope, gain, pitch and mode
-        setting — <b>plus a private copy of every pad's audio</b>. That copy is the point: once a
-        kit is saved, importing over a pad, clearing it or deleting the original file cannot hollow
-        the kit out. Load it back in six months and it still plays.</p>
-      <p>Open the browser with the <b class="ui">PRESETS</b> chip; the sheet is titled
-        <b class="ui">Sampler Kits</b>. Tap a row to load it. The row menu has
-        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> and
-        <b class="ui">Delete</b>. Deleting a kit never removes audio that the loaded pads or another
-        saved kit are still using.</p>
+      <h2 id="kits"><span class="n">05.4</span>音色包</h2>
+      <p>一個音色包是全部十六個打擊墊的快照——每個打擊墊的裁剪、包絡、增益、音高和
+        模式設置——<b>再加上每個打擊墊音頻的一份私有副本</b>。這份副本才是關鍵：
+        音色包一旦保存，無論之後往某個打擊墊導入新內容、清空它，還是刪除原始文件，
+        都無法把這個音色包掏空。六個月後再加載它，它依然能正常播放。</p>
+      <p>用 <b class="ui">預設</b> 標籤打開瀏覽器；面板標題為
+        <b class="ui">採樣器套件</b>。點擊一行即可加載它。行菜單裡有
+        <b class="ui">重命名</b>、<b class="ui">Update with current kit</b> 和
+        <b class="ui">刪除</b>。刪除一個音色包永遠不會移除仍在被已加載的打擊墊或
+        另一個已保存的音色包使用的音頻。</p>
       <div class="note warn">
-        <div class="t">Kits cannot be shared</div>
-        <p>The footer of the sheet says why: <b class="ui">Kits live on this device (they carry
-          their audio files).</b> There is no share or export for a kit, and the full backup export
-          leaves sampler kit audio out — it carries parameters and references only. Copy the
-          <b class="ui">samples/</b> folder in the Files app if you need the sounds on another
-          device.</p>
+        <div class="t">音色包無法分享</div>
+        <p>面板底部說明了原因：<b class="ui">Kits live on this device (they carry
+          their audio files).</b> 音色包沒有分享或導出功能，完整備份導出也不包含
+          採樣器音色包的音頻——只攜帶參數和引用。如果你需要在另一臺設備上使用這些聲音，
+          就用"文件"應用複製 <b class="ui">samples/</b> 文件夾。</p>
       </div>
 
-      <h3>The four factory kits</h3>
+      <h3>四套出廠音色包</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Kit</th><th>The sixteen pads</th></tr></thead>
+          <thead><tr><th>音色包</th><th>十六個打擊墊</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Drums — Digital</b></td>
+            <tr><td><b class="ui">鼓 — 數字</b></td>
                 <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
                     Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
-            <tr><td><b class="ui">Drums — Analog</b></td>
+            <tr><td><b class="ui">鼓 — 模擬</b></td>
                 <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
                     Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
-            <tr><td><b class="ui">Drums — Acoustic</b></td>
+            <tr><td><b class="ui">鼓 — 原聲</b></td>
                 <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
                     Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
                     Tambourine</td></tr>
-            <tr><td><b class="ui">FX &amp; Textures</b></td>
+            <tr><td><b class="ui">音效與氛圍</b></td>
                 <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
                     Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A deleted factory kit stays deleted — it does not come back on the next launch. Rename or
-        update one rather than deleting it if you only want it out of the way.</p>
+      <p>被刪除的出廠音色包會一直保持刪除狀態——下次啟動不會自動恢復。如果只是想讓它
+        不礙事，重命名或更新它,而不是刪除它。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>The <b class="ui">QUANT</b> knob is a <b>strength</b>, not a switch. At zero it reads
-        <b class="ui">OFF</b>; above that it shows a percentage. At 100 % every hit lands exactly on
-        the grid; at 30 % only the slightly-early ones get pulled into line and your feel survives.
-        The default is 0, off.</p>
-      <p>The chip beside it sets the grid, cycling <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> and <b class="ui">1/32</b>. The default is
-        <b class="ui">1/16</b>.</p>
-      <p>Both settings are <b>global</b> — not per kit, not per pad. Loading a kit does not change
-        them.</p>
+      <h2 id="quantize"><span class="n">05.5</span>觸發量化</h2>
+      <p><b class="ui">量化</b> 旋鈕控制的是<b>強度</b>，而不是開關。為零時顯示
+        <b class="ui">關</b>；高於零則顯示一個百分比。在 100% 時，每次敲擊都會精確
+        落在網格上；在 30% 時，只有稍微搶拍的敲擊會被拉回節奏線，你的演奏感覺得以保留。
+        默認值是 0，即關閉。</p>
+      <p>旁邊的標籤用來設置網格精度，循環切換 <b class="ui">1/4</b>、<b class="ui">1/8</b>、
+        <b class="ui">1/16</b> 和 <b class="ui">1/32</b>。默認是 <b class="ui">1/16</b>。</p>
+      <p>這兩個設置都是<b>全局的</b>——不區分音色包，也不區分打擊墊。加載一個音色包
+        不會改變它們。</p>
       <div class="note warn">
-        <div class="t">Three things must all be true</div>
-        <p>Quantize only does something audible when <b>all three</b> of these hold, and the screen
-          does not tell you so:</p>
+        <div class="t">必須同時滿足三個條件</div>
+        <p>只有以下<b>三個條件全部成立</b>時，量化才會產生可聽見的效果，而屏幕上不會
+          提示這一點：</p>
         <ul style="--nc:var(--drive)">
-          <li>a <b>tempo is set</b> — there is no grid otherwise;</li>
-          <li>a <b>loop is running</b> — the looper supplies the phase, so the grid knows where beat
-            one is;</li>
-          <li>you are <b>recording</b> — either the <b class="ui a">Perform</b> recorder, or a loop
-            track whose source is the sampler.</li>
+          <li>已經<b>設定了速度</b>——否則就沒有網格；</li>
+          <li>有一個<b>循環正在運行</b>——循環樂句器提供節拍相位，網格才知道第一拍在
+            哪裡；</li>
+          <li>你正在<b>錄音</b>——要麼是 <b class="ui a">演出</b> 的錄音功能，
+            要麼是來源為採樣器的一條循環音軌。</li>
         </ul>
-        <p>Turn the knob up while jamming over nothing and you will hear no difference. That is
-          deliberate: a pad that waits for the next sixteenth before it speaks feels broken under
-          your fingers, so free playing is always left unquantized and the correction is applied
-          only where it ends up on a recording.</p>
+        <p>如果你在沒有伴奏的情況下即興演奏時把旋鈕調高，你不會聽到任何變化。這是刻意
+          設計的：一個要等到下一個十六分音符才發聲的打擊墊，在手指下會讓人覺得反應
+          不靈，所以自由演奏時始終保持不量化，修正只會應用在最終落到錄音裡的部分。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="trigger"><span class="n">05.6</span>Playing the pads</h2>
-      <p>By touch: a tap plays or stops the pad according to its
-        <b class="ui">MODE</b> and <b class="ui">TAP</b> settings, and a long-press opens the
-        menu.</p>
-      <p>By MIDI: <b>notes 36 to 51 play pads 1 to 16</b>, following the GM drum convention — note
-        36 is pad 1. This is always active and needs no setup, on any MIDI channel, unless one of
-        your own mappings has claimed that note first.</p>
-      <p><b>Velocity is not used.</b> However hard you hit a controller pad, the sample plays at the
-        <b class="ui">Gain</b> you set in the editor. Set the levels once in the pad editor and they
-        stay put.</p>
+      <h2 id="trigger"><span class="n">05.6</span>演奏打擊墊</h2>
+      <p>用手指：點按會根據打擊墊的 <b class="ui">模式</b> 和 <b class="ui">打拍</b>
+        設置播放或停止它，長按打開菜單。</p>
+      <p>用 MIDI：<b>音符 36 到 51 演奏打擊墊 1 到 16</b>，遵循 GM 鼓組約定——音符 36
+        對應打擊墊 1。這一映射始終生效，無需任何設置，在任意 MIDI 通道上都可用，
+        除非你自己的某個映射已經先佔用了該音符。</p>
+      <p><b>不使用力度。</b>無論你敲擊控制器打擊墊的力度多大，採樣都會以你在編輯器中
+        設定的 <b class="ui">增益</b> 播放。在打擊墊編輯器中設定一次電平之後，它就會
+        固定不變。</p>
       <div class="note tip">
-        <div class="t">Learned mappings behave better than raw notes</div>
-        <p>A mapping you create on the <b class="ui a">Control</b> tab calls play/stop, so it
-          respects <b class="ui">Loop</b> and <b class="ui">Latch</b> — one footswitch press starts
-          the loop, the next stops it. Raw MIDI notes 36–51 always retrigger from the start. If you
-          are driving looping pads from a pedal, learn the mapping rather than relying on the
-          built-in note range.</p>
+        <div class="t">學習到的映射比原始音符表現更好</div>
+        <p>你在 <b class="ui a">控制</b> 標籤頁上創建的映射調用的是播放/停止，
+          所以它會遵循 <b class="ui">循環</b> 和 <b class="ui">鎖定</b> 的設置——
+          按一次腳踏開關啟動循環，再按一次停止。而原始 MIDI 音符 36–51 永遠從頭
+          重新觸發。如果你用踏板驅動循環模式的打擊墊，請學習映射，而不要依賴內置的
+          音符範圍。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="routing"><span class="n">05.7</span>Where the pads go</h2>
-      <p>Pads sum <b>straight into the main mix</b> — they do not run through the guitar chain, so
-        your amp's gain and your reverb never touch them. The <b class="ui">LEVEL</b> knob in the
-        header sets how loud the whole sampler sits against the rig.</p>
-      <p>They are also available elsewhere in the app as a source:</p>
+      <h2 id="routing"><span class="n">05.7</span>打擊墊的信號去向</h2>
+      <p>打擊墊的信號<b>直接匯入主混音</b>——它們不經過吉他信號鏈，所以你音箱的增益
+        和混響都不會碰到它們。頂部的 <b class="ui">電平</b> 旋鈕設置整個採樣器相對於
+        音色組的音量。</p>
+      <p>在應用的其他地方，它們也可以作為一個信號來源使用：</p>
       <ul style="--nc:var(--power)">
-        <li>As a <b>chain input</b> — pick <b class="ui">Sampler pads</b> on a rig's IN connector or
-          on a parallel branch (chip <b class="ui">SMPL</b>) and the pads run through that rig's
-          effects.</li>
-        <li>As a <b>loop track source</b> — set a looper track's <b class="ui">IN</b> to
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) and you can loop a beat you tap out
-          on the pads.</li>
-        <li>As a <b>compressor sidechain</b> — a Comp block's <b class="ui">Sidechain</b> menu
-          includes <b class="ui">SMP</b>, so the kick can duck the guitar.</li>
+        <li>作為<b>信號鏈輸入</b>——在音色組的 IN 連接點或某條並行分支上選擇
+          <b class="ui">採樣打擊墊</b>（標籤 <b class="ui">SMPL</b>），打擊墊的信號
+          就會經過該音色組的效果處理。</li>
+        <li>作為<b>循環音軌來源</b>——把某條循環樂句器音軌的 <b class="ui">入</b>
+          設為 <b class="ui">採樣器</b>（標籤 <b class="ui">SMP</b>），就可以循環
+          你在打擊墊上敲出的節奏。</li>
+        <li>作為<b>壓縮器側鏈</b>——Comp 模塊的 <b class="ui">側鏈</b> 菜單
+          包含 <b class="ui">SMP</b>，這樣底鼓就可以壓低吉他的音量。</li>
       </ul>
-      <p><b class="ui">STOP ALL</b> in the header releases every playing pad at once — the panic
-        button for a latched drone or a loop you cannot find.</p>
+      <p>頂部的 <b class="ui">全部停止</b> 會一次性釋放所有正在播放的打擊墊——
+        用來應對一個鎖定的持續音，或一個你找不到源頭的循環。</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh-hant/looper.html">← 04 · Looper</a>
+      <a href="/docs/zh-hant/looper.html">← 04 · 循環樂句器</a>
       <span class="sp"></span>
-      <a href="/docs/zh-hant/perform.html">06 · Perform &amp; lyrics →</a>
+      <a href="/docs/zh-hant/perform.html">06 · 演出與歌詞 →</a>
     </nav>
   </main>
 </div>
@@ -308,7 +302,8 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款獨立應用，與任何設備製造商均無關聯，也未獲得其認可或贊助。所有產品名稱、
+      品牌和商標均歸其各自所有者所有，此處僅用於說明模型採樣所使用的設備。</p>
   </div>
 </footer>
 

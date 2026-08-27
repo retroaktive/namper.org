@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIDI &amp; control — NAMper Documentation</title>
-<meta name="description" content="The control map and MIDI learn, everything you can map to, the built-in MIDI map, Bluetooth pairing, taught sound triggers, and the tuner.">
+<title>MIDI &amp; Điều khiển — Tài liệu NAMper</title>
+<meta name="description" content="Control map và MIDI learn, mọi thứ bạn có thể map vào, bản đồ MIDI có sẵn, ghép đôi Bluetooth, trigger bằng âm thanh đã dạy, và tuner.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="MIDI &amp; control — NAMper Documentation">
-<meta property="og:description" content="Map footswitches, pedals and taught sounds to anything in NAMper — plus the built-in MIDI map and the tuner.">
+<meta property="og:title" content="MIDI &amp; Điều khiển — Tài liệu NAMper">
+<meta property="og:description" content="Map footswitch, pedal và âm thanh đã dạy vào bất cứ thứ gì trong NAMper — cùng với bản đồ MIDI có sẵn và tuner.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/control.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/control.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -48,256 +48,251 @@
   <aside class="sidenav">
     <div class="slab">CONTENTS</div>
     <ol>
-      <li><a href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a class="on" href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Perform &amp; lời bài hát</a></li>
+      <li><a class="on" href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; CONTROL</div>
-    <h1>Hands on the guitar.</h1>
-    <p class="lede">Footswitches, pedals, a knock on the body of the instrument — the
-      <b class="ui a">Control</b> tab is where you decide what fires what, so the phone can stay in
-      its stand for the whole set. It is also where the tuner lives.</p>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; ĐIỀU KHIỂN</div>
+    <h1>Tay vẫn ở trên đàn.</h1>
+    <p class="lede">Footswitch, pedal, một cú gõ vào thân đàn — tab
+      <b class="ui a">Điều khiển</b> là nơi bạn quyết định cái gì kích hoạt cái gì, để điện thoại
+      có thể đứng yên trên giá suốt cả buổi diễn. Đây cũng là nơi tuner nằm.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRÊN TRANG NÀY</div>
       <ul>
-        <li><a href="#map">The control map</a></li>
+        <li><a href="#map">Control map</a></li>
         <li><a href="#learn">MIDI learn</a></li>
-        <li><a href="#actions">What you can map to</a></li>
-        <li><a href="#builtin">The built-in MIDI map</a></li>
+        <li><a href="#actions">Những gì bạn có thể map vào</a></li>
+        <li><a href="#builtin">Bản đồ MIDI có sẵn</a></li>
         <li><a href="#bluetooth">Bluetooth MIDI</a></li>
-        <li><a href="#sounds">Taught sound triggers</a></li>
-        <li><a href="#tuner">The tuner</a></li>
+        <li><a href="#sounds">Trigger bằng âm thanh đã dạy</a></li>
+        <li><a href="#tuner">Tuner</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="map"><span class="n">07.1</span>The control map</h2>
-      <p>The <b class="ui a">Control</b> tab holds three cards. The first is
-        <b class="ui">CONTROL MAP</b> — your own mappings, the ones that override everything else.
-        Its blurb says what it takes: <b class="ui">MIDI controls and input triggers, mapped to
-        anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or a
-        chord.</b></p>
-      <p>The header has a presets chip and a <b class="ui">+</b> (<b class="ui">Add mapping</b>).
-        With nothing mapped yet the card reads
-        <b class="ui">No mappings yet — add one with +</b>.</p>
-      <p>Every mapping is one row, read left to right: a source chip, a <b class="ui">LEARN</b>
-        button, an arrow, an action chip, and an <b class="ui">✕</b> to delete the row. Saved maps
-        live under <b class="ui">Control Presets</b> on the presets chip, so a pedalboard layout for
-        one band need not follow you to the next.</p>
+      <h2 id="map"><span class="n">07.1</span>Control map</h2>
+      <p>Tab <b class="ui a">Điều khiển</b> có ba thẻ. Thẻ đầu tiên là
+        <b class="ui">BẢN ĐỒ ĐIỀU KHIỂN</b> — các mapping của riêng bạn, những cái ghi đè lên mọi thứ
+        khác. Mô tả của nó nói rõ nó nhận gì: <b class="ui">Điều khiển MIDI và kích hoạt từ đầu vào, ánh xạ tới bất cứ thứ gì. Nguồn: bất kỳ CC hay nốt nào (dùng LEARN), gõ vào thùng đàn, giữ một nốt hoặc một hợp âm.</b></p>
+      <p>Header có một chip presets và một <b class="ui">+</b> (<b class="ui">Thêm ánh xạ</b>). Khi chưa map gì cả, thẻ hiện
+        <b class="ui">Chưa có ánh xạ — thêm bằng +</b>.</p>
+      <p>Mỗi mapping là một hàng, đọc từ trái sang phải: một chip nguồn, một nút
+        <b class="ui">LEARN</b>, một mũi tên, một chip hành động, và một <b class="ui">✕</b> để
+        xoá hàng. Các map đã lưu nằm dưới <b class="ui">Preset điều khiển</b> trên chip presets,
+        nên layout pedalboard của một ban nhạc không nhất thiết phải theo bạn sang ban nhạc kế
+        tiếp.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
-             alt="The Control tab: the CONTROL MAP card with mapping rows, the TAUGHT SOUNDS card, and the BUILT-IN MIDI MAP card listing CC ranges with a Pair Bluetooth MIDI button at the bottom.">
-        <figcaption>The Control tab — your map, your taught sounds, and the built-in map</figcaption>
+             alt="Tab Control: thẻ CONTROL MAP với các hàng mapping, thẻ TAUGHT SOUNDS, và thẻ BUILT-IN MIDI MAP liệt kê các dải CC cùng một nút Pair Bluetooth MIDI ở dưới cùng.">
+        <figcaption>Tab Control — map của bạn, âm thanh đã dạy của bạn, và bản đồ có sẵn</figcaption>
       </figure>
 
       <div class="note warn">
-        <div class="t">Four input triggers</div>
-        <p>Only the first four rows driven by a taught sound are live. Add a fifth and the card
-          warns you: <b class="ui r">Only the first 4 input triggers are active</b>. MIDI rows have
-          no such limit — this one is about listening to the instrument.</p>
+        <div class="t">Bốn trigger đầu vào</div>
+        <p>Chỉ bốn hàng đầu tiên chạy bằng âm thanh đã dạy là còn hoạt động. Thêm hàng thứ năm
+          thì thẻ cảnh báo bạn: <b class="ui r">Chỉ 4 kích hoạt đầu vào đầu tiên hoạt động</b>. Các hàng MIDI không có giới hạn này — giới hạn này chỉ áp dụng cho việc
+          lắng nghe nhạc cụ.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
-      <p>You never type a CC number. On a mapping row:</p>
+      <p>Bạn không bao giờ phải gõ số CC. Trên một hàng mapping:</p>
       <ol style="--nc:var(--eq)">
-        <li>Tap <b class="ui">LEARN</b>. The chip lights up and the row waits.</li>
-        <li>Press the footswitch or sweep the pedal you want to use.</li>
-        <li>The source chip fills in as <b class="ui">CC 42</b> or <b class="ui">Note 60</b>, and
-          the card's <b class="ui">Last:</b> line confirms it — <b class="ui">Learned CC 42</b>.</li>
+        <li>Chạm <b class="ui">LEARN</b>. Chip sáng lên và hàng chờ.</li>
+        <li>Đạp footswitch hoặc quét pedal bạn muốn dùng.</li>
+        <li>Chip nguồn được điền vào dạng <b class="ui">CC 42</b> hoặc <b class="ui">Note
+          60</b>, và dòng <b class="ui">Last:</b> của thẻ xác nhận điều đó —
+          <b class="ui">Learned CC 42</b>.</li>
       </ol>
-      <p>Tap <b class="ui">LEARN</b> again to disarm. The source chip's own menu has a
-        <b class="ui">MIDI</b> section with <b class="ui">CC… (use LEARN)</b> and
-        <b class="ui">Note… (use LEARN)</b>, and a <b class="ui">Taught sounds</b> section listing
-        the sounds you have trained plus <b class="ui">Teach a new sound…</b></p>
+      <p>Chạm <b class="ui">LEARN</b> lần nữa để huỷ. Menu riêng của chip nguồn có một mục
+        <b class="ui">MIDI</b> với <b class="ui">CC… (dùng LEARN)</b> và <b class="ui">Nốt… (dùng LEARN)</b>, và một mục <b class="ui">Âm đã dạy</b> liệt kê các âm thanh bạn đã
+        dạy cùng <b class="ui">Dạy một âm mới…</b></p>
 
-      <h3>Learn in place</h3>
-      <p>You do not have to start from the Control tab. Long-press almost any control in the app —
-        a knob, a chip row, a looper pad, a sampler pad, the Perform transport buttons — and the
-        menu offers <b class="ui">MIDI Learn: &lt;name&gt;</b> for that exact control. It outlines
-        itself and shows <b class="ui">MOVE A MIDI CONTROL…</b>; move the pedal and the mapping is
-        made. <b class="ui">Cancel learn</b> backs out if you grabbed the wrong knob.</p>
+      <h3>Learn tại chỗ</h3>
+      <p>Bạn không cần phải bắt đầu từ tab Control. Nhấn giữ hầu như bất kỳ control nào trong
+        app — một núm, một hàng chip, một pad looper, một pad sampler, các nút transport của
+        Perform — và menu cho ra <b class="ui">MIDI Learn: &lt;name&gt;</b> đúng cho control đó.
+        Nó tự viền sáng và hiện <b class="ui">DI CHUYỂN MỘT NÚM MIDI…</b>; di chuyển pedal và
+        mapping được tạo ra. <b class="ui">Huỷ learn</b> để thoát ra nếu bạn lỡ chọn nhầm
+        núm.</p>
       <div class="note tip">
-        <div class="t">The fast way to build a board</div>
-        <p>Learn in place beats the Control tab for anything you can see: open the block, long-press
-          the knob you want on the pedal, press the switch, done. The Control tab is for reviewing
-          and tidying what you built.</p>
+        <div class="t">Cách nhanh nhất để dựng một board</div>
+        <p>Learn tại chỗ nhanh hơn tab Control cho bất cứ thứ gì bạn nhìn thấy được: mở block,
+          nhấn giữ núm bạn muốn gán cho pedal, đạp switch, xong. Tab Control dùng để xem lại và
+          dọn gọn những gì bạn đã dựng.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="actions"><span class="n">07.3</span>What you can map to</h2>
-      <p>The action chip's menu, in full:</p>
+      <h2 id="actions"><span class="n">07.3</span>Những gì bạn có thể map vào</h2>
+      <p>Menu đầy đủ của chip hành động:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Actions</th></tr></thead>
+          <thead><tr><th>Mục</th><th>Hành động</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">No action</b></td><td>Leaves the row inert.</td></tr>
-            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> upwards, one per
-              loaded pad.</td></tr>
+            <tr><td><b class="ui">Không hành động</b></td><td>Để hàng không làm gì cả.</td></tr>
+            <tr><td><b class="ui">Pad sampler</b></td><td><b class="ui">Pad 1</b> trở lên, mỗi
+              pad đã tải một cái.</td></tr>
             <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">Clear all</b>.</td></tr>
-            <tr><td><b class="ui">Preset</b></td><td>Every rig preset by name, plus
-              <b class="ui">Next preset</b>.</td></tr>
-            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
-              <b class="ui">Stop</b>, <b class="ui">Next section</b>,
-              <b class="ui">Prev section</b>.</td></tr>
-            <tr><td>Per rig</td><td><b class="ui">Block on/off</b> and <b class="ui">Block parameter
-              (CC)</b>, listed under each rig by name.</td></tr>
+              track 4</b>, <b class="ui">Chạy / dừng</b>, <b class="ui">Xoá tất cả</b>.</td></tr>
+            <tr><td><b class="ui">Preset</b></td><td>Mọi preset của rig theo tên, cộng với
+              <b class="ui">Preset kế</b>.</td></tr>
+            <tr><td><b class="ui">Biểu diễn</b></td><td><b class="ui">Phát / tạm dừng</b>,
+              <b class="ui">Dừng</b>, <b class="ui">Phân đoạn kế</b>,
+              <b class="ui">Phân đoạn trước</b>.</td></tr>
+            <tr><td>Theo từng rig</td><td><b class="ui">Bật/tắt khối</b> và <b class="ui">Tham số khối (CC)</b>, liệt kê dưới từng rig theo tên.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Once you have more than one rig, three more entries appear: <b class="ui">Next rig</b>,
-        <b class="ui">Block on/off · Active rig</b> and <b class="ui">Block param · Active rig</b>.
-        Those follow whichever rig currently has MIDI focus, so one footswitch can bypass "the
-        drive in whatever rig I am playing" instead of a fixed block in a fixed rig.</p>
-      <p>Two constraints are worth remembering before you wire a pedal:</p>
+      <p>Khi bạn có nhiều hơn một rig, ba mục nữa xuất hiện: <b class="ui">Rig kế</b>,
+        <b class="ui">Bật/tắt khối · Rig đang chạy</b> và <b class="ui">Tham số khối · Rig đang chạy</b>. Những mục này theo bất kỳ rig nào đang có MIDI focus, nên một footswitch có thể
+        bypass "drive trong bất kỳ rig nào tôi đang chơi" thay vì một block cố định trong một
+        rig cố định.</p>
+      <p>Hai giới hạn đáng nhớ trước khi bạn đấu dây một pedal:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>A continuous block parameter needs a CC.</b> Notes and taught sounds are events —
-          they cannot sweep a value — so the parameter submenu is hidden for those sources.
-          An expression pedal sending a CC is what you want.</li>
-        <li><b>Soft pickup after a rig switch.</b> A continuous CC mapped to
-          <b class="ui">Block param · Active rig</b> does not jump the knob when you change rigs.
-          It waits until your pedal sweeps past the new rig's current value, then takes over — so
-          switching rigs mid-song never snaps a parameter to wherever your foot happens to be.</li>
+        <li><b>Một tham số block liên tục cần một CC.</b> Note và âm thanh đã dạy là các sự
+          kiện — chúng không thể quét một giá trị — nên submenu tham số bị ẩn đi cho các nguồn
+          đó. Một expression pedal gửi CC mới là thứ bạn cần.</li>
+        <li><b>Soft pickup sau khi đổi rig.</b> Một CC liên tục được map vào
+          <b class="ui">Tham số khối · Rig đang chạy</b> không làm núm nhảy giá trị khi bạn đổi rig.
+          Nó chờ cho đến khi pedal của bạn quét qua đúng giá trị hiện tại của rig mới, rồi mới
+          tiếp quản — nên đổi rig giữa bài không bao giờ làm một tham số nhảy về bất kỳ vị trí
+          nào chân bạn đang để.</li>
       </ul>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="builtin"><span class="n">07.4</span>The built-in MIDI map</h2>
-      <p>Before you map anything, a fixed layout is already live — plug a controller in and it
-        works. All channels are accepted, because NAMper listens omni, and every source that appears
-        is connected automatically. The app also publishes a virtual destination named
-        <b class="ui">NAMper</b>, so another app on the same device can send to it.</p>
+      <h2 id="builtin"><span class="n">07.4</span>Bản đồ MIDI có sẵn</h2>
+      <p>Trước khi bạn map bất cứ gì, một layout cố định đã sẵn sàng hoạt động — cắm một
+        controller vào là chạy được ngay. Mọi kênh đều được chấp nhận, vì NAMper lắng nghe omni,
+        và mọi nguồn xuất hiện đều được kết nối tự động. App cũng phát ra một đích ảo (virtual
+        destination) tên <b class="ui">NAMper</b>, để một app khác trên cùng thiết bị có thể gửi
+        tới nó.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Shown as</th><th>Does</th></tr></thead>
+          <thead><tr><th>Hiện là</th><th>Làm gì</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">presets</b></td></tr>
-            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp,
-              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, in that order; a value of
-              64 or more is on</td></tr>
-            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">block parameters</b> — 0–127
-              scaled into each parameter's range. <b class="ui">CC 64</b> is skipped and left free
-              for a sustain pedal</td></tr>
-            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">looper track taps</b> —
-              tracks 1 to 4</td></tr>
-            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
-              clear</b></td></tr>
-            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop ·
-              next · prev</b></td></tr>
-            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">preset</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">bật/tắt khối</b> — gate,
+              comp, drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, theo đúng thứ
+              tự đó; giá trị từ 64 trở lên là bật</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">tham số khối</b> —
+              0–127 được co giãn vào khoảng của từng tham số. <b class="ui">CC 64</b> bị bỏ qua
+              và để trống cho một sustain pedal</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">tap track looper</b> —
+              track 1 đến 4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper chạy-dừng / xoá</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: phát/tạm dừng · dừng · kế · trước</b></td></tr>
+            <tr><td><b class="ui">Nốt 36–51</b></td><td><b class="ui">pad 1–16</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Your own mappings always win. If you learn a footswitch to CC 85, your row runs and the
-        built-in track-1 tap on that CC steps aside — so you never have to work around the defaults,
-        only over them.</p>
+      <p>Mapping của riêng bạn luôn thắng. Nếu bạn learn một footswitch vào CC 85, hàng của bạn
+        chạy và tap track-1 có sẵn trên CC đó nhường chỗ — nên bạn không bao giờ phải né các mặc
+        định, chỉ cần đè lên chúng.</p>
       <div class="note">
-        <div class="t">CC 89 toggles</div>
-        <p>The built-in <b class="ui">CC 89</b> is a true run/stop toggle: it reads the looper's
-          current state, stops it when it is running (a recording counts as running) and starts it
-          from the top when it is stopped. A learned mapping on the
-          <b class="ui">Run / stop</b> action behaves the same way.</p>
+        <div class="t">CC 89 bật/tắt</div>
+        <p>Có sẵn <b class="ui">CC 89</b> là một công tắc run/stop thật sự: nó đọc trạng thái
+          hiện tại của looper, dừng nó khi đang chạy (một bản ghi cũng tính là đang chạy) và
+          chạy lại từ đầu khi đã dừng. Một mapping đã learn vào hành động
+          <b class="ui">Chạy / dừng</b> hoạt động y hệt vậy.</p>
       </div>
-      <p>Press detection is deliberately forgiving of cheap pedals. A message counts as a press when
-        its value is 64 or more, and also when it is low but did not follow a high one — so a
-        footswitch that sends every press as value 0 still fires discrete actions.</p>
-      <p>At the bottom of the card, one line tells you what NAMper can see:
-        <b class="ui">MIDI: waiting for sources</b> or the names of the connected sources, with a
-        <b class="ui">Last:</b> line under it showing the most recent event. If a pedal does
-        nothing, look there first — it tells you whether the messages are arriving at all.</p>
+      <p>Việc phát hiện lần đạp được cố tình làm dễ dãi với các pedal rẻ tiền. Một message được
+        tính là một lần đạp khi giá trị của nó từ 64 trở lên, và cũng khi giá trị thấp nhưng
+        không theo sau một giá trị cao — nên một footswitch gửi mọi lần đạp với giá trị 0 vẫn
+        kích hoạt được các hành động rời rạc.</p>
+      <p>Dưới cùng thẻ, một dòng cho bạn biết NAMper đang thấy gì:
+        <b class="ui">MIDI: đang chờ nguồn</b> hoặc tên các nguồn đã kết nối, với một dòng
+        <b class="ui">Last:</b> bên dưới hiện sự kiện gần nhất. Nếu một pedal không làm gì cả,
+        hãy nhìn vào đó trước — nó cho bạn biết các message có đang đến hay không.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
-      <p>Wireless pedals pair from inside the app. At the bottom of the built-in map card, tap
-        <b class="ui">Pair Bluetooth MIDI</b>. A sheet titled <b class="ui">Bluetooth MIDI</b> opens
-        with the system pairing panel in it and a <b class="ui">Done</b> button. Put your pedal into
-        pairing mode, tap it in the list, and it joins the MIDI sources line.</p>
+      <p>Pedal không dây ghép đôi ngay bên trong app. Ở dưới cùng thẻ bản đồ có sẵn, chạm
+        <b class="ui">Ghép nối MIDI Bluetooth</b>. Một sheet tên <b class="ui">Bluetooth MIDI</b> mở
+        ra với bảng ghép đôi của hệ thống bên trong và một nút <b class="ui">Xong</b>. Đưa pedal
+        của bạn vào chế độ ghép đôi, chạm vào nó trong danh sách, và nó gia nhập dòng nguồn
+        MIDI.</p>
       <div class="note warn">
-        <div class="t">Do not tap it twice</div>
-        <p>The sheet carries this caution for a reason: <b class="ui">Tapping a device toggles its
-          connection — a pedal already shown in the MIDI sources line is connected; don't tap it
-          again.</b> Tapping a connected pedal disconnects it. If you are unsure, check the sources
-          line at the bottom of the card before touching anything.</p>
+        <div class="t">Đừng chạm vào nó hai lần</div>
+        <p>Sheet mang lời cảnh báo này không phải vô cớ: <b class="ui">Chạm vào một thiết bị sẽ bật/tắt kết nối — bàn đạp đã hiện ở dòng nguồn MIDI là đang kết nối; đừng chạm lại.</b> Chạm vào một pedal đã kết nối sẽ ngắt kết nối nó. Nếu bạn không
+          chắc, hãy kiểm tra dòng nguồn ở dưới cùng thẻ trước khi chạm vào bất cứ gì.</p>
       </div>
-      <p>NAMper asks for Bluetooth permission the first time you open this sheet, and for nothing
-        else.</p>
+      <p>NAMper xin quyền Bluetooth ở lần đầu bạn mở sheet này, và không xin gì thêm.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="sounds"><span class="n">07.6</span>Taught sound triggers</h2>
-      <p>The <b class="ui">TAUGHT SOUNDS</b> card needs no hardware at all. You teach NAMper a
-        noise you can make with the instrument in your hands, and from then on it fires any action,
-        exactly like a MIDI event. The empty state puts it plainly:
-        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
-        bridge — then map it to any action, like a MIDI event.</b></p>
+      <h2 id="sounds"><span class="n">07.6</span>Trigger bằng âm thanh đã dạy</h2>
+      <p>Thẻ <b class="ui">ÂM ĐÃ DẠY</b> không cần phần cứng nào cả. Bạn dạy cho NAMper một
+        tiếng động bạn có thể tạo ra bằng nhạc cụ trong tay, và từ đó nó kích hoạt bất kỳ hành
+        động nào, y hệt một sự kiện MIDI. Trạng thái trống nói rõ điều đó:
+        <b class="ui">Dạy ứng dụng một âm thanh — gõ thùng đàn, vỗ dây, búng sau ngựa đàn — rồi gán nó cho bất kỳ hành động nào, như một sự kiện MIDI.</b></p>
 
-      <h3>Teaching one</h3>
-      <p>Tap <b class="ui">TEACH</b> and the sheet <b class="ui">TEACH A SOUND</b> opens with its
-        instruction: <b class="ui">Make the sound 3–5 times, the same way each time: knock the body,
-        slap the strings, click behind the bridge — anything with a clear attack.</b> Eight dots
-        fill in as takes arrive, and the status reads <b class="ui">Listening…</b> and then the
-        count. Give it a name in the <b class="ui">Sound name</b> field and tap
-        <b class="ui">Save the sound</b>. Save needs at least two takes, and up to eight are
-        averaged — more consistent takes make a more reliable trigger.</p>
-      <p>Each row shows the name, a usage count like <b class="ui">3×</b>, a
-        <b class="ui">RE-TEACH</b> button and a delete <b class="ui">✕</b>. Tap the name to rename
-        it. Re-teaching keeps the name and every mapping that points at it, so if a sound starts
-        misfiring after you change guitars, re-teach it rather than starting over.</p>
+      <h3>Dạy một âm thanh</h3>
+      <p>Chạm <b class="ui">DẠY</b> và sheet <b class="ui">DẠY MỘT ÂM</b> mở ra với hướng
+        dẫn: <b class="ui">Tạo âm thanh đó 3–5 lần theo cùng một cách: gõ thùng đàn, vỗ dây, búng sau ngựa đàn — bất cứ gì có attack rõ.</b> Tám chấm
+        điền dần khi các lần thử đến, và trạng thái hiện <b class="ui">Đang nghe…</b> rồi tới số
+        đếm. Đặt tên trong ô <b class="ui">Tên âm</b> và chạm <b class="ui">Lưu âm</b>. Lưu cần ít nhất hai lần thử, và tối đa tám lần được lấy trung bình — càng
+        nhiều lần thử nhất quán thì trigger càng đáng tin cậy.</p>
+      <p>Mỗi hàng hiện tên, một số lần sử dụng dạng <b class="ui">3×</b>, một nút
+        <b class="ui">DẠY LẠI</b> và một nút xoá <b class="ui">✕</b>. Chạm vào tên để đổi tên
+        nó. Dạy lại (re-teach) giữ nguyên tên và mọi mapping trỏ tới nó, nên nếu một âm thanh bắt
+        đầu nhận nhầm sau khi bạn đổi đàn, hãy dạy lại nó thay vì làm lại từ đầu.</p>
       <div class="note warn">
-        <div class="t">Deleting takes the mappings with it</div>
-        <p>Delete a taught sound and every mapping that listened for it goes too. The usage count on
-          the row tells you how many that is before you tap the ✕.</p>
+        <div class="t">Xoá sẽ kéo theo mọi mapping</div>
+        <p>Xoá một âm thanh đã dạy thì mọi mapping đang lắng nghe nó cũng mất theo. Số lần sử
+          dụng trên hàng cho bạn biết đó là bao nhiêu, trước khi bạn chạm ✕.</p>
       </div>
-      <p>A taught sound can fire any action in the menu except a continuous block parameter — it is
-        an event, not a sweep. And as on the control map, only the first four taught-sound mappings
-        are active at once.</p>
+      <p>Một âm thanh đã dạy có thể kích hoạt bất kỳ hành động nào trong menu trừ một tham số
+        block liên tục — nó là một sự kiện, không phải một lần quét. Và giống như trên control
+        map, chỉ bốn mapping âm thanh đã dạy đầu tiên hoạt động cùng lúc.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="tuner"><span class="n">07.7</span>The tuner</h2>
-      <p>The tuner is not a tab. It opens from the tuning-fork icon in the <b class="ui a">Rig</b>
-        header, and it works whenever the audio engine is running — including when the feedback
-        guard has muted the output, so you can still tune with the phone on its own speaker.</p>
+      <h2 id="tuner"><span class="n">07.7</span>Tuner</h2>
+      <p>Tuner không phải là một tab. Nó mở ra từ icon nĩa lên dây (tuning-fork) trong header
+        <b class="ui a">Rig</b>, và nó hoạt động bất cứ khi nào audio engine đang chạy — kể cả
+        khi feedback guard đã tắt tiếng output, nên bạn vẫn lên dây được với điện thoại phát
+        bằng loa của chính nó.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
-             alt="The tuner sheet in POLY mode: mode chips, a GUITAR badge, a row of tuning chips, and six vertical string meters with note names underneath.">
-        <figcaption>POLY mode — six strings reading at once</figcaption>
+             alt="Sheet tuner ở chế độ POLY: các chip chế độ, một badge GUITAR, một hàng chip tuning, và sáu đồng hồ dây dọc với tên nốt bên dưới.">
+        <figcaption>Chế độ POLY — sáu dây đọc cùng lúc</figcaption>
       </figure>
 
-      <p>Two mode chips sit at the top, <b class="ui">POLY</b> and <b class="ui">SINGLE</b>.
-        <b class="ui">POLY</b> is the default and the one to use on stage: strum once and every
-        string reads at the same time, one vertical meter per string with the note underneath. Its
-        caption says it — <b class="ui">strum — every string reads at once</b>. A string's dot goes
-        green inside ±5 cents.</p>
-      <p><b class="ui">SINGLE</b> is the classic one-note-at-a-time tuner: a big note letter, a
-        needle across ±50 cents and a cents readout, going green inside ±3 cents. With no signal it
-        shows <b class="ui">play a note…</b> Use it when you want to be precise about one
-        string.</p>
+      <p>Hai chip chế độ nằm trên cùng, <b class="ui">POLY</b> và <b class="ui">SINGLE</b>.
+        <b class="ui">POLY</b> là mặc định và là cái để dùng trên sân khấu: quạt một cái và mọi
+        dây đọc cùng lúc, mỗi dây một đồng hồ dọc với nốt bên dưới. Chú thích của nó nói rõ —
+        <b class="ui">quạt dây — mọi dây được đọc cùng lúc</b>. Chấm của một dây chuyển xanh lá
+        trong khoảng ±5 cent.</p>
+      <p><b class="ui">SINGLE</b> là tuner cổ điển từng nốt một: một chữ cái nốt lớn, một kim
+        chạy trong khoảng ±50 cent và một chỉ số cent, chuyển xanh lá trong khoảng ±3 cent. Khi
+        không có tín hiệu, nó hiện <b class="ui">chơi một nốt…</b> Dùng nó khi bạn muốn chính xác
+        về một dây cụ thể.</p>
 
-      <h3>Instrument and tuning</h3>
-      <p>NAMper works out what you are holding by itself and shows it as a pill:
-        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> or <b class="ui">UKULELE</b>. There is no
-        picker — plug a bass in and the tuner follows.</p>
-      <p>The tuning chips apply to <b class="ui">POLY</b> mode, and each instrument remembers its
-        own choice:</p>
+      <h3>Nhạc cụ và tuning</h3>
+      <p>NAMper tự nhận ra bạn đang cầm nhạc cụ gì và hiện nó dưới dạng một pill:
+        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> hoặc <b class="ui">UKULELE</b>. Không
+        có trình chọn nào cả — cắm một cây bass vào và tuner sẽ tự theo.</p>
+      <p>Các chip tuning áp dụng cho chế độ <b class="ui">POLY</b>, và mỗi nhạc cụ tự nhớ lựa
+        chọn riêng của nó:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Instrument</th><th>Tunings</th></tr></thead>
+          <thead><tr><th>Nhạc cụ</th><th>Tuning</th></tr></thead>
           <tbody>
             <tr><td>Guitar</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
               <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
@@ -308,14 +303,14 @@
           </tbody>
         </table>
       </div>
-      <p>Reference pitch is fixed at A4 = 440 Hz. There is no calibration control, so if you play
-        with an orchestra at 442 the tuner will not follow you there.</p>
+      <p>Cao độ tham chiếu cố định ở A4 = 440 Hz. Không có control hiệu chỉnh nào cả, nên nếu
+        bạn chơi cùng một dàn nhạc ở 442 thì tuner sẽ không theo bạn tới đó.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/perform.html">← 06 · Perform &amp; lyrics</a>
+      <a href="/docs/vi/perform.html">← 06 · Perform &amp; lời bài hát</a>
       <span class="sp"></span>
-      <a href="/docs/vi/settings.html">08 · Settings reference →</a>
+      <a href="/docs/vi/settings.html">08 · Tham chiếu cài đặt →</a>
     </nav>
   </main>
 </div>
@@ -330,7 +325,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một app độc lập, không liên kết, không được xác nhận hay tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu đều thuộc quyền sở hữu của chủ sở hữu tương ứng, và chỉ được dùng để mô tả thiết bị mà một bản capture được thực hiện từ đó.</p>
   </div>
 </footer>
 

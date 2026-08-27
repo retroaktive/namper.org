@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sampler pads — NAMper Documentation</title>
-<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, trigger quantize, MIDI notes 36–51 and where the pads go in the mix.">
+<title>Pad sampler — Dokumentasi NAMper</title>
+<meta name="description" content="Enam belas pad sampler: memuat dan merekam suara, editor pad dengan trim dan ADSR, kit serta empat kit drum pabrik, trigger quantize, not MIDI 36–51, dan ke mana pad-pad ini masuk ke dalam mix.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Sampler pads — NAMper Documentation">
-<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, quantize and MIDI triggering.">
+<meta property="og:title" content="Pad sampler — Dokumentasi NAMper">
+<meta property="og:description" content="Enam belas pad, kit, trim dan ADSR, quantize dan triggering MIDI.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/id/sampler.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOKUMENTASI</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/id/">← ALL DOCS</a>
+  <a class="home" href="/docs/id/">← SEMUA DOKUMEN</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/id/sampler.html" aria-current="page">Indonesia</a>
   </nav>
@@ -46,254 +46,260 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">ISI</div>
     <ol>
-      <li><a href="/docs/id/setup.html">Getting started</a></li>
-      <li><a href="/docs/id/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/id/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/id/setup.html">Memulai</a></li>
+      <li><a href="/docs/id/rig.html">Rig &amp; rantai sinyal</a></li>
+      <li><a href="/docs/id/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/id/looper.html">Looper</a></li>
-      <li><a class="on" href="/docs/id/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/id/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/id/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/id/settings.html">Settings reference</a></li>
+      <li><a class="on" href="/docs/id/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/id/perform.html">Perform &amp; lirik</a></li>
+      <li><a href="/docs/id/control.html">MIDI &amp; kontrol</a></li>
+      <li><a href="/docs/id/settings.html">Referensi pengaturan</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PADS</div>
-    <h1>Sixteen pads, one page.</h1>
-    <p class="lede">The <b class="ui a">Sample</b> tab is a drum machine you can play with your
-      thumbs or a MIDI pedal: sixteen pads, a kit library, trim and envelope per pad, and a
-      quantizer for when the timing has to be right.</p>
+    <div class="slab" style="--nc:var(--eq)">05 · PAD SAMPLER</div>
+    <h1>Enam belas pad, satu halaman.</h1>
+    <p class="lede">Tab <b class="ui a">Sample</b> adalah drum machine yang bisa kamu mainkan dengan
+      ibu jari atau pedal MIDI: enam belas pad, library kit, trim dan envelope per pad, serta
+      quantizer untuk saat timing harus pas.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">DI HALAMAN INI</div>
       <ul>
-        <li><a href="#grid">The grid</a></li>
-        <li><a href="#loading">Getting sound into a pad</a></li>
-        <li><a href="#editor">The pad editor</a></li>
-        <li><a href="#kits">Kits</a></li>
+        <li><a href="#grid">Grid pad</a></li>
+        <li><a href="#loading">Memasukkan suara ke pad</a></li>
+        <li><a href="#editor">Editor pad</a></li>
+        <li><a href="#kits">Kit</a></li>
         <li><a href="#quantize">Trigger quantize</a></li>
-        <li><a href="#trigger">Playing the pads</a></li>
-        <li><a href="#routing">Where the pads go</a></li>
+        <li><a href="#trigger">Memainkan pad</a></li>
+        <li><a href="#routing">Ke mana pad pergi</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="grid"><span class="n">05.1</span>The grid</h2>
-      <p>Sixteen pads in a fixed 4×4 grid. One page — there are no banks and no second page, so
-        everything you can play is on screen at once.</p>
+      <h2 id="grid"><span class="n">05.1</span>Grid pad</h2>
+      <p>Enam belas pad dalam grid 4×4 yang tetap. Satu halaman — tidak ada bank dan tidak ada
+        halaman kedua, jadi semua yang bisa kamu mainkan ada di layar sekaligus.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
-             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
-        <figcaption>The <b class="ui">Drums — Acoustic</b> factory kit loaded across all 16 pads</figcaption>
+             alt="Tab Sample dengan kit drum akustik pabrik dimuat di semua enam belas pad, masing-masing menampilkan nama sample, panjang, dan waveform-nya, dengan knob LEVEL dan QUANT serta chip grid quantize di header.">
+        <figcaption>Kit pabrik <b class="ui">Drum — akustik</b> dimuat di semua 16 pad</figcaption>
       </figure>
-      <p>The header row carries, left to right: the word <b class="ui">SAMPLER</b>, a
-        <b class="ui">LEVEL</b> knob (0 to 2, default 1), a <b class="ui">QUANT</b> knob, the
-        quantize grid chip, the <b class="ui">PRESETS</b> chip for kits, a <b class="ui">REC</b>
-        indicator that lights while a pad is recording, and <b class="ui">STOP ALL</b>.</p>
-      <p>Along the bottom, the hint says it all:</p>
-      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
-        36–51</b></p>
-      <p>An <b>empty pad</b> splits into two halves — <b class="ui">LOAD</b> and
-        <b class="ui">REC</b>. A <b>loaded pad</b> shows the sample name, its length (for example
-        <b class="ui">1.4s</b>), a dimmed waveform with everything outside the trim faded back, and
-        a bright cursor sweeping through while it plays.</p>
-      <p>Long-press any pad for the menu: <b class="ui">Load sound…</b>,
-        <b class="ui">Record mix</b> or <b class="ui">Stop recording</b>, and — on a loaded pad —
-        <b class="ui">Edit…</b>, <b class="ui">Clear</b> and <b class="ui">MIDI Learn: pad N</b>.</p>
+      <p>Baris header memuat, dari kiri ke kanan: kata <b class="ui">SAMPLER</b>, knob
+        <b class="ui">LEVEL</b> (0 sampai 2, default 1), knob <b class="ui">QUANT</b>, chip
+        grid quantize, chip <b class="ui">PRESET</b> untuk kit, indikator <b class="ui">REC</b>
+        yang menyala saat sebuah pad sedang merekam, dan <b class="ui">HENTIKAN SEMUA</b>.</p>
+      <p>Di bagian bawah, hint-nya sudah menjelaskan semuanya:</p>
+      <p><b class="ui">Pad kosong: muat atau rekam · terisi: ketuk = putar/berhenti, tekan lama untuk edit · not MIDI 36–51</b></p>
+      <p><b>Pad kosong</b> terbagi jadi dua bagian — <b class="ui">MUAT</b> dan
+        <b class="ui">REC</b>. <b>Pad yang sudah dimuat</b> menampilkan nama sample, panjangnya
+        (misalnya <b class="ui">1.4s</b>), waveform yang diredupkan dengan semua bagian di luar
+        trim dipudarkan, dan kursor terang yang bergerak melintasinya saat diputar.</p>
+      <p>Tekan lama pad mana pun untuk membuka menu: <b class="ui">Muat suara…</b>,
+        <b class="ui">Rekam mix</b> atau <b class="ui">Hentikan rekaman</b>, dan — pada pad yang
+        sudah dimuat — <b class="ui">Edit…</b>, <b class="ui">Hapus</b> dan
+        <b class="ui">MIDI Learn: pad N</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="loading"><span class="n">05.2</span>Getting sound into a pad</h2>
-      <p>There are three ways to load a file, and they all open the same Files picker: the
-        <b class="ui">LOAD</b> half of an empty pad, <b class="ui">Load sound…</b> in the long-press
-        menu, and <b class="ui">Load file</b> inside the pad editor. Anything iOS can decode is
-        accepted.</p>
-      <p>Samples are capped at <b>12 seconds</b> — a longer file is truncated rather than refused.
-        And there is no drag and drop into NAMper: every import goes through the picker.</p>
+      <h2 id="loading"><span class="n">05.2</span>Memasukkan suara ke pad</h2>
+      <p>Ada tiga cara memuat file, dan semuanya membuka picker Files yang sama: bagian
+        <b class="ui">MUAT</b> pada pad kosong, <b class="ui">Muat suara…</b> di menu tekan-lama,
+        dan <b class="ui">Muat file</b> di dalam editor pad. Apa pun yang bisa didekode iOS akan
+        diterima.</p>
+      <p>Sample dibatasi maksimal <b>12 detik</b> — file yang lebih panjang akan dipotong, bukan
+        ditolak. Dan tidak ada drag and drop ke NAMper: setiap impor harus lewat picker.</p>
 
-      <h3>Recording into a pad</h3>
-      <p>The <b class="ui">REC</b> half of an empty pad records straight into it. Only one pad can
-        record at a time, and the take is named <b class="ui">Rec N</b>. With the engine stopped it
-        refuses with <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <h3>Merekam ke dalam pad</h3>
+      <p>Bagian <b class="ui">REC</b> pada pad kosong merekam langsung ke dalamnya. Hanya satu pad
+        yang bisa merekam dalam satu waktu, dan take-nya diberi nama <b class="ui">Rec N</b>.
+        Saat engine dimatikan, perekaman ditolak dengan pesan <b class="ui r">Audio mati — ketuk tombol daya sebelum merekam.</b></p>
       <div class="note warn">
-        <div class="t">The pad recorder captures what you hear</div>
-        <p>It records the <b>main output mix</b>, not the raw input — so the rig, the looper, the
-          other pads and any backing track all land in the sample. That is useful for grabbing a
-          chord straight off your processed tone, and a trap if you meant to capture a dry
-          source. Mute or stop everything else before you hit <b class="ui">REC</b>.</p>
+        <div class="t">Perekam pad menangkap apa yang kamu dengar</div>
+        <p>Ia merekam <b>main output mix</b>, bukan input mentah — jadi rig, looper, pad lain, dan
+          backing track apa pun akan ikut masuk ke sample. Ini berguna untuk menangkap chord
+          langsung dari tone yang sudah diproses, tapi jadi jebakan kalau maksudmu menangkap
+          sumber yang kering (dry). Mute atau hentikan semua yang lain sebelum menekan
+          <b class="ui">REC</b>.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">05.3</span>The pad editor</h2>
-      <p>Long-press a loaded pad → <b class="ui">Edit…</b>. The sheet is headed
-        <b class="ui">PAD N</b> with the sample name and its length.</p>
-      <p>The waveform has <b>draggable trim handles</b> at the start and end — drag the start in to
-        cut off a slow attack, drag the end in to shorten a long tail.</p>
-      <p>The <b>ADSR envelope is drawn on top of the waveform</b> and edited by dragging three round
-        handles: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> and
-        <b class="ui">Release</b>. A readout above shows the values, like
+      <h2 id="editor"><span class="n">05.3</span>Editor pad</h2>
+      <p>Tekan lama pad yang sudah dimuat → <b class="ui">Edit…</b>. Sheet-nya berjudul
+        <b class="ui">PAD N</b> dengan nama sample dan panjangnya.</p>
+      <p>Waveform-nya punya <b>handle trim yang bisa digeser</b> di awal dan akhir — geser awalnya
+        ke dalam untuk memotong attack yang lambat, geser akhirnya ke dalam untuk memperpendek
+        tail yang panjang.</p>
+      <p><b>Envelope ADSR digambar di atas waveform</b> dan diedit dengan menggeser tiga handle
+        bulat: <b class="ui">Attack</b>, <b class="ui">Decay dan sustain</b> dan
+        <b class="ui">Release</b>. Sebuah readout di atasnya menampilkan nilainya, seperti
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
-      <p>Two knobs: <b class="ui">Gain</b> (0 to 2) and <b class="ui">Pitch</b> (0.25 to 4, shown as
-        <b class="ui">1.00x</b>). Pitch is a resampling rate, so it changes <b>pitch and speed
-        together</b> — a tape-style shift, not a formant-preserving one. Half speed is an octave
-        down.</p>
+      <p>Dua knob: <b class="ui">Gain</b> (0 sampai 2) dan <b class="ui">Pitch</b> (0.25 sampai 4,
+        ditampilkan sebagai <b class="ui">1.00x</b>). Pitch adalah rate resampling, jadi ia
+        mengubah <b>pitch dan kecepatan bersamaan</b> — pergeseran ala tape, bukan yang
+        mempertahankan format. Setengah kecepatan berarti turun satu oktaf.</p>
 
-      <h3>MODE and TAP</h3>
-      <p>Two pairs of chips decide how a pad behaves under your finger.
-        <b class="ui">MODE</b> is <b class="ui">One-shot</b> or <b class="ui">Loop</b>;
-        <b class="ui">TAP</b> is <b class="ui">Retrig</b> or <b class="ui">Latch</b>. The rule is
-        simple: a pad set to <b class="ui">Loop</b> or to <b class="ui">Latch</b> toggles start and
-        stop on each tap, and a <b class="ui">One-shot</b> / <b class="ui">Retrig</b> pad restarts
-        from the trim start every time you hit it — ordinary drum-pad behaviour.</p>
+      <h3>MODE dan TAP</h3>
+      <p>Dua pasang chip menentukan bagaimana pad berperilaku di bawah jarimu.
+        <b class="ui">MODE</b> adalah <b class="ui">One-shot</b> atau <b class="ui">Loop</b>;
+        <b class="ui">TAP</b> adalah <b class="ui">Retrig</b> atau <b class="ui">Latch</b>.
+        Aturannya simpel: pad yang diset ke <b class="ui">Loop</b> atau <b class="ui">Latch</b>
+        berganti antara start dan stop setiap kali disentuh, sedangkan pad
+        <b class="ui">One-shot</b> / <b class="ui">Retrig</b> selalu memulai lagi dari awal trim
+        setiap kali kamu memukulnya — perilaku drum pad biasa.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>MODE</th><th>TAP</th><th>What a tap does</th></tr></thead>
+          <thead><tr><th>MODE</th><th>TAP</th><th>Yang dilakukan sebuah tap</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
-                <td>Plays once from the trim start, restarting on every tap. Drums, hits, stabs.</td></tr>
+                <td>Diputar sekali dari awal trim, dan mengulang dari awal setiap tap. Drum, hit, stab.</td></tr>
             <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
-                <td>Plays once; a second tap while it is still sounding stops it. Long one-shots you
-                    may need to cut short.</td></tr>
+                <td>Diputar sekali; tap kedua saat masih berbunyi akan menghentikannya. Untuk
+                    one-shot panjang yang mungkin perlu dipotong.</td></tr>
             <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
-                <td>Loops until you tap again to stop it.</td></tr>
+                <td>Loop terus sampai kamu tap lagi untuk menghentikannya.</td></tr>
             <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
-                <td>Loops until you tap again to stop it. Beds, drones, rain, vinyl crackle.</td></tr>
+                <td>Loop terus sampai kamu tap lagi untuk menghentikannya. Bed, drone, rain, vinyl crackle.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>At the bottom, <b class="ui">Preview</b> auditions the pad with your current settings and
-        <b class="ui">Load file</b> swaps the sound without leaving the editor.</p>
+      <p>Di bagian bawah, <b class="ui">Pratinjau</b> memutar pad dengan pengaturan saat ini dan
+        <b class="ui">Muat file</b> mengganti suaranya tanpa keluar dari editor.</p>
       <div class="note">
-        <div class="t">What the sampler deliberately does not have</div>
-        <p>No choke groups (an open hat will not be cut by a closed one), no per-pad pan, no
-          reverse, no velocity layers, no per-pad output routing and no momentary
-          gate-while-held mode. Pads play at their set <b class="ui">Gain</b> and stop when the
-          sample or the envelope says so.</p>
+        <div class="t">Yang sengaja tidak dimiliki sampler ini</div>
+        <p>Tidak ada choke group (hi-hat open tidak akan dipotong oleh yang closed), tidak ada pan
+          per pad, tidak ada reverse, tidak ada velocity layer, tidak ada output routing per pad,
+          dan tidak ada mode gate-while-held sesaat. Pad diputar pada <b class="ui">Gain</b> yang
+          sudah diset dan berhenti saat sample atau envelope-nya bilang begitu.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="kits"><span class="n">05.4</span>Kits</h2>
-      <p>A kit is a snapshot of all sixteen pads — every trim, envelope, gain, pitch and mode
-        setting — <b>plus a private copy of every pad's audio</b>. That copy is the point: once a
-        kit is saved, importing over a pad, clearing it or deleting the original file cannot hollow
-        the kit out. Load it back in six months and it still plays.</p>
-      <p>Open the browser with the <b class="ui">PRESETS</b> chip; the sheet is titled
-        <b class="ui">Sampler Kits</b>. Tap a row to load it. The row menu has
-        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> and
-        <b class="ui">Delete</b>. Deleting a kit never removes audio that the loaded pads or another
-        saved kit are still using.</p>
+      <h2 id="kits"><span class="n">05.4</span>Kit</h2>
+      <p>Kit adalah snapshot dari semua enam belas pad — setiap pengaturan trim, envelope, gain,
+        pitch, dan mode — <b>plus salinan pribadi audio setiap pad</b>. Salinan itulah intinya:
+        setelah kit disimpan, mengimpor file baru ke atas pad, menghapusnya (clear), atau
+        menghapus file aslinya tidak bisa mengosongkan isi kit. Muat lagi enam bulan kemudian dan
+        kit itu masih tetap bisa diputar.</p>
+      <p>Buka browser-nya dengan chip <b class="ui">PRESET</b>; sheet-nya berjudul
+        <b class="ui">Kit sampler</b>. Tap sebuah baris untuk memuatnya. Menu baris punya
+        <b class="ui">Ganti nama</b>, <b class="ui">Update with current kit</b> dan
+        <b class="ui">Hapus</b>. Menghapus kit tidak akan pernah menghapus audio yang masih
+        dipakai pad yang sedang dimuat atau kit tersimpan lainnya.</p>
       <div class="note warn">
-        <div class="t">Kits cannot be shared</div>
-        <p>The footer of the sheet says why: <b class="ui">Kits live on this device (they carry
-          their audio files).</b> There is no share or export for a kit, and the full backup export
-          leaves sampler kit audio out — it carries parameters and references only. Copy the
-          <b class="ui">samples/</b> folder in the Files app if you need the sounds on another
-          device.</p>
+        <div class="t">Kit tidak bisa dibagikan</div>
+        <p>Footer sheet-nya menjelaskan kenapa: <b class="ui">Kits live on this device (they carry
+          their audio files).</b> Tidak ada opsi share atau export untuk kit, dan export backup
+          lengkap juga tidak menyertakan audio kit sampler — hanya membawa parameter dan
+          referensi saja. Salin folder <b class="ui">samples/</b> di aplikasi Files kalau kamu
+          butuh suaranya di perangkat lain.</p>
       </div>
 
-      <h3>The four factory kits</h3>
+      <h3>Empat kit pabrik</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Kit</th><th>The sixteen pads</th></tr></thead>
+          <thead><tr><th>Kit</th><th>Enam belas pad</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Drums — Digital</b></td>
+            <tr><td><b class="ui">Drum — digital</b></td>
                 <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
                     Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
-            <tr><td><b class="ui">Drums — Analog</b></td>
+            <tr><td><b class="ui">Drum — analog</b></td>
                 <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
                     Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
-            <tr><td><b class="ui">Drums — Acoustic</b></td>
+            <tr><td><b class="ui">Drum — akustik</b></td>
                 <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
                     Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
                     Tambourine</td></tr>
-            <tr><td><b class="ui">FX &amp; Textures</b></td>
+            <tr><td><b class="ui">FX &amp; Tekstur</b></td>
                 <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
-                    Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
+                    Bleep, Alarm, Crackle (loop), Wind (loop), Chime, Robot, Rumble</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A deleted factory kit stays deleted — it does not come back on the next launch. Rename or
-        update one rather than deleting it if you only want it out of the way.</p>
+      <p>Kit pabrik yang dihapus akan tetap terhapus — ia tidak akan kembali saat aplikasi dibuka
+        lagi. Rename atau update saja kalau kamu cuma ingin menyingkirkannya, daripada
+        menghapusnya.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>The <b class="ui">QUANT</b> knob is a <b>strength</b>, not a switch. At zero it reads
-        <b class="ui">OFF</b>; above that it shows a percentage. At 100 % every hit lands exactly on
-        the grid; at 30 % only the slightly-early ones get pulled into line and your feel survives.
-        The default is 0, off.</p>
-      <p>The chip beside it sets the grid, cycling <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> and <b class="ui">1/32</b>. The default is
-        <b class="ui">1/16</b>.</p>
-      <p>Both settings are <b>global</b> — not per kit, not per pad. Loading a kit does not change
-        them.</p>
+      <p>Knob <b class="ui">QUANT</b> adalah <b>strength</b>, bukan saklar. Di angka nol,
+        tampilannya <b class="ui">MATI</b>; di atas itu, ditampilkan sebagai persentase. Di 100 %,
+        setiap hit jatuh tepat di grid; di 30 %, hanya yang sedikit terlalu awal yang ditarik ke
+        garis, dan feel kamu tetap terjaga. Default-nya 0, off.</p>
+      <p>Chip di sebelahnya mengatur grid, berputar antara <b class="ui">1/4</b>,
+        <b class="ui">1/8</b>, <b class="ui">1/16</b> dan <b class="ui">1/32</b>. Default-nya
+        adalah <b class="ui">1/16</b>.</p>
+      <p>Kedua pengaturan ini bersifat <b>global</b> — bukan per kit, bukan per pad. Memuat kit
+        tidak mengubahnya.</p>
       <div class="note warn">
-        <div class="t">Three things must all be true</div>
-        <p>Quantize only does something audible when <b>all three</b> of these hold, and the screen
-          does not tell you so:</p>
+        <div class="t">Tiga hal ini harus semuanya terpenuhi</div>
+        <p>Quantize baru terdengar efeknya kalau <b>ketiga</b> hal ini terpenuhi, dan layarnya
+          tidak memberitahumu soal ini:</p>
         <ul style="--nc:var(--drive)">
-          <li>a <b>tempo is set</b> — there is no grid otherwise;</li>
-          <li>a <b>loop is running</b> — the looper supplies the phase, so the grid knows where beat
-            one is;</li>
-          <li>you are <b>recording</b> — either the <b class="ui a">Perform</b> recorder, or a loop
-            track whose source is the sampler.</li>
+          <li><b>tempo sudah diatur</b> — kalau tidak, tidak ada grid;</li>
+          <li><b>loop sedang berjalan</b> — looper menyediakan fase, jadi grid tahu di mana
+            ketukan pertama berada;</li>
+          <li>kamu sedang <b>merekam</b> — baik dengan recorder di tab <b class="ui a">Perform</b>,
+            atau loop track yang sumbernya adalah sampler.</li>
         </ul>
-        <p>Turn the knob up while jamming over nothing and you will hear no difference. That is
-          deliberate: a pad that waits for the next sixteenth before it speaks feels broken under
-          your fingers, so free playing is always left unquantized and the correction is applied
-          only where it ends up on a recording.</p>
+        <p>Putar knob-nya sambil jamming tanpa apa-apa dan kamu tidak akan mendengar perbedaan
+          apa pun. Itu memang disengaja: pad yang menunggu ketukan enam belas berikutnya sebelum
+          berbunyi terasa rusak di bawah jarimu, jadi permainan bebas selalu dibiarkan tanpa
+          quantize, dan koreksinya hanya diterapkan pada bagian yang berakhir di rekaman.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="trigger"><span class="n">05.6</span>Playing the pads</h2>
-      <p>By touch: a tap plays or stops the pad according to its
-        <b class="ui">MODE</b> and <b class="ui">TAP</b> settings, and a long-press opens the
+      <h2 id="trigger"><span class="n">05.6</span>Memainkan pad</h2>
+      <p>Lewat sentuhan: tap memutar atau menghentikan pad sesuai pengaturan
+        <b class="ui">MODE</b> dan <b class="ui">TAP</b>-nya, dan tekan lama membuka
         menu.</p>
-      <p>By MIDI: <b>notes 36 to 51 play pads 1 to 16</b>, following the GM drum convention — note
-        36 is pad 1. This is always active and needs no setup, on any MIDI channel, unless one of
-        your own mappings has claimed that note first.</p>
-      <p><b>Velocity is not used.</b> However hard you hit a controller pad, the sample plays at the
-        <b class="ui">Gain</b> you set in the editor. Set the levels once in the pad editor and they
-        stay put.</p>
+      <p>Lewat MIDI: <b>not 36 sampai 51 memainkan pad 1 sampai 16</b>, mengikuti konvensi drum
+        GM — not 36 adalah pad 1. Ini selalu aktif dan tidak butuh setup apa pun, di channel MIDI
+        mana pun, kecuali salah satu mapping buatanmu sendiri sudah mengklaim not itu lebih
+        dulu.</p>
+      <p><b>Velocity tidak digunakan.</b> Sekeras apa pun kamu memukul pad controller, sample akan
+        diputar pada <b class="ui">Gain</b> yang kamu atur di editor. Atur level-nya sekali saja
+        di editor pad dan pengaturannya akan tetap begitu.</p>
       <div class="note tip">
-        <div class="t">Learned mappings behave better than raw notes</div>
-        <p>A mapping you create on the <b class="ui a">Control</b> tab calls play/stop, so it
-          respects <b class="ui">Loop</b> and <b class="ui">Latch</b> — one footswitch press starts
-          the loop, the next stops it. Raw MIDI notes 36–51 always retrigger from the start. If you
-          are driving looping pads from a pedal, learn the mapping rather than relying on the
-          built-in note range.</p>
+        <div class="t">Mapping yang dipelajari berperilaku lebih baik daripada not mentah</div>
+        <p>Mapping yang kamu buat di tab <b class="ui a">Kontrol</b> memanggil play/stop, jadi ia
+          menghormati <b class="ui">Loop</b> dan <b class="ui">Latch</b> — satu tekan footswitch
+          memulai loop, tekan berikutnya menghentikannya. Not MIDI mentah 36–51 selalu retrigger
+          dari awal. Kalau kamu mengendalikan pad yang di-loop dari pedal, pelajari (learn)
+          mapping-nya daripada mengandalkan rentang not bawaan.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="routing"><span class="n">05.7</span>Where the pads go</h2>
-      <p>Pads sum <b>straight into the main mix</b> — they do not run through the guitar chain, so
-        your amp's gain and your reverb never touch them. The <b class="ui">LEVEL</b> knob in the
-        header sets how loud the whole sampler sits against the rig.</p>
-      <p>They are also available elsewhere in the app as a source:</p>
+      <h2 id="routing"><span class="n">05.7</span>Ke mana pad pergi</h2>
+      <p>Pad dijumlahkan <b>langsung ke main mix</b> — tidak melewati chain gitar, jadi gain
+        ampli dan reverb kamu tidak pernah menyentuhnya. Knob <b class="ui">LEVEL</b> di header
+        mengatur seberapa keras keseluruhan sampler ini terdengar dibanding rig.</p>
+      <p>Pad juga tersedia di tempat lain di aplikasi sebagai sumber:</p>
       <ul style="--nc:var(--power)">
-        <li>As a <b>chain input</b> — pick <b class="ui">Sampler pads</b> on a rig's IN connector or
-          on a parallel branch (chip <b class="ui">SMPL</b>) and the pads run through that rig's
-          effects.</li>
-        <li>As a <b>loop track source</b> — set a looper track's <b class="ui">IN</b> to
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) and you can loop a beat you tap out
-          on the pads.</li>
-        <li>As a <b>compressor sidechain</b> — a Comp block's <b class="ui">Sidechain</b> menu
-          includes <b class="ui">SMP</b>, so the kick can duck the guitar.</li>
+        <li>Sebagai <b>chain input</b> — pilih <b class="ui">Pad sampler</b> pada konektor IN
+          sebuah rig atau pada cabang paralel (chip <b class="ui">SMPL</b>) dan pad akan melewati
+          efek rig tersebut.</li>
+        <li>Sebagai <b>sumber loop track</b> — set <b class="ui">IN</b> sebuah track looper ke
+          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) dan kamu bisa nge-loop beat yang
+          kamu mainkan di pad.</li>
+        <li>Sebagai <b>sidechain compressor</b> — menu <b class="ui">Sidechain</b> pada blok Comp
+          menyertakan <b class="ui">SMP</b>, jadi kick bisa nge-duck gitar.</li>
       </ul>
-      <p><b class="ui">STOP ALL</b> in the header releases every playing pad at once — the panic
-        button for a latched drone or a loop you cannot find.</p>
+      <p><b class="ui">HENTIKAN SEMUA</b> di header melepaskan semua pad yang sedang bermain sekaligus
+        — tombol panik untuk drone yang ter-latch atau loop yang tidak bisa kamu temukan.</p>
     </section>
 
     <nav class="pager">
       <a href="/docs/id/looper.html">← 04 · Looper</a>
       <span class="sp"></span>
-      <a href="/docs/id/perform.html">06 · Perform &amp; lyrics →</a>
+      <a href="/docs/id/perform.html">06 · Perform &amp; lirik →</a>
     </nav>
   </main>
 </div>
@@ -308,7 +314,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper adalah aplikasi independen yang tidak berafiliasi dengan, didukung oleh, atau disponsori oleh produsen peralatan mana pun. Semua nama produk, merek, dan merek dagang adalah milik pemiliknya masing-masing dan hanya digunakan untuk mendeskripsikan perangkat tempat sebuah capture dibuat.</p>
   </div>
 </footer>
 

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<title>AU 플러그인 — NAMper 문서</title>
+<meta name="description" content="NAMper 체인 안에 Audio Unit 이펙트를 호스팅하는 방법, 내장된 플러그인 인터페이스, 한계, 플러그인 상태가 저장되는 방식, 그리고 NAMper 자체가 다른 앱 안에서 AUv3 이펙트로 어떻게 동작하는지까지.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
-<meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
+<meta property="og:title" content="AU 플러그인 — NAMper 문서">
+<meta property="og:description" content="체인 안에 AUv3 이펙트 호스팅하기, 플러그인 상태와 프리셋, 그리고 다른 앱 안의 플러그인으로서의 NAMper까지.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/plugins.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">문서</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/ko/">← ALL DOCS</a>
+  <a class="home" href="/docs/ko/">← 전체 문서</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/ko/plugins.html" aria-current="page">한국어</a>
   </nav>
@@ -46,212 +46,224 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">목차</div>
     <ol>
-      <li><a href="/docs/ko/setup.html">Getting started</a></li>
-      <li><a href="/docs/ko/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/ko/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/ko/looper.html">Looper</a></li>
-      <li><a href="/docs/ko/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/ko/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/ko/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/ko/settings.html">Settings reference</a></li>
+      <li><a href="/docs/ko/setup.html">시작하기</a></li>
+      <li><a href="/docs/ko/rig.html">리그와 시그널 체인</a></li>
+      <li><a class="on" href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a href="/docs/ko/looper.html">루퍼</a></li>
+      <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
+      <li><a href="/docs/ko/perform.html">퍼폼과 가사</a></li>
+      <li><a href="/docs/ko/control.html">MIDI와 컨트롤</a></li>
+      <li><a href="/docs/ko/settings.html">설정 참조</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
-    <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU 플러그인</div>
+    <h1>다른 사람이 만든 플러그인.</h1>
+    <p class="lede">NAMper는 이미 가지고 있는 AUv3 이펙트를 체인 어디에서든 호스팅합니다 —
+      그리고 NAMper 자체도 다른 앱 안에서 이펙트로 등장합니다. 두 방향 모두 공연 전에
+      알아둘 만한 규칙이 있습니다.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">이 페이지에서</div>
       <ul>
-        <li><a href="#hosting">Adding an AU effect</a></li>
-        <li><a href="#ui">The plugin interface</a></li>
-        <li><a href="#limits">Limits worth knowing</a></li>
-        <li><a href="#state">Settings and presets</a></li>
-        <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#hosting">AU 이펙트 추가하기</a></li>
+        <li><a href="#ui">플러그인 인터페이스</a></li>
+        <li><a href="#limits">알아둘 만한 한계</a></li>
+        <li><a href="#state">설정과 프리셋</a></li>
+        <li><a href="#auv3">플러그인으로서의 NAMper</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="hosting"><span class="n">03.1</span>Adding an AU effect</h2>
-      <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
-        the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
-        section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
-        needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
-        submenu.</p>
-      <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
-        ship AUv3 plugins make them appear here.</b> That is the normal state on a fresh device:
-        AUv3 plugins arrive as ordinary App Store apps, so you install the app and its plugin shows
-        up here on the next visit.</p>
-      <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
-        straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+      <h2 id="hosting"><span class="n">03.1</span>AU 이펙트 추가하기</h2>
+      <p>체인의 점선 <b class="ui">ADD</b> 칩을 탭하면 블록 팔레트가 열립니다. 목록 맨 아래,
+        <b class="ui">유틸리티</b>를 지나면 항목이 하나뿐인 <b class="ui">플러그인</b> 섹션이
+        있습니다: <b class="ui">AU 플러그인</b> 서브메뉴입니다.</p>
+      <p>열어보면 기기에 설치된 모든 Audio Unit 이펙트가, 플러그인 이름 뒤에 제조사가 붙은
+        형태로, 제조사 먼저 그다음 이름 순으로 정렬되어 나타납니다. 스캔하거나 활성화할
+        필요가 전혀 없습니다 — 폰에 있는 어떤 앱이 AUv3 이펙트를 담고 있다면 그것은 이미
+        이 서브메뉴 안에 있습니다.</p>
+      <p>서브메뉴가 비어 있으면 <b class="ui">설치된 Audio Unit 이펙트가 없습니다. AUv3 플러그인이 있는 앱이 여기에 표시됩니다.</b>라고 표시됩니다. 새 기기에서는 이것이
+        정상적인 상태입니다: AUv3 플러그인은 일반 App Store 앱의 형태로 들어오므로, 앱을
+        설치하면 다음에 열었을 때 그 플러그인이 여기에 나타납니다.</p>
+      <p>컴포넌트를 고르면 NAMper는 그 플러그인이 이미 로드된 블록을 만들고, 곧바로
+        플러그인 고유의 인터페이스로 들어갑니다 — 빈 껍데기도, 별도 단계도 없습니다. 체인
+        위 블록의 칩 이름은 <b class="ui">AU 플러그인</b>이며, 다른 블록과 똑같이 동작합니다:
+        이름 아래 LED 점을 탭해서 바이패스하고, 드래그해서 체인을 따라 옮기고, 길게 눌러
+        <b class="ui">제거</b>를 사용합니다.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
-             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
-        <figcaption>Apple's AUDelay hosted in a NAMper block, drawn with the generic sliders</figcaption>
+             alt="NAMper 블록 안에 호스팅된 Audio Unit 플러그인: 위쪽에 플러그인 이름이 있는 상태 표시 행, 아래에는 일반 파라미터 슬라이더 목록이 있음.">
+        <figcaption>NAMper 블록 안에 호스팅된 Apple의 AUDelay. 일반 슬라이더로 그려짐</figcaption>
       </figure>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="ui"><span class="n">03.2</span>The plugin interface</h2>
-      <p>The block sheet puts a thin status row above the plugin: an hourglass while the component
-        is being instantiated, a green check once it is live and passing audio, and the plugin's
-        name beside it. Under the status row you also get the usual block
-        <b class="ui">IN</b> and <b class="ui">OUT</b> meters, so you can see what the plugin is
-        being fed and what it hands back.</p>
-      <p>Loading is not always instant. While a component starts up the sheet reads
-        <b class="ui">Loading the plugin…</b> — larger plugins take a moment on first use, and the
-        signal passes through untouched until the plugin is ready.</p>
+      <h2 id="ui"><span class="n">03.2</span>플러그인 인터페이스</h2>
+      <p>블록 시트는 플러그인 위에 얇은 상태 표시 행을 둡니다: 컴포넌트가 초기화되는
+        동안은 모래시계, 살아나서 오디오를 처리하기 시작하면 초록색 체크가 뜨고, 그 옆에
+        플러그인 이름이 표시됩니다. 상태 표시 행 아래에는 여느 블록과 같은
+        <b class="ui">인</b>, <b class="ui">아웃</b> 미터도 있어서, 플러그인에 무엇이
+        들어가고 무엇이 나오는지 확인할 수 있습니다.</p>
+      <p>로딩이 항상 즉각적이지는 않습니다. 컴포넌트가 시작되는 동안 시트에는
+        <b class="ui">플러그인 로드 중…</b>이라고 표시됩니다 — 큰 플러그인은 처음
+        사용할 때 잠깐 시간이 걸리며, 플러그인이 준비될 때까지 신호는 손대지 않은 채로
+        그대로 통과합니다.</p>
 
-      <h3>Swapping the plugin</h3>
-      <p>The circular-arrows button in the sheet is <b class="ui">Replace plugin</b>. Its menu is
-        the same component list, and picking a different one swaps the plugin inside the existing
-        block, so the block keeps its place in the chain and its bypass state. Use it when you want
-        a different delay in the same slot rather than tearing the chain apart.</p>
+      <h3>플러그인 교체하기</h3>
+      <p>시트의 순환 화살표 버튼이 <b class="ui">플러그인 교체</b>입니다. 메뉴는 같은
+        컴포넌트 목록이며, 다른 것을 고르면 기존 블록 안의 플러그인이 교체되어, 블록은
+        체인 안 자기 위치와 바이패스 상태를 그대로 유지합니다. 체인을 뜯어고치는 대신
+        같은 슬롯에 다른 딜레이를 넣고 싶을 때 사용하세요.</p>
 
-      <h3>When a plugin has no view of its own</h3>
-      <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
-        designed it. Some ship no view at all. For those, NAMper draws its own generic list —
-        up to 24 parameters, each as a label and a slider. That is what the screenshot above shows:
-        Apple's AUDelay has no custom panel, so you get named sliders instead.</p>
+      <h3>플러그인에 고유한 화면이 없을 때</h3>
+      <p>대부분의 플러그인은 자신만의 인터페이스를 그리고, NAMper는 그것을 작성자가
+        설계한 그대로 인라인으로 내장합니다. 일부는 화면을 아예 갖고 있지 않습니다.
+        그런 경우 NAMper는 자체적으로 일반 목록을 그립니다 — 최대 24개의 파라미터가
+        각각 라벨과 슬라이더로 표시됩니다. 위 스크린샷이 바로 그 예시입니다: Apple의
+        AUDelay에는 전용 패널이 없어서 이름이 붙은 슬라이더로 대신 표시됩니다.</p>
       <div class="note">
-        <div class="t">Why the fallback exists</div>
-        <p>iOS can improvise an editor for a viewless plugin, but some units crash inside it.
-          NAMper draws the parameter list itself instead, which is plainer to look at and far more
-          likely to survive a set.</p>
+        <div class="t">대체 화면이 존재하는 이유</div>
+        <p>iOS는 화면이 없는 플러그인을 위해 즉석 에디터를 만들어낼 수 있지만, 일부
+          유닛은 그 안에서 크래시가 납니다. NAMper는 대신 직접 파라미터 목록을 그리는데,
+          보기에는 더 단순하지만 공연 도중 무너지지 않을 가능성은 훨씬 높습니다.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="limits"><span class="n">03.3</span>Limits worth knowing</h2>
+      <h2 id="limits"><span class="n">03.3</span>알아둘 만한 한계</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+          <thead><tr><th>한계</th><th>의미</th></tr></thead>
           <tbody>
-            <tr><td>Effects only</td>
-                <td>Only effect components are listed. AU instruments are not hostable, so a synth
-                    or a drum machine will never appear in the submenu.</td></tr>
-            <tr><td>16 plugins</td>
-                <td>Sixteen hosted plugins at once, counted across every rig and every branch. In
-                    practice you will run out of processor long before you run out of slots.</td></tr>
-            <tr><td>Stereo</td>
-                <td>Plugin input and output run in stereo, at whatever sample rate the engine is
-                    on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+            <tr><td>이펙트만</td>
+                <td>이펙트 컴포넌트만 목록에 나타납니다. AU 악기(instrument)는 호스팅할
+                    수 없으므로, 신스나 드럼머신은 서브메뉴에 절대 나타나지 않습니다.</td></tr>
+            <tr><td>16개의 플러그인</td>
+                <td>모든 리그와 모든 브랜치를 합쳐서 한 번에 최대 16개의 플러그인을
+                    호스팅할 수 있습니다. 실제로는 슬롯이 부족해지기 훨씬 전에
+                    프로세서가 먼저 한계에 부딪힐 것입니다.</td></tr>
+            <tr><td>스테레오</td>
+                <td>플러그인의 입력과 출력은 엔진이 돌아가는 샘플 레이트에서 스테레오로
+                    동작합니다.</td></tr>
+            <tr><td>리그 체인 전용</td>
+                <td>AU 플러그인은 리그 체인 안에만 넣을 수 있습니다.
+                    <b class="ui">마스터</b> 섹션에는 NAMper 자체 블록만 넣을 수
+                    있습니다.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If a plugin fails to render, NAMper leaves the signal dry for that block rather than
-        dropping out. You keep hearing your guitar, minus that one effect — which is the right
-        failure on stage, but it also means a plugin can go quiet without an obvious alarm. If an
-        effect stops doing anything, check the status row in its sheet.</p>
-      <p>Third-party plugins also cost processing power that NAMper cannot budget for. Watch the
-        <b class="ui">DSP load</b> chip in the Rig header after you add one; if it moves into amber
-        or red, step the buffer size up in Settings.</p>
+      <p>플러그인 렌더링이 실패하면 NAMper는 아예 끊기는 대신 그 블록의 신호를 드라이
+        상태로 그대로 흘려보냅니다. 기타 소리는 계속 들리지만 그 이펙트 하나만 빠진
+        상태입니다 — 무대 위에서는 바람직한 실패 방식이지만, 동시에 뚜렷한 경고 없이
+        플러그인이 조용히 멈출 수 있다는 뜻이기도 합니다. 이펙트가 아무 작동도 하지
+        않는다면 시트의 상태 표시 행을 확인하세요.</p>
+      <p>서드파티 플러그인은 NAMper가 미리 예산을 잡아둘 수 없는 처리 성능도
+        소모합니다. 플러그인을 추가한 뒤에는 Rig 헤더의 <b class="ui">DSP 부하</b>
+        칩을 지켜보세요. 호박색이나 빨간색으로 넘어가면 설정에서 버퍼 크기를
+        올리세요.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="state"><span class="n">03.4</span>Settings and presets</h2>
-      <p>A hosted plugin's own settings — everything you changed inside its interface — are stored
-        with the block and travel inside your NAMper preset. Save the rig, load it tomorrow, and
-        the plugin comes back set the way you left it.</p>
+      <h2 id="state"><span class="n">03.4</span>설정과 프리셋</h2>
+      <p>호스팅된 플러그인 고유의 설정 — 인터페이스 안에서 바꾼 모든 것 — 은 블록과
+        함께 저장되어 NAMper 프리셋 안에 그대로 담깁니다. 리그를 저장하고 내일
+        불러오면, 플러그인은 두고 간 그대로 돌아옵니다.</p>
       <div class="note warn">
-        <div class="t">Close the sheet before you save</div>
-        <p>Plugin state is captured at the moment you <b>close the block sheet</b>. Tweak a plugin,
-          leave its sheet open, save the preset from behind it, and the preset stores the state
-          from before your edits. Make it a habit: close the plugin sheet first, then save.</p>
+        <div class="t">저장하기 전에 시트를 닫으세요</div>
+        <p>플러그인 상태는 <b>블록 시트를 닫는</b> 순간에 저장됩니다. 플러그인을 조정한
+          뒤 시트를 열어둔 채로 그 뒤에서 프리셋을 저장하면, 프리셋에는 수정하기
+          이전의 상태가 저장됩니다. 습관처럼 만드세요: 플러그인 시트를 먼저 닫고,
+          그다음에 저장하세요.</p>
       </div>
-      <p>The same applies to global snapshots and to sharing a preset with someone else — whatever
-        was captured on the last sheet close is what goes into the file. Note that the preset
-        carries the plugin's <em>settings</em>, not the plugin: whoever opens it needs the same
-        Audio Unit installed on their device.</p>
-      <p>One more thing to expect: using <b class="ui">Replace plugin</b> clears the stored state.
-        The settings belonged to the old component and mean nothing to the new one, so the swap
-        starts you at the new plugin's defaults.</p>
+      <p>이는 글로벌 스냅샷과 다른 사람에게 프리셋을 공유할 때도 똑같이 적용됩니다 —
+        마지막으로 시트를 닫았을 때 저장된 상태가 그대로 파일에 담깁니다. 프리셋은
+        플러그인 자체가 아니라 플러그인의 <em>설정값</em>을 담고 있다는 점에
+        유의하세요: 프리셋을 여는 사람도 자신의 기기에 같은 Audio Unit이 설치되어
+        있어야 합니다.</p>
+      <p>한 가지 더 알아둘 점: <b class="ui">플러그인 교체</b>을 사용하면 저장된
+        상태가 지워집니다. 그 설정값은 이전 컴포넌트의 것이라 새 컴포넌트에는
+        의미가 없으므로, 교체하면 새 플러그인의 기본값에서 다시 시작하게 됩니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="auv3"><span class="n">03.5</span>NAMper as a plugin</h2>
-      <p>NAMper also ships as an AUv3 effect, so you can load it inside GarageBand, AUM, Logic or
-        any other AUv3 host and record it onto a track there. In a host's plugin browser it looks
-        like this:</p>
+      <h2 id="auv3"><span class="n">03.5</span>플러그인으로서의 NAMper</h2>
+      <p>NAMper는 AUv3 이펙트로도 제공되므로, GarageBand, AUM, Logic 등 어떤 AUv3
+        호스트에서든 불러와 트랙에 녹음할 수 있습니다. 호스트의 플러그인 브라우저에서는
+        이렇게 보입니다:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <thead><tr><th>항목</th><th>값</th></tr></thead>
           <tbody>
-            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
-            <tr><td>Manufacturer</td><td><b class="ui">retroaktive</b></td></tr>
-            <tr><td>Description</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
-            <tr><td>Type</td><td>Audio effect — not an instrument</td></tr>
+            <tr><td>이름</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>제조사</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>설명</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>유형</td><td>오디오 이펙트 — 악기 아님</td></tr>
           </tbody>
         </table>
       </div>
-      <p>It takes stereo in and gives stereo out, but the two input channels are summed to mono
-        inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
-        want for a DI'd guitar on a mono track.</p>
+      <p>스테레오 입력을 받아 스테레오로 출력하지만, 내부에서는 두 입력 채널이
+        모노로 합쳐집니다: 기타 방식의 모노 프론트엔드가 앰프로 신호를 보내는
+        구조입니다. 이는 의도된 설계이며, 모노 트랙에 DI로 녹음한 기타에 딱 맞는
+        방식입니다.</p>
 
-      <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <h3>18개의 파라미터</h3>
+      <p>플러그인 고유의 패널은 <b class="ui">NAMper</b>와 <b class="ui">Amp &amp; FX
+        chain — tweak the parameters in the host</b>라고 적힌 작은 브랜드 표시줄뿐
+        입니다. 실제 컨트롤은 모두 호스트에서 자동화할 수 있는 파라미터이며, 총
+        18개가 있습니다:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
+          <thead><tr><th>블록</th><th>파라미터</th></tr></thead>
           <tbody>
-            <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
-            <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
+            <tr><td>게이트</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
+            <tr><td>컴프레서</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
               <b class="ui">Comp Ratio</b></td></tr>
-            <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
+            <tr><td>드라이브</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
               <b class="ui">Drive Level</b></td></tr>
-            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
-              <b class="ui">Treble</b></td></tr>
-            <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
+            <tr><td>톤</td><td><b class="ui">베이스</b>, <b class="ui">미드</b>,
+              <b class="ui">트레블</b></td></tr>
+            <tr><td>딜레이</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
               <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
-            <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
+            <tr><td>리버브</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
               <b class="ui">Reverb Mix</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>이 파라미터는 모두 호스트에서 자동화할 수 있습니다. On/Off 파라미터는 0에서
+        1 사이의 부동소수점 값이라, 대부분의 호스트는 이를 스위치가 아니라
+        슬라이더로 표시합니다 — 절반 지점 이상이면 켜진 것으로 간주됩니다. 팩토리
+        프리셋 세 개도 호스트에 노출됩니다: <b class="ui">클린</b>, <b class="ui">크런치</b>,
+        <b class="ui">리드</b>.</p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">플러그인이 담지 않는 것</div>
+        <p>NAM 모델 없음. 캐비닛 IR 없음. 모듈레이션 블록 없음. 리그 문서 자체도
+          없습니다 — 호스트는 그 18개의 파라미터 값만 저장할 뿐 그 외에는 아무것도
+          저장하지 않으므로, 앱에서 만든 리그는 플러그인으로 옮겨가지 않습니다.
+          플러그인 버전에는 MIDI 입력도 없습니다.</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
+      <p>있는 그대로 받아들이세요: 호스트 안에서 NAMper는 앱 전체가 아니라 작은
+        앰프-이펙트 채널일 뿐입니다. NAM 캡처, 캐비닛, 루퍼, 세트리스트가 필요하다면
+        앱 자체를 실행해서 거기서 녹음하세요.</p>
       <div class="note tip">
-        <div class="t">Working with both</div>
-        <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/ko/perform.html">Perform &amp; lyrics</a>.</p>
+        <div class="t">두 방식을 함께 쓰기</div>
+        <p>앱 전체를 실행해서 그 출력을 DAW로 라우팅할 수도 있고, 이미 호스트에서
+          녹음 중인 트랙에 빠르게 기타 채널을 얹기 위해 플러그인을 쓸 수도
+          있습니다. 첫 번째 방식을 위한 도구가 바로 Perform 탭의 레코더와
+          DAWproject 내보내기입니다 — <a href="/docs/ko/perform.html">퍼폼과 가사</a>를
+          참고하세요.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/ko/rig.html">← 02 · Rig &amp; signal chain</a>
+      <a href="/docs/ko/rig.html">← 02 · 리그와 시그널 체인</a>
       <span class="sp"></span>
-      <a href="/docs/ko/looper.html">04 · Looper →</a>
+      <a href="/docs/ko/looper.html">04 · 루퍼 →</a>
     </nav>
   </main>
 </div>
@@ -266,7 +278,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper는 특정 장비 제조사와 제휴, 승인 또는 후원 관계가 전혀 없는 독립 앱입니다. 모든 제품명, 브랜드, 상표는 각 소유자의 자산이며, 캡처 대상이 된 장비를 설명하는 목적으로만 사용됩니다.</p>
   </div>
 </footer>
 

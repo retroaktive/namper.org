@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Settings reference — NAMper Documentation</title>
-<meta name="description" content="Every card and every row in NAMper's Settings sheet: audio interface, channel names, appearance, set, lyrics, metronome, prompts, reset and diagnostics — plus the settings that live elsewhere.">
+<title>Tham chiếu cài đặt — Tài liệu NAMper</title>
+<meta name="description" content="Mọi thẻ và mọi hàng trong sheet Settings của NAMper: audio interface, tên kênh, giao diện, set, lyrics, metronome, prompt, reset và diagnostics — cùng những cài đặt nằm ở nơi khác.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Settings reference — NAMper Documentation">
-<meta property="og:description" content="Every card and row in NAMper's Settings sheet, with defaults and what each control actually does.">
+<meta property="og:title" content="Tham chiếu cài đặt — Tài liệu NAMper">
+<meta property="og:description" content="Mọi thẻ và hàng trong sheet Settings của NAMper, cùng giá trị mặc định và chức năng thật sự của từng control.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/settings.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/settings.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -48,69 +48,70 @@
   <aside class="sidenav">
     <div class="slab">CONTENTS</div>
     <ol>
-      <li><a href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a class="on" href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Perform &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a class="on" href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--drive)">08 · SETTINGS REFERENCE</div>
-    <h1>Every switch, in order.</h1>
-    <p class="lede">NAMper's Settings sheet is short on purpose. This page walks it card by card,
-      row by row, with the defaults and what each control really does — and ends with the handful
-      of settings that live somewhere else entirely.</p>
+    <div class="slab" style="--nc:var(--drive)">08 · THAM CHIẾU CÀI ĐẶT</div>
+    <h1>Mọi công tắc, theo thứ tự.</h1>
+    <p class="lede">Sheet Settings của NAMper cố tình ngắn gọn. Trang này đi qua nó từng thẻ,
+      từng hàng một, cùng giá trị mặc định và chức năng thật sự của từng control — và kết thúc
+      với vài cài đặt nằm hẳn ở một nơi khác.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRÊN TRANG NÀY</div>
       <ul>
-        <li><a href="#opening">Opening Settings</a></li>
+        <li><a href="#opening">Mở Settings</a></li>
         <li><a href="#audio">Audio interface</a></li>
-        <li><a href="#names">Channel names</a></li>
-        <li><a href="#appearance">Appearance</a></li>
+        <li><a href="#names">Tên kênh</a></li>
+        <li><a href="#appearance">Giao diện</a></li>
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Lyrics</a></li>
         <li><a href="#metronome">Metronome</a></li>
-        <li><a href="#prompts">Prompts</a></li>
+        <li><a href="#prompts">Prompt</a></li>
         <li><a href="#reset">Reset</a></li>
         <li><a href="#diagnostics">Diagnostics</a></li>
-        <li><a href="#elsewhere">Not in Settings</a></li>
+        <li><a href="#elsewhere">Không nằm trong Settings</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="opening"><span class="n">08.1</span>Opening Settings</h2>
-      <p>Tap the <strong>gear icon</strong> in the header of the <b class="ui a">Rig</b> tab. That is
-        the only way in, and the header only exists on that tab — from
-        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> or
-        <b class="ui a">Control</b> you go back to <b class="ui a">Rig</b> first.</p>
+      <h2 id="opening"><span class="n">08.1</span>Mở Settings</h2>
+      <p>Chạm vào <strong>icon bánh răng</strong> ở header của tab <b class="ui a">Rig</b>. Đó
+        là cách duy nhất để vào, và header đó chỉ tồn tại trên tab đó — từ
+        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Biểu diễn</b> hoặc
+        <b class="ui a">Điều khiển</b> bạn phải quay lại <b class="ui a">Rig</b> trước.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
-             alt="The top of the Settings sheet: the AUDIO INTERFACE card with Feedback guard switched on, the DSP load readout, the sample rate and buffer chips, the input trim slider, and the beginning of the CHANNEL NAMES card.">
-        <figcaption>The top of the Settings sheet</figcaption>
+             alt="Phần trên cùng của sheet Settings: thẻ AUDIO INTERFACE với Feedback guard đang bật, chỉ số DSP load, các chip sample rate và buffer, slider input trim, và phần đầu của thẻ CHANNEL NAMES.">
+        <figcaption>Phần trên cùng của sheet Settings</figcaption>
       </figure>
-      <p>The gear has company in that header row, and it is worth knowing what the neighbours do:</p>
+      <p>Bánh răng không đứng một mình trong hàng header đó, và đáng để biết các thứ xung
+        quanh nó làm gì:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Item</th><th>Does</th></tr></thead>
+          <thead><tr><th>Mục</th><th>Chức năng</th></tr></thead>
           <tbody>
-            <tr><td>The <b class="ui">NAMper</b> wordmark</td>
-                <td>Opens the About sheet — version, credits and the tip jar. The only way in.</td></tr>
-            <tr><td><b class="ui">DSP load</b> chip</td>
-                <td>Processor load as a percentage, <b class="ui">—</b> when stopped. Green under 60 %, amber to 85 %, red above.</td></tr>
-            <tr><td>Gear</td><td>Settings — this page.</td></tr>
-            <tr><td><b class="ui">KEY</b> chip</td>
-                <td>The current key, or the word <b class="ui">KEY</b> when unset. Opens <b class="ui">SET KEY</b>.</td></tr>
-            <tr><td>Metronome chip</td>
-                <td>Tap to switch the click on and off; <strong>long-press</strong> for the <b class="ui">SET TEMPO</b> sheet. See <a href="/docs/vi/looper.html">the looper</a>.</td></tr>
-            <tr><td>Tuning fork</td><td>Opens the tuner. See <a href="/docs/vi/control.html">MIDI &amp; control</a>.</td></tr>
+            <tr><td>Chữ <b class="ui">NAMper</b></td>
+                <td>Mở sheet About — phiên bản, credit và tip jar. Cách duy nhất để vào.</td></tr>
+            <tr><td>Chip <b class="ui">Tải DSP</b></td>
+                <td>Tải xử lý tính theo phần trăm, <b class="ui">—</b> khi đã dừng. Xanh lá dưới 60%, hổ phách tới 85%, đỏ ở trên.</td></tr>
+            <tr><td>Bánh răng</td><td>Settings — chính trang này.</td></tr>
+            <tr><td>Chip <b class="ui">KEY</b></td>
+                <td>Giọng hiện tại, hoặc chữ <b class="ui">KEY</b> khi chưa đặt. Mở <b class="ui">ĐẶT GIỌNG</b>.</td></tr>
+            <tr><td>Chip metronome</td>
+                <td>Chạm để bật/tắt click; <strong>nhấn giữ</strong> để mở sheet <b class="ui">ĐẶT TEMPO</b>. Xem <a href="/docs/vi/looper.html">looper</a>.</td></tr>
+            <tr><td>Nĩa lên dây</td><td>Mở tuner. Xem <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</td></tr>
             <tr><td><b class="ui g">Power</b></td>
-                <td>Starts and stops the audio engine. Nothing makes a sound until it is on. See <a href="/docs/vi/setup.html#power">getting started</a>.</td></tr>
+                <td>Bật và tắt audio engine. Không gì phát ra âm thanh cho tới khi nó bật. Xem <a href="/docs/vi/setup.html#power">bắt đầu</a>.</td></tr>
           </tbody>
         </table>
       </div>
@@ -118,88 +119,87 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="audio"><span class="n">08.2</span>Audio interface</h2>
-      <p>The <b class="ui">AUDIO INTERFACE</b> card is the longest one, and the only one whose
-        settings need a relaunch to take effect. The first four rows are read-only: they tell you
-        what NAMper actually got from iOS, which is the fastest way to find out why an interface is
-        not behaving.</p>
+      <p>Thẻ <b class="ui">AUDIO INTERFACE</b> là thẻ dài nhất, và là thẻ duy nhất mà các cài
+        đặt cần khởi động lại app mới có hiệu lực. Bốn hàng đầu tiên chỉ đọc: chúng cho bạn biết
+        NAMper thực sự nhận được gì từ iOS, cách nhanh nhất để tìm ra vì sao một interface không
+        hoạt động đúng.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Sample rate</b></td><td>Read-only</td><td>—</td>
-                <td>The rate the engine is actually running at, in kHz.</td></tr>
-            <tr><td><b class="ui">Inputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many input channels the current route offers, up to eight.</td></tr>
-            <tr><td><b class="ui">Outputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many output channels the current route offers.</td></tr>
-            <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">running</b> or <b class="ui">stopped</b>.</td></tr>
-            <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
-                <td>Mutes the output while the built-in mic plays through the phone's own speaker. <a href="/docs/vi/setup.html#feedback-guard">Read this one properly</a>.</td></tr>
-            <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
-                <td>Processor load, shown only while the engine runs.</td></tr>
-            <tr><td><b class="ui">Sample rate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
-                <td>Sets the engine rate; remembered per route. Changing it restarts the engine. <a href="/docs/vi/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input channels</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
-                <td>Caps how many input channels NAMper opens. Leave on <b class="ui">Auto</b> unless you have a reason.</td></tr>
-            <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Block size, with a live <b class="ui">frames · ms</b> readout. The only latency control there is. <a href="/docs/vi/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input trim</b></td><td>One slider per input, −12…+24 dB</td><td>0 dB</td>
-                <td>Gain for interfaces without a gain knob. Play hard: the <b class="ui">IN</b> meter should reach its top third.</td></tr>
-            <tr><td><b class="ui">Use all interface outputs</b></td><td>Switch</td><td>Off</td>
-                <td>Opens every output pair, so a branch, a rig or the click can own its own pair. Stereo devices do not need it.</td></tr>
+            <tr><td><b class="ui">Sample rate</b></td><td>Chỉ đọc</td><td>—</td>
+                <td>Sample rate mà engine thực sự đang chạy, tính bằng kHz.</td></tr>
+            <tr><td><b class="ui">Đầu vào</b></td><td>Chỉ đọc</td><td>—</td>
+                <td>Route hiện tại cung cấp bao nhiêu kênh input, tối đa tám.</td></tr>
+            <tr><td><b class="ui">Đầu ra</b></td><td>Chỉ đọc</td><td>—</td>
+                <td>Route hiện tại cung cấp bao nhiêu kênh output.</td></tr>
+            <tr><td><b class="ui">Engine</b></td><td>Chỉ đọc</td><td>—</td>
+                <td><b class="ui">đang chạy</b> hoặc <b class="ui">đã dừng</b>.</td></tr>
+            <tr><td><b class="ui">Chống hú</b></td><td>Công tắc</td><td>Bật</td>
+                <td>Tắt tiếng output khi mic tích hợp phát qua chính loa của điện thoại. <a href="/docs/vi/setup.html#feedback-guard">Đọc kỹ mục này</a>.</td></tr>
+            <tr><td><b class="ui">Tải DSP</b></td><td>Chỉ số + thanh</td><td>—</td>
+                <td>Tải xử lý, chỉ hiện khi engine đang chạy.</td></tr>
+            <tr><td><b class="ui">Sample rate</b></td><td>Chip: <b class="ui">Tự động</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Tự động</b></td>
+                <td>Đặt sample rate của engine; nhớ theo từng route. Thay đổi nó sẽ khởi động lại engine. <a href="/docs/vi/setup.html#rate">Thêm</a>.</td></tr>
+            <tr><td><b class="ui">Kênh đầu vào</b></td><td>Chip: <b class="ui">Tự động</b>, 1…n</td><td><b class="ui">Tự động</b></td>
+                <td>Giới hạn số kênh input mà NAMper mở. Cứ để <b class="ui">Tự động</b> trừ khi bạn có lý do khác.</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>Chip: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
+                <td>Kích thước block, với chỉ số <b class="ui">frames · ms</b> cập nhật trực tiếp. Đây là control latency duy nhất có. <a href="/docs/vi/setup.html#rate">Thêm</a>.</td></tr>
+            <tr><td><b class="ui">Trim đầu vào</b></td><td>Một slider cho mỗi input, −12…+24 dB</td><td>0 dB</td>
+                <td>Gain cho các interface không có núm gain. Chơi mạnh tay: đồng hồ <b class="ui">VÀO</b> nên đạt tới một phần ba trên cùng.</td></tr>
+            <tr><td><b class="ui">Dùng mọi ngõ ra của interface</b></td><td>Công tắc</td><td>Tắt</td>
+                <td>Mở mọi cặp output, để một branch, một rig hoặc click có thể sở hữu cặp riêng của nó. Thiết bị stereo không cần cái này.</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note warn">
-        <div class="t">Audio changes need a relaunch</div>
-        <p>The chips and switches here take effect on the next engine start — some, like the sample
-          rate, restart the engine themselves. If something looks stuck, power the engine off and on
-          before assuming it is broken.</p>
+        <div class="t">Thay đổi audio cần khởi động lại</div>
+        <p>Các chip và công tắc ở đây có hiệu lực ở lần khởi động engine tiếp theo — một số, như
+          sample rate, tự khởi động lại engine. Nếu có gì đó trông như bị kẹt, tắt rồi bật lại
+          engine trước khi kết luận nó bị hỏng.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="names"><span class="n">08.3</span>Channel names</h2>
-      <p><b class="ui">CHANNEL NAMES</b> is a text field per input, each row prefixed
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on, with the placeholder
-        <b class="ui">Guitar, Vocal…</b>. The footnote says what they are for:
-        <b class="ui">Input pickers show these names everywhere.</b></p>
-      <p>Name them once and those names appear in every input picker in the app — rig inputs, looper
-        track sources, compressor sidechains, the input trim sliders. Channels you leave blank fall
-        back to <b class="ui">In &lt;n&gt;</b>.</p>
+      <h2 id="names"><span class="n">08.3</span>Tên kênh</h2>
+      <p><b class="ui">TÊN KÊNH</b> là một ô text cho mỗi input, mỗi hàng bắt đầu bằng
+        <b class="ui">In 1</b>, <b class="ui">In 2</b> và tương tự, với placeholder
+        <b class="ui">Guitar, vocal…</b>. Ghi chú nói rõ chúng dùng để làm gì:
+        <b class="ui">Các bộ chọn đầu vào hiển thị những tên này ở mọi nơi.</b></p>
+      <p>Đặt tên chúng một lần và những tên đó xuất hiện trong mọi trình chọn input của app —
+        input của rig, nguồn track của looper, sidechain của compressor, các slider input trim.
+        Kênh bạn để trống sẽ dùng lại <b class="ui">In &lt;n&gt;</b>.</p>
       <div class="note tip">
-        <div class="t">Worth two minutes</div>
-        <p>On a multichannel interface, <b class="ui">Guitar</b> and <b class="ui">Vocal</b> are much
-          easier to pick correctly mid-soundcheck than <b class="ui">In 3</b> and
+        <div class="t">Đáng bỏ ra hai phút</div>
+        <p>Trên một interface nhiều kênh, <b class="ui">Guitar</b> và <b class="ui">Vocal</b> dễ
+          chọn đúng hơn nhiều giữa lúc soundcheck so với <b class="ui">In 3</b> và
           <b class="ui">In 4</b>.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="appearance"><span class="n">08.4</span>Appearance</h2>
-      <p>Chips: <b class="ui">System</b>, <b class="ui">Light</b>, <b class="ui">Dark</b>. The
-        default is <b class="ui">System</b>, and this is the one setting on the whole sheet that
-        applies the instant you tap it.</p>
-      <p>NAMper is designed dark — the meters, the LEDs and the chain graphics are drawn for a dark
-        stage. <b class="ui">Light</b> is there if you need it in daylight, but the app is at its
-        most legible in the dark.</p>
+      <h2 id="appearance"><span class="n">08.4</span>Giao diện</h2>
+      <p>Chip: <b class="ui">Hệ thống</b>, <b class="ui">Sáng</b>, <b class="ui">Tối</b>. Mặc
+        định là <b class="ui">Hệ thống</b>, và đây là cài đặt duy nhất trên cả sheet có hiệu lực
+        ngay khi bạn chạm vào nó.</p>
+      <p>NAMper được thiết kế cho giao diện tối — các đồng hồ, LED và hình vẽ chuỗi tín hiệu
+        được vẽ cho một sân khấu tối. <b class="ui">Sáng</b> có sẵn nếu bạn cần dùng dưới ánh
+        sáng ban ngày, nhưng app dễ đọc nhất khi ở chế độ tối.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="set"><span class="n">08.5</span>Set</h2>
-      <p>The <b class="ui">SET</b> card is read-only. It shows <b class="ui">Tempo</b> (as
-        <b class="ui">BPM</b>, or <b class="ui">—</b> when nothing is set) and <b class="ui">Key</b>
-        (such as <b class="ui">Am</b>, or <b class="ui">—</b>). It is a status readout, not a
-        control.</p>
-      <p>The footnote points you at the real controls: <b class="ui">Tempo: long-press the
-        metronome. Key: the KEY button in the header.</b></p>
+      <p>Thẻ <b class="ui">SET</b> chỉ đọc. Nó hiện <b class="ui">Tempo</b> (dạng
+        <b class="ui">BPM</b>, hoặc <b class="ui">—</b> khi chưa đặt gì) và <b class="ui">Giọng</b>
+        (như <b class="ui">Am</b>, hoặc <b class="ui">—</b>). Đây là một chỉ số trạng thái,
+        không phải một control.</p>
+      <p>Ghi chú chỉ bạn tới các control thật sự: <b class="ui">Tempo: nhấn giữ máy đập nhịp. Giọng: nút KEY trên đầu trang.</b></p>
       <div class="tw">
         <table>
-          <thead><tr><th>Value</th><th>Set it from</th></tr></thead>
+          <thead><tr><th>Giá trị</th><th>Đặt từ đâu</th></tr></thead>
           <tbody>
-            <tr><td>Tempo</td><td>Long-press the metronome chip in the Rig header, or the tempo block in the <b class="ui a">Loop</b> tab. The looper also detects it from your first loop, and selecting a backing track applies the song's tempo.</td></tr>
-            <tr><td>Key</td><td>The <b class="ui">KEY</b> chip in the Rig header. Selecting a backing track applies the song's key.</td></tr>
+            <tr><td>Tempo</td><td>Nhấn giữ chip metronome trong header Rig, hoặc khối tempo ở tab <b class="ui a">Loop</b>. Looper cũng tự phát hiện nó từ loop đầu tiên của bạn, và chọn một nhạc nền sẽ áp tempo của bài hát đó.</td></tr>
+            <tr><td>Key</td><td>Chip <b class="ui">KEY</b> trong header Rig. Chọn một nhạc nền sẽ áp giọng của bài hát đó.</td></tr>
           </tbody>
         </table>
       </div>
@@ -207,130 +207,128 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="lyrics"><span class="n">08.6</span>Lyrics</h2>
-      <p>One slider: teleprompter text size, from <b class="ui">16</b> to <b class="ui">34 pt</b>,
-        default <b class="ui">22 pt</b>, with a live preview line reading <b class="ui">This is how
-        your lyrics will look</b>.</p>
-      <p>Changing it re-aims the teleprompter live, so if the lyrics screen is open on another
-        device or you come straight back to it, nothing has to be re-timed. Set it for the distance
-        the phone actually sits from your face on a mic stand, not from the sofa. See
-        <a href="/docs/vi/perform.html#lyrics">lyrics and the teleprompter</a>.</p>
+      <p>Một slider duy nhất: cỡ chữ teleprompter, từ <b class="ui">16</b> đến
+        <b class="ui">34 pt</b>, mặc định <b class="ui">22 pt</b>, với một dòng xem trước trực
+        tiếp hiện <b class="ui">Lời bài hát sẽ trông như thế này</b>.</p>
+      <p>Thay đổi nó sẽ chỉnh lại teleprompter ngay lập tức, nên nếu màn hình lyrics đang mở
+        trên một thiết bị khác hoặc bạn quay lại nó ngay sau đó, không có gì cần chỉnh lại thời
+        gian. Đặt nó theo khoảng cách thật giữa điện thoại và mặt bạn khi gắn trên giá mic,
+        không phải từ trên ghế sofa. Xem <a href="/docs/vi/perform.html#lyrics">lời bài hát và
+        teleprompter</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="metronome"><span class="n">08.7</span>Metronome</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
           <tbody>
-            <tr><td>Click level</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
-                <td>How loud the click is.</td></tr>
-            <tr><td><b class="ui">Click output</b></td><td>Chips: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
-                <td>Which hardware output pair carries the click. Shown only when there is more than one pair; picking a non-main pair force-enables <b class="ui">Use all interface outputs</b>.</td></tr>
+            <tr><td>Mức click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
+                <td>Click to đến mức nào.</td></tr>
+            <tr><td><b class="ui">Ngõ ra click</b></td><td>Chip: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>Cặp output phần cứng nào mang tiếng click. Chỉ hiện khi có nhiều hơn một cặp; chọn một cặp không phải main sẽ tự bật <b class="ui">Dùng mọi ngõ ra của interface</b>.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The card's footnote is the useful part: <b class="ui">The click is mixed in AFTER the master
-        FX chain — reverbs and limiters never touch it. Pick a separate output pair for in-ear
-        monitoring.</b></p>
-      <p>That means your master reverb will not smear the click and your master limiter will not
-        duck the band every time it ticks. Send it to its own pair and the drummer hears the click
-        while front of house does not.</p>
-      <p>The click itself is switched on and off with the metronome chip in the Rig header, or the
-        <b class="ui">CLICK</b> chip in the <b class="ui a">Loop</b> tab — not from here.</p>
+      <p>Ghi chú của thẻ mới là phần hữu ích: <b class="ui">Tiếng click được trộn SAU chuỗi master FX — reverb và limiter không chạm tới nó. Chọn một cặp ngõ ra riêng cho in-ear.</b></p>
+      <p>Nghĩa là reverb master của bạn sẽ không làm nhoè tiếng click và limiter master của bạn
+        sẽ không đè ban nhạc xuống mỗi lần nó tích. Gửi nó ra một cặp riêng và tay trống sẽ nghe
+        được click trong khi khán phòng thì không.</p>
+      <p>Bản thân click được bật/tắt bằng chip metronome trong header Rig, hoặc chip
+        <b class="ui">CLICK</b> ở tab <b class="ui a">Loop</b> — không phải từ đây.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">08.8</span>Prompts</h2>
+      <h2 id="prompts"><span class="n">08.8</span>Prompt</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Show the support prompt</b></td><td>Switch</td><td>On</td>
-                <td>The sheet that explains NAMper is free and points at the tip jar. It reappears occasionally from the third launch onward; switch this off and it never returns.</td></tr>
-            <tr><td><b class="ui">Offer TONE3000 sign-in on launch</b></td><td>Switch</td><td>On</td>
-                <td>The sheet offering to connect your TONE3000 account so factory presets can download their real amp captures. It appears once per launch while you are signed out.</td></tr>
-            <tr><td><b class="ui">Replay the quick tour</b></td><td>Button</td><td>—</td>
-                <td>Runs the eight-step first-run tour again.</td></tr>
+            <tr><td><b class="ui">Hiện lời mời ủng hộ</b></td><td>Công tắc</td><td>Bật</td>
+                <td>Sheet giải thích NAMper miễn phí và chỉ tới tip jar. Nó thỉnh thoảng xuất hiện lại từ lần mở thứ ba trở đi; tắt cái này thì nó không bao giờ quay lại.</td></tr>
+            <tr><td><b class="ui">Mời đăng nhập TONE3000 khi mở app</b></td><td>Công tắc</td><td>Bật</td>
+                <td>Sheet đề nghị kết nối tài khoản TONE3000 của bạn để các preset gốc có thể tải bản capture amp thật của chúng. Nó hiện một lần mỗi lần mở app trong khi bạn chưa đăng nhập.</td></tr>
+            <tr><td><b class="ui">Xem lại tour nhanh</b></td><td>Nút</td><td>—</td>
+                <td>Chạy lại tour tám bước lần đầu.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The quick tour is a spotlight over the live Rig tab, counted <b class="ui">n/8</b>, and it
-        is hands-on rather than a slideshow: it walks you through turning the audio on (you really
-        tap the power button), the amp card, the signal chain (you really tap a block), the block
-        editor, presets, the other tabs and a closing step. <b class="ui">Next</b>,
-        <b class="ui">Skip step</b> and <b class="ui">End tour</b> are always available, with
-        <b class="ui">Finish</b> at the end. It runs on the <b class="ui a">Rig</b> tab only.</p>
+      <p>Tour nhanh là một spotlight trên tab Rig thật, đếm <b class="ui">n/8</b>, và nó thực
+        hành thực tế chứ không phải một slideshow: nó dẫn bạn qua việc bật audio (bạn thực sự
+        chạm nút power), thẻ amp, chuỗi tín hiệu (bạn thực sự chạm vào một block), trình chỉnh
+        block, preset, các tab khác và một bước kết thúc. <b class="ui">Tiếp</b>,
+        <b class="ui">Bỏ qua bước</b> và <b class="ui">Kết thúc tour</b> luôn có sẵn, với
+        <b class="ui">Hoàn tất</b> ở cuối. Nó chỉ chạy trên tab <b class="ui a">Rig</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="reset"><span class="n">08.9</span>Reset</h2>
-      <p>Two buttons, each behind a confirmation.</p>
+      <p>Hai nút, mỗi nút có một xác nhận phía sau.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Button</th><th>Dialog</th><th>Confirm</th></tr></thead>
+          <thead><tr><th>Nút</th><th>Hộp thoại</th><th>Xác nhận</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Reset to factory presets</b></td>
-                <td><b class="ui">Delete ALL user presets? The four factory rigs come back.</b></td>
-                <td><b class="ui">Delete all user presets</b></td></tr>
-            <tr><td><b class="ui">Reset all settings</b></td>
-                <td><b class="ui">Reset every setting (audio, looper, MIDI map, appearance) to defaults? Presets and files stay. Restart the app afterwards.</b></td>
-                <td><b class="ui">Reset settings</b></td></tr>
+            <tr><td><b class="ui">Về preset gốc</b></td>
+                <td><b class="ui">Xoá TẤT CẢ preset của bạn? Bốn rig gốc sẽ quay lại.</b></td>
+                <td><b class="ui">Xoá mọi preset người dùng</b></td></tr>
+            <tr><td><b class="ui">Đặt lại mọi cài đặt</b></td>
+                <td><b class="ui">Đặt lại mọi cài đặt (âm thanh, looper, bản đồ MIDI, giao diện) về mặc định? Preset và tệp vẫn giữ nguyên. Hãy khởi động lại ứng dụng sau đó.</b></td>
+                <td><b class="ui">Đặt lại cài đặt</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>The first one wipes your rig presets and restores the four factory rigs. The second leaves
-        every preset and every file alone and only puts the settings back to their defaults.</p>
+      <p>Nút đầu tiên xoá sạch preset rig của bạn và khôi phục bốn rig gốc. Nút thứ hai để
+        nguyên mọi preset và mọi file, chỉ đưa các cài đặt về lại giá trị mặc định của chúng.</p>
       <div class="note warn">
-        <div class="t">Restart after a settings reset</div>
-        <p>The footnote reads <b class="ui">Settings reset takes effect after an app restart.</b>,
-          and it means it. Only the appearance change applies immediately — the audio settings need
-          a relaunch before they are truly back at their defaults. Quit NAMper from the app switcher
-          and open it again.</p>
+        <div class="t">Khởi động lại sau khi reset cài đặt</div>
+        <p>Ghi chú hiện <b class="ui">Việc đặt lại cài đặt có hiệu lực sau khi khởi động lại ứng dụng.</b>, và
+          nó thật sự có nghĩa như vậy. Chỉ có thay đổi giao diện có hiệu lực ngay lập tức — các
+          cài đặt audio cần khởi động lại app trước khi chúng thật sự trở về giá trị mặc định.
+          Thoát NAMper từ app switcher và mở lại nó.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="diagnostics"><span class="n">08.10</span>Diagnostics</h2>
-      <p>NAMper keeps a plain-text engine log recording interface routing and peaks. When one
-        exists, this card offers <b class="ui">Share engine log</b> and <b class="ui">Clear engine
-        log</b>; when it does not, it reads <b class="ui">No engine log yet (it records interface
-        routing and peaks).</b></p>
-      <p><b class="ui">Share engine log</b> hands the file to the iOS share sheet — mail it,
-        AirDrop it, or attach it to a support issue. It is the single most useful thing you can
-        include in a bug report about an interface that will not open, a rate that gets refused or
-        an engine that stops on its own, because it records what actually happened at the audio
-        layer.</p>
-      <p><b class="ui">Clear engine log</b> empties it. Do that immediately before reproducing a
-        problem and the log you send contains that problem and nothing else.</p>
+      <p>NAMper giữ một engine log dạng text thuần ghi lại việc định tuyến interface và các
+        đỉnh tín hiệu. Khi có một log, thẻ này cho <b class="ui">Chia sẻ nhật ký engine</b> và
+        <b class="ui">Xoá nhật ký engine</b>; khi không có, nó hiện <b class="ui">Chưa có nhật ký engine (nó ghi định tuyến interface và mức đỉnh).</b></p>
+      <p><b class="ui">Chia sẻ nhật ký engine</b> đưa file đó cho share sheet của iOS — gửi mail,
+        AirDrop, hoặc đính kèm vào một support issue. Đây là thứ hữu ích nhất bạn có thể đính
+        kèm vào một báo cáo lỗi về một interface không mở được, một sample rate bị từ chối, hoặc
+        một engine tự dừng, vì nó ghi lại những gì thực sự đã xảy ra ở tầng audio.</p>
+      <p><b class="ui">Xoá nhật ký engine</b> xoá sạch nó. Làm điều đó ngay trước khi tái hiện một
+        vấn đề thì log bạn gửi sẽ chỉ chứa đúng vấn đề đó và không gì khác.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">08.11</span>Not in Settings</h2>
-      <p>Three things people look for here and do not find.</p>
+      <h2 id="elsewhere"><span class="n">08.11</span>Không nằm trong Settings</h2>
+      <p>Ba thứ mọi người tìm ở đây mà không thấy.</p>
       <h3>Trigger quantize</h3>
-      <p>The <b class="ui">QUANT</b> knob and its grid chip live in the <b class="ui a">Sample</b>
-        tab header, not in Settings — even though both are global rather than per kit or per pad.
-        See <a href="/docs/vi/sampler.html#quantize">trigger quantize</a>.</p>
-      <h3>Tempo and key</h3>
-      <p>Both are header chips on the <b class="ui a">Rig</b> tab. Settings only reports them, in
-        the <a href="#set"><b class="ui">SET</b></a> card.</p>
+      <p>Núm <b class="ui">QUANT</b> và chip lưới của nó nằm trong header tab
+        <b class="ui a">Sample</b>, không phải trong Settings — mặc dù cả hai đều toàn cục chứ
+        không phải theo từng kit hay từng pad. Xem <a href="/docs/vi/sampler.html#quantize">trigger
+        quantize</a>.</p>
+      <h3>Tempo và giọng</h3>
+      <p>Cả hai đều là chip trên header của tab <b class="ui a">Rig</b>. Settings chỉ hiển thị
+        lại chúng, trong thẻ <a href="#set"><b class="ui">SET</b></a>.</p>
       <h3>MIDI</h3>
-      <p>There are <strong>no global MIDI settings at all</strong>: no channel selector, no
-        program-change toggle, no clock sync. MIDI in NAMper is omni and always on — every channel
-        is accepted, every source connects automatically, and the app publishes its own virtual
-        destination named <b class="ui">NAMper</b>.</p>
+      <p><strong>Không có bất kỳ cài đặt MIDI toàn cục nào cả</strong>: không có bộ chọn kênh,
+        không có công tắc program-change, không có clock sync. MIDI trong NAMper là omni và luôn
+        bật — mọi kênh đều được chấp nhận, mọi nguồn tự động kết nối, và app phát ra đích ảo
+        (virtual destination) riêng của nó tên <b class="ui">NAMper</b>.</p>
       <div class="note">
-        <div class="t">Nothing to configure</div>
-        <p>If a pedal is not doing anything, the problem is the mapping rather than a setting.
-          Everything MIDI lives in the <b class="ui a">Control</b> tab — see
-          <a href="/docs/vi/control.html">MIDI &amp; control</a>.</p>
+        <div class="t">Không có gì để cấu hình</div>
+        <p>Nếu một pedal không làm gì cả, vấn đề nằm ở mapping chứ không phải ở một cài đặt.
+          Mọi thứ liên quan MIDI nằm trong tab <b class="ui a">Điều khiển</b> — xem
+          <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/control.html">← 07 · MIDI &amp; control</a>
+      <a href="/docs/vi/control.html">← 07 · MIDI &amp; điều khiển</a>
       <span class="sp"></span>
-      <a href="/docs/vi/">All docs →</a>
+      <a href="/docs/vi/">Tất cả tài liệu →</a>
     </nav>
   </main>
 </div>
@@ -345,7 +343,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một app độc lập, không liên kết, không được xác nhận hay tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu đều thuộc quyền sở hữu của chủ sở hữu tương ứng, và chỉ được dùng để mô tả thiết bị mà một bản capture được thực hiện từ đó.</p>
   </div>
 </footer>
 

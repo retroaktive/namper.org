@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started — NAMper Documentation</title>
-<meta name="description" content="Plugging in: audio interfaces, sample rate and buffer size, the power button, the input and output meters, the feedback guard, and where NAMper keeps your files.">
+<title>Bắt đầu — Tài liệu NAMper</title>
+<meta name="description" content="Cắm và chạy: audio interface, sample rate và kích thước buffer, nút power, đồng hồ đo input và output, chống hú, và nơi NAMper lưu file của bạn.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Getting started — NAMper Documentation">
-<meta property="og:description" content="Audio interfaces, sample rate and buffer, the power button, the meters and the feedback guard.">
+<meta property="og:title" content="Bắt đầu — Tài liệu NAMper">
+<meta property="og:description" content="Audio interface, sample rate và buffer, nút power, các đồng hồ đo và chống hú.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/setup.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/setup.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -46,249 +46,252 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">NỘI DUNG</div>
     <ol>
-      <li><a class="on" href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a class="on" href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--power)">01 · GETTING STARTED</div>
-    <h1>Plugging in.</h1>
-    <p class="lede">Everything between your guitar and the first sound: how NAMper picks up your
-      audio hardware, what the power button does, how to read the meters, and why the app
-      sometimes mutes itself on purpose.</p>
+    <div class="slab" style="--nc:var(--power)">01 · BẮT ĐẦU</div>
+    <h1>Cắm và chạy.</h1>
+    <p class="lede">Mọi thứ giữa cây guitar của bạn và âm thanh đầu tiên: cách NAMper nhận diện
+      phần cứng audio, nút power làm gì, cách đọc đồng hồ đo, và vì sao app đôi khi tự tắt tiếng
+      có chủ đích.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRONG TRANG NÀY</div>
       <ul>
-        <li><a href="#power">The power button</a></li>
-        <li><a href="#interfaces">Audio interfaces</a></li>
-        <li><a href="#meters">Meters and levels</a></li>
-        <li><a href="#rate">Sample rate and buffer</a></li>
-        <li><a href="#feedback-guard">The feedback guard</a></li>
-        <li><a href="#permissions">Permissions</a></li>
-        <li><a href="#files">Where your files live</a></li>
+        <li><a href="#power">Nút power</a></li>
+        <li><a href="#interfaces">Audio interface</a></li>
+        <li><a href="#meters">Đồng hồ đo và mức tín hiệu</a></li>
+        <li><a href="#rate">Sample rate và buffer</a></li>
+        <li><a href="#feedback-guard">Chống hú</a></li>
+        <li><a href="#permissions">Quyền truy cập</a></li>
+        <li><a href="#files">Nơi lưu file của bạn</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="power"><span class="n">01.1</span>The power button</h2>
-      <p>The green power icon in the top-right corner of the <b class="ui a">Rig</b> tab starts and
-        stops the audio engine. Until it is on, nothing is processed and nothing makes a sound —
-        the meters stay flat and recording refuses with
-        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
-      <p>It is dim when the engine is stopped and green with a glow when it is running. The
-        <b class="ui">DSP load</b> chip beside it shows how hard the processor is working: green
-        under 60 %, amber up to 85 %, red above that. If it sits in the red, take a block out of the
-        chain or step the buffer size up.</p>
-      <p>NAMper asks for microphone access the first time you start the engine, not at launch.</p>
+      <h2 id="power"><span class="n">01.1</span>Nút power</h2>
+      <p>Biểu tượng power màu xanh lá ở góc trên bên phải tab <b class="ui a">Rig</b> bật và tắt
+        audio engine. Cho tới khi nó bật, không gì được xử lý và không có âm thanh nào phát ra —
+        đồng hồ đo đứng yên và việc ghi âm sẽ từ chối với
+        <b class="ui r">Âm thanh đang tắt — chạm nút nguồn trước khi ghi.</b></p>
+      <p>Nó mờ đi khi engine dừng và sáng xanh lá kèm hiệu ứng phát sáng khi đang chạy. Chip
+        <b class="ui">Tải DSP</b> bên cạnh cho biết bộ xử lý đang làm việc nặng tới đâu: xanh lá
+        dưới 60 %, hổ phách tới 85 %, đỏ trên mức đó. Nếu nó nằm trong vùng đỏ, hãy bỏ bớt một
+        block khỏi chuỗi hoặc tăng kích thước buffer lên.</p>
+      <p>NAMper xin quyền truy cập micro vào lần đầu bạn khởi động engine, không phải lúc mở
+        app.</p>
       <div class="note warn">
-        <div class="t">Unplugging</div>
-        <p>Pulling out your headphones or your interface <b>stops the engine</b> — deliberately, so
-          a loud rig never jumps to the phone speaker on its own. Tap power again once you are
-          plugged back in. Plugging something new in rebuilds the engine automatically.</p>
+        <div class="t">Rút dây</div>
+        <p>Rút tai nghe hoặc interface ra <b>sẽ dừng engine</b> — có chủ đích, để một rig đang to
+          tiếng không bao giờ tự động nhảy sang loa điện thoại. Chạm power lần nữa khi bạn đã cắm
+          lại. Cắm một thiết bị mới vào sẽ tự động dựng lại engine.</p>
       </div>
-      <p>If the engine cannot start, the banner reads <b class="ui r">Audio could not start.
-        Another app may be using the interface — try again.</b> Close whatever else is holding the
-        interface and try once more.</p>
+      <p>Nếu engine không khởi động được, banner hiện <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> Đóng bất cứ app nào khác đang
+        giữ interface và thử lại.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="interfaces"><span class="n">01.2</span>Audio interfaces</h2>
-      <p>There is no device picker. NAMper follows whatever audio route iOS is using, so you choose
-        your hardware the way you always do — plug the interface in, and the app rebuilds itself
-        around it. Multichannel interfaces are supported, up to eight input channels.</p>
-      <p>Settings → <b class="ui">AUDIO INTERFACE</b> tells you what NAMper actually got:
-        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> and
-        <b class="ui">Engine</b> (<b class="ui">running</b> or <b class="ui">stopped</b>). If the
-        channel count is not what you expected, that row is the place to find out.</p>
+      <h2 id="interfaces"><span class="n">01.2</span>Audio interface</h2>
+      <p>Không có bộ chọn thiết bị. NAMper đi theo bất kỳ audio route nào mà iOS đang dùng, nên
+        bạn chọn phần cứng theo đúng cách bạn vẫn làm — cắm interface vào, và app sẽ tự dựng lại
+        xung quanh nó. Interface đa kênh được hỗ trợ, tối đa tám kênh input.</p>
+      <p>Cài đặt → <b class="ui">AUDIO INTERFACE</b> cho bạn biết NAMper thực sự nhận được gì:
+        <b class="ui">Sample rate</b>, <b class="ui">Đầu vào</b>, <b class="ui">Đầu ra</b> và
+        <b class="ui">Engine</b> (<b class="ui">đang chạy</b> hoặc <b class="ui">đã dừng</b>). Nếu
+        số kênh không đúng như bạn mong đợi, hàng này là nơi để kiểm tra.</p>
 
-      <h3>Naming your channels</h3>
-      <p>Settings → <b class="ui">CHANNEL NAMES</b> gives every input a text field with the
-        placeholder <b class="ui">Guitar, Vocal…</b>. Name them once and those names appear in every
-        input picker in the app — rig inputs, looper track sources, input trim rows. Unnamed
-        channels simply read <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on.</p>
+      <h3>Đặt tên kênh</h3>
+      <p>Cài đặt → <b class="ui">TÊN KÊNH</b> cho mỗi input một ô nhập văn bản với
+        placeholder <b class="ui">Guitar, vocal…</b>. Đặt tên một lần và những tên đó xuất hiện
+        ở mọi bộ chọn input trong app — input của rig, nguồn track của looper, các hàng input
+        trim. Kênh chưa đặt tên chỉ hiện <b class="ui">In 1</b>, <b class="ui">In 2</b> và tiếp
+        tục như vậy.</p>
 
-      <h3>Multiple outputs</h3>
-      <p>Settings → <b class="ui">Use all interface outputs</b> is off by default, and stereo
-        devices never need it. Switch it on and NAMper opens every output pair on the interface, so
-        a rig, a parallel branch, a looper track or the metronome click can each own its own pair —
-        the guitar to front of house, the click to the drummer's in-ears.</p>
+      <h3>Nhiều output</h3>
+      <p>Cài đặt → <b class="ui">Dùng mọi ngõ ra của interface</b> mặc định tắt, và thiết bị stereo
+        không bao giờ cần bật nó. Bật lên và NAMper sẽ mở mọi cặp output trên interface, để một
+        rig, một nhánh song song, một track của looper hay tiếng click metronome đều có thể sở
+        hữu cặp riêng — guitar ra front of house, click ra tai nghe in-ear của tay trống.</p>
       <div class="note">
-        <div class="t">Input channels</div>
-        <p><b class="ui">Input channels</b> is normally left on <b class="ui">Auto</b>. Pin it to a
-          number only if your interface reports more channels than you want NAMper to open.</p>
+        <div class="t">Kênh input</div>
+        <p><b class="ui">Kênh đầu vào</b> thường để nguyên ở <b class="ui">Tự động</b>. Chỉ cố
+          định thành một con số nếu interface của bạn báo nhiều kênh hơn số bạn muốn NAMper
+          mở.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="meters"><span class="n">01.3</span>Meters and levels</h2>
-      <p>Two vertical strips flank the amp card on the Rig tab: <b class="ui">IN</b> on the left,
-        <b class="ui">OUT</b> on the right. Both run from −60 dBFS at the bottom to 0 at the top,
-        green through amber to red. There is no separate clip light — clipping is the bar hitting
-        red at the very top.</p>
+      <h2 id="meters"><span class="n">01.3</span>Đồng hồ đo và mức tín hiệu</h2>
+      <p>Hai dải dọc nằm hai bên thẻ ampli trên tab Rig: <b class="ui">VÀO</b> bên trái,
+        <b class="ui">RA</b> bên phải. Cả hai chạy từ −60 dBFS ở đáy tới 0 ở đỉnh, xanh lá qua
+        hổ phách tới đỏ. Không có đèn clip riêng — clip chính là khi thanh chạm đỏ ở tận đỉnh.</p>
 
-      <h3>Setting your input level</h3>
+      <h3>Thiết lập mức input</h3>
       <ol style="--nc:var(--eq)">
-        <li>Turn the audio on and play as hard as you ever play.</li>
-        <li>The <b class="ui">IN</b> meter should reach its top third and stay out of the red.</li>
-        <li>If your interface has a gain knob, use it. If it does not, open Settings →
-          <b class="ui">Input trim</b> and raise the slider for that channel — it goes from
-          −12 dB to +24 dB in 1 dB steps, and starts at 0.</li>
+        <li>Bật audio lên và chơi mạnh nhất có thể.</li>
+        <li>Đồng hồ <b class="ui">VÀO</b> phải chạm tới một phần ba trên cùng và không vào vùng
+          đỏ.</li>
+        <li>Nếu interface của bạn có núm gain, hãy dùng nó. Nếu không, mở Cài đặt →
+          <b class="ui">Trim đầu vào</b> và kéo thanh trượt lên cho kênh đó — nó chạy từ −12 dB
+          tới +24 dB theo bước 1 dB, và bắt đầu ở 0.</li>
       </ol>
-      <p>The <b class="ui">IN</b> meter shows the level <em>after</em> the trim, so what you see is
-        what the amp model actually receives.</p>
+      <p>Đồng hồ <b class="ui">VÀO</b> hiển thị mức <em>sau</em> khi đã trim, nên những gì bạn
+        thấy chính là những gì model ampli thực sự nhận được.</p>
 
-      <h3>The master section</h3>
-      <p>At the bottom of the Rig tab, the <b class="ui">MASTER</b> card is where every rig, the
-        looper, the sampler and the backing track sum together before the hardware output. It shows
-        stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> with marks at −12 and −6 dB,
-        plus a broadcast-style loudness reading in <b class="ui">LUFS</b> — the big number is
-        momentary loudness, the small line adds the short-term value. It reads
-        <b class="ui">-inf</b> in silence. The fader below runs from −60 to +12 dB.</p>
-      <p>Every block editor has its own small <b class="ui">IN</b> and <b class="ui">OUT</b> meters
-        too, which is the quickest way to find the block that is running hot.</p>
+      <h3>Phần master</h3>
+      <p>Ở cuối tab Rig, thẻ <b class="ui">MASTER</b> là nơi mọi rig, looper, sampler và nhạc nền
+        cộng dồn lại trước khi ra phần cứng output. Nó hiển thị thanh peak stereo <b class="ui">L</b>
+        và <b class="ui">R</b> với vạch mốc ở −12 và −6 dB, cộng thêm chỉ số độ to kiểu broadcast
+        tính bằng <b class="ui">LUFS</b> — con số lớn là độ to tức thời, dòng nhỏ thêm giá trị
+        ngắn hạn. Nó hiện <b class="ui">-inf</b> khi im lặng. Fader bên dưới chạy từ −60 tới
+        +12 dB.</p>
+      <p>Mọi trình chỉnh sửa block cũng có đồng hồ <b class="ui">VÀO</b> và <b class="ui">RA</b>
+        nhỏ riêng, đó là cách nhanh nhất để tìm block nào đang có mức tín hiệu quá cao.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="rate"><span class="n">01.4</span>Sample rate and buffer</h2>
-      <p>Both live in Settings → <b class="ui">AUDIO INTERFACE</b>, and both are remembered
-        per audio route — your interface and your headphones can each keep their own settings.</p>
+      <h2 id="rate"><span class="n">01.4</span>Sample rate và buffer</h2>
+      <p>Cả hai đều nằm trong Cài đặt → <b class="ui">AUDIO INTERFACE</b>, và cả hai đều được nhớ
+        theo từng audio route — interface và tai nghe của bạn có thể mỗi thứ giữ cài đặt riêng.</p>
 
       <h3>Sample rate</h3>
-      <p>The chips read <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
-        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> and
-        <b class="ui">192k</b>. <b class="ui">Auto</b> is the default and simply follows the
-        interface; changing the rate restarts the engine.</p>
-      <p>On the phone's own microphone and speaker only <b class="ui">Auto</b> and
-        <b class="ui">48k</b> appear, with the note
-        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
-        rates.</b> With an interface connected you get the full list — minus any rate that
-        particular interface has already refused, which NAMper remembers and stops offering.</p>
-      <p>If a rate is refused, the app falls back to the previous one and says so in red:
+      <p>Các chip hiện <b class="ui">Tự động</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
+        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> và
+        <b class="ui">192k</b>. <b class="ui">Tự động</b> là mặc định và chỉ đơn giản đi theo
+        interface; đổi rate sẽ khởi động lại engine.</p>
+      <p>Trên mic và loa của chính điện thoại, chỉ <b class="ui">Tự động</b> và <b class="ui">48k</b>
+        xuất hiện, kèm ghi chú <b class="ui">Âm thanh tích hợp chỉ chạy 48 kHz. Cắm interface để có thêm sample rate.</b> Khi kết nối một interface, bạn có đủ danh sách — trừ những
+        rate mà interface đó đã từ chối trước đó, điều mà NAMper nhớ và ngừng đưa ra.</p>
+      <p>Nếu một rate bị từ chối, app quay lại rate trước đó và báo bằng màu đỏ:
         <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
       <div class="note tip">
-        <div class="t">Which rate should I use?</div>
-        <p>Higher is not automatically better — it costs processing headroom, and NAM profiles are
-          captured at ordinary rates anyway. Leave it on <b class="ui">Auto</b> unless you are
-          matching a session that runs at a specific rate.</p>
+        <div class="t">Nên dùng rate nào?</div>
+        <p>Cao hơn không tự động tốt hơn — nó tốn thêm headroom xử lý, và profile NAM vốn được
+          capture ở các rate thông thường. Cứ để nguyên <b class="ui">Tự động</b> trừ khi bạn cần
+          khớp với một session chạy ở một rate cụ thể.</p>
       </div>
 
-      <h3>Buffer size</h3>
-      <p><b class="ui">Buffer</b> offers <b class="ui">64</b>, <b class="ui">128</b>,
-        <b class="ui">256</b> and <b class="ui">512</b> frames, with a live readout of the latency
-        that buys you. The default is <b class="ui">128</b>. The app's own advice is exact:
-        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
-        one step.</b></p>
-      <p>This is the only latency control in NAMper — there is no separate latency setting.</p>
+      <h3>Kích thước buffer</h3>
+      <p><b class="ui">Buffer</b> cung cấp <b class="ui">64</b>, <b class="ui">128</b>,
+        <b class="ui">256</b> và <b class="ui">512</b> frame, cùng chỉ số độ trễ tương ứng hiển
+        thị trực tiếp. Mặc định là <b class="ui">128</b>. Lời khuyên của chính app rất rõ ràng:
+        <b class="ui">Nhỏ hơn = trễ ít hơn; lớn hơn = an toàn hơn với interface USB. Bị rè? Tăng lên một nấc.</b></p>
+      <p>Đây là điều khiển độ trễ duy nhất trong NAMper — không có cài đặt latency riêng nào
+        khác.</p>
       <div class="note warn">
-        <div class="t">Bluetooth output</div>
-        <p>Bluetooth headphones and speakers add roughly 0.2 s of delay, which is unplayable. The
-          app warns you when it spots a Bluetooth route. Use wired output for live playing.</p>
+        <div class="t">Output qua Bluetooth</div>
+        <p>Tai nghe và loa Bluetooth thêm khoảng 0,2 giây độ trễ, khiến việc chơi đàn gần như bất
+          khả thi. App sẽ cảnh báo bạn khi phát hiện một route Bluetooth. Hãy dùng output có dây
+          khi chơi live.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="feedback-guard"><span class="n">01.5</span>The feedback guard</h2>
-      <p>A guitar app with the phone's own microphone open and the phone's own speaker playing is a
-        feedback loop waiting to happen. So NAMper watches for exactly that combination — built-in
-        mic in, built-in speaker or earpiece out — and mutes its output before it can howl.</p>
+      <h2 id="feedback-guard"><span class="n">01.5</span>Chống hú</h2>
+      <p>Một app guitar với mic của chính điện thoại đang mở và loa của chính điện thoại đang
+        phát là một vòng lặp hú chờ sẵn để xảy ra. Vì vậy NAMper theo dõi chính xác sự kết hợp đó
+        — mic tích hợp làm input, loa hoặc tai nghe tích hợp làm output — và tắt tiếng output
+        trước khi nó kịp hú.</p>
       <figure>
         <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
-             alt="The banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. With an Unmute button.">
-        <figcaption>The banner you get when the guard engages</figcaption>
+             alt="Banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. Có nút Unmute.">
+        <figcaption>Banner bạn thấy khi chống hú kích hoạt</figcaption>
       </figure>
-      <p>When it engages you see <b class="ui r">Output muted to stop feedback (mic → speaker).
-        Connect an interface or headphones.</b> Only the audible output is held back — the tuner,
-        the input meters and recording all keep working, so you can still tune up and still capture
-        a take.</p>
-      <p>Plug in headphones or an interface and the mute lifts by itself. The ✕ on the banner only
-        hides the message for this session; it does not unmute.</p>
+      <p>Khi nó kích hoạt, bạn sẽ thấy <b class="ui r">Ngõ ra đã tắt tiếng để tránh hú (micro → loa). Hãy cắm interface hoặc tai nghe.</b> Chỉ output nghe được bị chặn lại —
+        tuner, đồng hồ input và việc ghi âm vẫn hoạt động bình thường, nên bạn vẫn có thể lên
+        dây và vẫn có thể capture một take.</p>
+      <p>Cắm tai nghe hoặc interface vào và chế độ tắt tiếng sẽ tự gỡ bỏ. Dấu ✕ trên banner chỉ
+        ẩn thông báo cho phiên này; nó không unmute.</p>
       <div class="note">
-        <div class="t">What “Unmute” does</div>
-        <p>The <b class="ui">Unmute</b> button is a temporary exception: the output stays live for
-          this session, and the guard re-arms as soon as the route changes — plug an interface or
-          headphones in and out, or relaunch the app, and the built-in speaker is protected again.
-          To disable the guard permanently, use the
-          <b class="ui">Feedback guard</b> switch in Settings instead.</p>
+        <div class="t">Nút “Unmute” làm gì</div>
+        <p>Nút <b class="ui">Bật tiếng</b> là một ngoại lệ tạm thời: output vẫn phát trong phiên
+          này, và chống hú sẽ tự kích hoạt lại ngay khi route thay đổi — cắm hoặc rút một
+          interface hay tai nghe, hoặc khởi động lại app, và loa tích hợp lại được bảo vệ. Để tắt
+          chống hú vĩnh viễn, hãy dùng công tắc <b class="ui">Chống hú</b> trong Cài đặt
+          thay vào đó.</p>
       </div>
-      <p>The switch itself is Settings → <b class="ui">AUDIO INTERFACE</b> →
-        <b class="ui">Feedback guard</b>, subtitle
-        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> It is on
-        by default.</p>
+      <p>Công tắc đó nằm ở Cài đặt → <b class="ui">AUDIO INTERFACE</b> →
+        <b class="ui">Chống hú</b>, phụ đề
+        <b class="ui">Tắt tiếng ngõ ra khi micro đang phát qua loa điện thoại.</b> Nó bật
+        theo mặc định.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="permissions"><span class="n">01.6</span>Permissions</h2>
-      <p>NAMper asks for exactly two things, and only when it needs them.</p>
+      <h2 id="permissions"><span class="n">01.6</span>Quyền truy cập</h2>
+      <p>NAMper chỉ xin đúng hai quyền, và chỉ khi cần tới chúng.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Permission</th><th>When</th><th>Why</th></tr></thead>
+          <thead><tr><th>Quyền</th><th>Khi nào</th><th>Vì sao</th></tr></thead>
           <tbody>
-            <tr><td>Microphone</td><td>The first time you tap the power button</td>
-                <td>To hear your guitar or microphone. The prompt says it plainly: audio never
-                    leaves your device.</td></tr>
-            <tr><td>Bluetooth</td><td>The first time you pair a wireless MIDI pedal</td>
-                <td>To find and connect Bluetooth MIDI controllers.</td></tr>
+            <tr><td>Microphone</td><td>Lần đầu bạn chạm nút power</td>
+                <td>Để nghe guitar hoặc micro của bạn. Lời nhắc nói thẳng: âm thanh không bao giờ
+                    rời khỏi thiết bị của bạn.</td></tr>
+            <tr><td>Bluetooth</td><td>Lần đầu bạn ghép nối một pedal MIDI không dây</td>
+                <td>Để tìm và kết nối các bộ điều khiển MIDI qua Bluetooth.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If microphone access is off, a red banner reads
-        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> with a
-        <b class="ui">Settings</b> button that takes you straight to the iOS setting. Grant it and
-        the engine rebuilds without a relaunch.</p>
-      <p>There is no analytics, no tracking, no account and no camera, photos, location or contacts
-        access. NAMper collects nothing.</p>
+      <p>Nếu quyền truy cập micro đang tắt, một banner đỏ hiện
+        <b class="ui r">Quyền micro đang tắt — NAMper không nghe được cây đàn của bạn.</b> kèm nút
+        <b class="ui">Cài đặt</b> đưa bạn thẳng tới cài đặt iOS. Cấp quyền và engine sẽ tự dựng
+        lại mà không cần khởi động lại app.</p>
+      <p>Không có analytics, không theo dõi, không tài khoản và không truy cập camera, ảnh, vị
+        trí hay danh bạ. NAMper không thu thập gì cả.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="files"><span class="n">01.7</span>Where your files live</h2>
-      <p>Everything NAMper keeps is visible in the Files app under
-        <b class="ui">On My iPhone → NAMper</b> (or <b class="ui">On My iPad</b>). You can copy
-        things in and out with the Files app, back the folder up, or move it to a computer.</p>
+      <h2 id="files"><span class="n">01.7</span>Nơi lưu file của bạn</h2>
+      <p>Mọi thứ NAMper lưu trữ đều hiển thị trong app Files, ở
+        <b class="ui">On My iPhone → NAMper</b> (hoặc <b class="ui">On My iPad</b>). Bạn có thể
+        copy file ra vào bằng app Files, sao lưu thư mục, hoặc chuyển nó sang máy tính.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Folder</th><th>What is in it</th></tr></thead>
+          <thead><tr><th>Thư mục</th><th>Có gì trong đó</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">tones/</b></td><td>NAM amp profiles (<b class="ui">.nam</b>) plus their
-              cover art and metadata</td></tr>
-            <tr><td><b class="ui">irs/</b></td><td>Impulse responses you have imported</td></tr>
-            <tr><td><b class="ui">samples/</b></td><td>Sampler pads, and saved kits under
+            <tr><td><b class="ui">tones/</b></td><td>Profile ampli NAM (<b class="ui">.nam</b>)
+              cùng ảnh bìa và metadata</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>Impulse response bạn đã nhập</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>Pad sampler, và các kit đã lưu trong
               <b class="ui">samples/kits/</b></td></tr>
-            <tr><td><b class="ui">backing/</b></td><td>Backing tracks, the setlist, lyrics and preset
-              markers</td></tr>
-            <tr><td><b class="ui">recordings/</b></td><td>Your performance recordings</td></tr>
-            <tr><td><b class="ui">presets/</b></td><td>Rig presets and the looper, sampler, setlist and
-              control presets</td></tr>
-            <tr><td><b class="ui">engine.log</b></td><td>A plain-text log of interface routing and
-              peaks, useful in a bug report</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>Nhạc nền, setlist, lời bài hát và preset
+              marker</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>Các bản ghi âm buổi trình diễn của
+              bạn</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>Preset của rig, cùng preset của looper,
+              sampler, setlist và control</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>Log dạng văn bản thuần về định tuyến
+              interface và các mức peak, hữu ích khi báo lỗi</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note tip">
-        <div class="t">A shortcut worth knowing</div>
-        <p>Audio files you drop straight into <b class="ui">backing/</b> with the Files app are
-          adopted into the setlist the next time you open NAMper. Loading a whole set is a single
-          copy-paste on a computer rather than twenty taps on a phone.</p>
+        <div class="t">Một mẹo đáng biết</div>
+        <p>File audio bạn thả thẳng vào <b class="ui">backing/</b> bằng app Files sẽ được đưa vào
+          setlist ngay lần tiếp theo bạn mở NAMper. Nạp cả một set nhạc chỉ là một lần copy-paste
+          trên máy tính, thay vì hai mươi lần chạm trên điện thoại.</p>
       </div>
-      <p>Two things do not work the way you might guess: you cannot drag files onto the app icon or
-        into a window — every import goes through the file picker inside NAMper — and the
-        <b class="ui">tones/</b> folder is deliberately excluded from iCloud backup, because
-        TONE3000 can simply re-download those profiles.</p>
+      <p>Có hai điều không hoạt động như bạn có thể đoán: bạn không thể kéo file thả vào icon app
+        hay vào một cửa sổ — mọi thao tác nhập đều phải qua file picker bên trong NAMper — và
+        thư mục <b class="ui">tones/</b> bị loại khỏi sao lưu iCloud một cách có chủ đích, vì
+        TONE3000 có thể tải lại các profile đó bất cứ lúc nào.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/">← All docs</a>
+      <a href="/docs/vi/">← Tất cả tài liệu</a>
       <span class="sp"></span>
-      <a href="/docs/vi/rig.html">02 · Rig &amp; signal chain →</a>
+      <a href="/docs/vi/rig.html">02 · Rig &amp; chuỗi tín hiệu →</a>
     </nav>
   </main>
 </div>
@@ -303,7 +306,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một ứng dụng độc lập, không liên kết, không được xác nhận và không được tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu là tài sản của chủ sở hữu tương ứng và chỉ được dùng để mô tả thiết bị mà bản capture được lấy từ đó.</p>
   </div>
 </footer>
 

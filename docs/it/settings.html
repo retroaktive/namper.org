@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Settings reference — NAMper Documentation</title>
-<meta name="description" content="Every card and every row in NAMper's Settings sheet: audio interface, channel names, appearance, set, lyrics, metronome, prompts, reset and diagnostics — plus the settings that live elsewhere.">
+<title>Guida alle impostazioni — Documentazione di NAMper</title>
+<meta name="description" content="Ogni card e ogni riga del foglio Impostazioni di NAMper: interfaccia audio, nomi dei canali, aspetto, set, testi, metronomo, avvisi, ripristino e diagnostica — più le impostazioni che vivono altrove.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Settings reference — NAMper Documentation">
-<meta property="og:description" content="Every card and row in NAMper's Settings sheet, with defaults and what each control actually does.">
+<meta property="og:title" content="Guida alle impostazioni — Documentazione di NAMper">
+<meta property="og:description" content="Ogni card e riga del foglio Impostazioni di NAMper, con i valori predefiniti e cosa fa davvero ogni controllo.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/it/settings.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOCUMENTAZIONE</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/it/">← ALL DOCS</a>
+  <a class="home" href="/docs/it/">← TUTTI I DOC</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/it/settings.html" aria-current="page">Italiano</a>
   </nav>
@@ -46,291 +46,293 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">CONTENUTI</div>
     <ol>
-      <li><a href="/docs/it/setup.html">Getting started</a></li>
-      <li><a href="/docs/it/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/it/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/it/setup.html">Per iniziare</a></li>
+      <li><a href="/docs/it/rig.html">Rig e catena del segnale</a></li>
+      <li><a href="/docs/it/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/it/looper.html">Looper</a></li>
-      <li><a href="/docs/it/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/it/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/it/control.html">MIDI &amp; control</a></li>
-      <li><a class="on" href="/docs/it/settings.html">Settings reference</a></li>
+      <li><a href="/docs/it/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/it/perform.html">Perform e testi</a></li>
+      <li><a href="/docs/it/control.html">MIDI e Control</a></li>
+      <li><a class="on" href="/docs/it/settings.html">Guida alle impostazioni</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--drive)">08 · SETTINGS REFERENCE</div>
-    <h1>Every switch, in order.</h1>
-    <p class="lede">NAMper's Settings sheet is short on purpose. This page walks it card by card,
-      row by row, with the defaults and what each control really does — and ends with the handful
-      of settings that live somewhere else entirely.</p>
+    <div class="slab" style="--nc:var(--drive)">08 · GUIDA ALLE IMPOSTAZIONI</div>
+    <h1>Ogni interruttore, in ordine.</h1>
+    <p class="lede">Il foglio Impostazioni di NAMper è corto apposta. Questa pagina lo percorre card
+      per card, riga per riga, con i valori predefiniti e cosa fa davvero ogni controllo — e finisce
+      con la manciata di impostazioni che vivono altrove, in tutt'altro posto.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">IN QUESTA PAGINA</div>
       <ul>
-        <li><a href="#opening">Opening Settings</a></li>
-        <li><a href="#audio">Audio interface</a></li>
-        <li><a href="#names">Channel names</a></li>
-        <li><a href="#appearance">Appearance</a></li>
+        <li><a href="#opening">Aprire Impostazioni</a></li>
+        <li><a href="#audio">Interfaccia audio</a></li>
+        <li><a href="#names">Nomi dei canali</a></li>
+        <li><a href="#appearance">Aspetto</a></li>
         <li><a href="#set">Set</a></li>
-        <li><a href="#lyrics">Lyrics</a></li>
-        <li><a href="#metronome">Metronome</a></li>
-        <li><a href="#prompts">Prompts</a></li>
-        <li><a href="#reset">Reset</a></li>
-        <li><a href="#diagnostics">Diagnostics</a></li>
-        <li><a href="#elsewhere">Not in Settings</a></li>
+        <li><a href="#lyrics">Testi</a></li>
+        <li><a href="#metronome">Metronomo</a></li>
+        <li><a href="#prompts">Avvisi</a></li>
+        <li><a href="#reset">Ripristino</a></li>
+        <li><a href="#diagnostics">Diagnostica</a></li>
+        <li><a href="#elsewhere">Non in Impostazioni</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="opening"><span class="n">08.1</span>Opening Settings</h2>
-      <p>Tap the <strong>gear icon</strong> in the header of the <b class="ui a">Rig</b> tab. That is
-        the only way in, and the header only exists on that tab — from
-        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> or
-        <b class="ui a">Control</b> you go back to <b class="ui a">Rig</b> first.</p>
+      <h2 id="opening"><span class="n">08.1</span>Aprire Impostazioni</h2>
+      <p>Tocca l'<strong>icona a forma di ingranaggio</strong> nell'intestazione della scheda
+        <b class="ui a">Rig</b>. Quello è l'unico modo per entrarci, e l'intestazione esiste solo
+        su quella scheda — da <b class="ui a">Loop</b>, <b class="ui a">Sample</b>,
+        <b class="ui a">Perform</b> o <b class="ui a">Control</b> torni prima su
+        <b class="ui a">Rig</b>.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
-             alt="The top of the Settings sheet: the AUDIO INTERFACE card with Feedback guard switched on, the DSP load readout, the sample rate and buffer chips, the input trim slider, and the beginning of the CHANNEL NAMES card.">
-        <figcaption>The top of the Settings sheet</figcaption>
+             alt="La parte superiore del foglio Impostazioni: la card AUDIO INTERFACE con Feedback guard attivo, la lettura del carico DSP, i chip di frequenza di campionamento e buffer, lo slider di trim dell'ingresso, e l'inizio della card CHANNEL NAMES.">
+        <figcaption>La parte superiore del foglio Impostazioni</figcaption>
       </figure>
-      <p>The gear has company in that header row, and it is worth knowing what the neighbours do:</p>
+      <p>L'ingranaggio ha compagnia in quella riga di intestazione, ed è utile sapere cosa fanno i
+        vicini:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Item</th><th>Does</th></tr></thead>
+          <thead><tr><th>Elemento</th><th>Fa</th></tr></thead>
           <tbody>
-            <tr><td>The <b class="ui">NAMper</b> wordmark</td>
-                <td>Opens the About sheet — version, credits and the tip jar. The only way in.</td></tr>
-            <tr><td><b class="ui">DSP load</b> chip</td>
-                <td>Processor load as a percentage, <b class="ui">—</b> when stopped. Green under 60 %, amber to 85 %, red above.</td></tr>
-            <tr><td>Gear</td><td>Settings — this page.</td></tr>
-            <tr><td><b class="ui">KEY</b> chip</td>
-                <td>The current key, or the word <b class="ui">KEY</b> when unset. Opens <b class="ui">SET KEY</b>.</td></tr>
-            <tr><td>Metronome chip</td>
-                <td>Tap to switch the click on and off; <strong>long-press</strong> for the <b class="ui">SET TEMPO</b> sheet. See <a href="/docs/it/looper.html">the looper</a>.</td></tr>
-            <tr><td>Tuning fork</td><td>Opens the tuner. See <a href="/docs/it/control.html">MIDI &amp; control</a>.</td></tr>
+            <tr><td>Il logo <b class="ui">NAMper</b></td>
+                <td>Apre il foglio Informazioni — versione, crediti e il barattolo delle mance. L'unico modo per entrarci.</td></tr>
+            <tr><td>Chip <b class="ui">Carico DSP</b></td>
+                <td>Carico del processore in percentuale, <b class="ui">—</b> quando è fermo. Verde sotto il 60%, ambra fino all'85%, rosso oltre.</td></tr>
+            <tr><td>Ingranaggio</td><td>Impostazioni — questa pagina.</td></tr>
+            <tr><td>Chip <b class="ui">KEY</b></td>
+                <td>La tonalità attuale, oppure la parola <b class="ui">KEY</b> quando non è impostata. Apre <b class="ui">IMPOSTA TONALITÀ</b>.</td></tr>
+            <tr><td>Chip del metronomo</td>
+                <td>Tocca per attivare e disattivare il click; <strong>pressione prolungata</strong> per il foglio <b class="ui">IMPOSTA TEMPO</b>. Vedi <a href="/docs/it/looper.html">il looper</a>.</td></tr>
+            <tr><td>Diapason</td><td>Apre l'accordatore. Vedi <a href="/docs/it/control.html">MIDI e Control</a>.</td></tr>
             <tr><td><b class="ui g">Power</b></td>
-                <td>Starts and stops the audio engine. Nothing makes a sound until it is on. See <a href="/docs/it/setup.html#power">getting started</a>.</td></tr>
+                <td>Avvia e ferma il motore audio. Niente produce suono finché non è attivo. Vedi <a href="/docs/it/setup.html#power">per iniziare</a>.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="audio"><span class="n">08.2</span>Audio interface</h2>
-      <p>The <b class="ui">AUDIO INTERFACE</b> card is the longest one, and the only one whose
-        settings need a relaunch to take effect. The first four rows are read-only: they tell you
-        what NAMper actually got from iOS, which is the fastest way to find out why an interface is
-        not behaving.</p>
+      <h2 id="audio"><span class="n">08.2</span>Interfaccia audio</h2>
+      <p>La card <b class="ui">INTERFACCIA AUDIO</b> è la più lunga, e l'unica le cui impostazioni
+        richiedono un riavvio per avere effetto. Le prime quattro righe sono di sola lettura: ti
+        dicono cosa NAMper ha effettivamente ottenuto da iOS, il modo più veloce per scoprire perché
+        un'interfaccia non si comporta bene.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Riga</th><th>Controllo</th><th>Predefinito</th><th>Cosa fa</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Sample rate</b></td><td>Read-only</td><td>—</td>
-                <td>The rate the engine is actually running at, in kHz.</td></tr>
-            <tr><td><b class="ui">Inputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many input channels the current route offers, up to eight.</td></tr>
-            <tr><td><b class="ui">Outputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many output channels the current route offers.</td></tr>
-            <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">running</b> or <b class="ui">stopped</b>.</td></tr>
-            <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
-                <td>Mutes the output while the built-in mic plays through the phone's own speaker. <a href="/docs/it/setup.html#feedback-guard">Read this one properly</a>.</td></tr>
-            <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
-                <td>Processor load, shown only while the engine runs.</td></tr>
-            <tr><td><b class="ui">Sample rate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
-                <td>Sets the engine rate; remembered per route. Changing it restarts the engine. <a href="/docs/it/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input channels</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
-                <td>Caps how many input channels NAMper opens. Leave on <b class="ui">Auto</b> unless you have a reason.</td></tr>
-            <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Block size, with a live <b class="ui">frames · ms</b> readout. The only latency control there is. <a href="/docs/it/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input trim</b></td><td>One slider per input, −12…+24 dB</td><td>0 dB</td>
-                <td>Gain for interfaces without a gain knob. Play hard: the <b class="ui">IN</b> meter should reach its top third.</td></tr>
-            <tr><td><b class="ui">Use all interface outputs</b></td><td>Switch</td><td>Off</td>
-                <td>Opens every output pair, so a branch, a rig or the click can own its own pair. Stereo devices do not need it.</td></tr>
+            <tr><td><b class="ui">Frequenza di campionamento</b></td><td>Sola lettura</td><td>—</td>
+                <td>La frequenza a cui il motore sta effettivamente girando, in kHz.</td></tr>
+            <tr><td><b class="ui">Ingressi</b></td><td>Sola lettura</td><td>—</td>
+                <td>Quanti canali di ingresso offre la route attuale, fino a otto.</td></tr>
+            <tr><td><b class="ui">Uscite</b></td><td>Sola lettura</td><td>—</td>
+                <td>Quanti canali di uscita offre la route attuale.</td></tr>
+            <tr><td><b class="ui">Motore</b></td><td>Sola lettura</td><td>—</td>
+                <td><b class="ui">in esecuzione</b> oppure <b class="ui">ferma</b>.</td></tr>
+            <tr><td><b class="ui">Protezione feedback</b></td><td>Interruttore</td><td>Attivo</td>
+                <td>Silenzia l'uscita mentre il microfono integrato suona attraverso l'altoparlante del telefono. <a href="/docs/it/setup.html#feedback-guard">Leggi bene questa voce</a>.</td></tr>
+            <tr><td><b class="ui">Carico DSP</b></td><td>Lettura + barra</td><td>—</td>
+                <td>Carico del processore, mostrato solo mentre il motore è in esecuzione.</td></tr>
+            <tr><td><b class="ui">Frequenza di campionamento</b></td><td>Chip: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
+                <td>Imposta la frequenza del motore; viene ricordata per ogni route. Cambiarla riavvia il motore. <a href="/docs/it/setup.html#rate">Altro</a>.</td></tr>
+            <tr><td><b class="ui">Canali di ingresso</b></td><td>Chip: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
+                <td>Limita quanti canali di ingresso apre NAMper. Lascialo su <b class="ui">Auto</b> a meno che tu non abbia un motivo.</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>Chip: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
+                <td>Dimensione del blocco, con una lettura live <b class="ui">frames · ms</b>. L'unico controllo di latenza che esiste. <a href="/docs/it/setup.html#rate">Altro</a>.</td></tr>
+            <tr><td><b class="ui">Trim d'ingresso</b></td><td>Uno slider per ingresso, −12…+24 dB</td><td>0 dB</td>
+                <td>Guadagno per interfacce senza una manopola di gain. Suona forte: il misuratore <b class="ui">IN</b> dovrebbe raggiungere il suo terzo superiore.</td></tr>
+            <tr><td><b class="ui">Usa tutte le uscite dell'interfaccia</b></td><td>Interruttore</td><td>Non attivo</td>
+                <td>Apre ogni coppia di uscite, così un ramo, un rig o il click possono avere la propria coppia. I dispositivi stereo non ne hanno bisogno.</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note warn">
-        <div class="t">Audio changes need a relaunch</div>
-        <p>The chips and switches here take effect on the next engine start — some, like the sample
-          rate, restart the engine themselves. If something looks stuck, power the engine off and on
-          before assuming it is broken.</p>
+        <div class="t">Le modifiche audio richiedono un riavvio</div>
+        <p>I chip e gli interruttori qui hanno effetto al prossimo avvio del motore — alcuni, come
+          la frequenza di campionamento, riavviano il motore da soli. Se qualcosa sembra bloccato,
+          spegni e riaccendi il motore prima di dare per scontato che sia rotto.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="names"><span class="n">08.3</span>Channel names</h2>
-      <p><b class="ui">CHANNEL NAMES</b> is a text field per input, each row prefixed
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on, with the placeholder
-        <b class="ui">Guitar, Vocal…</b>. The footnote says what they are for:
-        <b class="ui">Input pickers show these names everywhere.</b></p>
-      <p>Name them once and those names appear in every input picker in the app — rig inputs, looper
-        track sources, compressor sidechains, the input trim sliders. Channels you leave blank fall
-        back to <b class="ui">In &lt;n&gt;</b>.</p>
+      <h2 id="names"><span class="n">08.3</span>Nomi dei canali</h2>
+      <p><b class="ui">NOMI DEI CANALI</b> è un campo di testo per ogni ingresso, ogni riga con il
+        prefisso <b class="ui">In 1</b>, <b class="ui">In 2</b> e così via, con il placeholder
+        <b class="ui">Chitarra, Voce…</b>. La nota a piè di pagina dice a cosa servono:
+        <b class="ui">I selettori di ingresso mostrano questi nomi ovunque.</b></p>
+      <p>Dai loro un nome una volta e quei nomi compaiono in ogni selettore di ingresso dell'app —
+        ingressi del rig, sorgenti delle tracce del looper, sidechain del compressore, gli slider
+        di trim dell'ingresso. I canali che lasci vuoti ricadono su <b class="ui">In &lt;n&gt;</b>.</p>
       <div class="note tip">
-        <div class="t">Worth two minutes</div>
-        <p>On a multichannel interface, <b class="ui">Guitar</b> and <b class="ui">Vocal</b> are much
-          easier to pick correctly mid-soundcheck than <b class="ui">In 3</b> and
-          <b class="ui">In 4</b>.</p>
+        <div class="t">Vale due minuti</div>
+        <p>Su un'interfaccia multicanale, <b class="ui">Guitar</b> e <b class="ui">Vocal</b> sono
+          molto più facili da scegliere correttamente a metà soundcheck rispetto a
+          <b class="ui">In 3</b> e <b class="ui">In 4</b>.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="appearance"><span class="n">08.4</span>Appearance</h2>
-      <p>Chips: <b class="ui">System</b>, <b class="ui">Light</b>, <b class="ui">Dark</b>. The
-        default is <b class="ui">System</b>, and this is the one setting on the whole sheet that
-        applies the instant you tap it.</p>
-      <p>NAMper is designed dark — the meters, the LEDs and the chain graphics are drawn for a dark
-        stage. <b class="ui">Light</b> is there if you need it in daylight, but the app is at its
-        most legible in the dark.</p>
+      <h2 id="appearance"><span class="n">08.4</span>Aspetto</h2>
+      <p>Chip: <b class="ui">Sistema</b>, <b class="ui">Chiaro</b>, <b class="ui">Scuro</b>. Il
+        predefinito è <b class="ui">Sistema</b>, ed è l'unica impostazione di tutto il foglio che si
+        applica nell'istante in cui la tocchi.</p>
+      <p>NAMper è pensata scura — i misuratori, i LED e la grafica della catena sono disegnati per
+        un palco scuro. <b class="ui">Chiaro</b> c'è se ti serve alla luce del giorno, ma l'app è
+        più leggibile nello scuro.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="set"><span class="n">08.5</span>Set</h2>
-      <p>The <b class="ui">SET</b> card is read-only. It shows <b class="ui">Tempo</b> (as
-        <b class="ui">BPM</b>, or <b class="ui">—</b> when nothing is set) and <b class="ui">Key</b>
-        (such as <b class="ui">Am</b>, or <b class="ui">—</b>). It is a status readout, not a
-        control.</p>
-      <p>The footnote points you at the real controls: <b class="ui">Tempo: long-press the
-        metronome. Key: the KEY button in the header.</b></p>
+      <p>La card <b class="ui">SET</b> è di sola lettura. Mostra <b class="ui">Tempo</b> (come
+        <b class="ui">BPM</b>, oppure <b class="ui">—</b> quando non è impostato nulla) e
+        <b class="ui">Tonalità</b> (per esempio <b class="ui">Am</b>, oppure <b class="ui">—</b>). È
+        una lettura di stato, non un controllo.</p>
+      <p>La nota a piè di pagina ti indica i controlli veri: <b class="ui">Tempo: tieni premuto il metronomo. Tonalità: il pulsante TONALITÀ nell'intestazione.</b></p>
       <div class="tw">
         <table>
-          <thead><tr><th>Value</th><th>Set it from</th></tr></thead>
+          <thead><tr><th>Valore</th><th>Si imposta da</th></tr></thead>
           <tbody>
-            <tr><td>Tempo</td><td>Long-press the metronome chip in the Rig header, or the tempo block in the <b class="ui a">Loop</b> tab. The looper also detects it from your first loop, and selecting a backing track applies the song's tempo.</td></tr>
-            <tr><td>Key</td><td>The <b class="ui">KEY</b> chip in the Rig header. Selecting a backing track applies the song's key.</td></tr>
+            <tr><td>Tempo</td><td>Pressione prolungata sul chip del metronomo nell'intestazione di Rig, oppure il blocco tempo nella scheda <b class="ui a">Loop</b>. Il looper lo rileva anche dal tuo primo loop, e selezionare un backing track applica il tempo del brano.</td></tr>
+            <tr><td>Tonalità</td><td>Il chip <b class="ui">KEY</b> nell'intestazione di Rig. Selezionare un backing track applica la tonalità del brano.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="lyrics"><span class="n">08.6</span>Lyrics</h2>
-      <p>One slider: teleprompter text size, from <b class="ui">16</b> to <b class="ui">34 pt</b>,
-        default <b class="ui">22 pt</b>, with a live preview line reading <b class="ui">This is how
-        your lyrics will look</b>.</p>
-      <p>Changing it re-aims the teleprompter live, so if the lyrics screen is open on another
-        device or you come straight back to it, nothing has to be re-timed. Set it for the distance
-        the phone actually sits from your face on a mic stand, not from the sofa. See
-        <a href="/docs/it/perform.html#lyrics">lyrics and the teleprompter</a>.</p>
+      <h2 id="lyrics"><span class="n">08.6</span>Testi</h2>
+      <p>Uno slider: dimensione del testo del teleprompter, da <b class="ui">16</b> a
+        <b class="ui">34 pt</b>, predefinito <b class="ui">22 pt</b>, con una riga di anteprima
+        live che mostra <b class="ui">Ecco come apparirà il tuo testo</b>.</p>
+      <p>Cambiarla riallinea il teleprompter in tempo reale, quindi se lo schermo dei testi è
+        aperto su un altro dispositivo o ci torni direttamente, non c'è nulla da
+        ri-sincronizzare. Impostala per la distanza a cui il telefono si trova davvero dal tuo
+        viso su un'asta per microfono, non dal divano. Vedi
+        <a href="/docs/it/perform.html#lyrics">testi e teleprompter</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="metronome"><span class="n">08.7</span>Metronome</h2>
+      <h2 id="metronome"><span class="n">08.7</span>Metronomo</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Riga</th><th>Controllo</th><th>Predefinito</th><th>Cosa fa</th></tr></thead>
           <tbody>
-            <tr><td>Click level</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
-                <td>How loud the click is.</td></tr>
-            <tr><td><b class="ui">Click output</b></td><td>Chips: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
-                <td>Which hardware output pair carries the click. Shown only when there is more than one pair; picking a non-main pair force-enables <b class="ui">Use all interface outputs</b>.</td></tr>
+            <tr><td>Livello del click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
+                <td>Quanto è forte il click.</td></tr>
+            <tr><td><b class="ui">Uscita del click</b></td><td>Chip: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>Quale coppia di uscite hardware porta il click. Mostrato solo quando c'è più di una coppia; scegliere una coppia diversa da quella principale forza l'attivazione di <b class="ui">Usa tutte le uscite dell'interfaccia</b>.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The card's footnote is the useful part: <b class="ui">The click is mixed in AFTER the master
-        FX chain — reverbs and limiters never touch it. Pick a separate output pair for in-ear
-        monitoring.</b></p>
-      <p>That means your master reverb will not smear the click and your master limiter will not
-        duck the band every time it ticks. Send it to its own pair and the drummer hears the click
-        while front of house does not.</p>
-      <p>The click itself is switched on and off with the metronome chip in the Rig header, or the
-        <b class="ui">CLICK</b> chip in the <b class="ui a">Loop</b> tab — not from here.</p>
+      <p>La nota a piè di pagina della card è la parte utile: <b class="ui">Il click viene miscelato DOPO la catena FX master — riverberi e limiter non lo toccano mai. Scegli una coppia di uscite separata per il monitoraggio in-ear.</b></p>
+      <p>Questo significa che il tuo reverb master non sbavarà il click e il tuo limiter master non
+        abbasserà la band ogni volta che fa tic. Mandalo su una coppia propria e il batterista
+        sente il click, mentre il missaggio di sala no.</p>
+      <p>Il click stesso si attiva e disattiva con il chip del metronomo nell'intestazione di Rig,
+        oppure il chip <b class="ui">CLICK</b> nella scheda <b class="ui a">Loop</b> — non da qui.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">08.8</span>Prompts</h2>
+      <h2 id="prompts"><span class="n">08.8</span>Avvisi</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Riga</th><th>Controllo</th><th>Predefinito</th><th>Cosa fa</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Show the support prompt</b></td><td>Switch</td><td>On</td>
-                <td>The sheet that explains NAMper is free and points at the tip jar. It reappears occasionally from the third launch onward; switch this off and it never returns.</td></tr>
-            <tr><td><b class="ui">Offer TONE3000 sign-in on launch</b></td><td>Switch</td><td>On</td>
-                <td>The sheet offering to connect your TONE3000 account so factory presets can download their real amp captures. It appears once per launch while you are signed out.</td></tr>
-            <tr><td><b class="ui">Replay the quick tour</b></td><td>Button</td><td>—</td>
-                <td>Runs the eight-step first-run tour again.</td></tr>
+            <tr><td><b class="ui">Mostra l'invito a sostenere il progetto</b></td><td>Interruttore</td><td>Attivo</td>
+                <td>Il foglio che spiega che NAMper è gratuita e indica il barattolo delle mance. Ricompare occasionalmente a partire dal terzo avvio; disattiva questa opzione e non torna più.</td></tr>
+            <tr><td><b class="ui">Proponi l'accesso a TONE3000 all'avvio</b></td><td>Interruttore</td><td>Attivo</td>
+                <td>Il foglio che offre di collegare il tuo account TONE3000 così i preset di fabbrica possono scaricare le loro catture di ampli reali. Appare una volta per avvio finché non hai effettuato l'accesso.</td></tr>
+            <tr><td><b class="ui">Rivedi il tour rapido</b></td><td>Pulsante</td><td>—</td>
+                <td>Esegue di nuovo il tour di otto passi del primo avvio.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The quick tour is a spotlight over the live Rig tab, counted <b class="ui">n/8</b>, and it
-        is hands-on rather than a slideshow: it walks you through turning the audio on (you really
-        tap the power button), the amp card, the signal chain (you really tap a block), the block
-        editor, presets, the other tabs and a closing step. <b class="ui">Next</b>,
-        <b class="ui">Skip step</b> and <b class="ui">End tour</b> are always available, with
-        <b class="ui">Finish</b> at the end. It runs on the <b class="ui a">Rig</b> tab only.</p>
+      <p>Il tour rapido è un riflettore sopra la scheda Rig dal vivo, conteggiato
+        <b class="ui">n/8</b>, ed è pratico piuttosto che una presentazione a diapositive: ti guida
+        nell'accendere l'audio (tocchi davvero il pulsante power), la card dell'ampli, la catena
+        del segnale (tocchi davvero un blocco), l'editor del blocco, i preset, le altre schede e un
+        passo finale. <b class="ui">Avanti</b>, <b class="ui">Salta step</b> e
+        <b class="ui">Termina tour</b> sono sempre disponibili, con <b class="ui">Termina</b> alla fine.
+        Gira solo sulla scheda <b class="ui a">Rig</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">08.9</span>Reset</h2>
-      <p>Two buttons, each behind a confirmation.</p>
+      <h2 id="reset"><span class="n">08.9</span>Ripristino</h2>
+      <p>Due pulsanti, ciascuno dietro una conferma.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Button</th><th>Dialog</th><th>Confirm</th></tr></thead>
+          <thead><tr><th>Pulsante</th><th>Dialogo</th><th>Conferma</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Reset to factory presets</b></td>
-                <td><b class="ui">Delete ALL user presets? The four factory rigs come back.</b></td>
-                <td><b class="ui">Delete all user presets</b></td></tr>
-            <tr><td><b class="ui">Reset all settings</b></td>
-                <td><b class="ui">Reset every setting (audio, looper, MIDI map, appearance) to defaults? Presets and files stay. Restart the app afterwards.</b></td>
-                <td><b class="ui">Reset settings</b></td></tr>
+            <tr><td><b class="ui">Ripristina i preset di fabbrica</b></td>
+                <td><b class="ui">Eliminare TUTTI i preset utente? I quattro rig di fabbrica verranno ripristinati.</b></td>
+                <td><b class="ui">Elimina tutti i preset utente</b></td></tr>
+            <tr><td><b class="ui">Ripristina tutte le impostazioni</b></td>
+                <td><b class="ui">Ripristinare tutte le impostazioni (audio, looper, mappa MIDI, aspetto) ai valori di default? Preset e file restano. Riavvia poi l'app.</b></td>
+                <td><b class="ui">Ripristina impostazioni</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>The first one wipes your rig presets and restores the four factory rigs. The second leaves
-        every preset and every file alone and only puts the settings back to their defaults.</p>
+      <p>Il primo cancella i tuoi preset del rig e ripristina i quattro rig di fabbrica. Il secondo
+        lascia intatto ogni preset e ogni file e riporta solo le impostazioni ai valori predefiniti.</p>
       <div class="note warn">
-        <div class="t">Restart after a settings reset</div>
-        <p>The footnote reads <b class="ui">Settings reset takes effect after an app restart.</b>,
-          and it means it. Only the appearance change applies immediately — the audio settings need
-          a relaunch before they are truly back at their defaults. Quit NAMper from the app switcher
-          and open it again.</p>
+        <div class="t">Riavvia dopo un ripristino delle impostazioni</div>
+        <p>La nota a piè di pagina dice <b class="ui">Il ripristino delle impostazioni ha effetto dopo il riavvio dell'app.</b>, e lo dice sul serio. Solo il cambiamento dell'aspetto si applica
+          immediatamente — le impostazioni audio richiedono un riavvio prima di essere davvero
+          tornate ai loro valori predefiniti. Chiudi NAMper dal selettore app e riaprila.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">08.10</span>Diagnostics</h2>
-      <p>NAMper keeps a plain-text engine log recording interface routing and peaks. When one
-        exists, this card offers <b class="ui">Share engine log</b> and <b class="ui">Clear engine
-        log</b>; when it does not, it reads <b class="ui">No engine log yet (it records interface
-        routing and peaks).</b></p>
-      <p><b class="ui">Share engine log</b> hands the file to the iOS share sheet — mail it,
-        AirDrop it, or attach it to a support issue. It is the single most useful thing you can
-        include in a bug report about an interface that will not open, a rate that gets refused or
-        an engine that stops on its own, because it records what actually happened at the audio
-        layer.</p>
-      <p><b class="ui">Clear engine log</b> empties it. Do that immediately before reproducing a
-        problem and the log you send contains that problem and nothing else.</p>
+      <h2 id="diagnostics"><span class="n">08.10</span>Diagnostica</h2>
+      <p>NAMper mantiene un log del motore in testo semplice che registra il routing
+        dell'interfaccia e i picchi. Quando ne esiste uno, questa card offre
+        <b class="ui">Condividi log del motore</b> e <b class="ui">Cancella log del motore</b>; quando non esiste,
+        mostra <b class="ui">Ancora nessun log del motore (registra il routing dell'interfaccia e i picchi).</b></p>
+      <p><b class="ui">Condividi log del motore</b> consegna il file al foglio di condivisione di iOS —
+        mandalo per email, via AirDrop, oppure allegalo a una segnalazione di supporto. È la cosa
+        più utile che puoi includere in un bug report su un'interfaccia che non si apre, una
+        frequenza che viene rifiutata o un motore che si ferma da solo, perché registra cosa è
+        realmente successo a livello audio.</p>
+      <p><b class="ui">Cancella log del motore</b> lo svuota. Fallo subito prima di riprodurre un problema
+        e il log che invii conterrà quel problema e nient'altro.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">08.11</span>Not in Settings</h2>
-      <p>Three things people look for here and do not find.</p>
-      <h3>Trigger quantize</h3>
-      <p>The <b class="ui">QUANT</b> knob and its grid chip live in the <b class="ui a">Sample</b>
-        tab header, not in Settings — even though both are global rather than per kit or per pad.
-        See <a href="/docs/it/sampler.html#quantize">trigger quantize</a>.</p>
-      <h3>Tempo and key</h3>
-      <p>Both are header chips on the <b class="ui a">Rig</b> tab. Settings only reports them, in
-        the <a href="#set"><b class="ui">SET</b></a> card.</p>
+      <h2 id="elsewhere"><span class="n">08.11</span>Non in Impostazioni</h2>
+      <p>Tre cose che le persone cercano qui e non trovano.</p>
+      <h3>Quantizzazione del trigger</h3>
+      <p>La manopola <b class="ui">QUANT</b> e il suo chip griglia vivono nell'intestazione della
+        scheda <b class="ui a">Sample</b>, non in Impostazioni — anche se entrambi sono globali
+        invece che per kit o per pad. Vedi <a href="/docs/it/sampler.html#quantize">quantizzazione
+        del trigger</a>.</p>
+      <h3>Tempo e tonalità</h3>
+      <p>Entrambi sono chip di intestazione sulla scheda <b class="ui a">Rig</b>. Impostazioni li
+        riporta soltanto, nella card <a href="#set"><b class="ui">SET</b></a>.</p>
       <h3>MIDI</h3>
-      <p>There are <strong>no global MIDI settings at all</strong>: no channel selector, no
-        program-change toggle, no clock sync. MIDI in NAMper is omni and always on — every channel
-        is accepted, every source connects automatically, and the app publishes its own virtual
-        destination named <b class="ui">NAMper</b>.</p>
+      <p>Non esiste <strong>alcuna impostazione MIDI globale</strong>: nessun selettore di canale,
+        nessun interruttore di cambio programma, nessuna sincronizzazione di clock. Il MIDI in
+        NAMper è omni e sempre attivo — ogni canale viene accettato, ogni sorgente si connette
+        automaticamente, e l'app pubblica una propria destinazione virtuale chiamata
+        <b class="ui">NAMper</b>.</p>
       <div class="note">
-        <div class="t">Nothing to configure</div>
-        <p>If a pedal is not doing anything, the problem is the mapping rather than a setting.
-          Everything MIDI lives in the <b class="ui a">Control</b> tab — see
-          <a href="/docs/it/control.html">MIDI &amp; control</a>.</p>
+        <div class="t">Niente da configurare</div>
+        <p>Se un pedale non fa nulla, il problema è il mapping, non un'impostazione. Tutto ciò che
+          riguarda il MIDI vive nella scheda <b class="ui a">Control</b> — vedi
+          <a href="/docs/it/control.html">MIDI e Control</a>.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/it/control.html">← 07 · MIDI &amp; control</a>
+      <a href="/docs/it/control.html">← 07 · MIDI e Control</a>
       <span class="sp"></span>
-      <a href="/docs/it/">All docs →</a>
+      <a href="/docs/it/">Tutti i doc →</a>
     </nav>
   </main>
 </div>
@@ -345,7 +347,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper è un'app indipendente, senza alcuna affiliazione, approvazione o sponsorizzazione da parte di alcun produttore di apparecchiature. Tutti i nomi di prodotto, marchi e marchi registrati sono proprietà dei rispettivi titolari e vengono usati solo per descrivere l'apparecchiatura da cui proviene una cattura.</p>
   </div>
 </footer>
 

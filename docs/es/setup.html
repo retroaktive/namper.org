@@ -84,9 +84,9 @@
       <p>El icono verde de encendido en la esquina superior derecha de la pestaña <b class="ui a">Rig</b>
         inicia y detiene el motor de audio. Hasta que esté encendido, no se procesa nada y no suena
         nada — los medidores se quedan planos y la grabación se rechaza con
-        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+        <b class="ui r">El audio está apagado — toca el botón de encendido antes de grabar.</b></p>
       <p>Está apagado (tenue) cuando el motor está detenido, y verde con un brillo cuando está
-        funcionando. El chip <b class="ui">DSP load</b> junto a él muestra cuánto está trabajando el
+        funcionando. El chip <b class="ui">Carga DSP</b> junto a él muestra cuánto está trabajando el
         procesador: verde por debajo del 60 %, ámbar hasta el 85 %, rojo por encima de eso. Si se
         queda en rojo, quita un bloque de la cadena o sube el tamaño del búfer.</p>
       <p>NAMper pide acceso al micrófono la primera vez que arrancas el motor, no al abrir la app.</p>
@@ -106,27 +106,27 @@
       <p>No hay selector de dispositivo. NAMper sigue la ruta de audio que esté usando iOS, así que
         eliges tu hardware como siempre lo haces — conecta la interfaz, y la app se reconstruye a su
         alrededor. Se admiten interfaces multicanal, hasta ocho canales de entrada.</p>
-      <p>Ajustes → <b class="ui">AUDIO INTERFACE</b> te dice qué obtuvo NAMper realmente:
-        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> y
-        <b class="ui">Engine</b> (<b class="ui">running</b> o <b class="ui">stopped</b>). Si el
+      <p>Ajustes → <b class="ui">INTERFAZ DE AUDIO</b> te dice qué obtuvo NAMper realmente:
+        <b class="ui">Frecuencia de muestreo</b>, <b class="ui">Entradas</b>, <b class="ui">Salidas</b> y
+        <b class="ui">Motor</b> (<b class="ui">en marcha</b> o <b class="ui">detenido</b>). Si el
         número de canales no es el que esperabas, esa fila es el lugar para averiguarlo.</p>
 
       <h3>Nombrar tus canales</h3>
-      <p>Ajustes → <b class="ui">CHANNEL NAMES</b> le da a cada entrada un campo de texto con el
-        marcador <b class="ui">Guitar, Vocal…</b>. Nómbralas una vez y esos nombres aparecen en cada
+      <p>Ajustes → <b class="ui">NOMBRES DE CANALES</b> le da a cada entrada un campo de texto con el
+        marcador <b class="ui">Guitarra, Voz…</b>. Nómbralas una vez y esos nombres aparecen en cada
         selector de entrada de la app — entradas del rig, fuentes de pista del looper, filas de input
         trim. Los canales sin nombre simplemente muestran <b class="ui">In 1</b>, <b class="ui">In 2</b>
         y así sucesivamente.</p>
 
       <h3>Varias salidas</h3>
-      <p>Ajustes → <b class="ui">Use all interface outputs</b> está desactivado por defecto, y los
+      <p>Ajustes → <b class="ui">Usar todas las salidas de la interfaz</b> está desactivado por defecto, y los
         dispositivos estéreo nunca lo necesitan. Actívalo y NAMper abre todos los pares de salida de
         la interfaz, para que un rig, una rama paralela, una pista del looper o el click del
         metrónomo puedan tener cada uno su propio par — la guitarra a la mesa de sonido, el click a
         los in-ears del baterista.</p>
       <div class="note">
         <div class="t">Canales de entrada</div>
-        <p><b class="ui">Input channels</b> normalmente se deja en <b class="ui">Auto</b>. Fíjalo en
+        <p><b class="ui">Canales de entrada</b> normalmente se deja en <b class="ui">Auto</b>. Fíjalo en
           un número solo si tu interfaz reporta más canales de los que quieres que NAMper abra.</p>
       </div>
     </section>
@@ -144,14 +144,14 @@
         <li>El medidor <b class="ui">IN</b> debería llegar a su tercio superior y mantenerse fuera
           del rojo.</li>
         <li>Si tu interfaz tiene un control de ganancia, úsalo. Si no lo tiene, abre Ajustes →
-          <b class="ui">Input trim</b> y sube el deslizador de ese canal — va de −12 dB a +24 dB en
+          <b class="ui">Trim de entrada</b> y sube el deslizador de ese canal — va de −12 dB a +24 dB en
           pasos de 1 dB, y empieza en 0.</li>
       </ol>
       <p>El medidor <b class="ui">IN</b> muestra el nivel <em>después</em> del trim, así que lo que
         ves es lo que el modelo de ampli realmente recibe.</p>
 
       <h3>La sección master</h3>
-      <p>En la parte inferior de la pestaña Rig, la tarjeta <b class="ui">MASTER</b> es donde se
+      <p>En la parte inferior de la pestaña Rig, la tarjeta <b class="ui">MÁSTER</b> es donde se
         suman cada rig, el looper, el sampler y la pista de acompañamiento antes de la salida de
         hardware. Muestra barras de pico estéreo <b class="ui">L</b> y <b class="ui">R</b> con marcas
         en −12 y −6 dB, más una lectura de sonoridad estilo broadcast en <b class="ui">LUFS</b> — el
@@ -163,7 +163,7 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="rate"><span class="n">01.4</span>Frecuencia de muestreo y búfer</h2>
-      <p>Ambos viven en Ajustes → <b class="ui">AUDIO INTERFACE</b>, y ambos se recuerdan por ruta
+      <p>Ambos viven en Ajustes → <b class="ui">INTERFAZ DE AUDIO</b>, y ambos se recuerdan por ruta
         de audio — tu interfaz y tus auriculares pueden tener cada uno sus propios ajustes.</p>
 
       <h3>Frecuencia de muestreo</h3>
@@ -173,8 +173,7 @@
         la interfaz; cambiar la frecuencia reinicia el motor.</p>
       <p>Con el micrófono y el altavoz propios del teléfono solo aparecen <b class="ui">Auto</b> y
         <b class="ui">48k</b>, con la nota
-        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
-        rates.</b> Con una interfaz conectada obtienes la lista completa — menos cualquier
+        <b class="ui">El audio integrado funciona solo a 48 kHz. Conecta una interfaz para más frecuencias.</b> Con una interfaz conectada obtienes la lista completa — menos cualquier
         frecuencia que esa interfaz en particular ya haya rechazado, lo cual NAMper recuerda y deja
         de ofrecer.</p>
       <p>Si se rechaza una frecuencia, la app vuelve a la anterior y lo indica en rojo:
@@ -187,11 +186,10 @@
       </div>
 
       <h3>Tamaño del búfer</h3>
-      <p><b class="ui">Buffer</b> ofrece <b class="ui">64</b>, <b class="ui">128</b>,
+      <p><b class="ui">Búfer</b> ofrece <b class="ui">64</b>, <b class="ui">128</b>,
         <b class="ui">256</b> y <b class="ui">512</b> frames, con una lectura en vivo de la latencia
         que eso te da. El valor por defecto es <b class="ui">128</b>. El propio consejo de la app es
-        exacto: <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling?
-        Go up one step.</b></p>
+        exacto: <b class="ui">Menor = menos latencia; mayor = más seguro con interfaces USB. ¿Crujidos? Sube un paso.</b></p>
       <p>Este es el único control de latencia en NAMper — no hay un ajuste de latencia por separado.</p>
       <div class="note warn">
         <div class="t">Salida Bluetooth</div>
@@ -212,23 +210,22 @@
              alt="El aviso: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. Con un botón Unmute.">
         <figcaption>El aviso que aparece cuando se activa la protección</figcaption>
       </figure>
-      <p>Cuando se activa, ves <b class="ui r">Output muted to stop feedback (mic → speaker).
-        Connect an interface or headphones.</b> Solo se retiene la salida audible — el afinador, los
+      <p>Cuando se activa, ves <b class="ui r">Salida silenciada para evitar acoples (micro → altavoz). Conecta una interfaz o auriculares.</b> Solo se retiene la salida audible — el afinador, los
         medidores de entrada y la grabación siguen funcionando, así que aún puedes afinar y aún
         puedes capturar una toma.</p>
       <p>Conecta auriculares o una interfaz y el silencio se levanta solo. La ✕ del aviso solo oculta
         el mensaje para esta sesión; no quita el silencio.</p>
       <div class="note">
         <div class="t">Qué hace «Unmute»</div>
-        <p>El botón <b class="ui">Unmute</b> es una excepción temporal: la salida permanece activa
+        <p>El botón <b class="ui">Activar</b> es una excepción temporal: la salida permanece activa
           durante esta sesión, y la protección se vuelve a armar en cuanto cambia la ruta — conecta
           y desconecta una interfaz o auriculares, o reinicia la app, y el altavoz integrado vuelve a
           estar protegido. Para desactivar la protección de forma permanente, usa el interruptor
-          <b class="ui">Feedback guard</b> en Ajustes.</p>
+          <b class="ui">Protección antiacoples</b> en Ajustes.</p>
       </div>
-      <p>El interruptor en sí está en Ajustes → <b class="ui">AUDIO INTERFACE</b> →
-        <b class="ui">Feedback guard</b>, con el subtítulo
-        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> Está
+      <p>El interruptor en sí está en Ajustes → <b class="ui">INTERFAZ DE AUDIO</b> →
+        <b class="ui">Protección antiacoples</b>, con el subtítulo
+        <b class="ui">Silencia la salida mientras el micro suena por el altavoz del teléfono.</b> Está
         activado por defecto.</p>
     </section>
 
@@ -248,8 +245,8 @@
         </table>
       </div>
       <p>Si el acceso al micrófono está desactivado, un aviso rojo dice
-        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> con un botón
-        <b class="ui">Settings</b> que te lleva directo al ajuste de iOS. Concédelo y el motor se
+        <b class="ui r">El acceso al micrófono está desactivado — NAMper no puede oír tu guitarra.</b> con un botón
+        <b class="ui">Ajustes</b> que te lleva directo al ajuste de iOS. Concédelo y el motor se
         reconstruye sin reiniciar la app.</p>
       <p>No hay analítica, ni seguimiento, ni cuenta, ni acceso a cámara, fotos, ubicación o
         contactos. NAMper no recopila nada.</p>

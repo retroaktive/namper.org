@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Looper — NAMper Documentation</title>
-<meta name="description" content="The four-track sync looper: circular pads, the transport, AUTO arming and boundary snapping, tempo and the click, the loop editor, undo, per-track routing and what gets saved.">
+<title>Looper — Tài liệu NAMper</title>
+<meta name="description" content="Looper đồng bộ bốn track: pad tròn, thanh transport, arm bằng AUTO và tự động khớp biên ô nhịp, tempo và click, trình chỉnh loop, undo, định tuyến theo từng track và những gì được lưu lại.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Looper — NAMper Documentation">
-<meta property="og:description" content="Four synced tracks, AUTO arming, boundary snapping and the loop editor.">
+<meta property="og:title" content="Looper — Tài liệu NAMper">
+<meta property="og:description" content="Bốn track đồng bộ, arm bằng AUTO, tự động khớp biên ô nhịp và trình chỉnh loop.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/looper.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/looper.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -48,335 +48,341 @@
   <aside class="sidenav">
     <div class="slab">CONTENTS</div>
     <ol>
-      <li><a href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a class="on" href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Perform &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
     <div class="slab" style="--nc:var(--power)">04 · LOOPER</div>
-    <h1>Four tracks, one cycle.</h1>
-    <p class="lede">The <b class="ui a">Loop</b> tab is a four-track sync looper with an
-      analysis engine behind it. Lay down the first loop and everything else falls in behind it —
-      and with AUTO on, NAMper finds the bar lines for you.</p>
+    <h1>Bốn track, một chu kỳ.</h1>
+    <p class="lede">Tab <b class="ui a">Loop</b> là một looper đồng bộ bốn track với một
+      engine phân tích chạy phía sau. Ghi xong loop đầu tiên, mọi thứ khác sẽ tự khớp theo nó —
+      và khi AUTO bật, NAMper tự tìm vạch ô nhịp cho bạn.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRÊN TRANG NÀY</div>
       <ul>
-        <li><a href="#basics">How the looper thinks</a></li>
-        <li><a href="#pads">The circular pads</a></li>
-        <li><a href="#transport">The transport</a></li>
-        <li><a href="#auto">AUTO mode</a></li>
-        <li><a href="#tempo">Tempo and the click</a></li>
-        <li><a href="#editor">The loop editor</a></li>
-        <li><a href="#undo">Undo</a></li>
-        <li><a href="#routing">Per-track routing</a></li>
-        <li><a href="#saving">What gets saved</a></li>
+        <li><a href="#basics">Looper vận hành thế nào</a></li>
+        <li><a href="#pads">Các pad tròn</a></li>
+        <li><a href="#transport">Thanh transport</a></li>
+        <li><a href="#auto">Chế độ AUTO</a></li>
+        <li><a href="#tempo">Tempo và click</a></li>
+        <li><a href="#editor">Trình chỉnh loop</a></li>
+        <li><a href="#undo">Hoàn tác</a></li>
+        <li><a href="#routing">Định tuyến theo từng track</a></li>
+        <li><a href="#saving">Những gì được lưu lại</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="basics"><span class="n">04.1</span>How the looper thinks</h2>
-      <p>One rule sits underneath everything else, and the app prints it along the bottom of the
-        screen:</p>
-      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
-        run/stop · 90 clear</b></p>
-      <p>Whichever track you record first defines the cycle. Every other track is fitted to it
-        rather than drifting off on its own, and nothing shifts that cycle afterwards except editing
-        the track that set it, or clearing everything and starting again.</p>
-      <p>There are four tracks, each holding up to <b>60 seconds</b>. In portrait the pads sit in a
-        2×2 grid; in landscape the transport moves to a left-hand column and the four pads line up
-        in a row.</p>
+      <h2 id="basics"><span class="n">04.1</span>Looper vận hành thế nào</h2>
+      <p>Có một quy tắc nằm bên dưới tất cả mọi thứ khác, và app in nó ngay phía dưới màn
+        hình:</p>
+      <p><b class="ui">Loop đầu định chu kỳ · các loop khác bám theo · MIDI CC 85–88 tap · 89 chạy/dừng · 90 xoá</b></p>
+      <p>Track nào bạn ghi trước sẽ định ra chu kỳ. Mọi track khác được khớp theo nó thay vì
+        trôi tự do, và không gì làm dịch chuyển chu kỳ đó về sau, trừ khi bạn chỉnh sửa track đã
+        đặt ra nó, hoặc xoá hết và ghi lại từ đầu.</p>
+      <p>Có bốn track, mỗi track chứa được tối đa <b>60 giây</b>. Ở chế độ dọc, các pad xếp
+        thành lưới 2×2; ở chế độ ngang, thanh transport chuyển sang cột bên trái và bốn pad xếp
+        thành một hàng.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1304"
-             alt="The Loop tab: track 1 playing with a green radial waveform and a spinning beam, track 2 armed with a dashed red border, tracks 3 and 4 empty, the AUTO chip lit green and the tempo reading 124 BPM.">
-        <figcaption>Track 1 playing, track 2 armed and waiting, AUTO on at 124 BPM</figcaption>
+             alt="Tab Loop: track 1 đang phát với dạng sóng toả tròn màu xanh lá và một tia quét xoay, track 2 đã arm với viền đỏ nét đứt, track 3 và 4 còn trống, chip AUTO sáng xanh lá và tempo hiển thị 124 BPM.">
+        <figcaption>Track 1 đang phát, track 2 đã arm và đang chờ, AUTO bật ở 124 BPM</figcaption>
       </figure>
-      <p>Every track card is laid out the same way: a header row with the big track number, the
-        state label and an LED dot; the circular pad; a 2×2 grid of chips — <b class="ui">IN</b> and
-        <b class="ui">LEN</b> over <b class="ui">DUB</b> and <b class="ui">OUT</b>; and a control
-        row underneath.</p>
+      <p>Mỗi thẻ track đều bố trí giống nhau: một hàng tiêu đề với số track lớn, nhãn trạng
+        thái và một chấm LED; pad tròn; một lưới chip 2×2 — <b class="ui">VÀO</b> và
+        <b class="ui">DÀI</b> phía trên <b class="ui">DUB</b> và <b class="ui">RA</b>; và một
+        hàng điều khiển bên dưới.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>The circular pads</h2>
-      <p>The pad draws the loop's waveform <em>radially</em> around the ring — one lap of the circle
-        is one lap of the cycle — with a spinning beam marking the play position. Attacks show up as
-        spikes on the ring, so you can read where you are from across a room.</p>
-      <p>While the very first loop records there is no cycle yet, so the ring behaves differently:
-        the whole circle maps to everything recorded <em>so far</em>. The waveform packs tighter as
-        the take grows, the beam holds still at 12 o'clock — that is the write head — and the centre
-        of the pad counts the elapsed seconds. Once the loop closes, the beam runs the cycle.</p>
+      <h2 id="pads"><span class="n">04.2</span>Các pad tròn</h2>
+      <p>Pad vẽ dạng sóng của loop <em>toả tròn</em> quanh vòng — một vòng của hình tròn là một
+        vòng của chu kỳ — với một tia quét xoay đánh dấu vị trí phát. Các tiếng gảy/đánh hiện lên
+        như gai nhọn trên vòng, để bạn đọc được vị trí hiện tại từ bên kia phòng.</p>
+      <p>Trong lúc loop đầu tiên đang ghi thì chưa có chu kỳ nào cả, nên vòng hoạt động khác:
+        cả vòng tròn ánh xạ mọi thứ đã ghi được <em>cho đến lúc đó</em>. Dạng sóng nén chặt dần
+        khi bản ghi dài ra, tia quét đứng yên ở vị trí 12 giờ — đó là đầu ghi — và tâm pad đếm
+        số giây đã trôi qua. Khi loop khép lại, tia quét bắt đầu chạy theo chu kỳ.</p>
 
-      <h3>Tapping the pad</h3>
-      <p>One tap moves the track one rung up the ladder:</p>
+      <h3>Chạm vào pad</h3>
+      <p>Mỗi lần chạm đưa track lên một nấc trong chuỗi trạng thái:</p>
       <ul style="--nc:var(--eq)">
         <li>empty → recording</li>
-        <li>recording → close the loop, and it starts playing</li>
+        <li>recording → khép loop lại, và nó bắt đầu chuyển sang playing</li>
         <li>playing → overdub</li>
-        <li>overdub → back to playing</li>
-        <li>muted → unmute</li>
+        <li>overdub → quay lại playing</li>
+        <li>muted → bỏ tắt tiếng (unmute)</li>
       </ul>
-      <p>With <b class="ui">AUTO</b> on, tapping an empty pad <b>arms</b> it instead of recording
-        immediately, and tapping an armed pad cancels the arm. That is the only change AUTO makes to
-        the ladder.</p>
+      <p>Khi <b class="ui">AUTO</b> bật, chạm vào một pad trống sẽ <b>arm</b> nó thay vì ghi
+        ngay lập tức, và chạm vào một pad đã arm sẽ huỷ arm. Đó là thay đổi duy nhất mà AUTO
+        tạo ra trong chuỗi trạng thái này.</p>
 
-      <h3>Long-press</h3>
-      <p>Long-press the round pad for <b class="ui">MIDI Learn: tap loop track 1</b> (and 2, 3, 4) —
-        that is how a footswitch gets bound to one track. Long-press the <em>card</em> around it and
-        you get the routing menu instead: <b class="ui">Input · …</b>, <b class="ui">Output · …</b>,
-        <b class="ui">Edit loop…</b>, plus <b class="ui">Length · Free</b> or
-        <b class="ui">Length · N bars</b> and <b class="ui">Overdubs · N</b>.</p>
+      <h3>Nhấn giữ</h3>
+      <p>Nhấn giữ pad tròn để vào <b class="ui">MIDI Learn: tap loop track 1</b> (và 2, 3, 4) —
+        đây là cách gán một footswitch cho một track. Nhấn giữ <em>thẻ</em> bao quanh nó thì bạn
+        sẽ được menu định tuyến: <b class="ui">Input · …</b>, <b class="ui">Output · …</b>,
+        <b class="ui">Sửa loop…</b>, cùng với <b class="ui">Độ dài · tự do</b> hoặc
+        <b class="ui">Length · N bars</b> và <b class="ui">Overdubs · N</b>.</p>
 
-      <h3>States</h3>
+      <h3>Trạng thái</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>State</th><th>Label</th><th>Colour</th></tr></thead>
+          <thead><tr><th>Trạng thái</th><th>Nhãn</th><th>Màu</th></tr></thead>
           <tbody>
-            <tr><td>Nothing recorded</td><td><b class="ui">empty</b></td><td>Dim</td></tr>
-            <tr><td>Capturing</td><td><b class="ui">recording</b></td><td>Red</td></tr>
-            <tr><td>Looping back</td><td><b class="ui">playing</b></td><td>Green</td></tr>
-            <tr><td>Layering</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
-            <tr><td>Silent, still running</td><td><b class="ui">muted</b></td><td>Yellow</td></tr>
-            <tr><td>Waiting (AUTO)</td><td><b class="ui">armed</b></td>
-                <td>Red, dashed border round the card</td></tr>
+            <tr><td>Chưa ghi gì</td><td><b class="ui">trống</b></td><td>Mờ</td></tr>
+            <tr><td>Đang ghi</td><td><b class="ui">đang ghi</b></td><td>Đỏ</td></tr>
+            <tr><td>Đang lặp lại</td><td><b class="ui">đang phát</b></td><td>Xanh lá</td></tr>
+            <tr><td>Đang chồng lớp</td><td><b class="ui">overdub</b></td><td>Cam</td></tr>
+            <tr><td>Im lặng, vẫn đang chạy</td><td><b class="ui">tắt tiếng</b></td><td>Vàng</td></tr>
+            <tr><td>Đang chờ (AUTO)</td><td><b class="ui">đã sẵn</b></td>
+                <td>Đỏ, viền nét đứt quanh thẻ</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The control row under each pad holds four things: mute
-        (<b class="ui">Mute track N</b>, which turns yellow), edit
-        (<b class="ui">Edit loop N</b>), clear (<b class="ui">Clear track N</b>) and a small level
-        knob (<b class="ui">Loop track N level</b>, 0 to 1.5).</p>
+      <p>Hàng điều khiển dưới mỗi pad có bốn thứ: mute
+        (<b class="ui">Mute track N</b>, chuyển sang màu vàng), edit
+        (<b class="ui">Edit loop N</b>), clear (<b class="ui">Clear track N</b>) và một núm
+        level nhỏ (<b class="ui">Loop track N level</b>, từ 0 đến 1.5).</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="transport"><span class="n">04.3</span>The transport</h2>
-      <p>Next to the word <b class="ui">LOOPER</b> sits the transport row:</p>
+      <h2 id="transport"><span class="n">04.3</span>Thanh transport</h2>
+      <p>Ngay cạnh chữ <b class="ui">LOOPER</b> là hàng transport:</p>
       <ul style="--nc:var(--gate)">
-        <li>A <b>master ring</b> showing the cycle length in seconds, or <b class="ui">—</b> when
-          nothing is recorded yet.</li>
-        <li>A <b class="ui">PRESETS</b> chip — see <a href="#saving">what gets saved</a>.</li>
-        <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>, disabled until there is a
-          cycle.</li>
-        <li>An <b>undo</b> button, enabled only when there is something to undo.</li>
-        <li>A trash button, <b class="ui">Clear all loops</b>.</li>
+        <li>Một <b>vòng master</b> hiển thị độ dài chu kỳ tính bằng giây, hoặc
+          <b class="ui">—</b> khi chưa ghi gì.</li>
+        <li>Một chip <b class="ui">PRESET</b> — xem <a href="#saving">những gì được lưu
+          lại</a>.</li>
+        <li><b class="ui">Phát loop</b> / <b class="ui">Dừng loop</b>, bị vô hiệu hoá cho tới
+          khi có chu kỳ.</li>
+        <li>Một nút <b>undo</b>, chỉ bật khi có gì đó để hoàn tác.</li>
+        <li>Một nút thùng rác, <b class="ui">Xoá mọi loop</b>.</li>
       </ul>
-      <p>Under it, one status line tells you where you are:
-        <b class="ui">recording the master loop…</b> while the first take runs, a running
-        <b class="ui">4.2 / 8.0 s</b> position once there is a cycle, <b class="ui">stopped</b>, or
-        <b class="ui">tap a track to record</b> when the looper is empty.</p>
+      <p>Bên dưới, một dòng trạng thái cho bạn biết bạn đang ở đâu:
+        <b class="ui">đang ghi loop master…</b> trong lúc bản ghi đầu tiên đang chạy, vị
+        trí đang chạy <b class="ui">4.2 / 8.0 s</b> khi đã có chu kỳ, <b class="ui">đã dừng</b>,
+        hoặc <b class="ui">chạm một track để ghi</b> khi looper còn trống.</p>
       <div class="note">
-        <div class="t">Footswitch control</div>
-        <p>The built-in MIDI map covers the looper with no setup: <b class="ui">CC 85–88</b> tap
-          tracks 1 to 4, <b class="ui">CC 89</b> runs, <b class="ui">CC 90</b> clears. Note that
-          CC 89 sends a <em>play</em> command — it restarts the loops from the top rather than
-          toggling them off. For a true run/stop toggle on one switch, add a mapping on the
-          <b class="ui a">Control</b> tab and learn it to <b class="ui">Run / stop</b>, which reads
-          the current state.</p>
+        <div class="t">Điều khiển bằng footswitch</div>
+        <p>Bản đồ MIDI có sẵn phủ hết looper mà không cần cài đặt gì: <b class="ui">CC
+          85–88</b> tap track 1 đến 4, <b class="ui">CC 89</b> chạy, <b class="ui">CC 90</b>
+          xoá. Lưu ý rằng CC 89 gửi một lệnh <em>play</em> — nó chạy lại các loop từ đầu chứ
+          không bật/tắt chúng. Để có một công tắc run/stop thật sự trên một switch, hãy thêm
+          một mapping ở tab <b class="ui a">Điều khiển</b> và learn nó vào <b class="ui">Chạy / dừng</b>, lệnh này đọc trạng thái hiện tại.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="auto"><span class="n">04.4</span>AUTO mode</h2>
-      <p><b class="ui">AUTO</b> — the wand chip, next to <b class="ui">CLICK</b> — does two jobs: it
-        starts and stops takes for you, and when the master loop closes it works out where the bar
-        lines actually are.</p>
+      <h2 id="auto"><span class="n">04.4</span>Chế độ AUTO</h2>
+      <p><b class="ui">AUTO</b> — chip hình đũa phép, cạnh <b class="ui">CLICK</b> — làm hai
+        việc: nó tự bắt đầu và dừng các bản ghi giúp bạn, và khi master loop khép lại, nó tính
+        ra vạch ô nhịp thực sự nằm ở đâu.</p>
 
-      <h3>Arming instead of recording</h3>
-      <p>With AUTO on, tapping an empty pad arms it: the card gets a dashed red border and reads
-        <b class="ui">armed</b>. What happens next depends on whether there is already a cycle:</p>
+      <h3>Arm thay vì ghi</h3>
+      <p>Khi AUTO bật, chạm vào một pad trống sẽ arm nó: thẻ có viền đỏ nét đứt và hiện chữ
+        <b class="ui">đã sẵn</b>. Điều xảy ra tiếp theo phụ thuộc vào việc đã có chu kỳ hay
+        chưa:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>No cycle yet.</b> Recording begins <b>on your first note</b> above the arm threshold.
-          You can pick the guitar up, get comfortable, and the take starts when you play — not when
-          you tapped.</li>
-        <li><b>A cycle already running.</b> Recording begins on the <b>next cycle boundary</b>, so
-          the take starts exactly on the bar. A short grace window forgives an attack that lands
-          slightly late, so hitting the downbeat a hair behind the beam still counts.</li>
+        <li><b>Chưa có chu kỳ.</b> Ghi âm bắt đầu <b>ngay ở nốt đầu tiên</b> của bạn vượt
+          ngưỡng arm. Bạn có thể cầm đàn lên, chỉnh tư thế thoải mái, và bản ghi bắt đầu khi bạn
+          chơi — không phải khi bạn chạm.</li>
+        <li><b>Đã có chu kỳ đang chạy.</b> Ghi âm bắt đầu ở <b>ranh giới chu kỳ tiếp theo</b>,
+          nên bản ghi bắt đầu đúng vào đầu ô nhịp. Một khoảng ân hạn ngắn bỏ qua tiếng đánh đến
+          hơi trễ, nên đánh vào phách mạnh đầu ô nhịp trễ hơn tia quét một chút vẫn được
+          tính.</li>
       </ul>
-      <p>A free armed take — one recorded with no cycle in place — also <b>stops itself</b> after
-        about 1.2 seconds of silence, trimmed back to the audible part. The threshold is generous on
-        purpose: reverb tails and gaps between phrases do not count as silence, so a sparse riff is
-        not cut in half.</p>
-      <p>After each loop closes, AUTO <b>arms the next empty cell by itself</b>, so you can build up
-        all four tracks without touching the screen again.</p>
+      <p>Một bản ghi armed tự do — ghi khi chưa có chu kỳ nào — cũng <b>tự dừng</b> sau khoảng
+        1.2 giây im lặng, và được cắt gọn về phần có âm thanh. Ngưỡng này cố tình đặt rộng rãi:
+        đuôi reverb và khoảng nghỉ giữa các câu nhạc không bị tính là im lặng, nên một riff thưa
+        nốt sẽ không bị cắt làm đôi.</p>
+      <p>Sau khi mỗi loop khép lại, AUTO <b>tự arm ô trống tiếp theo</b>, để bạn có thể xây
+        dựng cả bốn track mà không cần chạm màn hình thêm lần nào nữa.</p>
 
-      <h3>Boundary snapping</h3>
-      <p>When the master loop closes, NAMper analyses the clean input — the signal before your
-        effects — and looks for attacks. It fits a bar grid to them, then:</p>
+      <h3>Tự động khớp biên ô nhịp</h3>
+      <p>Khi master loop khép lại, NAMper phân tích tín hiệu clean input — tín hiệu trước khi
+        qua hiệu ứng của bạn — và tìm các tiếng đánh (attack). Nó khớp một lưới ô nhịp theo
+        chúng, rồi:</p>
       <ol style="--nc:var(--amp)">
-        <li><b>Trims the end</b> to the bar that contains the last attack, so a take that ran a
-          beat and a half long becomes a whole number of bars.</li>
-        <li><b>Rotates the loop</b> so it begins on the first beat. The string noise, the breath and
-          the finger squeak that happened before your downbeat are moved round to the end of the
-          loop, where they belong musically.</li>
-        <li><b>Folds the detected tempo</b> into the 70–180 BPM range, so a fast strum is not read
-          as 240 BPM and a slow one is not read as 45.</li>
+        <li><b>Cắt phần đuôi</b> về ô nhịp chứa tiếng đánh cuối cùng, để một bản ghi dài hơn
+          một phách rưỡi trở thành số ô nhịp tròn.</li>
+        <li><b>Xoay loop</b> để nó bắt đầu ở phách đầu tiên. Tiếng dây đàn, hơi thở và tiếng cà
+          ngón tay xảy ra trước phách mạnh đầu ô nhịp của bạn được chuyển vòng ra cuối loop, nơi
+          chúng thuộc về mặt âm nhạc.</li>
+        <li><b>Gập tempo phát hiện được</b> vào khoảng 70–180 BPM, để một nhịp gảy nhanh không
+          bị đọc thành 240 BPM và một nhịp chậm không bị đọc thành 45.</li>
       </ol>
-      <p>On screen it all happens in one moment: the ring re-draws, the length snaps to a clean
-        figure, and the BPM readout — blank until now — fills in. From there the click, the LEN
-        chips, the sampler's quantize and the setlist's bar clock all have a grid to work from.</p>
-      <p>With <b class="ui">CLICK</b> on, the tempo is <b>locked</b> to whatever tempo is set and
-        only the phase is fitted. That is the mode to use when you are playing to a click or to a
-        backing track and the tempo must not move.</p>
+      <p>Trên màn hình, tất cả diễn ra trong một khoảnh khắc: vòng vẽ lại, độ dài khớp về một
+        con số gọn gàng, và chỉ số BPM — trống cho tới lúc này — được điền vào. Từ đó, click,
+        các chip LEN, quantize của sampler và đồng hồ ô nhịp của setlist đều có một lưới để dựa
+        vào.</p>
+      <p>Khi <b class="ui">CLICK</b> bật, tempo bị <b>khoá</b> ở bất kỳ tempo nào đang đặt, và
+        chỉ pha (điểm bắt đầu) mới được khớp lại. Đây là chế độ dùng khi bạn chơi theo click
+        hoặc theo nhạc nền và tempo không được phép thay đổi.</p>
       <div class="note tip">
-        <div class="t">Drones and rubato</div>
-        <p>If there is no usable grid to find — a sustained pad, a freely-timed intro, a bowed
-          swell — NAMper does not force one. It falls back to trimming at the last attack and
-          picking a whole number of bars. You get a clean loop, just not a re-detected tempo.</p>
+        <div class="t">Drone và rubato</div>
+        <p>Nếu không có lưới nào khả dụng để tìm ra — một pad ngân dài, một đoạn intro chơi tự
+          do, một swell kéo cung — NAMper không cố ép ra một lưới. Nó quay về cách cắt ở tiếng
+          đánh cuối cùng và chọn một số ô nhịp tròn. Bạn vẫn có một loop gọn gàng, chỉ là không
+          có tempo được phát hiện lại.</p>
       </div>
       <div class="note warn">
-        <div class="t">The first loop matters most</div>
-        <p>Snapping runs on the master loop, and everything recorded afterwards inherits its grid.
-          If the first take lands wrong, fix it in the <a href="#editor">loop editor</a> before
-          layering, or clear and record it again — nudging track 3 will not move the bar lines.</p>
+        <div class="t">Loop đầu tiên quan trọng nhất</div>
+        <p>Việc khớp biên chạy trên master loop, và mọi thứ ghi sau đó đều thừa hưởng lưới của
+          nó. Nếu bản ghi đầu tiên bị lệch, hãy sửa nó trong <a href="#editor">trình chỉnh
+          loop</a> trước khi chồng thêm lớp, hoặc xoá và ghi lại từ đầu — chỉnh nhẹ track 3 sẽ
+          không làm dịch chuyển vạch ô nhịp.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="tempo"><span class="n">04.5</span>Tempo and the click</h2>
-      <p>The tempo block on the Loop tab shows a big number captioned <b class="ui">BPM</b>. With no
-        tempo set it reads <b class="ui">SET TEMPO</b> over a <b class="ui">—</b>. Tap it for the
-        tempo sheet.</p>
-      <p>The sheet has a numeric field (placeholder <b class="ui">120</b>, range <b>20 to 300</b>)
-        with <b class="ui">BPM</b> beside it, a large <b class="ui">TAP</b> button that reads
-        <b class="ui">again…</b> after your first tap, plus
-        <b class="ui">Clear (AUTO re-detects)</b> and <b class="ui">Done</b>. Clear it when you want
-        AUTO to work the tempo out from your playing instead.</p>
-      <p>The same sheet is reachable from the <b class="ui a">Rig</b> header: the metronome chip
-        toggles the click on a <b>tap</b> and opens <b class="ui">SET TEMPO</b> on a
-        <b>long-press</b>.</p>
-      <p><b class="ui">CLICK</b> turns the metronome on. Turning it on with no tempo set
-        <b>forces 120 BPM</b> and restarts the bar, so switching the click on is never a neutral
-        act. Click level and the click's output bus live in Settings →
-        <b class="ui">METRONOME</b>, where it can have its own output pair for in-ear
-        monitoring.</p>
+      <h2 id="tempo"><span class="n">04.5</span>Tempo và click</h2>
+      <p>Khối tempo trên tab Loop hiển thị một con số lớn với chú thích <b class="ui">BPM</b>.
+        Khi chưa đặt tempo, nó hiện <b class="ui">ĐẶT TEMPO</b> phía trên một
+        <b class="ui">—</b>. Chạm vào để mở sheet tempo.</p>
+      <p>Sheet này có một ô số (placeholder <b class="ui">120</b>, khoảng <b>20 đến 300</b>)
+        với <b class="ui">BPM</b> bên cạnh, một nút <b class="ui">TAP</b> lớn hiện chữ
+        <b class="ui">lần nữa…</b> sau lần chạm đầu tiên của bạn, cùng với
+        <b class="ui">Xoá (AUTO dò lại)</b> và <b class="ui">Xong</b>. Xoá nó khi bạn
+        muốn AUTO tự tính tempo từ cách bạn chơi thay vì đặt sẵn.</p>
+      <p>Cùng sheet đó cũng có thể mở từ header <b class="ui a">Rig</b>: chip metronome bật/tắt
+        click khi <b>chạm</b> và mở <b class="ui">ĐẶT TEMPO</b> khi <b>nhấn giữ</b>.</p>
+      <p><b class="ui">CLICK</b> bật metronome. Bật nó khi chưa đặt tempo sẽ <b>ép về 120
+        BPM</b> và khởi động lại ô nhịp, nên bật click không bao giờ là một hành động trung
+        tính. Mức click và bus output của click nằm trong Settings →
+        <b class="ui">MÁY ĐẬP NHỊP</b>, nơi nó có thể có một cặp output riêng để nghe
+        in-ear.</p>
       <div class="note warn">
-        <div class="t">There is no count-in</div>
-        <p>Tapping record starts recording. If you want a bar of click before you play, either arm
-          the pad with AUTO and let your first note start the take, or record the first loop against
-          a cycle that is already running.</p>
+        <div class="t">Không có count-in</div>
+        <p>Chạm record là bắt đầu ghi ngay. Nếu bạn muốn có một ô nhịp click trước khi chơi,
+          hãy arm pad bằng AUTO và để nốt đầu tiên của bạn bắt đầu bản ghi, hoặc ghi loop đầu
+          tiên theo một chu kỳ đã đang chạy sẵn.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">04.6</span>The loop editor</h2>
-      <p>Open it with the edit button in a pad's control row, or long-press the card →
-        <b class="ui">Edit loop…</b>. The sheet is headed <b class="ui">LOOP N</b> with a live length
-        label.</p>
+      <h2 id="editor"><span class="n">04.6</span>Trình chỉnh loop</h2>
+      <p>Mở nó bằng nút edit trong hàng điều khiển của pad, hoặc nhấn giữ thẻ →
+        <b class="ui">Sửa loop…</b>. Sheet có tiêu đề <b class="ui">LOOP N</b> với một nhãn độ
+        dài cập nhật trực tiếp.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
-             alt="The loop editor sheet over the looper: a waveform with a bar and beat grid, draggable start and end handles, the START and LENGTH TEMPO KEPT button rows, Level and Pan knobs, and Mute, Undo and Clear buttons.">
-        <figcaption>The loop editor: grid, handles, nudge buttons and the bottom row</figcaption>
+             alt="Sheet trình chỉnh loop đè lên looper: một dạng sóng với lưới ô nhịp và phách, các tay cầm start/end có thể kéo, các hàng nút START và LENGTH TEMPO KEPT, núm Level và Pan, cùng các nút Mute, Undo và Clear.">
+        <figcaption>Trình chỉnh loop: lưới, tay cầm, nút nudge và hàng dưới cùng</figcaption>
       </figure>
-      <p>The label reads something like <b class="ui">8.00 s · 4.0 bars</b>. Dragging the end handle
-        adds the tempo that length would produce; dragging the start handle changes it to
-        <b class="ui">start +0.50 beats</b>.</p>
-      <p>The waveform carries a bar and beat <b>grid overlay</b> — beat ticks and numbered bar
-        lines, anchored at the loop start. Audio past the loop end is drawn dimmed: kept but silent,
-        which is what lets you push the end handle back out again later.</p>
+      <p>Nhãn hiện đại loại <b class="ui">8.00 s · 4.0 bars</b>. Kéo tay cầm end sẽ thêm vào
+        tempo mà độ dài đó tạo ra; kéo tay cầm start sẽ đổi nó thành <b class="ui">start +0.50
+        beats</b>.</p>
+      <p>Dạng sóng có một <b>lớp lưới phủ</b> ô nhịp và phách — các vạch phách và vạch ô nhịp
+        đánh số, neo tại điểm bắt đầu loop. Âm thanh sau điểm kết thúc loop được vẽ mờ đi: vẫn
+        giữ lại nhưng im lặng, đó là điều cho phép bạn kéo tay cầm end ra xa hơn sau này.</p>
 
-      <h3>The two handles</h3>
+      <h3>Hai tay cầm</h3>
       <ul style="--nc:var(--pitch)">
-        <li><b>The start</b> (<b class="ui">Loop start handle</b>) rotates the phase: the loop
-          begins later and the skipped piece wraps round to the end. Length and tempo do not change.
-          This is the fix for a loop that starts half a beat early.</li>
-        <li><b>The end</b> (<b class="ui">Loop end handle</b>) resizes the loop, and works
-          <b>only on the track that defines the cycle</b>. The bar count is preserved and the set
-          tempo follows, so stretching the loop slows the whole set down. The sheet says as much:
-          <b class="ui">Drag the edges to move the start and resize the loop — resizing retunes the
-          set tempo.</b></li>
+        <li><b>Start</b> (<b class="ui">Tay kéo đầu loop</b>) xoay pha: loop bắt đầu muộn hơn
+          và phần bị bỏ qua vòng ra cuối. Độ dài và tempo không đổi. Đây là cách sửa cho một
+          loop bắt đầu sớm nửa phách.</li>
+        <li><b>End</b> (<b class="ui">Tay kéo cuối loop</b>) đổi kích thước loop, và chỉ hoạt
+          động <b>trên track định ra chu kỳ</b>. Số ô nhịp được giữ nguyên và tempo đang đặt sẽ
+          thay đổi theo, nên kéo dài loop sẽ làm chậm cả set lại. Sheet cũng nói rõ điều này:
+          <b class="ui">Kéo hai mép để dời điểm bắt đầu và đổi độ dài loop — đổi độ dài sẽ chỉnh lại tempo của set.</b></li>
       </ul>
-      <p>An empty track shows <b class="ui">no audio</b> and nothing to drag.</p>
+      <p>Một track trống hiện <b class="ui">không có âm</b> và không có gì để kéo.</p>
 
-      <h3>The button rows</h3>
-      <p>Under the waveform, <b class="ui">START</b> gives four phase nudges —
-        <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>,
-        <b class="ui">+BAR</b> — for when your thumb is less precise than the grid. They move the
-        start only.</p>
-      <p><b class="ui">LENGTH · TEMPO KEPT</b> gives six: the same four plus <b class="ui">÷2</b>
-        and <b class="ui">×2</b>. Halving turns an accidental eight-bar take into the four-bar loop
-        you meant to play; doubling gives room to overdub a phrase spanning twice the cycle.</p>
+      <h3>Các hàng nút</h3>
+      <p>Bên dưới dạng sóng, <b class="ui">BẮT ĐẦU</b> cho bốn nút chỉnh pha —
+        <b class="ui">-Ô NHỊP</b>, <b class="ui">-PHÁCH</b>, <b class="ui">+PHÁCH</b>,
+        <b class="ui">+Ô NHỊP</b> — dùng khi ngón tay của bạn không chính xác bằng lưới. Chúng chỉ
+        dịch chuyển start.</p>
+      <p><b class="ui">ĐỘ DÀI · GIỮ TEMPO</b> cho sáu nút: bốn nút như trên cộng thêm
+        <b class="ui">÷2</b> và <b class="ui">×2</b>. Chia đôi biến một bản ghi tám ô nhịp lỡ
+        tay thành loop bốn ô nhịp bạn thực sự muốn chơi; nhân đôi tạo chỗ để overdub một câu
+        nhạc trải dài gấp đôi chu kỳ.</p>
       <div class="note">
-        <div class="t">Why the length buttons are greyed out</div>
-        <p>All six <b class="ui">LENGTH · TEMPO KEPT</b> buttons are disabled unless the track you
-          are editing is the one that defines the cycle, and the sheet explains why:
-          <b class="ui">Only the track that defines the cycle can change its length.</b> If the
-          length is wrong on a follower track, the loop to edit is the master one.</p>
+        <div class="t">Vì sao các nút length bị mờ đi</div>
+        <p>Cả sáu nút <b class="ui">ĐỘ DÀI · GIỮ TEMPO</b> đều bị vô hiệu hoá trừ khi track
+          bạn đang chỉnh là track định ra chu kỳ, và sheet giải thích lý do:
+          <b class="ui">Chỉ track định ra chu kỳ mới đổi được độ dài.</b> Nếu
+          độ dài sai trên một track theo sau, loop cần chỉnh chính là loop master.</p>
       </div>
-      <p>The bottom row holds a <b class="ui">Level</b> knob (0 to 1.5), a <b class="ui">Pan</b> knob
-        reading <b class="ui">C</b>, <b class="ui">L50</b> or <b class="ui">R50</b>, and the buttons
-        <b class="ui">Mute</b>, <b class="ui">Undo</b> and <b class="ui">Clear</b>.</p>
-      <p>There is no reverse. Loops play forwards only.</p>
+      <p>Hàng dưới cùng có một núm <b class="ui">Mức</b> (0 đến 1.5), một núm
+        <b class="ui">Pan</b> hiện <b class="ui">C</b>, <b class="ui">L50</b> hoặc
+        <b class="ui">R50</b>, và các nút <b class="ui">Tắt tiếng</b>, <b class="ui">Hoàn tác</b> và
+        <b class="ui">Xoá</b>.</p>
+      <p>Không có chế độ tua ngược. Loop chỉ phát xuôi.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Undo</h2>
-      <p>Undo is a <b>toggle</b>, not a stack. Every overdub session snapshots the audio before the
-        dub goes on; undo swaps that snapshot back in, and pressing it again swaps your overdub
-        back. It is a compare button as much as an undo button.</p>
-      <p>Two limits: it is <b>one session deep</b>, so a second overdub replaces what undo was
-        holding, and it is <b>shared across tracks</b> — one snapshot for the whole looper, not one
-        per track. Overdub track 2 and the undo you were saving for track 1 is gone.</p>
+      <h2 id="undo"><span class="n">04.7</span>Hoàn tác</h2>
+      <p>Hoàn tác (undo) là một <b>công tắc bật/tắt</b>, không phải một stack. Mỗi phiên
+        overdub chụp lại snapshot âm thanh trước khi lớp dub được thêm vào; undo đưa snapshot
+        đó trở lại, và nhấn lần nữa sẽ đưa lớp overdub của bạn quay về. Nó vừa là nút so sánh
+        vừa là nút hoàn tác.</p>
+      <p>Có hai giới hạn: nó chỉ <b>sâu một phiên</b>, nên overdub lần thứ hai sẽ thay thế thứ
+        mà undo đang giữ, và nó <b>dùng chung cho mọi track</b> — một snapshot cho cả looper,
+        không phải một cho mỗi track. Overdub track 2 và undo bạn đang giữ cho track 1 sẽ
+        mất.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Per-track routing</h2>
-      <p><b class="ui">IN</b> and <b class="ui">OUT</b> decide where a track's audio comes from and
-        goes to; <b class="ui">LEN</b> and <b class="ui">DUB</b> decide how long and how many
-        passes.</p>
+      <h2 id="routing"><span class="n">04.8</span>Định tuyến theo từng track</h2>
+      <p><b class="ui">VÀO</b> và <b class="ui">RA</b> quyết định âm thanh của một track đến từ
+        đâu và đi đến đâu; <b class="ui">DÀI</b> và <b class="ui">DUB</b> quyết định dài bao
+        lâu và bao nhiêu lượt.</p>
 
       <h3>IN</h3>
-      <p>The <b class="ui">IN</b> menu offers <b class="ui">Post FX (the rig)</b> — the processed
-        guitar, which is what you usually want. With several rigs it becomes
-        <b class="ui">Post FX · &lt;rig name&gt;</b> per rig and the chip reads
-        <b class="ui">FX · &lt;rig&gt;</b>. Below that, one entry per hardware input channel under
-        its own name — a dry vocal or a second player straight off the interface — and
-        <b class="ui">Sampler</b>, chip <b class="ui">SMP</b>, for looping the pads.</p>
+      <p>Menu <b class="ui">VÀO</b> có <b class="ui">Sau FX (rig)</b> — tín hiệu guitar đã
+        qua xử lý, thứ bạn thường muốn dùng nhất. Với nhiều rig, nó trở thành
+        <b class="ui">Post FX · &lt;rig name&gt;</b> cho mỗi rig và chip hiện
+        <b class="ui">FX · &lt;rig&gt;</b>. Bên dưới đó, mỗi kênh input phần cứng có một mục
+        riêng dưới tên của nó — một giọng hát dry hoặc một người chơi thứ hai cắm thẳng vào
+        interface — và <b class="ui">Sampler</b>, chip <b class="ui">SMP</b>, để loop các
+        pad.</p>
 
       <h3>OUT</h3>
-      <p>The <b class="ui">OUT</b> menu offers <b class="ui">Main mix</b> (chip
-        <b class="ui">MAIN</b>), one entry per extra hardware output pair —
-        <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> and so on, which need
-        <b class="ui">Use all interface outputs</b> switched on in Settings — and
-        <b class="ui">Into &lt;rig name&gt;</b>.</p>
-      <p>That last one is the interesting one: rather than going straight to the mix, the loop plays
-        <em>into</em> that rig, so the rig's effects process it live. Loop a clean part, send it into
-        a rig with a delay and a filter, and sweep the filter while the loop runs. A rig the track
-        records from is not offered — that would be a feedback path.</p>
+      <p>Menu <b class="ui">RA</b> có <b class="ui">Mix chính</b> (chip <b class="ui">CHÍNH</b>),
+        mỗi cặp output phần cứng thêm có một mục — <b class="ui">Out 3/4</b>,
+        <b class="ui">Out 5/6</b> và tương tự, cần bật <b class="ui">Dùng mọi ngõ ra của interface</b> trong Settings — và <b class="ui">Into &lt;rig name&gt;</b>.</p>
+      <p>Cái cuối cùng đó thú vị nhất: thay vì đi thẳng vào mix, loop phát <em>vào</em> rig đó,
+        để hiệu ứng của rig xử lý nó trực tiếp. Loop một phần clean, gửi nó vào một rig có delay
+        và filter, rồi quét filter trong lúc loop chạy. Một rig mà track đang ghi từ đó thì
+        không được đưa ra để chọn — vì đó sẽ là một đường hồi tiếp (feedback).</p>
 
-      <h3>LEN and DUB</h3>
-      <p>The <b class="ui">LEN</b> chip cycles 0, 1, 2, 4 and 8 bars. At 0 it reads
-        <b class="ui">FREE</b>; otherwise <b class="ui">N BAR</b>, and the take is fixed to that many
-        bars. With no tempo set the menu says
-        <b class="ui">No tempo yet — record the first loop with AUTO on</b>.</p>
-      <p>The <b class="ui">DUB</b> chip cycles 0, 1, 2 and 4 automatic overdub passes — the track
-        drops back to playing by itself after that many laps.</p>
+      <h3>LEN và DUB</h3>
+      <p>Chip <b class="ui">DÀI</b> xoay vòng 0, 1, 2, 4 và 8 ô nhịp. Ở 0 nó hiện
+        <b class="ui">TỰ DO</b>; nếu không thì <b class="ui">N BAR</b>, và bản ghi bị cố định
+        đúng bằng số ô nhịp đó. Khi chưa đặt tempo, menu ghi <b class="ui">Chưa có tempo — ghi loop đầu tiên khi bật AUTO</b>.</p>
+      <p>Chip <b class="ui">DUB</b> xoay vòng 0, 1, 2 và 4 lượt overdub tự động — track tự
+        chuyển về playing sau đúng số vòng đó.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>What gets saved</h2>
-      <p>The <b class="ui">PRESETS</b> chip opens <b class="ui">Looper Presets</b>, and they hold
-        <b>the setup only</b>: each track's IN, OUT, LEN, DUB and pan, plus the AUTO flag. A routing
-        template you recall at the start of a song — not a recording.</p>
+      <h2 id="saving"><span class="n">04.9</span>Những gì được lưu lại</h2>
+      <p>Chip <b class="ui">PRESET</b> mở <b class="ui">Preset looper</b>, và chúng chỉ lưu
+        <b>phần thiết lập</b>: IN, OUT, LEN, DUB và pan của từng track, cộng với cờ AUTO. Một
+        mẫu định tuyến bạn gọi lại vào đầu bài hát — không phải một bản ghi âm.</p>
       <div class="note warn">
-        <div class="t">Loop audio cannot be exported</div>
-        <p>There is no way to save a loop as a file — no export, no share sheet. The only way to
-          capture what the looper played is the <b class="ui a">Perform</b> tab's recorder, which
-          records the output mix (rig, looper, pads and backing together, plus a separate dry input
-          stem). If a loop is worth keeping, hit record on Perform and let it run.</p>
+        <div class="t">Không thể xuất âm thanh của loop</div>
+        <p>Không có cách nào lưu một loop thành file — không export, không share sheet. Cách
+          duy nhất để ghi lại những gì looper đã phát là recorder trong tab
+          <b class="ui a">Biểu diễn</b>, cái ghi lại mix output (rig, looper, pad và nhạc nền
+          cùng nhau, cộng thêm một stem input dry riêng). Nếu một loop đáng giữ lại, hãy nhấn
+          record ở Perform và để nó chạy.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/plugins.html">← 03 · AU plugins</a>
+      <a href="/docs/vi/plugins.html">← 03 · Plugin AU</a>
       <span class="sp"></span>
-      <a href="/docs/vi/sampler.html">05 · Sampler pads →</a>
+      <a href="/docs/vi/sampler.html">05 · Pad sampler →</a>
     </nav>
   </main>
 </div>
@@ -391,7 +397,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một app độc lập, không liên kết, không được xác nhận hay tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu đều thuộc quyền sở hữu của chủ sở hữu tương ứng, và chỉ được dùng để mô tả thiết bị mà một bản capture được thực hiện từ đó.</p>
   </div>
 </footer>
 

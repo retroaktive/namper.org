@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Settings reference — NAMper Documentation</title>
-<meta name="description" content="Every card and every row in NAMper's Settings sheet: audio interface, channel names, appearance, set, lyrics, metronome, prompts, reset and diagnostics — plus the settings that live elsewhere.">
+<title>Ayarlar referansı — NAMper Dokümantasyonu</title>
+<meta name="description" content="NAMper'ın Ayarlar sayfasındaki her kart ve her satır: ses arayüzü, kanal isimleri, görünüm, set, şarkı sözü, metronom, uyarılar, sıfırlama ve tanılama — artı başka yerde yaşayan ayarlar.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Settings reference — NAMper Documentation">
-<meta property="og:description" content="Every card and row in NAMper's Settings sheet, with defaults and what each control actually does.">
+<meta property="og:title" content="Ayarlar referansı — NAMper Dokümantasyonu">
+<meta property="og:description" content="NAMper'ın Ayarlar sayfasındaki her kart ve satır, varsayılanlarıyla ve her kontrolün gerçekte ne yaptığıyla birlikte.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/settings.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOKÜMANTASYON</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/tr/">← ALL DOCS</a>
+  <a class="home" href="/docs/tr/">← TÜM DOCS</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/tr/settings.html" aria-current="page">Türkçe</a>
   </nav>
@@ -46,291 +46,286 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">İÇİNDEKİLER</div>
     <ol>
-      <li><a href="/docs/tr/setup.html">Getting started</a></li>
-      <li><a href="/docs/tr/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/tr/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/tr/setup.html">Başlarken</a></li>
+      <li><a href="/docs/tr/rig.html">Rig &amp; sinyal zinciri</a></li>
+      <li><a href="/docs/tr/plugins.html">AU eklentileri</a></li>
       <li><a href="/docs/tr/looper.html">Looper</a></li>
-      <li><a href="/docs/tr/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/tr/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/tr/control.html">MIDI &amp; control</a></li>
-      <li><a class="on" href="/docs/tr/settings.html">Settings reference</a></li>
+      <li><a href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
+      <li><a href="/docs/tr/perform.html">Perform &amp; şarkı sözü</a></li>
+      <li><a href="/docs/tr/control.html">MIDI &amp; kontrol</a></li>
+      <li><a class="on" href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--drive)">08 · SETTINGS REFERENCE</div>
-    <h1>Every switch, in order.</h1>
-    <p class="lede">NAMper's Settings sheet is short on purpose. This page walks it card by card,
-      row by row, with the defaults and what each control really does — and ends with the handful
-      of settings that live somewhere else entirely.</p>
+    <div class="slab" style="--nc:var(--drive)">08 · AYARLAR REFERANSI</div>
+    <h1>Her anahtar, sırayla.</h1>
+    <p class="lede">NAMper'ın Ayarlar sayfası bilerek kısa tutulmuştur. Bu sayfa onu kart kart,
+      satır satır, varsayılanlarıyla ve her kontrolün gerçekte ne yaptığıyla birlikte anlatır — ve
+      tamamen başka bir yerde yaşayan birkaç ayarla sona erer.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">BU SAYFADA</div>
       <ul>
-        <li><a href="#opening">Opening Settings</a></li>
-        <li><a href="#audio">Audio interface</a></li>
-        <li><a href="#names">Channel names</a></li>
-        <li><a href="#appearance">Appearance</a></li>
+        <li><a href="#opening">Ayarları açmak</a></li>
+        <li><a href="#audio">Ses arayüzü</a></li>
+        <li><a href="#names">Kanal isimleri</a></li>
+        <li><a href="#appearance">Görünüm</a></li>
         <li><a href="#set">Set</a></li>
-        <li><a href="#lyrics">Lyrics</a></li>
-        <li><a href="#metronome">Metronome</a></li>
-        <li><a href="#prompts">Prompts</a></li>
-        <li><a href="#reset">Reset</a></li>
-        <li><a href="#diagnostics">Diagnostics</a></li>
-        <li><a href="#elsewhere">Not in Settings</a></li>
+        <li><a href="#lyrics">Şarkı sözü</a></li>
+        <li><a href="#metronome">Metronom</a></li>
+        <li><a href="#prompts">Uyarılar</a></li>
+        <li><a href="#reset">Sıfırlama</a></li>
+        <li><a href="#diagnostics">Tanılama</a></li>
+        <li><a href="#elsewhere">Ayarlarda olmayanlar</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="opening"><span class="n">08.1</span>Opening Settings</h2>
-      <p>Tap the <strong>gear icon</strong> in the header of the <b class="ui a">Rig</b> tab. That is
-        the only way in, and the header only exists on that tab — from
-        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> or
-        <b class="ui a">Control</b> you go back to <b class="ui a">Rig</b> first.</p>
+      <h2 id="opening"><span class="n">08.1</span>Ayarları açmak</h2>
+      <p><strong>Dişli ikonuna</strong> dokun — bu, <b class="ui a">Rig</b> sekmesinin
+        başlığında bulunur. Girmenin tek yolu budur, ve başlık sadece o sekmede vardır —
+        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> ya da
+        <b class="ui a">Kontrol</b>'den önce <b class="ui a">Rig</b>'e geri dönersin.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
-             alt="The top of the Settings sheet: the AUDIO INTERFACE card with Feedback guard switched on, the DSP load readout, the sample rate and buffer chips, the input trim slider, and the beginning of the CHANNEL NAMES card.">
-        <figcaption>The top of the Settings sheet</figcaption>
+             alt="Ayarlar sayfasının üstü: Feedback guard açık AUDIO INTERFACE kartı, DSP load göstergesi, örnekleme hızı ve buffer çipleri, giriş trim kaydırıcısı, ve CHANNEL NAMES kartının başlangıcı.">
+        <figcaption>Ayarlar sayfasının üstü</figcaption>
       </figure>
-      <p>The gear has company in that header row, and it is worth knowing what the neighbours do:</p>
+      <p>Dişlinin o başlık satırında yanında başkaları da var, ve komşularının ne yaptığını
+        bilmek işine yarar:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Item</th><th>Does</th></tr></thead>
+          <thead><tr><th>Öğe</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td>The <b class="ui">NAMper</b> wordmark</td>
-                <td>Opens the About sheet — version, credits and the tip jar. The only way in.</td></tr>
-            <tr><td><b class="ui">DSP load</b> chip</td>
-                <td>Processor load as a percentage, <b class="ui">—</b> when stopped. Green under 60 %, amber to 85 %, red above.</td></tr>
-            <tr><td>Gear</td><td>Settings — this page.</td></tr>
-            <tr><td><b class="ui">KEY</b> chip</td>
-                <td>The current key, or the word <b class="ui">KEY</b> when unset. Opens <b class="ui">SET KEY</b>.</td></tr>
-            <tr><td>Metronome chip</td>
-                <td>Tap to switch the click on and off; <strong>long-press</strong> for the <b class="ui">SET TEMPO</b> sheet. See <a href="/docs/tr/looper.html">the looper</a>.</td></tr>
-            <tr><td>Tuning fork</td><td>Opens the tuner. See <a href="/docs/tr/control.html">MIDI &amp; control</a>.</td></tr>
+            <tr><td><b class="ui">NAMper</b> yazı logosu</td>
+                <td>Hakkında sayfasını açar — sürüm, emek verenler ve bağış kutusu. Girmenin tek yolu.</td></tr>
+            <tr><td><b class="ui">DSP yükü</b> çipi</td>
+                <td>İşlemci yükünü yüzde olarak gösterir, durduğunda <b class="ui">—</b>. %60'ın altında yeşil, %85'e kadar kehribar, üzerinde kırmızı.</td></tr>
+            <tr><td>Dişli</td><td>Ayarlar — bu sayfa.</td></tr>
+            <tr><td><b class="ui">KEY</b> çipi</td>
+                <td>Mevcut tonu, ayarlanmamışsa <b class="ui">KEY</b> yazısını gösterir. <b class="ui">TON BELİRLE</b>'i açar.</td></tr>
+            <tr><td>Metronom çipi</td>
+                <td>Click'i açıp kapatmak için dokun; <strong>uzun basmak</strong> <b class="ui">TEMPO BELİRLE</b> sayfasını açar. Bkz. <a href="/docs/tr/looper.html">looper</a>.</td></tr>
+            <tr><td>Akort çatalı</td><td>Tuner'ı açar. Bkz. <a href="/docs/tr/control.html">MIDI &amp; kontrol</a>.</td></tr>
             <tr><td><b class="ui g">Power</b></td>
-                <td>Starts and stops the audio engine. Nothing makes a sound until it is on. See <a href="/docs/tr/setup.html#power">getting started</a>.</td></tr>
+                <td>Ses motorunu başlatır ve durdurur. Açılana kadar hiçbir şey ses çıkarmaz. Bkz. <a href="/docs/tr/setup.html#power">başlarken</a>.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="audio"><span class="n">08.2</span>Audio interface</h2>
-      <p>The <b class="ui">AUDIO INTERFACE</b> card is the longest one, and the only one whose
-        settings need a relaunch to take effect. The first four rows are read-only: they tell you
-        what NAMper actually got from iOS, which is the fastest way to find out why an interface is
-        not behaving.</p>
+      <h2 id="audio"><span class="n">08.2</span>Ses arayüzü</h2>
+      <p><b class="ui">SES ARABİRİMİ</b> kartı en uzun olanıdır, ve ayarlarının etkili olması
+        için yeniden başlatma gerektiren tek karttır. İlk dört satır salt okunurdur: NAMper'ın
+        iOS'tan gerçekte ne aldığını söylerler, bu da bir arayüzün neden düzgün davranmadığını
+        bulmanın en hızlı yoludur.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Sample rate</b></td><td>Read-only</td><td>—</td>
-                <td>The rate the engine is actually running at, in kHz.</td></tr>
-            <tr><td><b class="ui">Inputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many input channels the current route offers, up to eight.</td></tr>
-            <tr><td><b class="ui">Outputs</b></td><td>Read-only</td><td>—</td>
-                <td>How many output channels the current route offers.</td></tr>
-            <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">running</b> or <b class="ui">stopped</b>.</td></tr>
-            <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
-                <td>Mutes the output while the built-in mic plays through the phone's own speaker. <a href="/docs/tr/setup.html#feedback-guard">Read this one properly</a>.</td></tr>
-            <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
-                <td>Processor load, shown only while the engine runs.</td></tr>
-            <tr><td><b class="ui">Sample rate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
-                <td>Sets the engine rate; remembered per route. Changing it restarts the engine. <a href="/docs/tr/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input channels</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
-                <td>Caps how many input channels NAMper opens. Leave on <b class="ui">Auto</b> unless you have a reason.</td></tr>
-            <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Block size, with a live <b class="ui">frames · ms</b> readout. The only latency control there is. <a href="/docs/tr/setup.html#rate">More</a>.</td></tr>
-            <tr><td><b class="ui">Input trim</b></td><td>One slider per input, −12…+24 dB</td><td>0 dB</td>
-                <td>Gain for interfaces without a gain knob. Play hard: the <b class="ui">IN</b> meter should reach its top third.</td></tr>
-            <tr><td><b class="ui">Use all interface outputs</b></td><td>Switch</td><td>Off</td>
-                <td>Opens every output pair, so a branch, a rig or the click can own its own pair. Stereo devices do not need it.</td></tr>
+            <tr><td><b class="ui">Örnekleme hızı</b></td><td>Salt okunur</td><td>—</td>
+                <td>Motorun gerçekte çalıştığı hız, kHz cinsinden.</td></tr>
+            <tr><td><b class="ui">Girişler</b></td><td>Salt okunur</td><td>—</td>
+                <td>Mevcut yönlendirmenin sunduğu giriş kanalı sayısı, sekize kadar.</td></tr>
+            <tr><td><b class="ui">Çıkışlar</b></td><td>Salt okunur</td><td>—</td>
+                <td>Mevcut yönlendirmenin sunduğu çıkış kanalı sayısı.</td></tr>
+            <tr><td><b class="ui">Motor</b></td><td>Salt okunur</td><td>—</td>
+                <td><b class="ui">çalışıyor</b> ya da <b class="ui">durdu</b>.</td></tr>
+            <tr><td><b class="ui">Geri besleme koruması</b></td><td>Anahtar</td><td>Açık</td>
+                <td>Yerleşik mikrofon telefonun kendi hoparlöründen çalarken çıkışı susturur. <a href="/docs/tr/setup.html#feedback-guard">Bunu düzgünce oku</a>.</td></tr>
+            <tr><td><b class="ui">DSP yükü</b></td><td>Gösterge + çubuk</td><td>—</td>
+                <td>İşlemci yükü, sadece motor çalışırken gösterilir.</td></tr>
+            <tr><td><b class="ui">Örnekleme hızı</b></td><td>Çipler: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
+                <td>Motor hızını ayarlar; yönlendirme başına hatırlanır. Değiştirmek motoru yeniden başlatır. <a href="/docs/tr/setup.html#rate">Daha fazlası</a>.</td></tr>
+            <tr><td><b class="ui">Giriş kanalları</b></td><td>Çipler: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
+                <td>NAMper'ın açtığı giriş kanalı sayısına üst sınır koyar. Bir sebebin yoksa <b class="ui">Auto</b>'da bırak.</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>Çipler: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
+                <td>Blok boyutu, canlı bir <b class="ui">frames · ms</b> göstergesiyle. Var olan tek gecikme kontrolü. <a href="/docs/tr/setup.html#rate">Daha fazlası</a>.</td></tr>
+            <tr><td><b class="ui">Giriş trim</b></td><td>Giriş başına bir kaydırıcı, −12…+24 dB</td><td>0 dB</td>
+                <td>Bir kazanç düğmesi olmayan arayüzler için kazanç. Sert çal: <b class="ui">IN</b> göstergesi üst üçte birine ulaşmalı.</td></tr>
+            <tr><td><b class="ui">Tüm arabirim çıkışlarını kullan</b></td><td>Anahtar</td><td>Kapalı</td>
+                <td>Her çıkış çiftini açar, böylece bir dal, bir rig ya da click kendi çiftine sahip olabilir. Stereo cihazların buna ihtiyacı yoktur.</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note warn">
-        <div class="t">Audio changes need a relaunch</div>
-        <p>The chips and switches here take effect on the next engine start — some, like the sample
-          rate, restart the engine themselves. If something looks stuck, power the engine off and on
-          before assuming it is broken.</p>
+        <div class="t">Ses değişiklikleri yeniden başlatma gerektirir</div>
+        <p>Buradaki çipler ve anahtarlar bir sonraki motor başlangıcında etkili olur — örnekleme
+          hızı gibi bazıları motoru kendisi yeniden başlatır. Bir şey takılı kalmış gibi
+          görünüyorsa, bozuk olduğunu varsaymadan önce motoru kapatıp aç.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="names"><span class="n">08.3</span>Channel names</h2>
-      <p><b class="ui">CHANNEL NAMES</b> is a text field per input, each row prefixed
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on, with the placeholder
-        <b class="ui">Guitar, Vocal…</b>. The footnote says what they are for:
-        <b class="ui">Input pickers show these names everywhere.</b></p>
-      <p>Name them once and those names appear in every input picker in the app — rig inputs, looper
-        track sources, compressor sidechains, the input trim sliders. Channels you leave blank fall
-        back to <b class="ui">In &lt;n&gt;</b>.</p>
+      <h2 id="names"><span class="n">08.3</span>Kanal isimleri</h2>
+      <p><b class="ui">KANAL ADLARI</b>, giriş başına bir metin alanıdır, her satır
+        <b class="ui">In 1</b>, <b class="ui">In 2</b> ve benzeriyle başlar, yer tutucusu
+        <b class="ui">Gitar, vokal…</b>'dır. Dipnot ne işe yaradıklarını söyler:
+        <b class="ui">Giriş seçicileri her yerde bu adları gösterir.</b></p>
+      <p>Onları bir kez adlandır, bu isimler uygulamadaki her giriş seçicide görünsün — rig
+        girişleri, looper parça kaynakları, compressor sidechain'leri, giriş trim kaydırıcıları.
+        Boş bıraktığın kanallar <b class="ui">In &lt;n&gt;</b>'e geri döner.</p>
       <div class="note tip">
-        <div class="t">Worth two minutes</div>
-        <p>On a multichannel interface, <b class="ui">Guitar</b> and <b class="ui">Vocal</b> are much
-          easier to pick correctly mid-soundcheck than <b class="ui">In 3</b> and
-          <b class="ui">In 4</b>.</p>
+        <div class="t">İki dakikaya değer</div>
+        <p>Çok kanallı bir arayüzde, ses kontrolü ortasında <b class="ui">Guitar</b> ve
+          <b class="ui">Vocal</b>'ı doğru seçmek, <b class="ui">In 3</b> ve <b class="ui">In
+          4</b>'ten çok daha kolaydır.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="appearance"><span class="n">08.4</span>Appearance</h2>
-      <p>Chips: <b class="ui">System</b>, <b class="ui">Light</b>, <b class="ui">Dark</b>. The
-        default is <b class="ui">System</b>, and this is the one setting on the whole sheet that
-        applies the instant you tap it.</p>
-      <p>NAMper is designed dark — the meters, the LEDs and the chain graphics are drawn for a dark
-        stage. <b class="ui">Light</b> is there if you need it in daylight, but the app is at its
-        most legible in the dark.</p>
+      <h2 id="appearance"><span class="n">08.4</span>Görünüm</h2>
+      <p>Çipler: <b class="ui">Sistem</b>, <b class="ui">Açık</b>, <b class="ui">Koyu</b>.
+        Varsayılan <b class="ui">Sistem</b>'dir, ve bu, tüm sayfada dokunduğun an uygulanan tek
+        ayardır.</p>
+      <p>NAMper karanlık için tasarlanmıştır — göstergeler, LED'ler ve zincir grafikleri karanlık
+        bir sahne için çizilmiştir. Gün ışığında ihtiyacın olursa <b class="ui">Açık</b>
+        oradadır, ama uygulama en okunaklı halini karanlıkta gösterir.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="set"><span class="n">08.5</span>Set</h2>
-      <p>The <b class="ui">SET</b> card is read-only. It shows <b class="ui">Tempo</b> (as
-        <b class="ui">BPM</b>, or <b class="ui">—</b> when nothing is set) and <b class="ui">Key</b>
-        (such as <b class="ui">Am</b>, or <b class="ui">—</b>). It is a status readout, not a
-        control.</p>
-      <p>The footnote points you at the real controls: <b class="ui">Tempo: long-press the
-        metronome. Key: the KEY button in the header.</b></p>
+      <p><b class="ui">SET</b> kartı salt okunurdur. <b class="ui">Tempo</b>'yu
+        (<b class="ui">BPM</b> olarak, ya da hiçbir şey ayarlanmamışsa <b class="ui">—</b>) ve
+        <b class="ui">Ton</b>'i (<b class="ui">Am</b> gibi, ya da <b class="ui">—</b>) gösterir.
+        Bu bir kontrol değil, bir durum göstergesidir.</p>
+      <p>Dipnot seni gerçek kontrollere yönlendirir: <b class="ui">Tempo: metronoma basılı tut. Ton: üstteki KEY düğmesi.</b></p>
       <div class="tw">
         <table>
-          <thead><tr><th>Value</th><th>Set it from</th></tr></thead>
+          <thead><tr><th>Değer</th><th>Şuradan ayarlanır</th></tr></thead>
           <tbody>
-            <tr><td>Tempo</td><td>Long-press the metronome chip in the Rig header, or the tempo block in the <b class="ui a">Loop</b> tab. The looper also detects it from your first loop, and selecting a backing track applies the song's tempo.</td></tr>
-            <tr><td>Key</td><td>The <b class="ui">KEY</b> chip in the Rig header. Selecting a backing track applies the song's key.</td></tr>
+            <tr><td>Tempo</td><td>Rig başlığındaki metronom çipine uzun bas, ya da <b class="ui a">Loop</b> sekmesindeki tempo bloğuna. Looper onu ilk loop'undan da algılar, ve bir altyapı seçmek şarkının temposunu uygular.</td></tr>
+            <tr><td>Ton</td><td>Rig başlığındaki <b class="ui">KEY</b> çipi. Bir altyapı seçmek şarkının tonunu uygular.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="lyrics"><span class="n">08.6</span>Lyrics</h2>
-      <p>One slider: teleprompter text size, from <b class="ui">16</b> to <b class="ui">34 pt</b>,
-        default <b class="ui">22 pt</b>, with a live preview line reading <b class="ui">This is how
-        your lyrics will look</b>.</p>
-      <p>Changing it re-aims the teleprompter live, so if the lyrics screen is open on another
-        device or you come straight back to it, nothing has to be re-timed. Set it for the distance
-        the phone actually sits from your face on a mic stand, not from the sofa. See
-        <a href="/docs/tr/perform.html#lyrics">lyrics and the teleprompter</a>.</p>
+      <h2 id="lyrics"><span class="n">08.6</span>Şarkı sözü</h2>
+      <p>Tek bir kaydırıcı: teleprompter metin boyutu, <b class="ui">16</b>'dan <b class="ui">34
+        pt</b>'ye, varsayılan <b class="ui">22 pt</b>, <b class="ui">Şarkı sözün böyle görünecek</b> yazan canlı bir önizleme satırıyla.</p>
+      <p>Onu değiştirmek teleprompter'ı canlı olarak yeniden hizalar, yani şarkı sözü ekranı
+        başka bir cihazda açıksa ya da ona doğrudan geri dönersen, hiçbir şeyin yeniden
+        zamanlanması gerekmez. Onu, telefonun bir mikrofon sehpasında yüzünden gerçekte ne kadar
+        uzakta durduğuna göre ayarla, kanepeden değil. Bkz.
+        <a href="/docs/tr/perform.html#lyrics">şarkı sözü ve teleprompter</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="metronome"><span class="n">08.7</span>Metronome</h2>
+      <h2 id="metronome"><span class="n">08.7</span>Metronom</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td>Click level</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
-                <td>How loud the click is.</td></tr>
-            <tr><td><b class="ui">Click output</b></td><td>Chips: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
-                <td>Which hardware output pair carries the click. Shown only when there is more than one pair; picking a non-main pair force-enables <b class="ui">Use all interface outputs</b>.</td></tr>
+            <tr><td>Click seviyesi</td><td>Kaydırıcı, −40…+6 dB</td><td>≈ −3 dB</td>
+                <td>Click'in ne kadar yüksek sesli olduğu.</td></tr>
+            <tr><td><b class="ui">Klik çıkışı</b></td><td>Çipler: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>Click'i hangi donanım çıkış çiftinin taşıdığı. Sadece birden fazla çift olduğunda gösterilir; ana olmayan bir çift seçmek <b class="ui">Tüm arabirim çıkışlarını kullan</b>'u zorla etkinleştirir.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The card's footnote is the useful part: <b class="ui">The click is mixed in AFTER the master
-        FX chain — reverbs and limiters never touch it. Pick a separate output pair for in-ear
-        monitoring.</b></p>
-      <p>That means your master reverb will not smear the click and your master limiter will not
-        duck the band every time it ticks. Send it to its own pair and the drummer hears the click
-        while front of house does not.</p>
-      <p>The click itself is switched on and off with the metronome chip in the Rig header, or the
-        <b class="ui">CLICK</b> chip in the <b class="ui a">Loop</b> tab — not from here.</p>
+      <p>Kartın dipnotu asıl işe yarayan kısımdır: <b class="ui">Klik, master FX zincirinden SONRA miksleniyor — reverb ve limiter ona dokunmaz. Kulak içi monitör için ayrı bir çıkış çifti seç.</b></p>
+      <p>Bu, master reverb'ünün click'i bulaştırmayacağı ve master limiter'ının her tık
+        attığında grubu bastırmayacağı anlamına gelir. Onu kendi çiftine gönder, davulcu click'i
+        duysun, ön ses masası duymasın.</p>
+      <p>Click'in kendisi, Rig başlığındaki metronom çipiyle ya da <b class="ui">KLİK</b>
+        çipiyle açılıp kapatılır (<b class="ui a">Loop</b> sekmesinde) — burada değil.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">08.8</span>Prompts</h2>
+      <h2 id="prompts"><span class="n">08.8</span>Uyarılar</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Show the support prompt</b></td><td>Switch</td><td>On</td>
-                <td>The sheet that explains NAMper is free and points at the tip jar. It reappears occasionally from the third launch onward; switch this off and it never returns.</td></tr>
-            <tr><td><b class="ui">Offer TONE3000 sign-in on launch</b></td><td>Switch</td><td>On</td>
-                <td>The sheet offering to connect your TONE3000 account so factory presets can download their real amp captures. It appears once per launch while you are signed out.</td></tr>
-            <tr><td><b class="ui">Replay the quick tour</b></td><td>Button</td><td>—</td>
-                <td>Runs the eight-step first-run tour again.</td></tr>
+            <tr><td><b class="ui">Destek penceresini göster</b></td><td>Anahtar</td><td>Açık</td>
+                <td>NAMper'ın ücretsiz olduğunu açıklayan ve bağış kutusuna yönlendiren sayfa. Üçüncü açılıştan itibaren zaman zaman yeniden görünür; bunu kapatırsan bir daha dönmez.</td></tr>
+            <tr><td><b class="ui">Açılışta TONE3000 girişini öner</b></td><td>Anahtar</td><td>Açık</td>
+                <td>Factory preset'lerin gerçek amp capture'larını indirebilmesi için TONE3000 hesabını bağlamayı öneren sayfa. Oturum açmamışken açılış başına bir kez görünür.</td></tr>
+            <tr><td><b class="ui">Hızlı turu tekrar oynat</b></td><td>Düğme</td><td>—</td>
+                <td>Sekiz adımlık ilk çalıştırma turunu yeniden başlatır.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The quick tour is a spotlight over the live Rig tab, counted <b class="ui">n/8</b>, and it
-        is hands-on rather than a slideshow: it walks you through turning the audio on (you really
-        tap the power button), the amp card, the signal chain (you really tap a block), the block
-        editor, presets, the other tabs and a closing step. <b class="ui">Next</b>,
-        <b class="ui">Skip step</b> and <b class="ui">End tour</b> are always available, with
-        <b class="ui">Finish</b> at the end. It runs on the <b class="ui a">Rig</b> tab only.</p>
+      <p>Hızlı tur, canlı Rig sekmesi üzerinde bir spot ışığıdır, <b class="ui">n/8</b> olarak
+        sayılır, ve bir slayt gösterisi yerine uygulamalıdır: seni sesi açmaktan (gerçekten power
+        düğmesine dokunursun), amp kartından, sinyal zincirinden (gerçekten bir bloğa
+        dokunursun), blok editöründen, preset'lerden, diğer sekmelerden ve bir kapanış adımından
+        geçirir. <b class="ui">İleri</b>, <b class="ui">Adımı atla</b> ve <b class="ui">Turu bitir</b> her zaman kullanılabilir, sonunda <b class="ui">Bitir</b> ile. Sadece
+        <b class="ui a">Rig</b> sekmesinde çalışır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">08.9</span>Reset</h2>
-      <p>Two buttons, each behind a confirmation.</p>
+      <h2 id="reset"><span class="n">08.9</span>Sıfırlama</h2>
+      <p>İki düğme, her biri bir onayın arkasında.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Button</th><th>Dialog</th><th>Confirm</th></tr></thead>
+          <thead><tr><th>Düğme</th><th>Diyalog</th><th>Onay</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Reset to factory presets</b></td>
-                <td><b class="ui">Delete ALL user presets? The four factory rigs come back.</b></td>
-                <td><b class="ui">Delete all user presets</b></td></tr>
-            <tr><td><b class="ui">Reset all settings</b></td>
-                <td><b class="ui">Reset every setting (audio, looper, MIDI map, appearance) to defaults? Presets and files stay. Restart the app afterwards.</b></td>
-                <td><b class="ui">Reset settings</b></td></tr>
+            <tr><td><b class="ui">Fabrika preset’lerine dön</b></td>
+                <td><b class="ui">TÜM kullanıcı preset’leri silinsin mi? Dört fabrika rig’i geri gelir.</b></td>
+                <td><b class="ui">Tüm kullanıcı preset’lerini sil</b></td></tr>
+            <tr><td><b class="ui">Tüm ayarları sıfırla</b></td>
+                <td><b class="ui">Tüm ayarlar (ses, looper, MIDI haritası, görünüm) varsayılana dönsün mü? Preset’ler ve dosyalar kalır. Sonrasında uygulamayı yeniden başlat.</b></td>
+                <td><b class="ui">Ayarları sıfırla</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>The first one wipes your rig presets and restores the four factory rigs. The second leaves
-        every preset and every file alone and only puts the settings back to their defaults.</p>
+      <p>İlki rig preset'lerini siler ve dört factory rig'i geri getirir. İkincisi her preset'i
+        ve her dosyayı olduğu gibi bırakır ve sadece ayarları varsayılanlarına döndürür.</p>
       <div class="note warn">
-        <div class="t">Restart after a settings reset</div>
-        <p>The footnote reads <b class="ui">Settings reset takes effect after an app restart.</b>,
-          and it means it. Only the appearance change applies immediately — the audio settings need
-          a relaunch before they are truly back at their defaults. Quit NAMper from the app switcher
-          and open it again.</p>
+        <div class="t">Ayar sıfırlamasından sonra yeniden başlat</div>
+        <p>Dipnot şunu yazar: <b class="ui">Ayar sıfırlama, uygulama yeniden başlatıldıktan sonra etkili olur.</b>, ve bunu ciddi olarak söyler. Sadece görünüm değişikliği anında uygulanır
+          — ses ayarlarının gerçekten varsayılanlarına dönmesi için yeniden başlatma gerekir.
+          NAMper'ı uygulama değiştiriciden kapat ve tekrar aç.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">08.10</span>Diagnostics</h2>
-      <p>NAMper keeps a plain-text engine log recording interface routing and peaks. When one
-        exists, this card offers <b class="ui">Share engine log</b> and <b class="ui">Clear engine
-        log</b>; when it does not, it reads <b class="ui">No engine log yet (it records interface
-        routing and peaks).</b></p>
-      <p><b class="ui">Share engine log</b> hands the file to the iOS share sheet — mail it,
-        AirDrop it, or attach it to a support issue. It is the single most useful thing you can
-        include in a bug report about an interface that will not open, a rate that gets refused or
-        an engine that stops on its own, because it records what actually happened at the audio
-        layer.</p>
-      <p><b class="ui">Clear engine log</b> empties it. Do that immediately before reproducing a
-        problem and the log you send contains that problem and nothing else.</p>
+      <h2 id="diagnostics"><span class="n">08.10</span>Tanılama</h2>
+      <p>NAMper, arayüz yönlendirmesini ve tepe seviyelerini kaydeden düz metin bir motor
+        günlüğü tutar. Bir tanesi varken bu kart <b class="ui">Motor günlüğünü paylaş</b> ve
+        <b class="ui">Motor günlüğünü temizle</b> sunar; yokken <b class="ui">Henüz motor günlüğü yok (arabirim yönlendirmesini ve tepe seviyelerini kaydeder).</b> yazar.</p>
+      <p><b class="ui">Motor günlüğünü paylaş</b>, dosyayı iOS paylaşım sayfasına verir — maille,
+        AirDrop'la, ya da bir destek talebine ekle. Açılmayan bir arayüz, reddedilen bir hız ya
+        da kendi kendine duran bir motor hakkındaki bir hata raporuna dahil edebileceğin en
+        yararlı tek şeydir, çünkü ses katmanında gerçekte ne olduğunu kaydeder.</p>
+      <p><b class="ui">Motor günlüğünü temizle</b> onu boşaltır. Bir sorunu yeniden oluşturmadan hemen
+        önce bunu yap, göndereceğin günlük sadece o sorunu içersin, başka hiçbir şeyi değil.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">08.11</span>Not in Settings</h2>
-      <p>Three things people look for here and do not find.</p>
-      <h3>Trigger quantize</h3>
-      <p>The <b class="ui">QUANT</b> knob and its grid chip live in the <b class="ui a">Sample</b>
-        tab header, not in Settings — even though both are global rather than per kit or per pad.
-        See <a href="/docs/tr/sampler.html#quantize">trigger quantize</a>.</p>
-      <h3>Tempo and key</h3>
-      <p>Both are header chips on the <b class="ui a">Rig</b> tab. Settings only reports them, in
-        the <a href="#set"><b class="ui">SET</b></a> card.</p>
+      <h2 id="elsewhere"><span class="n">08.11</span>Ayarlarda olmayanlar</h2>
+      <p>İnsanların burada aradığı ama bulamadığı üç şey.</p>
+      <h3>Tetikleme kuantalaması</h3>
+      <p><b class="ui">KUANT</b> düğmesi ve onun ızgara çipi, Ayarlarda değil <b class="ui a">Sample</b>
+        sekmesinin başlığında yaşar — ikisi de kit başına ya da pad başına değil global olsa da.
+        Bkz. <a href="/docs/tr/sampler.html#quantize">tetikleme kuantalaması</a>.</p>
+      <h3>Tempo ve ton</h3>
+      <p>İkisi de <b class="ui a">Rig</b> sekmesindeki başlık çipleridir. Ayarlar bunları sadece
+        <a href="#set"><b class="ui">SET</b></a> kartında raporlar.</p>
       <h3>MIDI</h3>
-      <p>There are <strong>no global MIDI settings at all</strong>: no channel selector, no
-        program-change toggle, no clock sync. MIDI in NAMper is omni and always on — every channel
-        is accepted, every source connects automatically, and the app publishes its own virtual
-        destination named <b class="ui">NAMper</b>.</p>
+      <p><strong>Hiç global MIDI ayarı yoktur</strong>: kanal seçici yok, program-change
+        anahtarı yok, clock sync yok. NAMper'da MIDI omni'dir ve her zaman açıktır — her kanal
+        kabul edilir, her kaynak otomatik olarak bağlanır, ve uygulama <b class="ui">NAMper</b>
+        adlı kendi sanal hedefini yayınlar.</p>
       <div class="note">
-        <div class="t">Nothing to configure</div>
-        <p>If a pedal is not doing anything, the problem is the mapping rather than a setting.
-          Everything MIDI lives in the <b class="ui a">Control</b> tab — see
-          <a href="/docs/tr/control.html">MIDI &amp; control</a>.</p>
+        <div class="t">Yapılandırılacak hiçbir şey yok</div>
+        <p>Bir pedal hiçbir şey yapmıyorsa, sorun bir ayar değil eşlemedir. MIDI ile ilgili her
+          şey <b class="ui a">Kontrol</b> sekmesinde yaşar — bkz.
+          <a href="/docs/tr/control.html">MIDI &amp; kontrol</a>.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/tr/control.html">← 07 · MIDI &amp; control</a>
+      <a href="/docs/tr/control.html">← 07 · MIDI &amp; kontrol</a>
       <span class="sp"></span>
-      <a href="/docs/tr/">All docs →</a>
+      <a href="/docs/tr/">Tüm dokümanlar →</a>
     </nav>
   </main>
 </div>
@@ -345,7 +340,10 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper, herhangi bir ekipman üreticisiyle bağlantısı, onayı ya da sponsorluğu
+      olmayan bağımsız bir uygulamadır. Tüm ürün adları, markalar ve ticari markalar kendi
+      sahiplerinin mülkiyetindedir ve yalnızca bir kaydın hangi ekipmandan alındığını belirtmek
+      için kullanılır.</p>
   </div>
 </footer>
 

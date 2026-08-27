@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started — NAMper Documentation</title>
-<meta name="description" content="Plugging in: audio interfaces, sample rate and buffer size, the power button, the input and output meters, the feedback guard, and where NAMper keeps your files.">
+<title>快速上手 — NAMper 文檔</title>
+<meta name="description" content="接線入門：音頻接口、採樣率與緩衝區大小、電源按鈕、輸入與輸出電平表、嘯叫保護，以及 NAMper 保存文件的位置。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Getting started — NAMper Documentation">
-<meta property="og:description" content="Audio interfaces, sample rate and buffer, the power button, the meters and the feedback guard.">
+<meta property="og:title" content="快速上手 — NAMper 文檔">
+<meta property="og:description" content="音頻接口、採樣率與緩衝區、電源按鈕、電平表和嘯叫保護。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/setup.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文檔</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh-hant/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh-hant/">← 全部文檔</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh-hant/setup.html" aria-current="page">繁體中文</a>
   </nav>
@@ -46,249 +46,232 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目錄</div>
     <ol>
-      <li><a class="on" href="/docs/zh-hant/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh-hant/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/zh-hant/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/zh-hant/looper.html">Looper</a></li>
-      <li><a href="/docs/zh-hant/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/zh-hant/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/zh-hant/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh-hant/settings.html">Settings reference</a></li>
+      <li><a class="on" href="/docs/zh-hant/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
+      <li><a href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
+      <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
+      <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
+      <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--power)">01 · GETTING STARTED</div>
-    <h1>Plugging in.</h1>
-    <p class="lede">Everything between your guitar and the first sound: how NAMper picks up your
-      audio hardware, what the power button does, how to read the meters, and why the app
-      sometimes mutes itself on purpose.</p>
+    <div class="slab" style="--nc:var(--power)">01 · 快速上手</div>
+    <h1>接上你的樂器。</h1>
+    <p class="lede">從吉他到第一個聲音之間的一切：NAMper 如何識別你的音頻硬體、電源按鈕的作用、
+      如何讀電平表，以及為什麼這款應用有時會故意把自己靜音。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本頁內容</div>
       <ul>
-        <li><a href="#power">The power button</a></li>
-        <li><a href="#interfaces">Audio interfaces</a></li>
-        <li><a href="#meters">Meters and levels</a></li>
-        <li><a href="#rate">Sample rate and buffer</a></li>
-        <li><a href="#feedback-guard">The feedback guard</a></li>
-        <li><a href="#permissions">Permissions</a></li>
-        <li><a href="#files">Where your files live</a></li>
+        <li><a href="#power">電源按鈕</a></li>
+        <li><a href="#interfaces">音頻接口</a></li>
+        <li><a href="#meters">電平表與電平</a></li>
+        <li><a href="#rate">採樣率與緩衝區</a></li>
+        <li><a href="#feedback-guard">嘯叫保護</a></li>
+        <li><a href="#permissions">權限</a></li>
+        <li><a href="#files">文件的存放位置</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="power"><span class="n">01.1</span>The power button</h2>
-      <p>The green power icon in the top-right corner of the <b class="ui a">Rig</b> tab starts and
-        stops the audio engine. Until it is on, nothing is processed and nothing makes a sound —
-        the meters stay flat and recording refuses with
-        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
-      <p>It is dim when the engine is stopped and green with a glow when it is running. The
-        <b class="ui">DSP load</b> chip beside it shows how hard the processor is working: green
-        under 60 %, amber up to 85 %, red above that. If it sits in the red, take a block out of the
-        chain or step the buffer size up.</p>
-      <p>NAMper asks for microphone access the first time you start the engine, not at launch.</p>
+      <h2 id="power"><span class="n">01.1</span>電源按鈕</h2>
+      <p><b class="ui a">音色組</b> 標籤頁右上角的綠色電源圖標用來啟動和停止音頻引擎。在它開啟之前，
+        不會處理任何信號，也不會發出任何聲音——電平表保持不動，錄音也會被拒絕，並提示
+        <b class="ui r">音頻已關閉——錄音前請點按電源按鈕。</b></p>
+      <p>引擎停止時它是暗淡的，運行時則是發光的綠色。旁邊的 <b class="ui">DSP 負載</b>
+        標籤顯示處理器的負載：低於 60% 為綠色，最高到 85% 為琥珀色，超過則為紅色。如果它一直停在紅色，
+        就從信號鏈中拿掉一個模塊，或者把緩衝區調大一檔。</p>
+      <p>NAMper 只會在你第一次啟動引擎時請求麥克風權限，而不是在啟動應用時。</p>
       <div class="note warn">
-        <div class="t">Unplugging</div>
-        <p>Pulling out your headphones or your interface <b>stops the engine</b> — deliberately, so
-          a loud rig never jumps to the phone speaker on its own. Tap power again once you are
-          plugged back in. Plugging something new in rebuilds the engine automatically.</p>
+        <div class="t">拔掉設備時</div>
+        <p>拔出耳機或音頻接口會<b>停止引擎</b>——這是故意的設計，防止一個開得很響的音色組
+          突然自己跳到手機揚聲器上。重新接好之後再次點擊電源即可。接入新設備會自動重建引擎。</p>
       </div>
-      <p>If the engine cannot start, the banner reads <b class="ui r">Audio could not start.
-        Another app may be using the interface — try again.</b> Close whatever else is holding the
-        interface and try once more.</p>
+      <p>如果引擎無法啟動，橫幅會顯示 <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> 關閉其他正在佔用該接口的應用，
+        再試一次。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="interfaces"><span class="n">01.2</span>Audio interfaces</h2>
-      <p>There is no device picker. NAMper follows whatever audio route iOS is using, so you choose
-        your hardware the way you always do — plug the interface in, and the app rebuilds itself
-        around it. Multichannel interfaces are supported, up to eight input channels.</p>
-      <p>Settings → <b class="ui">AUDIO INTERFACE</b> tells you what NAMper actually got:
-        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> and
-        <b class="ui">Engine</b> (<b class="ui">running</b> or <b class="ui">stopped</b>). If the
-        channel count is not what you expected, that row is the place to find out.</p>
+      <h2 id="interfaces"><span class="n">01.2</span>音頻接口</h2>
+      <p>這裡沒有設備選擇器。NAMper 會跟隨 iOS 當前使用的音頻路由，所以你還是像平時一樣選擇硬體——
+        接上接口，應用就會圍繞它自動重建。支持多通道接口，最多八個輸入通道。</p>
+      <p>設置 → <b class="ui">音頻接口</b> 會告訴你 NAMper 實際拿到了什麼：
+        <b class="ui">採樣率</b>、<b class="ui">輸入</b>、<b class="ui">輸出</b> 和
+        <b class="ui">引擎</b>（<b class="ui">運行中</b> 或 <b class="ui">已停止</b>）。
+        如果通道數量和你預期的不一樣，這一行就是查看原因的地方。</p>
 
-      <h3>Naming your channels</h3>
-      <p>Settings → <b class="ui">CHANNEL NAMES</b> gives every input a text field with the
-        placeholder <b class="ui">Guitar, Vocal…</b>. Name them once and those names appear in every
-        input picker in the app — rig inputs, looper track sources, input trim rows. Unnamed
-        channels simply read <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on.</p>
+      <h3>為通道命名</h3>
+      <p>設置 → <b class="ui">通道名稱</b> 會給每個輸入一個文本框，佔位提示為
+        <b class="ui">吉他、人聲…</b>。命名一次之後，這些名字會出現在應用內所有的輸入選擇器中——
+        音色組輸入、循環樂句器音軌來源、輸入電平行。未命名的通道則簡單地顯示為
+        <b class="ui">In 1</b>、<b class="ui">In 2</b> 等。</p>
 
-      <h3>Multiple outputs</h3>
-      <p>Settings → <b class="ui">Use all interface outputs</b> is off by default, and stereo
-        devices never need it. Switch it on and NAMper opens every output pair on the interface, so
-        a rig, a parallel branch, a looper track or the metronome click can each own its own pair —
-        the guitar to front of house, the click to the drummer's in-ears.</p>
+      <h3>多路輸出</h3>
+      <p>設置 → <b class="ui">使用接口的所有輸出</b> 默認關閉，立體聲設備也從不需要它。
+        打開之後，NAMper 會啟用接口上的每一對輸出，這樣音色組、並行分支、循環樂句器音軌或
+        節拍器點擊聲都可以擁有各自獨立的一對輸出——吉他送到前排音箱，點擊聲送到鼓手的入耳監聽。</p>
       <div class="note">
-        <div class="t">Input channels</div>
-        <p><b class="ui">Input channels</b> is normally left on <b class="ui">Auto</b>. Pin it to a
-          number only if your interface reports more channels than you want NAMper to open.</p>
+        <div class="t">輸入通道</div>
+        <p><b class="ui">輸入通道</b> 通常保持在 <b class="ui">自動</b>。只有當你的接口報告的
+          通道數比你想讓 NAMper 打開的更多時，才需要把它固定為某個具體數字。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="meters"><span class="n">01.3</span>Meters and levels</h2>
-      <p>Two vertical strips flank the amp card on the Rig tab: <b class="ui">IN</b> on the left,
-        <b class="ui">OUT</b> on the right. Both run from −60 dBFS at the bottom to 0 at the top,
-        green through amber to red. There is no separate clip light — clipping is the bar hitting
-        red at the very top.</p>
+      <h2 id="meters"><span class="n">01.3</span>電平表與電平</h2>
+      <p>兩條豎直的表條分列在 Rig 標籤頁音箱卡片的兩側：左邊是 <b class="ui">入</b>，
+        右邊是 <b class="ui">出</b>。兩者都從底部的 −60 dBFS 一直到頂部的 0，
+        顏色從綠色經琥珀色到紅色。這裡沒有單獨的削波指示燈——削波就是表條頂到最上方的紅色區域。</p>
 
-      <h3>Setting your input level</h3>
+      <h3>設置輸入電平</h3>
       <ol style="--nc:var(--eq)">
-        <li>Turn the audio on and play as hard as you ever play.</li>
-        <li>The <b class="ui">IN</b> meter should reach its top third and stay out of the red.</li>
-        <li>If your interface has a gain knob, use it. If it does not, open Settings →
-          <b class="ui">Input trim</b> and raise the slider for that channel — it goes from
-          −12 dB to +24 dB in 1 dB steps, and starts at 0.</li>
+        <li>打開音頻，然後用你平時最大力的彈法彈奏。</li>
+        <li><b class="ui">入</b> 電平表應到達上三分之一處，且不進入紅色區域。</li>
+        <li>如果你的接口有增益旋鈕，就用它。如果沒有，打開設置 →
+          <b class="ui">輸入微調增益</b>，把對應通道的滑塊調高——範圍是
+          −12 dB 到 +24 dB，每格 1 dB，默認為 0。</li>
       </ol>
-      <p>The <b class="ui">IN</b> meter shows the level <em>after</em> the trim, so what you see is
-        what the amp model actually receives.</p>
+      <p><b class="ui">入</b> 電平表顯示的是<em>經過</em>輸入電平調整之後的電平，所以你看到的
+        就是音箱模型實際接收到的信號。</p>
 
-      <h3>The master section</h3>
-      <p>At the bottom of the Rig tab, the <b class="ui">MASTER</b> card is where every rig, the
-        looper, the sampler and the backing track sum together before the hardware output. It shows
-        stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> with marks at −12 and −6 dB,
-        plus a broadcast-style loudness reading in <b class="ui">LUFS</b> — the big number is
-        momentary loudness, the small line adds the short-term value. It reads
-        <b class="ui">-inf</b> in silence. The fader below runs from −60 to +12 dB.</p>
-      <p>Every block editor has its own small <b class="ui">IN</b> and <b class="ui">OUT</b> meters
-        too, which is the quickest way to find the block that is running hot.</p>
+      <h3>主控部分</h3>
+      <p>在 Rig 標籤頁底部，<b class="ui">主控</b> 卡片是每個音色組、循環樂句器、
+        採樣器和伴奏音軌在送往硬體輸出之前匯合的地方。它顯示立體聲峰值表條
+        <b class="ui">L</b> 和 <b class="ui">R</b>，在 −12 和 −6 dB 處有刻度，
+        另外還有一個廣播風格的響度讀數，單位是 <b class="ui">LUFS</b>——大號數字是瞬時響度，
+        下方較小的一行是短期值。靜音時顯示 <b class="ui">-inf</b>。下方的推子範圍是 −60 到 +12 dB。</p>
+      <p>每個模塊編輯器也都有各自小型的 <b class="ui">入</b> 和 <b class="ui">出</b> 電平表，
+        這是找出哪個模塊電平過高最快的方法。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="rate"><span class="n">01.4</span>Sample rate and buffer</h2>
-      <p>Both live in Settings → <b class="ui">AUDIO INTERFACE</b>, and both are remembered
-        per audio route — your interface and your headphones can each keep their own settings.</p>
+      <h2 id="rate"><span class="n">01.4</span>採樣率與緩衝區</h2>
+      <p>兩者都位於設置 → <b class="ui">音頻接口</b>，並且都會按音頻路由分別記住——
+        你的接口和耳機可以各自保留自己的設置。</p>
 
-      <h3>Sample rate</h3>
-      <p>The chips read <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
-        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> and
-        <b class="ui">192k</b>. <b class="ui">Auto</b> is the default and simply follows the
-        interface; changing the rate restarts the engine.</p>
-      <p>On the phone's own microphone and speaker only <b class="ui">Auto</b> and
-        <b class="ui">48k</b> appear, with the note
-        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
-        rates.</b> With an interface connected you get the full list — minus any rate that
-        particular interface has already refused, which NAMper remembers and stops offering.</p>
-      <p>If a rate is refused, the app falls back to the previous one and says so in red:
+      <h3>採樣率</h3>
+      <p>可選的標籤有 <b class="ui">自動</b>、<b class="ui">44.1k</b>、<b class="ui">48k</b>、
+        <b class="ui">88.2k</b>、<b class="ui">96k</b>、<b class="ui">176.4k</b> 和
+        <b class="ui">192k</b>。默認是 <b class="ui">自動</b>，單純跟隨接口；更改採樣率會重啟引擎。</p>
+      <p>如果只使用手機自帶的麥克風和揚聲器，就只會出現 <b class="ui">自動</b> 和
+        <b class="ui">48k</b>，並附有提示
+        <b class="ui">內置音頻僅支持 48 kHz。連接音頻接口可使用更多採樣率。</b> 接上接口之後就能看到完整列表——但會減去該接口已經拒絕過的採樣率，
+        NAMper 會記住這一點，不再提供它們。</p>
+      <p>如果某個採樣率被拒絕，應用會退回上一個採樣率，並用紅色文字說明：
         <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
       <div class="note tip">
-        <div class="t">Which rate should I use?</div>
-        <p>Higher is not automatically better — it costs processing headroom, and NAM profiles are
-          captured at ordinary rates anyway. Leave it on <b class="ui">Auto</b> unless you are
-          matching a session that runs at a specific rate.</p>
+        <div class="t">應該用哪個採樣率？</div>
+        <p>更高並不等於更好——它會佔用更多處理餘量，而且 NAM 模型本來就是在常見採樣率下
+          採集的。除非你要匹配某個使用特定採樣率的工程，否則保持 <b class="ui">自動</b> 即可。</p>
       </div>
 
-      <h3>Buffer size</h3>
-      <p><b class="ui">Buffer</b> offers <b class="ui">64</b>, <b class="ui">128</b>,
-        <b class="ui">256</b> and <b class="ui">512</b> frames, with a live readout of the latency
-        that buys you. The default is <b class="ui">128</b>. The app's own advice is exact:
-        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
-        one step.</b></p>
-      <p>This is the only latency control in NAMper — there is no separate latency setting.</p>
+      <h3>緩衝區大小</h3>
+      <p><b class="ui">緩衝區</b> 提供 <b class="ui">64</b>、<b class="ui">128</b>、
+        <b class="ui">256</b> 和 <b class="ui">512</b> 幀，並實時顯示由此帶來的延遲。默認是
+        <b class="ui">128</b>。應用自帶的建議很直接：
+        <b class="ui">數值越小延遲越低；越大對 USB 接口越穩定。有爆音？調大一檔。</b></p>
+      <p>這是 NAMper 中唯一的延遲控制項——沒有單獨的延遲設置。</p>
       <div class="note warn">
-        <div class="t">Bluetooth output</div>
-        <p>Bluetooth headphones and speakers add roughly 0.2 s of delay, which is unplayable. The
-          app warns you when it spots a Bluetooth route. Use wired output for live playing.</p>
+        <div class="t">藍牙輸出</div>
+        <p>藍牙耳機和音箱會增加大約 0.2 秒的延遲，這對演奏來說是不可用的。應用在檢測到
+          藍牙路由時會發出警告。現場演奏請使用有線輸出。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="feedback-guard"><span class="n">01.5</span>The feedback guard</h2>
-      <p>A guitar app with the phone's own microphone open and the phone's own speaker playing is a
-        feedback loop waiting to happen. So NAMper watches for exactly that combination — built-in
-        mic in, built-in speaker or earpiece out — and mutes its output before it can howl.</p>
+      <h2 id="feedback-guard"><span class="n">01.5</span>嘯叫保護</h2>
+      <p>一款打開了手機自帶麥克風、又用手機自帶揚聲器播放的吉他應用，天生就是一個隨時可能發生的
+        嘯叫迴路。所以 NAMper 會專門監測這種組合——內置麥克風輸入、內置揚聲器或聽筒輸出——
+        並在嘯叫發生之前將輸出靜音。</p>
       <figure>
         <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
-             alt="The banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. With an Unmute button.">
-        <figcaption>The banner you get when the guard engages</figcaption>
+             alt="橫幅提示：Output muted to stop feedback (mic to speaker). Connect an interface or headphones. 帶有 Unmute 按鈕。">
+        <figcaption>保護機制啟動時出現的橫幅</figcaption>
       </figure>
-      <p>When it engages you see <b class="ui r">Output muted to stop feedback (mic → speaker).
-        Connect an interface or headphones.</b> Only the audible output is held back — the tuner,
-        the input meters and recording all keep working, so you can still tune up and still capture
-        a take.</p>
-      <p>Plug in headphones or an interface and the mute lifts by itself. The ✕ on the banner only
-        hides the message for this session; it does not unmute.</p>
+      <p>啟動時你會看到 <b class="ui r">為防止嘯叫已靜音輸出（麥克風 → 揚聲器）。請連接音效卡或耳機。</b> 只有可聽見的輸出被壓住——調音器、
+        輸入電平表和錄音都會照常工作，所以你仍然可以調音，也仍然可以錄下一條素材。</p>
+      <p>接上耳機或音頻接口後，靜音會自動解除。橫幅上的 ✕ 只是在本次會話中隱藏這條消息，
+        並不會解除靜音。</p>
       <div class="note">
-        <div class="t">What “Unmute” does</div>
-        <p>The <b class="ui">Unmute</b> button is a temporary exception: the output stays live for
-          this session, and the guard re-arms as soon as the route changes — plug an interface or
-          headphones in and out, or relaunch the app, and the built-in speaker is protected again.
-          To disable the guard permanently, use the
-          <b class="ui">Feedback guard</b> switch in Settings instead.</p>
+        <div class="t">"Unmute" 的作用</div>
+        <p><b class="ui">取消靜音</b> 按鈕只是一個臨時例外：在本次會話中輸出保持可聽，
+          一旦路由發生變化——插拔一次接口或耳機，或者重新啟動應用——保護機制就會重新啟用，
+          內置揚聲器再次受到保護。如果想永久關閉該保護，請改用設置裡的
+          <b class="ui">嘯叫保護</b> 開關。</p>
       </div>
-      <p>The switch itself is Settings → <b class="ui">AUDIO INTERFACE</b> →
-        <b class="ui">Feedback guard</b>, subtitle
-        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> It is on
-        by default.</p>
+      <p>這個開關本身位於設置 → <b class="ui">音頻接口</b> →
+        <b class="ui">嘯叫保護</b>，副標題是
+        <b class="ui">當麥克風通過手機揚聲器發聲時靜音輸出。</b>
+        默認是開啟的。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="permissions"><span class="n">01.6</span>Permissions</h2>
-      <p>NAMper asks for exactly two things, and only when it needs them.</p>
+      <h2 id="permissions"><span class="n">01.6</span>權限</h2>
+      <p>NAMper 只會請求兩項權限，而且只在需要時才會請求。</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Permission</th><th>When</th><th>Why</th></tr></thead>
+          <thead><tr><th>權限</th><th>請求時機</th><th>用途</th></tr></thead>
           <tbody>
-            <tr><td>Microphone</td><td>The first time you tap the power button</td>
-                <td>To hear your guitar or microphone. The prompt says it plainly: audio never
-                    leaves your device.</td></tr>
-            <tr><td>Bluetooth</td><td>The first time you pair a wireless MIDI pedal</td>
-                <td>To find and connect Bluetooth MIDI controllers.</td></tr>
+            <tr><td>麥克風</td><td>第一次點擊電源按鈕時</td>
+                <td>用來聽到你的吉他或麥克風。提示會明確說明：音頻絕不會離開你的設備。</td></tr>
+            <tr><td>藍牙</td><td>第一次配對無線 MIDI 踏板時</td>
+                <td>用來查找並連接藍牙 MIDI 控制器。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If microphone access is off, a red banner reads
-        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> with a
-        <b class="ui">Settings</b> button that takes you straight to the iOS setting. Grant it and
-        the engine rebuilds without a relaunch.</p>
-      <p>There is no analytics, no tracking, no account and no camera, photos, location or contacts
-        access. NAMper collects nothing.</p>
+      <p>如果麥克風權限被關閉，會出現一條紅色橫幅：
+        <b class="ui r">麥克風權限已關閉——NAMper 聽不到你的吉他。</b>
+        並附有一個 <b class="ui">設置</b> 按鈕，直接帶你去 iOS 的設置項。授予權限後，
+        引擎會自動重建，無需重新啟動應用。</p>
+      <p>沒有任何數據分析、沒有跟蹤、沒有帳戶，也不會訪問相機、照片、位置或通訊錄。
+        NAMper 不收集任何信息。</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="files"><span class="n">01.7</span>Where your files live</h2>
-      <p>Everything NAMper keeps is visible in the Files app under
-        <b class="ui">On My iPhone → NAMper</b> (or <b class="ui">On My iPad</b>). You can copy
-        things in and out with the Files app, back the folder up, or move it to a computer.</p>
+      <h2 id="files"><span class="n">01.7</span>文件的存放位置</h2>
+      <p>NAMper 保存的一切內容都能在"文件"應用中的
+        <b class="ui">On My iPhone → NAMper</b>（或 <b class="ui">On My iPad</b>）下看到。
+        你可以用"文件"應用把東西複製進出、備份整個文件夾，或者把它轉移到電腦上。</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Folder</th><th>What is in it</th></tr></thead>
+          <thead><tr><th>文件夾</th><th>存放內容</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">tones/</b></td><td>NAM amp profiles (<b class="ui">.nam</b>) plus their
-              cover art and metadata</td></tr>
-            <tr><td><b class="ui">irs/</b></td><td>Impulse responses you have imported</td></tr>
-            <tr><td><b class="ui">samples/</b></td><td>Sampler pads, and saved kits under
+            <tr><td><b class="ui">tones/</b></td><td>NAM 音箱模型（<b class="ui">.nam</b>）
+              及其封面圖和元數據</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>你導入過的脈衝響應</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>採樣打擊墊，以及保存的音色包，位於
               <b class="ui">samples/kits/</b></td></tr>
-            <tr><td><b class="ui">backing/</b></td><td>Backing tracks, the setlist, lyrics and preset
-              markers</td></tr>
-            <tr><td><b class="ui">recordings/</b></td><td>Your performance recordings</td></tr>
-            <tr><td><b class="ui">presets/</b></td><td>Rig presets and the looper, sampler, setlist and
-              control presets</td></tr>
-            <tr><td><b class="ui">engine.log</b></td><td>A plain-text log of interface routing and
-              peaks, useful in a bug report</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>伴奏音軌、曲目單、歌詞和預設
+              標記</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>你的演出錄音</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>音色組預設，以及循環樂句器、採樣器、
+              曲目單和控制預設</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>接口路由和峰值的純文本日誌，
+              在提交錯誤報告時很有用</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note tip">
-        <div class="t">A shortcut worth knowing</div>
-        <p>Audio files you drop straight into <b class="ui">backing/</b> with the Files app are
-          adopted into the setlist the next time you open NAMper. Loading a whole set is a single
-          copy-paste on a computer rather than twenty taps on a phone.</p>
+        <div class="t">一個值得知道的小技巧</div>
+        <p>用"文件"應用直接拖進 <b class="ui">backing/</b> 的音頻文件，會在你下次打開
+          NAMper 時被自動納入曲目單。在電腦上一次複製粘貼就能加載一整套曲目，
+          而不必在手機上點上二十次。</p>
       </div>
-      <p>Two things do not work the way you might guess: you cannot drag files onto the app icon or
-        into a window — every import goes through the file picker inside NAMper — and the
-        <b class="ui">tones/</b> folder is deliberately excluded from iCloud backup, because
-        TONE3000 can simply re-download those profiles.</p>
+      <p>有兩件事和你想的不太一樣：你不能把文件直接拖到應用圖標或窗口上——所有導入都要
+        經過 NAMper 內部的文件選擇器——而且 <b class="ui">tones/</b> 文件夾被特意排除在
+        iCloud 備份之外，因為 TONE3000 隨時可以重新下載這些模型。</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh-hant/">← All docs</a>
+      <a href="/docs/zh-hant/">← 全部文檔</a>
       <span class="sp"></span>
-      <a href="/docs/zh-hant/rig.html">02 · Rig &amp; signal chain →</a>
+      <a href="/docs/zh-hant/rig.html">02 · 音色組與信號鏈 →</a>
     </nav>
   </main>
 </div>
@@ -303,7 +286,8 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款獨立應用，與任何設備製造商均無關聯，也未獲得其認可或贊助。所有產品名稱、
+      品牌和商標均歸其各自所有者所有，此處僅用於說明模型採樣所使用的設備。</p>
   </div>
 </footer>
 

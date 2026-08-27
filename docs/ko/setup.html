@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started — NAMper Documentation</title>
-<meta name="description" content="Plugging in: audio interfaces, sample rate and buffer size, the power button, the input and output meters, the feedback guard, and where NAMper keeps your files.">
+<title>시작하기 — NAMper 문서</title>
+<meta name="description" content="연결하기: 오디오 인터페이스, 샘플 레이트와 버퍼 크기, 전원 버튼, 입력과 출력 미터, 피드백 가드, 그리고 NAMper가 파일을 보관하는 위치까지.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Getting started — NAMper Documentation">
-<meta property="og:description" content="Audio interfaces, sample rate and buffer, the power button, the meters and the feedback guard.">
+<meta property="og:title" content="시작하기 — NAMper 문서">
+<meta property="og:description" content="오디오 인터페이스, 샘플 레이트와 버퍼, 전원 버튼, 미터, 그리고 피드백 가드.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/setup.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">문서</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/ko/">← ALL DOCS</a>
+  <a class="home" href="/docs/ko/">← 전체 문서</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/ko/setup.html" aria-current="page">한국어</a>
   </nav>
@@ -46,249 +46,250 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">목차</div>
     <ol>
-      <li><a class="on" href="/docs/ko/setup.html">Getting started</a></li>
-      <li><a href="/docs/ko/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/ko/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/ko/looper.html">Looper</a></li>
-      <li><a href="/docs/ko/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/ko/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/ko/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/ko/settings.html">Settings reference</a></li>
+      <li><a class="on" href="/docs/ko/setup.html">시작하기</a></li>
+      <li><a href="/docs/ko/rig.html">리그와 시그널 체인</a></li>
+      <li><a href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a href="/docs/ko/looper.html">루퍼</a></li>
+      <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
+      <li><a href="/docs/ko/perform.html">퍼폼과 가사</a></li>
+      <li><a href="/docs/ko/control.html">MIDI와 컨트롤</a></li>
+      <li><a href="/docs/ko/settings.html">설정 참조</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--power)">01 · GETTING STARTED</div>
-    <h1>Plugging in.</h1>
-    <p class="lede">Everything between your guitar and the first sound: how NAMper picks up your
-      audio hardware, what the power button does, how to read the meters, and why the app
-      sometimes mutes itself on purpose.</p>
+    <div class="slab" style="--nc:var(--power)">01 · 시작하기</div>
+    <h1>연결하기.</h1>
+    <p class="lede">기타에서 첫 소리가 나오기까지 필요한 모든 것: NAMper가 오디오 하드웨어를 인식하는
+      방식, 전원 버튼이 하는 일, 미터를 읽는 법, 그리고 앱이 가끔 일부러 스스로를 뮤트하는
+      이유까지.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">이 페이지에서</div>
       <ul>
-        <li><a href="#power">The power button</a></li>
-        <li><a href="#interfaces">Audio interfaces</a></li>
-        <li><a href="#meters">Meters and levels</a></li>
-        <li><a href="#rate">Sample rate and buffer</a></li>
-        <li><a href="#feedback-guard">The feedback guard</a></li>
-        <li><a href="#permissions">Permissions</a></li>
-        <li><a href="#files">Where your files live</a></li>
+        <li><a href="#power">전원 버튼</a></li>
+        <li><a href="#interfaces">오디오 인터페이스</a></li>
+        <li><a href="#meters">미터와 레벨</a></li>
+        <li><a href="#rate">샘플 레이트와 버퍼</a></li>
+        <li><a href="#feedback-guard">피드백 가드</a></li>
+        <li><a href="#permissions">권한</a></li>
+        <li><a href="#files">파일이 저장되는 위치</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="power"><span class="n">01.1</span>The power button</h2>
-      <p>The green power icon in the top-right corner of the <b class="ui a">Rig</b> tab starts and
-        stops the audio engine. Until it is on, nothing is processed and nothing makes a sound —
-        the meters stay flat and recording refuses with
-        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
-      <p>It is dim when the engine is stopped and green with a glow when it is running. The
-        <b class="ui">DSP load</b> chip beside it shows how hard the processor is working: green
-        under 60 %, amber up to 85 %, red above that. If it sits in the red, take a block out of the
-        chain or step the buffer size up.</p>
-      <p>NAMper asks for microphone access the first time you start the engine, not at launch.</p>
+      <h2 id="power"><span class="n">01.1</span>전원 버튼</h2>
+      <p><b class="ui a">리그</b> 탭 오른쪽 위 모서리에 있는 초록색 전원 아이콘이 오디오 엔진을
+        켜고 끕니다. 켜지기 전에는 아무것도 처리되지 않고 소리도 나지 않습니다 — 미터는 움직이지
+        않고, 녹음은 <b class="ui r">오디오가 꺼져 있습니다. 녹음하기 전에 전원 버튼을 누르세요.</b>라는
+        메시지와 함께 거부됩니다.</p>
+      <p>엔진이 꺼져 있을 때는 어둡게, 켜져 있을 때는 초록빛으로 빛납니다. 옆에 있는
+        <b class="ui">DSP 부하</b> 칩은 프로세서가 얼마나 힘들게 일하고 있는지 보여줍니다: 60 %
+        미만은 초록, 85 %까지는 호박색, 그 이상은 빨강입니다. 계속 빨간색이라면 체인에서 블록을
+        하나 빼거나 버퍼 크기를 한 단계 올리세요.</p>
+      <p>NAMper는 앱을 실행할 때가 아니라, 처음으로 엔진을 켤 때 마이크 접근 권한을 요청합니다.</p>
       <div class="note warn">
-        <div class="t">Unplugging</div>
-        <p>Pulling out your headphones or your interface <b>stops the engine</b> — deliberately, so
-          a loud rig never jumps to the phone speaker on its own. Tap power again once you are
-          plugged back in. Plugging something new in rebuilds the engine automatically.</p>
+        <div class="t">연결을 뺐을 때</div>
+        <p>헤드폰이나 인터페이스를 뽑으면 <b>엔진이 멈춥니다</b> — 이는 의도된 동작으로, 시끄러운
+          리그가 저절로 폰 스피커로 넘어가는 일을 막기 위해서입니다. 다시 연결한 뒤 전원 버튼을
+          다시 탭하세요. 새 기기를 연결하면 엔진이 자동으로 다시 구성됩니다.</p>
       </div>
-      <p>If the engine cannot start, the banner reads <b class="ui r">Audio could not start.
-        Another app may be using the interface — try again.</b> Close whatever else is holding the
-        interface and try once more.</p>
+      <p>엔진이 시작되지 않으면 배너에 <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b>라고 표시됩니다. 인터페이스를
+        점유하고 있는 다른 앱을 닫고 다시 시도하세요.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="interfaces"><span class="n">01.2</span>Audio interfaces</h2>
-      <p>There is no device picker. NAMper follows whatever audio route iOS is using, so you choose
-        your hardware the way you always do — plug the interface in, and the app rebuilds itself
-        around it. Multichannel interfaces are supported, up to eight input channels.</p>
-      <p>Settings → <b class="ui">AUDIO INTERFACE</b> tells you what NAMper actually got:
-        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> and
-        <b class="ui">Engine</b> (<b class="ui">running</b> or <b class="ui">stopped</b>). If the
-        channel count is not what you expected, that row is the place to find out.</p>
+      <h2 id="interfaces"><span class="n">01.2</span>오디오 인터페이스</h2>
+      <p>별도의 장치 선택 화면은 없습니다. NAMper는 iOS가 사용하는 오디오 경로를 그대로 따르므로,
+        하드웨어를 고르는 방법은 평소와 같습니다 — 인터페이스를 연결하면 앱이 그에 맞춰 스스로
+        재구성됩니다. 최대 8개 입력 채널까지, 멀티채널 인터페이스도 지원합니다.</p>
+      <p>설정 → <b class="ui">오디오 인터페이스</b>에서 NAMper가 실제로 인식한 내용을 확인할 수
+        있습니다: <b class="ui">샘플 레이트</b>, <b class="ui">입력</b>, <b class="ui">출력</b>,
+        <b class="ui">엔진</b>(<b class="ui">실행 중</b> 또는 <b class="ui">정지됨</b>). 채널
+        수가 예상과 다르다면 이 항목에서 확인하세요.</p>
 
-      <h3>Naming your channels</h3>
-      <p>Settings → <b class="ui">CHANNEL NAMES</b> gives every input a text field with the
-        placeholder <b class="ui">Guitar, Vocal…</b>. Name them once and those names appear in every
-        input picker in the app — rig inputs, looper track sources, input trim rows. Unnamed
-        channels simply read <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on.</p>
+      <h3>채널 이름 붙이기</h3>
+      <p>설정 → <b class="ui">채널 이름</b>에서는 모든 입력에 <b class="ui">기타, 보컬…</b>이라는 플레이스홀더가 있는 텍스트 필드가 제공됩니다. 한 번 이름을 붙여두면 앱
+        안의 모든 입력 선택 화면 — 리그 입력, 루퍼 트랙 소스, 입력 트림 항목 — 에 그 이름이
+        나타납니다. 이름을 붙이지 않은 채널은 그냥 <b class="ui">In 1</b>, <b class="ui">In 2</b>
+        식으로 표시됩니다.</p>
 
-      <h3>Multiple outputs</h3>
-      <p>Settings → <b class="ui">Use all interface outputs</b> is off by default, and stereo
-        devices never need it. Switch it on and NAMper opens every output pair on the interface, so
-        a rig, a parallel branch, a looper track or the metronome click can each own its own pair —
-        the guitar to front of house, the click to the drummer's in-ears.</p>
+      <h3>여러 개의 출력</h3>
+      <p>설정 → <b class="ui">인터페이스의 모든 출력 사용</b>는 기본적으로 꺼져 있으며, 스테레오
+        기기에서는 애초에 필요 없습니다. 켜면 NAMper가 인터페이스의 모든 출력 페어를 열어서, 리그,
+        병렬 브랜치, 루퍼 트랙, 메트로놈 클릭이 각각 자신만의 출력 페어를 가질 수 있습니다 —
+        기타는 프론트 오브 하우스로, 클릭은 드러머의 인이어로.</p>
       <div class="note">
-        <div class="t">Input channels</div>
-        <p><b class="ui">Input channels</b> is normally left on <b class="ui">Auto</b>. Pin it to a
-          number only if your interface reports more channels than you want NAMper to open.</p>
+        <div class="t">입력 채널</div>
+        <p><b class="ui">입력 채널</b>는 보통 <b class="ui">자동</b>로 두면 됩니다. 인터페이스가
+          NAMper에 열어주고 싶은 채널 수보다 더 많은 채널을 보고할 때만 숫자를 고정하세요.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="meters"><span class="n">01.3</span>Meters and levels</h2>
-      <p>Two vertical strips flank the amp card on the Rig tab: <b class="ui">IN</b> on the left,
-        <b class="ui">OUT</b> on the right. Both run from −60 dBFS at the bottom to 0 at the top,
-        green through amber to red. There is no separate clip light — clipping is the bar hitting
-        red at the very top.</p>
+      <h2 id="meters"><span class="n">01.3</span>미터와 레벨</h2>
+      <p>Rig 탭의 앰프 카드 양옆에는 세로 막대 미터가 두 개 있습니다: 왼쪽이 <b class="ui">인</b>,
+        오른쪽이 <b class="ui">아웃</b>입니다. 둘 다 아래쪽 −60 dBFS부터 위쪽 0까지, 초록에서
+        호박색을 거쳐 빨강으로 변합니다. 별도의 클립 표시등은 없으며, 막대가 맨 위 빨간색에 닿으면
+        그것이 클리핑입니다.</p>
 
-      <h3>Setting your input level</h3>
+      <h3>입력 레벨 맞추기</h3>
       <ol style="--nc:var(--eq)">
-        <li>Turn the audio on and play as hard as you ever play.</li>
-        <li>The <b class="ui">IN</b> meter should reach its top third and stay out of the red.</li>
-        <li>If your interface has a gain knob, use it. If it does not, open Settings →
-          <b class="ui">Input trim</b> and raise the slider for that channel — it goes from
-          −12 dB to +24 dB in 1 dB steps, and starts at 0.</li>
+        <li>오디오를 켜고 평소 가장 세게 연주하는 강도로 쳐보세요.</li>
+        <li><b class="ui">인</b> 미터가 상단 3분의 1까지 올라가되 빨간색에는 들어가지 않아야
+          합니다.</li>
+        <li>인터페이스에 게인 노브가 있다면 그것을 쓰세요. 없다면 설정 →
+          <b class="ui">입력 트림</b>을 열어 해당 채널의 슬라이더를 올리세요 — −12 dB부터
+          +24 dB까지 1 dB 단위로 움직이며, 기본값은 0입니다.</li>
       </ol>
-      <p>The <b class="ui">IN</b> meter shows the level <em>after</em> the trim, so what you see is
-        what the amp model actually receives.</p>
+      <p><b class="ui">인</b> 미터는 트림을 거친 <em>이후</em>의 레벨을 보여주므로, 화면에 보이는
+        값이 앰프 모델이 실제로 받는 신호입니다.</p>
 
-      <h3>The master section</h3>
-      <p>At the bottom of the Rig tab, the <b class="ui">MASTER</b> card is where every rig, the
-        looper, the sampler and the backing track sum together before the hardware output. It shows
-        stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> with marks at −12 and −6 dB,
-        plus a broadcast-style loudness reading in <b class="ui">LUFS</b> — the big number is
-        momentary loudness, the small line adds the short-term value. It reads
-        <b class="ui">-inf</b> in silence. The fader below runs from −60 to +12 dB.</p>
-      <p>Every block editor has its own small <b class="ui">IN</b> and <b class="ui">OUT</b> meters
-        too, which is the quickest way to find the block that is running hot.</p>
+      <h3>마스터 섹션</h3>
+      <p>Rig 탭 맨 아래에 있는 <b class="ui">마스터</b> 카드는 모든 리그, 루퍼, 샘플러, 백킹
+        트랙이 하드웨어 출력 직전에 합쳐지는 곳입니다. −12 dB와 −6 dB 표시가 있는 스테레오 피크
+        바 <b class="ui">L</b>, <b class="ui">R</b>과 함께, 방송 표준 방식의 러프니스 값을
+        <b class="ui">LUFS</b>로 보여줍니다 — 큰 숫자는 순간 러프니스, 작은 선은 단기 값을 더해서
+        보여줍니다. 무음일 때는 <b class="ui">-inf</b>로 표시됩니다. 아래 페이더는 −60에서
+        +12 dB까지 움직입니다.</p>
+      <p>모든 블록 에디터에도 작은 <b class="ui">인</b>, <b class="ui">아웃</b> 미터가 있어서,
+        어느 블록이 과부하 상태인지 가장 빠르게 찾을 수 있습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="rate"><span class="n">01.4</span>Sample rate and buffer</h2>
-      <p>Both live in Settings → <b class="ui">AUDIO INTERFACE</b>, and both are remembered
-        per audio route — your interface and your headphones can each keep their own settings.</p>
+      <h2 id="rate"><span class="n">01.4</span>샘플 레이트와 버퍼</h2>
+      <p>둘 다 설정 → <b class="ui">오디오 인터페이스</b>에 있으며, 오디오 경로별로 값을 따로
+        기억합니다 — 인터페이스와 헤드폰이 각자 자신만의 설정을 유지할 수 있습니다.</p>
 
-      <h3>Sample rate</h3>
-      <p>The chips read <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
-        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> and
-        <b class="ui">192k</b>. <b class="ui">Auto</b> is the default and simply follows the
-        interface; changing the rate restarts the engine.</p>
-      <p>On the phone's own microphone and speaker only <b class="ui">Auto</b> and
-        <b class="ui">48k</b> appear, with the note
-        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
-        rates.</b> With an interface connected you get the full list — minus any rate that
-        particular interface has already refused, which NAMper remembers and stops offering.</p>
-      <p>If a rate is refused, the app falls back to the previous one and says so in red:
+      <h3>샘플 레이트</h3>
+      <p>칩에는 <b class="ui">자동</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
+        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b>,
+        <b class="ui">192k</b>가 표시됩니다. 기본값은 <b class="ui">자동</b>이며 그냥 인터페이스를
+        따라갑니다. 레이트를 바꾸면 엔진이 다시 시작됩니다.</p>
+      <p>폰 자체 마이크와 스피커만 쓸 때는 <b class="ui">자동</b>와 <b class="ui">48k</b>만
+        나타나며,
+        <b class="ui">내장 오디오는 48 kHz만 지원합니다. 다른 레이트를 쓰려면 인터페이스를 연결하세요.</b>라는 안내가 함께 표시됩니다. 인터페이스를 연결하면 전체 목록이 나타나지만 —
+        그 인터페이스가 이미 거부한 적 있는 레이트는 제외되며, NAMper가 이를 기억해 다시
+        제안하지 않습니다.</p>
+      <p>레이트가 거부되면 앱은 이전 값으로 되돌아가고 빨간 글씨로 이렇게 알립니다:
         <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
       <div class="note tip">
-        <div class="t">Which rate should I use?</div>
-        <p>Higher is not automatically better — it costs processing headroom, and NAM profiles are
-          captured at ordinary rates anyway. Leave it on <b class="ui">Auto</b> unless you are
-          matching a session that runs at a specific rate.</p>
+        <div class="t">어떤 레이트를 써야 하나요?</div>
+        <p>높다고 무조건 좋은 것은 아닙니다 — 처리 여유를 더 많이 소모하고, 어차피 NAM 프로필도
+          평범한 레이트로 캡처됩니다. 특정 레이트로 돌아가는 세션에 맞춰야 하는 경우가 아니라면
+          <b class="ui">자동</b>로 두세요.</p>
       </div>
 
-      <h3>Buffer size</h3>
-      <p><b class="ui">Buffer</b> offers <b class="ui">64</b>, <b class="ui">128</b>,
-        <b class="ui">256</b> and <b class="ui">512</b> frames, with a live readout of the latency
-        that buys you. The default is <b class="ui">128</b>. The app's own advice is exact:
-        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
-        one step.</b></p>
-      <p>This is the only latency control in NAMper — there is no separate latency setting.</p>
+      <h3>버퍼 크기</h3>
+      <p><b class="ui">버퍼</b>는 <b class="ui">64</b>, <b class="ui">128</b>,
+        <b class="ui">256</b>, <b class="ui">512</b> 프레임 중에서 고를 수 있으며, 그에 따른
+        레이턴시가 실시간으로 표시됩니다. 기본값은 <b class="ui">128</b>입니다. 앱 자체의 안내가
+        명확합니다:
+        <b class="ui">작을수록 지연이 짧고, 클수록 USB 인터페이스에서 안정적입니다. 소리가 지직거리면 한 단계 올리세요.</b></p>
+      <p>이것이 NAMper의 유일한 레이턴시 조절 항목이며, 별도의 레이턴시 설정은 없습니다.</p>
       <div class="note warn">
-        <div class="t">Bluetooth output</div>
-        <p>Bluetooth headphones and speakers add roughly 0.2 s of delay, which is unplayable. The
-          app warns you when it spots a Bluetooth route. Use wired output for live playing.</p>
+        <div class="t">블루투스 출력</div>
+        <p>블루투스 헤드폰과 스피커는 약 0.2초의 지연을 더하는데, 이는 연주가 불가능한
+          수준입니다. 앱은 블루투스 경로를 감지하면 경고를 표시합니다. 라이브 연주에는 유선
+          출력을 사용하세요.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="feedback-guard"><span class="n">01.5</span>The feedback guard</h2>
-      <p>A guitar app with the phone's own microphone open and the phone's own speaker playing is a
-        feedback loop waiting to happen. So NAMper watches for exactly that combination — built-in
-        mic in, built-in speaker or earpiece out — and mutes its output before it can howl.</p>
+      <h2 id="feedback-guard"><span class="n">01.5</span>피드백 가드</h2>
+      <p>폰 자체 마이크를 열어둔 채 폰 자체 스피커로 재생하는 기타 앱은 언제든 피드백 루프가 생길
+        수 있는 상황입니다. 그래서 NAMper는 바로 그 조합 — 내장 마이크 입력, 내장 스피커 또는
+        이어피스 출력 — 을 계속 감시하다가, 하울링이 나기 전에 출력을 뮤트합니다.</p>
       <figure>
         <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
-             alt="The banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. With an Unmute button.">
-        <figcaption>The banner you get when the guard engages</figcaption>
+             alt="배너: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. 메시지와 Unmute 버튼이 있음.">
+        <figcaption>가드가 작동했을 때 나타나는 배너</figcaption>
       </figure>
-      <p>When it engages you see <b class="ui r">Output muted to stop feedback (mic → speaker).
-        Connect an interface or headphones.</b> Only the audible output is held back — the tuner,
-        the input meters and recording all keep working, so you can still tune up and still capture
-        a take.</p>
-      <p>Plug in headphones or an interface and the mute lifts by itself. The ✕ on the banner only
-        hides the message for this session; it does not unmute.</p>
+      <p>작동하면 <b class="ui r">피드백 방지를 위해 출력을 음소거했습니다(마이크 → 스피커). 인터페이스나 헤드폰을 연결하세요.</b>라는 메시지가 표시됩니다. 막히는 것은 가청 출력뿐
+        입니다 — 튜너, 입력 미터, 녹음은 모두 계속 동작하므로 튜닝도 테이크 녹음도 그대로 할 수
+        있습니다.</p>
+      <p>헤드폰이나 인터페이스를 연결하면 뮤트가 저절로 풀립니다. 배너의 ✕는 이번 세션 동안만
+        메시지를 숨길 뿐, 뮤트를 해제하지는 않습니다.</p>
       <div class="note">
-        <div class="t">What “Unmute” does</div>
-        <p>The <b class="ui">Unmute</b> button is a temporary exception: the output stays live for
-          this session, and the guard re-arms as soon as the route changes — plug an interface or
-          headphones in and out, or relaunch the app, and the built-in speaker is protected again.
-          To disable the guard permanently, use the
-          <b class="ui">Feedback guard</b> switch in Settings instead.</p>
+        <div class="t">“Unmute”가 하는 일</div>
+        <p><b class="ui">음소거 해제</b> 버튼은 일시적인 예외입니다: 이번 세션 동안만 출력이 살아있고,
+          경로가 바뀌는 순간 가드가 다시 작동합니다 — 인터페이스나 헤드폰을 뺐다 꽂거나 앱을
+          다시 실행하면 내장 스피커가 다시 보호됩니다. 가드를 영구적으로 끄려면 설정의
+          <b class="ui">피드백 가드</b> 스위치를 사용하세요.</p>
       </div>
-      <p>The switch itself is Settings → <b class="ui">AUDIO INTERFACE</b> →
-        <b class="ui">Feedback guard</b>, subtitle
-        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> It is on
-        by default.</p>
+      <p>스위치 자체는 설정 → <b class="ui">오디오 인터페이스</b> →
+        <b class="ui">피드백 가드</b>에 있으며, 부제목은
+        <b class="ui">마이크가 휴대폰 스피커로 재생되는 동안 출력을 음소거합니다.</b>입니다.
+        기본값은 켜짐입니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="permissions"><span class="n">01.6</span>Permissions</h2>
-      <p>NAMper asks for exactly two things, and only when it needs them.</p>
+      <h2 id="permissions"><span class="n">01.6</span>권한</h2>
+      <p>NAMper가 요청하는 권한은 정확히 두 가지뿐이며, 필요할 때만 물어봅니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Permission</th><th>When</th><th>Why</th></tr></thead>
+          <thead><tr><th>권한</th><th>시점</th><th>이유</th></tr></thead>
           <tbody>
-            <tr><td>Microphone</td><td>The first time you tap the power button</td>
-                <td>To hear your guitar or microphone. The prompt says it plainly: audio never
-                    leaves your device.</td></tr>
-            <tr><td>Bluetooth</td><td>The first time you pair a wireless MIDI pedal</td>
-                <td>To find and connect Bluetooth MIDI controllers.</td></tr>
+            <tr><td>마이크</td><td>전원 버튼을 처음 탭할 때</td>
+                <td>기타나 마이크 소리를 듣기 위해서입니다. 안내 메시지에도 분명히 나와 있습니다:
+                    오디오는 절대 기기 밖으로 나가지 않습니다.</td></tr>
+            <tr><td>블루투스</td><td>무선 MIDI 페달을 처음 페어링할 때</td>
+                <td>블루투스 MIDI 컨트롤러를 찾아 연결하기 위해서입니다.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If microphone access is off, a red banner reads
-        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> with a
-        <b class="ui">Settings</b> button that takes you straight to the iOS setting. Grant it and
-        the engine rebuilds without a relaunch.</p>
-      <p>There is no analytics, no tracking, no account and no camera, photos, location or contacts
-        access. NAMper collects nothing.</p>
+      <p>마이크 접근이 꺼져 있으면 빨간 배너에
+        <b class="ui r">마이크 접근이 꺼져 있어 NAMper가 기타 소리를 들을 수 없습니다.</b>라고
+        표시되며, <b class="ui">설정</b> 버튼을 누르면 iOS 설정으로 바로 이동합니다. 권한을
+        허용하면 앱을 다시 실행하지 않아도 엔진이 다시 구성됩니다.</p>
+      <p>분석 기능도, 트래킹도, 계정도 없으며 카메라, 사진, 위치, 연락처 접근도 없습니다.
+        NAMper는 아무것도 수집하지 않습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="files"><span class="n">01.7</span>Where your files live</h2>
-      <p>Everything NAMper keeps is visible in the Files app under
-        <b class="ui">On My iPhone → NAMper</b> (or <b class="ui">On My iPad</b>). You can copy
-        things in and out with the Files app, back the folder up, or move it to a computer.</p>
+      <h2 id="files"><span class="n">01.7</span>파일이 저장되는 위치</h2>
+      <p>NAMper가 보관하는 모든 것은 파일 앱의
+        <b class="ui">On My iPhone → NAMper</b>(iPad라면 <b class="ui">On My iPad</b>) 아래에서
+        볼 수 있습니다. 파일 앱으로 파일을 넣고 빼거나, 폴더를 백업하거나, 컴퓨터로 옮길 수
+        있습니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Folder</th><th>What is in it</th></tr></thead>
+          <thead><tr><th>폴더</th><th>들어 있는 것</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">tones/</b></td><td>NAM amp profiles (<b class="ui">.nam</b>) plus their
-              cover art and metadata</td></tr>
-            <tr><td><b class="ui">irs/</b></td><td>Impulse responses you have imported</td></tr>
-            <tr><td><b class="ui">samples/</b></td><td>Sampler pads, and saved kits under
-              <b class="ui">samples/kits/</b></td></tr>
-            <tr><td><b class="ui">backing/</b></td><td>Backing tracks, the setlist, lyrics and preset
-              markers</td></tr>
-            <tr><td><b class="ui">recordings/</b></td><td>Your performance recordings</td></tr>
-            <tr><td><b class="ui">presets/</b></td><td>Rig presets and the looper, sampler, setlist and
-              control presets</td></tr>
-            <tr><td><b class="ui">engine.log</b></td><td>A plain-text log of interface routing and
-              peaks, useful in a bug report</td></tr>
+            <tr><td><b class="ui">tones/</b></td><td>NAM 앰프 프로필(<b class="ui">.nam</b>)과 그
+              커버 아트, 메타데이터</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>가져온 임펄스 리스폰스</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>샘플러 패드, 그리고
+              <b class="ui">samples/kits/</b> 아래에 저장된 킷</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>백킹 트랙, 세트리스트, 가사, 프리셋
+              마커</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>연주 녹음 파일</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>리그 프리셋과 루퍼, 샘플러, 세트리스트,
+              컨트롤 프리셋</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>인터페이스 라우팅과 피크 레벨을 기록한
+              텍스트 로그로, 버그 신고에 유용합니다</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note tip">
-        <div class="t">A shortcut worth knowing</div>
-        <p>Audio files you drop straight into <b class="ui">backing/</b> with the Files app are
-          adopted into the setlist the next time you open NAMper. Loading a whole set is a single
-          copy-paste on a computer rather than twenty taps on a phone.</p>
+        <div class="t">알아두면 편한 단축 경로</div>
+        <p>파일 앱으로 <b class="ui">backing/</b>에 바로 넣어둔 오디오 파일은 다음에 NAMper를 열
+          때 세트리스트에 자동으로 등록됩니다. 세트 전체를 불러오는 일이 폰에서 스무 번 탭하는
+          대신 컴퓨터에서 복사-붙여넣기 한 번으로 끝납니다.</p>
       </div>
-      <p>Two things do not work the way you might guess: you cannot drag files onto the app icon or
-        into a window — every import goes through the file picker inside NAMper — and the
-        <b class="ui">tones/</b> folder is deliberately excluded from iCloud backup, because
-        TONE3000 can simply re-download those profiles.</p>
+      <p>예상과 다르게 동작하는 것이 두 가지 있습니다: 파일을 앱 아이콘이나 창에 드래그해서 넣을
+        수는 없고 — 모든 가져오기는 NAMper 안의 파일 선택 화면을 거칩니다 — 그리고
+        <b class="ui">tones/</b> 폴더는 iCloud 백업에서 의도적으로 제외되어 있는데, TONE3000에서
+        언제든 그 프로필을 다시 내려받을 수 있기 때문입니다.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/ko/">← All docs</a>
+      <a href="/docs/ko/">← 전체 문서</a>
       <span class="sp"></span>
-      <a href="/docs/ko/rig.html">02 · Rig &amp; signal chain →</a>
+      <a href="/docs/ko/rig.html">02 · 리그와 시그널 체인 →</a>
     </nav>
   </main>
 </div>
@@ -303,7 +304,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper는 특정 장비 제조사와 제휴, 승인 또는 후원 관계가 전혀 없는 독립 앱입니다. 모든 제품명, 브랜드, 상표는 각 소유자의 자산이며, 캡처 대상이 된 장비를 설명하는 목적으로만 사용됩니다.</p>
   </div>
 </footer>
 

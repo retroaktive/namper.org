@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<title>ปลั๊กอิน AU — เอกสาร NAMper</title>
+<meta name="description" content="การโฮสต์เอฟเฟกต์ Audio Unit ไว้ในสายสัญญาณของ NAMper, อินเทอร์เฟซปลั๊กอินที่ฝังไว้, ข้อจำกัดต่าง ๆ, วิธีบันทึกสถานะปลั๊กอิน — และสิ่งที่ NAMper เองทำในฐานะเอฟเฟกต์ AUv3 ในแอปอื่น">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
-<meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
+<meta property="og:title" content="ปลั๊กอิน AU — เอกสาร NAMper">
+<meta property="og:description" content="การโฮสต์เอฟเฟกต์ AUv3 ในสายสัญญาณ, สถานะและพรีเซ็ตของปลั๊กอิน, และ NAMper ในฐานะปลั๊กอินในแอปอื่น">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/th/plugins.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">เอกสารประกอบ</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/th/">← ALL DOCS</a>
+  <a class="home" href="/docs/th/">← เอกสารทั้งหมด</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/th/plugins.html" aria-current="page">ไทย</a>
   </nav>
@@ -46,178 +46,174 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">สารบัญ</div>
     <ol>
-      <li><a href="/docs/th/setup.html">Getting started</a></li>
-      <li><a href="/docs/th/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/th/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/th/setup.html">เริ่มต้นใช้งาน</a></li>
+      <li><a href="/docs/th/rig.html">Rig &amp; สายสัญญาณ</a></li>
+      <li><a class="on" href="/docs/th/plugins.html">ปลั๊กอิน AU</a></li>
       <li><a href="/docs/th/looper.html">Looper</a></li>
-      <li><a href="/docs/th/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/th/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/th/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/th/settings.html">Settings reference</a></li>
+      <li><a href="/docs/th/sampler.html">แพดแซมเปลอร์</a></li>
+      <li><a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></li>
+      <li><a href="/docs/th/control.html">MIDI &amp; การควบคุม</a></li>
+      <li><a href="/docs/th/settings.html">คู่มือการตั้งค่า</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
-    <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <div class="slab" style="--nc:var(--pitch)">03 · ปลั๊กอิน AU</div>
+    <h1>ปลั๊กอินของคนอื่น</h1>
+    <p class="lede">NAMper โฮสต์เอฟเฟกต์ AUv3 ที่คุณมีอยู่แล้ว ไว้ที่จุดไหนของสายสัญญาณก็ได้ — และ
+      NAMper เองก็ไปโผล่เป็นเอฟเฟกต์ในแอปอื่นได้เช่นกัน ทั้งสองทิศทางมีกฎที่ควรรู้ไว้ก่อน
+      ขึ้นแสดง</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">ในหน้านี้</div>
       <ul>
-        <li><a href="#hosting">Adding an AU effect</a></li>
-        <li><a href="#ui">The plugin interface</a></li>
-        <li><a href="#limits">Limits worth knowing</a></li>
-        <li><a href="#state">Settings and presets</a></li>
-        <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#hosting">การเพิ่มเอฟเฟกต์ AU</a></li>
+        <li><a href="#ui">อินเทอร์เฟซของปลั๊กอิน</a></li>
+        <li><a href="#limits">ข้อจำกัดที่ควรรู้</a></li>
+        <li><a href="#state">การตั้งค่าและพรีเซ็ต</a></li>
+        <li><a href="#auv3">NAMper ในฐานะปลั๊กอิน</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="hosting"><span class="n">03.1</span>Adding an AU effect</h2>
-      <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
-        the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
-        section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
-        needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
-        submenu.</p>
-      <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
-        ship AUv3 plugins make them appear here.</b> That is the normal state on a fresh device:
-        AUv3 plugins arrive as ordinary App Store apps, so you install the app and its plugin shows
-        up here on the next visit.</p>
-      <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
-        straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+      <h2 id="hosting"><span class="n">03.1</span>การเพิ่มเอฟเฟกต์ AU</h2>
+      <p>แตะชิป <b class="ui">ADD</b> เส้นประบนสายสัญญาณเพื่อเปิดพาเลตบล็อก ที่ท้ายสุดของรายการ
+        ถัดจาก <b class="ui">ยูทิลิตี้</b> คือหมวด <b class="ui">ปลั๊กอิน</b> ที่มีรายการเดียว:
+        เมนูย่อย <b class="ui">ปลั๊กอิน AU</b></p>
+      <p>เปิดมันขึ้นมาแล้วคุณจะเห็นเอฟเฟกต์ Audio Unit ทุกตัวที่ติดตั้งไว้บนอุปกรณ์ แสดงเป็นชื่อ
+        ปลั๊กอินตามด้วยผู้ผลิต และเรียงตามผู้ผลิตก่อน แล้วตามด้วยชื่อ ไม่ต้องสแกนหรือเปิดใช้งาน
+        อะไรเลย — ถ้าแอปบนโทรศัพท์ของคุณมีเอฟเฟกต์ AUv3 ติดมาด้วย มันจะอยู่ในเมนูย่อยนั้น</p>
+      <p>ถ้าเมนูย่อยว่างเปล่า จะขึ้นว่า <b class="ui">ยังไม่มีเอฟเฟกต์ Audio Unit ติดตั้งอยู่ แอปที่มาพร้อมปลั๊กอิน AUv3 จะปรากฏที่นี่</b> นั่นคือสถานะปกติบนอุปกรณ์ใหม่: ปลั๊กอิน
+        AUv3 มาในรูปแอป App Store ทั่วไป ดังนั้นคุณติดตั้งแอปแล้วปลั๊กอินของมันจะขึ้นมาที่นี่ใน
+        ครั้งถัดไปที่เข้ามาดู</p>
+      <p>เลือกคอมโพเนนต์แล้ว NAMper จะสร้างบล็อกพร้อมปลั๊กอินนั้นโหลดไว้แล้ว จากนั้นเปิดตรงเข้าไป
+        ยังอินเทอร์เฟซของปลั๊กอินเลย — ไม่มีเปลือกเปล่า ไม่มีขั้นตอนที่สอง ชิปของบล็อกบนสายจะชื่อ
+        <b class="ui">ปลั๊กอิน AU</b> และทำงานเหมือนบล็อกอื่น ๆ ทุกอัน: แตะจุด LED ใต้ชื่อเพื่อ
+        bypass ลากเพื่อย้ายตำแหน่งบนสาย กดค้างเพื่อ <b class="ui">เอาออก</b></p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
-             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
-        <figcaption>Apple's AUDelay hosted in a NAMper block, drawn with the generic sliders</figcaption>
+             alt="ปลั๊กอิน Audio Unit ที่โฮสต์อยู่ในบล็อกของ NAMper: แถวสถานะพร้อมชื่อปลั๊กอินด้านบน และคอลัมน์สไลเดอร์พารามิเตอร์แบบทั่วไปด้านล่าง">
+        <figcaption>AUDelay ของ Apple ที่โฮสต์ในบล็อกของ NAMper วาดด้วยสไลเดอร์แบบทั่วไป</figcaption>
       </figure>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="ui"><span class="n">03.2</span>The plugin interface</h2>
-      <p>The block sheet puts a thin status row above the plugin: an hourglass while the component
-        is being instantiated, a green check once it is live and passing audio, and the plugin's
-        name beside it. Under the status row you also get the usual block
-        <b class="ui">IN</b> and <b class="ui">OUT</b> meters, so you can see what the plugin is
-        being fed and what it hands back.</p>
-      <p>Loading is not always instant. While a component starts up the sheet reads
-        <b class="ui">Loading the plugin…</b> — larger plugins take a moment on first use, and the
-        signal passes through untouched until the plugin is ready.</p>
+      <h2 id="ui"><span class="n">03.2</span>อินเทอร์เฟซของปลั๊กอิน</h2>
+      <p>ชีตของบล็อกใส่แถวสถานะบาง ๆ ไว้เหนือปลั๊กอิน: นาฬิกาทรายขณะที่คอมโพเนนต์กำลังถูกสร้างขึ้น
+        เครื่องหมายถูกสีเขียวเมื่อมันทำงานอยู่และรับส่งเสียงแล้ว และชื่อปลั๊กอินอยู่ข้าง ๆ ใต้แถว
+        สถานะคุณยังได้มิเตอร์ <b class="ui">เข้า</b> และ <b class="ui">ออก</b> ของบล็อกตามปกติ
+        คุณจึงเห็นได้ว่าปลั๊กอินได้รับอะไรเข้าไปและส่งอะไรกลับออกมา</p>
+      <p>การโหลดไม่ได้เกิดขึ้นทันทีเสมอไป ขณะที่คอมโพเนนต์กำลังเริ่มทำงาน ชีตจะขึ้นว่า
+        <b class="ui">กำลังโหลดปลั๊กอิน…</b> — ปลั๊กอินขนาดใหญ่จะใช้เวลาสักครู่ในการใช้งานครั้ง
+        แรก และสัญญาณจะผ่านไปโดยไม่ถูกแตะต้องจนกว่าปลั๊กอินจะพร้อม</p>
 
-      <h3>Swapping the plugin</h3>
-      <p>The circular-arrows button in the sheet is <b class="ui">Replace plugin</b>. Its menu is
-        the same component list, and picking a different one swaps the plugin inside the existing
-        block, so the block keeps its place in the chain and its bypass state. Use it when you want
-        a different delay in the same slot rather than tearing the chain apart.</p>
+      <h3>การสลับปลั๊กอิน</h3>
+      <p>ปุ่มลูกศรวงกลมในชีตคือ <b class="ui">เปลี่ยนปลั๊กอิน</b> เมนูของมันคือรายการคอมโพเนนต์
+        เดียวกัน และการเลือกตัวอื่นจะสลับปลั๊กอินภายในบล็อกเดิม บล็อกจึงคงตำแหน่งในสายและสถานะ
+        bypass ของมันไว้ ใช้เมื่อคุณต้องการ delay ตัวอื่นในช่องเดิม แทนที่จะรื้อสายทั้งหมด</p>
 
-      <h3>When a plugin has no view of its own</h3>
-      <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
-        designed it. Some ship no view at all. For those, NAMper draws its own generic list —
-        up to 24 parameters, each as a label and a slider. That is what the screenshot above shows:
-        Apple's AUDelay has no custom panel, so you get named sliders instead.</p>
+      <h3>เมื่อปลั๊กอินไม่มีหน้าตาของตัวเอง</h3>
+      <p>ปลั๊กอินส่วนใหญ่วาดอินเทอร์เฟซของตัวเอง และ NAMper ฝังมันไว้ในหน้าเดียวกัน ตรงตามที่
+        ผู้สร้างออกแบบไว้ทุกประการ บางตัวไม่มีหน้าตาเลย สำหรับตัวเหล่านั้น NAMper จะวาดรายการ
+        แบบทั่วไปของตัวเอง — สูงสุด 24 พารามิเตอร์ แต่ละตัวเป็นป้ายชื่อพร้อมสไลเดอร์ นั่นคือสิ่งที่
+        ภาพหน้าจอด้านบนแสดง: AUDelay ของ Apple ไม่มีแผงควบคุมของตัวเอง คุณจึงได้สไลเดอร์ที่มีชื่อ
+        กำกับแทน</p>
       <div class="note">
-        <div class="t">Why the fallback exists</div>
-        <p>iOS can improvise an editor for a viewless plugin, but some units crash inside it.
-          NAMper draws the parameter list itself instead, which is plainer to look at and far more
-          likely to survive a set.</p>
+        <div class="t">ทำไมถึงมีตัวสำรองนี้</div>
+        <p>iOS สามารถด้นสดตัวแก้ไขให้กับปลั๊กอินที่ไม่มีหน้าตาได้ แต่บางตัวแครชอยู่ข้างในนั้น
+          NAMper จึงวาดรายการพารามิเตอร์เองแทน ซึ่งดูเรียบง่ายกว่าและมีโอกาสรอดตลอดการแสดงมากกว่า
+          มาก</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="limits"><span class="n">03.3</span>Limits worth knowing</h2>
+      <h2 id="limits"><span class="n">03.3</span>ข้อจำกัดที่ควรรู้</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+          <thead><tr><th>ข้อจำกัด</th><th>หมายความว่าอย่างไร</th></tr></thead>
           <tbody>
-            <tr><td>Effects only</td>
-                <td>Only effect components are listed. AU instruments are not hostable, so a synth
-                    or a drum machine will never appear in the submenu.</td></tr>
-            <tr><td>16 plugins</td>
-                <td>Sixteen hosted plugins at once, counted across every rig and every branch. In
-                    practice you will run out of processor long before you run out of slots.</td></tr>
-            <tr><td>Stereo</td>
-                <td>Plugin input and output run in stereo, at whatever sample rate the engine is
-                    on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+            <tr><td>เอฟเฟกต์เท่านั้น</td>
+                <td>แสดงเฉพาะคอมโพเนนต์ประเภทเอฟเฟกต์ เครื่องดนตรี AU โฮสต์ไม่ได้ ดังนั้นซินธ์
+                    หรือกลองไฟฟ้าจะไม่มีวันปรากฏในเมนูย่อยนี้</td></tr>
+            <tr><td>ปลั๊กอิน 16 ตัว</td>
+                <td>โฮสต์ปลั๊กอินได้พร้อมกันสิบหกตัว นับรวมทุก Rig และทุกสายแยก ในทางปฏิบัติคุณ
+                    จะหมดพลังประมวลผลก่อนที่จะหมดช่องเสียอีก</td></tr>
+            <tr><td>สเตอริโอ</td>
+                <td>อินพุตและเอาต์พุตของปลั๊กอินทำงานแบบสเตอริโอ ที่แซมเปิลเรตใดก็ตามที่เอนจิน
+                    กำลังรันอยู่</td></tr>
+            <tr><td>สายของ Rig เท่านั้น</td>
+                <td>ปลั๊กอิน AU ใส่ได้เฉพาะในสายสัญญาณของ Rig ส่วน <b class="ui">มาสเตอร์</b>
+                    รับเฉพาะบล็อกของ NAMper เองเท่านั้น</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If a plugin fails to render, NAMper leaves the signal dry for that block rather than
-        dropping out. You keep hearing your guitar, minus that one effect — which is the right
-        failure on stage, but it also means a plugin can go quiet without an obvious alarm. If an
-        effect stops doing anything, check the status row in its sheet.</p>
-      <p>Third-party plugins also cost processing power that NAMper cannot budget for. Watch the
-        <b class="ui">DSP load</b> chip in the Rig header after you add one; if it moves into amber
-        or red, step the buffer size up in Settings.</p>
+      <p>ถ้าปลั๊กอินตัวใดเรนเดอร์ไม่สำเร็จ NAMper จะปล่อยสัญญาณให้ผ่านแบบดิบสำหรับบล็อกนั้น
+        แทนที่จะตัดเสียงหายไปเลย คุณจะยังได้ยินกีตาร์ของคุณ ลบด้วยเอฟเฟกต์ตัวนั้นตัวเดียว —
+        ซึ่งเป็นการรับมือความล้มเหลวที่ถูกต้องบนเวที แต่ก็หมายความว่าปลั๊กอินสามารถเงียบไปได้โดย
+        ไม่มีสัญญาณเตือนชัดเจน ถ้าเอฟเฟกต์หยุดทำงานอะไรเลย ให้เช็กแถวสถานะในชีตของมัน</p>
+      <p>ปลั๊กอินจากค่ายอื่นยังกินพลังประมวลผลที่ NAMper ไม่สามารถจัดสรรงบไว้ล่วงหน้าได้ จับตาดู
+        ชิป <b class="ui">โหลด DSP</b> ในส่วนหัวของ Rig หลังจากที่คุณเพิ่มมันเข้าไป ถ้ามันขยับ
+        ไปโซนเหลืองอำพันหรือแดง ให้เพิ่มขนาดบัฟเฟอร์ในหน้าตั้งค่า</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="state"><span class="n">03.4</span>Settings and presets</h2>
-      <p>A hosted plugin's own settings — everything you changed inside its interface — are stored
-        with the block and travel inside your NAMper preset. Save the rig, load it tomorrow, and
-        the plugin comes back set the way you left it.</p>
+      <h2 id="state"><span class="n">03.4</span>การตั้งค่าและพรีเซ็ต</h2>
+      <p>ค่าตั้งของปลั๊กอินที่โฮสต์ไว้เอง — ทุกอย่างที่คุณเปลี่ยนภายในอินเทอร์เฟซของมัน — ถูกเก็บ
+        ไว้กับบล็อก และเดินทางไปพร้อมกับพรีเซ็ต NAMper ของคุณ บันทึก Rig ไว้ โหลดมันในวันพรุ่งนี้
+        แล้วปลั๊กอินจะกลับมาพร้อมค่าตั้งที่คุณทิ้งไว้เหมือนเดิม</p>
       <div class="note warn">
-        <div class="t">Close the sheet before you save</div>
-        <p>Plugin state is captured at the moment you <b>close the block sheet</b>. Tweak a plugin,
-          leave its sheet open, save the preset from behind it, and the preset stores the state
-          from before your edits. Make it a habit: close the plugin sheet first, then save.</p>
+        <div class="t">ปิดชีตก่อนบันทึก</div>
+        <p>สถานะของปลั๊กอินจะถูกจับภาพไว้ ณ ตอนที่คุณ<b>ปิดชีตของบล็อก</b> ปรับปลั๊กอิน ปล่อยชีต
+          ของมันเปิดค้างไว้ บันทึกพรีเซ็ตจากด้านหลังมัน แล้วพรีเซ็ตจะเก็บสถานะจากก่อนที่คุณจะแก้ไข
+          ไว้แทน ทำให้เป็นนิสัย: ปิดชีตของปลั๊กอินก่อน แล้วค่อยบันทึก</p>
       </div>
-      <p>The same applies to global snapshots and to sharing a preset with someone else — whatever
-        was captured on the last sheet close is what goes into the file. Note that the preset
-        carries the plugin's <em>settings</em>, not the plugin: whoever opens it needs the same
-        Audio Unit installed on their device.</p>
-      <p>One more thing to expect: using <b class="ui">Replace plugin</b> clears the stored state.
-        The settings belonged to the old component and mean nothing to the new one, so the swap
-        starts you at the new plugin's defaults.</p>
+      <p>เรื่องเดียวกันนี้ใช้กับสแนปช็อตรวมและการแชร์พรีเซ็ตให้คนอื่นด้วย — สิ่งที่ถูกจับภาพไว้ตอน
+        ปิดชีตครั้งล่าสุดคือสิ่งที่ลงไปอยู่ในไฟล์ โปรดสังเกตว่าพรีเซ็ตพกพา<em>ค่าตั้ง</em>ของ
+        ปลั๊กอิน ไม่ใช่ตัวปลั๊กอินเอง: ใครก็ตามที่เปิดมันต้องมี Audio Unit ตัวเดียวกันติดตั้งไว้บน
+        อุปกรณ์ของตัวเอง</p>
+      <p>อีกเรื่องที่ควรคาดไว้: การใช้ <b class="ui">เปลี่ยนปลั๊กอิน</b> จะล้างสถานะที่เก็บไว้
+        ค่าตั้งเหล่านั้นเป็นของคอมโพเนนต์เก่า และไม่มีความหมายกับตัวใหม่ ดังนั้นการสลับจะเริ่ม
+        คุณไว้ที่ค่าเริ่มต้นของปลั๊กอินตัวใหม่</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="auv3"><span class="n">03.5</span>NAMper as a plugin</h2>
-      <p>NAMper also ships as an AUv3 effect, so you can load it inside GarageBand, AUM, Logic or
-        any other AUv3 host and record it onto a track there. In a host's plugin browser it looks
-        like this:</p>
+      <h2 id="auv3"><span class="n">03.5</span>NAMper ในฐานะปลั๊กอิน</h2>
+      <p>NAMper เองก็มาในรูปเอฟเฟกต์ AUv3 ด้วย คุณจึงโหลดมันเข้าไปใน GarageBand, AUM, Logic หรือ
+        โฮสต์ AUv3 อื่นใดก็ได้ แล้วอัดมันลงแทร็กที่นั่น ในตัวเรียกดูปลั๊กอินของโฮสต์ มันจะหน้าตา
+        แบบนี้:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <thead><tr><th>ฟิลด์</th><th>ค่า</th></tr></thead>
           <tbody>
-            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
-            <tr><td>Manufacturer</td><td><b class="ui">retroaktive</b></td></tr>
-            <tr><td>Description</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
-            <tr><td>Type</td><td>Audio effect — not an instrument</td></tr>
+            <tr><td>ชื่อ</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>ผู้ผลิต</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>คำอธิบาย</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>ประเภท</td><td>เอฟเฟกต์เสียง — ไม่ใช่เครื่องดนตรี</td></tr>
           </tbody>
         </table>
       </div>
-      <p>It takes stereo in and gives stereo out, but the two input channels are summed to mono
-        inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
-        want for a DI'd guitar on a mono track.</p>
+      <p>มันรับสเตอริโอเข้าและให้สเตอริโอออก แต่สองแชนเนลอินพุตจะถูกรวมเป็นโมโนภายใน: หน้าด่านโมโน
+        สไตล์กีตาร์ที่ป้อนเข้าแอมป์ นั่นคือความตั้งใจ และเป็นสิ่งที่คุณต้องการสำหรับกีตาร์ที่ DI
+        เข้ามาบนแทร็กโมโน</p>
 
-      <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <h3>พารามิเตอร์ทั้ง 18 ตัว</h3>
+      <p>แผงของปลั๊กอินเองเป็นแถบตราสินค้าเล็ก ๆ ที่ขึ้นว่า <b class="ui">NAMper</b> และ
+        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b> ตัวควบคุมจริง
+        ทั้งหมดเป็นพารามิเตอร์ที่โฮสต์ทำออโตเมชันได้ และมีอยู่สิบแปดตัว:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
+          <thead><tr><th>บล็อก</th><th>พารามิเตอร์</th></tr></thead>
           <tbody>
             <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
             <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
               <b class="ui">Comp Ratio</b></td></tr>
             <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
               <b class="ui">Drive Level</b></td></tr>
-            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
-              <b class="ui">Treble</b></td></tr>
+            <tr><td>Tone</td><td><b class="ui">เบส</b>, <b class="ui">กลาง</b>,
+              <b class="ui">แหลม</b></td></tr>
             <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
               <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
             <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
@@ -225,31 +221,31 @@
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>ทุกตัวสามารถทำออโตเมชันจากโฮสต์ได้ พารามิเตอร์เปิด/ปิดเป็นค่าทศนิยมตั้งแต่ 0 ถึง 1
+        ดังนั้นโฮสต์ส่วนใหญ่จะวาดเป็นสไลเดอร์แทนสวิตช์ — ค่าใดก็ตามที่อยู่ที่หรือเกินครึ่งทางถือ
+        ว่าเปิด พรีเซ็ตจากโรงงานสามตัวก็ถูกเปิดให้โฮสต์เห็นด้วย:
+        <b class="ui">คลีน</b>, <b class="ui">ครันช์</b> และ <b class="ui">ลีด</b></p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">สิ่งที่ปลั๊กอินไม่ได้พกพาไปด้วย</div>
+        <p>ไม่มีโมเดล NAM ไม่มี cab IR ไม่มีบล็อกโมดูเลชัน ไม่มีเอกสาร Rig เลยแม้แต่น้อย —
+          โฮสต์บันทึกแค่ค่าพารามิเตอร์ทั้ง 18 ค่านั้นและไม่มีอะไรอื่นอีก ดังนั้น Rig ที่คุณสร้าง
+          ไว้ในแอปจะไม่เดินทางเข้าไปในปลั๊กอิน และยังไม่มีอินพุต MIDI ในเวอร์ชันปลั๊กอินด้วย</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
+      <p>อ่านให้เข้าใจตรง ๆ: ภายในโฮสต์ NAMper คือแชนเนลแอมป์และเอฟเฟกต์แบบกะทัดรัด ไม่ใช่แอปเต็ม
+        รูปแบบ ถ้าคุณต้องการแคปเจอร์ NAM ของคุณ ตู้แอมป์ของคุณ ลูปเปอร์ หรือเซ็ตลิสต์ ให้รันตัวแอป
+        เองแล้วอัดจากตรงนั้น</p>
       <div class="note tip">
-        <div class="t">Working with both</div>
-        <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/th/perform.html">Perform &amp; lyrics</a>.</p>
+        <div class="t">ใช้ทั้งสองแบบร่วมกัน</div>
+        <p>คุณสามารถรันแอปแบบเต็มแล้วส่งเอาต์พุตของมันเข้า DAW หรือใช้ปลั๊กอินสำหรับแชนเนล
+          กีตาร์แบบเร็ว ๆ บนแทร็กที่คุณกำลังอัดอยู่แล้วในโฮสต์ก็ได้ ตัวอัดของแท็บ Perform และ
+          การส่งออก DAWproject มีไว้สำหรับแนวทางแรก — ดูที่
+          <a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/th/rig.html">← 02 · Rig &amp; signal chain</a>
+      <a href="/docs/th/rig.html">← 02 · Rig &amp; สายสัญญาณ</a>
       <span class="sp"></span>
       <a href="/docs/th/looper.html">04 · Looper →</a>
     </nav>
@@ -266,7 +262,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper เป็นแอปอิสระที่ไม่มีความเกี่ยวข้อง การรับรอง หรือการสนับสนุนจากผู้ผลิตอุปกรณ์ใด ๆ ชื่อผลิตภัณฑ์ แบรนด์ และเครื่องหมายการค้าทั้งหมดเป็นทรัพย์สินของเจ้าของแต่ละราย และถูกใช้เพียงเพื่ออธิบายอุปกรณ์ที่นำมาแคปเจอร์เสียงเท่านั้น</p>
   </div>
 </footer>
 

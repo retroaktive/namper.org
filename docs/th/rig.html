@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rig &amp; signal chain — NAMper Documentation</title>
-<meta name="description" content="Building a rig: the blocks palette, the five EQ models, NAM amp profiles and TONE3000, cab IRs, presets and MIDI PC slots, multiple rigs, parallel branches and the master section.">
+<title>Rig &amp; สายสัญญาณ — เอกสาร NAMper</title>
+<meta name="description" content="การสร้าง Rig: พาเลตบล็อก, EQ ห้าโมเดล, โปรไฟล์แอมป์ NAM กับ TONE3000, cab IR, พรีเซ็ตและช่อง MIDI PC, การใช้หลาย Rig, สายแยกขนาน และส่วน Master">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Rig &amp; signal chain — NAMper Documentation">
-<meta property="og:description" content="Blocks, EQ models, NAM profiles, TONE3000, cab IRs, presets, multiple rigs, parallel branches and the master section.">
+<meta property="og:title" content="Rig &amp; สายสัญญาณ — เอกสาร NAMper">
+<meta property="og:description" content="บล็อก, โมเดล EQ, โปรไฟล์ NAM, TONE3000, cab IR, พรีเซ็ต, การใช้หลาย Rig, สายแยกขนาน และส่วน Master">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/th/rig.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">เอกสารประกอบ</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/th/">← ALL DOCS</a>
+  <a class="home" href="/docs/th/">← เอกสารทั้งหมด</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/th/rig.html" aria-current="page">ไทย</a>
   </nav>
@@ -46,566 +46,561 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">สารบัญ</div>
     <ol>
-      <li><a href="/docs/th/setup.html">Getting started</a></li>
-      <li><a class="on" href="/docs/th/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/th/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/th/setup.html">เริ่มต้นใช้งาน</a></li>
+      <li><a class="on" href="/docs/th/rig.html">Rig &amp; สายสัญญาณ</a></li>
+      <li><a href="/docs/th/plugins.html">ปลั๊กอิน AU</a></li>
       <li><a href="/docs/th/looper.html">Looper</a></li>
-      <li><a href="/docs/th/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/th/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/th/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/th/settings.html">Settings reference</a></li>
+      <li><a href="/docs/th/sampler.html">แพดแซมเปลอร์</a></li>
+      <li><a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></li>
+      <li><a href="/docs/th/control.html">MIDI &amp; การควบคุม</a></li>
+      <li><a href="/docs/th/settings.html">คู่มือการตั้งค่า</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; SIGNAL CHAIN</div>
-    <h1>Building the sound.</h1>
-    <p class="lede">The <b class="ui a">Rig</b> tab is where your signal chain lives: blocks you add
-      and drag around, a NAM amp profile at the heart of it, a cab impulse response after it, and a
-      master section everything sums into. This page covers all of it — up to four rigs, four
-      parallel chains inside each one, and the presets that recall the lot.</p>
+    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; สายสัญญาณ</div>
+    <h1>การสร้างเสียง</h1>
+    <p class="lede">แท็บ <b class="ui a">ริก</b> คือที่ที่สายสัญญาณของคุณอาศัยอยู่: บล็อกที่คุณเพิ่ม
+      เข้าไปและลากจัดเรียง โปรไฟล์แอมป์ NAM เป็นหัวใจกลาง IR ตู้แอมป์ต่อจากมัน และ
+      ส่วน Master ที่ทุกอย่างรวมกันเข้าไปในนั้น หน้านี้ครอบคลุมทั้งหมด — ตั้งแต่ Rig สูงสุดสี่ชุด
+      สายสัญญาณขนานสี่สายในแต่ละชุด ไปจนถึงพรีเซ็ตที่เรียกคืนทุกอย่างพร้อมกัน</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">ในหน้านี้</div>
       <ul>
-        <li><a href="#blocks">The blocks palette</a></li>
-        <li><a href="#models">Models inside blocks</a></li>
-        <li><a href="#eq">The five EQ models</a></li>
-        <li><a href="#nam">NAM amp profiles</a></li>
+        <li><a href="#blocks">พาเลตบล็อก</a></li>
+        <li><a href="#models">โมเดลภายในบล็อก</a></li>
+        <li><a href="#eq">EQ ห้าโมเดล</a></li>
+        <li><a href="#nam">โปรไฟล์แอมป์ NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
-        <li><a href="#cabs">Cabs and IRs</a></li>
-        <li><a href="#presets">Presets</a></li>
-        <li><a href="#rigs">Multiple rigs</a></li>
-        <li><a href="#branches">Parallel branches</a></li>
-        <li><a href="#master">The master section</a></li>
+        <li><a href="#cabs">ตู้แอมป์และ IR</a></li>
+        <li><a href="#presets">พรีเซ็ต</a></li>
+        <li><a href="#rigs">การใช้หลาย Rig</a></li>
+        <li><a href="#branches">สายแยกขนาน</a></li>
+        <li><a href="#master">ส่วน Master</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="blocks"><span class="n">02.1</span>The blocks palette</h2>
-      <p>A chain starts empty and you fill it. Tap the dashed <b class="ui">ADD</b> chip at the end
-        of a chain and the palette opens, grouped into sections. Pick a block and it drops into the
-        chain at that point — and its editor opens straight away, so you land on the knobs rather
-        than on an untouched chip.</p>
+      <h2 id="blocks"><span class="n">02.1</span>พาเลตบล็อก</h2>
+      <p>สายสัญญาณเริ่มต้นแบบว่างเปล่า แล้วคุณเติมมันเข้าไปเอง แตะชิป <b class="ui">ADD</b>
+        เส้นประที่ปลายสายแล้วพาเลตจะเปิดขึ้น จัดกลุ่มเป็นหมวดหมู่ เลือกบล็อกแล้วมันจะตกลงไป
+        ในสายสัญญาณตรงจุดนั้น — และตัวแก้ไขของมันจะเปิดขึ้นทันที คุณจึงเจอปุ่มปรับต่าง ๆ ทันที
+        แทนที่จะเจอแค่ชิปเปล่า ๆ</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Blocks</th></tr></thead>
+          <thead><tr><th>หมวด</th><th>บล็อก</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
-            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
-            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
-            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
-            <tr><td><b class="ui">Plugins</b></td><td>the <b class="ui">AU Plugins</b> submenu</td></tr>
+            <tr><td><b class="ui">ไดนามิก</b></td><td><b class="ui">เกต</b>, <b class="ui">คอมป์</b>, <b class="ui">ดี-เอสเซอร์</b></td></tr>
+            <tr><td><b class="ui">ไดรฟ์</b></td><td><b class="ui">ไดรฟ์</b></td></tr>
+            <tr><td><b class="ui">แอมป์และตู้</b></td><td><b class="ui">แอมป์</b>, <b class="ui">แอมป์หลอด</b>, <b class="ui">อีคิว</b>, <b class="ui">ตู้แอมป์</b></td></tr>
+            <tr><td><b class="ui">ฟิลเตอร์</b></td><td><b class="ui">วา</b></td></tr>
+            <tr><td><b class="ui">มอดูเลชัน</b></td><td><b class="ui">เฟสเซอร์</b>, <b class="ui">แฟลนเจอร์</b>, <b class="ui">คอรัส</b>, <b class="ui">เทรม</b>, <b class="ui">โรตารี</b></td></tr>
+            <tr><td><b class="ui">ดีเลย์</b></td><td><b class="ui">ดีเลย์</b></td></tr>
+            <tr><td><b class="ui">รีเวิร์บ</b></td><td><b class="ui">คลาวด์</b>, <b class="ui">ฮอลล์</b>, <b class="ui">รูม</b>, <b class="ui">เพลต</b>, <b class="ui">สปริง</b>, <b class="ui">IR รีเวิร์บ</b></td></tr>
+            <tr><td><b class="ui">พิตช์</b></td><td><b class="ui">ฮาร์โมนี</b>, <b class="ui">ออโต้จูน</b>, <b class="ui">พิตช์</b>, <b class="ui">อ็อกเทเวอร์</b></td></tr>
+            <tr><td><b class="ui">ยูทิลิตี้</b></td><td><b class="ui">ระดับเสียง</b>, <b class="ui">แซตหลอด</b>, <b class="ui">แซตเทป</b>, <b class="ui">ลิมิตเตอร์</b>, <b class="ui">กัน FB</b></td></tr>
+            <tr><td><b class="ui">ปลั๊กอิน</b></td><td>เมนูย่อย <b class="ui">ปลั๊กอิน AU</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Nothing stops you adding the same block twice. Duplicates are numbered as they arrive —
-        <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — and block names are always drawn in
-        capitals on the chips. Two drives in a row, a gate at the front and another after the amp:
-        all fine.</p>
+      <p>ไม่มีอะไรห้ามคุณเพิ่มบล็อกเดียวกันสองครั้ง บล็อกที่ซ้ำกันจะถูกใส่หมายเลขตามลำดับที่เพิ่มเข้ามา —
+        <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — และชื่อบล็อกจะเขียนด้วยตัวพิมพ์ใหญ่
+        บนชิปเสมอ จะใส่ Drive สองตัวติดกัน จะใส่ Gate ไว้หน้าสุดแล้วมีอีกตัวหลังแอมป์ — ทำได้ทั้งหมด</p>
 
-      <h3>Working with a block</h3>
+      <h3>การทำงานกับบล็อก</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Action</th><th>How</th></tr></thead>
+          <thead><tr><th>การกระทำ</th><th>วิธีทำ</th></tr></thead>
           <tbody>
-            <tr><td>Bypass</td><td>Tap the small LED dot under the block name on the chip. The touch
-              target is deliberately large — this is the control you hit mid-song. The footswitch
-              inside the block sheet does the same, as does long-press →
-              <b class="ui">Enable</b> / <b class="ui">Bypass</b></td></tr>
-            <tr><td>Open the editor</td><td>Tap the block chip</td></tr>
-            <tr><td>Reorder</td><td>Drag the chip along its chain, or long-press →
-              <b class="ui">Move left</b> / <b class="ui">Move right</b>. Reordering works within
-              one chain only</td></tr>
-            <tr><td>Remove</td><td>Long-press → <b class="ui">Remove</b></td></tr>
-            <tr><td>Reset a knob</td><td>Double-tap it</td></tr>
-            <tr><td>MIDI-learn a control</td><td>Long-press any knob or chip row →
-              <b class="ui">MIDI Learn “&lt;label&gt;”</b>. The control outlines itself and shows
-              <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel learn</b> backs out</td></tr>
+            <tr><td>Bypass</td><td>แตะจุด LED เล็ก ๆ ใต้ชื่อบล็อกบนชิป จุดสัมผัสถูกออกแบบให้ใหญ่
+              เป็นพิเศษ — เพราะนี่คือปุ่มที่คุณกดกลางเพลง ฟุตสวิตช์ในชีตของบล็อกก็ทำแบบเดียวกัน
+              เช่นเดียวกับกดค้าง →
+              <b class="ui">เปิดใช้</b> / <b class="ui">บายพาส</b></td></tr>
+            <tr><td>เปิดตัวแก้ไข</td><td>แตะที่ชิปบล็อก</td></tr>
+            <tr><td>จัดลำดับใหม่</td><td>ลากชิปไปตามสายของมัน หรือกดค้าง →
+              <b class="ui">เลื่อนซ้าย</b> / <b class="ui">เลื่อนขวา</b> การจัดลำดับใหม่ทำได้
+              เฉพาะภายในสายเดียวกันเท่านั้น</td></tr>
+            <tr><td>ลบออก</td><td>กดค้าง → <b class="ui">เอาออก</b></td></tr>
+            <tr><td>รีเซ็ตปุ่มปรับ</td><td>แตะสองครั้ง</td></tr>
+            <tr><td>MIDI-learn ตัวควบคุม</td><td>กดค้างที่ปุ่มปรับหรือแถวชิปใดก็ได้ →
+              <b class="ui">MIDI Learn "&lt;label&gt;"</b> ตัวควบคุมจะขึ้นเส้นขอบและแสดง
+              <b class="ui">ขยับคอนโทรล MIDI สักตัว…</b>; <b class="ui">ยกเลิก learn</b> เพื่อยกเลิก</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A block that has no parameters of its own says so plainly when you open it:
-        <b class="ui">Nothing to tweak here</b>. That is the block working normally, not a
-        loading state.</p>
+      <p>บล็อกที่ไม่มีพารามิเตอร์ของตัวเองจะบอกตรง ๆ เมื่อคุณเปิดมันขึ้นมา:
+        <b class="ui">ไม่มีอะไรให้ปรับที่นี่</b> นั่นคือบล็อกทำงานปกติ ไม่ใช่สถานะกำลังโหลด</p>
       <div class="note warn">
-        <div class="t">There is no duplicate</div>
-        <p>NAMper has no copy or duplicate action for blocks, anywhere. To get a second block with
-          the same settings, add a fresh one and dial it in. To reuse a whole chain, save it as a
-          preset and build the next rig from that preset instead.</p>
+        <div class="t">ไม่มีปุ่มทำสำเนา</div>
+        <p>NAMper ไม่มีคำสั่งคัดลอกหรือทำสำเนาบล็อก ไม่ว่าที่ไหนก็ตาม หากต้องการบล็อกตัวที่สอง
+          ที่มีค่าตั้งเหมือนกัน ให้เพิ่มบล็อกใหม่แล้วปรับเองใหม่ ถ้าต้องการใช้สายสัญญาณทั้งชุดซ้ำ
+          ให้บันทึกเป็นพรีเซ็ต แล้วสร้าง Rig ถัดไปจากพรีเซ็ตนั้นแทน</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="models"><span class="n">02.2</span>Models inside blocks</h2>
-      <p>Several blocks are really a family of pedals or circuits behind one chip. Open the block
-        and the row of chips at the top picks the flavour — the knobs stay the same, the character
-        changes.</p>
+      <h2 id="models"><span class="n">02.2</span>โมเดลภายในบล็อก</h2>
+      <p>หลายบล็อกจริง ๆ แล้วคือกลุ่มของเพดัลหรือวงจรที่ซ่อนอยู่หลังชิปเดียว เปิดบล็อกขึ้นมา
+        แล้วแถวชิปด้านบนจะเลือกรสชาติ — ปุ่มปรับยังเหมือนเดิม แต่คาแรกเตอร์เปลี่ยนไป</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Chip row</th><th>Choices</th></tr></thead>
+          <thead><tr><th>บล็อก</th><th>แถวชิป</th><th>ตัวเลือก</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
-              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
-                <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
-            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
-                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
-            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
-              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
-                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>,
+            <tr><td><b class="ui">เกต</b></td><td><b class="ui">โมเดล</b></td>
+              <td><b class="ui">คลาสสิก</b>, <b class="ui">สมาร์ต</b>, <b class="ui">3-Band</b>, <b class="ui">ลดนอยส์</b></td></tr>
+            <tr><td><b class="ui">คอมป์</b></td><td><b class="ui">โมเดล</b> · <b class="ui">ไซด์เชน</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">ออปโต</b>, <b class="ui">FET</b>, <b class="ui">เพดัล</b> · sidechain
+                <b class="ui">ปิด</b>, <b class="ui">เข้า 1</b>…<b class="ui">เข้า 4</b>, <b class="ui">SMP</b></td></tr>
+            <tr><td><b class="ui">ไดรฟ์</b></td><td><b class="ui">โมเดล</b></td>
+              <td><b class="ui">หลอด</b>, <b class="ui">บลูส์</b>, <b class="ui">ดิสต์</b>, <b class="ui">ฟัซ</b>, <b class="ui">ซัสเทน</b></td></tr>
+            <tr><td><b class="ui">แอมป์หลอด</b></td><td><b class="ui">โมเดล</b></td>
+              <td><b class="ui">คลีน</b>, <b class="ui">ทวีด</b>, <b class="ui">บริท</b>, <b class="ui">ไชม์</b>,
+                <b class="ui">โมเดิร์น</b>, <b class="ui">เบส</b>, <b class="ui">อะคูสติก</b></td></tr>
+            <tr><td><b class="ui">วา</b></td><td><b class="ui">โหมด</b></td>
+              <td><b class="ui">อัตโนมัติ</b>, <b class="ui">LFO</b>, <b class="ui">เพดัล</b></td></tr>
+            <tr><td><b class="ui">ดีเลย์</b></td><td><b class="ui">วอยซ์</b> · <b class="ui">ซิงก์</b></td>
+              <td><b class="ui">ดิจิทัล</b>, <b class="ui">BBD</b>, <b class="ui">เทป</b> · sync
+                <b class="ui">ปิด</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">เทรม</b></td><td><b class="ui">โหมด</b> · <b class="ui">ซิงก์</b></td>
+              <td><b class="ui">เทรโมโล</b>, <b class="ui">ไวบราโต</b> · sync <b class="ui">ปิด</b>,
                 <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
-              <td><b class="ui">Studio</b>, <b class="ui">Small</b>, <b class="ui">Chamber</b>, <b class="ui">Large</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Speed</b></td>
-              <td><b class="ui">Slow</b>, <b class="ui">Fast</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voices</b></td>
-              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
-            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Listen</b></td>
-              <td>12 notes plus <b class="ui">AUTO</b> and <b class="ui">TRACK</b> ·
-                <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>,
-                <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> ·
-                <b class="ui">OWN</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
-              <td>the same key list, plus <b class="ui">CHROM</b> and <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">รูม</b></td><td><b class="ui">รูม</b></td>
+              <td><b class="ui">สตูดิโอ</b>, <b class="ui">เล็ก</b>, <b class="ui">แชมเบอร์</b>, <b class="ui">ใหญ่</b></td></tr>
+            <tr><td><b class="ui">โรตารี</b></td><td><b class="ui">ความเร็ว</b></td>
+              <td><b class="ui">ช้า</b>, <b class="ui">เร็ว</b></td></tr>
+            <tr><td><b class="ui">พิตช์</b></td><td><b class="ui">จำนวนวอยซ์</b></td>
+              <td><b class="ui">โมโน</b>, <b class="ui">โพลี</b></td></tr>
+            <tr><td><b class="ui">ฮาร์โมนี</b></td><td><b class="ui">คีย์</b> · <b class="ui">ช่วงเสียง</b> · <b class="ui">ฟัง</b></td>
+              <td>12 โน้ต บวก <b class="ui">ออโต้</b> และ <b class="ui">แทร็ก</b> ·
+                <b class="ui">-อ็อกเทฟ</b>, <b class="ui">-5</b>, <b class="ui">-3</b>, <b class="ui">+3</b>,
+                <b class="ui">+4</b>, <b class="ui">+5</b>, <b class="ui">+6</b>, <b class="ui">+อ็อกเทฟ</b> ·
+                <b class="ui">ของตัวเอง</b>, <b class="ui">ริก 1</b>…<b class="ui">ริก 4</b></td></tr>
+            <tr><td><b class="ui">ออโต้จูน</b></td><td><b class="ui">คีย์</b></td>
+              <td>รายการคีย์เดียวกัน บวก <b class="ui">โครมาติก</b> และ <b class="ui">เซ็ต</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>The <b class="ui">Tube Amp</b> block is NAMper's own amp simulation, and it carries the
-        knobs you expect: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>,
-        <b class="ui">Treble</b>, <b class="ui">Presence</b> and <b class="ui">Master</b>, all
-        running 0–10 with 5 as flat. It needs no download and no account, which is why it is the
-        thing that carries the show when you are offline.</p>
+      <p>บล็อก <b class="ui">แอมป์หลอด</b> คือการจำลองแอมป์ของ NAMper เอง มาพร้อมปุ่มปรับที่คุณคาดหวัง:
+        <b class="ui">เกน</b>, <b class="ui">เบส</b>, <b class="ui">กลาง</b>,
+        <b class="ui">แหลม</b>, <b class="ui">เพรเซนซ์</b> และ <b class="ui">มาสเตอร์</b> ทั้งหมด
+        ปรับได้ 0–10 โดย 5 คือค่ากลาง ไม่ต้องดาวน์โหลดและไม่ต้องมีบัญชีผู้ใช้ นี่จึงเป็นสิ่งที่
+        แบกรับการแสดงไว้เมื่อคุณออฟไลน์</p>
       <div class="note tip">
-        <div class="t">Harmony that listens to another rig</div>
-        <p>Harmony's <b class="ui">Listen</b> row is not a routing control — it is what the
-          harmoniser takes its chord from. Leave it on <b class="ui">OWN</b> and it follows the
-          signal in its own chain; point it at <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> and a
-          vocal line can be harmonised against what the guitar rig is playing.</p>
+        <div class="t">Harmony ที่ฟังจาก Rig อื่น</div>
+        <p>แถว <b class="ui">ฟัง</b> ของ Harmony ไม่ใช่ตัวควบคุมการจัดสาย — มันคือแหล่งที่
+          ฮาร์โมไนเซอร์ใช้ดึงคอร์ดมา ปล่อยไว้ที่ <b class="ui">ของตัวเอง</b> แล้วมันจะตามสัญญาณในสาย
+          ของตัวเอง ชี้ไปที่ <b class="ui">ริก 1</b>…<b class="ui">ริก 4</b> แล้วเสียงร้องสามารถ
+          ทำฮาร์โมนีตามสิ่งที่ Rig กีตาร์กำลังเล่นอยู่ได้</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>The five EQ models</h2>
-      <p>There is one <b class="ui">EQ</b> block, and inside it five completely different
-        equalisers. Switching the model swaps the knob set as well as the sound, so pick the one
-        that matches the job — a quick tone tweak, a surgical cut, or a mastering-style shelf.</p>
+      <h2 id="eq"><span class="n">02.3</span>EQ ห้าโมเดล</h2>
+      <p>มีบล็อก <b class="ui">อีคิว</b> เพียงบล็อกเดียว แต่ข้างในมันคืออีควอไลเซอร์ห้าแบบที่ต่างกัน
+        โดยสิ้นเชิง การสลับโมเดลจะเปลี่ยนทั้งชุดปุ่มปรับและเสียง ดังนั้นเลือกตัวที่ตรงกับงาน —
+        ปรับโทนแบบเร็ว ๆ, การตัดแบบผ่าตัดเฉพาะจุด, หรือเชลฟ์สไตล์มาสเตอริง</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Model</th><th>What it is</th><th>Knobs</th></tr></thead>
+          <thead><tr><th>โมเดล</th><th>คืออะไร</th><th>ปุ่มปรับ</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Tone</b></td>
-              <td>Classic three-band — low shelf at 100 Hz, peak at 800 Hz, high shelf at 3 kHz.
-                These are the same filters as the old three-band EQ, so older rigs sound
-                unchanged.</td>
-              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, each ±12 dB</td></tr>
-            <tr><td><b class="ui">Para</b></td>
-              <td>Full parametric — the same three bands, but every frequency moves and the mid gets
-                a Q control.</td>
-              <td><b class="ui">Low</b>, <b class="ui">Mid</b>, <b class="ui">High</b>,
-                <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
-                <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
-            <tr><td><b class="ui">Passive</b></td>
-              <td>The classic passive program-EQ trick: a low shelf boost plus a slightly higher cut shelf, so you boost
-                and attenuate at once for a tight low end — with a wide high bell and a high shelf
-                cut on top.</td>
-              <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
-                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Width</b>,
-                <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
-            <tr><td><b class="ui">Console</b></td>
-              <td>A British console channel strip — a 12 dB/octave high-pass (0 turns it off), an LF
-                shelf, a low-mid bell with Q, and an HF shelf.</td>
-              <td><b class="ui">HPF</b> 0–300, <b class="ui">Low</b>, <b class="ui">Lo Freq</b>,
-                <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
-                <b class="ui">High</b>, <b class="ui">Hi Freq</b></td></tr>
+            <tr><td><b class="ui">โทน</b></td>
+              <td>สามแบนด์คลาสสิก — low shelf ที่ 100 Hz, peak ที่ 800 Hz, high shelf ที่ 3 kHz
+                ฟิลเตอร์เดียวกับ EQ สามแบนด์รุ่นเก่า ดังนั้น Rig เก่า ๆ จะเสียงเหมือนเดิม</td>
+              <td><b class="ui">เบส</b>, <b class="ui">กลาง</b>, <b class="ui">แหลม</b>, แต่ละตัว ±12 dB</td></tr>
+            <tr><td><b class="ui">พารา</b></td>
+              <td>พารามาตริกเต็มรูปแบบ — สามแบนด์เดิม แต่ทุกความถี่ปรับได้ และแบนด์กลางมี
+                ตัวควบคุม Q เพิ่มมา</td>
+              <td><b class="ui">ต่ำ</b>, <b class="ui">กลาง</b>, <b class="ui">สูง</b>,
+                <b class="ui">ความถี่ต่ำ</b> 40–400, <b class="ui">ความถี่กลาง</b> 200–5000,
+                <b class="ui">ความถี่สูง</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">พาสซีฟ</b></td>
+              <td>เทคนิคคลาสสิกของพาสซีฟโปรแกรม EQ: บูสต์ low shelf บวกกับตัด shelf ที่สูงกว่า
+                เล็กน้อย ทำให้บูสต์และลดพร้อมกันเพื่อโลว์เอนด์ที่แน่น — พร้อมเบลล์สูงกว้าง ๆ และ
+                ตัด high shelf ด้านบน</td>
+              <td><b class="ui">บูสต์ต่ำ</b>, <b class="ui">ลดทอนต่ำ</b>, <b class="ui">ความถี่ต่ำ</b> 20–120,
+                <b class="ui">บูสต์สูง</b>, <b class="ui">ความถี่สูง</b> 2k–16k, <b class="ui">ความกว้าง</b>,
+                <b class="ui">ลดทอนสูง</b>, <b class="ui">ลดทอน Hz</b> 4k–20k</td></tr>
+            <tr><td><b class="ui">คอนโซล</b></td>
+              <td>แชนแนลสตริปคอนโซลแบบอังกฤษ — high-pass 12 dB/octave (0 คือปิด), LF shelf,
+                low-mid bell พร้อม Q และ HF shelf</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">ต่ำ</b>, <b class="ui">ความถี่ต่ำ</b>,
+                <b class="ui">กลาง</b>, <b class="ui">ความถี่กลาง</b>, <b class="ui">Q</b>,
+                <b class="ui">สูง</b>, <b class="ui">ความถี่สูง</b></td></tr>
             <tr><td><b class="ui">Bax</b></td>
-              <td>Baxandall — two very wide, very gentle shelves. The one to reach for when you want
-                the whole sound a little darker or a little brighter.</td>
-              <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+              <td>Baxandall — shelf สองตัวที่กว้างมากและอ่อนโยนมาก ตัวที่หยิบมาใช้เมื่อต้องการให้
+                เสียงทั้งหมดมืดขึ้นหรือสว่างขึ้นนิดหน่อย</td>
+              <td><b class="ui">เบส</b>, <b class="ui">แหลม</b></td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
-             alt="The EQ block sheet with the Passive model selected, showing its eight knobs: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten and Atten Hz, with IN and OUT meters at the top.">
-        <figcaption>The EQ block on the Passive model</figcaption>
+             alt="ชีตบล็อก EQ กับโมเดล Passive ที่เลือกไว้ แสดงปุ่มปรับทั้งแปด: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten และ Atten Hz พร้อมมิเตอร์ IN และ OUT ด้านบน">
+        <figcaption>บล็อก EQ ในโมเดล Passive</figcaption>
       </figure>
-      <p>Every block sheet, this one included, has horizontal <b class="ui">IN</b> and
-        <b class="ui">OUT</b> meters. On an EQ they are worth watching: a few decibels of boost on
-        three bands adds up fast, and the meters tell you whether the next block is being hit
-        harder than you meant.</p>
+      <p>ทุกชีตบล็อก รวมถึงตัวนี้ด้วย มีมิเตอร์ <b class="ui">เข้า</b> และ
+        <b class="ui">ออก</b> แนวนอน บน EQ นั้นควรจับตาดูให้ดี: บูสต์ไม่กี่เดซิเบลบนสามแบนด์
+        รวมกันแล้วขึ้นเร็วมาก และมิเตอร์จะบอกว่าบล็อกถัดไปกำลังโดนอัดหนักกว่าที่คุณตั้งใจหรือไม่</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM amp profiles</h2>
-      <p>Two different blocks live under <b class="ui">Amp &amp; Cab</b> and it is worth being clear
-        about which is which. <b class="ui">Tube Amp</b> is NAMper's own amp simulation, with the
-        seven models listed above. <b class="ui">Amp</b> is the Neural Amp Modeler player: it loads
-        a <b class="ui">.nam</b> capture of a real amplifier and runs it.</p>
+      <h2 id="nam"><span class="n">02.4</span>โปรไฟล์แอมป์ NAM</h2>
+      <p>มีสองบล็อกที่ต่างกันอยู่ใต้ <b class="ui">แอมป์และตู้</b> และควรทำความเข้าใจให้ชัดว่า
+        อันไหนเป็นอันไหน <b class="ui">แอมป์หลอด</b> คือการจำลองแอมป์ของ NAMper เอง มีโมเดลทั้งเจ็ด
+        แบบตามที่กล่าวไว้ข้างต้น ส่วน <b class="ui">แอมป์</b> คือตัวเล่นของ Neural Amp Modeler: มัน
+        โหลดไฟล์แคปเจอร์ <b class="ui">.nam</b> ของแอมป์จริง แล้วรันมัน</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="The Rig tab with a NAM profile loaded: cover art, tone title and author on the amp card, vertical IN and OUT meters either side of it, and the signal chain of blocks below.">
-        <figcaption>The amp card with a NAM profile loaded</figcaption>
+             alt="แท็บ Rig พร้อมโปรไฟล์ NAM ที่โหลดไว้: ภาพปก ชื่อโทน และผู้แต่งบนการ์ดแอมป์ มิเตอร์ IN และ OUT แนวตั้งขนาบข้าง และสายสัญญาณของบล็อกด้านล่าง">
+        <figcaption>การ์ดแอมป์พร้อมโปรไฟล์ NAM ที่โหลดไว้</figcaption>
       </figure>
 
-      <h3>The amp card</h3>
-      <p>At the top of the Rig tab, between the <b class="ui">IN</b> and <b class="ui">OUT</b>
-        meters, the amp card shows what the <b class="ui">Amp</b> block is currently playing: the
-        cover art, the tone title, the <b class="ui">@author</b>, up to six metadata chips, a
-        download count, a <b class="ui">Browse TONE3000</b> button and a books icon
-        (<b class="ui">Open NAM library</b>). With nothing loaded it reads
-        <b class="ui">Built-in tube amp</b>. If a rig has more than one amp in it, chips
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> and so on choose which one the card
-        edits.</p>
+      <h3>การ์ดแอมป์</h3>
+      <p>ที่ด้านบนของแท็บ Rig ระหว่างมิเตอร์ <b class="ui">เข้า</b> และ <b class="ui">ออก</b>
+        การ์ดแอมป์แสดงสิ่งที่บล็อก <b class="ui">แอมป์</b> กำลังเล่นอยู่: ภาพปก ชื่อโทน
+        <b class="ui">@author</b> ชิปเมทาดาต้าสูงสุดหกอัน จำนวนดาวน์โหลด ปุ่ม
+        <b class="ui">เปิดดู TONE3000</b> และไอคอนหนังสือ
+        (<b class="ui">เปิดคลัง NAM</b>) เมื่อยังไม่มีอะไรโหลดไว้จะขึ้นว่า
+        <b class="ui">แอมป์หลอดในตัว</b> ถ้า Rig หนึ่งมีแอมป์มากกว่าหนึ่งตัว ชิป
+        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> และต่อ ๆ ไปจะเลือกว่าการ์ดกำลังแก้ไข
+        ตัวไหนอยู่</p>
 
-      <h3>Input and Output</h3>
-      <p>The <b class="ui">Amp</b> block sheet is deliberately short: the profile title (or
-        <b class="ui">No model loaded</b>), a <b class="ui">Browse TONE3000</b> button, and two
-        knobs. <b class="ui">Input</b> and <b class="ui">Output</b> both run −20 to +20 dB and start
-        at 0. Input pushes the capture harder, which is how you get more or less breakup out of a
-        profile; Output trims the result afterwards.</p>
-      <p>NAM output is normalised automatically, using the loudness metadata inside the model, to a
-        −18 dB target. That is why swapping between profiles does not throw your levels around, and
-        it is not exposed as a control.</p>
+      <h3>Input และ Output</h3>
+      <p>ชีตของบล็อก <b class="ui">แอมป์</b> ถูกออกแบบให้สั้นโดยตั้งใจ: ชื่อโปรไฟล์ (หรือ
+        <b class="ui">ยังไม่ได้โหลดโมเดล</b>) ปุ่ม <b class="ui">เปิดดู TONE3000</b> และปุ่มปรับ
+        สองปุ่ม <b class="ui">อินพุต</b> และ <b class="ui">เอาต์พุต</b> ทั้งคู่ปรับได้ตั้งแต่
+        −20 ถึง +20 dB เริ่มต้นที่ 0 Input ดันแคปเจอร์ให้แรงขึ้น ซึ่งเป็นวิธีที่ทำให้ได้เสียงแตก
+        มากขึ้นหรือน้อยลงจากโปรไฟล์นั้น ส่วน Output ปรับผลลัพธ์หลังจากนั้น</p>
+      <p>เอาต์พุตของ NAM ถูกปรับระดับให้เท่ากันโดยอัตโนมัติ โดยใช้เมทาดาต้าความดังที่อยู่ใน
+        โมเดลเอง ให้ได้เป้าหมายที่ −18 dB นี่คือเหตุผลที่การสลับระหว่างโปรไฟล์ไม่ทำให้ระดับเสียง
+        กระโดดไปมา และมันไม่ได้เปิดให้ปรับเป็นตัวควบคุม</p>
       <div class="note">
-        <div class="t">The NAM amp is mono</div>
-        <p>A NAM capture is a mono device — a stereo signal arriving at the <b class="ui">Amp</b>
-          block is summed before it goes in. Put your stereo effects after the amp, not before it.</p>
+        <div class="t">แอมป์ NAM เป็นโมโน</div>
+        <p>แคปเจอร์ของ NAM เป็นอุปกรณ์โมโน — สัญญาณสเตอริโอที่มาถึงบล็อก <b class="ui">แอมป์</b>
+          จะถูกรวมเป็นสัญญาณเดียวก่อนเข้าไป ให้วางเอฟเฟกต์สเตอริโอไว้หลังแอมป์ ไม่ใช่ก่อนแอมป์</p>
       </div>
 
-      <h3>Three ways to load a profile</h3>
+      <h3>สามวิธีโหลดโปรไฟล์</h3>
       <ol style="--nc:var(--amp)">
-        <li><b class="ui">Browse TONE3000</b> — the online library, covered in the next section.</li>
-        <li>The books icon, which opens a sheet titled <b class="ui">NAM Profiles</b>. Tap any row
-          to load it into the current amp.</li>
-        <li>Factory presets resolve their own profiles, so loading <b class="ui">Crunch</b> brings
-          its amp with it.</li>
+        <li><b class="ui">เปิดดู TONE3000</b> — คลังออนไลน์ ซึ่งกล่าวถึงในหัวข้อถัดไป</li>
+        <li>ไอคอนหนังสือ ซึ่งเปิดชีตชื่อ <b class="ui">โปรไฟล์ NAM</b> แตะแถวใดก็ได้เพื่อโหลด
+          เข้าไปในแอมป์ปัจจุบัน</li>
+        <li>พรีเซ็ตจากโรงงานจะดึงโปรไฟล์ของตัวเองมาให้ ดังนั้นการโหลด <b class="ui">ครันช์</b>
+          จะพาแอมป์ของมันมาด้วย</li>
       </ol>
-      <p>The <b class="ui">NAM Profiles</b> sheet is your local library. Empty, it reads
-        <b class="ui">Profiles you download from TONE3000 collect here.</b> Its toolbar menu has
-        <b class="ui">Import .nam files…</b> — a multi-select file picker that accepts
-        <b class="ui">.nam</b> files only — along with <b class="ui">Export all (N files)</b> and
-        <b class="ui">Update all</b>. Each row carries <b class="ui">Share .nam file</b>,
-        <b class="ui">Delete</b> and a refresh button
-        (<b class="ui">Refresh from TONE3000</b>).</p>
-      <p>If a model cannot be read you get <b class="ui r">Could not load amp model
-        {filename}.</b> — usually a file that was moved or deleted out from under the rig.</p>
+      <p>ชีต <b class="ui">โปรไฟล์ NAM</b> คือคลังในเครื่องของคุณ เมื่อว่างเปล่าจะขึ้นว่า
+        <b class="ui">โปรไฟล์ที่คุณดาวน์โหลดจาก TONE3000 จะมารวมอยู่ที่นี่</b> เมนูแถบเครื่องมือ
+        มี <b class="ui">นำเข้าไฟล์ .nam…</b> — ตัวเลือกไฟล์แบบเลือกได้หลายไฟล์ที่รับเฉพาะ
+        <b class="ui">.nam</b> เท่านั้น — พร้อมกับ <b class="ui">Export all (N files)</b> และ
+        <b class="ui">อัปเดตทั้งหมด</b> แต่ละแถวมี <b class="ui">แชร์ไฟล์ .nam</b>,
+        <b class="ui">ลบ</b> และปุ่มรีเฟรช
+        (<b class="ui">รีเฟรชจาก TONE3000</b>)</p>
+      <p>ถ้าโมเดลใดอ่านไม่ได้ คุณจะเห็น <b class="ui r">Could not load amp model
+        {filename}.</b> — มักเป็นเพราะไฟล์ถูกย้ายหรือลบไปจากใต้ Rig</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 is a free library of amp captures, and NAMper pulls from it directly. There is no
-        in-app browse screen: <b class="ui">Browse TONE3000</b> opens tone3000.com inside a secure
-        web sheet. You search and filter on the website itself, pick a tone, and the app takes it
-        from there — while it fetches, the button reads <b class="ui">Loading…</b> and is
-        disabled.</p>
+      <p>TONE3000 คือคลังแคปเจอร์แอมป์ฟรี และ NAMper ดึงข้อมูลจากมันโดยตรง ไม่มีหน้าจอเรียกดู
+        ภายในแอป: <b class="ui">เปิดดู TONE3000</b> เปิด tone3000.com ภายในชีตเว็บที่ปลอดภัย
+        คุณค้นหาและกรองบนเว็บไซต์เอง เลือกโทนเสียง แล้วแอปจะรับช่วงต่อจากตรงนั้น — ระหว่างที่
+        กำลังดึงข้อมูล ปุ่มจะขึ้นว่า <b class="ui">กำลังโหลด…</b> และถูกปิดใช้งานชั่วคราว</p>
       <figure>
         <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="The Connect TONE3000 sheet over the Rig tab, offering Sign in to TONE3000 and Play offline buttons with a Don't ask again toggle.">
-        <figcaption>The sign-in offer, shown once per launch while signed out</figcaption>
+             alt="ชีต Connect TONE3000 บนแท็บ Rig เสนอปุ่ม Sign in to TONE3000 และ Play offline พร้อมสวิตช์ Don't ask again">
+        <figcaption>ข้อเสนอเข้าสู่ระบบ ปรากฏครั้งเดียวต่อการเปิดแอปขณะที่ยังไม่ได้ล็อกอิน</figcaption>
       </figure>
-      <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
-        in to tone3000.com in the browser the app reuses that session. The library is filtered
-        server-side to A2-architecture NAM captures of amps, full rigs and pedals — that is fixed,
-        not a setting you can change.</p>
-      <p>Picking a tone downloads the first model of that tone — there is no model picker — together
-        with its cover art and metadata. Everything lands in the app's <b class="ui">tones/</b>
-        folder and appears in the <b class="ui">NAM Profiles</b> sheet.</p>
+      <p>การเข้าสู่ระบบเป็นการล็อกอินผ่านเว็บแบบปกติ ไม่ใช่การวาง API key และถ้าคุณล็อกอิน
+        tone3000.com อยู่แล้วในเบราว์เซอร์ แอปจะใช้เซสชันนั้นซ้ำ คลังนี้ถูกกรองจากฝั่งเซิร์ฟเวอร์
+        ให้เหลือเฉพาะแคปเจอร์ NAM สถาปัตยกรรม A2 ของแอมป์ ริกเต็มรูปแบบ และเพดัล — นั่นคือค่าคงที่
+        ไม่ใช่การตั้งค่าที่คุณเปลี่ยนได้</p>
+      <p>การเลือกโทนเสียงจะดาวน์โหลดโมเดลแรกของโทนนั้น — ไม่มีตัวเลือกโมเดล — พร้อมภาพปกและ
+        เมทาดาต้า ทุกอย่างจะลงไปอยู่ในโฟลเดอร์ <b class="ui">tones/</b> ของแอป และปรากฏใน
+        ชีต <b class="ui">โปรไฟล์ NAM</b></p>
 
-      <h3>The sign-in offer</h3>
-      <p>A sheet titled <b class="ui">Connect TONE3000</b> appears once per launch while you are
-        signed out, explaining that factory presets stream real amp captures from the free library.
-        It offers <b class="ui">Sign in to TONE3000</b> and <b class="ui">Play offline</b>, with a
-        <b class="ui">Don't ask again</b> toggle. You can also silence it for good in Settings →
-        <b class="ui">PROMPTS</b> → <b class="ui">Offer TONE3000 sign-in on launch</b>.</p>
+      <h3>ข้อเสนอเข้าสู่ระบบ</h3>
+      <p>ชีตชื่อ <b class="ui">เชื่อม TONE3000</b> จะปรากฏครั้งเดียวต่อการเปิดแอปขณะที่คุณ
+        ยังไม่ได้ล็อกอิน อธิบายว่าพรีเซ็ตจากโรงงานสตรีมแคปเจอร์แอมป์จริงจากคลังฟรีนี้ มันเสนอ
+        <b class="ui">ลงชื่อเข้า TONE3000</b> และ <b class="ui">เล่นออฟไลน์</b> พร้อมสวิตช์
+        <b class="ui">ไม่ต้องถามอีก</b> คุณยังปิดมันถาวรได้ในหน้าตั้งค่า →
+        <b class="ui">ข้อความแจ้ง</b> → <b class="ui">เสนอให้ล็อกอิน TONE3000 ตอนเปิดแอป</b></p>
 
-      <h3>Playing offline</h3>
-      <p>Anything already downloaded keeps working with no network at all. A factory rig whose
-        profile is not cached falls back to its bypassed built-in <b class="ui">Tube Amp</b> and a
-        bundled cab, and the header reads <b class="ui">Built-in tube amp</b> so you know what you
-        are hearing. Sign in later and those rigs resolve to the real captures in place — you do not
-        have to rebuild anything.</p>
+      <h3>เล่นแบบออฟไลน์</h3>
+      <p>ทุกอย่างที่ดาวน์โหลดไว้แล้วยังทำงานต่อได้แม้ไม่มีเครือข่ายเลย Rig จากโรงงานที่โปรไฟล์
+        ยังไม่ถูกแคชไว้จะย้อนกลับไปใช้ <b class="ui">แอมป์หลอด</b> ในตัวที่ปิดไว้ (bypass) และ
+        ตู้แอมป์ที่มาพร้อมแอป โดยส่วนหัวจะขึ้นว่า <b class="ui">แอมป์หลอดในตัว</b> เพื่อให้คุณ
+        รู้ว่ากำลังฟังอะไรอยู่ ล็อกอินภายหลังแล้ว Rig เหล่านั้นจะกลับไปใช้แคปเจอร์จริงในตำแหน่งเดิม
+        — คุณไม่ต้องสร้างอะไรขึ้นใหม่</p>
       <div class="note warn">
-        <div class="t">There is no sign-out</div>
-        <p>NAMper has no TONE3000 sign-out button. Once the session exists, the only way to clear it
-          is to delete the app. Worth knowing before you sign in on a borrowed device.</p>
+        <div class="t">ไม่มีปุ่มออกจากระบบ</div>
+        <p>NAMper ไม่มีปุ่มออกจากระบบ TONE3000 เมื่อเซสชันถูกสร้างขึ้นแล้ว วิธีเดียวที่จะล้าง
+          มันได้คือลบแอปทิ้ง ควรรู้ไว้ก่อนล็อกอินบนอุปกรณ์ที่ยืมมา</p>
       </div>
-      <p>When something goes wrong the app says which of the four things it is:
-        <b class="ui r">TONE3000: sign in to load %@.</b>,
-        <b class="ui r">TONE3000: the server had a problem (HTTP %lld) — try again later.</b>,
-        <b class="ui r">TONE3000: unexpected reply for %@.</b> and
-        <b class="ui r">TONE3000: no connection — check the network.</b></p>
+      <p>เมื่อมีอะไรผิดพลาด แอปจะบอกว่าเป็นสี่กรณีไหน:
+        <b class="ui r">TONE3000: ลงชื่อเข้าใช้เพื่อโหลด %@</b>,
+        <b class="ui r">TONE3000: เซิร์ฟเวอร์มีปัญหา (HTTP %lld) — ลองใหม่ภายหลัง</b>,
+        <b class="ui r">TONE3000: การตอบกลับผิดปกติสำหรับ %@</b> และ
+        <b class="ui r">TONE3000: ไม่มีการเชื่อมต่อ — ตรวจสอบเครือข่าย</b></p>
       <div class="note tip">
-        <div class="t">Downloads and backups</div>
-        <p>The <b class="ui">tones/</b> folder is excluded from iCloud backup on purpose — a
-          restore-from-backup will not bring your downloaded profiles with it, because TONE3000 can
-          fetch them again. If a particular capture matters to you, export it from the
-          <b class="ui">NAM Profiles</b> sheet and keep the file.</p>
+        <div class="t">การดาวน์โหลดกับการสำรองข้อมูล</div>
+        <p>โฟลเดอร์ <b class="ui">tones/</b> ถูกกันออกจากการสำรองข้อมูล iCloud โดยตั้งใจ — การกู้
+          คืนจากแบ็กอัปจะไม่นำโปรไฟล์ที่ดาวน์โหลดไว้กลับมาด้วย เพราะ TONE3000 สามารถดึงมันมาใหม่
+          ได้อีก ถ้าแคปเจอร์ตัวใดสำคัญกับคุณ ให้ส่งออกจากชีต
+          <b class="ui">โปรไฟล์ NAM</b> แล้วเก็บไฟล์นั้นไว้เอง</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
-      <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with
-        a microphone. Its sheet shows the current IR name, a menu button labelled
-        <b class="ui">Cabinets</b>, a <b class="ui">Load file</b> button, and one knob:
-        <b class="ui">Level</b>, −12 to +12 dB. Once an IR is loaded, a <b class="ui">Clear IR</b>
-        button appears alongside.</p>
-      <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio;
-        whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays
-        available even if you delete the original. The same block, used as an
-        <b class="ui">IR Verb</b>, labels its menu <b class="ui">Spaces</b> instead and loads
-        reverb impulses rather than cabinets.</p>
+      <h2 id="cabs"><span class="n">02.6</span>ตู้แอมป์และ IR</h2>
+      <p>บล็อก <b class="ui">ตู้แอมป์</b> เล่น impulse response — ตู้ลำโพงที่ถูกแคปเจอร์ด้วยไมโครโฟน
+        ชีตของมันแสดงชื่อ IR ปัจจุบัน ปุ่มเมนูชื่อ
+        <b class="ui">ตู้ลำโพง</b> ปุ่ม <b class="ui">โหลดไฟล์</b> และปุ่มปรับหนึ่งปุ่ม:
+        <b class="ui">ระดับ</b> −12 ถึง +12 dB เมื่อโหลด IR แล้ว ปุ่ม <b class="ui">ล้าง IR</b>
+        จะปรากฏขึ้นข้าง ๆ</p>
+      <p><b class="ui">โหลดไฟล์</b> เปิดตัวเลือกไฟล์สำหรับ <b class="ui">.wav</b> และไฟล์เสียง
+        อื่น ๆ อะไรก็ตามที่คุณเลือกจะถูกคัดลอกเข้าโฟลเดอร์ <b class="ui">irs/</b> ของแอป จึงยัง
+        ใช้งานได้แม้คุณจะลบไฟล์ต้นฉบับทิ้งไป บล็อกเดียวกันนี้ เมื่อใช้เป็น
+        <b class="ui">IR รีเวิร์บ</b> จะตั้งชื่อเมนูว่า <b class="ui">สเปซ</b> แทน และโหลด
+        impulse ของรีเวิร์บแทนที่จะเป็นตู้แอมป์</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Menu</th><th>Bundled impulse responses</th></tr></thead>
+          <thead><tr><th>เมนู</th><th>Impulse response ที่มากับแอป</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Cabinets</b></td>
+            <tr><td><b class="ui">ตู้ลำโพง</b></td>
               <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
                 <b class="ui">V30 412 SM57 - Cookie Monster</b>,
                 <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
-            <tr><td><b class="ui">Spaces</b></td>
+            <tr><td><b class="ui">สเปซ</b></td>
               <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
                 <b class="ui">Plate 1.6s</b></td></tr>
           </tbody>
         </table>
       </div>
       <div class="note">
-        <div class="t">Not every amp needs a cab</div>
-        <p>An empty <b class="ui">Cab</b> block tells you why it might stay empty:
-          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. Plenty of TONE3000
-          captures are taken from the speaker output, cab and microphone included; putting another
-          cab after one of those makes the sound dull and boxy. An empty
-          <b class="ui">IR Verb</b> reads <b class="ui">No IR loaded — pick a space or a file</b>
-          instead.</p>
+        <div class="t">ไม่ใช่ทุกแอมป์ที่ต้องใช้ตู้แอมป์</div>
+        <p>บล็อก <b class="ui">ตู้แอมป์</b> ที่ว่างเปล่าจะบอกเหตุผลว่าทำไมมันอาจปล่อยว่างไว้แบบนั้น:
+          <b class="ui">ยังไม่ได้โหลด IR — โปรไฟล์ NAM แบบ amp+cab
+ไม่ต้องใช้</b> แคปเจอร์
+          TONE3000 จำนวนมากถูกอัดจากเอาต์พุตของลำโพง รวมตู้แอมป์และไมโครโฟนไว้แล้ว การใส่ตู้แอมป์
+          อีกตัวต่อจากแคปเจอร์แบบนั้นจะทำให้เสียงทึบและอึดอัด ส่วน
+          <b class="ui">IR รีเวิร์บ</b> ที่ว่างเปล่าจะขึ้นว่า
+          <b class="ui">ยังไม่ได้โหลด IR — เลือกสเปซหรือไฟล์</b> แทน</p>
       </div>
-      <p>IR problems show as <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> or
+      <p>ปัญหาเกี่ยวกับ IR จะแสดงเป็น <b class="ui r">IR file missing: {name}</b>,
+        <b class="ui r">Could not read IR {name}.</b> หรือ
         <b class="ui r">Could not import {name}.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>Presets</h2>
-      <p>A rig preset stores the whole chain — blocks, models, knob positions, the amp profile, the
-        cab. Save one from the <b class="ui">+</b> on the <b class="ui">PRESETS</b> card, or from
-        the preset manager. The prompt is an alert titled <b class="ui">Save preset</b> whose
-        message tells you what is about to happen:
-        <b class="ui">The current rig gets the next free MIDI PC slot.</b> Type a name and tap
-        <b class="ui">Save</b>. Leave the field empty and it saves as <b class="ui">Preset</b>.</p>
+      <h2 id="presets"><span class="n">02.7</span>พรีเซ็ต</h2>
+      <p>พรีเซ็ตของ Rig เก็บทั้งสายสัญญาณไว้ — บล็อก โมเดล ตำแหน่งปุ่มปรับ โปรไฟล์แอมป์
+        ตู้แอมป์ บันทึกได้จาก <b class="ui">+</b> บนการ์ด <b class="ui">พรีเซ็ต</b> หรือจาก
+        ตัวจัดการพรีเซ็ต กล่องแจ้งเตือนมีชื่อ <b class="ui">บันทึกพรีเซ็ต</b> ซึ่งข้อความบอกว่า
+        กำลังจะเกิดอะไรขึ้น:
+        <b class="ui">ริกปัจจุบันจะได้สล็อต MIDI PC ว่างถัดไป</b> พิมพ์ชื่อแล้วแตะ
+        <b class="ui">บันทึก</b> ปล่อยช่องว่างไว้แล้วมันจะบันทึกเป็น <b class="ui">พรีเซ็ต</b></p>
       <div class="note warn">
-        <div class="t">The PC slot is not editable</div>
-        <p>Every preset sits on a MIDI program-change slot, and NAMper assigns it for you: the four
-          factory presets hold PC 0–3, and user presets take the next free number from 4 upwards.
-          There is no way to change a slot by hand. Plan your footswitch layout around the order you
-          save presets in, not the other way round.</p>
+        <div class="t">ช่อง PC แก้ไขเองไม่ได้</div>
+        <p>ทุกพรีเซ็ตอยู่บนช่อง MIDI program-change และ NAMper กำหนดให้คุณเอง: พรีเซ็ตโรงงานทั้งสี่
+          ครองช่อง PC 0–3 และพรีเซ็ตของผู้ใช้จะได้หมายเลขว่างถัดไปตั้งแต่ 4 ขึ้นไป ไม่มีทางแก้ไข
+          ช่องด้วยมือเอง วางแผนผังฟุตสวิตช์ตามลำดับที่คุณบันทึกพรีเซ็ต ไม่ใช่กลับกัน</p>
       </div>
 
-      <h3>Updating and managing</h3>
-      <p>Overwriting is always confirmed. <b class="ui">Update with current rig</b> raises a dialog
-        reading <b class="ui">Overwrite “{name}” with the current rig?</b> with
-        <b class="ui">Overwrite</b> and <b class="ui">Cancel</b>. The manager itself has the nav
-        title <b class="ui">Presets</b> and two sections: <b class="ui">Rigs · MIDI PC slots</b>,
-        and <b class="ui">Everything at once</b> → <b class="ui">Global snapshots</b>, described as
-        rig, looper, sampler, setlist and control map saved and restored together.</p>
-      <p>Each row's context menu offers <b class="ui">Rename</b>,
-        <b class="ui">Update with current rig</b>, <b class="ui">Share</b> and
-        <b class="ui">Delete</b>. Renaming lives in the manager only — the preset chip menu on the
-        Rig tab does not have it. Once you have more than eight presets, a
-        <b class="ui">Search presets</b> field appears at the top.</p>
+      <h3>การอัปเดตและจัดการ</h3>
+      <p>การเขียนทับจะถูกยืนยันเสมอ <b class="ui">อัปเดตด้วยริกปัจจุบัน</b> จะเปิดกล่องโต้ตอบ
+        ที่ขึ้นว่า <b class="ui">Overwrite "{name}" with the current rig?</b> พร้อม
+        <b class="ui">เขียนทับ</b> และ <b class="ui">ยกเลิก</b> ตัวจัดการเองมีชื่อหน้าว่า
+        <b class="ui">พรีเซ็ต</b> และสองส่วน: <b class="ui">ริก · สล็อต MIDI PC</b>
+        และ <b class="ui">ทั้งหมดพร้อมกัน</b> → <b class="ui">สแนปช็อตรวม</b> ซึ่งอธิบาย
+        ว่าเป็น Rig, ลูปเปอร์, แซมเปลอร์, เซ็ตลิสต์ และแผนที่การควบคุม ที่บันทึกและเรียกคืนพร้อมกัน</p>
+      <p>เมนูบริบทของแต่ละแถวมี <b class="ui">เปลี่ยนชื่อ</b>,
+        <b class="ui">อัปเดตด้วยริกปัจจุบัน</b>, <b class="ui">แชร์</b> และ
+        <b class="ui">ลบ</b> การเปลี่ยนชื่อทำได้เฉพาะในตัวจัดการเท่านั้น — เมนูชิปพรีเซ็ตบน
+        แท็บ Rig ไม่มีตัวเลือกนี้ เมื่อคุณมีพรีเซ็ตมากกว่าแปดตัว ช่อง
+        <b class="ui">ค้นหาพรีเซ็ต</b> จะปรากฏที่ด้านบน</p>
       <div class="note warn">
-        <div class="t">Delete is not confirmed</div>
-        <p><b class="ui">Delete</b> in the preset row menu takes effect immediately, with no
-          "are you sure". Export a backup before a clear-out.</p>
+        <div class="t">Delete ไม่มีการยืนยัน</div>
+        <p><b class="ui">ลบ</b> ในเมนูแถวพรีเซ็ตมีผลทันที ไม่มีข้อความ "แน่ใจหรือไม่"
+          ให้ส่งออกสำรองไว้ก่อนล้างข้อมูล</p>
       </div>
 
-      <h3>Import and export</h3>
-      <p>The manager's import/export menu has <b class="ui">Import preset / bank / backup…</b>,
-        <b class="ui">Export rig presets</b> (which writes <b class="ui">NAMper Presets.namper</b>)
-        and <b class="ui">Export EVERYTHING (full backup)</b> (which writes
-        <b class="ui">NAMper Backup.namper</b>). Note that a full backup carries parameters and
-        references but not sampler kit audio.</p>
-      <p>The file extension is <b class="ui">.namper</b>. Tap one in Files, or receive one over
-        AirDrop, and NAMper imports it and opens the preset manager. Every imported preset gets a
-        fresh slot, so an import can never silently overwrite something you already had.</p>
+      <h3>การนำเข้าและส่งออก</h3>
+      <p>เมนูนำเข้า/ส่งออกของตัวจัดการมี <b class="ui">นำเข้าพรีเซ็ต / แบงก์ / ไฟล์สำรอง…</b>,
+        <b class="ui">ส่งออกพรีเซ็ตริก</b> (ซึ่งเขียนไฟล์ <b class="ui">NAMper Presets.namper</b>)
+        และ <b class="ui">ส่งออกทั้งหมด (สำรองเต็ม)</b> (ซึ่งเขียนไฟล์
+        <b class="ui">NAMper Backup.namper</b>) โปรดสังเกตว่าแบ็กอัปแบบเต็มพกพารามิเตอร์และ
+        การอ้างอิง แต่ไม่มีไฟล์เสียงของชุดแซมเปลอร์</p>
+      <p>นามสกุลไฟล์คือ <b class="ui">.namper</b> แตะไฟล์ในแอป Files หรือรับผ่าน AirDrop
+        แล้ว NAMper จะนำเข้าและเปิดตัวจัดการพรีเซ็ตให้เอง พรีเซ็ตที่นำเข้าทุกตัวจะได้ช่องใหม่
+        เสมอ การนำเข้าจึงไม่มีทางเขียนทับสิ่งที่คุณมีอยู่แล้วโดยเงียบ ๆ</p>
 
-      <h3>The factory four</h3>
-      <p>NAMper ships with four rigs on PC 0–3, each built around a real capture:
-        <b class="ui">Clean</b> (an American blackface combo), <b class="ui">Crunch</b> (a 1969
-        British 50-watt head), <b class="ui">Lead</b> (a modern high-gain amp+cab) and
-        <b class="ui">Ambient</b> (a British class-A chime combo). The capture each one streams
-        carries its uploader's own title, which is what the amp block shows. Each rig also carries a bypassed
-        built-in <b class="ui">Tube Amp</b> and a bundled cab as its offline fallback, and each is
-        marked <b class="ui">FACTORY</b> in the manager. Bring them all back from Settings →
-        <b class="ui">RESET</b> → <b class="ui">Reset to factory presets</b>; the dialog warns
-        <b class="ui">Delete ALL user presets? The four factory rigs come back.</b></p>
-      <p>The other tabs have preset sheets of their own, reached from their
-        <b class="ui">PRESETS</b> chip and all sharing the same design:
-        <b class="ui">Looper Presets</b>, <b class="ui">Sampler Kits</b>,
-        <b class="ui">Perform Presets</b>, <b class="ui">Control Presets</b> and
-        <b class="ui">Global Snapshots</b>. Two of them cannot be shared, because they point at
-        files on this device — sampler kits carry their audio, and global snapshots reference
-        models, samples and backing tracks.</p>
+      <h3>สี่พรีเซ็ตจากโรงงาน</h3>
+      <p>NAMper มาพร้อม Rig สี่ชุดบน PC 0–3 แต่ละชุดสร้างจากแคปเจอร์จริง:
+        <b class="ui">คลีน</b> (คอมโบ blackface สัญชาติอเมริกัน), <b class="ui">ครันช์</b>
+        (หัวแอมป์อังกฤษ 50 วัตต์ปี 1969), <b class="ui">ลีด</b> (แอมป์+ตู้เกนสูงสมัยใหม่)
+        และ <b class="ui">Ambient</b> (คอมโบ class-A แบบอังกฤษเสียงใส) แคปเจอร์ที่แต่ละตัว
+        สตรีมมาพกพาชื่อของผู้อัปโหลดเอง ซึ่งเป็นสิ่งที่บล็อกแอมป์แสดง แต่ละ Rig ยังพกพา
+        <b class="ui">แอมป์หลอด</b> ในตัวที่ปิดไว้ (bypass) และตู้แอมป์ที่มากับแอปเป็นตัวสำรอง
+        ออฟไลน์ และแต่ละตัวถูกทำเครื่องหมาย <b class="ui">โรงงาน</b> ในตัวจัดการ นำกลับมาทั้งหมด
+        ได้จากหน้าตั้งค่า → <b class="ui">รีเซ็ต</b> → <b class="ui">คืนค่าพรีเซ็ตโรงงาน</b>;
+        กล่องโต้ตอบเตือนว่า
+        <b class="ui">ลบพรีเซ็ตของผู้ใช้ทั้งหมด? ริกโรงงานทั้งสี่จะกลับมา</b></p>
+      <p>แท็บอื่น ๆ ก็มีชีตพรีเซ็ตของตัวเอง เข้าถึงได้จากชิป
+        <b class="ui">พรีเซ็ต</b> และทั้งหมดใช้ดีไซน์เดียวกัน:
+        <b class="ui">พรีเซ็ตลูปเปอร์</b>, <b class="ui">ชุดแซมเปลอร์</b>,
+        <b class="ui">พรีเซ็ตเวที</b>, <b class="ui">พรีเซ็ตการควบคุม</b> และ
+        <b class="ui">สแนปช็อตรวม</b> สองอันในนั้นแชร์ไม่ได้ เพราะชี้ไปที่ไฟล์บนอุปกรณ์
+        เครื่องนี้ — ชุดแซมเปลอร์พกพาไฟล์เสียงของตัวเอง และสแนปช็อตรวมอ้างอิงโมเดล แซมเปิล
+        และแบ็กกิ้งแทร็ก</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>Multiple rigs</h2>
-      <p>NAMper runs up to four rigs at once — a guitar and a vocal, a guitar and a bass, or four
-        players through one interface. Add one from the <b class="ui">RIG</b> <b class="ui">+</b>
-        menu in the <b class="ui">SIGNAL CHAIN</b> header.</p>
+      <h2 id="rigs"><span class="n">02.8</span>การใช้หลาย Rig</h2>
+      <p>NAMper รัน Rig ได้พร้อมกันสูงสุดสี่ชุด — กีตาร์กับเสียงร้อง, กีตาร์กับเบส หรือผู้เล่นสี่คน
+        ผ่านอินเตอร์เฟซเดียว เพิ่มได้จากเมนู <b class="ui">ริก</b> <b class="ui">+</b>
+        ในส่วนหัว <b class="ui">สายสัญญาณ</b></p>
       <figure>
         <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
-             alt="The Rig tab with two rigs stacked side by side: the first carries a MIDI badge marking it as MIDI-focused, the second is pinned so presets leave it alone.">
-        <figcaption>Two rigs — one holding MIDI focus, one pinned</figcaption>
+             alt="แท็บ Rig พร้อม Rig สองชุดวางเรียงกัน: ชุดแรกมีป้าย MIDI ระบุว่าโฟกัส MIDI อยู่ที่นี่ ชุดที่สองถูกปักหมุดไว้เพื่อไม่ให้พรีเซ็ตไปยุ่งกับมัน">
+        <figcaption>Rig สองชุด — ชุดหนึ่งถือโฟกัส MIDI อยู่ อีกชุดถูกปักหมุด</figcaption>
       </figure>
-      <p>The menu's <b class="ui">Templates</b> section starts you somewhere sensible:
-        <b class="ui">Guitar (gate · tube amp · cab)</b>,
-        <b class="ui">Bass (gate · comp · bass amp · cab)</b>,
-        <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> and
-        <b class="ui">Empty rig</b>. Below that, <b class="ui">From preset</b> lists your saved
-        presets by name — or opens a searchable <b class="ui">NEW RIG FROM PRESET</b> sheet once
-        there are more than eight of them.</p>
-      <p>Rigs are named <b class="ui">GUITAR</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b> or
-        <b class="ui">RIG n</b> depending on the template; a rig built from a preset takes the
-        preset's name. Headers only appear once you have more than one rig.</p>
+      <p>ส่วน <b class="ui">เทมเพลต</b> ของเมนูช่วยให้คุณเริ่มต้นจากจุดที่เข้าท่า:
+        <b class="ui">กีตาร์ (เกต · แอมป์หลอด · ตู้)</b>,
+        <b class="ui">เบส (เกต · คอมป์ · แอมป์เบส · ตู้)</b>,
+        <b class="ui">เสียงร้อง (เกต · ดี-เอสเซอร์ · คอมป์ · อีคิว · เพลต)</b> และ
+        <b class="ui">ริกว่าง</b> ด้านล่างนั้น <b class="ui">จากพรีเซ็ต</b> แสดงพรีเซ็ตที่คุณ
+        บันทึกไว้ตามชื่อ — หรือเปิดชีต <b class="ui">ริกใหม่จากพรีเซ็ต</b> ที่ค้นหาได้ เมื่อมี
+        มากกว่าแปดรายการ</p>
+      <p>Rig จะถูกตั้งชื่อว่า <b class="ui">กีตาร์</b>, <b class="ui">เบส</b>,
+        <b class="ui">เสียงร้อง</b> หรือ <b class="ui">RIG n</b> ขึ้นอยู่กับเทมเพลต ส่วน Rig ที่สร้าง
+        จากพรีเซ็ตจะใช้ชื่อของพรีเซ็ตนั้น ส่วนหัวจะปรากฏก็ต่อเมื่อคุณมีมากกว่าหนึ่ง Rig</p>
 
-      <h3>Focus, pinning and removal</h3>
-      <p>Tap a rig's header to give it <b class="ui">MIDI</b> focus — a badge marks which rig your
-        controller is currently driving. The pin toggle
-        (<b class="ui">Pin rig</b> / <b class="ui">Unpin rig</b>, captioned "presets keep this rig")
-        makes a rig survive preset switches, which is how you keep a vocal chain intact while you
-        change guitar sounds from a footswitch. A trash button
-        (<b class="ui">Remove rig</b>) appears once there is more than one rig.</p>
-      <p>Layout follows the device: in landscape the rigs stack as rows with each chain running left
-        to right; in portrait they sit side by side with the chains running top to bottom.</p>
+      <h3>โฟกัส การปักหมุด และการลบ</h3>
+      <p>แตะส่วนหัวของ Rig เพื่อให้มันได้โฟกัส <b class="ui">MIDI</b> — ป้ายจะบอกว่าคอนโทรลเลอร์
+        ของคุณกำลังขับเคลื่อน Rig ไหนอยู่ สวิตช์ปักหมุด
+        (<b class="ui">ปักหมุดริก</b> / <b class="ui">เลิกปักหมุดริก</b> คำอธิบายว่า "presets keep this rig")
+        ทำให้ Rig รอดจากการสลับพรีเซ็ต ซึ่งเป็นวิธีที่คุณรักษาสายเสียงร้องไว้ไม่ให้เปลี่ยน ในขณะที่
+        เปลี่ยนเสียงกีตาร์จากฟุตสวิตช์ ปุ่มถังขยะ
+        (<b class="ui">เอาริกออก</b>) จะปรากฏขึ้นเมื่อมีมากกว่าหนึ่ง Rig</p>
+      <p>เลย์เอาต์ปรับตามอุปกรณ์: แนวนอน Rig จะวางเรียงเป็นแถวโดยแต่ละสายวิ่งซ้ายไปขวา แนวตั้ง
+        Rig จะวางเคียงข้างกันโดยสายวิ่งจากบนลงล่าง</p>
 
-      <h3>Each rig's input and output</h3>
-      <p>The IN connector at the head of a chain is a menu. Its
-        <b class="ui">Sound-card input</b> section lists your channels by name —
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on — and adds
-        <b class="ui">Sampler pads</b> and <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, so a
-        rig can process a loop or the sampler rather than a live input.</p>
-      <p>The OUT connector opens a sheet headed <b class="ui">RIG OUTPUT</b>, with
-        <b class="ui">Level</b> and <b class="ui">Pan</b> knobs, a
-        <b class="ui">Hardware output pair</b> menu (<b class="ui">Out 1-2</b>,
-        <b class="ui">Out 3-4</b>… — this needs <b class="ui">Use all interface outputs</b> switched
-        on in Settings), and <b class="ui">Record this rig into</b> →
-        <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. The summary row underneath
-        reads <b class="ui">Looper: not assigned</b> or, once you have picked some,
-        <b class="ui">Looper: track 1, 3</b>.</p>
+      <h3>อินพุตและเอาต์พุตของแต่ละ Rig</h3>
+      <p>ขั้วต่อ IN ที่หัวสายคือเมนูหนึ่ง ส่วน
+        <b class="ui">อินพุตซาวด์การ์ด</b> ของมันแสดงแชนเนลของคุณตามชื่อ —
+        <b class="ui">In 1</b>, <b class="ui">In 2</b> และต่อ ๆ ไป — และเพิ่ม
+        <b class="ui">แพดแซมเปลอร์</b> กับ <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>
+        เข้าไปด้วย เพื่อให้ Rig สามารถประมวลผลลูปหรือแซมเปลอร์แทนที่จะเป็นอินพุตสด</p>
+      <p>ขั้วต่อ OUT เปิดชีตชื่อ <b class="ui">เอาต์พุตริก</b> พร้อมปุ่มปรับ
+        <b class="ui">ระดับ</b> และ <b class="ui">แพน</b> เมนู
+        <b class="ui">คู่เอาต์พุตฮาร์ดแวร์</b> (<b class="ui">Out 1-2</b>,
+        <b class="ui">Out 3-4</b>… — ต้องเปิด <b class="ui">ใช้เอาต์พุตทั้งหมดของอินเทอร์เฟซ</b> ในหน้า
+        ตั้งค่าก่อน) และ <b class="ui">อัดริกนี้ลงใน</b> →
+        <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b> แถวสรุปด้านล่างจะขึ้นว่า
+        <b class="ui">Looper: not assigned</b> หรือเมื่อคุณเลือกไว้บ้างแล้ว
+        <b class="ui">Looper: track 1, 3</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>Parallel branches</h2>
-      <p>A rig is not limited to one line. Each rig can hold up to four chains — the main one plus
-        three branches — so you can split a signal, treat the halves differently and mix them back
-        together. Create one with the branch-icon button under the chain
-        (<b class="ui">Add parallel chain</b>).</p>
-      <p>Its menu has a single section, <b class="ui">Branch from</b>, listing each input channel,
-        <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, and
-        <b class="ui">After {Block}</b> for every block on the main chain. That last group is the
-        interesting one: branching after the amp gives you two different reverbs on the same amp
-        tone, branching before it gives you two different amps on the same guitar.</p>
+      <h2 id="branches"><span class="n">02.9</span>สายแยกขนาน</h2>
+      <p>Rig ไม่ได้จำกัดอยู่แค่สายเดียว แต่ละ Rig รับสายได้สูงสุดสี่สาย — สายหลักบวกอีกสามสายแยก
+        — คุณจึงแยกสัญญาณ ปรับแต่งแต่ละครึ่งต่างกัน แล้วผสมกลับเข้าด้วยกันได้ สร้างสายแยกได้ด้วย
+        ปุ่มไอคอนสายแยกใต้สาย
+        (<b class="ui">เพิ่มเชนขนาน</b>)</p>
+      <p>เมนูของมันมีส่วนเดียว <b class="ui">แยกสายจาก</b> แสดงแชนเนลอินพุตแต่ละตัว,
+        <b class="ui">แพดแซมเปลอร์</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b> และ
+        <b class="ui">After {Block}</b> สำหรับทุกบล็อกบนสายหลัก กลุ่มสุดท้ายนั้นน่าสนใจที่สุด:
+        การแยกหลังแอมป์ให้คุณได้รีเวิร์บสองแบบต่างกันบนโทนแอมป์เดียวกัน ส่วนการแยกก่อนแอมป์ให้คุณ
+        ได้แอมป์สองตัวต่างกันบนกีตาร์ตัวเดียวกัน</p>
 
-      <h3>The two anchors</h3>
-      <p>A branch draws as a parallel column with an entry anchor where it leaves the main chain and
-        a merge anchor where it rejoins. The merge anchor shows that branch's level as a
-        percentage, so you can read the balance without opening anything.</p>
+      <h3>สมออันคู่</h3>
+      <p>สายแยกวาดเป็นคอลัมน์ขนานที่มีสมอทางเข้าจุดที่มันแยกออกจากสายหลัก และสมอทางออกจุดที่มัน
+        กลับมารวมกัน สมอทางออกแสดงระดับของสายแยกนั้นเป็นเปอร์เซ็นต์ คุณจึงอ่านสมดุลได้โดยไม่ต้อง
+        เปิดอะไรเลย</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Gesture</th><th>What it does</th></tr></thead>
+          <thead><tr><th>ท่าทาง</th><th>ทำอะไร</th></tr></thead>
           <tbody>
-            <tr><td>Tap an anchor</td><td>Opens the mixer sheet headed <b class="ui">LANE {n} MIX</b>,
-              with <b class="ui">Level</b> and <b class="ui">Pan</b></td></tr>
-            <tr><td>Long-press the entry anchor</td><td>The <b class="ui">Branch input</b> menu:
-              own input, <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-              <b class="ui">Branch after {Block}</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Long-press the merge anchor</td><td>The <b class="ui">Branch output</b> menu:
-              <b class="ui">Into the main mix</b>, <b class="ui">Merge before {Block}</b>,
-              <b class="ui">Own output 1-2</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Drag an anchor</td><td>Re-attaches it at a different point along the main
-              chain</td></tr>
+            <tr><td>แตะสมอ</td><td>เปิดชีตมิกเซอร์ชื่อ <b class="ui">LANE {n} MIX</b>
+              พร้อม <b class="ui">ระดับ</b> และ <b class="ui">แพน</b></td></tr>
+            <tr><td>กดค้างที่สมอทางเข้า</td><td>เมนู <b class="ui">อินพุตสายแยก</b>:
+              อินพุตของตัวเอง, <b class="ui">แพดแซมเปลอร์</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
+              <b class="ui">Branch after {Block}</b> และ <b class="ui">เอาสายแยกออก</b></td></tr>
+            <tr><td>กดค้างที่สมอทางออก</td><td>เมนู <b class="ui">เอาต์พุตสายแยก</b>:
+              <b class="ui">เข้ามิกซ์หลัก</b>, <b class="ui">Merge before {Block}</b>,
+              <b class="ui">Own output 1-2</b> และ <b class="ui">เอาสายแยกออก</b></td></tr>
+            <tr><td>ลากสมอ</td><td>ต่อมันใหม่ที่จุดอื่นตามสายหลัก</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Dragging is the fast way to audition: hold the merge anchor, slide it earlier or later in
-        the chain, and hear the branch land before or after the delay without opening a menu.</p>
+      <p>การลากเป็นวิธีที่เร็วในการลองฟัง: จับสมอทางออกไว้ เลื่อนมันไปข้างหน้าหรือข้างหลังในสาย
+        แล้วฟังว่าสายแยกไปอยู่ก่อนหรือหลัง delay โดยไม่ต้องเปิดเมนูเลย</p>
       <div class="note tip">
-        <div class="t">Mixing several branches at once</div>
-        <p>Put a <b class="ui">Volume</b> block at the point where branches merge and it grows an
-          extra section, <b class="ui">INCOMING LINES</b>, with one knob per merging branch —
-          <b class="ui">Line 1</b>, <b class="ui">Line 2</b> and so on. That gives you a small mixer
-          in the middle of the rig instead of chasing individual anchor sheets.</p>
+        <div class="t">มิกซ์หลายสายแยกพร้อมกัน</div>
+        <p>วางบล็อก <b class="ui">ระดับเสียง</b> ไว้ตรงจุดที่สายแยกมารวมกัน แล้วมันจะงอกส่วนเพิ่ม
+          ขึ้นมา <b class="ui">สัญญาณเข้า</b> พร้อมปุ่มปรับหนึ่งปุ่มต่อสายแยกที่มารวมแต่ละ
+          สาย — <b class="ui">Line 1</b>, <b class="ui">Line 2</b> และต่อ ๆ ไป นั่นให้คุณมี
+          มิกเซอร์เล็ก ๆ อยู่กลาง Rig แทนที่จะต้องไล่เปิดชีตของสมอทีละอัน</p>
       </div>
-      <p>A branch can also skip the main mix entirely: point its output at
-        <b class="ui">Own output 1-2</b> and it goes straight to its own hardware pair, which needs
-        <b class="ui">Use all interface outputs</b> enabled in Settings first.</p>
+      <p>สายแยกยังข้ามมิกซ์หลักไปเลยก็ได้: ชี้เอาต์พุตของมันไปที่
+        <b class="ui">Own output 1-2</b> แล้วมันจะไปที่คู่ฮาร์ดแวร์ของตัวเองโดยตรง ซึ่งต้องเปิด
+        <b class="ui">ใช้เอาต์พุตทั้งหมดของอินเทอร์เฟซ</b> ในหน้าตั้งค่าก่อน</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>The master section</h2>
-      <p>The <b class="ui">MASTER</b> card at the bottom of the Rig tab is where everything meets:
-        every rig, the looper, the sampler pads and the backing track sum here before the hardware
-        output. Whatever you do to the master, you do to all of it.</p>
-      <p>The <b class="ui">FX</b> <b class="ui">+</b> menu adds master processing — up to six
-        blocks. You can choose from <b class="ui">Volume</b>, <b class="ui">EQ</b>,
-        <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
-        <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
-        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
-        <b class="ui">Room</b> and <b class="ui">Delay</b>. They behave like chain blocks: tap a
-        chip to edit it, long-press for <b class="ui">Enable</b> / <b class="ui">Bypass</b> and
-        <b class="ui">Remove</b>.</p>
+      <h2 id="master"><span class="n">02.10</span>ส่วน Master</h2>
+      <p>การ์ด <b class="ui">มาสเตอร์</b> ที่ด้านล่างของแท็บ Rig คือจุดที่ทุกอย่างมาบรรจบกัน:
+        ทุก Rig, ลูปเปอร์, แพดแซมเปลอร์ และแบ็กกิ้งแทร็ก รวมกันที่นี่ก่อนออกไปที่ฮาร์ดแวร์
+        ไม่ว่าคุณทำอะไรกับ Master มันจะมีผลกับทุกอย่างทั้งหมด</p>
+      <p>เมนู <b class="ui">FX</b> <b class="ui">+</b> เพิ่มการประมวลผลของ Master — สูงสุด
+        หกบล็อก คุณเลือกได้จาก <b class="ui">ระดับเสียง</b>, <b class="ui">อีคิว</b>,
+        <b class="ui">คอมป์</b>, <b class="ui">แซตหลอด</b>, <b class="ui">แซตเทป</b>,
+        <b class="ui">ลิมิตเตอร์</b>, <b class="ui">กัน FB</b>, <b class="ui">ดี-เอสเซอร์</b>,
+        <b class="ui">คลาวด์</b>, <b class="ui">ฮอลล์</b>, <b class="ui">เพลต</b>,
+        <b class="ui">รูม</b> และ <b class="ui">ดีเลย์</b> พวกมันทำงานเหมือนบล็อกในสายสัญญาณ:
+        แตะชิปเพื่อแก้ไข กดค้างเพื่อ <b class="ui">เปิดใช้</b> / <b class="ui">บายพาส</b> และ
+        <b class="ui">เอาออก</b></p>
       <div class="note warn">
-        <div class="t">No AU plugins in the master</div>
-        <p>Hosted Audio Unit plugins can only go inside a rig chain. The master FX menu does not
-          offer them. If you want a third-party limiter across everything, that is not possible —
-          use the built-in <b class="ui">Limiter</b> block instead.</p>
+        <div class="t">ไม่มีปลั๊กอิน AU ใน Master</div>
+        <p>ปลั๊กอิน Audio Unit ที่โฮสต์อยู่ใส่ได้เฉพาะในสายสัญญาณของ Rig เท่านั้น เมนู FX ของ
+          Master ไม่มีให้เลือก ถ้าคุณต้องการลิมิตเตอร์จากค่ายอื่นคลุมทุกอย่าง นั่นทำไม่ได้ —
+          ใช้บล็อก <b class="ui">ลิมิตเตอร์</b> ในตัวแทน</p>
       </div>
-      <p>There is no always-on master processor here. Saturation is a block you add —
-        <b class="ui">Tube Sat</b> or <b class="ui">Tape Sat</b>, both with
-        <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> and
-        <b class="ui">Level</b> — and limiting is the <b class="ui">Limiter</b> block, with
-        <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 to 0 dB, default −1) and
-        <b class="ui">Release</b>. If you have not added them, they are not in the signal path.</p>
+      <p>ไม่มีตัวประมวลผล Master ที่เปิดค้างตลอดเวลาอยู่ที่นี่ ความอิ่มตัว (saturation) คือ
+        บล็อกที่คุณเพิ่มเอง —
+        <b class="ui">แซตหลอด</b> หรือ <b class="ui">แซตเทป</b> ทั้งคู่มี
+        <b class="ui">ไดรฟ์</b>, <b class="ui">โทน</b>, <b class="ui">มิกซ์</b> และ
+        <b class="ui">ระดับ</b> — และการลิมิตคือบล็อก <b class="ui">ลิมิตเตอร์</b> พร้อม
+        <b class="ui">เกน</b>, <b class="ui">เพดาน</b> (−12 ถึง 0 dB ค่าเริ่มต้น −1) และ
+        <b class="ui">รีลีส</b> ถ้าคุณยังไม่ได้เพิ่มมัน มันก็ไม่ได้อยู่ในเส้นทางสัญญาณ</p>
 
-      <h3>Reading the master meters</h3>
-      <p>Stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> carry ticks at −12 and −6 dB.
-        Beside them sits a BS.1770 loudness reading: a large momentary <b class="ui">LUFS</b>
-        number with a smaller line below reading <b class="ui">LUFS</b> or
-        <b class="ui">LUFS · S &lt;n&gt;</b> for the short-term value. Below −70 LUFS it shows
-        <b class="ui">-inf</b>. The fader runs −60 to +12 dB.</p>
-      <p>Use the peak bars to stay out of clipping and the LUFS number to match your overall level
-        to something else — a backing track, a previous take, another player on the same desk.</p>
+      <h3>อ่านค่ามิเตอร์ของ Master</h3>
+      <p>แท่งพีกสเตอริโอ <b class="ui">L</b> และ <b class="ui">R</b> มีขีดที่ −12 และ −6 dB
+        ข้าง ๆ กันมีค่าความดังแบบ BS.1770: ตัวเลข <b class="ui">LUFS</b> ชั่วขณะขนาดใหญ่ พร้อม
+        เส้นเล็กกว่าด้านล่างที่อ่านว่า <b class="ui">LUFS</b> หรือ
+        <b class="ui">LUFS · S &lt;n&gt;</b> สำหรับค่าระยะสั้น ต่ำกว่า −70 LUFS จะแสดง
+        <b class="ui">-inf</b> เฟดเดอร์ปรับได้ตั้งแต่ −60 ถึง +12 dB</p>
+      <p>ใช้แท่งพีกเพื่อไม่ให้คลิป และใช้ตัวเลข LUFS เพื่อจับคู่ระดับรวมของคุณให้เข้ากับอย่างอื่น
+        — แบ็กกิ้งแทร็ก, เทคก่อนหน้า, หรือผู้เล่นคนอื่นบนโต๊ะเดียวกัน</p>
       <div class="note">
-        <div class="t">The click stays clean</div>
-        <p>The metronome click is mixed in <b>after</b> the master FX chain, so master reverbs,
-          saturation and limiting never touch it. Set the click level in Settings →
-          <b class="ui">METRONOME</b>, and give it its own output pair there if you want it in the
-          in-ears and nowhere else.</p>
+        <div class="t">คลิกยังคงสะอาด</div>
+        <p>คลิกเมโทรนอมถูกมิกซ์เข้ามา <b>หลัง</b> สายของ Master FX ดังนั้นรีเวิร์บ ความอิ่มตัว
+          และการลิมิตของ Master จะไม่แตะต้องมันเลย ตั้งระดับคลิกได้ในหน้าตั้งค่า →
+          <b class="ui">เมโทรนอม</b> และให้มันมีคู่เอาต์พุตของตัวเองที่นั่น ถ้าคุณต้องการให้มัน
+          อยู่แค่ในหูฟังมอนิเตอร์เท่านั้น</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/th/setup.html">← 01 · Getting started</a>
+      <a href="/docs/th/setup.html">← 01 · เริ่มต้นใช้งาน</a>
       <span class="sp"></span>
-      <a href="/docs/th/plugins.html">03 · AU plugins →</a>
+      <a href="/docs/th/plugins.html">03 · ปลั๊กอิน AU →</a>
     </nav>
   </main>
 </div>
@@ -620,7 +615,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper เป็นแอปอิสระที่ไม่มีความเกี่ยวข้อง การรับรอง หรือการสนับสนุนจากผู้ผลิตอุปกรณ์ใด ๆ ชื่อผลิตภัณฑ์ แบรนด์ และเครื่องหมายการค้าทั้งหมดเป็นทรัพย์สินของเจ้าของแต่ละราย และถูกใช้เพียงเพื่ออธิบายอุปกรณ์ที่นำมาแคปเจอร์เสียงเท่านั้น</p>
   </div>
 </footer>
 

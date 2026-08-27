@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIDI &amp; control — NAMper Documentation</title>
-<meta name="description" content="The control map and MIDI learn, everything you can map to, the built-in MIDI map, Bluetooth pairing, taught sound triggers, and the tuner.">
+<title>MIDI 與控制 — NAMper 文檔</title>
+<meta name="description" content="控制映射表與 MIDI 學習、所有可映射的目標、內置 MIDI 映射表、藍牙配對、已學習聲音觸發,以及調音器。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="MIDI &amp; control — NAMper Documentation">
-<meta property="og:description" content="Map footswitches, pedals and taught sounds to anything in NAMper — plus the built-in MIDI map and the tuner.">
+<meta property="og:title" content="MIDI 與控制 — NAMper 文檔">
+<meta property="og:description" content="把踏板開關、表情踏板和已學習的聲音映射到 NAMper 中的任何功能——外加內置 MIDI 映射表和調音器。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/control.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文檔</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh-hant/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh-hant/">← 所有文檔</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh-hant/control.html" aria-current="page">繁體中文</a>
   </nav>
@@ -46,276 +46,250 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目錄</div>
     <ol>
-      <li><a href="/docs/zh-hant/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh-hant/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/zh-hant/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/zh-hant/looper.html">Looper</a></li>
-      <li><a href="/docs/zh-hant/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/zh-hant/perform.html">Perform &amp; lyrics</a></li>
-      <li><a class="on" href="/docs/zh-hant/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh-hant/settings.html">Settings reference</a></li>
+      <li><a href="/docs/zh-hant/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
+      <li><a href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
+      <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
+      <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a class="on" href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
+      <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; CONTROL</div>
-    <h1>Hands on the guitar.</h1>
-    <p class="lede">Footswitches, pedals, a knock on the body of the instrument — the
-      <b class="ui a">Control</b> tab is where you decide what fires what, so the phone can stay in
-      its stand for the whole set. It is also where the tuner lives.</p>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI 與控制</div>
+    <h1>雙手留在琴上。</h1>
+    <p class="lede">踏板開關、表情踏板、敲一下琴身——<b class="ui a">控制</b> 標籤頁就是你決定
+      什麼觸發什麼的地方,這樣手機就能整場演出都插在支架上。調音器也在這裡。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本頁內容</div>
       <ul>
-        <li><a href="#map">The control map</a></li>
-        <li><a href="#learn">MIDI learn</a></li>
-        <li><a href="#actions">What you can map to</a></li>
-        <li><a href="#builtin">The built-in MIDI map</a></li>
-        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
-        <li><a href="#sounds">Taught sound triggers</a></li>
-        <li><a href="#tuner">The tuner</a></li>
+        <li><a href="#map">控制映射表</a></li>
+        <li><a href="#learn">MIDI 學習</a></li>
+        <li><a href="#actions">可映射的目標</a></li>
+        <li><a href="#builtin">內置 MIDI 映射表</a></li>
+        <li><a href="#bluetooth">藍牙 MIDI</a></li>
+        <li><a href="#sounds">已學習聲音觸發</a></li>
+        <li><a href="#tuner">調音器</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="map"><span class="n">07.1</span>The control map</h2>
-      <p>The <b class="ui a">Control</b> tab holds three cards. The first is
-        <b class="ui">CONTROL MAP</b> — your own mappings, the ones that override everything else.
-        Its blurb says what it takes: <b class="ui">MIDI controls and input triggers, mapped to
-        anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or a
-        chord.</b></p>
-      <p>The header has a presets chip and a <b class="ui">+</b> (<b class="ui">Add mapping</b>).
-        With nothing mapped yet the card reads
-        <b class="ui">No mappings yet — add one with +</b>.</p>
-      <p>Every mapping is one row, read left to right: a source chip, a <b class="ui">LEARN</b>
-        button, an arrow, an action chip, and an <b class="ui">✕</b> to delete the row. Saved maps
-        live under <b class="ui">Control Presets</b> on the presets chip, so a pedalboard layout for
-        one band need not follow you to the next.</p>
+      <h2 id="map"><span class="n">07.1</span>控制映射表</h2>
+      <p><b class="ui a">控制</b> 標籤頁包含三張卡片。第一張是
+        <b class="ui">控制映射</b>——你自己創建的映射,會覆蓋其他一切。它的說明文字寫明了
+        用途:<b class="ui">MIDI 控制與輸入觸發，可映射到任何目標。來源：任意 CC 或音符（使用 LEARN）、叩擊琴體、持續音或和弦。</b></p>
+      <p>頁頭有一個預設晶片和一個 <b class="ui">+</b>(<b class="ui">添加映射</b>)。還沒有任何
+        映射時,卡片顯示 <b class="ui">暫無映射——點按 + 添加</b>。</p>
+      <p>每條映射佔一行,從左到右依次是:一個來源晶片、一個 <b class="ui">學習</b> 按鈕、一個箭頭、
+        一個動作晶片,以及一個用於刪除該行的 <b class="ui">✕</b>。已保存的映射表保存在預設晶片下的
+        <b class="ui">控制預設</b> 中,所以一套為某個樂隊搭建的踏板布局不必帶到下一個樂隊。</p>
 
       <figure>
         <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
-             alt="The Control tab: the CONTROL MAP card with mapping rows, the TAUGHT SOUNDS card, and the BUILT-IN MIDI MAP card listing CC ranges with a Pair Bluetooth MIDI button at the bottom.">
-        <figcaption>The Control tab — your map, your taught sounds, and the built-in map</figcaption>
+             alt="Control 標籤頁:帶有映射行的 CONTROL MAP 卡片、TAUGHT SOUNDS 卡片,以及列出各 CC
+             區間的 BUILT-IN MIDI MAP 卡片,底部帶有 Pair Bluetooth MIDI 按鈕。">
+        <figcaption>Control 標籤頁——你的映射表、你學習的聲音,以及內置映射表</figcaption>
       </figure>
 
       <div class="note warn">
-        <div class="t">Four input triggers</div>
-        <p>Only the first four rows driven by a taught sound are live. Add a fifth and the card
-          warns you: <b class="ui r">Only the first 4 input triggers are active</b>. MIDI rows have
-          no such limit — this one is about listening to the instrument.</p>
+        <div class="t">四個輸入觸發器</div>
+        <p>只有由已學習聲音驅動的前四行是生效的。添加第五個時,卡片會提示:
+          <b class="ui r">僅前 4 個輸入觸發生效</b>。MIDI 行沒有這個限制——
+          這條限制只針對監聽樂器聲音的方式。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
-      <p>You never type a CC number. On a mapping row:</p>
+      <h2 id="learn"><span class="n">07.2</span>MIDI 學習</h2>
+      <p>你永遠不需要手動輸入 CC 編號。在一條映射行上:</p>
       <ol style="--nc:var(--eq)">
-        <li>Tap <b class="ui">LEARN</b>. The chip lights up and the row waits.</li>
-        <li>Press the footswitch or sweep the pedal you want to use.</li>
-        <li>The source chip fills in as <b class="ui">CC 42</b> or <b class="ui">Note 60</b>, and
-          the card's <b class="ui">Last:</b> line confirms it — <b class="ui">Learned CC 42</b>.</li>
+        <li>點按 <b class="ui">學習</b>。晶片會亮起,該行進入等待狀態。</li>
+        <li>按下你想使用的踏板開關,或掃動表情踏板。</li>
+        <li>來源晶片會自動填入 <b class="ui">CC 42</b> 或 <b class="ui">Note 60</b> 之類的內容,
+          卡片下方的 <b class="ui">Last:</b> 一行會加以確認——<b class="ui">Learned CC 42</b>。</li>
       </ol>
-      <p>Tap <b class="ui">LEARN</b> again to disarm. The source chip's own menu has a
-        <b class="ui">MIDI</b> section with <b class="ui">CC… (use LEARN)</b> and
-        <b class="ui">Note… (use LEARN)</b>, and a <b class="ui">Taught sounds</b> section listing
-        the sounds you have trained plus <b class="ui">Teach a new sound…</b></p>
+      <p>再次點按 <b class="ui">學習</b> 可解除等待狀態。來源晶片自身的菜單中有一個
+        <b class="ui">MIDI</b> 分區,包含 <b class="ui">CC…（使用 LEARN）</b> 和
+        <b class="ui">音符…（使用 LEARN）</b>,以及一個 <b class="ui">已學習的聲音</b> 分區,列出
+        你已經訓練過的聲音,外加 <b class="ui">學習新聲音…</b>。</p>
 
-      <h3>Learn in place</h3>
-      <p>You do not have to start from the Control tab. Long-press almost any control in the app —
-        a knob, a chip row, a looper pad, a sampler pad, the Perform transport buttons — and the
-        menu offers <b class="ui">MIDI Learn: &lt;name&gt;</b> for that exact control. It outlines
-        itself and shows <b class="ui">MOVE A MIDI CONTROL…</b>; move the pedal and the mapping is
-        made. <b class="ui">Cancel learn</b> backs out if you grabbed the wrong knob.</p>
+      <h3>就地學習</h3>
+      <p>你不必從 Control 標籤頁開始。長按應用中幾乎任何一個控制項——一個旋鈕、一行晶片、一個循環墊、
+        一個採樣墊、Perform 的傳輸按鈕——菜單都會提供針對該控制項本身的
+        <b class="ui">MIDI Learn: &lt;name&gt;</b>。它會以邊框高亮自身,並顯示
+        <b class="ui">撥動一個 MIDI 控制器…</b>;移動踏板,映射即完成。如果抓錯了旋鈕,
+        <b class="ui">取消學習</b> 可以退出。</p>
       <div class="note tip">
-        <div class="t">The fast way to build a board</div>
-        <p>Learn in place beats the Control tab for anything you can see: open the block, long-press
-          the knob you want on the pedal, press the switch, done. The Control tab is for reviewing
-          and tidying what you built.</p>
+        <div class="t">搭建踏板板的快捷方式</div>
+        <p>對於你能看到的任何控制項,就地學習都比 Control 標籤頁更快:打開對應模塊,長按你想放到
+          踏板上的旋鈕,按下開關,完成。Control 標籤頁則用來查看和整理你已經搭建好的映射。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="actions"><span class="n">07.3</span>What you can map to</h2>
-      <p>The action chip's menu, in full:</p>
+      <h2 id="actions"><span class="n">07.3</span>可映射的目標</h2>
+      <p>動作晶片的完整菜單如下:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Actions</th></tr></thead>
+          <thead><tr><th>分區</th><th>動作</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">No action</b></td><td>Leaves the row inert.</td></tr>
-            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> upwards, one per
-              loaded pad.</td></tr>
-            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">Clear all</b>.</td></tr>
-            <tr><td><b class="ui">Preset</b></td><td>Every rig preset by name, plus
-              <b class="ui">Next preset</b>.</td></tr>
-            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
-              <b class="ui">Stop</b>, <b class="ui">Next section</b>,
-              <b class="ui">Prev section</b>.</td></tr>
-            <tr><td>Per rig</td><td><b class="ui">Block on/off</b> and <b class="ui">Block parameter
-              (CC)</b>, listed under each rig by name.</td></tr>
+            <tr><td><b class="ui">無操作</b></td><td>讓該行保持無效。</td></tr>
+            <tr><td><b class="ui">採樣打擊墊</b></td><td>從 <b class="ui">Pad 1</b> 起,每個已加載
+              的打擊墊各一項。</td></tr>
+            <tr><td><b class="ui">循環樂句器</b></td><td><b class="ui">Tap track 1</b>……
+              <b class="ui">Tap track 4</b>、<b class="ui">運行/停止</b>、
+              <b class="ui">全部清除</b>。</td></tr>
+            <tr><td><b class="ui">預設</b></td><td>按名稱列出的每個音色組預設,外加
+              <b class="ui">下一個預設</b>。</td></tr>
+            <tr><td><b class="ui">演出</b></td><td><b class="ui">播放/暫停</b>、
+              <b class="ui">停止</b>、<b class="ui">下一段落</b>、
+              <b class="ui">上一段落</b>。</td></tr>
+            <tr><td>逐個音色組</td><td><b class="ui">模塊開/關</b> 和
+              <b class="ui">模塊參數（CC）</b>,按名稱列在每個音色組下。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Once you have more than one rig, three more entries appear: <b class="ui">Next rig</b>,
-        <b class="ui">Block on/off · Active rig</b> and <b class="ui">Block param · Active rig</b>.
-        Those follow whichever rig currently has MIDI focus, so one footswitch can bypass "the
-        drive in whatever rig I am playing" instead of a fixed block in a fixed rig.</p>
-      <p>Two constraints are worth remembering before you wire a pedal:</p>
+      <p>當你擁有一個以上的音色組時,會額外出現三項:<b class="ui">下一個音色組</b>、
+        <b class="ui">模塊開/關 · 當前音色組</b> 和 <b class="ui">模塊參數 · 當前音色組</b>。這些會跟隨當前擁有 MIDI 焦點的音色組,所以一個踏板開關就能旁通"無論我正在彈哪個
+        音色組的過載",而不是綁死在某一個固定的音色組上。</p>
+      <p>接線之前,有兩條限制值得記住:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>A continuous block parameter needs a CC.</b> Notes and taught sounds are events —
-          they cannot sweep a value — so the parameter submenu is hidden for those sources.
-          An expression pedal sending a CC is what you want.</li>
-        <li><b>Soft pickup after a rig switch.</b> A continuous CC mapped to
-          <b class="ui">Block param · Active rig</b> does not jump the knob when you change rigs.
-          It waits until your pedal sweeps past the new rig's current value, then takes over — so
-          switching rigs mid-song never snaps a parameter to wherever your foot happens to be.</li>
+        <li><b>連續型的模塊參數需要一個 CC。</b>音符和已學習的聲音都是事件——它們無法連續掃動一個
+          數值——所以針對這些來源,參數子菜單會被隱藏。你需要的是一個發送 CC 的表情踏板。</li>
+        <li><b>切換音色組後的柔性接管。</b>映射到 <b class="ui">模塊參數 · 當前音色組</b> 的
+          連續 CC,在你切換音色組時不會讓旋鈕跳變。它會等到你的踏板掃過新音色組該參數的當前值,
+          才會接管——所以在歌曲中途切換音色組,參數永遠不會突然跳到你腳下當時的位置。</li>
       </ul>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="builtin"><span class="n">07.4</span>The built-in MIDI map</h2>
-      <p>Before you map anything, a fixed layout is already live — plug a controller in and it
-        works. All channels are accepted, because NAMper listens omni, and every source that appears
-        is connected automatically. The app also publishes a virtual destination named
-        <b class="ui">NAMper</b>, so another app on the same device can send to it.</p>
+      <h2 id="builtin"><span class="n">07.4</span>內置 MIDI 映射表</h2>
+      <p>在你映射任何內容之前,一套固定的布局就已經生效——接上控制器就能直接使用。所有通道都會被
+        接受,因為 NAMper 全通道監聽,任何出現的信號來源都會自動連接。應用還會發布一個名為
+        <b class="ui">NAMper</b> 的虛擬目標埠,方便同一設備上的另一個 App 向它發送數據。</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Shown as</th><th>Does</th></tr></thead>
+          <thead><tr><th>顯示為</th><th>作用</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">presets</b></td></tr>
-            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp,
-              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, in that order; a value of
-              64 or more is on</td></tr>
-            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">block parameters</b> — 0–127
-              scaled into each parameter's range. <b class="ui">CC 64</b> is skipped and left free
-              for a sustain pedal</td></tr>
-            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">looper track taps</b> —
-              tracks 1 to 4</td></tr>
-            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
-              clear</b></td></tr>
-            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop ·
-              next · prev</b></td></tr>
-            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">預設</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">模塊開/關</b>——依次為
+              門限、壓縮、過載、音箱、箱體、移相、鑲邊、合唱、顫音、延遲、雲霧;數值 64 及以上
+              為開</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">模塊參數</b>——
+              0–127 按比例映射到每個參數的範圍。<b class="ui">CC 64</b> 被跳過,留給延音踏板
+              使用</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">循環軌道點擊</b>——
+              1 至 4 號音軌</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">循環啟停 / 清除</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">演奏：播放/暫停 · 停止 · 下一個 · 上一個</b></td></tr>
+            <tr><td><b class="ui">音符 36–51</b></td><td><b class="ui">打擊墊 1–16</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Your own mappings always win. If you learn a footswitch to CC 85, your row runs and the
-        built-in track-1 tap on that CC steps aside — so you never have to work around the defaults,
-        only over them.</p>
+      <p>你自己的映射始終優先。如果你把一個踏板開關學習為 CC 85,你的那一行會生效,該 CC 上內置的
+        1 號音軌點按會讓位——所以你從不需要繞開默認設置,只需要覆蓋它們。</p>
       <div class="note">
-        <div class="t">CC 89 toggles</div>
-        <p>The built-in <b class="ui">CC 89</b> is a true run/stop toggle: it reads the looper's
-          current state, stops it when it is running (a recording counts as running) and starts it
-          from the top when it is stopped. A learned mapping on the
-          <b class="ui">Run / stop</b> action behaves the same way.</p>
+        <div class="t">CC 89 是切換開關</div>
+        <p>內置的 <b class="ui">CC 89</b> 是一個真正的運行/停止切換開關:它會讀取循環樂句器當前
+          的狀態,運行時(錄製也算運行)就停止,停止時就從頭開始運行。學習到
+          <b class="ui">運行/停止</b> 動作的映射表現完全一樣。</p>
       </div>
-      <p>Press detection is deliberately forgiving of cheap pedals. A message counts as a press when
-        its value is 64 or more, and also when it is low but did not follow a high one — so a
-        footswitch that sends every press as value 0 still fires discrete actions.</p>
-      <p>At the bottom of the card, one line tells you what NAMper can see:
-        <b class="ui">MIDI: waiting for sources</b> or the names of the connected sources, with a
-        <b class="ui">Last:</b> line under it showing the most recent event. If a pedal does
-        nothing, look there first — it tells you whether the messages are arriving at all.</p>
+      <p>按壓檢測特意對廉價踏板保持寬鬆。當數值為 64 或更高時,一條消息就算作一次按壓;數值較低
+        但並非緊跟在高值之後時,也同樣算數——所以一個把每次按壓都發送為數值 0 的踏板,依然能觸發
+        離散的動作。</p>
+      <p>卡片底部有一行文字告訴你 NAMper 能看到什麼:<b class="ui">MIDI：等待信號源</b>,或者已連接來源的名稱,下方還有一行 <b class="ui">Last:</b>,顯示最近一次
+        事件。如果某個踏板毫無反應,先看這裡——它會告訴你消息到底有沒有送達。</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
-      <p>Wireless pedals pair from inside the app. At the bottom of the built-in map card, tap
-        <b class="ui">Pair Bluetooth MIDI</b>. A sheet titled <b class="ui">Bluetooth MIDI</b> opens
-        with the system pairing panel in it and a <b class="ui">Done</b> button. Put your pedal into
-        pairing mode, tap it in the list, and it joins the MIDI sources line.</p>
+      <h2 id="bluetooth"><span class="n">07.5</span>藍牙 MIDI</h2>
+      <p>無線踏板可以在應用內配對。在內置映射表卡片底部,點按
+        <b class="ui">配對藍牙 MIDI</b>。會打開一張標題為 <b class="ui">Bluetooth MIDI</b>
+        的表單,內含系統配對面板和一個 <b class="ui">完成</b> 按鈕。把你的踏板設為配對模式,在
+        列表中點按它,它就會加入 MIDI 來源那一行。</p>
       <div class="note warn">
-        <div class="t">Do not tap it twice</div>
-        <p>The sheet carries this caution for a reason: <b class="ui">Tapping a device toggles its
-          connection — a pedal already shown in the MIDI sources line is connected; don't tap it
-          again.</b> Tapping a connected pedal disconnects it. If you are unsure, check the sources
-          line at the bottom of the card before touching anything.</p>
+        <div class="t">不要點按兩次</div>
+        <p>表單上專門寫有這條提示,是有原因的:<b class="ui">點按設備可切換其連接狀態——已顯示在 MIDI 信號源一欄中的踏板表示已連接，請勿再次點按。</b> 點按一個已連接的踏板會斷開它。如果你拿不準,先看看卡片底部的來源那一行,
+          再動手操作。</p>
       </div>
-      <p>NAMper asks for Bluetooth permission the first time you open this sheet, and for nothing
-        else.</p>
+      <p>NAMper 只會在你第一次打開這張表單時請求藍牙權限,此後不再請求任何其他權限。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="sounds"><span class="n">07.6</span>Taught sound triggers</h2>
-      <p>The <b class="ui">TAUGHT SOUNDS</b> card needs no hardware at all. You teach NAMper a
-        noise you can make with the instrument in your hands, and from then on it fires any action,
-        exactly like a MIDI event. The empty state puts it plainly:
-        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
-        bridge — then map it to any action, like a MIDI event.</b></p>
+      <h2 id="sounds"><span class="n">07.6</span>已學習聲音觸發</h2>
+      <p><b class="ui">已學習的聲音</b> 卡片完全不需要任何硬體。你教會 NAMper 一種你能用手上的
+        樂器發出的聲音,從那以後,它就能像一個 MIDI 事件一樣觸發任何動作。空狀態的說明寫得很直白:
+        <b class="ui">讓應用學習一種聲音——敲擊琴體、拍打琴弦、在琴橋後彈擊——然後像 MIDI 事件一樣把它映射到任意操作。</b></p>
 
-      <h3>Teaching one</h3>
-      <p>Tap <b class="ui">TEACH</b> and the sheet <b class="ui">TEACH A SOUND</b> opens with its
-        instruction: <b class="ui">Make the sound 3–5 times, the same way each time: knock the body,
-        slap the strings, click behind the bridge — anything with a clear attack.</b> Eight dots
-        fill in as takes arrive, and the status reads <b class="ui">Listening…</b> and then the
-        count. Give it a name in the <b class="ui">Sound name</b> field and tap
-        <b class="ui">Save the sound</b>. Save needs at least two takes, and up to eight are
-        averaged — more consistent takes make a more reliable trigger.</p>
-      <p>Each row shows the name, a usage count like <b class="ui">3×</b>, a
-        <b class="ui">RE-TEACH</b> button and a delete <b class="ui">✕</b>. Tap the name to rename
-        it. Re-teaching keeps the name and every mapping that points at it, so if a sound starts
-        misfiring after you change guitars, re-teach it rather than starting over.</p>
+      <h3>訓練一個聲音</h3>
+      <p>點按 <b class="ui">學習</b>,會打開 <b class="ui">學習聲音</b> 表單,附帶說明:
+        <b class="ui">以同樣的方式發出聲音 3–5 次：敲擊琴體、拍打琴弦、在琴橋後彈擊——任何起音清晰的聲音都可以。</b> 隨著每次採集完成,
+        八個小圓點會依次填滿,狀態先顯示 <b class="ui">正在聆聽…</b>,隨後顯示計數。在
+        <b class="ui">聲音名稱</b> 欄位中給它起個名字,再點按 <b class="ui">保存聲音</b>。保存至少需要兩次採集,最多取八次求平均——採集越一致,觸發就越可靠。</p>
+      <p>每一行顯示名稱、一個用量計數如 <b class="ui">3×</b>、一個 <b class="ui">重新學習</b>
+        按鈕,以及一個刪除用的 <b class="ui">✕</b>。點按名稱可重命名。重新訓練會保留名稱以及所有
+        指向它的映射,所以如果換了吉他後某個聲音開始誤觸發,應該重新訓練它,而不是從頭再來。</p>
       <div class="note warn">
-        <div class="t">Deleting takes the mappings with it</div>
-        <p>Delete a taught sound and every mapping that listened for it goes too. The usage count on
-          the row tells you how many that is before you tap the ✕.</p>
+        <div class="t">刪除會連帶刪除映射</div>
+        <p>刪除一個已學習的聲音,所有監聽它的映射也會一併消失。在你點按 ✕ 之前,該行的用量計數
+          會告訴你這會影響多少條映射。</p>
       </div>
-      <p>A taught sound can fire any action in the menu except a continuous block parameter — it is
-        an event, not a sweep. And as on the control map, only the first four taught-sound mappings
-        are active at once.</p>
+      <p>一個已學習的聲音可以觸髮菜單中除連續型模塊參數以外的任何動作——它是一個事件,不是一次
+        連續掃動。和控制映射表一樣,同一時間只有前四條已學習聲音的映射生效。</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="tuner"><span class="n">07.7</span>The tuner</h2>
-      <p>The tuner is not a tab. It opens from the tuning-fork icon in the <b class="ui a">Rig</b>
-        header, and it works whenever the audio engine is running — including when the feedback
-        guard has muted the output, so you can still tune with the phone on its own speaker.</p>
+      <h2 id="tuner"><span class="n">07.7</span>調音器</h2>
+      <p>調音器不是一個獨立的標籤頁。它從 <b class="ui a">音色組</b> 頁頭的音叉圖標打開,只要音頻
+        引擎在運行就能使用——包括嘯叫保護已經讓輸出靜音的時候,所以即使手機只用自身揚聲器,你也
+        依然能調音。</p>
 
       <figure>
         <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
-             alt="The tuner sheet in POLY mode: mode chips, a GUITAR badge, a row of tuning chips, and six vertical string meters with note names underneath.">
-        <figcaption>POLY mode — six strings reading at once</figcaption>
+             alt="POLY 模式下的調音器表單:模式晶片、一個 GUITAR 徽章、一行調弦晶片,以及六個豎直
+             弦位表,下方標有音名。">
+        <figcaption>POLY 模式——六根弦同時讀數</figcaption>
       </figure>
 
-      <p>Two mode chips sit at the top, <b class="ui">POLY</b> and <b class="ui">SINGLE</b>.
-        <b class="ui">POLY</b> is the default and the one to use on stage: strum once and every
-        string reads at the same time, one vertical meter per string with the note underneath. Its
-        caption says it — <b class="ui">strum — every string reads at once</b>. A string's dot goes
-        green inside ±5 cents.</p>
-      <p><b class="ui">SINGLE</b> is the classic one-note-at-a-time tuner: a big note letter, a
-        needle across ±50 cents and a cents readout, going green inside ±3 cents. With no signal it
-        shows <b class="ui">play a note…</b> Use it when you want to be precise about one
-        string.</p>
+      <p>頂部有兩個模式晶片,<b class="ui">POLY</b> 和 <b class="ui">SINGLE</b>。
+        <b class="ui">POLY</b> 是默認模式,也是舞臺上該用的模式:掃弦一次,所有琴弦同時讀數,
+        每根弦一個豎直表,下方標出音名。它的說明文字正是如此——
+        <b class="ui">掃弦——所有弦同時讀取</b>。一根弦的圓點在 ±5 音分以內會變綠。</p>
+      <p><b class="ui">SINGLE</b> 是經典的單音調音模式:一個大號音名字母、一根跨越 ±50 音分的
+        指針,以及一個音分讀數,在 ±3 音分以內會變綠。沒有信號時顯示
+        <b class="ui">彈一個音…</b>。想對某一根弦精確調音時使用它。</p>
 
-      <h3>Instrument and tuning</h3>
-      <p>NAMper works out what you are holding by itself and shows it as a pill:
-        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> or <b class="ui">UKULELE</b>. There is no
-        picker — plug a bass in and the tuner follows.</p>
-      <p>The tuning chips apply to <b class="ui">POLY</b> mode, and each instrument remembers its
-        own choice:</p>
+      <h3>樂器與調弦</h3>
+      <p>NAMper 會自行判斷你手上拿的是什麼樂器,並以徽章形式顯示:<b class="ui">吉他</b>、
+        <b class="ui">貝斯</b> 或 <b class="ui">尤克裡裡</b>。沒有手動選擇器——接上貝斯,
+        調音器就會跟著切換。</p>
+      <p>調弦晶片適用於 <b class="ui">POLY</b> 模式,並且每種樂器都會記住自己的選擇:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Instrument</th><th>Tunings</th></tr></thead>
+          <thead><tr><th>樂器</th><th>調弦</th></tr></thead>
           <tbody>
-            <tr><td>Guitar</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
-              <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
+            <tr><td>吉他</td><td><b class="ui">EADGBE</b>、<b class="ui">Drop D</b>、
+              <b class="ui">DADGAD</b>、<b class="ui">E♭ std</b>、<b class="ui">Open G</b>、
               <b class="ui">Open D</b></td></tr>
-            <tr><td>Bass</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+            <tr><td>貝斯</td><td><b class="ui">EADG</b>、<b class="ui">Drop D</b>、
               <b class="ui">5-str B</b></td></tr>
-            <tr><td>Ukulele</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+            <tr><td>尤克裡裡</td><td><b class="ui">GCEA</b>、<b class="ui">Baritone</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Reference pitch is fixed at A4 = 440 Hz. There is no calibration control, so if you play
-        with an orchestra at 442 the tuner will not follow you there.</p>
+      <p>參考音高固定為 A4 = 440 Hz。沒有校準控制項,所以如果你要跟一支使用 442 Hz 的樂團合奏,
+        調音器不會跟著調整。</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh-hant/perform.html">← 06 · Perform &amp; lyrics</a>
+      <a href="/docs/zh-hant/perform.html">← 06 · 演出與歌詞</a>
       <span class="sp"></span>
-      <a href="/docs/zh-hant/settings.html">08 · Settings reference →</a>
+      <a href="/docs/zh-hant/settings.html">08 · 設置參考 →</a>
     </nav>
   </main>
 </div>
@@ -324,13 +298,13 @@
   <div class="in">
     <nav>
       <a href="/">NAMPER.ORG</a>
-      <a href="/docs/zh-hant/">DOCS</a>
+      <a href="/docs/">DOCS</a>
       <a href="https://t.me/namperapp">TELEGRAM</a>
       <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款獨立應用,與任何設備製造商沒有任何關聯、認可或贊助關係。所有產品名稱、品牌和商標均歸其各自所有者所有,僅用於說明所使用的錄製設備。</p>
   </div>
 </footer>
 

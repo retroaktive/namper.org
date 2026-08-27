@@ -85,8 +85,7 @@
       <h2 id="basics"><span class="n">04.1</span>Wie der Looper denkt</h2>
       <p>Eine Regel liegt allem anderen zugrunde, und die App zeigt sie am unteren Bildschirmrand
         an:</p>
-      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
-        run/stop · 90 clear</b></p>
+      <p><b class="ui">Der erste Loop setzt den Zyklus · die anderen syncen dazu · MIDI CC 85–88 Tap · 89 Run/Stopp · 90 Löschen</b></p>
       <p>Welche Spur du zuerst aufnimmst, legt den Zyklus fest. Jede andere Spur wird darauf
         eingepasst, statt eigenständig davonzudriften, und nichts verschiebt diesen Zyklus danach
         noch — außer du bearbeitest die Spur, die ihn gesetzt hat, oder du löschst alles und fängst
@@ -134,8 +133,8 @@
       <p>Drücke lange auf das runde Pad für <b class="ui">MIDI Learn: tap loop track 1</b> (und 2,
         3, 4) — so bindest du einen Fußschalter an eine Spur. Drückst du stattdessen lange auf die
         <em>Karte</em> darum herum, bekommst du das Routing-Menü: <b class="ui">Input · …</b>,
-        <b class="ui">Output · …</b>, <b class="ui">Edit loop…</b>, dazu
-        <b class="ui">Length · Free</b> oder <b class="ui">Length · N bars</b> und
+        <b class="ui">Output · …</b>, <b class="ui">Loop bearbeiten…</b>, dazu
+        <b class="ui">Länge · Frei</b> oder <b class="ui">Length · N bars</b> und
         <b class="ui">Overdubs · N</b>.</p>
 
       <h3>Zustände</h3>
@@ -143,12 +142,12 @@
         <table>
           <thead><tr><th>Zustand</th><th>Label</th><th>Farbe</th></tr></thead>
           <tbody>
-            <tr><td>Nichts aufgenommen</td><td><b class="ui">empty</b></td><td>Gedimmt</td></tr>
-            <tr><td>Aufnahme läuft</td><td><b class="ui">recording</b></td><td>Rot</td></tr>
-            <tr><td>Loop läuft</td><td><b class="ui">playing</b></td><td>Grün</td></tr>
-            <tr><td>Schichtet</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
-            <tr><td>Still, läuft weiter</td><td><b class="ui">muted</b></td><td>Gelb</td></tr>
-            <tr><td>Wartet (AUTO)</td><td><b class="ui">armed</b></td>
+            <tr><td>Nichts aufgenommen</td><td><b class="ui">leer</b></td><td>Gedimmt</td></tr>
+            <tr><td>Aufnahme läuft</td><td><b class="ui">nimmt auf</b></td><td>Rot</td></tr>
+            <tr><td>Loop läuft</td><td><b class="ui">spielt</b></td><td>Grün</td></tr>
+            <tr><td>Schichtet</td><td><b class="ui">Overdub</b></td><td>Orange</td></tr>
+            <tr><td>Still, läuft weiter</td><td><b class="ui">stumm</b></td><td>Gelb</td></tr>
+            <tr><td>Wartet (AUTO)</td><td><b class="ui">scharf</b></td>
                 <td>Rot, gestrichelter Rand um die Karte</td></tr>
           </tbody>
         </table>
@@ -166,15 +165,15 @@
         <li>Ein <b>Master-Ring</b>, der die Zykluslänge in Sekunden anzeigt, oder
           <b class="ui">—</b>, solange noch nichts aufgenommen ist.</li>
         <li>Ein <b class="ui">PRESETS</b>-Chip — siehe <a href="#saving">was gespeichert wird</a>.</li>
-        <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>, deaktiviert, bis ein
+        <li><b class="ui">Loops abspielen</b> / <b class="ui">Loops stoppen</b>, deaktiviert, bis ein
           Zyklus existiert.</li>
         <li>Ein <b>Undo</b>-Button, nur aktiv, wenn es etwas rückgängig zu machen gibt.</li>
-        <li>Ein Papierkorb-Button, <b class="ui">Clear all loops</b>.</li>
+        <li>Ein Papierkorb-Button, <b class="ui">Alle Loops löschen</b>.</li>
       </ul>
       <p>Darunter zeigt eine Statuszeile, wo du gerade stehst:
-        <b class="ui">recording the master loop…</b>, solange der erste Take läuft, eine laufende
-        Position <b class="ui">4.2 / 8.0 s</b>, sobald es einen Zyklus gibt, <b class="ui">stopped</b>,
-        oder <b class="ui">tap a track to record</b>, wenn der Looper leer ist.</p>
+        <b class="ui">Master-Loop wird aufgenommen…</b>, solange der erste Take läuft, eine laufende
+        Position <b class="ui">4.2 / 8.0 s</b>, sobald es einen Zyklus gibt, <b class="ui">gestoppt</b>,
+        oder <b class="ui">tipp auf eine Spur zum Aufnehmen</b>, wenn der Looper leer ist.</p>
       <div class="note">
         <div class="t">Fußschalter-Steuerung</div>
         <p>Die eingebaute MIDI-Zuordnung deckt den Looper ohne jede Einrichtung ab:
@@ -182,20 +181,20 @@
           <b class="ui">CC 90</b> löscht. Beachte, dass CC 89 einen <em>Play</em>-Befehl sendet —
           es startet die Loops von vorn, statt sie ein- und auszuschalten. Für einen echten
           Run/Stop-Toggle auf einem einzigen Schalter füge ein Mapping auf dem Tab
-          <b class="ui a">Control</b> hinzu und lerne es auf <b class="ui">Run / stop</b> an, das
+          <b class="ui a">Control</b> hinzu und lerne es auf <b class="ui">Run / Stopp</b> an, das
           den aktuellen Zustand ausliest.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="auto"><span class="n">04.4</span>AUTO-Modus</h2>
-      <p><b class="ui">AUTO</b> — der Zauberstab-Chip neben <b class="ui">CLICK</b> — erledigt zwei
+      <p><b class="ui">AUTO</b> — der Zauberstab-Chip neben <b class="ui">KLICK</b> — erledigt zwei
         Aufgaben: Er startet und stoppt Takes für dich, und wenn die Master-Loop schließt, ermittelt
         er, wo die Taktgrenzen tatsächlich liegen.</p>
 
       <h3>Scharfschalten statt Aufnehmen</h3>
       <p>Ist AUTO aktiv, schaltet ein Tipp auf ein leeres Pad es scharf: Die Karte bekommt einen
-        gestrichelten roten Rand und zeigt <b class="ui">armed</b> an. Was als Nächstes passiert,
+        gestrichelten roten Rand und zeigt <b class="ui">scharf</b> an. Was als Nächstes passiert,
         hängt davon ab, ob bereits ein Zyklus läuft:</p>
       <ul style="--nc:var(--amp)">
         <li><b>Noch kein Zyklus.</b> Die Aufnahme beginnt <b>bei deiner ersten Note</b> oberhalb der
@@ -230,7 +229,7 @@
         Länge rastet auf eine saubere Zahl ein, und die BPM-Anzeige — bis dahin leer — füllt sich.
         Von da an haben der Click, die LEN-Chips, das Quantize des Samplers und die Taktuhr des
         Setlists alle ein Raster, mit dem sie arbeiten können.</p>
-      <p>Ist <b class="ui">CLICK</b> aktiv, ist das Tempo auf den eingestellten Wert
+      <p>Ist <b class="ui">KLICK</b> aktiv, ist das Tempo auf den eingestellten Wert
         <b>gesperrt</b>, und nur die Phase wird angepasst. Das ist der Modus für den Fall, dass du
         zu einem Click oder einem Backing Track spielst und das Tempo sich nicht verschieben darf.</p>
       <div class="note tip">
@@ -252,20 +251,20 @@
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tempo"><span class="n">04.5</span>Tempo und der Click</h2>
       <p>Der Tempo-Block auf dem Loop-Tab zeigt eine große Zahl mit der Bildunterschrift
-        <b class="ui">BPM</b>. Ist kein Tempo gesetzt, zeigt er <b class="ui">SET TEMPO</b> über
+        <b class="ui">BPM</b>. Ist kein Tempo gesetzt, zeigt er <b class="ui">TEMPO SETZEN</b> über
         einem <b class="ui">—</b>. Tippe darauf für das Tempo-Sheet.</p>
       <p>Das Sheet hat ein Zahlenfeld (Platzhalter <b class="ui">120</b>, Bereich <b>20 bis
         300</b>) mit <b class="ui">BPM</b> daneben, einen großen <b class="ui">TAP</b>-Button, der
-        nach deinem ersten Tipp <b class="ui">again…</b> zeigt, dazu
-        <b class="ui">Clear (AUTO re-detects)</b> und <b class="ui">Done</b>. Lösche es, wenn AUTO
+        nach deinem ersten Tipp <b class="ui">nochmal…</b> zeigt, dazu
+        <b class="ui">Löschen (AUTO erkennt neu)</b> und <b class="ui">Fertig</b>. Lösche es, wenn AUTO
         das Tempo stattdessen aus deinem Spiel ermitteln soll.</p>
       <p>Dasselbe Sheet erreichst du auch über die Kopfzeile von <b class="ui a">Rig</b>: Der
-        Metronom-Chip schaltet den Click per <b>Tipp</b> um und öffnet <b class="ui">SET TEMPO</b>
+        Metronom-Chip schaltet den Click per <b>Tipp</b> um und öffnet <b class="ui">TEMPO SETZEN</b>
         bei <b>langem Drücken</b>.</p>
-      <p><b class="ui">CLICK</b> schaltet das Metronom ein. Es ohne gesetztes Tempo einzuschalten,
+      <p><b class="ui">KLICK</b> schaltet das Metronom ein. Es ohne gesetztes Tempo einzuschalten,
         <b>erzwingt 120 BPM</b> und startet den Takt neu — den Click einzuschalten ist also nie ein
         neutraler Akt. Click-Lautstärke und der Ausgangsbus des Clicks liegen in den Einstellungen
-        → <b class="ui">METRONOME</b>, wo er ein eigenes Ausgangspaar für In-Ear-Monitoring
+        → <b class="ui">METRONOM</b>, wo er ein eigenes Ausgangspaar für In-Ear-Monitoring
         bekommen kann.</p>
       <div class="note warn">
         <div class="t">Es gibt keinen Count-in</div>
@@ -278,7 +277,7 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="editor"><span class="n">04.6</span>Der Loop-Editor</h2>
       <p>Öffne ihn mit dem Edit-Button in der Bedienzeile eines Pads, oder drücke lange auf die
-        Karte → <b class="ui">Edit loop…</b>. Das Sheet ist mit <b class="ui">LOOP N</b>
+        Karte → <b class="ui">Loop bearbeiten…</b>. Das Sheet ist mit <b class="ui">LOOP N</b>
         überschrieben, dazu ein Live-Längenlabel.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
@@ -295,38 +294,36 @@
 
       <h3>Die beiden Griffe</h3>
       <ul style="--nc:var(--pitch)">
-        <li><b>Der Start</b> (<b class="ui">Loop start handle</b>) rotiert die Phase: Die Loop
+        <li><b>Der Start</b> (<b class="ui">Griff für den Loop-Anfang</b>) rotiert die Phase: Die Loop
           beginnt später, und das übersprungene Stück wandert ans Ende. Länge und Tempo ändern
           sich nicht. Das ist die Korrektur für eine Loop, die einen halben Beat zu früh beginnt.</li>
-        <li><b>Das Ende</b> (<b class="ui">Loop end handle</b>) verändert die Größe der Loop und
+        <li><b>Das Ende</b> (<b class="ui">Griff für das Loop-Ende</b>) verändert die Größe der Loop und
           funktioniert <b>nur auf der Spur, die den Zyklus definiert</b>. Die Taktanzahl bleibt
           erhalten, und das gesetzte Tempo folgt — die Loop zu dehnen, verlangsamt also das ganze
-          Set. Das Sheet sagt es so: <b class="ui">Drag the edges to move the start and resize the
-          loop — resizing retunes the set tempo.</b></li>
+          Set. Das Sheet sagt es so: <b class="ui">Zieh an den Rändern, um den Anfang zu verschieben und die Länge zu ändern — das Ändern der Länge stimmt das Set-Tempo neu.</b></li>
       </ul>
-      <p>Eine leere Spur zeigt <b class="ui">no audio</b> und nichts zum Ziehen.</p>
+      <p>Eine leere Spur zeigt <b class="ui">kein Audio</b> und nichts zum Ziehen.</p>
 
       <h3>Die Button-Reihen</h3>
       <p>Unter der Wellenform bietet <b class="ui">START</b> vier Phasen-Feinkorrekturen —
-        <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>,
-        <b class="ui">+BAR</b> — für den Fall, dass dein Daumen weniger präzise ist als das
+        <b class="ui">-TAKT</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>,
+        <b class="ui">+TAKT</b> — für den Fall, dass dein Daumen weniger präzise ist als das
         Raster. Sie bewegen nur den Start.</p>
-      <p><b class="ui">LENGTH · TEMPO KEPT</b> bietet sechs: dieselben vier, dazu
+      <p><b class="ui">LÄNGE · TEMPO BLEIBT</b> bietet sechs: dieselben vier, dazu
         <b class="ui">÷2</b> und <b class="ui">×2</b>. Halbieren macht aus einem versehentlichen
         Acht-Takte-Take die Vier-Takte-Loop, die du eigentlich spielen wolltest; Verdoppeln schafft
         Platz, um eine Phrase zu overdubben, die sich über den doppelten Zyklus erstreckt.</p>
       <div class="note">
         <div class="t">Warum die Längen-Buttons ausgegraut sind</div>
-        <p>Alle sechs <b class="ui">LENGTH · TEMPO KEPT</b>-Buttons sind deaktiviert, es sei denn,
+        <p>Alle sechs <b class="ui">LÄNGE · TEMPO BLEIBT</b>-Buttons sind deaktiviert, es sei denn,
           die Spur, die du bearbeitest, ist diejenige, die den Zyklus definiert, und das Sheet
-          erklärt auch, warum: <b class="ui">Only the track that defines the cycle can change its
-          length.</b> Stimmt die Länge einer Folgespur nicht, ist die Loop, die es zu bearbeiten
+          erklärt auch, warum: <b class="ui">Nur die Spur, die den Zyklus definiert, kann seine Länge ändern.</b> Stimmt die Länge einer Folgespur nicht, ist die Loop, die es zu bearbeiten
           gilt, die Master-Loop.</p>
       </div>
       <p>Die untere Zeile enthält einen <b class="ui">Level</b>-Regler (0 bis 1.5), einen
         <b class="ui">Pan</b>-Regler, der <b class="ui">C</b>, <b class="ui">L50</b> oder
         <b class="ui">R50</b> zeigt, sowie die Buttons <b class="ui">Mute</b>,
-        <b class="ui">Undo</b> und <b class="ui">Clear</b>.</p>
+        <b class="ui">Undo</b> und <b class="ui">Löschen</b>.</p>
       <p>Es gibt kein Rückwärts. Loops spielen nur vorwärts.</p>
     </section>
 
@@ -349,7 +346,7 @@
         lang und wie viele Durchläufe.</p>
 
       <h3>IN</h3>
-      <p>Das <b class="ui">IN</b>-Menü bietet <b class="ui">Post FX (the rig)</b> — die bearbeitete
+      <p>Das <b class="ui">IN</b>-Menü bietet <b class="ui">Post-FX (das Rig)</b> — die bearbeitete
         Gitarre, was in der Regel das ist, was du willst. Bei mehreren Rigs wird daraus pro Rig
         <b class="ui">Post FX · &lt;rig name&gt;</b>, und der Chip zeigt
         <b class="ui">FX · &lt;rig&gt;</b>. Darunter je ein Eintrag pro Hardware-Eingangskanal
@@ -358,10 +355,10 @@
         loopen.</p>
 
       <h3>OUT</h3>
-      <p>Das <b class="ui">OUT</b>-Menü bietet <b class="ui">Main mix</b> (Chip
-        <b class="ui">MAIN</b>), je einen Eintrag pro zusätzlichem Hardware-Ausgangspaar —
+      <p>Das <b class="ui">OUT</b>-Menü bietet <b class="ui">Main-Mix</b> (Chip
+        <b class="ui">MIX</b>), je einen Eintrag pro zusätzlichem Hardware-Ausgangspaar —
         <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> und so weiter, wofür
-        <b class="ui">Use all interface outputs</b> in den Einstellungen eingeschaltet sein muss —
+        <b class="ui">Alle Interface-Ausgänge nutzen</b> in den Einstellungen eingeschaltet sein muss —
         und <b class="ui">Into &lt;rig name&gt;</b>.</p>
       <p>Diese letzte Option ist die interessante: Statt direkt in den Mix zu gehen, spielt die
         Loop <em>in</em> dieses Rig hinein, sodass die Effekte des Rigs sie live verarbeiten. Loope
@@ -371,16 +368,16 @@
 
       <h3>LEN und DUB</h3>
       <p>Der <b class="ui">LEN</b>-Chip durchläuft 0, 1, 2, 4 und 8 Takte. Bei 0 zeigt er
-        <b class="ui">FREE</b>; sonst <b class="ui">N BAR</b>, und der Take wird auf so viele Takte
+        <b class="ui">FREI</b>; sonst <b class="ui">N BAR</b>, und der Take wird auf so viele Takte
         fixiert. Ist kein Tempo gesetzt, sagt das Menü
-        <b class="ui">No tempo yet — record the first loop with AUTO on</b>.</p>
+        <b class="ui">Noch kein Tempo — nimm den ersten Loop mit aktiviertem AUTO auf</b>.</p>
       <p>Der <b class="ui">DUB</b>-Chip durchläuft 0, 1, 2 und 4 automatische Overdub-Durchläufe —
         die Spur fällt nach so vielen Runden von selbst zurück ins Abspielen.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="saving"><span class="n">04.9</span>Was gespeichert wird</h2>
-      <p>Der <b class="ui">PRESETS</b>-Chip öffnet <b class="ui">Looper Presets</b>, und die
+      <p>Der <b class="ui">PRESETS</b>-Chip öffnet <b class="ui">Looper-Presets</b>, und die
         enthalten <b>nur das Setup</b>: IN, OUT, LEN, DUB und Pan jeder Spur, dazu das AUTO-Flag.
         Eine Routing-Vorlage, die du am Anfang eines Songs abrufst — keine Aufnahme.</p>
       <div class="note warn">

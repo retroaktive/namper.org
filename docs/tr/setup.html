@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Getting started — NAMper Documentation</title>
-<meta name="description" content="Plugging in: audio interfaces, sample rate and buffer size, the power button, the input and output meters, the feedback guard, and where NAMper keeps your files.">
+<title>Başlarken — NAMper Dokümantasyonu</title>
+<meta name="description" content="Bağlanmak: ses arayüzleri, örnekleme hızı ve buffer boyutu, power düğmesi, giriş ve çıkış göstergeleri, geri besleme koruması ve NAMper'ın dosyalarını nerede tuttuğu.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Getting started — NAMper Documentation">
-<meta property="og:description" content="Audio interfaces, sample rate and buffer, the power button, the meters and the feedback guard.">
+<meta property="og:title" content="Başlarken — NAMper Dokümantasyonu">
+<meta property="og:description" content="Ses arayüzleri, örnekleme hızı ve buffer, power düğmesi, göstergeler ve geri besleme koruması.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/setup.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOKÜMANTASYON</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/tr/">← ALL DOCS</a>
+  <a class="home" href="/docs/tr/">← TÜM DOKÜMANLAR</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/tr/setup.html" aria-current="page">Türkçe</a>
   </nav>
@@ -46,249 +46,248 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">İÇİNDEKİLER</div>
     <ol>
-      <li><a class="on" href="/docs/tr/setup.html">Getting started</a></li>
-      <li><a href="/docs/tr/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/tr/plugins.html">AU plugins</a></li>
+      <li><a class="on" href="/docs/tr/setup.html">Başlarken</a></li>
+      <li><a href="/docs/tr/rig.html">Rig ve sinyal zinciri</a></li>
+      <li><a href="/docs/tr/plugins.html">AU eklentileri</a></li>
       <li><a href="/docs/tr/looper.html">Looper</a></li>
-      <li><a href="/docs/tr/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/tr/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/tr/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/tr/settings.html">Settings reference</a></li>
+      <li><a href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
+      <li><a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a></li>
+      <li><a href="/docs/tr/control.html">MIDI ve kontrol</a></li>
+      <li><a href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--power)">01 · GETTING STARTED</div>
-    <h1>Plugging in.</h1>
-    <p class="lede">Everything between your guitar and the first sound: how NAMper picks up your
-      audio hardware, what the power button does, how to read the meters, and why the app
-      sometimes mutes itself on purpose.</p>
+    <div class="slab" style="--nc:var(--power)">01 · BAŞLARKEN</div>
+    <h1>Bağlanmak.</h1>
+    <p class="lede">Gitarınla ilk ses arasındaki her şey: NAMper'ın ses donanımını nasıl
+      algıladığı, power düğmesinin ne yaptığı, göstergelerin nasıl okunacağı ve uygulamanın
+      bazen kendini neden bilerek susturduğu.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">BU SAYFADA</div>
       <ul>
-        <li><a href="#power">The power button</a></li>
-        <li><a href="#interfaces">Audio interfaces</a></li>
-        <li><a href="#meters">Meters and levels</a></li>
-        <li><a href="#rate">Sample rate and buffer</a></li>
-        <li><a href="#feedback-guard">The feedback guard</a></li>
-        <li><a href="#permissions">Permissions</a></li>
-        <li><a href="#files">Where your files live</a></li>
+        <li><a href="#power">Power düğmesi</a></li>
+        <li><a href="#interfaces">Ses arayüzleri</a></li>
+        <li><a href="#meters">Göstergeler ve seviyeler</a></li>
+        <li><a href="#rate">Örnekleme hızı ve buffer</a></li>
+        <li><a href="#feedback-guard">Geri besleme koruması</a></li>
+        <li><a href="#permissions">İzinler</a></li>
+        <li><a href="#files">Dosyaların nerede tutulduğu</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="power"><span class="n">01.1</span>The power button</h2>
-      <p>The green power icon in the top-right corner of the <b class="ui a">Rig</b> tab starts and
-        stops the audio engine. Until it is on, nothing is processed and nothing makes a sound —
-        the meters stay flat and recording refuses with
-        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
-      <p>It is dim when the engine is stopped and green with a glow when it is running. The
-        <b class="ui">DSP load</b> chip beside it shows how hard the processor is working: green
-        under 60 %, amber up to 85 %, red above that. If it sits in the red, take a block out of the
-        chain or step the buffer size up.</p>
-      <p>NAMper asks for microphone access the first time you start the engine, not at launch.</p>
+      <h2 id="power"><span class="n">01.1</span>Power düğmesi</h2>
+      <p><b class="ui a">Rig</b> sekmesinin sağ üst köşesindeki yeşil power simgesi ses motorunu
+        başlatır ve durdurur. O açılana kadar hiçbir şey işlenmez ve hiçbir ses çıkmaz —
+        göstergeler düz kalır ve kayıt şu mesajla reddedilir:
+        <b class="ui r">Ses kapalı — kayıttan önce güç düğmesine dokun.</b></p>
+      <p>Motor durduğunda soluk, çalışırken ışıltılı yeşildir. Yanındaki <b class="ui">DSP yükü</b> çipi işlemcinin ne kadar zorlandığını gösterir: %60'ın altında yeşil, %85'e
+        kadar kehribar, üstünde kırmızı. Kırmızıda kalıyorsa zincirden bir blok çıkar ya da
+        buffer boyutunu bir kademe artır.</p>
+      <p>NAMper mikrofon erişimini uygulama açılışında değil, motoru ilk başlattığında ister.</p>
       <div class="note warn">
-        <div class="t">Unplugging</div>
-        <p>Pulling out your headphones or your interface <b>stops the engine</b> — deliberately, so
-          a loud rig never jumps to the phone speaker on its own. Tap power again once you are
-          plugged back in. Plugging something new in rebuilds the engine automatically.</p>
+        <div class="t">Fişi çekmek</div>
+        <p>Kulaklığını ya da arayüzünü çıkarmak <b>motoru durdurur</b> — bilerek, çünkü yüksek
+          sesli bir rig kendiliğinden telefon hoparlörüne atlamamalı. Tekrar bağlandığında
+          power'a yeniden dokun. Yeni bir şey bağlamak motoru otomatik olarak yeniden kurar.</p>
       </div>
-      <p>If the engine cannot start, the banner reads <b class="ui r">Audio could not start.
-        Another app may be using the interface — try again.</b> Close whatever else is holding the
-        interface and try once more.</p>
+      <p>Motor başlayamazsa banner şunu gösterir: <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> Arayüzü elinde tutan diğer
+        uygulamayı kapat ve tekrar dene.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="interfaces"><span class="n">01.2</span>Audio interfaces</h2>
-      <p>There is no device picker. NAMper follows whatever audio route iOS is using, so you choose
-        your hardware the way you always do — plug the interface in, and the app rebuilds itself
-        around it. Multichannel interfaces are supported, up to eight input channels.</p>
-      <p>Settings → <b class="ui">AUDIO INTERFACE</b> tells you what NAMper actually got:
-        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> and
-        <b class="ui">Engine</b> (<b class="ui">running</b> or <b class="ui">stopped</b>). If the
-        channel count is not what you expected, that row is the place to find out.</p>
+      <h2 id="interfaces"><span class="n">01.2</span>Ses arayüzleri</h2>
+      <p>Cihaz seçici yoktur. NAMper, iOS'un kullandığı ses yolunu ne ise onu izler; donanımını
+        her zamanki gibi seçersin — arayüzü tak, uygulama kendini onun etrafında yeniden kurar.
+        Çok kanallı arayüzler desteklenir, sekiz giriş kanalına kadar.</p>
+      <p>Ayarlar → <b class="ui">SES ARABİRİMİ</b>, NAMper'ın gerçekte ne aldığını gösterir:
+        <b class="ui">Örnekleme hızı</b>, <b class="ui">Girişler</b>, <b class="ui">Çıkışlar</b> ve
+        <b class="ui">Motor</b> (<b class="ui">çalışıyor</b> ya da <b class="ui">durdu</b>).
+        Kanal sayısı beklediğin gibi değilse öğrenmen gereken yer burasıdır.</p>
 
-      <h3>Naming your channels</h3>
-      <p>Settings → <b class="ui">CHANNEL NAMES</b> gives every input a text field with the
-        placeholder <b class="ui">Guitar, Vocal…</b>. Name them once and those names appear in every
-        input picker in the app — rig inputs, looper track sources, input trim rows. Unnamed
-        channels simply read <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on.</p>
+      <h3>Kanallarını adlandırmak</h3>
+      <p>Ayarlar → <b class="ui">KANAL ADLARI</b>, her girişe <b class="ui">Gitar, vokal…</b> yer tutuculu bir metin alanı verir. Bir kez adlandır, bu adlar uygulamadaki
+        her giriş seçicide görünür — rig girişleri, looper parça kaynakları, input trim
+        satırları. Adlandırılmamış kanallar sadece <b class="ui">In 1</b>, <b class="ui">In
+        2</b> gibi görünür.</p>
 
-      <h3>Multiple outputs</h3>
-      <p>Settings → <b class="ui">Use all interface outputs</b> is off by default, and stereo
-        devices never need it. Switch it on and NAMper opens every output pair on the interface, so
-        a rig, a parallel branch, a looper track or the metronome click can each own its own pair —
-        the guitar to front of house, the click to the drummer's in-ears.</p>
+      <h3>Birden çok çıkış</h3>
+      <p>Ayarlar → <b class="ui">Tüm arabirim çıkışlarını kullan</b> varsayılan olarak kapalıdır ve
+        stereo cihazların buna hiç ihtiyacı yoktur. Açtığında NAMper arayüzdeki her çıkış
+        çiftini kullanır; böylece bir rig, paralel bir dal, bir looper parçası ya da metronom
+        kliki kendi çiftine sahip olabilir — gitar ana hoparlöre, klik ise davulcunun kulak içi
+        monitörüne.</p>
       <div class="note">
-        <div class="t">Input channels</div>
-        <p><b class="ui">Input channels</b> is normally left on <b class="ui">Auto</b>. Pin it to a
-          number only if your interface reports more channels than you want NAMper to open.</p>
+        <div class="t">Giriş kanalları</div>
+        <p><b class="ui">Giriş kanalları</b> genelde <b class="ui">Auto</b>'da bırakılır.
+          Sadece arayüzün, NAMper'ın açmasını istediğinden daha fazla kanal bildirdiğinde
+          belirli bir sayıya sabitle.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="meters"><span class="n">01.3</span>Meters and levels</h2>
-      <p>Two vertical strips flank the amp card on the Rig tab: <b class="ui">IN</b> on the left,
-        <b class="ui">OUT</b> on the right. Both run from −60 dBFS at the bottom to 0 at the top,
-        green through amber to red. There is no separate clip light — clipping is the bar hitting
-        red at the very top.</p>
+      <h2 id="meters"><span class="n">01.3</span>Göstergeler ve seviyeler</h2>
+      <p>Rig sekmesinde amfi kartının iki yanında dikey birer şerit vardır: solda
+        <b class="ui">IN</b>, sağda <b class="ui">OUT</b>. İkisi de altta −60 dBFS'ten üstte
+        0'a kadar uzanır, yeşilden kehribara, oradan kırmızıya geçer. Ayrı bir clip ışığı
+        yoktur — clipping, çubuğun en tepede kırmızıya çarpmasıdır.</p>
 
-      <h3>Setting your input level</h3>
+      <h3>Giriş seviyeni ayarlamak</h3>
       <ol style="--nc:var(--eq)">
-        <li>Turn the audio on and play as hard as you ever play.</li>
-        <li>The <b class="ui">IN</b> meter should reach its top third and stay out of the red.</li>
-        <li>If your interface has a gain knob, use it. If it does not, open Settings →
-          <b class="ui">Input trim</b> and raise the slider for that channel — it goes from
-          −12 dB to +24 dB in 1 dB steps, and starts at 0.</li>
+        <li>Sesi aç ve en sert çaldığın gibi çal.</li>
+        <li><b class="ui">IN</b> göstergesi üst üçte bire ulaşmalı ve kırmızıya girmemeli.</li>
+        <li>Arayüzünde bir gain düğmesi varsa onu kullan. Yoksa Ayarlar →
+          <b class="ui">Giriş trim</b>'i aç ve o kanalın kaydırıcısını yükselt — −12 dB'den
+          +24 dB'ye kadar 1 dB'lik adımlarla gider ve 0'dan başlar.</li>
       </ol>
-      <p>The <b class="ui">IN</b> meter shows the level <em>after</em> the trim, so what you see is
-        what the amp model actually receives.</p>
+      <p><b class="ui">IN</b> göstergesi seviyeyi trim'den <em>sonra</em> gösterir, yani
+        gördüğün şey amfi modelinin gerçekte aldığı şeydir.</p>
 
-      <h3>The master section</h3>
-      <p>At the bottom of the Rig tab, the <b class="ui">MASTER</b> card is where every rig, the
-        looper, the sampler and the backing track sum together before the hardware output. It shows
-        stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> with marks at −12 and −6 dB,
-        plus a broadcast-style loudness reading in <b class="ui">LUFS</b> — the big number is
-        momentary loudness, the small line adds the short-term value. It reads
-        <b class="ui">-inf</b> in silence. The fader below runs from −60 to +12 dB.</p>
-      <p>Every block editor has its own small <b class="ui">IN</b> and <b class="ui">OUT</b> meters
-        too, which is the quickest way to find the block that is running hot.</p>
+      <h3>Master bölümü</h3>
+      <p>Rig sekmesinin altında, <b class="ui">MASTER</b> kartı her rig'in, looper'ın,
+        sampler'ın ve altyapı parçasının donanım çıkışından önce birleştiği yerdir. −12 ve −6
+        dB işaretli stereo tepe çubukları <b class="ui">L</b> ve <b class="ui">R</b>'yi ve
+        yayıncılık tarzı bir yükseklik okuması olan <b class="ui">LUFS</b>'u gösterir — büyük
+        sayı anlık yükseklik, küçük çizgi kısa vadeli değeri ekler. Sessizlikte
+        <b class="ui">-inf</b> gösterir. Alttaki fader −60'tan +12 dB'ye kadar gider.</p>
+      <p>Her blok editörünün kendi küçük <b class="ui">IN</b> ve <b class="ui">OUT</b>
+        göstergeleri de vardır; aşırı yüklenen bloğu bulmanın en hızlı yolu budur.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="rate"><span class="n">01.4</span>Sample rate and buffer</h2>
-      <p>Both live in Settings → <b class="ui">AUDIO INTERFACE</b>, and both are remembered
-        per audio route — your interface and your headphones can each keep their own settings.</p>
+      <h2 id="rate"><span class="n">01.4</span>Örnekleme hızı ve buffer</h2>
+      <p>İkisi de Ayarlar → <b class="ui">SES ARABİRİMİ</b>'te bulunur ve her ikisi de ses
+        yoluna göre hatırlanır — arayüzün ve kulaklığın kendi ayarlarını ayrı ayrı
+        tutabilir.</p>
 
-      <h3>Sample rate</h3>
-      <p>The chips read <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
-        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> and
-        <b class="ui">192k</b>. <b class="ui">Auto</b> is the default and simply follows the
-        interface; changing the rate restarts the engine.</p>
-      <p>On the phone's own microphone and speaker only <b class="ui">Auto</b> and
-        <b class="ui">48k</b> appear, with the note
-        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
-        rates.</b> With an interface connected you get the full list — minus any rate that
-        particular interface has already refused, which NAMper remembers and stops offering.</p>
-      <p>If a rate is refused, the app falls back to the previous one and says so in red:
+      <h3>Örnekleme hızı</h3>
+      <p>Çipler şöyle görünür: <b class="ui">Auto</b>, <b class="ui">44.1k</b>,
+        <b class="ui">48k</b>, <b class="ui">88.2k</b>, <b class="ui">96k</b>,
+        <b class="ui">176.4k</b> ve <b class="ui">192k</b>. <b class="ui">Auto</b> varsayılandır
+        ve sadece arayüzü izler; hızı değiştirmek motoru yeniden başlatır.</p>
+      <p>Telefonun kendi mikrofonunda ve hoparlöründe sadece <b class="ui">Auto</b> ve
+        <b class="ui">48k</b> görünür, yanında şu not vardır: <b class="ui">Dahili ses yalnızca 48 kHz’de çalışır. Başka hızlar için bir arabirim bağla.</b> Bir arayüz bağlandığında
+        tam listeyi alırsın — o arayüzün daha önce reddettiği hızlar hariç; NAMper bunu hatırlar
+        ve bir daha sunmaz.</p>
+      <p>Bir hız reddedilirse uygulama öncekine geri döner ve bunu kırmızıyla söyler:
         <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
       <div class="note tip">
-        <div class="t">Which rate should I use?</div>
-        <p>Higher is not automatically better — it costs processing headroom, and NAM profiles are
-          captured at ordinary rates anyway. Leave it on <b class="ui">Auto</b> unless you are
-          matching a session that runs at a specific rate.</p>
+        <div class="t">Hangi hızı kullanmalıyım?</div>
+        <p>Daha yüksek olması otomatik olarak daha iyi demek değildir — işlem payından götürür,
+          üstelik NAM profilleri zaten sıradan hızlarda kaydedilir. Belirli bir hızda çalışan
+          bir oturuma uymadıkça <b class="ui">Auto</b>'da bırak.</p>
       </div>
 
-      <h3>Buffer size</h3>
-      <p><b class="ui">Buffer</b> offers <b class="ui">64</b>, <b class="ui">128</b>,
-        <b class="ui">256</b> and <b class="ui">512</b> frames, with a live readout of the latency
-        that buys you. The default is <b class="ui">128</b>. The app's own advice is exact:
-        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
-        one step.</b></p>
-      <p>This is the only latency control in NAMper — there is no separate latency setting.</p>
+      <h3>Buffer boyutu</h3>
+      <p><b class="ui">Buffer</b>, sana kazandırdığı gecikmenin canlı okumasıyla birlikte
+        <b class="ui">64</b>, <b class="ui">128</b>, <b class="ui">256</b> ve
+        <b class="ui">512</b> frame sunar. Varsayılan <b class="ui">128</b>'dir. Uygulamanın
+        kendi tavsiyesi net: <b class="ui">Küçük = daha az gecikme; büyük = USB arabirimlerde daha güvenli. Çıtırdıyor mu? Bir kademe yükselt.</b></p>
+      <p>Bu, NAMper'daki tek gecikme kontrolüdür — ayrı bir gecikme ayarı yoktur.</p>
       <div class="note warn">
-        <div class="t">Bluetooth output</div>
-        <p>Bluetooth headphones and speakers add roughly 0.2 s of delay, which is unplayable. The
-          app warns you when it spots a Bluetooth route. Use wired output for live playing.</p>
+        <div class="t">Bluetooth çıkışı</div>
+        <p>Bluetooth kulaklıklar ve hoparlörler yaklaşık 0.2 saniyelik bir gecikme ekler, bu da
+          çalınamaz haldedir. Uygulama bir Bluetooth yolu tespit ettiğinde seni uyarır. Canlı
+          çalarken kablolu çıkış kullan.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="feedback-guard"><span class="n">01.5</span>The feedback guard</h2>
-      <p>A guitar app with the phone's own microphone open and the phone's own speaker playing is a
-        feedback loop waiting to happen. So NAMper watches for exactly that combination — built-in
-        mic in, built-in speaker or earpiece out — and mutes its output before it can howl.</p>
+      <h2 id="feedback-guard"><span class="n">01.5</span>Geri besleme koruması</h2>
+      <p>Telefonun kendi mikrofonu açıkken ve kendi hoparlörü çalarken bir gitar uygulaması,
+        olmayı bekleyen bir geri besleme döngüsüdür. Bu yüzden NAMper tam olarak bu
+        kombinasyonu izler — dahili mikrofon girişte, dahili hoparlör ya da kulaklık çıkışta —
+        ve ıslık çalmadan önce çıkışını susturur.</p>
       <figure>
         <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
-             alt="The banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. With an Unmute button.">
-        <figcaption>The banner you get when the guard engages</figcaption>
+             alt="Banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. Bir Unmute düğmesiyle birlikte.">
+        <figcaption>Koruma devreye girdiğinde gördüğün banner</figcaption>
       </figure>
-      <p>When it engages you see <b class="ui r">Output muted to stop feedback (mic → speaker).
-        Connect an interface or headphones.</b> Only the audible output is held back — the tuner,
-        the input meters and recording all keep working, so you can still tune up and still capture
-        a take.</p>
-      <p>Plug in headphones or an interface and the mute lifts by itself. The ✕ on the banner only
-        hides the message for this session; it does not unmute.</p>
+      <p>Devreye girdiğinde şunu görürsün: <b class="ui r">Geri besleme olmasın diye çıkış susturuldu (mikrofon → hoparlör). Bir arabirim ya da kulaklık bağla.</b> Sadece duyulabilir çıkış tutulur —
+        akort cihazı, giriş göstergeleri ve kayıt çalışmaya devam eder, yani yine de akort
+        yapabilir ve yine de bir kayıt alabilirsin.</p>
+      <p>Kulaklık ya da arayüz taktığında susturma kendiliğinden kalkar. Banner üzerindeki ✕
+        mesajı sadece bu oturum için gizler; sesi açmaz.</p>
       <div class="note">
-        <div class="t">What “Unmute” does</div>
-        <p>The <b class="ui">Unmute</b> button is a temporary exception: the output stays live for
-          this session, and the guard re-arms as soon as the route changes — plug an interface or
-          headphones in and out, or relaunch the app, and the built-in speaker is protected again.
-          To disable the guard permanently, use the
-          <b class="ui">Feedback guard</b> switch in Settings instead.</p>
+        <div class="t">"Unmute" ne yapar</div>
+        <p><b class="ui">Sesi aç</b> düğmesi geçici bir istisnadır: çıkış bu oturum boyunca açık
+          kalır ve yol değiştiği anda koruma yeniden devreye girer — bir arayüz ya da kulaklık
+          takıp çıkar, ya da uygulamayı yeniden başlat, dahili hoparlör yine korunur. Korumayı
+          kalıcı olarak kapatmak için bunun yerine Ayarlar'daki <b class="ui">Geri besleme koruması</b> anahtarını kullan.</p>
       </div>
-      <p>The switch itself is Settings → <b class="ui">AUDIO INTERFACE</b> →
-        <b class="ui">Feedback guard</b>, subtitle
-        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> It is on
-        by default.</p>
+      <p>Anahtarın kendisi Ayarlar → <b class="ui">SES ARABİRİMİ</b> →
+        <b class="ui">Geri besleme koruması</b>'dadır, alt başlığı <b class="ui">Mikrofon telefon hoparlöründen çalarken çıkışı susturur.</b> Varsayılan olarak açıktır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="permissions"><span class="n">01.6</span>Permissions</h2>
-      <p>NAMper asks for exactly two things, and only when it needs them.</p>
+      <h2 id="permissions"><span class="n">01.6</span>İzinler</h2>
+      <p>NAMper tam olarak iki şey ister, ve sadece ihtiyaç duyduğunda.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Permission</th><th>When</th><th>Why</th></tr></thead>
+          <thead><tr><th>İzin</th><th>Ne zaman</th><th>Neden</th></tr></thead>
           <tbody>
-            <tr><td>Microphone</td><td>The first time you tap the power button</td>
-                <td>To hear your guitar or microphone. The prompt says it plainly: audio never
-                    leaves your device.</td></tr>
-            <tr><td>Bluetooth</td><td>The first time you pair a wireless MIDI pedal</td>
-                <td>To find and connect Bluetooth MIDI controllers.</td></tr>
+            <tr><td>Mikrofon</td><td>Power düğmesine ilk dokunduğunda</td>
+                <td>Gitarını ya da mikrofonunu duymak için. İstem bunu açıkça söyler: ses
+                    hiçbir zaman cihazından çıkmaz.</td></tr>
+            <tr><td>Bluetooth</td><td>Kablosuz bir MIDI pedalını ilk eşleştirdiğinde</td>
+                <td>Bluetooth MIDI kontrolcülerini bulmak ve bağlamak için.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If microphone access is off, a red banner reads
-        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> with a
-        <b class="ui">Settings</b> button that takes you straight to the iOS setting. Grant it and
-        the engine rebuilds without a relaunch.</p>
-      <p>There is no analytics, no tracking, no account and no camera, photos, location or contacts
-        access. NAMper collects nothing.</p>
+      <p>Mikrofon erişimi kapalıysa kırmızı bir banner şunu gösterir:
+        <b class="ui r">Mikrofon erişimi kapalı — NAMper gitarını duyamıyor.</b> ve seni
+        doğrudan iOS ayarına götüren bir <b class="ui">Ayarlar</b> düğmesi. İzni ver, motor
+        yeniden başlatmaya gerek kalmadan kendini yeniden kurar.</p>
+      <p>Analitik yoktur, takip yoktur, hesap yoktur; kamera, fotoğraf, konum ya da kişi
+        erişimi de yoktur. NAMper hiçbir şey toplamaz.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="files"><span class="n">01.7</span>Where your files live</h2>
-      <p>Everything NAMper keeps is visible in the Files app under
-        <b class="ui">On My iPhone → NAMper</b> (or <b class="ui">On My iPad</b>). You can copy
-        things in and out with the Files app, back the folder up, or move it to a computer.</p>
+      <h2 id="files"><span class="n">01.7</span>Dosyaların nerede tutulduğu</h2>
+      <p>NAMper'ın tuttuğu her şey Files uygulamasında <b class="ui">On My iPhone →
+        NAMper</b> (ya da <b class="ui">On My iPad</b>) altında görünür. Files uygulamasıyla
+        içine ve dışına dosya kopyalayabilir, klasörü yedekleyebilir ya da bir bilgisayara
+        taşıyabilirsin.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Folder</th><th>What is in it</th></tr></thead>
+          <thead><tr><th>Klasör</th><th>İçinde ne var</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">tones/</b></td><td>NAM amp profiles (<b class="ui">.nam</b>) plus their
-              cover art and metadata</td></tr>
-            <tr><td><b class="ui">irs/</b></td><td>Impulse responses you have imported</td></tr>
-            <tr><td><b class="ui">samples/</b></td><td>Sampler pads, and saved kits under
-              <b class="ui">samples/kits/</b></td></tr>
-            <tr><td><b class="ui">backing/</b></td><td>Backing tracks, the setlist, lyrics and preset
-              markers</td></tr>
-            <tr><td><b class="ui">recordings/</b></td><td>Your performance recordings</td></tr>
-            <tr><td><b class="ui">presets/</b></td><td>Rig presets and the looper, sampler, setlist and
-              control presets</td></tr>
-            <tr><td><b class="ui">engine.log</b></td><td>A plain-text log of interface routing and
-              peaks, useful in a bug report</td></tr>
+            <tr><td><b class="ui">tones/</b></td><td>NAM amfi profilleri (<b class="ui">.nam</b>)
+              ve bunların kapak görselleri ile metadata'sı</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>İçe aktardığın impulse response'lar</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>Sampler pad'leri ve
+              <b class="ui">samples/kits/</b> altında kayıtlı kitler</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>Altyapı parçaları, setlist, şarkı
+              sözleri ve preset işaretleri</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>Performans kayıtların</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>Rig preset'leri ve looper, sampler,
+              setlist ve control preset'leri</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>Arayüz yönlendirmesi ve tepe
+              seviyelerinin düz metin günlüğü, bir hata raporunda işine yarar</td></tr>
           </tbody>
         </table>
       </div>
       <div class="note tip">
-        <div class="t">A shortcut worth knowing</div>
-        <p>Audio files you drop straight into <b class="ui">backing/</b> with the Files app are
-          adopted into the setlist the next time you open NAMper. Loading a whole set is a single
-          copy-paste on a computer rather than twenty taps on a phone.</p>
+        <div class="t">Bilmeye değer bir kısayol</div>
+        <p>Files uygulamasıyla doğrudan <b class="ui">backing/</b> içine bıraktığın ses
+          dosyaları, NAMper'ı bir sonraki açışında setlist'e dahil edilir. Bütün bir seti
+          yüklemek, telefonda yirmi dokunuş yerine bilgisayarda tek bir kopyala-yapıştırdır.</p>
       </div>
-      <p>Two things do not work the way you might guess: you cannot drag files onto the app icon or
-        into a window — every import goes through the file picker inside NAMper — and the
-        <b class="ui">tones/</b> folder is deliberately excluded from iCloud backup, because
-        TONE3000 can simply re-download those profiles.</p>
+      <p>İki şey tahmin edebileceğin gibi çalışmaz: dosyaları uygulama simgesinin üzerine ya da
+        bir pencereye sürükleyemezsin — her içe aktarma NAMper içindeki dosya seçici üzerinden
+        geçer — ve <b class="ui">tones/</b> klasörü iCloud yedeklemesinden bilerek hariç
+        tutulmuştur, çünkü TONE3000 bu profilleri zaten yeniden indirebilir.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/tr/">← All docs</a>
+      <a href="/docs/tr/">← Tüm dokümanlar</a>
       <span class="sp"></span>
-      <a href="/docs/tr/rig.html">02 · Rig &amp; signal chain →</a>
+      <a href="/docs/tr/rig.html">02 · Rig ve sinyal zinciri →</a>
     </nav>
   </main>
 </div>
@@ -303,7 +302,10 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper, herhangi bir ekipman üreticisiyle bağlantısı, onayı veya sponsorluğu
+      olmayan bağımsız bir uygulamadır. Tüm ürün adları, markalar ve ticari markalar ilgili
+      sahiplerinin mülkiyetindedir ve yalnızca bir capture'ın hangi ekipmandan alındığını
+      tanımlamak için kullanılır.</p>
   </div>
 </footer>
 

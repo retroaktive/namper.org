@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<title>Plugin AU — Tài liệu NAMper</title>
+<meta name="description" content="Host hiệu ứng Audio Unit bên trong một chuỗi NAMper, giao diện plugin nhúng, các giới hạn, cách trạng thái plugin được lưu — và NAMper tự làm gì khi là một hiệu ứng AUv3 trong app khác.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
-<meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
+<meta property="og:title" content="Plugin AU — Tài liệu NAMper">
+<meta property="og:description" content="Host hiệu ứng AUv3 trong một chuỗi, trạng thái và preset của plugin, và NAMper như một plugin bên trong app khác.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/plugins.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/plugins.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -46,170 +46,173 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">NỘI DUNG</div>
     <ol>
-      <li><a href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a class="on" href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
-    <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGIN AU</div>
+    <h1>Plugin của người khác.</h1>
+    <p class="lede">NAMper host các hiệu ứng AUv3 mà bạn đã sở hữu, ở bất kỳ đâu trong một chuỗi —
+      và chính NAMper cũng xuất hiện như một hiệu ứng trong các app khác. Cả hai chiều đều có
+      những quy tắc đáng biết trước một buổi diễn.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRONG TRANG NÀY</div>
       <ul>
-        <li><a href="#hosting">Adding an AU effect</a></li>
-        <li><a href="#ui">The plugin interface</a></li>
-        <li><a href="#limits">Limits worth knowing</a></li>
-        <li><a href="#state">Settings and presets</a></li>
-        <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#hosting">Thêm một hiệu ứng AU</a></li>
+        <li><a href="#ui">Giao diện plugin</a></li>
+        <li><a href="#limits">Giới hạn đáng biết</a></li>
+        <li><a href="#state">Cài đặt và preset</a></li>
+        <li><a href="#auv3">NAMper như một plugin</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="hosting"><span class="n">03.1</span>Adding an AU effect</h2>
-      <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
-        the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
-        section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
-        needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
-        submenu.</p>
-      <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
-        ship AUv3 plugins make them appear here.</b> That is the normal state on a fresh device:
-        AUv3 plugins arrive as ordinary App Store apps, so you install the app and its plugin shows
-        up here on the next visit.</p>
-      <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
-        straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+      <h2 id="hosting"><span class="n">03.1</span>Thêm một hiệu ứng AU</h2>
+      <p>Chạm chip <b class="ui">ADD</b> viền nét đứt trên một chuỗi để mở bảng chọn block. Ngay
+        dưới cùng danh sách, sau <b class="ui">Tiện ích</b>, là phần <b class="ui">Plugin</b> với
+        một mục duy nhất: menu con <b class="ui">Plugin AU</b>.</p>
+      <p>Mở nó ra và bạn có mọi hiệu ứng Audio Unit đã cài trên thiết bị, liệt kê theo tên plugin
+        kèm nhà sản xuất, sắp xếp theo nhà sản xuất trước, rồi theo tên. Không cần quét hay bật
+        gì cả — nếu một app trên điện thoại của bạn đi kèm một hiệu ứng AUv3, nó sẽ nằm trong
+        menu con đó.</p>
+      <p>Nếu menu con trống, nó hiện <b class="ui">Chưa có hiệu ứng Audio Unit nào. Các ứng dụng kèm plugin AUv3 sẽ hiện ở đây.</b> Đó là trạng thái bình thường trên một thiết
+        bị mới: plugin AUv3 đến dưới dạng các app App Store thông thường, nên bạn cài app đó và
+        plugin của nó sẽ xuất hiện ở đây vào lần mở sau.</p>
+      <p>Chọn một component và NAMper tạo block với plugin đó đã được tải sẵn, rồi mở thẳng vào
+        giao diện riêng của plugin — không có vỏ rỗng, không có bước hai. Chip của block trên
+        chuỗi được đặt tên <b class="ui">Plugin AU</b>, và nó hoạt động như mọi block khác: chạm
+        chấm LED bên dưới tên để bypass nó, kéo để di chuyển nó dọc theo chuỗi, nhấn giữ để
+        <b class="ui">Bỏ</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
-             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
-        <figcaption>Apple's AUDelay hosted in a NAMper block, drawn with the generic sliders</figcaption>
+             alt="Một plugin Audio Unit được host bên trong một block NAMper: một hàng trạng thái với tên plugin ở trên và một cột các thanh trượt tham số chung bên dưới.">
+        <figcaption>AUDelay của Apple được host trong một block NAMper, vẽ bằng các thanh trượt chung</figcaption>
       </figure>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="ui"><span class="n">03.2</span>The plugin interface</h2>
-      <p>The block sheet puts a thin status row above the plugin: an hourglass while the component
-        is being instantiated, a green check once it is live and passing audio, and the plugin's
-        name beside it. Under the status row you also get the usual block
-        <b class="ui">IN</b> and <b class="ui">OUT</b> meters, so you can see what the plugin is
-        being fed and what it hands back.</p>
-      <p>Loading is not always instant. While a component starts up the sheet reads
-        <b class="ui">Loading the plugin…</b> — larger plugins take a moment on first use, and the
-        signal passes through untouched until the plugin is ready.</p>
+      <h2 id="ui"><span class="n">03.2</span>Giao diện plugin</h2>
+      <p>Sheet của block đặt một hàng trạng thái mỏng phía trên plugin: một đồng hồ cát trong lúc
+        component đang được khởi tạo, một dấu tích xanh khi nó đã hoạt động và đang xử lý âm
+        thanh, cùng tên plugin bên cạnh. Dưới hàng trạng thái, bạn cũng có đồng hồ
+        <b class="ui">VÀO</b> và <b class="ui">RA</b> quen thuộc của block, để bạn thấy plugin
+        đang nhận gì và trả về gì.</p>
+      <p>Việc tải không phải lúc nào cũng tức thì. Trong lúc một component khởi động, sheet hiện
+        <b class="ui">Đang tải plugin…</b> — các plugin lớn hơn cần một chút thời gian ở lần
+        dùng đầu tiên, và tín hiệu đi qua nguyên vẹn cho tới khi plugin sẵn sàng.</p>
 
-      <h3>Swapping the plugin</h3>
-      <p>The circular-arrows button in the sheet is <b class="ui">Replace plugin</b>. Its menu is
-        the same component list, and picking a different one swaps the plugin inside the existing
-        block, so the block keeps its place in the chain and its bypass state. Use it when you want
-        a different delay in the same slot rather than tearing the chain apart.</p>
+      <h3>Đổi plugin</h3>
+      <p>Nút mũi tên vòng tròn trong sheet là <b class="ui">Thay plugin</b>. Menu của nó là
+        cùng danh sách component đó, và chọn một cái khác sẽ đổi plugin bên trong block hiện có,
+        nên block vẫn giữ nguyên vị trí trong chuỗi và trạng thái bypass của nó. Dùng nó khi bạn
+        muốn một delay khác trong cùng một slot thay vì phải tháo cả chuỗi ra.</p>
 
-      <h3>When a plugin has no view of its own</h3>
-      <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
-        designed it. Some ship no view at all. For those, NAMper draws its own generic list —
-        up to 24 parameters, each as a label and a slider. That is what the screenshot above shows:
-        Apple's AUDelay has no custom panel, so you get named sliders instead.</p>
+      <h3>Khi một plugin không có giao diện riêng</h3>
+      <p>Hầu hết plugin vẽ giao diện riêng của chúng và NAMper nhúng nó trực tiếp, đúng như tác
+        giả đã thiết kế. Một số không có giao diện nào cả. Với những cái đó, NAMper tự vẽ một
+        danh sách chung — tối đa 24 tham số, mỗi cái là một nhãn và một thanh trượt. Đó là những
+        gì ảnh chụp màn hình ở trên cho thấy: AUDelay của Apple không có panel riêng, nên bạn
+        nhận được các thanh trượt có tên thay vào đó.</p>
       <div class="note">
-        <div class="t">Why the fallback exists</div>
-        <p>iOS can improvise an editor for a viewless plugin, but some units crash inside it.
-          NAMper draws the parameter list itself instead, which is plainer to look at and far more
-          likely to survive a set.</p>
+        <div class="t">Vì sao có phương án dự phòng này</div>
+        <p>iOS có thể tự ứng biến một trình chỉnh sửa cho một plugin không có giao diện, nhưng
+          một số plugin bị crash bên trong đó. NAMper tự vẽ danh sách tham số thay vào đó, trông
+          đơn giản hơn nhưng có khả năng sống sót qua một buổi diễn cao hơn nhiều.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="limits"><span class="n">03.3</span>Limits worth knowing</h2>
+      <h2 id="limits"><span class="n">03.3</span>Giới hạn đáng biết</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+          <thead><tr><th>Giới hạn</th><th>Nghĩa là gì</th></tr></thead>
           <tbody>
-            <tr><td>Effects only</td>
-                <td>Only effect components are listed. AU instruments are not hostable, so a synth
-                    or a drum machine will never appear in the submenu.</td></tr>
-            <tr><td>16 plugins</td>
-                <td>Sixteen hosted plugins at once, counted across every rig and every branch. In
-                    practice you will run out of processor long before you run out of slots.</td></tr>
+            <tr><td>Chỉ hiệu ứng</td>
+                <td>Chỉ các component hiệu ứng được liệt kê. Nhạc cụ AU không thể host được, nên
+                    một synth hay một drum machine sẽ không bao giờ xuất hiện trong menu con.</td></tr>
+            <tr><td>16 plugin</td>
+                <td>Mười sáu plugin được host cùng lúc, tính trên toàn bộ mọi rig và mọi nhánh.
+                    Trên thực tế bạn sẽ hết bộ xử lý từ rất lâu trước khi hết slot.</td></tr>
             <tr><td>Stereo</td>
-                <td>Plugin input and output run in stereo, at whatever sample rate the engine is
-                    on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+                <td>Input và output của plugin chạy ở stereo, ở bất kỳ sample rate nào engine
+                    đang dùng.</td></tr>
+            <tr><td>Chỉ trong chuỗi rig</td>
+                <td>Plugin AU chỉ đặt được bên trong chuỗi rig. Phần <b class="ui">MASTER</b>
+                    chỉ nhận block riêng của NAMper.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If a plugin fails to render, NAMper leaves the signal dry for that block rather than
-        dropping out. You keep hearing your guitar, minus that one effect — which is the right
-        failure on stage, but it also means a plugin can go quiet without an obvious alarm. If an
-        effect stops doing anything, check the status row in its sheet.</p>
-      <p>Third-party plugins also cost processing power that NAMper cannot budget for. Watch the
-        <b class="ui">DSP load</b> chip in the Rig header after you add one; if it moves into amber
-        or red, step the buffer size up in Settings.</p>
+      <p>Nếu một plugin render lỗi, NAMper để tín hiệu đi qua khô (dry) cho block đó thay vì làm
+        rớt cả chuỗi. Bạn vẫn nghe thấy guitar của mình, chỉ thiếu mỗi hiệu ứng đó — đó là cách
+        lỗi đúng đắn khi đang diễn, nhưng cũng có nghĩa là một plugin có thể im lặng mà không có
+        cảnh báo rõ ràng. Nếu một hiệu ứng ngừng làm gì đó, hãy kiểm tra hàng trạng thái trong
+        sheet của nó.</p>
+      <p>Plugin bên thứ ba cũng tốn năng lượng xử lý mà NAMper không thể tính trước được. Theo
+        dõi chip <b class="ui">Tải DSP</b> trong header của Rig sau khi bạn thêm một plugin;
+        nếu nó chuyển sang hổ phách hoặc đỏ, hãy tăng kích thước buffer trong Cài đặt.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="state"><span class="n">03.4</span>Settings and presets</h2>
-      <p>A hosted plugin's own settings — everything you changed inside its interface — are stored
-        with the block and travel inside your NAMper preset. Save the rig, load it tomorrow, and
-        the plugin comes back set the way you left it.</p>
+      <h2 id="state"><span class="n">03.4</span>Cài đặt và preset</h2>
+      <p>Cài đặt riêng của một plugin được host — mọi thứ bạn đã đổi bên trong giao diện của nó —
+        được lưu cùng với block và đi theo trong preset NAMper của bạn. Lưu rig, tải lại nó vào
+        ngày mai, và plugin sẽ quay lại đúng như bạn đã để nó.</p>
       <div class="note warn">
-        <div class="t">Close the sheet before you save</div>
-        <p>Plugin state is captured at the moment you <b>close the block sheet</b>. Tweak a plugin,
-          leave its sheet open, save the preset from behind it, and the preset stores the state
-          from before your edits. Make it a habit: close the plugin sheet first, then save.</p>
+        <div class="t">Đóng sheet trước khi lưu</div>
+        <p>Trạng thái của plugin được ghi lại vào đúng lúc bạn <b>đóng sheet của block</b>. Chỉnh
+          một plugin, để sheet của nó mở, lưu preset trong khi nó vẫn đang mở, và preset sẽ lưu
+          trạng thái từ trước khi bạn chỉnh sửa. Hãy tạo thói quen: đóng sheet plugin trước, rồi
+          mới lưu.</p>
       </div>
-      <p>The same applies to global snapshots and to sharing a preset with someone else — whatever
-        was captured on the last sheet close is what goes into the file. Note that the preset
-        carries the plugin's <em>settings</em>, not the plugin: whoever opens it needs the same
-        Audio Unit installed on their device.</p>
-      <p>One more thing to expect: using <b class="ui">Replace plugin</b> clears the stored state.
-        The settings belonged to the old component and mean nothing to the new one, so the swap
-        starts you at the new plugin's defaults.</p>
+      <p>Điều tương tự cũng áp dụng cho global snapshot và cho việc chia sẻ một preset với người
+        khác — bất cứ gì được ghi lại ở lần đóng sheet cuối cùng là thứ đi vào file. Lưu ý rằng
+        preset mang theo <em>cài đặt</em> của plugin, không phải bản thân plugin: ai mở nó cũng
+        cần cài cùng một Audio Unit đó trên thiết bị của họ.</p>
+      <p>Một điều nữa cần lưu ý: dùng <b class="ui">Thay plugin</b> sẽ xoá trạng thái đã lưu.
+        Cài đặt đó thuộc về component cũ và không có ý nghĩa gì với cái mới, nên việc đổi plugin
+        sẽ đưa bạn về mặc định của plugin mới.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="auv3"><span class="n">03.5</span>NAMper as a plugin</h2>
-      <p>NAMper also ships as an AUv3 effect, so you can load it inside GarageBand, AUM, Logic or
-        any other AUv3 host and record it onto a track there. In a host's plugin browser it looks
-        like this:</p>
+      <h2 id="auv3"><span class="n">03.5</span>NAMper như một plugin</h2>
+      <p>NAMper cũng có bản AUv3, nên bạn có thể tải nó vào GarageBand, AUM, Logic hay bất kỳ
+        host AUv3 nào khác và ghi âm nó vào một track ở đó. Trong trình duyệt plugin của một
+        host, nó trông như thế này:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <thead><tr><th>Trường</th><th>Giá trị</th></tr></thead>
           <tbody>
-            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
-            <tr><td>Manufacturer</td><td><b class="ui">retroaktive</b></td></tr>
-            <tr><td>Description</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
-            <tr><td>Type</td><td>Audio effect — not an instrument</td></tr>
+            <tr><td>Tên</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>Nhà sản xuất</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>Mô tả</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>Loại</td><td>Hiệu ứng audio — không phải nhạc cụ</td></tr>
           </tbody>
         </table>
       </div>
-      <p>It takes stereo in and gives stereo out, but the two input channels are summed to mono
-        inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
-        want for a DI'd guitar on a mono track.</p>
+      <p>Nó nhận vào stereo và trả ra stereo, nhưng hai kênh input được cộng dồn thành mono ở bên
+        trong: một đầu vào mono kiểu guitar đưa vào một ampli. Đây là chủ đích, và đó là điều bạn
+        muốn cho một cây guitar DI trên một track mono.</p>
 
-      <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <h3>18 tham số</h3>
+      <p>Panel riêng của plugin là một dải nhỏ có thương hiệu, ghi <b class="ui">NAMper</b> và
+        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. Mọi điều khiển
+        thực sự đều là các tham số có thể tự động hoá (automate) từ host, và có mười tám tham số
+        như vậy:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
+          <thead><tr><th>Block</th><th>Tham số</th></tr></thead>
           <tbody>
             <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
             <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
@@ -225,31 +228,31 @@
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>Mỗi tham số trong số đó đều có thể tự động hoá từ host. Các tham số on/off là giá trị
+        dấu phẩy động từ 0 tới 1, nên hầu hết host vẽ chúng thành thanh trượt thay vì công tắc —
+        bất cứ gì từ nửa chừng trở lên là bật. Ba preset gốc cũng được đưa ra cho host:
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b> và <b class="ui">Lead</b>.</p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">Những gì plugin không mang theo</div>
+        <p>Không có model NAM. Không có IR cab. Không có block modulation. Không có tài liệu rig
+          nào cả — host chỉ lưu 18 giá trị tham số đó và không gì khác, nên một rig bạn dựng
+          trong app không đi theo vào plugin. Cũng không có input MIDI trong bản plugin.</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
+      <p>Hãy hiểu đúng: bên trong một host, NAMper là một kênh amp-và-hiệu-ứng gọn nhẹ, không
+        phải cả app. Nếu bạn muốn các bản capture NAM, các thùng loa, looper hay setlist của
+        mình, hãy chạy chính app và ghi âm từ đó.</p>
       <div class="note tip">
-        <div class="t">Working with both</div>
-        <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/vi/perform.html">Perform &amp; lyrics</a>.</p>
+        <div class="t">Dùng cả hai cùng lúc</div>
+        <p>Bạn có thể chạy cả app đầy đủ và định tuyến output của nó vào một DAW, hoặc dùng
+          plugin cho một kênh guitar nhanh trên một track bạn đã đang thu trong một host. Trình
+          ghi âm của tab Perform và tính năng xuất DAWproject của nó tồn tại cho hướng đầu tiên
+          — xem <a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a>.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/rig.html">← 02 · Rig &amp; signal chain</a>
+      <a href="/docs/vi/rig.html">← 02 · Rig &amp; chuỗi tín hiệu</a>
       <span class="sp"></span>
       <a href="/docs/vi/looper.html">04 · Looper →</a>
     </nav>
@@ -266,7 +269,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một ứng dụng độc lập, không liên kết, không được xác nhận và không được tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu là tài sản của chủ sở hữu tương ứng và chỉ được dùng để mô tả thiết bị mà bản capture được lấy từ đó.</p>
   </div>
 </footer>
 

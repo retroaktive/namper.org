@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<title>AU 插件 — NAMper 文档</title>
+<meta name="description" content="在 NAMper 信号链中加载 Audio Unit 效果、内嵌插件界面、各项限制、插件状态如何保存——以及 NAMper 自身作为 AUv3 效果器在其他应用中的表现。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
-<meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
+<meta property="og:title" content="AU 插件 — NAMper 文档">
+<meta property="og:description" content="在信号链中加载 AUv3 效果、插件状态与预设，以及 NAMper 作为其他应用内的插件。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh/plugins.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">文档</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/zh/">← ALL DOCS</a>
+  <a class="home" href="/docs/zh/">← 全部文档</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/zh/plugins.html" aria-current="page">简体中文</a>
   </nav>
@@ -46,178 +46,171 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">目录</div>
     <ol>
-      <li><a href="/docs/zh/setup.html">Getting started</a></li>
-      <li><a href="/docs/zh/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/zh/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/zh/looper.html">Looper</a></li>
-      <li><a href="/docs/zh/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/zh/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/zh/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/zh/settings.html">Settings reference</a></li>
+      <li><a href="/docs/zh/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
+      <li><a class="on" href="/docs/zh/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
+      <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
+      <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
+      <li><a href="/docs/zh/settings.html">设置参考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
-    <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU 插件</div>
+    <h1>别人做的插件。</h1>
+    <p class="lede">NAMper 可以在信号链的任意位置加载你已经拥有的 AUv3 效果——而 NAMper 自身也会
+      作为一个效果器出现在其他应用里。这两个方向都各有一些值得在演出前弄清楚的规则。</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">本页内容</div>
       <ul>
-        <li><a href="#hosting">Adding an AU effect</a></li>
-        <li><a href="#ui">The plugin interface</a></li>
-        <li><a href="#limits">Limits worth knowing</a></li>
-        <li><a href="#state">Settings and presets</a></li>
-        <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#hosting">添加一个 AU 效果</a></li>
+        <li><a href="#ui">插件界面</a></li>
+        <li><a href="#limits">值得了解的限制</a></li>
+        <li><a href="#state">设置与预设</a></li>
+        <li><a href="#auv3">作为插件的 NAMper</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="hosting"><span class="n">03.1</span>Adding an AU effect</h2>
-      <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
-        the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
-        section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
-        needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
-        submenu.</p>
-      <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
-        ship AUv3 plugins make them appear here.</b> That is the normal state on a fresh device:
-        AUv3 plugins arrive as ordinary App Store apps, so you install the app and its plugin shows
-        up here on the next visit.</p>
-      <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
-        straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+      <h2 id="hosting"><span class="n">03.1</span>添加一个 AU 效果</h2>
+      <p>点击信号链上虚线的 <b class="ui">ADD</b> 标签打开模块面板。在列表最下方、
+        <b class="ui">实用工具</b> 之后，是 <b class="ui">插件</b> 分类，
+        里面只有一项：<b class="ui">AU 插件</b> 子菜单。</p>
+      <p>打开它，你会看到设备上安装的每一个 Audio Unit 效果，以插件名称加制造商的形式列出，
+        先按制造商排序，再按名称排序。不需要扫描或启用任何东西——只要手机上某个应用自带
+        AUv3 效果，它就会出现在这个子菜单里。</p>
+      <p>如果子菜单是空的，会显示 <b class="ui">未安装 Audio Unit 效果。含 AUv3 插件的应用会显示在这里。</b> 这是全新设备上的正常状态：
+        AUv3 插件是随普通的 App Store 应用一起安装的，所以你安装那个应用之后，
+        它的插件下次就会出现在这里。</p>
+      <p>选中一个组件，NAMper 就会创建一个已经加载好该插件的模块，然后直接打开插件
+        自己的界面——没有空壳，没有第二个步骤。信号链上这个模块的标签名为
+        <b class="ui">AU 插件</b>，它的行为和其他模块一样：点击名称下方的 LED 圆点
+        旁通它，拖动它在信号链上移动位置，长按它调出 <b class="ui">移除</b>。</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
-             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
-        <figcaption>Apple's AUDelay hosted in a NAMper block, drawn with the generic sliders</figcaption>
+             alt="在 NAMper 模块内加载的一个 Audio Unit 插件：顶部是显示插件名称的状态行，下方是一列通用参数滑块。">
+        <figcaption>苹果自带的 AUDelay 加载在一个 NAMper 模块中，以通用滑块的形式绘制</figcaption>
       </figure>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="ui"><span class="n">03.2</span>The plugin interface</h2>
-      <p>The block sheet puts a thin status row above the plugin: an hourglass while the component
-        is being instantiated, a green check once it is live and passing audio, and the plugin's
-        name beside it. Under the status row you also get the usual block
-        <b class="ui">IN</b> and <b class="ui">OUT</b> meters, so you can see what the plugin is
-        being fed and what it hands back.</p>
-      <p>Loading is not always instant. While a component starts up the sheet reads
-        <b class="ui">Loading the plugin…</b> — larger plugins take a moment on first use, and the
-        signal passes through untouched until the plugin is ready.</p>
+      <h2 id="ui"><span class="n">03.2</span>插件界面</h2>
+      <p>模块面板会在插件上方放一条细细的状态行：组件实例化过程中显示一个沙漏图标，
+        一旦它正常运行并开始处理音频，就变成一个绿色对勾，旁边显示插件的名称。状态行下方
+        还是常规的模块 <b class="ui">入</b> 和 <b class="ui">出</b> 电平表，让你能看到
+        送进插件的是什么信号、它又送回了什么。</p>
+      <p>加载不总是瞬间完成的。组件启动期间，面板会显示
+        <b class="ui">正在加载插件…</b>——较大的插件在首次使用时需要一点时间，
+        在插件准备好之前，信号会原样通过，不受影响。</p>
 
-      <h3>Swapping the plugin</h3>
-      <p>The circular-arrows button in the sheet is <b class="ui">Replace plugin</b>. Its menu is
-        the same component list, and picking a different one swaps the plugin inside the existing
-        block, so the block keeps its place in the chain and its bypass state. Use it when you want
-        a different delay in the same slot rather than tearing the chain apart.</p>
+      <h3>更换插件</h3>
+      <p>面板中的循环箭头按钮是 <b class="ui">替换插件</b>。它的菜单和同样的
+        组件列表一样，选中另一个插件会替换掉现有模块内部的插件，模块在信号链中的位置
+        和旁通状态都会保留。当你想在同一个位置换一个不同的延迟效果，而不是把整条信号链
+        拆掉重搭时，就用它。</p>
 
-      <h3>When a plugin has no view of its own</h3>
-      <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
-        designed it. Some ship no view at all. For those, NAMper draws its own generic list —
-        up to 24 parameters, each as a label and a slider. That is what the screenshot above shows:
-        Apple's AUDelay has no custom panel, so you get named sliders instead.</p>
+      <h3>当插件没有自己的界面时</h3>
+      <p>大多数插件会绘制自己的界面，NAMper 按其作者的设计原样内嵌显示。但也有一些
+        完全没有提供界面。对于这些插件，NAMper 会绘制自己的通用列表——最多 24 个参数，
+        每个都以一个标签和一个滑块的形式呈现。上面的截图展示的正是这种情况：
+        苹果的 AUDelay 没有自定义面板，所以你看到的是带名称的滑块。</p>
       <div class="note">
-        <div class="t">Why the fallback exists</div>
-        <p>iOS can improvise an editor for a viewless plugin, but some units crash inside it.
-          NAMper draws the parameter list itself instead, which is plainer to look at and far more
-          likely to survive a set.</p>
+        <div class="t">为什么会有这个备用方案</div>
+        <p>iOS 可以为一个没有界面的插件即兴生成一个编辑器，但有些插件在里面会崩溃。
+          NAMper 选择自己绘制参数列表，看起来更朴素，但在演出中存活下来的可能性
+          要高得多。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="limits"><span class="n">03.3</span>Limits worth knowing</h2>
+      <h2 id="limits"><span class="n">03.3</span>值得了解的限制</h2>
       <div class="tw">
         <table>
-          <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+          <thead><tr><th>限制</th><th>含义</th></tr></thead>
           <tbody>
-            <tr><td>Effects only</td>
-                <td>Only effect components are listed. AU instruments are not hostable, so a synth
-                    or a drum machine will never appear in the submenu.</td></tr>
-            <tr><td>16 plugins</td>
-                <td>Sixteen hosted plugins at once, counted across every rig and every branch. In
-                    practice you will run out of processor long before you run out of slots.</td></tr>
-            <tr><td>Stereo</td>
-                <td>Plugin input and output run in stereo, at whatever sample rate the engine is
-                    on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+            <tr><td>仅限效果器</td>
+                <td>只列出效果类组件。AU 乐器不可被加载，所以合成器或鼓机永远不会出现在
+                    这个子菜单里。</td></tr>
+            <tr><td>16 个插件</td>
+                <td>同时最多加载十六个插件，跨所有音色组和所有分支合并计算。实际使用中，
+                    你的处理器往往会先于插槽数量耗尽。</td></tr>
+            <tr><td>立体声</td>
+                <td>插件的输入和输出都是立体声，采样率跟随引擎当前所用的采样率。</td></tr>
+            <tr><td>仅限音色组信号链</td>
+                <td>AU 插件只能放在音色组信号链内。<b class="ui">主控</b> 部分只接受
+                    NAMper 自带的模块。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>If a plugin fails to render, NAMper leaves the signal dry for that block rather than
-        dropping out. You keep hearing your guitar, minus that one effect — which is the right
-        failure on stage, but it also means a plugin can go quiet without an obvious alarm. If an
-        effect stops doing anything, check the status row in its sheet.</p>
-      <p>Third-party plugins also cost processing power that NAMper cannot budget for. Watch the
-        <b class="ui">DSP load</b> chip in the Rig header after you add one; if it moves into amber
-        or red, step the buffer size up in Settings.</p>
+      <p>如果一个插件渲染失败，NAMper 会让该模块的信号保持干声通过，而不是直接断开。
+        你仍然能听到自己的吉他，只是少了那一个效果——这在舞台上是正确的失败方式，
+        但也意味着一个插件可能悄无声息地失效而没有明显的警报。如果某个效果不再起作用，
+        去检查它面板里的状态行。</p>
+      <p>第三方插件还会占用 NAMper 无法预先规划的处理性能。添加插件后留意 Rig 顶部的
+        <b class="ui">DSP 负载</b> 标签；如果它进入琥珀色或红色区域，就去设置里把缓冲区
+        调大一档。</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="state"><span class="n">03.4</span>Settings and presets</h2>
-      <p>A hosted plugin's own settings — everything you changed inside its interface — are stored
-        with the block and travel inside your NAMper preset. Save the rig, load it tomorrow, and
-        the plugin comes back set the way you left it.</p>
+      <h2 id="state"><span class="n">03.4</span>设置与预设</h2>
+      <p>一个加载的插件自身的设置——你在其界面内所做的一切更改——都会随模块一起保存，
+        并随着你的 NAMper 预设一起流转。保存音色组，明天再加载，插件会以你离开时的
+        设置回归。</p>
       <div class="note warn">
-        <div class="t">Close the sheet before you save</div>
-        <p>Plugin state is captured at the moment you <b>close the block sheet</b>. Tweak a plugin,
-          leave its sheet open, save the preset from behind it, and the preset stores the state
-          from before your edits. Make it a habit: close the plugin sheet first, then save.</p>
+        <div class="t">保存前先关闭面板</div>
+        <p>插件状态是在你<b>关闭模块面板</b>的那一刻被捕获的。调整一个插件，让它的
+          面板保持打开，再从它后面保存预设，预设保存的会是你编辑之前的状态。养成习惯：
+          先关闭插件面板，再保存。</p>
       </div>
-      <p>The same applies to global snapshots and to sharing a preset with someone else — whatever
-        was captured on the last sheet close is what goes into the file. Note that the preset
-        carries the plugin's <em>settings</em>, not the plugin: whoever opens it needs the same
-        Audio Unit installed on their device.</p>
-      <p>One more thing to expect: using <b class="ui">Replace plugin</b> clears the stored state.
-        The settings belonged to the old component and mean nothing to the new one, so the swap
-        starts you at the new plugin's defaults.</p>
+      <p>这一点同样适用于全局快照，以及把预设分享给别人的情况——最后一次关闭面板时
+        捕获到的状态，就是写进文件里的内容。注意预设携带的是插件的<em>设置</em>，
+        而不是插件本身：打开它的人需要在自己的设备上安装同一个 Audio Unit。</p>
+      <p>还有一点要预料到：使用 <b class="ui">替换插件</b> 会清除已保存的状态。
+        那些设置属于旧的组件，对新的组件毫无意义，所以更换之后你会从新插件的默认值
+        开始。</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="auv3"><span class="n">03.5</span>NAMper as a plugin</h2>
-      <p>NAMper also ships as an AUv3 effect, so you can load it inside GarageBand, AUM, Logic or
-        any other AUv3 host and record it onto a track there. In a host's plugin browser it looks
-        like this:</p>
+      <h2 id="auv3"><span class="n">03.5</span>作为插件的 NAMper</h2>
+      <p>NAMper 同时也以 AUv3 效果器的形式发布，所以你可以把它加载到 GarageBand、AUM、
+        Logic 或任何其他 AUv3 宿主中，并在那里的一条音轨上录制它。在宿主的插件浏览器中，
+        它看起来是这样的：</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <thead><tr><th>字段</th><th>值</th></tr></thead>
           <tbody>
-            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
-            <tr><td>Manufacturer</td><td><b class="ui">retroaktive</b></td></tr>
-            <tr><td>Description</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
-            <tr><td>Type</td><td>Audio effect — not an instrument</td></tr>
+            <tr><td>名称</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>制造商</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>描述</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>类型</td><td>音频效果器——不是乐器</td></tr>
           </tbody>
         </table>
       </div>
-      <p>It takes stereo in and gives stereo out, but the two input channels are summed to mono
-        inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
-        want for a DI'd guitar on a mono track.</p>
+      <p>它接受立体声输入并给出立体声输出，但内部会把两个输入声道合并为单声道：
+        一个吉他风格的单声道前端，送入一个音箱。这是刻意设计的，也正是单声道音轨上
+        直接输入（DI）的吉他所需要的效果。</p>
 
-      <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <h3>18 个参数</h3>
+      <p>插件自己的面板是一条小小的品牌条，显示 <b class="ui">NAMper</b> 和
+        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>。所有实际
+        控件都是宿主可自动化的参数，一共十八个：</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
+          <thead><tr><th>模块</th><th>参数</th></tr></thead>
           <tbody>
             <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
             <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
               <b class="ui">Comp Ratio</b></td></tr>
             <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
               <b class="ui">Drive Level</b></td></tr>
-            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
-              <b class="ui">Treble</b></td></tr>
+            <tr><td>Tone</td><td><b class="ui">低音</b>, <b class="ui">中频</b>,
+              <b class="ui">高音</b></td></tr>
             <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
               <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
             <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
@@ -225,33 +218,33 @@
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>每一个参数都可以从宿主端自动化。开关类参数是 0 到 1 之间的浮点数值，所以大多数
+        宿主会把它们绘制成滑块而不是开关——达到或超过中点即为开启。三个出厂预设也会
+        暴露给宿主：<b class="ui">清音</b>、<b class="ui">过载</b> 和
+        <b class="ui">主音</b>。</p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">这个插件不携带什么</div>
+        <p>没有 NAM 模型。没有箱体 IR。没有调制类模块。完全没有音色组文档——宿主只保存
+          这 18 个参数值，别无其他，所以你在应用里搭建的音色组不会带入这个插件。
+          插件版本里也没有 MIDI 输入。</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
+      <p>说得直白一点：在宿主里，NAMper 是一条紧凑的音箱+效果通道，而不是整个应用。
+        如果你想要自己的 NAM 模型、自己的箱体、循环乐句器或曲目单，就运行完整的应用，
+        并从那里录音。</p>
       <div class="note tip">
-        <div class="t">Working with both</div>
-        <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/zh/perform.html">Perform &amp; lyrics</a>.</p>
+        <div class="t">两者结合使用</div>
+        <p>你可以运行完整的应用，把它的输出路由进一个 DAW；也可以在宿主里已经在录制的
+          某条音轨上，用这个插件快速加一路吉他通道。Perform 标签页的录音功能及其
+          DAWproject 导出正是为第一种方式而存在的——参见
+          <a href="/docs/zh/perform.html">演出与歌词</a>。</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh/rig.html">← 02 · Rig &amp; signal chain</a>
+      <a href="/docs/zh/rig.html">← 02 · 音色组与信号链</a>
       <span class="sp"></span>
-      <a href="/docs/zh/looper.html">04 · Looper →</a>
+      <a href="/docs/zh/looper.html">04 · 循环乐句器 →</a>
     </nav>
   </main>
 </div>
@@ -266,7 +259,8 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper 是一款独立应用，与任何设备制造商均无关联，也未获得其认可或赞助。所有产品名称、
+      品牌和商标均归其各自所有者所有，此处仅用于说明模型采样所使用的设备。</p>
   </div>
 </footer>
 

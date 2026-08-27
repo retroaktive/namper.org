@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIDI &amp; control — NAMper Documentation</title>
-<meta name="description" content="The control map and MIDI learn, everything you can map to, the built-in MIDI map, Bluetooth pairing, taught sound triggers, and the tuner.">
+<title>MIDI &amp; 컨트롤 — NAMper 문서</title>
+<meta name="description" content="컨트롤 맵과 MIDI 학습, 매핑할 수 있는 모든 항목, 내장 MIDI 맵, 블루투스 페어링, 학습된 소리 트리거, 튜너까지.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="MIDI &amp; control — NAMper Documentation">
-<meta property="og:description" content="Map footswitches, pedals and taught sounds to anything in NAMper — plus the built-in MIDI map and the tuner.">
+<meta property="og:title" content="MIDI &amp; 컨트롤 — NAMper 문서">
+<meta property="og:description" content="풋스위치, 페달, 학습된 소리를 NAMper의 어떤 기능에든 매핑하세요 — 내장 MIDI 맵과 튜너도 함께.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/control.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">문서</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/ko/">← ALL DOCS</a>
+  <a class="home" href="/docs/ko/">← 전체 문서</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/ko/control.html" aria-current="page">한국어</a>
   </nav>
@@ -46,276 +46,272 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">목차</div>
     <ol>
-      <li><a href="/docs/ko/setup.html">Getting started</a></li>
-      <li><a href="/docs/ko/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/ko/plugins.html">AU plugins</a></li>
-      <li><a href="/docs/ko/looper.html">Looper</a></li>
-      <li><a href="/docs/ko/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/ko/perform.html">Perform &amp; lyrics</a></li>
-      <li><a class="on" href="/docs/ko/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/ko/settings.html">Settings reference</a></li>
+      <li><a href="/docs/ko/setup.html">시작하기</a></li>
+      <li><a href="/docs/ko/rig.html">리그 &amp; 시그널 체인</a></li>
+      <li><a href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a href="/docs/ko/looper.html">루퍼</a></li>
+      <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
+      <li><a href="/docs/ko/perform.html">퍼폼 &amp; 가사</a></li>
+      <li><a class="on" href="/docs/ko/control.html">MIDI &amp; 컨트롤</a></li>
+      <li><a href="/docs/ko/settings.html">설정 참고</a></li>
     </ol>
   </aside>
 
   <main>
     <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; CONTROL</div>
-    <h1>Hands on the guitar.</h1>
-    <p class="lede">Footswitches, pedals, a knock on the body of the instrument — the
-      <b class="ui a">Control</b> tab is where you decide what fires what, so the phone can stay in
-      its stand for the whole set. It is also where the tuner lives.</p>
+    <h1>손은 기타 위에 그대로.</h1>
+    <p class="lede">풋스위치, 페달, 악기 바디를 두드리는 소리 —
+      <b class="ui a">컨트롤</b> 탭은 무엇이 무엇을 실행할지 정하는 곳이라, 세트 내내 휴대폰을
+      거치대에 그대로 둘 수 있습니다. 튜너도 여기에 있습니다.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">이 페이지에서</div>
       <ul>
-        <li><a href="#map">The control map</a></li>
-        <li><a href="#learn">MIDI learn</a></li>
-        <li><a href="#actions">What you can map to</a></li>
-        <li><a href="#builtin">The built-in MIDI map</a></li>
-        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
-        <li><a href="#sounds">Taught sound triggers</a></li>
-        <li><a href="#tuner">The tuner</a></li>
+        <li><a href="#map">컨트롤 맵</a></li>
+        <li><a href="#learn">MIDI 학습</a></li>
+        <li><a href="#actions">매핑할 수 있는 항목</a></li>
+        <li><a href="#builtin">내장 MIDI 맵</a></li>
+        <li><a href="#bluetooth">블루투스 MIDI</a></li>
+        <li><a href="#sounds">학습된 소리 트리거</a></li>
+        <li><a href="#tuner">튜너</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="map"><span class="n">07.1</span>The control map</h2>
-      <p>The <b class="ui a">Control</b> tab holds three cards. The first is
-        <b class="ui">CONTROL MAP</b> — your own mappings, the ones that override everything else.
-        Its blurb says what it takes: <b class="ui">MIDI controls and input triggers, mapped to
-        anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or a
-        chord.</b></p>
-      <p>The header has a presets chip and a <b class="ui">+</b> (<b class="ui">Add mapping</b>).
-        With nothing mapped yet the card reads
-        <b class="ui">No mappings yet — add one with +</b>.</p>
-      <p>Every mapping is one row, read left to right: a source chip, a <b class="ui">LEARN</b>
-        button, an arrow, an action chip, and an <b class="ui">✕</b> to delete the row. Saved maps
-        live under <b class="ui">Control Presets</b> on the presets chip, so a pedalboard layout for
-        one band need not follow you to the next.</p>
+      <h2 id="map"><span class="n">07.1</span>컨트롤 맵</h2>
+      <p><b class="ui a">컨트롤</b> 탭에는 카드가 세 개 있습니다. 첫 번째는
+        <b class="ui">컨트롤 맵</b>으로, 다른 모든 것보다 우선하는 나만의 매핑입니다. 안내
+        문구는 이렇게 설명합니다: <b class="ui">MIDI 컨트롤과 입력 트리거를 무엇에든 매핑할 수 있습니다. 소스: 아무 CC나 노트(LEARN 사용), 바디 두드리기, 지속 노트 또는 코드.</b></p>
+      <p>헤더에는 프리셋 칩과 <b class="ui">+</b>(<b class="ui">매핑 추가</b>)가 있습니다.
+        아직 아무것도 매핑되지 않았다면 카드에는
+        <b class="ui">아직 매핑이 없습니다 — +로 추가하세요</b>라고 표시됩니다.</p>
+      <p>매핑은 한 행씩 좌에서 우로 읽습니다: 소스 칩, <b class="ui">러닝</b>
+        버튼, 화살표, 액션 칩, 그리고 행을 삭제하는 <b class="ui">✕</b>. 저장된 맵은 프리셋 칩
+        아래 <b class="ui">컨트롤 프리셋</b>에 있으므로, 한 밴드용 페달보드 구성이 다음
+        밴드까지 따라올 필요가 없습니다.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
-             alt="The Control tab: the CONTROL MAP card with mapping rows, the TAUGHT SOUNDS card, and the BUILT-IN MIDI MAP card listing CC ranges with a Pair Bluetooth MIDI button at the bottom.">
-        <figcaption>The Control tab — your map, your taught sounds, and the built-in map</figcaption>
+             alt="Control 탭: 매핑 행이 있는 CONTROL MAP 카드, TAUGHT SOUNDS 카드, 그리고 CC 범위를 나열하고 하단에 Pair Bluetooth MIDI 버튼이 있는 BUILT-IN MIDI MAP 카드.">
+        <figcaption>Control 탭 — 나의 맵, 나의 학습된 소리, 그리고 내장 맵</figcaption>
       </figure>
 
       <div class="note warn">
-        <div class="t">Four input triggers</div>
-        <p>Only the first four rows driven by a taught sound are live. Add a fifth and the card
-          warns you: <b class="ui r">Only the first 4 input triggers are active</b>. MIDI rows have
-          no such limit — this one is about listening to the instrument.</p>
+        <div class="t">입력 트리거는 네 개까지</div>
+        <p>학습된 소리로 구동되는 행은 처음 네 개만 활성 상태입니다. 다섯 번째를 추가하면 카드가
+          경고합니다: <b class="ui r">입력 트리거는 처음 4개만 활성화됩니다</b>. MIDI
+          행에는 이런 제한이 없습니다 — 이는 악기 소리를 듣는 방식에 대한 제한입니다.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
-      <p>You never type a CC number. On a mapping row:</p>
+      <h2 id="learn"><span class="n">07.2</span>MIDI 학습</h2>
+      <p>CC 번호를 직접 입력할 일은 없습니다. 매핑 행에서:</p>
       <ol style="--nc:var(--eq)">
-        <li>Tap <b class="ui">LEARN</b>. The chip lights up and the row waits.</li>
-        <li>Press the footswitch or sweep the pedal you want to use.</li>
-        <li>The source chip fills in as <b class="ui">CC 42</b> or <b class="ui">Note 60</b>, and
-          the card's <b class="ui">Last:</b> line confirms it — <b class="ui">Learned CC 42</b>.</li>
+        <li><b class="ui">러닝</b>을 탭합니다. 칩이 켜지고 행이 대기합니다.</li>
+        <li>사용할 풋스위치를 누르거나 페달을 움직입니다.</li>
+        <li>소스 칩에 <b class="ui">CC 42</b> 또는 <b class="ui">Note 60</b>처럼 채워지고,
+          카드의 <b class="ui">Last:</b> 줄이 이를 확인해줍니다 — <b class="ui">Learned CC
+          42</b>.</li>
       </ol>
-      <p>Tap <b class="ui">LEARN</b> again to disarm. The source chip's own menu has a
-        <b class="ui">MIDI</b> section with <b class="ui">CC… (use LEARN)</b> and
-        <b class="ui">Note… (use LEARN)</b>, and a <b class="ui">Taught sounds</b> section listing
-        the sounds you have trained plus <b class="ui">Teach a new sound…</b></p>
+      <p><b class="ui">러닝</b>을 다시 탭하면 해제됩니다. 소스 칩 자체 메뉴에는
+        <b class="ui">CC… (LEARN 사용)</b>와 <b class="ui">노트… (LEARN 사용)</b>가 있는
+        <b class="ui">MIDI</b> 섹션과, 학습해둔 소리 목록과 <b class="ui">새 소리 학습…</b>가 있는 <b class="ui">학습된 소리</b> 섹션이 있습니다.</p>
 
-      <h3>Learn in place</h3>
-      <p>You do not have to start from the Control tab. Long-press almost any control in the app —
-        a knob, a chip row, a looper pad, a sampler pad, the Perform transport buttons — and the
-        menu offers <b class="ui">MIDI Learn: &lt;name&gt;</b> for that exact control. It outlines
-        itself and shows <b class="ui">MOVE A MIDI CONTROL…</b>; move the pedal and the mapping is
-        made. <b class="ui">Cancel learn</b> backs out if you grabbed the wrong knob.</p>
+      <h3>그 자리에서 학습하기</h3>
+      <p>Control 탭에서부터 시작할 필요는 없습니다. 앱 안의 거의 모든 컨트롤 — 노브, 칩 행,
+        루퍼 패드, 샘플러 패드, Perform 트랜스포트 버튼 — 을 길게 누르면 메뉴에 바로 그
+        컨트롤을 위한 <b class="ui">MIDI Learn: &lt;name&gt;</b>이 뜹니다. 해당 컨트롤에
+        테두리가 생기고 <b class="ui">MIDI 컨트롤을 움직이세요…</b>가 표시되며, 페달을 움직이면
+        매핑이 완료됩니다. 노브를 잘못 잡았다면 <b class="ui">LEARN 취소</b>으로 빠져나올 수
+        있습니다.</p>
       <div class="note tip">
-        <div class="t">The fast way to build a board</div>
-        <p>Learn in place beats the Control tab for anything you can see: open the block, long-press
-          the knob you want on the pedal, press the switch, done. The Control tab is for reviewing
-          and tidying what you built.</p>
+        <div class="t">보드를 빠르게 구성하는 방법</div>
+        <p>눈에 보이는 컨트롤이라면 그 자리에서 학습하는 쪽이 Control 탭보다 빠릅니다: 블록을
+          열고, 페달에 쓸 노브를 길게 누르고, 스위치를 누르면 끝입니다. Control 탭은 이렇게
+          만든 것을 검토하고 정리하는 용도입니다.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="actions"><span class="n">07.3</span>What you can map to</h2>
-      <p>The action chip's menu, in full:</p>
+      <h2 id="actions"><span class="n">07.3</span>매핑할 수 있는 항목</h2>
+      <p>액션 칩 메뉴의 전체 목록입니다:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Actions</th></tr></thead>
+          <thead><tr><th>섹션</th><th>액션</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">No action</b></td><td>Leaves the row inert.</td></tr>
-            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> upwards, one per
-              loaded pad.</td></tr>
-            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">Clear all</b>.</td></tr>
-            <tr><td><b class="ui">Preset</b></td><td>Every rig preset by name, plus
-              <b class="ui">Next preset</b>.</td></tr>
-            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
-              <b class="ui">Stop</b>, <b class="ui">Next section</b>,
-              <b class="ui">Prev section</b>.</td></tr>
-            <tr><td>Per rig</td><td><b class="ui">Block on/off</b> and <b class="ui">Block parameter
-              (CC)</b>, listed under each rig by name.</td></tr>
+            <tr><td><b class="ui">동작 없음</b></td><td>행을 비활성 상태로 둡니다.</td></tr>
+            <tr><td><b class="ui">샘플러 패드</b></td><td>로드된 패드마다 하나씩,
+              <b class="ui">Pad 1</b>부터 위로.</td></tr>
+            <tr><td><b class="ui">루퍼</b></td><td><b class="ui">Tap track 1</b>부터
+              <b class="ui">Tap track 4</b>까지, <b class="ui">시작 / 정지</b>,
+              <b class="ui">모두 지우기</b>.</td></tr>
+            <tr><td><b class="ui">프리셋</b></td><td>이름별 모든 리그 프리셋, 그리고
+              <b class="ui">다음 프리셋</b>.</td></tr>
+            <tr><td><b class="ui">퍼폼</b></td><td><b class="ui">재생 / 일시정지</b>,
+              <b class="ui">정지</b>, <b class="ui">다음 섹션</b>,
+              <b class="ui">이전 섹션</b>.</td></tr>
+            <tr><td>리그별</td><td>각 리그 이름 아래 나열되는 <b class="ui">블록 켜기/끄기</b>와
+              <b class="ui">블록 파라미터 (CC)</b>.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Once you have more than one rig, three more entries appear: <b class="ui">Next rig</b>,
-        <b class="ui">Block on/off · Active rig</b> and <b class="ui">Block param · Active rig</b>.
-        Those follow whichever rig currently has MIDI focus, so one footswitch can bypass "the
-        drive in whatever rig I am playing" instead of a fixed block in a fixed rig.</p>
-      <p>Two constraints are worth remembering before you wire a pedal:</p>
+      <p>리그가 두 개 이상이 되면 세 항목이 추가로 나타납니다: <b class="ui">다음 리그</b>,
+        <b class="ui">블록 켜기/끄기 · 활성 리그</b>, <b class="ui">블록 파라미터 · 활성 리그</b>입니다. 이들은 현재 MIDI 포커스를 가진 리그를 따라가므로, 풋스위치 하나로 특정
+        리그의 고정된 블록이 아니라 "지금 연주 중인 리그의 드라이브"를 바이패스할 수
+        있습니다.</p>
+      <p>페달을 연결하기 전에 기억해둘 만한 제약이 두 가지 있습니다:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>A continuous block parameter needs a CC.</b> Notes and taught sounds are events —
-          they cannot sweep a value — so the parameter submenu is hidden for those sources.
-          An expression pedal sending a CC is what you want.</li>
-        <li><b>Soft pickup after a rig switch.</b> A continuous CC mapped to
-          <b class="ui">Block param · Active rig</b> does not jump the knob when you change rigs.
-          It waits until your pedal sweeps past the new rig's current value, then takes over — so
-          switching rigs mid-song never snaps a parameter to wherever your foot happens to be.</li>
+        <li><b>연속적인 블록 파라미터에는 CC가 필요합니다.</b> 노트와 학습된 소리는
+          이벤트이므로 값을 쓸어 넘길 수 없어서, 이런 소스에는 파라미터 하위 메뉴가
+          숨겨집니다. CC를 보내는 익스프레션 페달이 필요합니다.</li>
+        <li><b>리그 전환 후의 소프트 픽업.</b> <b class="ui">블록 파라미터 · 활성 리그</b>에
+          매핑된 연속 CC는 리그를 바꿔도 노브를 갑자기 튀게 하지 않습니다. 페달이 새 리그의
+          현재 값을 지나칠 때까지 기다렸다가 그때 제어를 넘겨받으므로, 곡 중간에 리그를 바꿔도
+          파라미터가 발 위치에 따라 갑자기 튀지 않습니다.</li>
       </ul>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="builtin"><span class="n">07.4</span>The built-in MIDI map</h2>
-      <p>Before you map anything, a fixed layout is already live — plug a controller in and it
-        works. All channels are accepted, because NAMper listens omni, and every source that appears
-        is connected automatically. The app also publishes a virtual destination named
-        <b class="ui">NAMper</b>, so another app on the same device can send to it.</p>
+      <h2 id="builtin"><span class="n">07.4</span>내장 MIDI 맵</h2>
+      <p>아무것도 매핑하지 않아도 고정 레이아웃이 이미 작동 중입니다 — 컨트롤러를 꽂으면 바로
+        동작합니다. NAMper는 모든 채널을 옴니로 수신하므로 어떤 채널이든 받아들이며, 나타나는
+        모든 소스는 자동으로 연결됩니다. 앱은 <b class="ui">NAMper</b>라는 이름의 가상
+        목적지도 공개하므로, 같은 기기의 다른 앱에서도 여기로 신호를 보낼 수 있습니다.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Shown as</th><th>Does</th></tr></thead>
+          <thead><tr><th>표시</th><th>동작</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">presets</b></td></tr>
-            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp,
-              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, in that order; a value of
-              64 or more is on</td></tr>
-            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">block parameters</b> — 0–127
-              scaled into each parameter's range. <b class="ui">CC 64</b> is skipped and left free
-              for a sustain pedal</td></tr>
-            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">looper track taps</b> —
-              tracks 1 to 4</td></tr>
-            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
-              clear</b></td></tr>
-            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop ·
-              next · prev</b></td></tr>
-            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">프리셋</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">블록 온/오프</b> —
+              게이트, 컴프, 드라이브, 앰프, 캐비닛, 페이저, 플랜저, 코러스, 트레몰로, 딜레이,
+              클라우드 순서. 값이 64 이상이면 켜짐</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">블록 파라미터</b> —
+              0–127을 각 파라미터 범위에 맞게 스케일링. <b class="ui">CC 64</b>는 건너뛰고
+              서스테인 페달용으로 비워둠</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">루퍼 트랙 탭</b> —
+              트랙 1~4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">루퍼 시작/정지 · 클리어</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">퍼폼: 재생/일시정지 · 정지 · 다음 · 이전</b></td></tr>
+            <tr><td><b class="ui">노트 36–51</b></td><td><b class="ui">패드 1–16</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Your own mappings always win. If you learn a footswitch to CC 85, your row runs and the
-        built-in track-1 tap on that CC steps aside — so you never have to work around the defaults,
-        only over them.</p>
+      <p>직접 만든 매핑이 항상 우선합니다. 풋스위치를 CC 85로 학습시키면 내 행이 실행되고 그
+        CC에 대한 내장 트랙 1 탭은 물러납니다 — 그러니 기본값을 피해 다닐 필요 없이 그 위에
+        덮어씌우기만 하면 됩니다.</p>
       <div class="note">
-        <div class="t">CC 89 toggles</div>
-        <p>The built-in <b class="ui">CC 89</b> is a true run/stop toggle: it reads the looper's
-          current state, stops it when it is running (a recording counts as running) and starts it
-          from the top when it is stopped. A learned mapping on the
-          <b class="ui">Run / stop</b> action behaves the same way.</p>
+        <div class="t">CC 89는 토글입니다</div>
+        <p>내장 <b class="ui">CC 89</b>는 진짜 실행/정지 토글입니다: 루퍼의 현재 상태를 읽어,
+          실행 중이면(녹음도 실행 중으로 취급) 정지시키고 정지 상태면 처음부터 시작합니다.
+          <b class="ui">시작 / 정지</b> 액션에 학습시킨 매핑도 똑같이 동작합니다.</p>
       </div>
-      <p>Press detection is deliberately forgiving of cheap pedals. A message counts as a press when
-        its value is 64 or more, and also when it is low but did not follow a high one — so a
-        footswitch that sends every press as value 0 still fires discrete actions.</p>
-      <p>At the bottom of the card, one line tells you what NAMper can see:
-        <b class="ui">MIDI: waiting for sources</b> or the names of the connected sources, with a
-        <b class="ui">Last:</b> line under it showing the most recent event. If a pedal does
-        nothing, look there first — it tells you whether the messages are arriving at all.</p>
+      <p>누름 감지는 저가형 페달에도 관대하도록 일부러 느슨하게 설계되어 있습니다. 값이 64
+        이상이면 누름으로 간주하고, 값이 낮더라도 그 앞에 높은 값이 오지 않았다면 역시 누름으로
+        간주합니다 — 그래서 모든 누름을 값 0으로 보내는 풋스위치도 독립된 동작을 제대로
+        실행시킵니다.</p>
+      <p>카드 아래쪽 한 줄에는 NAMper가 지금 무엇을 인식하는지 나옵니다:
+        <b class="ui">MIDI: 소스 대기 중</b> 또는 연결된 소스들의 이름이 표시되고,
+        그 아래 <b class="ui">Last:</b> 줄에는 가장 최근 이벤트가 표시됩니다. 페달이 반응하지
+        않는다면 먼저 이곳을 확인하세요 — 메시지가 애초에 들어오고 있는지 알 수 있습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
-      <p>Wireless pedals pair from inside the app. At the bottom of the built-in map card, tap
-        <b class="ui">Pair Bluetooth MIDI</b>. A sheet titled <b class="ui">Bluetooth MIDI</b> opens
-        with the system pairing panel in it and a <b class="ui">Done</b> button. Put your pedal into
-        pairing mode, tap it in the list, and it joins the MIDI sources line.</p>
+      <h2 id="bluetooth"><span class="n">07.5</span>블루투스 MIDI</h2>
+      <p>무선 페달은 앱 안에서 페어링합니다. 내장 맵 카드 아래쪽의
+        <b class="ui">Bluetooth MIDI 페어링</b>를 탭하세요. <b class="ui">Bluetooth MIDI</b>라는
+        제목의 시트가 열리며 시스템 페어링 패널과 <b class="ui">완료</b> 버튼이 함께
+        나타납니다. 페달을 페어링 모드로 두고 목록에서 탭하면 MIDI 소스 목록에 추가됩니다.</p>
       <div class="note warn">
-        <div class="t">Do not tap it twice</div>
-        <p>The sheet carries this caution for a reason: <b class="ui">Tapping a device toggles its
-          connection — a pedal already shown in the MIDI sources line is connected; don't tap it
-          again.</b> Tapping a connected pedal disconnects it. If you are unsure, check the sources
-          line at the bottom of the card before touching anything.</p>
+        <div class="t">두 번 탭하지 마세요</div>
+        <p>이 시트에는 이유가 있어 다음과 같은 주의가 적혀 있습니다:
+          <b class="ui">기기를 탭하면 연결이 전환됩니다. MIDI 소스 줄에 이미 표시된 페달은 연결된 상태이니 다시 탭하지 마세요.</b> 이미 연결된 페달을
+          탭하면 연결이 끊어집니다. 확신이 안 선다면 아무것도 건드리기 전에 카드 아래쪽 소스
+          목록부터 확인하세요.</p>
       </div>
-      <p>NAMper asks for Bluetooth permission the first time you open this sheet, and for nothing
-        else.</p>
+      <p>NAMper는 이 시트를 처음 열 때만 블루투스 권한을 요청하며, 그 외에는 요청하지
+        않습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="sounds"><span class="n">07.6</span>Taught sound triggers</h2>
-      <p>The <b class="ui">TAUGHT SOUNDS</b> card needs no hardware at all. You teach NAMper a
-        noise you can make with the instrument in your hands, and from then on it fires any action,
-        exactly like a MIDI event. The empty state puts it plainly:
-        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
-        bridge — then map it to any action, like a MIDI event.</b></p>
+      <h2 id="sounds"><span class="n">07.6</span>학습된 소리 트리거</h2>
+      <p><b class="ui">학습된 소리</b> 카드에는 하드웨어가 전혀 필요 없습니다. 손에 든
+        악기로 낼 수 있는 소리를 NAMper에게 학습시키면, 그 이후로는 MIDI 이벤트와 똑같이 어떤
+        액션이든 실행할 수 있습니다. 빈 상태 문구가 이를 명확히 설명합니다:
+        <b class="ui">앱에 소리를 학습시키세요 — 바디 두드리기, 스트링 슬랩, 브리지 뒤 클릭 등. 학습한 소리는 MIDI 이벤트처럼 어떤 동작에도 매핑할 수 있습니다.</b></p>
 
-      <h3>Teaching one</h3>
-      <p>Tap <b class="ui">TEACH</b> and the sheet <b class="ui">TEACH A SOUND</b> opens with its
-        instruction: <b class="ui">Make the sound 3–5 times, the same way each time: knock the body,
-        slap the strings, click behind the bridge — anything with a clear attack.</b> Eight dots
-        fill in as takes arrive, and the status reads <b class="ui">Listening…</b> and then the
-        count. Give it a name in the <b class="ui">Sound name</b> field and tap
-        <b class="ui">Save the sound</b>. Save needs at least two takes, and up to eight are
-        averaged — more consistent takes make a more reliable trigger.</p>
-      <p>Each row shows the name, a usage count like <b class="ui">3×</b>, a
-        <b class="ui">RE-TEACH</b> button and a delete <b class="ui">✕</b>. Tap the name to rename
-        it. Re-teaching keeps the name and every mapping that points at it, so if a sound starts
-        misfiring after you change guitars, re-teach it rather than starting over.</p>
+      <h3>소리 학습하기</h3>
+      <p><b class="ui">학습</b>를 탭하면 <b class="ui">소리 학습</b> 시트가 열리고 이런
+        안내가 나옵니다: <b class="ui">같은 방식으로 소리를 3~5번 내 주세요. 바디 두드리기, 스트링 슬랩, 브리지 뒤 클릭 등 어택이 분명한 소리면 됩니다.</b> 테이크가 들어올 때마다 점 여덟 개가 채워지고, 상태는
+        <b class="ui">듣는 중…</b>에서 개수 표시로 바뀝니다. <b class="ui">소리 이름</b>
+        필드에 이름을 붙이고 <b class="ui">소리 저장</b>를 탭하세요. 저장에는 최소 두
+        번의 테이크가 필요하고, 최대 여덟 번까지 평균을 냅니다 — 테이크가 일관될수록 트리거가
+        더 안정적입니다.</p>
+      <p>각 행에는 이름, <b class="ui">3×</b>처럼 표시되는 사용 횟수, <b class="ui">다시 학습</b>
+        버튼, 삭제용 <b class="ui">✕</b>가 표시됩니다. 이름을 탭하면 이름을 바꿀 수 있습니다.
+        다시 학습해도 이름과 그 소리를 가리키는 모든 매핑은 그대로 유지되므로, 기타를 바꾼 뒤
+        소리가 오작동하기 시작하면 처음부터 다시 만들기보다 다시 학습시키세요.</p>
       <div class="note warn">
-        <div class="t">Deleting takes the mappings with it</div>
-        <p>Delete a taught sound and every mapping that listened for it goes too. The usage count on
-          the row tells you how many that is before you tap the ✕.</p>
+        <div class="t">삭제하면 매핑도 함께 사라집니다</div>
+        <p>학습된 소리를 삭제하면 그 소리를 듣던 모든 매핑도 함께 사라집니다. ✕를 탭하기 전에
+          행에 표시된 사용 횟수로 몇 개가 사라지는지 미리 알 수 있습니다.</p>
       </div>
-      <p>A taught sound can fire any action in the menu except a continuous block parameter — it is
-        an event, not a sweep. And as on the control map, only the first four taught-sound mappings
-        are active at once.</p>
+      <p>학습된 소리는 연속적인 블록 파라미터를 제외한 메뉴의 모든 액션을 실행할 수 있습니다 —
+        스윕이 아니라 이벤트이기 때문입니다. 그리고 컨트롤 맵에서와 마찬가지로, 학습된 소리
+        매핑은 한 번에 처음 네 개만 활성 상태입니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="tuner"><span class="n">07.7</span>The tuner</h2>
-      <p>The tuner is not a tab. It opens from the tuning-fork icon in the <b class="ui a">Rig</b>
-        header, and it works whenever the audio engine is running — including when the feedback
-        guard has muted the output, so you can still tune with the phone on its own speaker.</p>
+      <h2 id="tuner"><span class="n">07.7</span>튜너</h2>
+      <p>튜너는 별도의 탭이 아닙니다. <b class="ui a">리그</b> 헤더의 소리굽쇠 아이콘에서
+        열리며, 오디오 엔진이 동작하는 동안에는 언제든 작동합니다 — 피드백 가드가 출력을
+        뮤트한 상태에서도 마찬가지라, 휴대폰 자체 스피커로도 튜닝할 수 있습니다.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
-             alt="The tuner sheet in POLY mode: mode chips, a GUITAR badge, a row of tuning chips, and six vertical string meters with note names underneath.">
-        <figcaption>POLY mode — six strings reading at once</figcaption>
+             alt="POLY 모드의 튜너 시트: 모드 칩, GUITAR 배지, 튜닝 칩 한 줄, 그리고 아래에 음이름이 붙은 세로형 6현 미터.">
+        <figcaption>POLY 모드 — 6현을 동시에 표시</figcaption>
       </figure>
 
-      <p>Two mode chips sit at the top, <b class="ui">POLY</b> and <b class="ui">SINGLE</b>.
-        <b class="ui">POLY</b> is the default and the one to use on stage: strum once and every
-        string reads at the same time, one vertical meter per string with the note underneath. Its
-        caption says it — <b class="ui">strum — every string reads at once</b>. A string's dot goes
-        green inside ±5 cents.</p>
-      <p><b class="ui">SINGLE</b> is the classic one-note-at-a-time tuner: a big note letter, a
-        needle across ±50 cents and a cents readout, going green inside ±3 cents. With no signal it
-        shows <b class="ui">play a note…</b> Use it when you want to be precise about one
-        string.</p>
+      <p>상단에 <b class="ui">POLY</b>와 <b class="ui">SINGLE</b> 두 모드 칩이 있습니다.
+        <b class="ui">POLY</b>가 기본값이며 무대에서 쓰기 좋습니다: 한 번 스트럼하면 모든 현이
+        동시에 표시되고, 현마다 세로 미터 하나와 그 아래 음이름이 나옵니다. 캡션에도 그대로
+        나와 있습니다 — <b class="ui">스트럼 — 모든 현을 한 번에 인식합니다</b>. 점은 ±5센트
+        이내로 들어오면 초록색이 됩니다.</p>
+      <p><b class="ui">SINGLE</b>은 한 번에 한 음씩 보는 클래식 튜너입니다: 큰 음이름 글자,
+        ±50센트 범위의 바늘, 센트 수치가 표시되며 ±3센트 이내면 초록색이 됩니다. 입력이 없으면
+        <b class="ui">노트를 연주하세요…</b>가 표시됩니다. 한 현을 정밀하게 맞추고 싶을 때
+        사용하세요.</p>
 
-      <h3>Instrument and tuning</h3>
-      <p>NAMper works out what you are holding by itself and shows it as a pill:
-        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> or <b class="ui">UKULELE</b>. There is no
-        picker — plug a bass in and the tuner follows.</p>
-      <p>The tuning chips apply to <b class="ui">POLY</b> mode, and each instrument remembers its
-        own choice:</p>
+      <h3>악기와 튜닝</h3>
+      <p>NAMper는 지금 들고 있는 악기가 무엇인지 스스로 파악해 알약 모양 배지로 보여줍니다:
+        <b class="ui">기타</b>, <b class="ui">베이스</b>, <b class="ui">우쿨렐레</b>입니다.
+        선택기는 따로 없습니다 — 베이스를 연결하면 튜너가 알아서 따라갑니다.</p>
+      <p>튜닝 칩은 <b class="ui">POLY</b> 모드에 적용되며, 각 악기는 자신의 선택을 따로
+        기억합니다:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Instrument</th><th>Tunings</th></tr></thead>
+          <thead><tr><th>악기</th><th>튜닝</th></tr></thead>
           <tbody>
-            <tr><td>Guitar</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
+            <tr><td>기타</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
               <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
               <b class="ui">Open D</b></td></tr>
-            <tr><td>Bass</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+            <tr><td>베이스</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
               <b class="ui">5-str B</b></td></tr>
-            <tr><td>Ukulele</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+            <tr><td>우쿨렐레</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Reference pitch is fixed at A4 = 440 Hz. There is no calibration control, so if you play
-        with an orchestra at 442 the tuner will not follow you there.</p>
+      <p>기준 음은 A4 = 440 Hz로 고정되어 있습니다. 보정 컨트롤이 없으므로, 442에 맞춘
+        오케스트라와 함께 연주한다면 튜너가 그 기준을 따라가지 않습니다.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/ko/perform.html">← 06 · Perform &amp; lyrics</a>
+      <a href="/docs/ko/perform.html">← 06 · 퍼폼 &amp; 가사</a>
       <span class="sp"></span>
-      <a href="/docs/ko/settings.html">08 · Settings reference →</a>
+      <a href="/docs/ko/settings.html">08 · 설정 참고 →</a>
     </nav>
   </main>
 </div>
@@ -330,7 +326,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper는 특정 장비 제조사와 제휴, 보증 또는 후원 관계가 없는 독립 앱입니다. 모든 제품명, 브랜드, 상표는 각 소유자의 재산이며, 캡처에 사용된 장비를 설명하기 위한 목적으로만 사용됩니다.</p>
   </div>
 </footer>
 

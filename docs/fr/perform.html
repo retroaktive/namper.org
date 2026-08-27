@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perform &amp; lyrics — NAMper Documentation</title>
-<meta name="description" content="Backing tracks, the setlist and its sections, preset markers on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
+<title>Perform et paroles — Documentation NAMper</title>
+<meta name="description" content="Les backing tracks, la setlist et ses sections, les marqueurs de preset sur la timeline, le télésouffleur de paroles plein écran avec des ancres, l'enregistrement multipiste et l'export DAWproject.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Perform &amp; lyrics — NAMper Documentation">
-<meta property="og:description" content="Backing tracks, the setlist, preset markers, the lyrics teleprompter and multitrack recording.">
+<meta property="og:title" content="Perform et paroles — Documentation NAMper">
+<meta property="og:description" content="Backing tracks, la setlist, les marqueurs de preset, le télésouffleur de paroles et l'enregistrement multipiste.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/fr/perform.html">
 <meta property="og:type" content="article">
@@ -38,7 +38,7 @@
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
   <span class="tag">DOCUMENTATION</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/fr/">← ALL DOCS</a>
+  <a class="home" href="/docs/fr/">← TOUS LES DOCS</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/fr/perform.html" aria-current="page">Français</a>
   </nav>
@@ -46,353 +46,383 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">SOMMAIRE</div>
     <ol>
-      <li><a href="/docs/fr/setup.html">Getting started</a></li>
-      <li><a href="/docs/fr/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/fr/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/fr/setup.html">Prise en main</a></li>
+      <li><a href="/docs/fr/rig.html">Rig et chaîne du signal</a></li>
+      <li><a href="/docs/fr/plugins.html">Plugins AU</a></li>
       <li><a href="/docs/fr/looper.html">Looper</a></li>
-      <li><a href="/docs/fr/sampler.html">Sampler pads</a></li>
-      <li><a class="on" href="/docs/fr/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/fr/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/fr/settings.html">Settings reference</a></li>
+      <li><a href="/docs/fr/sampler.html">Pads du sampler</a></li>
+      <li><a class="on" href="/docs/fr/perform.html">Perform et paroles</a></li>
+      <li><a href="/docs/fr/control.html">MIDI et contrôle</a></li>
+      <li><a href="/docs/fr/settings.html">Référence des réglages</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
-    <h1>Playing the set.</h1>
-    <p class="lede">The <b class="ui a">Perform</b> tab is the one you look at on stage: backing
-      tracks, a setlist of sections, preset changes that fire themselves, a full-screen
-      teleprompter for your words, and a recorder that captures the whole night in stems.</p>
+    <div class="slab" style="--nc:var(--cloud)">06 · PERFORM ET PAROLES</div>
+    <h1>Jouer le set.</h1>
+    <p class="lede">L'onglet <b class="ui a">Perform</b> est celui que tu regardes sur scène : des
+      backing tracks, une setlist de sections, des changements de preset qui se déclenchent tout
+      seuls, un télésouffleur plein écran pour tes paroles, et un enregistreur qui capture toute la
+      soirée en stems.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">SUR CETTE PAGE</div>
       <ul>
         <li><a href="#tracks">Backing tracks</a></li>
-        <li><a href="#player">The player card</a></li>
-        <li><a href="#setlist">The setlist</a></li>
-        <li><a href="#sections">Building a section</a></li>
-        <li><a href="#markers">Preset markers</a></li>
-        <li><a href="#lyrics">Lyrics and the teleprompter</a></li>
-        <li><a href="#presets">Perform presets</a></li>
-        <li><a href="#recording">Recording</a></li>
-        <li><a href="#projects">Recording projects</a></li>
-        <li><a href="#dawproject">DAWproject export</a></li>
+        <li><a href="#player">La carte lecteur</a></li>
+        <li><a href="#setlist">La setlist</a></li>
+        <li><a href="#sections">Construire une section</a></li>
+        <li><a href="#markers">Marqueurs de preset</a></li>
+        <li><a href="#lyrics">Paroles et télésouffleur</a></li>
+        <li><a href="#presets">Presets Perform</a></li>
+        <li><a href="#recording">Enregistrement</a></li>
+        <li><a href="#projects">Projets d'enregistrement</a></li>
+        <li><a href="#dawproject">Export DAWproject</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tracks"><span class="n">06.1</span>Backing tracks</h2>
-      <p>The <b class="ui">+</b> button in the <b class="ui">SETLIST</b> header
-        (<b class="ui">Import track</b>) opens the Files picker. It is multi-select, so bring in a
-        whole set at once, and it takes anything iOS can decode. Each file copies into
-        <b class="ui">backing/</b> and becomes a setlist section named after the file.</p>
-      <p>If a file cannot be read you get <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>Le bouton <b class="ui">+</b> dans l'en-tête <b class="ui">SETLIST</b>
+        (<b class="ui">Importer une piste</b>) ouvre le sélecteur de fichiers. Il est multi-sélection, tu
+        peux donc importer tout un set d'un coup, et il accepte tout ce qu'iOS sait décoder. Chaque
+        fichier est copié dans <b class="ui">backing/</b> et devient une section de la setlist
+        nommée d'après le fichier.</p>
+      <p>Si un fichier ne peut pas être lu, tu obtiens <b class="ui r">Could not import
+        &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1304"
-             alt="The Perform tab: the player card with Test Song loaded, its waveform timeline, 120 BPM and key A, and the DIRECT routing chip; below it the SETLIST card with AUTO NEXT switched on, and the RECORDINGS card at the bottom.">
-        <figcaption>The Perform tab: player, setlist, recordings</figcaption>
+             alt="L'onglet Perform : la carte lecteur avec Test Song chargée, sa timeline en forme d'onde, 120 BPM et la tonalité A, et la puce de routage DIRECT ; en dessous la carte SETLIST avec AUTO NEXT activé, et la carte RECORDINGS en bas.">
+        <figcaption>L'onglet Perform : lecteur, setlist, enregistrements</figcaption>
       </figure>
       <div class="note tip">
-        <div class="t">Loading a set from a computer</div>
-        <p>Audio copied straight into <b class="ui">On My iPhone → NAMper → backing/</b> with the
-          Files app is adopted into the setlist the next time you launch NAMper — one paste on a
-          laptop instead of twenty trips through the picker. See
-          <a href="/docs/fr/setup.html#files">where your files live</a>.</p>
+        <div class="t">Charger un set depuis un ordinateur</div>
+        <p>Un fichier audio copié directement dans <b class="ui">On My iPhone → NAMper →
+          backing/</b> avec l'app Fichiers est adopté dans la setlist au prochain lancement de
+          NAMper — un seul copier-coller depuis un ordinateur portable plutôt que vingt
+          allers-retours dans le sélecteur. Voir <a href="/docs/fr/setup.html#files">où vivent tes
+          fichiers</a>.</p>
       </div>
-      <p>Names matter: re-importing a file with the same name replaces the audio already in
-        <b class="ui">backing/</b>. Handy when you have re-bounced a track — and a trap if two
-        different songs are both called <b class="ui">Backing.wav</b>.</p>
+      <p>Les noms comptent : réimporter un fichier portant le même nom remplace l'audio déjà
+        présent dans <b class="ui">backing/</b>. Pratique quand tu as réexporté une piste — et un
+        piège si deux morceaux différents s'appellent tous les deux <b class="ui">Backing.wav</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="player"><span class="n">06.2</span>The player card</h2>
-      <p>The top card is the transport. The name row shows the loaded track, or
-        <b class="ui">No track selected</b>, with the time as <b class="ui">m:ss / m:ss</b>. Once
-        NAMper has analysed the audio it adds the tempo — <b class="ui">120 BPM</b> — and the key.</p>
-      <p>That analysis is not decoration. <strong>Selecting a track re-tunes the whole rig</strong>:
-        the global tempo and key follow the song, so the delay and tremolo sync divisions, the
-        looper's bar grid, the harmoniser and the autotune all land on the right song without you
-        setting anything.</p>
-      <p>Five buttons sit under the name, left to right:</p>
+      <h2 id="player"><span class="n">06.2</span>La carte lecteur</h2>
+      <p>La carte du haut est le transport. La ligne de nom affiche la piste chargée, ou
+        <b class="ui">Aucune piste sélectionnée</b>, avec le temps au format <b class="ui">m:ss /
+        m:ss</b>. Une fois que NAMper a analysé l'audio, il ajoute le tempo —
+        <b class="ui">120 BPM</b> — et la tonalité.</p>
+      <p>Cette analyse n'est pas décorative. <strong>Sélectionner une piste raccorde tout le
+        rig</strong> : le tempo et la tonalité globaux suivent le morceau, si bien que les
+        divisions synchronisées du delay et du tremolo, la grille de mesures du looper,
+        l'harmoniseur et l'autotune se retrouvent tous calés sur le bon morceau sans que tu règles
+        quoi que ce soit.</p>
+      <p>Cinq boutons se trouvent sous le nom, de gauche à droite :</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Button</th><th>Does</th></tr></thead>
+          <thead><tr><th>Bouton</th><th>Fait</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Play</b></td><td>Play and pause the backing track</td></tr>
-            <tr><td><b class="ui">Stop</b></td><td>Stop and return to the start</td></tr>
-            <tr><td><b class="ui">Record</b></td><td>Start and stop the performance recorder (<a href="#recording">below</a>)</td></tr>
-            <tr><td><b class="ui">Add preset marker</b></td><td>Drop a rig-preset change at the playhead</td></tr>
-            <tr><td><b class="ui">Lyrics</b></td><td>Open the teleprompter, or load a lyrics file</td></tr>
+            <tr><td><b class="ui">Lecture</b></td><td>Joue et met en pause le backing track</td></tr>
+            <tr><td><b class="ui">Stop</b></td><td>Arrête et revient au début</td></tr>
+            <tr><td><b class="ui">Enregistrer</b></td><td>Démarre et arrête l'enregistreur de performance (<a href="#recording">plus bas</a>)</td></tr>
+            <tr><td><b class="ui">Ajouter un marqueur de preset</b></td><td>Dépose un changement de preset de rig à la tête de lecture</td></tr>
+            <tr><td><b class="ui">Paroles</b></td><td>Ouvre le télésouffleur, ou charge un fichier de paroles</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Long-press <b class="ui">Play</b> or <b class="ui">Stop</b> to MIDI-learn them —
-        <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>,
-        <b class="ui">MIDI Learn: next section</b> and <b class="ui">MIDI Learn: previous
-        section</b> are all offered there. See <a href="/docs/fr/control.html">MIDI &amp; control</a>.</p>
-      <h3>Backing level and routing</h3>
-      <p>Below the buttons, a slider sets the backing level in dB from −60 to +12, reading
-        <b class="ui">-inf</b> at the bottom. The chip beside it is the routing:
-        <b class="ui">DIRECT</b> sends the track out after the master FX chain
-        (<b class="ui">Direct out (after master FX)</b>), which is what you want live — your reverb
-        and limiter never touch the backing. <b class="ui">PRE FX</b> (<b class="ui">Through master
-        FX</b>) puts the track through the master chain instead.</p>
-      <h3>The timeline</h3>
-      <p>The waveform under the card is a mirror-bar display with the played part lit and a cursor
-        at the playhead. <strong>Tap anywhere on it to seek.</strong> Seeking also re-applies the
-        newest <a href="#markers">preset marker</a> at or before that point, so jumping into the
-        last chorus still gets you the last chorus's sound.</p>
+      <p>Fais un appui long sur <b class="ui">Lecture</b> ou <b class="ui">Stop</b> pour les
+        apprendre en MIDI — <b class="ui">MIDI Learn : lecture / pause</b>,
+        <b class="ui">MIDI Learn : stop</b>, <b class="ui">MIDI Learn : section suivante</b> et
+        <b class="ui">MIDI Learn : section précédente</b> sont tous proposés là. Voir
+        <a href="/docs/fr/control.html">MIDI et contrôle</a>.</p>
+      <h3>Niveau et routage du backing</h3>
+      <p>Sous les boutons, un curseur règle le niveau du backing en dB de −60 à +12, affichant
+        <b class="ui">-inf</b> au minimum. La puce à côté est le routage :
+        <b class="ui">DIRECT</b> envoie la piste en sortie après la chaîne FX master
+        (<b class="ui">Sortie directe (après les FX master)</b>), ce que tu veux en live — ta reverb et
+        ton limiteur ne touchent jamais le backing. <b class="ui">PRE FX</b>
+        (<b class="ui">Via les FX master</b>) fait au contraire passer la piste par la chaîne
+        master.</p>
+      <h3>La timeline</h3>
+      <p>La forme d'onde sous la carte est un affichage en barres miroir, avec la partie déjà
+        jouée allumée et un curseur à la tête de lecture. <strong>Appuie n'importe où dessus pour
+        te déplacer.</strong> Se déplacer réapplique aussi le <a href="#markers">marqueur de
+        preset</a> le plus récent à ce point ou avant, donc sauter dans le dernier refrain te
+        donne quand même le son du dernier refrain.</p>
       <div class="note">
-        <div class="t">What the player does not do</div>
-        <p>There is no A/B loop region, no speed change and no pitch shift for backing tracks. If
-          you need a song in another key or at another tempo, bounce it that way before importing.</p>
+        <div class="t">Ce que le lecteur ne fait pas</div>
+        <p>Il n'y a pas de région de boucle A/B, pas de changement de vitesse ni de pitch shift
+          pour les backing tracks. Si tu as besoin d'un morceau dans une autre tonalité ou à un
+          autre tempo, exporte-le déjà comme ça avant de l'importer.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>The setlist</h2>
-      <p>The unit of a NAMper set is a <strong>section</strong>: a name, an optional backing track,
-        and a bar-clocked list of steps. Importing a file makes one section per song, so in practice
-        one section is one song — but a section with no audio at all is just as valid, and that is
-        how you build a song out of loops and pads.</p>
-      <p>The header carries the <b class="ui">PRESETS</b> chip, an <b class="ui">AUTO NEXT</b>
-        toggle, <b class="ui">Add section</b> (which creates <b class="ui">Section N</b>) and
-        <b class="ui">Import track</b>. With <b class="ui">AUTO NEXT</b> on, the set walks itself
-        forward as each section finishes.</p>
-      <p>Before you have anything, the card reads <b class="ui">Add audio files, or a loop/sample
-        section — a section is an optional backing track plus a bar-clocked sequence of loops and
-        samples.</b></p>
-      <p>Each row shows a play button (<b class="ui">Play section</b>), the name, small badges —
-        <b class="ui">backing</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, and a live
-        <b class="ui">bar N</b> while it runs — and an edit button (<b class="ui">Edit
-        section</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>La setlist</h2>
+      <p>L'unité d'un set NAMper est une <strong>section</strong> : un nom, un backing track
+        optionnel, et une liste d'étapes cadencée en mesures. Importer un fichier crée une section
+        par morceau, donc en pratique une section correspond à un morceau — mais une section sans
+        aucun audio est tout aussi valide, et c'est comme ça que tu construis un morceau à partir
+        de loops et de pads.</p>
+      <p>L'en-tête porte la puce <b class="ui">PRESETS</b>, un interrupteur
+        <b class="ui">AUTO SUIVANT</b>, <b class="ui">Ajouter une section</b> (qui crée
+        <b class="ui">Section N</b>) et <b class="ui">Importer une piste</b>. Avec
+        <b class="ui">AUTO SUIVANT</b> activé, le set avance tout seul à la fin de chaque section.</p>
+      <p>Avant que tu aies quoi que ce soit, la carte affiche <b class="ui">Ajoutez des fichiers audio, ou une section boucles/samples — une section, c'est une backing track optionnelle plus une séquence de boucles et de samples calée sur les mesures.</b></p>
+      <p>Chaque ligne affiche un bouton de lecture (<b class="ui">Lire la section</b>), le nom, de
+        petits badges — <b class="ui">backing</b>, <b class="ui">N steps</b>,
+        <b class="ui">N bars</b>, et un <b class="ui">bar N</b> en direct pendant qu'elle tourne —
+        et un bouton d'édition (<b class="ui">Modifier la section</b>).</p>
       <div class="note tip">
-        <div class="t">Tapping a row arms, it does not start</div>
-        <p>Tap a section and NAMper loads its backing track, applies that song's tempo and key to
-          the rig, and points the transport at it — <strong>without playing anything</strong>. Set
-          up between songs, talk to the room, then hit <b class="ui">Play</b> when you are ready.</p>
+        <div class="t">Appuyer sur une ligne l'arme, ça ne la démarre pas</div>
+        <p>Appuie sur une section et NAMper charge son backing track, applique le tempo et la
+          tonalité de ce morceau au rig, et pointe le transport dessus —
+          <strong>sans rien jouer</strong>. Prépare-toi entre les morceaux, parle à la salle, puis
+          appuie sur <b class="ui">Lecture</b> quand tu es prêt.</p>
       </div>
-      <p>The list is always in edit mode, so the drag handles are permanently visible: drag a row to
-        reorder the set, swipe a row to delete it. The row's context menu holds
-        <b class="ui">Load lyrics from file…</b> — see <a href="#lyrics">lyrics</a>.</p>
+      <p>La liste est toujours en mode édition, les poignées de glissement sont donc en permanence
+        visibles : glisse une ligne pour réordonner le set, balaie une ligne pour la supprimer. Le
+        menu contextuel de la ligne contient <b class="ui">Charger les paroles depuis un fichier…</b> — voir
+        <a href="#lyrics">paroles</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Building a section</h2>
-      <p>The edit button opens the section editor. It has a <b class="ui">Section name</b> field, a
-        backing picker whose first entry is <b class="ui">None (loops/samples only)</b> and which
-        reads <b class="ui">No backing track</b> when nothing is chosen, and — when there is no
-        backing — a <b class="ui">N bars</b> stepper from 1 to 128 that sets how long the section
-        runs.</p>
-      <p>Then comes the <b class="ui">STEPS</b> list. <b class="ui">Add step</b> offers
-        <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b> or <b class="ui">Stop loop
-        1…4</b>, and <b class="ui">Sampler pad</b> → <b class="ui">Pad 1…16</b>. Step rows read
-        <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b>
-        or <b class="ui">Stop pad N</b>, each with its own <b class="ui">bar N</b> stepper. The hint
-        under the list says it exactly: <b class="ui">Steps fire on the bar clock: start/stop loop
-        tracks and trigger pads at the bars you set.</b></p>
-      <p>This is how NAMper plays a song with no backing track at all. Record your parts into the
-        <a href="/docs/fr/looper.html">looper</a>, load your hits onto
-        <a href="/docs/fr/sampler.html">pads</a>, then write the arrangement out in bars: drums in at
-        bar 1, bass at bar 5, the pad stab at bar 13, everything out at bar 33. It runs on the bar
-        clock, so it stays locked to your tempo instead of a rendered file.</p>
+      <h2 id="sections"><span class="n">06.4</span>Construire une section</h2>
+      <p>Le bouton d'édition ouvre l'éditeur de section. Il comporte un champ
+        <b class="ui">Nom de la section</b>, un sélecteur de backing dont la première entrée est
+        <b class="ui">Aucune (boucles/samples uniquement)</b> et qui affiche
+        <b class="ui">Pas de backing track</b> quand rien n'est choisi, et — quand il n'y a pas de
+        backing — un compteur <b class="ui">N bars</b> de 1 à 128 qui règle la durée de la
+        section.</p>
+      <p>Vient ensuite la liste <b class="ui">ÉTAPES</b>. <b class="ui">Ajouter une étape</b> propose
+        <b class="ui">Piste de boucle</b> → <b class="ui">Start loop 1…4</b> ou
+        <b class="ui">Stop loop 1…4</b>, et <b class="ui">Pad du sampler</b> →
+        <b class="ui">Pad 1…16</b>. Les lignes d'étape affichent <b class="ui">Start loop N</b>,
+        <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b> ou
+        <b class="ui">Stop pad N</b>, chacune avec son propre compteur <b class="ui">bar N</b>.
+        L'indication sous la liste le dit exactement : <b class="ui">Les étapes se déclenchent sur l'horloge des mesures : lancez/arrêtez les pistes de boucle et déclenchez les pads aux mesures choisies.</b></p>
+      <p>C'est ainsi que NAMper joue un morceau sans aucun backing track. Enregistre tes parties
+        dans le <a href="/docs/fr/looper.html">looper</a>, charge tes samples sur les
+        <a href="/docs/fr/sampler.html">pads</a>, puis écris l'arrangement en mesures : batterie
+        qui entre à la mesure 1, basse à la mesure 5, le coup de pad à la mesure 13, tout qui sort
+        à la mesure 33. Ça tourne sur l'horloge de mesures, donc ça reste verrouillé sur ton tempo
+        plutôt que sur un fichier rendu.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Preset markers</h2>
-      <p>A preset marker is a rig change written onto the song's timeline. Clean verse, crunch
-        chorus, lead for the solo — placed once, then hands-free every time you play it.</p>
+      <h2 id="markers"><span class="n">06.5</span>Marqueurs de preset</h2>
+      <p>Un marqueur de preset est un changement de rig écrit sur la timeline du morceau. Couplet
+        clean, refrain crunch, lead pour le solo — placé une fois, puis les mains libres à chaque
+        fois que tu le joues.</p>
       <ol style="--nc:var(--drive)">
-        <li>Arm the track and put the playhead where the switch belongs — tap the timeline to seek,
-          or let it play.</li>
-        <li>Tap the pin button (<b class="ui">Add preset marker</b>).</li>
-        <li>Pick a rig from the menu of every preset, each row reading
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. The marker drops at the current
-          playhead position.</li>
+        <li>Arme la piste et place la tête de lecture là où le changement doit avoir lieu — appuie
+          sur la timeline pour te déplacer, ou laisse-la jouer.</li>
+        <li>Appuie sur le bouton épingle (<b class="ui">Ajouter un marqueur de preset</b>).</li>
+        <li>Choisis un rig dans le menu de tous les presets, chaque ligne affichant
+          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. Le marqueur se dépose à la position
+          actuelle de la tête de lecture.</li>
       </ol>
-      <p>Crossing a marker during playback fires that preset exactly as if a MIDI program change had
-        arrived from a pedalboard. Markers draw as amber dots on the timeline with a generous touch
-        area, and below the waveform a row of chips lists them as
-        <b class="ui">m:ss  &lt;preset name&gt;</b>. Long-press a chip for
-        <b class="ui">Delete marker</b>.</p>
+      <p>Franchir un marqueur pendant la lecture déclenche ce preset exactement comme si un
+        program change MIDI était arrivé depuis un pedalboard. Les marqueurs se dessinent en
+        points ambrés sur la timeline avec une zone tactile généreuse, et sous la forme d'onde une
+        rangée de puces les liste sous la forme <b class="ui">m:ss  &lt;preset name&gt;</b>. Fais
+        un appui long sur une puce pour <b class="ui">Supprimer le marqueur</b>.</p>
       <div class="note">
-        <div class="t">Snapping</div>
-        <p>A marker you have just created sits at the raw playhead, wherever your finger left it.
-          <strong>Drag a marker and it snaps to the bar grid</strong> — so the way to tighten a
-          rough placement is to nudge it. With no detected tempo there is no grid, and placement
-          stays free.</p>
+        <div class="t">Alignement</div>
+        <p>Un marqueur que tu viens de créer se place à la position brute de la tête de lecture,
+          là où ton doigt l'a laissé. <strong>Fais glisser un marqueur et il se cale sur la grille
+          de mesures</strong> — la façon d'affiner un placement approximatif est donc de le
+          déplacer légèrement. Sans tempo détecté, il n'y a pas de grille, et le placement reste
+          libre.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Lyrics and the teleprompter</h2>
-      <p>NAMper carries your words for you. Give a track a plain text file and it becomes a
-        full-screen teleprompter that opens by itself when the song starts and scrolls at the pace
-        you taught it.</p>
+      <h2 id="lyrics"><span class="n">06.6</span>Paroles et télésouffleur</h2>
+      <p>NAMper porte tes mots à ta place. Donne à une piste un simple fichier texte et il devient
+        un télésouffleur plein écran qui s'ouvre tout seul au démarrage du morceau et défile au
+        rythme que tu lui as appris.</p>
 
-      <h3>Loading lyrics</h3>
-      <p>There are two ways in.</p>
-      <p><strong>The reliable one:</strong> <b class="ui">Load lyrics from file…</b>, either from the
-        lyrics button's long-press menu or from a setlist row's context menu. It takes plain text.
-        If the file cannot be read you get <b class="ui r">Could not read the lyrics file.</b></p>
-      <p><strong>The automatic one:</strong> when you import audio, NAMper looks for a plain
-        <b class="ui">.txt</b> (or <b class="ui">.text</b>) file with the same base name sitting
-        next to it — <b class="ui">Song.wav</b> and <b class="ui">Song.txt</b> — and picks the text
-        up as that song's lyrics. Prepare a folder that way on a computer and a whole set arrives
-        with its words attached.</p>
+      <h3>Charger des paroles</h3>
+      <p>Il y a deux façons de faire.</p>
+      <p><strong>La fiable :</strong> <b class="ui">Charger les paroles depuis un fichier…</b>, soit depuis le
+        menu d'appui long du bouton paroles, soit depuis le menu contextuel d'une ligne de la
+        setlist. Elle accepte du texte brut. Si le fichier ne peut pas être lu, tu obtiens
+        <b class="ui r">Impossible de lire le fichier des paroles.</b></p>
+      <p><strong>L'automatique :</strong> quand tu importes de l'audio, NAMper cherche un simple
+        fichier <b class="ui">.txt</b> (ou <b class="ui">.text</b>) portant le même nom de base à
+        côté — <b class="ui">Song.wav</b> et <b class="ui">Song.txt</b> — et récupère le texte
+        comme paroles de ce morceau. Prépare un dossier de cette façon sur un ordinateur et tout
+        un set arrive avec ses paroles déjà attachées.</p>
       <div class="note warn">
-        <div class="t">The sibling pickup is best-effort</div>
-        <p>The file picker's permission scope does not always cover the file next to the one you
-          chose. When it does not, nothing is picked up and no error appears — the track simply has
-          no lyrics. Check the lyrics button after importing, and fall back to
-          <b class="ui">Load lyrics from file…</b> for anything that came up empty.</p>
+        <div class="t">La récupération du fichier voisin est faite au mieux</div>
+        <p>La portée des permissions du sélecteur de fichiers ne couvre pas toujours le fichier
+          situé à côté de celui que tu as choisi. Quand ce n'est pas le cas, rien n'est récupéré
+          et aucune erreur n'apparaît — la piste n'a simplement pas de paroles. Vérifie le bouton
+          paroles après l'import, et utilise <b class="ui">Charger les paroles depuis un fichier…</b> pour tout ce
+          qui est resté vide.</p>
       </div>
-      <p>The lyrics button carries a quote-mark icon and is tinted when the track has words. A
-        <strong>tap</strong> opens the full-screen lyrics if there are any and otherwise opens the
-        file picker; a <strong>long-press</strong> gives you <b class="ui">Show lyrics</b>,
-        <b class="ui">Load lyrics from file…</b> and <b class="ui">Remove lyrics</b>.</p>
+      <p>Le bouton paroles porte une icône de guillemets et se colore quand la piste a des
+        paroles. Un <strong>appui simple</strong> ouvre les paroles plein écran s'il y en a, sinon
+        il ouvre le sélecteur de fichiers ; un <strong>appui long</strong> donne
+        <b class="ui">Afficher les paroles</b>, <b class="ui">Charger les paroles depuis un fichier…</b> et
+        <b class="ui">Supprimer les paroles</b>.</p>
       <div class="note warn">
-        <div class="t">Loading resets the timing</div>
-        <p>Loading new lyrics onto a track resets the window to the whole song and
-          <strong>clears every anchor</strong>. Fix typos in the file before you spend a rehearsal
-          anchoring it, not after.</p>
+        <div class="t">Charger réinitialise le calage</div>
+        <p>Charger de nouvelles paroles sur une piste réinitialise la fenêtre sur tout le morceau
+          et <strong>efface toutes les ancres</strong>. Corrige les fautes de frappe dans le
+          fichier avant de passer une répétition à la caler, pas après.</p>
       </div>
 
-      <h3>The lyrics strip</h3>
-      <p>Once a track has lyrics, a tinted band called <b class="ui">Lyrics range</b> appears under
-        the waveform. Its edges are the <strong>lyrics window</strong>: where the text starts
-        scrolling and where it finishes. Drag an edge to move one bound, drag the middle to slide
-        the whole span — useful when a song opens with a long instrumental intro.</p>
-      <p>Anchors are drawn on the same strip as small diamonds. Drag one to retime it; long-press
-        one for <b class="ui">Delete anchor</b>.</p>
+      <h3>La bande des paroles</h3>
+      <p>Une fois qu'une piste a des paroles, une bande colorée nommée
+        <b class="ui">Plage des paroles</b> apparaît sous la forme d'onde. Ses bords sont la
+        <strong>fenêtre des paroles</strong> : où le texte commence à défiler et où il se termine.
+        Fais glisser un bord pour déplacer une limite, fais glisser le milieu pour décaler toute
+        la plage — utile quand un morceau s'ouvre sur une longue intro instrumentale.</p>
+      <p>Les ancres sont dessinées sur la même bande sous forme de petits losanges. Fais-en
+        glisser une pour la recaler ; fais un appui long dessus pour <b class="ui">Supprimer l’ancre</b>.</p>
 
-      <h3>The teleprompter</h3>
+      <h3>Le télésouffleur</h3>
       <figure>
         <img class="phone" src="/docs/assets/lyrics.png" width="600" height="1304"
-             alt="The full-screen lyrics teleprompter mid-song, showing the track name and the time readout at the top with a pause button, the scrolling verse text, and the hint line: Hold a line to pin it to the current moment.">
-        <figcaption>The teleprompter, before the first anchor is placed</figcaption>
+             alt="Le télésouffleur de paroles plein écran en plein morceau, montrant le nom de la piste et l'affichage du temps en haut avec un bouton pause, le texte du couplet en défilement, et la ligne d'indication : Hold a line to pin it to the current moment.">
+        <figcaption>Le télésouffleur, avant que la première ancre soit placée</figcaption>
       </figure>
-      <p>The teleprompter is a full screen, and it <strong>opens by itself when playback starts</strong>
-        on a track that has lyrics. Its header holds a back button, the track name, the
-        <b class="ui">m:ss / m:ss</b> readout and a play/pause button. <strong>Tapping anywhere on
-        the screen toggles play/pause</strong> — you do not have to find a small target with a
-        guitar in your hands.</p>
+      <p>Le télésouffleur occupe tout l'écran, et il <strong>s'ouvre tout seul quand la lecture
+        démarre</strong> sur une piste qui a des paroles. Son en-tête comporte un bouton retour, le
+        nom de la piste, l'affichage <b class="ui">m:ss / m:ss</b> et un bouton lecture/pause.
+        <strong>Appuyer n'importe où sur l'écran bascule lecture/pause</strong> — tu n'as pas
+        besoin de viser une petite cible avec une guitare dans les mains.</p>
 
-      <h3>Anchors</h3>
-      <p>An anchor is how you teach the text your song. <strong>Hold a line for about a third of a
-        second and it is pinned to the current moment.</strong> Hold an already-anchored line to
-        remove the anchor. An anchored line is marked with a filled bar in its left margin.</p>
-      <p>An anchor means one thing: <em>at this time, put this line at the top of the screen</em>.
-        Between anchors the text glides at a constant speed from one to the next. It can never
-        scroll backwards, even if you place anchors out of order — a teleprompter that jumps back
-        mid-verse is worse than one that is slightly early.</p>
-      <p>In practice: play the song once in rehearsal and hold each section's first line as you
-        reach it. Four or five anchors are usually enough for a three-minute song, and they are
-        saved with the track.</p>
-      <p><strong>With no anchors</strong> the text glides at one constant speed: the first line at
-        the start of the lyrics window, fully scrolled at the end of it. A hint reads
-        <b class="ui">Hold a line to pin it to the current moment</b> until you place your first
-        one. If the text is shorter than the screen it does not scroll at all — it is centred.</p>
+      <h3>Ancres</h3>
+      <p>Une ancre, c'est comme ça que tu enseignes ton morceau au texte. <strong>Maintiens une
+        ligne environ un tiers de seconde et elle se fixe au moment actuel.</strong> Maintiens une
+        ligne déjà ancrée pour retirer l'ancre. Une ligne ancrée est marquée d'une barre pleine
+        dans sa marge gauche.</p>
+      <p>Une ancre signifie une seule chose : <em>à ce moment-là, place cette ligne en haut de
+        l'écran</em>. Entre deux ancres, le texte glisse à vitesse constante de l'une à l'autre. Il
+        ne peut jamais défiler en arrière, même si tu places les ancres dans le désordre — un
+        télésouffleur qui saute en arrière en plein couplet est pire qu'un qui est un peu en
+        avance.</p>
+      <p>En pratique : joue le morceau une fois en répétition et maintiens la première ligne de
+        chaque section quand tu l'atteins. Quatre ou cinq ancres suffisent en général pour un
+        morceau de trois minutes, et elles sont sauvegardées avec la piste.</p>
+      <p><strong>Sans ancre</strong>, le texte glisse à vitesse constante : la première ligne au
+        début de la fenêtre des paroles, entièrement défilé à la fin de celle-ci. Une indication
+        affiche <b class="ui">Maintenez une ligne pour l’ancrer à l’instant actuel</b> jusqu'à ce que tu
+        places ta première ancre. Si le texte est plus court que l'écran, il ne défile pas du
+        tout — il est centré.</p>
 
-      <h3>Taking over by hand</h3>
-      <p>Drag the text and you take control: the auto-glide stops and the words follow your finger.
-        The moment that happens an <b class="ui">AUTO</b> chip appears in the header
-        (<b class="ui">Resume auto-scroll</b>); tap it to hand control back and the text re-aims at
-        the playhead. <strong>That chip is only visible while manual scroll is active</strong>, so
-        if you cannot see it, nothing is being held. Leaving the screen and coming back also resets
-        to automatic.</p>
+      <h3>Prendre la main manuellement</h3>
+      <p>Fais glisser le texte et tu prends la main : le défilement automatique s'arrête et les
+        mots suivent ton doigt. Dès que ça arrive, une puce <b class="ui">AUTO</b> apparaît dans
+        l'en-tête (<b class="ui">Reprendre le défilement automatique</b>) ; appuie dessus pour rendre la main et le
+        texte se recale sur la tête de lecture. <strong>Cette puce n'est visible que pendant que
+        le défilement manuel est actif</strong>, donc si tu ne la vois pas, rien n'est retenu
+        manuellement. Quitter l'écran et y revenir remet aussi le mode automatique.</p>
 
-      <h3>Text size</h3>
-      <p>Settings → <b class="ui">LYRICS</b> holds a text-size slider from <b class="ui">16</b> to
-        <b class="ui">34 pt</b>, default <b class="ui">22 pt</b>, with a live preview reading
-        <b class="ui">This is how your lyrics will look</b>. Changing it re-aims the teleprompter
-        live. Set it for the distance the phone actually sits from your face on a mic stand. See
-        <a href="/docs/fr/settings.html#lyrics">the settings reference</a>.</p>
+      <h3>Taille du texte</h3>
+      <p>Réglages → <b class="ui">PAROLES</b> comporte un curseur de taille de texte de
+        <b class="ui">16</b> à <b class="ui">34 pt</b>, par défaut <b class="ui">22 pt</b>, avec
+        un aperçu en direct affichant <b class="ui">Voici à quoi ressembleront vos paroles</b>. Le
+        modifier recale le télésouffleur en direct. Règle-le pour la distance à laquelle le
+        téléphone se trouve réellement de ton visage sur un pied de micro. Voir
+        <a href="/docs/fr/settings.html#lyrics">la référence des réglages</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Perform presets</h2>
-      <p>The <b class="ui">PRESETS</b> chip in the setlist header opens <b class="ui">Perform
-        Presets</b>. A saved perform preset carries the <strong>whole setlist</strong>: every
-        section with its steps and bars, the <b class="ui">AUTO NEXT</b> state, and the lyrics —
-        text, window and anchors — of every track that has them.</p>
-      <p>What it does not carry is the audio. Backing tracks are stored as <strong>file-name
-        references</strong>, so a preset stays small and can be shared. Load it on another device
-        and the sections whose backing file is not present fall back to steps only; the lyrics for
-        the tracks that <em>are</em> present are written back to disk as usual.</p>
+      <h2 id="presets"><span class="n">06.7</span>Presets Perform</h2>
+      <p>La puce <b class="ui">PRESETS</b> dans l'en-tête de la setlist ouvre
+        <b class="ui">Presets Perform</b>. Un preset Perform sauvegardé porte
+        <strong>toute la setlist</strong> : chaque section avec ses étapes et ses mesures, l'état
+        d'<b class="ui">AUTO SUIVANT</b>, et les paroles — texte, fenêtre et ancres — de chaque piste
+        qui en a.</p>
+      <p>Ce qu'il ne porte pas, c'est l'audio. Les backing tracks sont stockés comme
+        <strong>références de nom de fichier</strong>, donc un preset reste léger et peut être
+        partagé. Charge-le sur un autre appareil et les sections dont le fichier de backing est
+        absent retombent sur les étapes seules ; les paroles des pistes qui <em>sont</em>
+        présentes sont réécrites sur le disque comme d'habitude.</p>
       <div class="note tip">
-        <div class="t">Moving a set to another device</div>
-        <p>Copy your <b class="ui">backing/</b> folder across first, then load the perform preset.
-          Same file names, same set.</p>
+        <div class="t">Déplacer un set vers un autre appareil</div>
+        <p>Copie d'abord ton dossier <b class="ui">backing/</b>, puis charge le preset Perform.
+          Mêmes noms de fichiers, même set.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Recording</h2>
-      <p>The record button in the player card captures the performance as <strong>three aligned
-        stems</strong>. It refuses with <b class="ui r">Audio is off — tap the power button before
-        recording.</b> if the engine is not running.</p>
+      <h2 id="recording"><span class="n">06.8</span>Enregistrement</h2>
+      <p>Le bouton d'enregistrement dans la carte lecteur capture la performance en
+        <strong>trois stems alignés</strong>. Il refuse avec <b class="ui r">L'audio est coupé — touchez le bouton d'alimentation avant d'enregistrer.</b> si le moteur audio ne tourne pas.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Stem</th><th>What it holds</th></tr></thead>
+          <thead><tr><th>Stem</th><th>Ce qu'il contient</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>The master: rig, looper, sampler pads and backing together</td></tr>
-            <tr><td><b class="ui">input</b></td><td>The dry sound-card input, at whatever channel count your interface delivers</td></tr>
-            <tr><td><b class="ui">backing</b></td><td>The backing track alone, when one is attached</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>Le master : rig, looper, pads du sampler et backing ensemble</td></tr>
+            <tr><td><b class="ui">input</b></td><td>L'entrée carte son à sec, avec le nombre de canaux que fournit ton interface</td></tr>
+            <tr><td><b class="ui">backing</b></td><td>Le backing track seul, quand il y en a un</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The dry <b class="ui">input</b> stem is the one that saves a good take with a bad amp
-        choice — re-amp it later. <strong>Looper tracks are not separate stems</strong>; they are
-        inside the mix.</p>
-      <p>Files land in <b class="ui">recordings/</b> named
-        <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>, <b class="ui">… input</b> and
-        <b class="ui">… backing</b>. They are <b class="ui">.m4a</b> normally and
-        <b class="ui">.caf</b> for high-rate or multichannel material. Switching backing track
-        mid-take opens a numbered segment — <b class="ui">… backing 2</b>.</p>
-      <p>Three errors can stop a take: <b class="ui r">Recording could not start: the take file
-        could not be created.</b>, <b class="ui r">Recording stopped: the device is out of storage
-        space.</b> and <b class="ui r">Recording stopped: the take file could not be written.</b></p>
+      <p>Le stem <b class="ui">input</b> à sec est celui qui sauve une bonne prise avec un
+        mauvais choix d'ampli — tu pourras la réamplifier plus tard.
+        <strong>Les pistes du looper ne sont pas des stems séparés</strong> ; elles sont dans le
+        mix.</p>
+      <p>Les fichiers atterrissent dans <b class="ui">recordings/</b> nommés
+        <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>, <b class="ui">… input</b> et
+        <b class="ui">… backing</b>. Ils sont en <b class="ui">.m4a</b> normalement et en
+        <b class="ui">.caf</b> pour le matériel à fréquence élevée ou multicanal. Changer de
+        backing track en cours de prise ouvre un segment numéroté —
+        <b class="ui">… backing 2</b>.</p>
+      <p>Trois erreurs peuvent arrêter une prise : <b class="ui r">L'enregistrement n'a pas pu démarrer : impossible de créer le fichier de prise.</b>, <b class="ui r">Enregistrement arrêté : l’appareil n’a plus d’espace de stockage.</b> et <b class="ui r">Enregistrement arrêté : le fichier de la prise n’a pas pu être écrit.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Recording projects</h2>
-      <p>The <b class="ui">RECORDINGS</b> card groups the stems of one take into a
-        <strong>project</strong>, by their shared <b class="ui">Perf &lt;date&gt;</b> name. Newest
-        first, and the five newest projects are shown — older takes stay on disk in
-        <b class="ui">recordings/</b>, reachable through the Files app.</p>
-      <p>A project row has a preview button that plays the mix stem, the project name, a share
-        button (<b class="ui">Export DAWproject</b>), a delete button (<b class="ui">Delete
-        project</b>) and a chevron (<b class="ui">Show stems</b>). Tapping the row expands it too.</p>
-      <p>Expanded, each stem gets its own row labelled <b class="ui">mix</b>,
-        <b class="ui">input</b>, <b class="ui">backing</b> or <b class="ui">backing 2</b>, with
-        <b class="ui">Share recording</b> and <b class="ui">Delete recording</b>. Share a stem to
-        send someone a rough mix; share the project to open the take in a DAW.</p>
+      <h2 id="projects"><span class="n">06.9</span>Projets d'enregistrement</h2>
+      <p>La carte <b class="ui">ENREGISTREMENTS</b> regroupe les stems d'une prise en un
+        <strong>projet</strong>, via leur nom commun <b class="ui">Perf &lt;date&gt;</b>. Les plus
+        récents en premier, et les cinq projets les plus récents sont affichés — les prises plus
+        anciennes restent sur le disque dans <b class="ui">recordings/</b>, accessibles via l'app
+        Fichiers.</p>
+      <p>Une ligne de projet comporte un bouton d'aperçu qui joue le stem mix, le nom du projet, un
+        bouton de partage (<b class="ui">Exporter en DAWproject</b>), un bouton de suppression
+        (<b class="ui">Supprimer le projet</b>) et un chevron (<b class="ui">Afficher les pistes</b>). Appuyer
+        sur la ligne la déplie aussi.</p>
+      <p>Une fois dépliée, chaque stem a sa propre ligne intitulée <b class="ui">mix</b>,
+        <b class="ui">input</b>, <b class="ui">backing</b> ou <b class="ui">backing 2</b>, avec
+        <b class="ui">Partager l'enregistrement</b> et <b class="ui">Supprimer l'enregistrement</b>. Partage un stem
+        pour envoyer un mix brut à quelqu'un ; partage le projet pour ouvrir la prise dans un
+        DAW.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject export</h2>
-      <p>The share button on a <strong>project row</strong> — not on an individual stem — exports
-        the whole take as a <b class="ui">.dawproject</b> file through the normal iOS share sheet:
-        Save to Files, AirDrop it to a Mac, drop it in a cloud folder. DAWproject is an open
-        interchange format, so any DAW that reads it will open the take without a converter.</p>
-      <p>Inside you get one track per stem, named after the stem, each with a single clip starting
-        at <strong>0</strong> — so everything lines up the moment the project opens. The audio is
-        written as <strong>24-bit WAV</strong> at the original sample rate and channel count.</p>
+      <h2 id="dawproject"><span class="n">06.10</span>Export DAWproject</h2>
+      <p>Le bouton de partage sur une <strong>ligne de projet</strong> — pas sur un stem
+        individuel — exporte toute la prise sous forme de fichier <b class="ui">.dawproject</b>
+        via la feuille de partage iOS habituelle : Enregistrer dans Fichiers, l'envoyer par
+        AirDrop à un Mac, le déposer dans un dossier cloud. DAWproject est un format d'échange
+        ouvert, donc n'importe quel DAW qui le lit ouvrira la prise sans convertisseur.</p>
+      <p>À l'intérieur, tu obtiens une piste par stem, nommée d'après le stem, chacune avec un seul
+        clip qui commence à <strong>0</strong> — pour que tout s'aligne dès l'ouverture du projet.
+        L'audio est écrit en <strong>WAV 24 bits</strong>, à la fréquence d'échantillonnage et au
+        nombre de canaux d'origine.</p>
       <div class="note warn">
-        <div class="t">What the export does not carry</div>
-        <p>No tempo and no time signature — the timeline is in <strong>seconds</strong>, not bars.
-          No preset markers, no setlist, no plugin state and no automation. It is a clean multitrack
-          of the audio you played, and you will set the session tempo yourself at the other end.</p>
+        <div class="t">Ce que l'export ne transporte pas</div>
+        <p>Pas de tempo ni de signature rythmique — la timeline est en <strong>secondes</strong>,
+          pas en mesures. Pas de marqueurs de preset, pas de setlist, pas d'état de plugin ni
+          d'automation. C'est un multipiste propre de l'audio que tu as joué, et tu régleras
+          toi-même le tempo de la session à l'arrivée.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/fr/sampler.html">← 05 · Sampler pads</a>
+      <a href="/docs/fr/sampler.html">← 05 · Pads du sampler</a>
       <span class="sp"></span>
-      <a href="/docs/fr/control.html">07 · MIDI &amp; control →</a>
+      <a href="/docs/fr/control.html">07 · MIDI et contrôle →</a>
     </nav>
   </main>
 </div>
@@ -407,7 +437,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper est une application indépendante, sans affiliation, approbation ni parrainage d'aucun fabricant d'équipement. Tous les noms de produits, marques et logos sont la propriété de leurs détenteurs respectifs et ne sont utilisés que pour décrire le matériel à partir duquel une capture a été réalisée.</p>
   </div>
 </footer>
 

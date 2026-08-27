@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rig &amp; signal chain — NAMper Documentation</title>
-<meta name="description" content="Building a rig: the blocks palette, the five EQ models, NAM amp profiles and TONE3000, cab IRs, presets and MIDI PC slots, multiple rigs, parallel branches and the master section.">
+<title>Rig &amp; chuỗi tín hiệu — Tài liệu NAMper</title>
+<meta name="description" content="Xây dựng một rig: bảng block, năm model EQ, profile ampli NAM và TONE3000, IR cab, preset và slot MIDI PC, nhiều rig, nhánh song song và phần master.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Rig &amp; signal chain — NAMper Documentation">
-<meta property="og:description" content="Blocks, EQ models, NAM profiles, TONE3000, cab IRs, presets, multiple rigs, parallel branches and the master section.">
+<meta property="og:title" content="Rig &amp; chuỗi tín hiệu — Tài liệu NAMper">
+<meta property="og:description" content="Block, model EQ, profile NAM, TONE3000, IR cab, preset, nhiều rig, nhánh song song và phần master.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/rig.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">TÀI LIỆU</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/vi/">← ALL DOCS</a>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/vi/rig.html" aria-current="page">Tiếng Việt</a>
   </nav>
@@ -46,566 +46,564 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">NỘI DUNG</div>
     <ol>
-      <li><a href="/docs/vi/setup.html">Getting started</a></li>
-      <li><a class="on" href="/docs/vi/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/vi/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a class="on" href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
-      <li><a href="/docs/vi/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/vi/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/vi/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/vi/settings.html">Settings reference</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; SIGNAL CHAIN</div>
-    <h1>Building the sound.</h1>
-    <p class="lede">The <b class="ui a">Rig</b> tab is where your signal chain lives: blocks you add
-      and drag around, a NAM amp profile at the heart of it, a cab impulse response after it, and a
-      master section everything sums into. This page covers all of it — up to four rigs, four
-      parallel chains inside each one, and the presets that recall the lot.</p>
+    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; CHUỖI TÍN HIỆU</div>
+    <h1>Xây dựng âm thanh.</h1>
+    <p class="lede">Tab <b class="ui a">Rig</b> là nơi chuỗi tín hiệu của bạn sống: các block bạn
+      thêm vào và kéo đi kéo lại, một profile ampli NAM ở trung tâm, một impulse response của cab
+      sau nó, và một phần master mà mọi thứ cộng dồn vào. Trang này bao quát tất cả — tối đa bốn
+      rig, bốn chuỗi song song bên trong mỗi rig, và các preset gọi lại toàn bộ.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">TRONG TRANG NÀY</div>
       <ul>
-        <li><a href="#blocks">The blocks palette</a></li>
-        <li><a href="#models">Models inside blocks</a></li>
-        <li><a href="#eq">The five EQ models</a></li>
-        <li><a href="#nam">NAM amp profiles</a></li>
+        <li><a href="#blocks">Bảng block</a></li>
+        <li><a href="#models">Model bên trong block</a></li>
+        <li><a href="#eq">Năm model EQ</a></li>
+        <li><a href="#nam">Profile ampli NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
-        <li><a href="#cabs">Cabs and IRs</a></li>
-        <li><a href="#presets">Presets</a></li>
-        <li><a href="#rigs">Multiple rigs</a></li>
-        <li><a href="#branches">Parallel branches</a></li>
-        <li><a href="#master">The master section</a></li>
+        <li><a href="#cabs">Cab và IR</a></li>
+        <li><a href="#presets">Preset</a></li>
+        <li><a href="#rigs">Nhiều rig</a></li>
+        <li><a href="#branches">Nhánh song song</a></li>
+        <li><a href="#master">Phần master</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="blocks"><span class="n">02.1</span>The blocks palette</h2>
-      <p>A chain starts empty and you fill it. Tap the dashed <b class="ui">ADD</b> chip at the end
-        of a chain and the palette opens, grouped into sections. Pick a block and it drops into the
-        chain at that point — and its editor opens straight away, so you land on the knobs rather
-        than on an untouched chip.</p>
+      <h2 id="blocks"><span class="n">02.1</span>Bảng block</h2>
+      <p>Một chuỗi bắt đầu trống rỗng và bạn lấp đầy nó. Chạm chip <b class="ui">ADD</b> viền nét
+        đứt ở cuối chuỗi và bảng chọn sẽ mở ra, được nhóm theo từng phần. Chọn một block và nó sẽ
+        rơi vào chuỗi ngay tại điểm đó — trình chỉnh sửa của nó mở ra ngay lập tức, để bạn tới
+        thẳng các núm vặn thay vì một chip chưa chạm tới.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Blocks</th></tr></thead>
+          <thead><tr><th>Phần</th><th>Block</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
+            <tr><td><b class="ui">Động lực</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
             <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
-            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
-            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
+            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Amp đèn</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
+            <tr><td><b class="ui">Bộ lọc</b></td><td><b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Điều biến</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
             <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hội trường</b>, <b class="ui">Phòng</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
             <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
-            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
-            <tr><td><b class="ui">Plugins</b></td><td>the <b class="ui">AU Plugins</b> submenu</td></tr>
+            <tr><td><b class="ui">Tiện ích</b></td><td><b class="ui">Âm lượng</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
+            <tr><td><b class="ui">Plugin</b></td><td>menu con <b class="ui">Plugin AU</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Nothing stops you adding the same block twice. Duplicates are numbered as they arrive —
-        <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — and block names are always drawn in
-        capitals on the chips. Two drives in a row, a gate at the front and another after the amp:
-        all fine.</p>
+      <p>Không gì ngăn bạn thêm cùng một block hai lần. Các bản sao được đánh số theo thứ tự xuất
+        hiện — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — và tên block luôn được viết
+        hoa trên chip. Hai drive liên tiếp, một gate ở đầu và một gate khác sau ampli: đều ổn cả.</p>
 
-      <h3>Working with a block</h3>
+      <h3>Làm việc với một block</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Action</th><th>How</th></tr></thead>
+          <thead><tr><th>Hành động</th><th>Cách làm</th></tr></thead>
           <tbody>
-            <tr><td>Bypass</td><td>Tap the small LED dot under the block name on the chip. The touch
-              target is deliberately large — this is the control you hit mid-song. The footswitch
-              inside the block sheet does the same, as does long-press →
-              <b class="ui">Enable</b> / <b class="ui">Bypass</b></td></tr>
-            <tr><td>Open the editor</td><td>Tap the block chip</td></tr>
-            <tr><td>Reorder</td><td>Drag the chip along its chain, or long-press →
-              <b class="ui">Move left</b> / <b class="ui">Move right</b>. Reordering works within
-              one chain only</td></tr>
-            <tr><td>Remove</td><td>Long-press → <b class="ui">Remove</b></td></tr>
-            <tr><td>Reset a knob</td><td>Double-tap it</td></tr>
-            <tr><td>MIDI-learn a control</td><td>Long-press any knob or chip row →
-              <b class="ui">MIDI Learn “&lt;label&gt;”</b>. The control outlines itself and shows
-              <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel learn</b> backs out</td></tr>
+            <tr><td>Bypass</td><td>Chạm chấm LED nhỏ bên dưới tên block trên chip. Vùng chạm được
+              làm to có chủ đích — đây là điều khiển bạn bấm giữa bài hát. Footswitch bên trong
+              sheet của block làm điều tương tự, cũng như nhấn giữ →
+              <b class="ui">Bật</b> / <b class="ui">Bypass</b></td></tr>
+            <tr><td>Mở trình chỉnh sửa</td><td>Chạm vào chip của block</td></tr>
+            <tr><td>Sắp xếp lại</td><td>Kéo chip dọc theo chuỗi của nó, hoặc nhấn giữ →
+              <b class="ui">Chuyển trái</b> / <b class="ui">Chuyển phải</b>. Việc sắp xếp lại chỉ
+              hoạt động trong cùng một chuỗi</td></tr>
+            <tr><td>Xoá</td><td>Nhấn giữ → <b class="ui">Bỏ</b></td></tr>
+            <tr><td>Đặt lại núm vặn</td><td>Chạm đúp vào nó</td></tr>
+            <tr><td>Học MIDI cho một điều khiển</td><td>Nhấn giữ bất kỳ núm vặn hoặc hàng chip
+              nào → <b class="ui">MIDI Learn "&lt;label&gt;"</b>. Điều khiển đó tự viền sáng lên
+              và hiện <b class="ui">DI CHUYỂN MỘT NÚM MIDI…</b>; <b class="ui">Huỷ learn</b> để
+              thoát ra</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A block that has no parameters of its own says so plainly when you open it:
-        <b class="ui">Nothing to tweak here</b>. That is the block working normally, not a
-        loading state.</p>
+      <p>Một block không có tham số riêng sẽ nói thẳng điều đó khi bạn mở nó ra:
+        <b class="ui">Không có gì để chỉnh ở đây</b>. Đó là block đang hoạt động bình thường, không
+        phải trạng thái đang tải.</p>
       <div class="note warn">
-        <div class="t">There is no duplicate</div>
-        <p>NAMper has no copy or duplicate action for blocks, anywhere. To get a second block with
-          the same settings, add a fresh one and dial it in. To reuse a whole chain, save it as a
-          preset and build the next rig from that preset instead.</p>
+        <div class="t">Không có chức năng nhân bản</div>
+        <p>NAMper không có thao tác copy hay nhân bản cho block, ở bất cứ đâu. Để có một block
+          thứ hai với cùng cài đặt, hãy thêm một block mới và chỉnh lại từ đầu. Để tái sử dụng cả
+          một chuỗi, lưu nó thành preset và dựng rig tiếp theo từ preset đó thay vì làm lại.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="models"><span class="n">02.2</span>Models inside blocks</h2>
-      <p>Several blocks are really a family of pedals or circuits behind one chip. Open the block
-        and the row of chips at the top picks the flavour — the knobs stay the same, the character
-        changes.</p>
+      <h2 id="models"><span class="n">02.2</span>Model bên trong block</h2>
+      <p>Nhiều block thực ra là cả một họ pedal hoặc mạch điện đứng sau một chip duy nhất. Mở
+        block ra và hàng chip ở trên cùng sẽ chọn "vị" — các núm vặn giữ nguyên, chỉ tính chất âm
+        thanh thay đổi.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Block</th><th>Chip row</th><th>Choices</th></tr></thead>
+          <thead><tr><th>Block</th><th>Hàng chip</th><th>Lựa chọn</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
+              <td><b class="ui">Cổ điển</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
             <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
               <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
-                <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
+                <b class="ui">TẮT</b>, <b class="ui">VÀO 1</b>…<b class="ui">VÀO 4</b>, <b class="ui">SMP</b></td></tr>
             <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
-              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
-            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Đèn</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
+            <tr><td><b class="ui">Amp đèn</b></td><td><b class="ui">Model</b></td>
               <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
-                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
-            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
-              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
+                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Mộc</b></td></tr>
+            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Chế độ</b></td>
+              <td><b class="ui">Tự động</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
             <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
               <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
-                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>,
+                <b class="ui">TẮT</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Chế độ</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">TẮT</b>,
                 <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
-              <td><b class="ui">Studio</b>, <b class="ui">Small</b>, <b class="ui">Chamber</b>, <b class="ui">Large</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Speed</b></td>
-              <td><b class="ui">Slow</b>, <b class="ui">Fast</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voices</b></td>
+            <tr><td><b class="ui">Phòng</b></td><td><b class="ui">Phòng</b></td>
+              <td><b class="ui">Studio</b>, <b class="ui">Nhỏ</b>, <b class="ui">Chamber</b>, <b class="ui">Lớn</b></td></tr>
+            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Tốc độ</b></td>
+              <td><b class="ui">Chậm</b>, <b class="ui">Nhanh</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Số voice</b></td>
               <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
-            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Listen</b></td>
-              <td>12 notes plus <b class="ui">AUTO</b> and <b class="ui">TRACK</b> ·
-                <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>,
-                <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> ·
-                <b class="ui">OWN</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
-              <td>the same key list, plus <b class="ui">CHROM</b> and <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Giọng</b> · <b class="ui">Quãng</b> · <b class="ui">Nghe thử</b></td>
+              <td>12 nốt cộng thêm <b class="ui">AUTO</b> và <b class="ui">TRACK</b> ·
+                <b class="ui">-quãng 8</b>, <b class="ui">-5</b>, <b class="ui">-3</b>, <b class="ui">+3</b>,
+                <b class="ui">+4</b>, <b class="ui">+5</b>, <b class="ui">+6</b>, <b class="ui">+quãng 8</b> ·
+                <b class="ui">RIÊNG</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Giọng</b></td>
+              <td>danh sách giọng tương tự, cộng thêm <b class="ui">CHROM</b> và <b class="ui">SET</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>The <b class="ui">Tube Amp</b> block is NAMper's own amp simulation, and it carries the
-        knobs you expect: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>,
-        <b class="ui">Treble</b>, <b class="ui">Presence</b> and <b class="ui">Master</b>, all
-        running 0–10 with 5 as flat. It needs no download and no account, which is why it is the
-        thing that carries the show when you are offline.</p>
+      <p>Block <b class="ui">Amp đèn</b> là mô phỏng ampli riêng của NAMper, và nó mang các núm
+        vặn quen thuộc: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>,
+        <b class="ui">Treble</b>, <b class="ui">Presence</b> và <b class="ui">Master</b>, tất cả
+        chạy 0–10 với 5 là bằng phẳng. Nó không cần tải về và không cần tài khoản, đó là lý do nó
+        gánh vác buổi diễn khi bạn offline.</p>
       <div class="note tip">
-        <div class="t">Harmony that listens to another rig</div>
-        <p>Harmony's <b class="ui">Listen</b> row is not a routing control — it is what the
-          harmoniser takes its chord from. Leave it on <b class="ui">OWN</b> and it follows the
-          signal in its own chain; point it at <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> and a
-          vocal line can be harmonised against what the guitar rig is playing.</p>
+        <div class="t">Harmony lắng nghe một rig khác</div>
+        <p>Hàng <b class="ui">Nghe thử</b> của Harmony không phải là điều khiển định tuyến — nó xác
+          định harmoniser lấy hợp âm từ đâu. Để nguyên ở <b class="ui">RIÊNG</b> thì nó theo tín
+          hiệu trong chính chuỗi của nó; trỏ nó vào <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b>
+          thì một line vocal có thể được hoà âm theo đúng những gì rig guitar đang chơi.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>The five EQ models</h2>
-      <p>There is one <b class="ui">EQ</b> block, and inside it five completely different
-        equalisers. Switching the model swaps the knob set as well as the sound, so pick the one
-        that matches the job — a quick tone tweak, a surgical cut, or a mastering-style shelf.</p>
+      <h2 id="eq"><span class="n">02.3</span>Năm model EQ</h2>
+      <p>Chỉ có một block <b class="ui">EQ</b>, nhưng bên trong nó là năm equalizer hoàn toàn
+        khác nhau. Đổi model sẽ đổi cả bộ núm vặn lẫn âm thanh, nên hãy chọn cái phù hợp với việc
+        bạn cần làm — một chỉnh tone nhanh, một cắt phẫu thuật chính xác, hay một shelf kiểu
+        mastering.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Model</th><th>What it is</th><th>Knobs</th></tr></thead>
+          <thead><tr><th>Model</th><th>Đây là gì</th><th>Núm vặn</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">Tone</b></td>
-              <td>Classic three-band — low shelf at 100 Hz, peak at 800 Hz, high shelf at 3 kHz.
-                These are the same filters as the old three-band EQ, so older rigs sound
-                unchanged.</td>
-              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, each ±12 dB</td></tr>
+              <td>EQ ba băng cổ điển — low shelf ở 100 Hz, peak ở 800 Hz, high shelf ở 3 kHz. Đây
+                là những filter y hệt EQ ba băng cũ, nên các rig cũ nghe không đổi.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, mỗi cái ±12 dB</td></tr>
             <tr><td><b class="ui">Para</b></td>
-              <td>Full parametric — the same three bands, but every frequency moves and the mid gets
-                a Q control.</td>
-              <td><b class="ui">Low</b>, <b class="ui">Mid</b>, <b class="ui">High</b>,
+              <td>Parametric đầy đủ — vẫn ba băng đó, nhưng mọi tần số đều có thể di chuyển và
+                dải mid có thêm điều khiển Q.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>,
                 <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
                 <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
             <tr><td><b class="ui">Passive</b></td>
-              <td>The classic passive program-EQ trick: a low shelf boost plus a slightly higher cut shelf, so you boost
-                and attenuate at once for a tight low end — with a wide high bell and a high shelf
-                cut on top.</td>
+              <td>Chiêu EQ chương trình thụ động (passive) cổ điển: một low shelf boost cộng với
+                một cut shelf ở tần số hơi cao hơn, để bạn vừa boost vừa attenuate cùng lúc, cho
+                dải low gọn gàng — cùng một bell rộng ở dải cao và một high shelf cut phía trên.</td>
               <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
-                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Width</b>,
+                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Độ rộng</b>,
                 <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
             <tr><td><b class="ui">Console</b></td>
-              <td>A British console channel strip — a 12 dB/octave high-pass (0 turns it off), an LF
-                shelf, a low-mid bell with Q, and an HF shelf.</td>
-              <td><b class="ui">HPF</b> 0–300, <b class="ui">Low</b>, <b class="ui">Lo Freq</b>,
+              <td>Một channel strip kiểu console Anh — một high-pass 12 dB/octave (0 là tắt), một
+                LF shelf, một bell low-mid có Q, và một HF shelf.</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">Bass</b>, <b class="ui">Lo Freq</b>,
                 <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
-                <b class="ui">High</b>, <b class="ui">Hi Freq</b></td></tr>
+                <b class="ui">Treble</b>, <b class="ui">Hi Freq</b></td></tr>
             <tr><td><b class="ui">Bax</b></td>
-              <td>Baxandall — two very wide, very gentle shelves. The one to reach for when you want
-                the whole sound a little darker or a little brighter.</td>
+              <td>Baxandall — hai shelf rất rộng, rất nhẹ nhàng. Đây là cái để dùng khi bạn muốn
+                cả âm thanh tối hơn một chút hoặc sáng hơn một chút.</td>
               <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
-             alt="The EQ block sheet with the Passive model selected, showing its eight knobs: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten and Atten Hz, with IN and OUT meters at the top.">
-        <figcaption>The EQ block on the Passive model</figcaption>
+             alt="Sheet của block EQ với model Passive được chọn, hiển thị tám núm vặn của nó: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten và Atten Hz, cùng đồng hồ IN và OUT ở trên cùng.">
+        <figcaption>Block EQ ở model Passive</figcaption>
       </figure>
-      <p>Every block sheet, this one included, has horizontal <b class="ui">IN</b> and
-        <b class="ui">OUT</b> meters. On an EQ they are worth watching: a few decibels of boost on
-        three bands adds up fast, and the meters tell you whether the next block is being hit
-        harder than you meant.</p>
+      <p>Mọi sheet của block, kể cả cái này, đều có đồng hồ <b class="ui">VÀO</b> và
+        <b class="ui">RA</b> nằm ngang. Trên một EQ, chúng đáng để theo dõi: vài decibel boost
+        trên ba băng cộng dồn lại rất nhanh, và các đồng hồ đo cho bạn biết block tiếp theo có
+        đang bị đánh mạnh hơn bạn định hay không.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM amp profiles</h2>
-      <p>Two different blocks live under <b class="ui">Amp &amp; Cab</b> and it is worth being clear
-        about which is which. <b class="ui">Tube Amp</b> is NAMper's own amp simulation, with the
-        seven models listed above. <b class="ui">Amp</b> is the Neural Amp Modeler player: it loads
-        a <b class="ui">.nam</b> capture of a real amplifier and runs it.</p>
+      <h2 id="nam"><span class="n">02.4</span>Profile ampli NAM</h2>
+      <p>Hai block khác nhau nằm dưới <b class="ui">Amp &amp; Cab</b>, và đáng để làm rõ cái nào
+        là cái nào. <b class="ui">Amp đèn</b> là mô phỏng ampli riêng của NAMper, với bảy model
+        liệt kê ở trên. <b class="ui">Amp</b> là trình phát Neural Amp Modeler: nó tải một bản
+        capture <b class="ui">.nam</b> của một ampli thật và chạy nó.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="The Rig tab with a NAM profile loaded: cover art, tone title and author on the amp card, vertical IN and OUT meters either side of it, and the signal chain of blocks below.">
-        <figcaption>The amp card with a NAM profile loaded</figcaption>
+             alt="Tab Rig với một profile NAM đã tải: ảnh bìa, tên tone và tác giả trên thẻ ampli, đồng hồ IN và OUT dọc ở hai bên, và chuỗi tín hiệu các block bên dưới.">
+        <figcaption>Thẻ ampli với một profile NAM đã tải</figcaption>
       </figure>
 
-      <h3>The amp card</h3>
-      <p>At the top of the Rig tab, between the <b class="ui">IN</b> and <b class="ui">OUT</b>
-        meters, the amp card shows what the <b class="ui">Amp</b> block is currently playing: the
-        cover art, the tone title, the <b class="ui">@author</b>, up to six metadata chips, a
-        download count, a <b class="ui">Browse TONE3000</b> button and a books icon
-        (<b class="ui">Open NAM library</b>). With nothing loaded it reads
-        <b class="ui">Built-in tube amp</b>. If a rig has more than one amp in it, chips
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> and so on choose which one the card
-        edits.</p>
+      <h3>Thẻ ampli</h3>
+      <p>Ở trên cùng tab Rig, giữa đồng hồ <b class="ui">VÀO</b> và <b class="ui">RA</b>, thẻ
+        ampli hiển thị những gì block <b class="ui">Amp</b> đang phát: ảnh bìa, tên tone,
+        <b class="ui">@author</b>, tối đa sáu chip metadata, số lượt tải, nút
+        <b class="ui">Duyệt TONE3000</b> và biểu tượng sách (<b class="ui">Mở thư viện NAM</b>).
+        Khi chưa tải gì, nó hiện <b class="ui">Amp đèn tích hợp</b>. Nếu một rig có nhiều hơn
+        một amp, các chip <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> và tiếp tục như vậy sẽ
+        chọn cái nào thẻ đang chỉnh sửa.</p>
 
-      <h3>Input and Output</h3>
-      <p>The <b class="ui">Amp</b> block sheet is deliberately short: the profile title (or
-        <b class="ui">No model loaded</b>), a <b class="ui">Browse TONE3000</b> button, and two
-        knobs. <b class="ui">Input</b> and <b class="ui">Output</b> both run −20 to +20 dB and start
-        at 0. Input pushes the capture harder, which is how you get more or less breakup out of a
-        profile; Output trims the result afterwards.</p>
-      <p>NAM output is normalised automatically, using the loudness metadata inside the model, to a
-        −18 dB target. That is why swapping between profiles does not throw your levels around, and
-        it is not exposed as a control.</p>
+      <h3>Input và Output</h3>
+      <p>Sheet của block <b class="ui">Amp</b> được làm ngắn gọn có chủ đích: tên profile (hoặc
+        <b class="ui">Chưa nạp model</b>), nút <b class="ui">Duyệt TONE3000</b>, và hai núm
+        vặn. <b class="ui">Đầu vào</b> và <b class="ui">Đầu ra</b> đều chạy từ −20 tới +20 dB và
+        bắt đầu ở 0. Input đẩy bản capture mạnh hơn, đó là cách bạn lấy được nhiều hay ít breakup
+        hơn từ một profile; Output chỉnh lại kết quả sau đó.</p>
+      <p>Output của NAM được tự động chuẩn hoá, dùng metadata độ to bên trong model, về mục tiêu
+        −18 dB. Đó là lý do vì sao chuyển đổi giữa các profile không làm mức tín hiệu của bạn
+        nhảy loạn, và điều này không được hiển thị như một điều khiển.</p>
       <div class="note">
-        <div class="t">The NAM amp is mono</div>
-        <p>A NAM capture is a mono device — a stereo signal arriving at the <b class="ui">Amp</b>
-          block is summed before it goes in. Put your stereo effects after the amp, not before it.</p>
+        <div class="t">Ampli NAM là mono</div>
+        <p>Một bản capture NAM là một thiết bị mono — tín hiệu stereo tới block <b class="ui">Amp</b>
+          sẽ bị cộng dồn (sum) trước khi đi vào. Hãy đặt các hiệu ứng stereo của bạn sau ampli,
+          không phải trước nó.</p>
       </div>
 
-      <h3>Three ways to load a profile</h3>
+      <h3>Ba cách để tải một profile</h3>
       <ol style="--nc:var(--amp)">
-        <li><b class="ui">Browse TONE3000</b> — the online library, covered in the next section.</li>
-        <li>The books icon, which opens a sheet titled <b class="ui">NAM Profiles</b>. Tap any row
-          to load it into the current amp.</li>
-        <li>Factory presets resolve their own profiles, so loading <b class="ui">Crunch</b> brings
-          its amp with it.</li>
+        <li><b class="ui">Duyệt TONE3000</b> — thư viện online, được nói tới ở phần tiếp theo.</li>
+        <li>Biểu tượng sách, mở ra một sheet có tên <b class="ui">Profile NAM</b>. Chạm vào bất
+          kỳ hàng nào để tải nó vào amp hiện tại.</li>
+        <li>Các preset gốc tự phân giải profile riêng của chúng, nên tải <b class="ui">Crunch</b>
+          sẽ mang theo amp của nó.</li>
       </ol>
-      <p>The <b class="ui">NAM Profiles</b> sheet is your local library. Empty, it reads
-        <b class="ui">Profiles you download from TONE3000 collect here.</b> Its toolbar menu has
-        <b class="ui">Import .nam files…</b> — a multi-select file picker that accepts
-        <b class="ui">.nam</b> files only — along with <b class="ui">Export all (N files)</b> and
-        <b class="ui">Update all</b>. Each row carries <b class="ui">Share .nam file</b>,
-        <b class="ui">Delete</b> and a refresh button
-        (<b class="ui">Refresh from TONE3000</b>).</p>
-      <p>If a model cannot be read you get <b class="ui r">Could not load amp model
-        {filename}.</b> — usually a file that was moved or deleted out from under the rig.</p>
+      <p>Sheet <b class="ui">Profile NAM</b> là thư viện cục bộ của bạn. Khi trống, nó hiện
+        <b class="ui">Các profile bạn tải từ TONE3000 nằm ở đây.</b> Menu thanh công cụ
+        của nó có <b class="ui">Nhập tệp .nam…</b> — một file picker chọn nhiều, chỉ nhận
+        file <b class="ui">.nam</b> — cùng với <b class="ui">Export all (N files)</b> và
+        <b class="ui">Cập nhật tất cả</b>. Mỗi hàng mang theo <b class="ui">Chia sẻ tệp .nam</b>,
+        <b class="ui">Xoá</b> và một nút làm mới (<b class="ui">Làm mới từ TONE3000</b>).</p>
+      <p>Nếu một model không đọc được, bạn sẽ thấy <b class="ui r">Could not load amp model
+        {filename}.</b> — thường là do file đã bị di chuyển hoặc xoá trong khi rig vẫn đang trỏ
+        tới nó.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 is a free library of amp captures, and NAMper pulls from it directly. There is no
-        in-app browse screen: <b class="ui">Browse TONE3000</b> opens tone3000.com inside a secure
-        web sheet. You search and filter on the website itself, pick a tone, and the app takes it
-        from there — while it fetches, the button reads <b class="ui">Loading…</b> and is
-        disabled.</p>
+      <p>TONE3000 là một thư viện miễn phí gồm các bản capture ampli, và NAMper lấy trực tiếp từ
+        đó. Không có màn hình duyệt trong app: <b class="ui">Duyệt TONE3000</b> mở tone3000.com
+        bên trong một web sheet an toàn. Bạn tìm kiếm và lọc ngay trên website, chọn một tone, và
+        app sẽ lo phần còn lại — trong lúc tải, nút hiện <b class="ui">Đang tải…</b> và bị vô hiệu
+        hoá.</p>
       <figure>
         <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="The Connect TONE3000 sheet over the Rig tab, offering Sign in to TONE3000 and Play offline buttons with a Don't ask again toggle.">
-        <figcaption>The sign-in offer, shown once per launch while signed out</figcaption>
+             alt="Sheet Connect TONE3000 hiện trên tab Rig, cung cấp nút Sign in to TONE3000 và Play offline cùng công tắc Don't ask again.">
+        <figcaption>Lời mời đăng nhập, hiện một lần mỗi lần mở app khi bạn chưa đăng nhập</figcaption>
       </figure>
-      <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
-        in to tone3000.com in the browser the app reuses that session. The library is filtered
-        server-side to A2-architecture NAM captures of amps, full rigs and pedals — that is fixed,
-        not a setting you can change.</p>
-      <p>Picking a tone downloads the first model of that tone — there is no model picker — together
-        with its cover art and metadata. Everything lands in the app's <b class="ui">tones/</b>
-        folder and appears in the <b class="ui">NAM Profiles</b> sheet.</p>
+      <p>Đăng nhập là một lượt đăng nhập web thông thường, không phải dán API key, và nếu bạn đã
+        đăng nhập tone3000.com trên trình duyệt thì app sẽ dùng lại session đó. Thư viện được lọc
+        phía server chỉ còn các bản capture NAM kiến trúc A2 của ampli, full rig và pedal — điều
+        này cố định, không phải một cài đặt bạn có thể thay đổi.</p>
+      <p>Chọn một tone sẽ tải về model đầu tiên của tone đó — không có bộ chọn model — cùng với
+        ảnh bìa và metadata của nó. Mọi thứ được lưu vào thư mục <b class="ui">tones/</b> của app
+        và xuất hiện trong sheet <b class="ui">Profile NAM</b>.</p>
 
-      <h3>The sign-in offer</h3>
-      <p>A sheet titled <b class="ui">Connect TONE3000</b> appears once per launch while you are
-        signed out, explaining that factory presets stream real amp captures from the free library.
-        It offers <b class="ui">Sign in to TONE3000</b> and <b class="ui">Play offline</b>, with a
-        <b class="ui">Don't ask again</b> toggle. You can also silence it for good in Settings →
-        <b class="ui">PROMPTS</b> → <b class="ui">Offer TONE3000 sign-in on launch</b>.</p>
+      <h3>Lời mời đăng nhập</h3>
+      <p>Một sheet có tên <b class="ui">Kết nối TONE3000</b> xuất hiện một lần mỗi lần mở app
+        khi bạn chưa đăng nhập, giải thích rằng các preset gốc stream các bản capture ampli thật
+        từ thư viện miễn phí. Nó đưa ra <b class="ui">Đăng nhập TONE3000</b> và
+        <b class="ui">Chơi offline</b>, cùng công tắc <b class="ui">Đừng hỏi lại</b>. Bạn cũng
+        có thể tắt hẳn nó trong Cài đặt → <b class="ui">LỜI NHẮC</b> →
+        <b class="ui">Mời đăng nhập TONE3000 khi mở app</b>.</p>
 
-      <h3>Playing offline</h3>
-      <p>Anything already downloaded keeps working with no network at all. A factory rig whose
-        profile is not cached falls back to its bypassed built-in <b class="ui">Tube Amp</b> and a
-        bundled cab, and the header reads <b class="ui">Built-in tube amp</b> so you know what you
-        are hearing. Sign in later and those rigs resolve to the real captures in place — you do not
-        have to rebuild anything.</p>
+      <h3>Chơi offline</h3>
+      <p>Bất cứ thứ gì đã tải về vẫn hoạt động dù không có mạng chút nào. Một rig gốc mà profile
+        chưa được cache sẽ quay về <b class="ui">Amp đèn</b> tích hợp đang bypass và một cab đi
+        kèm, và tiêu đề hiện <b class="ui">Amp đèn tích hợp</b> để bạn biết mình đang nghe gì.
+        Đăng nhập sau đó và các rig này sẽ tự phân giải về đúng bản capture thật tại chỗ — bạn
+        không cần dựng lại bất cứ thứ gì.</p>
       <div class="note warn">
-        <div class="t">There is no sign-out</div>
-        <p>NAMper has no TONE3000 sign-out button. Once the session exists, the only way to clear it
-          is to delete the app. Worth knowing before you sign in on a borrowed device.</p>
+        <div class="t">Không có chức năng đăng xuất</div>
+        <p>NAMper không có nút đăng xuất TONE3000. Một khi session đã tồn tại, cách duy nhất để
+          xoá nó là xoá app. Đáng để biết trước khi bạn đăng nhập trên một thiết bị mượn.</p>
       </div>
-      <p>When something goes wrong the app says which of the four things it is:
-        <b class="ui r">TONE3000: sign in to load %@.</b>,
-        <b class="ui r">TONE3000: the server had a problem (HTTP %lld) — try again later.</b>,
-        <b class="ui r">TONE3000: unexpected reply for %@.</b> and
-        <b class="ui r">TONE3000: no connection — check the network.</b></p>
+      <p>Khi có gì đó không ổn, app sẽ nói rõ là một trong bốn trường hợp nào:
+        <b class="ui r">TONE3000: đăng nhập để tải %@.</b>,
+        <b class="ui r">TONE3000: máy chủ gặp sự cố (HTTP %lld) — thử lại sau.</b>,
+        <b class="ui r">TONE3000: phản hồi bất thường cho %@.</b> và
+        <b class="ui r">TONE3000: không có kết nối — kiểm tra mạng.</b></p>
       <div class="note tip">
-        <div class="t">Downloads and backups</div>
-        <p>The <b class="ui">tones/</b> folder is excluded from iCloud backup on purpose — a
-          restore-from-backup will not bring your downloaded profiles with it, because TONE3000 can
-          fetch them again. If a particular capture matters to you, export it from the
-          <b class="ui">NAM Profiles</b> sheet and keep the file.</p>
+        <div class="t">Tải về và sao lưu</div>
+        <p>Thư mục <b class="ui">tones/</b> bị loại khỏi sao lưu iCloud một cách có chủ đích —
+          khôi phục từ backup sẽ không mang theo các profile bạn đã tải về, vì TONE3000 có thể
+          tải lại chúng. Nếu một bản capture cụ thể quan trọng với bạn, hãy xuất nó từ sheet
+          <b class="ui">Profile NAM</b> và giữ file lại.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
-      <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with
-        a microphone. Its sheet shows the current IR name, a menu button labelled
-        <b class="ui">Cabinets</b>, a <b class="ui">Load file</b> button, and one knob:
-        <b class="ui">Level</b>, −12 to +12 dB. Once an IR is loaded, a <b class="ui">Clear IR</b>
-        button appears alongside.</p>
-      <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio;
-        whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays
-        available even if you delete the original. The same block, used as an
-        <b class="ui">IR Verb</b>, labels its menu <b class="ui">Spaces</b> instead and loads
-        reverb impulses rather than cabinets.</p>
+      <h2 id="cabs"><span class="n">02.6</span>Cab và IR</h2>
+      <p>Block <b class="ui">Cab</b> phát một impulse response — một thùng loa được thu bằng
+        micro. Sheet của nó hiển thị tên IR hiện tại, một nút menu ghi <b class="ui">Cabinet</b>,
+        một nút <b class="ui">Nạp tệp</b>, và một núm vặn: <b class="ui">Mức</b>, từ −12 tới
+        +12 dB. Khi một IR đã được tải, một nút <b class="ui">Bỏ IR</b> xuất hiện bên cạnh.</p>
+      <p><b class="ui">Nạp tệp</b> mở một file picker cho <b class="ui">.wav</b> và các định
+        dạng audio khác; bất cứ file nào bạn chọn đều được copy vào thư mục <b class="ui">irs/</b>
+        của app, nên nó vẫn còn dùng được kể cả khi bạn xoá file gốc. Cùng một block đó, khi dùng
+        như <b class="ui">IR Verb</b>, đổi tên menu thành <b class="ui">Không gian</b> và tải impulse
+        reverb thay vì thùng loa.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Menu</th><th>Bundled impulse responses</th></tr></thead>
+          <thead><tr><th>Menu</th><th>Impulse response đi kèm</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Cabinets</b></td>
+            <tr><td><b class="ui">Cabinet</b></td>
               <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
                 <b class="ui">V30 412 SM57 - Cookie Monster</b>,
                 <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
-            <tr><td><b class="ui">Spaces</b></td>
+            <tr><td><b class="ui">Không gian</b></td>
               <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
                 <b class="ui">Plate 1.6s</b></td></tr>
           </tbody>
         </table>
       </div>
       <div class="note">
-        <div class="t">Not every amp needs a cab</div>
-        <p>An empty <b class="ui">Cab</b> block tells you why it might stay empty:
-          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. Plenty of TONE3000
-          captures are taken from the speaker output, cab and microphone included; putting another
-          cab after one of those makes the sound dull and boxy. An empty
-          <b class="ui">IR Verb</b> reads <b class="ui">No IR loaded — pick a space or a file</b>
-          instead.</p>
+        <div class="t">Không phải ampli nào cũng cần cab</div>
+        <p>Một block <b class="ui">Cab</b> trống sẽ tự nói cho bạn biết vì sao nó có thể để
+          trống: <b class="ui">Chưa nạp IR — profile NAM amp+cab
+không cần IR</b>. Rất nhiều
+          bản capture TONE3000 được lấy từ output loa, đã bao gồm cả cab và micro; đặt thêm một
+          cab khác sau một bản như vậy sẽ khiến âm thanh đục và bí. Một <b class="ui">IR Verb</b>
+          trống thì hiện <b class="ui">Chưa nạp IR — chọn một không gian hoặc tệp</b> thay vào đó.</p>
       </div>
-      <p>IR problems show as <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> or
+      <p>Sự cố IR hiện ra dưới dạng <b class="ui r">IR file missing: {name}</b>,
+        <b class="ui r">Could not read IR {name}.</b> hoặc
         <b class="ui r">Could not import {name}.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>Presets</h2>
-      <p>A rig preset stores the whole chain — blocks, models, knob positions, the amp profile, the
-        cab. Save one from the <b class="ui">+</b> on the <b class="ui">PRESETS</b> card, or from
-        the preset manager. The prompt is an alert titled <b class="ui">Save preset</b> whose
-        message tells you what is about to happen:
-        <b class="ui">The current rig gets the next free MIDI PC slot.</b> Type a name and tap
-        <b class="ui">Save</b>. Leave the field empty and it saves as <b class="ui">Preset</b>.</p>
+      <h2 id="presets"><span class="n">02.7</span>Preset</h2>
+      <p>Một preset rig lưu toàn bộ chuỗi — block, model, vị trí núm vặn, profile ampli, cab. Lưu
+        một preset từ nút <b class="ui">+</b> trên thẻ <b class="ui">PRESET</b>, hoặc từ trình
+        quản lý preset. Lời nhắc là một alert có tên <b class="ui">Lưu preset</b>, thông báo cho
+        bạn biết chuyện gì sắp xảy ra: <b class="ui">Rig hiện tại nhận khe MIDI PC trống kế tiếp.</b> Gõ tên và chạm <b class="ui">Lưu</b>. Để trống ô nhập và nó sẽ lưu với tên
+        <b class="ui">Preset</b>.</p>
       <div class="note warn">
-        <div class="t">The PC slot is not editable</div>
-        <p>Every preset sits on a MIDI program-change slot, and NAMper assigns it for you: the four
-          factory presets hold PC 0–3, and user presets take the next free number from 4 upwards.
-          There is no way to change a slot by hand. Plan your footswitch layout around the order you
-          save presets in, not the other way round.</p>
+        <div class="t">Slot PC không thể chỉnh sửa</div>
+        <p>Mỗi preset nằm trên một slot MIDI program-change, và NAMper tự gán nó cho bạn: bốn
+          preset gốc chiếm PC 0–3, và preset của người dùng lấy số tự do tiếp theo từ 4 trở lên.
+          Không có cách nào để đổi slot bằng tay. Hãy lên kế hoạch bố trí footswitch theo thứ tự
+          bạn lưu preset, chứ không phải ngược lại.</p>
       </div>
 
-      <h3>Updating and managing</h3>
-      <p>Overwriting is always confirmed. <b class="ui">Update with current rig</b> raises a dialog
-        reading <b class="ui">Overwrite “{name}” with the current rig?</b> with
-        <b class="ui">Overwrite</b> and <b class="ui">Cancel</b>. The manager itself has the nav
-        title <b class="ui">Presets</b> and two sections: <b class="ui">Rigs · MIDI PC slots</b>,
-        and <b class="ui">Everything at once</b> → <b class="ui">Global snapshots</b>, described as
-        rig, looper, sampler, setlist and control map saved and restored together.</p>
-      <p>Each row's context menu offers <b class="ui">Rename</b>,
-        <b class="ui">Update with current rig</b>, <b class="ui">Share</b> and
-        <b class="ui">Delete</b>. Renaming lives in the manager only — the preset chip menu on the
-        Rig tab does not have it. Once you have more than eight presets, a
-        <b class="ui">Search presets</b> field appears at the top.</p>
+      <h3>Cập nhật và quản lý</h3>
+      <p>Ghi đè luôn được xác nhận. <b class="ui">Cập nhật bằng rig hiện tại</b> hiện một hộp thoại
+        ghi <b class="ui">Overwrite "{name}" with the current rig?</b> cùng
+        <b class="ui">Ghi đè</b> và <b class="ui">Huỷ</b>. Bản thân trình quản lý có tiêu
+        đề điều hướng <b class="ui">Preset</b> và hai phần: <b class="ui">Rig · khe MIDI PC</b>,
+        và <b class="ui">Tất cả cùng lúc</b> → <b class="ui">Snapshot toàn cục</b>, được mô tả
+        là rig, looper, sampler, setlist và bản đồ control được lưu và khôi phục cùng nhau.</p>
+      <p>Menu ngữ cảnh của mỗi hàng có <b class="ui">Đổi tên</b>,
+        <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Chia sẻ</b> và
+        <b class="ui">Xoá</b>. Đổi tên chỉ có trong trình quản lý — menu chip preset trên tab
+        Rig không có tuỳ chọn này. Khi bạn có nhiều hơn tám preset, một ô
+        <b class="ui">Tìm preset</b> sẽ xuất hiện ở trên cùng.</p>
       <div class="note warn">
-        <div class="t">Delete is not confirmed</div>
-        <p><b class="ui">Delete</b> in the preset row menu takes effect immediately, with no
-          "are you sure". Export a backup before a clear-out.</p>
+        <div class="t">Xoá không được xác nhận lại</div>
+        <p><b class="ui">Xoá</b> trong menu hàng preset có hiệu lực ngay lập tức, không hỏi
+          "bạn có chắc không". Hãy xuất một bản sao lưu trước khi dọn dẹp.</p>
       </div>
 
-      <h3>Import and export</h3>
-      <p>The manager's import/export menu has <b class="ui">Import preset / bank / backup…</b>,
-        <b class="ui">Export rig presets</b> (which writes <b class="ui">NAMper Presets.namper</b>)
-        and <b class="ui">Export EVERYTHING (full backup)</b> (which writes
-        <b class="ui">NAMper Backup.namper</b>). Note that a full backup carries parameters and
-        references but not sampler kit audio.</p>
-      <p>The file extension is <b class="ui">.namper</b>. Tap one in Files, or receive one over
-        AirDrop, and NAMper imports it and opens the preset manager. Every imported preset gets a
-        fresh slot, so an import can never silently overwrite something you already had.</p>
+      <h3>Nhập và xuất</h3>
+      <p>Menu nhập/xuất của trình quản lý có <b class="ui">Nhập preset / bank / sao lưu…</b>,
+        <b class="ui">Xuất preset rig</b> (ghi ra file <b class="ui">NAMper Presets.namper</b>)
+        và <b class="ui">Xuất TẤT CẢ (sao lưu đầy đủ)</b> (ghi ra file
+        <b class="ui">NAMper Backup.namper</b>). Lưu ý rằng một backup đầy đủ mang theo tham số và
+        tham chiếu nhưng không mang theo audio của kit sampler.</p>
+      <p>Phần mở rộng file là <b class="ui">.namper</b>. Chạm vào một file trong Files, hoặc nhận
+        nó qua AirDrop, và NAMper sẽ nhập nó và mở trình quản lý preset. Mỗi preset được nhập vào
+        đều nhận một slot mới, nên việc nhập sẽ không bao giờ âm thầm ghi đè lên thứ bạn đã có.</p>
 
-      <h3>The factory four</h3>
-      <p>NAMper ships with four rigs on PC 0–3, each built around a real capture:
-        <b class="ui">Clean</b> (an American blackface combo), <b class="ui">Crunch</b> (a 1969
-        British 50-watt head), <b class="ui">Lead</b> (a modern high-gain amp+cab) and
-        <b class="ui">Ambient</b> (a British class-A chime combo). The capture each one streams
-        carries its uploader's own title, which is what the amp block shows. Each rig also carries a bypassed
-        built-in <b class="ui">Tube Amp</b> and a bundled cab as its offline fallback, and each is
-        marked <b class="ui">FACTORY</b> in the manager. Bring them all back from Settings →
-        <b class="ui">RESET</b> → <b class="ui">Reset to factory presets</b>; the dialog warns
-        <b class="ui">Delete ALL user presets? The four factory rigs come back.</b></p>
-      <p>The other tabs have preset sheets of their own, reached from their
-        <b class="ui">PRESETS</b> chip and all sharing the same design:
-        <b class="ui">Looper Presets</b>, <b class="ui">Sampler Kits</b>,
-        <b class="ui">Perform Presets</b>, <b class="ui">Control Presets</b> and
-        <b class="ui">Global Snapshots</b>. Two of them cannot be shared, because they point at
-        files on this device — sampler kits carry their audio, and global snapshots reference
-        models, samples and backing tracks.</p>
+      <h3>Bộ bốn gốc</h3>
+      <p>NAMper đi kèm bốn rig ở PC 0–3, mỗi cái được dựng quanh một bản capture thật:
+        <b class="ui">Clean</b> (một combo blackface Mỹ), <b class="ui">Crunch</b> (một head Anh
+        50 watt đời 1969), <b class="ui">Lead</b> (một amp+cab high-gain hiện đại) và
+        <b class="ui">Ambient</b> (một combo class-A chime Anh). Bản capture mỗi rig stream mang
+        tên riêng do người upload đặt, đó là những gì block amp hiển thị. Mỗi rig cũng mang theo
+        một <b class="ui">Amp đèn</b> tích hợp đang bypass và một cab đi kèm làm phương án dự
+        phòng offline, và mỗi rig được đánh dấu <b class="ui">GỐC</b> trong trình quản lý.
+        Đưa tất cả trở lại từ Cài đặt → <b class="ui">ĐẶT LẠI</b> →
+        <b class="ui">Về preset gốc</b>; hộp thoại cảnh báo
+        <b class="ui">Xoá TẤT CẢ preset của bạn? Bốn rig gốc sẽ quay lại.</b></p>
+      <p>Các tab khác cũng có sheet preset riêng, mở từ chip <b class="ui">PRESET</b> của chúng
+        và đều dùng chung một thiết kế: <b class="ui">Preset looper</b>,
+        <b class="ui">Bộ kit sampler</b>, <b class="ui">Preset perform</b>,
+        <b class="ui">Preset điều khiển</b> và <b class="ui">Snapshot toàn cục</b>. Hai trong số đó
+        không thể chia sẻ được, vì chúng trỏ tới các file trên chính thiết bị — kit sampler mang
+        theo audio của chúng, và global snapshot tham chiếu tới model, sample và nhạc nền.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>Multiple rigs</h2>
-      <p>NAMper runs up to four rigs at once — a guitar and a vocal, a guitar and a bass, or four
-        players through one interface. Add one from the <b class="ui">RIG</b> <b class="ui">+</b>
-        menu in the <b class="ui">SIGNAL CHAIN</b> header.</p>
+      <h2 id="rigs"><span class="n">02.8</span>Nhiều rig</h2>
+      <p>NAMper chạy tối đa bốn rig cùng lúc — một guitar và một vocal, một guitar và một bass,
+        hoặc bốn người chơi qua một interface. Thêm một rig từ menu <b class="ui">RIG</b>
+        <b class="ui">+</b> trong phần header <b class="ui">CHUỖI TÍN HIỆU</b>.</p>
       <figure>
         <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
-             alt="The Rig tab with two rigs stacked side by side: the first carries a MIDI badge marking it as MIDI-focused, the second is pinned so presets leave it alone.">
-        <figcaption>Two rigs — one holding MIDI focus, one pinned</figcaption>
+             alt="Tab Rig với hai rig xếp cạnh nhau: rig đầu tiên mang huy hiệu MIDI đánh dấu nó đang nhận focus MIDI, rig thứ hai được ghim để preset không đụng vào nó.">
+        <figcaption>Hai rig — một đang giữ focus MIDI, một được ghim</figcaption>
       </figure>
-      <p>The menu's <b class="ui">Templates</b> section starts you somewhere sensible:
-        <b class="ui">Guitar (gate · tube amp · cab)</b>,
-        <b class="ui">Bass (gate · comp · bass amp · cab)</b>,
-        <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> and
-        <b class="ui">Empty rig</b>. Below that, <b class="ui">From preset</b> lists your saved
-        presets by name — or opens a searchable <b class="ui">NEW RIG FROM PRESET</b> sheet once
-        there are more than eight of them.</p>
-      <p>Rigs are named <b class="ui">GUITAR</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b> or
-        <b class="ui">RIG n</b> depending on the template; a rig built from a preset takes the
-        preset's name. Headers only appear once you have more than one rig.</p>
+      <p>Phần <b class="ui">Mẫu</b> trong menu cho bạn một điểm bắt đầu hợp lý:
+        <b class="ui">Guitar (gate · amp đèn · cab)</b>,
+        <b class="ui">Bass (gate · comp · amp bass · cab)</b>,
+        <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> và
+        <b class="ui">Rig trống</b>. Bên dưới đó, <b class="ui">Từ preset</b> liệt kê các preset
+        đã lưu của bạn theo tên — hoặc mở một sheet <b class="ui">RIG MỚI TỪ PRESET</b> có thể
+        tìm kiếm khi có nhiều hơn tám preset.</p>
+      <p>Rig được đặt tên <b class="ui">GUITAR</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b>
+        hoặc <b class="ui">RIG n</b> tuỳ theo template; một rig được dựng từ preset sẽ lấy tên
+        của preset đó. Header chỉ xuất hiện khi bạn có nhiều hơn một rig.</p>
 
-      <h3>Focus, pinning and removal</h3>
-      <p>Tap a rig's header to give it <b class="ui">MIDI</b> focus — a badge marks which rig your
-        controller is currently driving. The pin toggle
-        (<b class="ui">Pin rig</b> / <b class="ui">Unpin rig</b>, captioned "presets keep this rig")
-        makes a rig survive preset switches, which is how you keep a vocal chain intact while you
-        change guitar sounds from a footswitch. A trash button
-        (<b class="ui">Remove rig</b>) appears once there is more than one rig.</p>
-      <p>Layout follows the device: in landscape the rigs stack as rows with each chain running left
-        to right; in portrait they sit side by side with the chains running top to bottom.</p>
+      <h3>Focus, ghim và xoá</h3>
+      <p>Chạm vào header của một rig để cho nó focus <b class="ui">MIDI</b> — một huy hiệu đánh
+        dấu rig nào bộ điều khiển của bạn đang điều khiển. Công tắc ghim (<b class="ui">Ghim rig</b>
+        / <b class="ui">Bỏ ghim rig</b>, chú thích "presets keep this rig") giúp một rig sống sót
+        qua các lần đổi preset, đây là cách bạn giữ nguyên một chuỗi vocal trong khi đổi âm thanh
+        guitar bằng footswitch. Một nút thùng rác (<b class="ui">Bỏ rig</b>) xuất hiện khi có
+        nhiều hơn một rig.</p>
+      <p>Bố cục theo thiết bị: ở chế độ ngang, các rig xếp thành hàng với mỗi chuỗi chạy từ trái
+        sang phải; ở chế độ dọc, chúng nằm cạnh nhau với các chuỗi chạy từ trên xuống dưới.</p>
 
-      <h3>Each rig's input and output</h3>
-      <p>The IN connector at the head of a chain is a menu. Its
-        <b class="ui">Sound-card input</b> section lists your channels by name —
-        <b class="ui">In 1</b>, <b class="ui">In 2</b> and so on — and adds
-        <b class="ui">Sampler pads</b> and <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, so a
-        rig can process a loop or the sampler rather than a live input.</p>
-      <p>The OUT connector opens a sheet headed <b class="ui">RIG OUTPUT</b>, with
-        <b class="ui">Level</b> and <b class="ui">Pan</b> knobs, a
-        <b class="ui">Hardware output pair</b> menu (<b class="ui">Out 1-2</b>,
-        <b class="ui">Out 3-4</b>… — this needs <b class="ui">Use all interface outputs</b> switched
-        on in Settings), and <b class="ui">Record this rig into</b> →
-        <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. The summary row underneath
-        reads <b class="ui">Looper: not assigned</b> or, once you have picked some,
-        <b class="ui">Looper: track 1, 3</b>.</p>
+      <h3>Input và output của mỗi rig</h3>
+      <p>Đầu nối IN ở đầu chuỗi là một menu. Phần <b class="ui">Đầu vào sound card</b> của nó liệt
+        kê các kênh của bạn theo tên — <b class="ui">In 1</b>, <b class="ui">In 2</b> và tiếp tục
+        như vậy — và thêm <b class="ui">Pad sampler</b> cùng <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
+        để một rig có thể xử lý một loop hoặc sampler thay vì một input trực tiếp.</p>
+      <p>Đầu nối OUT mở một sheet có tiêu đề <b class="ui">ĐẦU RA RIG</b>, với các núm vặn
+        <b class="ui">Mức</b> và <b class="ui">Pan</b>, một menu <b class="ui">Cặp ngõ ra phần cứng</b> (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — cần bật
+        <b class="ui">Dùng mọi ngõ ra của interface</b> trong Cài đặt), và
+        <b class="ui">Ghi rig này vào</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>.
+        Hàng tóm tắt bên dưới hiện <b class="ui">Looper: not assigned</b> hoặc, khi bạn đã chọn
+        một vài track, <b class="ui">Looper: track 1, 3</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>Parallel branches</h2>
-      <p>A rig is not limited to one line. Each rig can hold up to four chains — the main one plus
-        three branches — so you can split a signal, treat the halves differently and mix them back
-        together. Create one with the branch-icon button under the chain
-        (<b class="ui">Add parallel chain</b>).</p>
-      <p>Its menu has a single section, <b class="ui">Branch from</b>, listing each input channel,
-        <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, and
-        <b class="ui">After {Block}</b> for every block on the main chain. That last group is the
-        interesting one: branching after the amp gives you two different reverbs on the same amp
-        tone, branching before it gives you two different amps on the same guitar.</p>
+      <h2 id="branches"><span class="n">02.9</span>Nhánh song song</h2>
+      <p>Một rig không bị giới hạn ở một đường tín hiệu duy nhất. Mỗi rig có thể chứa tối đa bốn
+        chuỗi — chuỗi chính cộng ba nhánh — để bạn tách tín hiệu, xử lý từng nửa khác nhau rồi
+        trộn lại. Tạo một nhánh bằng nút biểu tượng nhánh bên dưới chuỗi
+        (<b class="ui">Thêm chuỗi song song</b>).</p>
+      <p>Menu của nó có một phần duy nhất, <b class="ui">Rẽ nhánh từ</b>, liệt kê từng kênh
+        input, <b class="ui">Pad sampler</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
+        và <b class="ui">After {Block}</b> cho mỗi block trên chuỗi chính. Nhóm cuối cùng đó là
+        nhóm thú vị nhất: tách nhánh sau ampli cho bạn hai reverb khác nhau trên cùng một tone
+        ampli, tách nhánh trước ampli cho bạn hai ampli khác nhau trên cùng một cây guitar.</p>
 
-      <h3>The two anchors</h3>
-      <p>A branch draws as a parallel column with an entry anchor where it leaves the main chain and
-        a merge anchor where it rejoins. The merge anchor shows that branch's level as a
-        percentage, so you can read the balance without opening anything.</p>
+      <h3>Hai điểm neo</h3>
+      <p>Một nhánh được vẽ như một cột song song với một điểm neo vào nơi nó tách khỏi chuỗi
+        chính và một điểm neo trộn nơi nó nhập lại. Điểm neo trộn hiển thị mức của nhánh đó dưới
+        dạng phần trăm, để bạn đọc được cân bằng mà không cần mở gì cả.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Gesture</th><th>What it does</th></tr></thead>
+          <thead><tr><th>Thao tác</th><th>Nó làm gì</th></tr></thead>
           <tbody>
-            <tr><td>Tap an anchor</td><td>Opens the mixer sheet headed <b class="ui">LANE {n} MIX</b>,
-              with <b class="ui">Level</b> and <b class="ui">Pan</b></td></tr>
-            <tr><td>Long-press the entry anchor</td><td>The <b class="ui">Branch input</b> menu:
-              own input, <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-              <b class="ui">Branch after {Block}</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Long-press the merge anchor</td><td>The <b class="ui">Branch output</b> menu:
-              <b class="ui">Into the main mix</b>, <b class="ui">Merge before {Block}</b>,
-              <b class="ui">Own output 1-2</b>, and <b class="ui">Remove branch</b></td></tr>
-            <tr><td>Drag an anchor</td><td>Re-attaches it at a different point along the main
-              chain</td></tr>
+            <tr><td>Chạm vào một điểm neo</td><td>Mở sheet mixer có tiêu đề
+              <b class="ui">LANE {n} MIX</b>, với <b class="ui">Mức</b> và
+              <b class="ui">Pan</b></td></tr>
+            <tr><td>Nhấn giữ điểm neo vào</td><td>Menu <b class="ui">Đầu vào nhánh</b>: input
+              riêng, <b class="ui">Pad sampler</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
+              <b class="ui">Branch after {Block}</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
+            <tr><td>Nhấn giữ điểm neo trộn</td><td>Menu <b class="ui">Đầu ra nhánh</b>:
+              <b class="ui">Vào mix chính</b>, <b class="ui">Merge before {Block}</b>,
+              <b class="ui">Own output 1-2</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
+            <tr><td>Kéo một điểm neo</td><td>Gắn lại nó tại một điểm khác dọc theo chuỗi
+              chính</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Dragging is the fast way to audition: hold the merge anchor, slide it earlier or later in
-        the chain, and hear the branch land before or after the delay without opening a menu.</p>
+      <p>Kéo là cách nhanh để thử nghe: giữ điểm neo trộn, trượt nó sớm hơn hoặc muộn hơn trong
+        chuỗi, và nghe nhánh đó rơi vào trước hay sau delay mà không cần mở menu nào.</p>
       <div class="note tip">
-        <div class="t">Mixing several branches at once</div>
-        <p>Put a <b class="ui">Volume</b> block at the point where branches merge and it grows an
-          extra section, <b class="ui">INCOMING LINES</b>, with one knob per merging branch —
-          <b class="ui">Line 1</b>, <b class="ui">Line 2</b> and so on. That gives you a small mixer
-          in the middle of the rig instead of chasing individual anchor sheets.</p>
+        <div class="t">Trộn nhiều nhánh cùng lúc</div>
+        <p>Đặt một block <b class="ui">Âm lượng</b> tại điểm nơi các nhánh trộn lại và nó sẽ mọc
+          thêm một phần, <b class="ui">TÍN HIỆU VÀO</b>, với một núm vặn cho mỗi nhánh đang
+          trộn vào — <b class="ui">Line 1</b>, <b class="ui">Line 2</b> và tiếp tục như vậy.
+          Điều đó cho bạn một mixer nhỏ ngay giữa rig thay vì phải chạy theo từng sheet điểm neo
+          riêng lẻ.</p>
       </div>
-      <p>A branch can also skip the main mix entirely: point its output at
-        <b class="ui">Own output 1-2</b> and it goes straight to its own hardware pair, which needs
-        <b class="ui">Use all interface outputs</b> enabled in Settings first.</p>
+      <p>Một nhánh cũng có thể bỏ qua hoàn toàn mix chính: trỏ output của nó vào
+        <b class="ui">Own output 1-2</b> và nó sẽ đi thẳng ra cặp phần cứng riêng của nó, việc
+        này cần bật <b class="ui">Dùng mọi ngõ ra của interface</b> trong Cài đặt trước.</p>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>The master section</h2>
-      <p>The <b class="ui">MASTER</b> card at the bottom of the Rig tab is where everything meets:
-        every rig, the looper, the sampler pads and the backing track sum here before the hardware
-        output. Whatever you do to the master, you do to all of it.</p>
-      <p>The <b class="ui">FX</b> <b class="ui">+</b> menu adds master processing — up to six
-        blocks. You can choose from <b class="ui">Volume</b>, <b class="ui">EQ</b>,
-        <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
-        <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
-        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
-        <b class="ui">Room</b> and <b class="ui">Delay</b>. They behave like chain blocks: tap a
-        chip to edit it, long-press for <b class="ui">Enable</b> / <b class="ui">Bypass</b> and
-        <b class="ui">Remove</b>.</p>
+      <h2 id="master"><span class="n">02.10</span>Phần master</h2>
+      <p>Thẻ <b class="ui">MASTER</b> ở cuối tab Rig là nơi mọi thứ gặp nhau: mọi rig, looper,
+        pad sampler và nhạc nền đều cộng dồn tại đây trước khi ra phần cứng output. Bất cứ điều
+        gì bạn làm với master, bạn đều làm với tất cả.</p>
+      <p>Menu <b class="ui">FX</b> <b class="ui">+</b> thêm xử lý master — tối đa sáu block. Bạn
+        có thể chọn từ <b class="ui">Âm lượng</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>,
+        <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>,
+        <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Cloud</b>,
+        <b class="ui">Hội trường</b>, <b class="ui">Plate</b>, <b class="ui">Phòng</b> và
+        <b class="ui">Delay</b>. Chúng hoạt động như block của chuỗi: chạm vào một chip để chỉnh
+        sửa, nhấn giữ để <b class="ui">Bật</b> / <b class="ui">Bypass</b> và
+        <b class="ui">Bỏ</b>.</p>
       <div class="note warn">
-        <div class="t">No AU plugins in the master</div>
-        <p>Hosted Audio Unit plugins can only go inside a rig chain. The master FX menu does not
-          offer them. If you want a third-party limiter across everything, that is not possible —
-          use the built-in <b class="ui">Limiter</b> block instead.</p>
+        <div class="t">Không có plugin AU trong master</div>
+        <p>Plugin Audio Unit được host chỉ có thể đặt bên trong một chuỗi rig. Menu FX của master
+          không cung cấp chúng. Nếu bạn muốn một limiter bên thứ ba áp lên toàn bộ, điều đó không
+          thể — hãy dùng block <b class="ui">Limiter</b> tích hợp thay thế.</p>
       </div>
-      <p>There is no always-on master processor here. Saturation is a block you add —
-        <b class="ui">Tube Sat</b> or <b class="ui">Tape Sat</b>, both with
-        <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> and
-        <b class="ui">Level</b> — and limiting is the <b class="ui">Limiter</b> block, with
-        <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 to 0 dB, default −1) and
-        <b class="ui">Release</b>. If you have not added them, they are not in the signal path.</p>
+      <p>Ở đây không có bộ xử lý master nào luôn bật sẵn. Saturation là một block bạn tự thêm vào
+        — <b class="ui">Tube Sat</b> hoặc <b class="ui">Tape Sat</b>, cả hai đều có
+        <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> và
+        <b class="ui">Mức</b> — và limiting là block <b class="ui">Limiter</b>, với
+        <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 tới 0 dB, mặc định −1) và
+        <b class="ui">Release</b>. Nếu bạn chưa thêm chúng, chúng không nằm trong đường tín hiệu.</p>
 
-      <h3>Reading the master meters</h3>
-      <p>Stereo peak bars <b class="ui">L</b> and <b class="ui">R</b> carry ticks at −12 and −6 dB.
-        Beside them sits a BS.1770 loudness reading: a large momentary <b class="ui">LUFS</b>
-        number with a smaller line below reading <b class="ui">LUFS</b> or
-        <b class="ui">LUFS · S &lt;n&gt;</b> for the short-term value. Below −70 LUFS it shows
-        <b class="ui">-inf</b>. The fader runs −60 to +12 dB.</p>
-      <p>Use the peak bars to stay out of clipping and the LUFS number to match your overall level
-        to something else — a backing track, a previous take, another player on the same desk.</p>
+      <h3>Đọc đồng hồ đo của master</h3>
+      <p>Thanh peak stereo <b class="ui">L</b> và <b class="ui">R</b> mang vạch mốc ở −12 và
+        −6 dB. Bên cạnh chúng là chỉ số độ to BS.1770: một con số <b class="ui">LUFS</b> tức thời
+        lớn với một dòng nhỏ hơn bên dưới hiện <b class="ui">LUFS</b> hoặc
+        <b class="ui">LUFS · S &lt;n&gt;</b> cho giá trị ngắn hạn. Dưới −70 LUFS nó hiện
+        <b class="ui">-inf</b>. Fader chạy từ −60 tới +12 dB.</p>
+      <p>Dùng thanh peak để tránh clip và con số LUFS để khớp mức tổng thể của bạn với thứ khác
+        — một nhạc nền, một take trước đó, một người chơi khác trên cùng bàn mixer.</p>
       <div class="note">
-        <div class="t">The click stays clean</div>
-        <p>The metronome click is mixed in <b>after</b> the master FX chain, so master reverbs,
-          saturation and limiting never touch it. Set the click level in Settings →
-          <b class="ui">METRONOME</b>, and give it its own output pair there if you want it in the
-          in-ears and nowhere else.</p>
+        <div class="t">Tiếng click luôn sạch</div>
+        <p>Tiếng click metronome được trộn vào <b>sau</b> chuỗi FX của master, nên reverb,
+          saturation và limiting của master không bao giờ chạm vào nó. Đặt mức click trong Cài
+          đặt → <b class="ui">MÁY ĐẬP NHỊP</b>, và cấp cho nó một cặp output riêng ở đó nếu bạn muốn
+          nó chỉ vào tai nghe in-ear và không đi đâu khác.</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/vi/setup.html">← 01 · Getting started</a>
+      <a href="/docs/vi/setup.html">← 01 · Bắt đầu</a>
       <span class="sp"></span>
-      <a href="/docs/vi/plugins.html">03 · AU plugins →</a>
+      <a href="/docs/vi/plugins.html">03 · Plugin AU →</a>
     </nav>
   </main>
 </div>
@@ -620,7 +618,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper là một ứng dụng độc lập, không liên kết, không được xác nhận và không được tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu là tài sản của chủ sở hữu tương ứng và chỉ được dùng để mô tả thiết bị mà bản capture được lấy từ đó.</p>
   </div>
 </footer>
 

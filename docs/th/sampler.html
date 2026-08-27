@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sampler pads — NAMper Documentation</title>
-<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, trigger quantize, MIDI notes 36–51 and where the pads go in the mix.">
+<title>แพดแซมเปลอร์ — เอกสาร NAMper</title>
+<meta name="description" content="แพดแซมเปลอร์สิบหกแพด: การโหลดและอัดเสียง, ตัวแก้ไขแพดพร้อม trim และ ADSR, ชุดเสียงและชุดกลองจากโรงงานสี่ชุด, การควอนไทซ์การทริกเกอร์, MIDI note 36–51 และตำแหน่งของแพดในมิกซ์">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Sampler pads — NAMper Documentation">
-<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, quantize and MIDI triggering.">
+<meta property="og:title" content="แพดแซมเปลอร์ — เอกสาร NAMper">
+<meta property="og:description" content="สิบหกแพด, ชุดเสียง, trim กับ ADSR, ควอนไทซ์ และการทริกเกอร์ด้วย MIDI">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/th/sampler.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">เอกสารประกอบ</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/th/">← ALL DOCS</a>
+  <a class="home" href="/docs/th/">← เอกสารทั้งหมด</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/th/sampler.html" aria-current="page">ไทย</a>
   </nav>
@@ -46,254 +46,251 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">สารบัญ</div>
     <ol>
-      <li><a href="/docs/th/setup.html">Getting started</a></li>
-      <li><a href="/docs/th/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/th/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/th/setup.html">เริ่มต้นใช้งาน</a></li>
+      <li><a href="/docs/th/rig.html">Rig &amp; สายสัญญาณ</a></li>
+      <li><a href="/docs/th/plugins.html">ปลั๊กอิน AU</a></li>
       <li><a href="/docs/th/looper.html">Looper</a></li>
-      <li><a class="on" href="/docs/th/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/th/perform.html">Perform &amp; lyrics</a></li>
-      <li><a href="/docs/th/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/th/settings.html">Settings reference</a></li>
+      <li><a class="on" href="/docs/th/sampler.html">แพดแซมเปลอร์</a></li>
+      <li><a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></li>
+      <li><a href="/docs/th/control.html">MIDI &amp; การควบคุม</a></li>
+      <li><a href="/docs/th/settings.html">คู่มือการตั้งค่า</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PADS</div>
-    <h1>Sixteen pads, one page.</h1>
-    <p class="lede">The <b class="ui a">Sample</b> tab is a drum machine you can play with your
-      thumbs or a MIDI pedal: sixteen pads, a kit library, trim and envelope per pad, and a
-      quantizer for when the timing has to be right.</p>
+    <div class="slab" style="--nc:var(--eq)">05 · แพดแซมเปลอร์</div>
+    <h1>สิบหกแพด หน้าเดียว</h1>
+    <p class="lede">แท็บ <b class="ui a">แซมเปิล</b> คือเครื่องตีกลองที่คุณเล่นได้ด้วยนิ้วโป้งหรือ
+      เพดัล MIDI: สิบหกแพด คลังชุดเสียง trim กับ envelope ต่อแพด และตัวควอนไทซ์สำหรับตอนที่
+      จังหวะต้องแม่นเป๊ะ</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">ในหน้านี้</div>
       <ul>
-        <li><a href="#grid">The grid</a></li>
-        <li><a href="#loading">Getting sound into a pad</a></li>
-        <li><a href="#editor">The pad editor</a></li>
-        <li><a href="#kits">Kits</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
-        <li><a href="#trigger">Playing the pads</a></li>
-        <li><a href="#routing">Where the pads go</a></li>
+        <li><a href="#grid">กริดแพด</a></li>
+        <li><a href="#loading">การใส่เสียงเข้าแพด</a></li>
+        <li><a href="#editor">ตัวแก้ไขแพด</a></li>
+        <li><a href="#kits">ชุดเสียง</a></li>
+        <li><a href="#quantize">การควอนไทซ์การทริกเกอร์</a></li>
+        <li><a href="#trigger">การเล่นแพด</a></li>
+        <li><a href="#routing">แพดไปอยู่ที่ไหน</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="grid"><span class="n">05.1</span>The grid</h2>
-      <p>Sixteen pads in a fixed 4×4 grid. One page — there are no banks and no second page, so
-        everything you can play is on screen at once.</p>
+      <h2 id="grid"><span class="n">05.1</span>กริดแพด</h2>
+      <p>สิบหกแพดในกริด 4×4 ตายตัว หน้าเดียว — ไม่มีแบงก์และไม่มีหน้าที่สอง ทุกอย่างที่คุณเล่น
+        ได้จึงอยู่บนหน้าจอพร้อมกันหมด</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
-             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
-        <figcaption>The <b class="ui">Drums — Acoustic</b> factory kit loaded across all 16 pads</figcaption>
+             alt="แท็บ Sample พร้อมชุดกลอง acoustic จากโรงงานที่โหลดไว้ครบทั้งสิบหกแพด แต่ละแพดแสดงชื่อแซมเปิล ความยาว และเวฟฟอร์ม พร้อมปุ่มปรับ LEVEL และ QUANT และชิปกริดควอนไทซ์ในส่วนหัว">
+        <figcaption>ชุด <b class="ui">กลอง — อะคูสติก</b> จากโรงงานที่โหลดไว้ครบทั้ง 16 แพด</figcaption>
       </figure>
-      <p>The header row carries, left to right: the word <b class="ui">SAMPLER</b>, a
-        <b class="ui">LEVEL</b> knob (0 to 2, default 1), a <b class="ui">QUANT</b> knob, the
-        quantize grid chip, the <b class="ui">PRESETS</b> chip for kits, a <b class="ui">REC</b>
-        indicator that lights while a pad is recording, and <b class="ui">STOP ALL</b>.</p>
-      <p>Along the bottom, the hint says it all:</p>
-      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
-        36–51</b></p>
-      <p>An <b>empty pad</b> splits into two halves — <b class="ui">LOAD</b> and
-        <b class="ui">REC</b>. A <b>loaded pad</b> shows the sample name, its length (for example
-        <b class="ui">1.4s</b>), a dimmed waveform with everything outside the trim faded back, and
-        a bright cursor sweeping through while it plays.</p>
-      <p>Long-press any pad for the menu: <b class="ui">Load sound…</b>,
-        <b class="ui">Record mix</b> or <b class="ui">Stop recording</b>, and — on a loaded pad —
-        <b class="ui">Edit…</b>, <b class="ui">Clear</b> and <b class="ui">MIDI Learn: pad N</b>.</p>
+      <p>แถวส่วนหัวมี เรียงจากซ้ายไปขวา: คำว่า <b class="ui">แซมเปลอร์</b> ปุ่มปรับ
+        <b class="ui">ระดับ</b> (0 ถึง 2 ค่าเริ่มต้น 1) ปุ่มปรับ <b class="ui">ควอนไทซ์</b> ชิปกริด
+        ควอนไทซ์ ชิป <b class="ui">พรีเซ็ต</b> สำหรับชุดเสียง ไฟแสดงสถานะ <b class="ui">อัด</b>
+        ที่ติดขณะแพดใดกำลังอัดอยู่ และ <b class="ui">หยุดทั้งหมด</b></p>
+      <p>ที่ด้านล่าง คำแนะนำบอกไว้ครบแล้ว:</p>
+      <p><b class="ui">แพดว่าง: โหลดหรืออัด · มีเสียงแล้ว: แตะ = เล่น/หยุด กดค้างเพื่อแก้ไข · โน้ต MIDI 36–51</b></p>
+      <p><b>แพดที่ว่างเปล่า</b> แบ่งเป็นสองครึ่ง — <b class="ui">โหลด</b> และ
+        <b class="ui">อัด</b> <b>แพดที่โหลดไว้แล้ว</b> แสดงชื่อแซมเปิล ความยาวของมัน (เช่น
+        <b class="ui">1.4s</b>) เวฟฟอร์มที่หรี่ลงโดยส่วนนอก trim จะจางลง และเคอร์เซอร์สว่าง
+        ที่กวาดผ่านขณะเล่น</p>
+      <p>กดค้างที่แพดใดก็ได้เพื่อเปิดเมนู: <b class="ui">โหลดเสียง…</b>,
+        <b class="ui">อัดมิกซ์</b> หรือ <b class="ui">หยุดอัด</b> และ — บนแพดที่โหลด
+        ไว้แล้ว — <b class="ui">แก้ไข…</b>, <b class="ui">ล้าง</b> และ
+        <b class="ui">MIDI Learn: pad N</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="loading"><span class="n">05.2</span>Getting sound into a pad</h2>
-      <p>There are three ways to load a file, and they all open the same Files picker: the
-        <b class="ui">LOAD</b> half of an empty pad, <b class="ui">Load sound…</b> in the long-press
-        menu, and <b class="ui">Load file</b> inside the pad editor. Anything iOS can decode is
-        accepted.</p>
-      <p>Samples are capped at <b>12 seconds</b> — a longer file is truncated rather than refused.
-        And there is no drag and drop into NAMper: every import goes through the picker.</p>
+      <h2 id="loading"><span class="n">05.2</span>การใส่เสียงเข้าแพด</h2>
+      <p>มีสามวิธีในการโหลดไฟล์ ทั้งหมดเปิดตัวเลือกไฟล์ Files แบบเดียวกัน: ครึ่ง
+        <b class="ui">โหลด</b> ของแพดว่าง, <b class="ui">โหลดเสียง…</b> ในเมนูกดค้าง และ
+        <b class="ui">โหลดไฟล์</b> ภายในตัวแก้ไขแพด อะไรก็ตามที่ iOS ถอดรหัสได้ ใช้ได้ทั้งหมด</p>
+      <p>แซมเปิลจำกัดไว้ที่ <b>12 วินาที</b> — ไฟล์ที่ยาวกว่านั้นจะถูกตัดให้สั้นลง ไม่ใช่ถูก
+        ปฏิเสธ และไม่มีการลากวางเข้า NAMper — การนำเข้าทุกครั้งต้องผ่านตัวเลือกไฟล์</p>
 
-      <h3>Recording into a pad</h3>
-      <p>The <b class="ui">REC</b> half of an empty pad records straight into it. Only one pad can
-        record at a time, and the take is named <b class="ui">Rec N</b>. With the engine stopped it
-        refuses with <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <h3>การอัดเสียงเข้าแพด</h3>
+      <p>ครึ่ง <b class="ui">อัด</b> ของแพดว่างอัดเสียงเข้าไปในมันโดยตรง อัดได้ทีละแพดเดียว
+        เท่านั้น และเทคจะถูกตั้งชื่อว่า <b class="ui">Rec N</b> เมื่อเอนจินหยุดทำงาน มันจะปฏิเสธ
+        ด้วยข้อความ <b class="ui r">เสียงปิดอยู่ — แตะปุ่มเพาเวอร์ก่อนอัด</b></p>
       <div class="note warn">
-        <div class="t">The pad recorder captures what you hear</div>
-        <p>It records the <b>main output mix</b>, not the raw input — so the rig, the looper, the
-          other pads and any backing track all land in the sample. That is useful for grabbing a
-          chord straight off your processed tone, and a trap if you meant to capture a dry
-          source. Mute or stop everything else before you hit <b class="ui">REC</b>.</p>
+        <div class="t">ตัวอัดของแพดจับเสียงที่คุณได้ยิน</div>
+        <p>มันอัด<b>มิกซ์เอาต์พุตหลัก</b> ไม่ใช่อินพุตดิบ — ดังนั้น Rig, ลูปเปอร์, แพดอื่น ๆ และ
+          แบ็กกิ้งแทร็กใดก็ตามจะลงไปอยู่ในแซมเปิลด้วย มีประโยชน์เวลาที่ต้องการจับคอร์ดตรงจากโทน
+          ที่ผ่านการประมวลผลแล้ว แต่ก็เป็นกับดักถ้าคุณตั้งใจจะจับแหล่งเสียงดิบ ให้มิวต์หรือหยุด
+          ทุกอย่างอื่นก่อนกดปุ่ม <b class="ui">อัด</b></p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="editor"><span class="n">05.3</span>The pad editor</h2>
-      <p>Long-press a loaded pad → <b class="ui">Edit…</b>. The sheet is headed
-        <b class="ui">PAD N</b> with the sample name and its length.</p>
-      <p>The waveform has <b>draggable trim handles</b> at the start and end — drag the start in to
-        cut off a slow attack, drag the end in to shorten a long tail.</p>
-      <p>The <b>ADSR envelope is drawn on top of the waveform</b> and edited by dragging three round
-        handles: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> and
-        <b class="ui">Release</b>. A readout above shows the values, like
-        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
-      <p>Two knobs: <b class="ui">Gain</b> (0 to 2) and <b class="ui">Pitch</b> (0.25 to 4, shown as
-        <b class="ui">1.00x</b>). Pitch is a resampling rate, so it changes <b>pitch and speed
-        together</b> — a tape-style shift, not a formant-preserving one. Half speed is an octave
-        down.</p>
+      <h2 id="editor"><span class="n">05.3</span>ตัวแก้ไขแพด</h2>
+      <p>กดค้างที่แพดที่โหลดไว้แล้ว → <b class="ui">แก้ไข…</b> ชีตมีหัวข้อ
+        <b class="ui">PAD N</b> พร้อมชื่อแซมเปิลและความยาวของมัน</p>
+      <p>เวฟฟอร์มมี<b>ตัวจับ trim ที่ลากได้</b>ที่จุดเริ่มต้นและจุดสิ้นสุด — ลากจุดเริ่มต้นเข้ามา
+        เพื่อตัดอัตแทกที่ช้าออก ลากจุดสิ้นสุดเข้ามาเพื่อย่นหางเสียงที่ยาว</p>
+      <p><b>เอนเวโลป ADSR ถูกวาดทับบนเวฟฟอร์ม</b> และแก้ไขได้โดยลากตัวจับกลมสามอัน:
+        <b class="ui">Attack</b>, <b class="ui">ดีเคย์และซัสเทน</b> และ
+        <b class="ui">รีลีส</b> ค่าที่อ่านได้ด้านบนแสดงตัวเลข เช่น
+        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b></p>
+      <p>ปุ่มปรับสองปุ่ม: <b class="ui">เกน</b> (0 ถึง 2) และ <b class="ui">พิตช์</b> (0.25 ถึง 4
+        แสดงเป็น <b class="ui">1.00x</b>) Pitch คืออัตราการรีแซมเปิล ดังนั้นมันเปลี่ยน
+        <b>พิตช์กับความเร็วไปพร้อมกัน</b> — เป็นการเปลี่ยนแบบเทป ไม่ใช่แบบรักษาฟอร์แมนต์ ครึ่ง
+        ความเร็วคือต่ำลงหนึ่งอ็อกเทฟ</p>
 
-      <h3>MODE and TAP</h3>
-      <p>Two pairs of chips decide how a pad behaves under your finger.
-        <b class="ui">MODE</b> is <b class="ui">One-shot</b> or <b class="ui">Loop</b>;
-        <b class="ui">TAP</b> is <b class="ui">Retrig</b> or <b class="ui">Latch</b>. The rule is
-        simple: a pad set to <b class="ui">Loop</b> or to <b class="ui">Latch</b> toggles start and
-        stop on each tap, and a <b class="ui">One-shot</b> / <b class="ui">Retrig</b> pad restarts
-        from the trim start every time you hit it — ordinary drum-pad behaviour.</p>
+      <h3>MODE กับ TAP</h3>
+      <p>ชิปสองคู่กำหนดว่าแพดจะทำงานอย่างไรใต้นิ้วของคุณ
+        <b class="ui">โหมด</b> คือ <b class="ui">วันช็อต</b> หรือ <b class="ui">ลูป</b>;
+        <b class="ui">แตะ</b> คือ <b class="ui">รีทริก</b> หรือ <b class="ui">แลตช์</b> กฎง่าย ๆ
+        คือ: แพดที่ตั้งเป็น <b class="ui">ลูป</b> หรือ <b class="ui">แลตช์</b> จะสลับเริ่ม/หยุด
+        ทุกครั้งที่แตะ ส่วนแพด <b class="ui">วันช็อต</b> / <b class="ui">รีทริก</b> จะเริ่มใหม่
+        จากจุดเริ่ม trim ทุกครั้งที่คุณกด — พฤติกรรมแพดกลองแบบปกติ</p>
       <div class="tw">
         <table>
-          <thead><tr><th>MODE</th><th>TAP</th><th>What a tap does</th></tr></thead>
+          <thead><tr><th>MODE</th><th>TAP</th><th>การแตะทำอะไร</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
-                <td>Plays once from the trim start, restarting on every tap. Drums, hits, stabs.</td></tr>
-            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
-                <td>Plays once; a second tap while it is still sounding stops it. Long one-shots you
-                    may need to cut short.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
-                <td>Loops until you tap again to stop it.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
-                <td>Loops until you tap again to stop it. Beds, drones, rain, vinyl crackle.</td></tr>
+            <tr><td><b class="ui">วันช็อต</b></td><td><b class="ui">รีทริก</b></td>
+                <td>เล่นครั้งเดียวจากจุดเริ่ม trim เริ่มใหม่ทุกครั้งที่แตะ เหมาะกับกลอง เสียงกระแทก
+                    สแตบ</td></tr>
+            <tr><td><b class="ui">วันช็อต</b></td><td><b class="ui">แลตช์</b></td>
+                <td>เล่นครั้งเดียว การแตะครั้งที่สองขณะที่ยังดังอยู่จะหยุดมัน เหมาะกับวันช็อตยาว ๆ
+                    ที่อาจต้องตัดให้สั้นลง</td></tr>
+            <tr><td><b class="ui">ลูป</b></td><td><b class="ui">รีทริก</b></td>
+                <td>วนลูปจนกว่าคุณจะแตะอีกครั้งเพื่อหยุด</td></tr>
+            <tr><td><b class="ui">ลูป</b></td><td><b class="ui">แลตช์</b></td>
+                <td>วนลูปจนกว่าคุณจะแตะอีกครั้งเพื่อหยุด เหมาะกับเบด โดรน เสียงฝน เสียงแผ่นเสียงเก่า</td></tr>
           </tbody>
         </table>
       </div>
-      <p>At the bottom, <b class="ui">Preview</b> auditions the pad with your current settings and
-        <b class="ui">Load file</b> swaps the sound without leaving the editor.</p>
+      <p>ด้านล่าง <b class="ui">พรีวิว</b> ให้ลองฟังแพดด้วยค่าตั้งปัจจุบันของคุณ และ
+        <b class="ui">โหลดไฟล์</b> สลับเสียงโดยไม่ต้องออกจากตัวแก้ไข</p>
       <div class="note">
-        <div class="t">What the sampler deliberately does not have</div>
-        <p>No choke groups (an open hat will not be cut by a closed one), no per-pad pan, no
-          reverse, no velocity layers, no per-pad output routing and no momentary
-          gate-while-held mode. Pads play at their set <b class="ui">Gain</b> and stop when the
-          sample or the envelope says so.</p>
+        <div class="t">สิ่งที่แซมเปลอร์ตั้งใจไม่ใส่มาให้</div>
+        <p>ไม่มี choke group (แฮตเปิดจะไม่ถูกตัดโดยแฮตปิด) ไม่มี pan แยกต่อแพด ไม่มีการเล่นย้อนกลับ
+          ไม่มี velocity layer ไม่มีการจัดสายเอาต์พุตแยกต่อแพด และไม่มีโหมด gate-while-held
+          ชั่วขณะ แพดเล่นที่ <b class="ui">เกน</b> ที่ตั้งไว้ และหยุดเมื่อแซมเปิลหรือเอนเวโลป
+          บอกให้หยุด</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="kits"><span class="n">05.4</span>Kits</h2>
-      <p>A kit is a snapshot of all sixteen pads — every trim, envelope, gain, pitch and mode
-        setting — <b>plus a private copy of every pad's audio</b>. That copy is the point: once a
-        kit is saved, importing over a pad, clearing it or deleting the original file cannot hollow
-        the kit out. Load it back in six months and it still plays.</p>
-      <p>Open the browser with the <b class="ui">PRESETS</b> chip; the sheet is titled
-        <b class="ui">Sampler Kits</b>. Tap a row to load it. The row menu has
-        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> and
-        <b class="ui">Delete</b>. Deleting a kit never removes audio that the loaded pads or another
-        saved kit are still using.</p>
+      <h2 id="kits"><span class="n">05.4</span>ชุดเสียง</h2>
+      <p>ชุดเสียงคือภาพรวมของแพดทั้งสิบหกอัน — ทุก trim, envelope, gain, pitch และค่าตั้งโหมด —
+        <b>บวกกับสำเนาไฟล์เสียงส่วนตัวของทุกแพด</b> สำเนานั้นแหละคือประเด็นสำคัญ: เมื่อชุดเสียง
+        ถูกบันทึกแล้ว การนำเข้าทับแพด การล้างมัน หรือการลบไฟล์ต้นฉบับทิ้ง จะไม่ทำให้ชุดเสียง
+        กลวงเปล่า โหลดมันกลับมาในอีกหกเดือนข้างหน้าก็ยังเล่นได้เหมือนเดิม</p>
+      <p>เปิดตัวเรียกดูด้วยชิป <b class="ui">พรีเซ็ต</b> ชีตมีชื่อ
+        <b class="ui">ชุดแซมเปลอร์</b> แตะแถวใดก็ได้เพื่อโหลด เมนูของแถวมี
+        <b class="ui">เปลี่ยนชื่อ</b>, <b class="ui">Update with current kit</b> และ
+        <b class="ui">ลบ</b> การลบชุดเสียงจะไม่ลบไฟล์เสียงที่แพดที่โหลดอยู่หรือชุดเสียงอื่น
+        ที่บันทึกไว้ยังใช้งานอยู่</p>
       <div class="note warn">
-        <div class="t">Kits cannot be shared</div>
-        <p>The footer of the sheet says why: <b class="ui">Kits live on this device (they carry
-          their audio files).</b> There is no share or export for a kit, and the full backup export
-          leaves sampler kit audio out — it carries parameters and references only. Copy the
-          <b class="ui">samples/</b> folder in the Files app if you need the sounds on another
-          device.</p>
+        <div class="t">ชุดเสียงแชร์กันไม่ได้</div>
+        <p>ท้ายชีตบอกเหตุผลไว้: <b class="ui">Kits live on this device (they carry
+          their audio files).</b> ไม่มีการแชร์หรือส่งออกสำหรับชุดเสียง และการส่งออกแบ็กอัปแบบเต็ม
+          จะไม่รวมไฟล์เสียงของชุดแซมเปลอร์ไปด้วย — มันพกพาแค่พารามิเตอร์และการอ้างอิงเท่านั้น
+          คัดลอกโฟลเดอร์ <b class="ui">samples/</b> ในแอป Files ถ้าคุณต้องการเสียงเหล่านั้นบน
+          อุปกรณ์อีกเครื่อง</p>
       </div>
 
-      <h3>The four factory kits</h3>
+      <h3>ชุดเสียงจากโรงงานสี่ชุด</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Kit</th><th>The sixteen pads</th></tr></thead>
+          <thead><tr><th>ชุดเสียง</th><th>แพดทั้งสิบหก</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Drums — Digital</b></td>
+            <tr><td><b class="ui">กลอง — ดิจิทัล</b></td>
                 <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
                     Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
-            <tr><td><b class="ui">Drums — Analog</b></td>
+            <tr><td><b class="ui">กลอง — อนาล็อก</b></td>
                 <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
                     Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
-            <tr><td><b class="ui">Drums — Acoustic</b></td>
+            <tr><td><b class="ui">กลอง — อะคูสติก</b></td>
                 <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
                     Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
                     Tambourine</td></tr>
-            <tr><td><b class="ui">FX &amp; Textures</b></td>
+            <tr><td><b class="ui">FX และเท็กซ์เจอร์</b></td>
                 <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
                     Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
           </tbody>
         </table>
       </div>
-      <p>A deleted factory kit stays deleted — it does not come back on the next launch. Rename or
-        update one rather than deleting it if you only want it out of the way.</p>
+      <p>ชุดเสียงจากโรงงานที่ถูกลบไปจะยังคงถูกลบต่อไป — มันจะไม่กลับมาเองในการเปิดแอปครั้งถัดไป
+        เปลี่ยนชื่อหรืออัปเดตแทนการลบ ถ้าคุณแค่อยากให้มันไม่เกะกะ</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>The <b class="ui">QUANT</b> knob is a <b>strength</b>, not a switch. At zero it reads
-        <b class="ui">OFF</b>; above that it shows a percentage. At 100 % every hit lands exactly on
-        the grid; at 30 % only the slightly-early ones get pulled into line and your feel survives.
-        The default is 0, off.</p>
-      <p>The chip beside it sets the grid, cycling <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> and <b class="ui">1/32</b>. The default is
-        <b class="ui">1/16</b>.</p>
-      <p>Both settings are <b>global</b> — not per kit, not per pad. Loading a kit does not change
-        them.</p>
+      <h2 id="quantize"><span class="n">05.5</span>การควอนไทซ์การทริกเกอร์</h2>
+      <p>ปุ่มปรับ <b class="ui">ควอนไทซ์</b> คือ<b>ความแรง</b> ไม่ใช่สวิตช์ ที่ศูนย์มันขึ้นว่า
+        <b class="ui">ปิด</b> เหนือจากนั้นมันแสดงเป็นเปอร์เซ็นต์ ที่ 100% ทุกจังหวะจะลงตรงกริด
+        เป๊ะ ที่ 30% เฉพาะจังหวะที่เร็วไปนิดหน่อยเท่านั้นที่จะถูกดึงเข้าแถว และฟีลของคุณจะยัง
+        อยู่รอด ค่าเริ่มต้นคือ 0 ปิด</p>
+      <p>ชิปข้าง ๆ ตั้งค่ากริด วนไปที่ <b class="ui">1/4</b>, <b class="ui">1/8</b>,
+        <b class="ui">1/16</b> และ <b class="ui">1/32</b> ค่าเริ่มต้นคือ
+        <b class="ui">1/16</b></p>
+      <p>ทั้งสองค่าเป็นแบบ<b>รวม (global)</b> — ไม่ใช่ต่อชุดเสียง ไม่ใช่ต่อแพด การโหลดชุดเสียง
+        จะไม่เปลี่ยนมัน</p>
       <div class="note warn">
-        <div class="t">Three things must all be true</div>
-        <p>Quantize only does something audible when <b>all three</b> of these hold, and the screen
-          does not tell you so:</p>
+        <div class="t">ทั้งสามข้อต้องเป็นจริงพร้อมกัน</div>
+        <p>ควอนไทซ์จะทำงานให้ได้ยินก็ต่อเมื่อ<b>ทั้งสามข้อ</b>นี้เป็นจริง และหน้าจอไม่ได้บอกคุณ
+          ไว้ล่วงหน้า:</p>
         <ul style="--nc:var(--drive)">
-          <li>a <b>tempo is set</b> — there is no grid otherwise;</li>
-          <li>a <b>loop is running</b> — the looper supplies the phase, so the grid knows where beat
-            one is;</li>
-          <li>you are <b>recording</b> — either the <b class="ui a">Perform</b> recorder, or a loop
-            track whose source is the sampler.</li>
+          <li><b>ตั้งเทมโปไว้แล้ว</b> — ไม่อย่างนั้นก็ไม่มีกริด;</li>
+          <li><b>ลูปกำลังรันอยู่</b> — ลูปเปอร์เป็นตัวจ่ายเฟส กริดจึงรู้ว่าจังหวะที่หนึ่งอยู่ตรง
+            ไหน;</li>
+          <li>คุณกำลัง<b>อัดเสียงอยู่</b> — ไม่ว่าจะเป็นตัวอัดของ <b class="ui a">เวที</b>
+            หรือแทร็กลูปที่มีแหล่งเสียงเป็นแซมเปลอร์</li>
         </ul>
-        <p>Turn the knob up while jamming over nothing and you will hear no difference. That is
-          deliberate: a pad that waits for the next sixteenth before it speaks feels broken under
-          your fingers, so free playing is always left unquantized and the correction is applied
-          only where it ends up on a recording.</p>
+        <p>หมุนปุ่มขึ้นขณะแจมไปเรื่อย ๆ โดยไม่มีอะไรรองรับ คุณจะไม่ได้ยินความแตกต่างเลย นั่นคือ
+          ความตั้งใจ: แพดที่รอจนถึงเสี้ยวสิบหกถัดไปก่อนจะดังจะรู้สึกเหมือนพัง ใต้นิ้วของคุณ ดังนั้น
+          การเล่นแบบอิสระจะไม่ถูกควอนไทซ์เสมอ และการปรับแก้จะถูกใช้เฉพาะตอนที่มันไปลงเอยอยู่ใน
+          การอัดเสียงเท่านั้น</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="trigger"><span class="n">05.6</span>Playing the pads</h2>
-      <p>By touch: a tap plays or stops the pad according to its
-        <b class="ui">MODE</b> and <b class="ui">TAP</b> settings, and a long-press opens the
-        menu.</p>
-      <p>By MIDI: <b>notes 36 to 51 play pads 1 to 16</b>, following the GM drum convention — note
-        36 is pad 1. This is always active and needs no setup, on any MIDI channel, unless one of
-        your own mappings has claimed that note first.</p>
-      <p><b>Velocity is not used.</b> However hard you hit a controller pad, the sample plays at the
-        <b class="ui">Gain</b> you set in the editor. Set the levels once in the pad editor and they
-        stay put.</p>
+      <h2 id="trigger"><span class="n">05.6</span>การเล่นแพด</h2>
+      <p>ด้วยการแตะ: การแตะจะเล่นหรือหยุดแพดตามค่าตั้ง
+        <b class="ui">โหมด</b> และ <b class="ui">แตะ</b> ของมัน และการกดค้างจะเปิดเมนู</p>
+      <p>ด้วย MIDI: <b>note 36 ถึง 51 เล่นแพด 1 ถึง 16</b> ตามธรรมเนียมกลอง GM — note 36 คือ
+        แพด 1 อันนี้ทำงานอยู่เสมอและไม่ต้องตั้งค่าอะไร บนแชนเนล MIDI ใดก็ได้ เว้นแต่การแมปของ
+        คุณเองจะจับ note นั้นไปใช้ก่อนแล้ว</p>
+      <p><b>ไม่ได้ใช้ velocity</b> ไม่ว่าคุณจะกดแพดของคอนโทรลเลอร์แรงแค่ไหน แซมเปิลจะเล่นที่
+        <b class="ui">เกน</b> ที่คุณตั้งไว้ในตัวแก้ไข ตั้งระดับครั้งเดียวในตัวแก้ไขแพด แล้วมัน
+        จะคงอยู่แบบนั้น</p>
       <div class="note tip">
-        <div class="t">Learned mappings behave better than raw notes</div>
-        <p>A mapping you create on the <b class="ui a">Control</b> tab calls play/stop, so it
-          respects <b class="ui">Loop</b> and <b class="ui">Latch</b> — one footswitch press starts
-          the loop, the next stops it. Raw MIDI notes 36–51 always retrigger from the start. If you
-          are driving looping pads from a pedal, learn the mapping rather than relying on the
-          built-in note range.</p>
+        <div class="t">การแมปที่เรียนรู้ไว้ทำงานดีกว่า note ดิบ</div>
+        <p>การแมปที่คุณสร้างบนแท็บ <b class="ui a">ควบคุม</b> เรียกใช้ play/stop ดังนั้นมัน
+          เคารพ <b class="ui">ลูป</b> และ <b class="ui">แลตช์</b> — กดฟุตสวิตช์ครั้งแรกเริ่มลูป
+          ครั้งถัดไปหยุดมัน MIDI note ดิบ 36–51 จะรีทริกจากจุดเริ่มต้นเสมอ ถ้าคุณกำลังขับแพดที่
+          ลูปอยู่จากเพดัล ให้เรียนรู้การแมปแทนที่จะพึ่งช่วง note ที่มีมาให้ในตัว</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="routing"><span class="n">05.7</span>Where the pads go</h2>
-      <p>Pads sum <b>straight into the main mix</b> — they do not run through the guitar chain, so
-        your amp's gain and your reverb never touch them. The <b class="ui">LEVEL</b> knob in the
-        header sets how loud the whole sampler sits against the rig.</p>
-      <p>They are also available elsewhere in the app as a source:</p>
+      <h2 id="routing"><span class="n">05.7</span>แพดไปอยู่ที่ไหน</h2>
+      <p>แพดรวมเสียง<b>เข้ามิกซ์หลักโดยตรง</b> — มันไม่ผ่านสายกีตาร์ ดังนั้นเกนของแอมป์และ
+        รีเวิร์บของคุณจะไม่แตะต้องมันเลย ปุ่มปรับ <b class="ui">ระดับ</b> ในส่วนหัวตั้งว่า
+        แซมเปลอร์ทั้งชุดดังแค่ไหนเมื่อเทียบกับ Rig</p>
+      <p>มันยังใช้เป็นแหล่งเสียงได้ในที่อื่น ๆ ของแอปด้วย:</p>
       <ul style="--nc:var(--power)">
-        <li>As a <b>chain input</b> — pick <b class="ui">Sampler pads</b> on a rig's IN connector or
-          on a parallel branch (chip <b class="ui">SMPL</b>) and the pads run through that rig's
-          effects.</li>
-        <li>As a <b>loop track source</b> — set a looper track's <b class="ui">IN</b> to
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) and you can loop a beat you tap out
-          on the pads.</li>
-        <li>As a <b>compressor sidechain</b> — a Comp block's <b class="ui">Sidechain</b> menu
-          includes <b class="ui">SMP</b>, so the kick can duck the guitar.</li>
+        <li>เป็น<b>อินพุตของสาย</b> — เลือก <b class="ui">แพดแซมเปลอร์</b> บนขั้วต่อ IN ของ Rig
+          หรือบนสายแยกขนาน (ชิป <b class="ui">SMPL</b>) แล้วแพดจะวิ่งผ่านเอฟเฟกต์ของ Rig นั้น</li>
+        <li>เป็น<b>แหล่งเสียงของแทร็กลูป</b> — ตั้ง <b class="ui">เข้า</b> ของแทร็กลูปเปอร์เป็น
+          <b class="ui">แซมเปลอร์</b> (ชิป <b class="ui">SMP</b>) แล้วคุณก็ลูปบีตที่คุณแตะออกมาบน
+          แพดได้</li>
+        <li>เป็น<b>ไซด์เชนของคอมเพรสเซอร์</b> — เมนู <b class="ui">ไซด์เชน</b> ของบล็อก Comp
+          มี <b class="ui">SMP</b> รวมอยู่ด้วย กลองเบสจึงดักเสียงกีตาร์ได้</li>
       </ul>
-      <p><b class="ui">STOP ALL</b> in the header releases every playing pad at once — the panic
-        button for a latched drone or a loop you cannot find.</p>
+      <p><b class="ui">หยุดทั้งหมด</b> ในส่วนหัวปล่อยแพดที่กำลังเล่นอยู่ทุกอันพร้อมกัน — ปุ่มฉุกเฉิน
+        สำหรับโดรนที่ latch ค้างไว้ หรือลูปที่คุณหาไม่เจอ</p>
     </section>
 
     <nav class="pager">
       <a href="/docs/th/looper.html">← 04 · Looper</a>
       <span class="sp"></span>
-      <a href="/docs/th/perform.html">06 · Perform &amp; lyrics →</a>
+      <a href="/docs/th/perform.html">06 · Perform &amp; เนื้อเพลง →</a>
     </nav>
   </main>
 </div>
@@ -308,7 +305,7 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper เป็นแอปอิสระที่ไม่มีความเกี่ยวข้อง การรับรอง หรือการสนับสนุนจากผู้ผลิตอุปกรณ์ใด ๆ ชื่อผลิตภัณฑ์ แบรนด์ และเครื่องหมายการค้าทั้งหมดเป็นทรัพย์สินของเจ้าของแต่ละราย และถูกใช้เพียงเพื่ออธิบายอุปกรณ์ที่นำมาแคปเจอร์เสียงเท่านั้น</p>
   </div>
 </footer>
 

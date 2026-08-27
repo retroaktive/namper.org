@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIDI &amp; control — NAMper Documentation</title>
-<meta name="description" content="The control map and MIDI learn, everything you can map to, the built-in MIDI map, Bluetooth pairing, taught sound triggers, and the tuner.">
+<title>MIDI y control — Documentación de NAMper</title>
+<meta name="description" content="El mapa de control y MIDI learn, todo lo que puedes mapear, el mapa MIDI integrado, el emparejamiento Bluetooth, los disparadores de sonidos aprendidos, y el afinador.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="MIDI &amp; control — NAMper Documentation">
-<meta property="og:description" content="Map footswitches, pedals and taught sounds to anything in NAMper — plus the built-in MIDI map and the tuner.">
+<meta property="og:title" content="MIDI y control — Documentación de NAMper">
+<meta property="og:description" content="Mapea footswitches, pedales y sonidos aprendidos a cualquier cosa en NAMper — más el mapa MIDI integrado y el afinador.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/es/control.html">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 
 <header class="topbar">
   <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
-  <span class="tag">DOCUMENTATION</span>
+  <span class="tag">DOCUMENTACIÓN</span>
   <span class="grow"></span>
-  <a class="home" href="/docs/es/">← ALL DOCS</a>
+  <a class="home" href="/docs/es/">← TODOS LOS DOCS</a>
   <nav class="langs" aria-label="Language">
     <a class="on" href="/docs/es/control.html" aria-current="page">Español</a>
   </nav>
@@ -46,276 +46,274 @@
 
 <div class="shell">
   <aside class="sidenav">
-    <div class="slab">CONTENTS</div>
+    <div class="slab">CONTENIDO</div>
     <ol>
-      <li><a href="/docs/es/setup.html">Getting started</a></li>
-      <li><a href="/docs/es/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/es/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/es/setup.html">Primeros pasos</a></li>
+      <li><a href="/docs/es/rig.html">Rig y cadena de señal</a></li>
+      <li><a href="/docs/es/plugins.html">Plugins AU</a></li>
       <li><a href="/docs/es/looper.html">Looper</a></li>
-      <li><a href="/docs/es/sampler.html">Sampler pads</a></li>
-      <li><a href="/docs/es/perform.html">Perform &amp; lyrics</a></li>
-      <li><a class="on" href="/docs/es/control.html">MIDI &amp; control</a></li>
-      <li><a href="/docs/es/settings.html">Settings reference</a></li>
+      <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
+      <li><a href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a class="on" href="/docs/es/control.html">MIDI y control</a></li>
+      <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; CONTROL</div>
-    <h1>Hands on the guitar.</h1>
-    <p class="lede">Footswitches, pedals, a knock on the body of the instrument — the
-      <b class="ui a">Control</b> tab is where you decide what fires what, so the phone can stay in
-      its stand for the whole set. It is also where the tuner lives.</p>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI Y CONTROL</div>
+    <h1>Manos en la guitarra.</h1>
+    <p class="lede">Footswitches, pedales, un golpe en el cuerpo del instrumento — la pestaña
+      <b class="ui a">Control</b> es donde decides qué dispara qué, para que el teléfono pueda quedarse
+      en su soporte durante todo el show. Ahí también vive el afinador.</p>
 
     <nav class="toc">
-      <div class="slab">ON THIS PAGE</div>
+      <div class="slab">EN ESTA PÁGINA</div>
       <ul>
-        <li><a href="#map">The control map</a></li>
+        <li><a href="#map">El mapa de control</a></li>
         <li><a href="#learn">MIDI learn</a></li>
-        <li><a href="#actions">What you can map to</a></li>
-        <li><a href="#builtin">The built-in MIDI map</a></li>
-        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
-        <li><a href="#sounds">Taught sound triggers</a></li>
-        <li><a href="#tuner">The tuner</a></li>
+        <li><a href="#actions">A qué puedes mapear</a></li>
+        <li><a href="#builtin">El mapa MIDI integrado</a></li>
+        <li><a href="#bluetooth">MIDI Bluetooth</a></li>
+        <li><a href="#sounds">Disparadores de sonidos aprendidos</a></li>
+        <li><a href="#tuner">El afinador</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="map"><span class="n">07.1</span>The control map</h2>
-      <p>The <b class="ui a">Control</b> tab holds three cards. The first is
-        <b class="ui">CONTROL MAP</b> — your own mappings, the ones that override everything else.
-        Its blurb says what it takes: <b class="ui">MIDI controls and input triggers, mapped to
-        anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or a
-        chord.</b></p>
-      <p>The header has a presets chip and a <b class="ui">+</b> (<b class="ui">Add mapping</b>).
-        With nothing mapped yet the card reads
-        <b class="ui">No mappings yet — add one with +</b>.</p>
-      <p>Every mapping is one row, read left to right: a source chip, a <b class="ui">LEARN</b>
-        button, an arrow, an action chip, and an <b class="ui">✕</b> to delete the row. Saved maps
-        live under <b class="ui">Control Presets</b> on the presets chip, so a pedalboard layout for
-        one band need not follow you to the next.</p>
+      <h2 id="map"><span class="n">07.1</span>El mapa de control</h2>
+      <p>La pestaña <b class="ui a">Control</b> tiene tres tarjetas. La primera es
+        <b class="ui">MAPA DE CONTROL</b> — tus propios mapeos, los que anulan todo lo demás. Su
+        descripción dice lo que acepta: <b class="ui">Controles MIDI y disparadores de entrada, mapeados a lo que quieras. Fuentes: cualquier CC o nota (usa LEARN), un golpe en el cuerpo, una nota mantenida o un acorde.</b></p>
+      <p>La cabecera tiene un chip de presets y un <b class="ui">+</b>
+        (<b class="ui">Añadir mapeo</b>). Sin nada mapeado todavía, la tarjeta dice
+        <b class="ui">Aún no hay mapeos — añade uno con +</b>.</p>
+      <p>Cada mapeo es una fila, leída de izquierda a derecha: un chip de fuente, un botón
+        <b class="ui">APRENDER</b>, una flecha, un chip de acción, y una <b class="ui">✕</b> para borrar
+        la fila. Los mapas guardados viven bajo <b class="ui">Presets de control</b> en el chip de
+        presets, así que la configuración de un pedalboard para una banda no tiene por qué seguirte a
+        la siguiente.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
-             alt="The Control tab: the CONTROL MAP card with mapping rows, the TAUGHT SOUNDS card, and the BUILT-IN MIDI MAP card listing CC ranges with a Pair Bluetooth MIDI button at the bottom.">
-        <figcaption>The Control tab — your map, your taught sounds, and the built-in map</figcaption>
+             alt="La pestaña Control: la tarjeta CONTROL MAP con filas de mapeo, la tarjeta TAUGHT SOUNDS, y la tarjeta BUILT-IN MIDI MAP listando rangos de CC con un botón Pair Bluetooth MIDI en la parte inferior.">
+        <figcaption>La pestaña Control — tu mapa, tus sonidos aprendidos, y el mapa integrado</figcaption>
       </figure>
 
       <div class="note warn">
-        <div class="t">Four input triggers</div>
-        <p>Only the first four rows driven by a taught sound are live. Add a fifth and the card
-          warns you: <b class="ui r">Only the first 4 input triggers are active</b>. MIDI rows have
-          no such limit — this one is about listening to the instrument.</p>
+        <div class="t">Cuatro disparadores de entrada</div>
+        <p>Solo las primeras cuatro filas impulsadas por un sonido aprendido están activas. Añade una
+          quinta y la tarjeta te avisa: <b class="ui r">Solo los primeros 4 disparadores de entrada están activos</b>. Las filas MIDI no tienen ese límite — este es sobre escuchar al instrumento.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
-      <p>You never type a CC number. On a mapping row:</p>
+      <p>Nunca escribes un número de CC. En una fila de mapeo:</p>
       <ol style="--nc:var(--eq)">
-        <li>Tap <b class="ui">LEARN</b>. The chip lights up and the row waits.</li>
-        <li>Press the footswitch or sweep the pedal you want to use.</li>
-        <li>The source chip fills in as <b class="ui">CC 42</b> or <b class="ui">Note 60</b>, and
-          the card's <b class="ui">Last:</b> line confirms it — <b class="ui">Learned CC 42</b>.</li>
+        <li>Toca <b class="ui">APRENDER</b>. El chip se enciende y la fila espera.</li>
+        <li>Pulsa el footswitch o barre el pedal que quieras usar.</li>
+        <li>El chip de fuente se rellena como <b class="ui">CC 42</b> o <b class="ui">Note 60</b>, y
+          la línea <b class="ui">Last:</b> de la tarjeta lo confirma —
+          <b class="ui">Learned CC 42</b>.</li>
       </ol>
-      <p>Tap <b class="ui">LEARN</b> again to disarm. The source chip's own menu has a
-        <b class="ui">MIDI</b> section with <b class="ui">CC… (use LEARN)</b> and
-        <b class="ui">Note… (use LEARN)</b>, and a <b class="ui">Taught sounds</b> section listing
-        the sounds you have trained plus <b class="ui">Teach a new sound…</b></p>
+      <p>Toca <b class="ui">APRENDER</b> otra vez para desarmarlo. El menú propio del chip de fuente
+        tiene una sección <b class="ui">MIDI</b> con <b class="ui">CC… (usa LEARN)</b> y
+        <b class="ui">Nota… (usa LEARN)</b>, y una sección <b class="ui">Sonidos aprendidos</b> que lista
+        los sonidos que has entrenado más <b class="ui">Enseñar un sonido nuevo…</b></p>
 
-      <h3>Learn in place</h3>
-      <p>You do not have to start from the Control tab. Long-press almost any control in the app —
-        a knob, a chip row, a looper pad, a sampler pad, the Perform transport buttons — and the
-        menu offers <b class="ui">MIDI Learn: &lt;name&gt;</b> for that exact control. It outlines
-        itself and shows <b class="ui">MOVE A MIDI CONTROL…</b>; move the pedal and the mapping is
-        made. <b class="ui">Cancel learn</b> backs out if you grabbed the wrong knob.</p>
+      <h3>Aprender en el sitio</h3>
+      <p>No tienes que empezar desde la pestaña Control. Mantén pulsado casi cualquier control de la
+        app — una perilla, una fila de chips, un pad del looper, un pad del sampler, los botones de
+        transporte de Perform — y el menú ofrece <b class="ui">MIDI Learn: &lt;name&gt;</b> para ese
+        control exacto. Se resalta y muestra <b class="ui">MUEVE UN CONTROL MIDI…</b>; mueve el pedal y
+        el mapeo queda hecho. <b class="ui">Cancelar Learn</b> retrocede si agarraste la perilla
+        equivocada.</p>
       <div class="note tip">
-        <div class="t">The fast way to build a board</div>
-        <p>Learn in place beats the Control tab for anything you can see: open the block, long-press
-          the knob you want on the pedal, press the switch, done. The Control tab is for reviewing
-          and tidying what you built.</p>
+        <div class="t">La forma rápida de armar un pedalboard</div>
+        <p>Aprender en el sitio le gana a la pestaña Control para cualquier cosa que puedas ver: abre
+          el bloque, mantén pulsada la perilla que quieres en el pedal, pulsa el switch, listo. La
+          pestaña Control es para revisar y ordenar lo que ya construiste.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="actions"><span class="n">07.3</span>What you can map to</h2>
-      <p>The action chip's menu, in full:</p>
+      <h2 id="actions"><span class="n">07.3</span>A qué puedes mapear</h2>
+      <p>El menú del chip de acción, completo:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Section</th><th>Actions</th></tr></thead>
+          <thead><tr><th>Sección</th><th>Acciones</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">No action</b></td><td>Leaves the row inert.</td></tr>
-            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> upwards, one per
-              loaded pad.</td></tr>
+            <tr><td><b class="ui">Sin acción</b></td><td>Deja la fila inerte.</td></tr>
+            <tr><td><b class="ui">Pad del sampler</b></td><td><b class="ui">Pad 1</b> en adelante, uno por
+              cada pad cargado.</td></tr>
             <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">Clear all</b>.</td></tr>
-            <tr><td><b class="ui">Preset</b></td><td>Every rig preset by name, plus
-              <b class="ui">Next preset</b>.</td></tr>
-            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
-              <b class="ui">Stop</b>, <b class="ui">Next section</b>,
-              <b class="ui">Prev section</b>.</td></tr>
-            <tr><td>Per rig</td><td><b class="ui">Block on/off</b> and <b class="ui">Block parameter
-              (CC)</b>, listed under each rig by name.</td></tr>
+              track 4</b>, <b class="ui">Iniciar / detener</b>, <b class="ui">Borrar todo</b>.</td></tr>
+            <tr><td><b class="ui">Preset</b></td><td>Cada preset de rig por nombre, más
+              <b class="ui">Preset siguiente</b>.</td></tr>
+            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Reproducir / pausar</b>,
+              <b class="ui">Detener</b>, <b class="ui">Sección siguiente</b>,
+              <b class="ui">Sección anterior</b>.</td></tr>
+            <tr><td>Por rig</td><td><b class="ui">Bloque on/off</b> y <b class="ui">Parámetro de bloque (CC)</b>, listados bajo cada rig por nombre.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Once you have more than one rig, three more entries appear: <b class="ui">Next rig</b>,
-        <b class="ui">Block on/off · Active rig</b> and <b class="ui">Block param · Active rig</b>.
-        Those follow whichever rig currently has MIDI focus, so one footswitch can bypass "the
-        drive in whatever rig I am playing" instead of a fixed block in a fixed rig.</p>
-      <p>Two constraints are worth remembering before you wire a pedal:</p>
+      <p>En cuanto tienes más de un rig, aparecen tres entradas más: <b class="ui">Rig siguiente</b>,
+        <b class="ui">Bloque on/off · Rig activo</b> y <b class="ui">Parám. de bloque · Rig activo</b>.
+        Esas siguen al rig que tenga el foco MIDI en cada momento, así que un footswitch puede
+        desactivar "el drive del rig que esté tocando ahora" en lugar de un bloque fijo en un rig
+        fijo.</p>
+      <p>Dos limitaciones vale la pena recordar antes de conectar un pedal:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>A continuous block parameter needs a CC.</b> Notes and taught sounds are events —
-          they cannot sweep a value — so the parameter submenu is hidden for those sources.
-          An expression pedal sending a CC is what you want.</li>
-        <li><b>Soft pickup after a rig switch.</b> A continuous CC mapped to
-          <b class="ui">Block param · Active rig</b> does not jump the knob when you change rigs.
-          It waits until your pedal sweeps past the new rig's current value, then takes over — so
-          switching rigs mid-song never snaps a parameter to wherever your foot happens to be.</li>
+        <li><b>Un parámetro de bloque continuo necesita un CC.</b> Las notas y los sonidos aprendidos
+          son eventos — no pueden barrer un valor — así que el submenú de parámetros queda oculto para
+          esas fuentes. Un pedal de expresión que envía un CC es lo que quieres.</li>
+        <li><b>Recuperación suave tras un cambio de rig.</b> Un CC continuo mapeado a
+          <b class="ui">Parám. de bloque · Rig activo</b> no salta la perilla cuando cambias de rig. Espera
+          hasta que tu pedal barra más allá del valor actual del nuevo rig, y entonces toma el
+          control — así que cambiar de rig a mitad de canción nunca hace saltar un parámetro a donde
+          sea que esté tu pie en ese momento.</li>
       </ul>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="builtin"><span class="n">07.4</span>The built-in MIDI map</h2>
-      <p>Before you map anything, a fixed layout is already live — plug a controller in and it
-        works. All channels are accepted, because NAMper listens omni, and every source that appears
-        is connected automatically. The app also publishes a virtual destination named
-        <b class="ui">NAMper</b>, so another app on the same device can send to it.</p>
+      <h2 id="builtin"><span class="n">07.4</span>El mapa MIDI integrado</h2>
+      <p>Antes de que mapees nada, ya hay activa una disposición fija — conecta un controlador y
+        funciona. Se aceptan todos los canales, porque NAMper escucha en omni, y cada fuente que
+        aparece se conecta automáticamente. La app también publica un destino virtual llamado
+        <b class="ui">NAMper</b>, así que otra app en el mismo dispositivo puede enviarle datos.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Shown as</th><th>Does</th></tr></thead>
+          <thead><tr><th>Se muestra como</th><th>Hace</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">presets</b></td></tr>
-            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp,
-              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, in that order; a value of
-              64 or more is on</td></tr>
-            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">block parameters</b> — 0–127
-              scaled into each parameter's range. <b class="ui">CC 64</b> is skipped and left free
-              for a sustain pedal</td></tr>
-            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">looper track taps</b> —
-              tracks 1 to 4</td></tr>
-            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
-              clear</b></td></tr>
-            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop ·
-              next · prev</b></td></tr>
-            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">bloque on/off</b> — gate, comp,
+              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, en ese orden; un valor de
+              64 o más es on</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">parámetros del bloque</b> — 0–127
+              escalado al rango de cada parámetro. <b class="ui">CC 64</b> se salta y queda libre para
+              un pedal de sustain</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">taps de pistas del looper</b> —
+              pistas 1 a 4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper: inicio/stop / borrar</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pausa · stop · sig. · ant.</b></td></tr>
+            <tr><td><b class="ui">Notas 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Your own mappings always win. If you learn a footswitch to CC 85, your row runs and the
-        built-in track-1 tap on that CC steps aside — so you never have to work around the defaults,
-        only over them.</p>
+      <p>Tus propios mapeos siempre ganan. Si aprendes un footswitch al CC 85, tu fila corre y el tap
+        integrado de la pista 1 en ese CC se hace a un lado — así que nunca tienes que rodear los
+        valores por defecto, solo superponerte a ellos.</p>
       <div class="note">
-        <div class="t">CC 89 toggles</div>
-        <p>The built-in <b class="ui">CC 89</b> is a true run/stop toggle: it reads the looper's
-          current state, stops it when it is running (a recording counts as running) and starts it
-          from the top when it is stopped. A learned mapping on the
-          <b class="ui">Run / stop</b> action behaves the same way.</p>
+        <div class="t">CC 89 alterna</div>
+        <p>El <b class="ui">CC 89</b> integrado es un verdadero alternador de run/stop: lee el estado
+          actual del looper, lo detiene cuando está corriendo (una grabación cuenta como corriendo) y
+          lo arranca desde el principio cuando está detenido. Un mapeo aprendido en la acción
+          <b class="ui">Iniciar / detener</b> se comporta igual.</p>
       </div>
-      <p>Press detection is deliberately forgiving of cheap pedals. A message counts as a press when
-        its value is 64 or more, and also when it is low but did not follow a high one — so a
-        footswitch that sends every press as value 0 still fires discrete actions.</p>
-      <p>At the bottom of the card, one line tells you what NAMper can see:
-        <b class="ui">MIDI: waiting for sources</b> or the names of the connected sources, with a
-        <b class="ui">Last:</b> line under it showing the most recent event. If a pedal does
-        nothing, look there first — it tells you whether the messages are arriving at all.</p>
+      <p>La detección de pulsación es deliberadamente tolerante con pedales baratos. Un mensaje cuenta
+        como pulsación cuando su valor es 64 o más, y también cuando es bajo pero no siguió a uno
+        alto — así que un footswitch que envía cada pulsación como valor 0 sigue disparando acciones
+        discretas.</p>
+      <p>En la parte inferior de la tarjeta, una línea te dice qué puede ver NAMper:
+        <b class="ui">MIDI: esperando fuentes</b> o los nombres de las fuentes conectadas, con una
+        línea <b class="ui">Last:</b> debajo mostrando el evento más reciente. Si un pedal no hace
+        nada, mira ahí primero — te dice si los mensajes están llegando siquiera.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
-      <p>Wireless pedals pair from inside the app. At the bottom of the built-in map card, tap
-        <b class="ui">Pair Bluetooth MIDI</b>. A sheet titled <b class="ui">Bluetooth MIDI</b> opens
-        with the system pairing panel in it and a <b class="ui">Done</b> button. Put your pedal into
-        pairing mode, tap it in the list, and it joins the MIDI sources line.</p>
+      <h2 id="bluetooth"><span class="n">07.5</span>MIDI Bluetooth</h2>
+      <p>Los pedales inalámbricos se emparejan desde dentro de la app. En la parte inferior de la
+        tarjeta del mapa integrado, toca <b class="ui">Emparejar MIDI Bluetooth</b>. Se abre una hoja
+        titulada <b class="ui">Bluetooth MIDI</b> con el panel de emparejamiento del sistema dentro y
+        un botón <b class="ui">Listo</b>. Pon tu pedal en modo de emparejamiento, tócalo en la lista, y
+        se une a la línea de fuentes MIDI.</p>
       <div class="note warn">
-        <div class="t">Do not tap it twice</div>
-        <p>The sheet carries this caution for a reason: <b class="ui">Tapping a device toggles its
-          connection — a pedal already shown in the MIDI sources line is connected; don't tap it
-          again.</b> Tapping a connected pedal disconnects it. If you are unsure, check the sources
-          line at the bottom of the card before touching anything.</p>
+        <div class="t">No lo toques dos veces</div>
+        <p>La hoja lleva esta advertencia por una razón: <b class="ui">Tocar un dispositivo alterna su conexión — un pedal que ya aparece en la línea de fuentes MIDI está conectado; no lo toques otra vez.</b> Tocar un pedal ya conectado lo desconecta. Si no estás seguro, revisa la línea de
+          fuentes en la parte inferior de la tarjeta antes de tocar nada.</p>
       </div>
-      <p>NAMper asks for Bluetooth permission the first time you open this sheet, and for nothing
-        else.</p>
+      <p>NAMper pide permiso de Bluetooth la primera vez que abres esta hoja, y para nada más.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="sounds"><span class="n">07.6</span>Taught sound triggers</h2>
-      <p>The <b class="ui">TAUGHT SOUNDS</b> card needs no hardware at all. You teach NAMper a
-        noise you can make with the instrument in your hands, and from then on it fires any action,
-        exactly like a MIDI event. The empty state puts it plainly:
-        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
-        bridge — then map it to any action, like a MIDI event.</b></p>
+      <h2 id="sounds"><span class="n">07.6</span>Disparadores de sonidos aprendidos</h2>
+      <p>La tarjeta <b class="ui">SONIDOS APRENDIDOS</b> no necesita ningún hardware. Le enseñas a NAMper un
+        ruido que puedes hacer con el instrumento en las manos, y a partir de entonces dispara
+        cualquier acción, igual que un evento MIDI. El estado vacío lo dice claramente:
+        <b class="ui">Enséñale un sonido a la app — un golpe en el cuerpo, una palmada a las cuerdas, un chasquido tras el puente — y asígnalo a cualquier acción, como un evento MIDI.</b></p>
 
-      <h3>Teaching one</h3>
-      <p>Tap <b class="ui">TEACH</b> and the sheet <b class="ui">TEACH A SOUND</b> opens with its
-        instruction: <b class="ui">Make the sound 3–5 times, the same way each time: knock the body,
-        slap the strings, click behind the bridge — anything with a clear attack.</b> Eight dots
-        fill in as takes arrive, and the status reads <b class="ui">Listening…</b> and then the
-        count. Give it a name in the <b class="ui">Sound name</b> field and tap
-        <b class="ui">Save the sound</b>. Save needs at least two takes, and up to eight are
-        averaged — more consistent takes make a more reliable trigger.</p>
-      <p>Each row shows the name, a usage count like <b class="ui">3×</b>, a
-        <b class="ui">RE-TEACH</b> button and a delete <b class="ui">✕</b>. Tap the name to rename
-        it. Re-teaching keeps the name and every mapping that points at it, so if a sound starts
-        misfiring after you change guitars, re-teach it rather than starting over.</p>
+      <h3>Enseñar uno</h3>
+      <p>Toca <b class="ui">ENSEÑAR</b> y se abre la hoja <b class="ui">ENSEÑAR UN SONIDO</b> con su
+        instrucción: <b class="ui">Haz el sonido 3–5 veces, siempre igual: golpea el cuerpo, palmea las cuerdas, chasquea tras el puente; cualquier cosa con un ataque claro.</b> Ocho puntos se
+        van rellenando a medida que llegan las tomas, y el estado dice <b class="ui">Escuchando…</b> y
+        luego el contador. Dale un nombre en el campo <b class="ui">Nombre del sonido</b> y toca
+        <b class="ui">Guardar el sonido</b>. Guardar necesita al menos dos tomas, y hasta ocho se
+        promedian — tomas más consistentes hacen un disparador más fiable.</p>
+      <p>Cada fila muestra el nombre, un contador de uso como <b class="ui">3×</b>, un botón
+        <b class="ui">REENSEÑAR</b> y una <b class="ui">✕</b> de borrar. Toca el nombre para
+        renombrarlo. Reenseñar conserva el nombre y todos los mapeos que apuntan a él, así que si un
+        sonido empieza a fallar después de cambiar de guitarra, reenséñalo en lugar de empezar de
+        cero.</p>
       <div class="note warn">
-        <div class="t">Deleting takes the mappings with it</div>
-        <p>Delete a taught sound and every mapping that listened for it goes too. The usage count on
-          the row tells you how many that is before you tap the ✕.</p>
+        <div class="t">Borrar se lleva los mapeos con él</div>
+        <p>Borra un sonido aprendido y también desaparece cada mapeo que lo escuchaba. El contador de
+          uso en la fila te dice cuántos son antes de tocar la ✕.</p>
       </div>
-      <p>A taught sound can fire any action in the menu except a continuous block parameter — it is
-        an event, not a sweep. And as on the control map, only the first four taught-sound mappings
-        are active at once.</p>
+      <p>Un sonido aprendido puede disparar cualquier acción del menú excepto un parámetro de bloque
+        continuo — es un evento, no un barrido. Y como en el mapa de control, solo los primeros cuatro
+        mapeos de sonido aprendido están activos a la vez.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="tuner"><span class="n">07.7</span>The tuner</h2>
-      <p>The tuner is not a tab. It opens from the tuning-fork icon in the <b class="ui a">Rig</b>
-        header, and it works whenever the audio engine is running — including when the feedback
-        guard has muted the output, so you can still tune with the phone on its own speaker.</p>
+      <h2 id="tuner"><span class="n">07.7</span>El afinador</h2>
+      <p>El afinador no es una pestaña. Se abre desde el icono de diapasón en la cabecera de
+        <b class="ui a">Rig</b>, y funciona siempre que el motor de audio esté corriendo — incluso
+        cuando la protección antiacoples ha silenciado la salida, así que puedes seguir afinando con
+        el teléfono en su propio altavoz.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
-             alt="The tuner sheet in POLY mode: mode chips, a GUITAR badge, a row of tuning chips, and six vertical string meters with note names underneath.">
-        <figcaption>POLY mode — six strings reading at once</figcaption>
+             alt="La hoja del afinador en modo POLY: chips de modo, una insignia GUITAR, una fila de chips de afinación, y seis medidores verticales de cuerda con los nombres de nota debajo.">
+        <figcaption>Modo POLY — seis cuerdas leídas a la vez</figcaption>
       </figure>
 
-      <p>Two mode chips sit at the top, <b class="ui">POLY</b> and <b class="ui">SINGLE</b>.
-        <b class="ui">POLY</b> is the default and the one to use on stage: strum once and every
-        string reads at the same time, one vertical meter per string with the note underneath. Its
-        caption says it — <b class="ui">strum — every string reads at once</b>. A string's dot goes
-        green inside ±5 cents.</p>
-      <p><b class="ui">SINGLE</b> is the classic one-note-at-a-time tuner: a big note letter, a
-        needle across ±50 cents and a cents readout, going green inside ±3 cents. With no signal it
-        shows <b class="ui">play a note…</b> Use it when you want to be precise about one
-        string.</p>
+      <p>Dos chips de modo están arriba, <b class="ui">POLY</b> y <b class="ui">SINGLE</b>.
+        <b class="ui">POLY</b> es el predeterminado y el que usar en el escenario: rasguea una vez y
+        todas las cuerdas se leen al mismo tiempo, un medidor vertical por cuerda con la nota debajo.
+        Su leyenda lo dice — <b class="ui">rasguea — todas las cuerdas se leen a la vez</b>. El punto de una
+        cuerda se pone verde dentro de ±5 cents.</p>
+      <p><b class="ui">SINGLE</b> es el afinador clásico de una nota a la vez: una letra de nota
+        grande, una aguja a través de ±50 cents y una lectura en cents, que se pone verde dentro de ±3
+        cents. Sin señal muestra <b class="ui">toca una nota…</b> Úsalo cuando quieras ser preciso con
+        una sola cuerda.</p>
 
-      <h3>Instrument and tuning</h3>
-      <p>NAMper works out what you are holding by itself and shows it as a pill:
-        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> or <b class="ui">UKULELE</b>. There is no
-        picker — plug a bass in and the tuner follows.</p>
-      <p>The tuning chips apply to <b class="ui">POLY</b> mode, and each instrument remembers its
-        own choice:</p>
+      <h3>Instrumento y afinación</h3>
+      <p>NAMper deduce por sí solo qué tienes en las manos y lo muestra como una píldora:
+        <b class="ui">GUITARRA</b>, <b class="ui">BAJO</b> o <b class="ui">UKELELE</b>. No hay
+        selector — conecta un bajo y el afinador lo sigue.</p>
+      <p>Los chips de afinación aplican al modo <b class="ui">POLY</b>, y cada instrumento recuerda su
+        propia elección:</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Instrument</th><th>Tunings</th></tr></thead>
+          <thead><tr><th>Instrumento</th><th>Afinaciones</th></tr></thead>
           <tbody>
-            <tr><td>Guitar</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
+            <tr><td>Guitarra</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
               <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
               <b class="ui">Open D</b></td></tr>
-            <tr><td>Bass</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+            <tr><td>Bajo</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
               <b class="ui">5-str B</b></td></tr>
-            <tr><td>Ukulele</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+            <tr><td>Ukelele</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Reference pitch is fixed at A4 = 440 Hz. There is no calibration control, so if you play
-        with an orchestra at 442 the tuner will not follow you there.</p>
+      <p>El tono de referencia está fijo en A4 = 440 Hz. No hay control de calibración, así que si
+        tocas con una orquesta a 442 el afinador no te seguirá ahí.</p>
     </section>
 
     <nav class="pager">
-      <a href="/docs/es/perform.html">← 06 · Perform &amp; lyrics</a>
+      <a href="/docs/es/perform.html">← 06 · Perform y letra</a>
       <span class="sp"></span>
-      <a href="/docs/es/settings.html">08 · Settings reference →</a>
+      <a href="/docs/es/settings.html">08 · Referencia de ajustes →</a>
     </nav>
   </main>
 </div>
@@ -330,7 +328,10 @@
       <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
     </nav>
     <div>© 2026 Evgeny Stepanov</div>
-    <p class="tm">NAMper is an independent app with no affiliation to, endorsement by or sponsorship from any equipment manufacturer. All product names, brands and trademarks are the property of their respective owners and are used only to describe the gear a capture was made from.</p>
+    <p class="tm">NAMper es una app independiente, sin afiliación, aprobación ni patrocinio de ningún
+      fabricante de equipos. Todos los nombres de productos, marcas y marcas registradas son
+      propiedad de sus respectivos dueños y se usan únicamente para describir el equipo del que
+      proviene una captura.</p>
   </div>
 </footer>
 
