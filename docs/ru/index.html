@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Документация NAMper</title>
+<meta name="description" content="Как пользоваться NAMper: настройка звука и аудиоинтерфейсов, цепочка сигнала и профили NAM, AU-плагины, четырёхдорожечный лупер, сэмплерные пэды, сетлист и телесуфлёр для текстов песен, MIDI-управление и все настройки.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Документация NAMper">
+<meta property="og:description" content="Каждая ручка — с объяснением. Написано так, чтобы читать с телефона.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/">← NAMPER.ORG</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/">EN</a>
+    <a class="on" href="/docs/ru/" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab">NAMPER · РУКОВОДСТВО</div>
+    <h1>Каждая ручка — с объяснением.</h1>
+    <p class="lede">NAMper превращает iPhone или iPad в полноценный гитарный риг: профили Neural
+      Amp Modeler с настоящих усилителей, педалборд с гибкой коммутацией, твои собственные
+      Audio Unit-плагины, четырёхдорожечный лупер, который сам держит ритм, сэмплерные пэды,
+      бэкинг-треки с телесуфлёром для текстов — и MIDI-управление всем этим сразу.</p>
+
+    <div class="note">
+      <div class="t">О названиях на скриншотах</div>
+      <p>Приложение переведено на русский, но на скриншотах в документации интерфейс английский.
+        Поэтому точные названия кнопок, чипов и пунктов меню приведены здесь по-английски и
+        выделены так: <b class="ui">Feedback guard</b>. Ищи их на скриншоте — расположение
+        элементов в русской версии то же самое.</p>
+    </div>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="quickstart"><span class="n">НАЧНИ ОТСЮДА</span>Пять минут до первого звука</h2>
+      <ol style="--nc:var(--power)">
+        <li>Подключи гитару — через аудиоинтерфейс, если он есть, или просто играй в телефон,
+          надев наушники.</li>
+        <li>Открой вкладку <b>Rig</b> и нажми кнопку <b class="ui g">power</b> в правом верхнем
+          углу. Пока она выключена, звука не будет.</li>
+        <li>Играй. Смотри на индикатор <b class="ui">IN</b> рядом с карточкой усилителя — при
+          сильном ударе по струнам он должен доходить до верхней трети. Если нет — подними
+          <b class="ui">Input trim</b> в настройках.</li>
+        <li>Ткни в пресет на полосе <b class="ui">PRESETS</b>: <b class="ui">Clean</b>,
+          <b class="ui">Crunch</b>, <b class="ui">Lead</b> или <b class="ui">Ambient</b>.</li>
+        <li>Нажми на любой блок в цепочке, чтобы открыть его, а точка под блоком включает и
+          выключает его.</li>
+      </ol>
+      <div class="note tip">
+        <div class="t">Если звука нет вообще</div>
+        <p>На встроенном микрофоне и динамике NAMper глушит выход намеренно, чтобы телефон не
+          завёлся. Подробнее — <a href="/docs/ru/setup.html#feedback-guard">защита от
+          заводки</a>.</p>
+      </div>
+      <figure>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
+             alt="Вкладка Rig с загруженным профилем NAM, цепочкой сигнала и полосой пресетов">
+        <figcaption>Вкладка Rig — карточка усилителя сверху, цепочка сигнала ниже, пресеты справа</figcaption>
+      </figure>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="guide"><span class="n">РУКОВОДСТВО</span>Всё по главам</h2>
+      <div class="hub">
+        <a href="/docs/ru/setup.html" style="--nc:var(--power)">
+          <div class="t">01 · С чего начать</div>
+          <div class="d">Аудиоинтерфейсы, частота дискретизации и буфер, кнопка питания,
+            индикаторы, защита от заводки и где лежат твои файлы.</div>
+        </a>
+        <a href="/docs/ru/rig.html" style="--nc:var(--amp)">
+          <div class="t">02 · Риг и цепочка сигнала</div>
+          <div class="d">Палитра блоков, профили NAM и TONE3000, IR кабинетов, пять моделей
+            эквалайзера, пресеты, несколько ригов, параллельные ветки и мастер-секция.</div>
+        </a>
+        <a href="/docs/ru/plugins.html" style="--nc:var(--pitch)">
+          <div class="t">03 · AU-плагины</div>
+          <div class="d">Как добавить свои Audio Unit-эффекты в цепочку — и как запустить сам
+            NAMper как AUv3-эффект в GarageBand, AUM или Logic.</div>
+        </a>
+        <a href="/docs/ru/looper.html" style="--nc:var(--power)">
+          <div class="t">04 · Лупер</div>
+          <div class="d">Четыре синхронные дорожки, круглые пэды, режим AUTO и привязка к тактам,
+            редактор лупа, отмена, темп и метроном.</div>
+        </a>
+        <a href="/docs/ru/sampler.html" style="--nc:var(--eq)">
+          <div class="t">05 · Сэмплерные пэды</div>
+          <div class="d">Шестнадцать пэдов, четыре заводских набора, загрузка и запись сэмплов,
+            редактор пэда и квантайз триггеров.</div>
+        </a>
+        <a href="/docs/ru/perform.html" style="--nc:var(--cloud)">
+          <div class="t">06 · Сцена и тексты песен</div>
+          <div class="d">Бэкинг-треки, сетлист и секции, маркеры пресетов, телесуфлёр для текстов,
+            многодорожечная запись и экспорт в DAWproject.</div>
+        </a>
+        <a href="/docs/ru/control.html" style="--nc:var(--gate)">
+          <div class="t">07 · MIDI и управление</div>
+          <div class="d">MIDI learn, встроенная карта CC, подключение Bluetooth MIDI, триггеры по
+            выученному звуку и тюнер.</div>
+        </a>
+        <a href="/docs/ru/settings.html" style="--nc:var(--drive)">
+          <div class="t">08 · Справочник настроек</div>
+          <div class="d">Каждая карточка и каждая строка в настройках — со значением по умолчанию
+            и тем, на что она реально влияет.</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="tour"><span class="n">ОРИЕНТИРЫ</span>Пять вкладок</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Вкладка</th><th>Что там живёт</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui a">Rig</b></td><td>Усилитель, цепочка сигнала и пресеты.
+              Единственная вкладка с верхней панелью, поэтому кнопка питания, настройки, тюнер,
+              тональность и метроном находятся именно здесь.</td></tr>
+            <tr><td><b class="ui a">Loop</b></td><td>Четырёхдорожечный лупер.</td></tr>
+            <tr><td><b class="ui a">Sample</b></td><td>Шестнадцать сэмплерных пэдов и их наборы.</td></tr>
+            <tr><td><b class="ui a">Perform</b></td><td>Бэкинг-треки, сетлист, телесуфлёр с текстами
+              песен и твои записи.</td></tr>
+            <tr><td><b class="ui a">Control</b></td><td>MIDI-карта, триггеры по выученному звуку и
+              подключение Bluetooth MIDI.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>На iPad те же пять вкладок стоят сверху, а риг раскладывается от края до края экрана:
+        цепочка сигнала идёт слева направо, полоса пресетов — вдоль правого края.</p>
+      <figure>
+        <img class="wide" src="/docs/assets/ipad.png" width="1200" height="900"
+             alt="NAMper на iPad: риг развёрнут на весь экран, полоса пресетов справа">
+        <figcaption>Тот же риг на iPad</figcaption>
+      </figure>
+      <div class="note">
+        <div class="t">Быстрый тур</div>
+        <p>При первом запуске NAMper проводит восьмишаговый тур с подсветкой прямо по живому
+          интерфейсу. Его можно запустить снова в любой момент: настройки →
+          <b class="ui">PROMPTS</b> → <b class="ui">Replay the quick tour</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="help"><span class="n">ЗАСТРЯЛ?</span>Куда обращаться</h2>
+      <ul style="--nc:var(--drive)">
+        <li>Спроси в <a href="https://t.me/namperapp">сообществе в Telegram</a> — это самый быстрый
+          способ достучаться до других музыкантов и до разработчика.</li>
+        <li>Сообщить об ошибке или предложить функцию можно
+          <a href="https://github.com/retroaktive/namper-support/issues">в трекере задач</a>.</li>
+        <li>Если что-то не так со звуком, настройки → <b class="ui">DIAGNOSTICS</b> →
+          <b class="ui">Share engine log</b> отдаст текстовый лог с маршрутизацией интерфейса и
+          пиками — его удобно приложить к сообщению об ошибке.</li>
+      </ul>
+    </section>
+
+    <nav class="pager">
+      <span class="sp"></span>
+      <a href="/docs/ru/setup.html">01 · С чего начать →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>

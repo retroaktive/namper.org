@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AU-плагины — Документация NAMper</title>
+<meta name="description" content="Как запускать Audio Unit-эффекты внутри цепочки NAMper: встроенный интерфейс плагина, ограничения, как сохраняется состояние плагина — и что умеет сам NAMper в роли AUv3-эффекта в другом приложении.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="AU-плагины — Документация NAMper">
+<meta property="og:description" content="AUv3-эффекты внутри цепочки, состояние плагина и пресеты, а также NAMper как плагин в другом приложении.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/plugins.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/plugins.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/plugins.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/plugins.html">EN</a>
+    <a class="on" href="/docs/ru/plugins.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a class="on" href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU-ПЛАГИНЫ</div>
+    <h1>Чужие плагины.</h1>
+    <p class="lede">NAMper запускает AUv3-эффекты, которые у тебя уже есть, в любом месте цепочки —
+      а сам NAMper появляется как эффект в других приложениях. В обе стороны есть правила, которые
+      лучше узнать до концерта.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#hosting">Как добавить AU-эффект</a></li>
+        <li><a href="#ui">Интерфейс плагина</a></li>
+        <li><a href="#limits">Ограничения, о которых стоит знать</a></li>
+        <li><a href="#state">Настройки и пресеты</a></li>
+        <li><a href="#auv3">NAMper как плагин</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="hosting"><span class="n">03.1</span>Как добавить AU-эффект</h2>
+      <p>Ткни в пунктирный чип <b class="ui">ADD</b> на цепочке — откроется палитра блоков. В самом
+        низу списка, после <b class="ui">Utility</b>, стоит раздел <b class="ui">Plugins</b> с
+        единственным пунктом: подменю <b class="ui">AU Plugins</b>.</p>
+      <p>Открой его — и получишь все Audio Unit-эффекты, установленные на устройстве: имя плагина,
+        рядом производитель, сортировка сначала по производителю, потом по имени. Ничего сканировать
+        и включать не нужно — если какое-то приложение на телефоне несёт в себе AUv3-эффект, он уже
+        в этом подменю.</p>
+      <p>Если подменю пустое, там написано <b class="ui">No Audio Unit effects installed. Apps that
+        ship AUv3 plugins make them appear here.</b> На чистом устройстве это нормально:
+        AUv3-плагины приезжают как обычные приложения из App Store — ставишь приложение, и его
+        плагин оказывается здесь при следующем заходе.</p>
+      <p>Выбери компонент — NAMper создаст блок с уже загруженным плагином и сразу откроет его
+        собственный интерфейс: никакой пустой оболочки, никакого второго шага. На цепочке чип блока
+        называется <b class="ui">AU Plugin</b> и ведёт себя как любой другой блок: точка-индикатор
+        под названием обходит его, перетаскиванием он двигается по цепочке, долгое нажатие даёт
+        <b class="ui">Remove</b>.</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/au-plugin.png" width="600" height="1304"
+             alt="Audio Unit-плагин внутри блока NAMper: сверху строка состояния с именем плагина, ниже колонка обычных слайдеров параметров.">
+        <figcaption>AUDelay от Apple внутри блока NAMper — нарисован обычными слайдерами</figcaption>
+      </figure>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="ui"><span class="n">03.2</span>Интерфейс плагина</h2>
+      <p>Над плагином в шторке блока идёт тонкая строка состояния: песочные часы, пока компонент
+        поднимается, зелёная галка, когда он ожил и пропускает звук, и рядом имя плагина. Под строкой
+        состояния — привычные индикаторы блока <b class="ui">IN</b> и <b class="ui">OUT</b>, так что
+        видно, что подаётся на плагин и что он отдаёт обратно.</p>
+      <p>Грузится не всегда мгновенно. Пока компонент стартует, в шторке написано
+        <b class="ui">Loading the plugin…</b> — тяжёлым плагинам при первом запуске нужна пара
+        секунд, и до готовности сигнал идёт насквозь нетронутым.</p>
+
+      <h3>Замена плагина</h3>
+      <p>Кнопка с круговыми стрелками в шторке — это <b class="ui">Replace plugin</b>. В её меню тот
+        же список компонентов, и выбор другого меняет плагин внутри существующего блока: блок
+        сохраняет своё место в цепочке и состояние обхода. Пригодится, когда нужен другой дилей в том
+        же слоте, а не перекраивать всю цепочку.</p>
+
+      <h3>Когда у плагина нет своего окна</h3>
+      <p>Большинство плагинов рисуют собственный интерфейс, и NAMper встраивает его прямо внутрь —
+        ровно таким, каким его задумал автор. У некоторых окна нет вовсе. Для них NAMper рисует свой
+        простой список — до 24 параметров, каждый подписью и слайдером. Это и видно на скриншоте
+        выше: у AUDelay от Apple нет своей панели, поэтому вместо неё именованные слайдеры.</p>
+      <div class="note">
+        <div class="t">Зачем нужен запасной вариант</div>
+        <p>iOS умеет сама сочинить редактор для плагина без окна, но часть плагинов внутри него
+          падает. NAMper рисует список параметров сам — выглядит скучнее, зато куда больше шансов
+          дожить до конца сета.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="limits"><span class="n">03.3</span>Ограничения, о которых стоит знать</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Ограничение</th><th>Что это значит</th></tr></thead>
+          <tbody>
+            <tr><td>Только эффекты</td>
+                <td>В списке только компоненты-эффекты. AU-инструменты запускать нельзя, так что
+                    синтезатор или драм-машина в подменю не появятся.</td></tr>
+            <tr><td>16 плагинов</td>
+                <td>Шестнадцать плагинов одновременно, счёт общий по всем ригам и всем веткам. На
+                    практике процессор закончится сильно раньше слотов.</td></tr>
+            <tr><td>Стерео</td>
+                <td>Вход и выход плагина работают в стерео, на той частоте дискретизации, на которой
+                    сейчас движок.</td></tr>
+            <tr><td>Только цепочки рига</td>
+                <td>AU-плагины живут в цепочках рига. Секция <b class="ui">MASTER</b> принимает
+                    только собственные блоки NAMper.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Если плагин не смог обработать звук, NAMper оставляет сигнал на этом блоке сухим, а не
+        обрывает его. Гитару ты слышишь дальше, минус один эффект — на сцене это правильное
+        поведение, но оно же значит, что плагин может замолчать без всякой тревоги. Если эффект
+        перестал что-либо делать, посмотри строку состояния в его шторке.</p>
+      <p>Ещё сторонние плагины съедают процессор, который NAMper не может учесть заранее. После
+        добавления следи за чипом <b class="ui">DSP load</b> в шапке вкладки Rig; уйдёт в жёлтый или
+        красный — подними размер буфера в настройках.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="state"><span class="n">03.4</span>Настройки и пресеты</h2>
+      <p>Собственные настройки запущенного плагина — всё, что ты покрутил в его интерфейсе —
+        хранятся вместе с блоком и путешествуют внутри пресета NAMper. Сохрани риг, загрузи его
+        завтра — плагин вернётся ровно таким, каким ты его оставил.</p>
+      <div class="note warn">
+        <div class="t">Закрой шторку до того, как сохранять</div>
+        <p>Состояние плагина снимается в момент, когда ты <b>закрываешь шторку блока</b>. Покрутишь
+          плагин, оставишь его шторку открытой, сохранишь пресет из-за неё — в пресет уйдёт
+          состояние до твоих правок. Заведи привычку: сначала закрыть шторку плагина, потом
+          сохранять.</p>
+      </div>
+      <p>То же самое касается глобальных снимков и отправки пресета кому-то ещё — в файл уходит то,
+        что было снято при последнем закрытии шторки. И учти: пресет несёт <em>настройки</em>
+        плагина, а не сам плагин — у того, кто его откроет, должен быть установлен тот же
+        Audio Unit.</p>
+      <p>И ещё одно: <b class="ui">Replace plugin</b> стирает сохранённое состояние. Настройки
+        принадлежали старому компоненту и для нового ничего не значат, так что после замены ты
+        начинаешь со значений по умолчанию нового плагина.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="auv3"><span class="n">03.5</span>NAMper как плагин</h2>
+      <p>NAMper выходит и как AUv3-эффект: его можно загрузить в GarageBand, AUM, Logic или любой
+        другой AUv3-хост и записать там на дорожку. В браузере плагинов хоста он выглядит так:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Поле</th><th>Значение</th></tr></thead>
+          <tbody>
+            <tr><td>Имя</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>Производитель</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>Описание</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>Тип</td><td>Аудиоэффект — не инструмент</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>На вход он берёт стерео и отдаёт стерео, но два входных канала внутри складываются в моно:
+        гитарный моновход, идущий в усилитель. Так сделано намеренно, и это именно то, что нужно для
+        гитары по DI на моно-дорожке.</p>
+
+      <h3>Восемнадцать параметров</h3>
+      <p>Собственная панель плагина — маленькая фирменная полоска с надписями
+        <b class="ui">NAMper</b> и <b class="ui">Amp &amp; FX chain — tweak the parameters in the
+        host</b>. Все настоящие ручки — это параметры, автоматизируемые из хоста, и их
+        восемнадцать:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Блок</th><th>Параметры</th></tr></thead>
+          <tbody>
+            <tr><td>Гейт</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
+            <tr><td>Компрессор</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
+              <b class="ui">Comp Ratio</b></td></tr>
+            <tr><td>Драйв</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
+              <b class="ui">Drive Level</b></td></tr>
+            <tr><td>Тембр</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
+              <b class="ui">Treble</b></td></tr>
+            <tr><td>Дилей</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
+              <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
+            <tr><td>Реверб</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
+              <b class="ui">Reverb Mix</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Каждый из них автоматизируется из хоста. Параметры включения — это дробные числа от 0 до 1,
+        поэтому большинство хостов рисует их слайдерами, а не переключателями: всё, что на середине
+        и выше, считается включённым. Хосту отдаются и три заводских пресета:
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b> и <b class="ui">Lead</b>.</p>
+
+      <div class="note warn">
+        <div class="t">Чего в плагине нет</div>
+        <p>Ни профиля NAM. Ни IR кабинета. Ни модуляционных блоков. Ни самого документа рига — хост
+          сохраняет те самые 18 значений параметров и ничего больше, так что риг, собранный в
+          приложении, в плагин не переезжает. MIDI-входа в версии-плагине тоже нет.</p>
+      </div>
+      <p>Скажем честно: внутри хоста NAMper — компактный канал «усилитель плюс эффекты», а не всё
+        приложение целиком. Нужны твои профили NAM, кабинеты, лупер или сетлист — запускай само
+        приложение и пиши из него.</p>
+      <div class="note tip">
+        <div class="t">Работа в обе стороны</div>
+        <p>Можно запустить полное приложение и увести его выход в DAW, а можно взять плагин ради
+          быстрого гитарного канала на дорожке, которую ты и так пишешь в хосте. Для первого пути и
+          существуют запись на вкладке Perform и её экспорт в DAWproject — см.
+          <a href="/docs/ru/perform.html">Сцена и тексты песен</a>.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/rig.html">← 02 · Риг и цепочка сигнала</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/looper.html">04 · Лупер →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>

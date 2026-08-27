@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>С чего начать — Документация NAMper</title>
+<meta name="description" content="Подключаемся: аудиоинтерфейсы, частота дискретизации и размер буфера, кнопка питания, индикаторы входа и выхода, защита от заводки и где NAMper хранит твои файлы.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="С чего начать — Документация NAMper">
+<meta property="og:description" content="Аудиоинтерфейсы, частота дискретизации и буфер, кнопка питания, индикаторы и защита от заводки.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/setup.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/setup.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/setup.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/setup.html">EN</a>
+    <a class="on" href="/docs/ru/setup.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a class="on" href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">01 · С ЧЕГО НАЧАТЬ</div>
+    <h1>Подключаемся.</h1>
+    <p class="lede">Всё, что происходит между гитарой и первым звуком: как NAMper подхватывает
+      твоё железо, что делает кнопка питания, как читать индикаторы и почему приложение иногда
+      глушит себя намеренно.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#power">Кнопка питания</a></li>
+        <li><a href="#interfaces">Аудиоинтерфейсы</a></li>
+        <li><a href="#meters">Индикаторы и уровни</a></li>
+        <li><a href="#rate">Частота дискретизации и буфер</a></li>
+        <li><a href="#feedback-guard">Защита от заводки</a></li>
+        <li><a href="#permissions">Разрешения</a></li>
+        <li><a href="#files">Где лежат твои файлы</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="power"><span class="n">01.1</span>Кнопка питания</h2>
+      <p>Зелёная кнопка питания в правом верхнем углу вкладки <b class="ui a">Rig</b> запускает и
+        останавливает аудиодвижок. Пока она выключена, ничего не обрабатывается и ничего не звучит —
+        индикаторы стоят на месте, а запись отказывается стартовать с сообщением
+        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <p>Когда движок остановлен, кнопка тусклая; когда работает — зелёная и светится. Чип
+        <b class="ui">DSP load</b> рядом показывает, насколько загружен процессор: зелёный до 60 %,
+        янтарный до 85 %, красный выше. Если он держится в красном — убери блок из цепочки или
+        подними размер буфера на шаг.</p>
+      <p>Доступ к микрофону NAMper просит при первом запуске движка, а не при старте приложения.</p>
+      <div class="note warn">
+        <div class="t">Если выдернуть кабель</div>
+        <p>Отключение наушников или интерфейса <b>останавливает движок</b> — намеренно, чтобы
+          громкий риг никогда сам не выпрыгнул в динамик телефона. Подключился обратно — нажми
+          питание ещё раз. Если воткнуть что-то новое, движок пересоберётся автоматически.</p>
+      </div>
+      <p>Если движок не стартует, в баннере будет <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> Закрой то, что держит интерфейс, и
+        попробуй снова.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="interfaces"><span class="n">01.2</span>Аудиоинтерфейсы</h2>
+      <p>Выбора устройства в приложении нет. NAMper идёт за тем маршрутом, который сейчас использует
+        iOS, поэтому железо ты выбираешь как обычно — воткнул интерфейс, и приложение пересобралось
+        вокруг него. Многоканальные интерфейсы поддерживаются, до восьми входных каналов.</p>
+      <p>Настройки → <b class="ui">AUDIO INTERFACE</b> показывают, что NAMper реально получил:
+        <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b> и
+        <b class="ui">Engine</b> (<b class="ui">running</b> или <b class="ui">stopped</b>). Если
+        каналов не столько, сколько ты ждал, — смотреть надо именно сюда.</p>
+
+      <h3>Имена каналов</h3>
+      <p>Настройки → <b class="ui">CHANNEL NAMES</b> дают каждому входу текстовое поле с подсказкой
+        <b class="ui">Guitar, Vocal…</b>. Назови их один раз — и эти имена появятся во всех списках
+        входов в приложении: входы ригов, источники дорожек лупера, строки подстройки входа. Каналы
+        без имени так и остаются <b class="ui">In 1</b>, <b class="ui">In 2</b> и так далее.</p>
+
+      <h3>Несколько выходов</h3>
+      <p>Настройки → <b class="ui">Use all interface outputs</b> по умолчанию выключены, и стереоустройствам
+        они не нужны. Включи — и NAMper откроет все пары выходов на интерфейсе, так что риг,
+        параллельная ветка, дорожка лупера или клик метронома смогут получить каждый свою пару:
+        гитару — на пульт, клик — в ушные мониторы барабанщика.</p>
+      <div class="note">
+        <div class="t">Входные каналы</div>
+        <p><b class="ui">Input channels</b> обычно стоит оставить на <b class="ui">Auto</b>. Задавай
+          число вручную, только если интерфейс сообщает больше каналов, чем ты хочешь отдать
+          NAMper.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="meters"><span class="n">01.3</span>Индикаторы и уровни</h2>
+      <p>По бокам от карточки усилителя на вкладке Rig стоят две вертикальные полосы:
+        <b class="ui">IN</b> слева, <b class="ui">OUT</b> справа. Обе идут от −60 dBFS внизу до 0
+        наверху, от зелёного через янтарный к красному. Отдельной лампы клиппинга нет — клиппинг
+        это и есть полоса, дошедшая до красного на самом верху.</p>
+
+      <h3>Как выставить уровень входа</h3>
+      <ol style="--nc:var(--eq)">
+        <li>Включи звук и сыграй так сильно, как вообще играешь.</li>
+        <li>Индикатор <b class="ui">IN</b> должен доходить до верхней трети и не залезать в красное.</li>
+        <li>Если на интерфейсе есть ручка гейна — крути её. Если нет, открой настройки →
+          <b class="ui">Input trim</b> и подними слайдер нужного канала: он идёт от −12 dB до
+          +24 dB шагами по 1 dB, начиная с 0.</li>
+      </ol>
+      <p>Индикатор <b class="ui">IN</b> показывает уровень <em>после</em> подстройки, так что ты
+        видишь ровно то, что приходит на модель усилителя.</p>
+
+      <h3>Мастер-секция</h3>
+      <p>Внизу вкладки Rig карточка <b class="ui">MASTER</b> — там все риги, лупер, сэмплер и
+        бэкинг-трек сходятся вместе перед выходом на железо. На ней стереополосы пиков
+        <b class="ui">L</b> и <b class="ui">R</b> с метками на −12 и −6 dB и вещательный замер
+        громкости в <b class="ui">LUFS</b>: крупное число — мгновенная громкость, мелкая строка
+        добавляет краткосрочную. В тишине показывает <b class="ui">-inf</b>. Фейдер под ними идёт
+        от −60 до +12 dB.</p>
+      <p>У каждого редактора блока есть свои маленькие индикаторы <b class="ui">IN</b> и
+        <b class="ui">OUT</b> — самый быстрый способ найти блок, который перегружает.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="rate"><span class="n">01.4</span>Частота дискретизации и буфер</h2>
+      <p>Оба параметра живут в настройках → <b class="ui">AUDIO INTERFACE</b>, и оба запоминаются
+        отдельно для каждого аудиомаршрута — у интерфейса и у наушников могут быть свои значения.</p>
+
+      <h3>Частота дискретизации</h3>
+      <p>Чипы: <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
+        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> и
+        <b class="ui">192k</b>. По умолчанию стоит <b class="ui">Auto</b> — он просто идёт за
+        интерфейсом; смена частоты перезапускает движок.</p>
+      <p>На встроенных микрофоне и динамике доступны только <b class="ui">Auto</b> и
+        <b class="ui">48k</b>, с припиской
+        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
+        rates.</b> С подключённым интерфейсом список полный — минус те частоты, от которых этот
+        конкретный интерфейс уже отказался: NAMper их запоминает и больше не предлагает.</p>
+      <p>Если частоту не приняли, приложение возвращается к предыдущей и говорит об этом красным:
+        <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+      <div class="note tip">
+        <div class="t">Какую частоту выбрать</div>
+        <p>Выше — не значит автоматически лучше: это съедает запас по процессору, а профили NAM
+          снимаются на обычных частотах. Оставь <b class="ui">Auto</b>, если только ты не
+          подстраиваешься под сессию с конкретной частотой.</p>
+      </div>
+
+      <h3>Размер буфера</h3>
+      <p><b class="ui">Buffer</b> предлагает <b class="ui">64</b>, <b class="ui">128</b>,
+        <b class="ui">256</b> и <b class="ui">512</b> сэмплов и тут же показывает, какая при этом
+        получается задержка. По умолчанию — <b class="ui">128</b>. Совет самого приложения точный:
+        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
+        one step.</b></p>
+      <p>Это единственная регулировка задержки в NAMper — отдельной настройки латентности нет.</p>
+      <div class="note warn">
+        <div class="t">Выход по Bluetooth</div>
+        <p>Bluetooth-наушники и колонки добавляют примерно 0,2 с задержки — играть невозможно.
+          Приложение предупреждает, когда видит Bluetooth-маршрут. Для живой игры бери проводной
+          выход.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="feedback-guard"><span class="n">01.5</span>Защита от заводки</h2>
+      <p>Гитарное приложение с открытым микрофоном телефона и играющим динамиком телефона — это
+        готовая петля обратной связи. Поэтому NAMper следит именно за такой комбинацией: вход со
+        встроенного микрофона, выход на встроенный динамик или разговорный, — и глушит выход раньше,
+        чем всё это взвоет.</p>
+      <figure>
+        <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
+             alt="Баннер: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. С кнопкой Unmute.">
+        <figcaption>Баннер, который появляется, когда защита срабатывает</figcaption>
+      </figure>
+      <p>При срабатывании ты увидишь <b class="ui r">Output muted to stop feedback (mic → speaker).
+        Connect an interface or headphones.</b> Глушится только слышимый выход — тюнер,
+        индикаторы входа и запись продолжают работать, так что настроиться и записать дубль ты
+        по-прежнему можешь.</p>
+      <p>Подключи наушники или интерфейс — и глушение снимется само. Крестик на баннере только
+        прячет сообщение до конца сессии, звук он не возвращает.</p>
+      <div class="note warn">
+        <div class="t">Что на самом деле делает «Unmute»</div>
+        <p>Кнопка <b class="ui">Unmute</b> — это не разовое исключение: она выключает защиту от
+          заводки <b>насовсем</b>, ровно так же, как если бы ты выключил
+          <b class="ui">Feedback guard</b> в настройках. Она останется выключенной и при всех
+          следующих запусках, пока ты не включишь её обратно там же. Пользуйся, если понимаешь, что
+          делаешь (играешь тихо в динамик или мониторишь то, что завестись не может); в остальных
+          случаях лучше взять наушники.</p>
+      </div>
+      <p>Сам переключатель — настройки → <b class="ui">AUDIO INTERFACE</b> →
+        <b class="ui">Feedback guard</b>, с подписью
+        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> По
+        умолчанию включён.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="permissions"><span class="n">01.6</span>Разрешения</h2>
+      <p>NAMper просит ровно две вещи — и только тогда, когда они действительно нужны.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Разрешение</th><th>Когда</th><th>Зачем</th></tr></thead>
+          <tbody>
+            <tr><td>Микрофон</td><td>При первом нажатии кнопки питания</td>
+                <td>Чтобы слышать гитару или микрофон. В запросе сказано прямо: звук никогда не
+                    покидает твоё устройство.</td></tr>
+            <tr><td>Bluetooth</td><td>При первом подключении беспроводной MIDI-педали</td>
+                <td>Чтобы находить и подключать Bluetooth MIDI-контроллеры.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Если доступ к микрофону выключен, появится красный баннер
+        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> с кнопкой
+        <b class="ui">Settings</b>, которая ведёт прямо в нужную настройку iOS. Выдай доступ — и
+        движок пересоберётся без перезапуска приложения.</p>
+      <p>Никакой аналитики, никакого трекинга, никаких аккаунтов и никакого доступа к камере, фото,
+        геопозиции или контактам. NAMper не собирает ничего.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="files"><span class="n">01.7</span>Где лежат твои файлы</h2>
+      <p>Всё, что хранит NAMper, видно в приложении Files по пути
+        <b class="ui">On My iPhone → NAMper</b> (или <b class="ui">On My iPad</b>). Через Files можно
+        копировать файлы туда и обратно, забэкапить папку или перенести её на компьютер.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Папка</th><th>Что внутри</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">tones/</b></td><td>Профили усилителей NAM (<b class="ui">.nam</b>) вместе
+              с обложками и метаданными</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>Импульсы (IR), которые ты импортировал</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>Сэмплерные пэды, а сохранённые наборы — в
+              <b class="ui">samples/kits/</b></td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>Бэкинг-треки, сетлист, тексты песен и маркеры
+              пресетов</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>Твои концертные записи</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>Пресеты ригов, а также пресеты лупера, сэмплера,
+              сетлиста и управления</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>Текстовый лог маршрутизации интерфейса и пиков —
+              пригодится в сообщении об ошибке</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <div class="t">Приём, который стоит знать</div>
+        <p>Аудиофайлы, которые ты кладёшь прямо в <b class="ui">backing/</b> через Files, попадают в
+          сетлист при следующем открытии NAMper. Так целый сет заливается одним копипастом на
+          компьютере, а не двадцатью нажатиями на телефоне.</p>
+      </div>
+      <p>Две вещи работают не так, как можно было бы подумать: файлы нельзя перетащить на иконку
+        приложения или в окно — любой импорт идёт через файловый пикер внутри NAMper, — и папка
+        <b class="ui">tones/</b> намеренно исключена из бэкапа в iCloud, потому что TONE3000
+        скачает эти профили заново.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/">← Все разделы</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/rig.html">02 · Риг и цепочка сигнала →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>
