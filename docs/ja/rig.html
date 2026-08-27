@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リグとシグナルチェーン — NAMper ドキュメント</title>
+<meta name="description" content="リグを組み立てる: ブロックパレット、5種類のEQモデル、NAMアンププロファイルとTONE3000、キャビIR、プリセットとMIDI PCスロット、複数のリグ、パラレルブランチ、マスターセクションについて。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="リグとシグナルチェーン — NAMper ドキュメント">
+<meta property="og:description" content="ブロック、EQモデル、NAMプロファイル、TONE3000、キャビIR、プリセット、複数のリグ、パラレルブランチ、マスターセクションについて。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/rig.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/rig.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/rig.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/rig.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/rig.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/rig.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/rig.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/rig.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/rig.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/rig.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/rig.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/rig.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/rig.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/rig.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/rig.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/rig.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/rig.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/rig.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a class="on" href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; SIGNAL CHAIN</div>
+    <h1>サウンドを組み立てる。</h1>
+    <p class="lede"><b class="ui a">Rig</b>タブは、あなたのシグナルチェーンが存在する場所です:
+      追加してドラッグできるブロック、その中心にあるNAMアンププロファイル、その後段のキャビ
+      インパルスレスポンス、そしてすべてが合流するマスターセクション。このページでは、
+      最大4つのリグ、その各リグの中にある最大4本のパラレルチェーン、それらをまとめて呼び出す
+      プリセットまで、すべてを扱います。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#blocks">ブロックパレット</a></li>
+        <li><a href="#models">ブロック内のモデル</a></li>
+        <li><a href="#eq">5種類のEQモデル</a></li>
+        <li><a href="#nam">NAMアンププロファイル</a></li>
+        <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#cabs">キャビとIR</a></li>
+        <li><a href="#presets">プリセット</a></li>
+        <li><a href="#rigs">複数のリグ</a></li>
+        <li><a href="#branches">パラレルブランチ</a></li>
+        <li><a href="#master">マスターセクション</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="blocks"><span class="n">02.1</span>ブロックパレット</h2>
+      <p>チェーンは空の状態から始まり、あなたが埋めていきます。チェーン末尾の破線の
+        <b class="ui">ADD</b>チップをタップするとパレットが開き、セクションごとに
+        分類されています。ブロックを選ぶとその位置にチェーンへ追加され、すぐに
+        エディタが開くので、手を触れていないチップではなくつまみに直接たどり着けます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>セクション</th><th>ブロック</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
+            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
+            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
+            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
+            <tr><td><b class="ui">Plugins</b></td><td><b class="ui">AU Plugins</b>サブメニュー</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>同じブロックを2つ追加することも問題ありません。重複したブロックは追加された順に
+        番号が振られ — <b class="ui">GATE 1</b>、<b class="ui">GATE 2</b> — チップ上の
+        ブロック名は常に大文字で表示されます。ドライブを2つ連続で置いたり、ゲートを
+        先頭とアンプの後の両方に置いたりしても構いません。</p>
+
+      <h3>ブロックを操作する</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>操作</th><th>方法</th></tr></thead>
+          <tbody>
+            <tr><td>バイパス</td><td>チップのブロック名の下にある小さなLEDドットをタップします。
+              これは曲の途中で操作するコントロールなので、タップ領域はあえて大きく
+              作られています。ブロックシート内のフットスイッチも同じ動作をし、
+              長押し → <b class="ui">Enable</b> / <b class="ui">Bypass</b>でも同様です</td></tr>
+            <tr><td>エディタを開く</td><td>ブロックのチップをタップ</td></tr>
+            <tr><td>並べ替え</td><td>チップをチェーンに沿ってドラッグするか、長押し →
+              <b class="ui">Move left</b> / <b class="ui">Move right</b>。並べ替えは
+              1本のチェーン内でのみ有効</td></tr>
+            <tr><td>削除</td><td>長押し → <b class="ui">Remove</b></td></tr>
+            <tr><td>つまみをリセット</td><td>ダブルタップ</td></tr>
+            <tr><td>コントロールをMIDIラーン</td><td>任意のつまみやチップの行を長押し →
+              <b class="ui">MIDI Learn “&lt;label&gt;”</b>。コントロールの輪郭が表示され、
+              <b class="ui">MOVE A MIDI CONTROL…</b>と出ます。<b class="ui">Cancel learn</b>
+              で取り消せます</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>固有のパラメーターを持たないブロックは、開いたときにそのことをはっきり示します:
+        <b class="ui">Nothing to tweak here</b>。これはブロックが正常に動作している
+        状態であり、読み込み中の表示ではありません。</p>
+      <div class="note warn">
+        <div class="t">複製機能はありません</div>
+        <p>NAMperにはブロックのコピーや複製機能がどこにもありません。同じ設定の
+          ブロックをもう1つ用意したい場合は、新しいブロックを追加して調整し直して
+          ください。チェーン全体を使い回したい場合は、プリセットとして保存し、
+          次のリグをそのプリセットから組み立ててください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="models"><span class="n">02.2</span>ブロック内のモデル</h2>
+      <p>いくつかのブロックは、1つのチップの裏に一連のペダルや回路群を持っています。ブロックを
+        開くと、上部に並ぶチップの行でその中の1つを選べます — つまみは共通のまま、
+        キャラクターだけが変わります。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>ブロック</th><th>チップの行</th><th>選択肢</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
+            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · サイドチェイン
+                <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
+            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
+                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
+            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
+              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · 同期
+                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · 同期 <b class="ui">OFF</b>,
+                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
+              <td><b class="ui">Studio</b>, <b class="ui">Small</b>, <b class="ui">Chamber</b>, <b class="ui">Large</b></td></tr>
+            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Speed</b></td>
+              <td><b class="ui">Slow</b>, <b class="ui">Fast</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voices</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
+            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Listen</b></td>
+              <td>12種類の音名に加えて<b class="ui">AUTO</b>と<b class="ui">TRACK</b> ·
+                <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>,
+                <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> ·
+                <b class="ui">OWN</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
+              <td>同じ音名のリストに加えて<b class="ui">CHROM</b>と<b class="ui">SET</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b class="ui">Tube Amp</b>ブロックはNAMper独自のアンプシミュレーションで、想像通りの
+        つまみが揃っています: <b class="ui">Gain</b>、<b class="ui">Bass</b>、<b class="ui">Mid</b>、
+        <b class="ui">Treble</b>、<b class="ui">Presence</b>、<b class="ui">Master</b>で、
+        すべて0〜10の範囲、5がフラットです。ダウンロードもアカウントも不要なため、
+        オフライン時にステージを支えてくれる存在です。</p>
+      <div class="note tip">
+        <div class="t">他のリグを聴くハーモニー</div>
+        <p>Harmonyの<b class="ui">Listen</b>行はルーティングコントロールではなく、
+          ハーモナイザーがコードを取得する元を指定するものです。<b class="ui">OWN</b>のままにすれば
+          自分自身のチェーン内の信号に追従します。<b class="ui">RIG 1</b>…<b class="ui">RIG 4</b>を
+          指定すれば、ギターリグの演奏に合わせてボーカルラインをハーモナイズできます。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="eq"><span class="n">02.3</span>5種類のEQモデル</h2>
+      <p><b class="ui">EQ</b>ブロックは1つですが、その中に5つのまったく異なるイコライザーが
+        入っています。モデルを切り替えるとサウンドだけでなくつまみのセットも変わるため、
+        目的に合ったものを選んでください — 手早いトーン調整、ピンポイントなカット、
+        マスタリングスタイルのシェルフなど。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>モデル</th><th>概要</th><th>つまみ</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tone</b></td>
+              <td>クラシックな3バンド — 100 Hzのローシェルフ、800 Hzのピーク、3 kHzの
+                ハイシェルフ。旧来の3バンドEQと同じフィルターなので、古いリグの音は
+                変わりません。</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>、それぞれ±12 dB</td></tr>
+            <tr><td><b class="ui">Para</b></td>
+              <td>フルパラメトリック — 同じ3バンド構成ですが、すべての周波数が可変で、
+                ミッドにはQコントロールが付きます。</td>
+              <td><b class="ui">Low</b>, <b class="ui">Mid</b>, <b class="ui">High</b>,
+                <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
+                <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">Passive</b></td>
+              <td>クラシックなパッシブ・プログラムEQの手法: ローシェルフのブーストと
+                それよりやや高い位置のカットシェルフを組み合わせ、ブーストとアッテネートを
+                同時にかけてタイトな低音を作ります — さらにワイドなハイベルと
+                ハイシェルフのカットが加わります。</td>
+              <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
+                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Width</b>,
+                <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
+            <tr><td><b class="ui">Console</b></td>
+              <td>英国コンソールのチャンネルストリップ — 12 dB/オクターブのハイパス
+                (0でオフ)、LFシェルフ、Q付きの低域寄りミッドベル、HFシェルフ。</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">Low</b>, <b class="ui">Lo Freq</b>,
+                <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
+                <b class="ui">High</b>, <b class="ui">Hi Freq</b></td></tr>
+            <tr><td><b class="ui">Bax</b></td>
+              <td>バクサンダル型 — 非常にワイドで非常になだらかな2つのシェルフ。サウンド
+                全体を少し暗く、あるいは少し明るくしたいときに手を伸ばすモデルです。</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure>
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+             alt="The EQ block sheet with the Passive model selected, showing its eight knobs: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten and Atten Hz, with IN and OUT meters at the top.">
+        <figcaption>Passiveモデルを選んだEQブロック</figcaption>
+      </figure>
+      <p>このブロックを含め、すべてのブロックシートには横向きの<b class="ui">IN</b>・
+        <b class="ui">OUT</b>メーターが付いています。EQでは特に注目する価値があります:
+        3バンドそれぞれの数デシベルのブーストはすぐに積み重なるため、次のブロックに
+        意図した以上の信号が入っていないか、メーターで確認できます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="nam"><span class="n">02.4</span>NAMアンププロファイル</h2>
+      <p><b class="ui">Amp &amp; Cab</b>には性質の異なる2つのブロックがあり、その違いを
+        はっきりさせておく価値があります。<b class="ui">Tube Amp</b>はNAMper独自の
+        アンプシミュレーションで、上記の7モデルを持ちます。<b class="ui">Amp</b>は
+        Neural Amp Modelerのプレーヤーで、実機アンプの<b class="ui">.nam</b>キャプチャを
+        読み込んで再生します。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
+             alt="The Rig tab with a NAM profile loaded: cover art, tone title and author on the amp card, vertical IN and OUT meters either side of it, and the signal chain of blocks below.">
+        <figcaption>NAMプロファイルを読み込んだアンプカード</figcaption>
+      </figure>
+
+      <h3>アンプカード</h3>
+      <p>Rigタブの上部、<b class="ui">IN</b>と<b class="ui">OUT</b>メーターの間にある
+        アンプカードには、現在<b class="ui">Amp</b>ブロックが再生しているものが表示されます:
+        カバーアート、トーンのタイトル、<b class="ui">@author</b>、最大6個のメタデータ
+        チップ、ダウンロード数、<b class="ui">Browse TONE3000</b>ボタン、本のアイコン
+        (<b class="ui">Open NAM library</b>)。何も読み込まれていない場合は
+        <b class="ui">Built-in tube amp</b>と表示されます。リグに複数のアンプがある場合は、
+        <b class="ui">AMP 1</b>、<b class="ui">AMP 2</b>などのチップでカードが編集する
+        対象を選べます。</p>
+
+      <h3>InputとOutput</h3>
+      <p><b class="ui">Amp</b>ブロックのシートはあえて簡潔です: プロファイルのタイトル
+        (または<b class="ui">No model loaded</b>)、<b class="ui">Browse TONE3000</b>ボタン、
+        そして2つのつまみ。<b class="ui">Input</b>と<b class="ui">Output</b>はどちらも
+        −20から+20 dBの範囲で、初期値は0です。Inputはキャプチャをより強く押し込み、
+        プロファイルから得られるブレイクアップの量を左右します。Outputはその結果を
+        後段で調整します。</p>
+      <p>NAMの出力は、モデル内のラウドネスメタデータを使って自動的に−18 dBのターゲットへ
+        正規化されます。そのため、プロファイルを切り替えてもレベルが大きく変動することは
+        なく、これはコントロールとして表には出ていません。</p>
+      <div class="note">
+        <div class="t">NAMアンプはモノラルです</div>
+        <p>NAMキャプチャはモノラルデバイスです — ステレオ信号が<b class="ui">Amp</b>ブロックに
+          届くと、入る前にサミングされます。ステレオエフェクトはアンプの前ではなく
+          後段に置いてください。</p>
+      </div>
+
+      <h3>プロファイルを読み込む3つの方法</h3>
+      <ol style="--nc:var(--amp)">
+        <li><b class="ui">Browse TONE3000</b> — オンラインライブラリ。次のセクションで
+          扱います。</li>
+        <li>本のアイコン。<b class="ui">NAM Profiles</b>という名前のシートが開きます。任意の
+          行をタップすると、現在のアンプに読み込まれます。</li>
+        <li>ファクトリープリセットは自身のプロファイルを解決するので、<b class="ui">Crunch</b>を
+          読み込むとそのアンプも一緒に読み込まれます。</li>
+      </ol>
+      <p><b class="ui">NAM Profiles</b>シートはあなたのローカルライブラリです。空の状態では
+        <b class="ui">Profiles you download from TONE3000 collect here.</b>と表示されます。
+        ツールバーメニューには<b class="ui">Import .nam files…</b>(複数選択可能な、
+        <b class="ui">.nam</b>ファイルのみを受け付けるファイルピッカー)、
+        <b class="ui">Export all (N files)</b>、<b class="ui">Update all</b>があります。
+        各行には<b class="ui">Share .nam file</b>、<b class="ui">Delete</b>、更新ボタン
+        (<b class="ui">Refresh from TONE3000</b>)が付いています。</p>
+      <p>モデルが読み込めない場合は<b class="ui r">Could not load amp model
+        {filename}.</b>と表示されます — たいていは、ファイルがリグの管理下から移動または
+        削除されたことが原因です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
+      <p>TONE3000はアンプキャプチャの無料ライブラリで、NAMperはそこから直接取得します。
+        アプリ内ブラウズ画面はなく、<b class="ui">Browse TONE3000</b>はtone3000.comを
+        セキュアなWebシート内で開きます。検索やフィルタリングはWebサイト自体で行い、
+        トーンを選ぶとあとはアプリが処理します — 取得中はボタンが<b class="ui">Loading…</b>と
+        表示され、無効化されます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
+             alt="The Connect TONE3000 sheet over the Rig tab, offering Sign in to TONE3000 and Play offline buttons with a Don't ask again toggle.">
+        <figcaption>サインインの案内。サインアウト状態では起動ごとに1回表示されます</figcaption>
+      </figure>
+      <p>サインインは通常のWebサインインであり、APIキーを貼り付ける方式ではありません。
+        ブラウザですでにtone3000.comにログイン済みであれば、アプリはそのセッションを
+        再利用します。ライブラリはサーバー側でA2アーキテクチャのNAMキャプチャ
+        (アンプ、フルリグ、ペダル)のみに絞り込まれており、これは固定で変更できる
+        設定ではありません。</p>
+      <p>トーンを選ぶと、そのトーンの最初のモデルがダウンロードされます — モデルの
+        選択画面はありません — カバーアートとメタデータも一緒に取得されます。すべては
+        アプリの<b class="ui">tones/</b>フォルダに保存され、<b class="ui">NAM Profiles</b>
+        シートに表示されます。</p>
+
+      <h3>サインインの案内</h3>
+      <p><b class="ui">Connect TONE3000</b>という名前のシートが、サインアウト状態の間は
+        起動ごとに1回表示され、ファクトリープリセットが無料ライブラリから実機アンプ
+        キャプチャをストリーミングしていることを説明します。<b class="ui">Sign in to
+        TONE3000</b>と<b class="ui">Play offline</b>のボタンがあり、
+        <b class="ui">Don't ask again</b>トグルも付いています。設定 →
+        <b class="ui">PROMPTS</b> → <b class="ui">Offer TONE3000 sign-in on launch</b>から
+        恒久的に非表示にすることもできます。</p>
+
+      <h3>オフラインで演奏する</h3>
+      <p>すでにダウンロード済みのものは、ネットワークがまったくなくても動作し続けます。
+        プロファイルがキャッシュされていないファクトリーリグは、バイパスされた内蔵の
+        <b class="ui">Tube Amp</b>とバンドルされたキャビにフォールバックし、ヘッダーには
+        <b class="ui">Built-in tube amp</b>と表示されるので、何を聴いているかがわかります。
+        後からサインインすれば、そのリグはその場で実際のキャプチャに解決されます —
+        何かを組み直す必要はありません。</p>
+      <div class="note warn">
+        <div class="t">サインアウトはありません</div>
+        <p>NAMperにはTONE3000のサインアウトボタンがありません。一度セッションが
+          確立されると、それを消す唯一の方法はアプリを削除することです。借り物の
+          端末でサインインする前に知っておく価値があります。</p>
+      </div>
+      <p>問題が起きた場合、アプリは次の4種類のうちどれかを表示します:
+        <b class="ui r">TONE3000: sign in to load %@.</b>、
+        <b class="ui r">TONE3000: the server had a problem (HTTP %lld) — try again later.</b>、
+        <b class="ui r">TONE3000: unexpected reply for %@.</b>、
+        <b class="ui r">TONE3000: no connection — check the network.</b></p>
+      <div class="note tip">
+        <div class="t">ダウンロードとバックアップ</div>
+        <p><b class="ui">tones/</b>フォルダはあえてiCloudバックアップの対象外に
+          なっています — バックアップからの復元では、ダウンロード済みのプロファイルは
+          戻ってきません。TONE3000から再取得できるためです。特定のキャプチャが
+          重要な場合は、<b class="ui">NAM Profiles</b>シートからエクスポートしてファイルを
+          保管してください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="cabs"><span class="n">02.6</span>キャビとIR</h2>
+      <p><b class="ui">Cab</b>ブロックはインパルスレスポンス — マイクで収録したスピーカー
+        キャビネット — を再生します。そのシートには現在のIR名、<b class="ui">Cabinets</b>と
+        表示されたメニューボタン、<b class="ui">Load file</b>ボタン、そして1つのつまみ
+        <b class="ui">Level</b>(−12から+12 dB)があります。IRが読み込まれると、隣に
+        <b class="ui">Clear IR</b>ボタンが現れます。</p>
+      <p><b class="ui">Load file</b>は<b class="ui">.wav</b>などのオーディオファイル用の
+        ファイルピッカーを開きます。選んだファイルはアプリの<b class="ui">irs/</b>フォルダに
+        コピーされるため、元のファイルを削除しても引き続き使用できます。同じブロックを
+        <b class="ui">IR Verb</b>として使う場合は、メニューの名前が<b class="ui">Spaces</b>に
+        変わり、キャビネットではなくリバーブのインパルスを読み込みます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>メニュー</th><th>内蔵インパルスレスポンス</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Cabinets</b></td>
+              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+                <b class="ui">Greenback 412 SM57 - Nacho</b>,
+                <b class="ui">Greenback 412 e606 - Pesto</b>,
+                <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
+                <b class="ui">V30 412 SM57 - Cookie Monster</b>,
+                <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
+            <tr><td><b class="ui">Spaces</b></td>
+              <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
+                <b class="ui">Plate 1.6s</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <div class="t">すべてのアンプにキャビが必要なわけではありません</div>
+        <p>空の<b class="ui">Cab</b>ブロックは、なぜ空のままでよいのかを教えてくれます:
+          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>。
+          TONE3000のキャプチャの多くはスピーカー出力から収録されており、キャビとマイクを
+          すでに含んでいます。そこにさらにキャビを重ねると、音がこもって箱鳴りしたように
+          なります。空の<b class="ui">IR Verb</b>には代わりに
+          <b class="ui">No IR loaded — pick a space or a file</b>と表示されます。</p>
+      </div>
+      <p>IRに問題がある場合は<b class="ui r">IR file missing: {name}</b>、
+        <b class="ui r">Could not read IR {name}.</b>、または
+        <b class="ui r">Could not import {name}.</b>と表示されます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="presets"><span class="n">02.7</span>プリセット</h2>
+      <p>リグプリセットはチェーン全体を保存します — ブロック、モデル、つまみの位置、
+        アンププロファイル、キャビ。<b class="ui">PRESETS</b>カードの<b class="ui">+</b>、
+        またはプリセットマネージャーから保存できます。確認は<b class="ui">Save preset</b>
+        という名前のアラートで、これから起きることを説明します:
+        <b class="ui">The current rig gets the next free MIDI PC slot.</b>名前を入力して
+        <b class="ui">Save</b>をタップします。空欄のままにすると<b class="ui">Preset</b>という
+        名前で保存されます。</p>
+      <div class="note warn">
+        <div class="t">PCスロットは編集できません</div>
+        <p>すべてのプリセットはMIDIプログラムチェンジのスロットに配置され、NAMperが
+          自動的に割り当てます: 4つのファクトリープリセットはPC 0〜3を占め、ユーザー
+          プリセットは4以降の空いている番号から順に割り当てられます。スロットを
+          手動で変更する方法はありません。フットスイッチのレイアウトは、保存する
+          順番に合わせて計画してください。逆ではありません。</p>
+      </div>
+
+      <h3>更新と管理</h3>
+      <p>上書きは常に確認されます。<b class="ui">Update with current rig</b>を選ぶと
+        <b class="ui">Overwrite “{name}” with the current rig?</b>というダイアログが表示され、
+        <b class="ui">Overwrite</b>と<b class="ui">Cancel</b>があります。マネージャー自体の
+        ナビゲーションタイトルは<b class="ui">Presets</b>で、2つのセクションがあります:
+        <b class="ui">Rigs · MIDI PC slots</b>、そして<b class="ui">Everything at once</b> →
+        <b class="ui">Global snapshots</b>で、これはリグ、ルーパー、サンプラー、セットリスト、
+        コントロールマップをまとめて保存・復元するものと説明されています。</p>
+      <p>各行のコンテキストメニューには<b class="ui">Rename</b>、
+        <b class="ui">Update with current rig</b>、<b class="ui">Share</b>、
+        <b class="ui">Delete</b>があります。名前変更はマネージャー内でのみ可能です —
+        Rigタブのプリセットチップメニューにはありません。プリセットが8個を超えると、
+        上部に<b class="ui">Search presets</b>フィールドが表示されます。</p>
+      <div class="note warn">
+        <div class="t">削除に確認はありません</div>
+        <p>プリセット行メニューの<b class="ui">Delete</b>は「本当によろしいですか」の
+          確認なしに即座に実行されます。一括削除の前にバックアップをエクスポート
+          しておいてください。</p>
+      </div>
+
+      <h3>インポートとエクスポート</h3>
+      <p>マネージャーのインポート/エクスポートメニューには<b class="ui">Import preset / bank / backup…</b>、
+        <b class="ui">Export rig presets</b>(<b class="ui">NAMper Presets.namper</b>を
+        書き出します)、<b class="ui">Export EVERYTHING (full backup)</b>
+        (<b class="ui">NAMper Backup.namper</b>を書き出します)があります。フルバックアップには
+        パラメーターと参照情報は含まれますが、サンプラーキットの音声は含まれない
+        点に注意してください。</p>
+      <p>ファイル拡張子は<b class="ui">.namper</b>です。ファイルAppでこれをタップするか
+        AirDropで受け取ると、NAMperがインポートしてプリセットマネージャーを開きます。
+        インポートされたプリセットはそれぞれ新しいスロットを取得するため、インポートが
+        既存のものを黙って上書きすることはありません。</p>
+
+      <h3>ファクトリー4種</h3>
+      <p>NAMperにはPC 0〜3に4つのリグが同梱されており、それぞれ実際のキャプチャを
+        中心に構成されています: <b class="ui">Clean</b>(アメリカン・ブラックフェイスの
+        コンボ)、<b class="ui">Crunch</b>(1969年の英国製50ワットヘッド)、
+        <b class="ui">Lead</b>(現代的なハイゲインアンプ+キャビ)、<b class="ui">Ambient</b>
+        (英国製クラスAのチャイム系コンボ)。それぞれがストリーミングするキャプチャには
+        アップロード者自身のタイトルが付いており、アンプブロックにはそれが表示されます。
+        各リグにはオフライン用のフォールバックとして、バイパスされた内蔵の
+        <b class="ui">Tube Amp</b>とバンドルされたキャビも備わっており、マネージャー内では
+        それぞれ<b class="ui">FACTORY</b>と表示されます。設定 → <b class="ui">RESET</b> →
+        <b class="ui">Reset to factory presets</b>から元に戻せます。ダイアログには
+        <b class="ui">Delete ALL user presets? The four factory rigs come back.</b>と
+        警告が表示されます。</p>
+      <p>他のタブにも、それぞれの<b class="ui">PRESETS</b>チップから開ける独自の
+        プリセットシートがあり、いずれも同じデザインを共有しています:
+        <b class="ui">Looper Presets</b>、<b class="ui">Sampler Kits</b>、
+        <b class="ui">Perform Presets</b>、<b class="ui">Control Presets</b>、
+        <b class="ui">Global Snapshots</b>。このうち2つは共有できません。この端末上の
+        ファイルを参照しているためです — サンプラーキットは音声を含み、グローバル
+        スナップショットはモデル、サンプル、バッキングトラックを参照します。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="rigs"><span class="n">02.8</span>複数のリグ</h2>
+      <p>NAMperは最大4つのリグを同時に動かせます — ギターとボーカル、ギターとベース、
+        あるいは1台のインターフェースを通した4人のプレイヤー、といった具合です。
+        <b class="ui">SIGNAL CHAIN</b>ヘッダー内の<b class="ui">RIG</b> <b class="ui">+</b>
+        メニューから追加します。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
+             alt="The Rig tab with two rigs stacked side by side: the first carries a MIDI badge marking it as MIDI-focused, the second is pinned so presets leave it alone.">
+        <figcaption>2つのリグ — 一方はMIDIフォーカスを持ち、もう一方はピン留めされています</figcaption>
+      </figure>
+      <p>メニューの<b class="ui">Templates</b>セクションは、妥当な出発点を用意して
+        くれます: <b class="ui">Guitar (gate · tube amp · cab)</b>、
+        <b class="ui">Bass (gate · comp · bass amp · cab)</b>、
+        <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b>、
+        <b class="ui">Empty rig</b>。その下の<b class="ui">From preset</b>には、
+        保存済みのプリセットが名前で一覧表示されます — 8個を超えると、検索可能な
+        <b class="ui">NEW RIG FROM PRESET</b>シートが開きます。</p>
+      <p>リグにはテンプレートに応じて<b class="ui">GUITAR</b>、<b class="ui">BASS</b>、
+        <b class="ui">VOCAL</b>、<b class="ui">RIG n</b>という名前が付きます。プリセットから
+        作られたリグは、そのプリセットの名前を引き継ぎます。ヘッダーは複数のリグが
+        あるときにのみ表示されます。</p>
+
+      <h3>フォーカス、ピン留め、削除</h3>
+      <p>リグのヘッダーをタップすると<b class="ui">MIDI</b>フォーカスが移り、どのリグを
+        コントローラーが操作しているかがバッジで示されます。ピントグル
+        (<b class="ui">Pin rig</b> / <b class="ui">Unpin rig</b>。「presets keep this
+        rig」というキャプション付き)を使うと、プリセットの切り替えを跨いでリグを
+        維持できます。フットスイッチでギターの音を切り替えている間、ボーカルチェーンを
+        そのまま保つのに使えます。リグが複数あるときのみ、ゴミ箱ボタン
+        (<b class="ui">Remove rig</b>)が表示されます。</p>
+      <p>レイアウトは端末の向きに従います: 横向きではリグが行として積み重なり、各チェーンは
+        左から右へ流れます。縦向きでは並んで表示され、チェーンは上から下へ流れます。</p>
+
+      <h3>各リグの入力と出力</h3>
+      <p>チェーンの先頭にあるINコネクタはメニューになっています。
+        <b class="ui">Sound-card input</b>セクションには、チャンネルが名前で
+        一覧表示されます — <b class="ui">In 1</b>、<b class="ui">In 2</b>など — さらに
+        <b class="ui">Sampler pads</b>と<b class="ui">Loop 1</b>〜<b class="ui">Loop 4</b>も
+        追加されるので、リグにライブ入力の代わりにループやサンプラーを処理させることも
+        できます。</p>
+      <p>OUTコネクタは<b class="ui">RIG OUTPUT</b>という見出しのシートを開き、
+        <b class="ui">Level</b>と<b class="ui">Pan</b>のつまみ、<b class="ui">Hardware
+        output pair</b>メニュー(<b class="ui">Out 1-2</b>、<b class="ui">Out 3-4</b>…
+        — これには設定で<b class="ui">Use all interface outputs</b>をオンにしておく
+        必要があります)、<b class="ui">Record this rig into</b> →
+        <b class="ui">Loop track 1</b>〜<b class="ui">Loop track 4</b>があります。下の
+        サマリー行には<b class="ui">Looper: not assigned</b>、または選択後は
+        <b class="ui">Looper: track 1, 3</b>のように表示されます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="branches"><span class="n">02.9</span>パラレルブランチ</h2>
+      <p>リグは1本のラインに限定されません。各リグは最大4本のチェーン — メインの1本と
+        3本のブランチ — を持てるため、信号を分岐させ、それぞれを別々に処理してから
+        再びミックスできます。チェーン下部にあるブランチアイコンのボタン
+        (<b class="ui">Add parallel chain</b>)で作成します。</p>
+      <p>そのメニューには<b class="ui">Branch from</b>という単一のセクションがあり、
+        各入力チャンネル、<b class="ui">Sampler pads</b>、<b class="ui">Loop 1</b>〜
+        <b class="ui">Loop 4</b>、そしてメインチェーン上の各ブロックに対応する
+        <b class="ui">After {Block}</b>が並びます。最後のグループが特に興味深い
+        ところです: アンプの後で分岐すれば、同じアンプトーンに2種類の異なるリバーブを
+        かけられ、アンプの前で分岐すれば、同じギターに2種類の異なるアンプをかけられます。</p>
+
+      <h3>2つのアンカー</h3>
+      <p>ブランチは、メインチェーンから離れる位置に入口アンカー、再び合流する位置に
+        合流アンカーを持つ、並列の列として描画されます。合流アンカーにはそのブランチの
+        レベルがパーセンテージで表示されるため、何も開かなくてもバランスを読み取れます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>操作</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>アンカーをタップ</td><td><b class="ui">LANE {n} MIX</b>という見出しの
+              ミキサーシートが開き、<b class="ui">Level</b>と<b class="ui">Pan</b>が
+              あります</td></tr>
+            <tr><td>入口アンカーを長押し</td><td><b class="ui">Branch input</b>メニュー:
+              自身の入力、<b class="ui">Sampler pads</b>、<b class="ui">Loop 1</b>〜<b class="ui">Loop 4</b>、
+              <b class="ui">Branch after {Block}</b>、<b class="ui">Remove branch</b></td></tr>
+            <tr><td>合流アンカーを長押し</td><td><b class="ui">Branch output</b>メニュー:
+              <b class="ui">Into the main mix</b>、<b class="ui">Merge before {Block}</b>、
+              <b class="ui">Own output 1-2</b>、<b class="ui">Remove branch</b></td></tr>
+            <tr><td>アンカーをドラッグ</td><td>メインチェーンの別の位置に付け替えます</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ドラッグは素早く試聴する方法です: 合流アンカーを押さえたままチェーンの前後に
+        スライドさせると、メニューを開かずにブランチがディレイの前に来るか後に来るかを
+        聴き比べられます。</p>
+      <div class="note tip">
+        <div class="t">複数のブランチを一度にミックスする</div>
+        <p>ブランチが合流する位置に<b class="ui">Volume</b>ブロックを置くと、
+          <b class="ui">INCOMING LINES</b>という追加セクションが現れ、合流する
+          ブランチごとに1つのつまみが並びます — <b class="ui">Line 1</b>、
+          <b class="ui">Line 2</b>など。個々のアンカーシートを追いかける代わりに、
+          リグの中央に小さなミキサーを持てます。</p>
+      </div>
+      <p>ブランチはメインミックスを完全にスキップすることもできます: 出力を
+        <b class="ui">Own output 1-2</b>に向ければ、専用のハードウェアペアへ直接
+        出力されます。これには先に設定で<b class="ui">Use all interface outputs</b>を
+        有効にしておく必要があります。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="master"><span class="n">02.10</span>マスターセクション</h2>
+      <p>Rigタブ下部の<b class="ui">MASTER</b>カードは、すべてが合流する場所です:
+        すべてのリグ、ルーパー、サンプラーパッド、バッキングトラックが、ハードウェア
+        出力の前にここで合算されます。マスターに対して行った処理は、そのすべてに
+        適用されます。</p>
+      <p><b class="ui">FX</b> <b class="ui">+</b>メニューでは、マスター処理を最大6ブロック
+        追加できます。選べるのは<b class="ui">Volume</b>、<b class="ui">EQ</b>、
+        <b class="ui">Comp</b>、<b class="ui">Tube Sat</b>、<b class="ui">Tape Sat</b>、
+        <b class="ui">Limiter</b>、<b class="ui">FB Guard</b>、<b class="ui">De-Esser</b>、
+        <b class="ui">Cloud</b>、<b class="ui">Hall</b>、<b class="ui">Plate</b>、
+        <b class="ui">Room</b>、<b class="ui">Delay</b>です。これらはチェーンブロックと
+        同様に動作します: チップをタップして編集、長押しで<b class="ui">Enable</b> /
+        <b class="ui">Bypass</b>と<b class="ui">Remove</b>。</p>
+      <div class="note warn">
+        <div class="t">マスターにAUプラグインは使えません</div>
+        <p>ホストされたAudio Unitプラグインは、リグのチェーン内にのみ配置できます。
+          マスターFXメニューには表示されません。全体にサードパーティ製のリミッターを
+          かけたい場合、それは不可能です — 代わりに内蔵の<b class="ui">Limiter</b>
+          ブロックを使ってください。</p>
+      </div>
+      <p>ここには常時オンのマスタープロセッサーはありません。サチュレーションは
+        追加するブロックです — <b class="ui">Tube Sat</b>または<b class="ui">Tape
+        Sat</b>で、どちらも<b class="ui">Drive</b>、<b class="ui">Tone</b>、
+        <b class="ui">Mix</b>、<b class="ui">Level</b>を持ちます — リミッティングは
+        <b class="ui">Limiter</b>ブロックで、<b class="ui">Gain</b>、<b class="ui">Ceiling</b>
+        (−12から0 dB、デフォルト−1)、<b class="ui">Release</b>があります。追加して
+        いなければ、それらは信号経路に存在しません。</p>
+
+      <h3>マスターメーターの読み方</h3>
+      <p>ステレオのピークバー<b class="ui">L</b>と<b class="ui">R</b>には−12と−6 dBの
+        目盛りがあります。その横にはBS.1770ラウドネス表示があります: 大きい瞬間的な
+        <b class="ui">LUFS</b>の数値と、その下の小さい行に<b class="ui">LUFS</b>または
+        ショートターム値を示す<b class="ui">LUFS · S &lt;n&gt;</b>が表示されます。
+        −70 LUFSを下回ると<b class="ui">-inf</b>と表示されます。フェーダーは−60から
+        +12 dBの範囲で動きます。</p>
+      <p>ピークバーはクリッピングを避けるために、LUFSの数値は全体のレベルを他の何か
+        — バッキングトラック、以前のテイク、同じ卓に立つ他のプレイヤー — に
+        合わせるために使ってください。</p>
+      <div class="note">
+        <div class="t">クリックはクリーンなまま</div>
+        <p>メトロノームのクリックはマスターFXチェーンの<b>後</b>でミックスされるため、
+          マスターのリバーブ、サチュレーション、リミッティングの影響を一切受けません。
+          クリックのレベルは設定 → <b class="ui">METRONOME</b>で設定でき、イン
+          イヤーだけに送りたい場合はそこで専用の出力ペアを割り当てられます。</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/setup.html">← 01 · はじめに</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/plugins.html">03 · AUプラグイン →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

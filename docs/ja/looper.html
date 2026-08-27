@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ルーパー — NAMperドキュメント</title>
+<meta name="description" content="4トラック同期ルーパー: 円形パッド、トランスポート、AUTOアーミングと小節スナップ、テンポとクリック、ループエディタ、取り消し、トラックごとのルーティング、保存される内容について。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="ルーパー — NAMperドキュメント">
+<meta property="og:description" content="同期する4トラック、AUTOアーミング、小節スナップ、ループエディタについて。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/looper.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/looper.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/looper.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/looper.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/looper.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/looper.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/looper.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/looper.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/looper.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/looper.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/looper.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/looper.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/looper.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/looper.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/looper.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/looper.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/looper.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/looper.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a class="on" href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">04 · LOOPER</div>
+    <h1>4トラック、1つのサイクル。</h1>
+    <p class="lede"><b class="ui a">Loop</b>タブは、解析エンジンを内蔵した4トラック同期ルーパーです。
+      最初のループを打ち込めば、あとはすべてそれに合わせて収まります —
+      AUTOをオンにしておけば、小節線もNAMperが見つけてくれます。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#basics">ルーパーの考え方</a></li>
+        <li><a href="#pads">円形パッド</a></li>
+        <li><a href="#transport">トランスポート</a></li>
+        <li><a href="#auto">AUTOモード</a></li>
+        <li><a href="#tempo">テンポとクリック</a></li>
+        <li><a href="#editor">ループエディタ</a></li>
+        <li><a href="#undo">取り消し</a></li>
+        <li><a href="#routing">トラックごとのルーティング</a></li>
+        <li><a href="#saving">保存される内容</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="basics"><span class="n">04.1</span>ルーパーの考え方</h2>
+      <p>すべての土台となる1つのルールがあり、アプリはそれを画面の下部にそのまま表示します。</p>
+      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
+        run/stop · 90 clear</b></p>
+      <p>最初に録音したトラックがサイクルを決めます。それ以外のトラックはすべて、自分勝手にずれる
+        のではなく、そのサイクルに合わせて収まります。そして後からそのサイクルを動かせるのは、
+        それを決めたトラックを編集するか、すべてをクリアして最初からやり直す場合だけです。</p>
+      <p>トラックは4つあり、それぞれ最大<b>60秒</b>まで保持できます。縦向きではパッドが
+        2×2グリッドに並び、横向きではトランスポートが左側の列に移動し、4つのパッドは
+        1列に並びます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/looper.png" width="600" height="1304"
+             alt="The Loop tab: track 1 playing with a green radial waveform and a spinning beam, track 2 armed with a dashed red border, tracks 3 and 4 empty, the AUTO chip lit green and the tempo reading 124 BPM.">
+        <figcaption>トラック1が再生中、トラック2はアームされて待機中、AUTOオンで124 BPM</figcaption>
+      </figure>
+      <p>すべてのトラックカードは同じレイアウトです: 大きなトラック番号と状態ラベル、LEDドット
+        が並ぶヘッダー行、円形パッド、2×2に並んだチップ — <b class="ui">IN</b>と
+        <b class="ui">LEN</b>が上段、<b class="ui">DUB</b>と<b class="ui">OUT</b>が下段 —
+        そしてその下のコントロール行です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="pads"><span class="n">04.2</span>円形パッド</h2>
+      <p>パッドはループの波形をリングの周りに<em>放射状に</em>描きます — 円を1周することが
+        サイクルを1周することに対応し、再生位置を示す光の帯が回転します。アタックはリング上の
+        スパイクとして現れるので、部屋の反対側からでも今どこにいるか読み取れます。</p>
+      <p>最初のループを録音している間はまだサイクルが存在しないため、リングの挙動は変わります:
+        円全体が<em>これまでに</em>録音されたすべてを表します。テイクが長くなるほど波形は
+        密に詰まっていき、光の帯は12時の位置で止まったまま — これが書き込みヘッドです —
+        パッド中央には経過秒数が表示されます。ループが閉じると、光の帯はサイクルに沿って回り
+        始めます。</p>
+
+      <h3>パッドをタップする</h3>
+      <p>1回タップするごとに、トラックははしごを1段上ります。</p>
+      <ul style="--nc:var(--eq)">
+        <li>空 → 録音中</li>
+        <li>録音中 → ループを閉じ、再生を開始</li>
+        <li>再生中 → オーバーダブ</li>
+        <li>オーバーダブ → 再生中に戻る</li>
+        <li>ミュート → ミュート解除</li>
+      </ul>
+      <p><b class="ui">AUTO</b>がオンのとき、空のパッドをタップするとすぐに録音を始めるのではなく
+        <b>アーム</b>されます。アームされたパッドをタップするとアームは解除されます。これが
+        AUTOによって、はしごの流れに加わる唯一の変化です。</p>
+
+      <h3>長押し</h3>
+      <p>丸いパッドを長押しすると<b class="ui">MIDI Learn: tap loop track 1</b>(2、3、4も同様)
+        になります — これがフットスイッチを1つのトラックに割り当てる方法です。その周りの
+        <em>カード</em>を長押しすると、代わりにルーティングメニューが開きます:
+        <b class="ui">Input · …</b>、<b class="ui">Output · …</b>、
+        <b class="ui">Edit loop…</b>、さらに<b class="ui">Length · Free</b>または
+        <b class="ui">Length · N bars</b>、<b class="ui">Overdubs · N</b>です。</p>
+
+      <h3>状態</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>状態</th><th>ラベル</th><th>色</th></tr></thead>
+          <tbody>
+            <tr><td>何も録音されていない</td><td><b class="ui">empty</b></td><td>暗い</td></tr>
+            <tr><td>録音中</td><td><b class="ui">recording</b></td><td>赤</td></tr>
+            <tr><td>ループ再生中</td><td><b class="ui">playing</b></td><td>緑</td></tr>
+            <tr><td>重ね録り中</td><td><b class="ui">overdub</b></td><td>オレンジ</td></tr>
+            <tr><td>無音のまま動作中</td><td><b class="ui">muted</b></td><td>黄</td></tr>
+            <tr><td>待機中(AUTO)</td><td><b class="ui">armed</b></td>
+                <td>赤、カードの周りに破線の枠</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>各パッド下のコントロール行には4つの機能があります: ミュート
+        (<b class="ui">Mute track N</b>、黄色に変わります)、編集
+        (<b class="ui">Edit loop N</b>)、クリア(<b class="ui">Clear track N</b>)、そして小さな
+        レベルつまみ(<b class="ui">Loop track N level</b>、0から1.5)です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="transport"><span class="n">04.3</span>トランスポート</h2>
+      <p><b class="ui">LOOPER</b>という文字の隣にトランスポート行があります。</p>
+      <ul style="--nc:var(--gate)">
+        <li>サイクルの長さを秒数で示す<b>マスターリング</b>。何も録音されていないときは
+          <b class="ui">—</b>です。</li>
+        <li><b class="ui">PRESETS</b>チップ — <a href="#saving">保存される内容</a>を参照。</li>
+        <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>。サイクルが
+          できるまでは無効です。</li>
+        <li><b>取り消し</b>ボタン。取り消せるものがあるときだけ有効になります。</li>
+        <li>ゴミ箱ボタン、<b class="ui">Clear all loops</b>。</li>
+      </ul>
+      <p>その下の1行のステータス表示が、今どこにいるかを教えてくれます:
+        最初のテイクが進行中は<b class="ui">recording the master loop…</b>、サイクルが
+        できたあとは<b class="ui">4.2 / 8.0 s</b>のように進行中の位置、
+        <b class="ui">stopped</b>、あるいはルーパーが空のときは
+        <b class="ui">tap a track to record</b>です。</p>
+      <div class="note">
+        <div class="t">フットスイッチによる操作</div>
+        <p>内蔵のMIDIマップは、セットアップ不要でルーパーをカバーします:
+          <b class="ui">CC 85–88</b>がトラック1〜4をタップし、<b class="ui">CC 89</b>が
+          走らせ、<b class="ui">CC 90</b>がクリアします。ただしCC 89は<em>再生</em>コマンドを
+          送るという点に注意してください — オフに切り替えるのではなく、ループを最初から
+          再スタートさせます。1つのスイッチで本当の意味での走行/停止トグルにしたい場合は、
+          <b class="ui a">Control</b>タブでマッピングを追加し、それを現在の状態を読み取る
+          <b class="ui">Run / stop</b>にラーンしてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="auto"><span class="n">04.4</span>AUTOモード</h2>
+      <p><b class="ui">AUTO</b> — <b class="ui">CLICK</b>の隣にある魔法の杖のチップ — は
+        2つの仕事をします: テイクの開始と停止を代わりに行うこと、そしてマスターループが
+        閉じたときに小節線が実際どこにあるかを割り出すことです。</p>
+
+      <h3>録音の代わりにアームする</h3>
+      <p>AUTOがオンのとき、空のパッドをタップするとアームされます: カードに赤い破線の枠が
+        付き、<b class="ui">armed</b>と表示されます。次に何が起こるかは、すでにサイクルが
+        あるかどうかによります。</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>まだサイクルがない場合。</b>録音は、アームしきい値を超える<b>最初の音を弾いた
+          瞬間</b>に始まります。ギターを構えて楽な姿勢を取ってから、実際に弾いたときに
+          テイクが始まります — タップした瞬間ではありません。</li>
+        <li><b>すでにサイクルが動いている場合。</b>録音は<b>次のサイクルの境界</b>で始まる
+          ため、テイクはちょうど小節の頭から始まります。短い猶予期間が用意されているので、
+          少し遅れて入ったアタックも大目に見られます。光の帯より少し後ろでダウンビートを
+          弾いても、ちゃんとカウントされます。</li>
+      </ul>
+      <p>フリーの状態でアームされたテイク — サイクルがまだない状態で録音されたもの — は、
+        約1.2秒の無音が続くと<b>自動的に停止</b>し、音がある部分まで切り詰められます。この
+        しきい値はわざと余裕を持たせてあります: リバーブの余韻やフレーズの間の隙間は無音と
+        見なされないので、まばらなリフが途中で切れることはありません。</p>
+      <p>各ループが閉じるたびに、AUTOは<b>次の空セルを自動でアーム</b>するので、画面に触れる
+        ことなく4トラックすべてを組み立てていけます。</p>
+
+      <h3>境界スナップ</h3>
+      <p>マスターループが閉じると、NAMperはクリーンな入力 — エフェクトをかける前の信号 —
+        を解析し、アタックを探します。そこに小節グリッドを当てはめ、次のことを行います。</p>
+      <ol style="--nc:var(--amp)">
+        <li><b>末尾を切り詰め</b>、最後のアタックを含む小節に合わせます。1拍半だけ長く
+          走ったテイクも、これで切りのよい小節数になります。</li>
+        <li><b>ループを回転</b>させ、1拍目から始まるようにします。ダウンビートより前に
+          鳴っていた弦のノイズや息づかい、指のきしみは、音楽的にふさわしいループの末尾へと
+          移動します。</li>
+        <li><b>検出したテンポを70〜180 BPMの範囲に収め</b>、速いストラムが240 BPMと
+          誤認識されたり、遅い演奏が45と誤認識されたりしないようにします。</li>
+      </ol>
+      <p>画面上ではこれがすべて一瞬で起こります: リングが描き直され、長さが切りのよい数値に
+        スナップし、それまで空欄だったBPM表示が埋まります。ここから先は、クリックも
+        LENチップも、サンプラーのクオンタイズも、セットリストの小節クロックも、すべてこの
+        グリッドを基準に動きます。</p>
+      <p><b class="ui">CLICK</b>がオンのときは、テンポは設定されている値に<b>固定</b>され、
+        フェーズだけが合わせられます。クリックやバッキングトラックに合わせて演奏していて、
+        テンポを動かしたくないときはこちらのモードを使ってください。</p>
+      <div class="note tip">
+        <div class="t">ドローンとルバート</div>
+        <p>使えるグリッドが見つからない場合 — サステインし続けるパッド、自由なテンポの
+          イントロ、ボウイングによるうねりなど — NAMperは無理にグリッドを当てはめません。
+          最後のアタックで切り詰め、切りのよい小節数を選ぶという処理にとどめます。ループは
+          きれいに仕上がりますが、テンポは再検出されません。</p>
+      </div>
+      <div class="note warn">
+        <div class="t">最も重要なのは最初のループ</div>
+        <p>スナップはマスターループに対して実行され、その後録音されるものはすべてその
+          グリッドを引き継ぎます。最初のテイクがずれてしまった場合は、重ね録りする前に
+          <a href="#editor">ループエディタ</a>で修正するか、クリアして録音し直してください
+          — トラック3を微調整しても、小節線は動きません。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tempo"><span class="n">04.5</span>テンポとクリック</h2>
+      <p>Loopタブのテンポブロックには、<b class="ui">BPM</b>という見出しの付いた大きな数字が
+        表示されます。テンポが未設定のときは<b class="ui">SET TEMPO</b>と
+        <b class="ui">—</b>が表示されます。タップするとテンポシートが開きます。</p>
+      <p>シートには数値入力欄(プレースホルダー<b class="ui">120</b>、範囲<b>20から300</b>)
+        と隣に<b class="ui">BPM</b>、最初にタップすると<b class="ui">again…</b>と表示される
+        大きな<b class="ui">TAP</b>ボタン、さらに<b class="ui">Clear (AUTO re-detects)</b>と
+        <b class="ui">Done</b>があります。AUTOに自分の演奏からテンポを割り出させたいときは
+        これをクリアしてください。</p>
+      <p>同じシートは<b class="ui a">Rig</b>のヘッダーからも開けます: メトロノームのチップは
+        <b>タップ</b>するとクリックのオン/オフが切り替わり、
+        <b class="ui">SET TEMPO</b>は<b>長押し</b>すると開きます。</p>
+      <p><b class="ui">CLICK</b>はメトロノームをオンにします。テンポ未設定の状態でオンにすると
+        <b>120 BPMに強制設定</b>され、小節が最初からやり直しになるため、クリックをオンにする
+        ことは決して中立的な操作ではありません。クリックの音量と出力バスは設定 →
+        <b class="ui">METRONOME</b>にあり、インイヤーモニタリング用に専用の出力ペアを
+        持たせることもできます。</p>
+      <div class="note warn">
+        <div class="t">カウントインはありません</div>
+        <p>録音をタップすると、その場で録音が始まります。演奏の前に1小節分のクリックが
+          欲しい場合は、AUTOでパッドをアームして最初の音でテイクを始めさせるか、すでに
+          動いているサイクルに対して最初のループを録音してください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">04.6</span>ループエディタ</h2>
+      <p>パッドのコントロール行にある編集ボタン、またはカードの長押し →
+        <b class="ui">Edit loop…</b>から開きます。シートの見出しは<b class="ui">LOOP N</b>で、
+        長さのラベルがリアルタイムで表示されます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
+             alt="The loop editor sheet over the looper: a waveform with a bar and beat grid, draggable start and end handles, the START and LENGTH TEMPO KEPT button rows, Level and Pan knobs, and Mute, Undo and Clear buttons.">
+        <figcaption>ループエディタ: グリッド、ハンドル、微調整ボタン、そして最下段の行</figcaption>
+      </figure>
+      <p>ラベルは<b class="ui">8.00 s · 4.0 bars</b>のように表示されます。終点ハンドルを
+        ドラッグするとその長さに応じたテンポが加わり、始点ハンドルをドラッグすると
+        <b class="ui">start +0.50 beats</b>のように変化します。</p>
+      <p>波形には小節と拍の<b>グリッドオーバーレイ</b>が重なっています — 拍の目盛りと
+        番号付きの小節線が、ループの始点を基準に配置されています。ループの終端を過ぎた
+        音声は暗く表示されます: データとしては保持されているが無音、という状態で、
+        あとから終点ハンドルを再び外側へ押し出せるのはこのためです。</p>
+
+      <h3>2つのハンドル</h3>
+      <ul style="--nc:var(--pitch)">
+        <li><b>始点</b>(<b class="ui">Loop start handle</b>)はフェーズを回転させます: ループの
+          開始が遅くなり、その分スキップされた部分はループの末尾に回り込みます。長さもテンポも
+          変わりません。ループが半拍早く始まってしまう場合の修正手段です。</li>
+        <li><b>終点</b>(<b class="ui">Loop end handle</b>)はループの長さを変え、
+          <b>サイクルを決めているトラックでのみ</b>機能します。小節数は保たれ、設定テンポが
+          それに追従するため、ループを引き伸ばすとセット全体のテンポが遅くなります。
+          シートにもそのように書かれています:
+          <b class="ui">Drag the edges to move the start and resize the loop — resizing retunes the
+          set tempo.</b></li>
+      </ul>
+      <p>空のトラックは<b class="ui">no audio</b>と表示され、ドラッグできるものはありません。</p>
+
+      <h3>ボタン行</h3>
+      <p>波形の下にある<b class="ui">START</b>は、4つのフェーズ微調整ボタン —
+        <b class="ui">-BAR</b>、<b class="ui">-BEAT</b>、<b class="ui">+BEAT</b>、
+        <b class="ui">+BAR</b> — を提供します。指先がグリッドほど正確でないときのためのもの
+        です。これらは始点だけを動かします。</p>
+      <p><b class="ui">LENGTH · TEMPO KEPT</b>には6つあります: 同じ4つに加えて
+        <b class="ui">÷2</b>と<b class="ui">×2</b>です。半分にすれば、うっかり8小節に
+        なってしまったテイクを、本来弾くつもりだった4小節のループに戻せます。倍にすれば、
+        サイクルの2倍にまたがるフレーズを重ね録りする余地が生まれます。</p>
+      <div class="note">
+        <div class="t">なぜLENGTHのボタンがグレーアウトしているのか</div>
+        <p>6つの<b class="ui">LENGTH · TEMPO KEPT</b>ボタンはすべて、編集中のトラックが
+          サイクルを決めているトラックでない限り無効になっており、シートにもその理由が
+          書かれています: <b class="ui">Only the track that defines the cycle can change its
+          length.</b>フォロワートラックの長さがおかしい場合、編集すべきループはマスター
+          トラックの方です。</p>
+      </div>
+      <p>最下段の行には<b class="ui">Level</b>つまみ(0から1.5)、<b class="ui">C</b>、
+        <b class="ui">L50</b>、<b class="ui">R50</b>のように表示される<b class="ui">Pan</b>
+        つまみ、そして<b class="ui">Mute</b>、<b class="ui">Undo</b>、<b class="ui">Clear</b>の
+        各ボタンがあります。</p>
+      <p>逆再生はありません。ループは常に順方向にのみ再生されます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="undo"><span class="n">04.7</span>取り消し</h2>
+      <p>取り消しはスタックではなく<b>トグル</b>です。オーバーダブのたびに、重ねる前の音声が
+        スナップショットとして保存されます。取り消すとそのスナップショットに戻り、もう一度
+        押すと元のオーバーダブに戻ります。取り消しボタンであると同時に、聴き比べボタンでも
+        あります。</p>
+      <p>2つの制限があります: <b>1世代分の深さしかない</b>ため、2回目のオーバーダブは
+        取り消しが保持していた内容を上書きします。そして<b>全トラックで共有</b>されます
+        — ルーパー全体で1つのスナップショットであり、トラックごとではありません。
+        トラック2をオーバーダブすると、トラック1のためにとっておいた取り消しは消えます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="routing"><span class="n">04.8</span>トラックごとのルーティング</h2>
+      <p><b class="ui">IN</b>と<b class="ui">OUT</b>は、トラックの音声がどこから来てどこへ
+        行くかを決め、<b class="ui">LEN</b>と<b class="ui">DUB</b>は長さと重ね録りの回数を
+        決めます。</p>
+
+      <h3>IN</h3>
+      <p><b class="ui">IN</b>メニューには<b class="ui">Post FX (the rig)</b> — 加工済みの
+        ギター音で、通常はこれを選びます — があります。リグが複数ある場合はリグごとに
+        <b class="ui">Post FX · &lt;rig name&gt;</b>となり、チップには
+        <b class="ui">FX · &lt;rig&gt;</b>と表示されます。その下には、それぞれの名前が
+        付いたハードウェア入力チャンネルが1つずつ並びます — ドライなボーカルや、
+        インターフェースから直接入るもう1人の演奏者など — そして、パッドをループする
+        ための<b class="ui">Sampler</b>(チップ<b class="ui">SMP</b>)です。</p>
+
+      <h3>OUT</h3>
+      <p><b class="ui">OUT</b>メニューには<b class="ui">Main mix</b>(チップ
+        <b class="ui">MAIN</b>)、追加のハードウェア出力ペアごとの項目 —
+        <b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>など、設定で
+        <b class="ui">Use all interface outputs</b>をオンにする必要があります —
+        そして<b class="ui">Into &lt;rig name&gt;</b>があります。</p>
+      <p>最後のものが特に興味深い選択肢です: ミックスへ直接送るのではなく、ループはその
+        リグの<em>中へ</em>入って再生されるため、リグのエフェクトがリアルタイムで処理を
+        かけます。クリーンなパートをループさせ、ディレイとフィルターの付いたリグへ送り込み、
+        ループが回っている間にフィルターを動かす、といったことができます。トラックが録音元と
+        しているリグは選択肢に出てきません — それはフィードバックの経路になってしまう
+        ためです。</p>
+
+      <h3>LENとDUB</h3>
+      <p><b class="ui">LEN</b>チップは0、1、2、4、8小節を順に切り替えます。0のときは
+        <b class="ui">FREE</b>、それ以外は<b class="ui">N BAR</b>と表示され、テイクは
+        その小節数に固定されます。テンポが未設定の場合、メニューには
+        <b class="ui">No tempo yet — record the first loop with AUTO on</b>と表示されます。</p>
+      <p><b class="ui">DUB</b>チップは自動オーバーダブの回数を0、1、2、4の間で切り替えます
+        — その回数だけ周回すると、トラックは自動的に単純再生に戻ります。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="saving"><span class="n">04.9</span>保存される内容</h2>
+      <p><b class="ui">PRESETS</b>チップは<b class="ui">Looper Presets</b>を開き、そこには
+        <b>セットアップのみ</b>が保存されます: 各トラックのIN、OUT、LEN、DUB、パン、そして
+        AUTOフラグです。曲の冒頭で呼び出すルーティングのテンプレートであり、録音そのもの
+        ではありません。</p>
+      <div class="note warn">
+        <div class="t">ループの音声は書き出せません</div>
+        <p>ループをファイルとして保存する方法はありません — 書き出しも共有シートもありません。
+          ルーパーが再生した内容を記録する唯一の方法は<b class="ui a">Perform</b>タブの
+          レコーダーで、これは出力ミックス(リグ、ルーパー、パッド、バッキングトラックを
+          まとめたもの、加えて別のドライ入力ステム)を録音します。ループを残す価値があるなら、
+          Performで録音を押して走らせておいてください。</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/plugins.html">← 03 · AUプラグイン</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/sampler.html">05 · サンプラーパッド →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

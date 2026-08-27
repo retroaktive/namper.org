@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>設定リファレンス — NAMperドキュメント</title>
+<meta name="description" content="NAMperの設定シートにあるすべてのカードとすべての行: オーディオインターフェース、チャンネル名、外観、セット、歌詞、メトロノーム、プロンプト、リセット、診断 — さらに他の場所にある設定について。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="設定リファレンス — NAMperドキュメント">
+<meta property="og:description" content="NAMperの設定シートにあるすべてのカードと行、デフォルト値、各コントロールが実際に何をするか。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/settings.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/settings.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/settings.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/settings.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/settings.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/settings.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/settings.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/settings.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/settings.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/settings.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/settings.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/settings.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/settings.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/settings.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/settings.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/settings.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/settings.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/settings.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a class="on" href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--drive)">08 · SETTINGS REFERENCE</div>
+    <h1>すべてのスイッチを、順番に。</h1>
+    <p class="lede">NAMperの設定シートは意図的に短くまとめられています。このページでは
+      カードごと、行ごとに、デフォルト値と各コントロールが実際に何をするかを説明し、
+      最後にまったく別の場所にある一握りの設定で締めくくります。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#opening">設定を開く</a></li>
+        <li><a href="#audio">オーディオインターフェース</a></li>
+        <li><a href="#names">チャンネル名</a></li>
+        <li><a href="#appearance">外観</a></li>
+        <li><a href="#set">セット</a></li>
+        <li><a href="#lyrics">歌詞</a></li>
+        <li><a href="#metronome">メトロノーム</a></li>
+        <li><a href="#prompts">プロンプト</a></li>
+        <li><a href="#reset">リセット</a></li>
+        <li><a href="#diagnostics">診断</a></li>
+        <li><a href="#elsewhere">設定にないもの</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="opening"><span class="n">08.1</span>設定を開く</h2>
+      <p><strong>歯車アイコン</strong>を<b class="ui a">Rig</b>タブのヘッダーで
+        タップしてください。これが唯一の入口で、このヘッダーはRigタブにしか存在しません —
+        <b class="ui a">Loop</b>、<b class="ui a">Sample</b>、<b class="ui a">Perform</b>、
+        <b class="ui a">Control</b>からは、まず<b class="ui a">Rig</b>に戻る必要があります。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
+             alt="The top of the Settings sheet: the AUDIO INTERFACE card with Feedback guard switched on, the DSP load readout, the sample rate and buffer chips, the input trim slider, and the beginning of the CHANNEL NAMES card.">
+        <figcaption>設定シートの上部</figcaption>
+      </figure>
+      <p>そのヘッダー行には歯車の他にも仲間がいるので、隣にあるものが何をするかも知って
+        おく価値があります。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>項目</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">NAMper</b>のワードマーク</td>
+                <td>Aboutシートを開きます — バージョン、クレジット、投げ銭。唯一の入口です。</td></tr>
+            <tr><td><b class="ui">DSP load</b>チップ</td>
+                <td>プロセッサー負荷をパーセントで表示。停止中は<b class="ui">—</b>。60 %未満は緑、85 %までアンバー、それ以上は赤。</td></tr>
+            <tr><td>歯車</td><td>設定 — このページです。</td></tr>
+            <tr><td><b class="ui">KEY</b>チップ</td>
+                <td>現在のキー、未設定なら<b class="ui">KEY</b>という文字。<b class="ui">SET KEY</b>を開きます。</td></tr>
+            <tr><td>メトロノームチップ</td>
+                <td>タップでクリックのオン/オフ。<strong>長押し</strong>で<b class="ui">SET TEMPO</b>シート。<a href="/docs/ja/looper.html">ルーパー</a>を参照。</td></tr>
+            <tr><td>音叉</td><td>チューナーを開きます。<a href="/docs/ja/control.html">MIDIとコントロール</a>を参照。</td></tr>
+            <tr><td><b class="ui g">Power</b></td>
+                <td>オーディオエンジンの開始と停止。オンになるまで音は一切鳴りません。<a href="/docs/ja/setup.html#power">はじめに</a>を参照。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="audio"><span class="n">08.2</span>オーディオインターフェース</h2>
+      <p><b class="ui">AUDIO INTERFACE</b>カードは最も長いカードであり、設定の反映に
+        再起動が必要な唯一のカードです。最初の4行は読み取り専用です: NAMperが実際に
+        iOSから何を受け取っているかを示すもので、インターフェースの調子が悪い理由を
+        調べる最も早い方法です。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Sample rate</b></td><td>読み取り専用</td><td>—</td>
+                <td>エンジンが実際に動作しているレート(kHz)。</td></tr>
+            <tr><td><b class="ui">Inputs</b></td><td>読み取り専用</td><td>—</td>
+                <td>現在のルートが提供する入力チャンネル数。最大8。</td></tr>
+            <tr><td><b class="ui">Outputs</b></td><td>読み取り専用</td><td>—</td>
+                <td>現在のルートが提供する出力チャンネル数。</td></tr>
+            <tr><td><b class="ui">Engine</b></td><td>読み取り専用</td><td>—</td>
+                <td><b class="ui">running</b>または<b class="ui">stopped</b>。</td></tr>
+            <tr><td><b class="ui">Feedback guard</b></td><td>スイッチ</td><td>オン</td>
+                <td>内蔵マイクが本体スピーカーを拾っている間、出力をミュートします。<a href="/docs/ja/setup.html#feedback-guard">詳しくはこちら</a>。</td></tr>
+            <tr><td><b class="ui">DSP load</b></td><td>数値+バー</td><td>—</td>
+                <td>プロセッサー負荷。エンジン動作中のみ表示されます。</td></tr>
+            <tr><td><b class="ui">Sample rate</b></td><td>チップ: <b class="ui">Auto</b>、44.1k、48k、88.2k、96k、176.4k、192k</td><td><b class="ui">Auto</b></td>
+                <td>エンジンのレートを設定し、ルートごとに記憶されます。変更するとエンジンが再起動します。<a href="/docs/ja/setup.html#rate">詳細</a>。</td></tr>
+            <tr><td><b class="ui">Input channels</b></td><td>チップ: <b class="ui">Auto</b>、1…n</td><td><b class="ui">Auto</b></td>
+                <td>NAMperが開く入力チャンネル数の上限。理由がない限り<b class="ui">Auto</b>のままにしてください。</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>チップ: 64、128、256、512</td><td><b class="ui">128</b></td>
+                <td>ブロックサイズ。<b class="ui">frames · ms</b>のリアルタイム表示付き。唯一のレイテンシ調整項目です。<a href="/docs/ja/setup.html#rate">詳細</a>。</td></tr>
+            <tr><td><b class="ui">Input trim</b></td><td>入力ごとに1本のスライダー、−12…+24 dB</td><td>0 dB</td>
+                <td>ゲインつまみのないインターフェース用のゲイン。強めに弾いて<b class="ui">IN</b>メーターが上部3分の1に届くようにしてください。</td></tr>
+            <tr><td><b class="ui">Use all interface outputs</b></td><td>スイッチ</td><td>オフ</td>
+                <td>すべての出力ペアを開き、ブランチやリグ、クリックがそれぞれ専用ペアを持てるようにします。ステレオ機器には不要です。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn">
+        <div class="t">オーディオの変更には再起動が必要</div>
+        <p>ここにあるチップとスイッチは、次にエンジンを起動したときに反映されます —
+          サンプルレートのように、一部はエンジン自体を再起動させます。何かが固まって
+          見える場合は、壊れていると決めつける前にエンジンをオフ・オンしてみてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="names"><span class="n">08.3</span>チャンネル名</h2>
+      <p><b class="ui">CHANNEL NAMES</b>は入力ごとのテキスト欄で、各行には
+        <b class="ui">In 1</b>、<b class="ui">In 2</b>といった接頭辞が付き、
+        プレースホルダーは<b class="ui">Guitar, Vocal…</b>です。フッターの注記には
+        その用途が書かれています: <b class="ui">Input pickers show these names
+        everywhere.</b></p>
+      <p>一度名前を付ければ、アプリ内のすべての入力ピッカー — リグの入力、ルーパー
+        トラックのソース、コンプレッサーのサイドチェイン、入力トリムのスライダー —
+        にその名前が表示されます。空欄のままにしたチャンネルは<b class="ui">In
+        &lt;n&gt;</b>という表示に戻ります。</p>
+      <div class="note tip">
+        <div class="t">2分の価値がある作業</div>
+        <p>マルチチャンネルインターフェースでは、サウンドチェックの最中に
+          <b class="ui">Guitar</b>や<b class="ui">Vocal</b>を選ぶ方が、
+          <b class="ui">In 3</b>や<b class="ui">In 4</b>を選ぶよりずっと簡単です。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="appearance"><span class="n">08.4</span>外観</h2>
+      <p>チップ: <b class="ui">System</b>、<b class="ui">Light</b>、<b class="ui">Dark</b>。
+        デフォルトは<b class="ui">System</b>で、これはシート全体の中で唯一、タップした
+        瞬間に反映される設定です。</p>
+      <p>NAMperはダークを前提にデザインされています — メーター、LED、チェーンの
+        グラフィックはすべて暗いステージ向けに描かれています。<b class="ui">Light</b>は
+        日中に必要な場合のためにありますが、アプリが最も見やすいのはダークの状態です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="set"><span class="n">08.5</span>セット</h2>
+      <p><b class="ui">SET</b>カードは読み取り専用です。<b class="ui">Tempo</b>
+        (<b class="ui">BPM</b>として、未設定なら<b class="ui">—</b>)と
+        <b class="ui">Key</b>(<b class="ui">Am</b>のように、または
+        <b class="ui">—</b>)を表示します。これはコントロールではなく、状態を示す
+        表示です。</p>
+      <p>フッターの注記が実際のコントロールの場所を示しています:
+        <b class="ui">Tempo: long-press the metronome. Key: the KEY button in the
+        header.</b></p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>値</th><th>設定方法</th></tr></thead>
+          <tbody>
+            <tr><td>テンポ</td><td>Rigヘッダーのメトロノームチップを長押しするか、<b class="ui a">Loop</b>タブのテンポブロックから。ルーパーは最初のループからも検出し、バッキングトラックを選ぶとその曲のテンポが適用されます。</td></tr>
+            <tr><td>キー</td><td>Rigヘッダーの<b class="ui">KEY</b>チップ。バッキングトラックを選ぶとその曲のキーが適用されます。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="lyrics"><span class="n">08.6</span>歌詞</h2>
+      <p>スライダーは1つ: テレプロンプターの文字サイズで、<b class="ui">16</b>から
+        <b class="ui">34 pt</b>まで、デフォルトは<b class="ui">22 pt</b>です。
+        <b class="ui">This is how your lyrics will look</b>というライブプレビュー行が
+        付いています。</p>
+      <p>変更するとテレプロンプターの表示がその場で再調整されるので、歌詞画面が別の
+        端末で開いていても、そこにすぐ戻ってきても、タイミングを取り直す必要はありません。
+        ソファからの距離ではなく、マイクスタンドに立てたときに実際にスマホと顔の間にある
+        距離に合わせて設定してください。<a href="/docs/ja/perform.html#lyrics">歌詞と
+        テレプロンプター</a>を参照してください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="metronome"><span class="n">08.7</span>メトロノーム</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td>クリックレベル</td><td>スライダー、−40…+6 dB</td><td>約−3 dB</td>
+                <td>クリックの音量。</td></tr>
+            <tr><td><b class="ui">Click output</b></td><td>チップ: <b class="ui">Main</b>、<b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>どのハードウェア出力ペアがクリックを運ぶか。ペアが複数あるときのみ表示され、メイン以外のペアを選ぶと<b class="ui">Use all interface outputs</b>が強制的に有効になります。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>このカードの注記こそが役に立つ部分です: <b class="ui">The click is mixed in AFTER
+        the master FX chain — reverbs and limiters never touch it. Pick a separate output pair for
+        in-ear monitoring.</b></p>
+      <p>つまり、マスターリバーブがクリックをにじませることも、マスターリミッターが
+        クリックが鳴るたびにバンド全体をダッキングさせることもありません。専用ペアへ
+        送れば、ドラマーにはクリックが聞こえ、フロントオブハウスには聞こえません。</p>
+      <p>クリック自体のオン/オフは、Rigヘッダーのメトロノームチップ、または
+        <b class="ui">CLICK</b>チップ(<b class="ui a">Loop</b>タブ内)で行います
+        — ここからではありません。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="prompts"><span class="n">08.8</span>プロンプト</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Show the support prompt</b></td><td>スイッチ</td><td>オン</td>
+                <td>NAMperが無料であることを説明し、投げ銭を案内するシート。3回目の起動以降、時々再表示されます。オフにすると二度と表示されません。</td></tr>
+            <tr><td><b class="ui">Offer TONE3000 sign-in on launch</b></td><td>スイッチ</td><td>オン</td>
+                <td>ファクトリープリセットが実機アンプのキャプチャをダウンロードできるよう、TONE3000アカウントの接続を促すシート。サインアウト状態のとき、起動ごとに1回表示されます。</td></tr>
+            <tr><td><b class="ui">Replay the quick tour</b></td><td>ボタン</td><td>—</td>
+                <td>8ステップの初回起動ツアーをもう一度実行します。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>クイックツアーは、稼働中のRigタブの上に表示されるスポットライトで、
+        <b class="ui">n/8</b>とカウントされ、スライドショーではなく実際に手を動かして
+        進めます: オーディオをオンにする(本当にパワーボタンをタップします)、
+        アンプカード、シグナルチェーン(本当にブロックをタップします)、ブロック
+        エディタ、プリセット、他のタブ、そして締めくくりのステップを案内します。
+        <b class="ui">Next</b>、<b class="ui">Skip step</b>、<b class="ui">End
+        tour</b>は常に使え、最後には<b class="ui">Finish</b>があります。
+        <b class="ui a">Rig</b>タブでのみ実行されます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="reset"><span class="n">08.9</span>リセット</h2>
+      <p>ボタンは2つで、それぞれ確認ダイアログの先にあります。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>ボタン</th><th>ダイアログ</th><th>確認</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Reset to factory presets</b></td>
+                <td><b class="ui">Delete ALL user presets? The four factory rigs come back.</b></td>
+                <td><b class="ui">Delete all user presets</b></td></tr>
+            <tr><td><b class="ui">Reset all settings</b></td>
+                <td><b class="ui">Reset every setting (audio, looper, MIDI map, appearance) to defaults? Presets and files stay. Restart the app afterwards.</b></td>
+                <td><b class="ui">Reset settings</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>1つ目はユーザーのリグプリセットを消去し、4つのファクトリーリグを復元します。
+        2つ目はすべてのプリセットとすべてのファイルをそのままにして、設定だけを
+        デフォルトに戻します。</p>
+      <div class="note warn">
+        <div class="t">設定リセット後は再起動を</div>
+        <p>注記には<b class="ui">Settings reset takes effect after an app restart.</b>と
+          書かれており、それは文字どおりの意味です。即座に反映されるのは外観の変更だけで
+          — オーディオ設定が本当にデフォルトへ戻るには再起動が必要です。アプリスイッチャー
+          からNAMperを終了し、もう一度開いてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="diagnostics"><span class="n">08.10</span>診断</h2>
+      <p>NAMperはインターフェースのルーティングとピークを記録するプレーンテキストの
+        エンジンログを保持しています。ログが存在する場合、このカードには
+        <b class="ui">Share engine log</b>と<b class="ui">Clear engine log</b>が
+        表示されます。存在しない場合は<b class="ui">No engine log yet (it records interface
+        routing and peaks).</b>と表示されます。</p>
+      <p><b class="ui">Share engine log</b>はファイルをiOSの共有シートに渡します —
+        メールで送る、AirDropする、サポートの問い合わせに添付する、といったことができます。
+        インターフェースが開かない、レートが拒否される、エンジンが勝手に止まる、といった
+        バグ報告に含める材料としては、これが単独で最も役立つものです。オーディオ層で
+        実際に何が起きたかを記録しているためです。</p>
+      <p><b class="ui">Clear engine log</b>はログを空にします。問題を再現する直前に
+        これを行えば、送るログにはその問題だけが記録され、余計なものは入りません。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="elsewhere"><span class="n">08.11</span>設定にないもの</h2>
+      <p>ここで探しても見つからないものが3つあります。</p>
+      <h3>トリガークオンタイズ</h3>
+      <p><b class="ui">QUANT</b>つまみとそのグリッドチップは、キットやパッドごとではなく
+        グローバルな設定であるにもかかわらず、設定ではなく<b class="ui a">Sample</b>タブの
+        ヘッダーにあります。<a href="/docs/ja/sampler.html#quantize">トリガークオンタイズ</a>
+        を参照してください。</p>
+      <h3>テンポとキー</h3>
+      <p>どちらも<b class="ui a">Rig</b>タブのヘッダーチップです。設定はそれを
+        <a href="#set"><b class="ui">SET</b></a>カードで表示しているだけです。</p>
+      <h3>MIDI</h3>
+      <p><strong>グローバルなMIDI設定はまったくありません</strong>: チャンネル
+        セレクターも、プログラムチェンジのトグルも、クロック同期もありません。
+        NAMperのMIDIはオムニかつ常時オンです — すべてのチャンネルが受け付けられ、
+        すべてのソースが自動的に接続され、アプリは<b class="ui">NAMper</b>という
+        名前の仮想デスティネーションを自ら公開します。</p>
+      <div class="note">
+        <div class="t">設定すべきことは何もない</div>
+        <p>ペダルが何も反応しない場合、問題は設定ではなくマッピングにあります。
+          MIDIに関するすべては<b class="ui a">Control</b>タブにあります —
+          <a href="/docs/ja/control.html">MIDIとコントロール</a>を参照してください。</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/control.html">← 07 · MIDIとコントロール</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/">All docs →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

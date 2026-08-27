@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pads du sampler — Documentation NAMper</title>
+<meta name="description" content="Seize pads de sampler : charger et enregistrer des sons, l'éditeur de pad avec trim et ADSR, les kits et les quatre kits de batterie d'usine, la quantification du trigger, les notes MIDI 36–51 et où les pads se placent dans le mix.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Pads du sampler — Documentation NAMper">
+<meta property="og:description" content="Seize pads, kits, trim et ADSR, quantification et déclenchement MIDI.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fr/sampler.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/sampler.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/sampler.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/sampler.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/sampler.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/sampler.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/sampler.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/sampler.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/sampler.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/sampler.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/sampler.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/sampler.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/sampler.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/sampler.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/sampler.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/sampler.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/sampler.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fr/">← TOUS LES DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fr/sampler.html" aria-current="page">Français</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">SOMMAIRE</div>
+    <ol>
+      <li><a href="/docs/fr/setup.html">Prise en main</a></li>
+      <li><a href="/docs/fr/rig.html">Rig et chaîne du signal</a></li>
+      <li><a href="/docs/fr/plugins.html">Plugins AU</a></li>
+      <li><a href="/docs/fr/looper.html">Looper</a></li>
+      <li><a class="on" href="/docs/fr/sampler.html">Pads du sampler</a></li>
+      <li><a href="/docs/fr/perform.html">Perform et paroles</a></li>
+      <li><a href="/docs/fr/control.html">MIDI et contrôle</a></li>
+      <li><a href="/docs/fr/settings.html">Référence des réglages</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--eq)">05 · PADS DU SAMPLER</div>
+    <h1>Seize pads, une seule page.</h1>
+    <p class="lede">L'onglet <b class="ui a">Sample</b> est une boîte à rythmes que tu peux jouer
+      avec tes pouces ou une pédale MIDI : seize pads, une bibliothèque de kits, un trim et une
+      enveloppe par pad, et un quantiseur pour quand le timing doit être parfait.</p>
+
+    <nav class="toc">
+      <div class="slab">SUR CETTE PAGE</div>
+      <ul>
+        <li><a href="#grid">La grille</a></li>
+        <li><a href="#loading">Charger un son dans un pad</a></li>
+        <li><a href="#editor">L'éditeur de pad</a></li>
+        <li><a href="#kits">Kits</a></li>
+        <li><a href="#quantize">Quantification du trigger</a></li>
+        <li><a href="#trigger">Jouer les pads</a></li>
+        <li><a href="#routing">Où vont les pads</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="grid"><span class="n">05.1</span>La grille</h2>
+      <p>Seize pads dans une grille fixe 4×4. Une seule page — il n'y a ni banques ni deuxième
+        page, donc tout ce que tu peux jouer est à l'écran en même temps.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
+             alt="L'onglet Sample avec le kit de batterie acoustique d'usine chargé sur les seize pads, chacun affichant son nom de sample, sa durée et sa forme d'onde, avec les boutons LEVEL et QUANT et la puce de grille de quantification dans l'en-tête.">
+        <figcaption>Le kit d'usine <b class="ui">Drums — Acoustic</b> chargé sur les 16 pads</figcaption>
+      </figure>
+      <p>La ligne d'en-tête porte, de gauche à droite : le mot <b class="ui">SAMPLER</b>, un bouton
+        <b class="ui">LEVEL</b> (0 à 2, par défaut 1), un bouton <b class="ui">QUANT</b>, la puce
+        de grille de quantification, la puce <b class="ui">PRESETS</b> pour les kits, un indicateur
+        <b class="ui">REC</b> qui s'allume pendant qu'un pad enregistre, et <b class="ui">STOP
+        ALL</b>.</p>
+      <p>En bas, l'indice dit tout :</p>
+      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
+        36–51</b></p>
+      <p>Un <b>pad vide</b> se divise en deux moitiés — <b class="ui">LOAD</b> et
+        <b class="ui">REC</b>. Un <b>pad chargé</b> affiche le nom du sample, sa durée (par exemple
+        <b class="ui">1.4s</b>), une forme d'onde atténuée avec tout ce qui est hors du trim
+        estompé, et un curseur lumineux qui balaie pendant la lecture.</p>
+      <p>Appui long sur n'importe quel pad pour le menu : <b class="ui">Load sound…</b>,
+        <b class="ui">Record mix</b> ou <b class="ui">Stop recording</b>, et — sur un pad chargé —
+        <b class="ui">Edit…</b>, <b class="ui">Clear</b> et <b class="ui">MIDI Learn: pad N</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="loading"><span class="n">05.2</span>Charger un son dans un pad</h2>
+      <p>Il y a trois façons de charger un fichier, et elles ouvrent toutes le même sélecteur
+        Fichiers : la moitié <b class="ui">LOAD</b> d'un pad vide, <b class="ui">Load sound…</b>
+        dans le menu d'appui long, et <b class="ui">Load file</b> à l'intérieur de l'éditeur de
+        pad. Tout ce qu'iOS peut décoder est accepté.</p>
+      <p>Les samples sont plafonnés à <b>12 secondes</b> — un fichier plus long est tronqué plutôt
+        que refusé. Et il n'y a pas de glisser-déposer dans NAMper : chaque import passe par le
+        sélecteur.</p>
+
+      <h3>Enregistrer dans un pad</h3>
+      <p>La moitié <b class="ui">REC</b> d'un pad vide enregistre directement dedans. Un seul pad
+        peut enregistrer à la fois, et la prise est nommée <b class="ui">Rec N</b>. Avec le moteur
+        arrêté, ça refuse avec <b class="ui r">Audio is off — tap the power button before
+        recording.</b></p>
+      <div class="note warn">
+        <div class="t">L'enregistreur de pad capture ce que tu entends</div>
+        <p>Il enregistre le <b>mix de sortie principal</b>, pas l'entrée brute — donc le rig, le
+          looper, les autres pads et toute backing track atterrissent tous dans le sample. C'est
+          utile pour capturer un accord directement depuis ton son traité, et un piège si tu
+          voulais capturer une source sèche. Coupe ou arrête tout le reste avant d'appuyer sur
+          <b class="ui">REC</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">05.3</span>L'éditeur de pad</h2>
+      <p>Appui long sur un pad chargé → <b class="ui">Edit…</b>. La fiche est intitulée
+        <b class="ui">PAD N</b> avec le nom du sample et sa durée.</p>
+      <p>La forme d'onde a des <b>poignées de trim déplaçables</b> au début et à la fin — fais
+        glisser le début vers l'intérieur pour couper une attaque lente, fais glisser la fin vers
+        l'intérieur pour raccourcir une longue traîne.</p>
+      <p>L'<b>enveloppe ADSR est dessinée par-dessus la forme d'onde</b> et s'édite en faisant
+        glisser trois poignées rondes : <b class="ui">Attack</b>, <b class="ui">Decay and
+        sustain</b> et <b class="ui">Release</b>. Un affichage au-dessus montre les valeurs, comme
+        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
+      <p>Deux boutons : <b class="ui">Gain</b> (0 à 2) et <b class="ui">Pitch</b> (0.25 à 4,
+        affiché comme <b class="ui">1.00x</b>). Pitch est un taux de rééchantillonnage, donc il
+        change <b>la hauteur et la vitesse ensemble</b> — un décalage façon bande, pas un décalage
+        qui préserve les formants. La moitié de la vitesse, c'est une octave en dessous.</p>
+
+      <h3>MODE et TAP</h3>
+      <p>Deux paires de puces décident comment un pad se comporte sous ton doigt.
+        <b class="ui">MODE</b> est <b class="ui">One-shot</b> ou <b class="ui">Loop</b> ;
+        <b class="ui">TAP</b> est <b class="ui">Retrig</b> ou <b class="ui">Latch</b>. La règle est
+        simple : un pad réglé sur <b class="ui">Loop</b> ou sur <b class="ui">Latch</b> bascule
+        entre démarrage et arrêt à chaque tap, et un pad <b class="ui">One-shot</b> /
+        <b class="ui">Retrig</b> redémarre depuis le début du trim à chaque fois que tu le frappes
+        — le comportement ordinaire d'un pad de batterie.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>MODE</th><th>TAP</th><th>Ce que fait un tap</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
+                <td>Joue une fois depuis le début du trim, redémarrant à chaque tap. Batterie,
+                    hits, stabs.</td></tr>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
+                <td>Joue une fois ; un deuxième tap pendant qu'il sonne encore l'arrête. Utile pour
+                    les longs one-shots que tu dois parfois écourter.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+                <td>Boucle jusqu'à ce que tu tapotes de nouveau pour l'arrêter.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+                <td>Boucle jusqu'à ce que tu tapotes de nouveau pour l'arrêter. Nappes, drones,
+                    pluie, crépitement de vinyle.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>En bas, <b class="ui">Preview</b> permet d'auditionner le pad avec tes réglages actuels
+        et <b class="ui">Load file</b> remplace le son sans quitter l'éditeur.</p>
+      <div class="note">
+        <div class="t">Ce que le sampler n'a volontairement pas</div>
+        <p>Pas de choke groups (un charleston ouvert ne sera pas coupé par un fermé), pas de pan
+          par pad, pas d'inversion, pas de couches de vélocité, pas de routage de sortie par pad et
+          pas de mode gate momentané pendant l'appui. Les pads jouent au <b class="ui">Gain</b>
+          réglé et s'arrêtent quand le sample ou l'enveloppe le décide.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="kits"><span class="n">05.4</span>Kits</h2>
+      <p>Un kit est un instantané des seize pads — chaque trim, enveloppe, gain, pitch et réglage
+        de mode — <b>plus une copie privée de l'audio de chaque pad</b>. Cette copie, c'est tout
+        l'intérêt : une fois qu'un kit est enregistré, importer par-dessus un pad, le vider ou
+        supprimer le fichier original ne peut pas vider le kit de sa substance. Recharge-le dans
+        six mois et il joue toujours.</p>
+      <p>Ouvre le navigateur avec la puce <b class="ui">PRESETS</b> ; la fiche est intitulée
+        <b class="ui">Sampler Kits</b>. Appuie sur une ligne pour la charger. Le menu de la ligne a
+        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> et
+        <b class="ui">Delete</b>. Supprimer un kit n'enlève jamais l'audio que les pads chargés ou
+        un autre kit enregistré utilisent encore.</p>
+      <div class="note warn">
+        <div class="t">Les kits ne peuvent pas être partagés</div>
+        <p>Le pied de la fiche explique pourquoi : <b class="ui">Kits live on this device (they
+          carry their audio files).</b> Il n'y a ni partage ni export pour un kit, et l'export de
+          sauvegarde complète laisse l'audio des kits du sampler de côté — il ne porte que les
+          paramètres et les références. Copie le dossier <b class="ui">samples/</b> dans l'appli
+          Fichiers si tu as besoin des sons sur un autre appareil.</p>
+      </div>
+
+      <h3>Les quatre kits d'usine</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Kit</th><th>Les seize pads</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Drums — Digital</b></td>
+                <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
+                    Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
+            <tr><td><b class="ui">Drums — Analog</b></td>
+                <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
+                    Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
+            <tr><td><b class="ui">Drums — Acoustic</b></td>
+                <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
+                    Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
+                    Tambourine</td></tr>
+            <tr><td><b class="ui">FX &amp; Textures</b></td>
+                <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
+                    Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Un kit d'usine supprimé reste supprimé — il ne revient pas au prochain lancement. Renomme
+        ou mets-en un à jour plutôt que de le supprimer si tu veux juste le sortir du chemin.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="quantize"><span class="n">05.5</span>Quantification du trigger</h2>
+      <p>Le bouton <b class="ui">QUANT</b> est une <b>intensité</b>, pas un interrupteur. À zéro,
+        il affiche <b class="ui">OFF</b> ; au-dessus, il affiche un pourcentage. À 100 %, chaque
+        hit atterrit exactement sur la grille ; à 30 %, seuls ceux légèrement en avance sont
+        ramenés dans le rang et ton feel survit. La valeur par défaut est 0, désactivé.</p>
+      <p>La puce à côté règle la grille, en cyclant entre <b class="ui">1/4</b>, <b class="ui">1/8</b>,
+        <b class="ui">1/16</b> et <b class="ui">1/32</b>. La valeur par défaut est
+        <b class="ui">1/16</b>.</p>
+      <p>Les deux réglages sont <b>globaux</b> — pas par kit, pas par pad. Charger un kit ne les
+        change pas.</p>
+      <div class="note warn">
+        <div class="t">Trois choses doivent toutes être vraies</div>
+        <p>La quantification ne fait quelque chose d'audible que quand <b>ces trois conditions</b>
+          sont réunies, et l'écran ne te le dit pas :</p>
+        <ul style="--nc:var(--drive)">
+          <li>un <b>tempo est réglé</b> — sinon il n'y a pas de grille ;</li>
+          <li>une <b>loop tourne</b> — le looper fournit la phase, pour que la grille sache où se
+            trouve le temps un ;</li>
+          <li>tu es en train d'<b>enregistrer</b> — soit avec l'enregistreur de
+            <b class="ui a">Perform</b>, soit avec une piste de loop dont la source est le
+            sampler.</li>
+        </ul>
+        <p>Monte le bouton en jouant sur rien du tout et tu n'entendras aucune différence. C'est
+          voulu : un pad qui attend la prochaine double-croche avant de parler donne une sensation
+          cassée sous les doigts, donc le jeu libre reste toujours non quantifié et la correction
+          ne s'applique que là où ça finit sur un enregistrement.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="trigger"><span class="n">05.6</span>Jouer les pads</h2>
+      <p>Au toucher : un tap joue ou arrête le pad selon ses réglages <b class="ui">MODE</b> et
+        <b class="ui">TAP</b>, et un appui long ouvre le menu.</p>
+      <p>En MIDI : les <b>notes 36 à 51 jouent les pads 1 à 16</b>, en suivant la convention
+        batterie GM — la note 36 est le pad 1. C'est toujours actif et ne demande aucune
+        configuration, sur n'importe quel canal MIDI, sauf si l'un de tes propres mappings a déjà
+        réclamé cette note.</p>
+      <p><b>La vélocité n'est pas utilisée.</b> Quelle que soit la force avec laquelle tu frappes
+        un pad de contrôleur, le sample joue au <b class="ui">Gain</b> que tu as réglé dans
+        l'éditeur. Règle les niveaux une fois dans l'éditeur de pad et ils restent en place.</p>
+      <div class="note tip">
+        <div class="t">Les mappings appris se comportent mieux que les notes brutes</div>
+        <p>Un mapping que tu crées sur l'onglet <b class="ui a">Control</b> appelle play/stop,
+          donc il respecte <b class="ui">Loop</b> et <b class="ui">Latch</b> — une pression de
+          footswitch démarre la loop, la suivante l'arrête. Les notes MIDI brutes 36–51 relancent
+          toujours depuis le début. Si tu pilotes des pads en boucle depuis une pédale, apprends le
+          mapping plutôt que de te fier à la plage de notes intégrée.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="routing"><span class="n">05.7</span>Où vont les pads</h2>
+      <p>Les pads se mélangent <b>directement dans le mix principal</b> — ils ne passent pas par
+        la chaîne de guitare, donc le gain de ton ampli et ta réverbération ne les touchent
+        jamais. Le bouton <b class="ui">LEVEL</b> dans l'en-tête règle à quel volume tout le
+        sampler se place par rapport au rig.</p>
+      <p>Ils sont aussi disponibles ailleurs dans l'appli comme source :</p>
+      <ul style="--nc:var(--power)">
+        <li>Comme <b>entrée de chaîne</b> — choisis <b class="ui">Sampler pads</b> sur le
+          connecteur IN d'un rig ou sur une branche parallèle (puce <b class="ui">SMPL</b>) et les
+          pads passent par les effets de ce rig.</li>
+        <li>Comme <b>source de piste de loop</b> — règle l'<b class="ui">IN</b> d'une piste du
+          looper sur <b class="ui">Sampler</b> (puce <b class="ui">SMP</b>) et tu peux boucler un
+          rythme que tu tapotes sur les pads.</li>
+        <li>Comme <b>sidechain de compresseur</b> — le menu <b class="ui">Sidechain</b> d'un bloc
+          Comp inclut <b class="ui">SMP</b>, pour que la grosse caisse puisse faire du ducking sur
+          la guitare.</li>
+      </ul>
+      <p><b class="ui">STOP ALL</b> dans l'en-tête relâche tous les pads en train de jouer d'un
+        coup — le bouton panique pour un drone verrouillé ou une loop que tu ne trouves pas.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fr/looper.html">← 04 · Looper</a>
+      <span class="sp"></span>
+      <a href="/docs/fr/perform.html">06 · Perform et paroles →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fr/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper est une application indépendante, sans affiliation, approbation ni
+      parrainage d'aucun fabricant d'équipement. Tous les noms de produits, marques et logos sont la
+      propriété de leurs propriétaires respectifs et ne sont utilisés que pour décrire le matériel
+      à partir duquel une capture a été réalisée.</p>
+  </div>
+</footer>
+
+</body>
+</html>

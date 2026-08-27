@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDIとコントロール — NAMperドキュメント</title>
+<meta name="description" content="コントロールマップとMIDIラーン、マッピングできるすべての対象、内蔵MIDIマップ、Bluetoothペアリング、学習したサウンドトリガー、そしてチューナーについて。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="MIDIとコントロール — NAMperドキュメント">
+<meta property="og:description" content="フットスイッチ、ペダル、学習したサウンドをNAMperのあらゆる機能にマッピング — 内蔵MIDIマップとチューナーも。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/control.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/control.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/control.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/control.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/control.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/control.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/control.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/control.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/control.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/control.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/control.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/control.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/control.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/control.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/control.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/control.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/control.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/control.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a class="on" href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI &amp; CONTROL</div>
+    <h1>手はギターの上に。</h1>
+    <p class="lede">フットスイッチ、ペダル、楽器のボディを叩く音 —
+      <b class="ui a">Control</b>タブは、何が何を発火させるかを決める場所で、セットの間中
+      スマホをスタンドに置いたままにできます。チューナーもここにあります。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#map">コントロールマップ</a></li>
+        <li><a href="#learn">MIDIラーン</a></li>
+        <li><a href="#actions">マッピングできる対象</a></li>
+        <li><a href="#builtin">内蔵MIDIマップ</a></li>
+        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
+        <li><a href="#sounds">学習したサウンドトリガー</a></li>
+        <li><a href="#tuner">チューナー</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="map"><span class="n">07.1</span>コントロールマップ</h2>
+      <p><b class="ui a">Control</b>タブには3枚のカードがあります。1枚目は
+        <b class="ui">CONTROL MAP</b> — 自分で作るマッピングで、他のすべてに優先します。
+        説明文にはこう書かれています: <b class="ui">MIDI controls and input triggers, mapped to
+        anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or a
+        chord.</b></p>
+      <p>ヘッダーにはプリセットチップと<b class="ui">+</b>(<b class="ui">Add mapping</b>)が
+        あります。何もマッピングされていない状態では、カードに
+        <b class="ui">No mappings yet — add one with +</b>と表示されます。</p>
+      <p>各マッピングは1行で、左から: ソースチップ、<b class="ui">LEARN</b>ボタン、矢印、
+        アクションチップ、行を削除する<b class="ui">✕</b>という並びです。保存したマップは
+        プリセットチップの<b class="ui">Control Presets</b>にあるので、あるバンド用の
+        ペダルボードのレイアウトを次のバンドまで引きずる必要はありません。</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
+             alt="The Control tab: the CONTROL MAP card with mapping rows, the TAUGHT SOUNDS card, and the BUILT-IN MIDI MAP card listing CC ranges with a Pair Bluetooth MIDI button at the bottom.">
+        <figcaption>Controlタブ — あなたのマップ、学習したサウンド、内蔵マップ</figcaption>
+      </figure>
+
+      <div class="note warn">
+        <div class="t">入力トリガーは4つまで</div>
+        <p>学習したサウンドで駆動される行は、最初の4つだけが有効です。5つ目を追加すると
+          カードが警告します: <b class="ui r">Only the first 4 input triggers are active</b>。
+          MIDIの行にはこの制限はありません — これは楽器の音を聞き取る仕組みに関する制限です。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="learn"><span class="n">07.2</span>MIDIラーン</h2>
+      <p>CC番号を自分で入力することはありません。マッピングの行では次のようにします。</p>
+      <ol style="--nc:var(--eq)">
+        <li><b class="ui">LEARN</b>をタップします。チップが点灯し、行が待機状態になります。</li>
+        <li>使いたいフットスイッチを踏むか、ペダルを動かします。</li>
+        <li>ソースチップに<b class="ui">CC 42</b>や<b class="ui">Note 60</b>のように入力され、
+          カードの<b class="ui">Last:</b>行にも<b class="ui">Learned CC 42</b>のように
+          反映されます。</li>
+      </ol>
+      <p>もう一度<b class="ui">LEARN</b>をタップすると待機を解除します。ソースチップ自体の
+        メニューには、<b class="ui">CC… (use LEARN)</b>と<b class="ui">Note… (use
+        LEARN)</b>を含む<b class="ui">MIDI</b>セクションと、学習したサウンドを一覧する
+        <b class="ui">Taught sounds</b>セクション、そして<b class="ui">Teach a new
+        sound…</b>があります。</p>
+
+      <h3>その場でラーンする</h3>
+      <p>Controlタブから始める必要はありません。アプリ内のほぼどんなコントロールでも —
+        つまみ、チップの行、ルーパーパッド、サンプラーパッド、Performのトランスポート
+        ボタン — 長押しすると、そのコントロールそのものに対する
+        <b class="ui">MIDI Learn: &lt;name&gt;</b>がメニューに現れます。そのコントロールは
+        自ら輪郭を示し、<b class="ui">MOVE A MIDI CONTROL…</b>と表示します。ペダルを動かせば
+        マッピングが作られます。違うつまみをつかんでしまった場合は<b class="ui">Cancel
+        learn</b>で取り消せます。</p>
+      <div class="note tip">
+        <div class="t">ボードを素早く組む方法</div>
+        <p>画面に見えているものであれば、その場でラーンする方がControlタブより速いです:
+          ブロックを開き、ペダルに割り当てたいつまみを長押しし、スイッチを踏めば完了です。
+          Controlタブは、組み上げたものを見直して整理するための場所です。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="actions"><span class="n">07.3</span>マッピングできる対象</h2>
+      <p>アクションチップのメニューを、すべて挙げると次のとおりです。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>セクション</th><th>アクション</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">No action</b></td><td>行を無効のままにします。</td></tr>
+            <tr><td><b class="ui">Sampler pad</b></td><td>読み込まれたパッドごとに<b class="ui">Pad 1</b>から順に。</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
+              track 4</b>、<b class="ui">Run / stop</b>、<b class="ui">Clear all</b>。</td></tr>
+            <tr><td><b class="ui">Preset</b></td><td>名前ごとのすべてのリグプリセット、加えて
+              <b class="ui">Next preset</b>。</td></tr>
+            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>、
+              <b class="ui">Stop</b>、<b class="ui">Next section</b>、
+              <b class="ui">Prev section</b>。</td></tr>
+            <tr><td>リグごと</td><td><b class="ui">Block on/off</b>と<b class="ui">Block parameter
+              (CC)</b>。それぞれのリグの名前の下に一覧されます。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>リグが2つ以上になると、さらに3つの項目が現れます: <b class="ui">Next rig</b>、
+        <b class="ui">Block on/off · Active rig</b>、<b class="ui">Block param · Active
+        rig</b>です。これらはそのときMIDIフォーカスを持っているリグに追従するので、
+        1つのフットスイッチで「決まったリグの決まったブロック」ではなく「今弾いている
+        リグのドライブ」をバイパスできます。</p>
+      <p>ペダルを配線する前に覚えておきたい制約が2つあります。</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>連続的なブロックパラメータにはCCが必要です。</b>ノートと学習したサウンドは
+          イベントであり、値を滑らかに動かすことはできません — そのためパラメータの
+          サブメニューはこれらのソースでは表示されません。CCを送るエクスプレッションペダル
+          が必要なものです。</li>
+        <li><b>リグ切り替え後のソフトピックアップ。</b><b class="ui">Block param · Active
+          rig</b>にマッピングされた連続CCは、リグを切り替えてもつまみを飛び移らせません。
+          ペダルが新しいリグの現在値を通過するまで待ってから引き継ぐので、曲の途中で
+          リグを切り替えても、パラメータが足の位置にいきなり飛ぶことはありません。</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="builtin"><span class="n">07.4</span>内蔵MIDIマップ</h2>
+      <p>何もマッピングしていなくても、あらかじめ決まったレイアウトはすでに機能しています
+        — コントローラーを挿せば動きます。NAMperはオムニで受信するのですべてのチャンネルが
+        受け付けられ、現れたソースはすべて自動的に接続されます。アプリはまた
+        <b class="ui">NAMper</b>という名前の仮想デスティネーションも公開しているので、
+        同じ端末上の別のアプリからそこへ送信できます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>表示</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">プリセット</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">ブロックのオン/オフ</b>
+              — ゲート、コンプ、ドライブ、アンプ、キャビ、フェイザー、フランジャー、
+              コーラス、トレモロ、ディレイ、クラウドの順。値が64以上でオン</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">ブロックパラメータ</b>
+              — 0〜127を各パラメータの範囲にスケーリング。<b class="ui">CC 64</b>は
+              スキップされ、サステインペダル用に空けてあります</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">ルーパートラックのタップ</b>
+              — トラック1〜4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">ルーパーの走行/停止 /
+              クリア</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">パフォーム: 再生/一時停止 ·
+              停止 · 次へ · 前へ</b></td></tr>
+            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">パッド1〜16</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>自分で作ったマッピングは常に優先されます。フットスイッチをCC 85にラーンさせた場合、
+        その行が動作し、同じCCに対する内蔵のトラック1タップは道を譲ります — つまり
+        デフォルトを回避する必要はなく、それを上書きするだけで済みます。</p>
+      <div class="note">
+        <div class="t">CC 89はトグルです</div>
+        <p>内蔵の<b class="ui">CC 89</b>は本当の意味での走行/停止トグルです: ルーパーの
+          現在の状態を読み取り、動作中(録音中も動作中として扱われます)であれば停止し、
+          停止中であれば最初から走らせます。<b class="ui">Run / stop</b>アクションに
+          ラーンさせたマッピングも同じように動作します。</p>
+      </div>
+      <p>押下の検出は、安価なペダルにもわざと寛容に作られています。メッセージは、その値が
+        64以上のとき、または値は低いが直前に高い値が来ていなかったときに押下として
+        カウントされます — そのため、すべての押下を値0で送るフットスイッチでも、
+        個別のアクションはきちんと発火します。</p>
+      <p>カードの下部には、NAMperが何を認識しているかを示す1行があります:
+        <b class="ui">MIDI: waiting for sources</b>、または接続されているソースの名前で、
+        その下の<b class="ui">Last:</b>行には直近のイベントが表示されます。ペダルが
+        反応しない場合は、まずここを確認してください — メッセージがそもそも届いているか
+        どうかがわかります。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
+      <p>ワイヤレスペダルはアプリの中からペアリングします。内蔵マップカードの下部にある
+        <b class="ui">Pair Bluetooth MIDI</b>をタップします。<b class="ui">Bluetooth
+        MIDI</b>という見出しのシートが開き、システムのペアリングパネルと
+        <b class="ui">Done</b>ボタンが入っています。ペダルをペアリングモードにし、
+        リストでタップすると、MIDIソースの行に加わります。</p>
+      <div class="note warn">
+        <div class="t">2回タップしないこと</div>
+        <p>シートにはこの注意書きが理由あって書かれています: <b class="ui">Tapping a device
+          toggles its connection — a pedal already shown in the MIDI sources line is connected;
+          don't tap it again.</b>接続済みのペダルをタップすると切断されます。確信が
+          持てない場合は、何かに触れる前にカード下部のソース行を確認してください。</p>
+      </div>
+      <p>NAMperがBluetoothの許可を求めるのは、このシートを初めて開いたときだけで、
+        他には何も求めません。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="sounds"><span class="n">07.6</span>学習したサウンドトリガー</h2>
+      <p><b class="ui">TAUGHT SOUNDS</b>カードにはハードウェアが一切要りません。楽器を手に
+        持ったまま出せる音をNAMperに教えれば、以後それはMIDIイベントとまったく同じように
+        任意のアクションを発火させます。空の状態にはこう書かれています:
+        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
+        bridge — then map it to any action, like a MIDI event.</b></p>
+
+      <h3>サウンドを教える</h3>
+      <p><b class="ui">TEACH</b>をタップすると、<b class="ui">TEACH A SOUND</b>シートが
+        指示とともに開きます: <b class="ui">Make the sound 3–5 times, the same way each time: knock
+        the body, slap the strings, click behind the bridge — anything with a clear attack.</b>
+        テイクが届くたびに8つのドットが埋まっていき、ステータスには
+        <b class="ui">Listening…</b>、続けて回数が表示されます。<b class="ui">Sound
+        name</b>欄で名前を付け、<b class="ui">Save the sound</b>をタップします。保存には
+        最低2回のテイクが必要で、最大8回まで平均化されます — テイクが揃っているほど
+        トリガーの信頼性が上がります。</p>
+      <p>各行には名前、<b class="ui">3×</b>のような使用回数、<b class="ui">RE-TEACH</b>
+        ボタン、削除用の<b class="ui">✕</b>が表示されます。名前をタップすると変更できます。
+        再教育しても名前とそれを指すすべてのマッピングは保持されるので、ギターを変えた
+        あとにサウンドが誤発火し始めたら、最初からやり直すのではなく再教育してください。</p>
+      <div class="note warn">
+        <div class="t">削除するとマッピングも一緒に消える</div>
+        <p>学習したサウンドを削除すると、それを聞き取っていたすべてのマッピングも消え
+          ます。✕をタップする前に、行の使用回数でその数を確認できます。</p>
+      </div>
+      <p>学習したサウンドは、連続的なブロックパラメータを除くメニュー内のどのアクションでも
+        発火させられます — それはイベントであり、滑らかな変化ではないためです。そして
+        コントロールマップと同様、学習したサウンドのマッピングは同時に最初の4つだけが
+        有効です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="tuner"><span class="n">07.7</span>チューナー</h2>
+      <p>チューナーはタブではありません。<b class="ui a">Rig</b>ヘッダーの音叉アイコンから
+        開き、オーディオエンジンが動いている限りいつでも使えます — フィードバックガードが
+        出力をミュートしている状態でも使えるので、スマホ本体のスピーカーのままでも
+        チューニングできます。</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
+             alt="The tuner sheet in POLY mode: mode chips, a GUITAR badge, a row of tuning chips, and six vertical string meters with note names underneath.">
+        <figcaption>POLYモード — 6弦を同時に読み取る</figcaption>
+      </figure>
+
+      <p>上部には<b class="ui">POLY</b>と<b class="ui">SINGLE</b>という2つのモードチップが
+        あります。<b class="ui">POLY</b>がデフォルトで、ステージで使うべきモードです:
+        1回ストロークするだけですべての弦が同時に読み取られ、弦ごとに1本の縦型メーターと
+        その下の音名が表示されます。キャプションにもそう書かれています —
+        <b class="ui">strum — every string reads at once</b>。±5セント以内に入ると弦の
+        ドットが緑になります。</p>
+      <p><b class="ui">SINGLE</b>は昔ながらの1音ずつ合わせるチューナーです: 大きな音名の
+        文字、±50セントにわたる針、セント表示があり、±3セント以内で緑になります。信号が
+        ない状態では<b class="ui">play a note…</b>と表示されます。1本の弦を正確に合わせたい
+        ときに使ってください。</p>
+
+      <h3>楽器とチューニング</h3>
+      <p>NAMperは今持っている楽器を自動的に判別し、ピルとして表示します:
+        <b class="ui">GUITAR</b>、<b class="ui">BASS</b>、<b class="ui">UKULELE</b>です。
+        選択画面はありません — ベースを挿せば、チューナーはそれに合わせて切り替わります。</p>
+      <p>チューニングチップは<b class="ui">POLY</b>モードに適用され、楽器ごとに選択が
+        記憶されます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>楽器</th><th>チューニング</th></tr></thead>
+          <tbody>
+            <tr><td>ギター</td><td><b class="ui">EADGBE</b>、<b class="ui">Drop D</b>、
+              <b class="ui">DADGAD</b>、<b class="ui">E♭ std</b>、<b class="ui">Open G</b>、
+              <b class="ui">Open D</b></td></tr>
+            <tr><td>ベース</td><td><b class="ui">EADG</b>、<b class="ui">Drop D</b>、
+              <b class="ui">5-str B</b></td></tr>
+            <tr><td>ウクレレ</td><td><b class="ui">GCEA</b>、<b class="ui">Baritone</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>基準ピッチはA4 = 440 Hzに固定されています。校正用のコントロールはないため、
+        442 Hzのオーケストラと合わせて演奏する場合、チューナーはそこには追従しません。</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/perform.html">← 06 · パフォームと歌詞</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/settings.html">08 · 設定リファレンス →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

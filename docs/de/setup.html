@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erste Schritte — NAMper-Dokumentation</title>
+<meta name="description" content="Anschließen und loslegen: Audio-Interfaces, Samplerate und Buffergröße, die Power-Taste, die Eingangs- und Ausgangsanzeigen, der Rückkopplungsschutz und wo NAMper deine Dateien speichert.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Erste Schritte — NAMper-Dokumentation">
+<meta property="og:description" content="Audio-Interfaces, Samplerate und Buffer, die Power-Taste, die Anzeigen und der Rückkopplungsschutz.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/de/setup.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/setup.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/setup.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/setup.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/setup.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/setup.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/setup.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/setup.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/setup.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/setup.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/setup.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/setup.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/setup.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/setup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/setup.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/setup.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/setup.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/de/">← ALLE ANLEITUNGEN</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/de/setup.html" aria-current="page">Deutsch</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">INHALT</div>
+    <ol>
+      <li><a class="on" href="/docs/de/setup.html">Erste Schritte</a></li>
+      <li><a href="/docs/de/rig.html">Rig &amp; Signalkette</a></li>
+      <li><a href="/docs/de/plugins.html">AU-Plugins</a></li>
+      <li><a href="/docs/de/looper.html">Looper</a></li>
+      <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
+      <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
+      <li><a href="/docs/de/control.html">MIDI &amp; Control</a></li>
+      <li><a href="/docs/de/settings.html">Referenz: Einstellungen</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">01 · ERSTE SCHRITTE</div>
+    <h1>Anschließen und loslegen.</h1>
+    <p class="lede">Alles zwischen deiner Gitarre und dem ersten Sound: wie NAMper deine
+      Audio-Hardware erkennt, was die Power-Taste macht, wie du die Anzeigen liest, und warum
+      die App sich manchmal absichtlich selbst stummschaltet.</p>
+
+    <nav class="toc">
+      <div class="slab">AUF DIESER SEITE</div>
+      <ul>
+        <li><a href="#power">Die Power-Taste</a></li>
+        <li><a href="#interfaces">Audio-Interfaces</a></li>
+        <li><a href="#meters">Anzeigen und Pegel</a></li>
+        <li><a href="#rate">Samplerate und Buffer</a></li>
+        <li><a href="#feedback-guard">Der Rückkopplungsschutz</a></li>
+        <li><a href="#permissions">Berechtigungen</a></li>
+        <li><a href="#files">Wo deine Dateien liegen</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="power"><span class="n">01.1</span>Die Power-Taste</h2>
+      <p>Das grüne Power-Symbol in der oberen rechten Ecke des Tabs <b class="ui a">Rig</b> startet
+        und stoppt die Audio-Engine. Solange sie aus ist, wird nichts verarbeitet und nichts
+        klingt — die Anzeigen bleiben flach, und die Aufnahme verweigert mit
+        <b class="ui r">Audio is off — tap the power button before recording.</b></p>
+      <p>Sie ist gedimmt, wenn die Engine gestoppt ist, und grün mit Leuchten, wenn sie läuft. Der
+        Chip <b class="ui">DSP load</b> daneben zeigt, wie stark der Prozessor arbeitet: grün unter
+        60 %, gelb bis 85 %, rot darüber. Bleibt er im Roten, nimm einen Block aus der Kette oder
+        stell die Buffergröße einen Schritt höher.</p>
+      <p>NAMper fragt beim ersten Start der Engine nach Mikrofonzugriff, nicht beim Öffnen der App.</p>
+      <div class="note warn">
+        <div class="t">Beim Abziehen</div>
+        <p>Kopfhörer oder Interface abzuziehen <b>stoppt die Engine</b> — absichtlich, damit ein
+          lautes Rig nie von selbst auf den Telefonlautsprecher springt. Tippe erneut auf Power,
+          sobald du wieder angeschlossen bist. Etwas Neues anzuschließen baut die Engine automatisch
+          neu auf.</p>
+      </div>
+      <p>Kann die Engine nicht starten, zeigt das Banner <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> Schließe, was sonst noch das
+        Interface belegt, und versuch es erneut.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="interfaces"><span class="n">01.2</span>Audio-Interfaces</h2>
+      <p>Es gibt keine Geräteauswahl. NAMper folgt der Audio-Route, die iOS gerade nutzt, also wählst
+        du deine Hardware wie immer — Interface anschließen, und die App baut sich um es herum neu
+        auf. Multichannel-Interfaces werden unterstützt, bis zu acht Eingangskanäle.</p>
+      <p>Einstellungen → <b class="ui">AUDIO INTERFACE</b> zeigt dir, was NAMper tatsächlich
+        bekommen hat: <b class="ui">Sample rate</b>, <b class="ui">Inputs</b>, <b class="ui">Outputs</b>
+        und <b class="ui">Engine</b> (<b class="ui">running</b> oder <b class="ui">stopped</b>).
+        Stimmt die Kanalzahl nicht mit deiner Erwartung überein, findest du hier die Antwort.</p>
+
+      <h3>Deine Kanäle benennen</h3>
+      <p>Einstellungen → <b class="ui">CHANNEL NAMES</b> gibt jedem Eingang ein Textfeld mit dem
+        Platzhalter <b class="ui">Guitar, Vocal…</b>. Benenne sie einmal, und diese Namen erscheinen
+        in jeder Eingangsauswahl der App — Rig-Eingänge, Looper-Spurquellen, Input-Trim-Zeilen.
+        Unbenannte Kanäle heißen schlicht <b class="ui">In 1</b>, <b class="ui">In 2</b> und so
+        weiter.</p>
+
+      <h3>Mehrere Ausgänge</h3>
+      <p>Einstellungen → <b class="ui">Use all interface outputs</b> ist standardmäßig aus, und
+        Stereogeräte brauchen es nie. Schalte es ein, und NAMper öffnet jedes Ausgangspaar am
+        Interface, sodass ein Rig, ein Parallelzweig, eine Looper-Spur oder der Metronom-Klick
+        jeweils ihr eigenes Paar bekommen — die Gitarre zur Beschallung, den Klick in die
+        In-Ears des Schlagzeugers.</p>
+      <div class="note">
+        <div class="t">Eingangskanäle</div>
+        <p><b class="ui">Input channels</b> bleibt normalerweise auf <b class="ui">Auto</b>. Setze
+          eine feste Zahl nur, wenn dein Interface mehr Kanäle meldet, als du NAMper öffnen lassen
+          willst.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="meters"><span class="n">01.3</span>Anzeigen und Pegel</h2>
+      <p>Zwei senkrechte Balken flankieren die Amp-Karte auf dem Tab Rig: <b class="ui">IN</b> links,
+        <b class="ui">OUT</b> rechts. Beide laufen von −60 dBFS unten bis 0 oben, grün über gelb bis
+        rot. Eine eigene Clip-Anzeige gibt es nicht — Clipping ist der Balken, der oben ganz im Roten
+        landet.</p>
+
+      <h3>Den Eingangspegel einstellen</h3>
+      <ol style="--nc:var(--eq)">
+        <li>Schalte den Ton ein und spiel so kräftig, wie du überhaupt spielst.</li>
+        <li>Die Anzeige <b class="ui">IN</b> sollte das obere Drittel erreichen und aus dem Roten
+          bleiben.</li>
+        <li>Hat dein Interface einen Gain-Regler, benutze ihn. Wenn nicht, öffne Einstellungen →
+          <b class="ui">Input trim</b> und heb den Regler für diesen Kanal an — er geht von
+          −12 dB bis +24 dB in 1-dB-Schritten und startet bei 0.</li>
+      </ol>
+      <p>Die Anzeige <b class="ui">IN</b> zeigt den Pegel <em>nach</em> dem Trim, also genau das, was
+        das Amp-Modell tatsächlich bekommt.</p>
+
+      <h3>Die Master-Sektion</h3>
+      <p>Unten auf dem Tab Rig ist die Karte <b class="ui">MASTER</b> der Punkt, an dem jedes Rig,
+        der Looper, der Sampler und der Backing Track zusammenlaufen, bevor es zur Hardware-Ausgabe
+        geht. Sie zeigt Stereo-Pegelbalken <b class="ui">L</b> und <b class="ui">R</b> mit Marken bei
+        −12 und −6 dB, dazu einen Lautheitswert im Broadcast-Stil in <b class="ui">LUFS</b> — die
+        große Zahl ist die momentane Lautheit, die kleine Linie ergänzt den kurzfristigen Wert. In
+        der Stille zeigt sie <b class="ui">-inf</b>. Der Fader darunter geht von −60 bis +12 dB.</p>
+      <p>Jeder Block-Editor hat außerdem eigene kleine Anzeigen <b class="ui">IN</b> und
+        <b class="ui">OUT</b> — der schnellste Weg, den Block zu finden, der zu heiß läuft.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="rate"><span class="n">01.4</span>Samplerate und Buffer</h2>
+      <p>Beide stecken in Einstellungen → <b class="ui">AUDIO INTERFACE</b>, und beide werden pro
+        Audio-Route gemerkt — dein Interface und deine Kopfhörer können jeweils ihre eigenen
+        Einstellungen behalten.</p>
+
+      <h3>Samplerate</h3>
+      <p>Die Chips zeigen <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>,
+        <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> und
+        <b class="ui">192k</b>. <b class="ui">Auto</b> ist die Vorgabe und folgt einfach dem
+        Interface; ein Wechsel der Rate startet die Engine neu.</p>
+      <p>Am eingebauten Mikrofon und Lautsprecher des Telefons erscheinen nur <b class="ui">Auto</b>
+        und <b class="ui">48k</b>, mit dem Hinweis
+        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
+        rates.</b> Mit angeschlossenem Interface bekommst du die volle Liste — abzüglich jeder Rate,
+        die genau dieses Interface schon abgelehnt hat; NAMper merkt sich das und bietet sie nicht
+        mehr an.</p>
+      <p>Wird eine Rate abgelehnt, fällt die App auf die vorherige zurück und sagt es rot:
+        <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+      <div class="note tip">
+        <div class="t">Welche Rate soll ich nehmen?</div>
+        <p>Höher ist nicht automatisch besser — es kostet Prozessor-Headroom, und NAM-Profile werden
+          ohnehin bei gewöhnlichen Raten aufgenommen. Lass es auf <b class="ui">Auto</b>, außer du
+          passt dich an eine Session mit einer bestimmten Rate an.</p>
+      </div>
+
+      <h3>Buffergröße</h3>
+      <p><b class="ui">Buffer</b> bietet <b class="ui">64</b>, <b class="ui">128</b>,
+        <b class="ui">256</b> und <b class="ui">512</b> Samples, mit einer Live-Anzeige der Latenz,
+        die das kostet. Die Vorgabe ist <b class="ui">128</b>. Der eigene Hinweis der App ist genau:
+        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
+        one step.</b></p>
+      <p>Das ist die einzige Latenzregelung in NAMper — eine separate Latenzeinstellung gibt es
+        nicht.</p>
+      <div class="note warn">
+        <div class="t">Bluetooth-Ausgabe</div>
+        <p>Bluetooth-Kopfhörer und -Lautsprecher fügen rund 0,2 s Verzögerung hinzu — damit lässt
+          sich nicht spielen. Die App warnt dich, sobald sie eine Bluetooth-Route erkennt. Nimm für
+          das Livespiel einen kabelgebundenen Ausgang.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="feedback-guard"><span class="n">01.5</span>Der Rückkopplungsschutz</h2>
+      <p>Eine Gitarren-App mit offenem Telefonmikrofon und spielendem Telefonlautsprecher ist eine
+        Rückkopplungsschleife, die nur auf ihren Auftritt wartet. Deshalb achtet NAMper genau auf
+        diese Kombination — eingebautes Mikrofon als Eingang, eingebauter Lautsprecher oder
+        Hörmuschel als Ausgang — und schaltet die Ausgabe stumm, bevor es heult.</p>
+      <figure>
+        <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
+             alt="Das Banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. Mit einer Unmute-Taste.">
+        <figcaption>Das Banner, das erscheint, wenn der Schutz greift</figcaption>
+      </figure>
+      <p>Wenn er greift, siehst du <b class="ui r">Output muted to stop feedback (mic → speaker).
+        Connect an interface or headphones.</b> Nur die hörbare Ausgabe wird zurückgehalten — der
+        Tuner, die Eingangsanzeigen und die Aufnahme laufen weiter, sodass du trotzdem stimmen und
+        trotzdem einen Take aufnehmen kannst.</p>
+      <p>Schließe Kopfhörer oder ein Interface an, und die Stummschaltung hebt sich von selbst auf.
+        Das ✕ auf dem Banner blendet die Meldung nur für diese Sitzung aus; es hebt die
+        Stummschaltung nicht auf.</p>
+      <div class="note">
+        <div class="t">Was „Unmute“ bewirkt</div>
+        <p>Die Taste <b class="ui">Unmute</b> ist eine vorübergehende Ausnahme: Die Ausgabe bleibt
+          für diese Sitzung aktiv, und der Schutz schärft sich wieder scharf, sobald sich die Route
+          ändert — Interface oder Kopfhörer an- und abstecken, oder die App neu starten, und der
+          eingebaute Lautsprecher steht wieder unter Schutz. Um den Schutz dauerhaft zu deaktivieren,
+          nimm stattdessen den Schalter <b class="ui">Feedback guard</b> in den Einstellungen.</p>
+      </div>
+      <p>Der Schalter selbst sitzt unter Einstellungen → <b class="ui">AUDIO INTERFACE</b> →
+        <b class="ui">Feedback guard</b>, mit dem Untertitel
+        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b> Er ist
+        standardmäßig an.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="permissions"><span class="n">01.6</span>Berechtigungen</h2>
+      <p>NAMper fragt nach genau zwei Dingen, und nur dann, wenn sie gebraucht werden.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Berechtigung</th><th>Wann</th><th>Wozu</th></tr></thead>
+          <tbody>
+            <tr><td>Mikrofon</td><td>Beim ersten Tippen auf die Power-Taste</td>
+                <td>Um deine Gitarre oder dein Mikrofon zu hören. Die Abfrage sagt es klar: Audio
+                    verlässt dein Gerät nie.</td></tr>
+            <tr><td>Bluetooth</td><td>Beim ersten Koppeln eines drahtlosen MIDI-Pedals</td>
+                <td>Um Bluetooth-MIDI-Controller zu finden und zu verbinden.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ist der Mikrofonzugriff aus, zeigt ein rotes Banner
+        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> mit einer
+        Taste <b class="ui">Settings</b>, die dich direkt zur iOS-Einstellung bringt. Erteile den
+        Zugriff, und die Engine baut sich ohne Neustart der App neu auf.</p>
+      <p>Es gibt keine Analytics, kein Tracking, kein Konto und keinen Zugriff auf Kamera, Fotos,
+        Standort oder Kontakte. NAMper sammelt nichts.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="files"><span class="n">01.7</span>Wo deine Dateien liegen</h2>
+      <p>Alles, was NAMper speichert, ist in der App Dateien sichtbar unter
+        <b class="ui">On My iPhone → NAMper</b> (oder <b class="ui">On My iPad</b>). Mit der App
+        Dateien kannst du Dinge hinein- und herauskopieren, den Ordner sichern oder auf einen
+        Computer verschieben.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Ordner</th><th>Was darin liegt</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">tones/</b></td><td>NAM-Amp-Profile (<b class="ui">.nam</b>) samt
+              Cover und Metadaten</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>Von dir importierte Impulsantworten</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>Sampler-Pads, gespeicherte Kits unter
+              <b class="ui">samples/kits/</b></td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>Backing Tracks, die Setlist, Songtexte und
+              Preset-Marker</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>Deine Aufnahmen vom Auftritt</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>Rig-Presets sowie die Presets von Looper,
+              Sampler, Setlist und Control</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>Ein Klartext-Log von Interface-Routing und
+              Pegelspitzen, nützlich für eine Fehlermeldung</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <div class="t">Ein Kniff, den man kennen sollte</div>
+        <p>Audiodateien, die du mit der App Dateien direkt in <b class="ui">backing/</b> legst,
+          werden beim nächsten Öffnen von NAMper in die Setlist übernommen. Ein ganzes Set zu laden
+          ist so ein einziges Kopieren-Einfügen am Computer statt zwanzig Tipps auf dem Handy.</p>
+      </div>
+      <p>Zwei Dinge funktionieren nicht so, wie man vermuten könnte: Du kannst Dateien nicht auf das
+        App-Symbol oder in ein Fenster ziehen — jeder Import läuft über den Dateiauswähler innerhalb
+        von NAMper — und der Ordner <b class="ui">tones/</b> ist absichtlich vom iCloud-Backup
+        ausgeschlossen, weil TONE3000 diese Profile einfach erneut herunterladen kann.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/de/">← Alle Anleitungen</a>
+      <span class="sp"></span>
+      <a href="/docs/de/rig.html">02 · Rig &amp; Signalkette →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/de/">DOKUMENTATION</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">DATENSCHUTZ</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper ist eine unabhängige App ohne Verbindung zu, Empfehlung durch oder Sponsoring von
+      Ausrüstungsherstellern. Alle Produktnamen, Marken und Warenzeichen sind Eigentum ihrer jeweiligen
+      Inhaber und werden nur verwendet, um das Gerät zu beschreiben, von dem ein Capture stammt.</p>
+  </div>
+</footer>
+
+</body>
+</html>

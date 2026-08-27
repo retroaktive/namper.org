@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>はじめに — NAMper ドキュメント</title>
+<meta name="description" content="接続方法: オーディオインターフェース、サンプルレートとバッファサイズ、パワーボタン、入力・出力メーター、フィードバックガード、NAMperがファイルを保存する場所について。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="はじめに — NAMper ドキュメント">
+<meta property="og:description" content="オーディオインターフェース、サンプルレートとバッファ、パワーボタン、メーター、フィードバックガードについて。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/setup.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/setup.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/setup.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/setup.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/setup.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/setup.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/setup.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/setup.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/setup.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/setup.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/setup.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/setup.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/setup.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/setup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/setup.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/setup.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/setup.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/setup.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a class="on" href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">01 · GETTING STARTED</div>
+    <h1>接続する。</h1>
+    <p class="lede">ギターから最初の音が出るまでの流れ: NAMperがオーディオハードウェアをどう認識するか、
+      パワーボタンが何をするか、メーターの読み方、そしてアプリがあえて自らをミュートする理由まで。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#power">パワーボタン</a></li>
+        <li><a href="#interfaces">オーディオインターフェース</a></li>
+        <li><a href="#meters">メーターとレベル</a></li>
+        <li><a href="#rate">サンプルレートとバッファ</a></li>
+        <li><a href="#feedback-guard">フィードバックガード</a></li>
+        <li><a href="#permissions">権限について</a></li>
+        <li><a href="#files">ファイルの保存場所</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="power"><span class="n">01.1</span>パワーボタン</h2>
+      <p><b class="ui a">Rig</b>タブ右上にある緑色のパワーアイコンが、オーディオエンジンの開始と停止を
+        行います。オンになるまでは何も処理されず、音も鳴りません — メーターは動かず、録音は
+        <b class="ui r">Audio is off — tap the power button before recording.</b>で拒否されます。</p>
+      <p>エンジンが停止しているときは暗く表示され、動作中は緑色に光ります。隣にある
+        <b class="ui">DSP load</b>チップは、プロセッサーの負荷を示します: 60 %未満は緑、85 %までは
+        アンバー、それ以上は赤です。赤のままなら、チェーンからブロックを1つ外すか、バッファサイズを
+        1段階上げてください。</p>
+      <p>NAMperがマイクへのアクセスを求めるのは起動時ではなく、初めてエンジンを開始したときです。</p>
+      <div class="note warn">
+        <div class="t">接続を抜いたとき</div>
+        <p>ヘッドフォンやインターフェースを抜くと<b>エンジンが停止します</b> — これは意図的な仕様で、
+          大音量のリグが勝手にスマホのスピーカーへ切り替わることがないようにするためです。差し直したら
+          もう一度パワーをタップしてください。新しい機器を接続すると、エンジンは自動的に再構築されます。</p>
+      </div>
+      <p>エンジンが起動できない場合、バナーには<b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b>と表示されます。インターフェースを
+        使用している他のアプリを閉じてから、もう一度試してください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="interfaces"><span class="n">01.2</span>オーディオインターフェース</h2>
+      <p>デバイス選択画面はありません。NAMperはiOSが使用しているオーディオルートにそのまま従うため、
+        ハードウェアの選び方はいつも通りで構いません — インターフェースを接続すれば、アプリが
+        それに合わせて再構築されます。マルチチャンネルインターフェースにも対応し、最大8入力
+        チャンネルまで扱えます。</p>
+      <p>設定 → <b class="ui">AUDIO INTERFACE</b>で、NAMperが実際に認識している内容がわかります:
+        <b class="ui">Sample rate</b>、<b class="ui">Inputs</b>、<b class="ui">Outputs</b>、
+        <b class="ui">Engine</b>(<b class="ui">running</b>または<b class="ui">stopped</b>)。
+        チャンネル数が想定と違う場合は、この項目で確認できます。</p>
+
+      <h3>チャンネルに名前を付ける</h3>
+      <p>設定 → <b class="ui">CHANNEL NAMES</b>では、各入力にプレースホルダー
+        <b class="ui">Guitar, Vocal…</b>付きのテキストフィールドが用意されています。一度名前を
+        付ければ、アプリ内のすべての入力ピッカー — リグの入力、ルーパートラックのソース、
+        入力トリムの行 — にその名前が表示されます。名前を付けていないチャンネルは
+        <b class="ui">In 1</b>、<b class="ui">In 2</b>のように表示されます。</p>
+
+      <h3>複数の出力</h3>
+      <p>設定 → <b class="ui">Use all interface outputs</b>はデフォルトでオフになっており、
+        ステレオ機器では通常オンにする必要はありません。オンにすると、NAMperはインターフェース上の
+        すべての出力ペアを開くため、リグ、パラレルブランチ、ルーパートラック、メトロノームのクリックが
+        それぞれ専用のペアを持てます — ギターをフロントオブハウスへ、クリックをドラマーの
+        インイヤーへ、といった具合です。</p>
+      <div class="note">
+        <div class="t">入力チャンネル</div>
+        <p><b class="ui">Input channels</b>は通常<b class="ui">Auto</b>のままで構いません。
+          インターフェースが、NAMperに開かせたい数より多くのチャンネルを報告してくる場合にのみ、
+          数値を固定してください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="meters"><span class="n">01.3</span>メーターとレベル</h2>
+      <p>Rigタブのアンプカードの両脇には、縦型のメーターが2本並びます: 左が<b class="ui">IN</b>、
+        右が<b class="ui">OUT</b>です。どちらも下端が−60 dBFS、上端が0で、緑からアンバー、
+        赤へと変化します。専用のクリップランプはなく、バーが一番上の赤に達した状態がそのまま
+        クリッピングです。</p>
+
+      <h3>入力レベルを設定する</h3>
+      <ol style="--nc:var(--eq)">
+        <li>オーディオをオンにし、普段いちばん強く弾く強さで弾いてみます。</li>
+        <li><b class="ui">IN</b>メーターは上部3分の1まで届き、赤には入らないようにします。</li>
+        <li>インターフェースにゲインつまみがあればそれを使います。ない場合は設定 →
+          <b class="ui">Input trim</b>を開き、そのチャンネルのスライダーを上げてください —
+          −12 dBから+24 dBまで1 dB刻みで動き、初期値は0です。</li>
+      </ol>
+      <p><b class="ui">IN</b>メーターはトリム<em>適用後</em>のレベルを示すため、表示されている
+        値がそのままアンプモデルに入る信号です。</p>
+
+      <h3>マスターセクション</h3>
+      <p>Rigタブの下部にある<b class="ui">MASTER</b>カードは、すべてのリグ、ルーパー、サンプラー、
+        バッキングトラックがハードウェア出力の直前で合流する場所です。ステレオのピークバー
+        <b class="ui">L</b>と<b class="ui">R</b>には−12と−6 dBの目盛りがあり、加えて放送基準
+        スタイルのラウドネス表示が<b class="ui">LUFS</b>で示されます — 大きい数字が瞬間的な
+        ラウドネス、小さい方の線がショートタームの値です。無音時は<b class="ui">-inf</b>と
+        表示されます。下のフェーダーは−60から+12 dBの範囲で動きます。</p>
+      <p>各ブロックのエディタにも小さな<b class="ui">IN</b>・<b class="ui">OUT</b>メーターが
+        付いており、どのブロックが負荷過多になっているかを見つける最も手早い方法です。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="rate"><span class="n">01.4</span>サンプルレートとバッファ</h2>
+      <p>どちらも設定 → <b class="ui">AUDIO INTERFACE</b>にあり、オーディオルートごとに
+        記憶されます — インターフェースとヘッドフォンで、それぞれ別の設定を保持できます。</p>
+
+      <h3>サンプルレート</h3>
+      <p>チップには<b class="ui">Auto</b>、<b class="ui">44.1k</b>、<b class="ui">48k</b>、
+        <b class="ui">88.2k</b>、<b class="ui">96k</b>、<b class="ui">176.4k</b>、
+        <b class="ui">192k</b>と表示されます。デフォルトは<b class="ui">Auto</b>で、単純に
+        インターフェースに追従します。レートを変更するとエンジンが再起動します。</p>
+      <p>本体のマイクとスピーカーのみを使う場合は<b class="ui">Auto</b>と<b class="ui">48k</b>
+        しか表示されず、
+        <b class="ui">The built-in audio runs at 48 kHz only. Connect an interface for more
+        rates.</b>という注記が出ます。インターフェースを接続すると全リストが表示されますが —
+        そのインターフェースが一度拒否したレートは、NAMperが記憶して以後表示しません。</p>
+      <p>レートが拒否されると、アプリは直前のレートに戻り、赤字でこう表示します:
+        <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+      <div class="note tip">
+        <div class="t">どのレートを使うべきか</div>
+        <p>高ければ良いというものではありません — 処理の余裕を消費しますし、NAMプロファイルは
+          もともと一般的なレートでキャプチャされています。特定のレートで動くセッションに
+          合わせる必要がない限り、<b class="ui">Auto</b>のままにしておきましょう。</p>
+      </div>
+
+      <h3>バッファサイズ</h3>
+      <p><b class="ui">Buffer</b>では<b class="ui">64</b>、<b class="ui">128</b>、
+        <b class="ui">256</b>、<b class="ui">512</b>フレームから選べ、それによって得られる
+        レイテンシがリアルタイムで表示されます。デフォルトは<b class="ui">128</b>です。アプリ自身の
+        説明は明快です:
+        <b class="ui">Smaller = lower latency; larger = safer with USB interfaces. Crackling? Go up
+        one step.</b></p>
+      <p>これがNAMper唯一のレイテンシ調整項目であり、別途レイテンシ設定はありません。</p>
+      <div class="note warn">
+        <div class="t">Bluetooth出力</div>
+        <p>Bluetoothヘッドフォンやスピーカーはおよそ0.2秒の遅延を追加するため、演奏には
+          向きません。Bluetoothルートを検出すると、アプリが警告を表示します。ライブ演奏では
+          有線出力を使ってください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="feedback-guard"><span class="n">01.5</span>フィードバックガード</h2>
+      <p>本体のマイクを開いたまま本体のスピーカーで再生するギターアプリは、フィードバックループが
+        起きるのを待っているようなものです。そこでNAMperはまさにその組み合わせ — 内蔵マイクが
+        入力、内蔵スピーカーまたは受話口が出力 — を常に監視し、ハウリングが起きる前に出力を
+        ミュートします。</p>
+      <figure>
+        <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
+             alt="The banner: Output muted to stop feedback (mic to speaker). Connect an interface or headphones. With an Unmute button.">
+        <figcaption>ガードが作動したときに表示されるバナー</figcaption>
+      </figure>
+      <p>作動すると<b class="ui r">Output muted to stop feedback (mic → speaker).
+        Connect an interface or headphones.</b>と表示されます。ミュートされるのは可聴出力
+        のみで、チューナー、入力メーター、録音はすべて動作を続けるため、音のチューニングも
+        テイクの収録も引き続き行えます。</p>
+      <p>ヘッドフォンかインターフェースを接続すると、ミュートは自動的に解除されます。バナーの
+        ✕は今回のセッション中だけメッセージを隠すもので、ミュートを解除するわけではありません。</p>
+      <div class="note">
+        <div class="t">「Unmute」がすること</div>
+        <p><b class="ui">Unmute</b>ボタンは一時的な例外措置です: このセッション中は出力が
+          有効のままになりますが、ルートが変化すると — インターフェースやヘッドフォンを抜き差し
+          したり、アプリを再起動したりすると — ガードは再び作動し、内蔵スピーカーは
+          再び保護されます。ガードを恒久的に無効にするには、設定内の
+          <b class="ui">Feedback guard</b>スイッチを使ってください。</p>
+      </div>
+      <p>スイッチ本体は設定 → <b class="ui">AUDIO INTERFACE</b> →
+        <b class="ui">Feedback guard</b>にあり、サブタイトルは
+        <b class="ui">Mutes the output while the mic plays through the phone speaker.</b>です。
+        デフォルトでオンになっています。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="permissions"><span class="n">01.6</span>権限について</h2>
+      <p>NAMperが求める権限は正確に2つだけで、必要になったときにのみ確認します。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>権限</th><th>いつ</th><th>理由</th></tr></thead>
+          <tbody>
+            <tr><td>マイク</td><td>初めてパワーボタンをタップしたとき</td>
+                <td>ギターやマイクの音を聞くため。確認画面にもはっきり書かれています: 音声が
+                    端末の外に出ることはありません。</td></tr>
+            <tr><td>Bluetooth</td><td>初めてワイヤレスMIDIペダルとペアリングするとき</td>
+                <td>Bluetooth MIDIコントローラーを検出・接続するため。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>マイクへのアクセスがオフの場合、赤いバナーに
+        <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b>と
+        表示され、<b class="ui">Settings</b>ボタンからiOSの設定画面へ直接移動できます。許可すると、
+        再起動なしでエンジンが再構築されます。</p>
+      <p>アナリティクスもトラッキングもアカウントもなく、カメラ、写真、位置情報、連絡先への
+        アクセスもありません。NAMperは何も収集しません。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="files"><span class="n">01.7</span>ファイルの保存場所</h2>
+      <p>NAMperが保持するものはすべて、ファイルAppの
+        <b class="ui">On My iPhone → NAMper</b>(iPadの場合は<b class="ui">On My iPad</b>)から
+        確認できます。ファイルAppを使ってファイルを出し入れしたり、フォルダをバックアップしたり、
+        パソコンへ移動したりできます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>フォルダ</th><th>中身</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">tones/</b></td><td>NAMアンププロファイル(<b class="ui">.nam</b>)と
+              そのカバーアート、メタデータ</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>インポートしたインパルスレスポンス</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>サンプラーパッド、および
+              <b class="ui">samples/kits/</b>内の保存済みキット</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>バッキングトラック、セットリスト、歌詞、
+              プリセットマーカー</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>あなたの演奏の録音</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>リグのプリセット、およびルーパー、サンプラー、
+              セットリスト、コントロールの各プリセット</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>インターフェースのルーティングとピーク
+              レベルを記録したプレーンテキストのログ。バグ報告に便利です</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <div class="t">覚えておくと便利なショートカット</div>
+        <p>ファイルAppで<b class="ui">backing/</b>に直接ドロップした音声ファイルは、次にNAMperを
+          開いたときにセットリストへ自動的に取り込まれます。パソコン上でのコピー&ペースト1回で
+          セット全体を読み込め、スマホで20回タップする必要はありません。</p>
+      </div>
+      <p>予想と違う動きをする点が2つあります: ファイルをアプリアイコンやウィンドウにドラッグ
+        することはできず — インポートはすべてNAMper内のファイルピッカー経由になります —
+        また<b class="ui">tones/</b>フォルダは意図的にiCloudバックアップの対象外です。
+        TONE3000からいつでも再ダウンロードできるためです。</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/">← All docs</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/rig.html">02 · リグとシグナルチェーン →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

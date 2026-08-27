@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AU-Plugins — NAMper-Dokumentation</title>
+<meta name="description" content="Audio-Unit-Effekte in einer NAMper-Kette hosten, die eingebettete Plugin-Oberfläche, die Grenzen, wie der Plugin-Zustand gespeichert wird — und was NAMper selbst als AUv3-Effekt in einer anderen App macht.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="AU-Plugins — NAMper-Dokumentation">
+<meta property="og:description" content="AUv3-Effekte in einer Kette hosten, Plugin-Zustand und -Presets, und NAMper als Plugin in einer anderen App.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/de/plugins.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/plugins.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/plugins.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/plugins.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/plugins.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/plugins.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/plugins.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/plugins.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/plugins.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/plugins.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/plugins.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/plugins.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/plugins.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/plugins.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/plugins.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/plugins.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/plugins.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/de/">← ALLE ANLEITUNGEN</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/de/plugins.html" aria-current="page">Deutsch</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">INHALT</div>
+    <ol>
+      <li><a href="/docs/de/setup.html">Erste Schritte</a></li>
+      <li><a href="/docs/de/rig.html">Rig &amp; Signalkette</a></li>
+      <li><a class="on" href="/docs/de/plugins.html">AU-Plugins</a></li>
+      <li><a href="/docs/de/looper.html">Looper</a></li>
+      <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
+      <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
+      <li><a href="/docs/de/control.html">MIDI &amp; Control</a></li>
+      <li><a href="/docs/de/settings.html">Referenz: Einstellungen</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU-PLUGINS</div>
+    <h1>Plugins von anderen.</h1>
+    <p class="lede">NAMper hostet die AUv3-Effekte, die du bereits besitzt, an jeder Stelle einer
+      Kette — und NAMper selbst taucht als Effekt in anderen Apps auf. Beide Richtungen haben
+      Regeln, die man vor einem Gig kennen sollte.</p>
+
+    <nav class="toc">
+      <div class="slab">AUF DIESER SEITE</div>
+      <ul>
+        <li><a href="#hosting">Einen AU-Effekt hinzufügen</a></li>
+        <li><a href="#ui">Die Plugin-Oberfläche</a></li>
+        <li><a href="#limits">Grenzen, die man kennen sollte</a></li>
+        <li><a href="#state">Einstellungen und Presets</a></li>
+        <li><a href="#auv3">NAMper als Plugin</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="hosting"><span class="n">03.1</span>Einen AU-Effekt hinzufügen</h2>
+      <p>Tippe auf den gestrichelten Chip <b class="ui">ADD</b> an einer Kette, um die Block-Palette
+        zu öffnen. Ganz unten in der Liste, hinter <b class="ui">Utility</b>, sitzt der Abschnitt
+        <b class="ui">Plugins</b> mit einem einzigen Eintrag: dem Untermenü
+        <b class="ui">AU Plugins</b>.</p>
+      <p>Öffne es, und du bekommst jeden auf dem Gerät installierten Audio-Unit-Effekt, aufgelistet
+        als Plugin-Name gefolgt vom Hersteller, sortiert zuerst nach Hersteller, dann nach Name.
+        Nichts muss gescannt oder aktiviert werden — liefert eine App auf deinem Handy einen
+        AUv3-Effekt mit, steht er in diesem Untermenü.</p>
+      <p>Ist das Untermenü leer, steht dort <b class="ui">No Audio Unit effects installed. Apps that
+        ship AUv3 plugins make them appear here.</b> Das ist der Normalzustand auf einem frischen
+        Gerät: AUv3-Plugins kommen als gewöhnliche App-Store-Apps, du installierst also die App, und
+        ihr Plugin taucht beim nächsten Besuch hier auf.</p>
+      <p>Wähle eine Komponente, und NAMper erzeugt den Block mit bereits geladenem Plugin und öffnet
+        direkt dessen eigene Oberfläche — keine leere Hülle, kein zweiter Schritt. Der Chip des
+        Blocks in der Kette heißt <b class="ui">AU Plugin</b> und verhält sich wie jeder andere
+        Block: Tippe auf den LED-Punkt unter dem Namen, um ihn zu bypassen, zieh ihn, um ihn entlang
+        der Kette zu verschieben, Long-Press für <b class="ui">Remove</b>.</p>
+
+      <figure>
+        <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
+             alt="Ein Audio-Unit-Plugin, gehostet in einem NAMper-Block: eine Statuszeile mit dem Plugin-Namen oben und darunter eine Spalte generischer Parameter-Schieberegler.">
+        <figcaption>Apples AUDelay, gehostet in einem NAMper-Block, dargestellt mit den generischen Schiebereglern</figcaption>
+      </figure>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="ui"><span class="n">03.2</span>Die Plugin-Oberfläche</h2>
+      <p>Das Block-Sheet setzt eine schmale Statuszeile über das Plugin: eine Sanduhr, während die
+        Komponente instanziiert wird, ein grüner Haken, sobald sie live ist und Audio durchlässt, und
+        daneben der Plugin-Name. Unter der Statuszeile bekommst du auch die üblichen Block-Anzeigen
+        <b class="ui">IN</b> und <b class="ui">OUT</b>, sodass du siehst, was dem Plugin zugeführt
+        wird und was es zurückgibt.</p>
+      <p>Das Laden geht nicht immer sofort. Während eine Komponente hochfährt, steht im Sheet
+        <b class="ui">Loading the plugin…</b> — größere Plugins brauchen beim ersten Einsatz einen
+        Moment, und das Signal läuft so lange unverändert durch, bis das Plugin bereit ist.</p>
+
+      <h3>Das Plugin austauschen</h3>
+      <p>Die Taste mit den kreisenden Pfeilen im Sheet ist <b class="ui">Replace plugin</b>. Ihr
+        Menü ist dieselbe Komponentenliste, und die Wahl einer anderen tauscht das Plugin innerhalb
+        des bestehenden Blocks aus, sodass der Block seinen Platz in der Kette und seinen
+        Bypass-Zustand behält. Nutze es, wenn du ein anderes Delay im selben Slot willst, statt die
+        Kette auseinanderzureißen.</p>
+
+      <h3>Wenn ein Plugin keine eigene Ansicht hat</h3>
+      <p>Die meisten Plugins zeichnen ihre eigene Oberfläche, und NAMper bettet sie inline ein, genau
+        wie ihr Autor sie entworfen hat. Manche liefern gar keine Ansicht mit. Für die zeichnet
+        NAMper eine eigene generische Liste — bis zu 24 Parameter, jeder als Beschriftung und
+        Schieberegler. Genau das zeigt der Screenshot oben: Apples AUDelay hat kein eigenes Panel,
+        also bekommst du stattdessen benannte Schieberegler.</p>
+      <div class="note">
+        <div class="t">Warum es diesen Ausweg gibt</div>
+        <p>iOS kann für ein ansichtsloses Plugin einen Editor improvisieren, aber manche Einheiten
+          stürzen darin ab. NAMper zeichnet die Parameterliste stattdessen selbst — schlichter
+          anzusehen, aber deutlich sicherer für ein Set.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="limits"><span class="n">03.3</span>Grenzen, die man kennen sollte</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Grenze</th><th>Was das bedeutet</th></tr></thead>
+          <tbody>
+            <tr><td>Nur Effekte</td>
+                <td>Es werden nur Effektkomponenten gelistet. AU-Instrumente lassen sich nicht
+                    hosten, ein Synthesizer oder eine Drum-Machine erscheint im Untermenü also
+                    nie.</td></tr>
+            <tr><td>16 Plugins</td>
+                <td>Sechzehn gehostete Plugins gleichzeitig, gezählt über alle Rigs und alle Zweige
+                    hinweg. In der Praxis geht dir der Prozessor lange aus, bevor dir die Slots
+                    ausgehen.</td></tr>
+            <tr><td>Stereo</td>
+                <td>Plugin-Ein- und -Ausgang laufen in Stereo, bei welcher Samplerate auch immer die
+                    Engine gerade läuft.</td></tr>
+            <tr><td>Nur Rig-Ketten</td>
+                <td>AU-Plugins gehören in Rig-Ketten. Die Sektion <b class="ui">MASTER</b> nimmt nur
+                    NAMpers eigene Blöcke.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Rendert ein Plugin nicht, lässt NAMper das Signal für diesen Block trocken durch, statt
+        auszufallen. Du hörst deine Gitarre weiter, nur ohne diesen einen Effekt — das richtige
+        Verhalten im Fehlerfall auf der Bühne, bedeutet aber auch, dass ein Plugin still werden kann,
+        ohne offensichtlichen Alarm. Tut ein Effekt plötzlich nichts mehr, prüfe die Statuszeile in
+        seinem Sheet.</p>
+      <p>Plugins von Drittanbietern kosten außerdem Rechenleistung, die NAMper nicht einplanen kann.
+        Beobachte den Chip <b class="ui">DSP load</b> in der Rig-Kopfzeile, nachdem du eines
+        hinzugefügt hast; wandert er ins Gelbe oder Rote, stell die Buffergröße in den Einstellungen
+        höher.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="state"><span class="n">03.4</span>Einstellungen und Presets</h2>
+      <p>Die eigenen Einstellungen eines gehosteten Plugins — alles, was du in seiner Oberfläche
+        geändert hast — werden mit dem Block gespeichert und reisen in deinem NAMper-Preset mit.
+        Speichere das Rig, lade es morgen, und das Plugin kommt genau so zurück, wie du es verlassen
+        hast.</p>
+      <div class="note warn">
+        <div class="t">Schließe das Sheet, bevor du speicherst</div>
+        <p>Der Plugin-Zustand wird in dem Moment erfasst, in dem du <b>das Block-Sheet schließt</b>.
+          Stellst du an einem Plugin, lässt sein Sheet offen und speicherst das Preset von dahinter,
+          speichert das Preset den Zustand von vor deinen Änderungen. Mach es dir zur Gewohnheit:
+          erst das Plugin-Sheet schließen, dann speichern.</p>
+      </div>
+      <p>Dasselbe gilt für globale Snapshots und fürs Teilen eines Presets mit jemand anderem — was
+        auch immer beim letzten Schließen des Sheets erfasst wurde, landet in der Datei. Beachte,
+        dass das Preset die <em>Einstellungen</em> des Plugins trägt, nicht das Plugin selbst: Wer es
+        öffnet, braucht dieselbe Audio Unit auf seinem Gerät installiert.</p>
+      <p>Noch etwas, womit du rechnen solltest: <b class="ui">Replace plugin</b> zu nutzen löscht den
+        gespeicherten Zustand. Die Einstellungen gehörten zur alten Komponente und bedeuten der neuen
+        nichts, der Tausch startet dich also mit den Standardwerten des neuen Plugins.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="auv3"><span class="n">03.5</span>NAMper als Plugin</h2>
+      <p>NAMper wird auch als AUv3-Effekt ausgeliefert, du kannst es also in GarageBand, AUM, Logic
+        oder jedem anderen AUv3-Host laden und dort auf eine Spur aufnehmen. Im Plugin-Browser eines
+        Hosts sieht das so aus:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Feld</th><th>Wert</th></tr></thead>
+          <tbody>
+            <tr><td>Name</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>Hersteller</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>Beschreibung</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>Typ</td><td>Audio-Effekt — kein Instrument</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Es nimmt Stereo herein und gibt Stereo heraus, aber die beiden Eingangskanäle werden intern
+        zu Mono summiert: ein gitarrentypisches Mono-Frontend, das einen Amp speist. Das ist Absicht,
+        und genau das willst du für eine DI-abgenommene Gitarre auf einer Mono-Spur.</p>
+
+      <h3>Die 18 Parameter</h3>
+      <p>Das eigene Panel des Plugins ist ein kleiner gebrandeter Streifen mit
+        <b class="ui">NAMper</b> und
+        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. Alle tatsächlichen
+        Regler sind vom Host automatisierbare Parameter, achtzehn an der Zahl:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Block</th><th>Parameter</th></tr></thead>
+          <tbody>
+            <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
+            <tr><td>Kompressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
+              <b class="ui">Comp Ratio</b></td></tr>
+            <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
+              <b class="ui">Drive Level</b></td></tr>
+            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
+              <b class="ui">Treble</b></td></tr>
+            <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
+              <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
+            <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
+              <b class="ui">Reverb Mix</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Jeder einzelne davon lässt sich vom Host automatisieren. Die Ein/Aus-Parameter sind
+        Fließkommawerte von 0 bis 1, die meisten Hosts zeichnen sie deshalb als Schieberegler statt
+        als Schalter — alles bei oder über der Hälfte ist an. Auch drei Werkspresets werden dem Host
+        zugänglich gemacht: <b class="ui">Clean</b>, <b class="ui">Crunch</b> und
+        <b class="ui">Lead</b>.</p>
+
+      <div class="note warn">
+        <div class="t">Was das Plugin nicht mitträgt</div>
+        <p>Kein NAM-Modell. Keine Box-IR. Keine Modulationsblöcke. Überhaupt kein Rig-Dokument — der
+          Host speichert nur diese 18 Parameterwerte und sonst nichts, ein in der App gebautes Rig
+          wandert also nicht in das Plugin. Es gibt in der Plugin-Version auch keinen
+          MIDI-Eingang.</p>
+      </div>
+      <p>Ganz ehrlich gelesen: In einem Host ist NAMper ein kompakter Amp-und-Effekte-Kanal, nicht
+        die ganze App. Willst du deine NAM-Captures, deine Boxen, den Looper oder die Setlist, starte
+        die App selbst und nimm von dort auf.</p>
+      <div class="note tip">
+        <div class="t">Mit beidem arbeiten</div>
+        <p>Du kannst die vollständige App laufen lassen und ihren Ausgang in eine DAW routen, oder
+          das Plugin für einen schnellen Gitarrenkanal auf einer Spur nutzen, die du ohnehin schon in
+          einem Host aufnimmst. Für den ersten Weg gibt es den Recorder im Tab Perform und seinen
+          DAWproject-Export — siehe <a href="/docs/de/perform.html">Perform &amp; Songtexte</a>.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/de/rig.html">← 02 · Rig &amp; Signalkette</a>
+      <span class="sp"></span>
+      <a href="/docs/de/looper.html">04 · Looper →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/de/">DOKUMENTATION</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">DATENSCHUTZ</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper ist eine unabhängige App ohne Verbindung zu, Empfehlung durch oder Sponsoring von
+      Ausrüstungsherstellern. Alle Produktnamen, Marken und Warenzeichen sind Eigentum ihrer jeweiligen
+      Inhaber und werden nur verwendet, um das Gerät zu beschreiben, von dem ein Capture stammt.</p>
+  </div>
+</footer>
+
+</body>
+</html>

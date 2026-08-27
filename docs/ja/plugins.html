@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUプラグイン — NAMper ドキュメント</title>
+<meta name="description" content="NAMperのチェーン内でAudio Unitエフェクトをホストする方法、組み込みのプラグインインターフェース、制限事項、プラグインの状態がどう保存されるか — そしてNAMper自身が他のアプリの中でAUv3エフェクトとして何をするか。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="AUプラグイン — NAMper ドキュメント">
+<meta property="og:description" content="チェーン内でAUv3エフェクトをホストする、プラグインの状態とプリセット、そして他のアプリ内のプラグインとしてのNAMper。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/plugins.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/plugins.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/plugins.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/plugins.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/plugins.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/plugins.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/plugins.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/plugins.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/plugins.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/plugins.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/plugins.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/plugins.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/plugins.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/plugins.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/plugins.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/plugins.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/plugins.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/plugins.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a class="on" href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
+    <h1>他の人が作ったプラグイン。</h1>
+    <p class="lede">NAMperは、すでに持っているAUv3エフェクトをチェーンのどこにでもホストできます —
+      そしてNAMper自身も、他のアプリの中でエフェクトとして現れます。どちらの方向にも、
+      本番の前に知っておく価値のあるルールがあります。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#hosting">AUエフェクトを追加する</a></li>
+        <li><a href="#ui">プラグインインターフェース</a></li>
+        <li><a href="#limits">知っておくべき制限</a></li>
+        <li><a href="#state">設定とプリセット</a></li>
+        <li><a href="#auv3">プラグインとしてのNAMper</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="hosting"><span class="n">03.1</span>AUエフェクトを追加する</h2>
+      <p>チェーン上の破線の<b class="ui">ADD</b>チップをタップしてブロックパレットを開きます。
+        リストの一番下、<b class="ui">Utility</b>のさらに先に、<b class="ui">Plugins</b>
+        セクションがあり、そこには<b class="ui">AU Plugins</b>サブメニューという単一の
+        項目があります。</p>
+      <p>開くと、端末にインストールされているすべてのAudio Unitエフェクトが、プラグイン名の
+        後にメーカー名を添えて一覧表示され、まずメーカー名、次に名前の順で並びます。
+        スキャンや有効化は不要です — スマホ上のアプリがAUv3エフェクトを提供していれば、
+        それはこのサブメニューに現れます。</p>
+      <p>サブメニューが空の場合は<b class="ui">No Audio Unit effects installed. Apps that
+        ship AUv3 plugins make them appear here.</b>と表示されます。これは新しい端末では
+        普通の状態です: AUv3プラグインは通常のApp Storeアプリとして届くため、そのアプリを
+        インストールすれば、次にここを開いたときにプラグインが表示されます。</p>
+      <p>コンポーネントを選ぶと、NAMperはそのプラグインを読み込んだ状態でブロックを作成し、
+        すぐにプラグイン自身のインターフェースを開きます — 空のシェルや2段階目の操作は
+        ありません。チェーン上のこのブロックのチップは<b class="ui">AU Plugin</b>という
+        名前になり、他のすべてのブロックと同じように動作します: 名前の下のLEDドットを
+        タップしてバイパス、ドラッグしてチェーン上を移動、長押しで<b class="ui">Remove</b>。</p>
+
+      <figure>
+        <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
+             alt="An Audio Unit plugin hosted inside a NAMper block: a status row with the plugin name at the top and a column of generic parameter sliders below.">
+        <figcaption>NAMperのブロック内にホストされたApple製AUDelay。汎用スライダーで描画されています</figcaption>
+      </figure>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="ui"><span class="n">03.2</span>プラグインインターフェース</h2>
+      <p>ブロックシートには、プラグインの上に細いステータス行が表示されます: コンポーネントの
+        インスタンス化中は砂時計、動作を始めて音声が通ると緑のチェックマークが表示され、
+        その横にプラグイン名が並びます。ステータス行の下には通常のブロックの
+        <b class="ui">IN</b>・<b class="ui">OUT</b>メーターもあるので、プラグインに何が
+        入り、何が返ってきているかを確認できます。</p>
+      <p>読み込みは必ずしも一瞬とは限りません。コンポーネントが起動している間、シートには
+        <b class="ui">Loading the plugin…</b>と表示されます — 大きめのプラグインは初回の
+        使用時に少し時間がかかり、プラグインの準備が整うまで信号はそのまま通過します。</p>
+
+      <h3>プラグインを差し替える</h3>
+      <p>シート内の丸い矢印のボタンが<b class="ui">Replace plugin</b>です。そのメニューは
+        同じコンポーネント一覧で、別のものを選ぶと既存のブロック内でプラグインが
+        差し替わるため、ブロックはチェーン内の位置とバイパス状態を維持します。チェーンを
+        組み直す代わりに、同じスロットで別のディレイを使いたいときに便利です。</p>
+
+      <h3>専用の画面を持たないプラグインの場合</h3>
+      <p>ほとんどのプラグインは独自のインターフェースを描画し、NAMperはそれを作者が
+        設計した通りにそのまま組み込みます。中には画面をまったく持たないものもあります。
+        その場合、NAMperは独自の汎用リストを描画します — 最大24個のパラメーターを、
+        それぞれラベルとスライダーで表示します。上のスクリーンショットがまさにそれです:
+        Apple製AUDelayには専用パネルがないため、代わりに名前付きスライダーが表示されて
+        います。</p>
+      <div class="note">
+        <div class="t">なぜこのフォールバックがあるのか</div>
+        <p>iOSは画面を持たないプラグインのためにエディタを即興で用意できますが、それが
+          原因でクラッシュするユニットもあります。NAMperは代わりに自分でパラメーター
+          リストを描画します。見た目はシンプルですが、セット中に落ちる可能性ははるかに
+          低くなります。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="limits"><span class="n">03.3</span>知っておくべき制限</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>制限</th><th>意味</th></tr></thead>
+          <tbody>
+            <tr><td>エフェクトのみ</td>
+                <td>一覧に表示されるのはエフェクトコンポーネントのみです。AU楽器は
+                    ホストできないため、シンセやドラムマシンがサブメニューに現れる
+                    ことはありません。</td></tr>
+            <tr><td>16プラグイン</td>
+                <td>すべてのリグとすべてのブランチを合わせて、同時にホストできる
+                    プラグインは16個までです。実際には、スロットが尽きるよりも先に
+                    プロセッサーの処理能力が尽きるでしょう。</td></tr>
+            <tr><td>ステレオ</td>
+                <td>プラグインの入出力は、エンジンが動作しているサンプルレートで
+                    ステレオ動作します。</td></tr>
+            <tr><td>リグチェーンのみ</td>
+                <td>AUプラグインはリグチェーン内にのみ配置できます。<b class="ui">MASTER</b>
+                    セクションが受け付けるのはNAMper自身のブロックのみです。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>プラグインの描画に失敗した場合、NAMperは音を止めるのではなく、そのブロックの
+        信号をドライのまま通します。ギターの音は聞こえ続けますが、そのエフェクトだけが
+        かかりません — ステージ上ではこれが正しい失敗の仕方ですが、同時にプラグインが
+        目立った警告なしに沈黙してしまう可能性もあるということです。エフェクトが効かなく
+        なったら、シート内のステータス行を確認してください。</p>
+      <p>サードパーティ製のプラグインは、NAMperが見込めない処理能力も消費します。追加した
+        後はRigヘッダーの<b class="ui">DSP load</b>チップを見てください。アンバーや赤に
+        なったら、設定でバッファサイズを1段階上げてください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="state"><span class="n">03.4</span>設定とプリセット</h2>
+      <p>ホストされたプラグイン自身の設定 — そのインターフェース内で変更したすべて —
+        はブロックとともに保存され、NAMperのプリセットの中を移動します。リグを保存して
+        翌日読み込めば、プラグインは離れたときと同じ設定で戻ってきます。</p>
+      <div class="note warn">
+        <div class="t">保存の前にシートを閉じてください</div>
+        <p>プラグインの状態は、<b>ブロックシートを閉じた瞬間</b>に記録されます。プラグインを
+          調整し、そのシートを開いたままにして、その裏でプリセットを保存すると、
+          プリセットには編集前の状態が保存されてしまいます。習慣にしてください: まず
+          プラグインのシートを閉じ、それから保存する、という順番を守りましょう。</p>
+      </div>
+      <p>これはグローバルスナップショットや、プリセットを他の人と共有する場合にも
+        同様に当てはまります — 最後にシートを閉じた瞬間に記録された内容がファイルに
+        入ります。なお、プリセットが運ぶのはプラグインの<em>設定</em>であって、
+        プラグイン自体ではありません: 開く側も同じAudio Unitを自分の端末にインストール
+        しておく必要があります。</p>
+      <p>もう一つ覚えておくべきこと: <b class="ui">Replace plugin</b>を使うと、保存されて
+        いた状態はクリアされます。設定は元のコンポーネントに属するものであり、新しい
+        コンポーネントには意味を持たないため、差し替え後は新しいプラグインの初期設定
+        から始まります。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="auv3"><span class="n">03.5</span>プラグインとしてのNAMper</h2>
+      <p>NAMperはAUv3エフェクトとしても提供されているため、GarageBand、AUM、Logic、その他の
+        AUv3ホスト内に読み込み、そこでトラックに録音できます。ホストのプラグイン
+        ブラウザでは次のように表示されます:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>項目</th><th>値</th></tr></thead>
+          <tbody>
+            <tr><td>名前</td><td><b class="ui">retroaktive: NAMper</b></td></tr>
+            <tr><td>メーカー</td><td><b class="ui">retroaktive</b></td></tr>
+            <tr><td>説明</td><td><b class="ui">NAM amp &amp; effects chain</b></td></tr>
+            <tr><td>種類</td><td>オーディオエフェクト — 楽器ではありません</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>入出力はステレオですが、内部では2つの入力チャンネルがモノラルにサミングされます:
+        ギター的なモノラルのフロントエンドがアンプに信号を送る形です。これは意図的な
+        設計で、モノラルトラックにDIしたギターを扱う場合にちょうど合っています。</p>
+
+      <h3>18個のパラメーター</h3>
+      <p>プラグイン自体のパネルは、<b class="ui">NAMper</b>と
+        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>と表示された、
+        小さなブランドストリップです。実際のコントロールはすべてホスト側でオートメーション
+        可能なパラメーターとして提供され、その数は18個です:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>ブロック</th><th>パラメーター</th></tr></thead>
+          <tbody>
+            <tr><td>Gate</td><td><b class="ui">Gate On</b>, <b class="ui">Gate Threshold</b></td></tr>
+            <tr><td>Compressor</td><td><b class="ui">Comp On</b>, <b class="ui">Comp Threshold</b>,
+              <b class="ui">Comp Ratio</b></td></tr>
+            <tr><td>Drive</td><td><b class="ui">Drive On</b>, <b class="ui">Drive Gain</b>,
+              <b class="ui">Drive Level</b></td></tr>
+            <tr><td>Tone</td><td><b class="ui">Bass</b>, <b class="ui">Mid</b>,
+              <b class="ui">Treble</b></td></tr>
+            <tr><td>Delay</td><td><b class="ui">Delay On</b>, <b class="ui">Delay Time</b>,
+              <b class="ui">Delay Feedback</b>, <b class="ui">Delay Mix</b></td></tr>
+            <tr><td>Reverb</td><td><b class="ui">Reverb On</b>, <b class="ui">Reverb Decay</b>,
+              <b class="ui">Reverb Mix</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>これらはすべてホスト側からオートメーションできます。オン/オフのパラメーターは
+        0から1の浮動小数点値なので、多くのホストではスイッチではなくスライダーとして
+        表示されます — 中間点以上であればオンです。ファクトリープリセットも3つ、ホスト側に
+        公開されています: <b class="ui">Clean</b>、<b class="ui">Crunch</b>、
+        <b class="ui">Lead</b>。</p>
+
+      <div class="note warn">
+        <div class="t">プラグインが運ばないもの</div>
+        <p>NAMモデルはありません。キャビIRもありません。モジュレーション系ブロックも
+          ありません。リグのドキュメントも一切ありません — ホストが保存するのはその
+          18個のパラメーター値だけなので、アプリ内で組んだリグがそのままプラグインに
+          移ることはありません。プラグイン版にはMIDI入力もありません。</p>
+      </div>
+      <p>正直に理解しておいてください: ホスト内でのNAMperは、コンパクトなアンプ&エフェクト
+        チャンネルであり、アプリ全体ではありません。NAMキャプチャ、キャビネット、
+        ルーパー、セットリストが必要な場合は、アプリ本体を起動してそちらから録音して
+        ください。</p>
+      <div class="note tip">
+        <div class="t">両方を使い分ける</div>
+        <p>アプリ全体を動かしてその出力をDAWにルーティングすることも、すでにホスト側で
+          トラッキングしているトラックのために手早いギターチャンネルとしてプラグインを
+          使うこともできます。Performタブのレコーダーとそこからの
+          DAWprojectの書き出しは、前者の使い方のために存在します。詳しくは
+          <a href="/docs/ja/perform.html">パフォームと歌詞</a>を参照してください。</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/rig.html">← 02 · リグとシグナルチェーン</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/looper.html">04 · ルーパー →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

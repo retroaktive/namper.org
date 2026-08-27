@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rig y cadena de señal — Documentación de NAMper</title>
+<meta name="description" content="Cómo construir un rig: la paleta de bloques, los cinco modelos de EQ, los perfiles de ampli NAM y TONE3000, las IR de pantalla, los presets y las ranuras MIDI PC, varios rigs, ramas paralelas y la sección master.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Rig y cadena de señal — Documentación de NAMper">
+<meta property="og:description" content="Bloques, modelos de EQ, perfiles NAM, TONE3000, IR de pantalla, presets, varios rigs, ramas paralelas y la sección master.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/es/rig.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/rig.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/rig.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/rig.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/rig.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/rig.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/rig.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/rig.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/rig.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/rig.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/rig.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/rig.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/rig.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/rig.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/rig.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/rig.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/rig.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTACIÓN</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/es/">← TODOS LOS DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/es/rig.html" aria-current="page">Español</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENIDO</div>
+    <ol>
+      <li><a href="/docs/es/setup.html">Primeros pasos</a></li>
+      <li><a class="on" href="/docs/es/rig.html">Rig y cadena de señal</a></li>
+      <li><a href="/docs/es/plugins.html">Plugins AU</a></li>
+      <li><a href="/docs/es/looper.html">Looper</a></li>
+      <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
+      <li><a href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a href="/docs/es/control.html">MIDI y control</a></li>
+      <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--amp)">02 · RIG Y CADENA DE SEÑAL</div>
+    <h1>Construyendo el sonido.</h1>
+    <p class="lede">La pestaña <b class="ui a">Rig</b> es donde vive tu cadena de señal: bloques que
+      añades y arrastras, un perfil de ampli NAM en el corazón de todo, una respuesta de impulso de
+      pantalla después de él, y una sección master en la que todo se suma. Esta página lo cubre todo
+      — hasta cuatro rigs, cuatro cadenas paralelas dentro de cada uno, y los presets que recuperan
+      todo junto.</p>
+
+    <nav class="toc">
+      <div class="slab">EN ESTA PÁGINA</div>
+      <ul>
+        <li><a href="#blocks">La paleta de bloques</a></li>
+        <li><a href="#models">Modelos dentro de los bloques</a></li>
+        <li><a href="#eq">Los cinco modelos de EQ</a></li>
+        <li><a href="#nam">Perfiles de ampli NAM</a></li>
+        <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#cabs">Pantallas e IR</a></li>
+        <li><a href="#presets">Presets</a></li>
+        <li><a href="#rigs">Varios rigs</a></li>
+        <li><a href="#branches">Ramas paralelas</a></li>
+        <li><a href="#master">La sección master</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="blocks"><span class="n">02.1</span>La paleta de bloques</h2>
+      <p>Una cadena empieza vacía y tú la llenas. Toca el chip punteado <b class="ui">ADD</b> al
+        final de una cadena y se abre la paleta, agrupada en secciones. Elige un bloque y cae en la
+        cadena en ese punto — y su editor se abre de inmediato, así que aterrizas en los mandos y no
+        en un chip sin tocar.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Sección</th><th>Bloques</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
+            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
+            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
+            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
+            <tr><td><b class="ui">Plugins</b></td><td>el submenú <b class="ui">AU Plugins</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Nada te impide añadir el mismo bloque dos veces. Los duplicados se numeran según van
+        llegando — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — y los nombres de bloque
+        siempre se dibujan en mayúsculas en los chips. Dos drives seguidos, un gate al principio y
+        otro después del ampli: todo bien.</p>
+
+      <h3>Trabajar con un bloque</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Acción</th><th>Cómo</th></tr></thead>
+          <tbody>
+            <tr><td>Bypass</td><td>Toca el punto LED pequeño debajo del nombre del bloque en el
+              chip. El área táctil es deliberadamente grande — es el control que tocas en medio de
+              una canción. El footswitch dentro de la hoja del bloque hace lo mismo, igual que
+              mantener pulsado → <b class="ui">Enable</b> / <b class="ui">Bypass</b></td></tr>
+            <tr><td>Abrir el editor</td><td>Toca el chip del bloque</td></tr>
+            <tr><td>Reordenar</td><td>Arrastra el chip a lo largo de su cadena, o mantén pulsado →
+              <b class="ui">Move left</b> / <b class="ui">Move right</b>. Reordenar solo funciona
+              dentro de una misma cadena</td></tr>
+            <tr><td>Eliminar</td><td>Mantén pulsado → <b class="ui">Remove</b></td></tr>
+            <tr><td>Restablecer un mando</td><td>Tócalo dos veces</td></tr>
+            <tr><td>Hacer MIDI-learn de un control</td><td>Mantén pulsado cualquier mando o fila del
+              chip → <b class="ui">MIDI Learn "&lt;label&gt;"</b>. El control se resalta con un
+              contorno y muestra <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel
+              learn</b> cancela</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Un bloque que no tiene parámetros propios lo dice claramente cuando lo abres:
+        <b class="ui">Nothing to tweak here</b>. Eso es el bloque funcionando con normalidad, no un
+        estado de carga.</p>
+      <div class="note warn">
+        <div class="t">No existe duplicar</div>
+        <p>NAMper no tiene acción de copiar o duplicar para bloques, en ningún sitio. Para tener un
+          segundo bloque con los mismos ajustes, añade uno nuevo y ajústalo tú mismo. Para reutilizar
+          una cadena completa, guárdala como preset y construye el siguiente rig a partir de ese
+          preset.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="models"><span class="n">02.2</span>Modelos dentro de los bloques</h2>
+      <p>Varios bloques son en realidad una familia de pedales o circuitos detrás de un solo chip.
+        Abre el bloque y la fila de chips de arriba elige el sabor — los mandos siguen siendo los
+        mismos, lo que cambia es el carácter.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Bloque</th><th>Fila de chips</th><th>Opciones</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
+            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
+                <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
+            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
+                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
+            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
+              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
+                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>,
+                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
+              <td><b class="ui">Studio</b>, <b class="ui">Small</b>, <b class="ui">Chamber</b>, <b class="ui">Large</b></td></tr>
+            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Speed</b></td>
+              <td><b class="ui">Slow</b>, <b class="ui">Fast</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voices</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
+            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Listen</b></td>
+              <td>12 notas más <b class="ui">AUTO</b> y <b class="ui">TRACK</b> ·
+                <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>,
+                <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> ·
+                <b class="ui">OWN</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
+              <td>la misma lista de tonalidades, más <b class="ui">CHROM</b> y <b class="ui">SET</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>El bloque <b class="ui">Tube Amp</b> es la propia simulación de ampli de NAMper, y trae los
+        mandos que esperarías: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>,
+        <b class="ui">Treble</b>, <b class="ui">Presence</b> y <b class="ui">Master</b>, todos de 0 a
+        10 con 5 como plano. No necesita descarga ni cuenta, por eso es lo que sostiene el show
+        cuando estás sin conexión.</p>
+      <div class="note tip">
+        <div class="t">Harmony que escucha a otro rig</div>
+        <p>La fila <b class="ui">Listen</b> de Harmony no es un control de enrutamiento — es de
+          dónde toma su acorde el armonizador. Déjala en <b class="ui">OWN</b> y sigue la señal de su
+          propia cadena; apúntala a <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> y una línea vocal
+          puede armonizarse contra lo que está tocando el rig de guitarra.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="eq"><span class="n">02.3</span>Los cinco modelos de EQ</h2>
+      <p>Hay un solo bloque <b class="ui">EQ</b>, y dentro cinco ecualizadores completamente
+        distintos. Cambiar de modelo cambia el juego de mandos además del sonido, así que elige el
+        que encaje con el trabajo — un ajuste rápido de tono, un corte quirúrgico, o un shelf al
+        estilo de mastering.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Modelo</th><th>Qué es</th><th>Mandos</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tone</b></td>
+              <td>El clásico de tres bandas — shelf grave en 100 Hz, pico en 800 Hz, shelf agudo en
+                3 kHz. Son los mismos filtros que el antiguo EQ de tres bandas, así que los rigs
+                antiguos suenan igual.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, cada uno ±12 dB</td></tr>
+            <tr><td><b class="ui">Para</b></td>
+              <td>Paramétrico completo — las mismas tres bandas, pero cada frecuencia se puede mover
+                y el medio tiene un control de Q.</td>
+              <td><b class="ui">Low</b>, <b class="ui">Mid</b>, <b class="ui">High</b>,
+                <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
+                <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">Passive</b></td>
+              <td>El truco clásico de un EQ pasivo de programa: un realce shelf de graves más un
+                shelf de corte ligeramente más alto, para realzar y atenuar a la vez y conseguir
+                graves ajustados — con una campana amplia de agudos y un corte shelf de agudos
+                encima.</td>
+              <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
+                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Width</b>,
+                <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
+            <tr><td><b class="ui">Console</b></td>
+              <td>Un canal de consola británica — un paso alto de 12 dB/octava (0 lo apaga), un
+                shelf de graves (LF), una campana de medio-graves con Q, y un shelf de agudos (HF).</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">Low</b>, <b class="ui">Lo Freq</b>,
+                <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
+                <b class="ui">High</b>, <b class="ui">Hi Freq</b></td></tr>
+            <tr><td><b class="ui">Bax</b></td>
+              <td>Baxandall — dos shelves muy anchos y muy suaves. El que buscas cuando quieres que
+                todo el sonido sea un poco más oscuro o un poco más brillante.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure>
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+             alt="La hoja del bloque EQ con el modelo Passive seleccionado, mostrando sus ocho mandos: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten y Atten Hz, con medidores IN y OUT arriba.">
+        <figcaption>El bloque EQ en el modelo Passive</figcaption>
+      </figure>
+      <p>Cada hoja de bloque, esta incluida, tiene medidores horizontales <b class="ui">IN</b> y
+        <b class="ui">OUT</b>. En un EQ vale la pena vigilarlos: unos pocos decibelios de realce en
+        tres bandas se acumulan rápido, y los medidores te dicen si el siguiente bloque está
+        recibiendo más señal de la que pretendías.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="nam"><span class="n">02.4</span>Perfiles de ampli NAM</h2>
+      <p>Bajo <b class="ui">Amp &amp; Cab</b> viven dos bloques distintos, y vale la pena dejar claro
+        cuál es cuál. <b class="ui">Tube Amp</b> es la propia simulación de ampli de NAMper, con los
+        siete modelos listados arriba. <b class="ui">Amp</b> es el reproductor de Neural Amp Modeler:
+        carga una captura <b class="ui">.nam</b> de un amplificador real y la reproduce.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
+             alt="La pestaña Rig con un perfil NAM cargado: carátula, título del tono y autor en la tarjeta del ampli, medidores verticales IN y OUT a cada lado, y la cadena de señal de bloques debajo.">
+        <figcaption>La tarjeta del ampli con un perfil NAM cargado</figcaption>
+      </figure>
+
+      <h3>La tarjeta del ampli</h3>
+      <p>En la parte superior de la pestaña Rig, entre los medidores <b class="ui">IN</b> y
+        <b class="ui">OUT</b>, la tarjeta del ampli muestra lo que está reproduciendo el bloque
+        <b class="ui">Amp</b> en ese momento: la carátula, el título del tono, el
+        <b class="ui">@author</b>, hasta seis chips de metadatos, un contador de descargas, un botón
+        <b class="ui">Browse TONE3000</b> y un icono de libros (<b class="ui">Open NAM
+        library</b>). Sin nada cargado, dice <b class="ui">Built-in tube amp</b>. Si un rig tiene más
+        de un ampli, los chips <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> y así sucesivamente
+        eligen cuál edita la tarjeta.</p>
+
+      <h3>Input y Output</h3>
+      <p>La hoja del bloque <b class="ui">Amp</b> es deliberadamente corta: el título del perfil (o
+        <b class="ui">No model loaded</b>), un botón <b class="ui">Browse TONE3000</b>, y dos mandos.
+        <b class="ui">Input</b> y <b class="ui">Output</b> van ambos de −20 a +20 dB y empiezan en 0.
+        Input empuja la captura con más fuerza, que es como consigues más o menos breakup de un
+        perfil; Output ajusta el resultado después.</p>
+      <p>La salida NAM se normaliza automáticamente, usando los metadatos de sonoridad dentro del
+        modelo, a un objetivo de −18 dB. Por eso cambiar entre perfiles no descontrola tus niveles, y
+        no está expuesto como un control.</p>
+      <div class="note">
+        <div class="t">El ampli NAM es mono</div>
+        <p>Una captura NAM es un dispositivo mono — una señal estéreo que llega al bloque
+          <b class="ui">Amp</b> se suma antes de entrar. Pon tus efectos estéreo después del ampli,
+          no antes.</p>
+      </div>
+
+      <h3>Tres formas de cargar un perfil</h3>
+      <ol style="--nc:var(--amp)">
+        <li><b class="ui">Browse TONE3000</b> — la biblioteca en línea, cubierta en la siguiente
+          sección.</li>
+        <li>El icono de libros, que abre una hoja titulada <b class="ui">NAM Profiles</b>. Toca
+          cualquier fila para cargarla en el ampli actual.</li>
+        <li>Los presets de fábrica resuelven sus propios perfiles, así que cargar
+          <b class="ui">Crunch</b> trae su ampli consigo.</li>
+      </ol>
+      <p>La hoja <b class="ui">NAM Profiles</b> es tu biblioteca local. Vacía, dice
+        <b class="ui">Profiles you download from TONE3000 collect here.</b> Su menú de barra de
+        herramientas tiene <b class="ui">Import .nam files…</b> — un selector de archivos de
+        selección múltiple que solo acepta archivos <b class="ui">.nam</b> — junto con
+        <b class="ui">Export all (N files)</b> y <b class="ui">Update all</b>. Cada fila trae
+        <b class="ui">Share .nam file</b>, <b class="ui">Delete</b> y un botón de actualizar
+        (<b class="ui">Refresh from TONE3000</b>).</p>
+      <p>Si no se puede leer un modelo, obtienes <b class="ui r">Could not load amp model
+        {filename}.</b> — normalmente un archivo que se movió o se eliminó por debajo del rig.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
+      <p>TONE3000 es una biblioteca gratuita de capturas de amplis, y NAMper toma de ahí
+        directamente. No hay pantalla de exploración dentro de la app: <b class="ui">Browse
+        TONE3000</b> abre tone3000.com dentro de una hoja web segura. Buscas y filtras en el propio
+        sitio web, eliges un tono, y la app se encarga del resto — mientras lo obtiene, el botón dice
+        <b class="ui">Loading…</b> y está deshabilitado.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
+             alt="La hoja Connect TONE3000 sobre la pestaña Rig, con los botones Sign in to TONE3000 y Play offline y un interruptor Don't ask again.">
+        <figcaption>La oferta de inicio de sesión, mostrada una vez por cada apertura mientras no
+          has iniciado sesión</figcaption>
+      </figure>
+      <p>Iniciar sesión es un inicio de sesión web normal, no una clave de API pegada, y si ya has
+        iniciado sesión en tone3000.com en el navegador, la app reutiliza esa sesión. La biblioteca
+        se filtra en el servidor a capturas NAM de arquitectura A2 de amplis, rigs completos y
+        pedales — eso es fijo, no un ajuste que puedas cambiar.</p>
+      <p>Elegir un tono descarga el primer modelo de ese tono — no hay selector de modelo — junto con
+        su carátula y metadatos. Todo aterriza en la carpeta <b class="ui">tones/</b> de la app y
+        aparece en la hoja <b class="ui">NAM Profiles</b>.</p>
+
+      <h3>La oferta de inicio de sesión</h3>
+      <p>Una hoja titulada <b class="ui">Connect TONE3000</b> aparece una vez por cada apertura
+        mientras no has iniciado sesión, explicando que los presets de fábrica transmiten capturas
+        reales de amplis desde la biblioteca gratuita. Ofrece <b class="ui">Sign in to TONE3000</b> y
+        <b class="ui">Play offline</b>, con un interruptor <b class="ui">Don't ask again</b>. También
+        puedes silenciarla para siempre en Ajustes → <b class="ui">PROMPTS</b> →
+        <b class="ui">Offer TONE3000 sign-in on launch</b>.</p>
+
+      <h3>Tocar sin conexión</h3>
+      <p>Todo lo que ya está descargado sigue funcionando sin ninguna conexión. Un rig de fábrica
+        cuyo perfil no está en caché recurre a su <b class="ui">Tube Amp</b> integrado en bypass y
+        una pantalla incluida, y la cabecera dice <b class="ui">Built-in tube amp</b> para que sepas
+        qué estás escuchando. Inicia sesión más tarde y esos rigs se resuelven a las capturas reales
+        en su lugar — no tienes que reconstruir nada.</p>
+      <div class="note warn">
+        <div class="t">No existe cerrar sesión</div>
+        <p>NAMper no tiene botón para cerrar sesión de TONE3000. Una vez que la sesión existe, la
+          única forma de borrarla es eliminar la app. Vale la pena saberlo antes de iniciar sesión en
+          un dispositivo prestado.</p>
+      </div>
+      <p>Cuando algo sale mal, la app te dice cuál de las cuatro cosas es:
+        <b class="ui r">TONE3000: sign in to load %@.</b>,
+        <b class="ui r">TONE3000: the server had a problem (HTTP %lld) — try again later.</b>,
+        <b class="ui r">TONE3000: unexpected reply for %@.</b> y
+        <b class="ui r">TONE3000: no connection — check the network.</b></p>
+      <div class="note tip">
+        <div class="t">Descargas y copias de seguridad</div>
+        <p>La carpeta <b class="ui">tones/</b> está excluida de la copia de seguridad de iCloud a
+          propósito — una restauración desde copia de seguridad no traerá tus perfiles descargados
+          con ella, porque TONE3000 puede volver a obtenerlos. Si una captura en particular te
+          importa, expórtala desde la hoja <b class="ui">NAM Profiles</b> y guarda el archivo.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="cabs"><span class="n">02.6</span>Pantallas e IR</h2>
+      <p>El bloque <b class="ui">Cab</b> reproduce una respuesta de impulso — una pantalla de
+        altavoz capturada con un micrófono. Su hoja muestra el nombre de la IR actual, un botón de
+        menú llamado <b class="ui">Cabinets</b>, un botón <b class="ui">Load file</b>, y un mando:
+        <b class="ui">Level</b>, de −12 a +12 dB. Una vez cargada una IR, aparece junto a ella un
+        botón <b class="ui">Clear IR</b>.</p>
+      <p><b class="ui">Load file</b> abre un selector de archivos para <b class="ui">.wav</b> y
+        otros formatos de audio; lo que elijas se copia en la carpeta <b class="ui">irs/</b> de la
+        app, así que sigue disponible aunque borres el original. El mismo bloque, usado como
+        <b class="ui">IR Verb</b>, llama a su menú <b class="ui">Spaces</b> en su lugar y carga
+        impulsos de reverb en vez de pantallas.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Menú</th><th>Respuestas de impulso incluidas</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Cabinets</b></td>
+              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+                <b class="ui">Greenback 412 SM57 - Nacho</b>,
+                <b class="ui">Greenback 412 e606 - Pesto</b>,
+                <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
+                <b class="ui">V30 412 SM57 - Cookie Monster</b>,
+                <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
+            <tr><td><b class="ui">Spaces</b></td>
+              <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
+                <b class="ui">Plate 1.6s</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <div class="t">No todos los amplis necesitan una pantalla</div>
+        <p>Un bloque <b class="ui">Cab</b> vacío te dice por qué podría quedarse así:
+          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. Muchas capturas de
+          TONE3000 se toman desde la salida del altavoz, pantalla y micrófono incluidos; poner otra
+          pantalla después de una de esas hace que el sonido quede apagado y encajonado. Un
+          <b class="ui">IR Verb</b> vacío dice en cambio <b class="ui">No IR loaded — pick a space
+          or a file</b>.</p>
+      </div>
+      <p>Los problemas de IR se muestran como <b class="ui r">IR file missing: {name}</b>,
+        <b class="ui r">Could not read IR {name}.</b> o
+        <b class="ui r">Could not import {name}.</b></p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="presets"><span class="n">02.7</span>Presets</h2>
+      <p>Un preset de rig guarda toda la cadena — bloques, modelos, posiciones de mando, el perfil de
+        ampli, la pantalla. Guarda uno desde el <b class="ui">+</b> en la tarjeta
+        <b class="ui">PRESETS</b>, o desde el gestor de presets. El aviso es una alerta titulada
+        <b class="ui">Save preset</b> cuyo mensaje te dice qué va a pasar:
+        <b class="ui">The current rig gets the next free MIDI PC slot.</b> Escribe un nombre y toca
+        <b class="ui">Save</b>. Deja el campo vacío y se guarda como <b class="ui">Preset</b>.</p>
+      <div class="note warn">
+        <div class="t">La ranura PC no es editable</div>
+        <p>Cada preset ocupa una ranura de cambio de programa MIDI, y NAMper te la asigna: los cuatro
+          presets de fábrica ocupan PC 0–3, y los presets de usuario toman el siguiente número libre
+          a partir de 4. No hay forma de cambiar una ranura a mano. Planea la distribución de tu
+          footswitch según el orden en que guardas los presets, no al revés.</p>
+      </div>
+
+      <h3>Actualizar y gestionar</h3>
+      <p>Sobrescribir siempre se confirma. <b class="ui">Update with current rig</b> muestra un
+        diálogo que dice <b class="ui">Overwrite "{name}" with the current rig?</b> con
+        <b class="ui">Overwrite</b> y <b class="ui">Cancel</b>. El propio gestor tiene el título de
+        navegación <b class="ui">Presets</b> y dos secciones: <b class="ui">Rigs · MIDI PC
+        slots</b>, y <b class="ui">Everything at once</b> → <b class="ui">Global snapshots</b>,
+        descrito como rig, looper, sampler, setlist y mapa de control guardados y restaurados
+        juntos.</p>
+      <p>El menú contextual de cada fila ofrece <b class="ui">Rename</b>,
+        <b class="ui">Update with current rig</b>, <b class="ui">Share</b> y
+        <b class="ui">Delete</b>. Renombrar solo existe en el gestor — el menú del chip de preset en
+        la pestaña Rig no lo tiene. En cuanto tengas más de ocho presets, aparece arriba un campo
+        <b class="ui">Search presets</b>.</p>
+      <div class="note warn">
+        <div class="t">Delete no se confirma</div>
+        <p><b class="ui">Delete</b> en el menú de fila del preset surte efecto de inmediato, sin
+          "¿estás seguro?". Exporta una copia de seguridad antes de una limpieza.</p>
+      </div>
+
+      <h3>Importar y exportar</h3>
+      <p>El menú de importar/exportar del gestor tiene <b class="ui">Import preset / bank /
+        backup…</b>, <b class="ui">Export rig presets</b> (que escribe <b class="ui">NAMper
+        Presets.namper</b>) y <b class="ui">Export EVERYTHING (full backup)</b> (que escribe
+        <b class="ui">NAMper Backup.namper</b>). Ten en cuenta que una copia de seguridad completa
+        lleva parámetros y referencias pero no el audio de los kits del sampler.</p>
+      <p>La extensión de archivo es <b class="ui">.namper</b>. Toca uno en Archivos, o recíbelo por
+        AirDrop, y NAMper lo importa y abre el gestor de presets. Cada preset importado obtiene una
+        ranura nueva, así que una importación nunca puede sobrescribir en silencio algo que ya
+        tenías.</p>
+
+      <h3>Los cuatro de fábrica</h3>
+      <p>NAMper viene con cuatro rigs en PC 0–3, cada uno construido en torno a una captura real:
+        <b class="ui">Clean</b> (un combo americano blackface), <b class="ui">Crunch</b> (un cabezal
+        británico de 50 vatios de 1969), <b class="ui">Lead</b> (un amp+cab moderno de alta ganancia)
+        y <b class="ui">Ambient</b> (un combo británico de clase A con brillo). La captura que
+        transmite cada uno lleva el título propio de quien la subió, que es lo que muestra el bloque
+        de ampli. Cada rig también trae un <b class="ui">Tube Amp</b> integrado en bypass y una
+        pantalla incluida como respaldo sin conexión, y cada uno está marcado
+        <b class="ui">FACTORY</b> en el gestor. Recupéralos todos desde Ajustes →
+        <b class="ui">RESET</b> → <b class="ui">Reset to factory presets</b>; el diálogo advierte
+        <b class="ui">Delete ALL user presets? The four factory rigs come back.</b></p>
+      <p>Las otras pestañas tienen sus propias hojas de presets, accesibles desde su chip
+        <b class="ui">PRESETS</b> y todas compartiendo el mismo diseño: <b class="ui">Looper
+        Presets</b>, <b class="ui">Sampler Kits</b>, <b class="ui">Perform Presets</b>,
+        <b class="ui">Control Presets</b> y <b class="ui">Global Snapshots</b>. Dos de ellas no se
+        pueden compartir, porque apuntan a archivos en este dispositivo — los kits del sampler llevan
+        su audio, y los snapshots globales hacen referencia a modelos, samples y pistas de
+        acompañamiento.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="rigs"><span class="n">02.8</span>Varios rigs</h2>
+      <p>NAMper ejecuta hasta cuatro rigs a la vez — una guitarra y una voz, una guitarra y un bajo,
+        o cuatro músicos a través de una interfaz. Añade uno desde el menú <b class="ui">RIG</b>
+        <b class="ui">+</b> en la cabecera <b class="ui">SIGNAL CHAIN</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
+             alt="La pestaña Rig con dos rigs uno junto al otro: el primero lleva una insignia MIDI que lo marca como enfocado por MIDI, el segundo está anclado para que los presets lo dejen en paz.">
+        <figcaption>Dos rigs — uno con el foco MIDI, otro anclado</figcaption>
+      </figure>
+      <p>La sección <b class="ui">Templates</b> del menú te da un punto de partida razonable:
+        <b class="ui">Guitar (gate · tube amp · cab)</b>, <b class="ui">Bass (gate · comp · bass
+        amp · cab)</b>, <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> y
+        <b class="ui">Empty rig</b>. Debajo, <b class="ui">From preset</b> lista tus presets
+        guardados por nombre — o abre una hoja <b class="ui">NEW RIG FROM PRESET</b> con búsqueda en
+        cuanto haya más de ocho.</p>
+      <p>Los rigs se llaman <b class="ui">GUITAR</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b>
+        o <b class="ui">RIG n</b> según la plantilla; un rig construido a partir de un preset toma el
+        nombre del preset. Las cabeceras solo aparecen en cuanto tienes más de un rig.</p>
+
+      <h3>Foco, anclaje y eliminación</h3>
+      <p>Toca la cabecera de un rig para darle el foco <b class="ui">MIDI</b> — una insignia marca
+        qué rig está controlando tu controlador en ese momento. El interruptor de anclaje
+        (<b class="ui">Pin rig</b> / <b class="ui">Unpin rig</b>, con el texto "presets keep this
+        rig") hace que un rig sobreviva a los cambios de preset, que es como mantienes intacta una
+        cadena vocal mientras cambias sonidos de guitarra desde un footswitch. Aparece un botón de
+        papelera (<b class="ui">Remove rig</b>) en cuanto hay más de un rig.</p>
+      <p>La disposición sigue al dispositivo: en horizontal los rigs se apilan como filas con cada
+        cadena corriendo de izquierda a derecha; en vertical se sitúan uno junto al otro con las
+        cadenas corriendo de arriba abajo.</p>
+
+      <h3>La entrada y salida de cada rig</h3>
+      <p>El conector IN al principio de una cadena es un menú. Su sección
+        <b class="ui">Sound-card input</b> lista tus canales por nombre — <b class="ui">In 1</b>,
+        <b class="ui">In 2</b> y así sucesivamente — y añade <b class="ui">Sampler pads</b> y
+        <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, para que un rig pueda procesar un loop o
+        el sampler en lugar de una entrada en vivo.</p>
+      <p>El conector OUT abre una hoja encabezada <b class="ui">RIG OUTPUT</b>, con mandos
+        <b class="ui">Level</b> y <b class="ui">Pan</b>, un menú <b class="ui">Hardware output
+        pair</b> (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — esto necesita
+        <b class="ui">Use all interface outputs</b> activado en Ajustes), y
+        <b class="ui">Record this rig into</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop
+        track 4</b>. La fila de resumen debajo dice <b class="ui">Looper: not assigned</b> o, una
+        vez que has elegido alguna, <b class="ui">Looper: track 1, 3</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="branches"><span class="n">02.9</span>Ramas paralelas</h2>
+      <p>Un rig no está limitado a una sola línea. Cada rig puede tener hasta cuatro cadenas — la
+        principal más tres ramas — para que puedas dividir una señal, tratar las mitades de forma
+        diferente y volver a mezclarlas. Crea una con el botón de icono de rama debajo de la cadena
+        (<b class="ui">Add parallel chain</b>).</p>
+      <p>Su menú tiene una sola sección, <b class="ui">Branch from</b>, que lista cada canal de
+        entrada, <b class="ui">Sampler pads</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
+        y <b class="ui">After {Block}</b> para cada bloque de la cadena principal. Ese último grupo
+        es el interesante: ramificar después del ampli te da dos reverbs distintos sobre el mismo
+        tono de ampli, ramificar antes te da dos amplis distintos sobre la misma guitarra.</p>
+
+      <h3>Las dos anclas</h3>
+      <p>Una rama se dibuja como una columna paralela con un ancla de entrada donde sale de la
+        cadena principal y un ancla de fusión donde se reincorpora. El ancla de fusión muestra el
+        nivel de esa rama como un porcentaje, así puedes leer el balance sin abrir nada.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Gesto</th><th>Qué hace</th></tr></thead>
+          <tbody>
+            <tr><td>Toca un ancla</td><td>Abre la hoja de mezclador encabezada
+              <b class="ui">LANE {n} MIX</b>, con <b class="ui">Level</b> y <b class="ui">Pan</b></td></tr>
+            <tr><td>Mantén pulsada el ancla de entrada</td><td>El menú <b class="ui">Branch
+              input</b>: entrada propia, <b class="ui">Sampler pads</b>, <b class="ui">Loop
+              1</b>–<b class="ui">Loop 4</b>, <b class="ui">Branch after {Block}</b>, y
+              <b class="ui">Remove branch</b></td></tr>
+            <tr><td>Mantén pulsada el ancla de fusión</td><td>El menú <b class="ui">Branch
+              output</b>: <b class="ui">Into the main mix</b>, <b class="ui">Merge before
+              {Block}</b>, <b class="ui">Own output 1-2</b>, y <b class="ui">Remove branch</b></td></tr>
+            <tr><td>Arrastra un ancla</td><td>Lo vuelve a fijar en otro punto de la cadena
+              principal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Arrastrar es la forma rápida de probar: sostén el ancla de fusión, deslízala más temprano o
+        más tarde en la cadena, y escucha la rama caer antes o después del delay sin abrir ningún
+        menú.</p>
+      <div class="note tip">
+        <div class="t">Mezclar varias ramas a la vez</div>
+        <p>Pon un bloque <b class="ui">Volume</b> en el punto donde se fusionan las ramas y le crece
+          una sección extra, <b class="ui">INCOMING LINES</b>, con un mando por cada rama que se
+          fusiona — <b class="ui">Line 1</b>, <b class="ui">Line 2</b> y así sucesivamente. Eso te
+          da un pequeño mezclador en medio del rig en lugar de perseguir hojas de ancla
+          individuales.</p>
+      </div>
+      <p>Una rama también puede saltarse la mezcla principal por completo: apunta su salida a
+        <b class="ui">Own output 1-2</b> y va directa a su propio par de hardware, lo cual antes
+        necesita <b class="ui">Use all interface outputs</b> activado en Ajustes.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="master"><span class="n">02.10</span>La sección master</h2>
+      <p>La tarjeta <b class="ui">MASTER</b> al fondo de la pestaña Rig es donde todo se encuentra:
+        cada rig, el looper, los pads del sampler y la pista de acompañamiento se suman aquí antes de
+        la salida de hardware. Lo que le hagas al master, se lo haces a todo.</p>
+      <p>El menú <b class="ui">FX</b> <b class="ui">+</b> añade procesamiento de master — hasta seis
+        bloques. Puedes elegir entre <b class="ui">Volume</b>, <b class="ui">EQ</b>,
+        <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
+        <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
+        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
+        <b class="ui">Room</b> y <b class="ui">Delay</b>. Se comportan como bloques de cadena: toca
+        un chip para editarlo, mantén pulsado para <b class="ui">Enable</b> / <b class="ui">Bypass</b>
+        y <b class="ui">Remove</b>.</p>
+      <div class="note warn">
+        <div class="t">Sin plugins AU en el master</div>
+        <p>Los plugins Audio Unit alojados solo pueden ir dentro de una cadena de rig. El menú FX
+          del master no los ofrece. Si quieres un limitador de terceros sobre todo, eso no es
+          posible — usa en su lugar el bloque <b class="ui">Limiter</b> integrado.</p>
+      </div>
+      <p>Aquí no hay ningún procesador de master siempre activo. La saturación es un bloque que
+        añades — <b class="ui">Tube Sat</b> o <b class="ui">Tape Sat</b>, ambos con
+        <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> y
+        <b class="ui">Level</b> — y la limitación es el bloque <b class="ui">Limiter</b>, con
+        <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 a 0 dB, por defecto −1) y
+        <b class="ui">Release</b>. Si no los has añadido, no están en la ruta de la señal.</p>
+
+      <h3>Leer los medidores del master</h3>
+      <p>Las barras de pico estéreo <b class="ui">L</b> y <b class="ui">R</b> llevan marcas en −12 y
+        −6 dB. A su lado hay una lectura de sonoridad BS.1770: un número grande de sonoridad
+        momentánea <b class="ui">LUFS</b> con una línea más pequeña debajo que dice
+        <b class="ui">LUFS</b> o <b class="ui">LUFS · S &lt;n&gt;</b> para el valor a corto plazo.
+        Por debajo de −70 LUFS muestra <b class="ui">-inf</b>. El fader va de −60 a +12 dB.</p>
+      <p>Usa las barras de pico para mantenerte fuera del clipping y el número LUFS para igualar tu
+        nivel general con otra cosa — una pista de acompañamiento, una toma anterior, otro músico en
+        la misma mesa.</p>
+      <div class="note">
+        <div class="t">El click se mantiene limpio</div>
+        <p>El click del metrónomo se mezcla <b>después</b> de la cadena de FX del master, así que
+          los reverbs, la saturación y la limitación del master nunca lo tocan. Ajusta el nivel del
+          click en Ajustes → <b class="ui">METRONOME</b>, y dale ahí su propio par de salida si lo
+          quieres solo en los in-ears y en ningún otro sitio.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/es/setup.html">← 01 · Primeros pasos</a>
+      <span class="sp"></span>
+      <a href="/docs/es/plugins.html">03 · Plugins AU →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/es/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper es una app independiente, sin afiliación, aprobación ni patrocinio de ningún
+      fabricante de equipos. Todos los nombres de productos, marcas y marcas registradas son
+      propiedad de sus respectivos dueños y se usan únicamente para describir el equipo del que
+      proviene una captura.</p>
+  </div>
+</footer>
+
+</body>
+</html>

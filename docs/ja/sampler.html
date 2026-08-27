@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サンプラーパッド — NAMper ドキュメント</title>
+<meta name="description" content="16個のサンプラーパッド: サウンドの読み込みと録音、トリムとADSRを備えたパッドエディタ、キットと4種の内蔵ドラムキット、トリガークオンタイズ、MIDIノート36〜51、そしてパッドがミックスのどこに入るか。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="サンプラーパッド — NAMper ドキュメント">
+<meta property="og:description" content="16個のパッド、キット、トリムとADSR、クオンタイズとMIDIトリガー。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/sampler.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/sampler.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/sampler.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/sampler.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/sampler.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/sampler.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/sampler.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/sampler.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/sampler.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/sampler.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/sampler.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/sampler.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/sampler.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/sampler.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/sampler.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/sampler.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/sampler.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/sampler.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a class="on" href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PADS</div>
+    <h1>16個のパッド、1ページに。</h1>
+    <p class="lede"><b class="ui a">Sample</b>タブは、親指やMIDIペダルで演奏できるドラム
+      マシンです: 16個のパッド、キットライブラリ、パッドごとのトリムとエンベロープ、
+      そしてタイミングを正確に合わせたいときのためのクオンタイザーを備えています。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#grid">グリッド</a></li>
+        <li><a href="#loading">パッドにサウンドを入れる</a></li>
+        <li><a href="#editor">パッドエディタ</a></li>
+        <li><a href="#kits">キット</a></li>
+        <li><a href="#quantize">トリガークオンタイズ</a></li>
+        <li><a href="#trigger">パッドを演奏する</a></li>
+        <li><a href="#routing">パッドの信号はどこへ行くか</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="grid"><span class="n">05.1</span>グリッド</h2>
+      <p>16個のパッドが固定の4×4グリッドに並びます。1ページのみです — バンクや2ページ目は
+        なく、演奏できるものはすべて一度に画面上に表示されます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
+             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
+        <figcaption>16個すべてのパッドに読み込まれた<b class="ui">Drums — Acoustic</b>ファクトリーキット</figcaption>
+      </figure>
+      <p>ヘッダー行には左から順に、<b class="ui">SAMPLER</b>の文字、<b class="ui">LEVEL</b>
+        つまみ(0から2、デフォルト1)、<b class="ui">QUANT</b>つまみ、クオンタイズグリッド
+        チップ、キット用の<b class="ui">PRESETS</b>チップ、パッドが録音中に点灯する
+        <b class="ui">REC</b>インジケーター、<b class="ui">STOP ALL</b>が並びます。</p>
+      <p>下部のヒントがすべてを物語っています:</p>
+      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
+        36–51</b></p>
+      <p><b>空のパッド</b>は2分割され、<b class="ui">LOAD</b>と<b class="ui">REC</b>に
+        分かれます。<b>読み込み済みのパッド</b>にはサンプル名、その長さ(例えば
+        <b class="ui">1.4s</b>)、トリム範囲外を暗く落とした波形、再生中に流れる明るい
+        カーソルが表示されます。</p>
+      <p>任意のパッドを長押しするとメニューが開きます: <b class="ui">Load sound…</b>、
+        <b class="ui">Record mix</b>または<b class="ui">Stop recording</b>、さらに
+        読み込み済みのパッドでは<b class="ui">Edit…</b>、<b class="ui">Clear</b>、
+        <b class="ui">MIDI Learn: pad N</b>。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="loading"><span class="n">05.2</span>パッドにサウンドを入れる</h2>
+      <p>ファイルを読み込む方法は3つあり、いずれも同じファイルピッカーを開きます: 空の
+        パッドの<b class="ui">LOAD</b>側、長押しメニューの<b class="ui">Load sound…</b>、
+        パッドエディタ内の<b class="ui">Load file</b>です。iOSがデコードできるものであれば
+        何でも受け付けます。</p>
+      <p>サンプルは<b>12秒</b>に制限されています — それより長いファイルは拒否されるのでは
+        なく切り詰められます。また、NAMperへのドラッグ&ドロップはできません: すべての
+        インポートはピッカー経由です。</p>
+
+      <h3>パッドに録音する</h3>
+      <p>空のパッドの<b class="ui">REC</b>側は、そのままパッドへ録音します。同時に録音
+        できるパッドは1つだけで、テイクには<b class="ui">Rec N</b>という名前が付きます。
+        エンジンが停止していると
+        <b class="ui r">Audio is off — tap the power button before recording.</b>で
+        拒否されます。</p>
+      <div class="note warn">
+        <div class="t">パッドレコーダーは聞こえている音を録音します</div>
+        <p>これは生の入力ではなく<b>メイン出力ミックス</b>を録音します — そのため、リグ、
+          ルーパー、他のパッド、バッキングトラックまで、すべてがサンプルに含まれます。
+          処理済みのトーンからそのままコードを収録するには便利ですが、ドライな音源だけを
+          収録したかった場合には落とし穴になります。<b class="ui">REC</b>を押す前に、
+          それ以外をミュートするか止めておいてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">05.3</span>パッドエディタ</h2>
+      <p>読み込み済みのパッドを長押し → <b class="ui">Edit…</b>。シートの見出しは
+        <b class="ui">PAD N</b>で、サンプル名とその長さが表示されます。</p>
+      <p>波形の始点と終点には<b>ドラッグ可能なトリムハンドル</b>があります — 始点を
+        内側にドラッグすればゆっくりしたアタックをカットでき、終点を内側にドラッグ
+        すれば長いテールを短くできます。</p>
+      <p><b>ADSRエンベロープは波形の上に描画され</b>、3つの丸いハンドルをドラッグして
+        編集します: <b class="ui">Attack</b>、<b class="ui">Decay and sustain</b>、
+        <b class="ui">Release</b>。上部の読み取り表示には
+        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>のように数値が示されます。</p>
+      <p>つまみは2つ: <b class="ui">Gain</b>(0から2)と<b class="ui">Pitch</b>(0.25から4、
+        <b class="ui">1.00x</b>のように表示)。Pitchはリサンプリングレートなので、
+        <b>ピッチとスピードが同時に</b>変化します — フォルマントを保持しない、テープ
+        方式のシフトです。半分の速度は1オクターブ下がることを意味します。</p>
+
+      <h3>MODEとTAP</h3>
+      <p>2組のチップペアが、パッドが指の下でどう振る舞うかを決めます。
+        <b class="ui">MODE</b>は<b class="ui">One-shot</b>または<b class="ui">Loop</b>、
+        <b class="ui">TAP</b>は<b class="ui">Retrig</b>または<b class="ui">Latch</b>です。
+        ルールはシンプルです: <b class="ui">Loop</b>または<b class="ui">Latch</b>に
+        設定されたパッドはタップのたびに開始と停止をトグルし、<b class="ui">One-shot</b> /
+        <b class="ui">Retrig</b>のパッドは叩くたびにトリムの始点から再生し直します —
+        通常のドラムパッドの動作です。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>MODE</th><th>TAP</th><th>タップの効果</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
+                <td>トリムの始点から1回再生し、タップのたびに再スタートします。ドラム、
+                    ヒット、スタブに。</td></tr>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
+                <td>1回再生します。鳴っている途中でもう一度タップすると停止します。
+                    途中で切り上げたい長めのワンショットに。</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+                <td>再度タップして止めるまでループし続けます。</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+                <td>再度タップして止めるまでループし続けます。ベッド、ドローン、雨音、
+                    レコードノイズに。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>下部の<b class="ui">Preview</b>は現在の設定でパッドを試聴でき、
+        <b class="ui">Load file</b>はエディタを離れずにサウンドを差し替えられます。</p>
+      <div class="note">
+        <div class="t">サンプラーがあえて持っていないもの</div>
+        <p>チョークグループはありません(オープンハイハットがクローズハイハットで
+          止まることはありません)。パッドごとのパン、リバース、ベロシティレイヤー、
+          パッドごとの出力ルーティング、押している間だけ鳴らすモーメンタリー
+          ゲートモードもありません。パッドは設定された<b class="ui">Gain</b>で再生され、
+          サンプルまたはエンベロープが指示する時点で止まります。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="kits"><span class="n">05.4</span>キット</h2>
+      <p>キットは16個すべてのパッドのスナップショットです — すべてのトリム、
+        エンベロープ、ゲイン、ピッチ、モードの設定に加えて、<b>各パッドの音声の
+        専用コピー</b>を持ちます。このコピーこそが重要な点です: 一度キットを保存
+        すれば、パッドに別の音を読み込んだり、パッドをクリアしたり、元のファイルを
+        削除したりしても、キットの中身が失われることはありません。半年後に読み込んでも
+        問題なく鳴ります。</p>
+      <p><b class="ui">PRESETS</b>チップからブラウザを開きます。シートのタイトルは
+        <b class="ui">Sampler Kits</b>です。行をタップすると読み込まれます。行の
+        メニューには<b class="ui">Rename</b>、<b class="ui">Update with current kit</b>、
+        <b class="ui">Delete</b>があります。キットを削除しても、読み込み中のパッドや
+        他の保存済みキットがまだ使用している音声が削除されることはありません。</p>
+      <div class="note warn">
+        <div class="t">キットは共有できません</div>
+        <p>シートのフッターにその理由が書かれています:
+          <b class="ui">Kits live on this device (they carry their audio files).</b>
+          キットには共有やエクスポート機能がなく、フルバックアップのエクスポートにも
+          サンプラーキットの音声は含まれません — パラメーターと参照情報のみが
+          含まれます。別の端末でも同じ音を使いたい場合は、ファイルAppで
+          <b class="ui">samples/</b>フォルダをコピーしてください。</p>
+      </div>
+
+      <h3>4種の内蔵キット</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>キット</th><th>16個のパッド</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Drums — Digital</b></td>
+                <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
+                    Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
+            <tr><td><b class="ui">Drums — Analog</b></td>
+                <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
+                    Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
+            <tr><td><b class="ui">Drums — Acoustic</b></td>
+                <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
+                    Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
+                    Tambourine</td></tr>
+            <tr><td><b class="ui">FX &amp; Textures</b></td>
+                <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
+                    Bleep, Alarm, Crackle (looping), Wind (looping), Chime, Robot, Rumble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>削除したファクトリーキットは削除されたままです — 次回起動時に復活することは
+        ありません。単に邪魔にならないようにしたいだけなら、削除ではなく名前変更や
+        更新を使ってください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="quantize"><span class="n">05.5</span>トリガークオンタイズ</h2>
+      <p><b class="ui">QUANT</b>つまみはオン/オフのスイッチではなく<b>強さ</b>です。ゼロでは
+        <b class="ui">OFF</b>と表示され、それより上ではパーセンテージが表示されます。
+        100 %ではすべてのヒットがグリッドに正確に乗り、30 %ではわずかに早いものだけが
+        補正されて残りの演奏のフィーリングは保たれます。デフォルトは0(オフ)です。</p>
+      <p>隣のチップはグリッドを設定し、<b class="ui">1/4</b>、<b class="ui">1/8</b>、
+        <b class="ui">1/16</b>、<b class="ui">1/32</b>を順に切り替えます。デフォルトは
+        <b class="ui">1/16</b>です。</p>
+      <p>どちらの設定も<b>グローバル</b>です — キットごとでもパッドごとでもありません。
+        キットを読み込んでもこれらは変わりません。</p>
+      <div class="note warn">
+        <div class="t">3つすべてが揃っている必要があります</div>
+        <p>クオンタイズが実際に効果を発揮するのは、次の<b>3つすべて</b>が成立している
+          ときだけで、画面にはその説明はありません:</p>
+        <ul style="--nc:var(--drive)">
+          <li><b>テンポが設定されている</b> — そうでなければグリッド自体が存在しません。</li>
+          <li><b>ループが再生中である</b> — ループがフェーズを供給するので、グリッドは
+            1拍目がどこかを把握できます。</li>
+          <li>あなたが<b>録音中である</b> — <b class="ui a">Perform</b>のレコーダー、
+            またはソースがサンプラーになっているループトラックのどちらかです。</li>
+        </ul>
+        <p>何もない状態でジャムしながらつまみを上げても違いは感じられません。これは
+          意図的な仕様です: 次の16分音符を待ってから鳴るパッドは、指の下では壊れて
+          いるように感じられます。そのためフリー演奏は常にクオンタイズされないままで、
+          補正は録音として残る部分にのみ適用されます。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="trigger"><span class="n">05.6</span>パッドを演奏する</h2>
+      <p>タッチ操作: タップすると、その<b class="ui">MODE</b>と<b class="ui">TAP</b>の
+        設定に従ってパッドが再生・停止し、長押しでメニューが開きます。</p>
+      <p>MIDI操作: <b>ノート36〜51がパッド1〜16を演奏</b>し、GMドラムの慣例に
+        従います — ノート36がパッド1です。これは常に有効で、設定不要です。ただし、
+        自分で作成したマッピングが先にそのノートを使っている場合を除き、任意のMIDI
+        チャンネルで動作します。</p>
+      <p><b>ベロシティは使用されません。</b>コントローラーのパッドをどれだけ強く叩いても、
+        サンプルはエディタで設定した<b class="ui">Gain</b>で再生されます。パッドエディタで
+        一度レベルを設定すれば、そのまま維持されます。</p>
+      <div class="note tip">
+        <div class="t">学習させたマッピングは生のノートより優れた動作をします</div>
+        <p><b class="ui a">Control</b>タブで作成したマッピングは再生/停止を呼び出すため、
+          <b class="ui">Loop</b>と<b class="ui">Latch</b>を尊重します — フットスイッチを
+          1回押すとループが始まり、次に押すと止まります。生のMIDIノート36〜51は常に
+          最初から再トリガーします。ペダルからループ再生パッドを操作したい場合は、
+          内蔵のノート範囲に頼るのではなく、マッピングを学習させてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="routing"><span class="n">05.7</span>パッドの信号はどこへ行くか</h2>
+      <p>パッドは<b>メインミックスへ直接</b>合流します — ギターチェーンを経由しないため、
+        アンプのゲインやリバーブがパッドに影響することはありません。ヘッダーの
+        <b class="ui">LEVEL</b>つまみが、サンプラー全体がリグに対してどれくらいの
+        音量で鳴るかを設定します。</p>
+      <p>アプリの他の場所でも、ソースとして利用できます:</p>
+      <ul style="--nc:var(--power)">
+        <li><b>チェーン入力として</b> — リグのINコネクタやパラレルブランチ(チップ
+          <b class="ui">SMPL</b>)で<b class="ui">Sampler pads</b>を選ぶと、パッドが
+          そのリグのエフェクトを通過します。</li>
+        <li><b>ループトラックのソースとして</b> — ルーパートラックの<b class="ui">IN</b>を
+          <b class="ui">Sampler</b>(チップ<b class="ui">SMP</b>)に設定すれば、パッドで
+          叩いたビートをループできます。</li>
+        <li><b>コンプのサイドチェインとして</b> — Compブロックの<b class="ui">Sidechain</b>
+          メニューには<b class="ui">SMP</b>が含まれるため、キックでギターをダッキング
+          させられます。</li>
+      </ul>
+      <p>ヘッダーの<b class="ui">STOP ALL</b>は、鳴っているすべてのパッドを一度に
+        解放します — ラッチされたドローンや見つからないループのためのパニックボタン
+        です。</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/looper.html">← 04 · ルーパー</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/perform.html">06 · パフォームと歌詞 →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Looper — NAMper Dokumentation</title>
+<meta name="description" content="Der vierspurige Sync-Looper: runde Pads, die Transportleiste, Scharfschalten per AUTO und Taktgrenzen-Snapping, Tempo und Click, der Loop-Editor, Undo, Routing pro Spur und was gespeichert wird.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Looper — NAMper Dokumentation">
+<meta property="og:description" content="Vier synchronisierte Spuren, Scharfschalten per AUTO, Taktgrenzen-Snapping und der Loop-Editor.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/de/looper.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/looper.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/looper.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/looper.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/looper.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/looper.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/looper.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/looper.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/looper.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/looper.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/looper.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/looper.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/looper.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/looper.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/looper.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/looper.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/looper.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/de/">← ALLE DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/de/looper.html" aria-current="page">Deutsch</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">INHALT</div>
+    <ol>
+      <li><a href="/docs/de/setup.html">Erste Schritte</a></li>
+      <li><a href="/docs/de/rig.html">Rig &amp; Signalkette</a></li>
+      <li><a href="/docs/de/plugins.html">AU-Plugins</a></li>
+      <li><a class="on" href="/docs/de/looper.html">Looper</a></li>
+      <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
+      <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
+      <li><a href="/docs/de/control.html">MIDI &amp; Control</a></li>
+      <li><a href="/docs/de/settings.html">Einstellungen – Referenz</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">04 · LOOPER</div>
+    <h1>Vier Spuren, ein Zyklus.</h1>
+    <p class="lede">Der <b class="ui a">Loop</b>-Tab ist ein vierspuriger Sync-Looper mit einer
+      Analyse-Engine dahinter. Nimm die erste Loop auf, und alles andere ordnet sich dahinter ein —
+      und mit aktiviertem AUTO findet NAMper die Taktgrenzen für dich.</p>
+
+    <nav class="toc">
+      <div class="slab">AUF DIESER SEITE</div>
+      <ul>
+        <li><a href="#basics">Wie der Looper denkt</a></li>
+        <li><a href="#pads">Die runden Pads</a></li>
+        <li><a href="#transport">Die Transportleiste</a></li>
+        <li><a href="#auto">AUTO-Modus</a></li>
+        <li><a href="#tempo">Tempo und der Click</a></li>
+        <li><a href="#editor">Der Loop-Editor</a></li>
+        <li><a href="#undo">Undo</a></li>
+        <li><a href="#routing">Routing pro Spur</a></li>
+        <li><a href="#saving">Was gespeichert wird</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="basics"><span class="n">04.1</span>Wie der Looper denkt</h2>
+      <p>Eine Regel liegt allem anderen zugrunde, und die App zeigt sie am unteren Bildschirmrand
+        an:</p>
+      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
+        run/stop · 90 clear</b></p>
+      <p>Welche Spur du zuerst aufnimmst, legt den Zyklus fest. Jede andere Spur wird darauf
+        eingepasst, statt eigenständig davonzudriften, und nichts verschiebt diesen Zyklus danach
+        noch — außer du bearbeitest die Spur, die ihn gesetzt hat, oder du löschst alles und fängst
+        neu an.</p>
+      <p>Es gibt vier Spuren, jede mit Platz für bis zu <b>60 Sekunden</b>. Im Hochformat sitzen die
+        Pads in einem 2×2-Raster; im Querformat wandert die Transportleiste in eine Spalte links,
+        und die vier Pads reihen sich in einer Zeile auf.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/looper.png" width="600" height="1304"
+             alt="Der Loop-Tab: Spur 1 spielt mit einer grünen radialen Wellenform und einem rotierenden Strahl, Spur 2 ist scharfgeschaltet mit gestricheltem rotem Rand, Spur 3 und 4 sind leer, der AUTO-Chip leuchtet grün, und das Tempo zeigt 124 BPM.">
+        <figcaption>Spur 1 spielt, Spur 2 ist scharfgeschaltet und wartet, AUTO an bei 124 BPM</figcaption>
+      </figure>
+      <p>Jede Spurkarte ist gleich aufgebaut: eine Kopfzeile mit der großen Spurnummer, dem
+        Statuslabel und einem LED-Punkt; das runde Pad; ein 2×2-Raster aus Chips —
+        <b class="ui">IN</b> und <b class="ui">LEN</b> über <b class="ui">DUB</b> und
+        <b class="ui">OUT</b> — und darunter eine Bedienzeile.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="pads"><span class="n">04.2</span>Die runden Pads</h2>
+      <p>Das Pad zeichnet die Wellenform der Loop <em>radial</em> um den Ring — eine Umrundung des
+        Kreises entspricht einem Durchlauf des Zyklus — mit einem rotierenden Strahl, der die
+        Abspielposition markiert. Anschläge zeigen sich als Ausschläge auf dem Ring, sodass du quer
+        durch den Raum ablesen kannst, wo du gerade stehst.</p>
+      <p>Während die allererste Loop aufgenommen wird, gibt es noch keinen Zyklus, deshalb verhält
+        sich der Ring anders: Der gesamte Kreis bildet alles ab, was <em>bisher</em> aufgenommen
+        wurde. Die Wellenform verdichtet sich, während die Aufnahme wächst, der Strahl steht still
+        auf 12 Uhr — das ist der Schreibkopf — und die Mitte des Pads zählt die verstrichenen
+        Sekunden. Sobald die Loop schließt, durchläuft der Strahl den Zyklus.</p>
+
+      <h3>Auf das Pad tippen</h3>
+      <p>Ein Tipp bringt die Spur eine Stufe weiter auf der Leiter:</p>
+      <ul style="--nc:var(--eq)">
+        <li>leer → recording</li>
+        <li>recording → Loop schließt sich und beginnt zu spielen</li>
+        <li>playing → overdub</li>
+        <li>overdub → zurück zu playing</li>
+        <li>muted → Stummschaltung aufheben</li>
+      </ul>
+      <p>Ist <b class="ui">AUTO</b> aktiv, wird ein leeres Pad durch einen Tipp <b>scharfgeschaltet</b>,
+        statt sofort aufzunehmen, und ein Tipp auf ein scharfes Pad hebt die Schärfung wieder auf.
+        Das ist die einzige Änderung, die AUTO an dieser Leiter vornimmt.</p>
+
+      <h3>Langes Drücken</h3>
+      <p>Drücke lange auf das runde Pad für <b class="ui">MIDI Learn: tap loop track 1</b> (und 2,
+        3, 4) — so bindest du einen Fußschalter an eine Spur. Drückst du stattdessen lange auf die
+        <em>Karte</em> darum herum, bekommst du das Routing-Menü: <b class="ui">Input · …</b>,
+        <b class="ui">Output · …</b>, <b class="ui">Edit loop…</b>, dazu
+        <b class="ui">Length · Free</b> oder <b class="ui">Length · N bars</b> und
+        <b class="ui">Overdubs · N</b>.</p>
+
+      <h3>Zustände</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Zustand</th><th>Label</th><th>Farbe</th></tr></thead>
+          <tbody>
+            <tr><td>Nichts aufgenommen</td><td><b class="ui">empty</b></td><td>Gedimmt</td></tr>
+            <tr><td>Aufnahme läuft</td><td><b class="ui">recording</b></td><td>Rot</td></tr>
+            <tr><td>Loop läuft</td><td><b class="ui">playing</b></td><td>Grün</td></tr>
+            <tr><td>Schichtet</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
+            <tr><td>Still, läuft weiter</td><td><b class="ui">muted</b></td><td>Gelb</td></tr>
+            <tr><td>Wartet (AUTO)</td><td><b class="ui">armed</b></td>
+                <td>Rot, gestrichelter Rand um die Karte</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Die Bedienzeile unter jedem Pad enthält vier Dinge: Mute
+        (<b class="ui">Mute track N</b>, wird gelb), Edit
+        (<b class="ui">Edit loop N</b>), Clear (<b class="ui">Clear track N</b>) und einen kleinen
+        Level-Regler (<b class="ui">Loop track N level</b>, 0 bis 1.5).</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="transport"><span class="n">04.3</span>Die Transportleiste</h2>
+      <p>Neben dem Wort <b class="ui">LOOPER</b> sitzt die Transportzeile:</p>
+      <ul style="--nc:var(--gate)">
+        <li>Ein <b>Master-Ring</b>, der die Zykluslänge in Sekunden anzeigt, oder
+          <b class="ui">—</b>, solange noch nichts aufgenommen ist.</li>
+        <li>Ein <b class="ui">PRESETS</b>-Chip — siehe <a href="#saving">was gespeichert wird</a>.</li>
+        <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>, deaktiviert, bis ein
+          Zyklus existiert.</li>
+        <li>Ein <b>Undo</b>-Button, nur aktiv, wenn es etwas rückgängig zu machen gibt.</li>
+        <li>Ein Papierkorb-Button, <b class="ui">Clear all loops</b>.</li>
+      </ul>
+      <p>Darunter zeigt eine Statuszeile, wo du gerade stehst:
+        <b class="ui">recording the master loop…</b>, solange der erste Take läuft, eine laufende
+        Position <b class="ui">4.2 / 8.0 s</b>, sobald es einen Zyklus gibt, <b class="ui">stopped</b>,
+        oder <b class="ui">tap a track to record</b>, wenn der Looper leer ist.</p>
+      <div class="note">
+        <div class="t">Fußschalter-Steuerung</div>
+        <p>Die eingebaute MIDI-Zuordnung deckt den Looper ohne jede Einrichtung ab:
+          <b class="ui">CC 85–88</b> tippt Spur 1 bis 4 an, <b class="ui">CC 89</b> startet,
+          <b class="ui">CC 90</b> löscht. Beachte, dass CC 89 einen <em>Play</em>-Befehl sendet —
+          es startet die Loops von vorn, statt sie ein- und auszuschalten. Für einen echten
+          Run/Stop-Toggle auf einem einzigen Schalter füge ein Mapping auf dem Tab
+          <b class="ui a">Control</b> hinzu und lerne es auf <b class="ui">Run / stop</b> an, das
+          den aktuellen Zustand ausliest.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="auto"><span class="n">04.4</span>AUTO-Modus</h2>
+      <p><b class="ui">AUTO</b> — der Zauberstab-Chip neben <b class="ui">CLICK</b> — erledigt zwei
+        Aufgaben: Er startet und stoppt Takes für dich, und wenn die Master-Loop schließt, ermittelt
+        er, wo die Taktgrenzen tatsächlich liegen.</p>
+
+      <h3>Scharfschalten statt Aufnehmen</h3>
+      <p>Ist AUTO aktiv, schaltet ein Tipp auf ein leeres Pad es scharf: Die Karte bekommt einen
+        gestrichelten roten Rand und zeigt <b class="ui">armed</b> an. Was als Nächstes passiert,
+        hängt davon ab, ob bereits ein Zyklus läuft:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Noch kein Zyklus.</b> Die Aufnahme beginnt <b>bei deiner ersten Note</b> oberhalb der
+          Scharfschalt-Schwelle. Du kannst die Gitarre aufnehmen, dich zurechtsetzen, und der Take
+          startet, wenn du spielst — nicht, wenn du getippt hast.</li>
+        <li><b>Ein Zyklus läuft bereits.</b> Die Aufnahme beginnt an der <b>nächsten
+          Zyklusgrenze</b>, sodass der Take genau auf dem Takt startet. Ein kurzes Kulanzfenster
+          verzeiht einen Anschlag, der etwas zu spät kommt, sodass ein Downbeat, der ein Haar
+          hinter dem Strahl liegt, trotzdem zählt.</li>
+      </ul>
+      <p>Ein frei scharfgeschalteter Take — einer, der ohne bestehenden Zyklus aufgenommen wird —
+        <b>stoppt sich auch selbst</b>, nach etwa 1.2 Sekunden Stille, zurückgeschnitten auf den
+        hörbaren Teil. Die Schwelle ist absichtlich großzügig: Hallfahnen und Lücken zwischen
+        Phrasen zählen nicht als Stille, sodass ein spärliches Riff nicht mittendurch geschnitten
+        wird.</p>
+      <p>Nachdem jede Loop schließt, <b>schaltet AUTO die nächste leere Zelle von selbst scharf</b>,
+        sodass du alle vier Spuren aufbauen kannst, ohne den Bildschirm noch einmal zu berühren.</p>
+
+      <h3>Taktgrenzen-Snapping</h3>
+      <p>Wenn die Master-Loop schließt, analysiert NAMper das saubere Eingangssignal — das Signal
+        vor deinen Effekten — und sucht nach Anschlägen. Es passt ein Taktraster daran an, dann:</p>
+      <ol style="--nc:var(--amp)">
+        <li><b>Schneidet das Ende</b> auf den Takt, der den letzten Anschlag enthält, sodass ein
+          Take, der eineinhalb Beats zu lang lief, zu einer ganzen Anzahl Takte wird.</li>
+        <li><b>Rotiert die Loop</b>, sodass sie auf dem ersten Beat beginnt. Das Saitengeräusch, der
+          Atemzug und das Fingerquietschen, die vor deinem Downbeat passiert sind, werden ans Ende
+          der Loop verschoben, wo sie musikalisch hingehören.</li>
+        <li><b>Faltet das erkannte Tempo</b> in den Bereich 70–180 BPM, sodass ein schnelles
+          Schrammeln nicht als 240 BPM gelesen wird und ein langsames nicht als 45.</li>
+      </ol>
+      <p>Auf dem Bildschirm passiert das alles in einem Moment: Der Ring wird neu gezeichnet, die
+        Länge rastet auf eine saubere Zahl ein, und die BPM-Anzeige — bis dahin leer — füllt sich.
+        Von da an haben der Click, die LEN-Chips, das Quantize des Samplers und die Taktuhr des
+        Setlists alle ein Raster, mit dem sie arbeiten können.</p>
+      <p>Ist <b class="ui">CLICK</b> aktiv, ist das Tempo auf den eingestellten Wert
+        <b>gesperrt</b>, und nur die Phase wird angepasst. Das ist der Modus für den Fall, dass du
+        zu einem Click oder einem Backing Track spielst und das Tempo sich nicht verschieben darf.</p>
+      <div class="note tip">
+        <div class="t">Drones und Rubato</div>
+        <p>Wenn es kein brauchbares Raster zu finden gibt — eine gehaltene Fläche, ein frei
+          getimtes Intro, ein gebogenes Schwellen — erzwingt NAMper keins. Es fällt zurück auf das
+          Schneiden am letzten Anschlag und die Wahl einer ganzen Anzahl Takte. Du bekommst eine
+          saubere Loop, nur eben ohne neu erkanntes Tempo.</p>
+      </div>
+      <div class="note warn">
+        <div class="t">Die erste Loop zählt am meisten</div>
+        <p>Das Snapping läuft auf der Master-Loop, und alles, was danach aufgenommen wird, erbt ihr
+          Raster. Landet der erste Take falsch, korrigiere ihn im <a href="#editor">Loop-Editor</a>,
+          bevor du weiter schichtest, oder lösche ihn und nimm ihn neu auf — Spur 3 zu verschieben,
+          bewegt die Taktgrenzen nicht.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tempo"><span class="n">04.5</span>Tempo und der Click</h2>
+      <p>Der Tempo-Block auf dem Loop-Tab zeigt eine große Zahl mit der Bildunterschrift
+        <b class="ui">BPM</b>. Ist kein Tempo gesetzt, zeigt er <b class="ui">SET TEMPO</b> über
+        einem <b class="ui">—</b>. Tippe darauf für das Tempo-Sheet.</p>
+      <p>Das Sheet hat ein Zahlenfeld (Platzhalter <b class="ui">120</b>, Bereich <b>20 bis
+        300</b>) mit <b class="ui">BPM</b> daneben, einen großen <b class="ui">TAP</b>-Button, der
+        nach deinem ersten Tipp <b class="ui">again…</b> zeigt, dazu
+        <b class="ui">Clear (AUTO re-detects)</b> und <b class="ui">Done</b>. Lösche es, wenn AUTO
+        das Tempo stattdessen aus deinem Spiel ermitteln soll.</p>
+      <p>Dasselbe Sheet erreichst du auch über die Kopfzeile von <b class="ui a">Rig</b>: Der
+        Metronom-Chip schaltet den Click per <b>Tipp</b> um und öffnet <b class="ui">SET TEMPO</b>
+        bei <b>langem Drücken</b>.</p>
+      <p><b class="ui">CLICK</b> schaltet das Metronom ein. Es ohne gesetztes Tempo einzuschalten,
+        <b>erzwingt 120 BPM</b> und startet den Takt neu — den Click einzuschalten ist also nie ein
+        neutraler Akt. Click-Lautstärke und der Ausgangsbus des Clicks liegen in den Einstellungen
+        → <b class="ui">METRONOME</b>, wo er ein eigenes Ausgangspaar für In-Ear-Monitoring
+        bekommen kann.</p>
+      <div class="note warn">
+        <div class="t">Es gibt keinen Count-in</div>
+        <p>Ein Tipp auf Record startet die Aufnahme. Willst du einen Takt Click, bevor du spielst,
+          schalte das Pad entweder mit AUTO scharf und lass deine erste Note den Take starten, oder
+          nimm die erste Loop gegen einen bereits laufenden Zyklus auf.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">04.6</span>Der Loop-Editor</h2>
+      <p>Öffne ihn mit dem Edit-Button in der Bedienzeile eines Pads, oder drücke lange auf die
+        Karte → <b class="ui">Edit loop…</b>. Das Sheet ist mit <b class="ui">LOOP N</b>
+        überschrieben, dazu ein Live-Längenlabel.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
+             alt="Das Loop-Editor-Sheet über dem Looper: eine Wellenform mit Takt- und Beat-Raster, ziehbare Start- und End-Griffe, die Button-Reihen START und LENGTH TEMPO KEPT, die Regler Level und Pan sowie die Buttons Mute, Undo und Clear.">
+        <figcaption>Der Loop-Editor: Raster, Griffe, Feinkorrektur-Buttons und die untere Zeile</figcaption>
+      </figure>
+      <p>Das Label zeigt etwa <b class="ui">8.00 s · 4.0 bars</b>. Ziehst du am End-Griff, ergänzt
+        es das Tempo, das diese Länge ergeben würde; ziehst du am Start-Griff, ändert es sich zu
+        <b class="ui">start +0.50 beats</b>.</p>
+      <p>Die Wellenform trägt eine Takt- und Beat-<b>Rasterüberlagerung</b> — Beat-Striche und
+        nummerierte Taktlinien, verankert am Loop-Anfang. Audio hinter dem Loop-Ende wird
+        abgedunkelt gezeichnet: erhalten, aber stumm — deshalb kannst du den End-Griff später
+        wieder weiter herausziehen.</p>
+
+      <h3>Die beiden Griffe</h3>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Der Start</b> (<b class="ui">Loop start handle</b>) rotiert die Phase: Die Loop
+          beginnt später, und das übersprungene Stück wandert ans Ende. Länge und Tempo ändern
+          sich nicht. Das ist die Korrektur für eine Loop, die einen halben Beat zu früh beginnt.</li>
+        <li><b>Das Ende</b> (<b class="ui">Loop end handle</b>) verändert die Größe der Loop und
+          funktioniert <b>nur auf der Spur, die den Zyklus definiert</b>. Die Taktanzahl bleibt
+          erhalten, und das gesetzte Tempo folgt — die Loop zu dehnen, verlangsamt also das ganze
+          Set. Das Sheet sagt es so: <b class="ui">Drag the edges to move the start and resize the
+          loop — resizing retunes the set tempo.</b></li>
+      </ul>
+      <p>Eine leere Spur zeigt <b class="ui">no audio</b> und nichts zum Ziehen.</p>
+
+      <h3>Die Button-Reihen</h3>
+      <p>Unter der Wellenform bietet <b class="ui">START</b> vier Phasen-Feinkorrekturen —
+        <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>,
+        <b class="ui">+BAR</b> — für den Fall, dass dein Daumen weniger präzise ist als das
+        Raster. Sie bewegen nur den Start.</p>
+      <p><b class="ui">LENGTH · TEMPO KEPT</b> bietet sechs: dieselben vier, dazu
+        <b class="ui">÷2</b> und <b class="ui">×2</b>. Halbieren macht aus einem versehentlichen
+        Acht-Takte-Take die Vier-Takte-Loop, die du eigentlich spielen wolltest; Verdoppeln schafft
+        Platz, um eine Phrase zu overdubben, die sich über den doppelten Zyklus erstreckt.</p>
+      <div class="note">
+        <div class="t">Warum die Längen-Buttons ausgegraut sind</div>
+        <p>Alle sechs <b class="ui">LENGTH · TEMPO KEPT</b>-Buttons sind deaktiviert, es sei denn,
+          die Spur, die du bearbeitest, ist diejenige, die den Zyklus definiert, und das Sheet
+          erklärt auch, warum: <b class="ui">Only the track that defines the cycle can change its
+          length.</b> Stimmt die Länge einer Folgespur nicht, ist die Loop, die es zu bearbeiten
+          gilt, die Master-Loop.</p>
+      </div>
+      <p>Die untere Zeile enthält einen <b class="ui">Level</b>-Regler (0 bis 1.5), einen
+        <b class="ui">Pan</b>-Regler, der <b class="ui">C</b>, <b class="ui">L50</b> oder
+        <b class="ui">R50</b> zeigt, sowie die Buttons <b class="ui">Mute</b>,
+        <b class="ui">Undo</b> und <b class="ui">Clear</b>.</p>
+      <p>Es gibt kein Rückwärts. Loops spielen nur vorwärts.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="undo"><span class="n">04.7</span>Undo</h2>
+      <p>Undo ist ein <b>Umschalter</b>, kein Stapel. Jede Overdub-Sitzung erstellt einen
+        Schnappschuss des Audios, bevor der Dub aufgelegt wird; Undo tauscht diesen Schnappschuss
+        wieder ein, und ein erneuter Druck tauscht deinen Overdub zurück. Es ist ebenso sehr ein
+        Vergleichs-Button wie ein Undo-Button.</p>
+      <p>Zwei Grenzen: Es reicht <b>nur eine Sitzung tief</b>, sodass ein zweiter Overdub ersetzt,
+        was Undo bis dahin vorhielt, und es ist <b>über alle Spuren hinweg gemeinsam</b> — ein
+        Schnappschuss für den ganzen Looper, nicht einer pro Spur. Overdubbst du Spur 2, ist das
+        Undo, das du für Spur 1 aufgehoben hattest, weg.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="routing"><span class="n">04.8</span>Routing pro Spur</h2>
+      <p><b class="ui">IN</b> und <b class="ui">OUT</b> entscheiden, woher das Audio einer Spur
+        kommt und wohin es geht; <b class="ui">LEN</b> und <b class="ui">DUB</b> entscheiden, wie
+        lang und wie viele Durchläufe.</p>
+
+      <h3>IN</h3>
+      <p>Das <b class="ui">IN</b>-Menü bietet <b class="ui">Post FX (the rig)</b> — die bearbeitete
+        Gitarre, was in der Regel das ist, was du willst. Bei mehreren Rigs wird daraus pro Rig
+        <b class="ui">Post FX · &lt;rig name&gt;</b>, und der Chip zeigt
+        <b class="ui">FX · &lt;rig&gt;</b>. Darunter je ein Eintrag pro Hardware-Eingangskanal
+        unter seinem eigenen Namen — ein trockener Gesang oder ein zweiter Musiker direkt vom
+        Interface — sowie <b class="ui">Sampler</b>, Chip <b class="ui">SMP</b>, um die Pads zu
+        loopen.</p>
+
+      <h3>OUT</h3>
+      <p>Das <b class="ui">OUT</b>-Menü bietet <b class="ui">Main mix</b> (Chip
+        <b class="ui">MAIN</b>), je einen Eintrag pro zusätzlichem Hardware-Ausgangspaar —
+        <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> und so weiter, wofür
+        <b class="ui">Use all interface outputs</b> in den Einstellungen eingeschaltet sein muss —
+        und <b class="ui">Into &lt;rig name&gt;</b>.</p>
+      <p>Diese letzte Option ist die interessante: Statt direkt in den Mix zu gehen, spielt die
+        Loop <em>in</em> dieses Rig hinein, sodass die Effekte des Rigs sie live verarbeiten. Loope
+        einen cleanen Part, schicke ihn in ein Rig mit Delay und Filter, und fahre den Filter,
+        während die Loop läuft. Ein Rig, von dem die Spur aufnimmt, wird nicht angeboten — das wäre
+        ein Rückkopplungsweg.</p>
+
+      <h3>LEN und DUB</h3>
+      <p>Der <b class="ui">LEN</b>-Chip durchläuft 0, 1, 2, 4 und 8 Takte. Bei 0 zeigt er
+        <b class="ui">FREE</b>; sonst <b class="ui">N BAR</b>, und der Take wird auf so viele Takte
+        fixiert. Ist kein Tempo gesetzt, sagt das Menü
+        <b class="ui">No tempo yet — record the first loop with AUTO on</b>.</p>
+      <p>Der <b class="ui">DUB</b>-Chip durchläuft 0, 1, 2 und 4 automatische Overdub-Durchläufe —
+        die Spur fällt nach so vielen Runden von selbst zurück ins Abspielen.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="saving"><span class="n">04.9</span>Was gespeichert wird</h2>
+      <p>Der <b class="ui">PRESETS</b>-Chip öffnet <b class="ui">Looper Presets</b>, und die
+        enthalten <b>nur das Setup</b>: IN, OUT, LEN, DUB und Pan jeder Spur, dazu das AUTO-Flag.
+        Eine Routing-Vorlage, die du am Anfang eines Songs abrufst — keine Aufnahme.</p>
+      <div class="note warn">
+        <div class="t">Loop-Audio lässt sich nicht exportieren</div>
+        <p>Es gibt keine Möglichkeit, eine Loop als Datei zu speichern — kein Export, kein
+          Share-Sheet. Der einzige Weg, festzuhalten, was der Looper gespielt hat, ist der Recorder
+          im <b class="ui a">Perform</b>-Tab, der den Ausgangsmix aufnimmt (Rig, Looper, Pads und
+          Backing zusammen, plus ein separater trockener Eingangs-Stem). Ist eine Loop es wert,
+          behalten zu werden, drück auf Perform Record und lass es laufen.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/de/plugins.html">← 03 · AU-Plugins</a>
+      <span class="sp"></span>
+      <a href="/docs/de/sampler.html">05 · Sampler-Pads →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/de/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper ist eine unabhängige App ohne Zugehörigkeit zu, Empfehlung durch oder Sponsoring von irgendeinem Gerätehersteller. Alle Produktnamen, Marken und Warenzeichen sind Eigentum ihrer jeweiligen Inhaber und werden nur verwendet, um das Equipment zu beschreiben, mit dem ein Capture erstellt wurde.</p>
+  </div>
+</footer>
+
+</body>
+</html>

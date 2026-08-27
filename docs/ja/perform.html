@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>パフォームと歌詞 — NAMperドキュメント</title>
+<meta name="description" content="バッキングトラック、セットリストとそのセクション、タイムライン上のプリセットマーカー、アンカー付きの全画面歌詞テレプロンプター、マルチトラック録音、DAWprojectの書き出しについて。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="パフォームと歌詞 — NAMperドキュメント">
+<meta property="og:description" content="バッキングトラック、セットリスト、プリセットマーカー、歌詞テレプロンプター、マルチトラック録音について。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ja/perform.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/perform.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/perform.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/perform.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/perform.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/perform.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/perform.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/perform.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/perform.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/perform.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/perform.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/perform.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/perform.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/perform.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/perform.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/perform.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/perform.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ja/">← ALL DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ja/perform.html" aria-current="page">日本語</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENTS</div>
+    <ol>
+      <li><a href="/docs/ja/setup.html">はじめに</a></li>
+      <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
+      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/looper.html">ルーパー</a></li>
+      <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
+      <li><a class="on" href="/docs/ja/perform.html">パフォームと歌詞</a></li>
+      <li><a href="/docs/ja/control.html">MIDIとコントロール</a></li>
+      <li><a href="/docs/ja/settings.html">設定リファレンス</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
+    <h1>セットを演奏する。</h1>
+    <p class="lede"><b class="ui a">Perform</b>タブは、ステージの上で見ることになるタブです:
+      バッキングトラック、セクションから成るセットリスト、自動的に切り替わるプリセット、
+      歌詞のための全画面テレプロンプター、そして一晩分をステムごと丸ごと記録する
+      レコーダーです。</p>
+
+    <nav class="toc">
+      <div class="slab">ON THIS PAGE</div>
+      <ul>
+        <li><a href="#tracks">バッキングトラック</a></li>
+        <li><a href="#player">プレイヤーカード</a></li>
+        <li><a href="#setlist">セットリスト</a></li>
+        <li><a href="#sections">セクションを組み立てる</a></li>
+        <li><a href="#markers">プリセットマーカー</a></li>
+        <li><a href="#lyrics">歌詞とテレプロンプター</a></li>
+        <li><a href="#presets">パフォームプリセット</a></li>
+        <li><a href="#recording">録音</a></li>
+        <li><a href="#projects">録音プロジェクト</a></li>
+        <li><a href="#dawproject">DAWprojectの書き出し</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tracks"><span class="n">06.1</span>バッキングトラック</h2>
+      <p><b class="ui">SETLIST</b>ヘッダーの<b class="ui">+</b>ボタン
+        (<b class="ui">Import track</b>)がファイルピッカーを開きます。複数選択に対応しているので
+        セット全体を一度に取り込め、iOSがデコードできるものなら何でも受け付けます。各ファイルは
+        <b class="ui">backing/</b>にコピーされ、ファイル名を冠したセットリストのセクション
+        になります。</p>
+      <p>ファイルが読み込めない場合は<b class="ui r">Could not import &lt;name&gt;.</b>と
+        表示されます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/perform.png" width="600" height="1304"
+             alt="The Perform tab: the player card with Test Song loaded, its waveform timeline, 120 BPM and key A, and the DIRECT routing chip; below it the SETLIST card with AUTO NEXT switched on, and the RECORDINGS card at the bottom.">
+        <figcaption>Performタブ: プレイヤー、セットリスト、録音</figcaption>
+      </figure>
+      <div class="note tip">
+        <div class="t">パソコンからセットを読み込む</div>
+        <p>ファイルAppで<b class="ui">On My iPhone → NAMper → backing/</b>に直接コピーした
+          音声は、次にNAMperを起動したときにセットリストへ取り込まれます — ノートパソコンで
+          1回貼り付けるだけで済み、ピッカーを20回操作する必要はありません。
+          <a href="/docs/ja/setup.html#files">ファイルの保存場所</a>も参照してください。</p>
+      </div>
+      <p>名前が重要です: 同じ名前のファイルを再インポートすると、すでに
+        <b class="ui">backing/</b>にある音声が置き換えられます。トラックをバウンスし直した
+        ときには便利ですが、別の2曲が両方とも<b class="ui">Backing.wav</b>という名前だと
+        落とし穴になります。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="player"><span class="n">06.2</span>プレイヤーカード</h2>
+      <p>一番上のカードがトランスポートです。名前の行には読み込まれたトラック、または
+        <b class="ui">No track selected</b>が表示され、時間は
+        <b class="ui">m:ss / m:ss</b>の形式です。NAMperが音声を解析し終えると、テンポ
+        — <b class="ui">120 BPM</b> — とキーが追加されます。</p>
+      <p>この解析は飾りではありません。<strong>トラックを選ぶとリグ全体が再チューニングされ
+        ます</strong>: グローバルなテンポとキーが曲に追従するので、ディレイとトレモロの
+        シンク分割、ルーパーの小節グリッド、ハーモナイザー、オートチューンが、何も設定
+        しなくても正しい曲に合わせて収まります。</p>
+      <p>名前の下に5つのボタンが左から並びます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>ボタン</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Play</b></td><td>バッキングトラックの再生と一時停止</td></tr>
+            <tr><td><b class="ui">Stop</b></td><td>停止して先頭に戻る</td></tr>
+            <tr><td><b class="ui">Record</b></td><td>パフォームレコーダー(<a href="#recording">後述</a>)の開始と停止</td></tr>
+            <tr><td><b class="ui">Add preset marker</b></td><td>再生ヘッドの位置にリグプリセットの切り替えを配置する</td></tr>
+            <tr><td><b class="ui">Lyrics</b></td><td>テレプロンプターを開く、または歌詞ファイルを読み込む</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b class="ui">Play</b>または<b class="ui">Stop</b>を長押しするとMIDIラーンできます
+        — <b class="ui">MIDI Learn: play / pause</b>、<b class="ui">MIDI Learn: stop</b>、
+        <b class="ui">MIDI Learn: next section</b>、<b class="ui">MIDI Learn: previous
+        section</b>がそこで用意されています。<a href="/docs/ja/control.html">MIDIとコントロール</a>
+        を参照してください。</p>
+      <h3>バッキングのレベルとルーティング</h3>
+      <p>ボタンの下にあるスライダーは、バッキングのレベルを−60から+12 dBの範囲で設定し、
+        下端は<b class="ui">-inf</b>と表示されます。その隣のチップがルーティングです:
+        <b class="ui">DIRECT</b>はトラックをマスターFXチェーンの後段へ送り出し
+        (<b class="ui">Direct out (after master FX)</b>)、これがライブで望む設定です —
+        リバーブとリミッターはバッキングに一切かかりません。<b class="ui">PRE FX</b>
+        (<b class="ui">Through master FX</b>)はトラックをマスターチェーンに通します。</p>
+      <h3>タイムライン</h3>
+      <p>カードの下の波形は、再生済みの部分が点灯するミラーバー表示で、再生ヘッドにカーソルが
+        あります。<strong>どこをタップしてもシークできます。</strong>シークすると、その時点
+        以前の直近の<a href="#markers">プリセットマーカー</a>も再適用されるので、最後の
+        サビへ飛んでも、ちゃんとその音になります。</p>
+      <div class="note">
+        <div class="t">プレイヤーができないこと</div>
+        <p>バッキングトラックにはA/Bループ区間も、速度変更も、ピッチシフトもありません。
+          別のキーや別のテンポの曲が必要な場合は、インポートする前にその形でバウンスして
+          おいてください。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="setlist"><span class="n">06.3</span>セットリスト</h2>
+      <p>NAMperのセットの単位は<strong>セクション</strong>です: 名前、任意のバッキング
+        トラック、そして小節クロックに沿ったステップのリストから成ります。ファイルを
+        インポートすると曲ごとに1つのセクションが作られるので、実際には1セクション=1曲に
+        なりますが、音声を一切持たないセクションも同じように有効で、それがループとパッドだけ
+        で曲を組み立てる方法です。</p>
+      <p>ヘッダーには<b class="ui">PRESETS</b>チップ、<b class="ui">AUTO NEXT</b>トグル、
+        (<b class="ui">Section N</b>を作る)<b class="ui">Add section</b>、
+        <b class="ui">Import track</b>があります。<b class="ui">AUTO NEXT</b>がオンのとき、
+        セットは各セクションが終わるたびに自動で先へ進みます。</p>
+      <p>何もない状態では、カードに<b class="ui">Add audio files, or a loop/sample
+        section — a section is an optional backing track plus a bar-clocked sequence of loops and
+        samples.</b>と表示されます。</p>
+      <p>各行には再生ボタン(<b class="ui">Play section</b>)、名前、小さなバッジ —
+        <b class="ui">backing</b>、<b class="ui">N steps</b>、<b class="ui">N bars</b>、
+        実行中はリアルタイムの<b class="ui">bar N</b> — そして編集ボタン(<b class="ui">Edit
+        section</b>)があります。</p>
+      <div class="note tip">
+        <div class="t">行をタップすると準備が整うだけで、再生は始まらない</div>
+        <p>セクションをタップすると、NAMperはそのバッキングトラックを読み込み、その曲の
+          テンポとキーをリグに適用し、トランスポートをそこに合わせます —
+          <strong>何も再生せずに</strong>です。曲間で準備を整え、会場に語りかけてから、
+          用意ができたら<b class="ui">Play</b>を押してください。</p>
+      </div>
+      <p>リストは常に編集モードなので、ドラッグハンドルは常に表示されています: 行をドラッグ
+        してセットの順序を入れ替え、行をスワイプして削除します。行のコンテキストメニューには
+        <b class="ui">Load lyrics from file…</b>があります — <a href="#lyrics">歌詞</a>を
+        参照してください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="sections"><span class="n">06.4</span>セクションを組み立てる</h2>
+      <p>編集ボタンでセクションエディタが開きます。ここには<b class="ui">Section name</b>欄、
+        先頭が<b class="ui">None (loops/samples only)</b>で何も選ばれていないときは
+        <b class="ui">No backing track</b>と表示されるバッキングピッカー、そして —
+        バッキングがない場合には — セクションの長さを決める1から128までの
+        <b class="ui">N bars</b>ステッパーがあります。</p>
+      <p>続いて<b class="ui">STEPS</b>リストがあります。<b class="ui">Add step</b>は
+        <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b>または
+        <b class="ui">Stop loop 1…4</b>、そして<b class="ui">Sampler pad</b> →
+        <b class="ui">Pad 1…16</b>を提供します。ステップの行には<b class="ui">Start loop
+        N</b>、<b class="ui">Stop loop N</b>、<b class="ui">Play pad N</b>、
+        <b class="ui">Stop pad N</b>が表示され、それぞれに専用の<b class="ui">bar N</b>
+        ステッパーが付いています。リストの下のヒントがまさにそれを説明しています:
+        <b class="ui">Steps fire on the bar clock: start/stop loop
+        tracks and trigger pads at the bars you set.</b></p>
+      <p>これが、バッキングトラックを一切使わずにNAMperで曲を演奏する方法です。パートを
+        <a href="/docs/ja/looper.html">ルーパー</a>に録音し、決めのフレーズを
+        <a href="/docs/ja/sampler.html">パッド</a>に読み込み、あとは小節単位でアレンジを
+        書き出すだけです: 1小節目でドラム、5小節目でベース、13小節目でパッドの一撃、
+        33小節目で全部止める、というように。小節クロックで動くので、書き出し済みの
+        ファイルではなく常にテンポにロックされたままです。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="markers"><span class="n">06.5</span>プリセットマーカー</h2>
+      <p>プリセットマーカーとは、曲のタイムライン上に書き込まれたリグの切り替えです。
+        クリーンなヴァース、クランチのコーラス、ソロ用のリード — 一度置いてしまえば、
+        その曲を弾くたびに手を使わずに切り替わります。</p>
+      <ol style="--nc:var(--drive)">
+        <li>セクションを準備し、切り替えたい位置に再生ヘッドを置きます — タイムラインを
+          タップしてシークするか、そのまま再生させます。</li>
+        <li>ピンのボタン(<b class="ui">Add preset marker</b>)をタップします。</li>
+        <li>すべてのプリセットが並んだメニューからリグを選びます。各行は
+          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>と表示されます。マーカーは
+          現在の再生ヘッドの位置に置かれます。</li>
+      </ol>
+      <p>再生中にマーカーを通過すると、まるでペダルボードからMIDIプログラムチェンジが
+        届いたかのように、そのプリセットが正確に呼び出されます。マーカーはタイムライン上に
+        アンバーの点として描かれ、タップしやすいよう余裕を持った当たり判定があります。波形の
+        下にはそれらを一覧するチップの行があり、<b class="ui">m:ss  &lt;preset
+        name&gt;</b>と表示されます。チップを長押しすると<b class="ui">Delete marker</b>
+        が出ます。</p>
+      <div class="note">
+        <div class="t">スナップ</div>
+        <p>作ったばかりのマーカーは、指を離した生の再生ヘッド位置にそのまま置かれています。
+          <strong>マーカーをドラッグすると小節グリッドにスナップします</strong> — つまり
+          大まかに置いた位置を整えるには、少し動かしてやればよいということです。テンポが
+          検出されていない場合はグリッドがないため、配置は自由なままです。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="lyrics"><span class="n">06.6</span>歌詞とテレプロンプター</h2>
+      <p>NAMperは歌詞をあなたの代わりに運んでくれます。トラックにプレーンテキストファイルを
+        与えれば、それは曲が始まると自ら開く全画面テレプロンプターになり、教え込んだ速さで
+        スクロールします。</p>
+
+      <h3>歌詞を読み込む</h3>
+      <p>読み込む方法は2つあります。</p>
+      <p><strong>確実な方法:</strong>歌詞ボタンの長押しメニュー、またはセットリストの行の
+        コンテキストメニューにある<b class="ui">Load lyrics from file…</b>です。プレーン
+        テキストを受け付けます。ファイルが読み込めない場合は<b class="ui r">Could not read the
+        lyrics file.</b>と表示されます。</p>
+      <p><strong>自動の方法:</strong>音声をインポートすると、NAMperはその隣に置かれた同じ
+        ベース名のプレーンな<b class="ui">.txt</b>(または<b class="ui">.text</b>)ファイル —
+        <b class="ui">Song.wav</b>と<b class="ui">Song.txt</b> — を探し、そのテキストを
+        その曲の歌詞として取り込みます。パソコン上でフォルダをそのように準備しておけば、
+        セット全体が歌詞付きで届きます。</p>
+      <div class="note warn">
+        <div class="t">隣接ファイルの自動取り込みはベストエフォート</div>
+        <p>ファイルピッカーの権限範囲が、選んだファイルの隣にあるファイルまで常に
+          カバーするとは限りません。カバーされない場合、何も取り込まれずエラーも表示
+          されません — そのトラックには単に歌詞がないだけです。インポート後は歌詞ボタンを
+          確認し、空だったものについては<b class="ui">Load lyrics from file…</b>に
+          頼ってください。</p>
+      </div>
+      <p>歌詞ボタンには引用符のアイコンが付いており、トラックに歌詞があると色が付きます。
+        <strong>タップ</strong>すると、歌詞があれば全画面表示を開き、なければファイル
+        ピッカーを開きます。<strong>長押し</strong>すると<b class="ui">Show lyrics</b>、
+        <b class="ui">Load lyrics from file…</b>、<b class="ui">Remove lyrics</b>が
+        出てきます。</p>
+      <div class="note warn">
+        <div class="t">読み込むとタイミングがリセットされる</div>
+        <p>トラックに新しい歌詞を読み込むと、ウィンドウは曲全体に戻り、<strong>すべての
+          アンカーが消去されます</strong>。ファイル内の誤字は、リハーサルでアンカーを
+          打ち込んでからではなく、その前に直しておいてください。</p>
+      </div>
+
+      <h3>歌詞ストリップ</h3>
+      <p>トラックに歌詞が付くと、波形の下に<b class="ui">Lyrics range</b>という色付きの帯が
+        現れます。その両端が<strong>歌詞ウィンドウ</strong>です: テキストのスクロールが
+        始まる位置と終わる位置です。端をドラッグすると片方の境界を動かせ、中央をドラッグ
+        すると範囲全体をスライドできます — 長いインストゥルメンタルのイントロで曲が
+        始まるときに便利です。</p>
+      <p>アンカーは同じストリップ上に小さなひし形で描かれます。ドラッグすればタイミングを
+        変更でき、長押しすると<b class="ui">Delete anchor</b>が出ます。</p>
+
+      <h3>テレプロンプター</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/lyrics.png" width="600" height="1304"
+             alt="The full-screen lyrics teleprompter mid-song, showing the track name and the time readout at the top with a pause button, the scrolling verse text, and the hint line: Hold a line to pin it to the current moment.">
+        <figcaption>テレプロンプター、最初のアンカーを置く前</figcaption>
+      </figure>
+      <p>テレプロンプターは全画面表示で、歌詞のあるトラックで再生が始まると
+        <strong>自ら開きます</strong>。ヘッダーには戻るボタン、トラック名、
+        <b class="ui">m:ss / m:ss</b>の表示、再生/一時停止ボタンがあります。
+        <strong>画面のどこをタップしても再生/一時停止が切り替わる</strong>ので、
+        ギターを両手に持ったまま小さなターゲットを探す必要はありません。</p>
+
+      <h3>アンカー</h3>
+      <p>アンカーは、テキストに曲を教え込む方法です。<strong>行を0.3秒ほど押さえると、
+        その時点に固定されます。</strong>すでにアンカーされた行を押さえると、そのアンカーが
+        外れます。アンカーされた行は左端に塗りつぶしのバーで示されます。</p>
+      <p>アンカーが意味するのはただ1つです: <em>この時刻に、この行を画面の一番上に置け</em>。
+        アンカーとアンカーの間は、テキストが一定の速度で次へと流れます。アンカーを順不同に
+        置いた場合でも、テキストが逆方向にスクロールすることは決してありません —
+        ヴァースの途中で後ろへ戻るテレプロンプターは、多少早すぎるものより性質が悪いから
+        です。</p>
+      <p>実際には: リハーサルで曲を一度通して再生し、各セクションの最初の行にさしかかった
+        ところで押さえます。3分の曲であれば通常4つか5つのアンカーで十分で、それらは
+        トラックと一緒に保存されます。</p>
+      <p><strong>アンカーがない場合</strong>、テキストは一定速度で流れます: 歌詞ウィンドウの
+        始点で最初の行、終点で最後までスクロールし終わります。最初のアンカーを置くまでは
+        <b class="ui">Hold a line to pin it to the current moment</b>というヒントが
+        表示されます。テキストが画面より短い場合はまったくスクロールせず、中央に配置
+        されます。</p>
+
+      <h3>手動で操作を引き継ぐ</h3>
+      <p>テキストをドラッグすると操作を引き継げます: 自動スクロールが止まり、テキストが
+        指に追従します。その瞬間、ヘッダーに<b class="ui">AUTO</b>チップが現れ
+        (<b class="ui">Resume auto-scroll</b>)、タップすると操作を返し、テキストは再び
+        再生ヘッドに狙いを定めます。<strong>そのチップは手動スクロールが有効な間だけ
+        表示される</strong>ので、見当たらなければ何も保持されていません。画面を離れて
+        戻ってきた場合も自動に戻ります。</p>
+
+      <h3>文字サイズ</h3>
+      <p>設定 → <b class="ui">LYRICS</b>には、<b class="ui">16</b>から<b class="ui">34
+        pt</b>まで(デフォルト<b class="ui">22 pt</b>)の文字サイズスライダーがあり、
+        <b class="ui">This is how your lyrics will look</b>というライブプレビューが
+        表示されます。変更するとテレプロンプターの表示がその場で再調整されます。マイク
+        スタンドに立てたときの、実際にスマホと顔の間にある距離に合わせて設定してください。
+        <a href="/docs/ja/settings.html#lyrics">設定リファレンス</a>も参照してください。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="presets"><span class="n">06.7</span>パフォームプリセット</h2>
+      <p>セットリストヘッダーの<b class="ui">PRESETS</b>チップは<b class="ui">Perform
+        Presets</b>を開きます。保存されたパフォームプリセットは<strong>セットリスト全体</strong>
+        を保持します: ステップと小節を含むすべてのセクション、<b class="ui">AUTO
+        NEXT</b>の状態、そして歌詞を持つすべてのトラックの歌詞 — テキスト、ウィンドウ、
+        アンカー — です。</p>
+      <p>保持されないのは音声です。バッキングトラックは<strong>ファイル名の参照</strong>
+        として保存されるので、プリセットは小さく保たれ、共有もできます。別の端末で
+        読み込むと、バッキングファイルが存在しないセクションはステップのみにフォール
+        バックし、実際に<em>存在する</em>トラックの歌詞は通常どおりディスクに書き戻され
+        ます。</p>
+      <div class="note tip">
+        <div class="t">セットを別の端末に移す</div>
+        <p>先に<b class="ui">backing/</b>フォルダをコピーしてから、パフォームプリセットを
+          読み込んでください。同じファイル名、同じセットになります。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="recording"><span class="n">06.8</span>録音</h2>
+      <p>プレイヤーカードの録音ボタンは、パフォーマンスを<strong>3つの整列したステム</strong>
+        として記録します。エンジンが動作していない場合は<b class="ui r">Audio is off — tap the
+        power button before recording.</b>と表示されて拒否されます。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>ステム</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">mix</b></td><td>マスター: リグ、ルーパー、サンプラーパッド、バッキングをまとめたもの</td></tr>
+            <tr><td><b class="ui">input</b></td><td>ドライなサウンドカード入力。インターフェースが供給するチャンネル数のまま</td></tr>
+            <tr><td><b class="ui">backing</b></td><td>接続されている場合のバッキングトラック単体</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ドライな<b class="ui">input</b>ステムは、アンプの選択を誤ったテイクでも良い演奏を
+        救ってくれるものです — 後からリアンプできます。<strong>ルーパーのトラックは
+        独立したステムにはなりません</strong>。ミックスの中に含まれます。</p>
+      <p>ファイルは<b class="ui">recordings/</b>に、<b class="ui">Perf yyyy-MM-dd
+        HH.mm.ss mix</b>、<b class="ui">… input</b>、<b class="ui">… backing</b>という
+        名前で保存されます。通常は<b class="ui">.m4a</b>で、高レートやマルチチャンネルの
+        素材では<b class="ui">.caf</b>になります。テイクの途中でバッキングトラックを切り替
+        えると、番号付きのセグメントが開始します — <b class="ui">… backing 2</b>。</p>
+      <p>テイクを止めうるエラーは3つです: <b class="ui r">Recording could not start: the take
+        file could not be created.</b>、<b class="ui r">Recording stopped: the device is out of
+        storage space.</b>、<b class="ui r">Recording stopped: the take file could not be
+        written.</b></p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="projects"><span class="n">06.9</span>録音プロジェクト</h2>
+      <p><b class="ui">RECORDINGS</b>カードは、1回のテイクのステムを<strong>プロジェクト</strong>
+        としてまとめ、共通の<b class="ui">Perf &lt;date&gt;</b>という名前でグループ化します。
+        新しい順に並び、表示されるのは直近5件のプロジェクトです —
+        それより古いテイクは<b class="ui">recordings/</b>にディスク上のまま残り、
+        ファイルAppからアクセスできます。</p>
+      <p>プロジェクトの行には、ミックスステムを再生するプレビューボタン、プロジェクト名、
+        共有ボタン(<b class="ui">Export DAWproject</b>)、削除ボタン(<b class="ui">Delete
+        project</b>)、シェブロン(<b class="ui">Show stems</b>)があります。行をタップ
+        しても展開されます。</p>
+      <p>展開すると、各ステムに<b class="ui">mix</b>、<b class="ui">input</b>、
+        <b class="ui">backing</b>、<b class="ui">backing 2</b>というラベルの付いた行が
+        表示され、<b class="ui">Share recording</b>と<b class="ui">Delete recording</b>が
+        付きます。ステムを共有すればラフミックスを誰かに送れ、プロジェクトを共有すれば
+        テイクをDAWで開けます。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="dawproject"><span class="n">06.10</span>DAWprojectの書き出し</h2>
+      <p><strong>プロジェクトの行</strong>にある共有ボタン — 個々のステムのものではなく —
+        は、テイク全体を通常のiOS共有シートを通じて<b class="ui">.dawproject</b>ファイルとして
+        書き出します: ファイルに保存、Macへエアドロップ、クラウドフォルダへ入れる、といった
+        ことができます。DAWprojectはオープンな交換フォーマットなので、それを読めるDAWで
+        あればコンバーターなしでテイクを開けます。</p>
+      <p>中にはステムごとに1トラックが入っており、ステムにちなんだ名前が付き、それぞれ
+        <strong>0</strong>から始まる1つのクリップを持ちます — プロジェクトを開いた瞬間に
+        すべてが揃うということです。音声は元のサンプルレートとチャンネル数のまま
+        <strong>24ビットWAV</strong>として書き出されます。</p>
+      <div class="note warn">
+        <div class="t">書き出しに含まれないもの</div>
+        <p>テンポも拍子記号も含まれません — タイムラインは小節ではなく<strong>秒</strong>
+          単位です。プリセットマーカーも、セットリストも、プラグインの状態も、オートメーション
+          も含まれません。これは演奏した音声そのままのクリーンなマルチトラックであり、
+          セッションのテンポは受け取った側で自分で設定することになります。</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ja/sampler.html">← 05 · サンプラーパッド</a>
+      <span class="sp"></span>
+      <a href="/docs/ja/control.html">07 · MIDIとコントロール →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ja/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMperは独立系のアプリであり、いかなる機材メーカーとも提携、承認、後援の関係にありません。すべての製品名、ブランド名、商標はそれぞれの所有者に帰属し、キャプチャ元の機材を説明する目的でのみ使用しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>

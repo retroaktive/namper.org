@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentación de NAMper</title>
+<meta name="description" content="Cómo usar NAMper: primeros pasos con interfaces de audio, la cadena de señal y los perfiles NAM, plugins AU, el looper de cuatro pistas, los pads del sampler, setlists y el teleprompter de letras, control MIDI y todos los ajustes.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Documentación de NAMper">
+<meta property="og:description" content="Cada mando, explicado — escrito para un músico que lo lee en el teléfono.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/es/">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTACIÓN</span>
+  <span class="grow"></span>
+  <a class="home" href="/">← NAMPER.ORG</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/es/" aria-current="page">Español</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENIDO</div>
+    <ol>
+      <li><a href="/docs/es/setup.html">Primeros pasos</a></li>
+      <li><a href="/docs/es/rig.html">Rig y cadena de señal</a></li>
+      <li><a href="/docs/es/plugins.html">Plugins AU</a></li>
+      <li><a href="/docs/es/looper.html">Looper</a></li>
+      <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
+      <li><a href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a href="/docs/es/control.html">MIDI y control</a></li>
+      <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab">NAMPER · GUÍA DEL USUARIO</div>
+    <h1>Cada mando, explicado.</h1>
+    <p class="lede">NAMper convierte un iPhone o iPad en un rig de guitarra completo: perfiles Neural Amp
+      Modeler de amplis reales, un pedalboard con enrutamiento libre, tus propios plugins Audio Unit, un
+      looper de cuatro pistas que lleva el tiempo por ti, pads del sampler, pistas de acompañamiento con
+      teleprompter de letras, y control MIDI sobre todo ello.</p>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="quickstart"><span class="n">EMPIEZA AQUÍ</span>Cinco minutos para tu primer sonido</h2>
+      <ol style="--nc:var(--power)">
+        <li>Conecta tu guitarra — a través de una interfaz de audio si tienes una, o simplemente toca
+          directo al teléfono con los auriculares puestos.</li>
+        <li>Abre la pestaña <b>Rig</b> y toca el botón <b class="ui g">power</b> en la esquina superior
+          derecha. No suena nada hasta que esté encendido.</li>
+        <li>Toca. Observa el medidor <b class="ui">IN</b> junto a la tarjeta del ampli — un rasgueo fuerte
+          debería llegar al tercio superior. Si no es así, sube <b class="ui">Input trim</b> en Ajustes.</li>
+        <li>Toca un preset en la barra de <b class="ui">PRESETS</b>: <b class="ui">Clean</b>,
+          <b class="ui">Crunch</b>, <b class="ui">Lead</b> o <b class="ui">Ambient</b>.</li>
+        <li>Toca cualquier bloque de la cadena para abrirlo, y toca el punto pequeño debajo de un bloque
+          para activarlo o desactivarlo.</li>
+      </ol>
+      <div class="note tip">
+        <div class="t">Si no oyes nada</div>
+        <p>Con el micrófono y el altavoz integrados, NAMper se silencia a propósito para que tu teléfono no
+          genere acoples. Consulta <a href="/docs/es/setup.html#feedback-guard">la protección antiacoples</a>.</p>
+      </div>
+      <figure>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
+             alt="La pestaña Rig con un perfil de ampli NAM cargado, la cadena de señal y la barra de presets">
+        <figcaption>La pestaña Rig — tarjeta del ampli arriba, cadena de señal debajo, presets a la derecha</figcaption>
+      </figure>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="guide"><span class="n">LA GUÍA</span>Todo, capítulo a capítulo</h2>
+      <div class="hub">
+        <a href="/docs/es/setup.html" style="--nc:var(--power)">
+          <div class="t">01 · Primeros pasos</div>
+          <div class="d">Interfaces de audio, frecuencia de muestreo y búfer, el botón de encendido, los
+            medidores, la protección antiacoples y dónde viven tus archivos.</div>
+        </a>
+        <a href="/docs/es/rig.html" style="--nc:var(--amp)">
+          <div class="t">02 · Rig y cadena de señal</div>
+          <div class="d">La paleta de bloques, los perfiles NAM y TONE3000, las IR de pantalla, los cinco
+            modelos de EQ, los presets, varios rigs, las ramas y la sección master.</div>
+        </a>
+        <a href="/docs/es/plugins.html" style="--nc:var(--pitch)">
+          <div class="t">03 · Plugins AU</div>
+          <div class="d">Añadir tus propios efectos Audio Unit a una cadena — y ejecutar NAMper como
+            efecto AUv3 dentro de GarageBand, AUM o Logic.</div>
+        </a>
+        <a href="/docs/es/looper.html" style="--nc:var(--power)">
+          <div class="t">04 · Looper</div>
+          <div class="d">Cuatro pistas sincronizadas, los pads circulares, el armado AUTO y el ajuste a
+            compás, el editor de loops, deshacer, tempo y el click.</div>
+        </a>
+        <a href="/docs/es/sampler.html" style="--nc:var(--eq)">
+          <div class="t">05 · Pads del sampler</div>
+          <div class="d">Dieciséis pads, los cuatro kits de fábrica, importar y grabar samples, el editor
+            de pads y la cuantización de disparo.</div>
+        </a>
+        <a href="/docs/es/perform.html" style="--nc:var(--cloud)">
+          <div class="t">06 · Perform y letra</div>
+          <div class="d">Pistas de acompañamiento, setlists y secciones, marcadores de preset, el
+            teleprompter de letras, grabación multipista y exportación a DAWproject.</div>
+        </a>
+        <a href="/docs/es/control.html" style="--nc:var(--gate)">
+          <div class="t">07 · MIDI y control</div>
+          <div class="d">MIDI learn, el mapa de CC integrado, el emparejamiento Bluetooth MIDI, los
+            disparadores de sonidos aprendidos y el afinador.</div>
+        </a>
+        <a href="/docs/es/settings.html" style="--nc:var(--drive)">
+          <div class="t">08 · Referencia de ajustes</div>
+          <div class="d">Cada tarjeta y cada fila de la hoja de Ajustes, con su valor por defecto y lo que
+            realmente cambia.</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="tour"><span class="n">ORIENTACIÓN</span>Las cinco pestañas</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Pestaña</th><th>Qué hay ahí</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui a">Rig</b></td><td>El ampli, la cadena de señal y los presets. Es la
+              única pestaña con la barra de cabecera, así que aquí viven el botón de encendido, Ajustes,
+              el afinador, la tonalidad y el metrónomo.</td></tr>
+            <tr><td><b class="ui a">Loop</b></td><td>El looper de cuatro pistas.</td></tr>
+            <tr><td><b class="ui a">Sample</b></td><td>Los dieciséis pads del sampler y sus kits.</td></tr>
+            <tr><td><b class="ui a">Perform</b></td><td>Pistas de acompañamiento, el setlist, el
+              teleprompter de letras y tus grabaciones.</td></tr>
+            <tr><td><b class="ui a">Control</b></td><td>El mapa MIDI, los disparadores de sonidos
+              aprendidos y el emparejamiento Bluetooth MIDI.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>En iPad las mismas cinco pestañas se ubican arriba y el rig se despliega de borde a borde, con la
+        cadena de señal corriendo de izquierda a derecha y la barra de presets a un costado.</p>
+      <figure>
+        <img class="wide" src="/docs/assets/ipad.png" width="1200" height="900"
+             alt="NAMper en iPad: el rig desplegado de borde a borde con la barra de presets a la derecha">
+        <figcaption>El mismo rig en iPad</figcaption>
+      </figure>
+      <div class="note">
+        <div class="t">El recorrido rápido</div>
+        <p>NAMper ejecuta un recorrido guiado de ocho pasos sobre la interfaz real la primera vez que la
+          abres. Puedes repetirlo cuando quieras desde Ajustes →
+          <b class="ui">PROMPTS</b> → <b class="ui">Replay the quick tour</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="help"><span class="n">¿ATASCADO?</span>Cómo obtener ayuda</h2>
+      <ul style="--nc:var(--drive)">
+        <li>Pregunta en la <a href="https://t.me/namperapp">comunidad de Telegram</a> — es la forma más
+          rápida de contactar a otros músicos y al desarrollador.</li>
+        <li>Reporta un error o pide una función en
+          <a href="https://github.com/retroaktive/namper-support/issues">el rastreador de incidencias</a>.</li>
+        <li>Si el audio se comporta mal, Ajustes → <b class="ui">DIAGNOSTICS</b> →
+          <b class="ui">Share engine log</b> te da un registro de texto plano del enrutamiento de la
+          interfaz y los picos para adjuntar a un reporte.</li>
+      </ul>
+    </section>
+
+    <nav class="pager">
+      <span class="sp"></span>
+      <a href="/docs/es/setup.html">01 · Primeros pasos →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper es una app independiente, sin afiliación, aprobación ni patrocinio de ningún
+      fabricante de equipos. Todos los nombres de productos, marcas y marcas registradas son propiedad de
+      sus respectivos dueños y se usan únicamente para describir el equipo del que proviene una captura.</p>
+  </div>
+</footer>
+
+</body>
+</html>
