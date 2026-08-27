@@ -1,0 +1,36 @@
+# Deploy the site as plain static files.
+#
+# The legacy Jekyll builder wedged once the docs tree grew to fifteen
+# languages (a build hung for the better part of an hour and the site
+# 404'd meanwhile). Nothing here needs Liquid, so we upload the repo as
+# an artifact and let Pages serve it.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
