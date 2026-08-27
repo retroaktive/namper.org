@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Справочник настроек — Документация NAMper</title>
+<meta name="description" content="Каждая карточка и каждая строка в настройках NAMper: аудиоинтерфейс, имена каналов, оформление, сет, тексты песен, метроном, подсказки, сброс и диагностика — плюс настройки, которые живут в других местах.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Справочник настроек — Документация NAMper">
+<meta property="og:description" content="Каждая карточка и каждая строка в настройках NAMper — со значениями по умолчанию и тем, на что каждая ручка реально влияет.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/settings.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/settings.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/settings.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/settings.html">EN</a>
+    <a class="on" href="/docs/ru/settings.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a class="on" href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--drive)">08 · СПРАВОЧНИК НАСТРОЕК</div>
+    <h1>Каждый переключатель, по порядку.</h1>
+    <p class="lede">Лист настроек в NAMper короткий намеренно. Эта страница проходит его карточка за
+      карточкой, строка за строкой, со значениями по умолчанию и тем, что каждая ручка реально
+      делает, — и заканчивается горсткой настроек, которые живут совсем в других местах.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#opening">Как открыть настройки</a></li>
+        <li><a href="#audio">Аудиоинтерфейс</a></li>
+        <li><a href="#names">Имена каналов</a></li>
+        <li><a href="#appearance">Оформление</a></li>
+        <li><a href="#set">Сет</a></li>
+        <li><a href="#lyrics">Тексты песен</a></li>
+        <li><a href="#metronome">Метроном</a></li>
+        <li><a href="#prompts">Подсказки</a></li>
+        <li><a href="#reset">Сброс</a></li>
+        <li><a href="#diagnostics">Диагностика</a></li>
+        <li><a href="#elsewhere">Чего в настройках нет</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="opening"><span class="n">08.1</span>Как открыть настройки</h2>
+      <p>Нажми <strong>иконку шестерёнки</strong> в шапке вкладки <b class="ui a">Rig</b>. Другого
+        входа нет, а шапка есть только на этой вкладке — с
+        <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> или
+        <b class="ui a">Control</b> сначала вернись на <b class="ui a">Rig</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
+             alt="Верх листа настроек: карточка AUDIO INTERFACE с включённым Feedback guard, показания DSP load, чипы частоты дискретизации и буфера, ползунок входного трима и начало карточки CHANNEL NAMES.">
+        <figcaption>Верх листа настроек</figcaption>
+      </figure>
+      <p>У шестерёнки в этой строке есть соседи, и стоит знать, что они делают:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Элемент</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td>Надпись <b class="ui">NAMper</b></td>
+                <td>Открывает лист About — версия, благодарности и копилка на чай. Другого входа нет.</td></tr>
+            <tr><td>Чип <b class="ui">DSP load</b></td>
+                <td>Загрузка процессора в процентах, <b class="ui">—</b> когда движок остановлен. Зелёный до 60 %, янтарный до 85 %, красный выше.</td></tr>
+            <tr><td>Шестерёнка</td><td>Настройки — эта страница.</td></tr>
+            <tr><td>Чип <b class="ui">KEY</b></td>
+                <td>Текущая тональность или слово <b class="ui">KEY</b>, если она не задана. Открывает <b class="ui">SET KEY</b>.</td></tr>
+            <tr><td>Чип метронома</td>
+                <td>Нажатие включает и выключает клик; <strong>долгое нажатие</strong> открывает шторку <b class="ui">SET TEMPO</b>. См. <a href="/docs/ru/looper.html">лупер</a>.</td></tr>
+            <tr><td>Камертон</td><td>Открывает тюнер. См. <a href="/docs/ru/control.html">MIDI и управление</a>.</td></tr>
+            <tr><td><b class="ui g">Power</b></td>
+                <td>Запускает и останавливает аудиодвижок. Пока он выключен, ничего не звучит. См. <a href="/docs/ru/setup.html#power">с чего начать</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="audio"><span class="n">08.2</span>Аудиоинтерфейс</h2>
+      <p>Карточка <b class="ui">AUDIO INTERFACE</b> — самая длинная и единственная, чьи настройки
+        вступают в силу только после перезапуска. Первые четыре строки только читаются: они
+        показывают, что NAMper реально получил от iOS, а это самый быстрый способ понять, почему
+        интерфейс ведёт себя не так.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Строка</th><th>Элемент</th><th>По умолчанию</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Sample rate</b></td><td>Только чтение</td><td>—</td>
+                <td>Частота, на которой движок реально работает, в кГц.</td></tr>
+            <tr><td><b class="ui">Inputs</b></td><td>Только чтение</td><td>—</td>
+                <td>Сколько входных каналов даёт текущий маршрут, до восьми.</td></tr>
+            <tr><td><b class="ui">Outputs</b></td><td>Только чтение</td><td>—</td>
+                <td>Сколько выходных каналов даёт текущий маршрут.</td></tr>
+            <tr><td><b class="ui">Engine</b></td><td>Только чтение</td><td>—</td>
+                <td><b class="ui">running</b> или <b class="ui">stopped</b>.</td></tr>
+            <tr><td><b class="ui">Feedback guard</b></td><td>Переключатель</td><td>Вкл</td>
+                <td>Глушит выход, пока встроенный микрофон играет в собственный динамик телефона. <a href="/docs/ru/setup.html#feedback-guard">Прочитай про это как следует</a>.</td></tr>
+            <tr><td><b class="ui">DSP load</b></td><td>Показания + полоска</td><td>—</td>
+                <td>Загрузка процессора, показывается только пока движок работает.</td></tr>
+            <tr><td><b class="ui">Sample rate</b></td><td>Чипы: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
+                <td>Задаёт частоту движка; запоминается для каждого маршрута. Смена перезапускает движок. <a href="/docs/ru/setup.html#rate">Подробнее</a>.</td></tr>
+            <tr><td><b class="ui">Input channels</b></td><td>Чипы: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
+                <td>Ограничивает, сколько входных каналов открывает NAMper. Оставь на <b class="ui">Auto</b>, если нет причины сделать иначе.</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>Чипы: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
+                <td>Размер блока, с живыми показаниями <b class="ui">frames · ms</b>. Единственная ручка задержки, которая тут есть. <a href="/docs/ru/setup.html#rate">Подробнее</a>.</td></tr>
+            <tr><td><b class="ui">Input trim</b></td><td>По ползунку на каждый вход, −12…+24 dB</td><td>0 dB</td>
+                <td>Усиление для интерфейсов без ручки гейна. Играй сильно: индикатор <b class="ui">IN</b> должен доходить до верхней трети.</td></tr>
+            <tr><td><b class="ui">Use all interface outputs</b></td><td>Переключатель</td><td>Выкл</td>
+                <td>Открывает все пары выходов, чтобы ветка, риг или клик могли занять свою собственную пару. Стереоустройствам это не нужно.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn">
+        <div class="t">Аудионастройкам нужен перезапуск</div>
+        <p>Чипы и переключатели здесь вступают в силу при следующем старте движка — некоторые, вроде
+          частоты дискретизации, перезапускают его сами. Если что-то выглядит застрявшим, выключи и
+          включи движок, прежде чем считать это поломкой.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="names"><span class="n">08.3</span>Имена каналов</h2>
+      <p><b class="ui">CHANNEL NAMES</b> — по текстовому полю на каждый вход, каждая строка с
+        префиксом <b class="ui">In 1</b>, <b class="ui">In 2</b> и так далее, с плейсхолдером
+        <b class="ui">Guitar, Vocal…</b>. Сноска объясняет, зачем они:
+        <b class="ui">Input pickers show these names everywhere.</b></p>
+      <p>Назови их один раз — и эти имена появятся в каждом выборе входа в приложении: входы рига,
+        источники дорожек лупера, сайдчейны компрессора, ползунки входного трима. Каналы, которые ты
+        оставил пустыми, откатываются к <b class="ui">In &lt;n&gt;</b>.</p>
+      <div class="note tip">
+        <div class="t">Стоит двух минут</div>
+        <p>На многоканальном интерфейсе <b class="ui">Guitar</b> и <b class="ui">Vocal</b> выбрать
+          правильно посреди саундчека куда вернее, чем <b class="ui">In 3</b> и
+          <b class="ui">In 4</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="appearance"><span class="n">08.4</span>Оформление</h2>
+      <p>Чипы: <b class="ui">System</b>, <b class="ui">Light</b>, <b class="ui">Dark</b>. По
+        умолчанию — <b class="ui">System</b>, и это единственная настройка на всём листе, которая
+        применяется в момент нажатия.</p>
+      <p>NAMper нарисован тёмным — индикаторы, светодиоды и графика цепочки сделаны под тёмную сцену.
+        <b class="ui">Light</b> есть на случай дневного света, но читается приложение лучше всего в
+        темноте.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="set"><span class="n">08.5</span>Сет</h2>
+      <p>Карточка <b class="ui">SET</b> только читается. Она показывает <b class="ui">Tempo</b> (как
+        <b class="ui">BPM</b> или <b class="ui">—</b>, когда ничего не задано) и <b class="ui">Key</b>
+        (например, <b class="ui">Am</b>, или <b class="ui">—</b>). Это индикатор состояния, а не
+        орган управления.</p>
+      <p>Сноска отправляет к настоящим ручкам: <b class="ui">Tempo: long-press the
+        metronome. Key: the KEY button in the header.</b></p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Значение</th><th>Задаётся отсюда</th></tr></thead>
+          <tbody>
+            <tr><td>Темп</td><td>Долгое нажатие на чип метронома в шапке Rig или блок темпа на вкладке <b class="ui a">Loop</b>. Лупер ещё и определяет темп по твоему первому лупу, а выбор бэкинг-трека подставляет темп песни.</td></tr>
+            <tr><td>Тональность</td><td>Чип <b class="ui">KEY</b> в шапке Rig. Выбор бэкинг-трека подставляет тональность песни.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="lyrics"><span class="n">08.6</span>Тексты песен</h2>
+      <p>Один ползунок: размер текста в телесуфлёре, от <b class="ui">16</b> до
+        <b class="ui">34 pt</b>, по умолчанию <b class="ui">22 pt</b>, с живой строкой предпросмотра
+        <b class="ui">This is how your lyrics will look</b>.</p>
+      <p>Изменение перенацеливает телесуфлёр на лету, так что если экран с текстом открыт на другом
+        устройстве или ты вернёшься к нему сразу, ничего перетаймировать не придётся. Ставь размер
+        под то расстояние, на котором телефон реально висит от лица на микрофонной стойке, а не под
+        диван. См. <a href="/docs/ru/perform.html#lyrics">тексты песен и телесуфлёр</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="metronome"><span class="n">08.7</span>Метроном</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Строка</th><th>Элемент</th><th>По умолчанию</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td>Громкость клика</td><td>Ползунок, −40…+6 dB</td><td>≈ −3 dB</td>
+                <td>Насколько громко звучит клик.</td></tr>
+            <tr><td><b class="ui">Click output</b></td><td>Чипы: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>Какая аппаратная пара выходов несёт клик. Показывается, только когда пар больше одной; выбор не-основной пары принудительно включает <b class="ui">Use all interface outputs</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Сноска на карточке — самое полезное здесь: <b class="ui">The click is mixed in AFTER the
+        master FX chain — reverbs and limiters never touch it. Pick a separate output pair for in-ear
+        monitoring.</b></p>
+      <p>То есть мастер-реверб не размажет клик, а мастер-лимитер не будет придавливать группу на
+        каждом тике. Отправь клик на свою пару — и барабанщик его слышит, а зал нет.</p>
+      <p>Сам клик включается и выключается чипом метронома в шапке Rig или чипом
+        <b class="ui">CLICK</b> на вкладке <b class="ui a">Loop</b> — не отсюда.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="prompts"><span class="n">08.8</span>Подсказки</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Строка</th><th>Элемент</th><th>По умолчанию</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Show the support prompt</b></td><td>Переключатель</td><td>Вкл</td>
+                <td>Тот лист, который объясняет, что NAMper бесплатный, и показывает копилку на чай. Он изредка появляется начиная с третьего запуска; выключи — и он больше не вернётся.</td></tr>
+            <tr><td><b class="ui">Offer TONE3000 sign-in on launch</b></td><td>Переключатель</td><td>Вкл</td>
+                <td>Лист с предложением подключить аккаунт TONE3000, чтобы заводские пресеты могли скачать настоящие захваты усилителей. Появляется раз за запуск, пока ты не вошёл.</td></tr>
+            <tr><td><b class="ui">Replay the quick tour</b></td><td>Кнопка</td><td>—</td>
+                <td>Снова прогоняет восьмишаговый тур первого запуска.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Быстрый тур — это подсветка поверх живой вкладки Rig со счётчиком <b class="ui">n/8</b>, и он
+        не слайд-шоу, а работа руками: тебя проводят через включение звука (ты и правда жмёшь кнопку
+        питания), карточку усилителя, цепочку сигнала (ты и правда жмёшь на блок), редактор блока,
+        пресеты, остальные вкладки и завершающий шаг. <b class="ui">Next</b>,
+        <b class="ui">Skip step</b> и <b class="ui">End tour</b> доступны всегда, в конце —
+        <b class="ui">Finish</b>. Идёт он только на вкладке <b class="ui a">Rig</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="reset"><span class="n">08.9</span>Сброс</h2>
+      <p>Две кнопки, каждая за подтверждением.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Кнопка</th><th>Диалог</th><th>Подтверждение</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Reset to factory presets</b></td>
+                <td><b class="ui">Delete ALL user presets? The four factory rigs come back.</b></td>
+                <td><b class="ui">Delete all user presets</b></td></tr>
+            <tr><td><b class="ui">Reset all settings</b></td>
+                <td><b class="ui">Reset every setting (audio, looper, MIDI map, appearance) to defaults? Presets and files stay. Restart the app afterwards.</b></td>
+                <td><b class="ui">Reset settings</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Первая стирает твои пресеты ригов и возвращает четыре заводских рига. Вторая не трогает ни
+        один пресет и ни один файл, а только возвращает настройки к значениям по умолчанию.</p>
+      <div class="note warn">
+        <div class="t">После сброса настроек перезапусти приложение</div>
+        <p>Сноска гласит <b class="ui">Settings reset takes effect after an app restart.</b>, и это не
+          фигура речи. Сразу применяется только смена оформления — аудионастройкам нужен перезапуск,
+          чтобы действительно вернуться к умолчаниям. Выгрузи NAMper из переключателя приложений и
+          открой заново.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="diagnostics"><span class="n">08.10</span>Диагностика</h2>
+      <p>NAMper ведёт текстовый лог движка, куда пишет маршрутизацию интерфейса и пики. Когда лог
+        есть, карточка предлагает <b class="ui">Share engine log</b> и <b class="ui">Clear engine
+        log</b>; когда его нет — показывает <b class="ui">No engine log yet (it records interface
+        routing and peaks).</b></p>
+      <p><b class="ui">Share engine log</b> отдаёт файл системному листу «Поделиться» в iOS —
+        отправь почтой, по AirDrop или приложи к обращению в поддержку. Это самое полезное, что можно
+        приложить к сообщению об ошибке про интерфейс, который не открывается, частоту, которую не
+        принимают, или движок, который останавливается сам, — потому что там записано, что реально
+        произошло на уровне аудио.</p>
+      <p><b class="ui">Clear engine log</b> очищает его. Сделай это прямо перед тем, как
+        воспроизвести проблему, — и в логе, который ты отправишь, будет она и ничего лишнего.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="elsewhere"><span class="n">08.11</span>Чего в настройках нет</h2>
+      <p>Три вещи, которые здесь ищут и не находят.</p>
+      <h3>Квантайз триггеров</h3>
+      <p>Ручка <b class="ui">QUANT</b> и её чип сетки живут в шапке вкладки <b class="ui a">Sample</b>,
+        а не в настройках — хотя обе глобальные, а не на набор или на пэд.
+        См. <a href="/docs/ru/sampler.html#quantize">квантайз триггеров</a>.</p>
+      <h3>Темп и тональность</h3>
+      <p>Оба — чипы в шапке вкладки <b class="ui a">Rig</b>. Настройки их только показывают, в
+        карточке <a href="#set"><b class="ui">SET</b></a>.</p>
+      <h3>MIDI</h3>
+      <p>Глобальных MIDI-настроек <strong>нет вообще</strong>: ни выбора канала, ни переключателя
+        program change, ни синхронизации по клоку. MIDI в NAMper — omni и всегда включён: принимается
+        каждый канал, каждый источник подключается автоматически, а приложение публикует собственный
+        виртуальный приёмник с именем <b class="ui">NAMper</b>.</p>
+      <div class="note">
+        <div class="t">Настраивать нечего</div>
+        <p>Если педаль ничего не делает, дело в назначении, а не в настройке.
+          Всё, что касается MIDI, живёт на вкладке <b class="ui a">Control</b> — см.
+          <a href="/docs/ru/control.html">MIDI и управление</a>.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/control.html">← 07 · MIDI и управление</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/">Все разделы →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ru/">ДОКУМЕНТАЦИЯ</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сэмплерные пэды — Документация NAMper</title>
+<meta name="description" content="Шестнадцать сэмплерных пэдов: загрузка и запись звуков, редактор пэда с обрезкой и ADSR, наборы и четыре заводских барабанных набора, квантайз триггеров, MIDI-ноты 36–51 и место пэдов в миксе.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Сэмплерные пэды — Документация NAMper">
+<meta property="og:description" content="Шестнадцать пэдов, наборы, обрезка и ADSR, квантайз и запуск по MIDI.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/sampler.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/sampler.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/sampler.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/sampler.html">EN</a>
+    <a class="on" href="/docs/ru/sampler.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a class="on" href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--eq)">05 · СЭМПЛЕРНЫЕ ПЭДЫ</div>
+    <h1>Шестнадцать пэдов на одном экране.</h1>
+    <p class="lede">Вкладка <b class="ui a">Sample</b> — это драм-машина, на которой играешь
+      большими пальцами или ножным MIDI-контроллером: шестнадцать пэдов, библиотека наборов,
+      обрезка и огибающая на каждый пэд и квантайз на случай, когда попадать надо точно.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#grid">Сетка пэдов</a></li>
+        <li><a href="#loading">Как загнать звук в пэд</a></li>
+        <li><a href="#editor">Редактор пэда</a></li>
+        <li><a href="#kits">Наборы</a></li>
+        <li><a href="#quantize">Квантайз триггеров</a></li>
+        <li><a href="#trigger">Как играть на пэдах</a></li>
+        <li><a href="#routing">Куда идёт звук пэдов</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="grid"><span class="n">05.1</span>Сетка пэдов</h2>
+      <p>Шестнадцать пэдов в жёсткой сетке 4×4. Один экран — ни банков, ни второй страницы, так что
+        всё, на чём можно сыграть, видно сразу.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
+             alt="Вкладка Sample с заводским набором акустических барабанов на всех шестнадцати пэдах: у каждого имя сэмпла, длина и волна, а в шапке — ручки LEVEL и QUANT и чип сетки квантайза.">
+        <figcaption>Заводской набор <b class="ui">Drums — Acoustic</b> на всех 16 пэдах</figcaption>
+      </figure>
+      <p>В шапке слева направо: слово <b class="ui">SAMPLER</b>, ручка
+        <b class="ui">LEVEL</b> (от 0 до 2, по умолчанию 1), ручка <b class="ui">QUANT</b>, чип
+        сетки квантайза, чип <b class="ui">PRESETS</b> для наборов, индикатор <b class="ui">REC</b>,
+        который горит, пока идёт запись в пэд, и <b class="ui">STOP ALL</b>.</p>
+      <p>Внизу — подсказка, в которой сказано всё:</p>
+      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
+        36–51</b></p>
+      <p><b>Пустой пэд</b> разделён на две половины — <b class="ui">LOAD</b> и
+        <b class="ui">REC</b>. <b>Загруженный пэд</b> показывает имя сэмпла, его длину (например,
+        <b class="ui">1.4s</b>), приглушённую волну, где всё за пределами обрезки притушено, и
+        яркий курсор, который бежит по ней во время игры.</p>
+      <p>Задержи палец на любом пэде — откроется меню: <b class="ui">Load sound…</b>,
+        <b class="ui">Record input</b> или <b class="ui">Stop recording</b>, а на загруженном пэде
+        ещё и <b class="ui">Edit…</b>, <b class="ui">Clear</b> и <b class="ui">MIDI Learn: pad N</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="loading"><span class="n">05.2</span>Как загнать звук в пэд</h2>
+      <p>Загрузить файл можно тремя способами, и все они открывают один и тот же выбор файлов
+        Files: половина <b class="ui">LOAD</b> на пустом пэде, <b class="ui">Load sound…</b> в меню
+        по долгому нажатию и <b class="ui">Load file</b> внутри редактора пэда. Берётся всё, что
+        умеет декодировать iOS.</p>
+      <p>Длина сэмпла ограничена <b>12 секундами</b> — файл длиннее обрежется, а не отклонится.
+        Перетаскивания файлов в NAMper нет: любой импорт идёт через выбор файлов.</p>
+
+      <h3>Запись прямо в пэд</h3>
+      <p>Половина <b class="ui">REC</b> на пустом пэде пишет прямо в него. Одновременно писать
+        можно только в один пэд, дубль получает имя <b class="ui">Rec N</b>. С выключенным движком
+        запись не начнётся: <b class="ui r">Audio is off — tap the power button before
+        recording.</b></p>
+      <div class="note warn">
+        <div class="t">Пэд пишет то, что ты слышишь</div>
+        <p>Пишется <b>общий выходной микс</b>, а не чистый вход — в сэмпл попадут риг, лупер,
+          остальные пэды и любой бэкинг-трек. Это удобно, когда надо схватить аккорд прямо с
+          обработанного звука, и это ловушка, если ты рассчитывал на сухой сигнал. Приглуши или
+          останови всё остальное, прежде чем жать <b class="ui">REC</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">05.3</span>Редактор пэда</h2>
+      <p>Задержи палец на загруженном пэде → <b class="ui">Edit…</b>. Шторка озаглавлена
+        <b class="ui">PAD N</b>, рядом — имя сэмпла и его длина.</p>
+      <p>У волны есть <b>маркеры обрезки</b> в начале и в конце, их можно тянуть: сдвинь начало
+        внутрь, чтобы срезать вялую атаку, сдвинь конец, чтобы укоротить длинный хвост.</p>
+      <p><b>Огибающая ADSR нарисована поверх волны</b> и правится тремя круглыми ручками, которые
+        тянешь пальцем: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> и
+        <b class="ui">Release</b>. Значения показаны сверху — например,
+        <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
+      <p>Две ручки: <b class="ui">Gain</b> (от 0 до 2) и <b class="ui">Pitch</b> (от 0.25 до 4,
+        показывается как <b class="ui">1.00x</b>). Pitch — это коэффициент
+        передискретизации, поэтому он меняет <b>высоту и скорость вместе</b>: сдвиг как на плёнке,
+        без сохранения формант. Половинная скорость — это октава вниз.</p>
+
+      <h3>MODE и TAP</h3>
+      <p>Две пары чипов решают, как пэд ведёт себя под пальцем.
+        <b class="ui">MODE</b> — это <b class="ui">One-shot</b> или <b class="ui">Loop</b>;
+        <b class="ui">TAP</b> — <b class="ui">Retrig</b> или <b class="ui">Latch</b>. Правило
+        простое: пэд в режиме <b class="ui">Loop</b> или <b class="ui">Latch</b> по каждому
+        нажатию переключается между стартом и стопом, а пэд <b class="ui">One-shot</b> /
+        <b class="ui">Retrig</b> при каждом ударе начинает заново с начала обрезки — обычное
+        поведение барабанного пэда.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>MODE</th><th>TAP</th><th>Что делает нажатие</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
+                <td>Играет один раз с начала обрезки и перезапускается на каждом нажатии. Барабаны, удары, стабы.</td></tr>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
+                <td>Играет один раз; второе нажатие, пока звук ещё идёт, останавливает его. Для длинных
+                    ваншотов, которые может понадобиться оборвать.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+                <td>Крутится в петле, пока не нажмёшь ещё раз, чтобы остановить.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+                <td>Крутится в петле, пока не нажмёшь ещё раз, чтобы остановить. Подкладки, дроны, дождь, треск винила.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Внизу <b class="ui">Preview</b> прослушивает пэд с текущими настройками, а
+        <b class="ui">Load file</b> меняет звук, не выходя из редактора.</p>
+      <div class="note">
+        <div class="t">Чего в сэмплере нет намеренно</div>
+        <p>Нет чоук-групп (закрытый хэт не оборвёт открытый), нет панорамы по пэдам, нет реверса,
+          нет слоёв по велосити, нет отдельной маршрутизации выхода для пэда и нет режима «звучит,
+          пока держишь палец». Пэд играет на своём <b class="ui">Gain</b> и останавливается тогда,
+          когда это скажет сэмпл или огибающая.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="kits"><span class="n">05.4</span>Наборы</h2>
+      <p>Набор — это снимок всех шестнадцати пэдов: обрезка, огибающая, гейн, питч и режим каждого
+        — <b>плюс собственная копия аудио каждого пэда</b>. Копия здесь и есть суть: после того как
+        набор сохранён, ни импорт поверх пэда, ни очистка пэда, ни удаление исходного файла не
+        выпотрошат набор. Загрузи его через полгода — он всё так же играет.</p>
+      <p>Список открывается чипом <b class="ui">PRESETS</b>, шторка называется
+        <b class="ui">Sampler Kits</b>. Ткни в строку, чтобы загрузить набор. В меню строки —
+        <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> и
+        <b class="ui">Delete</b>. Удаление набора никогда не трогает аудио, которое ещё используют
+        загруженные пэды или другой сохранённый набор.</p>
+      <div class="note warn">
+        <div class="t">Наборами нельзя поделиться</div>
+        <p>Внизу шторки написано почему: <b class="ui">Kits live on this device (they carry
+          their audio files).</b> Ни «поделиться», ни экспорта для набора нет, а полный экспорт
+          резервной копии аудио наборов не берёт — только параметры и ссылки. Скопируй папку
+          <b class="ui">samples/</b> через Files, если звуки нужны на другом устройстве.</p>
+      </div>
+
+      <h3>Четыре заводских набора</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Набор</th><th>Шестнадцать пэдов</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Drums — Digital</b></td>
+                <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid,
+                    Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
+            <tr><td><b class="ui">Drums — Analog</b></td>
+                <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash,
+                    Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
+            <tr><td><b class="ui">Drums — Acoustic</b></td>
+                <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid,
+                    Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell,
+                    Tambourine</td></tr>
+            <tr><td><b class="ui">FX &amp; Textures</b></td>
+                <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab,
+                    Bleep, Alarm, Crackle (в петле), Wind (в петле), Chime, Robot, Rumble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Удалённый заводской набор остаётся удалённым — при следующем запуске он не вернётся. Если
+        он просто мешается под рукой, переименуй его или перезапиши поверх, а не удаляй.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="quantize"><span class="n">05.5</span>Квантайз триггеров</h2>
+      <p>Ручка <b class="ui">QUANT</b> — это <b>сила</b>, а не выключатель. На нуле она показывает
+        <b class="ui">OFF</b>, дальше — проценты. На 100 % каждый удар встаёт ровно по сетке; на
+        30 % подтягиваются только те, что чуть раньше времени, и твой грув остаётся живым. По
+        умолчанию 0, выключено.</p>
+      <p>Чип рядом задаёт сетку и перебирает <b class="ui">1/4</b>, <b class="ui">1/8</b>,
+        <b class="ui">1/16</b> и <b class="ui">1/32</b>. По умолчанию —
+        <b class="ui">1/16</b>.</p>
+      <p>Обе настройки <b>глобальные</b> — не по наборам и не по пэдам. Загрузка набора их не
+        меняет.</p>
+      <div class="note warn">
+        <div class="t">Должны совпасть три условия</div>
+        <p>Квантайз слышно, только когда выполнены <b>все три</b>, и экран об этом не
+          предупреждает:</p>
+        <ul style="--nc:var(--drive)">
+          <li><b>задан темп</b> — иначе никакой сетки нет;</li>
+          <li><b>крутится луп</b> — лупер задаёт фазу, и сетка знает, где первая доля;</li>
+          <li><b>идёт запись</b> — либо рекордером на вкладке <b class="ui a">Perform</b>, либо в
+            дорожку лупера, у которой источник — сэмплер.</li>
+        </ul>
+        <p>Выкрути ручку, играя просто так, ни подо что — разницы не услышишь. Так задумано: пэд,
+          который перед тем как зазвучать ждёт следующую шестнадцатую, ощущается под пальцами
+          сломанным, поэтому свободная игра всегда остаётся без квантайза, а поправка вносится
+          только там, где всё это ложится в запись.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="trigger"><span class="n">05.6</span>Как играть на пэдах</h2>
+      <p>Пальцем: нажатие запускает или останавливает пэд по его настройкам
+        <b class="ui">MODE</b> и <b class="ui">TAP</b>, а долгое нажатие открывает
+        меню.</p>
+      <p>По MIDI: <b>ноты с 36 по 51 играют пэды с 1 по 16</b> по барабанному стандарту GM — нота
+        36 это пэд 1. Работает всегда и без настройки, на любом MIDI-канале, если только эту ноту
+        раньше не занял твой собственный маппинг.</p>
+      <p><b>Велосити не используется.</b> Как бы сильно ты ни бил по пэду контроллера, сэмпл звучит
+        на том <b class="ui">Gain</b>, который выставлен в редакторе. Настрой уровни один раз в
+        редакторе пэда — дальше они держатся сами.</p>
+      <div class="note tip">
+        <div class="t">Выученный маппинг ведёт себя лучше, чем голые ноты</div>
+        <p>Маппинг, который ты создаёшь на вкладке <b class="ui a">Control</b>, вызывает
+          play/stop и потому уважает <b class="ui">Loop</b> и <b class="ui">Latch</b> — одно
+          нажатие на педаль запускает петлю, следующее её останавливает. Голые MIDI-ноты 36–51
+          всегда перезапускают звук с начала. Если гоняешь зацикленные пэды с педали, выучи
+          маппинг, а не полагайся на встроенный диапазон нот.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="routing"><span class="n">05.7</span>Куда идёт звук пэдов</h2>
+      <p>Пэды суммируются <b>сразу в основной микс</b> — они не идут через гитарную цепочку, так
+        что ни гейн усилителя, ни твой ревер их не трогают. Ручка <b class="ui">LEVEL</b> в шапке
+        задаёт, насколько громко весь сэмплер сидит относительно рига.</p>
+      <p>В других местах приложения пэды тоже доступны как источник:</p>
+      <ul style="--nc:var(--power)">
+        <li>Как <b>вход цепочки</b> — выбери <b class="ui">Sampler pads</b> на разъёме IN рига
+          или на параллельной ветке (чип <b class="ui">SMPL</b>), и пэды пойдут через эффекты
+          этого рига.</li>
+        <li>Как <b>источник дорожки лупера</b> — поставь <b class="ui">IN</b> дорожки в
+          <b class="ui">Sampler</b> (чип <b class="ui">SMP</b>), и можно закольцевать бит, который
+          настучал на пэдах.</li>
+        <li>Как <b>сайдчейн компрессора</b> — в меню <b class="ui">Sidechain</b> блока Comp есть
+          <b class="ui">SMP</b>, так что бочка может поджимать гитару.</li>
+      </ul>
+      <p><b class="ui">STOP ALL</b> в шапке разом отпускает все играющие пэды — кнопка паники для
+        залипшего дрона или петли, которую не можешь найти.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/looper.html">← 04 · Лупер</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/perform.html">06 · Сцена и тексты песен →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ru/">ДОКУМЕНТАЦИЯ</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>

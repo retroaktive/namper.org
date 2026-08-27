@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сцена и тексты песен — Документация NAMper</title>
+<meta name="description" content="Бэкинг-треки, сетлист и его секции, маркеры пресетов на таймлайне, полноэкранный телесуфлёр с якорями, многодорожечная запись и экспорт в DAWproject.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Сцена и тексты песен — Документация NAMper">
+<meta property="og:description" content="Бэкинг-треки, сетлист, маркеры пресетов, телесуфлёр для текстов и многодорожечная запись.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/perform.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/perform.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/perform.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/perform.html">EN</a>
+    <a class="on" href="/docs/ru/perform.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a class="on" href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--cloud)">06 · СЦЕНА И ТЕКСТЫ ПЕСЕН</div>
+    <h1>Играем сет.</h1>
+    <p class="lede">Вкладка <b class="ui a">Perform</b> — та, на которую смотришь на сцене:
+      бэкинг-треки, сетлист из секций, смены пресетов, которые срабатывают сами, полноэкранный
+      телесуфлёр для твоих слов и рекордер, который пишет весь вечер по стемам.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#tracks">Бэкинг-треки</a></li>
+        <li><a href="#player">Карточка плеера</a></li>
+        <li><a href="#setlist">Сетлист</a></li>
+        <li><a href="#sections">Как собрать секцию</a></li>
+        <li><a href="#markers">Маркеры пресетов</a></li>
+        <li><a href="#lyrics">Тексты песен и телесуфлёр</a></li>
+        <li><a href="#presets">Пресеты сцены</a></li>
+        <li><a href="#recording">Запись</a></li>
+        <li><a href="#projects">Проекты записей</a></li>
+        <li><a href="#dawproject">Экспорт в DAWproject</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tracks"><span class="n">06.1</span>Бэкинг-треки</h2>
+      <p>Кнопка <b class="ui">+</b> в шапке <b class="ui">SETLIST</b>
+        (<b class="ui">Import track</b>) открывает выбор файлов Files. Он умеет множественный
+        выбор, так что тащи сразу весь сет, и берёт всё, что умеет декодировать iOS. Каждый файл
+        копируется в <b class="ui">backing/</b> и становится секцией сетлиста с именем файла.</p>
+      <p>Если файл не читается, получишь <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <figure>
+        <img class="phone" src="/docs/assets/perform.png" width="600" height="1304"
+             alt="Вкладка Perform: карточка плеера с загруженным Test Song, таймлайн с волной, 120 BPM и тональность A, чип маршрутизации DIRECT; ниже карточка SETLIST с включённым AUTO NEXT, а в самом низу карточка RECORDINGS.">
+        <figcaption>Вкладка Perform: плеер, сетлист, записи</figcaption>
+      </figure>
+      <div class="note tip">
+        <div class="t">Как залить сет с компьютера</div>
+        <p>Аудио, скопированное через Files прямо в <b class="ui">On My iPhone → NAMper →
+          backing/</b>, подхватится в сетлист при следующем запуске NAMper — одна вставка на
+          ноутбуке вместо двадцати заходов через пикер. Смотри
+          <a href="/docs/ru/setup.html#files">где лежат твои файлы</a>.</p>
+      </div>
+      <p>Имена важны: повторный импорт файла с тем же именем заменяет аудио, которое уже лежит в
+        <b class="ui">backing/</b>. Удобно, когда пересвёл трек, — и ловушка, если две разные песни
+        обе называются <b class="ui">Backing.wav</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="player"><span class="n">06.2</span>Карточка плеера</h2>
+      <p>Верхняя карточка — это транспорт. В строке имени — загруженный трек или
+        <b class="ui">No track selected</b>, время в виде <b class="ui">m:ss / m:ss</b>. Как только
+        NAMper проанализирует аудио, туда добавятся темп — <b class="ui">120 BPM</b> — и тональность.</p>
+      <p>Этот анализ не для красоты. <strong>Выбор трека перенастраивает весь риг</strong>:
+        глобальные темп и тональность идут за песней, поэтому длительности синхронизации дилея и
+        тремоло, тактовая сетка лупера, гармонайзер и автотюн попадают в нужную песню без единой
+        настройки с твоей стороны.</p>
+      <p>Под именем стоят пять кнопок, слева направо:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Кнопка</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Play</b></td><td>Запускает и ставит на паузу бэкинг-трек</td></tr>
+            <tr><td><b class="ui">Stop</b></td><td>Останавливает и возвращает в начало</td></tr>
+            <tr><td><b class="ui">Record</b></td><td>Запускает и останавливает запись выступления (<a href="#recording">ниже</a>)</td></tr>
+            <tr><td><b class="ui">Add preset marker</b></td><td>Ставит смену пресета рига на позицию курсора</td></tr>
+            <tr><td><b class="ui">Lyrics</b></td><td>Открывает телесуфлёр или загружает файл с текстом</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Задержи палец на <b class="ui">Play</b> или <b class="ui">Stop</b>, чтобы назначить на них
+        MIDI: там предлагаются <b class="ui">MIDI Learn: play / pause</b>,
+        <b class="ui">MIDI Learn: stop</b>, <b class="ui">MIDI Learn: next section</b> и
+        <b class="ui">MIDI Learn: previous section</b>. Смотри
+        <a href="/docs/ru/control.html">MIDI и управление</a>.</p>
+      <h3>Громкость бэкинга и маршрутизация</h3>
+      <p>Под кнопками слайдер задаёт громкость бэкинга в дБ от −60 до +12, в самом низу он
+        показывает <b class="ui">-inf</b>. Чип рядом — маршрутизация:
+        <b class="ui">DIRECT</b> выпускает трек после мастер-цепочки эффектов
+        (<b class="ui">Direct out (after master FX)</b>), и на сцене нужен именно он — твои ревер и
+        лимитер бэкинг не трогают. <b class="ui">PRE FX</b> (<b class="ui">Through master
+        FX</b>) наоборот пропускает трек через мастер-цепочку.</p>
+      <h3>Таймлайн</h3>
+      <p>Волна под карточкой — зеркальные столбики: сыгранная часть подсвечена, на позиции
+        воспроизведения стоит курсор. <strong>Ткни в любое место, чтобы перемотать.</strong>
+        Перемотка заново применяет ближайший <a href="#markers">маркер пресета</a> в этой точке или
+        раньше, так что прыжок в последний припев даёт и звук последнего припева.</p>
+      <div class="note">
+        <div class="t">Чего плеер не делает</div>
+        <p>Для бэкинг-треков нет петли A/B, нет смены скорости и нет сдвига высоты. Если песня
+          нужна в другой тональности или в другом темпе, сведи её такой до импорта.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="setlist"><span class="n">06.3</span>Сетлист</h2>
+      <p>Единица сета в NAMper — <strong>секция</strong>: имя, необязательный бэкинг-трек и
+        привязанный к тактам список шагов. Импорт файла делает по секции на песню, так что на
+        практике одна секция — это одна песня. Но секция вообще без аудио так же законна, и именно
+        так собирается песня из лупов и пэдов.</p>
+      <p>В шапке — чип <b class="ui">PRESETS</b>, переключатель <b class="ui">AUTO NEXT</b>,
+        <b class="ui">Add section</b> (создаёт <b class="ui">Section N</b>) и
+        <b class="ui">Import track</b>. С включённым <b class="ui">AUTO NEXT</b> сет идёт вперёд
+        сам, как только заканчивается очередная секция.</p>
+      <p>Пока ничего нет, на карточке написано: <b class="ui">Add audio files, or a loop/sample
+        section — a section is an optional backing track plus a bar-clocked sequence of loops and
+        samples.</b></p>
+      <p>В каждой строке кнопка воспроизведения (<b class="ui">Play section</b>), имя, маленькие
+        бейджи — <b class="ui">backing</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b> и
+        живой <b class="ui">bar N</b>, пока секция играет, — и кнопка правки (<b class="ui">Edit
+        section</b>).</p>
+      <div class="note tip">
+        <div class="t">Нажатие на строку взводит, а не запускает</div>
+        <p>Ткни в секцию — NAMper загрузит её бэкинг-трек, применит темп и тональность этой песни к
+          ригу и наведёт на неё транспорт, <strong>ничего не запуская</strong>. Успеешь настроиться
+          между песнями, поговорить с залом, а потом нажать <b class="ui">Play</b>, когда готов.</p>
+      </div>
+      <p>Список всегда в режиме правки, поэтому ручки перетаскивания видны постоянно: тяни строку,
+        чтобы поменять порядок сета, смахни строку, чтобы удалить. В контекстном меню строки лежит
+        <b class="ui">Load lyrics from file…</b> — смотри <a href="#lyrics">тексты песен</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="sections"><span class="n">06.4</span>Как собрать секцию</h2>
+      <p>Кнопка правки открывает редактор секции. Там есть поле <b class="ui">Section name</b>,
+        выбор бэкинга, первый пункт которого — <b class="ui">None (loops/samples only)</b> и
+        который показывает <b class="ui">No backing track</b>, когда ничего не выбрано, и — если
+        бэкинга нет — счётчик <b class="ui">N bars</b> от 1 до 128, задающий, сколько секция
+        длится.</p>
+      <p>Дальше идёт список <b class="ui">STEPS</b>. <b class="ui">Add step</b> предлагает
+        <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b> или <b class="ui">Stop loop
+        1…4</b> и <b class="ui">Sampler pad</b> → <b class="ui">Pad 1…16</b>. Строки шагов выглядят
+        как <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b>
+        или <b class="ui">Stop pad N</b>, у каждой свой счётчик <b class="ui">bar N</b>. Подсказка
+        под списком говорит ровно это: <b class="ui">Steps fire on the bar clock: start/stop loop
+        tracks and trigger pads at the bars you set.</b></p>
+      <p>Так NAMper играет песню вообще без бэкинг-трека. Запиши свои партии в
+        <a href="/docs/ru/looper.html">лупер</a>, разложи удары по
+        <a href="/docs/ru/sampler.html">пэдам</a>, а потом распиши аранжировку по тактам: барабаны
+        с такта 1, бас с 5, стаб пэда на 13, всё выключается на 33. Всё идёт по тактовым часам,
+        поэтому держится за твой темп, а не за отрендеренный файл.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="markers"><span class="n">06.5</span>Маркеры пресетов</h2>
+      <p>Маркер пресета — это смена рига, записанная на таймлайн песни. Чистый куплет, кранч в
+        припеве, лид на соло — расставил один раз, дальше руки свободны на каждом исполнении.</p>
+      <ol style="--nc:var(--drive)">
+        <li>Взведи трек и поставь курсор туда, где нужно переключение: ткни в таймлайн или дай ему
+          играть.</li>
+        <li>Нажми кнопку с булавкой (<b class="ui">Add preset marker</b>).</li>
+        <li>Выбери риг в меню со всеми пресетами, строки в нём выглядят как
+          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. Маркер встанет на текущую позицию
+          курсора.</li>
+      </ol>
+      <p>Проход через маркер во время воспроизведения включает этот пресет ровно так, как будто с
+        педалборда пришёл MIDI program change. Маркеры рисуются на таймлайне янтарными точками с
+        щедрой зоной касания, а под волной идёт ряд чипов со списком:
+        <b class="ui">m:ss  &lt;preset name&gt;</b>. Задержи палец на чипе — появится
+        <b class="ui">Delete marker</b>.</p>
+      <div class="note">
+        <div class="t">Привязка к сетке</div>
+        <p>Только что созданный маркер сидит ровно там, где твой палец оставил курсор.
+          <strong>Потяни маркер — и он прилипнет к тактовой сетке</strong>, так что грубо
+          поставленный маркер подтягивается лёгким сдвигом. Если темп не определён, сетки нет и
+          позиция остаётся свободной.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="lyrics"><span class="n">06.6</span>Тексты песен и телесуфлёр</h2>
+      <p>NAMper носит твои слова за тебя. Дай треку обычный текстовый файл — и он станет
+        полноэкранным телесуфлёром, который сам открывается со стартом песни и прокручивается в том
+        темпе, которому ты его научил.</p>
+
+      <h3>Как загрузить текст</h3>
+      <p>Путей внутрь два.</p>
+      <p><strong>Надёжный:</strong> <b class="ui">Load lyrics from file…</b> — либо в меню по
+        долгому нажатию на кнопку текста, либо в контекстном меню строки сетлиста. Принимается
+        обычный текст. Если файл не читается, получишь <b class="ui r">Could not read the lyrics
+        file.</b></p>
+      <p><strong>Автоматический:</strong> при импорте аудио NAMper ищет рядом обычный файл
+        <b class="ui">.txt</b> (или <b class="ui">.text</b>) с тем же именем —
+        <b class="ui">Song.wav</b> и <b class="ui">Song.txt</b> — и подхватывает его как текст этой
+        песни. Собери такую папку на компьютере — и весь сет приедет со словами.</p>
+      <div class="note warn">
+        <div class="t">Подхват соседнего файла — как повезёт</div>
+        <p>Права, которые пикер даёт на выбранный файл, не всегда покрывают файл рядом с ним. Когда
+          не покрывают, ничего не подхватывается и ошибки не видно — у трека просто нет текста.
+          После импорта проверь кнопку текста, а всё пустое добери через
+          <b class="ui">Load lyrics from file…</b>.</p>
+      </div>
+      <p>На кнопке текста нарисованы кавычки, и она подсвечена, когда у трека есть слова.
+        <strong>Нажатие</strong> открывает полноэкранный текст, если он есть, а если нет — выбор
+        файла; <strong>долгое нажатие</strong> даёт <b class="ui">Show lyrics</b>,
+        <b class="ui">Load lyrics from file…</b> и <b class="ui">Remove lyrics</b>.</p>
+      <div class="note warn">
+        <div class="t">Загрузка сбрасывает тайминг</div>
+        <p>Загрузка нового текста на трек возвращает окно к длине всей песни и
+          <strong>стирает все якоря</strong>. Вычищай опечатки в файле до того, как потратишь
+          репетицию на расстановку якорей, а не после.</p>
+      </div>
+
+      <h3>Полоса текста</h3>
+      <p>Как только у трека появляется текст, под волной возникает подкрашенная полоса
+        <b class="ui">Lyrics range</b>. Её края — это <strong>окно текста</strong>: где текст
+        начинает прокручиваться и где заканчивает. Тяни край, чтобы сдвинуть одну границу, тяни
+        середину, чтобы подвинуть весь отрезок — пригодится, когда песня открывается длинным
+        инструментальным вступлением.</p>
+      <p>Якоря нарисованы на той же полосе маленькими ромбами. Потяни якорь, чтобы переставить его
+        во времени; задержи на нём палец — появится <b class="ui">Delete anchor</b>.</p>
+
+      <h3>Телесуфлёр</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/lyrics.png" width="600" height="1304"
+             alt="Полноэкранный телесуфлёр посреди песни: сверху имя трека, показания времени и кнопка паузы, ниже прокручивающийся текст куплета и строка подсказки: Hold a line to pin it to the current moment.">
+        <figcaption>Телесуфлёр до того, как поставлен первый якорь</figcaption>
+      </figure>
+      <p>Телесуфлёр занимает весь экран и <strong>открывается сам, когда начинается
+        воспроизведение</strong> трека с текстом. В его шапке — кнопка назад, имя трека, показания
+        <b class="ui">m:ss / m:ss</b> и кнопка play/pause. <strong>Нажатие в любом месте экрана
+        переключает play/pause</strong> — не надо целиться в мелкую кнопку с гитарой в руках.</p>
+
+      <h3>Якоря</h3>
+      <p>Якорь — это то, чем ты учишь текст своей песне. <strong>Задержи палец на строке примерно
+        на треть секунды — и она прибита к текущему моменту.</strong> Задержи палец на уже
+        заякоренной строке, чтобы снять якорь. Заякоренная строка помечена залитой полоской на
+        левом поле.</p>
+      <p>Якорь значит одно: <em>в этот момент подними эту строку к верху экрана</em>. Между якорями
+        текст едет с постоянной скоростью от одного к другому. Назад он не прокручивается никогда,
+        даже если якоря расставлены не по порядку — телесуфлёр, который прыгает назад посреди
+        куплета, хуже того, который чуть спешит.</p>
+      <p>На практике: сыграй песню один раз на репетиции и придерживай пальцем первую строку каждой
+        части, когда до неё доходишь. Для трёхминутной песни обычно хватает четырёх-пяти якорей, и
+        они сохраняются вместе с треком.</p>
+      <p><strong>Без якорей</strong> текст едет с одной постоянной скоростью: первая строка — в
+        начале окна текста, полностью прокручено — в его конце. Пока не поставлен первый якорь,
+        висит подсказка <b class="ui">Hold a line to pin it to the current moment</b>. Если текст
+        короче экрана, он не прокручивается вообще — стоит по центру.</p>
+
+      <h3>Взять управление в руки</h3>
+      <p>Потяни текст — и управление у тебя: автопрокрутка останавливается, слова идут за пальцем.
+        В этот же момент в шапке появляется чип <b class="ui">AUTO</b>
+        (<b class="ui">Resume auto-scroll</b>); нажми его, чтобы вернуть управление, и текст снова
+        наведётся на позицию воспроизведения. <strong>Этот чип виден, только пока активна ручная
+        прокрутка</strong>, так что если его не видно — ничего не удерживается. Выход с экрана и
+        возврат тоже сбрасывают всё в автомат.</p>
+
+      <h3>Размер текста</h3>
+      <p>Настройки → <b class="ui">LYRICS</b> — там слайдер размера текста от <b class="ui">16</b>
+        до <b class="ui">34 pt</b>, по умолчанию <b class="ui">22 pt</b>, с живым превью
+        <b class="ui">This is how your lyrics will look</b>. Изменение сразу перенаводит
+        телесуфлёр. Выставляй под то расстояние, на котором телефон реально висит от твоего лица на
+        стойке. Смотри <a href="/docs/ru/settings.html#lyrics">справочник настроек</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="presets"><span class="n">06.7</span>Пресеты сцены</h2>
+      <p>Чип <b class="ui">PRESETS</b> в шапке сетлиста открывает <b class="ui">Perform
+        Presets</b>. Сохранённый пресет сцены несёт в себе <strong>весь сетлист</strong>: каждую
+        секцию с её шагами и тактами, состояние <b class="ui">AUTO NEXT</b> и тексты — сам текст,
+        окно и якоря — всех треков, у которых они есть.</p>
+      <p>Чего в нём нет, так это аудио. Бэкинг-треки хранятся как <strong>ссылки по имени
+        файла</strong>, поэтому пресет остаётся маленьким, и им можно поделиться. Загрузи его на
+        другом устройстве — секции, у которых файла бэкинга нет, останутся только со своими шагами;
+        тексты для треков, которые <em>есть</em>, как обычно запишутся на диск.</p>
+      <div class="note tip">
+        <div class="t">Как перенести сет на другое устройство</div>
+        <p>Сначала перенеси папку <b class="ui">backing/</b>, потом загрузи пресет сцены. Те же
+          имена файлов — тот же сет.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="recording"><span class="n">06.8</span>Запись</h2>
+      <p>Кнопка записи в карточке плеера пишет выступление <strong>тремя выровненными
+        стемами</strong>. Если движок не запущен, она откажет: <b class="ui r">Audio is off — tap
+        the power button before recording.</b></p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Стем</th><th>Что в нём</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">mix</b></td><td>Мастер: риг, лупер, сэмплерные пэды и бэкинг вместе</td></tr>
+            <tr><td><b class="ui">input</b></td><td>Сухой вход звуковой карты, со столькими каналами, сколько отдаёт твой интерфейс</td></tr>
+            <tr><td><b class="ui">backing</b></td><td>Один бэкинг-трек, если он подключён</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Сухой стем <b class="ui">input</b> — тот самый, который спасает хороший дубль с неудачно
+        выбранным усилителем: переусилишь его потом. <strong>Дорожки лупера отдельными стемами не
+        пишутся</strong> — они внутри микса.</p>
+      <p>Файлы падают в <b class="ui">recordings/</b> с именами
+        <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>, <b class="ui">… input</b> и
+        <b class="ui">… backing</b>. Обычно это <b class="ui">.m4a</b>, а для высокой частоты
+        дискретизации или многоканального материала — <b class="ui">.caf</b>. Смена бэкинг-трека
+        посреди дубля открывает нумерованный кусок — <b class="ui">… backing 2</b>.</p>
+      <p>Дубль могут остановить три ошибки: <b class="ui r">Recording could not start: the take file
+        could not be created.</b>, <b class="ui r">Recording stopped: the device is out of storage
+        space.</b> и <b class="ui r">Recording stopped: the take file could not be written.</b></p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="projects"><span class="n">06.9</span>Проекты записей</h2>
+      <p>Карточка <b class="ui">RECORDINGS</b> собирает стемы одного дубля в
+        <strong>проект</strong> по их общему имени <b class="ui">Perf &lt;date&gt;</b>. Сверху
+        самые свежие, показываются пять последних проектов — дубли постарше остаются на диске в
+        <b class="ui">recordings/</b> и доступны через Files.</p>
+      <p>В строке проекта есть кнопка прослушивания, которая играет стем микса, имя проекта, кнопка
+        «поделиться» (<b class="ui">Export DAWproject</b>), кнопка удаления (<b class="ui">Delete
+        project</b>) и стрелка (<b class="ui">Show stems</b>). Нажатие на саму строку тоже её
+        разворачивает.</p>
+      <p>В развёрнутом виде у каждого стема своя строка с подписью <b class="ui">mix</b>,
+        <b class="ui">input</b>, <b class="ui">backing</b> или <b class="ui">backing 2</b> и с
+        <b class="ui">Share recording</b> и <b class="ui">Delete recording</b>. Отправь стем, чтобы
+        скинуть кому-то черновой микс; отправь проект, чтобы открыть дубль в DAW.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="dawproject"><span class="n">06.10</span>Экспорт в DAWproject</h2>
+      <p>Кнопка «поделиться» в строке <strong>проекта</strong> — не отдельного стема — выгружает
+        весь дубль файлом <b class="ui">.dawproject</b> через обычную шторку «поделиться» в iOS:
+        сохранить в Files, отправить по AirDrop на Mac, положить в облачную папку. DAWproject —
+        открытый формат обмена, так что любая DAW, которая его читает, откроет дубль без
+        конвертера.</p>
+      <p>Внутри — по дорожке на стем, названной по стему, у каждой один клип, начинающийся с
+        <strong>0</strong>, так что всё сходится ровно в момент открытия проекта. Аудио пишется
+        <strong>24-битным WAV</strong> с исходной частотой дискретизации и числом каналов.</p>
+      <div class="note warn">
+        <div class="t">Чего экспорт не несёт</div>
+        <p>Ни темпа, ни размера — таймлайн идёт в <strong>секундах</strong>, а не в тактах. Ни
+          маркеров пресетов, ни сетлиста, ни состояния плагинов, ни автоматизации. Это чистый
+          многодорожечник с тем аудио, которое ты сыграл, а темп сессии на той стороне ты выставишь
+          сам.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/sampler.html">← 05 · Сэмплерные пэды</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/control.html">07 · MIDI и управление →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ru/">ДОКУМЕНТАЦИЯ</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>

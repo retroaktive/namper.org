@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDI и управление — Документация NAMper</title>
+<meta name="description" content="Карта управления и MIDI learn, всё, на что можно назначить, встроенная MIDI-карта, подключение Bluetooth, триггеры по выученному звуку и тюнер.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="MIDI и управление — Документация NAMper">
+<meta property="og:description" content="Вешай футсвитчи, педали и выученные звуки на что угодно в NAMper — плюс встроенная MIDI-карта и тюнер.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ru/control.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/control.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/control.html">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">ДОКУМЕНТАЦИЯ</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ru/">← ВСЕ РАЗДЕЛЫ</a>
+  <nav class="langs" aria-label="Язык">
+    <a href="/docs/control.html">EN</a>
+    <a class="on" href="/docs/ru/control.html" aria-current="page">RU</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">СОДЕРЖАНИЕ</div>
+    <ol>
+      <li><a href="/docs/ru/setup.html">С чего начать</a></li>
+      <li><a href="/docs/ru/rig.html">Риг и цепочка сигнала</a></li>
+      <li><a href="/docs/ru/plugins.html">AU-плагины</a></li>
+      <li><a href="/docs/ru/looper.html">Лупер</a></li>
+      <li><a href="/docs/ru/sampler.html">Сэмплерные пэды</a></li>
+      <li><a href="/docs/ru/perform.html">Сцена и тексты песен</a></li>
+      <li><a class="on" href="/docs/ru/control.html">MIDI и управление</a></li>
+      <li><a href="/docs/ru/settings.html">Справочник настроек</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI И УПРАВЛЕНИЕ</div>
+    <h1>Руки остаются на гитаре.</h1>
+    <p class="lede">Футсвитчи, педали, стук по корпусу инструмента — на вкладке
+      <b class="ui a">Control</b> ты решаешь, что чем запускается, чтобы телефон весь сет простоял
+      в держателе. Здесь же живёт тюнер.</p>
+
+    <nav class="toc">
+      <div class="slab">НА ЭТОЙ СТРАНИЦЕ</div>
+      <ul>
+        <li><a href="#map">Карта управления</a></li>
+        <li><a href="#learn">MIDI learn</a></li>
+        <li><a href="#actions">На что можно назначить</a></li>
+        <li><a href="#builtin">Встроенная MIDI-карта</a></li>
+        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
+        <li><a href="#sounds">Триггеры по выученному звуку</a></li>
+        <li><a href="#tuner">Тюнер</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="map"><span class="n">07.1</span>Карта управления</h2>
+      <p>На вкладке <b class="ui a">Control</b> три карточки. Первая —
+        <b class="ui">CONTROL MAP</b>, твои собственные назначения, те, что перебивают всё остальное.
+        Подпись к ней говорит, что она принимает: <b class="ui">MIDI controls and input triggers,
+        mapped to anything. Sources: any CC or note (use LEARN), a knock on the body, a held note or
+        a chord.</b></p>
+      <p>В шапке — чип пресетов и <b class="ui">+</b> (<b class="ui">Add mapping</b>). Пока ничего не
+        назначено, на карточке написано
+        <b class="ui">No mappings yet — add one with +</b>.</p>
+      <p>Каждое назначение — одна строка, читается слева направо: чип источника, кнопка
+        <b class="ui">LEARN</b>, стрелка, чип действия и <b class="ui">✕</b>, чтобы удалить строку.
+        Сохранённые карты лежат под <b class="ui">Control Presets</b> на чипе пресетов — расклад
+        педалборда для одной группы не обязан тащиться за тобой в следующую.</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
+             alt="Вкладка Control: карточка CONTROL MAP со строками назначений, карточка TAUGHT SOUNDS и карточка BUILT-IN MIDI MAP со списком диапазонов CC и кнопкой Pair Bluetooth MIDI внизу.">
+        <figcaption>Вкладка Control — твоя карта, твои выученные звуки и встроенная карта</figcaption>
+      </figure>
+
+      <div class="note warn">
+        <div class="t">Четыре входных триггера</div>
+        <p>Живыми остаются только первые четыре строки, которые запускаются выученным звуком.
+          Добавишь пятую — карточка предупредит:
+          <b class="ui r">Only the first 4 input triggers are active</b>. У MIDI-строк такого
+          ограничения нет — это ограничение про слушание инструмента.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
+      <p>Номер CC вводить руками не придётся никогда. В строке назначения:</p>
+      <ol style="--nc:var(--eq)">
+        <li>Нажми <b class="ui">LEARN</b>. Чип загорается, строка ждёт.</li>
+        <li>Нажми футсвитч или качни педаль, которую хочешь использовать.</li>
+        <li>Чип источника заполняется как <b class="ui">CC 42</b> или <b class="ui">Note 60</b>, а
+          строка <b class="ui">Last:</b> на карточке это подтверждает — <b class="ui">Learned CC
+          42</b>.</li>
+      </ol>
+      <p>Нажми <b class="ui">LEARN</b> ещё раз, чтобы отменить ожидание. В собственном меню чипа
+        источника есть раздел <b class="ui">MIDI</b> с пунктами <b class="ui">CC… (use LEARN)</b> и
+        <b class="ui">Note… (use LEARN)</b>, и раздел <b class="ui">Taught sounds</b> со списком
+        звуков, которым ты уже научил приложение, плюс <b class="ui">Teach a new sound…</b></p>
+
+      <h3>Learn прямо на месте</h3>
+      <p>Начинать с вкладки Control не обязательно. Зажми почти любой элемент управления в
+        приложении — ручку, строку чипов, пэд лупера, пэд сэмплера, кнопки транспорта на Perform —
+        и в меню будет пункт <b class="ui">MIDI Learn: &lt;name&gt;</b> именно для этого элемента.
+        Он обводится рамкой и показывает <b class="ui">MOVE A MIDI CONTROL…</b>; двинь педаль — и
+        назначение готово. <b class="ui">Cancel learn</b> отменяет, если схватил не ту ручку.</p>
+      <div class="note tip">
+        <div class="t">Быстрый способ собрать педалборд</div>
+        <p>Learn на месте быстрее вкладки Control для всего, что видно на экране: открой блок, зажми
+          нужную ручку, нажми педаль — готово. Вкладка Control нужна, чтобы просмотреть и привести в
+          порядок то, что уже собрано.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="actions"><span class="n">07.3</span>На что можно назначить</h2>
+      <p>Меню чипа действия целиком:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Раздел</th><th>Действия</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">No action</b></td><td>Строка не делает ничего.</td></tr>
+            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> и дальше, по одному
+              на каждый загруженный пэд.</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
+              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">Clear all</b>.</td></tr>
+            <tr><td><b class="ui">Preset</b></td><td>Каждый пресет рига по имени, плюс
+              <b class="ui">Next preset</b>.</td></tr>
+            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
+              <b class="ui">Stop</b>, <b class="ui">Next section</b>,
+              <b class="ui">Prev section</b>.</td></tr>
+            <tr><td>По ригам</td><td><b class="ui">Block on/off</b> и <b class="ui">Block parameter
+              (CC)</b>, перечислены под каждым ригом по имени.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Как только ригов становится больше одного, появляются ещё три пункта:
+        <b class="ui">Next rig</b>, <b class="ui">Block on/off · Active rig</b> и
+        <b class="ui">Block param · Active rig</b>. Они идут за тем ригом, у которого сейчас
+        MIDI-фокус, — так один футсвитч обходит «драйв в том риге, который я сейчас играю», а не
+        фиксированный блок в фиксированном риге.</p>
+      <p>Перед тем как вешать педаль, стоит помнить про два ограничения:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Непрерывному параметру блока нужен CC.</b> Ноты и выученные звуки — события, плавно
+          вести значение они не умеют, поэтому для таких источников подменю параметров скрыто.
+          Нужна экспрессия-педаль, отдающая CC.</li>
+        <li><b>Мягкий подхват после смены рига.</b> Непрерывный CC, назначенный на
+          <b class="ui">Block param · Active rig</b>, не дёргает ручку, когда ты меняешь риг. Он
+          ждёт, пока педаль пройдёт мимо текущего значения нового рига, и только тогда перехватывает
+          управление — так смена рига посреди песни никогда не швыряет параметр туда, где случайно
+          стоит твоя нога.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="builtin"><span class="n">07.4</span>Встроенная MIDI-карта</h2>
+      <p>Ещё до того как ты что-то назначишь, фиксированный расклад уже работает — воткни контроллер,
+        и он играет. Принимаются все каналы, потому что NAMper слушает omni, и каждый появившийся
+        источник подключается автоматически. Приложение ещё и публикует виртуальный приёмник с именем
+        <b class="ui">NAMper</b>, так что другое приложение на том же устройстве может слать в
+        него.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Показано как</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">presets</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp,
+              drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, именно в этом порядке;
+              значение 64 и выше означает «включено»</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">block parameters</b> — 0–127
+              масштабируются в диапазон каждого параметра. <b class="ui">CC 64</b> пропущен и оставлен
+              свободным под педаль сустейна</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">looper track taps</b> —
+              дорожки с 1 по 4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
+              clear</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop ·
+              next · prev</b></td></tr>
+            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">pads 1–16</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Твои собственные назначения всегда сильнее. Выучишь футсвитч на CC 85 — сработает твоя
+        строка, а встроенный тап по дорожке 1 на этом же CC отойдёт в сторону. Умолчания не приходится
+        обходить, их достаточно перекрыть.</p>
+      <div class="note warn">
+        <div class="t">CC 89 — не переключатель</div>
+        <p>Встроенный <b class="ui">CC 89</b> шлёт команду <em>play</em>, то есть запускает лупы — а
+          если они уже играют, перезапускает их с начала. Останавливать он не умеет. Нужен настоящий
+          переключатель run/stop на футсвитче — добавь назначение, нажми
+          <b class="ui">LEARN</b> и наведи его на действие <b class="ui">Run / stop</b>: оно читает
+          текущее состояние и переключает как надо.</p>
+      </div>
+      <p>Определение нажатия намеренно снисходительно к дешёвым педалям. Сообщение считается нажатием,
+        когда его значение 64 или больше, а ещё когда значение маленькое, но перед ним не было
+        большого, — так что футсвитч, который шлёт каждое нажатие как 0, всё равно запускает
+        дискретные действия.</p>
+      <p>Внизу карточки одна строка показывает, что NAMper видит:
+        <b class="ui">MIDI: waiting for sources</b> или имена подключённых источников, а под ней
+        строка <b class="ui">Last:</b> с последним событием. Если педаль ничего не делает, смотри
+        сначала туда — она скажет, доходят ли сообщения вообще.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
+      <p>Беспроводные педали подключаются изнутри приложения. Внизу карточки со встроенной картой
+        нажми <b class="ui">Pair Bluetooth MIDI</b>. Откроется шторка <b class="ui">Bluetooth
+        MIDI</b> с системной панелью сопряжения внутри и кнопкой <b class="ui">Done</b>. Переведи
+        педаль в режим сопряжения, ткни в неё в списке — и она встанет в строку MIDI-источников.</p>
+      <div class="note warn">
+        <div class="t">Не жми по ней дважды</div>
+        <p>Предупреждение на шторке стоит там не зря: <b class="ui">Tapping a device toggles its
+          connection — a pedal already shown in the MIDI sources line is connected; don't tap it
+          again.</b> Нажатие на уже подключённую педаль отключает её. Если не уверен, посмотри на
+          строку источников внизу карточки, прежде чем что-то трогать.</p>
+      </div>
+      <p>Разрешение на Bluetooth NAMper спрашивает при первом открытии этой шторки — и больше ни для
+        чего.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="sounds"><span class="n">07.6</span>Триггеры по выученному звуку</h2>
+      <p>Карточке <b class="ui">TAUGHT SOUNDS</b> железо не нужно вообще. Ты учишь NAMper шуму,
+        который умеешь издать инструментом в руках, и дальше он запускает любое действие — ровно как
+        MIDI-событие. Пустое состояние говорит прямо:
+        <b class="ui">Teach the app a sound — a knock on the body, a string slap, a click behind the
+        bridge — then map it to any action, like a MIDI event.</b></p>
+
+      <h3>Как научить</h3>
+      <p>Нажми <b class="ui">TEACH</b> — откроется шторка <b class="ui">TEACH A SOUND</b> со своей
+        инструкцией: <b class="ui">Make the sound 3–5 times, the same way each time: knock the body,
+        slap the strings, click behind the bridge — anything with a clear attack.</b> Восемь точек
+        заполняются по мере того, как приходят дубли, а статус показывает <b class="ui">Listening…</b>
+        и затем счётчик. Дай звуку имя в поле <b class="ui">Sound name</b> и нажми
+        <b class="ui">Save the sound</b>. Для сохранения нужно минимум два дубля, усредняется до
+        восьми — чем однообразнее дубли, тем надёжнее триггер.</p>
+      <p>В каждой строке — имя, счётчик использований вида <b class="ui">3×</b>, кнопка
+        <b class="ui">RE-TEACH</b> и <b class="ui">✕</b> для удаления. Нажми на имя, чтобы
+        переименовать. Переобучение сохраняет имя и все назначения, которые на него смотрят, — так
+        что если звук начал промахиваться после смены гитары, переучи его, а не начинай заново.</p>
+      <div class="note warn">
+        <div class="t">Удаление уносит назначения с собой</div>
+        <p>Удалишь выученный звук — уйдут и все назначения, которые его слушали. Счётчик использований
+          в строке скажет, сколько их, ещё до того как ты нажмёшь ✕.</p>
+      </div>
+      <p>Выученный звук запускает любое действие из меню, кроме непрерывного параметра блока — это
+        событие, а не плавное ведение. И, как и на карте управления, одновременно активны только
+        первые четыре назначения по выученному звуку.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="tuner"><span class="n">07.7</span>Тюнер</h2>
+      <p>Тюнер — не вкладка. Он открывается по иконке камертона в шапке <b class="ui a">Rig</b> и
+        работает, пока запущен аудиодвижок — в том числе когда защита от заводки заглушила выход, так
+        что настроиться можно и с телефоном на его собственном динамике.</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
+             alt="Шторка тюнера в режиме POLY: чипы режимов, плашка GUITAR, ряд чипов строя и шесть вертикальных индикаторов по струнам с названиями нот внизу.">
+        <figcaption>Режим POLY — все шесть струн читаются разом</figcaption>
+      </figure>
+
+      <p>Сверху два чипа режима, <b class="ui">POLY</b> и <b class="ui">SINGLE</b>.
+        <b class="ui">POLY</b> стоит по умолчанию, и на сцене нужен именно он: ударь по всем струнам
+        один раз — и каждая струна читается одновременно, по вертикальному индикатору на струну с
+        нотой внизу. Подпись так и говорит — <b class="ui">strum — every string reads at once</b>.
+        Точка струны зеленеет в пределах ±5 центов.</p>
+      <p><b class="ui">SINGLE</b> — классический тюнер по одной ноте: крупная буква ноты, стрелка в
+        пределах ±50 центов и цифры центов, зеленеет в пределах ±3 центов. Без сигнала показывает
+        <b class="ui">play a note…</b> Бери его, когда нужна точность по одной струне.</p>
+
+      <h3>Инструмент и строй</h3>
+      <p>Что у тебя в руках, NAMper понимает сам и показывает это плашкой:
+        <b class="ui">GUITAR</b>, <b class="ui">BASS</b> или <b class="ui">UKULELE</b>. Выбора нет —
+        воткни бас, и тюнер пойдёт за ним.</p>
+      <p>Чипы строя действуют в режиме <b class="ui">POLY</b>, и каждый инструмент помнит свой
+        выбор:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Инструмент</th><th>Строи</th></tr></thead>
+          <tbody>
+            <tr><td>Гитара</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
+              <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
+              <b class="ui">Open D</b></td></tr>
+            <tr><td>Бас</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+              <b class="ui">5-str B</b></td></tr>
+            <tr><td>Укулеле</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Опорная частота зафиксирована на A4 = 440 Гц. Калибровки нет, так что если играешь с
+        оркестром на 442, тюнер за тобой туда не пойдёт.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ru/perform.html">← 06 · Сцена и тексты песен</a>
+      <span class="sp"></span>
+      <a href="/docs/ru/settings.html">08 · Справочник настроек →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ru/">ДОКУМЕНТАЦИЯ</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">ПОДДЕРЖКА</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">ПРИВАТНОСТЬ</a>
+      <a href="https://www.tone3000.com">TONE3000</a>
+      <a href="https://www.neuralampmodeler.com">NAM</a>
+    </nav>
+    <div>© 2026 Евгений Степанов</div>
+  </div>
+</footer>
+
+</body>
+</html>
