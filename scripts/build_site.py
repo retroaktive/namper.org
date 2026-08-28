@@ -10,7 +10,8 @@ import shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_site")
-ITEMS = ["index.html", "docs", "assets", "robots.txt", "sitemap.xml"]
+ITEMS = ["index.html", "privacy.html", "docs", "assets", "robots.txt",
+         "sitemap.xml"]
 
 
 def main():
