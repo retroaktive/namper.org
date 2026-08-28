@@ -1,6 +1,6 @@
 /* NAMper docs — shared top-bar behaviour: the theme switch and the
    language picker. Every localized copy of a page loads this file, so the
-   fifteen-language menu lives in one place instead of in 135 top bars. */
+   seventeen-language menu lives in one place instead of in 153 top bars. */
 (function () {
   var LOCALES = [
     { c: 'en',      d: '',        n: 'English' },
@@ -17,7 +17,9 @@
     { c: 'ja',      d: 'ja',      n: '日本語' },
     { c: 'ko',      d: 'ko',      n: '한국어' },
     { c: 'zh',      d: 'zh',      n: '简体中文' },
-    { c: 'zh-hant', d: 'zh-hant', n: '繁體中文' }
+    { c: 'zh-hant', d: 'zh-hant', n: '繁體中文' },
+    { c: 'hi',      d: 'hi',      n: 'हिन्दी' },
+    { c: 'fil',     d: 'fil',     n: 'Filipino' }
   ];
 
   /* ---- where are we: /docs/[lang/]page.html ---- */
