@@ -23,7 +23,7 @@ CATALOG = os.path.expanduser("~/NAMper/ios/App/Localizable.xcstrings")
 LOCALES = {
     "ru": "ru", "de": "de", "es": "es", "fr": "fr", "it": "it", "pt": "pt-BR",
     "tr": "tr", "id": "id", "vi": "vi", "th": "th", "ja": "ja", "ko": "ko",
-    "zh": "zh-Hans", "zh-hant": "zh-Hant",
+    "zh": "zh-Hans", "zh-hant": "zh-Hant", "hi": "hi", "fil": "fil",
 }
 
 CHIP = re.compile(r'(<(b|span) class="ui[^"]*">)(.*?)(</\2>)', re.S)

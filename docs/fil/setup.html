@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagsisimula — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Pag-plug in: mga audio interface, sample rate at laki ng buffer, ang power button, ang mga input at output meter, ang feedback guard, at kung saan iniingatan ng NAMper ang mga file mo.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Pagsisimula — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Mga audio interface, sample rate at buffer, ang power button, ang mga meter at ang feedback guard.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/setup.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/setup.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/setup.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/setup.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/setup.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/setup.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/setup.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/setup.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/setup.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/setup.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/setup.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/setup.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/setup.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/setup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/setup.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/setup.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/setup.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/setup.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/setup.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/setup.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a class="on" href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">01 · PAGSISIMULA</div>
+    <h1>Pag-plug in.</h1>
+    <p class="lede">Lahat ng namamagitan sa gitara mo at sa unang tunog: paano nakikita ng NAMper ang audio hardware mo, ano ang ginagawa ng power button, paano basahin ang mga meter, at bakit minsan sinasadya ng app na i-mute ang sarili.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#power">Ang power button</a></li>
+        <li><a href="#interfaces">Mga audio interface</a></li>
+        <li><a href="#meters">Mga meter at level</a></li>
+        <li><a href="#rate">Sample rate at buffer</a></li>
+        <li><a href="#feedback-guard">Ang feedback guard</a></li>
+        <li><a href="#permissions">Mga pahintulot</a></li>
+        <li><a href="#files">Kung saan naroon ang mga file mo</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="power"><span class="n">01.1</span>Ang power button</h2>
+      <p>Ang berdeng power icon sa kanang itaas na sulok ng <b class="ui a">Rig</b> tab ang nagsisimula at humihinto sa audio engine. Hangga't hindi ito naka-on, walang naipoproseso at walang tunog — nananatiling patag ang mga meter at tumatanggi ang recording nang may <b class="ui r">Naka-off ang audio — i-tap ang power button bago mag-record.</b></p>
+      <p>Malabo ito kapag nakahinto ang engine at berdeng may ningning kapag tumatakbo. Ipinapakita ng <b class="ui">DSP load</b> chip sa tabi nito kung gaano kabigat ang trabaho ng processor: berde kapag mababa sa 60 %, amber hanggang 85 %, pula kapag lampas doon. Kung nakapirmi ito sa pula, mag-alis ng block sa chain o taasan ang buffer size.</p>
+      <p>Hinihingi ng NAMper ang access sa mikropono sa unang pagsisimula mo ng engine, hindi sa pagbukas ng app.</p>
+      <div class="note warn">
+        <div class="t">Pag-unplug</div>
+        <p>Ang paghugot sa headphone o interface mo <b>ay humihinto sa engine</b> — sinasadya ito, para hindi kusang tumalon sa speaker ng telepono ang isang malakas na rig. I-tap ulit ang power kapag nakabalik ka na. Ang pagsaksak ng bago ay awtomatikong muling bumubuo ng engine.</p>
+      </div>
+      <p>Kung hindi makapagsimula ang engine, ganito ang banner: <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> Isara ang kung anuman ang humahawak sa interface at subukan ulit.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="interfaces"><span class="n">01.2</span>Mga audio interface</h2>
+      <p>Walang device picker. Sumusunod ang NAMper sa kahit anong audio route na ginagamit ng iOS, kaya pinipili mo ang hardware mo sa dati mong paraan — isaksak ang interface, at muling bubuuin ng app ang sarili sa paligid nito. Suportado ang mga multichannel interface, hanggang walong input channel.</p>
+      <p>Sinasabi ng Settings → <b class="ui">AUDIO INTERFACE</b> kung ano talaga ang nakuha ng NAMper: <b class="ui">Sample rate</b>, <b class="ui">Mga Input</b>, <b class="ui">Mga Output</b> at <b class="ui">Engine</b> (<b class="ui">tumatakbo</b> o <b class="ui">huminto</b>). Kung hindi iyon ang inaasahan mong bilang ng channel, doon sa row na iyon malalaman.</p>
+
+      <h3>Pagpapangalan sa mga channel mo</h3>
+      <p>Binibigyan ng Settings → <b class="ui">MGA PANGALAN NG CHANNEL</b> ang bawat input ng text field na may placeholder na <b class="ui">Gitara, Vocal…</b>. Pangalanan mo sila minsan at lalabas ang mga pangalang iyon sa bawat input picker sa app — mga rig input, source ng looper track, mga row ng input trim. Ang mga walang pangalang channel ay <b class="ui">In 1</b>, <b class="ui">In 2</b> at iba pa.</p>
+
+      <h3>Maraming output</h3>
+      <p>Naka-off bilang default ang Settings → <b class="ui">Gamitin lahat ng output ng interface</b>, at hindi ito kailanman kailangan ng mga stereo device. I-on ito at bubuksan ng NAMper ang bawat output pair sa interface, kaya puwedeng magkaroon ng sariling pair ang isang rig, isang parallel branch, isang looper track o ang metronome click — ang gitara sa front of house, ang click sa in-ear ng drummer.</p>
+      <div class="note">
+        <div class="t">Mga input channel</div>
+        <p>Karaniwang iniiwan sa <b class="ui">Auto</b> ang <b class="ui">Mga input channel</b>. Itakda lang ito sa isang bilang kung mas maraming channel ang iniuulat ng interface mo kaysa sa gusto mong buksan ng NAMper.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="meters"><span class="n">01.3</span>Mga meter at level</h2>
+      <p>May dalawang patayong guhit sa magkabilang gilid ng amp card sa Rig tab: <b class="ui">IN</b> sa kaliwa, <b class="ui">OUT</b> sa kanan. Pareho silang tumatakbo mula −60 dBFS sa ibaba hanggang 0 sa itaas, berde papuntang amber hanggang pula. Walang hiwalay na clip light — ang clipping ay ang pag-abot ng bar sa pula sa pinakatuktok.</p>
+
+      <h3>Pagtatakda ng input level mo</h3>
+      <ol style="--nc:var(--eq)">
+        <li>I-on ang audio at tumugtog nang kasinglakas ng pinakamalakas mong tugtog.</li>
+        <li>Dapat umabot ang <b class="ui">IN</b> meter sa itaas nitong ikatlo at manatiling wala sa pula.</li>
+        <li>Kung may gain knob ang interface mo, gamitin iyon. Kung wala, buksan ang Settings → <b class="ui">Input trim</b> at itaas ang slider para sa channel na iyon — mula −12 dB hanggang +24 dB ito sa tig-1 dB na hakbang, at nagsisimula sa 0.</li>
+      </ol>
+      <p>Ipinapakita ng <b class="ui">IN</b> meter ang level <em>pagkatapos</em> ng trim, kaya ang nakikita mo ang mismong natatanggap ng amp model.</p>
+
+      <h3>Ang master section</h3>
+      <p>Sa ibaba ng Rig tab, ang <b class="ui">MASTER</b> card ang pinagsasamahan ng bawat rig, ng looper, ng sampler at ng backing track bago pumunta sa hardware output. Ipinapakita nito ang mga stereo peak bar na <b class="ui">L</b> at <b class="ui">R</b> na may marka sa −12 at −6 dB, kasama ang loudness reading na parang broadcast sa <b class="ui">LUFS</b> — ang malaking numero ay momentary loudness, idinadagdag ng maliit na linya ang short-term na halaga. <b class="ui">-inf</b> ang nakikita kapag tahimik. Ang fader sa ibaba ay mula −60 hanggang +12 dB.</p>
+      <p>May sarili ring maliliit na <b class="ui">IN</b> at <b class="ui">OUT</b> meter ang bawat block editor, at iyon ang pinakamabilis na paraan para makita kung aling block ang uminit.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="rate"><span class="n">01.4</span>Sample rate at buffer</h2>
+      <p>Nasa Settings → <b class="ui">AUDIO INTERFACE</b> ang dalawa, at parehong naaalala ayon sa audio route — puwedeng magkaroon ng sariling setting ang interface mo at ang headphone mo.</p>
+
+      <h3>Sample rate</h3>
+      <p>Ganito ang mga chip: <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>, <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> at <b class="ui">192k</b>. Ang <b class="ui">Auto</b> ang default at sumusunod lang sa interface; ang pagpapalit ng rate ay nagre-restart sa engine.</p>
+      <p>Sa sariling mikropono at speaker ng telepono, <b class="ui">Auto</b> at <b class="ui">48k</b> lang ang lumalabas, kasama ang paalalang <b class="ui">48 kHz lang ang takbo ng built-in na audio. Magkonekta ng interface para sa iba pang rate.</b> Kapag may nakakonektang interface, makukuha mo ang buong listahan — maliban sa anumang rate na tinanggihan na ng interface na iyon, na naaalala ng NAMper at hindi na inaalok.</p>
+      <p>Kung tinanggihan ang isang rate, bumabalik ang app sa nauna at sinasabi ito sa pula: <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+      <div class="note tip">
+        <div class="t">Aling rate ang dapat kong gamitin?</div>
+        <p>Hindi awtomatikong mas mabuti ang mas mataas — nauubos nito ang processing headroom, at nakukuha naman ang mga NAM profile sa karaniwang rate. Iwan ito sa <b class="ui">Auto</b> maliban kung tumutugma ka sa isang session na tumatakbo sa tiyak na rate.</p>
+      </div>
+
+      <h3>Laki ng buffer</h3>
+      <p>Nag-aalok ang <b class="ui">Buffer</b> ng <b class="ui">64</b>, <b class="ui">128</b>, <b class="ui">256</b> at <b class="ui">512</b> na frame, na may live na pagbasa ng latency na naibibigay nito. Ang default ay <b class="ui">128</b>. Tiyak ang sariling payo ng app: <b class="ui">Mas maliit = mas mababang latency; mas malaki = mas ligtas sa mga USB interface. May lagitik? Taasan nang isang hakbang.</b></p>
+      <p>Ito lang ang kontrol sa latency sa NAMper — walang hiwalay na setting para sa latency.</p>
+      <div class="note warn">
+        <div class="t">Bluetooth output</div>
+        <p>Nagdaragdag ang mga Bluetooth headphone at speaker ng humigit-kumulang 0.2 s na delay, na hindi katugtugan. Binabalaan ka ng app kapag may nakitang Bluetooth route. Gumamit ng wired output para sa live na pagtugtog.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="feedback-guard"><span class="n">01.5</span>Ang feedback guard</h2>
+      <p>Ang isang guitar app na bukas ang sariling mikropono ng telepono at tumutugtog ang sariling speaker nito ay isang feedback loop na naghihintay mangyari. Kaya binabantayan ng NAMper ang mismong kumbinasyong iyon — built-in na mic papasok, built-in na speaker o earpiece palabas — at minu-mute ang output nito bago pa ito umalingawngaw.</p>
+      <figure>
+        <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
+             alt="Ang banner: Naka-mute ang output para pigilan ang feedback (mic papuntang speaker). Magkonekta ng interface o headphone. May Unmute button.">
+        <figcaption>Ang banner na lumalabas kapag gumana ang guard</figcaption>
+      </figure>
+      <p>Kapag gumana ito, makikita mo ang <b class="ui r">Naka-mute ang output para pigilan ang feedback (mic → speaker). Magkonekta ng interface o headphone.</b> Ang naririnig na output lang ang pinipigilan — patuloy pa rin ang tuner, ang mga input meter at ang recording, kaya puwede ka pa ring mag-tune at makakuha ng take.</p>
+      <p>Magsaksak ng headphone o interface at kusang maaalis ang mute. Itinatago lang ng ✕ sa banner ang mensahe para sa session na ito; hindi nito inaalis ang mute.</p>
+      <div class="note">
+        <div class="t">Ano ang ginagawa ng “Unmute”</div>
+        <p>Pansamantalang eksepsiyon ang <b class="ui">I-unmute</b> button: mananatiling live ang output para sa session na ito, at muling gumagana ang guard sa oras na magbago ang route — magsaksak at maghugot ng interface o headphone, o buksan ulit ang app, at protektado na naman ang built-in na speaker. Para tuluyang patayin ang guard, gamitin ang switch na <b class="ui">Feedback guard</b> sa Settings.</p>
+      </div>
+      <p>Ang switch mismo ay nasa Settings → <b class="ui">AUDIO INTERFACE</b> → <b class="ui">Feedback guard</b>, subtitle na <b class="ui">Minu-mute ang output habang dumadaan ang mic sa speaker ng telepono.</b> Naka-on ito bilang default.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="permissions"><span class="n">01.6</span>Mga pahintulot</h2>
+      <p>Dalawang bagay lang ang hinihingi ng NAMper, at kapag kailangan lang niya ang mga ito.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Pahintulot</th><th>Kailan</th><th>Bakit</th></tr></thead>
+          <tbody>
+            <tr><td>Mikropono</td><td>Sa unang pag-tap mo sa power button</td>
+                <td>Para marinig ang gitara o mikropono mo. Malinaw ang sinasabi ng prompt: hindi kailanman umaalis sa device mo ang audio.</td></tr>
+            <tr><td>Bluetooth</td><td>Sa unang pag-pair mo ng wireless na MIDI pedal</td>
+                <td>Para maghanap at kumonekta sa mga Bluetooth MIDI controller.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Kung naka-off ang access sa mikropono, may pulang banner na nagsasabing <b class="ui r">Naka-off ang access sa mikropono — hindi naririnig ng NAMper ang gitara mo.</b> kasama ang <b class="ui">Mga Setting</b> button na dumidiretso sa setting ng iOS. Ipagkaloob ito at muling bubuo ang engine nang hindi na kailangang buksan ulit ang app.</p>
+      <p>Walang analytics, walang tracking, walang account at walang access sa camera, larawan, lokasyon o mga kontak. Walang kinokolektang anuman ang NAMper.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="files"><span class="n">01.7</span>Kung saan naroon ang mga file mo</h2>
+      <p>Makikita sa Files app sa ilalim ng <b class="ui">On My iPhone → NAMper</b> (o <b class="ui">On My iPad</b>) ang lahat ng iniingatan ng NAMper. Puwede kang magkopya papasok at palabas gamit ang Files app, mag-back up ng folder, o ilipat ito sa computer.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Folder</th><th>Ano ang laman nito</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">tones/</b></td><td>Mga NAM amp profile (<b class="ui">.nam</b>) kasama ang cover art at metadata nila</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>Mga impulse response na na-import mo</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>Mga sampler pad, at mga naka-save na kit sa ilalim ng <b class="ui">samples/kits/</b></td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>Mga backing track, ang setlist, lyrics at mga preset marker</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>Ang mga recording ng performance mo</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>Mga rig preset at ang looper, sampler, setlist at control preset</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>Plain-text na log ng routing ng interface at ng mga peak, kapaki-pakinabang sa ulat ng bug</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <div class="t">Isang shortcut na dapat malaman</div>
+        <p>Ang mga audio file na diretso mong inilalagay sa <b class="ui">backing/</b> gamit ang Files app ay pumapasok sa setlist sa susunod mong pagbukas ng NAMper. Ang pag-load ng buong set ay iisang copy-paste sa computer sa halip na dalawampung tap sa telepono.</p>
+      </div>
+      <p>May dalawang bagay na hindi gumagana sa inaakala mong paraan: hindi mo puwedeng i-drag ang mga file sa app icon o sa isang window — dumadaan sa file picker sa loob ng NAMper ang bawat import — at sinasadyang hindi isinasama sa iCloud backup ang folder na <b class="ui">tones/</b>, dahil puwedeng i-download muli ng TONE3000 ang mga profile na iyon.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/">← Lahat ng docs</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/rig.html">02 · Rig at signal chain →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

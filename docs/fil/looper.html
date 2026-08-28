@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Looper — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Ang four-track na sync looper: mga bilog na pad, ang transport, AUTO arming at boundary snapping, tempo at ang click, ang loop editor, undo, routing kada track at kung ano ang nase-save.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Looper — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Apat na naka-sync na track, AUTO arming, boundary snapping at ang loop editor.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/looper.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/looper.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/looper.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/looper.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/looper.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/looper.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/looper.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/looper.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/looper.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/looper.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/looper.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/looper.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/looper.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/looper.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/looper.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/looper.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/looper.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/looper.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/looper.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/looper.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a class="on" href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">04 · LOOPER</div>
+    <h1>Apat na track, isang cycle.</h1>
+    <p class="lede">Ang <b class="ui a">Loop</b> tab ay four-track na sync looper na may analysis engine sa likod nito. Ilatag ang unang loop at susunod dito ang lahat ng iba — at kapag naka-on ang AUTO, hinahanap ng NAMper ang mga bar line para sa iyo.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#basics">Paano nag-iisip ang looper</a></li>
+        <li><a href="#pads">Ang mga bilog na pad</a></li>
+        <li><a href="#transport">Ang transport</a></li>
+        <li><a href="#auto">AUTO mode</a></li>
+        <li><a href="#tempo">Tempo at ang click</a></li>
+        <li><a href="#editor">Ang loop editor</a></li>
+        <li><a href="#undo">Undo</a></li>
+        <li><a href="#routing">Routing kada track</a></li>
+        <li><a href="#saving">Ano ang nase-save</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="basics"><span class="n">04.1</span>Paano nag-iisip ang looper</h2>
+      <p>May isang patakarang nakaupo sa ilalim ng lahat, at inililimbag ito ng app sa ibaba ng screen:</p>
+      <p><b class="ui">Ang unang loop ang nagtatakda ng cycle · sumusunod dito ang iba · MIDI CC 85–88 tap · 89 run/stop · 90 clear</b></p>
+      <p>Ang track na unang na-record mo ang nagtatakda ng cycle. Iniaayon dito ang bawat ibang track sa halip na kusang mawala sa timing, at wala nang naglilipat ng cycle na iyon pagkatapos maliban sa pag-edit ng track na nagtakda nito, o pag-clear ng lahat at pagsisimula ulit.</p>
+      <p>May apat na track, bawat isa'y kayang maglaman ng hanggang <b>60 segundo</b>. Sa portrait, nakaupo ang mga pad sa 2×2 na grid; sa landscape, lumilipat ang transport sa hanay sa kaliwa at pumipila sa isang hanay ang apat na pad.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/looper.png" width="600" height="1304"
+             alt="Ang Loop tab: tumutugtog ang track 1 na may berdeng pabilog na waveform at umiikot na sinag, nakahanda ang track 2 na may putol-putol na pulang border, walang laman ang track 3 at 4, berdeng nagniningning ang AUTO chip at 124 BPM ang tempo.">
+        <figcaption>Tumutugtog ang track 1, nakahanda at naghihintay ang track 2, naka-on ang AUTO sa 124 BPM</figcaption>
+      </figure>
+      <p>Pare-pareho ang pagkakalatag ng bawat track card: isang header row na may malaking numero ng track, ang label ng estado at isang LED na tuldok; ang bilog na pad; isang 2×2 na grid ng mga chip — <b class="ui">IN</b> at <b class="ui">LEN</b> sa ibabaw ng <b class="ui">DUB</b> at <b class="ui">OUT</b>; at isang control row sa ilalim.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="pads"><span class="n">04.2</span>Ang mga bilog na pad</h2>
+      <p>Iginuguhit ng pad ang waveform ng loop <em>nang pabilog</em> sa paligid ng singsing — isang ikot ng bilog ay isang ikot ng cycle — na may umiikot na sinag na nagmamarka ng puwesto ng pagtugtog. Lumalabas ang mga attack bilang mga tulis sa singsing, kaya nababasa mo kung nasaan ka kahit mula sa kabilang dulo ng kuwarto.</p>
+      <p>Habang nire-record ang kauna-unahang loop ay wala pang cycle, kaya iba ang kilos ng singsing: ang buong bilog ay kumakatawan sa lahat ng na-record <em>hanggang ngayon</em>. Sumisikip ang waveform habang humahaba ang take, nananatiling nakatigil ang sinag sa alas-dose — iyon ang write head — at binibilang ng gitna ng pad ang lumipas na mga segundo. Kapag nagsara na ang loop, tumatakbo ang sinag sa cycle.</p>
+
+      <h3>Pag-tap sa pad</h3>
+      <p>Isang tap ang naglilipat sa track ng isang baitang pataas sa hagdan:</p>
+      <ul style="--nc:var(--eq)">
+        <li>walang laman → nagre-record</li>
+        <li>nagre-record → isinasara ang loop, at nagsisimula itong tumugtog</li>
+        <li>tumutugtog → overdub</li>
+        <li>overdub → balik sa pagtugtog</li>
+        <li>naka-mute → i-unmute</li>
+      </ul>
+      <p>Kapag naka-on ang <b class="ui">AUTO</b>, ang pag-tap sa walang lamang pad ay <b>naghahanda</b> dito sa halip na agad na mag-record, at kinakansela ng pag-tap sa nakahandang pad ang paghahanda. Iyon lang ang binabago ng AUTO sa hagdan.</p>
+
+      <h3>Matagal na pagpindot</h3>
+      <p>Pindutin nang matagal ang bilog na pad para sa <b class="ui">MIDI Learn: tap loop track 1</b> (at 2, 3, 4) — ganito naitatali ang footswitch sa isang track. Pindutin nang matagal ang <em>card</em> sa paligid nito at ang makukuha mo ay ang routing menu: <b class="ui">Input · …</b>, <b class="ui">Output · …</b>, <b class="ui">I-edit ang loop…</b>, pati ang <b class="ui">Haba · Free</b> o <b class="ui">Length · N bars</b> at <b class="ui">Overdubs · N</b>.</p>
+
+      <h3>Mga estado</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Estado</th><th>Label</th><th>Kulay</th></tr></thead>
+          <tbody>
+            <tr><td>Walang na-record</td><td><b class="ui">walang laman</b></td><td>Malabo</td></tr>
+            <tr><td>Kumukuha</td><td><b class="ui">nagre-record</b></td><td>Pula</td></tr>
+            <tr><td>Bumabalik sa loop</td><td><b class="ui">tumutugtog</b></td><td>Berde</td></tr>
+            <tr><td>Nagpapatong-patong</td><td><b class="ui">overdub</b></td><td>Kahel</td></tr>
+            <tr><td>Tahimik, tumatakbo pa rin</td><td><b class="ui">naka-mute</b></td><td>Dilaw</td></tr>
+            <tr><td>Naghihintay (AUTO)</td><td><b class="ui">nakahanda</b></td>
+                <td>Pula, putol-putol na border sa paligid ng card</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Apat na bagay ang laman ng control row sa ilalim ng bawat pad: mute (<b class="ui">Mute track N</b>, na nagiging dilaw), edit (<b class="ui">Edit loop N</b>), clear (<b class="ui">Clear track N</b>) at isang maliit na level knob (<b class="ui">Loop track N level</b>, 0 hanggang 1.5).</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="transport"><span class="n">04.3</span>Ang transport</h2>
+      <p>Sa tabi ng salitang <b class="ui">LOOPER</b> nakaupo ang transport row:</p>
+      <ul style="--nc:var(--gate)">
+        <li>A <b>master ring</b> na nagpapakita ng haba ng cycle sa segundo, o <b class="ui">—</b> kapag wala pang na-record.</li>
+        <li>Isang <b class="ui">MGA PRESET</b> chip — tingnan ang <a href="#saving">kung ano ang nase-save</a>.</li>
+        <li><b class="ui">I-play ang mga loop</b> / <b class="ui">Ihinto ang mga loop</b>, hindi gumagana hangga't walang cycle.</li>
+        <li>Isang <b>undo</b> na button, gumagana lang kapag may maibabalik.</li>
+        <li>Isang trash button, <b class="ui">I-clear lahat ng loop</b>.</li>
+      </ul>
+      <p>Sa ilalim nito, may isang status line na nagsasabi kung nasaan ka: <b class="ui">nire-record ang master loop…</b> habang tumatakbo ang unang take, isang tumatakbong posisyong <b class="ui">4.2 / 8.0 s</b> kapag may cycle na, <b class="ui">huminto</b>, o <b class="ui">i-tap ang track para mag-record</b> kapag walang laman ang looper.</p>
+      <div class="note">
+        <div class="t">Kontrol sa footswitch</div>
+        <p>Sakop ng built-in na MIDI map ang looper nang walang setup: tina-tap ng <b class="ui">CC 85–88</b> ang mga track 1 hanggang 4, pinapatakbo ng <b class="ui">CC 89</b>, kina-clear ng <b class="ui">CC 90</b>. Tandaan na nagpapadala ang CC 89 ng utos na <em>play</em>  — muli nitong sinisimulan ang mga loop mula sa umpisa sa halip na patayin ang mga ito. Para sa tunay na run/stop toggle sa isang switch, magdagdag ng mapping sa <b class="ui a">Control</b> tab at ituro ito sa <b class="ui">Run / stop</b>, na bumabasa ng kasalukuyang estado.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="auto"><span class="n">04.4</span>AUTO mode</h2>
+      <p>Dalawa ang trabaho ng <b class="ui">AUTO</b> — ang wand chip, katabi ng <b class="ui">CLICK</b>: sinisimulan at hinihinto nito ang mga take para sa iyo, at kapag nagsara ang master loop, inaalam nito kung nasaan talaga ang mga bar line.</p>
+
+      <h3>Paghahanda sa halip na pag-record</h3>
+      <p>Kapag naka-on ang AUTO, inihahanda ng pag-tap sa walang lamang pad ang pad na iyon: nagkakaroon ang card ng putol-putol na pulang border at nagbabasang <b class="ui">nakahanda</b>. Ang susunod na mangyayari ay nakadepende kung may cycle na:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Wala pang cycle.</b> Nagsisimula ang recording <b>sa unang note mo</b> na lampas sa threshold ng paghahanda. Puwede mong damputin ang gitara, mag-ayos ng puwesto, at magsisimula ang take kapag tumugtog ka — hindi noong nag-tap ka.</li>
+        <li><b>May tumatakbo nang cycle.</b> Nagsisimula ang recording sa <b>susunod na hangganan ng cycle</b>, kaya eksaktong nagsisimula sa bar ang take. May maikling palugit na nagpapatawad sa attack na bahagyang nahuli, kaya bilang pa rin ang pagtama sa downbeat nang kaunting huli sa sinag.</li>
+      </ul>
+      <p>Ang malayang nakahandang take — iyong na-record nang walang cycle — ay <b>kusa ring humihinto</b> pagkatapos ng humigit-kumulang 1.2 segundo ng katahimikan, at pinuputol pabalik sa naririnig na bahagi. Sinasadyang maluwag ang threshold: hindi binibilang na katahimikan ang mga buntot ng reverb at ang mga puwang sa pagitan ng mga parirala, kaya hindi napuputol sa gitna ang isang kalat-kalat na riff.</p>
+      <p>Pagkatapos magsara ng bawat loop, ang AUTO ay <b>kusang naghahanda ng susunod na walang lamang cell</b>, kaya kaya mong buuin ang lahat ng apat na track nang hindi na muling hinahawakan ang screen.</p>
+
+      <h3>Pag-snap sa hangganan</h3>
+      <p>Kapag nagsara ang master loop, sinusuri ng NAMper ang malinis na input — ang signal bago ang mga effect mo — at naghahanap ng mga attack. Iniaayon nito ang isang bar grid sa mga ito, tapos:</p>
+      <ol style="--nc:var(--amp)">
+        <li><b>Pinuputol ang dulo</b> hanggang sa bar na naglalaman ng huling attack, kaya ang take na lumampas nang isa't kalahating beat ay nagiging buong bilang ng bar.</li>
+        <li><b>Iniikot ang loop</b> para magsimula ito sa unang beat. Ang ingay ng kuwerdas, ang paghinga at ang lagitik ng daliri na nangyari bago ang downbeat mo ay inililipat sa dulo ng loop, kung saan sila nabibilang sa musika.</li>
+        <li><b>Ipinipilipit ang natukoy na tempo</b> papasok sa saklaw na 70–180 BPM, kaya hindi nababasang 240 BPM ang mabilis na strum at hindi nababasang 45 ang mabagal.</li>
+      </ol>
+      <p>Sa screen, nangyayari ang lahat sa isang saglit: muling gumuguhit ang singsing, dumadapo ang haba sa malinis na bilang, at napupunan ang readout ng BPM na blangko hanggang ngayon. Mula roon, may grid nang mapagbabatayan ang click, ang mga LEN chip, ang quantize ng sampler at ang bar clock ng setlist.</p>
+      <p>Kapag naka-on ang <b class="ui">CLICK</b>, ang tempo ay <b>naka-lock</b> sa kahit anong tempo ang nakatakda at ang phase lang ang iniaayon. Iyon ang mode na gagamitin kapag tumutugtog ka kasabay ng click o ng backing track at hindi dapat gumalaw ang tempo.</p>
+      <div class="note tip">
+        <div class="t">Mga drone at rubato</div>
+        <p>Kung walang magamit na grid na mahahanap — isang hinatak na pad, isang malayang tinitimpla na intro, isang swell na binow — hindi ito pinipilit ng NAMper. Bumabalik ito sa pagputol sa huling attack at pagpili ng buong bilang ng bar. Makakakuha ka ng malinis na loop, hindi lang ng muling natukoy na tempo.</p>
+      </div>
+      <div class="note warn">
+        <div class="t">Ang unang loop ang pinakamahalaga</div>
+        <p>Tumatakbo ang snapping sa master loop, at minamana ng lahat ng na-record pagkatapos ang grid nito. Kung mali ang dapo ng unang take, ayusin ito sa <a href="#editor">loop editor</a> bago magpatong-patong, o i-clear at i-record itong muli — hindi maglilipat ng mga bar line ang pagtulak sa track 3.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tempo"><span class="n">04.5</span>Tempo at ang click</h2>
+      <p>Nagpapakita ng malaking numero na may caption na <b class="ui">BPM</b> ang tempo block sa Loop tab. Kapag walang nakatakdang tempo, <b class="ui">ITAKDA ANG TEMPO</b> ang nakikita sa ibabaw ng <b class="ui">—</b>. I-tap ito para sa tempo sheet.</p>
+      <p>May numeric field ang sheet (placeholder na <b class="ui">120</b>, saklaw na <b>20 hanggang 300</b>) na may <b class="ui">BPM</b> sa tabi nito, isang malaking <b class="ui">TAP</b> button na nagbabasang <b class="ui">ulit…</b> pagkatapos ng unang tap mo, pati ang <b class="ui">I-clear (muling tutukuyin ng AUTO)</b> at <b class="ui">Tapos na</b>. I-clear ito kapag gusto mong ang AUTO na ang umalam ng tempo mula sa pagtugtog mo.</p>
+      <p>Naaabot din ang parehong sheet mula sa header ng <b class="ui a">Rig</b>: ino-on at ino-off ng metronome chip ang click sa isang <b>tap</b> at binubuksan ang <b class="ui">ITAKDA ANG TEMPO</b> sa
+        <b>matagal na pagpindot</b>.</p>
+      <p>. Ino-on ng <b class="ui">CLICK</b> ang metronome. Ang pag-on nito nang walang nakatakdang tempo ay
+        <b>sapilitang naglalagay ng 120 BPM</b> at muling sinisimulan ang bar, kaya hindi kailanman neutral na gawain ang pag-on ng click. Nasa Settings → <b class="ui">METRONOME</b> ang level ng click at ang output bus ng click, kung saan puwede itong magkaroon ng sariling output pair para sa in-ear monitoring.</p>
+      <div class="note warn">
+        <div class="t">Walang count-in</div>
+        <p>Nagsisimula ang recording sa pag-tap ng record. Kung gusto mo ng isang bar ng click bago ka tumugtog, ihanda ang pad gamit ang AUTO at hayaang ang unang note mo ang magsimula ng take, o i-record ang unang loop kasabay ng cycle na tumatakbo na.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">04.6</span>Ang loop editor</h2>
+      <p>Buksan ito gamit ang edit button sa control row ng isang pad, o pindutin nang matagal ang card → <b class="ui">I-edit ang loop…</b>. Ang pamagat ng sheet ay <b class="ui">LOOP N</b> na may live na label ng haba.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1304"
+             alt="Ang loop editor sheet sa ibabaw ng looper: isang waveform na may grid ng bar at beat, mga nahihilang start at end handle, ang mga hanay ng button na START at LENGTH · TEMPO KEPT, ang Level at Pan na knob, at ang mga button na Mute, Undo at Clear.">
+        <figcaption>Ang loop editor: grid, mga handle, mga nudge button at ang row sa ibaba</figcaption>
+      </figure>
+      <p>Ganito ang nakikita sa label: <b class="ui">8.00 s · 4.0 bars</b>. Ang paghila sa end handle ay nagdaragdag ng tempo na malilikha ng habang iyon; ang paghila sa start handle ay nagbabago nito sa <b class="ui">start +0.50 beats</b>.</p>
+      <p>May patong na <b>grid ng bar at beat</b> ang waveform — mga tik ng beat at mga bar line na may numero, nakaangkla sa simula ng loop. Malabong iginuguhit ang audio na lampas sa dulo ng loop: itinatago pero tahimik, at iyon ang nagpapahintulot sa iyong itulak palabas muli ang end handle mamaya.</p>
+
+      <h3>Ang dalawang handle</h3>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Ang simula</b> (<b class="ui">Handle ng simula ng loop</b>) ay umiikot sa phase: mas huli nagsisimula ang loop at umiikot sa dulo ang nilaktawang piraso. Hindi nagbabago ang haba at ang tempo. Ito ang lunas sa loop na nagsisimula nang kalahating beat na maaga.</li>
+        <li><b>Ang dulo</b> (<b class="ui">Handle ng dulo ng loop</b>) ay nagbabago ng laki ng loop, at gumagana ito
+          <b>sa track lang na nagtatakda ng cycle</b>. Napapanatili ang bilang ng bar at sumusunod ang nakatakdang tempo, kaya ang pag-unat sa loop ay nagpapabagal sa buong set. Ganito rin ang sabi ng sheet: <b class="ui">Hilahin ang mga gilid para igalaw ang simula at baguhin ang laki ng loop — inaayos din nito ang nakatakdang tempo.</b></li>
+      </ul>
+      <p>Nagpapakita ang walang lamang track ng <b class="ui">walang audio</b> at walang mahihila.</p>
+
+      <h3>Ang mga hanay ng button</h3>
+      <p>Sa ilalim ng waveform, nagbibigay ang <b class="ui">SIMULA</b> ng apat na nudge sa phase — <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>, <b class="ui">+BAR</b> — para sa mga pagkakataong mas hindi tumpak ang hinlalaki mo kaysa sa grid. Ang simula lang ang ginagalaw nila.</p>
+      <p>Anim ang ibinibigay ng <b class="ui">HABA · NANATILING TEMPO</b>: ang parehong apat pati ang <b class="ui">÷2</b> at <b class="ui">×2</b>. Ginagawa ng paghahati ang aksidenteng walong-bar na take na apat-na-bar na loop na sinadya mong tugtugin; nagbibigay ang pagdodoble ng puwang para mag-overdub ng pariralang doble ang haba sa cycle.</p>
+      <div class="note">
+        <div class="t">Bakit kulay-abo ang mga button ng haba</div>
+        <p>Hindi gumagana ang lahat ng anim na button ng <b class="ui">HABA · NANATILING TEMPO</b> maliban kung ang track na ine-edit mo ang siyang nagtatakda ng cycle, at ipinapaliwanag ng sheet kung bakit: <b class="ui">Ang track lang na nagtatakda ng cycle ang puwedeng magbago ng haba nito.</b> Kung mali ang haba sa isang sumusunod na track, ang master loop ang dapat i-edit.</p>
+      </div>
+      <p>Naglalaman ang row sa ibaba ng isang <b class="ui">Level</b> knob (0 hanggang 1.5), isang <b class="ui">Pan</b> knob na nagbabasang <b class="ui">C</b>, <b class="ui">L50</b> o <b class="ui">R50</b>, at ng mga button na <b class="ui">I-mute</b>, <b class="ui">I-undo</b> at <b class="ui">I-clear</b>.</p>
+      <p>Walang reverse. Pasulong lang tumutugtog ang mga loop.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="undo"><span class="n">04.7</span>Undo</h2>
+      <p>Ang undo ay isang <b>toggle</b>, hindi stack. Kumukuha ng snapshot ng audio ang bawat overdub session bago dumaan ang dub; ibinabalik ng undo ang snapshot na iyon, at ang muling pagpindot dito ay ibinabalik ang overdub mo. Kasing-compare button din ito ng pagiging undo button nito.</p>
+      <p>Dalawang limitasyon: ito ay <b>isang session lang ang lalim</b>, kaya pinapalitan ng pangalawang overdub ang hawak ng undo, at ito ay <b>hinahati sa mga track</b>  — isang snapshot para sa buong looper, hindi tig-isa kada track. Mag-overdub sa track 2 at mawawala ang undo na iniingatan mo para sa track 1.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="routing"><span class="n">04.8</span>Routing kada track</h2>
+      <p>Ang <b class="ui">IN</b> at <b class="ui">OUT</b> ang nagpapasya kung saan nanggagaling at saan pupunta ang audio ng track; ang <b class="ui">LEN</b> at <b class="ui">DUB</b> ang nagpapasya kung gaano katagal at ilang ikot.</p>
+
+      <h3>IN</h3>
+      <p>Inaalok ng <b class="ui">IN</b> menu ang <b class="ui">Post FX (ang rig)</b> — ang naprosesong gitara, na siyang karaniwang gusto mo. Kapag maraming rig, nagiging <b class="ui">Post FX · &lt;rig name&gt;</b> ito kada rig at ang chip ay nagbabasang <b class="ui">FX · &lt;rig&gt;</b>. Sa ilalim niyon, isang entry kada hardware input channel sa sarili nitong pangalan — isang dry na vocal o pangalawang manunugtog diretso mula sa interface — at ang <b class="ui">Sampler</b>, chip na <b class="ui">SMP</b>, para i-loop ang mga pad.</p>
+
+      <h3>OUT</h3>
+      <p>Inaalok ng <b class="ui">OUT</b> menu ang <b class="ui">Main mix</b> (chip na <b class="ui">MAIN</b>), isang entry kada dagdag na hardware output pair — <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> at iba pa, na nangangailangang naka-on ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings — at ang <b class="ui">Into &lt;rig name&gt;</b>.</p>
+      <p>Ang huli ang kawili-wili: sa halip na dumiretso sa mix, tumutugtog ang loop
+        <em>papasok sa</em> rig na iyon, kaya pinoproseso ito nang live ng mga effect ng rig. Mag-loop ng malinis na bahagi, ipadala ito sa rig na may delay at filter, at galawin ang filter habang tumatakbo ang loop. Hindi inaalok ang rig na pinagre-record ng track — magiging daan iyon ng feedback.</p>
+
+      <h3>LEN at DUB</h3>
+      <p>Umiikot ang <b class="ui">LEN</b> chip sa 0, 1, 2, 4 at 8 na bar. Sa 0, <b class="ui">LIBRE</b> ang nakikita; kung hindi, <b class="ui">N BAR</b>, at nakapirmi ang take sa ganoong dami ng bar. Kapag walang nakatakdang tempo, sinasabi ng menu ang <b class="ui">Wala pang tempo — i-record ang unang loop na naka-on ang AUTO</b>.</p>
+      <p>Umiikot ang <b class="ui">DUB</b> chip sa 0, 1, 2 at 4 na awtomatikong ikot ng overdub — kusang bumabalik sa pagtugtog ang track pagkatapos ng ganoong dami ng ikot.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="saving"><span class="n">04.9</span>Ano ang nase-save</h2>
+      <p>Binubuksan ng <b class="ui">MGA PRESET</b> chip ang <b class="ui">Mga Looper Preset</b>, at hawak nila ang
+        <b>setup lamang</b>: ang IN, OUT, LEN, DUB at pan ng bawat track, pati ang AUTO flag. Isang routing template na binabalikan mo sa simula ng kanta — hindi isang recording.</p>
+      <div class="note warn">
+        <div class="t">Hindi ma-export ang audio ng loop</div>
+        <p>Walang paraan para i-save ang loop bilang file — walang export, walang share sheet. Ang tanging paraan para makuha ang tinugtog ng looper ay ang recorder ng <b class="ui a">Perform</b> tab, na nagre-record ng output mix (rig, looper, mga pad at backing nang sabay, pati ang hiwalay na dry input stem). Kung sulit itago ang isang loop, pindutin ang record sa Perform at hayaan itong tumakbo.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/plugins.html">← 03 · Mga AU plugin</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/sampler.html">05 · Mga sampler pad →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

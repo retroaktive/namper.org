@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDI at control — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Ang control map at MIDI learn, lahat ng puwede mong pag-mapahan, ang built-in na MIDI map, Bluetooth pairing, mga trigger na itinurong tunog, at ang tuner.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="MIDI at control — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Imapa ang mga footswitch, pedal at itinurong tunog sa kahit ano sa NAMper — pati ang built-in na MIDI map at ang tuner.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/control.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/control.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/control.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/control.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/control.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/control.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/control.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/control.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/control.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/control.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/control.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/control.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/control.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/control.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/control.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/control.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/control.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/control.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/control.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/control.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a class="on" href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI AT CONTROL</div>
+    <h1>Nasa gitara ang mga kamay.</h1>
+    <p class="lede">Mga footswitch, pedal, katok sa katawan ng instrumento — ang <b class="ui a">Control</b> tab ang lugar kung saan mo pinipili kung ano ang nagpapaputok ng ano, para manatili sa stand ang telepono sa buong set. Dito rin nakatira ang tuner.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#map">Ang control map</a></li>
+        <li><a href="#learn">MIDI learn</a></li>
+        <li><a href="#actions">Kung saan ka puwedeng mag-mapa</a></li>
+        <li><a href="#builtin">Ang built-in na MIDI map</a></li>
+        <li><a href="#bluetooth">Bluetooth MIDI</a></li>
+        <li><a href="#sounds">Mga trigger na itinurong tunog</a></li>
+        <li><a href="#tuner">Ang tuner</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="map"><span class="n">07.1</span>Ang control map</h2>
+      <p>May tatlong card ang <b class="ui a">Control</b> tab. Ang una ay <b class="ui">CONTROL MAP</b> — ang sarili mong mga mapping, ang mga nangingibabaw sa lahat ng iba. Sinasabi ng paglalarawan nito kung ano ang tinatanggap nito: <b class="ui">Mga MIDI control at input trigger, naimapa sa kahit ano. Mga source: anumang CC o note (gamitin ang LEARN), katok sa katawan ng gitara, hawak na note o chord.</b></p>
+      <p>May presets chip at <b class="ui">+</b> (<b class="ui">Magdagdag ng mapping</b>) ang header. Kapag wala pang naimapa, ganito ang card: <b class="ui">Wala pang mapping — magdagdag gamit ang +</b>.</p>
+      <p>Bawat mapping ay isang row, binabasa mula kaliwa pakanan: source chip, <b class="ui">LEARN</b> button, arrow, action chip, at <b class="ui">✕</b> para burahin ang row. Nakatira ang mga naka-save na map sa ilalim ng <b class="ui">Mga Control Preset</b> sa presets chip, kaya hindi kailangang sumunod sa susunod na banda ang layout ng pedalboard para sa isa.</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
+             alt="Ang Control tab: ang CONTROL MAP card na may mga mapping row, ang TAUGHT SOUNDS card, at ang BUILT-IN NA MIDI MAP card na naglilista ng mga saklaw ng CC na may button na Mag-pair ng Bluetooth MIDI sa ibaba.">
+        <figcaption>Ang Control tab — ang map mo, ang mga itinurong tunog mo, at ang built-in na map</figcaption>
+      </figure>
+
+      <div class="note warn">
+        <div class="t">Apat na input trigger</div>
+        <p>Ang unang apat na row lang na pinapatakbo ng itinurong tunog ang live. Magdagdag ng ikalima at bibigyan ka ng babala ng card: <b class="ui r">Ang unang 4 na input trigger lang ang aktibo</b>. Walang ganoong limitasyon ang mga MIDI row — tungkol ito sa pakikinig sa instrumento.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="learn"><span class="n">07.2</span>MIDI learn</h2>
+      <p>Hindi ka kailanman magta-type ng numero ng CC. Sa isang mapping row:</p>
+      <ol style="--nc:var(--eq)">
+        <li>I-tap ang <b class="ui">LEARN</b>. Magniningning ang chip at maghihintay ang row.</li>
+        <li>Pindutin ang footswitch o galawin ang pedal na gusto mong gamitin.</li>
+        <li>Napupunan ang source chip bilang <b class="ui">CC 42</b> o <b class="ui">Note 60</b>, at kinukumpirma ito ng <b class="ui">Last:</b> na linya ng card — <b class="ui">Learned CC 42</b>.</li>
+      </ol>
+      <p>I-tap muli ang <b class="ui">LEARN</b> para i-disarm. May seksyong <b class="ui">MIDI</b> ang sariling menu ng source chip na naglalaman ng <b class="ui">CC… (gamitin ang LEARN)</b> at <b class="ui">Note… (gamitin ang LEARN)</b>, at seksyong <b class="ui">Mga itinurong tunog</b> na naglilista ng mga tunog na sinanay mo pati na ang <b class="ui">Magturo ng bagong tunog…</b></p>
+
+      <h3>Mag-learn sa mismong lugar</h3>
+      <p>Hindi mo kailangang magsimula sa Control tab. Pindutin nang matagal ang halos anumang kontrol sa app — isang knob, isang chip row, isang looper pad, isang sampler pad, ang mga transport button ng Perform — at inaalok ng menu ang <b class="ui">MIDI Learn: &lt;name&gt;</b> para sa mismong kontrol na iyon. Binabalangkas nito ang sarili at ipinapakita ang <b class="ui">GUMALAW NG MIDI CONTROL…</b>; galawin ang pedal at nagawa na ang mapping. Umuurong ang <b class="ui">Kanselahin ang learn</b> kung maling knob ang nahawakan mo.</p>
+      <div class="note tip">
+        <div class="t">Ang mabilis na paraan ng pagbuo ng board</div>
+        <p>Mas mabuti ang pag-learn sa mismong lugar kaysa sa Control tab para sa kahit anong nakikita mo: buksan ang block, pindutin nang matagal ang knob na gusto mo sa pedal, pindutin ang switch, tapos na. Para sa pagsusuri at pag-aayos ng nabuo mo ang Control tab.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="actions"><span class="n">07.3</span>Kung saan ka puwedeng mag-mapa</h2>
+      <p>Ang buong menu ng action chip:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Seksyon</th><th>Mga aksyon</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Walang aksyon</b></td><td>Iniiwang walang gana ang row.</td></tr>
+            <tr><td><b class="ui">Sampler pad</b></td><td><b class="ui">Pad 1</b> pataas, tig-isa kada may lamang pad.</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
+              track 4</b>, <b class="ui">Run / stop</b>, <b class="ui">I-clear lahat</b>.</td></tr>
+            <tr><td><b class="ui">Preset</b></td><td>Bawat rig preset ayon sa pangalan, pati ang <b class="ui">Susunod na preset</b>.</td></tr>
+            <tr><td><b class="ui">Perform</b></td><td><b class="ui">Play / pause</b>,
+              <b class="ui">Ihinto</b>, <b class="ui">Susunod na section</b>,
+              <b class="ui">Nakaraang section</b>.</td></tr>
+            <tr><td>Kada rig</td><td><b class="ui">Block on/off</b> at <b class="ui">Block parameter
+              (CC)</b>, nakalista sa ilalim ng bawat rig ayon sa pangalan.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Kapag mahigit isa na ang rig mo, lalabas ang tatlo pang entry: <b class="ui">Susunod na rig</b>, <b class="ui">Block on/off · Aktibong rig</b> at <b class="ui">Block param · Aktibong rig</b>. Sumusunod ang mga iyon sa kung aling rig ang kasalukuyang may MIDI focus, kaya kayang i-bypass ng isang footswitch ang "ang drive sa kung anong rig ang tinutugtog ko" sa halip na isang nakatakdang block sa nakatakdang rig.</p>
+      <p>May dalawang limitasyong dapat tandaan bago mag-kabit ng pedal:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Kailangan ng CC ang tuloy-tuloy na block parameter.</b> Mga pangyayari ang mga note at itinurong tunog — hindi sila makakagalaw ng halaga nang tuloy-tuloy — kaya nakatago ang parameter submenu para sa mga source na iyon. Ang gusto mo ay expression pedal na nagpapadala ng CC.</li>
+        <li><b>Malambot na pagsalo pagkatapos magpalit ng rig.</b> Ang tuloy-tuloy na CC na naka-mapa sa <b class="ui">Block param · Aktibong rig</b> ay hindi naglulundag ng knob kapag nagpalit ka ng rig. Naghihintay ito hanggang madaanan ng pedal mo ang kasalukuyang halaga ng bagong rig, saka humahawak — kaya ang pagpapalit ng rig sa gitna ng kanta ay hindi kailanman naglilipat bigla ng parameter sa kung nasaan ang paa mo.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="builtin"><span class="n">07.4</span>Ang built-in na MIDI map</h2>
+      <p>Bago ka pa mag-mapa ng anuman, may nakatakdang layout nang live — isaksak ang controller at gumagana ito. Tinatanggap ang lahat ng channel, dahil omni ang pakikinig ng NAMper, at awtomatikong nakokonekta ang bawat source na lumalabas. Naglalathala rin ang app ng virtual destination na tinatawag na <b class="ui">NAMper</b>, kaya makakapagpadala rito ang ibang app sa parehong device.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Ipinapakita bilang</th><th>Ginagawa</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">mga preset</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">block on/off</b> — gate, comp, drive, amp, cab, phaser, flanger, chorus, trem, delay, cloud, sa ganoong pagkakasunod; naka-on ang halagang 64 pataas</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">mga block parameter</b> — 0–127 na isinusukat sa saklaw ng bawat parameter. Nilalaktawan ang <b class="ui">CC 64</b> at iniiwang libre para sa sustain pedal</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">mga tap sa looper track</b> — mga track 1 hanggang 4</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper run-stop /
+              clear</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pause · stop · susunod · nakaraan</b></td></tr>
+            <tr><td><b class="ui">Notes 36–51</b></td><td><b class="ui">mga pad 1–16</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Laging nananalo ang sarili mong mga mapping. Kung magtuturo ka ng footswitch sa CC 85, tatakbo ang row mo at uurong ang built-in na tap ng track 1 sa CC na iyon — kaya hindi mo kailangang umiwas sa mga default, dadaan ka lang sa ibabaw nila.</p>
+      <div class="note">
+        <div class="t">Nagto-toggle ang CC 89</div>
+        <p>Tunay na run/stop toggle ang built-in na <b class="ui">CC 89</b>: binabasa nito ang kasalukuyang estado ng looper, hinihinto ito kapag tumatakbo (bilang tumatakbo ang recording) at sinisimulan ito mula sa umpisa kapag nakahinto. Ganito rin kumilos ang natutunang mapping sa aksyong <b class="ui">Run / stop</b>.</p>
+      </div>
+      <p>Sinasadyang maluwag sa mga murang pedal ang pagtukoy ng pagpindot. Binibilang na pagpindot ang isang mensahe kapag 64 pataas ang halaga nito, at gayundin kapag mababa ito pero hindi sumunod sa mataas — kaya kahit ang footswitch na nagpapadala ng bawat pindot bilang halagang 0 ay nakakapagpaputok pa rin ng mga hiwalay na aksyon.</p>
+      <p>Sa ibaba ng card, may isang linyang nagsasabi kung ano ang nakikita ng NAMper: <b class="ui">MIDI: naghihintay ng mga source</b> o ang mga pangalan ng nakakonektang source, na may <b class="ui">Last:</b> na linya sa ilalim nito na nagpapakita ng pinakahuling pangyayari. Kung walang ginagawa ang isang pedal, doon muna tumingin — sinasabi nito kung dumarating ba talaga ang mga mensahe.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="bluetooth"><span class="n">07.5</span>Bluetooth MIDI</h2>
+      <p>Nagpa-pair ang mga wireless pedal mula sa loob ng app. Sa ibaba ng card ng built-in na map, i-tap ang <b class="ui">Mag-pair ng Bluetooth MIDI</b>. Bubukas ang sheet na pinamagatang <b class="ui">Bluetooth MIDI</b> na may panel ng system pairing at isang <b class="ui">Tapos na</b> button. Ilagay ang pedal mo sa pairing mode, i-tap ito sa listahan, at sasama ito sa linya ng MIDI sources.</p>
+      <div class="note warn">
+        <div class="t">Huwag itong i-tap nang dalawang beses</div>
+        <p>May dahilan kung bakit may ganitong babala ang sheet: <b class="ui">Ang pag-tap sa isang device ay nagpapalit sa koneksyon nito — konektado na ang pedal na nakalista sa linya ng MIDI sources; huwag na itong i-tap ulit.</b> Ang pag-tap sa nakakonektang pedal ay nagdidiskonekta rito. Kung hindi ka sigurado, tingnan ang linya ng sources sa ibaba ng card bago humipo ng kahit ano.</p>
+      </div>
+      <p>Hinihingi ng NAMper ang pahintulot sa Bluetooth sa unang pagbukas mo ng sheet na ito, at para sa wala nang iba.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="sounds"><span class="n">07.6</span>Mga trigger na itinurong tunog</h2>
+      <p>Walang kailangang hardware ang <b class="ui">MGA ITINURONG TUNOG</b> card. Tinuturuan mo ang NAMper ng ingay na kaya mong gawin gamit ang instrumentong hawak mo, at mula noon nagpapaputok ito ng kahit anong aksyon, tulad na tulad ng MIDI event. Malinaw ang sinasabi ng walang lamang estado: <b class="ui">Turuan ang app ng isang tunog — katok sa katawan, sampal sa kuwerdas, click sa likod ng bridge — tapos imapa ito sa kahit anong aksyon, gaya ng MIDI event.</b></p>
+
+      <h3>Pagtuturo ng isa</h3>
+      <p>I-tap ang <b class="ui">TURUAN</b> at bubukas ang sheet na <b class="ui">MAGTURO NG TUNOG</b> kasama ang tagubilin nito: <b class="ui">Gawin ang tunog nang 3–5 beses, pare-pareho ang paraan: katukin ang katawan, sampalin ang mga kuwerdas, mag-click sa likod ng bridge — kahit ano na may malinaw na attack.</b> Napupunan ang walong tuldok habang dumarating ang mga take, at ganito ang estado: <b class="ui">Nakikinig…</b> tapos ang bilang. Bigyan ito ng pangalan sa field na <b class="ui">Pangalan ng tunog</b> at i-tap ang <b class="ui">I-save ang tunog</b>. Kailangan ng hindi bababa sa dalawang take para makapag-save, at hanggang walo ang inaaverage — mas magkakatulad na take, mas maaasahang trigger.</p>
+      <p>Ipinapakita ng bawat row ang pangalan, ang bilang ng paggamit gaya ng <b class="ui">3×</b>, isang <b class="ui">TURUAN ULIT</b> button at isang pambura na <b class="ui">✕</b>. I-tap ang pangalan para palitan ito. Pinapanatili ng muling pagtuturo ang pangalan at ang bawat mapping na nakaturo rito, kaya kung may tunog na nagsimulang magkamali pagkatapos mong magpalit ng gitara, ituro itong muli sa halip na magsimula sa umpisa.</p>
+      <div class="note warn">
+        <div class="t">Kasama ng pagbura ang mga mapping</div>
+        <p>Burahin ang isang itinurong tunog at mawawala rin ang bawat mapping na nakikinig dito. Sinasabi sa iyo ng bilang ng paggamit sa row kung ilan iyon bago mo i-tap ang ✕.</p>
+      </div>
+      <p>Kayang magpaputok ng itinurong tunog ng kahit anong aksyon sa menu maliban sa tuloy-tuloy na block parameter — pangyayari ito, hindi tuloy-tuloy na paggalaw. At gaya sa control map, ang unang apat na mapping ng itinurong tunog lang ang sabay na aktibo.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="tuner"><span class="n">07.7</span>Ang tuner</h2>
+      <p>Hindi tab ang tuner. Bumubukas ito mula sa tuning-fork icon sa header ng <b class="ui a">Rig</b>, at gumagana ito kapag tumatakbo ang audio engine — pati na kapag minute ng feedback guard ang output, kaya puwede ka pa ring mag-tune gamit ang sariling speaker ng telepono.</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
+             alt="Ang tuner sheet sa POLY mode: mga mode chip, isang GUITAR badge, isang hanay ng mga tuning chip, at anim na patayong string meter na may pangalan ng note sa ilalim.">
+        <figcaption>POLY mode — sabay na binabasa ang anim na kuwerdas</figcaption>
+      </figure>
+
+      <p>May dalawang mode chip sa itaas, <b class="ui">POLY</b> at <b class="ui">SINGLE</b>. Ang <b class="ui">POLY</b> ang default at ang gamitin sa entablado: mag-strum minsan at sabay na babasahin ang bawat kuwerdas, isang patayong meter kada kuwerdas na may note sa ilalim. Sinasabi ito ng caption nito — <b class="ui">strum — sabay na binabasa ang bawat kuwerdas</b>. Nagiging berde ang tuldok ng kuwerdas sa loob ng ±5 cents.</p>
+      <p>Ang <b class="ui">SINGLE</b> ang klasikong tuner na tig-isang note: malaking letra ng note, karayom sa ±50 cents at readout ng cents, nagiging berde sa loob ng ±3 cents. Kapag walang signal, ipinapakita nito ang <b class="ui">tumugtog ng note…</b> Gamitin ito kapag gusto mong maging tumpak sa isang kuwerdas.</p>
+
+      <h3>Instrumento at tuning</h3>
+      <p>Kusang natutukoy ng NAMper kung ano ang hawak mo at ipinapakita ito bilang pill: <b class="ui">GITARA</b>, <b class="ui">BASS</b> o <b class="ui">UKULELE</b>. Walang picker — isaksak ang bass at susunod ang tuner.</p>
+      <p>Umiiral ang mga tuning chip sa <b class="ui">POLY</b> mode, at naaalala ng bawat instrumento ang sariling pinili:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Instrumento</th><th>Mga tuning</th></tr></thead>
+          <tbody>
+            <tr><td>Gitara</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
+              <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
+              <b class="ui">Open D</b></td></tr>
+            <tr><td>Bass</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+              <b class="ui">5-str B</b></td></tr>
+            <tr><td>Ukulele</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Nakatakda ang reference pitch sa A4 = 440 Hz. Walang kontrol sa calibration, kaya kung tutugtog ka kasama ng orkestra sa 442, hindi ka susundan doon ng tuner.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/perform.html">← 06 · Perform at lyrics</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/settings.html">08 · Sanggunian sa mga setting →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

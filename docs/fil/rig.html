@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rig at signal chain — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Pagbuo ng rig: ang blocks palette, ang limang EQ model, mga NAM amp profile at TONE3000, mga cab IR, mga preset at MIDI PC slot, maraming rig, mga parallel branch at ang master section.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Rig at signal chain — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Mga block, EQ model, NAM profile, TONE3000, cab IR, preset, maraming rig, parallel branch at ang master section.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/rig.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/rig.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/rig.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/rig.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/rig.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/rig.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/rig.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/rig.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/rig.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/rig.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/rig.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/rig.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/rig.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/rig.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/rig.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/rig.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/rig.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/rig.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/rig.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/rig.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a class="on" href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--amp)">02 · RIG AT SIGNAL CHAIN</div>
+    <h1>Pagbuo ng tunog.</h1>
+    <p class="lede">Nasa <b class="ui a">Rig</b> tab ang signal chain mo: mga block na idinaragdag at hinihila mo, isang NAM amp profile sa gitna nito, isang cab impulse response pagkatapos nito, at isang master section kung saan nagsasama ang lahat. Sakop ng pahinang ito ang lahat ng iyon — hanggang apat na rig, apat na parallel chain sa loob ng bawat isa, at ang mga preset na bumabalik sa kabuuan.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#blocks">Ang blocks palette</a></li>
+        <li><a href="#models">Mga model sa loob ng mga block</a></li>
+        <li><a href="#eq">Ang limang EQ model</a></li>
+        <li><a href="#nam">Mga NAM amp profile</a></li>
+        <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#cabs">Mga cab at IR</a></li>
+        <li><a href="#presets">Mga preset</a></li>
+        <li><a href="#rigs">Maraming rig</a></li>
+        <li><a href="#branches">Mga parallel branch</a></li>
+        <li><a href="#master">Ang master section</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="blocks"><span class="n">02.1</span>Ang blocks palette</h2>
+      <p>Nagsisimulang walang laman ang isang chain at ikaw ang pumupuno rito. I-tap ang putol-putol na <b class="ui">ADD</b> chip sa dulo ng chain at bubukas ang palette, nakagrupo sa mga seksyon. Pumili ng block at bumababa ito sa chain sa puntong iyon — at agad na bumubukas ang editor nito, kaya sa mga knob ka dumadapo at hindi sa isang hindi pa nagagalaw na chip.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Seksyon</th><th>Mga block</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Dynamics</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
+            <tr><td><b class="ui">Amp at Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Tube Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
+            <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Room</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">IR Verb</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
+            <tr><td><b class="ui">Utility</b></td><td><b class="ui">Volume</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
+            <tr><td><b class="ui">Mga Plugin</b></td><td>ang submenu na <b class="ui">Mga AU Plugin</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Walang pumipigil sa iyong magdagdag ng parehong block nang dalawang beses. Binibigyan ng numero ang mga duplicate habang dumarating — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — at laging naka-malaking titik ang pangalan ng block sa mga chip. Dalawang drive na magkasunod, isang gate sa unahan at isa pa pagkatapos ng amp: ayos lang lahat.</p>
+
+      <h3>Pagtatrabaho sa isang block</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Aksyon</th><th>Paano</th></tr></thead>
+          <tbody>
+            <tr><td>Bypass</td><td>I-tap ang maliit na LED na tuldok sa ilalim ng pangalan ng block sa chip. Sinasadyang malaki ang lugar na mahihipo — ito ang kontrol na pipindutin mo sa gitna ng kanta. Ganito rin ang ginagawa ng footswitch sa loob ng block sheet, gayundin ang matagal na pagpindot → <b class="ui">Paganahin</b> / <b class="ui">Bypass</b></td></tr>
+            <tr><td>Buksan ang editor</td><td>I-tap ang block chip</td></tr>
+            <tr><td>Baguhin ang pagkakasunod</td><td>Hilahin ang chip sa chain nito, o pindutin nang matagal → <b class="ui">Igalaw pakaliwa</b> / <b class="ui">Igalaw pakanan</b>. Sa loob lang ng iisang chain gumagana ang pagbabago ng pagkakasunod</td></tr>
+            <tr><td>Alisin</td><td>Pindutin nang matagal → <b class="ui">Alisin</b></td></tr>
+            <tr><td>I-reset ang isang knob</td><td>I-double tap ito</td></tr>
+            <tr><td>MIDI-learn ang isang kontrol</td><td>Pindutin nang matagal ang kahit anong knob o chip row → <b class="ui">MIDI Learn “&lt;label&gt;”</b>. Binabalangkas ng kontrol ang sarili at ipinapakita ang <b class="ui">GUMALAW NG MIDI CONTROL…</b>; umuurong ang <b class="ui">Kanselahin ang learn</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Malinaw na sinasabi ng block na walang sariling parameter kapag binuksan mo ito: <b class="ui">Walang maiaayos dito</b>. Normal na paggana iyon ng block, hindi estado ng pag-load.</p>
+      <div class="note warn">
+        <div class="t">Walang duplicate</div>
+        <p>Walang aksyong copy o duplicate para sa mga block ang NAMper, kahit saan. Para magkaroon ng pangalawang block na may parehong setting, magdagdag ng bago at ayusin ito. Para gamitin muli ang buong chain, i-save ito bilang preset at buuin ang susunod na rig mula sa preset na iyon.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="models"><span class="n">02.2</span>Mga model sa loob ng mga block</h2>
+      <p>Ang ilang block ay talagang isang pamilya ng mga pedal o circuit sa likod ng isang chip. Buksan ang block at pumipili ng lasa ang hanay ng mga chip sa itaas — pareho ang mga knob, nagbabago ang karakter.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Block</th><th>Hanay ng chip</th><th>Mga pagpipilian</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
+            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz</b>, <b class="ui">Sustain</b></td></tr>
+            <tr><td><b class="ui">Tube Amp</b></td><td><b class="ui">Model</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>,
+                <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
+            <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mode</b></td>
+              <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mode</b> · <b class="ui">Sync</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
+            <tr><td><b class="ui">Room</b></td><td><b class="ui">Room</b></td>
+              <td><b class="ui">Studio</b>, <b class="ui">Maliit</b>, <b class="ui">Chamber</b>, <b class="ui">Malaki</b></td></tr>
+            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Bilis</b></td>
+              <td><b class="ui">Mabagal</b>, <b class="ui">Mabilis</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Mga Voice</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
+            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Key</b> · <b class="ui">Interval</b> · <b class="ui">Makinig</b></td>
+              <td>12 note pati ang <b class="ui">AUTO</b> at <b class="ui">TRACK</b> · <b class="ui">-8ve</b>, <b class="ui">-5th</b>, <b class="ui">-3rd</b>, <b class="ui">+3rd</b>, <b class="ui">+4th</b>, <b class="ui">+5th</b>, <b class="ui">+6th</b>, <b class="ui">+8ve</b> · <b class="ui">SARILI</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Key</b></td>
+              <td>ang parehong listahan ng key, pati ang <b class="ui">CHROM</b> at <b class="ui">SET</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ang <b class="ui">Tube Amp</b> block ang sariling amp simulation ng NAMper, at dala nito ang mga knob na inaasahan mo: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, <b class="ui">Presence</b> at <b class="ui">Master</b>, pawang tumatakbo sa 0–10 kung saan patag ang 5. Walang kailangang download at walang account, kaya ito ang nagdadala ng palabas kapag offline ka.</p>
+      <div class="note tip">
+        <div class="t">Harmony na nakikinig sa ibang rig</div>
+        <p>Hindi routing control ang <b class="ui">Makinig</b> na row ng Harmony — dito kinukuha ng harmoniser ang chord nito. Iwan ito sa <b class="ui">SARILI</b> at susunod ito sa signal ng sariling chain nito; ituro ito sa <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> at maha-harmonize ang isang vocal line laban sa tinutugtog ng guitar rig.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="eq"><span class="n">02.3</span>Ang limang EQ model</h2>
+      <p>May iisang <b class="ui">EQ</b> block, at sa loob nito ay limang ganap na magkaibang equaliser. Ang pagpapalit ng model ay nagpapalit sa set ng knob pati na sa tunog, kaya piliin ang tumutugma sa trabaho — isang mabilis na pag-ayos ng tono, isang surgical na cut, o isang shelf na parang mastering.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Model</th><th>Ano ito</th><th>Mga knob</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tone</b></td>
+              <td>Klasikong three-band — low shelf sa 100 Hz, peak sa 800 Hz, high shelf sa 3 kHz. Pareho ito sa mga filter ng lumang three-band na EQ, kaya hindi nagbabago ang tunog ng mga lumang rig.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, tig-±12 dB</td></tr>
+            <tr><td><b class="ui">Para</b></td>
+              <td>Buong parametric — ang parehong tatlong band, pero gumagalaw ang bawat frequency at nagkakaroon ng Q control ang mid.</td>
+              <td><b class="ui">Mababa</b>, <b class="ui">Mid</b>, <b class="ui">Mataas</b>,
+                <b class="ui">Lo Freq</b> 40–400, <b class="ui">Mid Freq</b> 200–5000,
+                <b class="ui">Hi Freq</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">Passive</b></td>
+              <td>Ang klasikong trick ng passive program-EQ: isang low shelf boost kasama ang bahagyang mas mataas na cut shelf, kaya sabay kang nagbo-boost at nag-a-attenuate para sa masikip na low end — may malapad na high bell at high shelf cut sa ibabaw.</td>
+              <td><b class="ui">Lo Boost</b>, <b class="ui">Lo Atten</b>, <b class="ui">Lo Freq</b> 20–120,
+                <b class="ui">Hi Boost</b>, <b class="ui">Hi Freq</b> 2k–16k, <b class="ui">Lapad</b>,
+                <b class="ui">Hi Atten</b>, <b class="ui">Atten Hz</b> 4k–20k</td></tr>
+            <tr><td><b class="ui">Console</b></td>
+              <td>Isang British console channel strip — isang 12 dB/octave na high-pass (pinapatay ito ng 0), isang LF shelf, isang low-mid bell na may Q, at isang HF shelf.</td>
+              <td><b class="ui">HPF</b> 0–300, <b class="ui">Mababa</b>, <b class="ui">Lo Freq</b>,
+                <b class="ui">Mid</b>, <b class="ui">Mid Freq</b>, <b class="ui">Q</b>,
+                <b class="ui">Mataas</b>, <b class="ui">Hi Freq</b></td></tr>
+            <tr><td><b class="ui">Bax</b></td>
+              <td>Baxandall — dalawang napakalapad, napakabanayad na shelf. Ito ang aabutin mo kapag gusto mong bahagyang padilimin o paliwanagin ang buong tunog.</td>
+              <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure>
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+             alt="Ang EQ block sheet na napili ang Passive na model, ipinapakita ang walong knob nito: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Lapad, Hi Atten at Atten Hz, may IN at OUT na meter sa itaas.">
+        <figcaption>Ang EQ block sa Passive na model</figcaption>
+      </figure>
+      <p>May pahigang <b class="ui">IN</b> at <b class="ui">OUT</b> meter ang bawat block sheet, kasama na ito. Sa isang EQ, sulit silang bantayan: mabilis magsanib-sanib ang ilang decibel ng boost sa tatlong band, at sinasabi ng mga meter kung mas malakas na napupukpok ang susunod na block kaysa sa sinadya mo.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="nam"><span class="n">02.4</span>Mga NAM amp profile</h2>
+      <p>May dalawang magkaibang block sa ilalim ng <b class="ui">Amp at Cab</b> at mabuting maging malinaw kung alin ang alin. Ang <b class="ui">Tube Amp</b> ang sariling amp simulation ng NAMper, na may pitong model na nakalista sa itaas. Ang <b class="ui">Amp</b> ang Neural Amp Modeler player: nagla-load ito ng <b class="ui">.nam</b> na capture ng totoong amplifier at pinapatakbo ito.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
+             alt="Ang Rig tab na may naka-load na NAM profile: cover art, pamagat ng tono at may-akda sa amp card, patayong IN at OUT na meter sa magkabilang gilid nito, at ang signal chain ng mga block sa ibaba.">
+        <figcaption>Ang amp card na may naka-load na NAM profile</figcaption>
+      </figure>
+
+      <h3>Ang amp card</h3>
+      <p>Sa itaas ng Rig tab, sa pagitan ng <b class="ui">IN</b> at <b class="ui">OUT</b> na meter, ipinapakita ng amp card kung ano ang kasalukuyang tinutugtog ng <b class="ui">Amp</b> block: ang cover art, ang pamagat ng tono, ang <b class="ui">@author</b>, hanggang anim na metadata chip, isang bilang ng download, isang <b class="ui">Mag-browse sa TONE3000</b> button at isang icon ng mga libro (<b class="ui">Buksan ang NAM library</b>). Kapag walang naka-load, ganito ang nakikita: <b class="ui">Built-in na tube amp</b>. Kung mahigit isa ang amp sa isang rig, pinipili ng mga chip na <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> at iba pa kung alin ang ine-edit ng card.</p>
+
+      <h3>Input at Output</h3>
+      <p>Sinasadyang maikli ang block sheet ng <b class="ui">Amp</b>: ang pamagat ng profile (o <b class="ui">Walang naka-load na model</b>), isang <b class="ui">Mag-browse sa TONE3000</b> button, at dalawang knob. Pareho ang <b class="ui">Input</b> at <b class="ui">Output</b> na tumatakbo mula −20 hanggang +20 dB at nagsisimula sa 0. Mas malakas na itinutulak ng Input ang capture, at ganoon ka nagkakaroon ng mas marami o mas kaunting breakup mula sa profile; ang Output naman ang nag-aayos sa resulta pagkatapos.</p>
+      <p>Awtomatikong ino-normalize ang NAM output, gamit ang loudness metadata sa loob ng model, tungo sa target na −18 dB. Kaya hindi nagugulo ang mga level mo kapag nagpapalit ka ng profile, at hindi ito inilalantad bilang kontrol.</p>
+      <div class="note">
+        <div class="t">Mono ang NAM amp</div>
+        <p>Mono device ang isang NAM capture — pinagsasama muna ang stereo signal na dumarating sa <b class="ui">Amp</b> block bago ito pumasok. Ilagay ang mga stereo effect mo pagkatapos ng amp, hindi bago ito.</p>
+      </div>
+
+      <h3>Tatlong paraan ng pag-load ng profile</h3>
+      <ol style="--nc:var(--amp)">
+        <li><b class="ui">Mag-browse sa TONE3000</b> — ang online library, tinatalakay sa susunod na seksyon.</li>
+        <li>Ang icon ng mga libro, na nagbubukas ng sheet na pinamagatang <b class="ui">Mga NAM Profile</b>. I-tap ang kahit anong row para i-load ito sa kasalukuyang amp.</li>
+        <li>Hinahanap ng mga factory preset ang sariling profile nila, kaya ang pag-load ng <b class="ui">Crunch</b> ay may kasamang amp nito.</li>
+      </ol>
+      <p>Ang <b class="ui">Mga NAM Profile</b> sheet ang lokal na library mo. Kapag walang laman, ganito ang nakikita: <b class="ui">Dito nagtitipon ang mga profile na dina-download mo mula sa TONE3000.</b> Nasa toolbar menu nito ang <b class="ui">Mag-import ng mga .nam file…</b> — isang multi-select na file picker na tumatanggap lang ng mga <b class="ui">.nam</b> na file — kasama ang <b class="ui">Export all (N files)</b> at <b class="ui">I-update lahat</b>. Dala ng bawat row ang <b class="ui">Ibahagi ang .nam file</b>, <b class="ui">Tanggalin</b> at isang refresh button (<b class="ui">I-refresh mula sa TONE3000</b>).</p>
+      <p>Kung hindi mabasa ang isang model, makukuha mo ang <b class="ui r">Could not load amp model
+        {filename}.</b> — karaniwang isang file na inilipat o binura mula sa ilalim ng rig.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
+      <p>Libreng library ng mga amp capture ang TONE3000, at direktang kumukuha rito ang NAMper. Walang in-app na browse screen: binubuksan ng <b class="ui">Mag-browse sa TONE3000</b> ang tone3000.com sa loob ng ligtas na web sheet. Sa mismong website ka naghahanap at nagsasala, pumili ng tono, at ang app na ang bahala mula roon — habang kumukuha ito, ganito ang button: <b class="ui">Naglo-load…</b> at hindi ito gumagana.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
+             alt="Ang sheet na Ikonekta ang TONE3000 sa ibabaw ng Rig tab, inaalok ang mga button na Mag-sign in sa TONE3000 at Mag-play offline kasama ang toggle na Huwag nang magtanong ulit.">
+        <figcaption>Ang alok na mag-sign in, ipinapakita nang minsan kada pagbukas habang naka-sign out</figcaption>
+      </figure>
+      <p>Ordinaryong web sign-in ang pag-sign in, hindi isang idinikit na API key, at kung naka-log in ka na sa tone3000.com sa browser, ginagamit muli ng app ang session na iyon. Sinasala ang library sa panig ng server tungo sa mga NAM capture na A2-architecture ng mga amp, buong rig at pedal — nakatakda iyon, hindi setting na kaya mong baguhin.</p>
+      <p>Ang pagpili ng tono ay nagda-download ng unang model ng tonong iyon — walang model picker — kasama ang cover art at metadata nito. Dumadapo ang lahat sa <b class="ui">tones/</b> na folder ng app at lumalabas sa <b class="ui">Mga NAM Profile</b> sheet.</p>
+
+      <h3>Ang alok na mag-sign in</h3>
+      <p>Isang sheet na pinamagatang <b class="ui">Ikonekta ang TONE3000</b> ang lumalabas nang minsan kada pagbukas habang naka-sign out ka, na nagpapaliwanag na nagsi-stream ang mga factory preset ng totoong amp capture mula sa libreng library. Inaalok nito ang <b class="ui">Mag-sign in sa TONE3000</b> at <b class="ui">Mag-play offline</b>, kasama ang toggle na <b class="ui">Huwag nang magtanong ulit</b>. Puwede mo rin itong tuluyang patahimikin sa Settings → <b class="ui">MGA PROMPT</b> → <b class="ui">Mag-alok ng TONE3000 sign-in sa pagbukas</b>.</p>
+
+      <h3>Pagtugtog offline</h3>
+      <p>Patuloy na gumagana ang kahit anong na-download na kahit walang network. Ang factory rig na hindi naka-cache ang profile ay bumabalik sa naka-bypass nitong built-in na <b class="ui">Tube Amp</b> at sa kasamang cab, at ganito ang header: <b class="ui">Built-in na tube amp</b> para alam mo kung ano ang naririnig mo. Mag-sign in mamaya at doon na mismo magiging totoong capture ang mga rig na iyon — hindi mo kailangang muling buuin ang anuman.</p>
+      <div class="note warn">
+        <div class="t">Walang sign-out</div>
+        <p>Walang button na pang-sign out sa TONE3000 ang NAMper. Kapag umiiral na ang session, ang tanging paraan para burahin ito ay tanggalin ang app. Mabuting malaman bago ka mag-sign in sa hiniram na device.</p>
+      </div>
+      <p>Kapag may nagkamali, sinasabi ng app kung alin sa apat na bagay ito: <b class="ui r">TONE3000: mag-sign in para i-load ang %@.</b>, <b class="ui r">TONE3000: may problema ang server (HTTP %lld) — subukan mamaya.</b>, <b class="ui r">TONE3000: hindi inaasahang sagot para sa %@.</b> at <b class="ui r">TONE3000: walang koneksyon — suriin ang network.</b></p>
+      <div class="note tip">
+        <div class="t">Mga download at backup</div>
+        <p>Sinasadyang hindi kasama sa iCloud backup ang <b class="ui">tones/</b> na folder — hindi kasamang babalik sa isang restore-from-backup ang mga na-download mong profile, dahil kayang kunin muli ng TONE3000 ang mga ito. Kung mahalaga sa iyo ang isang partikular na capture, i-export ito mula sa <b class="ui">Mga NAM Profile</b> sheet at itago ang file.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="cabs"><span class="n">02.6</span>Mga cab at IR</h2>
+      <p>Nagpapatugtog ang <b class="ui">Cab</b> block ng impulse response — isang speaker cabinet na nakuha gamit ang mikropono. Ipinapakita ng sheet nito ang kasalukuyang pangalan ng IR, isang menu button na may label na <b class="ui">Mga Cabinet</b>, isang <b class="ui">Mag-load ng file</b> button, at isang knob: <b class="ui">Level</b>, −12 hanggang +12 dB. Kapag may naka-load nang IR, lumalabas sa tabi ang isang <b class="ui">I-clear ang IR</b> button.</p>
+      <p>Binubuksan ng <b class="ui">Mag-load ng file</b> ang file picker para sa <b class="ui">.wav</b> at iba pang audio; kinokopya sa <b class="ui">irs/</b> na folder ng app ang kahit anong piliin mo, kaya nananatili itong available kahit burahin mo ang orihinal. Ang parehong block, kapag ginamit bilang <b class="ui">IR Verb</b>, ay nagla-label sa menu nito bilang <b class="ui">Mga Space</b> at nagla-load ng mga reverb impulse sa halip na mga cabinet.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Menu</th><th>Mga kasamang impulse response</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Mga Cabinet</b></td>
+              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+                <b class="ui">Greenback 412 SM57 - Nacho</b>,
+                <b class="ui">Greenback 412 e606 - Pesto</b>,
+                <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
+                <b class="ui">V30 412 SM57 - Cookie Monster</b>,
+                <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
+            <tr><td><b class="ui">Mga Space</b></td>
+              <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
+                <b class="ui">Plate 1.6s</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <div class="t">Hindi lahat ng amp ay nangangailangan ng cab</div>
+        <p>Sinasabi sa iyo ng walang lamang <b class="ui">Cab</b> block kung bakit puwede itong manatiling walang laman: <b class="ui">Walang naka-load na IR — hindi ito kailangan
+ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa speaker output, kasama ang cab at mikropono; ang paglalagay ng isa pang cab pagkatapos ng ganoon ay nagpapapurol at nagpapa-boxy sa tunog. Ang walang lamang <b class="ui">IR Verb</b> naman ay nagpapakita ng <b class="ui">Walang naka-load na IR — pumili ng space o file</b>.</p>
+      </div>
+      <p>Lumalabas ang mga problema sa IR bilang <b class="ui r">IR file missing: {name}</b>, <b class="ui r">Could not read IR {name}.</b> o <b class="ui r">Could not import {name}.</b></p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="presets"><span class="n">02.7</span>Mga preset</h2>
+      <p>Iniimbak ng rig preset ang buong chain — mga block, model, posisyon ng knob, ang amp profile, ang cab. Mag-save ng isa mula sa <b class="ui">+</b> sa <b class="ui">MGA PRESET</b> card, o mula sa preset manager. Ang prompt ay isang alert na pinamagatang <b class="ui">I-save ang preset</b> na ang mensahe ay nagsasabi kung ano ang mangyayari: <b class="ui">Nakukuha ng kasalukuyang rig ang susunod na bakanteng MIDI PC slot.</b> Mag-type ng pangalan at i-tap ang <b class="ui">I-save</b>. Iwang blangko ang field at ise-save ito bilang <b class="ui">Preset</b>.</p>
+      <div class="note warn">
+        <div class="t">Hindi ma-edit ang PC slot</div>
+        <p>Nakaupo ang bawat preset sa isang MIDI program-change slot, at ang NAMper ang nagtatalaga nito para sa iyo: hawak ng apat na factory preset ang PC 0–3, at kinukuha ng mga user preset ang susunod na bakanteng numero mula 4 pataas. Walang paraan para baguhin ang slot nang manu-mano. Planuhin ang layout ng footswitch mo ayon sa pagkakasunod ng pag-save mo ng mga preset, hindi kabaligtaran.</p>
+      </div>
+
+      <h3>Pag-update at pamamahala</h3>
+      <p>Laging kinukumpirma ang pagpapalit. Naglalabas ang <b class="ui">I-update gamit ang kasalukuyang rig</b> ng dialog na nagbabasang <b class="ui">Overwrite “{name}” with the current rig?</b> kasama ang <b class="ui">Palitan</b> at <b class="ui">Kanselahin</b>. Ang manager mismo ay may nav title na <b class="ui">Mga Preset</b> at dalawang seksyon: <b class="ui">Mga rig · MIDI PC slot</b>, at <b class="ui">Lahat nang sabay</b> → <b class="ui">Mga global snapshot</b>, na inilalarawan bilang rig, looper, sampler, setlist at control map na sabay na sine-save at ibinabalik.</p>
+      <p>Inaalok ng context menu ng bawat row ang <b class="ui">Palitan ang pangalan</b>, <b class="ui">I-update gamit ang kasalukuyang rig</b>, <b class="ui">Ibahagi</b> at <b class="ui">Tanggalin</b>. Nasa manager lang ang pagpapalit ng pangalan — wala ito sa menu ng preset chip sa Rig tab. Kapag mahigit walo na ang preset mo, lumalabas sa itaas ang isang <b class="ui">Maghanap ng preset</b> na field.</p>
+      <div class="note warn">
+        <div class="t">Hindi kinukumpirma ang pagbura</div>
+        <p>Agad na nagkakabisa ang <b class="ui">Tanggalin</b> sa menu ng preset row, nang walang "sigurado ka ba". Mag-export ng backup bago maglinis.</p>
+      </div>
+
+      <h3>Import at export</h3>
+      <p>May <b class="ui">Mag-import ng preset / bank / backup…</b>, <b class="ui">I-export ang mga rig preset</b> (na sumusulat ng <b class="ui">NAMper Presets.namper</b>) at <b class="ui">I-export ang LAHAT (buong backup)</b> (na sumusulat ng <b class="ui">NAMper Backup.namper</b>) ang import/export menu ng manager. Tandaan na dala ng buong backup ang mga parameter at reference pero hindi ang audio ng sampler kit.</p>
+      <p>Ang file extension ay <b class="ui">.namper</b>. I-tap ang isa sa Files, o tumanggap ng isa sa AirDrop, at ini-import ito ng NAMper at binubuksan ang preset manager. Nakakakuha ng bagong slot ang bawat na-import na preset, kaya hindi kailanman tahimik na mapapalitan ng import ang mayroon ka na.</p>
+
+      <h3>Ang apat na factory rig</h3>
+      <p>Dumarating ang NAMper na may apat na rig sa PC 0–3, bawat isa'y binuo sa paligid ng totoong capture: <b class="ui">Clean</b> (isang American blackface combo), <b class="ui">Crunch</b> (isang 1969 British 50-watt head), <b class="ui">Lead</b> (isang modernong high-gain amp+cab) at <b class="ui">Ambient</b> (isang British class-A chime combo). Dala ng capture na sini-stream ng bawat isa ang sariling pamagat ng nag-upload nito, at iyon ang ipinapakita ng amp block. Dala rin ng bawat rig ang isang naka-bypass na built-in na <b class="ui">Tube Amp</b> at isang kasamang cab bilang offline na kapalit nito, at bawat isa'y minarkahang <b class="ui">FACTORY</b> sa manager. Ibalik silang lahat mula sa Settings → <b class="ui">RESET</b> → <b class="ui">Ibalik sa mga factory preset</b>; nagbabala ang dialog ng <b class="ui">Tanggalin ang LAHAT ng user preset? Babalik ang apat na factory rig.</b></p>
+      <p>May sariling preset sheet ang ibang tab, naaabot mula sa <b class="ui">MGA PRESET</b> chip nila at pare-pareho ang disenyo: <b class="ui">Mga Looper Preset</b>, <b class="ui">Mga Sampler Kit</b>, <b class="ui">Mga Perform Preset</b>, <b class="ui">Mga Control Preset</b> at <b class="ui">Mga Global Snapshot</b>. Dalawa sa kanila ang hindi maibabahagi, dahil nakaturo sila sa mga file sa device na ito — dala ng mga sampler kit ang audio nila, at tumutukoy ang mga global snapshot sa mga model, sample at backing track.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="rigs"><span class="n">02.8</span>Maraming rig</h2>
+      <p>Nagpapatakbo ang NAMper ng hanggang apat na rig nang sabay — isang gitara at isang vocal, isang gitara at isang bass, o apat na manunugtog sa iisang interface. Magdagdag ng isa mula sa <b class="ui">RIG</b> <b class="ui">+</b> menu sa header ng <b class="ui">SIGNAL CHAIN</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rigs-two.png" width="600" height="1304"
+             alt="Ang Rig tab na may dalawang rig na magkatabi: dala ng una ang MIDI badge na nagmamarka ritong MIDI-focused, naka-pin ang pangalawa kaya hindi ito ginagalaw ng mga preset.">
+        <figcaption>Dalawang rig — isang may hawak na MIDI focus, isang naka-pin</figcaption>
+      </figure>
+      <p>Pinapasimulan ka ng seksyong <b class="ui">Mga Template</b> ng menu sa isang makatuwirang lugar: <b class="ui">Gitara (gate · tube amp · cab)</b>, <b class="ui">Bass (gate · comp · bass amp · cab)</b>, <b class="ui">Vocal (gate · de-esser · comp · eq · plate)</b> at <b class="ui">Walang lamang rig</b>. Sa ilalim niyon, inililista ng <b class="ui">Mula sa preset</b> ang mga naka-save mong preset ayon sa pangalan — o binubuksan nito ang isang mahahanapang <b class="ui">BAGONG RIG MULA SA PRESET</b> sheet kapag mahigit walo na ang mga ito.</p>
+      <p>Pinapangalanang <b class="ui">GITARA</b>, <b class="ui">BASS</b>, <b class="ui">VOCAL</b> o <b class="ui">RIG n</b> ang mga rig depende sa template; kinukuha ng rig na binuo mula sa preset ang pangalan ng preset. Lumalabas lang ang mga header kapag mahigit isa na ang rig mo.</p>
+
+      <h3>Focus, pag-pin at pag-alis</h3>
+      <p>I-tap ang header ng isang rig para bigyan ito ng <b class="ui">MIDI</b> focus — may badge na nagmamarka kung aling rig ang kasalukuyang pinapatakbo ng controller mo. Ang pin toggle (<b class="ui">I-pin ang rig</b> / <b class="ui">I-unpin ang rig</b>, may caption na "pinapanatili ng mga preset ang rig na ito") ay nagpapatagal sa isang rig kahit magpalit ng preset, at ganoon mo pinananatiling buo ang isang vocal chain habang pinapalitan mo ang tunog ng gitara mula sa footswitch. Lumalabas ang trash button (<b class="ui">Alisin ang rig</b>) kapag mahigit isa na ang rig.</p>
+      <p>Sumusunod ang layout sa device: sa landscape, nagpapatong-patong ang mga rig bilang mga row at tumatakbo ang bawat chain mula kaliwa pakanan; sa portrait, magkatabi sila at tumatakbo ang mga chain mula itaas pababa.</p>
+
+      <h3>Ang input at output ng bawat rig</h3>
+      <p>Menu ang IN connector sa unahan ng isang chain. Inililista ng seksyong <b class="ui">Input ng sound card</b> nito ang mga channel mo ayon sa pangalan — <b class="ui">In 1</b>, <b class="ui">In 2</b> at iba pa — at idinaragdag ang <b class="ui">Mga sampler pad</b> at <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, kaya kayang iproseso ng isang rig ang isang loop o ang sampler sa halip na isang live na input.</p>
+      <p>Binubuksan ng OUT connector ang isang sheet na may ulong <b class="ui">RIG OUTPUT</b>, na may mga knob na <b class="ui">Level</b> at <b class="ui">Pan</b>, isang <b class="ui">Hardware output pair</b> menu (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — kailangan nitong naka-on ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings), at <b class="ui">I-record ang rig na ito sa</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. Ang buod na row sa ilalim ay nagbabasang <b class="ui">Looper: not assigned</b> o, kapag may napili ka na, <b class="ui">Looper: track 1, 3</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="branches"><span class="n">02.9</span>Mga parallel branch</h2>
+      <p>Hindi limitado sa isang linya ang isang rig. Kayang maglaman ng bawat rig ng hanggang apat na chain — ang pangunahin kasama ang tatlong branch — kaya kaya mong hatiin ang isang signal, tratuhin nang magkaiba ang mga kalahati at pagsamahin silang muli. Gumawa ng isa gamit ang button na may branch icon sa ilalim ng chain (<b class="ui">Magdagdag ng parallel chain</b>).</p>
+      <p>May iisang seksyon ang menu nito, ang <b class="ui">Mag-branch mula sa</b>, na naglilista ng bawat input channel, ng <b class="ui">Mga sampler pad</b>, ng <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, at ng <b class="ui">After {Block}</b> para sa bawat block sa pangunahing chain. Ang huling grupo ang kawili-wili: ang pag-branch pagkatapos ng amp ay nagbibigay sa iyo ng dalawang magkaibang reverb sa parehong tono ng amp, ang pag-branch bago ito ay nagbibigay ng dalawang magkaibang amp sa parehong gitara.</p>
+
+      <h3>Ang dalawang anchor</h3>
+      <p>Iginuguhit ang branch bilang parallel na hanay na may entry anchor kung saan ito umaalis sa pangunahing chain at merge anchor kung saan ito bumabalik. Ipinapakita ng merge anchor ang level ng branch na iyon bilang porsiyento, kaya nababasa mo ang balanse nang walang binubuksan.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Kilos</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td>I-tap ang isang anchor</td><td>Binubuksan ang mixer sheet na may ulong <b class="ui">LANE {n} MIX</b>, kasama ang <b class="ui">Level</b> at <b class="ui">Pan</b></td></tr>
+            <tr><td>Pindutin nang matagal ang entry anchor</td><td>Ang <b class="ui">Branch input</b> menu: sariling input, <b class="ui">Mga sampler pad</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, <b class="ui">Branch after {Block}</b>, at <b class="ui">Alisin ang branch</b></td></tr>
+            <tr><td>Pindutin nang matagal ang merge anchor</td><td>Ang <b class="ui">Branch output</b> menu: <b class="ui">Papunta sa main mix</b>, <b class="ui">Merge before {Block}</b>, <b class="ui">Own output 1-2</b>, at <b class="ui">Alisin ang branch</b></td></tr>
+            <tr><td>Hilahin ang isang anchor</td><td>Muli itong ikinakabit sa ibang punto sa pangunahing chain</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ang paghila ang mabilis na paraan ng pakikinig: hawakan ang merge anchor, ilipat ito nang mas maaga o mas huli sa chain, at pakinggan ang branch na dumapo bago o pagkatapos ng delay nang hindi nagbubukas ng menu.</p>
+      <div class="note tip">
+        <div class="t">Paghahalo ng ilang branch nang sabay</div>
+        <p>Maglagay ng <b class="ui">Volume</b> block sa puntong pinagsasanib ng mga branch at tutubo ito ng dagdag na seksyon, ang <b class="ui">MGA PAPASOK NA LINYA</b>, na may tig-isang knob kada sumasanib na branch — <b class="ui">Line 1</b>, <b class="ui">Line 2</b> at iba pa. Nagbibigay iyon sa iyo ng maliit na mixer sa gitna ng rig sa halip na habulin ang bawat anchor sheet.</p>
+      </div>
+      <p>Kaya ring lampasan ng isang branch ang buong main mix: ituro ang output nito sa <b class="ui">Own output 1-2</b> at dumidiretso ito sa sariling hardware pair nito, na nangangailangan munang naka-enable ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="master"><span class="n">02.10</span>Ang master section</h2>
+      <p>Ang <b class="ui">MASTER</b> card sa ibaba ng Rig tab ang pinagtatagpuan ng lahat: dito nagsasama ang bawat rig, ang looper, ang mga sampler pad at ang backing track bago ang hardware output. Anuman ang gawin mo sa master, ginagawa mo iyon sa lahat.</p>
+      <p>Nagdaragdag ang <b class="ui">FX</b> <b class="ui">+</b> menu ng master processing — hanggang anim na block. Puwede kang pumili mula sa <b class="ui">Volume</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Room</b> at <b class="ui">Delay</b>. Kumikilos sila gaya ng mga chain block: i-tap ang chip para i-edit ito, pindutin nang matagal para sa <b class="ui">Paganahin</b> / <b class="ui">Bypass</b> at <b class="ui">Alisin</b>.</p>
+      <div class="note warn">
+        <div class="t">Walang AU plugin sa master</div>
+        <p>Sa loob lang ng rig chain puwedeng ilagay ang mga pinapatakbong Audio Unit plugin. Hindi sila inaalok ng master FX menu. Kung gusto mo ng third-party na limiter sa buong bagay, hindi iyon posible — gamitin na lang ang built-in na <b class="ui">Limiter</b> block.</p>
+      </div>
+      <p>Walang laging naka-on na master processor dito. Ang saturation ay isang block na idinaragdag mo — <b class="ui">Tube Sat</b> o <b class="ui">Tape Sat</b>, pareho na may <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> at <b class="ui">Level</b> — at ang limiting ay ang <b class="ui">Limiter</b> block, na may <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 hanggang 0 dB, default na −1) at <b class="ui">Release</b>. Kung hindi mo sila idinagdag, wala sila sa daan ng signal.</p>
+
+      <h3>Pagbasa sa mga master meter</h3>
+      <p>May mga tik sa −12 at −6 dB ang mga stereo peak bar na <b class="ui">L</b> at <b class="ui">R</b>. Sa tabi nila nakaupo ang isang BS.1770 na pagbasa ng loudness: isang malaking momentary na numerong <b class="ui">LUFS</b> na may mas maliit na linya sa ibaba na nagbabasang <b class="ui">LUFS</b> o <b class="ui">LUFS · S &lt;n&gt;</b> para sa short-term na halaga. Sa ibaba ng −70 LUFS, ipinapakita nito ang <b class="ui">-inf</b>. Tumatakbo ang fader mula −60 hanggang +12 dB.</p>
+      <p>Gamitin ang mga peak bar para maiwasan ang clipping at ang numerong LUFS para itugma ang pangkalahatang level mo sa ibang bagay — isang backing track, isang naunang take, isa pang manunugtog sa parehong desk.</p>
+      <div class="note">
+        <div class="t">Nananatiling malinis ang click</div>
+        <p>Isinasama ang click ng metronome <b>pagkatapos</b> ng master FX chain, kaya hindi ito kailanman nahahawakan ng mga master reverb, saturation at limiting. Itakda ang level ng click sa Settings → <b class="ui">METRONOME</b>, at bigyan ito roon ng sariling output pair kung gusto mo itong nasa in-ears lang at wala nang iba.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/setup.html">← 01 · Pagsisimula</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/plugins.html">03 · Mga AU plugin →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>शुरुआत — NAMper दस्तावेज़</title>
+<meta name="description" content="जोड़ना: ऑडियो इंटरफ़ेस, सैंपल रेट और बफ़र साइज़, पावर बटन, इनपुट और आउटपुट मीटर, फ़ीडबैक गार्ड, और NAMper आपकी फ़ाइलें कहाँ रखता है।">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="शुरुआत — NAMper दस्तावेज़">
+<meta property="og:description" content="ऑडियो इंटरफ़ेस, सैंपल रेट और बफ़र, पावर बटन, मीटर और फ़ीडबैक गार्ड।">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/hi/setup.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/setup.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/setup.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/setup.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/setup.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/setup.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/setup.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/setup.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/setup.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/setup.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/setup.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/setup.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/setup.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/setup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/setup.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/setup.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/setup.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/setup.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/setup.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">दस्तावेज़</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/hi/">← सभी दस्तावेज़</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/hi/setup.html" aria-current="page">हिन्दी</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">विषय-सूची</div>
+    <ol>
+      <li><a class="on" href="/docs/hi/setup.html">शुरुआत</a></li>
+      <li><a href="/docs/hi/rig.html">रिग और सिग्नल चेन</a></li>
+      <li><a href="/docs/hi/plugins.html">AU प्लगइन</a></li>
+      <li><a href="/docs/hi/looper.html">लूपर</a></li>
+      <li><a href="/docs/hi/sampler.html">सैंपलर पैड</a></li>
+      <li><a href="/docs/hi/perform.html">परफ़ॉर्म और लिरिक्स</a></li>
+      <li><a href="/docs/hi/control.html">MIDI और कंट्रोल</a></li>
+      <li><a href="/docs/hi/settings.html">सेटिंग्स संदर्भ</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--power)">01 · शुरुआत</div>
+    <h1>जोड़ना।</h1>
+    <p class="lede">आपके गिटार और पहली आवाज़ के बीच की हर बात: NAMper आपका ऑडियो हार्डवेयर कैसे पहचानता है, पावर बटन क्या करता है, मीटर कैसे पढ़ें, और ऐप कभी-कभी जानबूझकर ख़ुद को क्यों म्यूट कर लेता है।</p>
+
+    <nav class="toc">
+      <div class="slab">इस पृष्ठ पर</div>
+      <ul>
+        <li><a href="#power">पावर बटन</a></li>
+        <li><a href="#interfaces">ऑडियो इंटरफ़ेस</a></li>
+        <li><a href="#meters">मीटर और स्तर</a></li>
+        <li><a href="#rate">सैंपल रेट और बफ़र</a></li>
+        <li><a href="#feedback-guard">फ़ीडबैक गार्ड</a></li>
+        <li><a href="#permissions">अनुमतियाँ</a></li>
+        <li><a href="#files">आपकी फ़ाइलें कहाँ रहती हैं</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="power"><span class="n">01.1</span>पावर बटन</h2>
+      <p><b class="ui a">रिग</b> टैब के ऊपर-दाएँ कोने का हरा पावर आइकॉन ऑडियो इंजन चालू और बंद करता है। जब तक वह चालू न हो, कुछ भी प्रोसेस नहीं होता और कोई आवाज़ नहीं आती — मीटर सपाट रहते हैं और रिकॉर्डिंग यह कहकर मना कर देती है: <b class="ui r">ऑडियो बंद है — रिकॉर्ड करने से पहले पावर बटन दबाएँ।</b></p>
+      <p>इंजन बंद हो तो यह मद्धम रहता है, चालू हो तो हरा और चमकदार। बगल का <b class="ui">DSP लोड</b> चिप बताता है कि प्रोसेसर कितना काम कर रहा है: 60 % से कम पर हरा, 85 % तक एम्बर, उससे ऊपर लाल। अगर वह लाल में टिका रहे तो चेन से कोई ब्लॉक हटाएँ या बफ़र साइज़ एक कदम बढ़ाएँ।</p>
+      <p>NAMper माइक्रोफ़ोन की अनुमति तब माँगता है जब आप पहली बार इंजन चालू करते हैं — ऐप खुलते ही नहीं।</p>
+      <div class="note warn">
+        <div class="t">जोड़ हटाना</div>
+        <p>हेडफ़ोन या इंटरफ़ेस निकालने पर <b>इंजन रुक जाता है</b> — जानबूझकर, ताकि तेज़ आवाज़ वाला रिग अपने आप फ़ोन के स्पीकर पर न चला जाए। दोबारा जोड़ने के बाद पावर फिर दबाएँ। कुछ नया जोड़ने पर इंजन अपने आप दोबारा बन जाता है।</p>
+      </div>
+      <p>अगर इंजन शुरू न हो सके तो बैनर दिखाता है: <b class="ui r">Audio could not start.
+        Another app may be using the interface — try again.</b> जो भी और चीज़ इंटरफ़ेस पकड़े हुए है उसे बंद करें और फिर कोशिश करें।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="interfaces"><span class="n">01.2</span>ऑडियो इंटरफ़ेस</h2>
+      <p>यहाँ कोई डिवाइस चुनने की सूची नहीं है। NAMper उसी ऑडियो रूट पर चलता है जो iOS इस्तेमाल कर रहा है, इसलिए हार्डवेयर आप हमेशा की तरह चुनते हैं — इंटरफ़ेस जोड़िए, ऐप ख़ुद को उसके हिसाब से दोबारा बना लेता है। मल्टीचैनल इंटरफ़ेस समर्थित हैं, आठ इनपुट चैनल तक।</p>
+      <p>सेटिंग्स → <b class="ui">ऑडियो इंटरफ़ेस</b> बताता है कि NAMper को असल में क्या मिला: <b class="ui">सैंपल रेट</b>, <b class="ui">इनपुट</b>, <b class="ui">आउटपुट</b> और <b class="ui">इंजन</b> (<b class="ui">चल रहा है</b> या <b class="ui">रुका हुआ</b>)। अगर चैनल की संख्या उम्मीद से अलग हो, तो पता वहीं चलेगा।</p>
+
+      <h3>चैनलों के नाम रखना</h3>
+      <p>सेटिंग्स → <b class="ui">चैनल के नाम</b> हर इनपुट को एक टेक्स्ट फ़ील्ड देता है जिसमें प्लेसहोल्डर <b class="ui">गिटार, वोकल…</b> होता है। एक बार नाम रख दें और वे नाम ऐप की हर इनपुट सूची में दिखेंगे — रिग इनपुट, लूपर ट्रैक स्रोत, इनपुट ट्रिम पंक्तियाँ। बिना नाम वाले चैनल बस <b class="ui">In 1</b>, <b class="ui">In 2</b> और आगे इसी तरह दिखते हैं।</p>
+
+      <h3>कई आउटपुट</h3>
+      <p>सेटिंग्स → <b class="ui">इंटरफ़ेस के सभी आउटपुट लें</b> डिफ़ॉल्ट रूप से बंद है, और स्टीरियो डिवाइस को इसकी कभी ज़रूरत नहीं। इसे चालू करें और NAMper इंटरफ़ेस के हर आउटपुट जोड़े को खोल देता है, ताकि कोई रिग, समानांतर ब्रांच, लूपर ट्रैक या मेट्रोनोम क्लिक अपना-अपना जोड़ा रख सके — गिटार फ़्रंट ऑफ़ हाउस को, क्लिक ड्रमर के इन-ईयर को।</p>
+      <div class="note">
+        <div class="t">इनपुट चैनल</div>
+        <p><b class="ui">इनपुट चैनल</b> आम तौर पर <b class="ui">ऑटो</b> पर ही छोड़ा जाता है। किसी संख्या पर तभी टिकाएँ जब आपका इंटरफ़ेस उससे ज़्यादा चैनल बताता हो जितने आप NAMper से खुलवाना चाहते हैं।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="meters"><span class="n">01.3</span>मीटर और स्तर</h2>
+      <p>रिग टैब पर एम्प कार्ड के दोनों ओर दो खड़ी पट्टियाँ हैं: बाईं ओर <b class="ui">IN</b>, दाईं ओर <b class="ui">OUT</b>। दोनों नीचे −60 dBFS से ऊपर 0 तक जाती हैं, हरे से एम्बर होते हुए लाल तक। अलग से कोई क्लिप लाइट नहीं — क्लिपिंग यानी पट्टी का सबसे ऊपर लाल तक पहुँचना।</p>
+
+      <h3>इनपुट स्तर तय करना</h3>
+      <ol style="--nc:var(--eq)">
+        <li>ऑडियो चालू करें और जितना ज़ोर से कभी बजाते हैं उतना ज़ोर से बजाएँ।</li>
+        <li><b class="ui">IN</b> मीटर ऊपरी तिहाई तक पहुँचना चाहिए और लाल से बाहर रहना चाहिए।</li>
+        <li>अगर आपके इंटरफ़ेस में गेन नॉब है तो उसी का उपयोग करें। न हो तो सेटिंग्स → <b class="ui">इनपुट ट्रिम</b> खोलें और उस चैनल का स्लाइडर बढ़ाएँ — यह −12 dB से +24 dB तक 1 dB के कदमों में चलता है और 0 से शुरू होता है।</li>
+      </ol>
+      <p><b class="ui">IN</b> मीटर वह स्तर दिखाता है जो ट्रिम के <em>बाद</em> का है, यानी जो आप देखते हैं वही एम्प मॉडल को असल में मिलता है।</p>
+
+      <h3>मास्टर सेक्शन</h3>
+      <p>रिग टैब के नीचे <b class="ui">मास्टर</b> कार्ड वह जगह है जहाँ हर रिग, लूपर, सैंपलर और बैकिंग ट्रैक हार्डवेयर आउटपुट से पहले आपस में जुड़ते हैं। यह स्टीरियो पीक बार <b class="ui">L</b> और <b class="ui">R</b> दिखाता है, जिन पर −12 और −6 dB के निशान हैं, साथ ही <b class="ui">LUFS</b> में ब्रॉडकास्ट-शैली की लाउडनेस रीडिंग — बड़ा अंक तात्कालिक लाउडनेस है, छोटी पंक्ति शॉर्ट-टर्म मान जोड़ती है। ख़ामोशी में यह <b class="ui">-inf</b> दिखाता है। नीचे का फ़ेडर −60 से +12 dB तक चलता है।</p>
+      <p>हर ब्लॉक एडिटर में अपने छोटे <b class="ui">IN</b> और <b class="ui">OUT</b> मीटर भी होते हैं — गरम चल रहे ब्लॉक को ढूँढ़ने का यही सबसे तेज़ तरीका है।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="rate"><span class="n">01.4</span>सैंपल रेट और बफ़र</h2>
+      <p>दोनों सेटिंग्स → <b class="ui">ऑडियो इंटरफ़ेस</b> में हैं, और दोनों हर ऑडियो रूट के लिए अलग-अलग याद रखे जाते हैं — आपका इंटरफ़ेस और आपके हेडफ़ोन अपनी-अपनी सेटिंग रख सकते हैं।</p>
+
+      <h3>सैंपल रेट</h3>
+      <p>चिप इस तरह हैं: <b class="ui">ऑटो</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b>, <b class="ui">88.2k</b>, <b class="ui">96k</b>, <b class="ui">176.4k</b> और <b class="ui">192k</b>। <b class="ui">ऑटो</b> डिफ़ॉल्ट है और बस इंटरफ़ेस के पीछे चलता है; रेट बदलने पर इंजन दोबारा शुरू होता है।</p>
+      <p>फ़ोन के अपने माइक्रोफ़ोन और स्पीकर पर सिर्फ़ <b class="ui">ऑटो</b> और <b class="ui">48k</b> दिखते हैं, इस टिप्पणी के साथ: <b class="ui">अंतर्निहित ऑडियो सिर्फ़ 48 kHz पर चलता है। और रेट के लिए इंटरफ़ेस जोड़ें।</b> इंटरफ़ेस जुड़ा हो तो पूरी सूची मिलती है — सिवाय उन रेट के जिन्हें वह इंटरफ़ेस पहले मना कर चुका है; NAMper उन्हें याद रखता है और दोबारा नहीं दिखाता।</p>
+      <p>अगर कोई रेट मना हो जाए तो ऐप पिछले पर लौट आता है और लाल रंग में बताता है: <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+      <div class="note tip">
+        <div class="t">कौन-सा रेट लूँ?</div>
+        <p>ज़्यादा अपने आप बेहतर नहीं होता — इसमें प्रोसेसिंग हेडरूम ख़र्च होता है, और NAM प्रोफ़ाइल वैसे भी सामान्य रेट पर कैप्चर होती हैं। इसे <b class="ui">ऑटो</b> पर ही रहने दें, जब तक किसी ऐसे सेशन से मेल न बिठाना हो जो किसी ख़ास रेट पर चलता है।</p>
+      </div>
+
+      <h3>बफ़र साइज़</h3>
+      <p><b class="ui">बफ़र</b> में <b class="ui">64</b>, <b class="ui">128</b>, <b class="ui">256</b> और <b class="ui">512</b> फ़्रेम मिलते हैं, साथ ही यह लाइव दिखता है कि उससे कितनी लेटेंसी बनती है। डिफ़ॉल्ट <b class="ui">128</b> है। ऐप की अपनी सलाह साफ़ है: <b class="ui">छोटा = कम लेटेंसी; बड़ा = USB इंटरफ़ेस के साथ ज़्यादा सुरक्षित। कड़कड़ाहट हो? एक कदम ऊपर जाएँ।</b></p>
+      <p>NAMper में लेटेंसी का यही एकमात्र नियंत्रण है — अलग से कोई लेटेंसी सेटिंग नहीं।</p>
+      <div class="note warn">
+        <div class="t">ब्लूटूथ आउटपुट</div>
+        <p>ब्लूटूथ हेडफ़ोन और स्पीकर लगभग 0.2 से की देरी जोड़ते हैं, जिस पर बजाना संभव नहीं। ब्लूटूथ रूट दिखते ही ऐप चेतावनी देता है। लाइव बजाने के लिए तार वाला आउटपुट लें।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="feedback-guard"><span class="n">01.5</span>फ़ीडबैक गार्ड</h2>
+      <p>फ़ोन का अपना माइक्रोफ़ोन खुला हो और फ़ोन का अपना स्पीकर बज रहा हो — गिटार ऐप के लिए यह फ़ीडबैक लूप को न्योता है। इसलिए NAMper ठीक इसी जोड़ पर नज़र रखता है — अंतर्निहित माइक अंदर, अंतर्निहित स्पीकर या ईयरपीस बाहर — और चीख़ शुरू होने से पहले अपना आउटपुट म्यूट कर देता है।</p>
+      <figure>
+        <img class="wide" src="/docs/assets/feedback-guard.png" width="900" height="115"
+             alt="बैनर: फ़ीडबैक रोकने के लिए आउटपुट म्यूट (माइक → स्पीकर)। इंटरफ़ेस या हेडफ़ोन जोड़ें। साथ में अनम्यूट बटन।">
+        <figcaption>गार्ड लगने पर दिखने वाला बैनर</figcaption>
+      </figure>
+      <p>यह लगने पर दिखता है: <b class="ui r">फ़ीडबैक रोकने के लिए आउटपुट म्यूट (माइक → स्पीकर)। इंटरफ़ेस या हेडफ़ोन जोड़ें।</b> सिर्फ़ सुनाई देने वाला आउटपुट रोका जाता है — ट्यूनर, इनपुट मीटर और रिकॉर्डिंग सब चलते रहते हैं, इसलिए आप ट्यून भी कर सकते हैं और टेक भी ले सकते हैं।</p>
+      <p>हेडफ़ोन या इंटरफ़ेस जोड़ते ही म्यूट अपने आप हट जाता है। बैनर पर का ✕ सिर्फ़ इस सत्र के लिए संदेश छिपाता है; वह अनम्यूट नहीं करता।</p>
+      <div class="note">
+        <div class="t">“अनम्यूट” क्या करता है</div>
+        <p><b class="ui">अनम्यूट</b> बटन एक अस्थायी छूट है: इस सत्र के लिए आउटपुट चालू रहता है, और रूट बदलते ही गार्ड फिर सक्रिय हो जाता है — इंटरफ़ेस या हेडफ़ोन जोड़ें-हटाएँ, या ऐप दोबारा खोलें, और अंतर्निहित स्पीकर फिर सुरक्षित हो जाता है। गार्ड को स्थायी रूप से बंद करने के लिए सेटिंग्स में <b class="ui">फ़ीडबैक गार्ड</b> स्विच का उपयोग करें।</p>
+      </div>
+      <p>स्विच ख़ुद सेटिंग्स → <b class="ui">ऑडियो इंटरफ़ेस</b> → <b class="ui">फ़ीडबैक गार्ड</b> में है, उपशीर्षक <b class="ui">जब माइक फ़ोन के स्पीकर से बजता है तो आउटपुट म्यूट कर देता है।</b> यह डिफ़ॉल्ट रूप से चालू है।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="permissions"><span class="n">01.6</span>अनुमतियाँ</h2>
+      <p>NAMper ठीक दो चीज़ें माँगता है, और तभी जब उनकी ज़रूरत हो।</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>अनुमति</th><th>कब</th><th>क्यों</th></tr></thead>
+          <tbody>
+            <tr><td>माइक्रोफ़ोन</td><td>पहली बार पावर बटन दबाने पर</td>
+                <td>आपका गिटार या माइक्रोफ़ोन सुनने के लिए। संकेत साफ़ कहता है: ऑडियो कभी आपका डिवाइस नहीं छोड़ता।</td></tr>
+            <tr><td>ब्लूटूथ</td><td>पहली बार वायरलेस MIDI पेडल जोड़ने पर</td>
+                <td>ब्लूटूथ MIDI कंट्रोलर ढूँढ़ने और जोड़ने के लिए।</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>अगर माइक्रोफ़ोन की अनुमति बंद हो तो लाल बैनर दिखता है: <b class="ui r">माइक्रोफ़ोन की अनुमति बंद है — NAMper आपका गिटार नहीं सुन सकता।</b> साथ में <b class="ui">सेटिंग्स</b> बटन, जो सीधे iOS सेटिंग तक ले जाता है। अनुमति दें और इंजन ऐप दोबारा खोले बिना ही बन जाता है।</p>
+      <p>न कोई एनालिटिक्स, न ट्रैकिंग, न खाता, और न कैमरा, फ़ोटो, स्थान या संपर्कों तक पहुँच। NAMper कुछ भी इकट्ठा नहीं करता।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="files"><span class="n">01.7</span>आपकी फ़ाइलें कहाँ रहती हैं</h2>
+      <p>NAMper जो कुछ रखता है वह Files ऐप में <b class="ui">On My iPhone → NAMper</b> (या <b class="ui">On My iPad</b>) के नीचे दिखता है। आप Files ऐप से चीज़ें अंदर-बाहर कॉपी कर सकते हैं, फ़ोल्डर का बैकअप ले सकते हैं, या उसे कंप्यूटर पर ले जा सकते हैं।</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>फ़ोल्डर</th><th>उसमें क्या है</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">tones/</b></td><td>NAM एम्प प्रोफ़ाइल (<b class="ui">.nam</b>) और उनके कवर आर्ट व मेटाडेटा</td></tr>
+            <tr><td><b class="ui">irs/</b></td><td>आपके आयात किए इम्पल्स रिस्पॉन्स</td></tr>
+            <tr><td><b class="ui">samples/</b></td><td>सैंपलर पैड, और <b class="ui">samples/kits/</b> के नीचे सहेजे गए किट</td></tr>
+            <tr><td><b class="ui">backing/</b></td><td>बैकिंग ट्रैक, सेटलिस्ट, लिरिक्स और प्रीसेट मार्कर</td></tr>
+            <tr><td><b class="ui">recordings/</b></td><td>आपकी परफ़ॉर्मेंस रिकॉर्डिंग</td></tr>
+            <tr><td><b class="ui">presets/</b></td><td>रिग प्रीसेट और लूपर, सैंपलर, सेटलिस्ट व कंट्रोल प्रीसेट</td></tr>
+            <tr><td><b class="ui">engine.log</b></td><td>इंटरफ़ेस रूटिंग और पीक का सादा-टेक्स्ट लॉग, बग रिपोर्ट में काम आता है</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note tip">
+        <div class="t">एक काम का शॉर्टकट</div>
+        <p>Files ऐप से सीधे <b class="ui">backing/</b> में डाली गई ऑडियो फ़ाइलें अगली बार NAMper खोलने पर सेटलिस्ट में अपने आप जुड़ जाती हैं। पूरा सेट चढ़ाना कंप्यूटर पर एक कॉपी-पेस्ट है, फ़ोन पर बीस टैप नहीं।</p>
+      </div>
+      <p>दो चीज़ें वैसे काम नहीं करतीं जैसा आप सोच सकते हैं: आप फ़ाइलें ऐप आइकॉन पर या किसी विंडो में खींचकर नहीं डाल सकते — हर आयात NAMper के अंदर फ़ाइल पिकर से होता है — और <b class="ui">tones/</b> फ़ोल्डर जानबूझकर iCloud बैकअप से बाहर रखा गया है, क्योंकि TONE3000 उन प्रोफ़ाइलों को दोबारा डाउनलोड कर सकता है।</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/hi/">← सभी दस्तावेज़</a>
+      <span class="sp"></span>
+      <a href="/docs/hi/rig.html">02 · रिग और सिग्नल चेन →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/hi/">दस्तावेज़</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">सहायता</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">गोपनीयता</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper एक स्वतंत्र ऐप है, किसी भी उपकरण निर्माता से संबद्ध, अनुमोदित या प्रायोजित नहीं। सभी उत्पाद नाम, ब्रांड और ट्रेडमार्क अपने-अपने स्वामियों की संपत्ति हैं और केवल यह बताने के लिए इस्तेमाल हुए हैं कि कोई कैप्चर किस उपकरण से लिया गया था।</p>
+  </div>
+</footer>
+
+</body>
+</html>

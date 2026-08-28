@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanggunian sa mga setting — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Bawat card at bawat row sa Settings sheet ng NAMper: audio interface, mga pangalan ng channel, itsura, set, lyrics, metronome, mga prompt, reset at diagnostics — pati ang mga setting na nasa ibang lugar.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Sanggunian sa mga setting — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Bawat card at row sa Settings sheet ng NAMper, kasama ang mga default at kung ano talaga ang ginagawa ng bawat kontrol.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/settings.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/settings.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/settings.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/settings.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/settings.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/settings.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/settings.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/settings.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/settings.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/settings.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/settings.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/settings.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/settings.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/settings.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/settings.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/settings.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/settings.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/settings.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/settings.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/settings.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a class="on" href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--drive)">08 · SANGGUNIAN SA MGA SETTING</div>
+    <h1>Bawat switch, sunod-sunod.</h1>
+    <p class="lede">Sinasadyang maikli ang Settings sheet ng NAMper. Dinadaanan ito ng pahinang ito card bawat card, row bawat row, kasama ang mga default at kung ano talaga ang ginagawa ng bawat kontrol — at nagtatapos sa iilang setting na nasa ibang lugar talaga.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#opening">Pagbukas ng Settings</a></li>
+        <li><a href="#audio">Audio interface</a></li>
+        <li><a href="#names">Mga pangalan ng channel</a></li>
+        <li><a href="#appearance">Itsura</a></li>
+        <li><a href="#set">Set</a></li>
+        <li><a href="#lyrics">Lyrics</a></li>
+        <li><a href="#metronome">Metronome</a></li>
+        <li><a href="#prompts">Mga prompt</a></li>
+        <li><a href="#reset">Reset</a></li>
+        <li><a href="#diagnostics">Diagnostics</a></li>
+        <li><a href="#elsewhere">Wala sa Settings</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="opening"><span class="n">08.1</span>Pagbukas ng Settings</h2>
+      <p>I-tap ang <strong>gear icon</strong> sa header ng <b class="ui a">Rig</b> tab. Iyon lang ang daan papasok, at nasa tab na iyon lang ang header — mula sa <b class="ui a">Loop</b>, <b class="ui a">Sample</b>, <b class="ui a">Perform</b> o <b class="ui a">Control</b>, bumalik ka muna sa <b class="ui a">Rig</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
+             alt="Ang itaas ng Settings sheet: ang AUDIO INTERFACE card na naka-on ang Feedback guard, ang DSP load readout, ang mga chip ng sample rate at buffer, ang input trim slider, at ang simula ng CHANNEL NAMES card.">
+        <figcaption>Ang itaas ng Settings sheet</figcaption>
+      </figure>
+      <p>May kasama ang gear sa header row na iyon, at mabuting malaman kung ano ang ginagawa ng mga katabi nito:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Aytem</th><th>Ginagawa</th></tr></thead>
+          <tbody>
+            <tr><td>Ang wordmark na <b class="ui">NAMper</b></td>
+                <td>Binubuksan ang About sheet — bersyon, mga kredito at ang tip jar. Ito lang ang daan papasok.</td></tr>
+            <tr><td><b class="ui">DSP load</b> chip</td>
+                <td>Load ng processor bilang porsiyento, <b class="ui">—</b> kapag nakahinto. Berde kapag mababa sa 60 %, amber hanggang 85 %, pula kapag lampas.</td></tr>
+            <tr><td>Gear</td><td>Settings — ang pahinang ito.</td></tr>
+            <tr><td><b class="ui">KEY</b> chip</td>
+                <td>Ang kasalukuyang key, o ang salitang <b class="ui">KEY</b> kapag walang nakatakda. Binubuksan ang <b class="ui">ITAKDA ANG KEY</b>.</td></tr>
+            <tr><td>Metronome chip</td>
+                <td>I-tap para i-on at i-off ang click; <strong>pindutin nang matagal</strong> para sa <b class="ui">ITAKDA ANG TEMPO</b> sheet. Tingnan ang <a href="/docs/fil/looper.html">looper</a>.</td></tr>
+            <tr><td>Tuning fork</td><td>Binubuksan ang tuner. Tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</td></tr>
+            <tr><td><b class="ui g">Power</b></td>
+                <td>Sinisimulan at hinihinto ang audio engine. Walang tunog hangga't hindi ito naka-on. Tingnan ang <a href="/docs/fil/setup.html#power">pagsisimula</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="audio"><span class="n">08.2</span>Audio interface</h2>
+      <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa iOS, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Sample rate</b></td><td>Read-only</td><td>—</td>
+                <td>Ang rate na talagang tinatakbo ng engine, sa kHz.</td></tr>
+            <tr><td><b class="ui">Mga Input</b></td><td>Read-only</td><td>—</td>
+                <td>Ilang input channel ang inaalok ng kasalukuyang route, hanggang walo.</td></tr>
+            <tr><td><b class="ui">Mga Output</b></td><td>Read-only</td><td>—</td>
+                <td>Ilang output channel ang inaalok ng kasalukuyang route.</td></tr>
+            <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
+                <td><b class="ui">tumatakbo</b> o <b class="ui">huminto</b>.</td></tr>
+            <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
+                <td>Minu-mute ang output habang dumadaan ang built-in na mic sa sariling speaker ng telepono. <a href="/docs/fil/setup.html#feedback-guard">Basahin itong mabuti</a>.</td></tr>
+            <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
+                <td>Load ng processor, ipinapakita lang habang tumatakbo ang engine.</td></tr>
+            <tr><td><b class="ui">Sample rate</b></td><td>Mga chip: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
+                <td>Itinatakda ang rate ng engine; naaalala kada route. Ang pagpapalit nito ay nagre-restart sa engine. <a href="/docs/fil/setup.html#rate">Higit pa</a>.</td></tr>
+            <tr><td><b class="ui">Mga input channel</b></td><td>Mga chip: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
+                <td>Nililimitahan kung ilang input channel ang binubuksan ng NAMper. Iwan sa <b class="ui">Auto</b> maliban kung may dahilan ka.</td></tr>
+            <tr><td><b class="ui">Buffer</b></td><td>Mga chip: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
+                <td>Laki ng block, may live na <b class="ui">frames · ms</b> readout. Ito lang ang kontrol sa latency. <a href="/docs/fil/setup.html#rate">Higit pa</a>.</td></tr>
+            <tr><td><b class="ui">Input trim</b></td><td>Isang slider kada input, −12…+24 dB</td><td>0 dB</td>
+                <td>Gain para sa mga interface na walang gain knob. Tumugtog nang malakas: dapat umabot ang <b class="ui">IN</b> meter sa itaas nitong ikatlo.</td></tr>
+            <tr><td><b class="ui">Gamitin lahat ng output ng interface</b></td><td>Switch</td><td>Off</td>
+                <td>Binubuksan ang bawat output pair, para magkaroon ng sariling pair ang isang branch, rig o ang click. Hindi ito kailangan ng mga stereo device.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn">
+        <div class="t">Kailangang buksan muli ang app para sa mga pagbabago sa audio</div>
+        <p>Nagkakabisa ang mga chip at switch dito sa susunod na pagsisimula ng engine — may ilan, gaya ng sample rate, na sila mismo ang nagre-restart sa engine. Kung may mukhang naipit, i-off at i-on ang engine bago mo isipin na sira ito.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="names"><span class="n">08.3</span>Mga pangalan ng channel</h2>
+      <p>Ang <b class="ui">MGA PANGALAN NG CHANNEL</b> ay isang text field kada input, bawat row ay may unahang <b class="ui">In 1</b>, <b class="ui">In 2</b> at iba pa, na may placeholder na <b class="ui">Gitara, Vocal…</b>. Sinasabi ng footnote kung para saan sila: <b class="ui">Ipinapakita ng mga input picker ang mga pangalang ito kahit saan.</b></p>
+      <p>Pangalanan sila minsan at lalabas ang mga pangalang iyon sa bawat input picker sa app — mga rig input, source ng looper track, mga compressor sidechain, mga input trim slider. Ang mga channel na iiwan mong blangko ay babalik sa <b class="ui">In &lt;n&gt;</b>.</p>
+      <div class="note tip">
+        <div class="t">Sulit ang dalawang minuto</div>
+        <p>Sa isang multichannel na interface, mas madaling piliin nang tama sa gitna ng soundcheck ang <b class="ui">Guitar</b> at <b class="ui">Vocal</b> kaysa sa <b class="ui">In 3</b> at <b class="ui">In 4</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="appearance"><span class="n">08.4</span>Itsura</h2>
+      <p>Mga chip: <b class="ui">System</b>, <b class="ui">Maliwanag</b>, <b class="ui">Madilim</b>. Ang default ay <b class="ui">System</b>, at ito ang iisang setting sa buong sheet na nagkakabisa agad sa pag-tap mo.</p>
+      <p>Madilim ang disenyo ng NAMper — para sa madilim na entablado iginuhit ang mga meter, ang mga LED at ang graphics ng chain. Nariyan ang <b class="ui">Maliwanag</b> kung kailangan mo ito sa liwanag ng araw, pero pinakamadaling basahin ang app sa dilim.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="set"><span class="n">08.5</span>Set</h2>
+      <p>Read-only ang <b class="ui">SET</b> card. Ipinapakita nito ang <b class="ui">Tempo</b> (bilang <b class="ui">BPM</b>, o <b class="ui">—</b> kapag walang nakatakda) at ang <b class="ui">Key</b> (gaya ng <b class="ui">Am</b>, o <b class="ui">—</b>). Isa itong pagpapakita ng estado, hindi kontrol.</p>
+      <p>Itinuturo sa iyo ng footnote ang tunay na mga kontrol: <b class="ui">Tempo: pindutin nang matagal ang metronome. Key: ang KEY button sa header.</b></p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Halaga</th><th>Itakda ito mula sa</th></tr></thead>
+          <tbody>
+            <tr><td>Tempo</td><td>Pindutin nang matagal ang metronome chip sa Rig header, o ang tempo block sa <b class="ui a">Loop</b> tab. Natutukoy din ito ng looper mula sa unang loop mo, at ang pagpili ng backing track ay naglalagay ng tempo ng kanta.</td></tr>
+            <tr><td>Key</td><td>Ang <b class="ui">KEY</b> chip sa Rig header. Ang pagpili ng backing track ay naglalagay ng key ng kanta.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="lyrics"><span class="n">08.6</span>Lyrics</h2>
+      <p>Isang slider: laki ng teksto ng teleprompter, mula <b class="ui">16</b> hanggang <b class="ui">34 pt</b>, default na <b class="ui">22 pt</b>, may live na preview na linyang <b class="ui">Ganito magmumukha ang lyrics mo</b>.</p>
+      <p>Ang pagbabago nito ay agad na nag-aayos sa teleprompter nang live, kaya kung bukas ang lyrics screen sa ibang device o babalik ka agad dito, walang kailangang i-time muli. Itakda ito ayon sa layo ng telepono sa mukha mo sa mic stand, hindi mula sa sopa. Tingnan ang
+        <a href="/docs/fil/perform.html#lyrics">lyrics at ang teleprompter</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="metronome"><span class="n">08.7</span>Metronome</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td>Level ng click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
+                <td>Gaano kalakas ang click.</td></tr>
+            <tr><td><b class="ui">Click output</b></td><td>Mga chip: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+                <td>Kung aling hardware output pair ang nagdadala ng click. Ipinapakita lang kapag mahigit isa ang pair; ang pagpili ng hindi pangunahing pair ay sapilitang nag-o-on sa <b class="ui">Gamitin lahat ng output ng interface</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ang footnote ng card ang kapaki-pakinabang na bahagi: <b class="ui">Isinasama ang click PAGKATAPOS ng master FX chain — hindi ito nahahawakan ng mga reverb at limiter. Pumili ng hiwalay na output pair para sa in-ear monitoring.</b></p>
+      <p>Ibig sabihin, hindi lalabo ang click sa master reverb mo at hindi ibababa ng master limiter mo ang banda sa bawat tiktak. Ipadala ito sa sariling pair at maririnig ng drummer ang click habang hindi ito naririnig ng front of house.</p>
+      <p>Ang click mismo ay ino-on at ino-off sa metronome chip sa Rig header, o sa <b class="ui">CLICK</b> chip sa <b class="ui a">Loop</b> tab — hindi dito.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="prompts"><span class="n">08.8</span>Mga prompt</h2>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Ipakita ang support prompt</b></td><td>Switch</td><td>On</td>
+                <td>Ang sheet na nagpapaliwanag na libre ang NAMper at itinuturo ang tip jar. Paminsan-minsan itong lumilitaw mula sa ikatlong pagbukas; i-off ito at hindi na ito babalik.</td></tr>
+            <tr><td><b class="ui">Mag-alok ng TONE3000 sign-in sa pagbukas</b></td><td>Switch</td><td>On</td>
+                <td>Ang sheet na nag-aalok na ikonekta ang TONE3000 account mo para ma-download ng mga factory preset ang totoo nilang amp capture. Lumalabas ito minsan kada pagbukas habang naka-sign out ka.</td></tr>
+            <tr><td><b class="ui">Ulitin ang mabilisang tour</b></td><td>Button</td><td>—</td>
+                <td>Pinapatakbo muli ang walong-hakbang na tour sa unang paggamit.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ang mabilisang tour ay spotlight sa ibabaw ng live na Rig tab, binibilang bilang <b class="ui">n/8</b>, at ito ay hands-on sa halip na slideshow: dinadaanan ka nito sa pag-on ng audio (talagang tina-tap mo ang power button), ang amp card, ang signal chain (talagang tina-tap mo ang isang block), ang block editor, mga preset, ang ibang tab at isang pangwakas na hakbang. Laging available ang <b class="ui">Susunod</b>, <b class="ui">Laktawan ang hakbang</b> at <b class="ui">Tapusin ang tour</b>, may <b class="ui">Tapusin</b> sa dulo. Sa <b class="ui a">Rig</b> tab lang ito tumatakbo.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="reset"><span class="n">08.9</span>Reset</h2>
+      <p>Dalawang button, bawat isa'y may kumpirmasyon.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Button</th><th>Dialog</th><th>Kumpirmahin</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Ibalik sa mga factory preset</b></td>
+                <td><b class="ui">Tanggalin ang LAHAT ng user preset? Babalik ang apat na factory rig.</b></td>
+                <td><b class="ui">Tanggalin lahat ng user preset</b></td></tr>
+            <tr><td><b class="ui">I-reset lahat ng setting</b></td>
+                <td><b class="ui">I-reset ang bawat setting (audio, looper, MIDI map, itsura) sa default? Mananatili ang mga preset at file. I-restart ang app pagkatapos.</b></td>
+                <td><b class="ui">I-reset ang mga setting</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Binubura ng una ang mga rig preset mo at ibinabalik ang apat na factory rig. Hindi ginagalaw ng pangalawa ang bawat preset at bawat file at ibinabalik lang nito ang mga setting sa default.</p>
+      <div class="note warn">
+        <div class="t">I-restart pagkatapos ng pag-reset ng mga setting</div>
+        <p>Ganito ang nakasulat sa footnote: <b class="ui">Magkakabisa ang pag-reset ng mga setting pagkatapos i-restart ang app.</b>, at totoo iyon. Ang pagbabago sa itsura lang ang agad na nagkakabisa — kailangang buksan muli ang app bago tunay na bumalik sa default ang mga setting ng audio. Isara ang NAMper sa app switcher at buksan itong muli.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="diagnostics"><span class="n">08.10</span>Diagnostics</h2>
+      <p>Nag-iingat ang NAMper ng plain-text na engine log na nagtatala ng routing ng interface at ng mga peak. Kapag may ganito, inaalok ng card na ito ang <b class="ui">Ibahagi ang engine log</b> at <b class="ui">I-clear ang engine log</b>; kapag wala, ganito ang nakasulat: <b class="ui">Wala pang engine log (itinatala nito ang routing ng interface at ang mga peak).</b></p>
+      <p>Ibinibigay ng <b class="ui">Ibahagi ang engine log</b> ang file sa iOS share sheet — i-mail, i-AirDrop, o ilakip sa isang support issue. Ito ang pinakakapaki-pakinabang na bagay na maisasama mo sa ulat ng bug tungkol sa interface na ayaw bumukas, rate na tinatanggihan o engine na kusang humihinto, dahil itinatala nito kung ano talaga ang nangyari sa antas ng audio.</p>
+      <p>Inaalis ng <b class="ui">I-clear ang engine log</b> ang laman nito. Gawin iyon bago mo ulitin ang isang problema at ang ipapadala mong log ay maglalaman ng problemang iyon at wala nang iba.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="elsewhere"><span class="n">08.11</span>Wala sa Settings</h2>
+      <p>Tatlong bagay na hinahanap dito ng mga tao at hindi nakikita.</p>
+      <h3>Trigger quantize</h3>
+      <p>Nasa header ng <b class="ui a">Sample</b> tab ang <b class="ui">QUANT</b> knob at ang grid chip nito, hindi sa Settings — kahit na pareho silang global sa halip na kada kit o kada pad. Tingnan ang <a href="/docs/fil/sampler.html#quantize">trigger quantize</a>.</p>
+      <h3>Tempo at key</h3>
+      <p>Pareho silang header chip sa <b class="ui a">Rig</b> tab. Iniuulat lang sila ng Settings, sa <a href="#set"><b class="ui">SET</b></a> card.</p>
+      <h3>MIDI</h3>
+      <p>Wala talagang <strong>anumang global na setting ng MIDI</strong>: walang pampili ng channel, walang toggle para sa program-change, walang clock sync. Omni at laging naka-on ang MIDI sa NAMper — tinatanggap ang bawat channel, awtomatikong kumokonekta ang bawat source, at naglalathala ang app ng sarili nitong virtual destination na tinatawag na <b class="ui">NAMper</b>.</p>
+      <div class="note">
+        <div class="t">Walang kailangang i-configure</div>
+        <p>Kung walang ginagawa ang isang pedal, ang mapping ang problema, hindi ang setting. Nasa <b class="ui a">Control</b> tab ang lahat ng may kinalaman sa MIDI — tingnan ang
+          <a href="/docs/fil/control.html">MIDI at control</a>.</p>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/control.html">← 07 · MIDI at control</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/">Lahat ng docs →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

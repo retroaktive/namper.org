@@ -34,6 +34,8 @@ LOCALES = [
     ("ko", "ko",      "ko"),
     ("zh", "zh",      "zh-Hans"),
     ("zh-hant", "zh-hant", "zh-Hant"),
+    ("hi", "hi",      "hi"),
+    ("fil", "fil",    "fil"),
 ]
 
 PAGES = ["index.html", "setup.html", "rig.html", "plugins.html", "looper.html",

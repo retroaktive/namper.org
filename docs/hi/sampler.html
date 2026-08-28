@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>सैंपलर पैड — NAMper दस्तावेज़</title>
+<meta name="description" content="सोलह सैंपलर पैड: आवाज़ें लोड करना और रिकॉर्ड करना, ट्रिम और ADSR वाला पैड एडिटर, किट और चार फ़ैक्टरी ड्रम किट, ट्रिगर क्वांटाइज़, MIDI नोट 36–51, और मिक्स में पैड कहाँ जाते हैं।">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="सैंपलर पैड — NAMper दस्तावेज़">
+<meta property="og:description" content="सोलह पैड, किट, ट्रिम और ADSR, क्वांटाइज़ और MIDI ट्रिगरिंग।">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/hi/sampler.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/sampler.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/sampler.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/sampler.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/sampler.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/sampler.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/sampler.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/sampler.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/sampler.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/sampler.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/sampler.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/sampler.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/sampler.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/sampler.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/sampler.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/sampler.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/sampler.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/sampler.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/sampler.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">दस्तावेज़</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/hi/">← सभी दस्तावेज़</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/hi/sampler.html" aria-current="page">हिन्दी</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">विषय-सूची</div>
+    <ol>
+      <li><a href="/docs/hi/setup.html">शुरुआत</a></li>
+      <li><a href="/docs/hi/rig.html">रिग और सिग्नल चेन</a></li>
+      <li><a href="/docs/hi/plugins.html">AU प्लगइन</a></li>
+      <li><a href="/docs/hi/looper.html">लूपर</a></li>
+      <li><a class="on" href="/docs/hi/sampler.html">सैंपलर पैड</a></li>
+      <li><a href="/docs/hi/perform.html">परफ़ॉर्म और लिरिक्स</a></li>
+      <li><a href="/docs/hi/control.html">MIDI और कंट्रोल</a></li>
+      <li><a href="/docs/hi/settings.html">सेटिंग्स संदर्भ</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--eq)">05 · सैंपलर पैड</div>
+    <h1>सोलह पैड, एक पन्ना।</h1>
+    <p class="lede"><b class="ui a">सैंपल</b> टैब एक ड्रम मशीन है जिसे आप अंगूठों से या MIDI पेडल से बजा सकते हैं: सोलह पैड, किट लाइब्रेरी, हर पैड के लिए ट्रिम और एनवेलप, और जब समय ठीक चाहिए तब के लिए क्वांटाइज़र।</p>
+
+    <nav class="toc">
+      <div class="slab">इस पृष्ठ पर</div>
+      <ul>
+        <li><a href="#grid">ग्रिड</a></li>
+        <li><a href="#loading">पैड में आवाज़ डालना</a></li>
+        <li><a href="#editor">पैड एडिटर</a></li>
+        <li><a href="#kits">किट</a></li>
+        <li><a href="#quantize">ट्रिगर क्वांटाइज़</a></li>
+        <li><a href="#trigger">पैड बजाना</a></li>
+        <li><a href="#routing">पैड कहाँ जाते हैं</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="grid"><span class="n">05.1</span>ग्रिड</h2>
+      <p>तय 4×4 ग्रिड में सोलह पैड। एक ही पन्ना — न कोई बैंक, न दूसरा पन्ना, इसलिए जो कुछ बजा सकते हैं वह सब एक साथ स्क्रीन पर है।</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
+             alt="सैंपल टैब, जिसमें सोलहों पैड पर अकूस्टिक ड्रम फ़ैक्टरी किट लोड है और हर पैड अपना सैंपल नाम, लंबाई और वेवफ़ॉर्म दिखा रहा है; हेडर में LEVEL और QUANT नॉब तथा क्वांटाइज़ ग्रिड चिप।">
+        <figcaption>सभी 16 पैड पर लोड किया <b class="ui">ड्रम — अकूस्टिक</b> फ़ैक्टरी किट</figcaption>
+      </figure>
+      <p>हेडर पंक्ति में बाएँ से दाएँ हैं: शब्द <b class="ui">सैंपलर</b>, एक <b class="ui">स्तर</b> नॉब (0 से 2, डिफ़ॉल्ट 1), एक <b class="ui">QUANT</b> नॉब, क्वांटाइज़ ग्रिड चिप, किट के लिए <b class="ui">प्रीसेट</b> चिप, एक <b class="ui">REC</b> सूचक जो पैड के रिकॉर्ड होते समय जलता है, और <b class="ui">सब रोकें</b>।</p>
+      <p>नीचे की पंक्ति में संकेत सब कह देता है:</p>
+      <p><b class="ui">खाली पैड: लोड करें या रिकॉर्ड करें · भरा पैड: टैप = बजाएँ/रोकें, संपादित करने के लिए दबाए रखें · MIDI नोट 36–51</b></p>
+      <p>एक <b>ख़ाली पैड</b> दो हिस्सों में बँटा होता है — <b class="ui">लोड</b> और <b class="ui">REC</b>। एक <b>भरा पैड</b> सैंपल का नाम दिखाता है, उसकी लंबाई (जैसे <b class="ui">1.4s</b>), एक मद्धम वेवफ़ॉर्म जिसमें ट्रिम के बाहर सब कुछ फीका पड़ा होता है, और बजते समय उसमें से गुज़रता एक चमकीला कर्सर।</p>
+      <p>मेन्यू के लिए किसी भी पैड को देर तक दबाएँ: <b class="ui">साउंड लोड करें…</b>, <b class="ui">मिक्स रिकॉर्ड करें</b> या <b class="ui">रिकॉर्डिंग रोकें</b>, और भरे पैड पर — <b class="ui">संपादित करें…</b>, <b class="ui">साफ़ करें</b> और <b class="ui">MIDI Learn: pad N</b>।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="loading"><span class="n">05.2</span>पैड में आवाज़ डालना</h2>
+      <p>फ़ाइल लोड करने के तीन रास्ते हैं, और तीनों वही Files पिकर खोलते हैं: ख़ाली पैड का <b class="ui">लोड</b> हिस्सा, देर तक दबाने वाले मेन्यू का <b class="ui">साउंड लोड करें…</b>, और पैड एडिटर के अंदर <b class="ui">फ़ाइल लोड करें</b>। जो कुछ iOS पढ़ सकता है वह सब स्वीकार है।</p>
+      <p>सैंपल की सीमा है <b>12 सेकंड</b> — उससे लंबी फ़ाइल मना नहीं होती, काट दी जाती है। और NAMper में खींचकर छोड़ना काम नहीं करता: हर आयात पिकर से होता है।</p>
+
+      <h3>पैड में रिकॉर्ड करना</h3>
+      <p>ख़ाली पैड का <b class="ui">REC</b> हिस्सा सीधे उसी में रिकॉर्ड करता है। एक बार में सिर्फ़ एक पैड रिकॉर्ड कर सकता है, और टेक का नाम <b class="ui">Rec N</b> होता है। इंजन बंद हो तो वह मना कर देता है: <b class="ui r">ऑडियो बंद है — रिकॉर्ड करने से पहले पावर बटन दबाएँ।</b></p>
+      <div class="note warn">
+        <div class="t">पैड रिकॉर्डर वही पकड़ता है जो आप सुनते हैं</div>
+        <p>यह रिकॉर्ड करता है <b>मुख्य आउटपुट मिक्स</b>, कच्चा इनपुट नहीं — इसलिए रिग, लूपर, बाकी पैड और कोई भी बैकिंग ट्रैक सब सैंपल में आ जाते हैं। अपने प्रोसेस किए टोन से सीधा कॉर्ड पकड़ने के लिए यह काम का है, और अगर आप सूखा स्रोत पकड़ना चाहते थे तो जाल भी। <b class="ui">REC</b> दबाने से पहले बाकी सब म्यूट या बंद कर दें।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">05.3</span>पैड एडिटर</h2>
+      <p>भरे पैड को देर तक दबाएँ → <b class="ui">संपादित करें…</b>। शीट का शीर्षक <b class="ui">PAD N</b> होता है, साथ में सैंपल का नाम और लंबाई।</p>
+      <p>वेवफ़ॉर्म में हैं <b>खींचे जा सकने वाले ट्रिम हैंडल</b> शुरुआत और अंत पर — धीमा अटैक काटने के लिए शुरुआत को अंदर खींचें, लंबी पूँछ छोटी करने के लिए अंत को अंदर खींचें।</p>
+      <p>यह <b>ADSR एनवेलप वेवफ़ॉर्म के ऊपर खींचा जाता है</b> और तीन गोल हैंडल खींचकर बदला जाता है: <b class="ui">अटैक</b>, <b class="ui">डिके और सस्टेन</b> और <b class="ui">रिलीज़</b>। ऊपर एक रीडआउट मान दिखाता है, जैसे <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>।</p>
+      <p>दो नॉब: <b class="ui">गेन</b> (0 से 2) और <b class="ui">पिच</b> (0.25 से 4, <b class="ui">1.00x</b> के रूप में दिखता है)। पिच एक रीसैंपलिंग रेट है, इसलिए वह बदलती है <b>पिच और गति, दोनों एक साथ</b> — टेप जैसा बदलाव, फ़ॉर्मेंट बचाने वाला नहीं। आधी गति यानी एक ऑक्टेव नीचे।</p>
+
+      <h3>MODE और TAP</h3>
+      <p>चिप के दो जोड़े तय करते हैं कि पैड आपकी उँगली के नीचे कैसा बर्ताव करेगा। <b class="ui">मोड</b> या तो <b class="ui">वन-शॉट</b> है या <b class="ui">लूप</b>; <b class="ui">TAP</b> या तो <b class="ui">Retrig</b> है या <b class="ui">लैच</b>। नियम सीधा है: <b class="ui">लूप</b> या <b class="ui">लैच</b> पर सेट पैड हर टैप पर शुरू और बंद के बीच बदलता है, और <b class="ui">वन-शॉट</b> / <b class="ui">Retrig</b> पैड हर बार दबाने पर ट्रिम की शुरुआत से फिर चालू हो जाता है — आम ड्रम-पैड जैसा बर्ताव।</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>MODE</th><th>TAP</th><th>टैप क्या करता है</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">वन-शॉट</b></td><td><b class="ui">Retrig</b></td>
+                <td>ट्रिम की शुरुआत से एक बार बजता है, हर टैप पर फिर से। ड्रम, हिट, स्टैब।</td></tr>
+            <tr><td><b class="ui">वन-शॉट</b></td><td><b class="ui">लैच</b></td>
+                <td>एक बार बजता है; बजते-बजते दूसरा टैप उसे रोक देता है। लंबे वन-शॉट, जिन्हें बीच में काटना पड़ सकता है।</td></tr>
+            <tr><td><b class="ui">लूप</b></td><td><b class="ui">Retrig</b></td>
+                <td>जब तक रोकने के लिए दोबारा टैप न करें तब तक लूप करता रहता है।</td></tr>
+            <tr><td><b class="ui">लूप</b></td><td><b class="ui">लैच</b></td>
+                <td>जब तक रोकने के लिए दोबारा टैप न करें तब तक लूप करता रहता है। बेड, ड्रोन, बारिश, विनाइल की कड़कड़ाहट।</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>नीचे, <b class="ui">प्रीव्यू</b> आपकी मौजूदा सेटिंग्स के साथ पैड सुनाता है और <b class="ui">फ़ाइल लोड करें</b> एडिटर से बाहर निकले बिना आवाज़ बदल देता है।</p>
+      <div class="note">
+        <div class="t">सैंपलर में जानबूझकर क्या नहीं है</div>
+        <p>न चोक ग्रुप (खुला हैट बंद वाले से नहीं कटेगा), न हर पैड का अलग पैन, न रिवर्स, न वेलोसिटी लेयर, न हर पैड की अलग आउटपुट रूटिंग, और न दबाए रखने तक चलने वाला मोड। पैड अपने तय <b class="ui">गेन</b> पर बजते हैं और तब रुकते हैं जब सैंपल या एनवेलप कहे।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="kits"><span class="n">05.4</span>किट</h2>
+      <p>किट सोलहों पैड का स्नैपशॉट है — हर ट्रिम, एनवेलप, गेन, पिच और मोड सेटिंग — <b>और साथ में हर पैड के ऑडियो की अपनी निजी नक़ल</b>। वही नक़ल असली बात है: किट सहेजने के बाद, किसी पैड पर कुछ और आयात करना, उसे साफ़ करना या मूल फ़ाइल मिटा देना किट को खोखला नहीं कर सकता। छह महीने बाद लोड कीजिए, वह तब भी बजेगी।</p>
+      <p><b class="ui">प्रीसेट</b> चिप से ब्राउज़र खोलिए; शीट का शीर्षक <b class="ui">सैंपलर किट</b> है। लोड करने के लिए किसी पंक्ति पर टैप कीजिए। पंक्ति के मेन्यू में <b class="ui">नाम बदलें</b>, <b class="ui">Update with current kit</b> और <b class="ui">मिटाएँ</b> हैं। किट मिटाने पर वह ऑडियो कभी नहीं हटता जिसे लोड किए पैड या कोई और सहेजी किट अब भी इस्तेमाल कर रहे हों।</p>
+      <div class="note warn">
+        <div class="t">किट साझा नहीं की जा सकतीं</div>
+        <p>शीट के नीचे की पंक्ति वजह बताती है: <b class="ui">किट इसी डिवाइस पर रहते हैं (उनके साथ उनकी ऑडियो फ़ाइलें भी आती हैं)।</b> किट के लिए न साझा है न निर्यात, और पूरा बैकअप निर्यात भी सैंपलर किट का ऑडियो छोड़ देता है — वह सिर्फ़ पैरामीटर और संदर्भ ले जाता है। किसी दूसरे डिवाइस पर आवाज़ें चाहिए तो Files ऐप में <b class="ui">samples/</b> फ़ोल्डर कॉपी कर लीजिए।</p>
+      </div>
+
+      <h3>चार फ़ैक्टरी किट</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>किट</th><th>सोलह पैड</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">ड्रम — डिजिटल</b></td>
+                <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid, Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
+            <tr><td><b class="ui">ड्रम — एनालॉग</b></td>
+                <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash, Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
+            <tr><td><b class="ui">ड्रम — अकूस्टिक</b></td>
+                <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid, Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell, Tambourine</td></tr>
+            <tr><td><b class="ui">FX और टेक्सचर</b></td>
+                <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab, Bleep, Alarm, Crackle (लूपिंग), Wind (लूपिंग), Chime, Robot, Rumble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>मिटाई गई फ़ैक्टरी किट मिटी ही रहती है — अगली बार ऐप खोलने पर वह वापस नहीं आती। सिर्फ़ रास्ते से हटाना हो तो मिटाने के बजाय उसका नाम बदल दीजिए या उसे अपडेट कर दीजिए।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="quantize"><span class="n">05.5</span>ट्रिगर क्वांटाइज़</h2>
+      <p><b class="ui">QUANT</b> नॉब एक <b>मात्रा है</b>, स्विच नहीं। शून्य पर वह <b class="ui">बंद</b> दिखाता है; उससे ऊपर प्रतिशत। 100 % पर हर हिट ठीक ग्रिड पर बैठती है; 30 % पर सिर्फ़ थोड़ी जल्दी वाली हिट पंक्ति में खिंचती हैं और आपका अपना अंदाज़ बचा रहता है। डिफ़ॉल्ट 0 है, यानी बंद।</p>
+      <p>बगल की चिप ग्रिड तय करती है, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b> और <b class="ui">1/32</b> के बीच घूमती हुई। डिफ़ॉल्ट <b class="ui">1/16</b> है।</p>
+      <p>दोनों सेटिंग्स <b>वैश्विक हैं</b> — न हर किट की, न हर पैड की। किट लोड करने से वे नहीं बदलतीं।</p>
+      <div class="note warn">
+        <div class="t">तीनों बातें सच होनी चाहिए</div>
+        <p>क्वांटाइज़ तभी सुनाई देने लायक कुछ करता है जब <b>तीनों</b> बातें लागू हों, और स्क्रीन आपको यह बताती नहीं:</p>
+        <ul style="--nc:var(--drive)">
+          <li>a <b>टेम्पो तय हो</b> — वरना कोई ग्रिड ही नहीं;</li>
+          <li>a <b>लूप चल रहा हो</b> — लूपर फ़ेज़ देता है, जिससे ग्रिड को पता रहता है कि पहली बीट कहाँ है;</li>
+          <li>आप <b>रिकॉर्ड कर रहे हों</b> — या तो <b class="ui a">परफ़ॉर्म</b> रिकॉर्डर से, या ऐसे लूप ट्रैक से जिसका स्रोत सैंपलर है।</li>
+        </ul>
+        <p>यूँ ही बजाते हुए नॉब बढ़ाइए और कोई फ़र्क़ नहीं सुनाई देगा। यह जानबूझकर है: जो पैड बोलने से पहले अगली सोलहवीं का इंतज़ार करे वह उँगलियों के नीचे टूटा हुआ लगता है, इसलिए खुला बजाना हमेशा बिना क्वांटाइज़ के छोड़ा जाता है और सुधार सिर्फ़ वहीं लगता है जहाँ वह रिकॉर्डिंग में जाता है।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="trigger"><span class="n">05.6</span>पैड बजाना</h2>
+      <p>छूकर: टैप पैड को उसकी <b class="ui">मोड</b> और <b class="ui">TAP</b> सेटिंग्स के हिसाब से बजाता या रोकता है, और देर तक दबाने पर मेन्यू खुलता है।</p>
+      <p>MIDI से: <b>नोट 36 से 51 पैड 1 से 16 बजाते हैं</b>, GM ड्रम परंपरा के अनुसार — नोट 36 यानी पैड 1। यह हमेशा सक्रिय रहता है और किसी भी MIDI चैनल पर बिना सेटअप के चलता है, जब तक आपकी अपनी कोई मैपिंग उस नोट पर पहले दावा न कर ले।</p>
+      <p><b>वेलोसिटी इस्तेमाल नहीं होती।</b> कंट्रोलर पैड कितना भी ज़ोर से मारिए, सैंपल उसी <b class="ui">गेन</b> पर बजता है जो आपने एडिटर में तय किया। पैड एडिटर में स्तर एक बार तय कर दीजिए, वे वहीं टिके रहते हैं।</p>
+      <div class="note tip">
+        <div class="t">सिखाई मैपिंग कच्चे नोट से बेहतर चलती हैं</div>
+        <p><b class="ui a">कंट्रोल</b> टैब पर बनाई मैपिंग बजाओ/रोको को बुलाती है, इसलिए वह <b class="ui">लूप</b> और <b class="ui">लैच</b> का पालन करती है — फ़ुटस्विच का एक दबाव लूप शुरू करता है, अगला उसे रोकता है। कच्चे MIDI नोट 36–51 हमेशा शुरू से फिर चला देते हैं। अगर आप पेडल से लूपिंग पैड चला रहे हैं, तो अंतर्निहित नोट श्रेणी पर भरोसा करने के बजाय मैपिंग सिखा दीजिए।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="routing"><span class="n">05.7</span>पैड कहाँ जाते हैं</h2>
+      <p>पैड जुड़ते हैं <b>सीधे मुख्य मिक्स में</b> — वे गिटार चेन से होकर नहीं जाते, इसलिए आपके एम्प का गेन और आपका रिवर्ब उन्हें कभी नहीं छूते। हेडर का <b class="ui">स्तर</b> नॉब तय करता है कि पूरा सैंपलर रिग के मुक़ाबले कितना तेज़ बैठे।</p>
+      <p>ऐप में और जगहों पर भी वे स्रोत के रूप में उपलब्ध हैं:</p>
+      <ul style="--nc:var(--power)">
+        <li>एक <b>चेन इनपुट के रूप में</b> — किसी रिग के IN कनेक्टर पर या समानांतर ब्रांच पर (चिप <b class="ui">SMPL</b>) <b class="ui">सैंपलर पैड</b> चुनिए और पैड उस रिग के इफ़ेक्ट से होकर जाएँगे।</li>
+        <li>एक <b>लूप ट्रैक स्रोत के रूप में</b> — किसी लूपर ट्रैक का <b class="ui">IN</b> <b class="ui">सैंपलर</b> पर सेट कीजिए (चिप <b class="ui">SMP</b>) और आप पैड पर बजाई बीट को लूप कर सकते हैं।</li>
+        <li>एक <b>कंप्रेसर साइडचेन के रूप में</b> — कॉम्प ब्लॉक के <b class="ui">साइडचेन</b> मेन्यू में <b class="ui">SMP</b> है, इसलिए किक गिटार को दबा सकती है।</li>
+      </ul>
+      <p>हेडर का <b class="ui">सब रोकें</b> एक साथ हर बजते पैड को छोड़ देता है — अटके ड्रोन या न मिलने वाले लूप के लिए घबराहट का बटन।</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/hi/looper.html">← 04 · लूपर</a>
+      <span class="sp"></span>
+      <a href="/docs/hi/perform.html">06 · परफ़ॉर्म और लिरिक्स →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/hi/">दस्तावेज़</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">सहायता</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">गोपनीयता</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper एक स्वतंत्र ऐप है, किसी भी उपकरण निर्माता से संबद्ध, अनुमोदित या प्रायोजित नहीं। सभी उत्पाद नाम, ब्रांड और ट्रेडमार्क अपने-अपने स्वामियों की संपत्ति हैं और केवल यह बताने के लिए इस्तेमाल हुए हैं कि कोई कैप्चर किस उपकरण से लिया गया था।</p>
+  </div>
+</footer>
+
+</body>
+</html>

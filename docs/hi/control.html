@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDI और कंट्रोल — NAMper दस्तावेज़</title>
+<meta name="description" content="कंट्रोल मैप और MIDI Learn, किन-किन क्रियाओं से जोड़ सकते हैं, अंतर्निहित MIDI मैप, ब्लूटूथ पेयरिंग, सिखाए गए साउंड ट्रिगर, और ट्यूनर।">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="MIDI और कंट्रोल — NAMper दस्तावेज़">
+<meta property="og:description" content="फ़ुटस्विच, पेडल और सिखाए गए साउंड को NAMper की किसी भी चीज़ से जोड़िए — साथ में अंतर्निहित MIDI मैप और ट्यूनर।">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/hi/control.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/control.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/control.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/control.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/control.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/control.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/control.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/control.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/control.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/control.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/control.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/control.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/control.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/control.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/control.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/control.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/control.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/control.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/control.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">दस्तावेज़</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/hi/">← सभी दस्तावेज़</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/hi/control.html" aria-current="page">हिन्दी</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">विषय-सूची</div>
+    <ol>
+      <li><a href="/docs/hi/setup.html">शुरुआत</a></li>
+      <li><a href="/docs/hi/rig.html">रिग और सिग्नल चेन</a></li>
+      <li><a href="/docs/hi/plugins.html">AU प्लगइन</a></li>
+      <li><a href="/docs/hi/looper.html">लूपर</a></li>
+      <li><a href="/docs/hi/sampler.html">सैंपलर पैड</a></li>
+      <li><a href="/docs/hi/perform.html">परफ़ॉर्म और लिरिक्स</a></li>
+      <li><a class="on" href="/docs/hi/control.html">MIDI और कंट्रोल</a></li>
+      <li><a href="/docs/hi/settings.html">सेटिंग्स संदर्भ</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIDI और कंट्रोल</div>
+    <h1>हाथ गिटार पर।</h1>
+    <p class="lede">फ़ुटस्विच, पेडल, वाद्य की बॉडी पर थपकी — <b class="ui a">कंट्रोल</b> टैब वह जगह है जहाँ आप तय करते हैं कि क्या किसे चलाएगा, ताकि फ़ोन पूरे सेट के दौरान अपने स्टैंड पर ही रहे। ट्यूनर भी यहीं रहता है।</p>
+
+    <nav class="toc">
+      <div class="slab">इस पृष्ठ पर</div>
+      <ul>
+        <li><a href="#map">कंट्रोल मैप</a></li>
+        <li><a href="#learn">MIDI Learn</a></li>
+        <li><a href="#actions">किन क्रियाओं से जोड़ सकते हैं</a></li>
+        <li><a href="#builtin">अंतर्निहित MIDI मैप</a></li>
+        <li><a href="#bluetooth">ब्लूटूथ MIDI</a></li>
+        <li><a href="#sounds">सिखाए गए साउंड ट्रिगर</a></li>
+        <li><a href="#tuner">ट्यूनर</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="map"><span class="n">07.1</span>कंट्रोल मैप</h2>
+      <p><b class="ui a">कंट्रोल</b> टैब में तीन कार्ड हैं। पहला <b class="ui">कंट्रोल मैप</b> है — आपकी अपनी मैपिंग, जो बाकी सब पर भारी पड़ती हैं। उसका विवरण बताता है कि वह क्या लेता है: <b class="ui">MIDI कंट्रोल और इनपुट ट्रिगर, किसी भी क्रिया से जुड़े। स्रोत: कोई भी CC या नोट (LEARN से), बॉडी पर थपकी, देर तक पकड़ा नोट या कॉर्ड।</b></p>
+      <p>हेडर में एक प्रीसेट चिप और एक <b class="ui">+</b> (<b class="ui">मैपिंग जोड़ें</b>) है। अभी कुछ भी मैप न हो तो कार्ड दिखाता है <b class="ui">अभी कोई मैपिंग नहीं — + से जोड़ें</b>।</p>
+      <p>हर मैपिंग एक पंक्ति है, बाएँ से दाएँ पढ़ी जाती है: एक स्रोत चिप, एक <b class="ui">LEARN</b> बटन, एक तीर, एक क्रिया चिप, और पंक्ति मिटाने के लिए एक <b class="ui">✕</b>। सहेजे गए मैप प्रीसेट चिप पर <b class="ui">कंट्रोल प्रीसेट</b> के नीचे रहते हैं, इसलिए एक बैंड का पेडलबोर्ड विन्यास अगले तक साथ ढोने की ज़रूरत नहीं।</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/control.png" width="600" height="1304"
+             alt="कंट्रोल टैब: मैपिंग पंक्तियों वाला कंट्रोल मैप कार्ड, सिखाए गए साउंड कार्ड, और CC श्रेणियाँ दिखाता अंतर्निहित MIDI मैप कार्ड, नीचे “ब्लूटूथ MIDI जोड़ें” बटन के साथ।">
+        <figcaption>कंट्रोल टैब — आपका मैप, आपके सिखाए साउंड, और अंतर्निहित मैप</figcaption>
+      </figure>
+
+      <div class="note warn">
+        <div class="t">चार इनपुट ट्रिगर</div>
+        <p>सिखाए गए साउंड से चलने वाली सिर्फ़ पहली चार पंक्तियाँ सक्रिय रहती हैं। पाँचवीं जोड़ने पर कार्ड चेतावनी देता है: <b class="ui r">सिर्फ़ पहले 4 इनपुट ट्रिगर सक्रिय हैं</b>। MIDI पंक्तियों पर ऐसी कोई सीमा नहीं — यह वाली वाद्य को सुनने से जुड़ी है।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="learn"><span class="n">07.2</span>MIDI Learn</h2>
+      <p>आपको कभी CC नंबर टाइप नहीं करना पड़ता। किसी मैपिंग पंक्ति पर:</p>
+      <ol style="--nc:var(--eq)">
+        <li><b class="ui">LEARN</b> दबाएँ। चिप जल उठती है और पंक्ति इंतज़ार करती है।</li>
+        <li>जो फ़ुटस्विच दबाना है उसे दबाएँ, या जो पेडल चाहिए उसे घुमाएँ।</li>
+        <li>स्रोत चिप <b class="ui">CC 42</b> या <b class="ui">Note 60</b> के रूप में भर जाती है, और कार्ड की <b class="ui">Last:</b> पंक्ति इसकी पुष्टि करती है — <b class="ui">Learned CC 42</b>।</li>
+      </ol>
+      <p>निष्क्रिय करने के लिए <b class="ui">LEARN</b> फिर दबाएँ। स्रोत चिप के अपने मेन्यू में एक <b class="ui">MIDI</b> खंड है जिसमें <b class="ui">CC… (LEARN से)</b> और <b class="ui">नोट… (LEARN से)</b> हैं, और एक <b class="ui">सिखाए गए साउंड</b> खंड है जिसमें आपके सिखाए साउंड और साथ में <b class="ui">नया साउंड सिखाएँ…</b></p>
+
+      <h3>जहाँ हैं वहीं सिखाएँ</h3>
+      <p>कंट्रोल टैब से शुरू करना ज़रूरी नहीं। ऐप के लगभग किसी भी नियंत्रण को देर तक दबाएँ — नॉब, चिप पंक्ति, लूपर पैड, सैंपलर पैड, परफ़ॉर्म के ट्रांसपोर्ट बटन — और मेन्यू ठीक उसी नियंत्रण के लिए <b class="ui">MIDI Learn: &lt;name&gt;</b> देता है। वह अपने चारों ओर रेखा खींच लेता है और दिखाता है <b class="ui">कोई MIDI कंट्रोल हिलाएँ…</b>; पेडल हिलाइए और मैपिंग बन जाती है। ग़लत नॉब पकड़ लिया हो तो <b class="ui">Learn रद्द करें</b> से बाहर निकलें।</p>
+      <div class="note tip">
+        <div class="t">बोर्ड बनाने का तेज़ तरीका</div>
+        <p>जो दिख रहा है उसके लिए “जहाँ हैं वहीं सिखाएँ” कंट्रोल टैब से बेहतर है: ब्लॉक खोलिए, जो नॉब पेडल पर चाहिए उसे देर तक दबाइए, स्विच दबाइए, हो गया। कंट्रोल टैब बनाए हुए को देखने और सँवारने के लिए है।</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="actions"><span class="n">07.3</span>किन क्रियाओं से जोड़ सकते हैं</h2>
+      <p>क्रिया चिप का पूरा मेन्यू:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>खंड</th><th>क्रियाएँ</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">कोई क्रिया नहीं</b></td><td>पंक्ति को निष्क्रिय छोड़ देता है।</td></tr>
+            <tr><td><b class="ui">सैंपलर पैड</b></td><td><b class="ui">Pad 1</b> से आगे, हर भरे पैड के लिए एक।</td></tr>
+            <tr><td><b class="ui">लूपर</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
+              track 4</b>, <b class="ui">चलाएँ / रोकें</b>, <b class="ui">सब साफ़ करें</b>.</td></tr>
+            <tr><td><b class="ui">प्रीसेट</b></td><td>हर रिग प्रीसेट नाम से, साथ में <b class="ui">अगला प्रीसेट</b>।</td></tr>
+            <tr><td><b class="ui">परफ़ॉर्म</b></td><td><b class="ui">बजाएँ / रोकें</b>,
+              <b class="ui">रोकें</b>, <b class="ui">अगला सेक्शन</b>,
+              <b class="ui">पिछला सेक्शन</b>.</td></tr>
+            <tr><td>हर रिग के लिए</td><td><b class="ui">ब्लॉक चालू/बंद</b> और <b class="ui">ब्लॉक पैरामीटर (CC)</b>, हर रिग के नीचे नाम से सूचीबद्ध।</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>एक से ज़्यादा रिग होते ही तीन और प्रविष्टियाँ आ जाती हैं: <b class="ui">अगला रिग</b>, <b class="ui">ब्लॉक चालू/बंद · सक्रिय रिग</b> और <b class="ui">ब्लॉक पैरामीटर · सक्रिय रिग</b>। ये उसी रिग के पीछे चलती हैं जिस पर इस समय MIDI फ़ोकस है, इसलिए एक फ़ुटस्विच किसी तय रिग के तय ब्लॉक के बजाय “जिस रिग पर मैं बजा रहा हूँ उसका ड्राइव” बायपास कर सकता है।</p>
+      <p>पेडल जोड़ने से पहले दो बातें याद रखने लायक हैं:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>लगातार बदलते ब्लॉक पैरामीटर के लिए CC चाहिए।</b> नोट और सिखाए गए साउंड घटनाएँ हैं — वे किसी मान को धीरे-धीरे नहीं बदल सकते — इसलिए उन स्रोतों के लिए पैरामीटर उपमेन्यू छिपा रहता है। आपको CC भेजने वाला एक्सप्रेशन पेडल चाहिए।</li>
+        <li><b>रिग बदलने के बाद नर्म पिकअप।</b> <b class="ui">ब्लॉक पैरामीटर · सक्रिय रिग</b> से जुड़ा लगातार CC रिग बदलने पर नॉब को उछालता नहीं। वह तब तक रुका रहता है जब तक आपका पेडल नए रिग के मौजूदा मान से न गुज़र जाए, फिर नियंत्रण ले लेता है — इसलिए गाने के बीच रिग बदलने पर कोई पैरामीटर वहाँ नहीं कूदता जहाँ आपका पैर पड़ा हो।</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="builtin"><span class="n">07.4</span>अंतर्निहित MIDI मैप</h2>
+      <p>कुछ भी मैप करने से पहले ही एक तय विन्यास चालू रहता है — कंट्रोलर जोड़िए और वह काम करता है। सभी चैनल स्वीकार होते हैं, क्योंकि NAMper ओमनी सुनता है, और दिखने वाला हर स्रोत अपने आप जुड़ जाता है। ऐप <b class="ui">NAMper</b> नाम से एक वर्चुअल डेस्टिनेशन भी प्रकाशित करता है, ताकि उसी डिवाइस का दूसरा ऐप उसे भेज सके।</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>इस रूप में दिखता है</th><th>क्या करता है</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">PC 0…</b></td><td><b class="ui">प्रीसेट</b></td></tr>
+            <tr><td><b class="ui">CC 20–30</b></td><td><b class="ui">ब्लॉक चालू/बंद</b> — गेट, कॉम्प, ड्राइव, एम्प, कैब, फ़ेज़र, फ़्लैंजर, कोरस, ट्रेम, डिले, क्लाउड, इसी क्रम में; 64 या उससे बड़ा मान यानी चालू</td></tr>
+            <tr><td><b class="ui">CC 40–80</b></td><td><b class="ui">ब्लॉक पैरामीटर</b> — 0–127 को हर पैरामीटर की सीमा में ढाला जाता है। <b class="ui">CC 64</b> छोड़ दिया जाता है और सस्टेन पेडल के लिए ख़ाली रहता है</td></tr>
+            <tr><td><b class="ui">CC 85–88</b></td><td><b class="ui">लूपर ट्रैक टैप</b> — ट्रैक 1 से 4 तक</td></tr>
+            <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">लूपर चलाएँ-रोकें / साफ़ करें</b></td></tr>
+            <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">परफ़ॉर्म: बजाएँ/रोकें · स्टॉप · अगला · पिछला</b></td></tr>
+            <tr><td><b class="ui">नोट 36–51</b></td><td><b class="ui">पैड 1–16</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>आपकी अपनी मैपिंग हमेशा जीतती है। अगर आप कोई फ़ुटस्विच CC 85 पर सिखाते हैं, तो आपकी पंक्ति चलती है और उस CC पर अंतर्निहित ट्रैक-1 टैप हट जाता है — इसलिए डिफ़ॉल्ट के इर्द-गिर्द घूमने की ज़रूरत कभी नहीं, बस उनके ऊपर से चलिए।</p>
+      <div class="note">
+        <div class="t">CC 89 टॉगल करता है</div>
+        <p>अंतर्निहित <b class="ui">CC 89</b> असली चलाओ/रोको टॉगल है: यह लूपर की मौजूदा स्थिति पढ़ता है, चल रहा हो तो रोक देता है (रिकॉर्डिंग भी चलना ही माना जाता है) और रुका हो तो शुरू से चला देता है। <b class="ui">चलाएँ / रोकें</b> क्रिया पर सिखाई गई मैपिंग भी ऐसा ही बर्ताव करती है।</p>
+      </div>
+      <p>दबाव पहचानना सस्ते पेडल के लिए जानबूझकर उदार रखा गया है। कोई संदेश दबाव तब माना जाता है जब उसका मान 64 या उससे बड़ा हो, और तब भी जब वह कम हो पर उससे पहले कोई ऊँचा मान न आया हो — इसलिए हर दबाव को मान 0 भेजने वाला फ़ुटस्विच भी अलग-अलग क्रियाएँ चला देता है।</p>
+      <p>कार्ड के नीचे एक पंक्ति बताती है कि NAMper को क्या दिख रहा है: <b class="ui">MIDI: स्रोतों की प्रतीक्षा</b> या जुड़े स्रोतों के नाम, और उसके नीचे <b class="ui">Last:</b> पंक्ति जो सबसे हालिया घटना दिखाती है। कोई पेडल कुछ न करे तो पहले वहीं देखें — वह बताती है कि संदेश आ भी रहे हैं या नहीं।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="bluetooth"><span class="n">07.5</span>ब्लूटूथ MIDI</h2>
+      <p>वायरलेस पेडल ऐप के अंदर से ही जुड़ते हैं। अंतर्निहित मैप कार्ड के नीचे <b class="ui">ब्लूटूथ MIDI जोड़ें</b> दबाएँ। <b class="ui">Bluetooth MIDI</b> शीर्षक वाली शीट खुलती है जिसमें सिस्टम का पेयरिंग पैनल और एक <b class="ui">हो गया</b> बटन होता है। अपना पेडल पेयरिंग मोड में डालिए, सूची में उस पर टैप कीजिए, और वह MIDI स्रोत पंक्ति में जुड़ जाता है।</p>
+      <div class="note warn">
+        <div class="t">दो बार टैप न करें</div>
+        <p>शीट यह चेतावनी वजह से देती है: <b class="ui">डिवाइस पर टैप करने से उसका कनेक्शन बदलता है — MIDI स्रोत पंक्ति में दिख रहा पेडल पहले से जुड़ा है; उसे दोबारा टैप न करें।</b> जुड़े हुए पेडल पर टैप करने से वह हट जाता है। संदेह हो तो कुछ भी छूने से पहले कार्ड के नीचे स्रोत पंक्ति देख लें।</p>
+      </div>
+      <p>NAMper ब्लूटूथ की अनुमति पहली बार यह शीट खोलने पर माँगता है, और किसी और चीज़ के लिए नहीं।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="sounds"><span class="n">07.6</span>सिखाए गए साउंड ट्रिगर</h2>
+      <p><b class="ui">सिखाए गए साउंड</b> कार्ड को किसी हार्डवेयर की ज़रूरत ही नहीं। आप NAMper को कोई ऐसी आवाज़ सिखाते हैं जो हाथ में पकड़े वाद्य से निकाली जा सके, और उसके बाद वह ठीक MIDI घटना की तरह कोई भी क्रिया चला देती है। ख़ाली स्थिति साफ़ कहती है: <b class="ui">ऐप को कोई आवाज़ सिखाएँ — बॉडी पर थपकी, तारों पर स्लैप, ब्रिज के पीछे क्लिक — फिर उसे किसी भी क्रिया से जोड़ें, MIDI इवेंट की तरह।</b></p>
+
+      <h3>कोई एक सिखाना</h3>
+      <p><b class="ui">सिखाएँ</b> दबाइए और <b class="ui">एक साउंड सिखाएँ</b> शीट अपने निर्देश के साथ खुलती है: <b class="ui">आवाज़ 3–5 बार निकालें, हर बार एक ही तरह: बॉडी पर थपकी, तारों पर स्लैप, ब्रिज के पीछे क्लिक — कोई भी साफ़ अटैक वाली आवाज़।</b> टेक आते जाने पर आठ बिंदियाँ भरती जाती हैं, और स्थिति में <b class="ui">सुन रहे हैं…</b> दिखता है, फिर गिनती। <b class="ui">साउंड का नाम</b> फ़ील्ड में नाम दीजिए और <b class="ui">साउंड सहेजें</b> दबाइए। सहेजने के लिए कम से कम दो टेक चाहिए, और आठ तक का औसत लिया जाता है — जितने एक जैसे टेक, उतना भरोसेमंद ट्रिगर।</p>
+      <p>हर पंक्ति नाम दिखाती है, <b class="ui">3×</b> जैसी उपयोग गिनती, एक <b class="ui">फिर सिखाएँ</b> बटन और मिटाने के लिए <b class="ui">✕</b>। नाम बदलने के लिए नाम पर टैप कीजिए। दोबारा सिखाने पर नाम और उस पर टिकी हर मैपिंग बनी रहती है, इसलिए गिटार बदलने के बाद कोई साउंड ग़लत चलने लगे तो नए सिरे से शुरू करने के बजाय उसे दोबारा सिखा दीजिए।</p>
+      <div class="note warn">
+        <div class="t">मिटाने पर मैपिंग भी साथ जाती हैं</div>
+        <p>कोई सिखाया साउंड मिटाइए और उसे सुनने वाली हर मैपिंग भी चली जाती है। ✕ दबाने से पहले पंक्ति की उपयोग गिनती बता देती है कि वे कितनी हैं।</p>
+      </div>
+      <p>सिखाया गया साउंड मेन्यू की कोई भी क्रिया चला सकता है, सिवाय लगातार बदलते ब्लॉक पैरामीटर के — वह घटना है, धीमा बदलाव नहीं। और कंट्रोल मैप की तरह ही, एक समय पर सिखाए-साउंड की सिर्फ़ पहली चार मैपिंग सक्रिय रहती हैं।</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="tuner"><span class="n">07.7</span>ट्यूनर</h2>
+      <p>ट्यूनर कोई टैब नहीं है। वह <b class="ui a">रिग</b> हेडर के ट्यूनिंग-फ़ोर्क आइकॉन से खुलता है, और जब भी ऑडियो इंजन चल रहा हो तब काम करता है — तब भी जब फ़ीडबैक गार्ड ने आउटपुट म्यूट कर रखा हो, इसलिए फ़ोन के अपने स्पीकर पर भी ट्यून किया जा सकता है।</p>
+
+      <figure>
+        <img class="phone" src="/docs/assets/tuner.png" width="600" height="1304"
+             alt="POLY मोड में ट्यूनर शीट: मोड चिप, गिटार बैज, ट्यूनिंग चिप की एक पंक्ति, और नीचे नोट नामों के साथ छह खड़े तार-मीटर।">
+        <figcaption>POLY मोड — छहों तार एक साथ पढ़े जाते हैं</figcaption>
+      </figure>
+
+      <p>ऊपर दो मोड चिप हैं, <b class="ui">POLY</b> और <b class="ui">सिंगल</b>। <b class="ui">POLY</b> डिफ़ॉल्ट है और मंच पर यही काम की है: एक बार स्ट्रम कीजिए और हर तार एक ही समय पढ़ा जाता है, हर तार के लिए एक खड़ा मीटर और नीचे नोट। इसका शीर्षक यही कहता है — <b class="ui">स्ट्रम — सभी तार एक साथ पढ़े जाते हैं</b>। ±5 सेंट के भीतर तार की बिंदी हरी हो जाती है।</p>
+      <p><b class="ui">सिंगल</b> क्लासिक एक-नोट-एक-बार वाला ट्यूनर है: बड़ा नोट अक्षर, ±50 सेंट पर घूमती सुई और सेंट रीडआउट, ±3 सेंट के भीतर हरा हो जाता है। सिग्नल न हो तो दिखाता है <b class="ui">कोई नोट बजाएँ…</b> जब किसी एक तार पर सटीक होना हो तब इसे लीजिए।</p>
+
+      <h3>वाद्य और ट्यूनिंग</h3>
+      <p>आप क्या पकड़े हैं यह NAMper ख़ुद समझ लेता है और गोली के रूप में दिखाता है: <b class="ui">गिटार</b>, <b class="ui">बेस</b> या <b class="ui">युकुलेले</b>। कोई चुनने की सूची नहीं — बेस जोड़िए और ट्यूनर पीछे चल पड़ता है।</p>
+      <p>ट्यूनिंग चिप <b class="ui">POLY</b> मोड पर लागू होती हैं, और हर वाद्य अपना चुनाव ख़ुद याद रखता है:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>वाद्य</th><th>ट्यूनिंग</th></tr></thead>
+          <tbody>
+            <tr><td>गिटार</td><td><b class="ui">EADGBE</b>, <b class="ui">Drop D</b>,
+              <b class="ui">DADGAD</b>, <b class="ui">E♭ std</b>, <b class="ui">Open G</b>,
+              <b class="ui">Open D</b></td></tr>
+            <tr><td>बेस</td><td><b class="ui">EADG</b>, <b class="ui">Drop D</b>,
+              <b class="ui">5-str B</b></td></tr>
+            <tr><td>युकुलेले</td><td><b class="ui">GCEA</b>, <b class="ui">Baritone</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>संदर्भ पिच A4 = 440 Hz पर तय है। कोई कैलिब्रेशन नियंत्रण नहीं, इसलिए अगर आप 442 पर किसी ऑर्केस्ट्रा के साथ बजाते हैं तो ट्यूनर वहाँ तक नहीं आएगा।</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/hi/perform.html">← 06 · परफ़ॉर्म और लिरिक्स</a>
+      <span class="sp"></span>
+      <a href="/docs/hi/settings.html">08 · सेटिंग्स संदर्भ →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/hi/">दस्तावेज़</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">सहायता</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">गोपनीयता</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper एक स्वतंत्र ऐप है, किसी भी उपकरण निर्माता से संबद्ध, अनुमोदित या प्रायोजित नहीं। सभी उत्पाद नाम, ब्रांड और ट्रेडमार्क अपने-अपने स्वामियों की संपत्ति हैं और केवल यह बताने के लिए इस्तेमाल हुए हैं कि कोई कैप्चर किस उपकरण से लिया गया था।</p>
+  </div>
+</footer>
+
+</body>
+</html>

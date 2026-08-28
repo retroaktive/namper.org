@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mga sampler pad — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Labing-anim na sampler pad: pag-load at pag-record ng mga tunog, ang pad editor na may trim at ADSR, mga kit at ang apat na factory drum kit, trigger quantize, MIDI notes 36–51 at kung saan napupunta ang mga pad sa mix.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mga sampler pad — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Labing-anim na pad, mga kit, trim at ADSR, quantize at MIDI triggering.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/sampler.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/sampler.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/sampler.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/sampler.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/sampler.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/sampler.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/sampler.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/sampler.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/sampler.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/sampler.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/sampler.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/sampler.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/sampler.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/sampler.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/sampler.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/sampler.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/sampler.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/sampler.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/sampler.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/sampler.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a class="on" href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--eq)">05 · MGA SAMPLER PAD</div>
+    <h1>Labing-anim na pad, isang pahina.</h1>
+    <p class="lede">Ang <b class="ui a">Sample</b> tab ay drum machine na kaya mong tugtugin gamit ang mga hinlalaki mo o ng MIDI pedal: labing-anim na pad, isang kit library, trim at envelope kada pad, at isang quantizer para sa mga pagkakataong kailangang tama ang timing.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#grid">Ang grid</a></li>
+        <li><a href="#loading">Paglalagay ng tunog sa isang pad</a></li>
+        <li><a href="#editor">Ang pad editor</a></li>
+        <li><a href="#kits">Mga kit</a></li>
+        <li><a href="#quantize">Trigger quantize</a></li>
+        <li><a href="#trigger">Pagtugtog ng mga pad</a></li>
+        <li><a href="#routing">Saan napupunta ang mga pad</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="grid"><span class="n">05.1</span>Ang grid</h2>
+      <p>Labing-anim na pad sa nakatakdang 4×4 na grid. Isang pahina — walang mga bank at walang pangalawang pahina, kaya sabay na nasa screen ang lahat ng puwede mong tugtugin.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
+             alt="Ang Sample tab na naka-load ang acoustic drum factory kit sa lahat ng labing-anim na pad, bawat isa'y nagpapakita ng pangalan ng sample, haba at waveform, kasama ang LEVEL at QUANT na knob at ang quantize grid chip sa header.">
+        <figcaption>Ang <b class="ui">Drums — Acoustic</b> na factory kit na naka-load sa lahat ng 16 na pad</figcaption>
+      </figure>
+      <p>Dala ng header row, mula kaliwa pakanan: ang salitang <b class="ui">SAMPLER</b>, isang <b class="ui">LEVEL</b> knob (0 hanggang 2, default na 1), isang <b class="ui">QUANT</b> knob, ang quantize grid chip, ang <b class="ui">MGA PRESET</b> chip para sa mga kit, isang <b class="ui">REC</b> na indicator na nagniningning habang nagre-record ang isang pad, at ang <b class="ui">IHINTO LAHAT</b>.</p>
+      <p>Sa ibaba, sinasabi na ng pahiwatig ang lahat:</p>
+      <p><b class="ui">Walang laman na pad: mag-load o mag-record · may laman: tap = play/stop, pindutin nang matagal para i-edit · MIDI notes 36–51</b></p>
+      <p>Ang isang <b>walang lamang pad</b> ay nahahati sa dalawa — <b class="ui">LOAD</b> at <b class="ui">REC</b>. Ang isang <b>may lamang pad</b> ay nagpapakita ng pangalan ng sample, ng haba nito (halimbawa <b class="ui">1.4s</b>), ng malabong waveform kung saan pinalabo ang lahat ng nasa labas ng trim, at ng maliwanag na cursor na dumadaan habang tumutugtog ito.</p>
+      <p>Pindutin nang matagal ang kahit anong pad para sa menu: <b class="ui">Mag-load ng tunog…</b>, <b class="ui">I-record ang mix</b> o <b class="ui">Ihinto ang recording</b>, at — sa may lamang pad — <b class="ui">I-edit…</b>, <b class="ui">I-clear</b> at <b class="ui">MIDI Learn: pad N</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="loading"><span class="n">05.2</span>Paglalagay ng tunog sa isang pad</h2>
+      <p>May tatlong paraan para mag-load ng file, at pare-pareho silang bumubukas ng Files picker: ang <b class="ui">LOAD</b> na kalahati ng walang lamang pad, ang <b class="ui">Mag-load ng tunog…</b> sa menu ng matagal na pagpindot, at ang <b class="ui">Mag-load ng file</b> sa loob ng pad editor. Tinatanggap ang kahit anong kayang i-decode ng iOS.</p>
+      <p>May hangganan ang mga sample sa <b>12 segundo</b> — pinuputol ang mas mahabang file sa halip na tanggihan. At walang drag and drop papasok sa NAMper: dumadaan sa picker ang bawat import.</p>
+
+      <h3>Pag-record sa isang pad</h3>
+      <p>Diretsong nagre-record dito ang <b class="ui">REC</b> na kalahati ng walang lamang pad. Isang pad lang ang puwedeng mag-record sa isang pagkakataon, at pinapangalanang <b class="ui">Rec N</b> ang take. Kapag nakahinto ang engine, tumatanggi ito nang may <b class="ui r">Naka-off ang audio — i-tap ang power button bago mag-record.</b></p>
+      <div class="note warn">
+        <div class="t">Kinukuha ng pad recorder ang naririnig mo</div>
+        <p>Nire-record nito ang <b>main output mix</b>, hindi ang raw na input — kaya napupunta sa sample ang rig, ang looper, ang ibang pad at kahit anong backing track. Kapaki-pakinabang iyon para sumagap ng chord diretso mula sa naprosesong tono mo, at bitag kung dry na source ang balak mong kunin. I-mute o ihinto ang lahat ng iba bago mo pindutin ang <b class="ui">REC</b>.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="editor"><span class="n">05.3</span>Ang pad editor</h2>
+      <p>Pindutin nang matagal ang may lamang pad → <b class="ui">I-edit…</b>. Ang pamagat ng sheet ay <b class="ui">PAD N</b> kasama ang pangalan ng sample at ang haba nito.</p>
+      <p>May <b>mga nahihilang trim handle</b> ang waveform sa simula at dulo — hilahin papasok ang simula para putulin ang mabagal na attack, hilahin papasok ang dulo para paikliin ang mahabang tail.</p>
+      <p>Ang <b>ADSR envelope ay iginuguhit sa ibabaw ng waveform</b> at ine-edit sa paghila ng tatlong bilog na handle: <b class="ui">Attack</b>, <b class="ui">Decay at sustain</b> at <b class="ui">Release</b>. May readout sa itaas na nagpapakita ng mga halaga, gaya ng <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
+      <p>Dalawang knob: <b class="ui">Gain</b> (0 hanggang 2) at <b class="ui">Pitch</b> (0.25 hanggang 4, ipinapakita bilang <b class="ui">1.00x</b>). Ang pitch ay isang resampling rate, kaya binabago nito ang <b>pitch at bilis nang sabay</b> — paglipat na parang tape, hindi iyong nagpapanatili ng formant. Ang kalahating bilis ay isang oktaba pababa.</p>
+
+      <h3>MODE at TAP</h3>
+      <p>Dalawang pares ng chip ang nagpapasya kung paano kumikilos ang pad sa ilalim ng daliri mo. Ang <b class="ui">MODE</b> ay <b class="ui">One-shot</b> o <b class="ui">Loop</b>; ang <b class="ui">TAP</b> ay <b class="ui">Retrig</b> o <b class="ui">Latch</b>. Simple ang patakaran: ang pad na naka-<b class="ui">Loop</b> o naka-<b class="ui">Latch</b> ay nagpapalit-palit ng simula at hinto sa bawat tap, at ang <b class="ui">One-shot</b> / <b class="ui">Retrig</b> na pad ay muling nagsisimula mula sa simula ng trim sa tuwing pipindutin mo ito — karaniwang kilos ng drum pad.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>MODE</th><th>TAP</th><th>Ano ang ginagawa ng isang tap</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Retrig</b></td>
+                <td>Tumutugtog nang isang beses mula sa simula ng trim, muling nagsisimula sa bawat tap. Mga drum, hit, stab.</td></tr>
+            <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
+                <td>Tumutugtog nang isang beses; hinihinto ito ng pangalawang tap habang tumutunog pa. Mga mahabang one-shot na baka kailangan mong putulin.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+                <td>Nagli-loop hanggang mag-tap ka ulit para ihinto ito.</td></tr>
+            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+                <td>Nagli-loop hanggang mag-tap ka ulit para ihinto ito. Mga bed, drone, ulan, lagitik ng vinyl.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Sa ibaba, pinapatugtog ng <b class="ui">Preview</b> ang pad gamit ang kasalukuyang mga setting mo at pinapalitan ng <b class="ui">Mag-load ng file</b> ang tunog nang hindi umaalis sa editor.</p>
+      <div class="note">
+        <div class="t">Ano ang sinasadyang wala sa sampler</div>
+        <p>Walang choke group (hindi puputulin ng saradong hat ang bukas na hat), walang pan kada pad, walang reverse, walang velocity layer, walang output routing kada pad at walang pansamantalang gate-habang-hawak na mode. Tumutugtog ang mga pad sa nakatakda nilang <b class="ui">Gain</b> at humihinto kapag sinabi ng sample o ng envelope.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="kits"><span class="n">05.4</span>Mga kit</h2>
+      <p>Ang kit ay snapshot ng lahat ng labing-anim na pad — bawat setting ng trim, envelope, gain, pitch at mode — <b>kasama ang pribadong kopya ng audio ng bawat pad</b>. Iyon ang buong punto ng kopyang iyon: kapag na-save na ang kit, hindi ito mahuhungkag ng pag-import sa ibabaw ng isang pad, ng pag-clear dito o ng pagbura sa orihinal na file. I-load ito ulit makalipas ang anim na buwan at tumutugtog pa rin ito.</p>
+      <p>Buksan ang browser gamit ang <b class="ui">MGA PRESET</b> chip; ang pamagat ng sheet ay <b class="ui">Mga Sampler Kit</b>. I-tap ang isang row para i-load ito. May <b class="ui">Palitan ang pangalan</b>, <b class="ui">Update with current kit</b> at <b class="ui">Tanggalin</b> ang menu ng row. Hindi kailanman inaalis ng pagbura ng kit ang audio na ginagamit pa ng mga naka-load na pad o ng ibang naka-save na kit.</p>
+      <div class="note warn">
+        <div class="t">Hindi maibabahagi ang mga kit</div>
+        <p>Sinasabi ng footer ng sheet kung bakit: <b class="ui">Nasa device na ito ang mga kit (dala nila ang kanilang mga audio file).</b> Walang share o export para sa isang kit, at hindi kasama sa buong backup export ang audio ng sampler kit — mga parameter at reference lang ang dala nito. Kopyahin ang folder na <b class="ui">samples/</b> sa Files app kung kailangan mo ang mga tunog sa ibang device.</p>
+      </div>
+
+      <h3>Ang apat na factory kit</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Kit</th><th>Ang labing-anim na pad</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Drums — Digital</b></td>
+                <td>Kick 808, Kick punch, Snare, Clap, Rim, Hat cl, Hat op, Ride, Tom lo, Tom mid, Tom hi, Cowbell, Clave, Shaker, Zap, Sub boom</td></tr>
+            <tr><td><b class="ui">Drums — Analog</b></td>
+                <td>Kick round, Kick tight, Snare fat, Clap warm, Rim wood, Hat cl, Hat op, Crash, Tom lo, Tom mid, Tom hi, Conga, Bongo, Shaker, Perc snap, Sub warm</td></tr>
+            <tr><td><b class="ui">Drums — Acoustic</b></td>
+                <td>Kick, Kick soft, Snare, Snare ghost, Sidestick, Rimshot, Tom hi, Tom mid, Tom floor, Hat closed, Hat pedal, Hat open, Crash, Ride, Ride bell, Tambourine</td></tr>
+            <tr><td><b class="ui">FX at Texture</b></td>
+                <td>Riser, Downlifter, Impact, Laser, Sweep, Vinyl stop, Cym rev, Sub drop, Stab, Bleep, Alarm, Crackle (naglo-loop), Wind (naglo-loop), Chime, Robot, Rumble</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ang nabura nang factory kit ay nananatiling bura — hindi ito bumabalik sa susunod na pagbukas. Palitan ang pangalan nito o i-update ito sa halip na burahin kung gusto mo lang itong ilayo sa daan.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
+      <p>Ang <b class="ui">QUANT</b> knob ay isang <b>lakas</b>, hindi switch. Sa zero, <b class="ui">OFF</b> ang nakikita; lampas doon, porsiyento ang ipinapakita nito. Sa 100 %, eksaktong dumadapo sa grid ang bawat hit; sa 30 %, ang bahagyang maaga lang ang hinihila sa linya at nananatili ang sariling timpla mo. Ang default ay 0, naka-off.</p>
+      <p>Itinatakda ng chip sa tabi nito ang grid, umiikot sa <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b> at <b class="ui">1/32</b>. Ang default ay <b class="ui">1/16</b>.</p>
+      <p>Pareho ang mga setting na ito ay <b>global</b> — hindi kada kit, hindi kada pad. Hindi sila binabago ng pag-load ng kit.</p>
+      <div class="note warn">
+        <div class="t">Kailangang totoo ang tatlong bagay</div>
+        <p>May naririnig lang na epekto ang quantize kapag <b>lahat ng tatlo</b> ng mga ito ay totoo, at hindi ito sinasabi ng screen:</p>
+        <ul style="--nc:var(--drive)">
+          <li>a <b>nakatakda ang tempo</b> — wala nang grid kung wala nito;</li>
+          <li>a <b>tumatakbo ang loop</b> — ang looper ang nagbibigay ng phase, kaya alam ng grid kung nasaan ang unang beat;</li>
+          <li>ikaw ay <b>nagre-record</b> — alinman sa <b class="ui a">Perform</b> recorder, o sa loop track na ang source ay ang sampler.</li>
+        </ul>
+        <p>Itaas ang knob habang nagja-jam nang wala sa likod at wala kang maririnig na pagkakaiba. Sinasadya iyon: ang padna naghihintay sa susunod na ikalabing-anim bago tumunog ay pakiramdam na sira sa ilalim ng mga daliri mo, kaya laging iniiwang hindi naka-quantize ang malayang pagtugtog at inilalapat lang ang pagwawasto kung saan ito napupunta sa isang recording.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="trigger"><span class="n">05.6</span>Pagtugtog ng mga pad</h2>
+      <p>Sa paghipo: pinapatugtog o hinihinto ng isang tap ang pad ayon sa mga setting nitong <b class="ui">MODE</b> at <b class="ui">TAP</b>, at binubuksan ng matagal na pagpindot ang menu.</p>
+      <p>Sa MIDI: <b>pinapatugtog ng mga note 36 hanggang 51 ang mga pad 1 hanggang 16</b>, sumusunod sa GM drum convention — ang note 36 ay pad 1. Laging aktibo ito at walang kailangang setup, sa kahit anong MIDI channel, maliban kung may sarili kang mapping na nauna nang umangkin sa note na iyon.</p>
+      <p><b>Hindi ginagamit ang velocity.</b> Gaano mo man kalakas pindutin ang isang controller pad, tumutugtog ang sample sa <b class="ui">Gain</b> na itinakda mo sa editor. Itakda ang mga level nang minsan sa pad editor at doon na sila mananatili.</p>
+      <div class="note tip">
+        <div class="t">Mas maayos kumilos ang mga natutunang mapping kaysa sa raw na note</div>
+        <p>Ang mapping na gagawin mo sa <b class="ui a">Control</b> tab ay tumatawag ng play/stop, kaya iginagalang nito ang <b class="ui">Loop</b> at <b class="ui">Latch</b> — sinisimulan ng isang pindot sa footswitch ang loop, hinihinto ito ng susunod. Palaging muling nagsisimula mula sa umpisa ang raw na MIDI notes 36–51. Kung pinapatakbo mo ang mga naglo-loop na pad mula sa pedal, ituro ang mapping sa halip na umasa sa built-in na saklaw ng note.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="routing"><span class="n">05.7</span>Saan napupunta ang mga pad</h2>
+      <p>Nagsasama ang mga pad <b>diretso sa main mix</b> — hindi sila dumadaan sa guitar chain, kaya hindi sila kailanman nahahawakan ng gain ng amp mo at ng reverb mo. Itinatakda ng <b class="ui">LEVEL</b> knob sa header kung gaano kalakas ang buong sampler laban sa rig.</p>
+      <p>Available din sila bilang source sa ibang bahagi ng app:</p>
+      <ul style="--nc:var(--power)">
+        <li>Bilang <b>chain input</b> — piliin ang <b class="ui">Mga sampler pad</b> sa IN connector ng isang rig o sa isang parallel branch (chip na <b class="ui">SMPL</b>) at dadaan ang mga pad sa mga effect ng rig na iyon.</li>
+        <li>Bilang <b>source ng loop track</b> — itakda ang <b class="ui">IN</b> ng isang looper track sa <b class="ui">Sampler</b> (chip na <b class="ui">SMP</b>) at puwede mong i-loop ang beat na tinapik mo sa mga pad.</li>
+        <li>Bilang <b>sidechain ng compressor</b> — kasama sa <b class="ui">Sidechain</b> menu ng isang Comp block ang <b class="ui">SMP</b>, kaya kayang ibaba ng kick ang gitara.</li>
+      </ul>
+      <p>Binibitawan ng <b class="ui">IHINTO LAHAT</b> sa header ang bawat tumutugtog na pad nang sabay — ang panic button para sa naka-latch na drone o loop na hindi mo mahanap.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/looper.html">← 04 · Looper</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/perform.html">06 · Perform at lyrics →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://github.com/retroaktive/namper-support/blob/main/PRIVACY.md">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>
