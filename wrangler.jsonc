@@ -3,8 +3,11 @@
 // Stand-in for GitHub Pages while the GitHub account is flagged: the same
 // files, served from Cloudflare. Build the payload with
 //   python3 scripts/build_site.py
-// and deploy with
-//   CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… npx wrangler deploy
+// and deploy to the Cloudflare Pages project (this is what serves
+// namper.org; a plain `wrangler deploy` targets Workers and fails with
+// an authentication error on a Pages-only token):
+//   CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… \
+//     npx wrangler pages deploy _site --project-name namper-site
 {
   "name": "namper-site",
   "compatibility_date": "2026-08-01",
