@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU 插件 — NAMper 文档</title>
+<title>插件 — NAMper 文档</title>
 <meta name="description" content="在 NAMper 信号链中加载 Audio Unit 效果、内嵌插件界面、各项限制、插件状态如何保存——以及 NAMper 自身作为 AUv3 效果器在其他应用中的表现。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU 插件 — NAMper 文档">
+<meta property="og:title" content="插件 — NAMper 文档">
 <meta property="og:description" content="在信号链中加载 AUv3 效果、插件状态与预设，以及 NAMper 作为其他应用内的插件。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/zh/setup.html">快速上手</a></li>
       <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
-      <li><a class="on" href="/docs/zh/plugins.html">AU 插件</a></li>
+      <li><a class="on" href="/docs/zh/plugins.html">插件</a></li>
       <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
       <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
       <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
@@ -62,10 +62,10 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU 插件</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · 插件</div>
     <h1>别人做的插件。</h1>
-    <p class="lede">NAMper 可以在信号链的任意位置加载你已经拥有的 AUv3 效果——而 NAMper 自身也会
-      作为一个效果器出现在其他应用里。这两个方向都各有一些值得在演出前弄清楚的规则。</p>
+    <p class="lede">NAMper 可以在信号链的任意位置加载你已经拥有的插件——iOS 上是 AUv3，Android 上是 AAP——
+      而 NAMper 自身也会作为一个效果器出现在其他应用里。这两个方向都各有一些值得在演出前弄清楚的规则。</p>
 
     <nav class="toc">
       <div class="slab">本页内容</div>
@@ -75,6 +75,7 @@
         <li><a href="#limits">值得了解的限制</a></li>
         <li><a href="#state">设置与预设</a></li>
         <li><a href="#auv3">作为插件的 NAMper</a></li>
+        <li><a href="#aap">Android 上的 AAP</a></li>
       </ul>
     </nav>
 
@@ -83,16 +84,16 @@
       <p>点击信号链上虚线的 <b class="ui">ADD</b> 标签打开模块面板。在列表最下方、
         <b class="ui">实用工具</b> 之后，是 <b class="ui">插件</b> 分类，
         里面只有一项：<b class="ui">AU 插件</b> 子菜单。</p>
-      <p>打开它，你会看到设备上安装的每一个 Audio Unit 效果，以插件名称加制造商的形式列出，
-        先按制造商排序，再按名称排序。不需要扫描或启用任何东西——只要手机上某个应用自带
+      <p>打开它，你会看到设备上安装的每一个 Audio Unit 效果，按制造商分成子菜单，里面列出
+        插件的原名。不需要扫描或启用任何东西——只要手机上某个应用自带
         AUv3 效果，它就会出现在这个子菜单里。</p>
       <p>如果子菜单是空的，会显示 <b class="ui">未安装 Audio Unit 效果。含 AUv3 插件的应用会显示在这里。</b> 这是全新设备上的正常状态：
         AUv3 插件是随普通的 App Store 应用一起安装的，所以你安装那个应用之后，
         它的插件下次就会出现在这里。</p>
       <p>选中一个组件，NAMper 就会创建一个已经加载好该插件的模块，然后直接打开插件
-        自己的界面——没有空壳，没有第二个步骤。信号链上这个模块的标签名为
-        <b class="ui">AU 插件</b>，它的行为和其他模块一样：点击名称下方的 LED 圆点
-        旁通它，拖动它在信号链上移动位置，长按它调出 <b class="ui">移除</b>。</p>
+        自己的界面——没有空壳，没有第二个步骤。信号链上这个模块的标签会显示
+        插件自己的名字，它的行为和其他模块一样：点击脚踏开关条旁通它，按住并拖动来移动它，
+        长按它调出 <b class="ui">移除</b>。</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -241,6 +242,24 @@
           DAWproject 导出正是为第一种方式而存在的——参见
           <a href="/docs/zh/perform.html">演出与歌词</a>。</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Android 上的 AAP</h2>
+      <p>Android 上没有 Audio Unit。那里的插件格式是
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a>（AAP），
+        一种开放格式，NAMper 在两个方向上都支持它。</p>
+      <h3>加载 AAP 效果</h3>
+      <p>模块面板底部的 <b class="ui">插件</b> 区域会列出手机上安装的每一个 AAP 效果。为空时
+        会显示 <b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make
+        them appear here.</b> 选中一个，模块就会打开，并以滑块形式显示插件的参数；如果插件自带
+        界面，<b class="ui">Open plugin UI</b> 会在单独的窗口中打开它。模块的替换菜单可以换成另一个
+        插件，参数值和插件状态会和在 iOS 上一样随预设一起保存。</p>
+      <h3>作为 AAP 效果的 NAMper</h3>
+      <p>任何 AAP 宿主都能找到一个名为 <b class="ui">NAMper</b>、由
+        <b class="ui">retroaktive</b> 提供的效果：立体声输入、立体声输出，与 AUv3 相同的十八个参数
+        和相同的三个预设，状态由宿主保存。同样的限制也适用——它是精简的音箱加效果通道，
+        而不是整个应用。</p>
     </section>
 
     <nav class="pager">

@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/ja/setup.html">はじめに</a></li>
       <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
-      <li><a href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a href="/docs/ja/plugins.html">プラグイン</a></li>
       <li><a href="/docs/ja/looper.html">ルーパー</a></li>
       <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
       <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
@@ -77,6 +77,7 @@
         <li><a href="#feedback-guard">フィードバックガード</a></li>
         <li><a href="#permissions">権限について</a></li>
         <li><a href="#files">ファイルの保存場所</a></li>
+        <li><a href="#android">Androidでは</a></li>
       </ul>
     </nav>
 
@@ -103,7 +104,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>オーディオインターフェース</h2>
-      <p>デバイス選択画面はありません。NAMperはiOSが使用しているオーディオルートにそのまま従うため、
+      <p>デバイス選択画面はありません。NAMperはシステムが使用しているオーディオルートにそのまま従うため、
         ハードウェアの選び方はいつも通りで構いません — インターフェースを接続すれば、アプリが
         それに合わせて再構築されます。マルチチャンネルインターフェースにも対応し、最大8入力
         チャンネルまで扱えます。</p>
@@ -247,7 +248,7 @@
       </div>
       <p>マイクへのアクセスがオフの場合、赤いバナーに
         <b class="ui r">マイクへのアクセスがオフです — NAMperにギターの音が届きません。</b>と
-        表示され、<b class="ui">設定</b>ボタンからiOSの設定画面へ直接移動できます。許可すると、
+        表示され、<b class="ui">設定</b>ボタンからシステムの設定画面へ直接移動できます。許可すると、
         再起動なしでエンジンが再構築されます。</p>
       <p>アナリティクスもトラッキングもアカウントもなく、カメラ、写真、位置情報、連絡先への
         アクセスもありません。NAMperは何も収集しません。</p>
@@ -288,6 +289,45 @@
         することはできず — インポートはすべてNAMper内のファイルピッカー経由になります —
         また<b class="ui">tones/</b>フォルダは意図的にiCloudバックアップの対象外です。
         TONE3000からいつでも再ダウンロードできるためです。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Androidでは</h2>
+      <p>Android版NAMperは、同じオーディオエンジンの上で動く同じアプリです: すべてのブロック、
+        ルーパー、サンプラー、セットリスト、コントロールマップはこのガイドの説明どおりに動作し、
+        プリセットはファイルとして両プラットフォーム間を行き来できます。Android 10以降が必要です。
+        プラットフォームが違う分、いくつか異なる点があります。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>項目</th><th>Androidでは</th></tr></thead>
+          <tbody>
+            <tr><td>インターフェース</td><td>クラスコンプライアントなUSB-Cインターフェース、USB-C
+              ヘッドセット、有線ヘッドホンはそのまま使えます。アプリはiOSと同じくシステムの
+              オーディオルートに従います。Bluetooth出力には同じレイテンシ警告が出ます。</td></tr>
+            <tr><td>レイテンシ</td><td>iPhoneよりはるかに端末次第です。エンジンは低レイテンシ
+              パスを要求しますが、<b class="ui">バッファ</b>ピッカーが勝手に大きなサイズへ
+              飛ぶなら、それがそのハードウェアの本当の最小値です。</td></tr>
+            <tr><td>サンプルレート</td><td>チップは<b class="ui">自動</b>、<b class="ui">44.1k</b>、
+              <b class="ui">48k</b>、<b class="ui">96k</b>です。</td></tr>
+            <tr><td>バックグラウンド再生</td><td>エンジン動作中は、控えめな通知が他のアプリの
+              裏でも音声を生かし続けます。Android 13以降では初回に通知の許可を求めます。</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>ペアリング時、Android 12以降では
+              <b class="ui">Nearby devices</b>の許可を求めます。</td></tr>
+            <tr><td>ファイル</td><td>ファイルはアプリのプライベート領域に保存されます。インポートは
+              すべてシステムのファイルピッカー経由 — または任意のアプリから
+              <b class="ui">.namper</b>、<b class="ui">.nam</b>、IR、音声ファイルを
+              <b class="ui">Open with → NAMper</b>で開く — で、エクスポートはすべてAndroidの
+              共有シート経由です。</td></tr>
+            <tr><td>TONE3000</td><td>サインインはブラウザで開き、自動的にアプリへ戻ります。</td></tr>
+            <tr><td>プラグイン</td><td>Audio UnitはAppleのフォーマットです。AndroidではNAMperが
+              <a href="/docs/ja/plugins.html#aap">AAPエフェクト</a>をホストし、自身もAAPエフェクト
+              として動きます。</td></tr>
+            <tr><td>大画面</td><td>タブレットと開いた状態のフォルダブルではワイドレイアウトに
+              なります。折りたたんだり回転させたりしてもエンジンとチェーンは動き続けます。</td></tr>
+            <tr><td>投げ銭</td><td>Androidではまだありません。</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

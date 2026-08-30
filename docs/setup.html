@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/setup.html">Getting started</a></li>
       <li><a href="/docs/rig.html">Rig &amp; signal chain</a></li>
-      <li><a href="/docs/plugins.html">AU plugins</a></li>
+      <li><a href="/docs/plugins.html">Plugins</a></li>
       <li><a href="/docs/looper.html">Looper</a></li>
       <li><a href="/docs/sampler.html">Sampler pads</a></li>
       <li><a href="/docs/perform.html">Perform &amp; lyrics</a></li>
@@ -78,6 +78,7 @@
         <li><a href="#feedback-guard">The feedback guard</a></li>
         <li><a href="#permissions">Permissions</a></li>
         <li><a href="#files">Where your files live</a></li>
+        <li><a href="#android">On Android</a></li>
       </ul>
     </nav>
 
@@ -105,7 +106,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>Audio interfaces</h2>
-      <p>There is no device picker. NAMper follows whatever audio route iOS is using, so you choose
+      <p>There is no device picker. NAMper follows whatever audio route the system is using, so you choose
         your hardware the way you always do — plug the interface in, and the app rebuilds itself
         around it. Multichannel interfaces are supported, up to eight input channels.</p>
       <p>Settings → <b class="ui">AUDIO INTERFACE</b> tells you what NAMper actually got:
@@ -245,7 +246,7 @@
       </div>
       <p>If microphone access is off, a red banner reads
         <b class="ui r">Microphone access is off — NAMper can't hear your guitar.</b> with a
-        <b class="ui">Settings</b> button that takes you straight to the iOS setting. Grant it and
+        <b class="ui">Settings</b> button that takes you straight to the system setting. Grant it and
         the engine rebuilds without a relaunch.</p>
       <p>There is no analytics, no tracking, no account and no camera, photos, location or contacts
         access. NAMper collects nothing.</p>
@@ -285,6 +286,46 @@
         into a window — every import goes through the file picker inside NAMper — and the
         <b class="ui">tones/</b> folder is deliberately excluded from iCloud backup, because
         TONE3000 can simply re-download those profiles.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>On Android</h2>
+      <p>NAMper for Android is the same app on the same audio engine: every block, the looper, the
+        sampler, the setlist and the control map behave as this guide describes, and presets move
+        between the two platforms as files. It needs Android 10 or newer. A few things are
+        different because the platform is.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Topic</th><th>On Android</th></tr></thead>
+          <tbody>
+            <tr><td>Interfaces</td><td>Class-compliant USB-C interfaces, USB-C headsets and wired
+              headphones work out of the box; the app follows the system route just as it does on
+              iOS. Bluetooth output gets the same latency warning.</td></tr>
+            <tr><td>Latency</td><td>Depends on the phone far more than it does on an iPhone. The
+              engine asks for the low-latency path; if the <b class="ui">Buffer</b> picker snaps to
+              a larger size on its own, that is the hardware's real minimum.</td></tr>
+            <tr><td>Sample rate</td><td>The chips are <b class="ui">Auto</b>, <b class="ui">44.1k</b>,
+              <b class="ui">48k</b> and <b class="ui">96k</b>.</td></tr>
+            <tr><td>Background audio</td><td>While the engine runs, a quiet notification keeps the
+              audio alive behind other apps. Android 13 and newer ask for notification permission
+              the first time.</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>Pairing asks for the <b class="ui">Nearby devices</b>
+              permission on Android 12 and newer.</td></tr>
+            <tr><td>Files</td><td>Your files live in the app's private storage. Every import goes
+              through the system file picker — or open a <b class="ui">.namper</b>,
+              <b class="ui">.nam</b>, IR or audio file from any app with
+              <b class="ui">Open with → NAMper</b> — and everything exports through the Android
+              share sheet.</td></tr>
+            <tr><td>TONE3000</td><td>Sign-in opens in your browser and returns to the app by
+              itself.</td></tr>
+            <tr><td>Plugins</td><td>Audio Units are an Apple format. On Android NAMper hosts
+              <a href="/docs/plugins.html#aap">AAP effects</a>, and is one itself.</td></tr>
+            <tr><td>Big screens</td><td>Tablets and unfolded foldables get the wide layout; folding
+              or rotating keeps the engine and the chain running.</td></tr>
+            <tr><td>Tip jar</td><td>Not on Android yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

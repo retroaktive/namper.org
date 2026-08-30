@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ปลั๊กอิน AU — เอกสาร NAMper</title>
+<title>ปลั๊กอิน — เอกสาร NAMper</title>
 <meta name="description" content="การโฮสต์เอฟเฟกต์ Audio Unit ไว้ในสายสัญญาณของ NAMper, อินเทอร์เฟซปลั๊กอินที่ฝังไว้, ข้อจำกัดต่าง ๆ, วิธีบันทึกสถานะปลั๊กอิน — และสิ่งที่ NAMper เองทำในฐานะเอฟเฟกต์ AUv3 ในแอปอื่น">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="ปลั๊กอิน AU — เอกสาร NAMper">
+<meta property="og:title" content="ปลั๊กอิน — เอกสาร NAMper">
 <meta property="og:description" content="การโฮสต์เอฟเฟกต์ AUv3 ในสายสัญญาณ, สถานะและพรีเซ็ตของปลั๊กอิน, และ NAMper ในฐานะปลั๊กอินในแอปอื่น">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/th/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/th/setup.html">เริ่มต้นใช้งาน</a></li>
       <li><a href="/docs/th/rig.html">Rig &amp; สายสัญญาณ</a></li>
-      <li><a class="on" href="/docs/th/plugins.html">ปลั๊กอิน AU</a></li>
+      <li><a class="on" href="/docs/th/plugins.html">ปลั๊กอิน</a></li>
       <li><a href="/docs/th/looper.html">Looper</a></li>
       <li><a href="/docs/th/sampler.html">แพดแซมเปลอร์</a></li>
       <li><a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></li>
@@ -62,10 +62,10 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · ปลั๊กอิน AU</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · ปลั๊กอิน</div>
     <h1>ปลั๊กอินของคนอื่น</h1>
-    <p class="lede">NAMper โฮสต์เอฟเฟกต์ AUv3 ที่คุณมีอยู่แล้ว ไว้ที่จุดไหนของสายสัญญาณก็ได้ — และ
-      NAMper เองก็ไปโผล่เป็นเอฟเฟกต์ในแอปอื่นได้เช่นกัน ทั้งสองทิศทางมีกฎที่ควรรู้ไว้ก่อน
+    <p class="lede">NAMper โฮสต์ปลั๊กอินที่คุณมีอยู่แล้ว ไว้ที่จุดไหนของสายสัญญาณก็ได้ — AUv3 บน iOS,
+      AAP บน Android — และ NAMper เองก็ไปโผล่เป็นเอฟเฟกต์ในแอปอื่นได้เช่นกัน ทั้งสองทิศทางมีกฎที่ควรรู้ไว้ก่อน
       ขึ้นแสดง</p>
 
     <nav class="toc">
@@ -76,6 +76,7 @@
         <li><a href="#limits">ข้อจำกัดที่ควรรู้</a></li>
         <li><a href="#state">การตั้งค่าและพรีเซ็ต</a></li>
         <li><a href="#auv3">NAMper ในฐานะปลั๊กอิน</a></li>
+        <li><a href="#aap">บน Android: AAP</a></li>
       </ul>
     </nav>
 
@@ -84,16 +85,16 @@
       <p>แตะชิป <b class="ui">ADD</b> เส้นประบนสายสัญญาณเพื่อเปิดพาเลตบล็อก ที่ท้ายสุดของรายการ
         ถัดจาก <b class="ui">ยูทิลิตี้</b> คือหมวด <b class="ui">ปลั๊กอิน</b> ที่มีรายการเดียว:
         เมนูย่อย <b class="ui">ปลั๊กอิน AU</b></p>
-      <p>เปิดมันขึ้นมาแล้วคุณจะเห็นเอฟเฟกต์ Audio Unit ทุกตัวที่ติดตั้งไว้บนอุปกรณ์ แสดงเป็นชื่อ
-        ปลั๊กอินตามด้วยผู้ผลิต และเรียงตามผู้ผลิตก่อน แล้วตามด้วยชื่อ ไม่ต้องสแกนหรือเปิดใช้งาน
+      <p>เปิดมันขึ้นมาแล้วคุณจะเห็นเอฟเฟกต์ Audio Unit ทุกตัวที่ติดตั้งไว้บนอุปกรณ์ แยกเป็นเมนูย่อย
+        ตามผู้ผลิต โดยข้างในเป็นชื่อปลั๊กอินล้วน ๆ ไม่ต้องสแกนหรือเปิดใช้งาน
         อะไรเลย — ถ้าแอปบนโทรศัพท์ของคุณมีเอฟเฟกต์ AUv3 ติดมาด้วย มันจะอยู่ในเมนูย่อยนั้น</p>
       <p>ถ้าเมนูย่อยว่างเปล่า จะขึ้นว่า <b class="ui">ยังไม่มีเอฟเฟกต์ Audio Unit ติดตั้งอยู่ แอปที่มาพร้อมปลั๊กอิน AUv3 จะปรากฏที่นี่</b> นั่นคือสถานะปกติบนอุปกรณ์ใหม่: ปลั๊กอิน
         AUv3 มาในรูปแอป App Store ทั่วไป ดังนั้นคุณติดตั้งแอปแล้วปลั๊กอินของมันจะขึ้นมาที่นี่ใน
         ครั้งถัดไปที่เข้ามาดู</p>
       <p>เลือกคอมโพเนนต์แล้ว NAMper จะสร้างบล็อกพร้อมปลั๊กอินนั้นโหลดไว้แล้ว จากนั้นเปิดตรงเข้าไป
-        ยังอินเทอร์เฟซของปลั๊กอินเลย — ไม่มีเปลือกเปล่า ไม่มีขั้นตอนที่สอง ชิปของบล็อกบนสายจะชื่อ
-        <b class="ui">ปลั๊กอิน AU</b> และทำงานเหมือนบล็อกอื่น ๆ ทุกอัน: แตะจุด LED ใต้ชื่อเพื่อ
-        bypass ลากเพื่อย้ายตำแหน่งบนสาย กดค้างเพื่อ <b class="ui">เอาออก</b></p>
+        ยังอินเทอร์เฟซของปลั๊กอินเลย — ไม่มีเปลือกเปล่า ไม่มีขั้นตอนที่สอง ชิปของบล็อกบนสายจะใช้
+        ชื่อของปลั๊กอินเอง และทำงานเหมือนบล็อกอื่น ๆ ทุกอัน: แตะแถบฟุตสวิตช์เพื่อ bypass
+        กดค้างแล้วลากเพื่อย้าย กดค้างเพื่อ <b class="ui">เอาออก</b></p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -244,6 +245,25 @@
           การส่งออก DAWproject มีไว้สำหรับแนวทางแรก — ดูที่
           <a href="/docs/th/perform.html">Perform &amp; เนื้อเพลง</a></p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>บน Android: AAP</h2>
+      <p>Audio Unit ไม่มีบน Android ฟอร์แมตปลั๊กอินที่นั่นคือ
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP)
+        ซึ่งเป็นฟอร์แมตเปิด และ NAMper รองรับมันทั้งสองทิศทาง</p>
+      <h3>การโฮสต์เอฟเฟกต์ AAP</h3>
+      <p>หมวด <b class="ui">ปลั๊กอิน</b> ท้ายพาเลตบล็อกแสดงเอฟเฟกต์ AAP ทุกตัวที่ติดตั้งไว้บน
+        โทรศัพท์ ถ้าว่างเปล่าจะขึ้นว่า <b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make them appear here.</b>
+        เลือกตัวหนึ่งแล้วบล็อกจะเปิดขึ้นพร้อมพารามิเตอร์ของปลั๊กอินเป็นสไลเดอร์ ถ้าปลั๊กอินมี
+        หน้าตาของตัวเอง <b class="ui">Open plugin UI</b> จะเปิดมันในหน้าต่างแยก เมนูเปลี่ยน
+        ปลั๊กอินของบล็อกใช้สลับปลั๊กอินได้ และค่าพารามิเตอร์กับสถานะของปลั๊กอินจะติดไปกับ
+        พรีเซ็ตของคุณเหมือนบน iOS</p>
+      <h3>NAMper ในฐานะเอฟเฟกต์ AAP</h3>
+      <p>โฮสต์ AAP ตัวไหนก็ตามจะเห็น NAMper เป็นเอฟเฟกต์ชื่อ <b class="ui">NAMper</b> โดย
+        <b class="ui">retroaktive</b>: สเตอริโอเข้า สเตอริโอออก พารามิเตอร์สิบแปดตัวเหมือนกับ
+        AUv3 และพรีเซ็ตสามตัวเหมือนกัน โดยโฮสต์เป็นผู้เก็บสถานะ ข้อจำกัดก็เหมือนกัน —
+        มันคือช่องแอมป์กับเอฟเฟกต์แบบกะทัดรัด ไม่ใช่ทั้งแอป</p>
     </section>
 
     <nav class="pager">

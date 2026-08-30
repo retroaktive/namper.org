@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU-Plugins — NAMper-Dokumentation</title>
+<title>Plugins — NAMper-Dokumentation</title>
 <meta name="description" content="Audio-Unit-Effekte in einer NAMper-Kette hosten, die eingebettete Plugin-Oberfläche, die Grenzen, wie der Plugin-Zustand gespeichert wird — und was NAMper selbst als AUv3-Effekt in einer anderen App macht.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU-Plugins — NAMper-Dokumentation">
+<meta property="og:title" content="Plugins — NAMper-Dokumentation">
 <meta property="og:description" content="AUv3-Effekte in einer Kette hosten, Plugin-Zustand und -Presets, und NAMper als Plugin in einer anderen App.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/de/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/de/setup.html">Erste Schritte</a></li>
       <li><a href="/docs/de/rig.html">Rig &amp; Signalkette</a></li>
-      <li><a class="on" href="/docs/de/plugins.html">AU-Plugins</a></li>
+      <li><a class="on" href="/docs/de/plugins.html">Plugins</a></li>
       <li><a href="/docs/de/looper.html">Looper</a></li>
       <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
       <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
@@ -62,10 +62,10 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU-PLUGINS</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGINS</div>
     <h1>Plugins von anderen.</h1>
-    <p class="lede">NAMper hostet die AUv3-Effekte, die du bereits besitzt, an jeder Stelle einer
-      Kette — und NAMper selbst taucht als Effekt in anderen Apps auf. Beide Richtungen haben
+    <p class="lede">NAMper hostet die Plugins, die du bereits besitzt, an jeder Stelle einer Kette — AUv3 auf
+      iOS, AAP auf Android — und NAMper selbst taucht als Effekt in anderen Apps auf. Beide Richtungen haben
       Regeln, die man vor einem Gig kennen sollte.</p>
 
     <nav class="toc">
@@ -76,6 +76,7 @@
         <li><a href="#limits">Grenzen, die man kennen sollte</a></li>
         <li><a href="#state">Einstellungen und Presets</a></li>
         <li><a href="#auv3">NAMper als Plugin</a></li>
+        <li><a href="#aap">Auf Android: AAP</a></li>
       </ul>
     </nav>
 
@@ -85,8 +86,8 @@
         zu öffnen. Ganz unten in der Liste, hinter <b class="ui">Utility</b>, sitzt der Abschnitt
         <b class="ui">Plugins</b> mit einem einzigen Eintrag: dem Untermenü
         <b class="ui">AU-Plugins</b>.</p>
-      <p>Öffne es, und du bekommst jeden auf dem Gerät installierten Audio-Unit-Effekt, aufgelistet
-        als Plugin-Name gefolgt vom Hersteller, sortiert zuerst nach Hersteller, dann nach Name.
+      <p>Öffne es, und du bekommst jeden auf dem Gerät installierten Audio-Unit-Effekt, ein
+        Untermenü pro Hersteller mit den reinen Plugin-Namen darin.
         Nichts muss gescannt oder aktiviert werden — liefert eine App auf deinem Handy einen
         AUv3-Effekt mit, steht er in diesem Untermenü.</p>
       <p>Ist das Untermenü leer, steht dort <b class="ui">Keine Audio-Unit-Effekte installiert. Apps mit AUv3-Plugins erscheinen hier.</b> Das ist der Normalzustand auf einem frischen
@@ -94,9 +95,9 @@
         ihr Plugin taucht beim nächsten Besuch hier auf.</p>
       <p>Wähle eine Komponente, und NAMper erzeugt den Block mit bereits geladenem Plugin und öffnet
         direkt dessen eigene Oberfläche — keine leere Hülle, kein zweiter Schritt. Der Chip des
-        Blocks in der Kette heißt <b class="ui">AU-Plugin</b> und verhält sich wie jeder andere
-        Block: Tippe auf den LED-Punkt unter dem Namen, um ihn zu bypassen, zieh ihn, um ihn entlang
-        der Kette zu verschieben, Long-Press für <b class="ui">Entfernen</b>.</p>
+        Blocks in der Kette trägt den Namen des Plugins selbst und verhält sich wie jeder andere
+        Block: Tippe auf den Fußschalter-Streifen, um ihn zu bypassen, halte und zieh ihn, um ihn zu
+        verschieben, Long-Press für <b class="ui">Entfernen</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -259,6 +260,26 @@
           einem Host aufnimmst. Für den ersten Weg gibt es den Recorder im Tab Perform und seinen
           DAWproject-Export — siehe <a href="/docs/de/perform.html">Perform &amp; Songtexte</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Auf Android: AAP</h2>
+      <p>Audio Units gibt es auf Android nicht. Das Plugin-Format dort ist
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), ein
+        offenes Format, und NAMper spricht es in beide Richtungen.</p>
+      <h3>AAP-Effekte hosten</h3>
+      <p>Der Abschnitt <b class="ui">Plugins</b> ganz unten in der Block-Palette listet jeden auf dem
+        Phone installierten AAP-Effekt. Ist er leer, steht dort <b class="ui">No AAP effects installed. Apps
+        that ship Audio Plugins for Android make them appear here.</b> Wähl einen aus, und der Block
+        öffnet sich mit den Parametern des Plugins als Slider; bringt das Plugin eine eigene Oberfläche
+        mit, öffnet <b class="ui">Open plugin UI</b> sie in einem eigenen Fenster. Das Ersetzen-Menü
+        des Blocks tauscht das Plugin aus, und die Parameterwerte und der Zustand des Plugins wandern
+        in deinem Preset mit, genau wie auf iOS.</p>
+      <h3>NAMper als AAP-Effekt</h3>
+      <p>Jeder AAP-Host findet NAMper als Effekt namens <b class="ui">NAMper</b> von
+        <b class="ui">retroaktive</b>: Stereo rein, Stereo raus, dieselben achtzehn Parameter wie das
+        AUv3 und dieselben drei Presets, den Zustand speichert der Host. Es gelten dieselben Grenzen —
+        es ist der kompakte Amp-und-Effekte-Kanal, nicht die ganze App.</p>
     </section>
 
     <nav class="pager">

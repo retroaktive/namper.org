@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/ko/setup.html">시작하기</a></li>
       <li><a href="/docs/ko/rig.html">리그와 시그널 체인</a></li>
-      <li><a href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a href="/docs/ko/plugins.html">플러그인</a></li>
       <li><a href="/docs/ko/looper.html">루퍼</a></li>
       <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
       <li><a href="/docs/ko/perform.html">퍼폼과 가사</a></li>
@@ -78,6 +78,7 @@
         <li><a href="#feedback-guard">피드백 가드</a></li>
         <li><a href="#permissions">권한</a></li>
         <li><a href="#files">파일이 저장되는 위치</a></li>
+        <li><a href="#android">Android에서</a></li>
       </ul>
     </nav>
 
@@ -105,7 +106,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>오디오 인터페이스</h2>
-      <p>별도의 장치 선택 화면은 없습니다. NAMper는 iOS가 사용하는 오디오 경로를 그대로 따르므로,
+      <p>별도의 장치 선택 화면은 없습니다. NAMper는 시스템이 사용하는 오디오 경로를 그대로 따르므로,
         하드웨어를 고르는 방법은 평소와 같습니다 — 인터페이스를 연결하면 앱이 그에 맞춰 스스로
         재구성됩니다. 최대 8개 입력 채널까지, 멀티채널 인터페이스도 지원합니다.</p>
       <p>설정 → <b class="ui">오디오 인터페이스</b>에서 NAMper가 실제로 인식한 내용을 확인할 수
@@ -245,7 +246,7 @@
       </div>
       <p>마이크 접근이 꺼져 있으면 빨간 배너에
         <b class="ui r">마이크 접근이 꺼져 있어 NAMper가 기타 소리를 들을 수 없습니다.</b>라고
-        표시되며, <b class="ui">설정</b> 버튼을 누르면 iOS 설정으로 바로 이동합니다. 권한을
+        표시되며, <b class="ui">설정</b> 버튼을 누르면 시스템 설정으로 바로 이동합니다. 권한을
         허용하면 앱을 다시 실행하지 않아도 엔진이 다시 구성됩니다.</p>
       <p>분석 기능도, 트래킹도, 계정도 없으며 카메라, 사진, 위치, 연락처 접근도 없습니다.
         NAMper는 아무것도 수집하지 않습니다.</p>
@@ -286,6 +287,44 @@
         수는 없고 — 모든 가져오기는 NAMper 안의 파일 선택 화면을 거칩니다 — 그리고
         <b class="ui">tones/</b> 폴더는 iCloud 백업에서 의도적으로 제외되어 있는데, TONE3000에서
         언제든 그 프로필을 다시 내려받을 수 있기 때문입니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Android에서</h2>
+      <p>Android용 NAMper는 같은 오디오 엔진 위에서 도는 같은 앱입니다: 모든 블록, 루퍼,
+        샘플러, 세트리스트, 컨트롤 맵이 이 안내서대로 동작하고, 프리셋은 파일로 두 플랫폼
+        사이를 오갑니다. Android 10 이상이 필요합니다. 플랫폼이 다른 만큼 몇 가지는
+        다릅니다.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>항목</th><th>Android에서</th></tr></thead>
+          <tbody>
+            <tr><td>인터페이스</td><td>클래스 컴플라이언트 USB-C 인터페이스, USB-C 헤드셋, 유선
+              헤드폰은 바로 동작합니다. 앱은 iOS에서처럼 시스템 오디오 경로를 따릅니다.
+              Bluetooth 출력에는 같은 레이턴시 경고가 뜹니다.</td></tr>
+            <tr><td>레이턴시</td><td>iPhone보다 기기에 훨씬 많이 좌우됩니다. 엔진은 저지연
+              경로를 요청하는데, <b class="ui">버퍼</b> 선택기가 저절로 더 큰 크기로
+              튄다면 그것이 하드웨어의 실제 최솟값입니다.</td></tr>
+            <tr><td>샘플 레이트</td><td>칩은 <b class="ui">자동</b>, <b class="ui">44.1k</b>,
+              <b class="ui">48k</b>, <b class="ui">96k</b>입니다.</td></tr>
+            <tr><td>백그라운드 오디오</td><td>엔진이 도는 동안 조용한 알림 하나가 다른 앱 뒤에서도
+              오디오를 살려 둡니다. Android 13 이상은 처음에 알림 권한을 요청합니다.</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>페어링 시 Android 12 이상에서는
+              <b class="ui">Nearby devices</b> 권한을 요청합니다.</td></tr>
+            <tr><td>파일</td><td>파일은 앱의 비공개 저장소에 있습니다. 모든 가져오기는 시스템
+              파일 선택기를 거치며 — 또는 아무 앱에서나 <b class="ui">.namper</b>,
+              <b class="ui">.nam</b>, IR, 오디오 파일을 <b class="ui">Open with → NAMper</b>로
+              열 수 있고 — 내보내기는 모두 Android 공유 시트를 거칩니다.</td></tr>
+            <tr><td>TONE3000</td><td>로그인은 브라우저에서 열리고 저절로 앱으로 돌아옵니다.</td></tr>
+            <tr><td>플러그인</td><td>Audio Unit은 Apple의 포맷입니다. Android에서 NAMper는
+              <a href="/docs/ko/plugins.html#aap">AAP 이펙트</a>를 호스팅하며, 자신도 AAP
+              이펙트입니다.</td></tr>
+            <tr><td>큰 화면</td><td>태블릿과 펼친 폴더블에서는 와이드 레이아웃이 됩니다. 접거나
+              회전해도 엔진과 체인은 계속 돌아갑니다.</td></tr>
+            <tr><td>후원</td><td>Android에는 아직 없습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

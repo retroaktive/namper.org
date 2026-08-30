@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plugin AU — Dokumentasi NAMper</title>
+<title>Plugin — Dokumentasi NAMper</title>
 <meta name="description" content="Menjalankan efek Audio Unit di dalam rantai NAMper, antarmuka plugin bawaan, batasannya, cara status plugin disimpan — dan apa yang dilakukan NAMper sendiri sebagai efek AUv3 di aplikasi lain.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Plugin AU — Dokumentasi NAMper">
+<meta property="og:title" content="Plugin — Dokumentasi NAMper">
 <meta property="og:description" content="Menjalankan efek AUv3 dalam satu rantai, status plugin dan preset, serta NAMper sebagai plugin di aplikasi lain.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/id/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/id/setup.html">Memulai</a></li>
       <li><a href="/docs/id/rig.html">Rig &amp; rantai sinyal</a></li>
-      <li><a class="on" href="/docs/id/plugins.html">Plugin AU</a></li>
+      <li><a class="on" href="/docs/id/plugins.html">Plugin</a></li>
       <li><a href="/docs/id/looper.html">Looper</a></li>
       <li><a href="/docs/id/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/id/perform.html">Perform &amp; lirik</a></li>
@@ -62,11 +62,11 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · PLUGIN AU</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGIN</div>
     <h1>Plugin milik orang lain.</h1>
-    <p class="lede">NAMper menjalankan efek AUv3 yang sudah kamu punya, di mana pun posisinya dalam
-      rantai — dan NAMper sendiri tampil sebagai efek di aplikasi lain. Kedua arah ini punya aturan
-      yang perlu kamu tahu sebelum manggung.</p>
+    <p class="lede">NAMper menjalankan plugin yang sudah kamu punya, di mana pun posisinya dalam
+      rantai — AUv3 di iOS, AAP di Android — dan NAMper sendiri tampil sebagai efek di aplikasi
+      lain. Kedua arah ini punya aturan yang perlu kamu tahu sebelum manggung.</p>
 
     <nav class="toc">
       <div class="slab">DI HALAMAN INI</div>
@@ -76,6 +76,7 @@
         <li><a href="#limits">Batasan yang perlu kamu tahu</a></li>
         <li><a href="#state">Pengaturan dan preset</a></li>
         <li><a href="#auv3">NAMper sebagai plugin</a></li>
+        <li><a href="#aap">Di Android: AAP</a></li>
       </ul>
     </nav>
 
@@ -85,17 +86,16 @@
         Tepat di bagian paling bawah daftar, setelah <b class="ui">Utilitas</b>, ada bagian
         <b class="ui">Plugin</b> dengan satu entri saja: submenu <b class="ui">Plugin AU</b>.</p>
       <p>Buka submenu itu dan kamu akan melihat semua efek Audio Unit yang terpasang di perangkat,
-        terdaftar sebagai nama plugin diikuti nama pembuatnya, diurutkan dulu berdasarkan pembuat,
-        baru nama. Tidak perlu memindai atau mengaktifkan apa pun — kalau sebuah aplikasi di
+        satu submenu per pembuat dengan nama polos plugin-nya di dalam. Tidak perlu memindai atau mengaktifkan apa pun — kalau sebuah aplikasi di
         ponselmu membawa efek AUv3, ia otomatis ada di submenu itu.</p>
       <p>Kalau submenu itu kosong, tertulis <b class="ui">Tidak ada efek Audio Unit terpasang. Aplikasi yang membawa plugin AUv3 akan muncul di sini.</b> Itu kondisi normal di perangkat baru: plugin
         AUv3 datang sebagai aplikasi App Store biasa, jadi kamu pasang aplikasinya dan plugin-nya
         akan muncul di sini pada kunjungan berikutnya.</p>
       <p>Pilih satu komponen dan NAMper akan membuat blok dengan plugin itu sudah dimuat, lalu
         langsung membuka antarmuka plugin itu sendiri — tanpa cangkang kosong, tanpa langkah kedua.
-        Chip blok itu di rantai diberi nama <b class="ui">Plugin AU</b>, dan berperilaku seperti
-        blok lainnya: ketuk titik LED di bawah namanya untuk bypass, seret untuk memindahkannya di
-        sepanjang rantai, tekan lama untuk <b class="ui">Hapus</b>.</p>
+        Chip blok itu di rantai memakai nama plugin-nya sendiri, dan berperilaku seperti
+        blok lainnya: ketuk strip footswitch untuk bypass, tahan dan seret untuk memindahkannya,
+        tekan lama untuk <b class="ui">Hapus</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -252,6 +252,26 @@
           di tab Perform dan ekspor DAWproject-nya ada untuk jalur yang pertama — lihat
           <a href="/docs/id/perform.html">Perform &amp; lirik</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Di Android: AAP</h2>
+      <p>Audio Unit tidak ada di Android. Format plugin di sana adalah
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), sebuah
+        format terbuka, dan NAMper memakainya dua arah.</p>
+      <h3>Menjalankan efek AAP</h3>
+      <p>Bagian <b class="ui">Plugin</b> di paling bawah palet blok mendaftar semua efek AAP yang
+        terpasang di ponsel. Kalau kosong, tertulis <b class="ui">No AAP effects installed. Apps
+        that ship Audio Plugins for Android make them appear here.</b> Pilih satu dan blok terbuka
+        dengan parameter plugin sebagai slider; kalau plugin membawa antarmukanya sendiri,
+        <b class="ui">Open plugin UI</b> membukanya di jendela tersendiri. Menu ganti pada blok
+        menukar plugin-nya, dan nilai parameter serta state plugin ikut tersimpan di dalam
+        preset-mu persis seperti di iOS.</p>
+      <h3>NAMper sebagai efek AAP</h3>
+      <p>Host AAP mana pun menemukan NAMper sebagai efek bernama <b class="ui">NAMper</b> dari
+        <b class="ui">retroaktive</b>: input stereo, output stereo, delapan belas parameter yang
+        sama dengan AUv3 dan tiga preset yang sama, dengan state disimpan oleh host. Batasan yang
+        sama berlaku — ini channel amp-dan-efek yang ringkas, bukan seluruh aplikasi.</p>
     </section>
 
     <nav class="pager">

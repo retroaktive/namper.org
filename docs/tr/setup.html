@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/tr/setup.html">Başlarken</a></li>
       <li><a href="/docs/tr/rig.html">Rig ve sinyal zinciri</a></li>
-      <li><a href="/docs/tr/plugins.html">AU eklentileri</a></li>
+      <li><a href="/docs/tr/plugins.html">Eklentiler</a></li>
       <li><a href="/docs/tr/looper.html">Looper</a></li>
       <li><a href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
       <li><a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a></li>
@@ -78,6 +78,7 @@
         <li><a href="#feedback-guard">Geri besleme koruması</a></li>
         <li><a href="#permissions">İzinler</a></li>
         <li><a href="#files">Dosyaların nerede tutulduğu</a></li>
+        <li><a href="#android">Android'de</a></li>
       </ul>
     </nav>
 
@@ -104,7 +105,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>Ses arayüzleri</h2>
-      <p>Cihaz seçici yoktur. NAMper, iOS'un kullandığı ses yolunu ne ise onu izler; donanımını
+      <p>Cihaz seçici yoktur. NAMper, sistemin kullandığı ses yolunu ne ise onu izler; donanımını
         her zamanki gibi seçersin — arayüzü tak, uygulama kendini onun etrafında yeniden kurar.
         Çok kanallı arayüzler desteklenir, sekiz giriş kanalına kadar.</p>
       <p>Ayarlar → <b class="ui">SES ARABİRİMİ</b>, NAMper'ın gerçekte ne aldığını gösterir:
@@ -243,7 +244,7 @@
       </div>
       <p>Mikrofon erişimi kapalıysa kırmızı bir banner şunu gösterir:
         <b class="ui r">Mikrofon erişimi kapalı — NAMper gitarını duyamıyor.</b> ve seni
-        doğrudan iOS ayarına götüren bir <b class="ui">Ayarlar</b> düğmesi. İzni ver, motor
+        doğrudan sistem ayarına götüren bir <b class="ui">Ayarlar</b> düğmesi. İzni ver, motor
         yeniden başlatmaya gerek kalmadan kendini yeniden kurar.</p>
       <p>Analitik yoktur, takip yoktur, hesap yoktur; kamera, fotoğraf, konum ya da kişi
         erişimi de yoktur. NAMper hiçbir şey toplamaz.</p>
@@ -284,6 +285,47 @@
         bir pencereye sürükleyemezsin — her içe aktarma NAMper içindeki dosya seçici üzerinden
         geçer — ve <b class="ui">tones/</b> klasörü iCloud yedeklemesinden bilerek hariç
         tutulmuştur, çünkü TONE3000 bu profilleri zaten yeniden indirebilir.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Android'de</h2>
+      <p>Android için NAMper aynı ses motoru üzerindeki aynı uygulamadır: her blok, looper,
+        sampler, setlist ve kontrol haritası bu kılavuzun anlattığı gibi davranır, preset'ler de
+        iki platform arasında dosya olarak taşınır. Android 10 ya da daha yenisini gerektirir.
+        Birkaç şey farklıdır, çünkü platform farklıdır.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Konu</th><th>Android'de</th></tr></thead>
+          <tbody>
+            <tr><td>Arabirimler</td><td>Class-compliant USB-C arabirimler, USB-C kulaklık setleri ve
+              kablolu kulaklıklar kutudan çıktığı gibi çalışır; uygulama sistem yolunu tıpkı
+              iOS'taki gibi izler. Bluetooth çıkışı aynı gecikme uyarısını alır.</td></tr>
+            <tr><td>Gecikme</td><td>Telefona, iPhone'dakinden çok daha fazla bağlıdır. Motor düşük
+              gecikmeli yolu ister; <b class="ui">Buffer</b> seçici kendiliğinden daha büyük bir
+              boyuta atlarsa, donanımın gerçek minimumu odur.</td></tr>
+            <tr><td>Örnekleme hızı</td><td>Çipler <b class="ui">Auto</b>, <b class="ui">44.1k</b>,
+              <b class="ui">48k</b> ve <b class="ui">96k</b>'dır.</td></tr>
+            <tr><td>Arka planda ses</td><td>Motor çalışırken sessiz bir bildirim, sesi diğer
+              uygulamaların arkasında canlı tutar. Android 13 ve yenisi ilk seferde bildirim izni
+              ister.</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>Eşleştirme, Android 12 ve yenisinde
+              <b class="ui">Nearby devices</b> iznini ister.</td></tr>
+            <tr><td>Dosyalar</td><td>Dosyaların uygulamanın özel depolama alanında durur. Her içe
+              aktarma sistem dosya seçicisinden geçer — ya da herhangi bir uygulamadan bir
+              <b class="ui">.namper</b>, <b class="ui">.nam</b>, IR ya da ses dosyasını
+              <b class="ui">Open with → NAMper</b> ile aç — ve her şey Android paylaşım sayfası
+              üzerinden dışa aktarılır.</td></tr>
+            <tr><td>TONE3000</td><td>Oturum açma tarayıcında açılır ve kendiliğinden uygulamaya
+              döner.</td></tr>
+            <tr><td>Eklentiler</td><td>Audio Unit bir Apple formatıdır. Android'de NAMper
+              <a href="/docs/tr/plugins.html#aap">AAP efektlerini</a> barındırır, kendisi de
+              bir AAP efektidir.</td></tr>
+            <tr><td>Büyük ekranlar</td><td>Tabletler ve açılmış katlanabilirler geniş düzeni alır;
+              katlamak ya da döndürmek motoru ve zinciri çalışır halde tutar.</td></tr>
+            <tr><td>Bahşiş kutusu</td><td>Android'de henüz yok.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

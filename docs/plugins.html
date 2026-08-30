@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU plugins — NAMper Documentation</title>
+<title>Plugins — NAMper Documentation</title>
 <meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU plugins — NAMper Documentation">
+<meta property="og:title" content="Plugins — NAMper Documentation">
 <meta property="og:description" content="Hosting AUv3 effects in a chain, plugin state and presets, and NAMper as a plugin inside another app.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/setup.html">Getting started</a></li>
       <li><a href="/docs/rig.html">Rig &amp; signal chain</a></li>
-      <li><a class="on" href="/docs/plugins.html">AU plugins</a></li>
+      <li><a class="on" href="/docs/plugins.html">Plugins</a></li>
       <li><a href="/docs/looper.html">Looper</a></li>
       <li><a href="/docs/sampler.html">Sampler pads</a></li>
       <li><a href="/docs/perform.html">Perform &amp; lyrics</a></li>
@@ -62,11 +62,11 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGINS</div>
     <h1>Other people's plugins.</h1>
-    <p class="lede">NAMper hosts the AUv3 effects you already own, anywhere in a chain — and NAMper
-      itself turns up as an effect in other apps. Both directions have rules worth knowing before
-      a gig.</p>
+    <p class="lede">NAMper hosts the plugins you already own, anywhere in a chain — AUv3 on iOS, AAP
+      on Android — and NAMper itself turns up as an effect in other apps. Both directions have
+      rules worth knowing before a gig.</p>
 
     <nav class="toc">
       <div class="slab">ON THIS PAGE</div>
@@ -76,6 +76,7 @@
         <li><a href="#limits">Limits worth knowing</a></li>
         <li><a href="#state">Settings and presets</a></li>
         <li><a href="#auv3">NAMper as a plugin</a></li>
+        <li><a href="#aap">On Android: AAP</a></li>
       </ul>
     </nav>
 
@@ -84,8 +85,8 @@
       <p>Tap the dashed <b class="ui">ADD</b> chip on a chain to open the blocks palette. Right at
         the bottom of the list, past <b class="ui">Utility</b>, sits the <b class="ui">Plugins</b>
         section with a single entry: the <b class="ui">AU Plugins</b> submenu.</p>
-      <p>Open it and you get every Audio Unit effect installed on the device, listed as the plugin
-        name followed by its manufacturer and sorted by manufacturer first, then by name. Nothing
+      <p>Open it and you get every Audio Unit effect installed on the device, one submenu per
+        manufacturer with the plain plugin names inside. Nothing
         needs scanning or enabling — if an app on your phone ships an AUv3 effect, it is in that
         submenu.</p>
       <p>If the submenu is empty it reads <b class="ui">No Audio Unit effects installed. Apps that
@@ -94,9 +95,9 @@
         up here on the next visit.</p>
       <p>Pick a component and NAMper creates the block with that plugin already loaded, then opens
         straight into the plugin's own interface — no empty shell, no second step. The block's chip
-        on the chain is named <b class="ui">AU Plugin</b>, and it behaves like every other block:
-        tap the LED dot under the name to bypass it, drag it to move it along the chain,
-        long-press it for <b class="ui">Remove</b>.</p>
+        on the chain wears the plugin's own name, and it behaves like every other block: tap the
+        footswitch strip to bypass it, hold and drag to move it, long-press it for
+        <b class="ui">Remove</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -248,6 +249,26 @@
           and its DAWproject export exist for the first route — see
           <a href="/docs/perform.html">Perform &amp; lyrics</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>On Android: AAP</h2>
+      <p>Audio Units do not exist on Android. The plugin format there is
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), an
+        open format, and NAMper speaks it in both directions.</p>
+      <h3>Hosting AAP effects</h3>
+      <p>The <b class="ui">Plugins</b> section at the bottom of the blocks palette lists every AAP
+        effect installed on the phone. Empty, it reads <b class="ui">No AAP effects installed. Apps
+        that ship Audio Plugins for Android make them appear here.</b> Pick one and the block opens
+        with the plugin's parameters as sliders; if the plugin ships its own interface,
+        <b class="ui">Open plugin UI</b> opens it in a window of its own. The block's replace menu
+        swaps the plugin, and the parameter values and the plugin's state travel inside your
+        preset just as they do on iOS.</p>
+      <h3>NAMper as an AAP effect</h3>
+      <p>Any AAP host finds NAMper as an effect named <b class="ui">NAMper</b> by
+        <b class="ui">retroaktive</b>: stereo in, stereo out, the same eighteen parameters as the
+        AUv3 and the same three presets, with its state saved by the host. The same limits apply —
+        it is the compact amp-and-effects channel, not the whole app.</p>
     </section>
 
     <nav class="pager">

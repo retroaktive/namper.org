@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mga AU plugin — Dokumentasyon ng NAMper</title>
+<title>Mga plugin — Dokumentasyon ng NAMper</title>
 <meta name="description" content="Pagpapatakbo ng mga Audio Unit effect sa loob ng isang NAMper chain, ang nakalagay na interface ng plugin, ang mga limitasyon, kung paano sine-save ang estado ng plugin — at kung ano ang ginagawa ng NAMper mismo bilang AUv3 effect sa ibang app.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Mga AU plugin — Dokumentasyon ng NAMper">
+<meta property="og:title" content="Mga plugin — Dokumentasyon ng NAMper">
 <meta property="og:description" content="Pagpapatakbo ng mga AUv3 effect sa isang chain, estado ng plugin at mga preset, at ang NAMper bilang plugin sa loob ng ibang app.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/fil/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
       <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
-      <li><a class="on" href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a class="on" href="/docs/fil/plugins.html">Mga plugin</a></li>
       <li><a href="/docs/fil/looper.html">Looper</a></li>
       <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
       <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
@@ -62,9 +62,9 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · MGA AU PLUGIN</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · MGA PLUGIN</div>
     <h1>Mga plugin ng iba.</h1>
-    <p class="lede">Pinapatakbo ng NAMper ang mga AUv3 effect na pag-aari mo na, kahit saan sa isang chain — at ang NAMper mismo ay lumalabas bilang effect sa ibang app. May mga patakaran ang dalawang direksyon na dapat malaman bago ang gig.</p>
+    <p class="lede">Pinapatakbo ng NAMper ang mga plugin na pag-aari mo na, kahit saan sa isang chain — AUv3 sa iOS, AAP sa Android — at ang NAMper mismo ay lumalabas bilang effect sa ibang app. May mga patakaran ang dalawang direksyon na dapat malaman bago ang gig.</p>
 
     <nav class="toc">
       <div class="slab">SA PAHINANG ITO</div>
@@ -74,15 +74,16 @@
         <li><a href="#limits">Mga limitasyong dapat malaman</a></li>
         <li><a href="#state">Mga setting at preset</a></li>
         <li><a href="#auv3">Ang NAMper bilang plugin</a></li>
+        <li><a href="#aap">Sa Android: AAP</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="hosting"><span class="n">03.1</span>Pagdaragdag ng AU effect</h2>
       <p>I-tap ang putol-putol na <b class="ui">ADD</b> chip sa isang chain para buksan ang blocks palette. Sa pinakailalim ng listahan, lampas sa <b class="ui">Utility</b>, naroon ang seksyong <b class="ui">Mga Plugin</b> na may iisang entry: ang submenu na <b class="ui">Mga AU Plugin</b>.</p>
-      <p>Buksan ito at makukuha mo ang bawat Audio Unit effect na naka-install sa device, nakalista bilang pangalan ng plugin na sinusundan ng gumawa nito at inayos ayon sa gumawa muna, saka ayon sa pangalan. Walang kailangang i-scan o i-enable — kung may app sa telepono mo na may AUv3 effect, nasa submenu na iyon ito.</p>
+      <p>Buksan ito at makukuha mo ang bawat Audio Unit effect na naka-install sa device, isang submenu kada gumawa na may mga simpleng pangalan ng plugin sa loob. Walang kailangang i-scan o i-enable — kung may app sa telepono mo na may AUv3 effect, nasa submenu na iyon ito.</p>
       <p>Kung walang laman ang submenu, ganito ang nakasulat: <b class="ui">Walang naka-install na Audio Unit effect. Lumalabas dito ang mga plugin ng mga app na may AUv3.</b> Normal iyan sa bagong device: dumarating ang mga AUv3 plugin bilang ordinaryong App Store app, kaya i-install mo ang app at lalabas dito ang plugin nito sa susunod mong pagbisita.</p>
-      <p>Pumili ng component at gagawa ang NAMper ng block na naka-load na ang plugin na iyon, tapos dumidiretso sa sariling interface ng plugin — walang walang lamang shell, walang pangalawang hakbang. Ang chip ng block sa chain ay pinangalanang <b class="ui">AU Plugin</b>, at kumikilos ito gaya ng bawat ibang block: i-tap ang LED na tuldok sa ilalim ng pangalan para i-bypass, i-drag para igalaw sa chain, pindutin nang matagal para sa <b class="ui">Alisin</b>.</p>
+      <p>Pumili ng component at gagawa ang NAMper ng block na naka-load na ang plugin na iyon, tapos dumidiretso sa sariling interface ng plugin — walang walang lamang shell, walang pangalawang hakbang. Dala ng chip ng block sa chain ang sariling pangalan ng plugin, at kumikilos ito gaya ng bawat ibang block: i-tap ang footswitch strip para i-bypass, pindutin at i-drag para igalaw, pindutin nang matagal para sa <b class="ui">Alisin</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -187,6 +188,15 @@
         <p>Puwede mong patakbuhin ang buong app at iruta ang output nito sa isang DAW, o gamitin ang plugin para sa mabilisang guitar channel sa track na nire-record mo na sa isang host. Umiiral ang recorder ng Perform tab at ang DAWproject export nito para sa unang ruta — tingnan ang
           <a href="/docs/fil/perform.html">Perform at lyrics</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Sa Android: AAP</h2>
+      <p>Walang Audio Unit sa Android. Ang plugin format doon ay <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), isang bukas na format, at sinusuportahan ito ng NAMper sa dalawang direksyon.</p>
+      <h3>Pagpapatakbo ng mga AAP effect</h3>
+      <p>Nakalista sa seksyong <b class="ui">Mga Plugin</b> sa pinakailalim ng blocks palette ang bawat AAP effect na naka-install sa telepono. Kung walang laman, ganito ang nakasulat: <b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make them appear here.</b> Pumili ng isa at bubukas ang block na may mga parameter ng plugin bilang mga slider; kung may sariling interface ang plugin, binubuksan ito ng <b class="ui">Open plugin UI</b> sa sarili nitong window. Pinapalitan ng replace menu ng block ang plugin, at ang mga halaga ng parameter at ang estado ng plugin ay sumasama sa preset mo gaya ng ginagawa nila sa iOS.</p>
+      <h3>Ang NAMper bilang AAP effect</h3>
+      <p>Nahahanap ng kahit anong AAP host ang NAMper bilang effect na pinangalanang <b class="ui">NAMper</b> mula sa <b class="ui">retroaktive</b>: stereo in, stereo out, ang parehong labingwalong parameter ng AUv3 at ang parehong tatlong preset, na ang estado ay sine-save ng host. Pareho rin ang mga limitasyon — ito ang compact na amp-at-effects channel, hindi ang buong app.</p>
     </section>
 
     <nav class="pager">

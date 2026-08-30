@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU 플러그인 — NAMper 문서</title>
+<title>플러그인 — NAMper 문서</title>
 <meta name="description" content="NAMper 체인 안에 Audio Unit 이펙트를 호스팅하는 방법, 내장된 플러그인 인터페이스, 한계, 플러그인 상태가 저장되는 방식, 그리고 NAMper 자체가 다른 앱 안에서 AUv3 이펙트로 어떻게 동작하는지까지.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU 플러그인 — NAMper 문서">
+<meta property="og:title" content="플러그인 — NAMper 문서">
 <meta property="og:description" content="체인 안에 AUv3 이펙트 호스팅하기, 플러그인 상태와 프리셋, 그리고 다른 앱 안의 플러그인으로서의 NAMper까지.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/ko/setup.html">시작하기</a></li>
       <li><a href="/docs/ko/rig.html">리그와 시그널 체인</a></li>
-      <li><a class="on" href="/docs/ko/plugins.html">AU 플러그인</a></li>
+      <li><a class="on" href="/docs/ko/plugins.html">플러그인</a></li>
       <li><a href="/docs/ko/looper.html">루퍼</a></li>
       <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
       <li><a href="/docs/ko/perform.html">퍼폼과 가사</a></li>
@@ -62,11 +62,11 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU 플러그인</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · 플러그인</div>
     <h1>다른 사람이 만든 플러그인.</h1>
-    <p class="lede">NAMper는 이미 가지고 있는 AUv3 이펙트를 체인 어디에서든 호스팅합니다 —
-      그리고 NAMper 자체도 다른 앱 안에서 이펙트로 등장합니다. 두 방향 모두 공연 전에
-      알아둘 만한 규칙이 있습니다.</p>
+    <p class="lede">NAMper는 이미 가지고 있는 플러그인을 체인 어디에서든 호스팅합니다 — iOS에서는
+      AUv3, Android에서는 AAP — 그리고 NAMper 자체도 다른 앱 안에서 이펙트로 등장합니다. 두 방향
+      모두 공연 전에 알아둘 만한 규칙이 있습니다.</p>
 
     <nav class="toc">
       <div class="slab">이 페이지에서</div>
@@ -76,6 +76,7 @@
         <li><a href="#limits">알아둘 만한 한계</a></li>
         <li><a href="#state">설정과 프리셋</a></li>
         <li><a href="#auv3">플러그인으로서의 NAMper</a></li>
+        <li><a href="#aap">Android에서: AAP</a></li>
       </ul>
     </nav>
 
@@ -84,8 +85,8 @@
       <p>체인의 점선 <b class="ui">ADD</b> 칩을 탭하면 블록 팔레트가 열립니다. 목록 맨 아래,
         <b class="ui">유틸리티</b>를 지나면 항목이 하나뿐인 <b class="ui">플러그인</b> 섹션이
         있습니다: <b class="ui">AU 플러그인</b> 서브메뉴입니다.</p>
-      <p>열어보면 기기에 설치된 모든 Audio Unit 이펙트가, 플러그인 이름 뒤에 제조사가 붙은
-        형태로, 제조사 먼저 그다음 이름 순으로 정렬되어 나타납니다. 스캔하거나 활성화할
+      <p>열어보면 기기에 설치된 모든 Audio Unit 이펙트가 제조사별 서브메뉴로 나뉘어, 그
+        안에 플러그인 이름만 깔끔하게 나열됩니다. 스캔하거나 활성화할
         필요가 전혀 없습니다 — 폰에 있는 어떤 앱이 AUv3 이펙트를 담고 있다면 그것은 이미
         이 서브메뉴 안에 있습니다.</p>
       <p>서브메뉴가 비어 있으면 <b class="ui">설치된 Audio Unit 이펙트가 없습니다. AUv3 플러그인이 있는 앱이 여기에 표시됩니다.</b>라고 표시됩니다. 새 기기에서는 이것이
@@ -93,8 +94,8 @@
         설치하면 다음에 열었을 때 그 플러그인이 여기에 나타납니다.</p>
       <p>컴포넌트를 고르면 NAMper는 그 플러그인이 이미 로드된 블록을 만들고, 곧바로
         플러그인 고유의 인터페이스로 들어갑니다 — 빈 껍데기도, 별도 단계도 없습니다. 체인
-        위 블록의 칩 이름은 <b class="ui">AU 플러그인</b>이며, 다른 블록과 똑같이 동작합니다:
-        이름 아래 LED 점을 탭해서 바이패스하고, 드래그해서 체인을 따라 옮기고, 길게 눌러
+        위 블록의 칩에는 플러그인 자체의 이름이 붙으며, 다른 블록과 똑같이 동작합니다:
+        풋스위치 띠를 탭해서 바이패스하고, 누른 채 드래그해서 옮기고, 길게 눌러
         <b class="ui">제거</b>를 사용합니다.</p>
 
       <figure>
@@ -260,6 +261,25 @@
           DAWproject 내보내기입니다 — <a href="/docs/ko/perform.html">퍼폼과 가사</a>를
           참고하세요.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Android에서: AAP</h2>
+      <p>Android에는 Audio Unit이 없습니다. 그쪽의 플러그인 포맷은
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a>(AAP)라는
+        열린 포맷이며, NAMper는 양방향으로 이를 지원합니다.</p>
+      <h3>AAP 이펙트 호스팅</h3>
+      <p>블록 팔레트 맨 아래의 <b class="ui">플러그인</b> 섹션에 폰에 설치된 모든 AAP 이펙트가
+        나열됩니다. 비어 있으면 <b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make them appear here.</b>라고
+        표시됩니다. 하나를 고르면 플러그인의 파라미터가 슬라이더로 펼쳐진 블록이 열리고,
+        플러그인에 자체 인터페이스가 있다면 <b class="ui">Open plugin UI</b>가 별도 창으로
+        열어줍니다. 블록의 교체 메뉴로 플러그인을 바꿀 수 있고, 파라미터 값과 플러그인 상태는
+        iOS에서처럼 프리셋 안에 담겨 함께 이동합니다.</p>
+      <h3>AAP 이펙트로서의 NAMper</h3>
+      <p>어떤 AAP 호스트에서든 NAMper는 <b class="ui">retroaktive</b>의 <b class="ui">NAMper</b>라는
+        이펙트로 나타납니다: 스테레오 입력, 스테레오 출력, AUv3와 같은 18개의 파라미터와
+        같은 3개의 프리셋, 상태는 호스트가 저장합니다. 한계도 같습니다 — 이것은 앱 전체가
+        아니라 콤팩트한 앰프-이펙트 채널입니다.</p>
     </section>
 
     <nav class="pager">

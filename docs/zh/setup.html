@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/zh/setup.html">快速上手</a></li>
       <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
-      <li><a href="/docs/zh/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh/plugins.html">插件</a></li>
       <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
       <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
       <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
@@ -77,6 +77,7 @@
         <li><a href="#feedback-guard">啸叫保护</a></li>
         <li><a href="#permissions">权限</a></li>
         <li><a href="#files">文件的存放位置</a></li>
+        <li><a href="#android">在 Android 上</a></li>
       </ul>
     </nav>
 
@@ -101,7 +102,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>音频接口</h2>
-      <p>这里没有设备选择器。NAMper 会跟随 iOS 当前使用的音频路由，所以你还是像平时一样选择硬件——
+      <p>这里没有设备选择器。NAMper 会跟随系统当前使用的音频路由，所以你还是像平时一样选择硬件——
         接上接口，应用就会围绕它自动重建。支持多通道接口，最多八个输入通道。</p>
       <p>设置 → <b class="ui">音频接口</b> 会告诉你 NAMper 实际拿到了什么：
         <b class="ui">采样率</b>、<b class="ui">输入</b>、<b class="ui">输出</b> 和
@@ -229,7 +230,7 @@
       </div>
       <p>如果麦克风权限被关闭，会出现一条红色横幅：
         <b class="ui r">麦克风权限已关闭——NAMper 听不到你的吉他。</b>
-        并附有一个 <b class="ui">设置</b> 按钮，直接带你去 iOS 的设置项。授予权限后，
+        并附有一个 <b class="ui">设置</b> 按钮，直接带你去系统的设置项。授予权限后，
         引擎会自动重建，无需重新启动应用。</p>
       <p>没有任何数据分析、没有跟踪、没有账户，也不会访问相机、照片、位置或通讯录。
         NAMper 不收集任何信息。</p>
@@ -268,6 +269,39 @@
       <p>有两件事和你想的不太一样：你不能把文件直接拖到应用图标或窗口上——所有导入都要
         经过 NAMper 内部的文件选择器——而且 <b class="ui">tones/</b> 文件夹被特意排除在
         iCloud 备份之外，因为 TONE3000 随时可以重新下载这些模型。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>在 Android 上</h2>
+      <p>Android 版 NAMper 是同一款应用、同一套音频引擎：每个模块、循环乐句器、采样器、曲目单和
+        控制映射表都和本指南描述的一样，预设也能以文件形式在两个平台之间互通。它需要 Android 10
+        或更新版本。有几处因平台本身而不同。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>主题</th><th>在 Android 上</th></tr></thead>
+          <tbody>
+            <tr><td>音频接口</td><td>免驱动（class-compliant）的 USB-C 接口、USB-C 耳麦和有线耳机
+              即插即用；应用和在 iOS 上一样跟随系统路由。蓝牙输出会收到同样的延迟警告。</td></tr>
+            <tr><td>延迟</td><td>比 iPhone 更依赖手机本身。引擎会请求低延迟路径；如果
+              <b class="ui">缓冲区</b> 选择器自己跳到更大的尺寸，那就是硬件的真实下限。</td></tr>
+            <tr><td>采样率</td><td>可选芯片为 <b class="ui">自动</b>、<b class="ui">44.1k</b>、
+              <b class="ui">48k</b> 和 <b class="ui">96k</b>。</td></tr>
+            <tr><td>后台音频</td><td>引擎运行时，一条安静的通知会让音频在其他应用后面继续工作。
+              Android 13 及更新版本会在第一次时请求通知权限。</td></tr>
+            <tr><td>蓝牙 MIDI</td><td>在 Android 12 及更新版本上，配对会请求
+              <b class="ui">Nearby devices</b> 权限。</td></tr>
+            <tr><td>文件</td><td>你的文件保存在应用的私有存储中。所有导入都经过系统文件选择器——
+              或者在任意应用中打开 <b class="ui">.namper</b>、<b class="ui">.nam</b>、IR 或音频文件，
+              选择 <b class="ui">Open with → NAMper</b>——所有导出都通过 Android 分享菜单。</td></tr>
+            <tr><td>TONE3000</td><td>登录会在浏览器中打开，然后自动返回应用。</td></tr>
+            <tr><td>插件</td><td>Audio Unit 是 Apple 的格式。在 Android 上 NAMper 可以加载
+              <a href="/docs/zh/plugins.html#aap">AAP 效果</a>，自身也是一个 AAP 效果。</td></tr>
+            <tr><td>大屏幕</td><td>平板和展开的折叠屏会使用宽屏布局；折叠或旋转时，引擎和信号链
+              会继续运行。</td></tr>
+            <tr><td>赞赏</td><td>Android 上暂未提供。</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

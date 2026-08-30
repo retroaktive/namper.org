@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AUプラグイン — NAMper ドキュメント</title>
+<title>プラグイン — NAMper ドキュメント</title>
 <meta name="description" content="NAMperのチェーン内でAudio Unitエフェクトをホストする方法、組み込みのプラグインインターフェース、制限事項、プラグインの状態がどう保存されるか — そしてNAMper自身が他のアプリの中でAUv3エフェクトとして何をするか。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AUプラグイン — NAMper ドキュメント">
+<meta property="og:title" content="プラグイン — NAMper ドキュメント">
 <meta property="og:description" content="チェーン内でAUv3エフェクトをホストする、プラグインの状態とプリセット、そして他のアプリ内のプラグインとしてのNAMper。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ja/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/ja/setup.html">はじめに</a></li>
       <li><a href="/docs/ja/rig.html">リグとシグナルチェーン</a></li>
-      <li><a class="on" href="/docs/ja/plugins.html">AUプラグイン</a></li>
+      <li><a class="on" href="/docs/ja/plugins.html">プラグイン</a></li>
       <li><a href="/docs/ja/looper.html">ルーパー</a></li>
       <li><a href="/docs/ja/sampler.html">サンプラーパッド</a></li>
       <li><a href="/docs/ja/perform.html">パフォームと歌詞</a></li>
@@ -62,11 +62,11 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU PLUGINS</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGINS</div>
     <h1>他の人が作ったプラグイン。</h1>
-    <p class="lede">NAMperは、すでに持っているAUv3エフェクトをチェーンのどこにでもホストできます —
-      そしてNAMper自身も、他のアプリの中でエフェクトとして現れます。どちらの方向にも、
-      本番の前に知っておく価値のあるルールがあります。</p>
+    <p class="lede">NAMperは、すでに持っているプラグインをチェーンのどこにでもホストできます —
+      iOSではAUv3、AndroidではAAP — そしてNAMper自身も、他のアプリの中でエフェクトとして現れます。
+      どちらの方向にも、本番の前に知っておく価値のあるルールがあります。</p>
 
     <nav class="toc">
       <div class="slab">このページの内容</div>
@@ -76,6 +76,7 @@
         <li><a href="#limits">知っておくべき制限</a></li>
         <li><a href="#state">設定とプリセット</a></li>
         <li><a href="#auv3">プラグインとしてのNAMper</a></li>
+        <li><a href="#aap">Androidでは: AAP</a></li>
       </ul>
     </nav>
 
@@ -85,8 +86,8 @@
         リストの一番下、<b class="ui">ユーティリティ</b>のさらに先に、<b class="ui">プラグイン</b>
         セクションがあり、そこには<b class="ui">AUプラグイン</b>サブメニューという単一の
         項目があります。</p>
-      <p>開くと、端末にインストールされているすべてのAudio Unitエフェクトが、プラグイン名の
-        後にメーカー名を添えて一覧表示され、まずメーカー名、次に名前の順で並びます。
+      <p>開くと、端末にインストールされているすべてのAudio Unitエフェクトが、メーカーごとの
+        サブメニューに分かれて表示され、その中にプラグイン名だけが並びます。
         スキャンや有効化は不要です — スマホ上のアプリがAUv3エフェクトを提供していれば、
         それはこのサブメニューに現れます。</p>
       <p>サブメニューが空の場合は<b class="ui">Audio Unitエフェクトがありません。AUv3プラグインを含むアプリがここに表示されます。</b>と表示されます。これは新しい端末では
@@ -94,9 +95,9 @@
         インストールすれば、次にここを開いたときにプラグインが表示されます。</p>
       <p>コンポーネントを選ぶと、NAMperはそのプラグインを読み込んだ状態でブロックを作成し、
         すぐにプラグイン自身のインターフェースを開きます — 空のシェルや2段階目の操作は
-        ありません。チェーン上のこのブロックのチップは<b class="ui">AUプラグイン</b>という
-        名前になり、他のすべてのブロックと同じように動作します: 名前の下のLEDドットを
-        タップしてバイパス、ドラッグしてチェーン上を移動、長押しで<b class="ui">削除</b>。</p>
+        ありません。チェーン上のこのブロックのチップにはプラグイン自身の名前が付き、
+        他のすべてのブロックと同じように動作します: フットスイッチ帯をタップしてバイパス、
+        押さえてドラッグで移動、長押しで<b class="ui">削除</b>。</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -262,6 +263,25 @@
           DAWprojectの書き出しは、前者の使い方のために存在します。詳しくは
           <a href="/docs/ja/perform.html">パフォームと歌詞</a>を参照してください。</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Androidでは: AAP</h2>
+      <p>AndroidにAudio Unitはありません。あちらのプラグインフォーマットは
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a>(AAP)という
+        オープンなフォーマットで、NAMperは双方向でこれに対応しています。</p>
+      <h3>AAPエフェクトをホストする</h3>
+      <p>ブロックパレットの一番下にある<b class="ui">プラグイン</b>セクションに、スマホにインストール
+        されているすべてのAAPエフェクトが並びます。空のときは<b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make them appear here.</b>と
+        表示されます。1つ選ぶと、プラグインのパラメータをスライダーにしたブロックが開きます。
+        プラグインが独自のインターフェースを持っていれば、<b class="ui">Open plugin UI</b>で
+        別ウィンドウに開きます。ブロックの置き換えメニューでプラグインを差し替えられ、
+        パラメータ値とプラグインの状態はiOSと同じようにプリセットの中に入って持ち運べます。</p>
+      <h3>AAPエフェクトとしてのNAMper</h3>
+      <p>どのAAPホストからも、NAMperは<b class="ui">retroaktive</b>製の<b class="ui">NAMper</b>という
+        エフェクトとして見つかります: ステレオ入力、ステレオ出力、AUv3と同じ18個のパラメータ、
+        同じ3つのプリセットで、状態はホストが保存します。制限も同じです —
+        これはコンパクトなアンプ+エフェクトのチャンネルであって、アプリ全体ではありません。</p>
     </section>
 
     <nav class="pager">

@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/fil/setup.html">Pagsisimula</a></li>
       <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
-      <li><a href="/docs/fil/plugins.html">Mga AU plugin</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga plugin</a></li>
       <li><a href="/docs/fil/looper.html">Looper</a></li>
       <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
       <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
@@ -76,6 +76,7 @@
         <li><a href="#feedback-guard">Ang feedback guard</a></li>
         <li><a href="#permissions">Mga pahintulot</a></li>
         <li><a href="#files">Kung saan naroon ang mga file mo</a></li>
+        <li><a href="#android">Sa Android</a></li>
       </ul>
     </nav>
 
@@ -94,7 +95,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>Mga audio interface</h2>
-      <p>Walang device picker. Sumusunod ang NAMper sa kahit anong audio route na ginagamit ng iOS, kaya pinipili mo ang hardware mo sa dati mong paraan — isaksak ang interface, at muling bubuuin ng app ang sarili sa paligid nito. Suportado ang mga multichannel interface, hanggang walong input channel.</p>
+      <p>Walang device picker. Sumusunod ang NAMper sa kahit anong audio route na ginagamit ng system, kaya pinipili mo ang hardware mo sa dati mong paraan — isaksak ang interface, at muling bubuuin ng app ang sarili sa paligid nito. Suportado ang mga multichannel interface, hanggang walong input channel.</p>
       <p>Sinasabi ng Settings → <b class="ui">AUDIO INTERFACE</b> kung ano talaga ang nakuha ng NAMper: <b class="ui">Sample rate</b>, <b class="ui">Mga Input</b>, <b class="ui">Mga Output</b> at <b class="ui">Engine</b> (<b class="ui">tumatakbo</b> o <b class="ui">huminto</b>). Kung hindi iyon ang inaasahan mong bilang ng channel, doon sa row na iyon malalaman.</p>
 
       <h3>Pagpapangalan sa mga channel mo</h3>
@@ -178,7 +179,7 @@
           </tbody>
         </table>
       </div>
-      <p>Kung naka-off ang access sa mikropono, may pulang banner na nagsasabing <b class="ui r">Naka-off ang access sa mikropono — hindi naririnig ng NAMper ang gitara mo.</b> kasama ang <b class="ui">Mga Setting</b> button na dumidiretso sa setting ng iOS. Ipagkaloob ito at muling bubuo ang engine nang hindi na kailangang buksan ulit ang app.</p>
+      <p>Kung naka-off ang access sa mikropono, may pulang banner na nagsasabing <b class="ui r">Naka-off ang access sa mikropono — hindi naririnig ng NAMper ang gitara mo.</b> kasama ang <b class="ui">Mga Setting</b> button na dumidiretso sa setting ng system. Ipagkaloob ito at muling bubuo ang engine nang hindi na kailangang buksan ulit ang app.</p>
       <p>Walang analytics, walang tracking, walang account at walang access sa camera, larawan, lokasyon o mga kontak. Walang kinokolektang anuman ang NAMper.</p>
     </section>
 
@@ -204,6 +205,28 @@
         <p>Ang mga audio file na diretso mong inilalagay sa <b class="ui">backing/</b> gamit ang Files app ay pumapasok sa setlist sa susunod mong pagbukas ng NAMper. Ang pag-load ng buong set ay iisang copy-paste sa computer sa halip na dalawampung tap sa telepono.</p>
       </div>
       <p>May dalawang bagay na hindi gumagana sa inaakala mong paraan: hindi mo puwedeng i-drag ang mga file sa app icon o sa isang window — dumadaan sa file picker sa loob ng NAMper ang bawat import — at sinasadyang hindi isinasama sa iCloud backup ang folder na <b class="ui">tones/</b>, dahil puwedeng i-download muli ng TONE3000 ang mga profile na iyon.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Sa Android</h2>
+      <p>Ang NAMper para sa Android ay ang parehong app sa parehong audio engine: bawat block, ang looper, ang sampler, ang setlist at ang control map ay kumikilos gaya ng inilalarawan sa gabay na ito, at lumilipat ang mga preset sa pagitan ng dalawang platform bilang mga file. Kailangan nito ng Android 10 o mas bago. May ilang bagay na iba dahil iba ang platform.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Paksa</th><th>Sa Android</th></tr></thead>
+          <tbody>
+            <tr><td>Mga interface</td><td>Gumagana agad ang mga class-compliant na USB-C interface, USB-C headset at wired na headphone; sumusunod ang app sa system route gaya ng ginagawa nito sa iOS. Pareho ring babala sa latency ang nakukuha ng Bluetooth output.</td></tr>
+            <tr><td>Latency</td><td>Mas nakadepende sa telepono kaysa sa iPhone. Humihingi ang engine ng low-latency na daan; kung kusang tumatalon sa mas malaking size ang <b class="ui">Buffer</b> picker, iyon ang totoong minimum ng hardware.</td></tr>
+            <tr><td>Sample rate</td><td>Ang mga chip ay <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b> at <b class="ui">96k</b>.</td></tr>
+            <tr><td>Background audio</td><td>Habang tumatakbo ang engine, may tahimik na notification na nagpapanatiling buhay sa audio sa likod ng ibang app. Humihingi ng pahintulot sa notification ang Android 13 at mas bago sa unang pagkakataon.</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>Humihingi ng pahintulot sa <b class="ui">Nearby devices</b> ang pairing sa Android 12 at mas bago.</td></tr>
+            <tr><td>Mga file</td><td>Nasa pribadong storage ng app ang mga file mo. Dumadaan sa system file picker ang bawat import — o magbukas ng <b class="ui">.namper</b>, <b class="ui">.nam</b>, IR o audio file mula sa kahit anong app gamit ang <b class="ui">Open with → NAMper</b> — at lahat ay ine-export sa pamamagitan ng Android share sheet.</td></tr>
+            <tr><td>TONE3000</td><td>Bumubukas ang sign-in sa browser mo at kusang bumabalik sa app.</td></tr>
+            <tr><td>Mga plugin</td><td>Format ng Apple ang mga Audio Unit. Sa Android, pinapatakbo ng NAMper ang mga <a href="/docs/fil/plugins.html#aap">AAP effect</a>, at isa rin ito mismo.</td></tr>
+            <tr><td>Malalaking screen</td><td>Nakukuha ng mga tablet at nakabukas na foldable ang malapad na layout; patuloy na tumatakbo ang engine at ang chain kapag tinupi o pinihit.</td></tr>
+            <tr><td>Tip jar</td><td>Wala pa sa Android.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

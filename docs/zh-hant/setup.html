@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/zh-hant/setup.html">快速上手</a></li>
       <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
-      <li><a href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a href="/docs/zh-hant/plugins.html">插件</a></li>
       <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
       <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
       <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
@@ -77,6 +77,7 @@
         <li><a href="#feedback-guard">嘯叫保護</a></li>
         <li><a href="#permissions">權限</a></li>
         <li><a href="#files">文件的存放位置</a></li>
+        <li><a href="#android">在 Android 上</a></li>
       </ul>
     </nav>
 
@@ -101,7 +102,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>音頻接口</h2>
-      <p>這裡沒有設備選擇器。NAMper 會跟隨 iOS 當前使用的音頻路由，所以你還是像平時一樣選擇硬體——
+      <p>這裡沒有設備選擇器。NAMper 會跟隨系統當前使用的音頻路由，所以你還是像平時一樣選擇硬體——
         接上接口，應用就會圍繞它自動重建。支持多通道接口，最多八個輸入通道。</p>
       <p>設置 → <b class="ui">音頻接口</b> 會告訴你 NAMper 實際拿到了什麼：
         <b class="ui">採樣率</b>、<b class="ui">輸入</b>、<b class="ui">輸出</b> 和
@@ -229,7 +230,7 @@
       </div>
       <p>如果麥克風權限被關閉，會出現一條紅色橫幅：
         <b class="ui r">麥克風權限已關閉——NAMper 聽不到你的吉他。</b>
-        並附有一個 <b class="ui">設置</b> 按鈕，直接帶你去 iOS 的設置項。授予權限後，
+        並附有一個 <b class="ui">設置</b> 按鈕，直接帶你去系統的設置項。授予權限後，
         引擎會自動重建，無需重新啟動應用。</p>
       <p>沒有任何數據分析、沒有跟蹤、沒有帳戶，也不會訪問相機、照片、位置或通訊錄。
         NAMper 不收集任何信息。</p>
@@ -268,6 +269,39 @@
       <p>有兩件事和你想的不太一樣：你不能把文件直接拖到應用圖標或窗口上——所有導入都要
         經過 NAMper 內部的文件選擇器——而且 <b class="ui">tones/</b> 文件夾被特意排除在
         iCloud 備份之外，因為 TONE3000 隨時可以重新下載這些模型。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>在 Android 上</h2>
+      <p>Android 版 NAMper 是同一款應用、同一套音頻引擎：每個模塊、循環樂句器、採樣器、曲目單和
+        控制映射表都和本指南描述的一樣，預設也能以文件形式在兩個平台之間互通。它需要 Android 10
+        或更新版本。有幾處因平台本身而不同。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>主題</th><th>在 Android 上</th></tr></thead>
+          <tbody>
+            <tr><td>音頻接口</td><td>免驅動（class-compliant）的 USB-C 接口、USB-C 耳麥和有線耳機
+              即插即用；應用和在 iOS 上一樣跟隨系統路由。藍牙輸出會收到同樣的延遲警告。</td></tr>
+            <tr><td>延遲</td><td>比 iPhone 更依賴手機本身。引擎會請求低延遲路徑；如果
+              <b class="ui">緩衝區</b> 選擇器自己跳到更大的尺寸，那就是硬體的真實下限。</td></tr>
+            <tr><td>採樣率</td><td>可選晶片為 <b class="ui">自動</b>、<b class="ui">44.1k</b>、
+              <b class="ui">48k</b> 和 <b class="ui">96k</b>。</td></tr>
+            <tr><td>後台音頻</td><td>引擎運行時，一條安靜的通知會讓音頻在其他應用後面繼續工作。
+              Android 13 及更新版本會在第一次時請求通知權限。</td></tr>
+            <tr><td>藍牙 MIDI</td><td>在 Android 12 及更新版本上，配對會請求
+              <b class="ui">Nearby devices</b> 權限。</td></tr>
+            <tr><td>文件</td><td>你的文件保存在應用的私有存儲中。所有導入都經過系統文件選擇器——
+              或者在任意應用中打開 <b class="ui">.namper</b>、<b class="ui">.nam</b>、IR 或音頻文件，
+              選擇 <b class="ui">Open with → NAMper</b>——所有導出都通過 Android 分享菜單。</td></tr>
+            <tr><td>TONE3000</td><td>登錄會在瀏覽器中打開，然後自動返回應用。</td></tr>
+            <tr><td>插件</td><td>Audio Unit 是 Apple 的格式。在 Android 上 NAMper 可以加載
+              <a href="/docs/zh-hant/plugins.html#aap">AAP 效果</a>，自身也是一個 AAP 效果。</td></tr>
+            <tr><td>大屏幕</td><td>平板和展開的折疊屏會使用寬屏佈局；折疊或旋轉時，引擎和信號鏈
+              會繼續運行。</td></tr>
+            <tr><td>讚賞</td><td>Android 上暫未提供。</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

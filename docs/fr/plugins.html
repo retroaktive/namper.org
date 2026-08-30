@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plugins AU — Documentation NAMper</title>
+<title>Plugins — Documentation NAMper</title>
 <meta name="description" content="Héberger des effets Audio Unit à l'intérieur d'une chaîne NAMper, l'interface de plugin intégrée, les limites, comment l'état du plugin est enregistré — et ce que fait NAMper lui-même comme effet AUv3 dans une autre appli.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Plugins AU — Documentation NAMper">
+<meta property="og:title" content="Plugins — Documentation NAMper">
 <meta property="og:description" content="Héberger des effets AUv3 dans une chaîne, l'état et les presets des plugins, et NAMper comme plugin dans une autre appli.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/fr/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/fr/setup.html">Prise en main</a></li>
       <li><a href="/docs/fr/rig.html">Rig et chaîne du signal</a></li>
-      <li><a class="on" href="/docs/fr/plugins.html">Plugins AU</a></li>
+      <li><a class="on" href="/docs/fr/plugins.html">Plugins</a></li>
       <li><a href="/docs/fr/looper.html">Looper</a></li>
       <li><a href="/docs/fr/sampler.html">Pads du sampler</a></li>
       <li><a href="/docs/fr/perform.html">Perform et paroles</a></li>
@@ -62,10 +62,10 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · PLUGINS AU</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGINS</div>
     <h1>Les plugins des autres.</h1>
-    <p class="lede">NAMper héberge les effets AUv3 que tu possèdes déjà, n'importe où dans une
-      chaîne — et NAMper lui-même apparaît comme effet dans d'autres applis. Les deux sens ont
+    <p class="lede">NAMper héberge les plugins que tu possèdes déjà, n'importe où dans une chaîne — AUv3 sur
+      iOS, AAP sur Android — et NAMper lui-même apparaît comme effet dans d'autres applis. Les deux sens ont
       leurs règles, bonnes à connaître avant un concert.</p>
 
     <nav class="toc">
@@ -76,6 +76,7 @@
         <li><a href="#limits">Les limites à connaître</a></li>
         <li><a href="#state">Réglages et presets</a></li>
         <li><a href="#auv3">NAMper comme plugin</a></li>
+        <li><a href="#aap">Sur Android : AAP</a></li>
       </ul>
     </nav>
 
@@ -84,8 +85,8 @@
       <p>Appuie sur la puce en pointillés <b class="ui">ADD</b> d'une chaîne pour ouvrir la palette
         de blocs. Tout en bas de la liste, après <b class="ui">Utilitaire</b>, se trouve la section
         <b class="ui">Plugins</b> avec une seule entrée : le sous-menu <b class="ui">Plugins AU</b>.</p>
-      <p>Ouvre-le et tu obtiens tous les effets Audio Unit installés sur l'appareil, listés comme
-        le nom du plugin suivi de son fabricant, triés d'abord par fabricant puis par nom. Rien
+      <p>Ouvre-le et tu obtiens tous les effets Audio Unit installés sur l'appareil, un sous-menu
+        par fabricant avec les simples noms des plugins à l'intérieur. Rien
         n'a besoin d'être scanné ou activé — si une appli sur ton téléphone fournit un effet AUv3,
         il est dans ce sous-menu.</p>
       <p>Si le sous-menu est vide, il affiche <b class="ui">Aucun effet Audio Unit installé. Les apps fournissant des plugins AUv3 apparaîtront ici.</b> C'est l'état normal sur un appareil
@@ -93,9 +94,9 @@
         l'appli et son plugin apparaît ici à la prochaine visite.</p>
       <p>Choisis un composant et NAMper crée le bloc avec ce plugin déjà chargé, puis s'ouvre
         directement sur l'interface propre du plugin — pas de coquille vide, pas de deuxième
-        étape. La puce du bloc sur la chaîne s'appelle <b class="ui">Plugin AU</b>, et elle se
-        comporte comme tout autre bloc : appuie sur le point LED sous le nom pour le bypasser,
-        fais-la glisser pour la déplacer le long de la chaîne, appui long pour
+        étape. La puce du bloc sur la chaîne porte le nom du plugin lui-même, et elle se
+        comporte comme tout autre bloc : appuie sur la bande footswitch pour le bypasser,
+        maintiens et fais-la glisser pour la déplacer, appui long pour
         <b class="ui">Retirer</b>.</p>
 
       <figure>
@@ -260,6 +261,26 @@
           hôte. L'enregistreur de l'onglet Perform et son export DAWproject existent pour la
           première option — voir <a href="/docs/fr/perform.html">Perform et paroles</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Sur Android : AAP</h2>
+      <p>Les Audio Units n'existent pas sur Android. Le format de plugin là-bas, c'est
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), un
+        format ouvert, et NAMper le parle dans les deux sens.</p>
+      <h3>Héberger des effets AAP</h3>
+      <p>La section <b class="ui">Plugins</b> tout en bas de la palette de blocs liste tous les effets
+        AAP installés sur le téléphone. Vide, elle affiche <b class="ui">No AAP effects installed. Apps
+        that ship Audio Plugins for Android make them appear here.</b> Choisis-en un et le bloc s'ouvre
+        avec les paramètres du plugin sous forme de curseurs ; si le plugin fournit sa propre
+        interface, <b class="ui">Open plugin UI</b> l'ouvre dans une fenêtre à part. Le menu de
+        remplacement du bloc change de plugin, et les valeurs des paramètres comme l'état du plugin
+        voyagent dans ton preset, exactement comme sur iOS.</p>
+      <h3>NAMper comme effet AAP</h3>
+      <p>N'importe quel hôte AAP trouve NAMper comme un effet nommé <b class="ui">NAMper</b> par
+        <b class="ui">retroaktive</b> : stéréo en entrée, stéréo en sortie, les mêmes dix-huit
+        paramètres que l'AUv3 et les mêmes trois presets, avec l'état sauvegardé par l'hôte. Les mêmes
+        limites s'appliquent — c'est le canal compact ampli-et-effets, pas toute l'appli.</p>
     </section>
 
     <nav class="pager">

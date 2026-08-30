@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plugin AU — Documentazione NAMper</title>
+<title>Plugin — Documentazione NAMper</title>
 <meta name="description" content="Ospitare effetti Audio Unit dentro una catena NAMper, l'interfaccia del plugin incorporata, i limiti, come viene salvato lo stato del plugin — e cosa fa NAMper stesso come effetto AUv3 in un'altra app.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="Plugin AU — Documentazione NAMper">
+<meta property="og:title" content="Plugin — Documentazione NAMper">
 <meta property="og:description" content="Ospitare effetti AUv3 in una catena, stato e preset del plugin, e NAMper come plugin dentro un'altra app.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/it/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/it/setup.html">Per iniziare</a></li>
       <li><a href="/docs/it/rig.html">Rig e catena del segnale</a></li>
-      <li><a class="on" href="/docs/it/plugins.html">Plugin AU</a></li>
+      <li><a class="on" href="/docs/it/plugins.html">Plugin</a></li>
       <li><a href="/docs/it/looper.html">Looper</a></li>
       <li><a href="/docs/it/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/it/perform.html">Perform e testi</a></li>
@@ -62,11 +62,11 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · PLUGIN AU</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · PLUGIN</div>
     <h1>I plugin di altri.</h1>
-    <p class="lede">NAMper ospita gli effetti AUv3 che già possiedi, ovunque in una catena — e
-      NAMper stesso compare come effetto in altre app. Entrambe le direzioni hanno regole che vale
-      la pena conoscere prima di un concerto.</p>
+    <p class="lede">NAMper ospita i plugin che già possiedi, ovunque in una catena — AUv3 su iOS,
+      AAP su Android — e NAMper stesso compare come effetto in altre app. Entrambe le direzioni
+      hanno regole che vale la pena conoscere prima di un concerto.</p>
 
     <nav class="toc">
       <div class="slab">IN QUESTA PAGINA</div>
@@ -76,6 +76,7 @@
         <li><a href="#limits">Limiti da conoscere</a></li>
         <li><a href="#state">Impostazioni e preset</a></li>
         <li><a href="#auv3">NAMper come plugin</a></li>
+        <li><a href="#aap">Su Android: AAP</a></li>
       </ul>
     </nav>
 
@@ -84,8 +85,8 @@
       <p>Tocca il chip tratteggiato <b class="ui">ADD</b> su una catena per aprire la palette dei
         blocchi. Proprio in fondo alla lista, dopo <b class="ui">Utilità</b>, si trova la sezione
         <b class="ui">Plugin</b> con una sola voce: il sottomenu <b class="ui">Plugin AU</b>.</p>
-      <p>Aprilo e ottieni ogni effetto Audio Unit installato sul dispositivo, elencato come nome
-        del plugin seguito dal suo produttore e ordinato prima per produttore, poi per nome. Niente
+      <p>Aprilo e ottieni ogni effetto Audio Unit installato sul dispositivo, un sottomenu per
+        produttore con dentro i semplici nomi dei plugin. Niente
         richiede scansioni o attivazioni — se un'app sul tuo telefono include un effetto AUv3, è in
         quel sottomenu.</p>
       <p>Se il sottomenu è vuoto mostra <b class="ui">Nessun effetto Audio Unit installato. Le app con plugin AUv3 appariranno qui.</b> È lo stato normale su un dispositivo appena
@@ -93,9 +94,9 @@
         e il suo plugin compare qui alla visita successiva.</p>
       <p>Scegli un componente e NAMper crea il blocco con quel plugin già caricato, poi si apre
         direttamente sull'interfaccia propria del plugin — nessun guscio vuoto, nessun secondo
-        passaggio. Il chip del blocco sulla catena si chiama <b class="ui">Plugin AU</b>, e si
-        comporta come ogni altro blocco: tocca il LED sotto il nome per metterlo in bypass,
-        trascinalo per spostarlo lungo la catena, pressione prolungata per <b class="ui">Rimuovi</b>.</p>
+        passaggio. Il chip del blocco sulla catena porta il nome del plugin stesso, e si
+        comporta come ogni altro blocco: tocca la striscia del footswitch per metterlo in bypass,
+        tieni premuto e trascina per spostarlo, pressione prolungata per <b class="ui">Rimuovi</b>.</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -255,6 +256,26 @@
           registratore della scheda Perform e la sua esportazione DAWproject esistono per la prima
           strada — vedi <a href="/docs/it/perform.html">Perform e testi</a>.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Su Android: AAP</h2>
+      <p>Gli Audio Unit non esistono su Android. Lì il formato dei plugin è
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a> (AAP), un
+        formato aperto, e NAMper lo parla in entrambe le direzioni.</p>
+      <h3>Ospitare effetti AAP</h3>
+      <p>La sezione <b class="ui">Plugin</b> in fondo alla palette dei blocchi elenca ogni effetto
+        AAP installato sul telefono. Se è vuota mostra <b class="ui">No AAP effects installed. Apps
+        that ship Audio Plugins for Android make them appear here.</b> Scegline uno e il blocco si
+        apre con i parametri del plugin come cursori; se il plugin ha una propria interfaccia,
+        <b class="ui">Open plugin UI</b> la apre in una finestra a parte. Il menu di sostituzione
+        del blocco scambia il plugin, e i valori dei parametri e lo stato del plugin viaggiano
+        dentro il tuo preset esattamente come su iOS.</p>
+      <h3>NAMper come effetto AAP</h3>
+      <p>Qualsiasi host AAP trova NAMper come effetto chiamato <b class="ui">NAMper</b> di
+        <b class="ui">retroaktive</b>: ingresso stereo, uscita stereo, gli stessi diciotto
+        parametri dell'AUv3 e gli stessi tre preset, con lo stato salvato dall'host. Valgono gli
+        stessi limiti — è il canale compatto ampli-ed-effetti, non l'intera app.</p>
     </section>
 
     <nav class="pager">

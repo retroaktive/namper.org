@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/vi/setup.html">Bắt đầu</a></li>
       <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
-      <li><a href="/docs/vi/plugins.html">Plugin AU</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin</a></li>
       <li><a href="/docs/vi/looper.html">Looper</a></li>
       <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
@@ -78,6 +78,7 @@
         <li><a href="#feedback-guard">Chống hú</a></li>
         <li><a href="#permissions">Quyền truy cập</a></li>
         <li><a href="#files">Nơi lưu file của bạn</a></li>
+        <li><a href="#android">Trên Android</a></li>
       </ul>
     </nav>
 
@@ -106,7 +107,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>Audio interface</h2>
-      <p>Không có bộ chọn thiết bị. NAMper đi theo bất kỳ audio route nào mà iOS đang dùng, nên
+      <p>Không có bộ chọn thiết bị. NAMper đi theo bất kỳ audio route nào mà hệ thống đang dùng, nên
         bạn chọn phần cứng theo đúng cách bạn vẫn làm — cắm interface vào, và app sẽ tự dựng lại
         xung quanh nó. Interface đa kênh được hỗ trợ, tối đa tám kênh input.</p>
       <p>Cài đặt → <b class="ui">AUDIO INTERFACE</b> cho bạn biết NAMper thực sự nhận được gì:
@@ -247,7 +248,7 @@
       </div>
       <p>Nếu quyền truy cập micro đang tắt, một banner đỏ hiện
         <b class="ui r">Quyền micro đang tắt — NAMper không nghe được cây đàn của bạn.</b> kèm nút
-        <b class="ui">Cài đặt</b> đưa bạn thẳng tới cài đặt iOS. Cấp quyền và engine sẽ tự dựng
+        <b class="ui">Cài đặt</b> đưa bạn thẳng tới cài đặt hệ thống. Cấp quyền và engine sẽ tự dựng
         lại mà không cần khởi động lại app.</p>
       <p>Không có analytics, không theo dõi, không tài khoản và không truy cập camera, ảnh, vị
         trí hay danh bạ. NAMper không thu thập gì cả.</p>
@@ -288,6 +289,46 @@
         hay vào một cửa sổ — mọi thao tác nhập đều phải qua file picker bên trong NAMper — và
         thư mục <b class="ui">tones/</b> bị loại khỏi sao lưu iCloud một cách có chủ đích, vì
         TONE3000 có thể tải lại các profile đó bất cứ lúc nào.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Trên Android</h2>
+      <p>NAMper cho Android là cùng một app trên cùng một audio engine: mọi block, looper,
+        sampler, setlist và control map đều hoạt động như hướng dẫn này mô tả, và preset đi
+        qua lại giữa hai nền tảng dưới dạng file. Cần Android 10 trở lên. Một vài điều khác
+        đi, vì nền tảng khác.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Chủ đề</th><th>Trên Android</th></tr></thead>
+          <tbody>
+            <tr><td>Interface</td><td>Interface USB-C class-compliant, tai nghe USB-C và tai nghe
+              có dây dùng được ngay; app đi theo route của hệ thống y như trên iOS. Đầu ra
+              Bluetooth nhận cùng cảnh báo latency.</td></tr>
+            <tr><td>Latency</td><td>Phụ thuộc vào điện thoại nhiều hơn hẳn so với iPhone. Engine
+              xin đường low-latency; nếu bộ chọn <b class="ui">Buffer</b> tự nhảy lên kích thước
+              lớn hơn, đó là mức tối thiểu thật của phần cứng.</td></tr>
+            <tr><td>Sample rate</td><td>Các chip là <b class="ui">Tự động</b>, <b class="ui">44.1k</b>,
+              <b class="ui">48k</b> và <b class="ui">96k</b>.</td></tr>
+            <tr><td>Âm thanh nền</td><td>Khi engine đang chạy, một thông báo im lặng giữ cho âm
+              thanh sống sau các app khác. Android 13 trở lên hỏi quyền thông báo ở lần
+              đầu.</td></tr>
+            <tr><td>Bluetooth MIDI</td><td>Ghép nối hỏi quyền <b class="ui">Nearby devices</b>
+              trên Android 12 trở lên.</td></tr>
+            <tr><td>File</td><td>File của bạn nằm trong bộ nhớ riêng của app. Mọi thao tác nhập
+              đều qua file picker của hệ thống — hoặc mở file <b class="ui">.namper</b>,
+              <b class="ui">.nam</b>, IR hay audio từ bất kỳ app nào bằng
+              <b class="ui">Open with → NAMper</b> — và mọi thứ xuất ra qua share sheet của
+              Android.</td></tr>
+            <tr><td>TONE3000</td><td>Đăng nhập mở trong trình duyệt và tự quay lại app.</td></tr>
+            <tr><td>Plugin</td><td>Audio Unit là định dạng của Apple. Trên Android NAMper host
+              <a href="/docs/vi/plugins.html#aap">hiệu ứng AAP</a>, và chính nó cũng là một
+              hiệu ứng AAP.</td></tr>
+            <tr><td>Màn hình lớn</td><td>Máy tính bảng và điện thoại gập khi mở ra dùng bố cục
+              rộng; gập hay xoay máy vẫn giữ engine và chuỗi chạy tiếp.</td></tr>
+            <tr><td>Tip jar</td><td>Chưa có trên Android.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">

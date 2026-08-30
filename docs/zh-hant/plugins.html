@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AU 插件 — NAMper 文檔</title>
+<title>插件 — NAMper 文檔</title>
 <meta name="description" content="在 NAMper 信號鏈中加載 Audio Unit 效果、內嵌插件界面、各項限制、插件狀態如何保存——以及 NAMper 自身作為 AUv3 效果器在其他應用中的表現。">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<meta property="og:title" content="AU 插件 — NAMper 文檔">
+<meta property="og:title" content="插件 — NAMper 文檔">
 <meta property="og:description" content="在信號鏈中加載 AUv3 效果、插件狀態與預設，以及 NAMper 作為其他應用內的插件。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/plugins.html">
@@ -52,7 +52,7 @@
     <ol>
       <li><a href="/docs/zh-hant/setup.html">快速上手</a></li>
       <li><a href="/docs/zh-hant/rig.html">音色組與信號鏈</a></li>
-      <li><a class="on" href="/docs/zh-hant/plugins.html">AU 插件</a></li>
+      <li><a class="on" href="/docs/zh-hant/plugins.html">插件</a></li>
       <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
       <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
       <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
@@ -62,10 +62,10 @@
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--pitch)">03 · AU 插件</div>
+    <div class="slab" style="--nc:var(--pitch)">03 · 插件</div>
     <h1>別人做的插件。</h1>
-    <p class="lede">NAMper 可以在信號鏈的任意位置加載你已經擁有的 AUv3 效果——而 NAMper 自身也會
-      作為一個效果器出現在其他應用裡。這兩個方向都各有一些值得在演出前弄清楚的規則。</p>
+    <p class="lede">NAMper 可以在信號鏈的任意位置加載你已經擁有的插件——iOS 上是 AUv3，Android 上是 AAP——
+      而 NAMper 自身也會作為一個效果器出現在其他應用裡。這兩個方向都各有一些值得在演出前弄清楚的規則。</p>
 
     <nav class="toc">
       <div class="slab">本頁內容</div>
@@ -75,6 +75,7 @@
         <li><a href="#limits">值得了解的限制</a></li>
         <li><a href="#state">設置與預設</a></li>
         <li><a href="#auv3">作為插件的 NAMper</a></li>
+        <li><a href="#aap">Android 上的 AAP</a></li>
       </ul>
     </nav>
 
@@ -83,16 +84,16 @@
       <p>點擊信號鏈上虛線的 <b class="ui">ADD</b> 標籤打開模塊面板。在列表最下方、
         <b class="ui">實用工具</b> 之後，是 <b class="ui">插件</b> 分類，
         裡面只有一項：<b class="ui">AU 插件</b> 子菜單。</p>
-      <p>打開它，你會看到設備上安裝的每一個 Audio Unit 效果，以插件名稱加製造商的形式列出，
-        先按製造商排序，再按名稱排序。不需要掃描或啟用任何東西——只要手機上某個應用自帶
+      <p>打開它，你會看到設備上安裝的每一個 Audio Unit 效果，按製造商分成子菜單，裡面列出
+        插件的原名。不需要掃描或啟用任何東西——只要手機上某個應用自帶
         AUv3 效果，它就會出現在這個子菜單裡。</p>
       <p>如果子菜單是空的，會顯示 <b class="ui">未安裝 Audio Unit 效果。含 AUv3 插件的應用會顯示在這裡。</b> 這是全新設備上的正常狀態：
         AUv3 插件是隨普通的 App Store 應用一起安裝的，所以你安裝那個應用之後，
         它的插件下次就會出現在這裡。</p>
       <p>選中一個組件，NAMper 就會創建一個已經加載好該插件的模塊，然後直接打開插件
-        自己的界面——沒有空殼，沒有第二個步驟。信號鏈上這個模塊的標籤名為
-        <b class="ui">AU 插件</b>，它的行為和其他模塊一樣：點擊名稱下方的 LED 圓點
-        旁通它，拖動它在信號鏈上移動位置，長按它調出 <b class="ui">移除</b>。</p>
+        自己的界面——沒有空殼，沒有第二個步驟。信號鏈上這個模塊的標籤會顯示
+        插件自己的名字，它的行為和其他模塊一樣：點擊腳踏開關條旁通它，按住並拖動來移動它，
+        長按它調出 <b class="ui">移除</b>。</p>
 
       <figure>
         <img class="wide" src="/docs/assets/au-plugin.png" width="900" height="574"
@@ -241,6 +242,24 @@
           DAWproject 導出正是為第一種方式而存在的——參見
           <a href="/docs/zh-hant/perform.html">演出與歌詞</a>。</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="aap"><span class="n">03.6</span>Android 上的 AAP</h2>
+      <p>Android 上沒有 Audio Unit。那裡的插件格式是
+        <a href="https://github.com/atsushieno/aap-core">Audio Plugins For Android</a>（AAP），
+        一種開放格式，NAMper 在兩個方向上都支持它。</p>
+      <h3>加載 AAP 效果</h3>
+      <p>模塊面板底部的 <b class="ui">插件</b> 區域會列出手機上安裝的每一個 AAP 效果。為空時
+        會顯示 <b class="ui">No AAP effects installed. Apps that ship Audio Plugins for Android make
+        them appear here.</b> 選中一個，模塊就會打開，並以滑塊形式顯示插件的參數；如果插件自帶
+        界面，<b class="ui">Open plugin UI</b> 會在單獨的窗口中打開它。模塊的替換菜單可以換成另一個
+        插件，參數值和插件狀態會和在 iOS 上一樣隨預設一起保存。</p>
+      <h3>作為 AAP 效果的 NAMper</h3>
+      <p>任何 AAP 宿主都能找到一個名為 <b class="ui">NAMper</b>、由
+        <b class="ui">retroaktive</b> 提供的效果：立體聲輸入、立體聲輸出，與 AUv3 相同的十八個參數
+        和相同的三個預設，狀態由宿主保存。同樣的限制也適用——它是精簡的音箱加效果通道，
+        而不是整個應用。</p>
     </section>
 
     <nav class="pager">

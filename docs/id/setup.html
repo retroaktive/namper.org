@@ -52,7 +52,7 @@
     <ol>
       <li><a class="on" href="/docs/id/setup.html">Memulai</a></li>
       <li><a href="/docs/id/rig.html">Rig &amp; rantai sinyal</a></li>
-      <li><a href="/docs/id/plugins.html">Plugin AU</a></li>
+      <li><a href="/docs/id/plugins.html">Plugin</a></li>
       <li><a href="/docs/id/looper.html">Looper</a></li>
       <li><a href="/docs/id/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/id/perform.html">Perform &amp; lirik</a></li>
@@ -78,6 +78,7 @@
         <li><a href="#feedback-guard">Pelindung feedback</a></li>
         <li><a href="#permissions">Izin</a></li>
         <li><a href="#files">Tempat file kamu disimpan</a></li>
+        <li><a href="#android">Di Android</a></li>
       </ul>
     </nav>
 
@@ -105,7 +106,7 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="interfaces"><span class="n">01.2</span>Interface audio</h2>
-      <p>Tidak ada pemilih perangkat. NAMper mengikuti rute audio apa pun yang sedang dipakai iOS, jadi kamu
+      <p>Tidak ada pemilih perangkat. NAMper mengikuti rute audio apa pun yang sedang dipakai sistem, jadi kamu
         memilih hardware kamu seperti biasa — colokkan interface-nya, dan aplikasi akan membangun ulang
         dirinya sendiri di sekitarnya. Interface multichannel didukung, hingga delapan kanal input.</p>
       <p>Settings → <b class="ui">AUDIO INTERFACE</b> menunjukkan apa yang sebenarnya didapat NAMper:
@@ -245,7 +246,7 @@
       </div>
       <p>Kalau akses mikrofon nonaktif, banner merah akan menampilkan
         <b class="ui r">Akses mikrofon mati — NAMper tidak bisa mendengar gitarmu.</b> dengan tombol
-        <b class="ui">Pengaturan</b> yang membawa kamu langsung ke pengaturan iOS. Berikan izinnya dan
+        <b class="ui">Pengaturan</b> yang membawa kamu langsung ke pengaturan sistem. Berikan izinnya dan
         mesin akan dibangun ulang tanpa perlu membuka ulang aplikasi.</p>
       <p>Tidak ada analitik, tidak ada tracking, tidak ada akun, dan tidak ada akses ke kamera, foto, lokasi,
         atau kontak. NAMper tidak mengumpulkan apa pun.</p>
@@ -285,6 +286,46 @@
         ke sebuah window — setiap impor harus lewat file picker di dalam NAMper — dan folder
         <b class="ui">tones/</b> dengan sengaja dikecualikan dari backup iCloud, karena
         TONE3000 tinggal mengunduh ulang profil-profil itu.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="android"><span class="n">01.8</span>Di Android</h2>
+      <p>NAMper untuk Android adalah aplikasi yang sama di atas mesin audio yang sama: setiap blok,
+        looper, sampler, setlist, dan peta kontrol berperilaku persis seperti yang dijelaskan
+        panduan ini, dan preset berpindah antar kedua platform sebagai file. Butuh Android 10 atau
+        lebih baru. Beberapa hal berbeda karena platformnya memang berbeda.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Topik</th><th>Di Android</th></tr></thead>
+          <tbody>
+            <tr><td>Interface</td><td>Interface USB-C class-compliant, headset USB-C, dan headphone kabel
+              langsung bekerja; aplikasi mengikuti rute sistem persis seperti di iOS. Output
+              Bluetooth mendapat peringatan latensi yang sama.</td></tr>
+            <tr><td>Latensi</td><td>Jauh lebih bergantung pada ponselnya dibanding di iPhone. Mesin
+              meminta jalur latensi rendah; kalau pemilih <b class="ui">Buffer</b> melompat sendiri
+              ke ukuran yang lebih besar, itulah minimum sebenarnya dari hardware-nya.</td></tr>
+            <tr><td>Sample rate</td><td>Chip-nya <b class="ui">Auto</b>, <b class="ui">44.1k</b>,
+              <b class="ui">48k</b>, dan <b class="ui">96k</b>.</td></tr>
+            <tr><td>Audio di latar belakang</td><td>Selama mesin berjalan, sebuah notifikasi senyap
+              menjaga audio tetap hidup di balik aplikasi lain. Android 13 dan yang lebih baru
+              meminta izin notifikasi pada kali pertama.</td></tr>
+            <tr><td>MIDI Bluetooth</td><td>Pairing meminta izin <b class="ui">Nearby devices</b> di
+              Android 12 dan yang lebih baru.</td></tr>
+            <tr><td>File</td><td>File-filemu tersimpan di penyimpanan privat aplikasi. Setiap impor lewat
+              file picker sistem — atau buka file <b class="ui">.namper</b>,
+              <b class="ui">.nam</b>, IR, atau audio dari aplikasi mana pun lewat
+              <b class="ui">Open with → NAMper</b> — dan semuanya diekspor lewat share sheet
+              Android.</td></tr>
+            <tr><td>TONE3000</td><td>Login terbuka di browser dan kembali sendiri ke aplikasi.</td></tr>
+            <tr><td>Plugin</td><td>Audio Unit adalah format Apple. Di Android NAMper menjalankan
+              <a href="/docs/id/plugins.html#aap">efek AAP</a>, dan ia sendiri juga salah
+              satunya.</td></tr>
+            <tr><td>Layar besar</td><td>Tablet dan ponsel lipat yang dibuka mendapat tata letak lebar;
+              melipat atau memutar layar tidak menghentikan mesin maupun rantai.</td></tr>
+            <tr><td>Kotak tip</td><td>Belum ada di Android.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <nav class="pager">
