@@ -56,6 +56,7 @@
       <li><a href="/docs/looper.html">Looper</a></li>
       <li><a href="/docs/sampler.html">Sampler pads</a></li>
       <li><a class="on" href="/docs/perform.html">Perform &amp; lyrics</a></li>
+      <li><a href="/docs/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/control.html">MIDI &amp; control</a></li>
       <li><a href="/docs/settings.html">Settings reference</a></li>
     </ol>
@@ -65,7 +66,7 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
     <h1>Playing the set.</h1>
     <p class="lede">The <b class="ui a">Perform</b> tab is the one you look at on stage: backing
-      tracks, a setlist of sections, preset changes that fire themselves, a full-screen
+      tracks, a setlist of songs, rig changes that fire themselves off the timeline, a full-screen
       teleprompter for your words, and a recorder that captures the whole night in stems.</p>
 
     <nav class="toc">
@@ -73,9 +74,9 @@
       <ul>
         <li><a href="#tracks">Backing tracks</a></li>
         <li><a href="#player">The player card</a></li>
-        <li><a href="#setlist">The setlist</a></li>
-        <li><a href="#sections">Building a section</a></li>
-        <li><a href="#markers">Preset markers</a></li>
+        <li><a href="#setlist">Setlists and songs</a></li>
+        <li><a href="#sections">What a song brings up</a></li>
+        <li><a href="#markers">Markers</a></li>
         <li><a href="#lyrics">Lyrics and the teleprompter</a></li>
         <li><a href="#presets">Perform presets</a></li>
         <li><a href="#recording">Recording</a></li>
@@ -125,7 +126,7 @@
             <tr><td><b class="ui">Play</b></td><td>Play and pause the backing track</td></tr>
             <tr><td><b class="ui">Stop</b></td><td>Stop and return to the start</td></tr>
             <tr><td><b class="ui">Record</b></td><td>Start and stop the performance recorder (<a href="#recording">below</a>)</td></tr>
-            <tr><td><b class="ui">Add preset marker</b></td><td>Drop a rig-preset change at the playhead</td></tr>
+            <tr><td><b class="ui">Add marker</b></td><td>Drop a change at the playhead</td></tr>
             <tr><td><b class="ui">Lyrics</b></td><td>Open the teleprompter, or load a lyrics file</td></tr>
           </tbody>
         </table>
@@ -135,8 +136,10 @@
         <b class="ui">MIDI Learn: next section</b> and <b class="ui">MIDI Learn: previous
         section</b> are all offered there. See <a href="/docs/control.html">MIDI &amp; control</a>.</p>
       <h3>Backing level and routing</h3>
-      <p>Below the buttons, a slider sets the backing level in dB from −60 to +12, reading
-        <b class="ui">-inf</b> at the bottom. The chip beside it is the routing:
+      <p>Below the buttons, a console fader on its side sets the backing level in dB from −60 to
+        +12, reading <b class="ui">-inf</b> at the bottom; a double tap brings it back to 0 dB. It
+        is the same fader, and the same level, as the <b class="ui">Backing</b> strip on the
+        <a href="/docs/mix.html">Mix</a> tab. The chip beside it is the routing:
         <b class="ui">DIRECT</b> sends the track out after the master FX chain
         (<b class="ui">Direct out (after master FX)</b>), which is what you want live — your reverb
         and limiter never touch the backing. <b class="ui">PRE FX</b> (<b class="ui">Through master
@@ -144,7 +147,7 @@
       <h3>The timeline</h3>
       <p>The waveform under the card is a mirror-bar display with the played part lit and a cursor
         at the playhead. <strong>Tap anywhere on it to seek.</strong> Seeking also re-applies the
-        newest <a href="#markers">preset marker</a> at or before that point, so jumping into the
+        newest <a href="#markers">marker</a> at or before that point, so jumping into the
         last chorus still gets you the last chorus's sound.</p>
       <div class="note">
         <div class="t">What the player does not do</div>
@@ -154,70 +157,98 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>The setlist</h2>
-      <p>The unit of a NAMper set is a <strong>section</strong>: a name, an optional backing track,
-        and a bar-clocked list of steps. Importing a file makes one section per song, so in practice
-        one section is one song — but a section with no audio at all is just as valid, and that is
-        how you build a song out of loops and pads.</p>
-      <p>The header carries the <b class="ui">PRESETS</b> chip, an <b class="ui">AUTO NEXT</b>
-        toggle and <b class="ui">Import track</b>; every imported file becomes a section of its own.
-        With <b class="ui">AUTO NEXT</b> on, the set walks itself
-        forward as each section finishes.</p>
-      <p>Before you have anything, the card reads <b class="ui">Add audio files, or a loop/sample
-        section — a section is an optional backing track plus a bar-clocked sequence of loops and
-        samples.</b></p>
-      <p>Each row shows a play button (<b class="ui">Play section</b>), the name, small badges —
-        <b class="ui">backing</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, and a live
-        <b class="ui">bar N</b> while it runs — and an edit button (<b class="ui">Edit
-        section</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>Setlists and songs</h2>
+      <p>A <strong>setlist</strong> is a list of songs; one of them is <b class="ui">LIVE</b> at a
+        time, and the live one owns the preset strip and MIDI — program change <em>n</em> plays song
+        <em>n</em>. A <strong>song</strong> is a name, an ordered list of what it brings up, and an
+        <em>optional</em> backing track with its markers and lyrics. A song with no audio at all is
+        just as valid: it is the sound you play it with, cued from the same list.</p>
+      <p>The card header carries the <b class="ui">SETLISTS</b> button — create, pick, rename, share
+        and delete sets — an <b class="ui">AUTO NEXT</b> toggle, and a <b class="ui">+</b> that
+        imports audio files (one song each), adds a <b class="ui">Song without backing</b>, or
+        builds a song straight <b class="ui">From rig preset</b>. With <b class="ui">AUTO NEXT</b>
+        on, the set walks itself forward as each song finishes.</p>
+      <p>Each row shows a play button (<b class="ui">Play song</b>), the name, what the song brings
+        up underneath it, and an edit button (<b class="ui">Edit song</b>). The list is always in
+        edit mode: drag a row to reorder the set, swipe a row to delete it.</p>
       <div class="note tip">
-        <div class="t">Tapping a row arms, it does not start</div>
-        <p>Tap a section and NAMper loads its backing track, applies that song's tempo and key to
-          the rig, and points the transport at it — <strong>without playing anything</strong>. Set
-          up between songs, talk to the room, then hit <b class="ui">Play</b> when you are ready.</p>
+        <div class="t">Tapping a row cues, it does not start</div>
+        <p>Tap a song and NAMper applies everything it brings up, loads its backing track, takes its
+          tempo and key, and points the transport at it — <strong>without playing anything</strong>.
+          Set up between numbers, talk to the room, then hit <b class="ui">Play</b> when you are
+          ready.</p>
       </div>
-      <p>The list is always in edit mode, so the drag handles are permanently visible: drag a row to
-        reorder the set, swipe a row to delete it. The row's context menu holds
-        <b class="ui">Load lyrics from file…</b> — see <a href="#lyrics">lyrics</a>.</p>
+      <p>While a set is LIVE the <a href="/docs/rig.html">Rig</a> tab carries it beside the chain,
+        so switching sounds needs no tab change: the preset rail becomes the set panel — the song
+        stepper and one card per sound <em>this song</em> brings up, scenes included. See
+        <a href="/docs/rig.html#presets">the rail's two faces</a>.</p>
+      <div class="note">
+        <div class="t">The demo set</div>
+        <p>A first launch with no setlists brings one: the song <em>NAMper</em> twice — the full mix
+          and a play-along without the guitars. It is a worked example of this whole page. The
+          timeline carries markers that switch the factory rigs <b class="ui">One-Man Riot</b> (verse,
+          pre-chorus, chorus and a clean bridge as scenes, a second clean amp on a branch) and
+          <b class="ui">Friday Night Lead</b> (solo and breakdown scenes, a sub-octave branch); the
+          lyrics are pinned to their sections; and each song also recalls a looper preset of four
+          8-bar tracks and the <b class="ui">FX &amp; Textures</b> kit. It is an ordinary set —
+          rename it, add your own songs, or delete it, in which case it does not come back.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Building a section</h2>
-      <p>The edit button opens the section editor. It has a <b class="ui">Section name</b> field, a
-        backing picker whose first entry is <b class="ui">None (loops/samples only)</b> and which
-        reads <b class="ui">No backing track</b> when nothing is chosen, and — when there is no
-        backing — a <b class="ui">N bars</b> stepper from 1 to 128 that sets how long the section
-        runs.</p>
-      <p>Then comes the <b class="ui">STEPS</b> list. <b class="ui">Add step</b> offers
-        <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b> or <b class="ui">Stop loop
-        1…4</b>, and <b class="ui">Sampler pad</b> → <b class="ui">Pad 1…16</b>. Step rows read
-        <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b>
-        or <b class="ui">Stop pad N</b>, each with its own <b class="ui">bar N</b> stepper. The hint
-        under the list says it exactly: <b class="ui">Steps fire on the bar clock: start/stop loop
-        tracks and trigger pads at the bars you set.</b></p>
-      <p>This is how NAMper plays a song with no backing track at all. Record your parts into the
-        <a href="/docs/looper.html">looper</a>, load your hits onto
-        <a href="/docs/sampler.html">pads</a>, then write the arrangement out in bars: drums in at
-        bar 1, bass at bar 5, the pad stab at bar 13, everything out at bar 33. It runs on the bar
-        clock, so it stays locked to your tempo instead of a rendered file.</p>
+      <h2 id="sections"><span class="n">06.4</span>What a song brings up</h2>
+      <p>The edit button opens the song editor: a <b class="ui">Song name</b> field, a backing
+        picker whose first entry is <b class="ui">Song without backing</b>, the
+        <a href="#lyrics">lyrics</a> row, and the list of what the song recalls.</p>
+      <p><b class="ui">Add a preset, a looper, a kit…</b> puts one entry on that list:</p>
+      <table>
+        <thead><tr><th>Entry</th><th>What it recalls</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Rig preset</b></td><td>A preset with its <b class="ui">SCENE</b> —
+            <b class="ui">A</b>–<b class="ui">D</b>, or <b class="ui">-</b> for the preset as it was
+            saved. The same preset can appear twice on two different scenes.</td></tr>
+          <tr><td><b class="ui">Looper preset</b></td><td>Track lengths, routing and pans for the
+            <a href="/docs/looper.html">looper</a> — the recorded audio is yours to play.</td></tr>
+          <tr><td><b class="ui">Sampler kit</b></td><td>A kit for the sixteen
+            <a href="/docs/sampler.html">pads</a>.</td></tr>
+        </tbody>
+      </table>
+      <p>The list is applied in order when the song is cued, so the <em>last</em> rig preset on it is
+        the sound you start the song with; the ones above it are there for the
+        <a href="#markers">markers</a> to reach. Rows move up and down and delete from their own
+        menu.</p>
+      <h3>Picking a preset</h3>
+      <p>The rig-preset picker shows the same numbers as the preset rail — <b class="ui">0</b> …
+        <b class="ui">127</b> — with the cover art and a search field over the list that filters by
+        name, number and tag. It <strong>monitors</strong> while you browse: tap a row and the rig
+        actually loads it, so you choose the sound with your ears. Close the picker without choosing
+        and the rig goes back to what it was.</p>
+      <p>The other direction works too: the row menu on a preset in the Rig tab's rail has
+        <b class="ui">Assign to set…</b> — pick a setlist, then one of its songs or
+        <b class="ui">New song</b>, and the preset is appended to that song's list.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Preset markers</h2>
-      <p>A preset marker is a rig change written onto the song's timeline. Clean verse, crunch
-        chorus, lead for the solo — placed once, then hands-free every time you play it.</p>
+      <h2 id="markers"><span class="n">06.5</span>Markers</h2>
+      <p>A marker is a moment on the song's timeline that brings up one of the song's own entries.
+        Clean verse, crunch chorus, lead for the solo — placed once, then hands-free every time you
+        play it.</p>
       <ol style="--nc:var(--drive)">
-        <li>Arm the track and put the playhead where the switch belongs — tap the timeline to seek,
+        <li>Cue the song and put the playhead where the switch belongs — tap the timeline to seek,
           or let it play.</li>
-        <li>Tap the pin button (<b class="ui">Add preset marker</b>).</li>
-        <li>Pick a rig from the menu of every preset, each row reading
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. The marker drops at the current
-          playhead position.</li>
+        <li>Tap the pin button (<b class="ui">Add marker</b>).</li>
+        <li>The marker sheet lists what the song brings up —
+          <b class="ui">Which of the song's parts this moment brings up.</b> — and you tick the ones
+          this moment should fire. A marker can bring up more than one: a rig preset and a kit
+          together, say.</li>
       </ol>
-      <p>Crossing a marker during playback fires that preset exactly as if a MIDI program change had
+      <p>Picking a <b class="ui">SCENE</b> on a marker's row that the song does not carry yet adds
+        it to the song as an entry of its own, so the list stays the whole truth about what the song
+        can do.</p>
+      <p>Crossing a marker during playback applies it exactly as if a MIDI program change had
         arrived from a pedalboard. Markers draw as amber dots on the timeline with a generous touch
         area, and below the waveform a row of chips lists them as
-        <b class="ui">m:ss  &lt;preset name&gt;</b>. Long-press a chip for
+        <b class="ui">m:ss  &lt;name&gt;</b>. Tap a chip to open its sheet, long-press for
         <b class="ui">Delete marker</b>.</p>
       <div class="note">
         <div class="t">Snapping</div>
@@ -394,7 +425,7 @@
     <nav class="pager">
       <a href="/docs/sampler.html">← 05 · Sampler pads</a>
       <span class="sp"></span>
-      <a href="/docs/control.html">07 · MIDI &amp; control →</a>
+      <a href="/docs/mix.html">07 · Mix &amp; master →</a>
     </nav>
   </main>
 </div>

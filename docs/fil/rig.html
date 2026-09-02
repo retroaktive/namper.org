@@ -56,6 +56,7 @@
       <li><a href="/docs/fil/looper.html">Looper</a></li>
       <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
       <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/mix.html">Mix at master</a></li>
       <li><a href="/docs/fil/control.html">MIDI at control</a></li>
       <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
     </ol>
@@ -301,9 +302,43 @@ ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa spe
         <p>Nakaupo ang bawat preset sa isang MIDI program-change slot, at ang NAMper ang nagtatalaga nito para sa iyo: hawak ng apat na factory preset ang PC 0–3, at kinukuha ng mga user preset ang susunod na bakanteng numero mula 4 pataas. Walang paraan para baguhin ang slot nang manu-mano. Planuhin ang layout ng footswitch mo ayon sa pagkakasunod ng pag-save mo ng mga preset, hindi kabaligtaran.</p>
       </div>
 
+      <h3>May dalawang mukha ang rail</h3>
+      <p>Ang <b class="ui">MGA PRESET</b> card — ang rail sa gilid ng Rig tab sa tablet, ang banda sa
+        ilalim ng chain sa telepono — ay nagpapakita ng isa sa dalawang bagay, at nakadepende iyon sa
+        kung may setlist na <b class="ui">LIVE</b>:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Walang live na setlist</b> — ang aklatan: bawat preset sa sarili nitong MIDI PC slot,
+          may takip, may search field kapag lampas walo na sila, at may menu ang bawat hilera na may
+          <b class="ui">Palitan ang pangalan</b>, <b class="ui">I-update gamit ang kasalukuyang rig</b>,
+          <b class="ui">Idagdag sa set…</b>, <b class="ui">Ibahagi</b> at <b class="ui">Tanggalin</b>.
+          Ipinapataw ng program change <em>n</em> ang preset <em>n</em>.</li>
+        <li><b>May live na setlist</b> — ang set mismo: ang pangalan ng set, isang stepper ng mga awit
+          (<b class="ui">‹</b> pangalan <b class="ui">›</b>, at ang pangalan mismo ang naglalabas ng
+          buong listahan para makalukso), at isang card sa bawat preset ng rig <em>na tinatawag ng
+          kasalukuyang awit</em> — hindi ang 128 slot, kundi ang apat o limang tunog na talagang
+          kailangan ng piyesang iyon. Ngayon, pinatutugtog ng program change <em>n</em> ang awit
+          <em>n</em>.</li>
+      </ul>
+      <p>Sa entablado, ang ikalawang mukha ang mahalaga: minsan lang piliin ang awit, at sa pagitan ng
+        mga koro ay ang mga tunog ng awit na iyon ang inaabot mo. Dala ng bawat card ang pangalan ng
+        preset at ang hilera ng mga scene nito — <b class="ui">-</b> <b class="ui">A</b>
+        <b class="ui">B</b> <b class="ui">C</b> <b class="ui">D</b> — may border ang sariling scene ng
+        entry, at umiilaw ang buong card habang iyon ang tumutugtog.</p>
+      <p><strong>Nagpapakita lang ang mga titik, hindi sila nagtatakda.</strong> Ang pag-tap saanman sa
+        card, pati sa mga titik, ay naglalabas ng entry na iyon nang eksakto ayon sa nakalista sa awit.
+        Bahagi ng awit kung anong scene ang ginagamit ng isang entry, kaya sa editor ng awit sa
+        <a href="/docs/fil/perform.html#sections">Perform</a> tab ito binabago — hindi dapat mabago ng
+        isang maling tap sa entablado ang buong set.</p>
+      <p>Binubuksan pa rin ng salansan na icon sa ulo ng set panel ang buong aklatan ng preset, at
+        inaalis ka ng <b class="ui">⊗</b> sa setlist: babalik ang rail sa 128 slot, at gayundin ang
+        mga numero ng programa.</p>
       <h3>Pag-update at pamamahala</h3>
       <p>Laging kinukumpirma ang pagpapalit. Naglalabas ang <b class="ui">I-update gamit ang kasalukuyang rig</b> ng dialog na nagbabasang <b class="ui">Overwrite “{name}” with the current rig?</b> kasama ang <b class="ui">Palitan</b> at <b class="ui">Kanselahin</b>. Ang manager mismo ay may nav title na <b class="ui">Mga Preset</b> at dalawang seksyon: <b class="ui">Mga rig · MIDI PC slot</b>, at <b class="ui">Lahat nang sabay</b> → <b class="ui">Mga global snapshot</b>, na inilalarawan bilang rig, looper, sampler, setlist at control map na sabay na sine-save at ibinabalik.</p>
-      <p>Inaalok ng context menu ng bawat row ang <b class="ui">Palitan ang pangalan</b>, <b class="ui">I-update gamit ang kasalukuyang rig</b>, <b class="ui">Ibahagi</b> at <b class="ui">Tanggalin</b>. Nasa manager lang ang pagpapalit ng pangalan — wala ito sa menu ng preset chip sa Rig tab. Kapag mahigit walo na ang preset mo, lumalabas sa itaas ang isang <b class="ui">Maghanap ng preset</b> na field.</p>
+      <p>Sa context menu ng bawat hilera ay makikita ang <b class="ui">Palitan ang pangalan</b>,
+        <b class="ui">I-update gamit ang kasalukuyang rig</b>, <b class="ui">Idagdag sa set…</b>,
+        <b class="ui">Ibahagi</b> at <b class="ui">Tanggalin</b>. Nasa manager lamang ang pagpapalit ng
+        pangalan — wala ito sa menu ng preset chip sa Rig tab. Kapag lampas walo na ang preset,
+        lilitaw sa itaas ang isang <b class="ui">Maghanap ng preset</b> na field.</p>
       <div class="note warn">
         <div class="t">Hindi kinukumpirma ang pagbura</div>
         <p>Agad na nagkakabisa ang <b class="ui">Tanggalin</b> sa menu ng preset row, nang walang "sigurado ka ba". Mag-export ng backup bago maglinis.</p>
@@ -335,7 +370,7 @@ ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa spe
 
       <h3>Ang input at output ng bawat rig</h3>
       <p>Menu ang IN connector sa unahan ng isang chain. Inililista ng seksyong <b class="ui">Input ng sound card</b> nito ang mga channel mo ayon sa pangalan — <b class="ui">In 1</b>, <b class="ui">In 2</b> at iba pa — at idinaragdag ang <b class="ui">Mga sampler pad</b> at <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, kaya kayang iproseso ng isang rig ang isang loop o ang sampler sa halip na isang live na input.</p>
-      <p>Binubuksan ng OUT connector ang isang sheet na may ulong <b class="ui">RIG OUTPUT</b>, na may mga knob na <b class="ui">Level</b> at <b class="ui">Pan</b>, isang <b class="ui">Hardware output pair</b> menu (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — kailangan nitong naka-on ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings), at <b class="ui">I-record ang rig na ito sa</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. Ang buod na row sa ilalim ay nagbabasang <b class="ui">Looper: not assigned</b> o, kapag may napili ka na, <b class="ui">Looper: track 1, 3</b>.</p>
+      <p>Binubuksan ng OUT connector ang isang sheet na may ulong <b class="ui">RIG OUTPUT</b>, na may mga knob na <b class="ui">Level</b> at <b class="ui">Pan</b>, isang <b class="ui">Pares ng hardware output</b> menu (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — kailangan nitong naka-on ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings), at <b class="ui">I-record ang rig na ito sa</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>. Ang buod na row sa ilalim ay nagbabasang <b class="ui">Looper: not assigned</b> o, kapag may napili ka na, <b class="ui">Looper: track 1, 3</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -357,6 +392,16 @@ ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa spe
         </table>
       </div>
       <p>Ang paghila ang mabilis na paraan ng pakikinig: hawakan ang merge anchor, ilipat ito nang mas maaga o mas huli sa chain, at pakinggan ang branch na dumapo bago o pagkatapos ng delay nang hindi nagbubukas ng menu.</p>
+      <h3>Pagpatay sa buong sanga</h3>
+      <p>Sa mismong linya ng sanga, kaunti pa lang mula sa pinaghiwalayan, may nakaupong
+        <b class="ui g">power</b> na switch. I-tap ito at lalabas sa graph ang buong sanga — iginuguhit
+        itong tuldok-tuldok at malabo, at walang naproproseso sa loob nito. Nasa menu rin ng sanga ang
+        parehong switch at, bilang <b class="ui">I-bypass ang branch</b> / <b class="ui">I-enable ang branch</b>,
+        nasa mixer sheet nito at sa strip nito sa <a href="/docs/fil/mix.html">Mix</a> tab.</p>
+      <p>Naaalala ito ng mga scene, kaya puwedeng pumasok at lumabas ang isang paralel na amp o isang
+        sub-octave sa pamamagitan ng footswitch sa halip na muling itayo. Ganito gumagana ang factory
+        rig na <b class="ui">Friday Night Lead</b>: patay ang octave branch nito saanman maliban sa
+        breakdown scene.</p>
       <div class="note tip">
         <div class="t">Paghahalo ng ilang branch nang sabay</div>
         <p>Maglagay ng <b class="ui">Volume</b> block sa puntong pinagsasanib ng mga branch at tutubo ito ng dagdag na seksyon, ang <b class="ui">MGA PAPASOK NA LINYA</b>, na may tig-isang knob kada sumasanib na branch — <b class="ui">Line 1</b>, <b class="ui">Line 2</b> at iba pa. Nagbibigay iyon sa iyo ng maliit na mixer sa gitna ng rig sa halip na habulin ang bawat anchor sheet.</p>
@@ -366,8 +411,19 @@ ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa spe
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>Ang master section</h2>
-      <p>Ang <b class="ui">MASTER</b> card sa ibaba ng Rig tab ang pinagtatagpuan ng lahat: dito nagsasama ang bawat rig, ang looper, ang mga sampler pad at ang backing track bago ang hardware output. Anuman ang gawin mo sa master, ginagawa mo iyon sa lahat.</p>
-      <p>Nagdaragdag ang <b class="ui">FX</b> <b class="ui">+</b> menu ng master processing — hanggang anim na block. Puwede kang pumili mula sa <b class="ui">Volume</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Room</b> at <b class="ui">Delay</b>. Kumikilos sila gaya ng mga chain block: i-tap ang chip para i-edit ito, pindutin nang matagal para sa <b class="ui">Paganahin</b> / <b class="ui">Bypass</b> at <b class="ui">Alisin</b>.</p>
+      <p>Ang <b class="ui">MASTER</b> strip ang lugar kung saan nagtatagpo ang lahat: doon nagsasama
+        ang bawat rig, ang looper at ang dalawang send return bago lumabas sa hardware. Ang ginagawa
+        mo sa master ay ginagawa mo sa lahat. Dati'y nasa paanan ito ng Rig tab; ngayon ay nakatira na
+        ito sa <a href="/docs/fil/mix.html">Mix</a> tab, sa column katabi ng mga fader — maikling
+        bersyon ang seksyong ito, at nasa pahinang iyon ang buong konsolang nakapaligid dito.</p>
+      <p>Nagdaragdag ng master processing ang tuldok-tuldok na <b class="ui">+</b> na bar — hanggang
+        anim na block. Mapagpipilian ang <b class="ui">Volume</b>, <b class="ui">EQ</b>,
+        <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
+        <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
+        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
+        <b class="ui">Room</b> at <b class="ui">Delay</b>. Gumagana sila gaya ng mga block sa chain:
+        i-tap ang chip para i-edit, pindutin nang matagal para sa <b class="ui">Paganahin</b> /
+        <b class="ui">Bypass</b> at <b class="ui">Alisin</b>.</p>
       <div class="note warn">
         <div class="t">Walang AU plugin sa master</div>
         <p>Sa loob lang ng rig chain puwedeng ilagay ang mga pinapatakbong Audio Unit plugin. Hindi sila inaalok ng master FX menu. Kung gusto mo ng third-party na limiter sa buong bagay, hindi iyon posible — gamitin na lang ang built-in na <b class="ui">Limiter</b> block.</p>

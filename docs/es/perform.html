@@ -56,6 +56,7 @@
       <li><a href="/docs/es/looper.html">Looper</a></li>
       <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
       <li><a class="on" href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a href="/docs/es/mix.html">Mezcla y máster</a></li>
       <li><a href="/docs/es/control.html">MIDI y control</a></li>
       <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM Y LETRA</div>
     <h1>Tocando el show.</h1>
-    <p class="lede">La pestaña <b class="ui a">Perform</b> es la que miras en el escenario: pistas de
+    <p class="lede">La pestaña <b class="ui a">Escena</b> es la que miras en el escenario: pistas de
       acompañamiento, un setlist de secciones, cambios de preset que se disparan solos, un
       teleprompter a pantalla completa para tu letra, y un grabador que captura toda la noche en
       stems.</p>
@@ -74,9 +75,9 @@
       <ul>
         <li><a href="#tracks">Pistas de acompañamiento</a></li>
         <li><a href="#player">La tarjeta del reproductor</a></li>
-        <li><a href="#setlist">El setlist</a></li>
-        <li><a href="#sections">Construir una sección</a></li>
-        <li><a href="#markers">Marcadores de preset</a></li>
+        <li><a href="#setlist">Listas y temas</a></li>
+        <li><a href="#sections">Qué trae un tema</a></li>
+        <li><a href="#markers">Marcadores</a></li>
         <li><a href="#lyrics">Letra y el teleprompter</a></li>
         <li><a href="#presets">Presets de Perform</a></li>
         <li><a href="#recording">Grabación</a></li>
@@ -127,7 +128,7 @@
             <tr><td><b class="ui">Reproducir</b></td><td>Reproduce y pausa la pista de acompañamiento</td></tr>
             <tr><td><b class="ui">Detener</b></td><td>Detiene y vuelve al principio</td></tr>
             <tr><td><b class="ui">Grabar</b></td><td>Inicia y detiene el grabador de la actuación (<a href="#recording">más abajo</a>)</td></tr>
-            <tr><td><b class="ui">Añadir marcador de preset</b></td><td>Coloca un cambio de preset del rig en el cursor</td></tr>
+            <tr><td><b class="ui">Añadir marcador</b></td><td>Deja un cambio en la posición de reproducción</td></tr>
             <tr><td><b class="ui">Letra</b></td><td>Abre el teleprompter, o carga un archivo de letra</td></tr>
           </tbody>
         </table>
@@ -136,11 +137,14 @@
         — <b class="ui">MIDI Learn: reproducir / pausar</b>, <b class="ui">MIDI Learn: detener</b>,
         <b class="ui">MIDI Learn: sección siguiente</b> y <b class="ui">MIDI Learn: sección anterior</b> se ofrecen todos ahí. Ver <a href="/docs/es/control.html">MIDI y control</a>.</p>
       <h3>Nivel y enrutamiento del acompañamiento</h3>
-      <p>Bajo los botones, un deslizador fija el nivel del acompañamiento en dB de −60 a +12, marcando
-        <b class="ui">-inf</b> en el fondo. El chip a su lado es el enrutamiento:
-        <b class="ui">DIRECTO</b> envía la pista tras la cadena FX maestra
-        (<b class="ui">Salida directa (después de los FX máster)</b>), que es lo que quieres en vivo — tu reverb y
-        tu limitador nunca tocan el acompañamiento. <b class="ui">PRE FX</b> (<b class="ui">A través de los FX máster</b>) pasa la pista por la cadena maestra en su lugar.</p>
+      <p>Bajo los botones, un fader de mesa tumbado fija el nivel de la base en dB de −60 a +12 y
+        muestra <b class="ui">-inf</b> abajo del todo; un doble toque lo devuelve a 0 dB. Es el
+        mismo fader y el mismo nivel que el canal <b class="ui">Backing</b> de la pestaña
+        <a href="/docs/es/mix.html">Mix</a>. La ficha de al lado es el enrutado:
+        <b class="ui">DIRECTO</b> saca la pista después de la cadena de efectos del master
+        (<b class="ui">Salida directa (después de los FX máster)</b>), que es lo que quieres en directo — tu
+        reverb y tu limitador no tocan la base nunca. <b class="ui">PRE FX</b>
+        (<b class="ui">A través de los FX máster</b>) hace pasar la pista por la cadena master.</p>
       <h3>La línea de tiempo</h3>
       <p>La forma de onda bajo la tarjeta es una visualización de barras espejadas con la parte
         reproducida iluminada y un cursor en el punto de reproducción. <strong>Toca en cualquier
@@ -156,75 +160,107 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>El setlist</h2>
-      <p>La unidad de un set de NAMper es una <strong>sección</strong>: un nombre, una pista de
-        acompañamiento opcional, y una lista de pasos con reloj de compases. Importar un archivo crea
-        una sección por canción, así que en la práctica una sección es una canción — pero una sección
-        sin ningún audio es igual de válida, y así es como construyes una canción a partir de loops y
-        pads.</p>
-      <p>La cabecera lleva el chip <b class="ui">PRESETS</b>, un interruptor <b class="ui">AUTO SIG.</b> e
-        <b class="ui">Importar pista</b>; cada archivo importado se convierte en una sección propia. Con <b class="ui">AUTO SIG.</b> activado, el set avanza solo a
-        medida que termina cada sección.</p>
-      <p>Antes de tener nada, la tarjeta dice <b class="ui">Añade archivos de audio o una sección de loops/samples — una sección es una pista de acompañamiento opcional más una secuencia de loops y samples sincronizada por compases.</b></p>
-      <p>Cada fila muestra un botón de reproducción (<b class="ui">Reproducir sección</b>), el nombre,
-        pequeñas insignias — <b class="ui">backing</b>, <b class="ui">N steps</b>,
-        <b class="ui">N bars</b>, y un <b class="ui">bar N</b> en vivo mientras corre — y un botón de
-        edición (<b class="ui">Editar sección</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>Listas y temas</h2>
+      <p>Una <strong>lista de temas</strong> es una lista de canciones; una de ellas está
+        <b class="ui">EN VIVO</b> en cada momento, y la lista en directo es la dueña de la tira de
+        presets y del MIDI: el program change <em>n</em> reproduce el tema <em>n</em>. Un
+        <strong>tema</strong> es un nombre, una lista ordenada de lo que trae y una base
+        <em>opcional</em> con sus marcadores y su letra. Un tema sin audio alguno vale igual: es el
+        sonido con el que lo tocas, llamado desde la misma lista.</p>
+      <p>La cabecera de la tarjeta lleva el botón <b class="ui">SETLISTS</b> — crear, elegir,
+        renombrar, compartir y borrar listas —, un interruptor <b class="ui">AUTO SIG.</b> y un
+        <b class="ui">+</b> que importa archivos de audio (un tema por archivo), añade un
+        <b class="ui">Canción sin pista</b> o construye un tema directamente
+        <b class="ui">De preset de rig</b>. Con <b class="ui">AUTO SIG.</b> activado, el set avanza
+        solo a medida que terminan los temas.</p>
+      <p>Cada fila muestra un botón de reproducción (<b class="ui">Reproducir canción</b>), el nombre, debajo
+        lo que el tema trae, y un botón de edición (<b class="ui">Editar canción</b>). La lista siempre
+        está en modo edición: arrastra una fila para reordenar el set y deslízala para borrarla.</p>
       <div class="note tip">
-        <div class="t">Tocar una fila la arma, no la inicia</div>
-        <p>Toca una sección y NAMper carga su pista de acompañamiento, aplica el tempo y la tonalidad
-          de esa canción al rig, y apunta el transporte a ella — <strong>sin reproducir nada</strong>.
-          Prepárate entre canciones, habla con el público, y luego pulsa <b class="ui">Reproducir</b> cuando
-          estés listo.</p>
+        <div class="t">Tocar una fila la prepara, no la arranca</div>
+        <p>Toca un tema y NAMper aplica todo lo que trae, carga su base, toma su tempo y su tonalidad
+          y apunta el transporte hacia él, <strong>sin reproducir nada</strong>. Prepárate entre
+          canciones, habla con la sala, y pulsa <b class="ui">Reproducir</b> cuando estés listo.</p>
       </div>
-      <p>La lista siempre está en modo edición, así que las asas de arrastre están permanentemente
-        visibles: arrastra una fila para reordenar el set, desliza una fila para borrarla. El menú
-        contextual de la fila lleva <b class="ui">Cargar letra desde archivo…</b> — ver
-        <a href="#lyrics">letra</a>.</p>
+      <p>Mientras hay un set en directo, la pestaña <a href="/docs/es/rig.html">Rig</a> lo lleva
+        junto a la cadena, así que cambiar de sonido no exige cambiar de pestaña: la tira de presets
+        se convierte en el panel del set — el paso a paso de temas y una tarjeta por cada sonido que
+        trae <em>este</em> tema, escenas incluidas. Mira
+        <a href="/docs/es/rig.html#presets">las dos caras de la tira</a>.</p>
+      <div class="note">
+        <div class="t">El set de demostración</div>
+        <p>Un primer arranque sin listas trae uno: el tema <em>NAMper</em> dos veces — la mezcla
+          completa y una versión sin las guitarras. Es un ejemplo trabajado de toda esta página. Su
+          línea de tiempo lleva marcadores que cambian entre los rigs de fábrica
+          <b class="ui">One-Man Riot</b> (estrofa, pre-estribillo, estribillo y un puente limpio como
+          escenas, y un segundo ampli limpio en una rama) y <b class="ui">Friday Night Lead</b>
+          (escenas de solo y de breakdown, con una rama de suboctava); la letra está anclada a sus
+          secciones; y cada tema recupera además un preset de looper de cuatro pistas de 8 compases
+          y el kit <b class="ui">FX y texturas</b>. Es un set normal: renómbralo, añádele tus
+          temas o bórralo, y entonces no vuelve.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Construir una sección</h2>
-      <p>El botón de edición abre el editor de sección. Tiene un campo <b class="ui">Nombre de la sección</b>, un selector de acompañamiento cuya primera entrada es <b class="ui">Ninguna (solo loops/samples)</b> y que dice <b class="ui">Sin pista de acompañamiento</b> cuando no se ha
-        elegido nada, y — cuando no hay acompañamiento — un contador <b class="ui">N bars</b> de 1 a
-        128 que fija cuánto dura la sección.</p>
-      <p>Luego viene la lista <b class="ui">PASOS</b>. <b class="ui">Añadir paso</b> ofrece
-        <b class="ui">Pista de loop</b> → <b class="ui">Start loop 1…4</b> o <b class="ui">Stop loop
-        1…4</b>, y <b class="ui">Pad del sampler</b> → <b class="ui">Pad 1…16</b>. Las filas de pasos
-        dicen <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad
-        N</b> o <b class="ui">Stop pad N</b>, cada una con su propio contador <b class="ui">bar
-        N</b>. La pista bajo la lista lo dice exactamente: <b class="ui">Los pasos se disparan con el reloj de compases: inician/detienen pistas de loop y disparan pads en los compases que definas.</b></p>
-      <p>Así es como NAMper toca una canción sin ninguna pista de acompañamiento. Graba tus partes en
-        el <a href="/docs/es/looper.html">looper</a>, carga tus golpes en los
-        <a href="/docs/es/sampler.html">pads</a>, y luego escribe el arreglo en compases: batería
-        entra en el compás 1, bajo en el 5, el golpe de pad en el 13, todo fuera en el 33. Corre sobre
-        el reloj de compases, así que se mantiene bloqueado a tu tempo en lugar de a un archivo
-        renderizado.</p>
+      <h2 id="sections"><span class="n">06.4</span>Qué trae un tema</h2>
+      <p>El botón de edición abre el editor del tema: un campo <b class="ui">Nombre de la canción</b>, un
+        selector de base cuya primera entrada es <b class="ui">Canción sin pista</b>, la fila de
+        <a href="#lyrics">letra</a> y la lista de lo que el tema recupera.</p>
+      <p><b class="ui">Añadir un preset, un looper, un kit…</b> pone una entrada en esa lista:</p>
+      <table>
+        <thead><tr><th>Entrada</th><th>Qué recupera</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Preset de rig</b></td><td>Un preset con su <b class="ui">ESCENA</b> —
+            <b class="ui">A</b>–<b class="ui">D</b>, o <b class="ui">-</b> para el preset tal como se
+            guardó. El mismo preset puede aparecer dos veces con escenas distintas.</td></tr>
+          <tr><td><b class="ui">Preset de looper</b></td><td>Longitudes de pista, enrutado y panoramas
+            del <a href="/docs/es/looper.html">looper</a> — el audio grabado lo tocas tú.</td></tr>
+          <tr><td><b class="ui">Kit de sampler</b></td><td>Un kit para los dieciséis
+            <a href="/docs/es/sampler.html">pads</a>.</td></tr>
+        </tbody>
+      </table>
+      <p>La lista se aplica en orden cuando se prepara el tema, así que el <em>último</em> preset de
+        rig es el sonido con el que empiezas; los de arriba están ahí para que los alcancen los
+        <a href="#markers">marcadores</a>. Las filas suben, bajan y se borran desde su propio
+        menú.</p>
+      <h3>Elegir un preset</h3>
+      <p>El selector de presets de rig muestra los mismos números que la tira — <b class="ui">0</b> …
+        <b class="ui">127</b> — con la portada y un campo de búsqueda sobre la lista que filtra por
+        nombre, número y etiqueta. Y <strong>monitoriza</strong> mientras buscas: toca una fila y el
+        rig la carga de verdad, así eliges el sonido con los oídos. Si cierras el selector sin
+        elegir, el rig vuelve a lo que había.</p>
+      <p>La dirección contraria también funciona: el menú de fila de un preset en la tira de la
+        pestaña Rig tiene <b class="ui">Asignar a un set…</b> — eliges una lista, luego uno de sus temas
+        o <b class="ui">Nueva canción</b>, y el preset se añade al final de la lista de ese tema.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marcadores de preset</h2>
-      <p>Un marcador de preset es un cambio de rig escrito en la línea de tiempo de la canción. Estrofa
-        limpia, coro con crunch, lead para el solo — colocado una vez, luego manos libres cada vez que
-        la toques.</p>
+      <h2 id="markers"><span class="n">06.5</span>Marcadores</h2>
+      <p>Un marcador es un momento de la línea de tiempo del tema que trae una de sus propias
+        entradas. Estrofa limpia, estribillo con crunch, lead para el solo: se coloca una vez y
+        después va solo cada vez que lo tocas.</p>
       <ol style="--nc:var(--drive)">
-        <li>Arma la pista y coloca el cursor donde debe ir el cambio — toca la línea de tiempo para
-          buscar, o déjala reproducirse.</li>
-        <li>Toca el botón de pin (<b class="ui">Añadir marcador de preset</b>).</li>
-        <li>Elige un rig del menú de cada preset, cada fila dice
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. El marcador cae en la posición actual
-          del cursor.</li>
+        <li>Prepara el tema y pon la posición de reproducción donde toca el cambio — toca la línea
+          de tiempo para buscar, o déjala correr.</li>
+        <li>Toca el botón del alfiler (<b class="ui">Añadir marcador</b>).</li>
+        <li>La hoja del marcador enumera lo que trae el tema —
+          <b class="ui">Qué partes de la canción recupera este momento.</b> — y tú marcas lo que
+          debe dispararse en ese momento. Un marcador puede traer más de una cosa: un preset de rig
+          y un kit a la vez, por ejemplo.</li>
       </ol>
-      <p>Cruzar un marcador durante la reproducción dispara ese preset exactamente como si hubiera
-        llegado un cambio de programa MIDI desde un pedalboard. Los marcadores se dibujan como puntos
-        ámbar en la línea de tiempo con un área táctil generosa, y bajo la forma de onda una fila de
-        chips los lista como <b class="ui">m:ss  &lt;preset name&gt;</b>. Mantén pulsado un chip para
-        <b class="ui">Eliminar marcador</b>.</p>
+      <p>Si eliges en la fila de un marcador una <b class="ui">ESCENA</b> que el tema todavía no
+        tiene, se añade al tema como entrada propia, de modo que la lista sigue siendo toda la verdad
+        sobre lo que el tema sabe hacer.</p>
+      <p>Al cruzar un marcador durante la reproducción se aplica exactamente como si hubiera llegado
+        un program change MIDI desde una pedalera. Los marcadores se dibujan como puntos ámbar en la
+        línea de tiempo con una zona de toque generosa, y bajo la forma de onda una fila de fichas
+        los lista como <b class="ui">m:ss  &lt;nombre&gt;</b>. Toca una ficha para abrir su hoja y
+        mantén pulsado para <b class="ui">Eliminar marcador</b>.</p>
       <div class="note">
-        <div class="t">Ajuste automático</div>
-        <p>Un marcador que acabas de crear se coloca en el cursor sin ajustar, donde tu dedo lo dejó.
-          <strong>Arrastra un marcador y se ajusta a la rejilla de compases</strong> — así que la
-          manera de afinar una colocación tosca es moverla un poco. Sin tempo detectado no hay
+        <div class="t">Ajuste a la rejilla</div>
+        <p>Un marcador recién creado se queda en la posición cruda, donde lo dejó tu dedo.
+          <strong>Arrastra un marcador y se ajusta a la rejilla de compases</strong>, así que la
+          forma de afinar una colocación tosca es moverlo un poco. Sin tempo detectado no hay
           rejilla, y la colocación queda libre.</p>
       </div>
     </section>
@@ -402,7 +438,7 @@
     <nav class="pager">
       <a href="/docs/es/sampler.html">← 05 · Pads del sampler</a>
       <span class="sp"></span>
-      <a href="/docs/es/control.html">07 · MIDI y control →</a>
+      <a href="/docs/es/mix.html">07 · Mezcla y máster →</a>
     </nav>
   </main>
 </div>

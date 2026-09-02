@@ -56,6 +56,7 @@
       <li><a href="/docs/fr/looper.html">Looper</a></li>
       <li><a href="/docs/fr/sampler.html">Pads du sampler</a></li>
       <li><a href="/docs/fr/perform.html">Perform et paroles</a></li>
+      <li><a href="/docs/fr/mix.html">Mix et master</a></li>
       <li><a href="/docs/fr/control.html">MIDI et contrôle</a></li>
       <li><a href="/docs/fr/settings.html">Référence des réglages</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--amp)">02 · RIG ET CHAÎNE DU SIGNAL</div>
     <h1>Construire le son.</h1>
-    <p class="lede">L'onglet <b class="ui a">Rig</b> est l'endroit où vit ta chaîne du signal : des
+    <p class="lede">L'onglet <b class="ui a">Config</b> est l'endroit où vit ta chaîne du signal : des
       blocs que tu ajoutes et fais glisser, un profil d'ampli NAM en son cœur, une réponse
       impulsionnelle de baffle après lui, et une section master où tout se mélange. Cette page
       couvre tout ça — jusqu'à quatre rigs, quatre chaînes parallèles dans chacun d'eux, et les
@@ -431,6 +432,35 @@ n'en ont pas besoin</b>. Beaucoup de
           pas l'inverse.</p>
       </div>
 
+      <h3>La barre a deux visages</h3>
+      <p>La carte <b class="ui">PRESETS</b> — la barre latérale de l'onglet Rig sur tablette, le
+        bandeau sous la chaîne sur téléphone — montre l'une de deux choses, selon qu'une setlist est
+        <b class="ui">LIVE</b> ou non :</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Aucune setlist en scène</b> — la bibliothèque : chaque preset sur son slot MIDI PC,
+          avec sa pochette, un champ de recherche dès qu'il y en a plus de huit et un menu de ligne
+          avec <b class="ui">Renommer</b>, <b class="ui">Mettre à jour avec le rig actuel</b>,
+          <b class="ui">Ajouter à un set…</b>, <b class="ui">Partager</b> et <b class="ui">Supprimer</b>. Le
+          program change <em>n</em> applique le preset <em>n</em>.</li>
+        <li><b>Une setlist en scène</b> — le set : son nom, un sélecteur de morceau
+          (<b class="ui">‹</b> nom <b class="ui">›</b>, et le nom lui-même déroule toute la liste pour
+          sauter) et une carte par preset de rig <em>que le morceau courant appelle</em> — pas les
+          128 slots, mais les quatre ou cinq sons dont ce morceau a réellement besoin. Le program
+          change <em>n</em> joue désormais le morceau <em>n</em>.</li>
+      </ul>
+      <p>Sur scène, c'est le second visage qui compte : le morceau se choisit une fois, et entre deux
+        refrains tu cherches les sons de ce morceau-là. Chaque carte porte le nom du preset et sa
+        rangée de scènes — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b>
+        <b class="ui">C</b> <b class="ui">D</b> — la scène propre à l'entrée étant entourée, et toute
+        la carte s'allume tant que c'est elle qui joue.</p>
+      <p><strong>Les lettres montrent seulement, elles ne règlent pas.</strong> Un appui n'importe où
+        sur la carte, lettres comprises, rappelle l'entrée exactement telle que le morceau la
+        décrit. La scène qu'utilise une entrée fait partie du morceau : elle se change donc dans
+        l'éditeur de morceau, dans l'onglet <a href="/docs/fr/perform.html#sections">Perform</a> — un
+        appui malheureux sur scène ne doit pas réécrire le set.</p>
+      <p>L'icône de pile dans l'en-tête du panneau de set ouvre malgré tout la bibliothèque complète,
+        et <b class="ui">⊗</b> quitte la setlist : la barre revient à ses 128 slots, et les numéros
+        de programme avec elle.</p>
       <h3>Mettre à jour et gérer</h3>
       <p>L'écrasement est toujours confirmé. <b class="ui">Mettre à jour avec le rig actuel</b> fait
         apparaître une boîte de dialogue affichant <b class="ui">Overwrite “{name}” with the
@@ -439,10 +469,10 @@ n'en ont pas besoin</b>. Beaucoup de
         deux sections : <b class="ui">Rigs · emplacements PC MIDI</b>, et <b class="ui">Tout en une fois</b> → <b class="ui">Snapshots globaux</b>, décrite comme rig, looper, sampler, setlist
         et table de contrôle enregistrés et restaurés ensemble.</p>
       <p>Le menu contextuel de chaque ligne propose <b class="ui">Renommer</b>,
-        <b class="ui">Mettre à jour avec le rig actuel</b>, <b class="ui">Partager</b> et
-        <b class="ui">Supprimer</b>. Le renommage n'existe que dans le gestionnaire — le menu de puce
-        de preset sur l'onglet Rig ne l'a pas. Une fois que tu as plus de huit presets, un champ
-        <b class="ui">Rechercher des presets</b> apparaît en haut.</p>
+        <b class="ui">Mettre à jour avec le rig actuel</b>, <b class="ui">Ajouter à un set…</b>,
+        <b class="ui">Partager</b> et <b class="ui">Supprimer</b>. Le renommage n'existe que dans le
+        gestionnaire — le menu de la pastille de preset dans l'onglet Rig ne l'a pas. Dès que tu
+        dépasses huit presets, un champ <b class="ui">Rechercher des presets</b> apparaît en haut.</p>
       <div class="note warn">
         <div class="t">La suppression n'est pas confirmée</div>
         <p><b class="ui">Supprimer</b> dans le menu de la ligne de preset prend effet immédiatement,
@@ -565,6 +595,16 @@ n'en ont pas besoin</b>. Beaucoup de
       <p>Le glisser-déposer est le moyen rapide d'auditionner : maintiens le point d'ancrage de
         fusion, fais-le glisser plus tôt ou plus tard dans la chaîne, et entends la branche
         atterrir avant ou après le delay sans ouvrir de menu.</p>
+      <h3>Couper une branche entière</h3>
+      <p>Sur le câble de la branche elle-même, un peu après la jonction, se trouve un interrupteur
+        <b class="ui g">power</b>. Touche-le et toute la branche quitte le graphe : elle est dessinée
+        en pointillés et estompée, et rien n'y est traité. Le même interrupteur est dans le menu de
+        la branche et, sous la forme <b class="ui">Contourner la branche</b> / <b class="ui">Activer la branche</b>, dans sa fiche de mixage et sur sa tranche dans l'onglet
+        <a href="/docs/fr/mix.html">Mix</a>.</p>
+      <p>Les scènes s'en souviennent : un ampli parallèle ou une sous-octave peuvent donc aller et
+        venir au pied plutôt que d'être reconstruits. C'est ainsi que fonctionne le rig d'usine
+        <b class="ui">Friday Night Lead</b> : sa branche d'octave est coupée partout sauf dans la
+        scène du breakdown.</p>
       <div class="note tip">
         <div class="t">Mixer plusieurs branches à la fois</div>
         <p>Place un bloc <b class="ui">Volume</b> à l'endroit où les branches fusionnent et il
@@ -581,17 +621,19 @@ n'en ont pas besoin</b>. Beaucoup de
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>La section master</h2>
-      <p>La carte <b class="ui">MASTER</b> en bas de l'onglet Rig est l'endroit où tout se
-        rejoint : chaque rig, le looper, les pads du sampler et la backing track se mélangent ici
-        avant la sortie matérielle. Quoi que tu fasses au master, tu le fais à tout.</p>
-      <p>Le menu <b class="ui">FX</b> <b class="ui">+</b> ajoute du traitement master — jusqu'à
-        six blocs. Tu peux choisir parmi <b class="ui">Volume</b>, <b class="ui">EQ</b>,
-        <b class="ui">Comp</b>, <b class="ui">Sat Lampe</b>, <b class="ui">Sat Bande</b>,
-        <b class="ui">Limiteur</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,
-        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
-        <b class="ui">Room</b> et <b class="ui">Delay</b>. Ils se comportent comme des blocs de
-        chaîne : appuie sur une puce pour l'éditer, appui long pour <b class="ui">Activer</b> /
-        <b class="ui">Bypass</b> et <b class="ui">Retirer</b>.</p>
+      <p>La tranche <b class="ui">MASTER</b> est l'endroit où tout se rejoint : chaque rig, le
+        looper et les deux retours de départ s'y somment avant la sortie matérielle. Ce que tu fais
+        au master, tu le fais à tout. Elle était au pied de l'onglet Rig ; elle vit maintenant dans
+        l'onglet <a href="/docs/fr/mix.html">Mix</a>, dans la colonne à côté des faders — cette
+        section en donne la version courte, la console autour est sur cette page-là.</p>
+      <p>La barre <b class="ui">+</b> en pointillés ajoute du traitement master — jusqu'à six blocs.
+        Au choix : <b class="ui">Volume</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>,
+        <b class="ui">Sat Lampe</b>, <b class="ui">Sat Bande</b>, <b class="ui">Limiteur</b>,
+        <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Cloud</b>,
+        <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Room</b> et
+        <b class="ui">Delay</b>. Ils se comportent comme des blocs de chaîne : touche une pastille
+        pour l'éditer, appui long pour <b class="ui">Activer</b> / <b class="ui">Bypass</b> et
+        <b class="ui">Retirer</b>.</p>
       <div class="note warn">
         <div class="t">Pas de plugins AU dans le master</div>
         <p>Les plugins Audio Unit hébergés ne peuvent aller que dans une chaîne de rig. Le menu FX

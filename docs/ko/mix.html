@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>믹스 — NAMper 문서</title>
+<meta name="description" content="Mix 탭: 모든 리그와 브랜치, 루퍼 트랙, 샘플러, 배킹 플레이어마다 하나씩의 채널 스트립, 리턴 체인을 갖춘 두 개의 글로벌 센드 버스, 자체 블록과 LUFS 표시가 있는 마스터 섹션, 그리고 레코더.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="믹스 — NAMper 문서">
+<meta property="og:description" content="소리 나는 모든 것을 위한 콘솔: 스트립, 센드, 마스터 섹션, 레코더.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/ko/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">문서</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/ko/">← 전체 문서</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/ko/mix.html" aria-current="page">한국어</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">목차</div>
+    <ol>
+      <li><a href="/docs/ko/setup.html">시작하기</a></li>
+      <li><a href="/docs/ko/rig.html">리그 &amp; 시그널 체인</a></li>
+      <li><a href="/docs/ko/plugins.html">플러그인</a></li>
+      <li><a href="/docs/ko/looper.html">루퍼</a></li>
+      <li><a href="/docs/ko/sampler.html">샘플러 패드</a></li>
+      <li><a href="/docs/ko/perform.html">퍼폼 &amp; 가사</a></li>
+      <li><a class="on" href="/docs/ko/mix.html">믹스와 마스터</a></li>
+      <li><a href="/docs/ko/control.html">MIDI &amp; 컨트롤</a></li>
+      <li><a href="/docs/ko/settings.html">설정 참고</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · 믹스와 마스터</div>
+    <h1>소리 나는 모든 것이 한 콘솔에.</h1>
+    <p class="lede"><b class="ui a">믹스</b> 탭은 콘솔입니다. 리그마다, 브랜치마다 채널 스트립이
+      하나씩, 루퍼 트랙마다 하나, 샘플러에 하나, 배킹 플레이어에 하나. 여기에 글로벌 이펙트 버스
+      두 개와 마스터 섹션이 더해집니다. 모두 같은 격자 위에 칸을 맞춰 놓여 있어, 페이더는 언제나
+      같은 자리에 있습니다.</p>
+
+    <nav class="toc">
+      <div class="slab">이 페이지에서</div>
+      <ul>
+        <li><a href="#desk">콘솔</a></li>
+        <li><a href="#strip">채널 스트립</a></li>
+        <li><a href="#rigs">리그와 브랜치</a></li>
+        <li><a href="#players">루프, 샘플러, 배킹</a></li>
+        <li><a href="#sends">Send A와 Send B</a></li>
+        <li><a href="#master">마스터 섹션</a></li>
+        <li><a href="#recorder">레코더</a></li>
+        <li><a href="#phone">휴대폰에서</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>콘솔</h2>
+      <p>앱에서 소리를 낼 수 있는 것은 모두 자기 스트립에 서 있고, 모든 스트립은 같은 칸이 같은
+        순서로 쌓여 있습니다. 하위 메뉴에 숨은 것은 없습니다. 앱의 신호 흐름 전체가 화면 하나
+        너비에 들어옵니다.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="Mix 탭: 리그와 그 브랜치, 네 개의 루퍼 트랙, 샘플러, 배킹 플레이어의 채널 스트립. 각각 센드, 팬 노브, 페이더, 미터가 있고 오른쪽에는 마스터 열과 레코더가 있다.">
+        <figcaption>리그와 브랜치, 루퍼 그룹, 마스터 열이 놓인 콘솔</figcaption>
+      </figure>
+      <p>왼쪽에서 오른쪽으로, 콘솔에는 이런 것들이 있습니다.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>리그</b>마다 스트립 하나, 그 옆으로 같은 색조 그룹 안에 그 리그의 <b>브랜치</b>들;</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>. 열기 전까지는 하나의
+          <b class="ui">루퍼</b> 스트립으로 접혀 있습니다;</li>
+        <li><b class="ui">샘플러</b> — 패드 버스 — 와 <b class="ui">백킹</b> —
+          <a href="/docs/ko/perform.html">Perform</a> 탭의 플레이어;</li>
+        <li><b class="ui">센드 A</b>와 <b class="ui">센드 B</b>, 두 개의 글로벌 이펙트 버스;</li>
+        <li>절대 스크롤되지 않는 오른쪽 열: 레코더와 <b class="ui">마스터</b>.</li>
+      </ul>
+      <p>콘솔은 스냅숏이 아니라 살아 있습니다. <a href="/docs/ko/rig.html">Rig</a> 탭에서 추가한
+        리그가 여기에 나타나고, 녹음한 루퍼 트랙이 채워지며, 미터는 당신이 보든 보지 않든
+        움직입니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>채널 스트립</h2>
+      <p>위에서 아래로, 모든 스트립은 같은 컨트롤을 갖습니다.</p>
+      <table>
+        <thead><tr><th>칸</th><th>하는 일</th></tr></thead>
+        <tbody>
+          <tr><td><b>이름</b></td><td>이 스트립이 무엇인지. 리그라면 이름을 탭해 MIDI 포커스를 줍니다.</td></tr>
+          <tr><td><b class="ui">인</b> / <b class="ui">아웃</b></td><td>스트립이 신호를 어디서 받고 어디로 내보내는지 — 아래 참조, 스트립 종류마다 다르게 읽힙니다.</td></tr>
+          <tr><td><b>블록</b></td><td>체인을 LED가 달린 작은 칩으로 표시합니다. 탭하면 블록 시트가 열리고, 길게 누르면 바이패스나 삭제, 점선 <b class="ui">+</b>는 끝에 블록을 더합니다.</td></tr>
+          <tr><td><b class="ui">센드</b></td><td>작은 노브 두 개, 센드 버스마다 하나씩.</td></tr>
+          <tr><td><b class="ui">팬</b></td><td>노브 하나. 두 번 탭하면 가운데로 돌아옵니다.</td></tr>
+          <tr><td><b>페이더</b></td><td>−60 … +12 dB, 0 / −6 / −12 / −24 / −48에 눈금이 있고, 두 번 탭하면 0 dB로 돌아옵니다.</td></tr>
+          <tr><td><b>미터</b></td><td>페이더 옆의 포스트 페이더 피크 미터. 스트립에서 나가는 소리를 그대로 보여 줍니다.</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>뮤트와 솔로. 솔로는 마스터를 제외한 모든 것을 침묵시킵니다.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>뮤트와 솔로는 무대의 상태입니다.</b> 프리셋에는 들어가지 않지만 앱을 다시
+        켜도 남아 있습니다. 콘솔은 당신이 두고 간 모습 그대로 돌아옵니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>리그와 브랜치</h2>
+      <p>리그의 스트립은 그 <a href="/docs/ko/rig.html">시그널 체인</a>을 옆에서 본 모습입니다.
+        <b class="ui">인</b> 칩은 리그가 듣고 있는 인터페이스 채널을 — 또는 샘플러 버스나 루퍼
+        트랙을 — 알려 주고, <b class="ui">아웃</b> 칩은 어디로 나가는지, 메인 믹스인지 자기만의
+        출력 페어인지를 알려 줍니다.</p>
+      <p><b>브랜치</b>는 같은 색조로 리그 옆에 스트립을 갖습니다. 칩은 Rig 탭의 분기점과 같은
+        방식으로 읽습니다. <b class="ui">인</b>은 어느 블록 <em>뒤에서</em> 갈라지는지,
+        <b class="ui">아웃</b>은 어느 블록 <em>앞에서</em> 합쳐지는지를 말합니다. 페이더는 브랜치의
+        레벨이고, <b class="ui">M</b>은 그래프에서 빼지 않은 채 브랜치를 음소거합니다. 아예 빼려면
+        Rig 탭의 <b>전원 스위치</b>나 스트립 시트의 <b class="ui">브랜치 바이패스</b> 버튼을
+        쓰세요.</p>
+      <p>블록 칩은 진짜 체인을 편집합니다. 여기서 바꾼 것은 Rig 탭에서도 바뀌어 있고, 그동안에도
+        소리는 끊기지 않습니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>루프, 샘플러, 배킹</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">루퍼</b> — 몇 개의 트랙이 돌고 있는지 보여 주는 접힌 스트립 하나. 열면
+          네 트랙이 각각 자기 <b class="ui">인</b>과 <b class="ui">아웃</b>
+          (<a href="/docs/ko/looper.html">Loop</a> 탭과 같은 선택지), 상태, 센드, 팬, 페이더를 가진
+          스트립을 갖습니다. <b class="ui">루퍼 전체</b>는 대신 넷을 한 페이더 아래 둡니다.</li>
+        <li><b class="ui">샘플러</b> — 패드 버스 전체가 스트립 하나로. 팬은
+          <a href="/docs/ko/sampler.html">Sample</a> 탭이 아니라 여기에 있습니다.</li>
+        <li><b class="ui">백킹</b> — 플레이어. <b class="ui">아웃</b> 칩은 Perform 탭이
+          <b class="ui">DIRECT</b>와 <b class="ui">PRE FX</b>라고 부르는 라우팅입니다.
+          <b class="ui">다이렉트</b>는 트랙을 마스터 체인 밖에 두고, <b class="ui">마스터 FX</b>는
+          통과시킵니다. 라이브에서는 거의 언제나 <b class="ui">다이렉트</b>가 맞습니다.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A와 Send B</h2>
+      <p>글로벌 버스 두 개. 리그마다 하나씩 두는 대신, 리버브 하나가 밴드 전체 뒤에 섭니다.</p>
+      <p>각 버스에는 자기 스트립이 있고, 그 스트립이 <b>리턴 체인</b>을 담습니다. 딜레이, 리버브,
+        모듈레이션, 다이내믹스, 유틸리티 중 최대 네 블록에, 마스터로 가는 리턴 레벨과 팬이
+        마스터 FX <em>앞에</em> 놓입니다.</p>
+      <p>다른 모든 스트립에는 센드 노브가 두 개씩 있습니다. 플레이어에서는 바로 동작합니다. 리그나
+        브랜치에서는 그 체인에 해당 버스용 <b class="ui">센드</b> 블록이 있어야 노브가 살아납니다
+        (체인의 <b class="ui">+</b> 메뉴, Utility에서 추가). 센드는 블록을 놓은 바로 그 지점에서
+        갈라지므로, 딜레이를 앰프 앞에서 먹일지 뒤에서 먹일지는 당신 선택입니다.</p>
+      <p class="note">리턴 체인은 리그 프리셋이 아니라 <b>마스터 프리셋</b>과 함께 저장됩니다. 한
+        악기가 아니라 콘솔에 속하기 때문입니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>마스터 섹션</h2>
+      <p>오른쪽의 <b class="ui">마스터</b> 스트립은 출력 직전의 마지막 단입니다. 모든 리그, 모든
+        루퍼 트랙, 두 센드 리턴이 이곳을 지납니다. 예전에는 Rig 탭에 있었지만, 이제는 마땅히
+        함께 있어야 할 페이더들 옆, 바로 여기에 있습니다.</p>
+      <p>자체 블록을 최대 <b>여섯 개</b>까지 담습니다 — 한 악기가 아니라 믹스에 어울리는
+        블록들입니다.</p>
+      <table>
+        <thead><tr><th>계열</th><th>블록</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">다이내믹스</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">딜레이</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">리버브</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">유틸리티</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn">호스팅된 <a href="/docs/ko/plugins.html">플러그인</a>은 리그 체인 안에서만
+        살아갑니다. 마스터의 ADD 메뉴에는 나오지 않습니다. 전체에 리미터를 걸고 싶다면 내장
+        <b class="ui">리미터</b> 블록을 쓰세요.</p>
+      <ul style="--nc:var(--drive)">
+        <li>점선 <b class="ui">+</b> 막대가 블록을 더합니다. 저장된 블록 프리셋이 있는 계열은
+          하위 메뉴를 엽니다: 기본 설정, 저장해 둔 프리셋, 또는 리그 프리셋에서 그대로 가져온
+          블록.</li>
+        <li>막대는 소리의 순서대로 위에서 아래로 흐릅니다. 탭하면 편집, 길게 누르면 바이패스,
+          <b class="ui">Move</b>, 삭제.</li>
+        <li>스트립 헤더의 <b>겹친 아이콘</b>이 <b class="ui">마스터 프리셋</b>를 엽니다. 마스터
+          체인 전체를 리그와 같은 라이브러리에서 저장하고 불러옵니다. 센드 리턴도 함께
+          저장됩니다.</li>
+        <li>마스터 페이더(−60 … +12 dB)는 출력 직전의 마지막 요소이며, 옆에는 스테레오 피크 바와
+          <b class="ui">LUFS</b> 표시가 있습니다.</li>
+      </ul>
+      <p><b>마스터를 지나지 않는 것:</b> 클릭과 샘플러 패드(루퍼 트랙이나 녹음 레인이 샘플러 버스를
+        받는 경우는 제외). 배킹 플레이어도 <b class="ui">아웃</b>을 <b class="ui">마스터 FX</b>로
+        바꾸기 전까지는 다이렉트로 나갑니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>레코더</h2>
+      <p>오른쪽 열에는 레코더도 있어, 레벨을 잡는 동안에도 손이 닿습니다. 시간이 흐르는
+        <b class="ui">REC</b>와, 담긴 테이크를 모은 <b class="ui">세트</b>. 거기서 테이크를 들어
+        보고, 이름을 바꾸고, 스템 하나로 또는 <b>DAW 프로젝트</b> 전체로 공유하고, 삭제할 수
+        있습니다. 각 레인이 무엇을 녹음하고 내보내기에 무엇이 담기는지는
+        <a href="/docs/ko/perform.html#recording">Perform</a> 페이지에 있습니다.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>휴대폰에서</h2>
+      <p>태블릿이라면 공연 하나가 콘솔 가로폭에 다 들어옵니다. 휴대폰에서는 스트립이 옆으로
+        스크롤되고 마스터 열은 제자리에 남습니다.</p>
+      <p>휴대폰을 옆으로 돌리면 콘솔이 두 페이지로 나뉘고, 위의 넓은 탭으로 고릅니다.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">페이더</b> — <b class="ui">M</b> / <b class="ui">S</b>, 센드 노브, 팬,
+          그리고 미터가 붙은 페이더;</li>
+        <li><b class="ui">블록</b> — 같은 스트립들이 체인을 보여 주고, 블록마다 엄지로 누르기 좋은
+          가로 전체 폭의 막대가 됩니다.</li>
+      </ul>
+      <p>마스터 카드와 레코더는 두 페이지 모두의 옆에 남고, 탭 바는 화면 아래에서 작은 알약 모양으로
+        줄어 콘솔에 높이를 내어 줍니다.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/ko/perform.html">← 06 · 퍼폼과 가사</a>
+      <span class="sp"></span>
+      <a href="/docs/ko/control.html">08 · MIDI와 컨트롤 →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/ko/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper는 특정 장비 제조사와 제휴, 보증 또는 후원 관계가 없는 독립 앱입니다. 모든 제품명, 브랜드, 상표는 각 소유자의 재산이며, 캡처에 사용된 장비를 설명하기 위한 목적으로만 사용됩니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -56,6 +56,7 @@
       <li><a href="/docs/looper.html">Looper</a></li>
       <li><a href="/docs/sampler.html">Sampler pads</a></li>
       <li><a href="/docs/perform.html">Perform &amp; lyrics</a></li>
+      <li><a href="/docs/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/control.html">MIDI &amp; control</a></li>
       <li><a href="/docs/settings.html">Settings reference</a></li>
     </ol>
@@ -420,6 +421,35 @@
           save presets in, not the other way round.</p>
       </div>
 
+      <h3>The rail has two faces</h3>
+      <p>The <b class="ui">PRESETS</b> card — the rail down the side of the Rig tab on a tablet, the
+        strip under the chain on a phone — shows one of two things, and which one depends on whether
+        a setlist is <b class="ui">LIVE</b>:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>No setlist live</b> — the library: every preset on its MIDI PC slot, with its cover,
+          a search field once there are more than eight, and a row menu holding
+          <b class="ui">Rename</b>, <b class="ui">Update with current rig</b>,
+          <b class="ui">Assign to set…</b>, <b class="ui">Share</b> and
+          <b class="ui">Delete</b>. Program change <em>n</em> applies preset <em>n</em>.</li>
+        <li><b>A setlist live</b> — the set: the set's name, a song stepper (<b class="ui">‹</b>
+          name <b class="ui">›</b>, and the name itself drops down the whole list to jump), and one
+          card per rig preset <em>the current song brings up</em> — not the 128 slots, but the four
+          or five sounds this number actually needs. Program change <em>n</em> now plays song
+          <em>n</em>.</li>
+      </ul>
+      <p>On stage the second face is the one that matters: the song is picked once, and what you
+        reach for between choruses is this song's own sounds. Each card carries the preset's name
+        and its scene row — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b>
+        <b class="ui">C</b> <b class="ui">D</b> — with the entry's own scene outlined and the whole
+        card lit while it is the one playing.</p>
+      <p><strong>The letters only show, they do not set.</strong> A tap anywhere on the card, the
+        letters included, brings that entry up exactly as its song lists it. Which scene an entry
+        uses is part of the song, so it is changed in the song editor on the
+        <a href="/docs/perform.html#sections">Perform</a> tab — a stray tap on stage cannot rewrite
+        the set.</p>
+      <p>The stack icon in the set panel's header opens the full preset library anyway, and
+        <b class="ui">⊗</b> leaves the setlist: the rail goes back to the 128 slots, and so do the
+        program numbers.</p>
       <h3>Updating and managing</h3>
       <p>Overwriting is always confirmed. <b class="ui">Update with current rig</b> raises a dialog
         reading <b class="ui">Overwrite “{name}” with the current rig?</b> with
@@ -428,8 +458,8 @@
         and <b class="ui">Everything at once</b> → <b class="ui">Global snapshots</b>, described as
         rig, looper, sampler, setlist and control map saved and restored together.</p>
       <p>Each row's context menu offers <b class="ui">Rename</b>,
-        <b class="ui">Update with current rig</b>, <b class="ui">Share</b> and
-        <b class="ui">Delete</b>. Renaming lives in the manager only — the preset chip menu on the
+        <b class="ui">Update with current rig</b>, <b class="ui">Assign to set…</b>,
+        <b class="ui">Share</b> and <b class="ui">Delete</b>. Renaming lives in the manager only — the preset chip menu on the
         Rig tab does not have it. Once you have more than eight presets, a
         <b class="ui">Search presets</b> field appears at the top.</p>
       <div class="note warn">
@@ -549,6 +579,15 @@
       </div>
       <p>Dragging is the fast way to audition: hold the merge anchor, slide it earlier or later in
         the chain, and hear the branch land before or after the delay without opening a menu.</p>
+      <h3>Switching a branch out</h3>
+      <p>A <b class="ui g">power</b> switch sits on the branch's own wire, a little way past the
+        fork. Tap it and the whole branch leaves the graph — it is drawn dashed and dim, and nothing
+        in it is processed. The same switch is in the branch's menu and, as
+        <b class="ui">Bypass branch</b> / <b class="ui">Enable branch</b>, in its mixer sheet and on
+        its strip in the <a href="/docs/mix.html">Mix</a> tab.</p>
+      <p>Scenes remember it, so a parallel amp or a sub-octave can come and go with a footswitch
+        instead of being rebuilt. That is how the factory rig <b class="ui">Friday Night Lead</b>
+        works: its octave branch is switched out everywhere except the breakdown scene.</p>
       <div class="note tip">
         <div class="t">Mixing several branches at once</div>
         <p>Put a <b class="ui">Volume</b> block at the point where branches merge and it grows an
@@ -563,10 +602,12 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>The master section</h2>
-      <p>The <b class="ui">MASTER</b> card at the bottom of the Rig tab is where everything meets:
-        every rig, the looper, the sampler pads and the backing track sum here before the hardware
-        output. Whatever you do to the master, you do to all of it.</p>
-      <p>The <b class="ui">FX</b> <b class="ui">+</b> menu adds master processing — up to six
+      <p>The <b class="ui">MASTER</b> strip is where everything meets: every rig, the looper and
+        both send returns sum there before the hardware output. Whatever you do to the master, you
+        do to all of it. It used to sit at the foot of the Rig tab; it lives on the
+        <a href="/docs/mix.html">Mix</a> tab now, in the column beside the faders — this section is
+        the short version, the desk around it is on that page.</p>
+      <p>The dashed <b class="ui">+</b> bar adds master processing — up to six
         blocks. You can choose from <b class="ui">Volume</b>, <b class="ui">EQ</b>,
         <b class="ui">Comp</b>, <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>,
         <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>,

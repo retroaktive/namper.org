@@ -56,13 +56,14 @@
       <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
       <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
       <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/mix.html">混合与主控</a></li>
       <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
       <li><a class="on" href="/docs/zh/settings.html">设置参考</a></li>
     </ol>
   </aside>
 
   <main>
-    <div class="slab" style="--nc:var(--drive)">08 · 设置参考</div>
+    <div class="slab" style="--nc:var(--drive)">09 · 设置参考</div>
     <h1>每一个开关,逐一说明。</h1>
     <p class="lede">NAMper 的设置表单被有意做得很短。本页逐张卡片、逐行为你讲解,包括默认值和每个
       控件的实际作用——最后再介绍那少数几个存放在完全不同位置的设置。</p>
@@ -85,11 +86,34 @@
     </nav>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="opening"><span class="n">08.1</span>打开设置</h2>
-      <p>点按<strong>齿轮图标</strong>,它位于 <b class="ui a">音色组</b> 标签页页头。这是唯一的
-        入口,而且该页头只存在于这一个标签页——从 <b class="ui a">循环</b>、
-        <b class="ui a">采样</b>、<b class="ui a">演出</b> 或 <b class="ui a">控制</b>
-        进入设置,都要先回到 <b class="ui a">音色组</b>。</p>
+      <h2 id="opening"><span class="n">09.1</span>打开设置</h2>
+      <p>点<strong>齿轮图标</strong>，它在 <b class="ui a">音色组</b> 标签页的标题栏里。那是唯一的
+        入口，而标题栏只存在于这个标签页——从 <b class="ui a">循环</b>、<b class="ui a">采样</b>、
+        <b class="ui a">演出</b> 或 <b class="ui a">混合</b> 过来，请先回到
+        <b class="ui a">音色组</b>。</p>
+      <p>设置是一份目录，而不是一张长长的表单：一行 <b class="ui">关于</b> 加六个页面，各点一下就
+        到，你要找的东西就在讲那件事的页面上。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>页面</th><th>里面有什么</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">关于</b></td>
+                <td>版本、打赏、致谢，以及 <b class="ui">帮助与链接</b>——文档、网站、<a href="https://t.me/namperapp">Telegram 社区</a>、支持和隐私政策。</td></tr>
+            <tr><td><b class="ui">音频</b></td>
+                <td>接口、采样率、缓冲区、输入增益——<a href="#audio">见下文</a>，通道名称也在其中。</td></tr>
+            <tr><td><b class="ui">控制</b></td>
+                <td>MIDI 与输入触发，可映射到任何东西——有自己的页面：<a href="/docs/zh/control.html">MIDI 与控制</a>。</td></tr>
+            <tr><td><b class="ui">舞台</b></td>
+                <td>节拍器、歌单的速度与调性、歌词字号——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>和 <a href="#metronome">节拍器</a>。</td></tr>
+            <tr><td><b class="ui">外观</b></td>
+                <td>浅色、深色，或者跟随系统——<a href="#appearance">见下文</a>。</td></tr>
+            <tr><td><b class="ui">提示与导览</b></td>
+                <td>启动提示和快速导览——<a href="#prompts">见下文</a>。</td></tr>
+            <tr><td><b class="ui">故障排查</b></td>
+                <td>引擎日志和恢复出厂——见下文的 <a href="#reset">重置</a>和<a href="#diagnostics">诊断</a>。</td></tr>
+          </tbody>
+        </table>
+      </div>
       <figure>
         <img class="phone" src="/docs/assets/settings.png" width="600" height="1304"
              alt="设置表单的顶部:开启了 Feedback guard 的 AUDIO INTERFACE 卡片、DSP 负载读数、
@@ -102,7 +126,7 @@
           <thead><tr><th>项目</th><th>作用</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">NAMper</b> 字标</td>
-                <td>打开关于表单——版本、赞赏入口、鸣谢，以及包含文档、网站、支持和隐私政策的 <b class="ui">帮助与链接</b> 卡片。设置顶部的 <b class="ui">关于</b> 行会打开同一张表单。</td></tr>
+                <td>打开 About 面板——版本、打赏、致谢，以及包含文档、网站、Telegram 社区、支持和隐私政策的 <b class="ui">帮助与链接</b> 卡片。设置最上方的 <b class="ui">关于</b> 行打开的是同一个面板。</td></tr>
             <tr><td><b class="ui">DSP 负载</b> 芯片</td>
                 <td>以百分比显示处理器负载,停止时显示 <b class="ui">—</b>。60% 以下为绿色,
                   到 85% 为琥珀色,再往上为红色。</td></tr>
@@ -123,7 +147,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="audio"><span class="n">08.2</span>音频接口</h2>
+      <h2 id="audio"><span class="n">09.2</span>音频接口</h2>
       <p><b class="ui">音频接口</b> 是最长的一张卡片,也是唯一一个设置需要重新启动应用
         才能生效的卡片。前四行是只读的:它们告诉你 NAMper 实际从系统获取到的信息,这是排查接口
         异常最快的方式。</p>
@@ -174,7 +198,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="names"><span class="n">08.3</span>通道名称</h2>
+      <h2 id="names"><span class="n">09.3</span>通道名称</h2>
       <p><b class="ui">通道名称</b> 是每路输入各一个的文本框,每一行前缀为
         <b class="ui">In 1</b>、<b class="ui">In 2</b> 等等,占位符为
         <b class="ui">吉他、人声…</b>。脚注说明了它们的用途:
@@ -184,13 +208,13 @@
       <div class="note tip">
         <div class="t">值得花两分钟</div>
         <p>在多通道接口上,试音过程中要快速选对通道,<b class="ui">Guitar</b> 和
-          <b class="ui">Vocal</b> 比 <b class="ui">In 3</b> 和 <b class="ui">In 4</b> 容易
+          <b class="ui">人声</b> 比 <b class="ui">In 3</b> 和 <b class="ui">In 4</b> 容易
           得多。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="appearance"><span class="n">08.4</span>外观</h2>
+      <h2 id="appearance"><span class="n">09.4</span>外观</h2>
       <p>芯片选项:<b class="ui">跟随系统</b>、<b class="ui">浅色</b>、<b class="ui">深色</b>。
         默认是 <b class="ui">跟随系统</b>,这也是整张表单中唯一一个点按后立即生效的设置。</p>
       <p>NAMper 是按深色风格设计的——电平表、LED 指示灯和信号链图形都是为深色舞台绘制的。
@@ -198,7 +222,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="set"><span class="n">08.5</span>演出信息</h2>
+      <h2 id="set"><span class="n">09.5</span>演出信息</h2>
       <p><b class="ui">SET</b> 卡片是只读的。它显示 <b class="ui">速度</b>(以
         <b class="ui">BPM</b> 表示,未设置时为 <b class="ui">—</b>)和 <b class="ui">调</b>
         (例如 <b class="ui">Am</b>,或 <b class="ui">—</b>)。这是一个状态读数,而不是一个
@@ -219,7 +243,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="lyrics"><span class="n">08.6</span>歌词</h2>
+      <h2 id="lyrics"><span class="n">09.6</span>歌词</h2>
       <p>只有一个滑块:提词器文字大小,范围从 <b class="ui">16</b> 到 <b class="ui">34 pt</b>,
         默认 <b class="ui">22 pt</b>,并带有实时预览行,显示为 <b class="ui">歌词将以此样式显示</b>。</p>
       <p>调整它会实时重新调整提词器,所以即使歌词界面在另一台设备上打开,或者你直接切回该界面,
@@ -228,15 +252,15 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="metronome"><span class="n">08.7</span>节拍器</h2>
+      <h2 id="metronome"><span class="n">09.7</span>节拍器</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
           <tbody>
             <tr><td>节拍器电平</td><td>滑块,−40…+6 dB</td><td>≈ −3 dB</td>
                 <td>节拍器的响度。</td></tr>
-            <tr><td><b class="ui">节拍声输出</b></td><td>芯片:<b class="ui">Main</b>、
-                <b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>……</td><td><b class="ui">Main</b></td>
+            <tr><td><b class="ui">节拍声输出</b></td><td>芯片:<b class="ui">主输出</b>、
+                <b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>……</td><td><b class="ui">主输出</b></td>
                 <td>由哪一对硬件输出承载节拍器声音。仅当存在多于一对输出时才会显示;选择非主输出
                   的一对会强制开启 <b class="ui">使用接口的所有输出</b>。</td></tr>
           </tbody>
@@ -250,7 +274,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">08.8</span>提示</h2>
+      <h2 id="prompts"><span class="n">09.8</span>提示</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
@@ -274,7 +298,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">08.9</span>重置</h2>
+      <h2 id="reset"><span class="n">09.9</span>重置</h2>
       <p>两个按钮,每个都带有确认步骤。</p>
       <div class="tw">
         <table>
@@ -300,7 +324,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">08.10</span>诊断</h2>
+      <h2 id="diagnostics"><span class="n">09.10</span>诊断</h2>
       <p>NAMper 会保留一份纯文本的引擎日志,记录接口路由和峰值。当日志存在时,这张卡片提供
         <b class="ui">分享引擎日志</b> 和 <b class="ui">清除引擎日志</b>;不存在时,
         显示 <b class="ui">暂无引擎日志（记录接口路由与峰值）。</b></p>
@@ -312,7 +336,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">08.11</span>不在设置里的内容</h2>
+      <h2 id="elsewhere"><span class="n">09.11</span>不在设置里的内容</h2>
       <p>有三样东西,大家常常在这里找,却找不到。</p>
       <h3>触发量化</h3>
       <p><b class="ui">量化</b> 旋钮及其网格芯片位于 <b class="ui a">采样</b> 标签页页头,
@@ -327,14 +351,14 @@
         自动连接,应用还会发布自己的虚拟目标端口,名为 <b class="ui">NAMper</b>。</p>
       <div class="note">
         <div class="t">无需配置任何内容</div>
-        <p>如果某个踏板毫无反应,问题出在映射上,而不是某项设置。所有与 MIDI 相关的内容都在
-          <b class="ui a">控制</b> 标签页中——参见
+          <p>如果某个踏板什么都不做，问题出在映射上，而不是某项设置。所有和 MIDI 有关的东西都在设置
+          的 <b class="ui">控制</b> 页面上——见
           <a href="/docs/zh/control.html">MIDI 与控制</a>。</p>
       </div>
     </section>
 
     <nav class="pager">
-      <a href="/docs/zh/control.html">← 07 · MIDI 与控制</a>
+      <a href="/docs/zh/control.html">← 08 · MIDI 与控制</a>
       <span class="sp"></span>
       <a href="/docs/zh/">所有文档 →</a>
     </nav>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mix — NAMper-Dokumentation</title>
+<meta name="description" content="Der Mix-Tab: ein Kanalzug für jedes Rig, jeden Zweig, jede Loop-Spur, den Sampler und den Backing-Player, zwei globale Send-Busse mit Return-Ketten, die Master-Sektion mit eigenen Blöcken und LUFS-Anzeige sowie der Recorder.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mix — NAMper-Dokumentation">
+<meta property="og:description" content="Ein Pult für alles, was klingt: Kanalzüge, Sends, Master-Sektion und Recorder.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/de/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/de/">← ALLE DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/de/mix.html" aria-current="page">Deutsch</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">INHALT</div>
+    <ol>
+      <li><a href="/docs/de/setup.html">Erste Schritte</a></li>
+      <li><a href="/docs/de/rig.html">Rig &amp; Signalkette</a></li>
+      <li><a href="/docs/de/plugins.html">Plugins</a></li>
+      <li><a href="/docs/de/looper.html">Looper</a></li>
+      <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
+      <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
+      <li><a class="on" href="/docs/de/mix.html">Mix &amp; Master</a></li>
+      <li><a href="/docs/de/control.html">MIDI &amp; Control</a></li>
+      <li><a href="/docs/de/settings.html">Einstellungen – Referenz</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIX &amp; MASTER</div>
+    <h1>Ein Pult für alles, was klingt.</h1>
+    <p class="lede">Der <b class="ui a">Mix</b>-Tab ist ein Mischpult: ein Kanalzug für jedes Rig
+      und jeden Zweig, einer pro Loop-Spur, einer für den Sampler und einer für den Backing-Player,
+      dazu zwei globale Effektbusse und eine Master-Sektion — alles auf einem Raster, Feld für
+      Feld, damit ein Fader immer an derselben Stelle sitzt.</p>
+
+    <nav class="toc">
+      <div class="slab">AUF DIESER SEITE</div>
+      <ul>
+        <li><a href="#desk">Das Pult</a></li>
+        <li><a href="#strip">Ein Kanalzug</a></li>
+        <li><a href="#rigs">Rigs und Zweige</a></li>
+        <li><a href="#players">Loops, Sampler, Backing</a></li>
+        <li><a href="#sends">Send A und Send B</a></li>
+        <li><a href="#master">Die Master-Sektion</a></li>
+        <li><a href="#recorder">Der Recorder</a></li>
+        <li><a href="#phone">Auf dem Telefon</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>Das Pult</h2>
+      <p>Alles, womit die App einen Ton erzeugen kann, steht in einem eigenen Kanalzug, und jeder
+        Zug ist aus denselben Feldern in derselben Reihenfolge gebaut. Nichts versteckt sich in
+        einem Untermenü: der gesamte Signalfluss der App ist einen Bildschirm breit.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="Der Mix-Tab: Kanalzüge für das Rig, seinen Zweig, die vier Loop-Spuren, den Sampler und den Backing-Player, jeweils mit Sends, Pan-Regler, Fader und Aussteuerungsanzeige, rechts die Master-Spalte mit dem Recorder.">
+        <figcaption>Das Pult mit einem Rig, seinem Zweig, der Looper-Gruppe und der Master-Spalte</figcaption>
+      </figure>
+      <p>Von links nach rechts stehen auf dem Pult:</p>
+      <ul style="--nc:var(--gate)">
+        <li>ein Zug pro <b>Rig</b>, daneben dessen <b>Zweige</b> in derselben eingefärbten
+          Gruppe;</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, zu einem <b class="ui">Looper</b>-Zug
+          zusammengeklappt, bis du sie aufmachst;</li>
+        <li><b class="ui">Sampler</b> — der Pad-Bus — und <b class="ui">Backing</b> — der Player aus
+          dem <a href="/docs/de/perform.html">Perform</a>-Tab;</li>
+        <li><b class="ui">Send A</b> und <b class="ui">Send B</b>, die beiden globalen
+          Effektbusse;</li>
+        <li>die rechte Spalte, die nie mitscrollt: der Recorder und der
+          <b class="ui">MASTER</b>.</li>
+      </ul>
+      <p>Das Pult ist lebendig, kein Schnappschuss: ein Rig, das du im
+        <a href="/docs/de/rig.html">Rig</a>-Tab anlegst, taucht hier auf, eine aufgenommene
+        Loop-Spur füllt sich, und die Anzeigen laufen, ob du hinsiehst oder nicht.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>Ein Kanalzug</h2>
+      <p>Von oben nach unten trägt jeder Zug dieselben Bedienelemente:</p>
+      <table>
+        <thead><tr><th>Feld</th><th>Was es tut</th></tr></thead>
+        <tbody>
+          <tr><td><b>Name</b></td><td>Was der Zug ist. Bei einem Rig gibt ein Tipp auf den Namen diesem Rig den MIDI-Fokus.</td></tr>
+          <tr><td><b class="ui">IN</b> / <b class="ui">OUT</b></td><td>Woher der Zug sein Signal nimmt und wohin es geht — siehe unten, je nach Zug liest es sich anders.</td></tr>
+          <tr><td><b>Blöcke</b></td><td>Die Kette als kleine Chips mit ihren LEDs. Tippen öffnet das Blatt des Blocks, Halten bietet Bypass oder Entfernen, das gestrichelte <b class="ui">+</b> hängt hinten einen Block an.</td></tr>
+          <tr><td><b class="ui">Sends</b></td><td>Zwei kleine Regler, einer pro Send-Bus.</td></tr>
+          <tr><td><b class="ui">Pan</b></td><td>Ein Regler; ein Doppeltipp stellt ihn zurück in die Mitte.</td></tr>
+          <tr><td><b>Fader</b></td><td>−60 … +12 dB, Markierungen bei 0 / −6 / −12 / −24 / −48, ein Doppeltipp bringt ihn auf 0 dB.</td></tr>
+          <tr><td><b>Anzeige</b></td><td>Eine Post-Fader-Spitzenanzeige neben dem Fader: du siehst, was den Zug tatsächlich verlässt.</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>Mute und Solo. Solo legt alles außer dem Master still.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Mute und Solo sind ein Bühnenzustand.</b> Sie wandern nie in ein Preset,
+        überstehen aber einen Neustart — das Pult kommt so zurück, wie du es verlassen hast.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>Rigs und Zweige</h2>
+      <p>Der Zug eines Rigs ist seine <a href="/docs/de/rig.html">Signalkette</a> von der Seite
+        gesehen. Der <b class="ui">IN</b>-Chip nennt den Interface-Kanal, auf den das Rig hört —
+        oder den Sampler-Bus oder eine Loop-Spur —, und der <b class="ui">OUT</b>-Chip sagt, wohin
+        es geht: in den Hauptmix oder auf ein eigenes Ausgangspaar.</p>
+      <p>Ein <b>Zweig</b> bekommt einen Zug neben seinem Rig, im selben Farbton. Seine Chips lesen
+        sich wie die Abzweigungen im Rig-Tab: <b class="ui">IN</b> sagt, <em>nach</em> welchem Block
+        der Zweig abgeht, <b class="ui">OUT</b> sagt, <em>vor</em> welchem er wieder einmündet. Sein
+        Fader ist der Zweigpegel, und sein <b class="ui">M</b> schaltet den Zweig stumm, ohne ihn
+        aus dem Graphen zu nehmen — dafür gibt es den <b>Netzschalter</b> im Rig-Tab oder den
+        Knopf <b class="ui">Zweig umgehen</b> im Blatt des Zuges.</p>
+      <p>Die Block-Chips bearbeiten die echte Kette: was du hier änderst, ist auch im Rig-Tab
+        geändert, und der Ton reißt dabei nie ab.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>Loops, Sampler, Backing</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Looper</b> — ein zusammengeklappter Zug, der zeigt, wie viele Spuren
+          laufen; klapp ihn auf, und jede der vier bekommt einen Zug mit eigenem
+          <b class="ui">IN</b> und <b class="ui">OUT</b> (dieselbe Auswahl wie im
+          <a href="/docs/de/looper.html">Loop</a>-Tab), Zustand, Sends, Pan und Fader.
+          <b class="ui">Ganzer Looper</b> lässt sie stattdessen unter einem Fader.</li>
+        <li><b class="ui">Sampler</b> — der ganze Pad-Bus in einem Zug, mit einem eigenen Pan hier
+          statt im <a href="/docs/de/sampler.html">Sample</a>-Tab.</li>
+        <li><b class="ui">Backing</b> — der Player. Sein <b class="ui">OUT</b>-Chip trägt das
+          Routing, das der Perform-Tab <b class="ui">DIREKT</b> und <b class="ui">PRE-FX</b> nennt:
+          <b class="ui">Direkt</b> hält den Track aus der Master-Kette heraus,
+          <b class="ui">Master-FX</b> schickt ihn hindurch. Live willst du fast immer
+          <b class="ui">Direkt</b>.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A und Send B</h2>
+      <p>Zwei globale Busse, damit ein Hall hinter der ganzen Band steht statt einer pro Rig.</p>
+      <p>Jeder Bus hat einen eigenen Zug, und darin sitzt die <b>Return-Kette</b>: bis zu vier
+        Blöcke — Delay, Hall, Modulation, Dynamik oder Utility — mit Return-Pegel und Pan in den
+        Master, <em>vor</em> den Master-Effekten.</p>
+      <p>Jeder andere Zug trägt zwei Send-Regler. Bei den Playern sind sie sofort aktiv. Bei einem
+        Rig oder Zweig wird ein Regler aktiv, sobald die Kette einen <b class="ui">Send</b>-Block
+        für diesen Bus enthält (aus dem <b class="ui">+</b>-Menü der Kette, unter Utility) — der
+        Send wird genau dort abgegriffen, wo du den Block hinstellst, ein Delay lässt sich also vor
+        oder nach dem Amp speisen, wie du willst.</p>
+      <p class="note">Die Return-Ketten werden mit den <b>Master-Presets</b> gespeichert, nicht mit
+        den Rig-Presets: sie gehören zum Pult, nicht zu einem Instrument.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>Die Master-Sektion</h2>
+      <p>Der <b class="ui">MASTER</b>-Zug rechts ist die letzte Stufe vor dem Ausgang: jedes Rig,
+        jede Loop-Spur und beide Send-Returns laufen hindurch. Früher saß er im Rig-Tab; jetzt
+        steht er hier, neben den Fadern, zu denen er gehört.</p>
+      <p>Er trägt bis zu <b>sechs eigene Blöcke</b> — die, die auf einen Mix gehören und nicht auf
+        ein einzelnes Instrument:</p>
+      <table>
+        <thead><tr><th>Familie</th><th>Blöcke</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Dynamik</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">Delay</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">Reverb</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">Utility</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn">Geladene <a href="/docs/de/plugins.html">Plugins</a> leben nur in einer
+        Rig-Kette: das ADD-Menü des Masters bietet sie nicht an. Für einen Limiter über allem nimm
+        den eingebauten Block <b class="ui">Limiter</b>.</p>
+      <ul style="--nc:var(--drive)">
+        <li>Der gestrichelte <b class="ui">+</b>-Balken fügt einen Block hinzu. Eine Familie, für
+          die es gespeicherte Block-Presets gibt, öffnet ein Untermenü: Standardeinstellungen, eines
+          deiner Presets oder ein Block direkt aus einem Rig-Preset.</li>
+        <li>Die Balken laufen von oben nach unten in der Reihenfolge des Audios. Tippen zum
+          Bearbeiten; langes Drücken für Bypass, <b class="ui">Move</b> und Entfernen.</li>
+        <li>Das <b>Stapel-Symbol</b> in der Kopfzeile des Zuges öffnet
+          <b class="ui">Master-Presets</b> — die ganze Master-Kette gespeichert und abgerufen, aus
+          derselben Bibliothek wie bei den Rigs. Die Send-Returns werden mitgespeichert.</li>
+        <li>Der Master-Fader (−60 … +12 dB) ist das Letzte vor dem Ausgang, daneben die
+          Stereo-Spitzenbalken und die <b class="ui">LUFS</b>-Anzeige.</li>
+      </ul>
+      <p><b>Was nicht durch den Master läuft:</b> das Klick und die Sampler-Pads (außer eine
+        Loop-Spur oder eine Aufnahmespur nimmt den Sampler-Bus auf). Auch der Backing-Player geht
+        direkt, bis du seinen <b class="ui">OUT</b> auf <b class="ui">Master-FX</b> stellst.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>Der Recorder</h2>
+      <p>In der rechten Spalte sitzt auch der Recorder, in Reichweite, während du Pegel setzt:
+        <b class="ui">REC</b> mit laufender Zeit und <b class="ui">Sets</b> — die aufgenommenen
+        Takes. Von dort lässt sich ein Take anhören, umbenennen, als einzelner Stem oder als ganzes
+        <b>DAW-Projekt</b> teilen und löschen. Was jede Spur aufnimmt und was der Export enthält,
+        steht auf der Seite <a href="/docs/de/perform.html#recording">Perform</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>Auf dem Telefon</h2>
+      <p>Auf einem Tablet passt eine ganze Show quer aufs Pult. Auf dem Telefon scrollen die Züge
+        seitwärts, während die Master-Spalte stehen bleibt.</p>
+      <p>Dreh das Telefon quer, und das Pult teilt sich in zwei Seiten, die du über die breiten
+        Reiter darüber wählst:</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">Fader</b> — <b class="ui">M</b> / <b class="ui">S</b>, die Send-Regler,
+          Pan und der Fader mit seiner Anzeige;</li>
+        <li><b class="ui">Blöcke</b> — dieselben Züge mit ihren Ketten, jeder Block ein Balken über
+          die volle Breite, den man mit dem Daumen trifft.</li>
+      </ul>
+      <p>Die Master-Karte und der Recorder stehen neben beiden Seiten, und die Tab-Leiste schrumpft
+        zu einer kompakten Pille am unteren Rand, damit das Pult die Höhe bekommt.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/de/perform.html">← 06 · Perform &amp; Songtexte</a>
+      <span class="sp"></span>
+      <a href="/docs/de/control.html">08 · MIDI &amp; Steuerung →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/de/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper ist eine unabhängige App ohne Zugehörigkeit zu, Empfehlung durch oder Sponsoring von irgendeinem Gerätehersteller. Alle Produktnamen, Marken und Warenzeichen sind Eigentum ihrer jeweiligen Inhaber und werden nur verwendet, um das Equipment zu beschreiben, mit dem ein Capture erstellt wurde.</p>
+  </div>
+</footer>
+
+</body>
+</html>

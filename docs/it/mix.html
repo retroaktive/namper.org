@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mix — Documentazione NAMper</title>
+<meta name="description" content="La scheda Mix: un canale per ogni rig, ogni ramo, ogni traccia del looper, il sampler e il lettore delle basi, due bus di mandata globali con le loro catene di ritorno, la sezione master con i suoi blocchi e la lettura LUFS, e il registratore.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mix — Documentazione NAMper">
+<meta property="og:description" content="Un banco per tutto ciò che suona: canali, mandate, sezione master e registratore.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/it/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTAZIONE</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/it/">← TUTTI I DOC</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/it/mix.html" aria-current="page">Italiano</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENUTI</div>
+    <ol>
+      <li><a href="/docs/it/setup.html">Per iniziare</a></li>
+      <li><a href="/docs/it/rig.html">Rig e catena del segnale</a></li>
+      <li><a href="/docs/it/plugins.html">Plugin</a></li>
+      <li><a href="/docs/it/looper.html">Looper</a></li>
+      <li><a href="/docs/it/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/it/perform.html">Perform e testi</a></li>
+      <li><a class="on" href="/docs/it/mix.html">Mix e master</a></li>
+      <li><a href="/docs/it/control.html">MIDI e Control</a></li>
+      <li><a href="/docs/it/settings.html">Guida alle impostazioni</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIX E MASTER</div>
+    <h1>Un banco per tutto ciò che suona.</h1>
+    <p class="lede">La scheda <b class="ui a">Mix</b> è un banco: un canale per ogni rig e ogni ramo,
+      uno per traccia del looper, uno per il sampler e uno per il lettore delle basi, due bus di
+      effetti globali e una sezione master — tutto su una sola griglia, casella per casella, così
+      che un fader stia sempre nello stesso punto.</p>
+
+    <nav class="toc">
+      <div class="slab">IN QUESTA PAGINA</div>
+      <ul>
+        <li><a href="#desk">Il banco</a></li>
+        <li><a href="#strip">Un canale</a></li>
+        <li><a href="#rigs">Rig e rami</a></li>
+        <li><a href="#players">Loop, sampler, base</a></li>
+        <li><a href="#sends">Send A e Send B</a></li>
+        <li><a href="#master">La sezione master</a></li>
+        <li><a href="#recorder">Il registratore</a></li>
+        <li><a href="#phone">Sul telefono</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>Il banco</h2>
+      <p>Tutto ciò con cui l'app può produrre un suono ha un canale suo, e ogni canale è fatto delle
+        stesse caselle nello stesso ordine. Niente è nascosto in un sottomenu: l'intero flusso di
+        segnale dell'app sta in una schermata di larghezza.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="La scheda Mix: i canali del rig, del suo ramo, delle quattro tracce del looper, del sampler e del lettore delle basi, ognuno con mandate, panorama, fader e indicatore, con la colonna master e il registratore sulla destra.">
+        <figcaption>Il banco con un rig, il suo ramo, il gruppo del looper e la colonna master</figcaption>
+      </figure>
+      <p>Da sinistra a destra il banco contiene:</p>
+      <ul style="--nc:var(--gate)">
+        <li>un canale per ogni <b>rig</b>, con i suoi <b>rami</b> accanto, nello stesso gruppo
+          colorato;</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, ripiegate in un unico canale
+          <b class="ui">Looper</b> finché non le apri;</li>
+        <li><b class="ui">Sampler</b> — il bus dei pad — e <b class="ui">Base</b> — il lettore
+          della scheda <a href="/docs/it/perform.html">Perform</a>;</li>
+        <li><b class="ui">Mandata A</b> e <b class="ui">Mandata B</b>, i due bus di effetti globali;</li>
+        <li>la colonna di destra, che non scorre mai: il registratore e il
+          <b class="ui">MASTER</b>.</li>
+      </ul>
+      <p>Il banco è vivo, non è un'istantanea: un rig che aggiungi nella scheda
+        <a href="/docs/it/rig.html">Rig</a> compare qui, una traccia del looper che registri si
+        riempie, e gli indicatori lavorano che tu li guardi o no.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>Un canale</h2>
+      <p>Dall'alto in basso ogni canale porta gli stessi comandi:</p>
+      <table>
+        <thead><tr><th>Casella</th><th>Che cosa fa</th></tr></thead>
+        <tbody>
+          <tr><td><b>Nome</b></td><td>Che cos'è il canale. Su un rig, toccare il nome gli dà il focus MIDI.</td></tr>
+          <tr><td><b class="ui">IN</b> / <b class="ui">OUT</b></td><td>Da dove il canale prende il segnale e da dove esce — vedi sotto, si leggono in modo diverso su ogni tipo di canale.</td></tr>
+          <tr><td><b>Blocchi</b></td><td>La catena come piccole targhette con il loro LED. Tocca per aprirne la scheda, tieni premuto per bypass o rimozione, e il <b class="ui">+</b> tratteggiato aggiunge un blocco in fondo.</td></tr>
+          <tr><td><b class="ui">Mandate</b></td><td>Due manopoline, una per bus di mandata.</td></tr>
+          <tr><td><b class="ui">Pan</b></td><td>Una manopola; un doppio tocco la riporta al centro.</td></tr>
+          <tr><td><b>Fader</b></td><td>−60 … +12 dB, tacche a 0 / −6 / −12 / −24 / −48, e un doppio tocco lo riporta a 0 dB.</td></tr>
+          <tr><td><b>Indicatore</b></td><td>Un misuratore di picco post-fader accanto al fader: vedi esattamente ciò che esce dal canale.</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>Mute e solo. Il solo zittisce tutto tranne il master.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Mute e solo sono uno stato da palco.</b> Non entrano mai in un preset, ma
+        restano dopo un riavvio: il banco torna com'era quando l'hai lasciato.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>Rig e rami</h2>
+      <p>Il canale di un rig è la sua <a href="/docs/it/rig.html">catena di segnale</a> vista di
+        lato. La targhetta <b class="ui">IN</b> nomina il canale dell'interfaccia che ascolta — o il
+        bus del sampler, o una traccia del looper — e la targhetta <b class="ui">OUT</b> dice dove
+        va: nel mix principale o su una coppia di uscite tutta sua.</p>
+      <p>Un <b>ramo</b> ottiene un canale accanto al suo rig, nella stessa tinta. Le sue targhette si
+        leggono come gli innesti nella scheda Rig: <b class="ui">IN</b> dice <em>dopo</em> quale
+        blocco il ramo si stacca, <b class="ui">OUT</b> dice <em>prima</em> di quale rientra. Il suo
+        fader è il livello del ramo, e la sua <b class="ui">M</b> lo zittisce senza toglierlo dal
+        grafo; per quello ci sono l'<b>interruttore</b> nella scheda Rig o il pulsante
+        <b class="ui">Bypassa il ramo</b> nella scheda del canale.</p>
+      <p>Le targhette dei blocchi modificano la catena vera: ciò che cambi qui è cambiato anche nella
+        scheda Rig, e l'audio non si interrompe mai mentre lo fai.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>Loop, sampler, base</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Looper</b> — un canale ripiegato che mostra quante tracce stanno girando;
+          aprilo e ognuna delle quattro avrà il suo canale con <b class="ui">IN</b> e
+          <b class="ui">OUT</b> propri (le stesse scelte della scheda
+          <a href="/docs/it/looper.html">Loop</a>), il suo stato, le sue mandate, panorama e fader.
+          <b class="ui">Looper intero</b> le tiene invece tutte sotto un unico fader.</li>
+        <li><b class="ui">Sampler</b> — l'intero bus dei pad in un canale, con un panorama suo qui
+          invece che nella scheda <a href="/docs/it/sampler.html">Sample</a>.</li>
+        <li><b class="ui">Base</b> — il lettore. La sua targhetta <b class="ui">OUT</b> porta
+          l'instradamento che la scheda Perform chiama <b class="ui">DIRECT</b> e
+          <b class="ui">PRE FX</b>: <b class="ui">Diretto</b> tiene la traccia fuori dalla catena
+          master, <b class="ui">FX master</b> ce la fa passare. Dal vivo vuoi quasi sempre
+          <b class="ui">Diretto</b>.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A e Send B</h2>
+      <p>Due bus globali, così un solo riverbero sta dietro a tutta la band invece di uno per
+        rig.</p>
+      <p>Ogni bus ha un canale suo, e quel canale contiene la <b>catena di ritorno</b>: fino a quattro
+        blocchi — delay, riverbero, modulazione, dinamica o utility — con livello e panorama del
+        ritorno verso il master, <em>prima</em> degli effetti master.</p>
+      <p>Ogni altro canale porta due manopole di mandata. Sui lettori sono attive subito. Su un rig o
+        un ramo la manopola si attiva quando quella catena contiene un blocco <b class="ui">Mandata</b>
+        per quel bus (si aggiunge dal menu <b class="ui">+</b> della catena, sotto Utility) — la
+        mandata viene prelevata proprio dove metti il blocco, quindi un delay può essere alimentato
+        prima o dopo l'ampli, come preferisci.</p>
+      <p class="note">Le catene di ritorno si salvano con i <b>preset master</b>, non con quelli dei
+        rig: appartengono al banco, non a un singolo strumento.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>La sezione master</h2>
+      <p>Il canale <b class="ui">MASTER</b> a destra è l'ultimo stadio prima dell'uscita: ci passano
+        ogni rig, ogni traccia del looper e i due ritorni di mandata. Prima stava nella scheda Rig;
+        adesso è qui, accanto ai fader a cui appartiene.</p>
+      <p>Porta fino a <b>sei blocchi</b> suoi — quelli che stanno bene su un mix e non su un singolo
+        strumento:</p>
+      <table>
+        <thead><tr><th>Famiglia</th><th>Blocchi</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Dinamica</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">Delay</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">Riverbero</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">Utilità</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn">I <a href="/docs/it/plugins.html">plugin</a> ospitati vivono solo dentro
+        la catena di un rig: il menu ADD del master non li propone. Per un limiter su tutto usa il
+        blocco <b class="ui">Limiter</b> integrato.</p>
+      <ul style="--nc:var(--drive)">
+        <li>La barra tratteggiata <b class="ui">+</b> aggiunge un blocco. Una famiglia con preset di
+          blocco salvati apre un sottomenu: impostazioni predefinite, uno dei tuoi preset, o un
+          blocco preso direttamente da un preset di rig.</li>
+        <li>Le barre vanno dall'alto in basso nell'ordine dell'audio. Tocca per modificare; tieni
+          premuto per bypass, <b class="ui">Move</b> e rimozione.</li>
+        <li>L'<b>icona a pila</b> nell'intestazione del canale apre <b class="ui">Preset del master</b>
+          — l'intera catena master salvata e richiamata, la stessa libreria che hanno i rig. I
+          ritorni di mandata si salvano insieme a loro.</li>
+        <li>Il fader master (−60 … +12 dB) è l'ultima cosa prima dell'uscita, con le barre di picco
+          stereo e la lettura <b class="ui">LUFS</b> accanto.</li>
+      </ul>
+      <p><b>Che cosa non passa dal master:</b> il click e i pad del sampler (a meno che una traccia
+        del looper o una traccia di registrazione non prenda il bus del sampler). Anche il lettore
+        delle basi va diretto, finché non porti il suo <b class="ui">OUT</b> su
+        <b class="ui">FX master</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>Il registratore</h2>
+      <p>Nella colonna di destra c'è anche il registratore, a portata di mano mentre sistemi i
+        livelli: <b class="ui">REC</b> con il suo tempo che scorre e <b class="ui">Set</b> — le
+        riprese catturate. Da lì una ripresa si ascolta, si rinomina, si condivide come singolo stem
+        o come intero <b>progetto DAW</b>, e si elimina. Che cosa registra ogni traccia e che cosa
+        contiene l'esportazione sta nella pagina
+        <a href="/docs/it/perform.html#recording">Perform</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>Sul telefono</h2>
+      <p>Su un tablet ci sta un concerto intero in larghezza sul banco. Sul telefono i canali scorrono
+        lateralmente mentre la colonna master resta ferma.</p>
+      <p>Gira il telefono di lato e il banco si divide in due pagine, che scegli con le linguette
+        larghe in alto:</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">Fader</b> — <b class="ui">M</b> / <b class="ui">S</b>, le manopole di
+          mandata, il panorama e il fader con il suo indicatore;</li>
+        <li><b class="ui">Blocchi</b> — gli stessi canali con le loro catene, ogni blocco una barra a
+          tutta larghezza che si prende col pollice.</li>
+      </ul>
+      <p>La scheda del master e il registratore restano accanto a entrambe le pagine, e la barra
+        delle schede si riduce a una pillola compatta in basso, così l'altezza va al banco.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/it/perform.html">← 06 · Perform e testi</a>
+      <span class="sp"></span>
+      <a href="/docs/it/control.html">08 · MIDI e controllo →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/it/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper è un'app indipendente, senza alcuna affiliazione, approvazione o sponsorizzazione da parte di alcun produttore di apparecchiature. Tutti i nomi di prodotto, marchi e marchi registrati sono proprietà dei rispettivi titolari e vengono usati solo per descrivere l'apparecchiatura da cui proviene una cattura.</p>
+  </div>
+</footer>
+
+</body>
+</html>

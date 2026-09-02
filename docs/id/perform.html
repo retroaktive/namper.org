@@ -56,6 +56,7 @@
       <li><a href="/docs/id/looper.html">Looper</a></li>
       <li><a href="/docs/id/sampler.html">Pad sampler</a></li>
       <li><a class="on" href="/docs/id/perform.html">Perform &amp; lirik</a></li>
+      <li><a href="/docs/id/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/id/control.html">MIDI &amp; kontrol</a></li>
       <li><a href="/docs/id/settings.html">Referensi pengaturan</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LIRIK</div>
     <h1>Memainkan set.</h1>
-    <p class="lede">Tab <b class="ui a">Perform</b> adalah yang kamu lihat di atas panggung:
+    <p class="lede">Tab <b class="ui a">Panggung</b> adalah yang kamu lihat di atas panggung:
       backing track, setlist berisi section, perubahan preset yang memicu dirinya sendiri, sebuah
       teleprompter layar penuh untuk lirikmu, dan recorder yang merekam seluruh malam dalam bentuk
       stem.</p>
@@ -74,9 +75,9 @@
       <ul>
         <li><a href="#tracks">Backing track</a></li>
         <li><a href="#player">Kartu player</a></li>
-        <li><a href="#setlist">Setlist</a></li>
-        <li><a href="#sections">Membangun section</a></li>
-        <li><a href="#markers">Marker preset</a></li>
+        <li><a href="#setlist">Setlist dan lagu</a></li>
+        <li><a href="#sections">Apa yang dibawa sebuah lagu</a></li>
+        <li><a href="#markers">Penanda</a></li>
         <li><a href="#lyrics">Lirik dan teleprompter</a></li>
         <li><a href="#presets">Preset Perform</a></li>
         <li><a href="#recording">Perekaman</a></li>
@@ -130,7 +131,7 @@
             <tr><td><b class="ui">Putar</b></td><td>Memutar dan menjeda backing track</td></tr>
             <tr><td><b class="ui">Berhenti</b></td><td>Berhenti dan kembali ke awal</td></tr>
             <tr><td><b class="ui">Rekam</b></td><td>Memulai dan menghentikan performance recorder (<a href="#recording">di bawah</a>)</td></tr>
-            <tr><td><b class="ui">Tambah penanda preset</b></td><td>Menaruh perubahan rig-preset pada posisi playhead</td></tr>
+            <tr><td><b class="ui">Tambah penanda</b></td><td>Menjatuhkan sebuah perubahan di posisi pemutaran</td></tr>
             <tr><td><b class="ui">Lirik</b></td><td>Membuka teleprompter, atau memuat file lirik</td></tr>
           </tbody>
         </table>
@@ -140,13 +141,14 @@
         <b class="ui">MIDI Learn: seksi berikutnya</b> dan <b class="ui">MIDI Learn: seksi sebelumnya</b> semuanya ditawarkan di sana. Lihat <a href="/docs/id/control.html">MIDI
         &amp; kontrol</a>.</p>
       <h3>Level backing dan routing</h3>
-      <p>Di bawah tombol-tombol tersebut, sebuah slider mengatur level backing dalam dB dari
-        −60 hingga +12, menampilkan <b class="ui">-inf</b> di titik terbawah. Chip di
-        sebelahnya adalah routing-nya: <b class="ui">LANGSUNG</b> mengirim trek keluar setelah
-        master FX chain (<b class="ui">Direct out (setelah FX master)</b>), yang biasanya kamu
-        inginkan saat live — reverb dan limiter-mu tidak pernah menyentuh backing.
-        <b class="ui">PRE FX</b> (<b class="ui">Lewat FX master</b>) justru melewatkan trek
-        lewat master chain.</p>
+      <p>Di bawah tombol-tombol itu, sebuah fader konsol yang direbahkan mengatur level backing dalam
+        dB dari −60 sampai +12 dan menunjukkan <b class="ui">-inf</b> di paling bawah; ketuk dua kali
+        mengembalikannya ke 0 dB. Fader dan level ini sama dengan jalur <b class="ui">Backing</b> di
+        tab <a href="/docs/id/mix.html">Mix</a>. Chip di sebelahnya adalah peruteannya:
+        <b class="ui">LANGSUNG</b> mengeluarkan trek setelah rantai efek master
+        (<b class="ui">Direct out (setelah FX master)</b>), dan itulah yang kamu mau di panggung —
+        reverb dan limiter-mu tidak pernah menyentuh backing. <b class="ui">PRE FX</b>
+        (<b class="ui">Lewat FX master</b>) justru melewatkan trek melalui rantai master.</p>
       <h3>Timeline</h3>
       <p>Bentuk gelombang di bawah kartu adalah tampilan mirror-bar dengan bagian yang sudah
         diputar menyala dan kursor pada playhead. <strong>Ketuk di mana pun untuk seek.</strong>
@@ -162,76 +164,109 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlist</h2>
-      <p>Unit dasar sebuah set NAMper adalah <strong>section</strong>: sebuah nama, backing
-        track opsional, dan daftar step yang berjalan sesuai jam birama. Mengimpor file membuat
-        satu section per lagu, jadi pada praktiknya satu section sama dengan satu lagu — tapi
-        section tanpa audio sama sekali juga tetap sah, dan begitulah caramu membangun lagu dari
-        loop dan pad.</p>
-      <p>Header-nya memuat chip <b class="ui">PRESET</b>, toggle <b class="ui">AUTO NEXT</b>, dan
-        <b class="ui">Impor trek</b>; setiap file yang diimpor menjadi section tersendiri. Dengan <b class="ui">AUTO NEXT</b> aktif, set berjalan
-        maju dengan sendirinya begitu setiap section selesai.</p>
-      <p>Sebelum kamu punya apa pun, kartu ini menampilkan <b class="ui">Tambahkan file audio, atau seksi loop/sample — seksi adalah minus one opsional plus rangkaian loop dan sample yang mengikuti hitungan bar.</b></p>
-      <p>Setiap baris menampilkan tombol putar (<b class="ui">Putar seksi</b>), nama, badge
-        kecil — <b class="ui">minus one</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>,
-        dan <b class="ui">bar N</b> yang hidup selagi berjalan — serta tombol edit
-        (<b class="ui">Edit seksi</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>Setlist dan lagu</h2>
+      <p><strong>Setlist</strong> adalah daftar lagu; satu di antaranya berstatus
+        <b class="ui">LIVE</b> pada satu waktu, dan setlist yang live memiliki rel preset dan MIDI:
+        program change <em>n</em> memainkan lagu <em>n</em>. Sebuah <strong>lagu</strong> adalah
+        nama, daftar berurutan tentang apa yang dibawanya, dan sebuah trek backing
+        <em>opsional</em> beserta penanda dan liriknya. Lagu tanpa audio sama sahnya: ia adalah suara
+        yang kamu pakai memainkannya, dipanggil dari daftar yang sama.</p>
+      <p>Kepala kartu memuat tombol <b class="ui">SETLIST</b> — membuat, memilih, mengganti nama,
+        membagikan, dan menghapus set —, sakelar <b class="ui">AUTO NEXT</b>, dan
+        <b class="ui">+</b> yang mengimpor berkas audio (satu lagu per berkas), menambahkan
+        <b class="ui">Lagu tanpa minus one</b>, atau menyusun lagu langsung
+        <b class="ui">Dari preset rig</b>. Dengan <b class="ui">AUTO NEXT</b> menyala, set berjalan
+        sendiri begitu tiap lagu selesai.</p>
+      <p>Tiap baris menampilkan tombol putar (<b class="ui">Putar lagu</b>), nama, di bawahnya apa
+        yang dibawa lagu itu, dan tombol edit (<b class="ui">Edit lagu</b>). Daftarnya selalu dalam
+        mode edit: seret baris untuk menyusun ulang set, geser untuk menghapusnya.</p>
       <div class="note tip">
-        <div class="t">Mengetuk baris meng-arm, bukan langsung memulai</div>
-        <p>Ketuk sebuah section dan NAMper memuat backing track-nya, menerapkan tempo dan nada
-          dasar lagu itu ke rig, dan mengarahkan transport padanya — <strong>tanpa memutar apa
-          pun</strong>. Siapkan di antara lagu, bicara pada penonton, lalu tekan
-          <b class="ui">Putar</b> saat kamu siap.</p>
+        <div class="t">Mengetuk baris menyiapkan, bukan memulai</div>
+        <p>Ketuk sebuah lagu dan NAMper menerapkan semua yang dibawanya, memuat trek backing-nya,
+          mengambil tempo dan nadanya, dan mengarahkan transport ke sana — <strong>tanpa memutar
+          apa pun</strong>. Bersiaplah di antara nomor, ngobrol dengan penonton, lalu tekan
+          <b class="ui">Putar</b> ketika kamu siap.</p>
       </div>
-      <p>Daftarnya selalu dalam mode edit, jadi drag handle-nya selalu terlihat: seret baris
-        untuk mengubah urutan set, geser baris untuk menghapusnya. Menu konteks baris memuat
-        <b class="ui">Muat lirik dari file…</b> — lihat <a href="#lyrics">lirik</a>.</p>
+      <p>Selama sebuah set live, tab <a href="/docs/id/rig.html">Rig</a> membawanya di samping
+        rantai, jadi berganti suara tidak perlu berganti tab: rel preset berubah menjadi panel set —
+        penjelajah lagu dan satu kartu untuk tiap suara yang dibawa lagu <em>ini</em>, lengkap dengan
+        scene. Lihat <a href="/docs/id/rig.html#presets">dua wajah rel</a>.</p>
+      <div class="note">
+        <div class="t">Set demo</div>
+        <p>Peluncuran pertama tanpa setlist membawa satu: lagu <em>NAMper</em> dua kali — mix penuh
+          dan versi tanpa gitar. Ia contoh yang dikerjakan untuk seluruh halaman ini. Lini masanya
+          memuat penanda yang berganti antara rig pabrik <b class="ui">One-Man Riot</b> (bait,
+          pra-refrain, refrain, dan bridge bersih sebagai scene, plus amp bersih kedua di sebuah
+          cabang) dan <b class="ui">Friday Night Lead</b> (scene solo dan breakdown, dengan cabang
+          sub-oktaf); liriknya dipatok ke bagiannya; dan tiap lagu juga memanggil preset looper berisi
+          empat trek 8 birama serta kit <b class="ui">FX &amp; Tekstur</b>. Ini set biasa: ganti
+          namanya, tambahkan lagumu, atau hapus — kalau dihapus, ia tidak kembali.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Membangun section</h2>
-      <p>Tombol edit membuka editor section. Di sana ada kolom <b class="ui">Nama seksi</b>, pemilih backing yang entri pertamanya <b class="ui">Tidak ada (hanya loop/sample)</b> dan menampilkan <b class="ui">Tanpa minus one</b> saat belum ada yang
-        dipilih, dan — ketika tidak ada backing — stepper <b class="ui">N bars</b> dari 1
-        hingga 128 yang menentukan berapa lama section berjalan.</p>
-      <p>Lalu ada daftar <b class="ui">LANGKAH</b>. <b class="ui">Tambah langkah</b> menawarkan
-        <b class="ui">Trek loop</b> → <b class="ui">Start loop 1…4</b> atau
-        <b class="ui">Stop loop 1…4</b>, dan <b class="ui">Pad sampler</b> →
-        <b class="ui">Pad 1…16</b>. Baris step menampilkan <b class="ui">Start loop N</b>,
-        <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b> atau <b class="ui">Stop pad
-        N</b>, masing-masing dengan stepper <b class="ui">bar N</b> sendiri. Hint di bawah
-        daftar menyebutkannya secara persis: <b class="ui">Langkah dipicu oleh clock bar: menjalankan/menghentikan trek loop dan memicu pad pada bar yang kamu tentukan.</b></p>
-      <p>Begitulah cara NAMper memainkan lagu tanpa backing track sama sekali. Rekam bagianmu ke
-        dalam <a href="/docs/id/looper.html">looper</a>, muat hit-mu ke
-        <a href="/docs/id/sampler.html">pad</a>, lalu tulis aransemennya dalam birama: drum
-        masuk di bar 1, bass di bar 5, tembakan pad di bar 13, semuanya keluar di bar 33. Ini
-        berjalan pada jam birama, jadi tetap terkunci pada tempomu, bukan pada file yang sudah
-        di-render.</p>
+      <h2 id="sections"><span class="n">06.4</span>Apa yang dibawa sebuah lagu</h2>
+      <p>Tombol edit membuka editor lagu: kolom <b class="ui">Nama lagu</b>, pemilih backing yang
+        entri pertamanya <b class="ui">Lagu tanpa minus one</b>, baris <a href="#lyrics">lirik</a>,
+        dan daftar apa saja yang dipanggil lagu itu.</p>
+      <p><b class="ui">Tambahkan preset, looper, kit…</b> menaruh satu entri di daftar itu:</p>
+      <table>
+        <thead><tr><th>Entri</th><th>Apa yang dipanggil</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Preset rig</b></td><td>Sebuah preset dengan
+            <b class="ui">SCENE</b>-nya — <b class="ui">A</b>–<b class="ui">D</b>, atau
+            <b class="ui">-</b> untuk preset apa adanya saat disimpan. Preset yang sama boleh muncul
+            dua kali dengan scene berbeda.</td></tr>
+          <tr><td><b class="ui">Preset looper</b></td><td>Panjang trek, perutean, dan pan untuk
+            <a href="/docs/id/looper.html">looper</a> — audio rekamannya kamu sendiri yang
+            memainkan.</td></tr>
+          <tr><td><b class="ui">Kit sampler</b></td><td>Sebuah kit untuk enam belas
+            <a href="/docs/id/sampler.html">pad</a>.</td></tr>
+        </tbody>
+      </table>
+      <p>Daftarnya diterapkan berurutan ketika lagu disiapkan, jadi preset rig <em>terakhir</em> di
+        situlah suara yang kamu pakai memulai lagu; yang di atasnya ada untuk dijangkau
+        <a href="#markers">penanda</a>. Baris bisa dinaikkan, diturunkan, dan dihapus dari menunya
+        sendiri.</p>
+      <h3>Memilih preset</h3>
+      <p>Pemilih preset rig menampilkan nomor yang sama seperti rel — <b class="ui">0</b> …
+        <b class="ui">127</b> — dengan sampul dan kolom pencarian di atas daftar yang menyaring
+        berdasarkan nama, nomor, dan tag. Ia juga <strong>memonitor</strong> sementara kamu
+        menelusuri: ketuk sebuah baris dan rig benar-benar memuatnya, jadi kamu memilih suara dengan
+        telinga. Tutup pemilih tanpa memilih dan rig kembali ke keadaan sebelumnya.</p>
+      <p>Arah sebaliknya juga bisa: menu baris sebuah preset di rel tab Rig punya
+        <b class="ui">Tambahkan ke set…</b> — pilih setlist, lalu salah satu lagunya atau
+        <b class="ui">Lagu baru</b>, dan preset itu ditambahkan ke daftar lagu tersebut.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marker preset</h2>
-      <p>Marker preset adalah perubahan rig yang dituliskan ke timeline lagu. Clean untuk verse,
-        crunch untuk chorus, lead untuk solo — dipasang sekali, lalu hands-free setiap kali kamu
-        memainkannya.</p>
+      <h2 id="markers"><span class="n">06.5</span>Penanda</h2>
+      <p>Penanda adalah satu momen di lini masa lagu yang memanggil salah satu entri milik lagu itu
+        sendiri. Bait bersih, refrain crunch, lead untuk solo — dipasang sekali, lalu bebas tangan
+        setiap kali kamu memainkannya.</p>
       <ol style="--nc:var(--drive)">
-        <li>Arm trek dan taruh playhead di tempat perpindahan itu seharusnya — ketuk timeline
-          untuk seek, atau biarkan berjalan.</li>
-        <li>Ketuk tombol pin (<b class="ui">Tambah penanda preset</b>).</li>
-        <li>Pilih rig dari menu berisi semua preset, tiap baris menampilkan
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. Marker akan ditaruh pada posisi
-          playhead saat ini.</li>
+        <li>Siapkan lagunya dan letakkan posisi pemutaran di tempat pergantian seharusnya terjadi —
+          ketuk lini masa untuk melompat, atau biarkan berjalan.</li>
+        <li>Ketuk tombol pin (<b class="ui">Tambah penanda</b>).</li>
+        <li>Lembar penanda mendaftar apa saja yang dibawa lagu —
+          <b class="ui">Bagian lagu mana yang dipanggil pada momen ini.</b> — dan kamu mencentang
+          yang harus dipicu pada momen itu. Satu penanda boleh membawa lebih dari satu: preset rig
+          dan kit sekaligus, misalnya.</li>
       </ol>
-      <p>Melewati marker saat playback memicu preset itu persis seperti jika MIDI program change
-        datang dari sebuah pedalboard. Marker digambar sebagai titik kuning keemasan pada
-        timeline dengan area sentuh yang lega, dan di bawah bentuk gelombang, baris chip
-        mendaftarnya sebagai <b class="ui">m:ss  &lt;preset name&gt;</b>. Tekan lama sebuah chip
-        untuk <b class="ui">Hapus penanda</b>.</p>
+      <p>Memilih <b class="ui">SCENE</b> pada baris sebuah penanda yang belum dimiliki lagu akan
+        menambahkannya ke lagu sebagai entri tersendiri, sehingga daftarnya tetap menjadi kebenaran
+        utuh tentang apa yang bisa dilakukan lagu itu.</p>
+      <p>Melewati sebuah penanda saat pemutaran menerapkannya persis seperti jika program change MIDI
+        datang dari pedalboard. Penanda digambar sebagai titik kuning-kecokelatan di lini masa dengan
+        area sentuh yang lapang, dan di bawah gelombang sederet chip mendaftarnya sebagai
+        <b class="ui">m:ss  &lt;nama&gt;</b>. Ketuk chip untuk membuka lembarnya, tahan untuk
+        <b class="ui">Hapus penanda</b>.</p>
       <div class="note">
-        <div class="t">Snapping</div>
-        <p>Marker yang baru saja kamu buat berada persis di playhead mentah, di mana pun
-          jarimu meninggalkannya. <strong>Seret marker dan ia akan snap ke grid birama</strong>
-          — jadi cara merapikan penempatan yang kasar adalah dengan menggesernya sedikit. Tanpa
-          tempo yang terdeteksi tidak ada grid, dan penempatan tetap bebas.</p>
+        <div class="t">Pengancingan ke kisi</div>
+        <p>Penanda yang baru dibuat berada di posisi mentah, tepat di tempat jarimu meninggalkannya.
+          <strong>Seret sebuah penanda dan ia mengancing ke kisi birama</strong> — jadi cara
+          merapikan penempatan kasar adalah menyenggolnya. Tanpa tempo yang terdeteksi tidak ada
+          kisi, dan penempatannya bebas.</p>
       </div>
     </section>
 
@@ -406,7 +441,7 @@
     <nav class="pager">
       <a href="/docs/id/sampler.html">← 05 · Pad sampler</a>
       <span class="sp"></span>
-      <a href="/docs/id/control.html">07 · MIDI &amp; kontrol →</a>
+      <a href="/docs/id/mix.html">07 · Mix &amp; master →</a>
     </nav>
   </main>
 </div>

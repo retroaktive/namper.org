@@ -56,6 +56,7 @@
       <li><a href="/docs/tr/looper.html">Looper</a></li>
       <li><a href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
       <li><a class="on" href="/docs/tr/perform.html">Perform &amp; şarkı sözü</a></li>
+      <li><a href="/docs/tr/mix.html">Miks ve master</a></li>
       <li><a href="/docs/tr/control.html">MIDI &amp; kontrol</a></li>
       <li><a href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; ŞARKI SÖZÜ</div>
     <h1>Seti çalmak.</h1>
-    <p class="lede"><b class="ui a">Perform</b> sekmesi, sahnede baktığın sekmedir: altyapılar,
+    <p class="lede"><b class="ui a">Sahne</b> sekmesi, sahnede baktığın sekmedir: altyapılar,
       bölümlerden oluşan bir setlist, kendiliğinden tetiklenen preset değişimleri, sözlerin için
       tam ekran bir teleprompter, ve tüm geceyi stem'ler halinde yakalayan bir kaydedici.</p>
 
@@ -73,9 +74,9 @@
       <ul>
         <li><a href="#tracks">Altyapılar</a></li>
         <li><a href="#player">Player kartı</a></li>
-        <li><a href="#setlist">Setlist</a></li>
-        <li><a href="#sections">Bir bölüm oluşturmak</a></li>
-        <li><a href="#markers">Preset marker'ları</a></li>
+        <li><a href="#setlist">Setlistler ve şarkılar</a></li>
+        <li><a href="#sections">Bir şarkı neyi getirir</a></li>
+        <li><a href="#markers">İşaretçiler</a></li>
         <li><a href="#lyrics">Şarkı sözü ve teleprompter</a></li>
         <li><a href="#presets">Perform preset'leri</a></li>
         <li><a href="#recording">Kayıt</a></li>
@@ -129,7 +130,7 @@
             <tr><td><b class="ui">Çal</b></td><td>Altyapıyı çalar ve duraklatır</td></tr>
             <tr><td><b class="ui">Durdur</b></td><td>Durdurur ve başa döner</td></tr>
             <tr><td><b class="ui">Kaydet</b></td><td>Performans kaydediciyi başlatır ve durdurur (<a href="#recording">aşağıda</a>)</td></tr>
-            <tr><td><b class="ui">Preset işareti ekle</b></td><td>Çalma başlığına bir rig-preset değişimi bırakır</td></tr>
+            <tr><td><b class="ui">İşaret ekle</b></td><td>Oynatma konumuna bir değişim bırakır</td></tr>
             <tr><td><b class="ui">Şarkı sözü</b></td><td>Teleprompter'ı açar, ya da bir şarkı sözü dosyası yükler</td></tr>
           </tbody>
         </table>
@@ -139,11 +140,14 @@
         <b class="ui">MIDI Learn: sonraki bölüm</b> ve <b class="ui">MIDI Learn: önceki bölüm</b> hepsi orada sunulur. Bkz. <a href="/docs/tr/control.html">MIDI &amp;
         kontrol</a>.</p>
       <h3>Altyapı seviyesi ve yönlendirme</h3>
-      <p>Düğmelerin altında bir kaydırıcı, altyapı seviyesini dB cinsinden −60 ile +12 arasında
-        ayarlar; en altta <b class="ui">-inf</b> yazar. Yanındaki çip yönlendirmedir:
-        <b class="ui">DOĞRUDAN</b> parçayı master FX zincirinden sonra çıkışa gönderir
-        (<b class="ui">Direct out (master FX’ten sonra)</b>), canlıda istediğin şey de budur —
-        reverb'in ve limiter'ın altyapıya hiç dokunmaz. <b class="ui">FX ÖNCESİ</b> (<b class="ui">Master FX üzerinden</b>) ise parçayı bunun yerine master zincirden geçirir.</p>
+      <p>Düğmelerin altında yan yatmış bir konsol faderi altyapı seviyesini −60 ile +12 dB arasında
+        ayarlar, en altta <b class="ui">-inf</b> yazar; çift dokunuş onu 0 dB'ye döndürür. Bu fader
+        ve bu seviye, <b class="ui">Altyapı</b> şeridininkiyle aynıdır —
+        <a href="/docs/tr/mix.html">Mix</a> sekmesindeki şeritle. Yanındaki etiket yönlendirmedir:
+        <b class="ui">DOĞRUDAN</b> parçayı master FX zincirinden sonra dışarı verir
+        (<b class="ui">Direct out (master FX’ten sonra)</b>) ki sahnede istediğin budur — reverb'ün ve
+        limiter'ın altyapıya hiç dokunmaz. <b class="ui">FX ÖNCESİ</b>
+        (<b class="ui">Master FX üzerinden</b>) ise parçayı master zincirinden geçirir.</p>
       <h3>Zaman çizelgesi</h3>
       <p>Kartın altındaki dalga formu, çalınan kısmı aydınlık gösteren ve çalma başlığında bir
         imleç bulunan bir ayna-çubuk görünümüdür. <strong>Sarmak için herhangi bir yerine
@@ -159,75 +163,103 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlist</h2>
-      <p>Bir NAMper setinin birimi bir <strong>bölüm</strong>dür: bir isim, isteğe bağlı bir
-        altyapı, ve ölçü saatine bağlı bir adım listesi. Bir dosyayı içeri aktarmak şarkı başına
-        bir bölüm oluşturur, yani pratikte bir bölüm bir şarkıdır — ama hiç sesi olmayan bir bölüm
-        de tamamen geçerlidir, ve bir şarkıyı loop'lardan ve pad'lerden inşa etmenin yolu budur.</p>
-      <p>Başlık; <b class="ui">PRESET’LER</b> çipini, bir <b class="ui">OTO GEÇİŞ</b> anahtarını ve
-        <b class="ui">Parça içe aktar</b>'ı taşır; içe aktarılan her dosya kendi başına bir bölüm
-        olur. <b class="ui">OTO GEÇİŞ</b> açıkken, her bölüm
-        bittikçe set kendini ileri taşır.</p>
-      <p>Henüz hiçbir şeyin yokken kart şunu yazar: <b class="ui">Ses dosyaları ekle ya da bir loop/sample bölümü — bölüm, isteğe bağlı bir altyapı ve ölçüye kilitli loop ile sample dizisidir.</b></p>
-      <p>Her satır; bir çal düğmesi (<b class="ui">Bölümü çal</b>), ismi, küçük rozetleri —
-        <b class="ui">altyapı</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, ve
-        çalışırken canlı bir <b class="ui">bar N</b> — ve bir düzenle düğmesi (<b class="ui">Bölümü düzenle</b>) gösterir.</p>
+      <h2 id="setlist"><span class="n">06.3</span>Setlistler ve şarkılar</h2>
+      <p><strong>Setlist</strong> bir şarkı listesidir; her seferinde biri <b class="ui">CANLI</b>
+        olur ve sahnedeki setlist preset şeridine ve MIDI'ye sahiptir: program change <em>n</em>,
+        <em>n</em> numaralı şarkıyı çalar. <strong>Şarkı</strong> ise bir ad, getirdiklerinin sıralı
+        listesi ve işaretçileriyle ve sözleriyle birlikte <em>isteğe bağlı</em> bir altyapı
+        parçasıdır. Hiç sesi olmayan bir şarkı da geçerlidir: o, aynı listeden çağrılan, onu
+        çaldığın sestir.</p>
+      <p>Kartın başlığında <b class="ui">SETLIST'LER</b> düğmesi — set oluştur, seç, yeniden adlandır,
+        paylaş ve sil —, bir <b class="ui">OTO GEÇİŞ</b> anahtarı ve ses dosyalarını içe aktaran (her
+        dosya bir şarkı), <b class="ui">Altyapısız şarkı</b> ekleyen ya da doğrudan
+        <b class="ui">Rig hazır ayarından</b> ile şarkı kuran bir <b class="ui">+</b> var.
+        <b class="ui">OTO GEÇİŞ</b> açıkken şarkılar bittikçe set kendi kendine ilerler.</p>
+      <p>Her satırda bir çal düğmesi (<b class="ui">Şarkıyı çal</b>), ad, altında şarkının getirdikleri
+        ve bir düzenle düğmesi (<b class="ui">Şarkıyı düzenle</b>) bulunur. Liste her zaman düzenleme
+        kipindedir: sırayı değiştirmek için satırı sürükle, silmek için kaydır.</p>
       <div class="note tip">
-        <div class="t">Bir satıra dokunmak hazırlar, başlatmaz</div>
-        <p>Bir bölüme dokun, NAMper onun altyapısını yükler, o şarkının tempo ve tonunu rig'e
-          uygular, ve transportu ona yöneltir — <strong>hiçbir şey çalmadan</strong>. Şarkılar
-          arasında hazırlan, salona birkaç söz söyle, sonra hazır olduğunda <b class="ui">Çal</b>'e
-          bas.</p>
+        <div class="t">Satıra dokunmak hazırlar, başlatmaz</div>
+        <p>Bir şarkıya dokun; NAMper getirdiği her şeyi uygular, altyapısını yükler, temposunu ve
+          tonunu alır ve transport'u ona yöneltir — <strong>hiçbir şey çalmadan</strong>. Parçalar
+          arasında hazırlan, salona iki laf et, hazır olduğunda <b class="ui">Çal</b>'e bas.</p>
       </div>
-      <p>Liste her zaman düzenleme modundadır, yani sürükleme tutamaçları sürekli görünürdür: seti
-        yeniden sıralamak için bir satırı sürükle, silmek için kaydır. Satırın bağlam menüsü
-        <b class="ui">Şarkı sözünü dosyadan yükle…</b>'yi barındırır — bkz. <a href="#lyrics">şarkı
-        sözü</a>.</p>
+      <p>Bir set sahnedeyken <a href="/docs/tr/rig.html">Rig</a> sekmesi onu zincirin yanında taşır,
+        yani ses değiştirmek için sekme değiştirmen gerekmez: preset şeridi set paneline dönüşür —
+        şarkı adımlayıcısı ve <em>bu</em> şarkının getirdiği her ses için bir kart, sahneler dâhil.
+        Bkz. <a href="/docs/tr/rig.html#presets">şeridin iki yüzü</a>.</p>
+      <div class="note">
+        <div class="t">Demo seti</div>
+        <p>Setlist yokken yapılan ilk açılış bir tane getirir: <em>NAMper</em> şarkısı iki kez — tam
+          miks ve gitarsız versiyon. Bu sayfanın tamamının işlenmiş bir örneğidir. Zaman çizgisinde,
+          fabrika rig'leri <b class="ui">One-Man Riot</b> (kıta, ön nakarat, nakarat ve sahne olarak
+          temiz bir köprü, bir dalda ikinci bir temiz amfi) ile <b class="ui">Friday Night Lead</b>
+          (solo ve breakdown sahneleri, bir alt oktav dalı) arasında geçiş yapan işaretçiler var;
+          sözler bölümlerine sabitlenmiş; ve her şarkı ayrıca dört adet 8 ölçülük kanaldan oluşan bir
+          looper preset'i ile <b class="ui">FX ve dokular</b> kitini çağırır. Sıradan bir settir:
+          adını değiştir, kendi şarkılarını ekle ya da sil — silersen geri gelmez.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Bir bölüm oluşturmak</h2>
-      <p>Düzenle düğmesi bölüm editörünü açar. Bir <b class="ui">Bölüm adı</b> alanı, ilk
-        girdisi <b class="ui">Yok (yalnızca loop/sample)</b> olan ve hiçbir şey seçilmediğinde
-        <b class="ui">Altyapı yok</b> yazan bir altyapı seçici, ve — altyapı yokken —
-        bölümün ne kadar süreceğini belirleyen 1'den 128'e bir <b class="ui">N bars</b>
-        ayarlayıcısı içerir.</p>
-      <p>Ardından <b class="ui">ADIMLAR</b> listesi gelir. <b class="ui">Adım ekle</b>;
-        <b class="ui">Loop kanalı</b> → <b class="ui">Start loop 1…4</b> ya da <b class="ui">Stop
-        loop 1…4</b>, ve <b class="ui">Sampler pad’i</b> → <b class="ui">Pad 1…16</b> sunar. Adım
-        satırları <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play
-        pad N</b> ya da <b class="ui">Stop pad N</b> yazar, her biri kendi <b class="ui">bar N</b>
-        ayarlayıcısıyla. Listenin altındaki ipucu bunu tam olarak söyler: <b class="ui">Adımlar ölçü saatinde tetiklenir: belirlediğin ölçülerde loop kanallarını başlatır/durdurur ve pad’leri tetikler.</b></p>
-      <p>NAMper bir şarkıyı hiç altyapı olmadan böyle çalar. Parçalarını
-        <a href="/docs/tr/looper.html">looper'a</a> kaydet, vuruşlarını
-        <a href="/docs/tr/sampler.html">pad'lere</a> yükle, sonra düzenlemeyi ölçülerle yaz: davul
-        1. ölçüde girer, bas 5. ölçüde, pad vuruşu 13. ölçüde, her şey 33. ölçüde çıkar. Ölçü
-        saati üzerinde çalışır, yani render edilmiş bir dosya yerine temponla senkron kalır.</p>
+      <h2 id="sections"><span class="n">06.4</span>Bir şarkı neyi getirir</h2>
+      <p>Düzenle düğmesi şarkı düzenleyicisini açar: bir <b class="ui">Şarkı adı</b> alanı, ilk
+        girdisi <b class="ui">Altyapısız şarkı</b> olan bir altyapı seçici,
+        <a href="#lyrics">söz</a> satırı ve şarkının çağırdıklarının listesi.</p>
+      <p><b class="ui">Preset, looper, kit ekle…</b> bu listeye bir girdi ekler:</p>
+      <table>
+        <thead><tr><th>Girdi</th><th>Neyi çağırır</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Rig hazır ayarı</b></td><td>Kendi <b class="ui">SAHNE</b> bilgisiyle bir
+            preset — <b class="ui">A</b>–<b class="ui">D</b> ya da kaydedildiği hâliyle preset için
+            <b class="ui">-</b>. Aynı preset iki farklı sahneyle iki kez yer alabilir.</td></tr>
+          <tr><td><b class="ui">Looper hazır ayarı</b></td><td>
+            <a href="/docs/tr/looper.html">Looper</a> için kanal uzunlukları, yönlendirme ve panlar —
+            kaydedilmiş sesi sen çalarsın.</td></tr>
+          <tr><td><b class="ui">Sampler kiti</b></td><td>On altı
+            <a href="/docs/tr/sampler.html">pad</a> için bir kit.</td></tr>
+        </tbody>
+      </table>
+      <p>Şarkı hazırlanırken liste sırayla uygulanır, yani listedeki <em>son</em> rig preset'i şarkıya
+        başladığın sestir; üstündekiler <a href="#markers">işaretçilerin</a> ulaşması içindir.
+        Satırlar kendi menülerinden yukarı aşağı taşınır ve silinir.</p>
+      <h3>Preset seçmek</h3>
+      <p>Rig preset seçici, şeritteki numaraların aynısını gösterir — <b class="ui">0</b> …
+        <b class="ui">127</b> — kapak resmiyle ve listenin üstünde ada, numaraya ve etikete göre
+        süzen bir arama alanıyla. Ve gezerken <strong>dinletir</strong>: bir satıra dokun, rig onu
+        gerçekten yükler, yani sesi kulağınla seçersin. Seçim yapmadan kapatırsan rig eski hâline
+        döner.</p>
+      <p>Ters yön de çalışır: Rig sekmesindeki şeritte bir preset'in satır menüsünde
+        <b class="ui">Sete ekle…</b> vardır — bir setlist seç, sonra onun şarkılarından birini ya
+        da <b class="ui">Yeni şarkı</b>'u, preset o şarkının listesinin sonuna eklenir.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Preset marker'ları</h2>
-      <p>Bir preset marker, şarkının zaman çizelgesine yazılmış bir rig değişimidir. Temiz bir
-        dize, kalın bir nakarat, solo için lead — bir kez yerleştirilir, sonra her çaldığında
-        elini sürmene gerek kalmaz.</p>
+      <h2 id="markers"><span class="n">06.5</span>İşaretçiler</h2>
+      <p>İşaretçi, şarkının zaman çizgisinde onun kendi girdilerinden birini getiren bir andır. Temiz
+        kıta, crunch nakarat, solo için lead — bir kez konur, sonra her çalışında eller serbest.</p>
       <ol style="--nc:var(--drive)">
-        <li>Parçayı hazırla ve çalma başlığını geçişin ait olduğu yere koy — sarmak için zaman
-          çizelgesine dokun, ya da çalmasına izin ver.</li>
-        <li>İğne düğmesine dokun (<b class="ui">Preset işareti ekle</b>).</li>
-        <li>Her satırı <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b> yazan preset menüsünden
-          bir rig seç. Marker, o anki çalma başlığı konumuna düşer.</li>
+        <li>Şarkıyı hazırla ve oynatma konumunu değişimin olması gereken yere getir — zaman
+          çizgisine dokunarak atla ya da bırak çalsın.</li>
+        <li>Raptiye düğmesine dokun (<b class="ui">İşaret ekle</b>).</li>
+        <li>İşaretçi kartı şarkının getirdiklerini sıralar —
+          <b class="ui">Bu anın şarkının hangi parçalarını çağırdığı.</b> — sen de o anda neyin
+          tetiklenmesi gerektiğini işaretlersin. Bir işaretçi birden fazlasını getirebilir: örneğin
+          bir rig preset'i ile bir kit birlikte.</li>
       </ol>
-      <p>Çalma sırasında bir marker'ı geçmek, o preset'i tıpkı bir pedalboard'dan gelen bir MIDI
-        program change gibi tetikler. Marker'lar, zaman çizelgesinde geniş bir dokunma alanına
-        sahip kehribar noktalar olarak çizilir, ve dalga formunun altında bir çip sırası onları
-        <b class="ui">m:ss  &lt;preset name&gt;</b> olarak listeler. Bir çipe uzun basmak
-        <b class="ui">İşareti sil</b>'ı verir.</p>
+      <p>Bir işaretçinin satırında şarkının henüz taşımadığı bir <b class="ui">SAHNE</b> seçmek, onu
+        şarkıya kendi girdisi olarak ekler; böylece liste, şarkının neler yapabildiğine dair tüm
+        gerçeği taşımaya devam eder.</p>
+      <p>Çalarken bir işaretçinin üzerinden geçmek, sanki pedalboarddan bir MIDI program change
+        gelmiş gibi onu uygular. İşaretçiler zaman çizgisinde geniş dokunma alanlı kehribar noktalar
+        olarak çizilir ve dalga biçiminin altındaki etiket sırası onları
+        <b class="ui">m:ss  &lt;ad&gt;</b> olarak listeler. Kartını açmak için etikete dokun,
+        <b class="ui">İşareti sil</b> için basılı tut.</p>
       <div class="note">
-        <div class="t">Hizalanma</div>
-        <p>Az önce oluşturduğun bir marker, parmağının bıraktığı ham çalma başlığı konumunda
-          durur. <strong>Bir marker'ı sürüklersen ölçü ızgarasına hizalanır</strong> — yani kaba
-          bir yerleşimi sıkılaştırmanın yolu onu biraz oynatmaktır. Algılanmış bir tempo yoksa
-          ızgara da yoktur, ve yerleşim serbest kalır.</p>
+        <div class="t">Izgaraya oturma</div>
+        <p>Yeni oluşturduğun işaretçi, parmağının bıraktığı ham konumda durur. <strong>Bir işaretçiyi
+          sürüklersen ölçü ızgarasına oturur</strong> — yani kaba bir yerleşimi düzeltmenin yolu onu
+          biraz itmektir. Tempo algılanmadıysa ızgara da yoktur, yerleşim serbest kalır.</p>
       </div>
     </section>
 
@@ -395,7 +427,7 @@
     <nav class="pager">
       <a href="/docs/tr/sampler.html">← 05 · Sampler pad'leri</a>
       <span class="sp"></span>
-      <a href="/docs/tr/control.html">07 · MIDI &amp; kontrol →</a>
+      <a href="/docs/tr/mix.html">07 · Miks ve master →</a>
     </nav>
   </main>
 </div>

@@ -56,6 +56,7 @@
       <li><a href="/docs/es/looper.html">Looper</a></li>
       <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
       <li><a href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a href="/docs/es/mix.html">Mezcla y máster</a></li>
       <li><a href="/docs/es/control.html">MIDI y control</a></li>
       <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--amp)">02 · RIG Y CADENA DE SEÑAL</div>
     <h1>Construyendo el sonido.</h1>
-    <p class="lede">La pestaña <b class="ui a">Rig</b> es donde vive tu cadena de señal: bloques que
+    <p class="lede">La pestaña <b class="ui a">Equipo</b> es donde vive tu cadena de señal: bloques que
       añades y arrastras, un perfil de ampli NAM en el corazón de todo, una respuesta de impulso de
       pantalla después de él, y una sección master en la que todo se suma. Esta página lo cubre todo
       — hasta cuatro rigs, cuatro cadenas paralelas dentro de cada uno, y los presets que recuperan
@@ -427,6 +428,35 @@ no lo necesitan</b>. Muchas capturas de
           footswitch según el orden en que guardas los presets, no al revés.</p>
       </div>
 
+      <h3>La tira tiene dos caras</h3>
+      <p>La tarjeta <b class="ui">PRESETS</b> — la tira lateral de la pestaña Rig en una tableta, la
+        franja bajo la cadena en el teléfono — muestra una de dos cosas, y cuál depende de si hay
+        una lista de temas <b class="ui">EN VIVO</b>:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Sin lista en directo</b> — la biblioteca: cada preset en su slot de MIDI PC, con su
+          portada, un campo de búsqueda en cuanto pasas de ocho y un menú de fila con
+          <b class="ui">Renombrar</b>, <b class="ui">Actualizar con el rig actual</b>,
+          <b class="ui">Asignar a un set…</b>, <b class="ui">Compartir</b> y <b class="ui">Eliminar</b>. El
+          program change <em>n</em> aplica el preset <em>n</em>.</li>
+        <li><b>Con una lista en directo</b> — el set: su nombre, un paso a paso de temas
+          (<b class="ui">‹</b> nombre <b class="ui">›</b>, y el propio nombre despliega la lista
+          entera para saltar) y una tarjeta por cada preset de rig <em>que trae el tema actual</em>
+          — no los 128 slots, sino los cuatro o cinco sonidos que ese tema necesita de verdad. Ahora
+          el program change <em>n</em> reproduce el tema <em>n</em>.</li>
+      </ul>
+      <p>En el escenario importa la segunda cara: el tema se elige una vez, y entre estribillos lo
+        que buscas son los sonidos de ese tema. Cada tarjeta lleva el nombre del preset y su fila de
+        escenas — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b> <b class="ui">C</b>
+        <b class="ui">D</b> — con la escena propia de la entrada rodeada y toda la tarjeta encendida
+        mientras es la que suena.</p>
+      <p><strong>Las letras solo muestran, no asignan.</strong> Un toque en cualquier punto de la
+        tarjeta, letras incluidas, trae esa entrada tal y como la tiene el tema. Qué escena usa una
+        entrada forma parte del tema, así que se cambia en el editor de temas de la pestaña
+        <a href="/docs/es/perform.html#sections">Perform</a>: un toque despistado en el escenario no
+        puede reescribir el set.</p>
+      <p>El icono de pila de la cabecera del panel del set abre igualmente la biblioteca completa, y
+        <b class="ui">⊗</b> sale de la lista: la tira vuelve a los 128 slots, y los números de
+        programa con ella.</p>
       <h3>Actualizar y gestionar</h3>
       <p>Sobrescribir siempre se confirma. <b class="ui">Actualizar con el rig actual</b> muestra un
         diálogo que dice <b class="ui">Overwrite "{name}" with the current rig?</b> con
@@ -435,10 +465,10 @@ no lo necesitan</b>. Muchas capturas de
         descrito como rig, looper, sampler, setlist y mapa de control guardados y restaurados
         juntos.</p>
       <p>El menú contextual de cada fila ofrece <b class="ui">Renombrar</b>,
-        <b class="ui">Actualizar con el rig actual</b>, <b class="ui">Compartir</b> y
-        <b class="ui">Eliminar</b>. Renombrar solo existe en el gestor — el menú del chip de preset en
-        la pestaña Rig no lo tiene. En cuanto tengas más de ocho presets, aparece arriba un campo
-        <b class="ui">Buscar presets</b>.</p>
+        <b class="ui">Actualizar con el rig actual</b>, <b class="ui">Asignar a un set…</b>,
+        <b class="ui">Compartir</b> y <b class="ui">Eliminar</b>. Renombrar solo existe en el gestor — el
+        menú de la ficha de preset de la pestaña Rig no lo tiene. En cuanto tienes más de ocho
+        presets aparece arriba un campo <b class="ui">Buscar presets</b>.</p>
       <div class="note warn">
         <div class="t">Delete no se confirma</div>
         <p><b class="ui">Eliminar</b> en el menú de fila del preset surte efecto de inmediato, sin
@@ -553,6 +583,16 @@ no lo necesitan</b>. Muchas capturas de
       <p>Arrastrar es la forma rápida de probar: sostén el ancla de fusión, deslízala más temprano o
         más tarde en la cadena, y escucha la rama caer antes o después del delay sin abrir ningún
         menú.</p>
+      <h3>Apagar una rama entera</h3>
+      <p>En el propio cable de la rama, un poco después del empalme, hay un interruptor
+        <b class="ui g">power</b>. Tócalo y la rama entera sale del grafo: se dibuja punteada y
+        atenuada, y nada de lo que hay en ella se procesa. El mismo interruptor está en el menú de
+        la rama y, como <b class="ui">Omitir la rama</b> / <b class="ui">Activar la rama</b>, en su
+        hoja de mezcla y en su canal de la pestaña <a href="/docs/es/mix.html">Mix</a>.</p>
+      <p>Las escenas lo recuerdan, así que un ampli en paralelo o una suboctava pueden aparecer y
+        desaparecer con un pedal en vez de reconstruirse. Así funciona el rig de fábrica
+        <b class="ui">Friday Night Lead</b>: su rama de octava está apagada en todas partes menos en
+        la escena del breakdown.</p>
       <div class="note tip">
         <div class="t">Mezclar varias ramas a la vez</div>
         <p>Pon un bloque <b class="ui">Volumen</b> en el punto donde se fusionan las ramas y le crece
@@ -568,17 +608,19 @@ no lo necesitan</b>. Muchas capturas de
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>La sección master</h2>
-      <p>La tarjeta <b class="ui">MÁSTER</b> al fondo de la pestaña Rig es donde todo se encuentra:
-        cada rig, el looper, los pads del sampler y la pista de acompañamiento se suman aquí antes de
-        la salida de hardware. Lo que le hagas al master, se lo haces a todo.</p>
-      <p>El menú <b class="ui">FX</b> <b class="ui">+</b> añade procesamiento de master — hasta seis
-        bloques. Puedes elegir entre <b class="ui">Volumen</b>, <b class="ui">EQ</b>,
-        <b class="ui">Comp</b>, <b class="ui">Sat. válv.</b>, <b class="ui">Sat. cinta</b>,
-        <b class="ui">Limitador</b>, <b class="ui">Prot. FB</b>, <b class="ui">De-esser</b>,
-        <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
-        <b class="ui">Room</b> y <b class="ui">Delay</b>. Se comportan como bloques de cadena: toca
-        un chip para editarlo, mantén pulsado para <b class="ui">Activar</b> / <b class="ui">Bypass</b>
-        y <b class="ui">Quitar</b>.</p>
+      <p>El canal <b class="ui">MÁSTER</b> es donde se junta todo: cada rig, el looper y los dos
+        retornos de envío se suman ahí antes de la salida física. Lo que le hagas al master se lo
+        haces a todo. Antes estaba al pie de la pestaña Rig; ahora vive en la pestaña
+        <a href="/docs/es/mix.html">Mix</a>, en la columna junto a los faders — esta sección es la
+        versión corta, y la mesa que lo rodea está en esa página.</p>
+      <p>La barra punteada <b class="ui">+</b> añade procesado de master — hasta seis bloques. Puedes
+        elegir entre <b class="ui">Volumen</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>,
+        <b class="ui">Sat. válv.</b>, <b class="ui">Sat. cinta</b>, <b class="ui">Limitador</b>,
+        <b class="ui">Prot. FB</b>, <b class="ui">De-esser</b>, <b class="ui">Cloud</b>,
+        <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Room</b> y
+        <b class="ui">Delay</b>. Se comportan como bloques de cadena: toca una ficha para editarla y
+        mantén pulsado para <b class="ui">Activar</b> / <b class="ui">Bypass</b> y
+        <b class="ui">Quitar</b>.</p>
       <div class="note warn">
         <div class="t">Sin plugins AU en el master</div>
         <p>Los plugins Audio Unit alojados solo pueden ir dentro de una cadena de rig. El menú FX

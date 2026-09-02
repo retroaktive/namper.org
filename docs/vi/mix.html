@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mix — Tài liệu NAMper</title>
+<meta name="description" content="Thẻ Mix: một kênh cho mỗi rig, mỗi nhánh, mỗi track looper, sampler và trình phát nhạc nền, hai bus send toàn cục với chuỗi return riêng, khối master với các block riêng và chỉ số LUFS, cùng máy ghi.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mix — Tài liệu NAMper">
+<meta property="og:description" content="Một bàn trộn cho mọi thứ phát ra tiếng: kênh, send, khối master và máy ghi.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/vi/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">TÀI LIỆU</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/vi/">← TẤT CẢ TÀI LIỆU</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/vi/mix.html" aria-current="page">Tiếng Việt</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">MỤC LỤC</div>
+    <ol>
+      <li><a href="/docs/vi/setup.html">Bắt đầu</a></li>
+      <li><a href="/docs/vi/rig.html">Rig &amp; chuỗi tín hiệu</a></li>
+      <li><a href="/docs/vi/plugins.html">Plugin</a></li>
+      <li><a href="/docs/vi/looper.html">Looper</a></li>
+      <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
+      <li><a href="/docs/vi/perform.html">Perform &amp; lời bài hát</a></li>
+      <li><a class="on" href="/docs/vi/mix.html">Mix &amp; master</a></li>
+      <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
+      <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIX &amp; MASTER</div>
+    <h1>Một bàn trộn cho mọi thứ phát ra tiếng.</h1>
+    <p class="lede">Thẻ <b class="ui a">Mix</b> là một bàn trộn: một kênh cho mỗi rig và mỗi nhánh,
+      một cho mỗi track looper, một cho sampler và một cho trình phát nhạc nền, thêm hai bus hiệu
+      ứng toàn cục và một khối master — tất cả trên cùng một lưới, ô ăn khớp ô, để fader luôn nằm
+      đúng chỗ cũ.</p>
+
+    <nav class="toc">
+      <div class="slab">TRÊN TRANG NÀY</div>
+      <ul>
+        <li><a href="#desk">Bàn trộn</a></li>
+        <li><a href="#strip">Một kênh</a></li>
+        <li><a href="#rigs">Rig và nhánh</a></li>
+        <li><a href="#players">Loop, sampler, nhạc nền</a></li>
+        <li><a href="#sends">Send A và Send B</a></li>
+        <li><a href="#master">Khối master</a></li>
+        <li><a href="#recorder">Máy ghi</a></li>
+        <li><a href="#phone">Trên điện thoại</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>Bàn trộn</h2>
+      <p>Mọi thứ có thể tạo ra tiếng trong ứng dụng đều đứng ở kênh riêng, và mọi kênh đều được dựng
+        từ những ô giống nhau theo cùng một thứ tự. Không có gì bị giấu trong menu con: toàn bộ
+        đường tín hiệu của ứng dụng rộng đúng một màn hình.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="Thẻ Mix: các kênh của rig, nhánh của nó, bốn track looper, sampler và trình phát nhạc nền, mỗi kênh có send, núm pan, fader và đồng hồ, bên phải là cột master và máy ghi.">
+        <figcaption>Bàn trộn với một rig, nhánh của nó, nhóm looper và cột master</figcaption>
+      </figure>
+      <p>Từ trái sang phải, bàn trộn có:</p>
+      <ul style="--nc:var(--gate)">
+        <li>một kênh cho mỗi <b>rig</b>, cạnh đó là các <b>nhánh</b> của nó trong cùng nhóm màu;</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, gập lại thành một kênh
+          <b class="ui">Looper</b> cho tới khi bạn mở ra;</li>
+        <li><b class="ui">Sampler</b> — bus của các pad — và <b class="ui">Nhạc nền</b> — trình phát ở
+          thẻ <a href="/docs/vi/perform.html">Perform</a>;</li>
+        <li><b class="ui">Send A</b> và <b class="ui">Send B</b>, hai bus hiệu ứng toàn cục;</li>
+        <li>cột bên phải không bao giờ cuộn: máy ghi và <b class="ui">MASTER</b>.</li>
+      </ul>
+      <p>Bàn trộn là thứ sống động chứ không phải ảnh chụp: rig bạn thêm ở thẻ
+        <a href="/docs/vi/rig.html">Rig</a> sẽ xuất hiện tại đây, track looper bạn thu sẽ tự đầy lên,
+        và các đồng hồ vẫn chạy dù bạn có nhìn hay không.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>Một kênh</h2>
+      <p>Từ trên xuống dưới, kênh nào cũng mang đúng những điều khiển sau:</p>
+      <table>
+        <thead><tr><th>Ô</th><th>Làm gì</th></tr></thead>
+        <tbody>
+          <tr><td><b>Tên</b></td><td>Kênh này là gì. Ở một rig, chạm vào tên sẽ trao tiêu điểm MIDI cho rig đó.</td></tr>
+          <tr><td><b class="ui">VÀO</b> / <b class="ui">RA</b></td><td>Kênh lấy tín hiệu từ đâu và đi ra đâu — xem bên dưới, mỗi loại kênh đọc một kiểu.</td></tr>
+          <tr><td><b>Các block</b></td><td>Chuỗi hiện dưới dạng chip nhỏ kèm đèn LED. Chạm để mở bảng của block, giữ để bypass hoặc xoá, và dấu <b class="ui">+</b> nét đứt thêm một block ở cuối.</td></tr>
+          <tr><td><b class="ui">Các send</b></td><td>Hai núm nhỏ, mỗi núm cho một bus send.</td></tr>
+          <tr><td><b class="ui">Pan</b></td><td>Một núm; chạm hai lần đưa nó về giữa.</td></tr>
+          <tr><td><b>Fader</b></td><td>−60 … +12 dB, vạch ở 0 / −6 / −12 / −24 / −48, chạm hai lần đưa về 0 dB.</td></tr>
+          <tr><td><b>Đồng hồ</b></td><td>Đồng hồ đỉnh sau fader nằm cạnh fader: bạn thấy đúng thứ đang rời khỏi kênh.</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>Mute và solo. Solo làm câm mọi thứ trừ master.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Mute và solo là trạng thái sân khấu.</b> Chúng không bao giờ đi vào preset,
+        nhưng vẫn còn sau khi khởi động lại — bàn trộn trở lại đúng như bạn để.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>Rig và nhánh</h2>
+      <p>Kênh của một rig chính là <a href="/docs/vi/rig.html">chuỗi tín hiệu</a> của nó nhìn từ bên
+        cạnh. Chip <b class="ui">VÀO</b> nêu kênh giao diện mà nó lắng nghe — hoặc bus sampler, hoặc
+        một track looper — còn chip <b class="ui">RA</b> cho biết nó đi đâu: vào bản mix chính hay
+        ra cặp ngõ ra riêng.</p>
+      <p>Một <b>nhánh</b> có kênh riêng đặt cạnh rig của nó, cùng tông màu. Chip của nó đọc như các
+        điểm nối ở thẻ Rig: <b class="ui">VÀO</b> cho biết nhánh tách ra <em>sau</em> block nào,
+        <b class="ui">RA</b> cho biết nó nhập lại <em>trước</em> block nào. Fader của nó là mức của
+        nhánh, còn <b class="ui">M</b> làm câm nhánh mà không đưa nó ra khỏi đồ thị — muốn vậy hãy
+        dùng <b>công tắc nguồn</b> ở thẻ Rig hoặc nút <b class="ui">Bỏ qua nhánh</b> trong bảng của
+        kênh.</p>
+      <p>Các chip block sửa đúng chuỗi thật: thứ bạn đổi ở đây cũng đổi ở thẻ Rig, và âm thanh không
+        bao giờ đứt trong lúc đó.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>Loop, sampler, nhạc nền</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Looper</b> — một kênh gập lại cho biết bao nhiêu track đang chạy; mở ra và
+          từng track trong bốn track sẽ có kênh riêng với <b class="ui">VÀO</b> và
+          <b class="ui">RA</b> của mình (đúng những lựa chọn như ở thẻ
+          <a href="/docs/vi/looper.html">Loop</a>), trạng thái, send, pan và fader.
+          <b class="ui">Toàn bộ looper</b> thì giữ tất cả dưới một fader duy nhất.</li>
+        <li><b class="ui">Sampler</b> — toàn bộ bus pad trong một kênh, với pan riêng ở đây thay vì ở
+          thẻ <a href="/docs/vi/sampler.html">Sample</a>.</li>
+        <li><b class="ui">Nhạc nền</b> — trình phát. Chip <b class="ui">RA</b> của nó mang đúng cách
+          định tuyến mà thẻ Perform gọi là <b class="ui">TRỰC TIẾP</b> và <b class="ui">TRƯỚC FX</b>:
+          <b class="ui">Trực tiếp</b> giữ bản nhạc nằm ngoài chuỗi master, còn
+          <b class="ui">FX master</b> cho nó đi xuyên qua. Khi diễn, hầu như lúc nào bạn cũng muốn
+          <b class="ui">Trực tiếp</b>.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A và Send B</h2>
+      <p>Hai bus toàn cục, để một reverb đứng sau cả ban nhạc thay vì mỗi rig một cái.</p>
+      <p>Mỗi bus có kênh riêng, và kênh đó chứa <b>chuỗi return</b>: tối đa bốn block — delay,
+        reverb, modulation, dynamics hoặc utility — kèm mức và pan của return đi vào master,
+        <em>trước</em> các hiệu ứng master.</p>
+      <p>Mọi kênh khác đều có hai núm send. Ở các trình phát, chúng hoạt động ngay. Ở một rig hay một
+        nhánh, núm chỉ sống khi chuỗi đó có block <b class="ui">Send</b> cho bus tương ứng (thêm từ
+        menu <b class="ui">+</b> của chuỗi, mục Utility) — tín hiệu send được lấy đúng chỗ bạn đặt
+        block, nên một delay có thể được nuôi trước hoặc sau ampli, tuỳ bạn.</p>
+      <p class="note">Chuỗi return được lưu cùng <b>preset master</b>, không phải preset rig: chúng
+        thuộc về bàn trộn, không thuộc về một nhạc cụ.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>Khối master</h2>
+      <p>Kênh <b class="ui">MASTER</b> bên phải là chặng cuối trước ngõ ra: mọi rig, mọi track looper
+        và cả hai return của send đều đi qua nó. Trước đây nó nằm ở thẻ Rig; giờ nó ở đây, cạnh
+        những fader mà nó vốn thuộc về.</p>
+      <p>Nó mang tối đa <b>sáu block</b> của riêng mình — những block hợp với một bản mix chứ không
+        hợp với một nhạc cụ đơn lẻ:</p>
+      <table>
+        <thead><tr><th>Nhóm</th><th>Block</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Động lực</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">Delay</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">Reverb</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">Tiện ích</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn"><a href="/docs/vi/plugins.html">Plugin</a> được nạp chỉ sống bên trong
+        chuỗi của một rig: menu ADD của master không mời chúng. Muốn một limiter phủ lên tất cả, hãy
+        dùng block <b class="ui">Limiter</b> có sẵn.</p>
+      <ul style="--nc:var(--drive)">
+        <li>Thanh <b class="ui">+</b> nét đứt thêm một block. Nhóm nào có preset block đã lưu sẽ mở
+          menu con: thiết lập mặc định, một preset của bạn, hoặc một block lấy thẳng từ preset của
+          rig.</li>
+        <li>Các thanh chạy từ trên xuống theo đúng thứ tự âm thanh. Chạm để chỉnh; giữ để bypass,
+          <b class="ui">Move</b> và xoá.</li>
+        <li><b>Biểu tượng chồng</b> ở đầu kênh mở <b class="ui">Preset master</b> — cả chuỗi master
+          được lưu và gọi lại, cùng thư viện mà các rig dùng. Các return của send được lưu kèm.</li>
+        <li>Fader master (−60 … +12 dB) là thứ cuối cùng trước ngõ ra, bên cạnh là các thanh đỉnh
+          stereo và chỉ số <b class="ui">LUFS</b>.</li>
+      </ul>
+      <p><b>Thứ không đi qua master:</b> tiếng click và các pad sampler (trừ khi một track looper hay
+        một làn thu lấy bus sampler). Trình phát nhạc nền cũng đi thẳng, cho tới khi bạn chuyển
+        <b class="ui">RA</b> của nó sang <b class="ui">FX master</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>Máy ghi</h2>
+      <p>Cột bên phải cũng chứa máy ghi, nằm trong tầm tay khi bạn chỉnh mức:
+        <b class="ui">REC</b> với đồng hồ đang chạy, và <b class="ui">Bộ</b> — những bản đã thu. Từ
+        đó, một bản thu có thể nghe lại, đổi tên, chia sẻ dưới dạng một stem hoặc cả một
+        <b>dự án DAW</b>, và xoá. Mỗi làn thu những gì và bản xuất chứa những gì thì xem ở trang
+        <a href="/docs/vi/perform.html#recording">Perform</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>Trên điện thoại</h2>
+      <p>Trên máy tính bảng, cả buổi diễn nằm gọn theo chiều ngang của bàn trộn. Trên điện thoại, các
+        kênh cuộn ngang còn cột master đứng yên.</p>
+      <p>Xoay ngang điện thoại, bàn trộn tách thành hai trang, chọn bằng hai thẻ rộng phía trên:</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">Fader</b> — <b class="ui">M</b> / <b class="ui">S</b>, các núm send, pan
+          và fader kèm đồng hồ;</li>
+        <li><b class="ui">Khối</b> — vẫn những kênh ấy nhưng hiện chuỗi của chúng, mỗi block là một
+          thanh rộng hết bề ngang, dễ chạm bằng ngón cái.</li>
+      </ul>
+      <p>Thẻ master và máy ghi vẫn nằm cạnh cả hai trang, còn thanh thẻ thu lại thành một viên nén
+        gọn ở đáy màn hình để chiều cao dành cho bàn trộn.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/vi/perform.html">← 06 · Biểu diễn &amp; lời bài hát</a>
+      <span class="sp"></span>
+      <a href="/docs/vi/control.html">08 · MIDI &amp; điều khiển →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/vi/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper là một app độc lập, không liên kết, không được xác nhận hay tài trợ bởi bất kỳ nhà sản xuất thiết bị nào. Mọi tên sản phẩm, thương hiệu và nhãn hiệu đều thuộc quyền sở hữu của chủ sở hữu tương ứng, và chỉ được dùng để mô tả thiết bị mà một bản capture được thực hiện từ đó.</p>
+  </div>
+</footer>
+
+</body>
+</html>

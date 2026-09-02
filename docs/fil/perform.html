@@ -56,6 +56,7 @@
       <li><a href="/docs/fil/looper.html">Looper</a></li>
       <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
       <li><a class="on" href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a href="/docs/fil/mix.html">Mix at master</a></li>
       <li><a href="/docs/fil/control.html">MIDI at control</a></li>
       <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
     </ol>
@@ -64,16 +65,16 @@
   <main>
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM AT LYRICS</div>
     <h1>Pagtugtog ng set.</h1>
-    <p class="lede">Ang <b class="ui a">Perform</b> tab ang tinitingnan mo sa entablado: mga backing track, setlist ng mga section, mga pagbabago ng preset na kusang pumuputok, full-screen na teleprompter para sa mga salita mo, at recorder na kumukuha sa buong gabi bilang mga stem.</p>
+    <p class="lede">Ang <b class="ui a">Tanghal</b> tab ang tinitingnan mo sa entablado: mga backing track, setlist ng mga section, mga pagbabago ng preset na kusang pumuputok, full-screen na teleprompter para sa mga salita mo, at recorder na kumukuha sa buong gabi bilang mga stem.</p>
 
     <nav class="toc">
       <div class="slab">SA PAHINANG ITO</div>
       <ul>
         <li><a href="#tracks">Mga backing track</a></li>
         <li><a href="#player">Ang player card</a></li>
-        <li><a href="#setlist">Ang setlist</a></li>
-        <li><a href="#sections">Pagbuo ng section</a></li>
-        <li><a href="#markers">Mga preset marker</a></li>
+        <li><a href="#setlist">Mga setlist at awit</a></li>
+        <li><a href="#sections">Ano ang inilalabas ng isang awit</a></li>
+        <li><a href="#markers">Mga marker</a></li>
         <li><a href="#lyrics">Lyrics at ang teleprompter</a></li>
         <li><a href="#presets">Mga perform preset</a></li>
         <li><a href="#recording">Pag-record</a></li>
@@ -111,14 +112,21 @@
             <tr><td><b class="ui">I-play</b></td><td>I-play at i-pause ang backing track</td></tr>
             <tr><td><b class="ui">Ihinto</b></td><td>Ihinto at bumalik sa simula</td></tr>
             <tr><td><b class="ui">Mag-record</b></td><td>Simulan at ihinto ang performance recorder (<a href="#recording">sa ibaba</a>)</td></tr>
-            <tr><td><b class="ui">Magdagdag ng preset marker</b></td><td>Maglagay ng pagbabago ng rig preset sa playhead</td></tr>
+            <tr><td><b class="ui">Magdagdag ng marker</b></td><td>Naglalapag ng pagbabago sa kinaroroonan ng playhead</td></tr>
             <tr><td><b class="ui">Lyrics</b></td><td>Buksan ang teleprompter, o mag-load ng lyrics file</td></tr>
           </tbody>
         </table>
       </div>
       <p>Pindutin nang matagal ang <b class="ui">I-play</b> o <b class="ui">Ihinto</b> para MIDI-learn ang mga ito — inaalok doon ang <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>, <b class="ui">MIDI Learn: susunod na section</b> at <b class="ui">MIDI Learn: nakaraang section</b>. Tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</p>
       <h3>Level at routing ng backing</h3>
-      <p>Sa ilalim ng mga button, may slider na nagtatakda ng level ng backing sa dB mula −60 hanggang +12, nagbabasang <b class="ui">-inf</b> sa ibaba. Ang chip sa tabi nito ang routing: ipinapadala ng <b class="ui">DIRECT</b> ang track palabas pagkatapos ng master FX chain (<b class="ui">Direct out (pagkatapos ng master FX)</b>), na siyang gusto mo sa live — hindi kailanman nahahawakan ng reverb at limiter mo ang backing. Ipinapadaan naman ng <b class="ui">PRE FX</b> (<b class="ui">Dumaan sa master FX</b>) ang track sa master chain.</p>
+      <p>Sa ilalim ng mga buton, itinatakda ng isang nakahigang console fader ang antas ng backing sa
+        dB mula −60 hanggang +12 at nagpapakita ng <b class="ui">-inf</b> sa pinakailalim; ibinabalik
+        ito ng dobleng tap sa 0 dB. Iisa lang ang fader at ang antas nito at ng <b class="ui">Backing</b>
+        strip — iyon mismong nasa <a href="/docs/fil/mix.html">Mix</a> tab. Ang chip sa tabi nito ang
+        ruta: ipinapalabas ng <b class="ui">DIRECT</b> ang track pagkatapos ng master FX chain
+        (<b class="ui">Direct out (pagkatapos ng master FX)</b>), at iyon ang gusto mo sa entablado — hindi
+        nahahawakan ng reverb at limiter mo ang backing. Ang <b class="ui">PRE FX</b>
+        (<b class="ui">Dumaan sa master FX</b>) naman ang nagpaparaan sa track sa master chain.</p>
       <h3>Ang timeline</h3>
       <p>Ang waveform sa ilalim ng card ay mirror-bar na display kung saan nakailaw ang natugtog nang bahagi at may cursor sa playhead. <strong>I-tap kahit saan dito para lumipat.</strong> Muling inilalapat din ng paglipat ang pinakabagong <a href="#markers">preset marker</a> sa o bago ang puntong iyon, kaya ang paglukso sa huling chorus ay makukuha pa rin ang tunog ng huling chorus.</p>
       <div class="note">
@@ -128,41 +136,114 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Ang setlist</h2>
-      <p>Ang yunit ng isang NAMper set ay ang <strong>section</strong>: isang pangalan, isang opsyonal na backing track, at listahan ng mga hakbang na sinusukat sa bar. Ang pag-import ng file ay gumagawa ng isang section kada kanta, kaya sa praktika, isang section ay isang kanta — pero kasing-balido rin ang section na walang audio, at ganoon ka bumubuo ng kanta mula sa mga loop at pad.</p>
-      <p>Dala ng header ang <b class="ui">MGA PRESET</b> chip, isang <b class="ui">AUTO NEXT</b> na toggle at ang <b class="ui">Mag-import ng track</b>; nagiging sariling section ang bawat na-import na file. Kapag naka-on ang <b class="ui">AUTO NEXT</b>, kusang sumusulong ang set habang natatapos ang bawat section.</p>
-      <p>Bago ka pa magkaroon ng anuman, ganito ang card: <b class="ui">Magdagdag ng mga audio file, o ng loop/sample section — ang section ay opsyonal na backing track kasama ang sunod-sunod na loop at sample na sinusukat sa bar.</b></p>
-      <p>Ipinapakita ng bawat row ang isang play button (<b class="ui">I-play ang section</b>), ang pangalan, maliliit na badge — <b class="ui">backing</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, at isang live na <b class="ui">bar N</b> habang tumatakbo ito — at isang edit button (<b class="ui">I-edit ang section</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>Mga setlist at awit</h2>
+      <p>Listahan ng mga awit ang <strong>setlist</strong>; isa lang ang <b class="ui">LIVE</b> sa
+        bawat sandali, at ang live na setlist ang may hawak ng preset rail at ng MIDI: pinatutugtog ng
+        program change <em>n</em> ang awit <em>n</em>. Ang <strong>awit</strong> ay isang pangalan,
+        isang nakaayos na listahan ng inilalabas nito, at isang <em>opsyonal</em> na backing track
+        kasama ang mga marker at liriko nito. Kasing-tibay rin ang awit na walang anumang audio: iyon
+        ang tunog na ipapatugtog mo rito, tinawag mula sa parehong listahan.</p>
+      <p>Dala ng ulo ng card ang <b class="ui">SETLISTS</b> na buton — lumikha, pumili, magpalit ng
+        pangalan, magbahagi at magbura ng set —, isang <b class="ui">AUTO NEXT</b> na switch, at isang
+        <b class="ui">+</b> na nag-a-import ng mga audio file (isang awit sa bawat file), nagdaragdag
+        ng <b class="ui">Kantang walang backing track</b>, o gumagawa ng awit mismo
+        <b class="ui">Mula sa rig preset</b>. Kapag nakabukas ang <b class="ui">AUTO NEXT</b>, kusang
+        umuusad ang set habang natatapos ang bawat awit.</p>
+      <p>May play button (<b class="ui">I-play ang kanta</b>) ang bawat hilera, ang pangalan, sa ilalim nito
+        ang inilalabas ng awit, at isang edit button (<b class="ui">I-edit ang kanta</b>). Laging nasa edit
+        mode ang listahan: i-drag ang hilera para baguhin ang pagkakasunod, i-swipe para burahin.</p>
       <div class="note tip">
-        <div class="t">Ang pag-tap sa row ay naghahanda, hindi nagsisimula</div>
-        <p>I-tap ang isang section at ilo-load ng NAMper ang backing track nito, ilalapat ang tempo at key ng kantang iyon sa rig, at ituturo dito ang transport — <strong>nang walang pinapatugtog</strong>. Mag-ayos sa pagitan ng mga kanta, kausapin ang mga tao, saka pindutin ang <b class="ui">I-play</b> kapag handa ka na.</p>
+        <div class="t">Naghahanda ang pag-tap sa hilera, hindi ito nagsisimula</div>
+        <p>I-tap ang isang awit at ipapataw ng NAMper ang lahat ng inilalabas nito, ilo-load ang
+          backing track, kukunin ang tempo at susi nito, at itututok doon ang transport —
+          <strong>nang walang anumang tumutugtog</strong>. Maghanda ka sa pagitan ng mga piyesa,
+          makipag-usap sa madla, at pindutin ang <b class="ui">I-play</b> kapag handa ka na.</p>
       </div>
-      <p>Laging nasa edit mode ang listahan, kaya palaging nakikita ang mga drag handle: hilahin ang isang row para baguhin ang pagkakasunod ng set, i-swipe ang row para burahin ito. Nasa context menu ng row ang <b class="ui">Mag-load ng lyrics mula sa file…</b> — tingnan ang <a href="#lyrics">lyrics</a>.</p>
+      <p>Habang live ang isang set, dala ito ng <a href="/docs/fil/rig.html">Rig</a> tab sa tabi ng
+        chain, kaya hindi kailangang lumipat ng tab para magpalit ng tunog: nagiging set panel ang
+        preset rail — ang stepper ng mga awit at isang card sa bawat tunog na inilalabas ng
+        <em>awit na ito</em>, pati na ang mga scene. Tingnan ang
+        <a href="/docs/fil/rig.html#presets">dalawang mukha ng rail</a>.</p>
+      <div class="note">
+        <div class="t">Ang demo set</div>
+        <p>Ang unang pagbukas nang walang setlist ay may kasamang isa: ang awit na <em>NAMper</em> nang
+          dalawang beses — ang buong mix at ang bersyong walang gitara. Isa itong gawang halimbawa ng
+          buong pahinang ito. May mga marker ang timeline nito na naglilipat sa pagitan ng mga factory
+          rig na <b class="ui">One-Man Riot</b> (verse, pre-chorus, chorus at isang malinis na bridge
+          bilang mga scene, at isang pangalawang malinis na amp sa isang sanga) at
+          <b class="ui">Friday Night Lead</b> (mga scene para sa solo at breakdown, may sangang
+          sub-octave); nakapako ang liriko sa mga bahagi nito; at tumatawag pa ang bawat awit ng isang
+          looper preset na apat na track na tig-8 kompas at ng <b class="ui">FX at Texture</b> na
+          kit. Karaniwang set lang ito: palitan ang pangalan, dagdagan ng sarili mong mga awit, o
+          burahin — at kapag binura, hindi na ito babalik.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Pagbuo ng section</h2>
-      <p>Binubuksan ng edit button ang section editor. May <b class="ui">Pangalan ng section</b> field ito, isang backing picker na ang unang entry ay <b class="ui">Wala (loop/sample lang)</b> at nagbabasang <b class="ui">Walang backing track</b> kapag walang pinili, at — kapag walang backing — isang <b class="ui">N bars</b> stepper mula 1 hanggang 128 na nagtatakda kung gaano katagal tumatakbo ang section.</p>
-      <p>Susunod ay ang listahang <b class="ui">MGA HAKBANG</b>. Inaalok ng <b class="ui">Magdagdag ng hakbang</b> ang <b class="ui">Loop track</b> → <b class="ui">Start loop 1…4</b> o <b class="ui">Stop loop
-        1…4</b>, at ang <b class="ui">Sampler pad</b> → <b class="ui">Pad 1…16</b>. Nagbabasa ang mga step row ng <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>, <b class="ui">Play pad N</b> o <b class="ui">Stop pad N</b>, bawat isa'y may sariling <b class="ui">bar N</b> stepper. Eksaktong sinasabi ito ng pahiwatig sa ilalim ng listahan: <b class="ui">Pumuputok ang mga hakbang sa bar clock: simulan/ihinto ang mga loop track at i-trigger ang mga pad sa mga bar na itinakda mo.</b></p>
-      <p>Ganito tumutugtog ang NAMper ng kanta nang walang anumang backing track. I-record ang mga parte mo sa
-        <a href="/docs/fil/looper.html">looper</a>, i-load ang mga hit mo sa mga
-        <a href="/docs/fil/sampler.html">pad</a>, tapos isulat ang arrangement sa mga bar: pasok ang drums sa bar 1, bass sa bar 5, ang pad stab sa bar 13, labas lahat sa bar 33. Tumatakbo ito sa bar clock, kaya nananatili itong nakakabit sa tempo mo sa halip na sa isang na-render na file.</p>
+      <h2 id="sections"><span class="n">06.4</span>Ano ang inilalabas ng isang awit</h2>
+      <p>Binubuksan ng edit button ang editor ng awit: isang <b class="ui">Pangalan ng kanta</b> na field, isang
+        pampiling backing na ang unang entry ay <b class="ui">Kantang walang backing track</b>, ang hilera ng
+        <a href="#lyrics">liriko</a>, at ang listahan ng tinatawag ng awit.</p>
+      <p>Naglalagay ng isang entry sa listahang iyon ang
+        <b class="ui">Magdagdag ng preset, looper, kit…</b>:</p>
+      <table>
+        <thead><tr><th>Entry</th><th>Ano ang tinatawag</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Rig preset</b></td><td>Isang preset kasama ang <b class="ui">SCENE</b>
+            nito — <b class="ui">A</b>–<b class="ui">D</b>, o <b class="ui">-</b> para sa preset gaya
+            ng pagkaka-save. Puwedeng lumitaw nang dalawang beses ang parehong preset sa magkaibang
+            scene.</td></tr>
+          <tr><td><b class="ui">Looper preset</b></td><td>Haba ng mga track, ruta at pan para sa
+            <a href="/docs/fil/looper.html">looper</a> — ikaw ang tutugtog ng naitalang audio.</td></tr>
+          <tr><td><b class="ui">Sampler kit</b></td><td>Isang kit para sa labing-anim na
+            <a href="/docs/fil/sampler.html">pad</a>.</td></tr>
+        </tbody>
+      </table>
+      <p>Sunod-sunod na ipinapataw ang listahan kapag inihanda ang awit, kaya ang <em>huling</em>
+        preset ng rig doon ang tunog na pagsisimulan mo; ang mga nasa itaas nito ay nariyan para
+        maabot ng mga <a href="#markers">marker</a>. Umaakyat, bumababa at nabubura ang mga hilera
+        mula sa sarili nilang menu.</p>
+      <h3>Pagpili ng preset</h3>
+      <p>Ipinapakita ng pampiling preset ng rig ang parehong numero gaya ng rail — <b class="ui">0</b>
+        … <b class="ui">127</b> — kasama ang takip at isang search field sa ibabaw ng listahan na
+        sumasala ayon sa pangalan, numero at tag. At <strong>pinakikinggan ka nito</strong> habang
+        naghahanap: i-tap ang isang hilera at talagang ilo-load ito ng rig, kaya sa tainga mo pipiliin
+        ang tunog. Isara ang pampili nang walang piniling anuman at babalik ang rig sa dating
+        kalagayan.</p>
+      <p>Gumagana rin ang kabaligtaran: sa menu ng hilera ng isang preset sa rail ng Rig tab ay may
+        <b class="ui">Idagdag sa set…</b> — pumili ng setlist, tapos ng isa sa mga awit nito o ng
+        <b class="ui">Bagong kanta</b>, at idaragdag ang preset sa dulo ng listahan ng awit na iyon.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Mga preset marker</h2>
-      <p>Ang preset marker ay pagbabago ng rig na nakasulat sa timeline ng kanta. Malinis na verse, crunch na chorus, lead para sa solo — inilagay minsan, tapos hands-free na sa tuwing tutugtugin mo ito.</p>
+      <h2 id="markers"><span class="n">06.5</span>Mga marker</h2>
+      <p>Ang marker ay isang sandali sa timeline ng awit na naglalabas ng isa sa sariling entry ng awit
+        na iyon. Malinis na verse, crunch na chorus, lead para sa solo — minsan lang ilagay, at
+        pagkatapos ay hands-free na sa tuwing tutugtugin mo ito.</p>
       <ol style="--nc:var(--drive)">
-        <li>Ihanda ang track at ilagay ang playhead kung saan dapat ang palitan — i-tap ang timeline para lumipat, o hayaan itong tumugtog.</li>
-        <li>I-tap ang pin button (<b class="ui">Magdagdag ng preset marker</b>).</li>
-        <li>Pumili ng rig mula sa menu ng bawat preset, bawat row ay nagbabasang <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. Dumadapo ang marker sa kasalukuyang posisyon ng playhead.</li>
+        <li>Ihanda ang awit at ilagay ang playhead kung saan dapat mangyari ang pagpapalit — i-tap ang
+          timeline para lumukso, o hayaan itong tumakbo.</li>
+        <li>I-tap ang buton na pin (<b class="ui">Magdagdag ng marker</b>).</li>
+        <li>Inilalista ng sheet ng marker ang inilalabas ng awit —
+          <b class="ui">Alin sa mga bahagi ng kanta ang ibinabalik ng sandaling ito.</b> — at ikaw ang tik ng mga
+          dapat pumutok sa sandaling iyon. Kayang maglabas ng higit sa isa ng isang marker: halimbawa,
+          isang preset ng rig at isang kit nang sabay.</li>
       </ol>
-      <p>Ang pagtawid sa isang marker habang tumutugtog ay nagpapaputok sa preset na iyon na parang dumating ang MIDI program change mula sa isang pedalboard. Iginuguhit ang mga marker bilang amber na tuldok sa timeline na may maluwag na lugar na mahihipo, at sa ilalim ng waveform, isang hanay ng mga chip ang naglilista sa kanila bilang <b class="ui">m:ss  &lt;preset name&gt;</b>. Pindutin nang matagal ang isang chip para sa <b class="ui">Tanggalin ang marker</b>.</p>
+      <p>Ang pagpili ng <b class="ui">SCENE</b> sa hilera ng isang marker na wala pa sa awit ay
+        nagdaragdag nito sa awit bilang sarili nitong entry, kaya nananatiling buong katotohanan ang
+        listahan tungkol sa kaya ng awit na iyon.</p>
+      <p>Ang pagtawid sa isang marker habang tumutugtog ay nagpapataw nito na parang may dumating na
+        MIDI program change mula sa pedalboard. Iginuguhit ang mga marker bilang mga amber na tuldok
+        sa timeline na may maluwag na lugar na matatapik, at sa ilalim ng waveform ay may hanay ng
+        chip na naglilista sa kanila bilang <b class="ui">m:ss  &lt;pangalan&gt;</b>. I-tap ang chip
+        para buksan ang sheet nito, pindutin nang matagal para sa
+        <b class="ui">Tanggalin ang marker</b>.</p>
       <div class="note">
-        <div class="t">Pag-snap</div>
-        <p>Ang bagong-gawa mong marker ay nakaupo sa hilaw na playhead, kung saan man ito iniwan ng daliri mo.
-          <strong>Hilahin ang isang marker at dadapo ito sa bar grid</strong>  — kaya ang paraan para higpitan ang magaspang na paglalagay ay tulakin ito nang bahagya. Kapag walang natukoy na tempo, walang grid, at nananatiling malaya ang paglalagay.</p>
+        <div class="t">Pagkapit sa grid</div>
+        <p>Nananatili sa hilaw na posisyon ang bagong likhang marker, kung saan iniwan ito ng daliri
+          mo. <strong>I-drag ang isang marker at kakapit ito sa grid ng mga kompas</strong> — kaya ang
+          paraan para hasain ang magaspang na paglalagay ay itulak ito nang bahagya. Kapag walang
+          natukoy na tempo, walang grid, at malaya ang paglalagay.</p>
       </div>
     </section>
 
@@ -262,7 +343,7 @@
     <nav class="pager">
       <a href="/docs/fil/sampler.html">← 05 · Mga sampler pad</a>
       <span class="sp"></span>
-      <a href="/docs/fil/control.html">07 · MIDI at control →</a>
+      <a href="/docs/fil/mix.html">07 · Mix at master →</a>
     </nav>
   </main>
 </div>

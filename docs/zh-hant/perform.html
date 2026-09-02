@@ -56,6 +56,7 @@
       <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
       <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
       <li><a class="on" href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a href="/docs/zh-hant/mix.html">混合與主控</a></li>
       <li><a href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
       <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
@@ -73,9 +74,9 @@
       <ul>
         <li><a href="#tracks">伴奏音軌</a></li>
         <li><a href="#player">播放器卡片</a></li>
-        <li><a href="#setlist">曲目單</a></li>
-        <li><a href="#sections">搭建段落</a></li>
-        <li><a href="#markers">預設標記點</a></li>
+        <li><a href="#setlist">歌單與歌曲</a></li>
+        <li><a href="#sections">一首歌會叫出什麼</a></li>
+        <li><a href="#markers">標記</a></li>
         <li><a href="#lyrics">歌詞與提詞器</a></li>
         <li><a href="#presets">演出預設</a></li>
         <li><a href="#recording">錄製</a></li>
@@ -123,7 +124,7 @@
             <tr><td><b class="ui">播放</b></td><td>播放和暫停伴奏音軌</td></tr>
             <tr><td><b class="ui">停止</b></td><td>停止並返回開頭</td></tr>
             <tr><td><b class="ui">錄製</b></td><td>啟動和停止演出錄音功能(見<a href="#recording">下文</a>)</td></tr>
-            <tr><td><b class="ui">添加預設標記</b></td><td>在播放頭位置放置一個音色組預設切換</td></tr>
+            <tr><td><b class="ui">新增標記</b></td><td>在播放位置放下一次切換</td></tr>
             <tr><td><b class="ui">歌詞</b></td><td>打開提詞器,或加載歌詞文件</td></tr>
           </tbody>
         </table>
@@ -134,11 +135,13 @@
         <b class="ui">MIDI 學習：上一段落</b> 都可以在那裡設置。參見
         <a href="/docs/control.html">MIDI 與控制</a>。</p>
       <h3>伴奏電平與路由</h3>
-      <p>按鈕下方,一個滑塊以 dB 為單位設置伴奏電平,範圍從 −60 到 +12,最低時顯示為
-        <b class="ui">-inf</b>。旁邊的晶片是路由選項:<b class="ui">直通</b> 讓音軌在主效果鏈
-        之後直接輸出(<b class="ui">直接輸出（主效果之後）</b>),這是現場演出時你想要的
-        設置——你的混響和限制器永遠不會碰到伴奏。<b class="ui">前置效果</b>
-        (<b class="ui">經過主效果</b>)則讓音軌改為經過主效果鏈。</p>
+      <p>按鈕下面是一條橫放的混音台推桿，把伴奏電平設在 −60 到 +12 dB 之間，最下方顯示
+        <b class="ui">-inf</b>；點兩下可回到 0 dB。它和 <b class="ui">伴奏</b> 通道條是同一條
+        推桿、同一個電平——就是 <a href="/docs/zh-hant/mix.html">Mix</a> 分頁上的那一條。旁邊的標籤是
+        走向：<b class="ui">直通</b> 讓伴奏在主控效果鏈之後送出
+        （<b class="ui">直接輸出（主效果之後）</b>），現場要的正是這個——你的殘響與限幅器永遠
+        碰不到伴奏。<b class="ui">前置效果</b>（<b class="ui">經過主效果</b>）則讓伴奏穿過主控
+        鏈。</p>
       <h3>時間線</h3>
       <p>卡片下方的波形是一個鏡像條形顯示,已播放部分會點亮,並帶有一個位於播放頭處的光標。
         <strong>點按其上任意位置即可跳轉。</strong>跳轉還會重新應用該位置或之前最新的
@@ -151,68 +154,94 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>曲目單</h2>
-      <p>NAMper 曲目單的基本單位是<strong>段落</strong>:一個名稱、一條可選的伴奏音軌,以及一份按
-        小節計時的步驟列表。導入一個文件會生成一個段落,所以實際上一個段落就對應一首歌——但完全
-        沒有音頻的段落同樣有效,這正是你用循環和打擊墊拼出一首歌的方式。</p>
-      <p>頁頭上有 <b class="ui">預設</b> 晶片、<b class="ui">自動切換</b> 開關以及
-        <b class="ui">導入音軌</b>;每個導入的文件都會成為一個獨立的段落。開啟 <b class="ui">自動切換</b> 後,每個段落結束時,
-        整套曲目會自動往下走。</p>
-      <p>在你添加任何內容之前,卡片會顯示
-        <b class="ui">添加音頻文件，或添加循環/採樣段落——段落包含可選的伴奏，以及按小節時鐘排列的循環與採樣序列。</b></p>
-      <p>每一行顯示一個播放按鈕(<b class="ui">播放段落</b>)、名稱、若干小徽章——
-        <b class="ui">伴奏</b>、<b class="ui">N steps</b>、<b class="ui">N bars</b>,運行時還會
-        實時顯示 <b class="ui">bar N</b>——以及一個編輯按鈕(<b class="ui">編輯段落</b>)。</p>
+      <h2 id="setlist"><span class="n">06.3</span>歌單與歌曲</h2>
+      <p><strong>歌單</strong>就是一串歌；同一時間只有一份處於 <b class="ui">現場</b>，而處於演出中
+        的那份歌單擁有預設條與 MIDI：程式切換 <em>n</em> 播放第 <em>n</em> 首歌。一首
+        <strong>歌</strong>由名稱、它要叫出的東西的有序清單，以及一條<em>可有可無</em>的伴奏（連同
+        標記與歌詞）組成。完全沒有音訊的歌同樣成立：它就是你用來演奏它的聲音，從同一份清單裡叫
+        出來。</p>
+      <p>卡片標題列上有 <b class="ui">設定單</b> 按鈕——新增、選擇、重新命名、分享與刪除歌單——一個
+        <b class="ui">自動切換</b> 開關，以及一個 <b class="ui">+</b>：匯入音訊檔（每個檔案成為
+        一首歌）、新增 <b class="ui">無伴奏歌曲</b>，或者直接
+        <b class="ui">來自機架預設</b> 建一首歌。打開 <b class="ui">自動切換</b> 之後，每首歌
+        結束時歌單會自己往前走。</p>
+      <p>每一列都有播放按鈕（<b class="ui">播放歌曲</b>）、歌名、名稱下方是這首歌會叫出的東西，以及
+        編輯按鈕（<b class="ui">編輯歌曲</b>）。清單始終處於編輯狀態：拖曳一列重新排序，橫掃一列
+        刪除。</p>
       <div class="note tip">
-        <div class="t">點按一行是待命,而不是啟動</div>
-        <p>點按一個段落,NAMper 會加載它的伴奏音軌,把這首歌的速度和調性應用到音色組,並讓傳輸
-          控制指向它——<strong>但不會播放任何內容</strong>。在歌曲之間做好準備、和觀眾說幾句話,
-          再在準備好時按下 <b class="ui">播放</b>。</p>
+        <div class="t">點一列是就位，不是開始播放</div>
+        <p>點一首歌，NAMper 會套用它叫出的一切，載入它的伴奏，接過它的速度與調性，並把走帶對準它
+          ——<strong>但什麼都不播</strong>。在兩首歌之間做準備、和觀眾說兩句，準備好了再按
+          <b class="ui">播放</b>。</p>
       </div>
-      <p>列表始終處於編輯模式,所以拖動手柄一直可見:拖動一行可調整曲目順序,滑動一行可將其刪除。
-        行的上下文菜單中有 <b class="ui">從文件加載歌詞…</b>——見<a href="#lyrics">歌詞</a>
-        一節。</p>
+      <p>只要有歌單在演出中，<a href="/docs/zh-hant/rig.html">Rig</a> 分頁就把它放在鏈旁邊，於是換
+        聲音不必換分頁：預設條會變成歌單面板——歌曲切換器，以及<em>這首</em>歌叫出的每個聲音各一張
+        卡片，連場景一起。見<a href="/docs/zh-hant/rig.html#presets">預設條的兩副面孔</a>。</p>
+      <div class="note">
+        <div class="t">示範歌單</div>
+        <p>第一次啟動、還沒有任何歌單時，App 會帶來一份：歌曲 <em>NAMper</em> 兩遍——完整混音，以及
+          抽掉吉他的伴奏版。它就是整頁內容的一個做好的範例。它的時間軸上有標記，在原廠機架
+          <b class="ui">One-Man Riot</b>（主歌、預副歌、副歌，以及作為場景的乾淨橋段，還有一條分支上
+          的第二台乾淨音箱）與 <b class="ui">Friday Night Lead</b>（solo 與 breakdown 場景，加一條低
+          八度分支）之間切換；歌詞釘在各自的段落上；而且每首歌還會叫出一個四軌、每軌 8 小節的循環器
+          預設與 <b class="ui">音效與氛圍</b> 音色組。它就是一份普通歌單：改名、加進你自己的
+          歌，或者刪掉——刪掉之後它不會回來。</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>搭建段落</h2>
-      <p>編輯按鈕會打開段落編輯器。其中有一個 <b class="ui">段落名稱</b> 欄位,一個伴奏選擇器
-        (第一項是 <b class="ui">無（僅循環/採樣）</b>,未選擇時顯示為
-        <b class="ui">無伴奏</b>),以及——當沒有伴奏音軌時——一個從 1 到 128 的
-        <b class="ui">N bars</b> 步進器,用來設定該段落的時長。</p>
-      <p>接下來是 <b class="ui">步驟</b> 列表。<b class="ui">添加步驟</b> 提供
-        <b class="ui">循環音軌</b> → <b class="ui">Start loop 1…4</b> 或
-        <b class="ui">Stop loop 1…4</b>,以及 <b class="ui">採樣打擊墊</b> →
-        <b class="ui">Pad 1…16</b>。步驟行顯示為 <b class="ui">Start loop N</b>、
-        <b class="ui">Stop loop N</b>、<b class="ui">Play pad N</b> 或
-        <b class="ui">Stop pad N</b>,各自帶有獨立的 <b class="ui">bar N</b> 步進器。列表下方的
-        提示準確說明了這一點:<b class="ui">步驟按小節時鐘觸發：在設定的小節啟動/停止循環音軌並觸發打擊墊。</b></p>
-      <p>這就是 NAMper 在完全沒有伴奏音軌的情況下演奏一首歌的方式。把你的分部錄進
-        <a href="/docs/zh-hant/looper.html">循環樂句器</a>,把你的採樣加載到
-        <a href="/docs/zh-hant/sampler.html">打擊墊</a>上,再按小節寫出編曲:鼓在第 1 小節進入,
-        貝斯在第 5 小節,墊音在第 13 小節,所有聲部在第 33 小節退出。它按小節時鐘運行,因此始終
-        鎖定在你的速度上,而不是依賴一段渲染好的文件。</p>
+      <h2 id="sections"><span class="n">06.4</span>一首歌會叫出什麼</h2>
+      <p>編輯按鈕會開啟歌曲編輯器：一個 <b class="ui">歌曲名稱</b> 輸入框、第一項為
+        <b class="ui">無伴奏歌曲</b> 的伴奏選擇器、<a href="#lyrics">歌詞</a>那一列，以及
+        這首歌要叫出的東西的清單。</p>
+      <p><b class="ui">新增預設、循環器、鼓組…</b> 會往清單裡加一項：</p>
+      <table>
+        <thead><tr><th>項目</th><th>叫出什麼</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">機架預設</b></td><td>一個預設，連同它的 <b class="ui">場景</b>——
+            <b class="ui">A</b>–<b class="ui">D</b>，或者用 <b class="ui">-</b> 表示儲存時的樣子。
+            同一個預設可以帶著兩個不同場景出現兩次。</td></tr>
+          <tr><td><b class="ui">循環預設</b></td><td>
+            <a href="/docs/zh-hant/looper.html">循環器</a>的軌道長度、走向與聲像——錄下來的音訊得你
+            自己彈。</td></tr>
+          <tr><td><b class="ui">取樣器套件</b></td><td>給十六個
+            <a href="/docs/zh-hant/sampler.html">打擊墊</a>用的一組音色。</td></tr>
+        </tbody>
+      </table>
+      <p>歌曲就位時，這份清單按順序套用，所以清單上<em>最後</em>一個機架預設就是你開始這首歌時的
+        聲音；排在上面的那些，是留給<a href="#markers">標記</a>去拿的。每一列都能從自己的選單上移、
+        下移與刪除。</p>
+      <h3>挑一個預設</h3>
+      <p>機架預設選擇器顯示和預設條相同的編號——<b class="ui">0</b> … <b class="ui">127</b>——帶封面，
+        清單上方還有依名稱、編號與標籤過濾的搜尋框。而且你翻的時候它會<strong>試聽</strong>：點一列，
+        機架就真的載入它，於是你是用耳朵挑聲音。不挑就關掉選擇器，機架會回到原來的樣子。</p>
+      <p>反方向也行：Rig 分頁預設條上某個預設的列選單裡有 <b class="ui">加入歌單…</b>——先選
+        一份歌單，再選它的某首歌或 <b class="ui">新歌曲</b>，這個預設就會被附加到那首歌的清單
+        末尾。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>預設標記點</h2>
-      <p>預設標記點是寫在歌曲時間線上的一次音色組切換。清音的主歌、失真的副歌、獨奏時的主音色——
-        放置一次,以後每次演奏都無需動手。</p>
+      <h2 id="markers"><span class="n">06.5</span>標記</h2>
+      <p>標記是歌曲時間軸上的一個時刻，它會叫出這首歌自己的某個項目。乾淨的主歌、破音的副歌、solo
+        用的主音——放好一次，以後每次演奏都不用再動手。</p>
       <ol style="--nc:var(--drive)">
-        <li>讓音軌待命,把播放頭放到應該切換的位置——點按時間線跳轉,或讓它自然播放到那裡。</li>
-        <li>點按圖釘按鈕(<b class="ui">添加預設標記</b>)。</li>
-        <li>從列出所有預設的菜單中選擇一個音色組,每一行顯示為
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>。標記點會放置在當前播放頭位置。</li>
+        <li>讓這首歌就位，把播放位置放到該切換的地方——點時間軸跳過去，或者乾脆讓它播。</li>
+        <li>點圖釘按鈕（<b class="ui">新增標記</b>）。</li>
+        <li>標記面板會列出這首歌叫出的東西——
+          <b class="ui">這一刻調用歌曲的哪些部分。</b>——你勾選此刻該觸發的那
+          幾項。一個標記可以叫出不只一樣：例如一個機架預設與一組打擊墊音色一起。</li>
       </ol>
-      <p>播放時經過一個標記點,會觸發對應預設,效果與從踏板上收到一次 MIDI 程序變更完全一樣。
-        標記點在時間線上顯示為琥珀色圓點,並帶有寬裕的點按區域;波形下方還有一行晶片將它們列出,
-        形式為 <b class="ui">m:ss  &lt;preset name&gt;</b>。長按一個晶片可執行
+      <p>如果在某個標記那一列選了這首歌還沒有的 <b class="ui">場景</b>，它會作為一個獨立項目被加進
+        這首歌，於是這份清單始終是「這首歌能做什麼」的全部真相。</p>
+      <p>播放時越過一個標記，App 會像收到腳踏板送來的 MIDI 程式切換一樣把它套用上。標記在時間軸上畫
+        成琥珀色的圓點，觸控區域給得很寬裕，波形下方還有一列標籤把它們列成
+        <b class="ui">m:ss  &lt;名稱&gt;</b>。點標籤開啟它的面板，長按可
         <b class="ui">刪除標記</b>。</p>
       <div class="note">
         <div class="t">吸附</div>
-        <p>剛創建的標記點會停在手指離開時的原始播放頭位置。<strong>拖動標記點則會吸附到小節
-          網格</strong>——所以微調一個粗略的位置,方法就是把它拖一下。如果沒有檢測到速度,就沒有
-          網格,放置也就保持自由。</p>
+        <p>剛建立的標記待在原始位置，也就是你手指離開的地方。<strong>拖曳標記，它就會吸附到小節
+          格線上</strong>——所以要把大致的位置調準，推它一下就行。如果沒偵測到速度，就沒有格線，
+          位置也就自由。</p>
       </div>
     </section>
 
@@ -367,7 +396,7 @@
     <nav class="pager">
       <a href="/docs/zh-hant/sampler.html">← 05 · 採樣打擊墊</a>
       <span class="sp"></span>
-      <a href="/docs/zh-hant/control.html">07 · MIDI 與控制 →</a>
+      <a href="/docs/zh-hant/mix.html">07 · 混合與主控 →</a>
     </nav>
   </main>
 </div>

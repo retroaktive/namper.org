@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>混合 — NAMper 文档</title>
+<meta name="description" content="Mix 标签页：每个机架、每条分支、每条循环轨、采样器和伴奏播放器各有一条通道条，两条带回程链的全局发送母线，拥有自己模块与 LUFS 读数的主控段，以及录音机。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="混合 — NAMper 文档">
+<meta property="og:description" content="一台调音台装下所有会发声的东西：通道条、发送、主控段和录音机。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/zh/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">文档</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/zh/">← 所有文档</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/zh/mix.html" aria-current="page">简体中文</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">目录</div>
+    <ol>
+      <li><a href="/docs/zh/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
+      <li><a href="/docs/zh/plugins.html">插件</a></li>
+      <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
+      <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
+      <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a class="on" href="/docs/zh/mix.html">混合与主控</a></li>
+      <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
+      <li><a href="/docs/zh/settings.html">设置参考</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · 混合与主控</div>
+    <h1>一台调音台，装下所有会发声的东西。</h1>
+    <p class="lede"><b class="ui a">混合</b> 标签页就是一台调音台：每个机架、每条分支各一条通道条，
+      每条循环轨一条，采样器一条，伴奏播放器一条，再加上两条全局效果母线和一个主控段——全部排在同一
+      张栅格上，一格对一格，所以推子永远在同一个位置。</p>
+
+    <nav class="toc">
+      <div class="slab">本页内容</div>
+      <ul>
+        <li><a href="#desk">调音台</a></li>
+        <li><a href="#strip">一条通道条</a></li>
+        <li><a href="#rigs">机架与分支</a></li>
+        <li><a href="#players">循环、采样器、伴奏</a></li>
+        <li><a href="#sends">Send A 与 Send B</a></li>
+        <li><a href="#master">主控段</a></li>
+        <li><a href="#recorder">录音机</a></li>
+        <li><a href="#phone">在手机上</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>调音台</h2>
+      <p>凡是这个应用能发出声音的东西，都站在自己的通道条里，而每条通道条都由同样的格子按同样的顺序
+        搭起来。没有什么藏在子菜单里：应用的整条信号流，就是一屏的宽度。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="Mix 标签页：机架、它的分支、四条循环轨、采样器和伴奏播放器的通道条，每条都有发送、声像旋钮、推子和电平表，右侧是主控列和录音机。">
+        <figcaption>调音台上有一个机架、它的分支、循环器分组和主控列</figcaption>
+      </figure>
+      <p>从左到右，调音台上排着：</p>
+      <ul style="--nc:var(--gate)">
+        <li>每个<b>机架</b>一条通道条，它的<b>分支</b>就在旁边，属于同一个着色分组；</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>，在你展开之前折叠成一条
+          <b class="ui">循环乐句器</b> 通道条；</li>
+        <li><b class="ui">采样器</b>——打击垫母线——以及 <b class="ui">伴奏</b>——
+          <a href="/docs/zh/perform.html">Perform</a> 标签页里的播放器；</li>
+        <li><b class="ui">发送 A</b> 和 <b class="ui">发送 B</b>，两条全局效果母线；</li>
+        <li>永远不会跟着滚动的右侧一列：录音机和 <b class="ui">主控</b>。</li>
+      </ul>
+      <p>调音台是活的，不是快照：你在 <a href="/docs/zh/rig.html">Rig</a> 标签页里新建的机架会出现在
+        这里，录下的循环轨会被填满，而电平表无论你看不看都在跳动。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>一条通道条</h2>
+      <p>自上而下，每条通道条都带着同样的控件：</p>
+      <table>
+        <thead><tr><th>格子</th><th>作用</th></tr></thead>
+        <tbody>
+          <tr><td><b>名称</b></td><td>这条通道条是什么。在机架上点一下名字，就把 MIDI 焦点交给它。</td></tr>
+          <tr><td><b class="ui">入</b> / <b class="ui">出</b></td><td>通道条从哪里取信号、又从哪里送出去——见下文，不同类型的通道条读法不同。</td></tr>
+          <tr><td><b>模块</b></td><td>整条链以带 LED 的小标签呈现。点一下打开模块面板，长按可旁通或删除，虚线的 <b class="ui">+</b> 在末尾添加模块。</td></tr>
+          <tr><td><b class="ui">发送</b></td><td>两个小旋钮，每条发送母线一个。</td></tr>
+          <tr><td><b class="ui">声像</b></td><td>一个旋钮；双击回到正中。</td></tr>
+          <tr><td><b>推子</b></td><td>−60 … +12 dB，刻度在 0 / −6 / −12 / −24 / −48，双击回到 0 dB。</td></tr>
+          <tr><td><b>电平表</b></td><td>推子旁边的推子后峰值表：你看到的就是这条通道条送出去的东西。</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>静音与独奏。独奏会让除主控之外的一切安静下来。</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>静音与独奏属于演出状态。</b>它们从不写进预设，却能在重启之后依然保留——
+        调音台会以你离开时的样子回来。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>机架与分支</h2>
+      <p>机架的通道条，就是它的<a href="/docs/zh/rig.html">信号链</a>从侧面看的样子。
+        <b class="ui">入</b> 标签写着它在听哪个接口通道——或者采样器母线，或者某条循环轨——而
+        <b class="ui">出</b> 标签写着它去哪里：主混音，还是自己的一对输出。</p>
+      <p><b>分支</b>会在机架旁边得到一条同色调的通道条。它的标签读法和 Rig 标签页里的分叉点一样：
+        <b class="ui">入</b> 说的是在哪个模块<em>之后</em>分出去，<b class="ui">出</b> 说的是在哪个
+        模块<em>之前</em>汇回来。它的推子就是分支电平，而 <b class="ui">M</b> 只是让分支静音，并不
+        把它移出信号图——要那样做，请用 Rig 标签页上的<b>电源开关</b>，或通道条面板里的
+        <b class="ui">旁通分支</b> 按钮。</p>
+      <p>模块标签编辑的是真正的链：你在这里改的，Rig 标签页里也改了，而且改的过程中声音从不中断。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>循环、采样器、伴奏</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">循环乐句器</b>——一条折叠的通道条，显示有几条轨在跑；展开之后，四条轨各自获得
+          一条通道条，带自己的 <b class="ui">入</b> 和 <b class="ui">出</b>（选项和
+          <a href="/docs/zh/looper.html">Loop</a> 标签页一样）、状态、发送、声像和推子。
+          <b class="ui">整个循环器</b> 则把它们统统放在一个推子下面。</li>
+        <li><b class="ui">采样器</b>——整条打击垫母线一条通道条，声像在这里，而不在
+          <a href="/docs/zh/sampler.html">Sample</a> 标签页。</li>
+        <li><b class="ui">伴奏</b>——播放器。它的 <b class="ui">出</b> 标签就是 Perform 标签页里
+          叫作 <b class="ui">直通</b> 和 <b class="ui">前置效果</b> 的走向：<b class="ui">直通</b>
+          让伴奏绕开主控链，<b class="ui">主效果</b> 则让它穿过去。现场演出几乎总是要
+          <b class="ui">直通</b>。</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A 与 Send B</h2>
+      <p>两条全局母线，好让一台混响站在整支乐队后面，而不是每个机架配一台。</p>
+      <p>每条母线都有自己的通道条，条上放着<b>回程链</b>：最多四个模块——延迟、混响、调制、动态或
+        工具——外加回到主控的回程电平与声像，位置在主控效果<em>之前</em>。</p>
+      <p>其余每条通道条都带两个发送旋钮。在各个播放器上，它们一上来就有效。在机架或分支上，只有当
+        那条链里放了对应母线的 <b class="ui">发送</b> 模块（从链的 <b class="ui">+</b> 菜单、Utility
+        里添加），旋钮才会活过来——发送就从你放模块的位置取信号，所以延迟既可以从功放前面喂，也可以
+        从后面喂，由你决定。</p>
+      <p class="note">回程链随<b>主控预设</b>保存，而不是随机架预设：它们属于调音台，不属于某一件
+        乐器。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>主控段</h2>
+      <p>右侧的 <b class="ui">主控</b> 通道条是输出前的最后一级：每个机架、每条循环轨和两条发送
+        回程都要经过它。它过去住在 Rig 标签页；现在它在这里，和本该与它相邻的推子在一起。</p>
+      <p>它自己最多可以放<b>六个模块</b>——那些属于一首混音、而不是属于单件乐器的模块：</p>
+      <table>
+        <thead><tr><th>类别</th><th>模块</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">动态</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">延迟</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">混响</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">实用工具</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn">载入的<a href="/docs/zh/plugins.html">插件</a>只活在机架的链里：主控的 ADD
+        菜单不提供它们。想给全局挂一个限制器，请用内置的 <b class="ui">限制器</b> 模块。</p>
+      <ul style="--nc:var(--drive)">
+        <li>虚线的 <b class="ui">+</b> 条添加模块。某个类别若存有模块预设，会展开子菜单：默认设置、
+          你保存的某个预设，或者直接从某个机架预设里拿出来的模块。</li>
+        <li>这些条按音频的顺序自上而下排列。点一下编辑；长按可旁通、<b class="ui">Move</b> 和
+          删除。</li>
+        <li>通道条标题里的<b>堆叠图标</b>打开 <b class="ui">主控预设</b>——整条主控链的保存与
+          调用，用的是和机架同一个库。发送回程会一起保存。</li>
+        <li>主控推子（−60 … +12 dB）是输出前的最后一件事，旁边是立体声峰值条和 <b class="ui">LUFS</b>
+          读数。</li>
+      </ul>
+      <p><b>不经过主控的东西：</b>节拍器和采样器打击垫（除非某条循环轨或某条录音轨录的是采样器母
+        线）。伴奏播放器同样直出，直到你把它的 <b class="ui">出</b> 改成
+        <b class="ui">主效果</b>。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>录音机</h2>
+      <p>右侧一列里还有录音机，你调电平的时候它就在手边：带计时的 <b class="ui">REC</b>，以及
+        <b class="ui">录音</b>——录下的每一条。从那里可以试听、改名、以单条分轨或整个
+        <b>DAW 工程</b>分享，也可以删除。每条录音轨录的是什么、导出里包含什么，都在
+        <a href="/docs/zh/perform.html#recording">Perform</a> 页面上。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>在手机上</h2>
+      <p>在平板上，一整场演出能横着摆满调音台。在手机上，通道条会左右滚动，而主控列留在原处。</p>
+      <p>把手机横过来，调音台会分成两页，用上方的宽标签来切换：</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">推子</b>——<b class="ui">M</b> / <b class="ui">S</b>、发送旋钮、声像，以及
+          带电平表的推子；</li>
+        <li><b class="ui">模块</b>——同样那些通道条，只是显示它们的链，每个模块是一条通宽的横条，
+          用拇指也能按准。</li>
+      </ul>
+      <p>主控卡片和录音机在两页旁边都不动，而标签栏缩成屏幕底部一枚紧凑的胶囊，把高度让给调音台。</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/zh/perform.html">← 06 · 演出与歌词</a>
+      <span class="sp"></span>
+      <a href="/docs/zh/control.html">08 · MIDI 与控制 →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper 是一款独立应用,与任何设备制造商没有任何关联、认可或赞助关系。所有产品名称、品牌和商标均归其各自所有者所有,仅用于说明所使用的录制设备。</p>
+  </div>
+</footer>
+
+</body>
+</html>

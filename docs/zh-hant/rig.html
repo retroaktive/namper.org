@@ -56,6 +56,7 @@
       <li><a href="/docs/zh-hant/looper.html">循環樂句器</a></li>
       <li><a href="/docs/zh-hant/sampler.html">採樣打擊墊</a></li>
       <li><a href="/docs/zh-hant/perform.html">演出與歌詞</a></li>
+      <li><a href="/docs/zh-hant/mix.html">混合與主控</a></li>
       <li><a href="/docs/zh-hant/control.html">MIDI 與控制</a></li>
       <li><a href="/docs/zh-hant/settings.html">設置參考</a></li>
     </ol>
@@ -405,6 +406,30 @@
           請圍繞你保存預設的順序來規劃腳踏板的布局，而不是反過來。</p>
       </div>
 
+      <h3>預設條有兩副面孔</h3>
+      <p><b class="ui">預設</b> 卡片——在平板上是 Rig 分頁側邊的長條，在手機上是鏈下方的橫帶
+        ——顯示兩樣東西中的一樣，取決於有沒有一份處於 <b class="ui">現場</b> 的歌單：</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>沒有歌單在演出中</b>——它是預設庫：每個預設待在自己的 MIDI PC 插槽上，帶封面；超過八個
+          就出現搜尋框；列選單裡有 <b class="ui">重命名</b>、
+          <b class="ui">用當前音色組更新</b>、<b class="ui">加入歌單…</b>、
+          <b class="ui">分享</b> 與 <b class="ui">刪除</b>。程式切換 <em>n</em> 叫用預設
+          <em>n</em>。</li>
+        <li><b>有歌單在演出中</b>——它就是這份歌單：歌單名稱、歌曲切換器（<b class="ui">‹</b> 歌名
+          <b class="ui">›</b>，點歌名會展開整份清單以便跳轉），以及<em>目前這首歌叫出的</em>每個機架
+          預設各一張卡片——不是 128 個插槽，而是這首歌真正需要的那四五個聲音。此時程式切換 <em>n</em>
+          播放的是第 <em>n</em> 首歌。</li>
+      </ul>
+      <p>在台上真正重要的是第二副面孔：歌只挑一次，而副歌之間你伸手去拿的，就是這首歌自己的那些
+        聲音。每張卡片上有預設名稱和它的場景列——<b class="ui">-</b> <b class="ui">A</b>
+        <b class="ui">B</b> <b class="ui">C</b> <b class="ui">D</b>——該項目自己的場景帶有外框，而正在
+        發聲的那張卡片整張亮起。</p>
+      <p><strong>這些字母只是顯示，並不設定。</strong>點卡片上的任意位置，包括字母，都會照歌單裡寫好
+        的樣子把那個項目叫出來。某個項目用哪個場景是歌的一部分，所以要在
+        <a href="/docs/zh-hant/perform.html#sections">Perform</a> 分頁的歌曲編輯器裡改——台上一次誤
+        觸，不該改寫整份歌單。</p>
+      <p>歌單面板標題裡的堆疊圖示照樣能開啟完整的預設庫，而 <b class="ui">⊗</b> 會離開歌單：長條回到
+        128 個插槽，程式號碼也跟著回去。</p>
       <h3>更新與管理</h3>
       <p>覆蓋操作總是需要確認的。<b class="ui">用當前音色組更新</b> 會彈出一個對話框，
         顯示 <b class="ui">Overwrite "{name}" with the current rig?</b>，附帶
@@ -412,11 +437,11 @@
         <b class="ui">預設</b>，分為兩個部分：<b class="ui">音色組 · MIDI PC 預設位</b>，
         以及 <b class="ui">一次搞定全部</b> → <b class="ui">全局快照</b>，
         後者說明會把音色組、循環樂句器、採樣器、曲目單和控制映射一起保存和恢復。</p>
-      <p>每一行的操作菜單都提供 <b class="ui">重命名</b>、
-        <b class="ui">用當前音色組更新</b>、<b class="ui">分享</b> 和
-        <b class="ui">刪除</b>。重命名功能只存在於管理器中——Rig 標籤頁上的預設標籤
-        菜單裡沒有這一項。當預設超過八個之後，頂部會出現一個
-        <b class="ui">搜索預設</b> 搜索框。</p>
+      <p>每一列的內容選單裡有 <b class="ui">重命名</b>、
+        <b class="ui">用當前音色組更新</b>、<b class="ui">加入歌單…</b>、
+        <b class="ui">分享</b> 與 <b class="ui">刪除</b>。重新命名只在管理器裡有——Rig 分頁上預設
+        標籤的選單沒有它。預設超過八個之後，頂端會出現一個 <b class="ui">搜索預設</b>
+        搜尋框。</p>
       <div class="note warn">
         <div class="t">刪除不會二次確認</div>
         <p>預設行菜單中的 <b class="ui">刪除</b> 會立即生效，不會問"是否確定"。
@@ -528,6 +553,14 @@
       </div>
       <p>拖動是最快的試聽方式：按住合併錨點，把它在信號鏈上前後滑動，就能不打開任何菜單
         聽到分支落在延遲之前或之後的效果。</p>
+      <h3>整條分支的開關</h3>
+      <p>在分支自己的連線上、離分岔點稍遠一點的位置，有一個 <b class="ui g">power</b> 開關。點一下，
+        整條分支就離開訊號圖：它被畫成虛線並變暗，裡面的東西一律不再處理。同一個開關也在分支的選單
+        裡，並以 <b class="ui">旁通分支</b> / <b class="ui">啟用分支</b> 的形式出現在它的
+        混音面板裡，以及 <a href="/docs/zh-hant/mix.html">Mix</a> 分頁上它那條通道條上。</p>
+      <p>場景會記住這件事，於是並聯的音箱或低八度可以靠腳踏來來去去，而不必重新搭一遍。原廠機架
+        <b class="ui">Friday Night Lead</b> 正是這麼做的：它的八度分支在除 breakdown 場景之外的地方
+        全都是關的。</p>
       <div class="note tip">
         <div class="t">同時混合多條分支</div>
         <p>在分支匯合的位置放一個 <b class="ui">音量</b> 模塊，它會長出一個額外的部分，
@@ -542,16 +575,17 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>主控部分</h2>
-      <p>Rig 標籤頁底部的 <b class="ui">主控</b> 卡片是一切的匯合點：每個音色組、
-        循環樂句器、採樣打擊墊和伴奏音軌都會在這裡匯合，然後再送往硬體輸出。你對主控
-        做的任何操作，都會作用於全部內容。</p>
-      <p><b class="ui">FX</b> <b class="ui">+</b> 菜單用來添加主控處理——最多六個模塊。
-        可選項有 <b class="ui">音量</b>、<b class="ui">均衡</b>、<b class="ui">壓縮</b>、
-        <b class="ui">電子管飽和</b>、<b class="ui">磁帶飽和</b>、<b class="ui">限制器</b>、
-        <b class="ui">FB抑制</b>、<b class="ui">去齒音</b>、<b class="ui">雲霧</b>、
-        <b class="ui">大廳</b>、<b class="ui">板式</b>、<b class="ui">房間</b> 和
-        <b class="ui">延遲</b>。它們的行為和信號鏈中的模塊一樣：點擊標籤編輯，長按
-        進行 <b class="ui">啟用</b> / <b class="ui">旁通</b> 和 <b class="ui">移除</b>。</p>
+      <p><b class="ui">主控</b> 通道條是一切匯合的地方：每個機架、循環器與兩條傳送回程都在硬體
+        輸出之前在那裡相加。你對主控做的事，就是對全部做的事。它過去在 Rig 分頁的最下面；現在它
+        住在 <a href="/docs/zh-hant/mix.html">Mix</a> 分頁裡，在推桿旁邊的那一欄——這裡是簡短版本，
+        它周圍的整台混音台在那一頁上。</p>
+      <p>虛線的 <b class="ui">+</b> 條新增主控處理——最多六個模組。可選的有 <b class="ui">音量</b>、
+        <b class="ui">均衡</b>、<b class="ui">壓縮</b>、<b class="ui">電子管飽和</b>、
+        <b class="ui">磁帶飽和</b>、<b class="ui">限制器</b>、<b class="ui">FB抑制</b>、
+        <b class="ui">去齒音</b>、<b class="ui">雲霧</b>、<b class="ui">大廳</b>、
+        <b class="ui">板式</b>、<b class="ui">房間</b> 與 <b class="ui">延遲</b>。它們的行為和鏈上
+        的模組一樣：點標籤編輯，長按可 <b class="ui">啟用</b> / <b class="ui">旁通</b> 與
+        <b class="ui">移除</b>。</p>
       <div class="note warn">
         <div class="t">主控中沒有 AU 插件</div>
         <p>宿主的 Audio Unit 插件只能放在音色組信號鏈內部。主控的 FX 菜單不提供它們。

@@ -56,6 +56,7 @@
       <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
       <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
       <li><a class="on" href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/mix.html">混合与主控</a></li>
       <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
       <li><a href="/docs/zh/settings.html">设置参考</a></li>
     </ol>
@@ -73,9 +74,9 @@
       <ul>
         <li><a href="#tracks">伴奏音轨</a></li>
         <li><a href="#player">播放器卡片</a></li>
-        <li><a href="#setlist">曲目单</a></li>
-        <li><a href="#sections">搭建段落</a></li>
-        <li><a href="#markers">预设标记点</a></li>
+        <li><a href="#setlist">歌单与歌曲</a></li>
+        <li><a href="#sections">一首歌会调出什么</a></li>
+        <li><a href="#markers">标记</a></li>
         <li><a href="#lyrics">歌词与提词器</a></li>
         <li><a href="#presets">演出预设</a></li>
         <li><a href="#recording">录制</a></li>
@@ -123,7 +124,7 @@
             <tr><td><b class="ui">播放</b></td><td>播放和暂停伴奏音轨</td></tr>
             <tr><td><b class="ui">停止</b></td><td>停止并返回开头</td></tr>
             <tr><td><b class="ui">录制</b></td><td>启动和停止演出录音功能(见<a href="#recording">下文</a>)</td></tr>
-            <tr><td><b class="ui">添加预设标记</b></td><td>在播放头位置放置一个音色组预设切换</td></tr>
+            <tr><td><b class="ui">添加标记</b></td><td>在播放位置放下一次切换</td></tr>
             <tr><td><b class="ui">歌词</b></td><td>打开提词器,或加载歌词文件</td></tr>
           </tbody>
         </table>
@@ -134,11 +135,13 @@
         <b class="ui">MIDI 学习：上一段落</b> 都可以在那里设置。参见
         <a href="/docs/control.html">MIDI 与控制</a>。</p>
       <h3>伴奏电平与路由</h3>
-      <p>按钮下方,一个滑块以 dB 为单位设置伴奏电平,范围从 −60 到 +12,最低时显示为
-        <b class="ui">-inf</b>。旁边的芯片是路由选项:<b class="ui">直通</b> 让音轨在主效果链
-        之后直接输出(<b class="ui">直接输出（主效果之后）</b>),这是现场演出时你想要的
-        设置——你的混响和限制器永远不会碰到伴奏。<b class="ui">前置效果</b>
-        (<b class="ui">经过主效果</b>)则让音轨改为经过主效果链。</p>
+      <p>按钮下面是一条横放的调音台推子，把伴奏电平设在 −60 到 +12 dB 之间，最下方显示
+        <b class="ui">-inf</b>；双击可回到 0 dB。它和 <b class="ui">伴奏</b> 通道条是同一条推子、
+        同一个电平——就是 <a href="/docs/zh/mix.html">Mix</a> 标签页上的那一条。旁边的标签是走向：
+        <b class="ui">直通</b> 让伴奏在主控效果链之后送出
+        （<b class="ui">直接输出（主效果之后）</b>），现场要的正是这个——你的混响和限制器永远
+        碰不到伴奏。<b class="ui">前置效果</b>（<b class="ui">经过主效果</b>）则让伴奏穿过主控
+        链。</p>
       <h3>时间线</h3>
       <p>卡片下方的波形是一个镜像条形显示,已播放部分会点亮,并带有一个位于播放头处的光标。
         <strong>点按其上任意位置即可跳转。</strong>跳转还会重新应用该位置或之前最新的
@@ -151,68 +154,94 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>曲目单</h2>
-      <p>NAMper 曲目单的基本单位是<strong>段落</strong>:一个名称、一条可选的伴奏音轨,以及一份按
-        小节计时的步骤列表。导入一个文件会生成一个段落,所以实际上一个段落就对应一首歌——但完全
-        没有音频的段落同样有效,这正是你用循环和打击垫拼出一首歌的方式。</p>
-      <p>页头上有 <b class="ui">预设</b> 芯片、<b class="ui">自动切换</b> 开关以及
-        <b class="ui">导入音轨</b>;每个导入的文件都会成为一个独立的段落。开启 <b class="ui">自动切换</b> 后,每个段落结束时,
-        整套曲目会自动往下走。</p>
-      <p>在你添加任何内容之前,卡片会显示
-        <b class="ui">添加音频文件，或添加循环/采样段落——段落包含可选的伴奏，以及按小节时钟排列的循环与采样序列。</b></p>
-      <p>每一行显示一个播放按钮(<b class="ui">播放段落</b>)、名称、若干小徽章——
-        <b class="ui">伴奏</b>、<b class="ui">N steps</b>、<b class="ui">N bars</b>,运行时还会
-        实时显示 <b class="ui">bar N</b>——以及一个编辑按钮(<b class="ui">编辑段落</b>)。</p>
+      <h2 id="setlist"><span class="n">06.3</span>歌单与歌曲</h2>
+      <p><strong>歌单</strong>就是一串歌；同一时间只有一份处于 <b class="ui">现场</b>，而处于演出中
+        的那份歌单拥有预设条和 MIDI：程序切换 <em>n</em> 播放第 <em>n</em> 首歌。一首
+        <strong>歌</strong>由名字、它要调出的东西的有序清单，以及一条<em>可有可无</em>的伴奏（连同
+        标记和歌词）组成。完全没有音频的歌同样成立：它就是你用来演奏它的声音，从同一份清单里调出
+        来。</p>
+      <p>卡片标题栏上有 <b class="ui">设置单</b> 按钮——新建、选择、重命名、分享和删除歌单——一个
+        <b class="ui">自动切换</b> 开关，以及一个 <b class="ui">+</b>：导入音频文件（每个文件成为
+        一首歌）、添加 <b class="ui">无伴奏歌曲</b>，或者直接
+        <b class="ui">来自机架预设</b> 建一首歌。打开 <b class="ui">自动切换</b> 后，每首歌结束
+        时歌单会自己往前走。</p>
+      <p>每一行都有播放按钮（<b class="ui">播放歌曲</b>）、歌名、名字下方是这首歌会调出的东西，以及
+        编辑按钮（<b class="ui">编辑歌曲</b>）。列表始终处于编辑状态：拖动一行重新排序，横扫一行
+        删除。</p>
       <div class="note tip">
-        <div class="t">点按一行是待命,而不是启动</div>
-        <p>点按一个段落,NAMper 会加载它的伴奏音轨,把这首歌的速度和调性应用到音色组,并让传输
-          控制指向它——<strong>但不会播放任何内容</strong>。在歌曲之间做好准备、和观众说几句话,
-          再在准备好时按下 <b class="ui">播放</b>。</p>
+        <div class="t">点一行是就位，不是开始播放</div>
+        <p>点一首歌，NAMper 会应用它调出的一切，载入它的伴奏，接过它的速度和调性，并把走带对准它
+          ——<strong>但什么都不播</strong>。在两首歌之间做准备、和观众说两句，准备好了再按
+          <b class="ui">播放</b>。</p>
       </div>
-      <p>列表始终处于编辑模式,所以拖动手柄一直可见:拖动一行可调整曲目顺序,滑动一行可将其删除。
-        行的上下文菜单中有 <b class="ui">从文件加载歌词…</b>——见<a href="#lyrics">歌词</a>
-        一节。</p>
+      <p>只要有歌单在演出中，<a href="/docs/zh/rig.html">Rig</a> 标签页就把它放在链旁边，于是换声音
+        不必换标签页：预设条会变成歌单面板——歌曲步进器，以及<em>这首</em>歌调出的每个声音各一张
+        卡片，连场景一起。见<a href="/docs/zh/rig.html#presets">预设条的两副面孔</a>。</p>
+      <div class="note">
+        <div class="t">演示歌单</div>
+        <p>第一次启动、还没有任何歌单时，应用会带来一份：歌曲 <em>NAMper</em> 两遍——完整混音，以及
+          抽掉吉他的伴奏版。它就是整页内容的一个做好的示例。它的时间轴上有标记，在出厂机架
+          <b class="ui">One-Man Riot</b>（主歌、预副歌、副歌，以及作为场景的干净桥段，还有一条分支上
+          的第二台干净功放）和 <b class="ui">Friday Night Lead</b>（solo 与 breakdown 场景，加一条低
+          八度分支）之间切换；歌词钉在各自的段落上；而且每首歌还会调出一个四轨、每轨 8 小节的循环器
+          预设和 <b class="ui">音效与氛围</b> 套件。它就是一份普通歌单：改名、加进你自己的歌，
+          或者删掉——删掉之后它不会回来。</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>搭建段落</h2>
-      <p>编辑按钮会打开段落编辑器。其中有一个 <b class="ui">段落名称</b> 字段,一个伴奏选择器
-        (第一项是 <b class="ui">无（仅循环/采样）</b>,未选择时显示为
-        <b class="ui">无伴奏</b>),以及——当没有伴奏音轨时——一个从 1 到 128 的
-        <b class="ui">N bars</b> 步进器,用来设定该段落的时长。</p>
-      <p>接下来是 <b class="ui">步骤</b> 列表。<b class="ui">添加步骤</b> 提供
-        <b class="ui">循环音轨</b> → <b class="ui">Start loop 1…4</b> 或
-        <b class="ui">Stop loop 1…4</b>,以及 <b class="ui">采样打击垫</b> →
-        <b class="ui">Pad 1…16</b>。步骤行显示为 <b class="ui">Start loop N</b>、
-        <b class="ui">Stop loop N</b>、<b class="ui">Play pad N</b> 或
-        <b class="ui">Stop pad N</b>,各自带有独立的 <b class="ui">bar N</b> 步进器。列表下方的
-        提示准确说明了这一点:<b class="ui">步骤按小节时钟触发：在设定的小节启动/停止循环音轨并触发打击垫。</b></p>
-      <p>这就是 NAMper 在完全没有伴奏音轨的情况下演奏一首歌的方式。把你的分部录进
-        <a href="/docs/zh/looper.html">循环乐句器</a>,把你的采样加载到
-        <a href="/docs/zh/sampler.html">打击垫</a>上,再按小节写出编曲:鼓在第 1 小节进入,
-        贝斯在第 5 小节,垫音在第 13 小节,所有声部在第 33 小节退出。它按小节时钟运行,因此始终
-        锁定在你的速度上,而不是依赖一段渲染好的文件。</p>
+      <h2 id="sections"><span class="n">06.4</span>一首歌会调出什么</h2>
+      <p>编辑按钮会打开歌曲编辑器：一个 <b class="ui">歌曲名称</b> 输入框、第一项为
+        <b class="ui">无伴奏歌曲</b> 的伴奏选择器、<a href="#lyrics">歌词</a>那一行，以及
+        这首歌要调出的东西的清单。</p>
+      <p><b class="ui">添加预设、循环器、鼓组…</b> 会往清单里加一项：</p>
+      <table>
+        <thead><tr><th>条目</th><th>调出什么</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">机架预设</b></td><td>一个预设，连同它的 <b class="ui">场景</b>——
+            <b class="ui">A</b>–<b class="ui">D</b>，或者用 <b class="ui">-</b> 表示保存时的样子。
+            同一个预设可以带着两个不同场景出现两次。</td></tr>
+          <tr><td><b class="ui">循环预设</b></td><td>
+            <a href="/docs/zh/looper.html">循环器</a>的轨道长度、走向和声像——录下来的音频得你自己
+            弹。</td></tr>
+          <tr><td><b class="ui">采样器套件</b></td><td>给十六个
+            <a href="/docs/zh/sampler.html">打击垫</a>用的一套音色。</td></tr>
+        </tbody>
+      </table>
+      <p>歌曲就位时，这份清单按顺序应用，所以清单上<em>最后</em>一个机架预设就是你开始这首歌时的
+        声音；排在上面的那些，是留给<a href="#markers">标记</a>去够的。每一行都能从自己的菜单上移、
+        下移和删除。</p>
+      <h3>挑一个预设</h3>
+      <p>机架预设选择器显示和预设条相同的编号——<b class="ui">0</b> … <b class="ui">127</b>——带封面，
+        列表上方还有按名称、编号和标签过滤的搜索框。而且你翻的时候它会<strong>试听</strong>：点一行，
+        机架就真的载入它，于是你是用耳朵挑声音。不挑就关掉选择器，机架会回到原来的样子。</p>
+      <p>反方向也行：Rig 标签页预设条上某个预设的行菜单里有 <b class="ui">添加到歌单…</b>——先选
+        一份歌单，再选它的某首歌或 <b class="ui">新歌曲</b>，这个预设就会被追加到那首歌的清单
+        末尾。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>预设标记点</h2>
-      <p>预设标记点是写在歌曲时间线上的一次音色组切换。清音的主歌、失真的副歌、独奏时的主音色——
-        放置一次,以后每次演奏都无需动手。</p>
+      <h2 id="markers"><span class="n">06.5</span>标记</h2>
+      <p>标记是歌曲时间轴上的一个时刻，它会调出这首歌自己的某个条目。干净的主歌、失真的副歌、solo 用
+        的主音——放好一次，以后每次演奏都不用再动手。</p>
       <ol style="--nc:var(--drive)">
-        <li>让音轨待命,把播放头放到应该切换的位置——点按时间线跳转,或让它自然播放到那里。</li>
-        <li>点按图钉按钮(<b class="ui">添加预设标记</b>)。</li>
-        <li>从列出所有预设的菜单中选择一个音色组,每一行显示为
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>。标记点会放置在当前播放头位置。</li>
+        <li>让这首歌就位，把播放位置放到该切换的地方——点时间轴跳过去，或者干脆让它播。</li>
+        <li>点图钉按钮（<b class="ui">添加标记</b>）。</li>
+        <li>标记面板会列出这首歌调出的东西——
+          <b class="ui">这一刻调用歌曲的哪些部分。</b>——你勾选此刻该触发的那
+          几项。一个标记可以调出不止一样：比如一个机架预设和一套打击垫音色一起。</li>
       </ol>
-      <p>播放时经过一个标记点,会触发对应预设,效果与从踏板上收到一次 MIDI 程序变更完全一样。
-        标记点在时间线上显示为琥珀色圆点,并带有宽裕的点按区域;波形下方还有一行芯片将它们列出,
-        形式为 <b class="ui">m:ss  &lt;preset name&gt;</b>。长按一个芯片可执行
+      <p>如果在某个标记那一行选了这首歌还没有的 <b class="ui">场景</b>，它会作为一个独立条目被加进
+        这首歌，于是这份清单始终是"这首歌能做什么"的全部真相。</p>
+      <p>播放时越过一个标记，应用会像收到脚踏板发来的 MIDI 程序切换一样把它应用上。标记在时间轴上画
+        成琥珀色的圆点，触摸区域给得很宽裕，波形下方还有一行标签把它们列成
+        <b class="ui">m:ss  &lt;名称&gt;</b>。点标签打开它的面板，长按可
         <b class="ui">删除标记</b>。</p>
       <div class="note">
         <div class="t">吸附</div>
-        <p>刚创建的标记点会停在手指离开时的原始播放头位置。<strong>拖动标记点则会吸附到小节
-          网格</strong>——所以微调一个粗略的位置,方法就是把它拖一下。如果没有检测到速度,就没有
-          网格,放置也就保持自由。</p>
+        <p>刚创建的标记待在原始位置，也就是你手指离开的地方。<strong>拖动标记，它就会吸附到小节
+          网格上</strong>——所以要把大致的位置调准，推它一下就行。如果没检测到速度，就没有网格，
+          位置也就自由。</p>
       </div>
     </section>
 
@@ -367,7 +396,7 @@
     <nav class="pager">
       <a href="/docs/zh/sampler.html">← 05 · 采样打击垫</a>
       <span class="sp"></span>
-      <a href="/docs/zh/control.html">07 · MIDI 与控制 →</a>
+      <a href="/docs/zh/mix.html">07 · 混合与主控 →</a>
     </nav>
   </main>
 </div>

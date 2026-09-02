@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mix — Dokumentasyon ng NAMper</title>
+<meta name="description" content="Ang Mix tab: isang channel strip para sa bawat rig, bawat sanga, bawat looper track, ang sampler at ang backing player, dalawang global send bus na may sariling return chain, ang master section na may sariling mga block at LUFS reading, at ang recorder.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mix — Dokumentasyon ng NAMper">
+<meta property="og:description" content="Isang konsola para sa lahat ng tumutunog: mga strip, send, master section at recorder.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/fil/mix.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mix.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mix.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mix.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mix.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mix.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mix.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mix.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mix.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mix.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mix.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mix.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mix.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mix.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mix.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mix.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mix.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mix.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mix.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOKUMENTASYON</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/fil/">← LAHAT NG DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/fil/mix.html" aria-current="page">Filipino</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">NILALAMAN</div>
+    <ol>
+      <li><a href="/docs/fil/setup.html">Pagsisimula</a></li>
+      <li><a href="/docs/fil/rig.html">Rig at signal chain</a></li>
+      <li><a href="/docs/fil/plugins.html">Mga plugin</a></li>
+      <li><a href="/docs/fil/looper.html">Looper</a></li>
+      <li><a href="/docs/fil/sampler.html">Mga sampler pad</a></li>
+      <li><a href="/docs/fil/perform.html">Perform at lyrics</a></li>
+      <li><a class="on" href="/docs/fil/mix.html">Mix at master</a></li>
+      <li><a href="/docs/fil/control.html">MIDI at control</a></li>
+      <li><a href="/docs/fil/settings.html">Sanggunian sa mga setting</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--gate)">07 · MIX AT MASTER</div>
+    <h1>Isang konsola para sa lahat ng tumutunog.</h1>
+    <p class="lede">Konsola ang <b class="ui a">Mix</b> tab: isang channel strip para sa bawat rig at
+      bawat sanga, isa sa bawat looper track, isa para sa sampler at isa para sa backing player, dalawang
+      global effect bus at isang master section — lahat nasa iisang grid, puwesto sa puwesto, kaya
+      laging nasa iisang lugar ang fader.</p>
+
+    <nav class="toc">
+      <div class="slab">SA PAHINANG ITO</div>
+      <ul>
+        <li><a href="#desk">Ang konsola</a></li>
+        <li><a href="#strip">Isang channel strip</a></li>
+        <li><a href="#rigs">Mga rig at sanga</a></li>
+        <li><a href="#players">Loop, sampler, backing</a></li>
+        <li><a href="#sends">Send A at Send B</a></li>
+        <li><a href="#master">Ang master section</a></li>
+        <li><a href="#recorder">Ang recorder</a></li>
+        <li><a href="#phone">Sa telepono</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="desk"><span class="n">07.1</span>Ang konsola</h2>
+      <p>Lahat ng puwedeng magpatunog sa app ay nakatayo sa sarili nitong strip, at pare-parehong
+        puwesto sa parehong pagkakasunod-sunod ang bumubuo sa bawat strip. Walang nakatago sa submenu:
+        kasyang-kasya sa isang lapad ng screen ang buong daloy ng signal ng app.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/mix.png" width="600" height="1304"
+             alt="Ang Mix tab: mga channel strip para sa rig, sa sanga nito, sa apat na looper track, sa sampler at sa backing player, bawat isa may send, pan knob, fader at meter, habang nasa kanan ang master column at ang recorder.">
+        <figcaption>Ang konsola na may isang rig, ang sanga nito, ang looper group at ang master column</figcaption>
+      </figure>
+      <p>Mula kaliwa pakanan, ito ang nasa konsola:</p>
+      <ul style="--nc:var(--gate)">
+        <li>isang strip sa bawat <b>rig</b>, katabi ang mga <b>sanga</b> nito sa iisang kulay na
+          grupo;</li>
+        <li><b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, nakatiklop sa iisang
+          <b class="ui">Looper</b> strip hangga't hindi mo binubuksan;</li>
+        <li><b class="ui">Sampler</b> — ang bus ng mga pad — at <b class="ui">Backing</b> — ang player
+          sa <a href="/docs/fil/perform.html">Perform</a> tab;</li>
+        <li><b class="ui">Send A</b> at <b class="ui">Send B</b>, ang dalawang global effect bus;</li>
+        <li>ang kanang column na hindi kailanman umuusad: ang recorder at ang
+          <b class="ui">MASTER</b>.</li>
+      </ul>
+      <p>Buhay ang konsola, hindi litrato: lilitaw dito ang rig na idinagdag mo sa
+        <a href="/docs/fil/rig.html">Rig</a> tab, mapupuno ang looper track na irerekord mo, at
+        gumagalaw ang mga meter kahit hindi mo tinitingnan.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="strip"><span class="n">07.2</span>Isang channel strip</h2>
+      <p>Mula itaas pababa, pareho ang mga kontrol na dala ng bawat strip:</p>
+      <table>
+        <thead><tr><th>Puwesto</th><th>Ano ang ginagawa</th></tr></thead>
+        <tbody>
+          <tr><td><b>Pangalan</b></td><td>Kung ano ang strip. Sa isang rig, ang pag-tap sa pangalan ang nagbibigay dito ng MIDI focus.</td></tr>
+          <tr><td><b class="ui">IN</b> / <b class="ui">OUT</b></td><td>Kung saan kumukuha ng signal ang strip at kung saan ito lumalabas — tingnan sa ibaba, magkakaiba ang basa sa bawat uri ng strip.</td></tr>
+          <tr><td><b>Mga block</b></td><td>Ang chain bilang maliliit na chip kasama ang LED nito. I-tap para buksan ang sheet ng block, pindutin nang matagal para sa bypass o pagtanggal, at ang tuldok-tuldok na <b class="ui">+</b> ay nagdaragdag ng block sa dulo.</td></tr>
+          <tr><td><b class="ui">Mga send</b></td><td>Dalawang maliit na knob, isa sa bawat send bus.</td></tr>
+          <tr><td><b class="ui">Pan</b></td><td>Isang knob; ibinabalik ito sa gitna ng dobleng tap.</td></tr>
+          <tr><td><b>Fader</b></td><td>−60 … +12 dB, may guhit sa 0 / −6 / −12 / −24 / −48, at ibinabalik ito sa 0 dB ng dobleng tap.</td></tr>
+          <tr><td><b>Meter</b></td><td>Post-fader peak meter sa tabi ng fader: ang nakikita mo ang mismong lumalabas sa strip.</td></tr>
+          <tr><td><b class="ui">M</b> / <b class="ui">S</b></td><td>Mute at solo. Pinatatahimik ng solo ang lahat maliban sa master.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Ang mute at solo ay kalagayan ng pagtatanghal.</b> Hindi sila kailanman
+        pumapasok sa preset, pero naroon pa rin pagkatapos mag-restart — babalik ang konsola sa
+        kalagayang iniwan mo.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="rigs"><span class="n">07.3</span>Mga rig at sanga</h2>
+      <p>Ang strip ng isang rig ay ang <a href="/docs/fil/rig.html">signal chain</a> nito na tiningnan
+        mula sa gilid. Sinasabi ng <b class="ui">IN</b> chip kung aling interface channel ang
+        pinakikinggan nito — o ang sampler bus, o isang looper track — at sinasabi ng
+        <b class="ui">OUT</b> chip kung saan ito papunta: sa pangunahing mix o sa sarili nitong pares
+        ng output.</p>
+      <p>Binibigyan ang <b>sanga</b> ng sariling strip katabi ng rig nito, sa parehong kulay. Ganoon
+        din ang basa ng mga chip nito gaya ng mga sanga sa Rig tab: sinasabi ng <b class="ui">IN</b>
+        kung <em>pagkatapos</em> ng aling block ito humihiwalay, at ng <b class="ui">OUT</b> kung
+        <em>bago</em> ang aling block ito bumabalik. Ang fader nito ang antas ng sanga, at ang
+        <b class="ui">M</b> ay nagpapatahimik sa sanga nang hindi ito inaalis sa graph — para roon,
+        gamitin ang <b>power switch</b> sa Rig tab o ang <b class="ui">I-bypass ang branch</b> na buton sa
+        sheet ng strip.</p>
+      <p>Ang tunay na chain ang inaayos ng mga block chip: ang binago mo rito ay nabago na rin sa Rig
+        tab, at hindi kailanman naputol ang tunog habang ginagawa mo iyon.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="players"><span class="n">07.4</span>Loop, sampler, backing</h2>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Looper</b> — isang nakatiklop na strip na nagpapakita kung ilang track ang
+          umaandar; buksan mo ito at bawat isa sa apat ay magkakaroon ng sariling strip na may sariling
+          <b class="ui">IN</b> at <b class="ui">OUT</b> (kaparehong pagpipilian gaya sa
+          <a href="/docs/fil/looper.html">Loop</a> tab), sariling estado, send, pan at fader. Sa
+          <b class="ui">Buong looper</b> naman, iisang fader ang humahawak sa kanilang lahat.</li>
+        <li><b class="ui">Sampler</b> — ang buong bus ng mga pad sa isang strip, na may sariling pan
+          dito sa halip na sa <a href="/docs/fil/sampler.html">Sample</a> tab.</li>
+        <li><b class="ui">Backing</b> — ang player. Ang <b class="ui">OUT</b> chip nito ang ruta na
+          tinatawag ng Perform tab na <b class="ui">DIRECT</b> at <b class="ui">PRE FX</b>:
+          pinananatili ng <b class="ui">Direkta</b> ang track sa labas ng master chain, at pinaraan
+          naman ito ng <b class="ui">Master FX</b>. Sa entablado, halos palaging
+          <b class="ui">Direkta</b> ang gusto mo.</li>
+      </ul>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="sends"><span class="n">07.5</span>Send A at Send B</h2>
+      <p>Dalawang global bus, para isang reverb ang nakatayo sa likod ng buong banda sa halip na
+        tig-isa sa bawat rig.</p>
+      <p>May sariling strip ang bawat bus, at nasa strip na iyon ang <b>return chain</b>: hanggang
+        apat na block — delay, reverb, modulation, dynamics o utility — kasama ang antas at pan ng
+        return papunta sa master, <em>bago</em> ang master FX.</p>
+      <p>May dalawang send knob ang bawat isa pang strip. Sa mga player, agad na tumatakbo ang mga
+        ito. Sa isang rig o sanga, nabubuhay ang knob kapag may <b class="ui">Send</b> block ang chain
+        na iyon para sa bus na iyon (idinaragdag mula sa <b class="ui">+</b> menu ng chain, sa ilalim
+        ng Utility) — kinukuha ang send mismo sa kinalalagyan ng block, kaya puwedeng pakainin ang
+        delay bago o pagkatapos ng amp, ikaw ang bahala.</p>
+      <p class="note">Kasama ng <b>master preset</b> naka-save ang mga return chain, hindi ng preset ng
+        rig: sa konsola sila nabibilang, hindi sa iisang instrumento.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="master"><span class="n">07.6</span>Ang master section</h2>
+      <p>Ang <b class="ui">MASTER</b> strip sa kanan ang huling yugto bago ang output: dumadaan dito
+        ang bawat rig, bawat looper track at ang dalawang send return. Dati'y nasa Rig tab ito; nandito
+        na ito ngayon, katabi ng mga fader na talagang kasama nito.</p>
+      <p>Kaya nitong magdala ng hanggang <b>anim na block</b> na sarili nito — ang mga bagay na
+        nababagay sa isang mix at hindi sa iisang instrumento:</p>
+      <table>
+        <thead><tr><th>Pamilya</th><th>Mga block</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Dynamics</b></td><td>Comp, De-Esser, Limiter, FB Guard</td></tr>
+          <tr><td><b class="ui">Delay</b></td><td>Delay</td></tr>
+          <tr><td><b class="ui">Reverb</b></td><td>Cloud, Hall, Room, Plate</td></tr>
+          <tr><td><b class="ui">Utility</b></td><td>EQ, Volume, Tube Sat, Tape Sat</td></tr>
+        </tbody>
+      </table>
+      <p class="note warn">Sa loob lamang ng chain ng isang rig nabubuhay ang mga naka-load na
+        <a href="/docs/fil/plugins.html">plugin</a>: hindi sila inaalok ng ADD menu ng master. Para sa
+        isang limiter sa ibabaw ng lahat, gamitin ang built-in na <b class="ui">Limiter</b> block.</p>
+      <ul style="--nc:var(--drive)">
+        <li>Nagdaragdag ng block ang tuldok-tuldok na <b class="ui">+</b> na bar. Ang pamilyang may
+          naka-save nang block preset ay magbubukas ng submenu: default na setting, isa sa mga preset
+          mo, o isang block na kinuha mismo sa isang preset ng rig.</li>
+        <li>Sumusunod sa daloy ng audio ang mga bar, mula itaas pababa. I-tap para i-edit; pindutin
+          nang matagal para sa bypass, <b class="ui">Move</b> at pagtanggal.</li>
+        <li>Binubuksan ng <b>salansan na icon</b> sa ulo ng strip ang <b class="ui">Master Presets</b>
+          — ang buong master chain, naka-save at naibabalik, mula sa parehong aklatan ng mga rig.
+          Kasama ring naka-save ang mga send return.</li>
+        <li>Ang master fader (−60 … +12 dB) ang huling bagay bago ang output, katabi ang stereo peak
+          bar at ang <b class="ui">LUFS</b> na pagbasa.</li>
+      </ul>
+      <p><b>Ang hindi dumadaan sa master:</b> ang click at ang mga sampler pad (maliban kung may
+        looper track o recording lane na kumukuha ng sampler bus). Direkta rin ang backing player,
+        hanggang ilipat mo ang <b class="ui">OUT</b> nito sa <b class="ui">Master FX</b>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="recorder"><span class="n">07.7</span>Ang recorder</h2>
+      <p>Nasa kanang column din ang recorder, kaya abot-kamay ito habang inaayos mo ang mga antas:
+        <b class="ui">REC</b> kasama ang tumatakbong oras, at <b class="ui">Mga set</b> — ang mga
+        nakuhang take. Mula roon, puwedeng pakinggan ang isang take, palitan ang pangalan, ibahagi
+        bilang isang stem o bilang buong <b>proyektong DAW</b>, at burahin. Ang inirerekord ng bawat
+        lane at ang laman ng export ay nasa pahinang
+        <a href="/docs/fil/perform.html#recording">Perform</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="phone"><span class="n">07.8</span>Sa telepono</h2>
+      <p>Sa tablet, kasya sa lapad ng konsola ang isang buong palabas. Sa telepono, pahalang na
+        umuusad ang mga strip habang nananatili sa puwesto ang master column.</p>
+      <p>Ihiga mo ang telepono at mahahati sa dalawang pahina ang konsola, na pinipili sa malalapad na
+        tab sa itaas:</p>
+      <ul style="--nc:var(--gate)">
+        <li><b class="ui">Mga fader</b> — <b class="ui">M</b> / <b class="ui">S</b>, ang mga send knob,
+          ang pan at ang fader kasama ang meter nito;</li>
+        <li><b class="ui">Mga block</b> — ang parehong mga strip na ipinapakita ang kanilang chain, at
+          bawat block ay isang bar na kasinglapad ng screen, madaling tamaan ng hinlalaki.</li>
+      </ul>
+      <p>Nananatili sa tabi ng dalawang pahina ang master card at ang recorder, at umuurong sa isang
+        maliit na pill sa ibaba ng screen ang tab bar para mapunta sa konsola ang taas.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/fil/perform.html">← 06 · Perform at liriko</a>
+      <span class="sp"></span>
+      <a href="/docs/fil/control.html">08 · MIDI at kontrol →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/fil/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://github.com/retroaktive/namper-support/issues">SUPORTA</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">Ang NAMper ay isang malayang app na walang kaugnayan sa, hindi inendorso at hindi isinusuportahan ng anumang gumagawa ng kagamitan. Ang lahat ng pangalan ng produkto, brand at trademark ay pag-aari ng kani-kanilang may-ari at ginagamit lamang para ilarawan kung saang kagamitan ginawa ang isang capture.</p>
+  </div>
+</footer>
+
+</body>
+</html>

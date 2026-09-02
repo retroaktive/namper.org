@@ -39,7 +39,7 @@ LOCALES = [
 ]
 
 PAGES = ["index.html", "setup.html", "rig.html", "plugins.html", "looper.html",
-         "sampler.html", "perform.html", "control.html", "settings.html"]
+         "sampler.html", "perform.html", "mix.html", "control.html", "settings.html"]
 
 
 def page_path(d, page):

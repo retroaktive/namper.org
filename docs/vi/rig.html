@@ -56,6 +56,7 @@
       <li><a href="/docs/vi/looper.html">Looper</a></li>
       <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
       <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--amp)">02 · RIG &amp; CHUỖI TÍN HIỆU</div>
     <h1>Xây dựng âm thanh.</h1>
-    <p class="lede">Tab <b class="ui a">Rig</b> là nơi chuỗi tín hiệu của bạn sống: các block bạn
+    <p class="lede">Tab <b class="ui a">Bộ tiếng</b> là nơi chuỗi tín hiệu của bạn sống: các block bạn
       thêm vào và kéo đi kéo lại, một profile ampli NAM ở trung tâm, một impulse response của cab
       sau nó, và một phần master mà mọi thứ cộng dồn vào. Trang này bao quát tất cả — tối đa bốn
       rig, bốn chuỗi song song bên trong mỗi rig, và các preset gọi lại toàn bộ.</p>
@@ -420,6 +421,32 @@ không cần IR</b>. Rất nhiều
           bạn lưu preset, chứ không phải ngược lại.</p>
       </div>
 
+      <h3>Dải preset có hai gương mặt</h3>
+      <p>Thẻ <b class="ui">PRESET</b> — dải dọc bên cạnh thẻ Rig trên máy tính bảng, dải ngang dưới
+        chuỗi trên điện thoại — hiển thị một trong hai thứ, tuỳ vào việc có setlist nào đang
+        <b class="ui">LIVE</b> hay không:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Không có setlist live</b> — thư viện: mỗi preset trên khe MIDI PC của nó, kèm ảnh bìa,
+          ô tìm kiếm khi đã hơn tám preset, và menu dòng gồm <b class="ui">Đổi tên</b>,
+          <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Thêm vào set…</b>,
+          <b class="ui">Chia sẻ</b> và <b class="ui">Xoá</b>. Program change <em>n</em> áp dụng
+          preset <em>n</em>.</li>
+        <li><b>Có setlist live</b> — chính bộ set: tên set, bộ chuyển bài (<b class="ui">‹</b> tên
+          <b class="ui">›</b>, và bấm vào tên sẽ mở cả danh sách để nhảy bài), cùng một thẻ cho mỗi
+          preset rig <em>mà bài hiện tại gọi lên</em> — không phải 128 khe, mà là bốn năm âm thanh
+          bài đó thực sự cần. Giờ program change <em>n</em> phát bài <em>n</em>.</li>
+      </ul>
+      <p>Trên sân khấu, gương mặt thứ hai mới quan trọng: bài được chọn một lần, và giữa các điệp
+        khúc thứ bạn với tay tới là âm thanh của chính bài đó. Mỗi thẻ mang tên preset và hàng scene
+        của nó — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b> <b class="ui">C</b>
+        <b class="ui">D</b> — trong đó scene của mục được viền lại, và cả thẻ sáng lên khi đúng mục
+        đó đang vang.</p>
+      <p><strong>Các chữ cái chỉ để xem, không phải để đặt.</strong> Chạm vào bất cứ đâu trên thẻ, kể
+        cả chữ cái, sẽ gọi mục đó lên đúng như bài đã ghi. Mục dùng scene nào là chuyện của bài, nên
+        thay đổi ở trình sửa bài trong thẻ <a href="/docs/vi/perform.html#sections">Perform</a> —
+        một cú chạm nhầm trên sân khấu không được phép viết lại bộ set.</p>
+      <p>Biểu tượng chồng ở đầu bảng set vẫn mở toàn bộ thư viện preset, còn <b class="ui">⊗</b> rời
+        khỏi setlist: dải quay về 128 khe, và các số program cũng vậy.</p>
       <h3>Cập nhật và quản lý</h3>
       <p>Ghi đè luôn được xác nhận. <b class="ui">Cập nhật bằng rig hiện tại</b> hiện một hộp thoại
         ghi <b class="ui">Overwrite "{name}" with the current rig?</b> cùng
@@ -427,11 +454,11 @@ không cần IR</b>. Rất nhiều
         đề điều hướng <b class="ui">Preset</b> và hai phần: <b class="ui">Rig · khe MIDI PC</b>,
         và <b class="ui">Tất cả cùng lúc</b> → <b class="ui">Snapshot toàn cục</b>, được mô tả
         là rig, looper, sampler, setlist và bản đồ control được lưu và khôi phục cùng nhau.</p>
-      <p>Menu ngữ cảnh của mỗi hàng có <b class="ui">Đổi tên</b>,
-        <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Chia sẻ</b> và
-        <b class="ui">Xoá</b>. Đổi tên chỉ có trong trình quản lý — menu chip preset trên tab
-        Rig không có tuỳ chọn này. Khi bạn có nhiều hơn tám preset, một ô
-        <b class="ui">Tìm preset</b> sẽ xuất hiện ở trên cùng.</p>
+      <p>Menu ngữ cảnh của mỗi dòng có <b class="ui">Đổi tên</b>,
+        <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Thêm vào set…</b>,
+        <b class="ui">Chia sẻ</b> và <b class="ui">Xoá</b>. Đổi tên chỉ có trong trình quản lý —
+        menu chip preset ở thẻ Rig không có. Khi đã hơn tám preset, phía trên xuất hiện ô
+        <b class="ui">Tìm preset</b>.</p>
       <div class="note warn">
         <div class="t">Xoá không được xác nhận lại</div>
         <p><b class="ui">Xoá</b> trong menu hàng preset có hiệu lực ngay lập tức, không hỏi
@@ -547,6 +574,15 @@ không cần IR</b>. Rất nhiều
       </div>
       <p>Kéo là cách nhanh để thử nghe: giữ điểm neo trộn, trượt nó sớm hơn hoặc muộn hơn trong
         chuỗi, và nghe nhánh đó rơi vào trước hay sau delay mà không cần mở menu nào.</p>
+      <h3>Tắt hẳn một nhánh</h3>
+      <p>Trên chính sợi dây của nhánh, ngay sau chỗ rẽ, có một công tắc <b class="ui g">power</b>.
+        Chạm vào đó, cả nhánh rời khỏi đồ thị: nó được vẽ nét đứt và mờ đi, và không gì bên trong
+        được xử lý. Vẫn công tắc ấy có trong menu của nhánh và, dưới dạng
+        <b class="ui">Bỏ qua nhánh</b> / <b class="ui">Bật nhánh</b>, trong bảng mixer của nó
+        cũng như trên kênh của nó ở thẻ <a href="/docs/vi/mix.html">Mix</a>.</p>
+      <p>Các scene nhớ điều đó, nên một ampli song song hay một quãng tám trầm có thể đến rồi đi bằng
+        footswitch thay vì phải dựng lại. Rig xuất xưởng <b class="ui">Friday Night Lead</b> hoạt
+        động đúng như vậy: nhánh quãng tám của nó tắt ở mọi nơi trừ scene breakdown.</p>
       <div class="note tip">
         <div class="t">Trộn nhiều nhánh cùng lúc</div>
         <p>Đặt một block <b class="ui">Âm lượng</b> tại điểm nơi các nhánh trộn lại và nó sẽ mọc
@@ -562,17 +598,17 @@ không cần IR</b>. Rất nhiều
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>Phần master</h2>
-      <p>Thẻ <b class="ui">MASTER</b> ở cuối tab Rig là nơi mọi thứ gặp nhau: mọi rig, looper,
-        pad sampler và nhạc nền đều cộng dồn tại đây trước khi ra phần cứng output. Bất cứ điều
-        gì bạn làm với master, bạn đều làm với tất cả.</p>
-      <p>Menu <b class="ui">FX</b> <b class="ui">+</b> thêm xử lý master — tối đa sáu block. Bạn
-        có thể chọn từ <b class="ui">Âm lượng</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>,
+      <p>Kênh <b class="ui">MASTER</b> là nơi mọi thứ gặp nhau: mọi rig, looper và cả hai return của
+        send cộng lại ở đó trước khi ra phần cứng. Bạn làm gì với master là làm với tất cả. Trước
+        đây nó nằm ở cuối thẻ Rig; giờ nó sống ở thẻ <a href="/docs/vi/mix.html">Mix</a>, trong cột
+        cạnh các fader — mục này là bản rút gọn, cả bàn trộn quanh nó nằm ở trang đó.</p>
+      <p>Thanh <b class="ui">+</b> nét đứt thêm xử lý master — tối đa sáu block. Bạn có thể chọn
+        <b class="ui">Âm lượng</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>,
         <b class="ui">Tube Sat</b>, <b class="ui">Tape Sat</b>, <b class="ui">Limiter</b>,
         <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Cloud</b>,
         <b class="ui">Hội trường</b>, <b class="ui">Plate</b>, <b class="ui">Phòng</b> và
-        <b class="ui">Delay</b>. Chúng hoạt động như block của chuỗi: chạm vào một chip để chỉnh
-        sửa, nhấn giữ để <b class="ui">Bật</b> / <b class="ui">Bypass</b> và
-        <b class="ui">Bỏ</b>.</p>
+        <b class="ui">Delay</b>. Chúng cư xử như block trong chuỗi: chạm chip để chỉnh, giữ lâu để
+        <b class="ui">Bật</b> / <b class="ui">Bypass</b> và <b class="ui">Bỏ</b>.</p>
       <div class="note warn">
         <div class="t">Không có plugin AU trong master</div>
         <p>Plugin Audio Unit được host chỉ có thể đặt bên trong một chuỗi rig. Menu FX của master

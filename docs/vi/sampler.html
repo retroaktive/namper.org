@@ -56,6 +56,7 @@
       <li><a href="/docs/vi/looper.html">Looper</a></li>
       <li><a class="on" href="/docs/vi/sampler.html">Pad sampler</a></li>
       <li><a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
       <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--eq)">05 · PAD SAMPLER</div>
     <h1>Mười sáu pad, một trang.</h1>
-    <p class="lede">Tab <b class="ui a">Sample</b> là một drum machine bạn có thể chơi bằng ngón
+    <p class="lede">Tab <b class="ui a">Mẫu</b> là một drum machine bạn có thể chơi bằng ngón
       tay cái hoặc bằng một pedal MIDI: mười sáu pad, một thư viện kit, trim và envelope cho từng
       pad, và một bộ quantize cho khi timing cần phải chuẩn.</p>
 
@@ -85,6 +86,9 @@
       <h2 id="grid"><span class="n">05.1</span>Lưới pad</h2>
       <p>Mười sáu pad trong một lưới 4×4 cố định. Một trang duy nhất — không có bank, không có
         trang thứ hai, nên mọi thứ bạn có thể chơi đều nằm trên màn hình cùng lúc.</p>
+      <p>Xoay ngang điện thoại và phần đầu trở thành một cột bên trái — mức sampler, chip quantize
+        và <b class="ui">DỪNG TẤT CẢ</b> — còn dàn 4×4 chiếm toàn bộ phần còn lại của màn hình, các pad
+        giãn ra để lấp đầy.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
              alt="Tab Sample với kit trống acoustic gốc được tải trên cả mười sáu pad, mỗi pad hiển thị tên sample, độ dài và waveform của nó, cùng núm LEVEL và QUANT và chip lưới quantize trong header.">
@@ -145,9 +149,9 @@
 
       <h3>MODE và TAP</h3>
       <p>Hai cặp chip quyết định một pad phản ứng thế nào dưới ngón tay bạn.
-        <b class="ui">CHẾ ĐỘ</b> là <b class="ui">One-shot</b> hoặc <b class="ui">Loop</b>;
+        <b class="ui">CHẾ ĐỘ</b> là <b class="ui">One-shot</b> hoặc <b class="ui">Vòng lặp</b>;
         <b class="ui">TAP</b> là <b class="ui">Retrig</b> hoặc <b class="ui">Latch</b>. Quy tắc
-        đơn giản: một pad đặt ở <b class="ui">Loop</b> hoặc <b class="ui">Latch</b> sẽ bật/tắt
+        đơn giản: một pad đặt ở <b class="ui">Vòng lặp</b> hoặc <b class="ui">Latch</b> sẽ bật/tắt
         start và stop mỗi lần chạm, còn một pad <b class="ui">One-shot</b> / <b class="ui">Retrig</b>
         sẽ phát lại từ đầu vùng trim mỗi lần bạn chạm vào nó — hành vi drum-pad thông thường.</p>
       <div class="tw">
@@ -159,9 +163,9 @@
             <tr><td><b class="ui">One-shot</b></td><td><b class="ui">Latch</b></td>
                 <td>Phát một lần; chạm lần hai trong khi nó vẫn đang kêu sẽ dừng nó. Dùng cho các
                     one-shot dài mà bạn có thể cần cắt ngắn.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+            <tr><td><b class="ui">Vòng lặp</b></td><td><b class="ui">Retrig</b></td>
                 <td>Lặp cho tới khi bạn chạm lại để dừng nó.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+            <tr><td><b class="ui">Vòng lặp</b></td><td><b class="ui">Latch</b></td>
                 <td>Lặp cho tới khi bạn chạm lại để dừng nó. Nền nhạc, drone, tiếng mưa, tiếng rè
                     đĩa than.</td></tr>
           </tbody>
@@ -263,11 +267,10 @@
         trình chỉnh sửa pad và chúng sẽ giữ nguyên.</p>
       <div class="note tip">
         <div class="t">Mapping đã học hoạt động tốt hơn note thô</div>
-        <p>Một mapping bạn tạo trên tab <b class="ui a">Điều khiển</b> gọi play/stop, nên nó tôn
-          trọng <b class="ui">Loop</b> và <b class="ui">Latch</b> — một lần đạp footswitch bắt
-          đầu loop, lần tiếp theo dừng nó. Note MIDI thô 36–51 luôn phát lại từ đầu. Nếu bạn đang
-          điều khiển các pad đang loop từ một pedal, hãy học mapping thay vì dựa vào dải note
-          tích hợp sẵn.</p>
+        <p>Một ánh xạ bạn tạo trong Cài đặt → <b class="ui">Điều khiển</b> sẽ gọi play/stop, nên nó tôn
+          trọng <b class="ui">Vòng lặp</b> và <b class="ui">Latch</b> — đạp một lần khởi động vòng lặp,
+          đạp lần nữa dừng lại. Nốt MIDI 36–51 thô thì luôn phát lại từ đầu. Nếu bạn điều khiển các
+          pad lặp bằng pedal, hãy dạy ánh xạ thay vì dựa vào dải nốt có sẵn.</p>
       </div>
     </section>
 

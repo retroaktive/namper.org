@@ -56,6 +56,7 @@
       <li><a href="/docs/tr/looper.html">Looper</a></li>
       <li><a class="on" href="/docs/tr/sampler.html">Sampler pad'leri</a></li>
       <li><a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a></li>
+      <li><a href="/docs/tr/mix.html">Miks ve master</a></li>
       <li><a href="/docs/tr/control.html">MIDI ve kontrol</a></li>
       <li><a href="/docs/tr/settings.html">Ayarlar referansı</a></li>
     </ol>
@@ -64,7 +65,7 @@
   <main>
     <div class="slab" style="--nc:var(--eq)">05 · SAMPLER PAD'LERİ</div>
     <h1>On altı pad, tek sayfa.</h1>
-    <p class="lede"><b class="ui a">Sample</b> sekmesi, başparmaklarınla ya da bir MIDI pedalıyla
+    <p class="lede"><b class="ui a">Örnek</b> sekmesi, başparmaklarınla ya da bir MIDI pedalıyla
       çalabileceğin bir drum machine'dir: on altı pad, bir kit kütüphanesi, pad başına trim ve
       zarf, ve zamanlamanın tam olması gerektiğinde bir quantizer.</p>
 
@@ -85,6 +86,9 @@
       <h2 id="grid"><span class="n">05.1</span>Izgara</h2>
       <p>Sabit bir 4×4 ızgarada on altı pad. Tek sayfa — banka yok, ikinci sayfa yok; çalabileceğin
         her şey aynı anda ekrandadır.</p>
+      <p>Telefonu yan çevir: başlık sola bir sütuna dönüşür — sampler seviyesi, quantize etiketi ve
+        <b class="ui">HEPSİNİ DURDUR</b> — 4×4'lük banko ise ekranın geri kalanının tamamını kaplar, pad'ler
+        onu dolduracak şekilde uzar.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1304"
              alt="Akustik davul fabrika kitinin on altı pad'in tamamına yüklü olduğu Sample sekmesi; her biri sample adını, uzunluğunu ve dalga formunu gösteriyor, başlıkta LEVEL ve QUANT düğmeleri ile quantize ızgara çipi var.">
@@ -148,9 +152,9 @@
 
       <h3>MODE ve TAP</h3>
       <p>İki çip çifti bir pad'in parmağının altında nasıl davranacağına karar verir.
-        <b class="ui">MOD</b>, <b class="ui">Tek atış</b> ya da <b class="ui">Loop</b>'tur;
+        <b class="ui">MOD</b>, <b class="ui">Tek atış</b> ya da <b class="ui">Döngü</b>'tur;
         <b class="ui">TAP</b>, <b class="ui">Retrig</b> ya da <b class="ui">Latch</b>'tir. Kural
-        basit: <b class="ui">Loop</b>'a ya da <b class="ui">Latch</b>'e ayarlı bir pad her
+        basit: <b class="ui">Döngü</b>'a ya da <b class="ui">Latch</b>'e ayarlı bir pad her
         dokunuşta başlangıç ve durmayı değiştirir, bir <b class="ui">Tek atış</b> /
         <b class="ui">Retrig</b> pad'i ise her vurduğunda trim başlangıcından yeniden başlar —
         sıradan bir drum-pad davranışı.</p>
@@ -164,9 +168,9 @@
             <tr><td><b class="ui">Tek atış</b></td><td><b class="ui">Latch</b></td>
                 <td>Bir kez çalar; hâlâ çalarken ikinci bir dokunuş onu durdurur. Kısaltman
                     gerekebilecek uzun one-shot'lar için.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Retrig</b></td>
+            <tr><td><b class="ui">Döngü</b></td><td><b class="ui">Retrig</b></td>
                 <td>Tekrar dokunup durdurana kadar loop yapar.</td></tr>
-            <tr><td><b class="ui">Loop</b></td><td><b class="ui">Latch</b></td>
+            <tr><td><b class="ui">Döngü</b></td><td><b class="ui">Latch</b></td>
                 <td>Tekrar dokunup durdurana kadar loop yapar. Zemin sesleri, drone'lar, yağmur,
                     vinil cızırtısı.</td></tr>
           </tbody>
@@ -246,7 +250,7 @@
           <li>bir <b>tempo ayarlı</b> olmalı — aksi halde ızgara yoktur;</li>
           <li>bir <b>loop çalıyor</b> olmalı — looper fazı sağlar, böylece ızgara birinci
             vuruşun nerede olduğunu bilir;</li>
-          <li><b>kayıt yapıyor</b> olmalısın — ya <b class="ui a">Perform</b> kaydedicisi, ya da
+          <li><b>kayıt yapıyor</b> olmalısın — ya <b class="ui a">Sahne</b> kaydedicisi, ya da
             kaynağı sampler olan bir loop parçası.</li>
         </ul>
         <p>Hiçbir şeyin üzerinde jam yaparken düğmeyi açarsan hiçbir fark duymazsın. Bu bilerek
@@ -268,11 +272,11 @@
         ayarla, öyle kalırlar.</p>
       <div class="note tip">
         <div class="t">Öğrenilmiş eşleştirmeler ham notalardan daha iyi davranır</div>
-        <p><b class="ui a">Kontrol</b> sekmesinde oluşturduğun bir eşleştirme play/stop çağırır,
-          bu yüzden <b class="ui">Loop</b> ve <b class="ui">Latch</b>'e saygı gösterir — bir
-          footswitch basışı loop'u başlatır, bir sonraki durdurur. Ham MIDI notaları 36–51 her
-          zaman baştan yeniden tetikler. Loop yapan pad'leri bir pedaldan sürüyorsan, dahili
-          nota aralığına güvenmek yerine eşleştirmeyi öğret.</p>
+        <p>Ayarlar → <b class="ui">Kontrol</b> içinde oluşturduğun bir eşleme play/stop çağırır ve
+          böylece <b class="ui">Döngü</b> ile <b class="ui">Latch</b> ayarlarına uyar: pedala bir
+          basış döngüyü başlatır, ikincisi durdurur. Ham MIDI notaları 36–51 ise her zaman baştan
+          tetikler. Döngülü pad'leri pedalla sürüyorsan, yerleşik nota aralığına güvenmek yerine
+          eşlemeyi öğret.</p>
       </div>
     </section>
 

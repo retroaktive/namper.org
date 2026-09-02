@@ -56,6 +56,7 @@
       <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
       <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
       <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/mix.html">混合与主控</a></li>
       <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
       <li><a href="/docs/zh/settings.html">设置参考</a></li>
     </ol>
@@ -405,6 +406,30 @@
           请围绕你保存预设的顺序来规划脚踏板的布局，而不是反过来。</p>
       </div>
 
+      <h3>预设条有两副面孔</h3>
+      <p><b class="ui">预设</b> 卡片——在平板上是 Rig 标签页侧边的长条，在手机上是链下方的横带
+        ——显示两样东西中的一样，取决于有没有一份处于 <b class="ui">现场</b> 的歌单：</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>没有歌单在演出中</b>——它是预设库：每个预设待在自己的 MIDI PC 槽位上，带封面；超过八个
+          就出现搜索框；行菜单里有 <b class="ui">重命名</b>、
+          <b class="ui">用当前音色组更新</b>、<b class="ui">添加到歌单…</b>、
+          <b class="ui">分享</b> 和 <b class="ui">删除</b>。程序切换 <em>n</em> 调用预设
+          <em>n</em>。</li>
+        <li><b>有歌单在演出中</b>——它就是这份歌单：歌单名、歌曲步进器（<b class="ui">‹</b> 歌名
+          <b class="ui">›</b>，点歌名会展开整份列表以便跳转），以及<em>当前这首歌调出的</em>每个机架
+          预设各一张卡片——不是 128 个槽位，而是这首歌真正需要的那四五个声音。此时程序切换 <em>n</em>
+          播放的是第 <em>n</em> 首歌。</li>
+      </ul>
+      <p>在台上真正重要的是第二副面孔：歌只挑一次，而副歌之间你伸手去够的，就是这首歌自己的那些声音。
+        每张卡片上有预设名和它的场景行——<b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b>
+        <b class="ui">C</b> <b class="ui">D</b>——该条目自己的场景带有描边，而正在发声的那张卡片整张
+        亮起。</p>
+      <p><strong>这些字母只是显示，并不设置。</strong>点卡片上的任意位置，包括字母，都会按歌单里写好
+        的样子把那个条目调出来。某个条目用哪个场景是歌的一部分，所以要在
+        <a href="/docs/zh/perform.html#sections">Perform</a> 标签页的歌曲编辑器里改——台上一次误触，
+        不该改写整份歌单。</p>
+      <p>歌单面板标题里的堆叠图标照样能打开完整的预设库，而 <b class="ui">⊗</b> 会离开歌单：长条回到
+        128 个槽位，程序号也跟着回去。</p>
       <h3>更新与管理</h3>
       <p>覆盖操作总是需要确认的。<b class="ui">用当前音色组更新</b> 会弹出一个对话框，
         显示 <b class="ui">Overwrite "{name}" with the current rig?</b>，附带
@@ -412,11 +437,11 @@
         <b class="ui">预设</b>，分为两个部分：<b class="ui">音色组 · MIDI PC 预设位</b>，
         以及 <b class="ui">一次搞定全部</b> → <b class="ui">全局快照</b>，
         后者说明会把音色组、循环乐句器、采样器、曲目单和控制映射一起保存和恢复。</p>
-      <p>每一行的操作菜单都提供 <b class="ui">重命名</b>、
-        <b class="ui">用当前音色组更新</b>、<b class="ui">分享</b> 和
-        <b class="ui">删除</b>。重命名功能只存在于管理器中——Rig 标签页上的预设标签
-        菜单里没有这一项。当预设超过八个之后，顶部会出现一个
-        <b class="ui">搜索预设</b> 搜索框。</p>
+      <p>每一行的上下文菜单里有 <b class="ui">重命名</b>、
+        <b class="ui">用当前音色组更新</b>、<b class="ui">添加到歌单…</b>、
+        <b class="ui">分享</b> 和 <b class="ui">删除</b>。重命名只在管理器里有——Rig 标签页上预设
+        标签的菜单没有它。预设超过八个之后，顶部会出现一个 <b class="ui">搜索预设</b>
+        搜索框。</p>
       <div class="note warn">
         <div class="t">删除不会二次确认</div>
         <p>预设行菜单中的 <b class="ui">删除</b> 会立即生效，不会问"是否确定"。
@@ -528,6 +553,14 @@
       </div>
       <p>拖动是最快的试听方式：按住合并锚点，把它在信号链上前后滑动，就能不打开任何菜单
         听到分支落在延迟之前或之后的效果。</p>
+      <h3>整条分支的开关</h3>
+      <p>在分支自己的连线上、离分叉点稍远一点的位置，有一个 <b class="ui g">power</b> 开关。点一下，
+        整条分支就离开信号图：它被画成虚线并变暗，里面的东西一律不再处理。同一个开关也在分支的菜单
+        里，并以 <b class="ui">旁通分支</b> / <b class="ui">启用分支</b> 的形式出现在它的
+        混音面板里，以及 <a href="/docs/zh/mix.html">Mix</a> 标签页上它那条通道条上。</p>
+      <p>场景会记住这件事，于是并联的功放或低八度可以靠脚踏来来去去，而不必重新搭一遍。出厂机架
+        <b class="ui">Friday Night Lead</b> 正是这么做的：它的八度分支在除 breakdown 场景之外的地方
+        全都是关的。</p>
       <div class="note tip">
         <div class="t">同时混合多条分支</div>
         <p>在分支汇合的位置放一个 <b class="ui">音量</b> 模块，它会长出一个额外的部分，
@@ -542,16 +575,17 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>主控部分</h2>
-      <p>Rig 标签页底部的 <b class="ui">主控</b> 卡片是一切的汇合点：每个音色组、
-        循环乐句器、采样打击垫和伴奏音轨都会在这里汇合，然后再送往硬件输出。你对主控
-        做的任何操作，都会作用于全部内容。</p>
-      <p><b class="ui">FX</b> <b class="ui">+</b> 菜单用来添加主控处理——最多六个模块。
-        可选项有 <b class="ui">音量</b>、<b class="ui">均衡</b>、<b class="ui">压缩</b>、
-        <b class="ui">电子管饱和</b>、<b class="ui">磁带饱和</b>、<b class="ui">限制器</b>、
-        <b class="ui">FB抑制</b>、<b class="ui">去齿音</b>、<b class="ui">云雾</b>、
-        <b class="ui">大厅</b>、<b class="ui">板式</b>、<b class="ui">房间</b> 和
-        <b class="ui">延迟</b>。它们的行为和信号链中的模块一样：点击标签编辑，长按
-        进行 <b class="ui">启用</b> / <b class="ui">旁通</b> 和 <b class="ui">移除</b>。</p>
+      <p><b class="ui">主控</b> 通道条是一切汇合的地方：每个机架、循环器和两条发送回程都在硬件
+        输出之前在那里相加。你对主控做的事，就是对全部做的事。它过去在 Rig 标签页的最下面；现在它
+        住在 <a href="/docs/zh/mix.html">Mix</a> 标签页里，在推子旁边的那一列——这里是简短版本，
+        它周围的整台调音台在那一页上。</p>
+      <p>虚线的 <b class="ui">+</b> 条添加主控处理——最多六个模块。可选的有 <b class="ui">音量</b>、
+        <b class="ui">均衡</b>、<b class="ui">压缩</b>、<b class="ui">电子管饱和</b>、
+        <b class="ui">磁带饱和</b>、<b class="ui">限制器</b>、<b class="ui">FB抑制</b>、
+        <b class="ui">去齿音</b>、<b class="ui">云雾</b>、<b class="ui">大厅</b>、
+        <b class="ui">板式</b>、<b class="ui">房间</b> 和 <b class="ui">延迟</b>。它们的行为和链上
+        的模块一样：点标签编辑，长按可 <b class="ui">启用</b> / <b class="ui">旁通</b> 和
+        <b class="ui">移除</b>。</p>
       <div class="note warn">
         <div class="t">主控中没有 AU 插件</div>
         <p>宿主的 Audio Unit 插件只能放在音色组信号链内部。主控的 FX 菜单不提供它们。

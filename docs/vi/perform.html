@@ -56,6 +56,7 @@
       <li><a href="/docs/vi/looper.html">Looper</a></li>
       <li><a href="/docs/vi/sampler.html">Pad sampler</a></li>
       <li><a class="on" href="/docs/vi/perform.html">Perform &amp; lời bài hát</a></li>
+      <li><a href="/docs/vi/mix.html">Mix &amp; master</a></li>
       <li><a href="/docs/vi/control.html">MIDI &amp; điều khiển</a></li>
       <li><a href="/docs/vi/settings.html">Tham chiếu cài đặt</a></li>
     </ol>
@@ -73,9 +74,9 @@
       <ul>
         <li><a href="#tracks">Nhạc nền</a></li>
         <li><a href="#player">Thẻ player</a></li>
-        <li><a href="#setlist">Setlist</a></li>
-        <li><a href="#sections">Xây dựng một section</a></li>
-        <li><a href="#markers">Preset marker</a></li>
+        <li><a href="#setlist">Setlist và bài hát</a></li>
+        <li><a href="#sections">Một bài gọi lên những gì</a></li>
+        <li><a href="#markers">Mốc</a></li>
         <li><a href="#lyrics">Lời bài hát và teleprompter</a></li>
         <li><a href="#presets">Preset của Perform</a></li>
         <li><a href="#recording">Ghi âm</a></li>
@@ -128,7 +129,7 @@
             <tr><td><b class="ui">Phát</b></td><td>Phát và tạm dừng nhạc nền</td></tr>
             <tr><td><b class="ui">Dừng</b></td><td>Dừng và quay về đầu</td></tr>
             <tr><td><b class="ui">Ghi</b></td><td>Bắt đầu và dừng recorder của buổi diễn (<a href="#recording">bên dưới</a>)</td></tr>
-            <tr><td><b class="ui">Thêm dấu preset</b></td><td>Đặt một lần đổi rig-preset tại vị trí playhead</td></tr>
+            <tr><td><b class="ui">Thêm điểm đánh dấu</b></td><td>Đặt một thay đổi tại vị trí đang phát</td></tr>
             <tr><td><b class="ui">Lời bài hát</b></td><td>Mở teleprompter, hoặc tải một file lời bài hát</td></tr>
           </tbody>
         </table>
@@ -138,12 +139,13 @@
         <b class="ui">MIDI Learn: phân đoạn kế</b> và <b class="ui">MIDI Learn: phân đoạn trước</b> đều có ở đó. Xem <a href="/docs/vi/control.html">MIDI &amp; điều
         khiển</a>.</p>
       <h3>Mức nhạc nền và định tuyến</h3>
-      <p>Bên dưới các nút, một slider đặt mức nhạc nền tính bằng dB, từ −60 đến +12, hiện
-        <b class="ui">-inf</b> ở đáy. Chip bên cạnh là định tuyến: <b class="ui">TRỰC TIẾP</b> gửi
-        track ra sau chuỗi FX master (<b class="ui">Direct out (sau master FX)</b>), đây là
-        thứ bạn muốn khi diễn live — reverb và limiter của bạn không bao giờ chạm vào nhạc nền.
-        <b class="ui">TRƯỚC FX</b> (<b class="ui">Qua master FX</b>) thay vào đó cho track đi
-        qua chuỗi master.</p>
+      <p>Dưới các nút là một fader bàn trộn nằm ngang, đặt mức nhạc nền theo dB từ −60 tới +12 và
+        hiện <b class="ui">-inf</b> ở tận đáy; chạm hai lần đưa nó về 0 dB. Đây đúng là fader và mức
+        của kênh <b class="ui">Nhạc nền</b> ở thẻ <a href="/docs/vi/mix.html">Mix</a>. Chip bên cạnh
+        là cách định tuyến: <b class="ui">TRỰC TIẾP</b> đưa bản nhạc ra sau chuỗi hiệu ứng master
+        (<b class="ui">Direct out (sau master FX)</b>), và khi diễn thì bạn muốn đúng thế — reverb
+        cùng limiter của bạn không bao giờ chạm vào nhạc nền. <b class="ui">TRƯỚC FX</b>
+        (<b class="ui">Qua master FX</b>) thì cho bản nhạc đi qua chuỗi master.</p>
       <h3>Timeline</h3>
       <p>Dạng sóng dưới thẻ là một hiển thị dạng thanh đối xứng với phần đã phát được sáng lên
         và một con trỏ tại playhead. <strong>Chạm bất kỳ đâu trên đó để tua (seek).</strong> Tua
@@ -158,76 +160,104 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlist</h2>
-      <p>Đơn vị của một set trong NAMper là một <strong>section</strong>: một tên, một nhạc nền
-        tuỳ chọn, và một danh sách step chạy theo đồng hồ ô nhịp. Import một file tạo ra một
-        section cho mỗi bài, nên thực tế một section là một bài hát — nhưng một section không
-        có âm thanh nào cả cũng hoàn toàn hợp lệ, và đó là cách bạn dựng một bài hát từ loop và
-        pad.</p>
-      <p>Header có chip <b class="ui">PRESET</b>, một công tắc <b class="ui">TỰ CHUYỂN</b> và
-        <b class="ui">Nhập bản nhạc</b>; mỗi file nhập vào trở thành một section riêng. Khi <b class="ui">TỰ CHUYỂN</b> bật, set tự đi tiếp khi
-        mỗi section kết thúc.</p>
-      <p>Khi chưa có gì, thẻ hiện <b class="ui">Thêm tệp âm thanh, hoặc một phân đoạn loop/sample — phân đoạn gồm nhạc nền tuỳ chọn cùng chuỗi loop và sample chạy theo ô nhịp.</b></p>
-      <p>Mỗi hàng có một nút play (<b class="ui">Phát phân đoạn</b>), tên, các badge nhỏ —
-        <b class="ui">nhạc nền</b>, <b class="ui">N steps</b>, <b class="ui">N bars</b>, và một
-        <b class="ui">bar N</b> cập nhật trực tiếp khi đang chạy — và một nút edit
-        (<b class="ui">Sửa phân đoạn</b>).</p>
+      <h2 id="setlist"><span class="n">06.3</span>Setlist và bài hát</h2>
+      <p>Một <strong>setlist</strong> là danh sách bài hát; mỗi lúc có một setlist ở trạng thái
+        <b class="ui">LIVE</b>, và setlist đang live nắm dải preset lẫn MIDI: program change
+        <em>n</em> phát bài <em>n</em>. Một <strong>bài hát</strong> gồm tên, danh sách có thứ tự
+        những thứ nó gọi lên, và một bản nhạc nền <em>tuỳ chọn</em> kèm mốc và lời. Một bài không có
+        âm thanh nào cũng hoàn toàn hợp lệ: nó chính là âm thanh bạn dùng để chơi bài đó, được gọi
+        lên từ cùng danh sách.</p>
+      <p>Đầu thẻ có nút <b class="ui">SETLIST</b> — tạo, chọn, đổi tên, chia sẻ và xoá set —, công
+        tắc <b class="ui">TỰ CHUYỂN</b> và dấu <b class="ui">+</b> để nhập tệp âm thanh (mỗi tệp
+        thành một bài), thêm <b class="ui">Bài không nhạc nền</b>, hoặc dựng bài thẳng từ
+        <b class="ui">Từ preset rig</b>. Khi bật <b class="ui">TỰ CHUYỂN</b>, bộ set tự đi tiếp mỗi
+        khi một bài kết thúc.</p>
+      <p>Mỗi dòng có nút phát (<b class="ui">Phát bài</b>), tên bài, bên dưới là những gì bài gọi
+        lên, và nút sửa (<b class="ui">Sửa bài</b>). Danh sách luôn ở chế độ sửa: kéo một dòng để
+        đổi thứ tự, vuốt để xoá.</p>
       <div class="note tip">
-        <div class="t">Chạm vào một hàng chỉ arm, không bắt đầu chạy</div>
-        <p>Chạm vào một section, NAMper sẽ tải nhạc nền của nó, áp tempo và giọng của bài đó vào
-          rig, và hướng transport vào nó — <strong>mà không phát bất cứ thứ gì</strong>. Chỉnh
-          giữa các bài, nói chuyện với khán phòng, rồi nhấn <b class="ui">Phát</b> khi bạn sẵn
+        <div class="t">Chạm vào dòng là chuẩn bị, không phải bắt đầu</div>
+        <p>Chạm một bài và NAMper áp dụng mọi thứ bài đó gọi lên, nạp bản nhạc nền, lấy tempo và
+          giọng của bài rồi hướng transport vào đó — <strong>mà không phát gì cả</strong>. Hãy chuẩn
+          bị giữa các tiết mục, nói chuyện với khán giả, rồi bấm <b class="ui">Phát</b> khi bạn sẵn
           sàng.</p>
       </div>
-      <p>Danh sách luôn ở chế độ edit, nên các tay cầm kéo luôn hiển thị: kéo một hàng để sắp
-        xếp lại set, vuốt một hàng để xoá nó. Context menu của hàng có <b class="ui">Nạp lời từ tệp…</b> — xem <a href="#lyrics">lời bài hát</a>.</p>
+      <p>Khi một bộ set đang live, thẻ <a href="/docs/vi/rig.html">Rig</a> mang nó ngay cạnh chuỗi,
+        nên đổi âm thanh không cần đổi thẻ: dải preset biến thành bảng set — bộ chuyển bài và mỗi âm
+        thanh mà <em>bài này</em> gọi lên là một thẻ, kể cả scene. Xem
+        <a href="/docs/vi/rig.html#presets">hai gương mặt của dải preset</a>.</p>
+      <div class="note">
+        <div class="t">Bộ set demo</div>
+        <p>Lần mở đầu tiên khi chưa có setlist sẽ mang tới một bộ: bài <em>NAMper</em> hai lần — bản
+          mix đầy đủ và bản không có guitar. Đây là ví dụ đã làm sẵn cho cả trang này. Dòng thời gian
+          của nó mang các mốc chuyển giữa hai rig xuất xưởng <b class="ui">One-Man Riot</b> (phiên
+          khúc, tiền điệp khúc, điệp khúc và một đoạn cầu sạch làm scene, thêm một ampli sạch thứ hai
+          trên một nhánh) và <b class="ui">Friday Night Lead</b> (scene solo và breakdown, với một
+          nhánh quãng tám trầm); lời được ghim vào từng phần; và mỗi bài còn gọi lên một preset looper
+          gồm bốn track dài 8 ô nhịp cùng bộ kit <b class="ui">FX &amp; kết cấu</b>. Đây là một bộ
+          set bình thường: đổi tên, thêm bài của bạn, hoặc xoá đi — và khi đã xoá thì nó không quay
+          lại.</p>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Xây dựng một section</h2>
-      <p>Nút edit mở trình chỉnh section. Nó có một ô <b class="ui">Tên phân đoạn</b>, một trình
-        chọn nhạc nền với mục đầu tiên là <b class="ui">Không có (chỉ loop/sample)</b> và hiện
-        <b class="ui">Không có nhạc nền</b> khi chưa chọn gì, và — khi không có nhạc nền — một
-        stepper <b class="ui">N bars</b> từ 1 đến 128 đặt section chạy dài bao lâu.</p>
-      <p>Tiếp theo là danh sách <b class="ui">BƯỚC</b>. <b class="ui">Thêm bước</b> cho
-        <b class="ui">Track loop</b> → <b class="ui">Start loop 1…4</b> hoặc <b class="ui">Stop
-        loop 1…4</b>, và <b class="ui">Pad sampler</b> → <b class="ui">Pad 1…16</b>. Các hàng
-        step hiện <b class="ui">Start loop N</b>, <b class="ui">Stop loop N</b>,
-        <b class="ui">Play pad N</b> hoặc <b class="ui">Stop pad N</b>, mỗi cái có stepper
-        <b class="ui">bar N</b> riêng. Gợi ý dưới danh sách nói rõ điều này:
-        <b class="ui">Các bước kích theo nhịp ô: chạy/dừng track loop và bắn pad tại những ô nhịp bạn đặt.</b></p>
-      <p>Đây là cách NAMper chơi một bài hát mà không có nhạc nền nào cả. Ghi các phần của bạn
-        vào <a href="/docs/vi/looper.html">looper</a>, tải các hit của bạn lên
-        <a href="/docs/vi/sampler.html">pad</a>, rồi viết ra bản phối theo ô nhịp: trống vào ở ô
-        nhịp 1, bass ở ô nhịp 5, tiếng pad chèn ở ô nhịp 13, mọi thứ tắt ở ô nhịp 33. Nó chạy
-        theo đồng hồ ô nhịp, nên luôn khoá theo tempo của bạn thay vì theo một file đã render
-        sẵn.</p>
+      <h2 id="sections"><span class="n">06.4</span>Một bài gọi lên những gì</h2>
+      <p>Nút sửa mở trình sửa bài: ô <b class="ui">Tên bài</b>, bộ chọn nhạc nền mà mục đầu tiên là
+        <b class="ui">Bài không nhạc nền</b>, dòng <a href="#lyrics">lời bài hát</a>, và danh sách
+        những thứ bài gọi lên.</p>
+      <p><b class="ui">Thêm preset, looper, kit…</b> đặt một mục vào danh sách đó:</p>
+      <table>
+        <thead><tr><th>Mục</th><th>Gọi lên cái gì</th></tr></thead>
+        <tbody>
+          <tr><td><b class="ui">Preset rig</b></td><td>Một preset kèm <b class="ui">CẢNH</b> của nó
+            — <b class="ui">A</b>–<b class="ui">D</b>, hoặc <b class="ui">-</b> để dùng preset đúng
+            như khi lưu. Cùng một preset có thể xuất hiện hai lần với hai scene khác nhau.</td></tr>
+          <tr><td><b class="ui">Preset looper</b></td><td>Độ dài track, định tuyến và pan cho
+            <a href="/docs/vi/looper.html">looper</a> — phần âm thanh đã thu là do bạn chơi.</td></tr>
+          <tr><td><b class="ui">Bộ sampler</b></td><td>Một bộ kit cho mười sáu
+            <a href="/docs/vi/sampler.html">pad</a>.</td></tr>
+        </tbody>
+      </table>
+      <p>Danh sách được áp dụng theo thứ tự khi bài được chuẩn bị, nên preset rig <em>cuối cùng</em>
+        trong đó chính là âm thanh bạn bắt đầu bài; những preset phía trên có mặt để các
+        <a href="#markers">mốc</a> với tới. Các dòng có thể đưa lên, đưa xuống và xoá từ menu của
+        chính chúng.</p>
+      <h3>Chọn một preset</h3>
+      <p>Bộ chọn preset rig hiển thị đúng những con số như dải preset — <b class="ui">0</b> …
+        <b class="ui">127</b> — kèm ảnh bìa và ô tìm kiếm phía trên danh sách, lọc theo tên, số và
+        thẻ. Nó còn <strong>cho nghe thử</strong> trong lúc bạn lướt: chạm một dòng và rig nạp thật,
+        nên bạn chọn âm thanh bằng tai. Đóng bộ chọn mà không chọn gì thì rig trở lại như trước.</p>
+      <p>Chiều ngược lại cũng có: menu dòng của một preset trên dải ở thẻ Rig có
+        <b class="ui">Thêm vào set…</b> — chọn một setlist, rồi một bài của nó hoặc
+        <b class="ui">Bài hát mới</b>, và preset sẽ được thêm vào cuối danh sách của bài đó.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Preset marker</h2>
-      <p>Một preset marker là một lần đổi rig được ghi thẳng lên timeline của bài hát. Verse
-        clean, điệp khúc crunch, lead cho đoạn solo — đặt một lần, rồi rảnh tay mỗi lần bạn chơi
-        lại bài đó.</p>
+      <h2 id="markers"><span class="n">06.5</span>Mốc</h2>
+      <p>Mốc là một thời điểm trên dòng thời gian của bài, gọi lên một trong những mục của chính bài
+        đó. Phiên khúc sạch, điệp khúc crunch, lead cho đoạn solo — đặt một lần, rồi rảnh tay mỗi lần
+        bạn chơi lại.</p>
       <ol style="--nc:var(--drive)">
-        <li>Arm track và đặt playhead vào đúng chỗ cần chuyển — chạm vào timeline để tua, hoặc
-          để nó tự chạy.</li>
-        <li>Chạm vào nút ghim (<b class="ui">Thêm dấu preset</b>).</li>
-        <li>Chọn một rig từ menu chứa mọi preset, mỗi hàng hiện
-          <b class="ui">&lt;pc&gt; · &lt;preset name&gt;</b>. Marker được đặt tại vị trí
-          playhead hiện tại.</li>
+        <li>Chuẩn bị bài và đưa vị trí phát tới chỗ cần chuyển — chạm dòng thời gian để nhảy, hoặc
+          cứ để nó chạy.</li>
+        <li>Chạm nút ghim (<b class="ui">Thêm điểm đánh dấu</b>).</li>
+        <li>Bảng của mốc liệt kê những gì bài gọi lên —
+          <b class="ui">Phần nào của bài được gọi lên tại thời điểm này.</b> — và bạn tích vào những
+          thứ cần kích hoạt tại thời điểm đó. Một mốc có thể gọi lên nhiều thứ: chẳng hạn một preset
+          rig và một bộ kit cùng lúc.</li>
       </ol>
-      <p>Khi phát đi qua một marker, preset đó được kích hoạt y như khi nhận một lệnh MIDI
-        program change từ pedalboard. Marker vẽ dưới dạng chấm hổ phách trên timeline với vùng
-        chạm khá rộng, và dưới dạng sóng là một hàng chip liệt kê chúng dạng
-        <b class="ui">m:ss  &lt;preset name&gt;</b>. Nhấn giữ một chip để
+      <p>Chọn trên dòng của một mốc một <b class="ui">CẢNH</b> mà bài chưa có sẽ thêm nó vào bài như
+        một mục riêng, để danh sách luôn là toàn bộ sự thật về những gì bài có thể làm.</p>
+      <p>Khi phát mà đi ngang một mốc, ứng dụng áp dụng nó đúng như thể một program change MIDI vừa
+        tới từ pedalboard. Các mốc được vẽ thành chấm hổ phách trên dòng thời gian với vùng chạm rộng
+        rãi, và bên dưới dạng sóng là một hàng chip liệt kê chúng dưới dạng
+        <b class="ui">m:ss  &lt;tên&gt;</b>. Chạm một chip để mở bảng của nó, giữ lâu để
         <b class="ui">Xoá dấu</b>.</p>
       <div class="note">
-        <div class="t">Khớp lưới</div>
-        <p>Một marker bạn vừa tạo nằm đúng tại vị trí playhead thô, bất kỳ nơi nào ngón tay bạn
-          thả ra. <strong>Kéo một marker thì nó sẽ khớp về lưới ô nhịp</strong> — nên cách để
-          chỉnh chính xác một vị trí đặt còn thô là nhích nó đi. Khi chưa có tempo được phát
-          hiện thì không có lưới, và việc đặt marker vẫn tự do.</p>
+        <div class="t">Bám lưới</div>
+        <p>Mốc vừa tạo nằm đúng vị trí thô, nơi ngón tay bạn để lại. <strong>Kéo một mốc và nó bám
+          vào lưới ô nhịp</strong> — nên cách chỉnh lại một vị trí đặt vội chính là đẩy nhẹ nó. Nếu
+          không dò được tempo thì không có lưới, và vị trí đặt hoàn toàn tự do.</p>
       </div>
     </section>
 
@@ -395,7 +425,7 @@
     <nav class="pager">
       <a href="/docs/vi/sampler.html">← 05 · Pad sampler</a>
       <span class="sp"></span>
-      <a href="/docs/vi/control.html">07 · MIDI &amp; điều khiển →</a>
+      <a href="/docs/vi/mix.html">07 · Mix &amp; master →</a>
     </nav>
   </main>
 </div>

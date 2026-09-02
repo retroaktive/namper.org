@@ -56,6 +56,7 @@
       <li><a href="/docs/de/looper.html">Looper</a></li>
       <li><a href="/docs/de/sampler.html">Sampler-Pads</a></li>
       <li><a href="/docs/de/perform.html">Perform &amp; Songtexte</a></li>
+      <li><a href="/docs/de/mix.html">Mix &amp; Master</a></li>
       <li><a href="/docs/de/control.html">MIDI &amp; Control</a></li>
       <li><a href="/docs/de/settings.html">Referenz: Einstellungen</a></li>
     </ol>
@@ -98,7 +99,7 @@
           <tbody>
             <tr><td><b class="ui">Dynamik</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
             <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b></td></tr>
-            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">Röhren-Amp</b>, <b class="ui">EQ</b>, <b class="ui">Box</b></td></tr>
+            <tr><td><b class="ui">Amp &amp; Box</b></td><td><b class="ui">Amp</b>, <b class="ui">Röhren-Amp</b>, <b class="ui">EQ</b>, <b class="ui">Box</b></td></tr>
             <tr><td><b class="ui">Filter</b></td><td><b class="ui">Wah</b></td></tr>
             <tr><td><b class="ui">Modulation</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b></td></tr>
             <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
@@ -260,7 +261,7 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAM-Amp-Profile</h2>
-      <p>Unter <b class="ui">Amp &amp; Cab</b> stecken zwei verschiedene Blöcke, und es lohnt sich,
+      <p>Unter <b class="ui">Amp &amp; Box</b> stecken zwei verschiedene Blöcke, und es lohnt sich,
         klar zwischen ihnen zu unterscheiden. <b class="ui">Röhren-Amp</b> ist NAMpers eigene
         Amp-Simulation mit den sieben oben genannten Modellen. <b class="ui">Amp</b> ist der
         Neural-Amp-Modeler-Player: Er lädt einen <b class="ui">.nam</b>-Capture eines echten
@@ -434,6 +435,35 @@ brauchen keine</b>. Viele
           Fußschalter-Layout nach der Reihenfolge, in der du Presets speicherst — nicht umgekehrt.</p>
       </div>
 
+      <h3>Die Leiste hat zwei Gesichter</h3>
+      <p>Die <b class="ui">PRESETS</b>-Karte — auf dem Tablet die Leiste an der Seite des Rig-Tabs,
+        auf dem Telefon der Streifen unter der Kette — zeigt eines von zwei Dingen, und welches,
+        hängt daran, ob eine Setlist <b class="ui">LIVE</b> ist:</p>
+      <ul style="--nc:var(--amp)">
+        <li><b>Keine Setlist live</b> — die Bibliothek: jedes Preset auf seinem MIDI-PC-Slot, mit
+          Cover, einem Suchfeld ab neun Presets und einem Zeilenmenü mit
+          <b class="ui">Umbenennen</b>, <b class="ui">Mit aktuellem Rig aktualisieren</b>,
+          <b class="ui">Zum Set hinzufügen…</b>, <b class="ui">Teilen</b> und
+          <b class="ui">Löschen</b>. Program Change <em>n</em> ruft Preset <em>n</em> auf.</li>
+        <li><b>Eine Setlist live</b> — das Set: der Name des Sets, ein Song-Stepper
+          (<b class="ui">‹</b> Name <b class="ui">›</b>, und der Name selbst klappt die ganze Liste
+          zum Springen auf) und eine Karte pro Rig-Preset, <em>das der aktuelle Song aufruft</em> —
+          nicht die 128 Slots, sondern die vier, fünf Sounds, die diese Nummer wirklich braucht.
+          Program Change <em>n</em> spielt jetzt Song <em>n</em>.</li>
+      </ul>
+      <p>Auf der Bühne zählt das zweite Gesicht: der Song wird einmal gewählt, und zwischen den
+        Refrains greifst du nach den Sounds genau dieses Songs. Jede Karte trägt den Namen des
+        Presets und seine Szenenreihe — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b>
+        <b class="ui">C</b> <b class="ui">D</b> — wobei die eigene Szene des Eintrags umrandet ist
+        und die ganze Karte leuchtet, solange dieser Eintrag spielt.</p>
+      <p><strong>Die Buchstaben zeigen nur, sie stellen nicht ein.</strong> Ein Tipp irgendwo auf
+        die Karte, die Buchstaben eingeschlossen, ruft den Eintrag genau so auf, wie der Song ihn
+        führt. Welche Szene ein Eintrag benutzt, gehört zum Song und wird deshalb im Song-Editor im
+        <a href="/docs/de/perform.html#sections">Perform</a>-Tab geändert — ein versehentlicher
+        Tipp auf der Bühne darf das Set nicht umschreiben.</p>
+      <p>Das Stapel-Symbol in der Kopfzeile des Set-Panels öffnet trotzdem die ganze
+        Preset-Bibliothek, und <b class="ui">⊗</b> verlässt die Setlist: die Leiste kehrt zu den 128
+        Slots zurück, und die Programmnummern ebenso.</p>
       <h3>Aktualisieren und verwalten</h3>
       <p>Überschreiben wird immer bestätigt. <b class="ui">Mit aktuellem Rig aktualisieren</b> öffnet einen
         Dialog mit <b class="ui">Overwrite "{name}" with the current rig?</b> mit
@@ -443,10 +473,10 @@ brauchen keine</b>. Viele
         <b class="ui">Globale Snapshots</b>, beschrieben als Rig, Looper, Sampler, Setlist und
         Control-Zuordnung, gemeinsam gespeichert und wiederhergestellt.</p>
       <p>Das Kontextmenü jeder Zeile bietet <b class="ui">Umbenennen</b>,
-        <b class="ui">Mit aktuellem Rig aktualisieren</b>, <b class="ui">Teilen</b> und
-        <b class="ui">Löschen</b>. Umbenennen gibt es nur im Manager — das Preset-Chip-Menü auf dem
-        Tab Rig hat es nicht. Sobald du mehr als acht Presets hast, erscheint oben ein Feld
-        <b class="ui">Presets durchsuchen</b>.</p>
+        <b class="ui">Mit aktuellem Rig aktualisieren</b>, <b class="ui">Zum Set hinzufügen…</b>,
+        <b class="ui">Teilen</b> und <b class="ui">Löschen</b>. Das Umbenennen gibt es nur im
+        Manager — das Preset-Chip-Menü im Rig-Tab hat es nicht. Ab mehr als acht Presets erscheint
+        oben ein Feld <b class="ui">Presets durchsuchen</b>.</p>
       <div class="note warn">
         <div class="t">Delete wird nicht bestätigt</div>
         <p><b class="ui">Löschen</b> im Zeilenmenü des Presets wirkt sofort, ohne Rückfrage.
@@ -570,6 +600,17 @@ brauchen keine</b>. Viele
       <p>Ziehen ist der schnelle Weg zum Probehören: Halte den Merge-Anker, schieb ihn weiter vorne
         oder hinten in die Kette, und hör, wie der Zweig vor oder nach dem Delay landet, ohne ein
         Menü zu öffnen.</p>
+      <h3>Einen Zweig ganz abschalten</h3>
+      <p>Auf der eigenen Leitung des Zweigs, ein Stück hinter der Abzweigung, sitzt ein
+        <b class="ui g">power</b>-Schalter. Ein Tipp, und der ganze Zweig verlässt den Graphen — er
+        wird gestrichelt und gedimmt gezeichnet, und nichts darin wird verarbeitet. Denselben
+        Schalter gibt es im Menü des Zweigs und, als <b class="ui">Zweig umgehen</b> /
+        <b class="ui">Zweig aktivieren</b>, in seinem Mixer-Blatt und auf seinem Zug im
+        <a href="/docs/de/mix.html">Mix</a>-Tab.</p>
+      <p>Szenen merken sich das, also können ein Parallel-Amp oder eine Suboktave per Fußschalter
+        kommen und gehen, statt neu gebaut zu werden. Genau so funktioniert das Werks-Rig
+        <b class="ui">Friday Night Lead</b>: sein Oktav-Zweig ist überall abgeschaltet außer in der
+        Breakdown-Szene.</p>
       <div class="note tip">
         <div class="t">Mehrere Zweige gleichzeitig mischen</div>
         <p>Setz einen Block <b class="ui">Volume</b> an die Stelle, an der Zweige zusammenlaufen,
@@ -586,17 +627,18 @@ brauchen keine</b>. Viele
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="master"><span class="n">02.10</span>Die Master-Sektion</h2>
-      <p>Die Karte <b class="ui">MASTER</b> unten auf dem Tab Rig ist der Ort, an dem alles
-        zusammenkommt: jedes Rig, der Looper, die Sampler-Pads und der Backing Track summieren sich
-        hier, bevor es zur Hardware-Ausgabe geht. Was auch immer du am Master machst, machst du mit
-        allem davon.</p>
-      <p>Das Menü <b class="ui">FX</b> <b class="ui">+</b> fügt Master-Bearbeitung hinzu — bis zu
-        sechs Blöcke. Du kannst wählen aus <b class="ui">Volume</b>, <b class="ui">EQ</b>,
+      <p>Der <b class="ui">MASTER</b>-Zug ist der Punkt, an dem alles zusammenläuft: jedes Rig, der
+        Looper und beide Send-Returns summieren sich dort vor dem Hardware-Ausgang. Was du mit dem
+        Master machst, machst du mit allem. Früher saß er unten im Rig-Tab; jetzt lebt er im
+        <a href="/docs/de/mix.html">Mix</a>-Tab, in der Spalte neben den Fadern — hier steht die
+        Kurzfassung, das Pult drumherum steht auf jener Seite.</p>
+      <p>Der gestrichelte <b class="ui">+</b>-Balken fügt Master-Bearbeitung hinzu — bis zu sechs
+        Blöcke. Zur Wahl stehen <b class="ui">Volume</b>, <b class="ui">EQ</b>,
         <b class="ui">Comp</b>, <b class="ui">Röhren-Sat</b>, <b class="ui">Tape-Sat</b>,
         <b class="ui">Limiter</b>, <b class="ui">FB-Schutz</b>, <b class="ui">De-Esser</b>,
         <b class="ui">Cloud</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>,
         <b class="ui">Room</b> und <b class="ui">Delay</b>. Sie verhalten sich wie Kettenblöcke:
-        Tippe auf einen Chip, um ihn zu bearbeiten, Long-Press für <b class="ui">Aktivieren</b> /
+        Chip antippen zum Bearbeiten, lange drücken für <b class="ui">Aktivieren</b> /
         <b class="ui">Bypass</b> und <b class="ui">Entfernen</b>.</p>
       <div class="note warn">
         <div class="t">Keine AU-Plugins im Master</div>
