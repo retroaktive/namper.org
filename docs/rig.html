@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig &amp; signal chain — NAMper Documentation</title>
-<meta name="description" content="Building a rig: the blocks palette, the five EQ models, NAM amp profiles and TONE3000, cab IRs, presets and MIDI PC slots, multiple rigs, parallel branches and the master section.">
+<meta name="description" content="Building a rig: the blocks palette, the five EQ models, NAM captures and TONE3000, capture banks, cab and reverb impulses, presets and MIDI PC slots, multiple rigs, parallel branches and the master section.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Rig &amp; signal chain — NAMper Documentation">
-<meta property="og:description" content="Blocks, EQ models, NAM profiles, TONE3000, cab IRs, presets, multiple rigs, parallel branches and the master section.">
+<meta property="og:description" content="Blocks, EQ models, NAM captures, TONE3000, banks, cab and reverb impulses, presets, multiple rigs, parallel branches and the master section.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/rig.html">
 <meta property="og:type" content="article">
@@ -76,7 +76,7 @@
         <li><a href="#blocks">The blocks palette</a></li>
         <li><a href="#models">Models inside blocks</a></li>
         <li><a href="#eq">The five EQ models</a></li>
-        <li><a href="#nam">NAM amp profiles</a></li>
+        <li><a href="#nam">NAM captures</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Cabs and IRs</a></li>
         <li><a href="#presets">Presets</a></li>
@@ -244,7 +244,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="The EQ block sheet with the Passive model selected, showing its eight knobs: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten and Atten Hz, with IN and OUT meters at the top.">
         <figcaption>The EQ block on the Passive model</figcaption>
       </figure>
@@ -255,94 +255,137 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM amp profiles</h2>
-      <p>Two different blocks live under <b class="ui">Amp &amp; Cab</b> and it is worth being clear
-        about which is which. <b class="ui">Tube Amp</b> is NAMper's own amp simulation, with the
-        seven models listed above. <b class="ui">Amp</b> is the Neural Amp Modeler player: it loads
-        a <b class="ui">.nam</b> capture of a real amplifier and runs it.</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM captures</h2>
+      <p>The <b class="ui">Amp</b> block is one block with two sources. Two chips at the top of its
+        sheet choose between them: <b class="ui">Built-in</b> is NAMper's own amp simulation with
+        the seven voicings listed above, <b class="ui">NAM</b> is the Neural Amp Modeler player
+        running a <b class="ui">.nam</b> capture of a real amplifier. Both live in the same block,
+        so a preset carries the voicing it was built on <em>and</em> the capture it was voiced
+        around, and switching between them is one tap.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="The Rig tab with a NAM profile loaded: cover art, tone title and author on the amp card, vertical IN and OUT meters either side of it, and the signal chain of blocks below.">
-        <figcaption>The amp card with a NAM profile loaded</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="The Rig tab: the IN and OUT meters across the top of the signal chain card, and the chain of blocks below with the Amp block naming the capture it plays.">
+        <figcaption>The Rig tab; the Amp tile names what it is playing</figcaption>
       </figure>
 
-      <h3>The amp card</h3>
-      <p>At the top of the Rig tab, between the <b class="ui">IN</b> and <b class="ui">OUT</b>
-        meters, the amp card shows what the <b class="ui">Amp</b> block is currently playing: the
-        cover art, the tone title, the <b class="ui">@author</b>, up to six metadata chips, a
-        download count, a <b class="ui">Browse TONE3000</b> button and a books icon
-        (<b class="ui">Open NAM library</b>). With nothing loaded it reads
-        <b class="ui">Built-in tube amp</b>. If a rig has more than one amp in it, chips
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> and so on choose which one the card
-        edits.</p>
-
-      <h3>Input and Output</h3>
-      <p>The <b class="ui">Amp</b> block sheet is deliberately short: the profile title (or
-        <b class="ui">No model loaded</b>), a <b class="ui">Browse TONE3000</b> button, and two
-        knobs. <b class="ui">Input</b> and <b class="ui">Output</b> both run −20 to +20 dB and start
-        at 0. Input pushes the capture harder, which is how you get more or less breakup out of a
-        profile; Output trims the result afterwards.</p>
-      <p>NAM output is normalised automatically, using the loudness metadata inside the model, to a
-        −18 dB target. That is why swapping between profiles does not throw your levels around, and
-        it is not exposed as a control.</p>
+      <h3>The capture side</h3>
+      <p>On the <b class="ui">NAM</b> side the sheet shows the model's name (or
+        <b class="ui">No model loaded</b>), the <b class="ui">@author</b> and an arrow that opens
+        the tone on tone3000.com, the cover art on the left, and three ways to get a capture on the
+        right: <b class="ui">Browse TONE3000</b>, <b class="ui">Library</b> and
+        <b class="ui">Load file</b>. Underneath are <b class="ui">Input</b> and
+        <b class="ui">Output</b>, both −20 to +20 dB and starting at 0. Input pushes the capture
+        harder, which is how you get more or less breakup out of a profile; Output trims the result
+        afterwards.</p>
+      <p>Levels are measured, not guessed: both sources are unity on the same reference DI, so a
+        preset's output gain means the same thing whichever one is playing, and swapping profiles
+        does not throw your levels around.</p>
+      <p><b class="ui">Load file</b> takes several <b class="ui">.nam</b> files at once. Pick more
+        than one and the app asks <b class="ui">Combine the models into a bank?</b> —
+        <b class="ui">Combine</b> makes a bank of them, <b class="ui">Only the first</b> loads one.</p>
       <div class="note">
-        <div class="t">The NAM amp is mono</div>
+        <div class="t">A capture is mono</div>
         <p>A NAM capture is a mono device — a stereo signal arriving at the <b class="ui">Amp</b>
           block is summed before it goes in. Put your stereo effects after the amp, not before it.</p>
       </div>
 
-      <h3>Three ways to load a profile</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">Browse TONE3000</b> — the online library, covered in the next section.</li>
-        <li>The books icon, which opens a sheet titled <b class="ui">NAM Profiles</b>. Tap any row
-          to load it into the current amp.</li>
-        <li>Factory presets resolve their own profiles, so loading <b class="ui">Crunch</b> brings
-          its amp with it.</li>
-      </ol>
-      <p>The <b class="ui">NAM Profiles</b> sheet is your local library. Empty, it reads
-        <b class="ui">Profiles you download from TONE3000 collect here.</b> Its toolbar menu has
-        <b class="ui">Import .nam files…</b> — a multi-select file picker that accepts
-        <b class="ui">.nam</b> files only — along with <b class="ui">Export all (N files)</b> and
-        <b class="ui">Update all</b>. Each row carries <b class="ui">Share .nam file</b>,
-        <b class="ui">Delete</b> and a refresh button
-        (<b class="ui">Refresh from TONE3000</b>).</p>
-      <p>If a model cannot be read you get <b class="ui r">Could not load amp model
-        {filename}.</b> — usually a file that was moved or deleted out from under the rig.</p>
+      <h3>Banks and the Model knob</h3>
+      <p>A TONE3000 tone often ships many models: the same amp through different microphones,
+        channels or cabinets. Download them together and they become the block's <b>bank</b>. The
+        sheet then reads <b class="ui">Bank: 6</b> (or <b class="ui">Bank: 4 of 6</b> when some are
+        left out of the sweep) and a <b class="ui">Model</b> knob appears between the trims,
+        reading <b class="ui">1/6 · SM57</b> as it turns. It is an ordinary knob, so a long press
+        offers <b class="ui">MIDI Learn</b>: one CC then walks the whole bank from your pedalboard,
+        and the change is crossfaded rather than cut, so nothing clicks or drops out.</p>
+
+      <h3>The NAM block: pedals and outboard</h3>
+      <p>A separate <b class="ui">NAM</b> block carries the same capture side without the built-in
+        amp, and that is where captures of pedals and outboard gear belong. You do not have to
+        place it yourself: load a pedal capture while an <b class="ui">Amp</b> block is aimed at,
+        and NAMper inserts a <b class="ui">NAM</b> block immediately before that amp and opens it
+        for you.</p>
+
+      <h3>The library</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="The NAM Profiles sheet: NAM and IR chips at the top, then tones grouped under Amplifiers with cover art, author and model counts.">
+        <figcaption>The library: two sides, and tones grouped by what they captured</figcaption>
+      </figure>
+      <p>The <b class="ui">Library</b> button opens a sheet titled <b class="ui">NAM Profiles</b> —
+        everything you have downloaded, available offline. Two chips at the top split it in half:
+        <b class="ui">NAM</b> for captures and <b class="ui">IR</b> for impulses, each with a count.
+        A block only takes one of the two, so they are never listed together, and the block you
+        opened the library from picks the side for you.</p>
+      <p>Inside a side, tones are grouped by what was captured: <b class="ui">Amplifiers</b>,
+        <b class="ui">Pedals</b>, <b class="ui">Outboard</b>, <b class="ui">Cabinets</b>,
+        <b class="ui">Spaces</b> and <b class="ui">Other</b>. Each row is a tone, not a file: cover
+        art, title, <b class="ui">@author</b> and how many models it ships. A tap loads it — a tone
+        with one model plays alone, a tone with several becomes the block's bank — and the tone
+        lands where it belongs: an amp in the <b class="ui">Amp</b> block, a pedal or an outboard
+        box in a <b class="ui">NAM</b> block before it, a cabinet in the <b class="ui">Cab</b>
+        after it, a space in the <b class="ui">IR Verb</b>.</p>
+      <p>The chevron opens the tone's models. In the tone that <em>is</em> the block's bank each
+        model carries a checkmark: it keeps that model in the <b class="ui">Model</b> knob's sweep,
+        and a tap moves the knob onto it. In any other tone a tap on a model plays that model alone
+        and clears the bank. Models the site lists but you do not have yet are dimmed with a cloud
+        icon; a tap fetches one, and in the bank tone it joins the sweep.</p>
+      <p>On the right of every tone row: the star (a favourite — starring a tone stars all of its
+        models) and the refresh button (<b class="ui">Refresh from TONE3000</b>, which re-fetches
+        the metadata, the cover and the files). A long press, or a right-click on a row, offers
+        <b class="ui">Open on TONE3000</b>, <b class="ui">Share .nam file</b> /
+        <b class="ui">Share IR file</b> and <b class="ui">Delete</b>. The toolbar has
+        <b class="ui">Import files…</b> — a multi-select picker that takes <b class="ui">.nam</b>
+        captures and <b class="ui">.wav</b> impulses — along with
+        <b class="ui">Export all (N files)</b> and <b class="ui">Update all</b>.</p>
+      <p>Empty, the sheet reads <b class="ui">Profiles you download from TONE3000 collect here.</b>
+        on the NAM side and <b class="ui">Cabinets and spaces you download from TONE3000 collect
+        here.</b> on the IR side. If a model cannot be read you get <b class="ui r">Could not load
+        amp model {filename}.</b> — usually a file that was moved or deleted out from under the
+        rig.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 is a free library of amp captures, and NAMper pulls from it directly. There is no
+      <p>TONE3000 is a free library of captures, and NAMper pulls from it directly. There is no
         in-app browse screen: <b class="ui">Browse TONE3000</b> opens tone3000.com inside a secure
         web sheet. You search and filter on the website itself, pick a tone, and the app takes it
         from there — while it fetches, the button reads <b class="ui">Loading…</b> and is
         disabled.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="The Connect TONE3000 sheet over the Rig tab, offering Sign in to TONE3000 and Play offline buttons with a Don't ask again toggle.">
-        <figcaption>The sign-in offer, shown once per launch while signed out</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="The TONE3000 page in Settings: the account row with a Sign in to TONE3000 button, and the factory-presets switch between built-in amps and TONE3000 captures.">
+        <figcaption>TONE3000 lives in Settings and in every block that can take a capture</figcaption>
       </figure>
       <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
-        in to tone3000.com in the browser the app reuses that session. The library is filtered
-        server-side to A2-architecture NAM captures of amps, full rigs and pedals — that is fixed,
-        not a setting you can change.</p>
-      <p>Picking a tone downloads the first model of that tone — there is no model picker — together
-        with its cover art and metadata. Everything lands in the app's <b class="ui">tones/</b>
-        folder and appears in the <b class="ui">NAM Profiles</b> sheet.</p>
+        in to tone3000.com in the browser the app reuses that session. NAMper never asks for it at
+        launch — the factory presets play on the built-in amps and the bundled cabinets, and the
+        sign-in happens the first time you press <b class="ui">Browse TONE3000</b>, or from
+        Settings → <b class="ui">TONE3000</b>.</p>
+      <p>What the catalogue offers depends on the block that opened it. From an <b class="ui">Amp</b>
+        or a <b class="ui">NAM</b> block it is filtered server-side to A2-architecture
+        <b class="ui">.nam</b> captures of amps, full rigs, pedals and outboard gear. From a
+        <b class="ui">Cab</b> block it offers the site's cabinet impulses, and from an
+        <b class="ui">IR Verb</b> its spaces — <b class="ui">.wav</b> files, not captures. That
+        filter is fixed, not a setting you can change.</p>
+      <p>When the tone you picked has one model, it lands straight in the block with its cover art
+        and metadata. When it has several, a picker opens: tap one to play it alone, or tick a few
+        and <b class="ui">Download {n} selected into the bank</b> — the whole tone is
+        <b class="ui">Download all {n} models into the bank</b>. Everything lands in the app's
+        <b class="ui">tones/</b> folder and joins the library.</p>
 
-      <h3>The sign-in offer</h3>
-      <p>A sheet titled <b class="ui">Connect TONE3000</b> appears once per launch while you are
-        signed out, explaining that factory presets stream real amp captures from the free library.
-        It offers <b class="ui">Sign in to TONE3000</b> and <b class="ui">Play offline</b>, with a
-        <b class="ui">Don't ask again</b> toggle. You can also silence it for good in Settings →
-        <b class="ui">PROMPTS</b> → <b class="ui">Offer TONE3000 sign-in on launch</b>.</p>
+      <h3>The factory presets, on captures or built-in</h3>
+      <p>Settings → <b class="ui">TONE3000</b> carries one switch: <b class="ui">Built-in amps</b>
+        or <b class="ui">TONE3000 captures</b>. The four factory rigs were voiced around four
+        public captures — a Fender Deluxe Reverb, a Marshall Plexi, a Victory Kraken and a VOX AC30
+        — and the switch decides which of the two the bank plays. NAMper offers the choice once,
+        the first time you pick a capture of your own.</p>
 
       <h3>Playing offline</h3>
-      <p>Anything already downloaded keeps working with no network at all. A factory rig whose
-        profile is not cached falls back to its bypassed built-in <b class="ui">Tube Amp</b> and a
-        bundled cab, and the header reads <b class="ui">Built-in tube amp</b> so you know what you
-        are hearing. Sign in later and those rigs resolve to the real captures in place — you do not
-        have to rebuild anything.</p>
+      <p>Anything already downloaded keeps working with no network at all. An <b class="ui">Amp</b>
+        block whose capture is not cached plays its own built-in voicing meanwhile and says so
+        (<b class="ui">Not downloaded yet — the built-in amp plays meanwhile</b>), with the
+        <b class="ui">Cab</b> after it awake for the built-in amp. Sign in later and those blocks
+        resolve to the real captures in place — you do not have to rebuild anything.</p>
       <div class="note warn">
         <div class="t">There is no sign-out</div>
         <p>NAMper has no TONE3000 sign-out button. Once the session exists, the only way to clear it
@@ -365,15 +408,32 @@
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
       <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with
-        a microphone. Its sheet shows the current IR name, a menu button labelled
-        <b class="ui">Cabinets</b>, a <b class="ui">Load file</b> button, and one knob:
-        <b class="ui">Level</b>, −12 to +12 dB. Once an IR is loaded, a <b class="ui">Clear IR</b>
-        button appears alongside.</p>
+        a microphone. Its sheet is built like a capture block's: the impulse's name across the top
+        with the <b class="ui">@author</b>, an arrow to the tone's page and
+        <b class="ui">Clear IR</b> beside it, the cover art on the left, and four ways to load one
+        on the right — <b class="ui">Browse TONE3000</b>, <b class="ui">Library</b>,
+        <b class="ui">Cabinets</b> and <b class="ui">Load file</b>. Under them sits the block's own
+        knob, <b class="ui">Level</b>, −12 to +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="The Cab block sheet: the impulse name and author across the top, cover art on the left, and the Browse TONE3000, Library, Cabinets and Load file buttons on the right, with the Level knob below.">
+        <figcaption>The Cab block, built like the capture side of an amp</figcaption>
+      </figure>
+      <p>The same block used as an <b class="ui">IR Verb</b> labels its menu
+        <b class="ui">Spaces</b> instead, loads reverb impulses rather than cabinets, and carries
+        <b class="ui">Mix</b>, <b class="ui">Predelay</b> and <b class="ui">Level</b>.</p>
+      <p><b class="ui">Browse TONE3000</b> opens the site's cabinets from a <b class="ui">Cab</b>
+        and its spaces from an <b class="ui">IR Verb</b>. A tone with several impulses opens the
+        same picker the captures use: play one, or tick a few and download them into the block's
+        bank. The sheet then reads <b class="ui">Bank: 6</b> and a <b class="ui">Model</b> knob
+        appears beside <b class="ui">Level</b>, reading <b class="ui">1/6 · R121</b> as it turns —
+        a long press on it offers <b class="ui">MIDI Learn</b>, exactly as on the amp, so one
+        expression pedal or knob walks a whole set of microphones.</p>
       <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio;
         whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays
-        available even if you delete the original. The same block, used as an
-        <b class="ui">IR Verb</b>, labels its menu <b class="ui">Spaces</b> instead and loads
-        reverb impulses rather than cabinets.</p>
+        available even if you delete the original. Impulses you have downloaded appear in the
+        <b class="ui">Cabinets</b> / <b class="ui">Spaces</b> menu under
+        <b class="ui">Downloaded</b>, and on the <b class="ui">IR</b> side of the library.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menu</th><th>Bundled impulse responses</th></tr></thead>
@@ -393,10 +453,15 @@
       </div>
       <div class="note">
         <div class="t">Not every amp needs a cab</div>
-        <p>An empty <b class="ui">Cab</b> block tells you why it might stay empty:
-          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. Plenty of TONE3000
-          captures are taken from the speaker output, cab and microphone included; putting another
-          cab after one of those makes the sound dull and boxy. An empty
+        <p>Plenty of TONE3000 captures are taken from the speaker output, cab and microphone
+          included; putting another cab after one of those makes the sound dull and boxy. NAMper
+          reads that from the tone and handles it: a full-rig capture rests the <b class="ui">Cab</b>
+          right after the amp, a bare head or a DI wakes it. A Cab left resting with no impulse in
+          it is not even drawn in the chain — load an impulse into it, or switch the amp back to a
+          bare head, and it comes straight back. The Cab's own footswitch always has the last
+          word.</p>
+        <p>An empty <b class="ui">Cab</b> block says why it might stay empty:
+          <b class="ui">No IR loaded — amp+cab NAM profiles don't need one</b>. An empty
           <b class="ui">IR Verb</b> reads <b class="ui">No IR loaded — pick a space or a file</b>
           instead.</p>
       </div>

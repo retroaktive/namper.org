@@ -76,7 +76,7 @@
         <li><a href="#blocks">Die Block-Palette</a></li>
         <li><a href="#models">Modelle in Blöcken</a></li>
         <li><a href="#eq">Die fünf EQ-Modelle</a></li>
-        <li><a href="#nam">NAM-Amp-Profile</a></li>
+        <li><a href="#nam">NAM-Captures</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Boxen und IRs</a></li>
         <li><a href="#presets">Presets</a></li>
@@ -249,7 +249,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="Das EQ-Block-Sheet mit ausgewähltem Passive-Modell, mit seinen acht Reglern: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten und Atten Hz, mit IN- und OUT-Anzeigen oben.">
         <figcaption>Der EQ-Block im Passive-Modell</figcaption>
       </figure>
@@ -260,99 +260,148 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM-Amp-Profile</h2>
-      <p>Unter <b class="ui">Amp &amp; Box</b> stecken zwei verschiedene Blöcke, und es lohnt sich,
-        klar zwischen ihnen zu unterscheiden. <b class="ui">Röhren-Amp</b> ist NAMpers eigene
-        Amp-Simulation mit den sieben oben genannten Modellen. <b class="ui">Amp</b> ist der
-        Neural-Amp-Modeler-Player: Er lädt einen <b class="ui">.nam</b>-Capture eines echten
-        Verstärkers und spielt ihn ab.</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM-Captures</h2>
+      <p>Der Block <b class="ui">Amp</b> ist ein Block mit zwei Quellen. Zwei Chips oben in seinem
+        Sheet wählen zwischen ihnen: <b class="ui">Eingebaut</b> ist NAMpers eigene Amp-Simulation
+        mit den sieben oben genannten Voicings, <b class="ui">NAM</b> ist der
+        Neural-Amp-Modeler-Player, der einen <b class="ui">.nam</b>-Capture eines echten
+        Verstärkers abspielt. Beide stecken im selben Block, ein Preset trägt also das Voicing, auf
+        dem es aufgebaut wurde, <em>und</em> den Capture, um den herum es abgestimmt wurde, und der
+        Wechsel zwischen beiden ist ein Tipp.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Der Tab Rig mit geladenem NAM-Profil: Cover, Tone-Titel und Autor auf der Amp-Karte, vertikale IN- und OUT-Anzeigen zu beiden Seiten, und darunter die Signalkette aus Blöcken.">
-        <figcaption>Die Amp-Karte mit geladenem NAM-Profil</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Der Tab Rig: die Anzeigen IN und OUT oben auf der Signalketten-Karte, darunter die Kette aus Blöcken, in der der Amp-Block den Capture nennt, den er spielt.">
+        <figcaption>Der Tab Rig; die Amp-Kachel nennt, was sie gerade spielt</figcaption>
       </figure>
 
-      <h3>Die Amp-Karte</h3>
-      <p>Oben auf dem Tab Rig, zwischen den Anzeigen <b class="ui">IN</b> und <b class="ui">OUT</b>,
-        zeigt die Amp-Karte, was der Block <b class="ui">Amp</b> gerade spielt: das Cover, den
-        Tone-Titel, den <b class="ui">@author</b>, bis zu sechs Metadaten-Chips, eine Download-Zahl,
-        eine Taste <b class="ui">TONE3000 durchsuchen</b> und ein Bücher-Symbol
-        (<b class="ui">NAM-Bibliothek öffnen</b>). Ist nichts geladen, steht dort
-        <b class="ui">Eingebauter Röhren-Amp</b>. Enthält ein Rig mehr als einen Amp, wählen Chips
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> und so weiter, welchen die Karte
-        bearbeitet.</p>
-
-      <h3>Input und Output</h3>
-      <p>Das Block-Sheet von <b class="ui">Amp</b> ist absichtlich kurz: der Profiltitel (oder
-        <b class="ui">Kein Modell geladen</b>), eine Taste <b class="ui">TONE3000 durchsuchen</b> und zwei
-        Regler. <b class="ui">Eingang</b> und <b class="ui">Ausgang</b> laufen beide von −20 bis +20 dB
-        und starten bei 0. Input treibt den Capture stärker an, so bekommst du mehr oder weniger
-        Breakup aus einem Profil heraus; Output trimmt das Ergebnis danach.</p>
-      <p>Der NAM-Ausgang wird anhand der Lautheits-Metadaten im Modell automatisch auf ein
-        −18-dB-Ziel normalisiert. Deshalb wirft ein Wechsel zwischen Profilen deine Pegel nicht
-        durcheinander — und das ist auch nicht als Regler zugänglich.</p>
+      <h3>Die Capture-Seite</h3>
+      <p>Auf der Seite <b class="ui">NAM</b> zeigt das Sheet den Namen des Modells (oder
+        <b class="ui">Kein Modell geladen</b>), den <b class="ui">@author</b> und einen Pfeil, der
+        den Tone auf tone3000.com öffnet, links das Cover und rechts drei Wege zu einem Capture:
+        <b class="ui">TONE3000 durchsuchen</b>, <b class="ui">Bibliothek</b> und
+        <b class="ui">Datei laden</b>. Darunter liegen <b class="ui">Eingang</b> und
+        <b class="ui">Ausgang</b>, beide von −20 bis +20 dB und bei 0 startend. Input treibt den
+        Capture stärker an, so bekommst du mehr oder weniger Breakup aus einem Profil heraus;
+        Output trimmt das Ergebnis danach.</p>
+      <p>Die Pegel sind gemessen, nicht geraten: Beide Quellen liegen auf demselben Referenz-DI bei
+        Unity, das Output-Gain eines Presets bedeutet also immer dasselbe, ganz gleich, welche der
+        beiden spielt, und ein Profilwechsel wirft deine Pegel nicht durcheinander.</p>
+      <p><b class="ui">Datei laden</b> nimmt mehrere <b class="ui">.nam</b>-Dateien auf einmal. Wähl
+        mehr als eine, und die App fragt <b class="ui">Die Modelle zu einer Bank zusammenfassen?</b>
+        — <b class="ui">Zusammenfassen</b> macht eine Bank daraus, <b class="ui">Nur das erste</b>
+        lädt eines.</p>
       <div class="note">
-        <div class="t">Der NAM-Amp ist mono</div>
+        <div class="t">Ein Capture ist mono</div>
         <p>Ein NAM-Capture ist ein Mono-Gerät — ein Stereosignal, das am Block <b class="ui">Amp</b>
-          ankommt, wird summiert, bevor es hineingeht. Setz deine Stereo-Effekte hinter den Amp, nicht
-          davor.</p>
+          ankommt, wird summiert, bevor es hineingeht. Setz deine Stereo-Effekte hinter den Amp, nicht davor.</p>
       </div>
 
-      <h3>Drei Wege, ein Profil zu laden</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">TONE3000 durchsuchen</b> — die Online-Bibliothek, im nächsten Abschnitt
-          beschrieben.</li>
-        <li>Das Bücher-Symbol, das ein Sheet mit dem Titel <b class="ui">NAM-Profile</b> öffnet.
-          Tippe auf eine beliebige Zeile, um sie in den aktuellen Amp zu laden.</li>
-        <li>Werkspresets lösen ihre eigenen Profile auf, das Laden von <b class="ui">Crunch</b> bringt
-          also seinen Amp gleich mit.</li>
-      </ol>
-      <p>Das Sheet <b class="ui">NAM-Profile</b> ist deine lokale Bibliothek. Leer steht dort
-        <b class="ui">Profile, die du von TONE3000 lädst, sammeln sich hier.</b> Sein Toolbar-Menü hat
-        <b class="ui">.nam-Dateien importieren…</b> — einen Mehrfachauswahl-Dateipicker, der nur
-        <b class="ui">.nam</b>-Dateien akzeptiert — sowie <b class="ui">Export all (N files)</b> und
-        <b class="ui">Alle aktualisieren</b>. Jede Zeile trägt <b class="ui">.nam-Datei teilen</b>,
-        <b class="ui">Löschen</b> und eine Aktualisieren-Taste (<b class="ui">Von TONE3000 aktualisieren</b>).</p>
-      <p>Kann ein Modell nicht gelesen werden, bekommst du
-        <b class="ui r">Could not load amp model {filename}.</b> — meist eine Datei, die unter dem
-        Rig verschoben oder gelöscht wurde.</p>
+      <h3>Bänke und der Regler Modell</h3>
+      <p>Ein TONE3000-Tone bringt oft viele Modelle mit: derselbe Amp durch verschiedene Mikrofone,
+        Kanäle oder Boxen. Lade sie zusammen herunter, und sie werden zur <b>Bank</b> des Blocks.
+        Das Sheet zeigt dann <b class="ui">Bank: 6</b> (oder <b class="ui">Bank: 4 von 6</b>, wenn
+        einige aus dem Durchlauf herausfallen), und zwischen den Trims erscheint ein Regler
+        <b class="ui">Modell</b>, der beim Drehen <b class="ui">1/6 · SM57</b> anzeigt. Es ist ein
+        ganz normaler Regler, ein langer Druck bietet also <b class="ui">MIDI Learn</b>: Ein
+        einziger CC läuft dann vom Pedalboard aus durch die ganze Bank, und der Wechsel wird
+        überblendet statt geschnitten, es klickt und reißt also nichts ab.</p>
+
+      <h3>Der Block NAM: Pedale und Outboard</h3>
+      <p>Ein eigener Block <b class="ui">NAM</b> trägt dieselbe Capture-Seite ohne den eingebauten
+        Amp, und dort gehören Captures von Pedalen und Outboard-Geräten hin. Du musst ihn nicht
+        selbst setzen: Lade einen Pedal-Capture, während ein Block <b class="ui">Amp</b> anvisiert
+        ist, und NAMper fügt direkt vor diesem Amp einen Block <b class="ui">NAM</b> ein und öffnet
+        ihn für dich.</p>
+
+      <h3>Die Bibliothek</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="Das Sheet NAM-Profile: die Chips NAM und IR oben, darunter Tones, gruppiert unter Verstärker, mit Cover, Autor und Modellanzahl.">
+        <figcaption>Die Bibliothek: zwei Seiten, und Tones gruppiert nach dem, was sie aufgenommen haben</figcaption>
+      </figure>
+      <p>Die Taste <b class="ui">Bibliothek</b> öffnet ein Sheet mit dem Titel
+        <b class="ui">NAM-Profile</b> — alles, was du heruntergeladen hast, offline verfügbar. Zwei
+        Chips oben teilen es in zwei Hälften: <b class="ui">NAM</b> für Captures und
+        <b class="ui">IR</b> für Impulse, jeder mit einer Zahl. Ein Block nimmt immer nur eines von
+        beiden, sie stehen also nie zusammen in einer Liste, und der Block, aus dem du die
+        Bibliothek geöffnet hast, wählt die Seite für dich.</p>
+      <p>Innerhalb einer Seite sind die Tones danach gruppiert, was aufgenommen wurde:
+        <b class="ui">Verstärker</b>, <b class="ui">Pedale</b>, <b class="ui">Outboard</b>,
+        <b class="ui">Cabinets</b>, <b class="ui">Räume</b> und <b class="ui">Sonstiges</b>. Jede
+        Zeile ist ein Tone, keine Datei: Cover, Titel, <b class="ui">@author</b> und wie viele
+        Modelle er mitbringt. Ein Tipp lädt ihn — ein Tone mit einem Modell spielt allein, ein Tone
+        mit mehreren wird zur Bank des Blocks — und der Tone landet da, wo er hingehört: ein Amp im
+        Block <b class="ui">Amp</b>, ein Pedal oder ein Outboard-Gerät in einem Block
+        <b class="ui">NAM</b> davor, eine Box in der <b class="ui">Box</b> danach, ein Raum im
+        <b class="ui">IR-Verb</b>.</p>
+      <p>Der Pfeil öffnet die Modelle des Tones. In dem Tone, der <em>die</em> Bank des Blocks ist,
+        trägt jedes Modell ein Häkchen: Es hält dieses Modell im Durchlauf des Reglers
+        <b class="ui">Modell</b>, und ein Tipp schiebt den Regler darauf. In jedem anderen Tone
+        spielt ein Tipp auf ein Modell dieses Modell allein und leert die Bank. Modelle, die die
+        Website führt, die du aber noch nicht hast, sind ausgegraut und mit einem Wolkensymbol
+        versehen; ein Tipp holt eines, und im Bank-Tone reiht es sich in den Durchlauf ein.</p>
+      <p>Rechts in jeder Tone-Zeile: der Stern (ein Favorit — einen Tone zu markieren markiert alle
+        seine Modelle) und die Aktualisieren-Taste (<b class="ui">Von TONE3000 aktualisieren</b>,
+        die die Metadaten, das Cover und die Dateien neu holt). Ein langer Druck oder ein
+        Rechtsklick auf eine Zeile bietet <b class="ui">Auf TONE3000 öffnen</b>,
+        <b class="ui">.nam-Datei teilen</b> / <b class="ui">IR-Datei teilen</b> und
+        <b class="ui">Löschen</b>. Die Toolbar hat <b class="ui">Dateien importieren …</b> — einen
+        Mehrfachauswahl-Picker, der <b class="ui">.nam</b>-Captures und
+        <b class="ui">.wav</b>-Impulse annimmt — sowie
+        <b class="ui">Alle exportieren (N Dateien)</b> und <b class="ui">Alle aktualisieren</b>.</p>
+      <p>Leer steht auf der NAM-Seite <b class="ui">Profile, die du von TONE3000 lädst, sammeln sich
+        hier.</b> und auf der IR-Seite <b class="ui">Boxen und Räume, die du von TONE3000 lädst,
+        sammeln sich hier.</b> Kann ein Modell nicht gelesen werden, bekommst du
+        <b class="ui r">Amp-Modell {filename} konnte nicht geladen werden.</b> — meist eine Datei,
+        die unter dem Rig verschoben oder gelöscht wurde.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 ist eine kostenlose Bibliothek von Amp-Captures, und NAMper greift direkt darauf
-        zu. Es gibt keinen Browse-Bildschirm in der App: <b class="ui">TONE3000 durchsuchen</b> öffnet
+      <p>TONE3000 ist eine kostenlose Bibliothek von Captures, und NAMper greift direkt darauf zu.
+        Es gibt keinen Browse-Bildschirm in der App: <b class="ui">TONE3000 durchsuchen</b> öffnet
         tone3000.com in einem sicheren Web-Sheet. Du suchst und filterst auf der Website selbst,
         wählst einen Tone, und die App übernimmt von da an — während sie lädt, zeigt die Taste
         <b class="ui">Lade…</b> und ist deaktiviert.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Das Sheet Connect TONE3000 über dem Tab Rig, mit den Tasten Sign in to TONE3000 und Play offline sowie einem Schalter Don't ask again.">
-        <figcaption>Das Anmeldeangebot, einmal pro Start angezeigt, solange du abgemeldet bist</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="Die Seite TONE3000 in den Einstellungen: die Kontozeile mit der Taste Sign in to TONE3000 und der Schalter für die Werkspresets zwischen eingebauten Amps und TONE3000-Captures.">
+        <figcaption>TONE3000 sitzt in den Einstellungen und in jedem Block, der einen Capture aufnehmen kann</figcaption>
       </figure>
       <p>Das Anmelden ist eine ganz normale Web-Anmeldung, kein eingefügter API-Key, und wenn du im
-        Browser bereits bei tone3000.com angemeldet bist, übernimmt die App diese Sitzung. Die
-        Bibliothek wird serverseitig auf NAM-Captures der A2-Architektur von Amps, kompletten Rigs
-        und Pedalen gefiltert — das ist fest vorgegeben und keine Einstellung, die du ändern
-        kannst.</p>
-      <p>Die Wahl eines Tones lädt das erste Modell dieses Tones herunter — es gibt keine
-        Modellauswahl — zusammen mit Cover und Metadaten. Alles landet im Ordner
-        <b class="ui">tones/</b> der App und erscheint im Sheet <b class="ui">NAM-Profile</b>.</p>
+        Browser bereits bei tone3000.com angemeldet bist, übernimmt die App diese Sitzung. NAMper
+        fragt beim Start nie danach — die Werkspresets spielen auf den eingebauten Amps und den
+        mitgelieferten Boxen, und die Anmeldung passiert beim ersten Druck auf
+        <b class="ui">TONE3000 durchsuchen</b> oder über Einstellungen →
+        <b class="ui">TONE3000</b>.</p>
+      <p>Was der Katalog anbietet, hängt vom Block ab, der ihn geöffnet hat. Aus einem Block
+        <b class="ui">Amp</b> oder <b class="ui">NAM</b> heraus wird serverseitig auf
+        <b class="ui">.nam</b>-Captures der A2-Architektur von Amps, kompletten Rigs, Pedalen und
+        Outboard-Geräten gefiltert. Aus einem Block <b class="ui">Box</b> heraus bietet er die
+        Boxen-Impulse der Website, aus einem <b class="ui">IR-Verb</b> ihre Räume —
+        <b class="ui">.wav</b>-Dateien, keine Captures. Dieser Filter ist fest vorgegeben und keine
+        Einstellung, die du ändern kannst.</p>
+      <p>Hat der gewählte Tone ein Modell, landet es direkt im Block, mit Cover und Metadaten. Hat
+        er mehrere, öffnet sich eine Auswahl: Tippe eines an, um es allein zu spielen, oder hak
+        mehrere an und <b class="ui">{n} ausgewählte in die Bank laden</b> — der ganze Tone ist
+        <b class="ui">Alle {n} Modelle in die Bank laden</b>. Alles landet im Ordner
+        <b class="ui">tones/</b> der App und reiht sich in die Bibliothek ein.</p>
 
-      <h3>Das Anmeldeangebot</h3>
-      <p>Ein Sheet mit dem Titel <b class="ui">TONE3000 verbinden</b> erscheint einmal pro Start,
-        solange du abgemeldet bist, und erklärt, dass Werkspresets echte Amp-Captures aus der
-        kostenlosen Bibliothek streamen. Es bietet <b class="ui">Bei TONE3000 anmelden</b> und
-        <b class="ui">Offline spielen</b>, mit einem Schalter <b class="ui">Nicht mehr fragen</b>. Du
-        kannst es auch dauerhaft abstellen: Einstellungen → <b class="ui">HINWEISE</b> →
-        <b class="ui">TONE3000-Anmeldung beim Start anbieten</b>.</p>
+      <h3>Die Werkspresets, auf Captures oder eingebaut</h3>
+      <p>Einstellungen → <b class="ui">TONE3000</b> hat einen Schalter:
+        <b class="ui">Eingebaute Amps</b> oder <b class="ui">TONE3000-Captures</b>. Die vier
+        Werksrigs wurden um vier öffentliche Captures herum abgestimmt — einen Fender Deluxe
+        Reverb, einen Marshall Plexi, einen Victory Kraken und einen VOX AC30 — und der Schalter
+        entscheidet, welche der beiden die Bank spielt. NAMper bietet die Wahl einmal an, beim
+        ersten Mal, wenn du einen eigenen Capture wählst.</p>
 
       <h3>Offline spielen</h3>
-      <p>Alles bereits Heruntergeladene funktioniert völlig ohne Netzwerk weiter. Ein Werksrig,
-        dessen Profil nicht gecacht ist, fällt auf seinen bypassten eingebauten
-        <b class="ui">Röhren-Amp</b> und eine mitgelieferte Box zurück, und die Kopfzeile zeigt
-        <b class="ui">Eingebauter Röhren-Amp</b>, damit du weißt, was du hörst. Melde dich später an, und
-        diese Rigs lösen sich an Ort und Stelle zu den echten Captures auf — du musst nichts neu
+      <p>Alles bereits Heruntergeladene funktioniert völlig ohne Netzwerk weiter. Ein Block
+        <b class="ui">Amp</b>, dessen Capture nicht gecacht ist, spielt solange sein eigenes
+        eingebautes Voicing und sagt das auch
+        (<b class="ui">Noch nicht geladen – solange spielt der eingebaute Amp</b>), mit der
+        <b class="ui">Box</b> dahinter wach für den eingebauten Amp. Melde dich später an, und diese
+        Blöcke lösen sich an Ort und Stelle zu den echten Captures auf — du musst nichts neu
         aufbauen.</p>
       <div class="note warn">
         <div class="t">Es gibt kein Abmelden</div>
@@ -377,15 +426,33 @@
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Boxen und IRs</h2>
       <p>Der Block <b class="ui">Box</b> spielt eine Impulsantwort ab — eine mit einem Mikrofon
-        aufgenommene Lautsprecherbox. Sein Sheet zeigt den aktuellen IR-Namen, eine Menütaste mit der
-        Beschriftung <b class="ui">Cabinets</b>, eine Taste <b class="ui">Datei laden</b> und einen
-        Regler: <b class="ui">Level</b>, −12 bis +12 dB. Sobald eine IR geladen ist, erscheint
-        daneben eine Taste <b class="ui">IR entfernen</b>.</p>
+        aufgenommene Lautsprecherbox. Sein Sheet ist wie das eines Capture-Blocks gebaut: oben der
+        Name des Impulses mit dem <b class="ui">@author</b>, einem Pfeil zur Seite des Tones und
+        <b class="ui">IR entfernen</b> daneben, links das Cover und rechts vier Wege, einen zu
+        laden — <b class="ui">TONE3000 durchsuchen</b>, <b class="ui">Bibliothek</b>,
+        <b class="ui">Cabinets</b> und <b class="ui">Datei laden</b>. Darunter sitzt der eigene
+        Regler des Blocks, <b class="ui">Level</b>, −12 bis +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="Das Sheet des Box-Blocks: oben Name und Autor des Impulses, links das Cover, rechts die Tasten TONE3000 durchsuchen, Bibliothek, Cabinets und Datei laden, darunter der Level-Regler.">
+        <figcaption>Der Block Box, gebaut wie die Capture-Seite eines Amps</figcaption>
+      </figure>
+      <p>Derselbe Block, als <b class="ui">IR-Verb</b> eingesetzt, beschriftet sein Menü
+        stattdessen mit <b class="ui">Räume</b>, lädt Hall-Impulse statt Boxen und trägt
+        <b class="ui">Mix</b>, <b class="ui">Predelay</b> und <b class="ui">Level</b>.</p>
+      <p><b class="ui">TONE3000 durchsuchen</b> öffnet aus einer <b class="ui">Box</b> heraus die
+        Boxen der Website und aus einem <b class="ui">IR-Verb</b> heraus ihre Räume. Ein Tone mit
+        mehreren Impulsen öffnet dieselbe Auswahl wie die Captures: eines spielen, oder ein paar
+        anhaken und in die Bank des Blocks laden. Das Sheet zeigt dann <b class="ui">Bank: 6</b>,
+        und neben <b class="ui">Level</b> erscheint ein Regler <b class="ui">Modell</b>, der beim
+        Drehen <b class="ui">1/6 · R121</b> anzeigt — ein langer Druck darauf bietet
+        <b class="ui">MIDI Learn</b>, genau wie beim Amp, sodass ein einziges Expression-Pedal oder
+        ein Regler einen ganzen Mikrofonsatz durchläuft.</p>
       <p><b class="ui">Datei laden</b> öffnet einen Dateipicker für <b class="ui">.wav</b> und andere
         Audioformate; was auch immer du wählst, wird in den Ordner <b class="ui">irs/</b> der App
-        kopiert, sodass es verfügbar bleibt, selbst wenn du das Original löschst. Derselbe Block, als
-        <b class="ui">IR-Verb</b> eingesetzt, beschriftet sein Menü stattdessen mit
-        <b class="ui">Räume</b> und lädt Hall-Impulse statt Boxen.</p>
+        kopiert, sodass es verfügbar bleibt, selbst wenn du das Original löschst. Heruntergeladene
+        Impulse erscheinen im Menü <b class="ui">Cabinets</b> / <b class="ui">Räume</b> unter
+        <b class="ui">Heruntergeladen</b> und auf der Seite <b class="ui">IR</b> der Bibliothek.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menü</th><th>Mitgelieferte Impulsantworten</th></tr></thead>
@@ -405,17 +472,21 @@
       </div>
       <div class="note">
         <div class="t">Nicht jeder Amp braucht eine Box</div>
-        <p>Ein leerer Block <b class="ui">Box</b> sagt dir, warum er vielleicht leer bleiben sollte:
-          <b class="ui">Keine IR geladen — Amp+Cab-NAM-Profile
-brauchen keine</b>. Viele
-          TONE3000-Captures werden am Lautsprecherausgang abgenommen, Box und Mikrofon inklusive;
-          eine weitere Box danach zu setzen macht den Sound dumpf und kistig. Ein leerer
+        <p>Viele TONE3000-Captures werden am Lautsprecherausgang abgenommen, Box und Mikrofon
+          inklusive; eine weitere Box danach zu setzen macht den Sound dumpf und kistig. NAMper
+          liest das aus dem Tone und regelt es: Ein Capture eines kompletten Rigs legt die
+          <b class="ui">Box</b> direkt hinter dem Amp schlafen, ein reines Topteil oder ein DI weckt
+          sie. Eine schlafende Box ohne Impuls darin wird in der Kette gar nicht erst gezeichnet —
+          lad einen Impuls hinein oder stell den Amp zurück auf ein reines Topteil, und sie ist
+          sofort wieder da. Der eigene Fußschalter der Box hat immer das letzte Wort.</p>
+        <p>Ein leerer Block <b class="ui">Box</b> sagt dir, warum er vielleicht leer bleibt:
+          <b class="ui">Keine IR geladen — Amp+Cab-NAM-Profile brauchen keine</b>. Ein leerer
           <b class="ui">IR-Verb</b> zeigt stattdessen
           <b class="ui">Keine IR geladen — wähle einen Raum oder eine Datei</b>.</p>
       </div>
-      <p>IR-Probleme erscheinen als <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> oder
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>IR-Probleme erscheinen als <b class="ui r">IR-Datei fehlt: {name}</b>,
+        <b class="ui r">IR {name} konnte nicht gelesen werden.</b> oder
+        <b class="ui r">{name} konnte nicht importiert werden.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

@@ -76,7 +76,7 @@
         <li><a href="#blocks">Palet blok</a></li>
         <li><a href="#models">Model di dalam blok</a></li>
         <li><a href="#eq">Lima model EQ</a></li>
-        <li><a href="#nam">Profil amp NAM</a></li>
+        <li><a href="#nam">Capture NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Cab dan IR</a></li>
         <li><a href="#presets">Preset</a></li>
@@ -248,7 +248,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="Sheet blok EQ dengan model Passive terpilih, menampilkan delapan knob-nya: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten dan Atten Hz, dengan meter IN dan OUT di bagian atas.">
         <figcaption>Blok EQ pada model Passive</figcaption>
       </figure>
@@ -259,99 +259,146 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>Profil amp NAM</h2>
-      <p>Ada dua blok berbeda yang hidup di bawah <b class="ui">Amp &amp; Cab</b>, dan penting untuk
-        jelas soal mana yang mana. <b class="ui">Amp tabung</b> adalah simulasi amp buatan NAMper
-        sendiri, dengan tujuh model yang tercantum di atas. <b class="ui">Amp</b> adalah player
-        Neural Amp Modeler: ia memuat capture <b class="ui">.nam</b> dari amplifier sungguhan dan
-        menjalankannya.</p>
+      <h2 id="nam"><span class="n">02.4</span>Capture NAM</h2>
+      <p>Blok <b class="ui">Amp</b> adalah satu blok dengan dua sumber. Dua chip di bagian atas
+        sheet-nya memilih di antara keduanya: <b class="ui">Bawaan</b> adalah simulasi amp buatan
+        NAMper sendiri dengan tujuh voicing yang tercantum di atas, <b class="ui">NAM</b> adalah
+        player Neural Amp Modeler yang menjalankan capture <b class="ui">.nam</b> dari amplifier
+        sungguhan. Keduanya hidup di blok yang sama, jadi sebuah preset membawa voicing tempat ia
+        dibangun <em>dan</em> capture yang jadi acuan penyetelannya, dan berpindah di antara
+        keduanya cuma satu ketukan.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Tab Rig dengan profil NAM termuat: cover art, judul tone dan penulis pada kartu amp, meter IN dan OUT vertikal di kedua sisinya, serta rantai sinyal blok di bawahnya.">
-        <figcaption>Kartu amp dengan profil NAM termuat</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Tab Rig: meter IN dan OUT membentang di bagian atas kartu rantai sinyal, dan rantai blok di bawahnya dengan blok Amp menyebutkan capture yang sedang dimainkannya.">
+        <figcaption>Tab Rig; petak Amp menyebutkan apa yang sedang dimainkannya</figcaption>
       </figure>
 
-      <h3>Kartu amp</h3>
-      <p>Di bagian atas tab Rig, di antara meter <b class="ui">IN</b> dan <b class="ui">OUT</b>,
-        kartu amp menampilkan apa yang sedang dimainkan blok <b class="ui">Amp</b> saat ini: cover
-        art, judul tone, <b class="ui">@author</b>, hingga enam chip metadata, jumlah unduhan,
-        tombol <b class="ui">Jelajahi TONE3000</b> dan ikon buku
-        (<b class="ui">Buka pustaka NAM</b>). Kalau belum ada yang dimuat, tertulis
-        <b class="ui">Amp tabung bawaan</b>. Kalau sebuah rig punya lebih dari satu amp, chip
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> dan seterusnya memilih mana yang sedang
-        diedit oleh kartu itu.</p>
-
-      <h3>Input dan Output</h3>
-      <p>Sheet blok <b class="ui">Amp</b> sengaja dibuat singkat: judul profil (atau
-        <b class="ui">Model belum dimuat</b>), tombol <b class="ui">Jelajahi TONE3000</b>, dan dua knob.
-        <b class="ui">Input</b> dan <b class="ui">Output</b> keduanya berjalan −20 hingga +20 dB dan
-        mulai dari 0. Input mendorong capture-nya lebih keras, itulah cara kamu mendapat lebih
-        banyak atau lebih sedikit breakup dari sebuah profil; Output merapikan hasilnya setelah
-        itu.</p>
-      <p>Output NAM dinormalisasi secara otomatis, memakai metadata loudness di dalam model itu
-        sendiri, menuju target −18 dB. Itulah sebabnya berpindah antar profil tidak membuat level
-        kamu berantakan, dan itu tidak diekspos sebagai kontrol.</p>
+      <h3>Sisi capture</h3>
+      <p>Di sisi <b class="ui">NAM</b>, sheet-nya menampilkan nama modelnya (atau
+        <b class="ui">Model belum dimuat</b>), <b class="ui">@author</b> dan panah yang membuka tone
+        itu di tone3000.com, cover art di sebelah kiri, dan tiga cara mendapatkan capture di sebelah
+        kanan: <b class="ui">Jelajahi TONE3000</b>, <b class="ui">Pustaka</b> dan
+        <b class="ui">Muat file</b>. Di bawahnya ada <b class="ui">Input</b> dan
+        <b class="ui">Output</b>, keduanya −20 hingga +20 dB dan mulai dari 0. Input mendorong
+        capture-nya lebih keras, itulah cara kamu mendapat lebih banyak atau lebih sedikit breakup
+        dari sebuah profil; Output merapikan hasilnya setelah itu.</p>
+      <p>Level-nya diukur, bukan ditebak: kedua sumber sama-sama unity pada DI referensi yang sama,
+        jadi output gain sebuah preset berarti hal yang sama mana pun yang sedang dimainkan, dan
+        bertukar profil tidak membuat level kamu berantakan.</p>
+      <p><b class="ui">Muat file</b> menerima beberapa file <b class="ui">.nam</b> sekaligus. Pilih
+        lebih dari satu dan aplikasi bertanya <b class="ui">Gabungkan model menjadi satu bank?</b> —
+        <b class="ui">Gabungkan</b> membuat bank dari semuanya, <b class="ui">Hanya yang pertama</b>
+        memuat satu saja.</p>
       <div class="note">
-        <div class="t">Amp NAM itu mono</div>
+        <div class="t">Capture itu mono</div>
         <p>Capture NAM adalah perangkat mono — sinyal stereo yang tiba di blok <b class="ui">Amp</b>
           dijumlahkan sebelum masuk. Taruh efek stereo kamu setelah amp, bukan sebelumnya.</p>
       </div>
 
-      <h3>Tiga cara memuat profil</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">Jelajahi TONE3000</b> — perpustakaan online, dibahas di bagian
-          berikutnya.</li>
-        <li>Ikon buku, yang membuka sheet berjudul <b class="ui">Profil NAM</b>. Ketuk baris mana
-          pun untuk memuatnya ke amp yang sedang aktif.</li>
-        <li>Preset pabrik menyelesaikan profilnya sendiri, jadi memuat <b class="ui">Crunch</b>
-          membawa serta ampnya.</li>
-      </ol>
-      <p>Sheet <b class="ui">Profil NAM</b> adalah perpustakaan lokal kamu. Kalau kosong,
-        tertulis <b class="ui">Profil yang kamu unduh dari TONE3000 terkumpul di sini.</b> Menu
-        toolbar-nya punya <b class="ui">Impor file .nam…</b> — file picker multi-pilih yang hanya
-        menerima file <b class="ui">.nam</b> — bersama <b class="ui">Export all (N files)</b> dan
-        <b class="ui">Perbarui semua</b>. Setiap baris membawa <b class="ui">Bagikan file .nam</b>,
-        <b class="ui">Hapus</b> dan tombol refresh
-        (<b class="ui">Segarkan dari TONE3000</b>).</p>
-      <p>Kalau sebuah model tidak bisa dibaca, kamu akan mendapat <b class="ui r">Could not load amp
-        model {filename}.</b> — biasanya karena filenya dipindahkan atau dihapus dari bawah
-        rig.</p>
+      <h3>Bank dan knob Model</h3>
+      <p>Satu tone TONE3000 sering datang dengan banyak model: amp yang sama lewat mikrofon, kanal
+        atau kabinet yang berbeda. Unduh semuanya sekaligus dan mereka menjadi <b>bank</b> milik
+        blok itu. Sheet-nya lalu bertuliskan <b class="ui">Bank: 6</b> (atau
+        <b class="ui">Bank: 4 dari 6</b> saat sebagian ditinggalkan dari sapuan) dan sebuah knob
+        <b class="ui">Model</b> muncul di antara kedua trim, terbaca
+        <b class="ui">1/6 · SM57</b> saat diputar. Ia knob biasa, jadi tekan lama menawarkan
+        <b class="ui">MIDI Learn</b>: satu CC lalu menelusuri seluruh bank dari pedalboard kamu, dan
+        pergantiannya di-crossfade, bukan dipotong, jadi tidak ada klik atau suara yang hilang.</p>
+
+      <h3>Blok NAM: pedal dan outboard</h3>
+      <p>Blok <b class="ui">NAM</b> terpisah membawa sisi capture yang sama tanpa amp bawaan, dan di
+        situlah tempat capture pedal serta perangkat outboard. Kamu tidak perlu menempatkannya
+        sendiri: muat capture pedal selagi sebuah blok <b class="ui">Amp</b> sedang dituju, dan
+        NAMper menyisipkan blok <b class="ui">NAM</b> tepat sebelum amp itu lalu membukanya untuk
+        kamu.</p>
+
+      <h3>Pustaka</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="Sheet Profil NAM: chip NAM dan IR di bagian atas, lalu tone yang dikelompokkan di bawah Amplifier dengan cover art, penulis dan jumlah model.">
+        <figcaption>Pustaka: dua sisi, dan tone yang dikelompokkan menurut apa yang di-capture</figcaption>
+      </figure>
+      <p>Tombol <b class="ui">Pustaka</b> membuka sheet berjudul <b class="ui">Profil NAM</b> —
+        semua yang sudah kamu unduh, tersedia offline. Dua chip di bagian atas membelahnya jadi dua:
+        <b class="ui">NAM</b> untuk capture dan <b class="ui">IR</b> untuk impuls, masing-masing
+        dengan jumlahnya. Sebuah blok hanya menerima salah satu dari keduanya, jadi keduanya tidak
+        pernah didaftar bersama, dan blok tempat kamu membuka pustaka itulah yang memilih sisinya
+        untuk kamu.</p>
+      <p>Di dalam satu sisi, tone dikelompokkan menurut apa yang di-capture:
+        <b class="ui">Amplifier</b>, <b class="ui">Pedal</b>, <b class="ui">Outboard</b>,
+        <b class="ui">Cabinet</b>, <b class="ui">Ruang</b> dan <b class="ui">Lainnya</b>. Setiap
+        baris adalah satu tone, bukan satu file: cover art, judul, <b class="ui">@author</b> dan
+        berapa model yang dibawanya. Satu ketukan memuatnya — tone dengan satu model dimainkan
+        sendiri, tone dengan beberapa model menjadi bank milik blok itu — dan tone itu mendarat di
+        tempat yang semestinya: sebuah amp di blok <b class="ui">Amp</b>, sebuah pedal atau
+        perangkat outboard di blok <b class="ui">NAM</b> sebelumnya, sebuah kabinet di
+        <b class="ui">Cab</b> sesudahnya, sebuah ruang di <b class="ui">IR Verb</b>.</p>
+      <p>Chevron-nya membuka daftar model milik tone itu. Pada tone yang <em>memang</em> menjadi bank
+        blok itu, setiap model membawa tanda centang: centang itu menjaga model tersebut tetap dalam
+        sapuan knob <b class="ui">Model</b>, dan satu ketukan memindahkan knob-nya ke sana. Pada
+        tone lain mana pun, ketukan pada sebuah model memainkan model itu sendirian dan menghapus
+        bank-nya. Model yang didaftar situsnya tapi belum kamu punya tampil redup dengan ikon awan;
+        satu ketukan mengambilnya, dan pada tone yang jadi bank ia ikut masuk ke sapuan.</p>
+      <p>Di sebelah kanan setiap baris tone: bintang (favorit — membintangi sebuah tone membintangi
+        semua modelnya) dan tombol refresh (<b class="ui">Segarkan dari TONE3000</b>, yang mengambil
+        ulang metadata, cover dan filenya). Tekan lama, atau klik kanan pada sebuah baris,
+        menawarkan <b class="ui">Buka di TONE3000</b>, <b class="ui">Bagikan file .nam</b> /
+        <b class="ui">Bagikan berkas IR</b> dan <b class="ui">Hapus</b>. Toolbar-nya punya
+        <b class="ui">Impor berkas…</b> — file picker multi-pilih yang menerima capture
+        <b class="ui">.nam</b> dan impuls <b class="ui">.wav</b> — bersama
+        <b class="ui">Ekspor semua (N file)</b> dan <b class="ui">Perbarui semua</b>.</p>
+      <p>Saat kosong, sheet-nya bertuliskan <b class="ui">Profil yang kamu unduh dari TONE3000
+        terkumpul di sini.</b> di sisi NAM dan <b class="ui">Kabinet dan ruang yang kamu unduh dari
+        TONE3000 terkumpul di sini.</b> di sisi IR. Kalau sebuah model tidak bisa dibaca, kamu akan
+        mendapat <b class="ui r">Model amp {filename} tidak bisa dimuat.</b> — biasanya karena
+        filenya dipindahkan atau dihapus dari bawah rig.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 adalah perpustakaan gratis berisi capture amp, dan NAMper menariknya langsung dari
+      <p>TONE3000 adalah perpustakaan gratis berisi capture, dan NAMper menariknya langsung dari
         sana. Tidak ada layar browse di dalam aplikasi: <b class="ui">Jelajahi TONE3000</b> membuka
         tone3000.com di dalam sheet web yang aman. Kamu mencari dan memfilter di situsnya sendiri,
         memilih sebuah tone, dan aplikasi mengurus sisanya — selagi mengambil data, tombolnya
         bertuliskan <b class="ui">Memuat…</b> dan dinonaktifkan.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Sheet Connect TONE3000 di atas tab Rig, menawarkan tombol Sign in to TONE3000 dan Play offline dengan toggle Don't ask again.">
-        <figcaption>Tawaran sign-in, ditampilkan sekali per peluncuran saat kamu belum masuk</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="Halaman TONE3000 di Settings: baris akun dengan tombol Masuk ke TONE3000, dan sakelar preset pabrik antara amp bawaan dan capture TONE3000.">
+        <figcaption>TONE3000 ada di Settings dan di setiap blok yang bisa menerima capture</figcaption>
       </figure>
       <p>Sign in adalah sign-in web biasa, bukan menempelkan API key, dan kalau kamu sudah login di
-        tone3000.com lewat browser, aplikasi akan memakai ulang sesi itu. Perpustakaan ini
-        difilter di sisi server hanya untuk capture NAM arsitektur A2 dari amp, rig lengkap dan
-        pedal — itu sudah tetap, bukan pengaturan yang bisa kamu ubah.</p>
-      <p>Memilih sebuah tone mengunduh model pertama dari tone tersebut — tidak ada pemilih model —
-        bersama cover art dan metadatanya. Semuanya mendarat di folder aplikasi
-        <b class="ui">tones/</b> dan muncul di sheet <b class="ui">Profil NAM</b>.</p>
+        tone3000.com lewat browser, aplikasi akan memakai ulang sesi itu. NAMper tidak pernah
+        memintanya saat dibuka — preset pabrik dimainkan dengan amp bawaan dan cabinet yang
+        disertakan, dan sign in terjadi pertama kali kamu menekan
+        <b class="ui">Jelajahi TONE3000</b>, atau dari Settings → <b class="ui">TONE3000</b>.</p>
+      <p>Apa yang ditawarkan katalognya bergantung pada blok yang membukanya. Dari blok
+        <b class="ui">Amp</b> atau <b class="ui">NAM</b>, katalog difilter di sisi server hanya untuk
+        capture <b class="ui">.nam</b> arsitektur A2 dari amp, rig lengkap, pedal dan perangkat
+        outboard. Dari blok <b class="ui">Cab</b> ia menawarkan impuls kabinet milik situsnya, dan
+        dari <b class="ui">IR Verb</b> ruang-ruangnya — file <b class="ui">.wav</b>, bukan capture.
+        Filter itu sudah tetap, bukan pengaturan yang bisa kamu ubah.</p>
+      <p>Kalau tone yang kamu pilih punya satu model, ia mendarat langsung di blok itu bersama cover
+        art dan metadatanya. Kalau punya beberapa, sebuah pemilih terbuka: ketuk satu untuk
+        memainkannya sendirian, atau centang beberapa lalu
+        <b class="ui">Unduh {n} yang dipilih ke bank</b> — seluruh tone-nya adalah
+        <b class="ui">Unduh semua {n} model ke bank</b>. Semuanya mendarat di folder aplikasi
+        <b class="ui">tones/</b> dan bergabung ke pustaka.</p>
 
-      <h3>Tawaran sign-in</h3>
-      <p>Sebuah sheet berjudul <b class="ui">Hubungkan TONE3000</b> muncul sekali per peluncuran
-        selama kamu belum masuk, menjelaskan bahwa preset pabrik menyetel capture amp sungguhan
-        dari perpustakaan gratis tersebut. Sheet ini menawarkan <b class="ui">Masuk ke TONE3000</b>
-        dan <b class="ui">Main offline</b>, dengan toggle <b class="ui">Jangan tanya lagi</b>. Kamu
-        juga bisa membisukannya untuk selamanya di Settings → <b class="ui">PROMPT</b> →
-        <b class="ui">Tawarkan login TONE3000 saat dibuka</b>.</p>
+      <h3>Preset pabrik, di atas capture atau bawaan</h3>
+      <p>Settings → <b class="ui">TONE3000</b> membawa satu sakelar: <b class="ui">Amp bawaan</b>
+        atau <b class="ui">Capture TONE3000</b>. Keempat rig pabrik disetel berdasarkan empat
+        capture publik — Fender Deluxe Reverb, Marshall Plexi, Victory Kraken dan VOX AC30 — dan
+        sakelar itu menentukan mana dari keduanya yang dimainkan bank tersebut. NAMper menawarkan
+        pilihan ini sekali, pertama kali kamu memilih capture milikmu sendiri.</p>
 
       <h3>Bermain offline</h3>
-      <p>Apa pun yang sudah diunduh tetap bekerja tanpa jaringan sama sekali. Rig pabrik yang
-        profilnya belum ter-cache akan kembali ke <b class="ui">Amp tabung</b> bawaan yang dibypass
-        dan sebuah cab bawaan, dan headernya bertuliskan <b class="ui">Amp tabung bawaan</b> supaya
-        kamu tahu apa yang sedang kamu dengar. Sign in belakangan, dan rig-rig itu akan langsung
-        beralih ke capture sungguhan di tempatnya — kamu tidak perlu menyusun ulang apa pun.</p>
+      <p>Apa pun yang sudah diunduh tetap bekerja tanpa jaringan sama sekali. Blok
+        <b class="ui">Amp</b> yang capture-nya belum ter-cache memainkan voicing bawaannya sendiri
+        untuk sementara dan mengatakannya
+        (<b class="ui">Belum diunduh — amp bawaan bermain sementara</b>), dengan
+        <b class="ui">Cab</b> sesudahnya tetap hidup untuk amp bawaan itu. Sign in belakangan dan
+        blok-blok itu akan beralih ke capture sungguhan di tempatnya — kamu tidak perlu menyusun
+        ulang apa pun.</p>
       <div class="note warn">
         <div class="t">Tidak ada sign-out</div>
         <p>NAMper tidak punya tombol sign-out TONE3000. Begitu sesi itu ada, satu-satunya cara
@@ -375,15 +422,33 @@
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Cab dan IR</h2>
       <p>Blok <b class="ui">Cab</b> memutar sebuah impulse response — kabinet speaker yang direkam
-        dengan mikrofon. Sheet-nya menampilkan nama IR yang aktif, tombol menu berlabel
-        <b class="ui">Cabinet</b>, tombol <b class="ui">Muat file</b>, dan satu knob:
-        <b class="ui">Level</b>, −12 hingga +12 dB. Begitu sebuah IR dimuat, tombol
-        <b class="ui">Hapus IR</b> muncul di sampingnya.</p>
+        dengan mikrofon. Sheet-nya dibangun seperti sheet blok capture: nama impuls membentang di
+        bagian atas bersama <b class="ui">@author</b>, panah ke halaman tone-nya dan
+        <b class="ui">Hapus IR</b> di sampingnya, cover art di sebelah kiri, dan empat cara memuat
+        satu impuls di sebelah kanan — <b class="ui">Jelajahi TONE3000</b>,
+        <b class="ui">Pustaka</b>, <b class="ui">Cabinet</b> dan <b class="ui">Muat file</b>. Di
+        bawahnya ada knob milik blok itu sendiri, <b class="ui">Level</b>, −12 hingga +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="Sheet blok Cab: nama impuls dan penulisnya membentang di bagian atas, cover art di sebelah kiri, dan tombol Jelajahi TONE3000, Pustaka, Cabinet serta Muat file di sebelah kanan, dengan knob Level di bawahnya.">
+        <figcaption>Blok Cab, dibangun seperti sisi capture pada amp</figcaption>
+      </figure>
+      <p>Blok yang sama, saat dipakai sebagai <b class="ui">IR Verb</b>, memberi label menunya
+        <b class="ui">Ruang</b>, memuat impuls reverb alih-alih kabinet, dan membawa
+        <b class="ui">Mix</b>, <b class="ui">Predelay</b> dan <b class="ui">Level</b>.</p>
+      <p><b class="ui">Jelajahi TONE3000</b> membuka kabinet milik situsnya dari sebuah
+        <b class="ui">Cab</b> dan ruang-ruangnya dari sebuah <b class="ui">IR Verb</b>. Tone dengan
+        beberapa impuls membuka pemilih yang sama seperti pada capture: mainkan satu, atau centang
+        beberapa dan unduh semuanya ke bank milik blok itu. Sheet-nya lalu bertuliskan
+        <b class="ui">Bank: 6</b> dan sebuah knob <b class="ui">Model</b> muncul di samping
+        <b class="ui">Level</b>, terbaca <b class="ui">1/6 · R121</b> saat diputar — tekan lama pada
+        knob itu menawarkan <b class="ui">MIDI Learn</b>, persis seperti pada amp, jadi satu pedal
+        ekspresi atau satu knob menelusuri seluruh set mikrofon.</p>
       <p><b class="ui">Muat file</b> membuka file picker untuk <b class="ui">.wav</b> dan audio
         lainnya; apa pun yang kamu pilih disalin ke folder aplikasi <b class="ui">irs/</b>, jadi
-        tetap tersedia meskipun kamu menghapus file aslinya. Blok yang sama, saat dipakai sebagai
-        <b class="ui">IR Verb</b>, memberi label menunya <b class="ui">Ruang</b> dan memuat impuls
-        reverb, bukan kabinet.</p>
+        tetap tersedia meskipun kamu menghapus file aslinya. Impuls yang sudah kamu unduh muncul di
+        menu <b class="ui">Cabinet</b> / <b class="ui">Ruang</b> di bawah
+        <b class="ui">Terunduh</b>, dan di sisi <b class="ui">IR</b> pada pustaka.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menu</th><th>Impulse response bawaan</th></tr></thead>
@@ -403,17 +468,21 @@
       </div>
       <div class="note">
         <div class="t">Tidak semua amp butuh cab</div>
+        <p>Banyak capture TONE3000 diambil dari output speaker, sudah termasuk cab dan mikrofonnya;
+          menaruh cab lain setelah salah satunya membuat suaranya jadi tumpul dan boxy. NAMper
+          membaca itu dari tone-nya dan mengurusnya: capture rig lengkap mengistirahatkan
+          <b class="ui">Cab</b> tepat setelah amp, sedangkan head polos atau DI membangunkannya. Cab
+          yang dibiarkan istirahat tanpa impuls di dalamnya bahkan tidak digambar di rantai — muat
+          sebuah impuls ke dalamnya, atau kembalikan ampnya ke head polos, dan ia langsung muncul
+          lagi. Footswitch milik Cab sendiri selalu punya kata terakhir.</p>
         <p>Blok <b class="ui">Cab</b> yang kosong memberitahumu kenapa ia bisa tetap kosong:
-          <b class="ui">IR belum dimuat — profil NAM amp+cab
-tidak memerlukannya</b>. Banyak capture
-          TONE3000 diambil dari output speaker, sudah termasuk cab dan mikrofonnya; menaruh cab
-          lain setelah salah satunya membuat suaranya jadi tumpul dan boxy. Blok
+          <b class="ui">IR belum dimuat — profil NAM amp+cab tidak memerlukannya</b>. Blok
           <b class="ui">IR Verb</b> yang kosong malah bertuliskan
           <b class="ui">IR belum dimuat — pilih ruang atau file</b>.</p>
       </div>
-      <p>Masalah IR tampil sebagai <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> atau
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>Masalah IR tampil sebagai <b class="ui r">File IR hilang: {name}</b>,
+        <b class="ui r">IR {name} tidak terbaca.</b> atau
+        <b class="ui r">{name} tidak bisa diimpor.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

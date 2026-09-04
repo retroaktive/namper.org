@@ -75,7 +75,7 @@
         <li><a href="#blocks">模塊面板</a></li>
         <li><a href="#models">模塊內部的型號</a></li>
         <li><a href="#eq">五種均衡模型</a></li>
-        <li><a href="#nam">NAM 音箱模型</a></li>
+        <li><a href="#nam">NAM 擷取</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">箱體與 IR</a></li>
         <li><a href="#presets">預設</a></li>
@@ -237,7 +237,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="EQ 模塊面板，選中 Passive 模型，顯示其八個旋鈕：Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten 和 Atten Hz，頂部有 IN 和 OUT 電平表。">
         <figcaption>選中 Passive 模型的 EQ 模塊</figcaption>
       </figure>
@@ -247,89 +247,128 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM 音箱模型</h2>
-      <p><b class="ui">音箱與箱體</b> 下面有兩個不同的模塊，值得弄清楚誰是誰。
-        <b class="ui">電子管音箱</b> 是 NAMper 自帶的音箱模擬，上面列出的七種模型都在這裡。
-        <b class="ui">音箱</b> 則是 Neural Amp Modeler 播放器：它加載一個真實音箱的
-        <b class="ui">.nam</b> 模型並運行它。</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM 擷取</h2>
+      <p><b class="ui">音箱</b> 模塊是一個模塊、兩個聲源。面板頂部的兩個晶片用來在它們之間
+        切換：<b class="ui">內建</b> 是 NAMper 自帶的音箱模擬，帶有上面列出的七種風味；
+        <b class="ui">NAM</b> 則是 Neural Amp Modeler 播放器，運行一個真實音箱的
+        <b class="ui">.nam</b> 擷取。兩者同處一個模塊，所以一個預設既帶著它所依託的風味，
+        <em>也</em>帶著它圍繞調校的那個擷取，而在兩者之間切換只需一次點擊。</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Rig 標籤頁加載了一個 NAM 模型：音箱卡片上有封面圖、音色標題和作者，兩側是豎直的 IN 和 OUT 電平表，下方是模塊信號鏈。">
-        <figcaption>加載了 NAM 模型的音箱卡片</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Rig 標籤頁：信號鏈卡片頂部橫向排列的 IN 和 OUT 電平表，下方是模塊信號鏈，音箱模塊上寫著它正在播放的擷取。">
+        <figcaption>Rig 標籤頁；音箱標籤上寫著它正在播放的內容</figcaption>
       </figure>
 
-      <h3>音箱卡片</h3>
-      <p>在 Rig 標籤頁頂部，<b class="ui">入</b> 和 <b class="ui">出</b> 電平表之間，
-        音箱卡片顯示 <b class="ui">音箱</b> 模塊當前正在播放的內容：封面圖、音色標題、
-        <b class="ui">@author</b>、最多六個元數據標籤、下載次數、一個
-        <b class="ui">瀏覽 TONE3000</b> 按鈕，以及一個書本圖標
-        （<b class="ui">打開 NAM 庫</b>）。沒有加載任何內容時會顯示
-        <b class="ui">內置電子管音箱</b>。如果一個音色組裡有不止一個 Amp，
-        <b class="ui">AMP 1</b>、<b class="ui">AMP 2</b> 等標籤用來選擇卡片編輯的是哪一個。</p>
-
-      <h3>Input 和 Output</h3>
-      <p><b class="ui">音箱</b> 模塊面板刻意做得很簡短：模型標題（或
-        <b class="ui">未加載模型</b>）、一個 <b class="ui">瀏覽 TONE3000</b> 按鈕，
-        以及兩個旋鈕。<b class="ui">輸入</b> 和 <b class="ui">輸出</b> 都在 −20 到 +20 dB
-        之間，起始為 0。Input 把信號推得更猛，用來獲得或多或少的破音；Output 則在之後
-        修整結果。</p>
-      <p>NAM 的輸出會利用模型內部的響度元數據自動歸一化到 −18 dB 的目標值。這就是為什麼
-        在不同模型間切換時電平不會亂跳，而且它也沒有作為一個可調控制項暴露出來。</p>
+      <h3>擷取這一側</h3>
+      <p>在 <b class="ui">NAM</b> 這一側，面板顯示模型的名稱（或
+        <b class="ui">未加載模型</b>）、<b class="ui">@author</b>、一個在 tone3000.com 上
+        打開該音色的箭頭，左側是封面圖，右側是三種獲取擷取的方式：
+        <b class="ui">瀏覽 TONE3000</b>、<b class="ui">資料庫</b> 和
+        <b class="ui">加載文件</b>。下方是 <b class="ui">輸入</b> 和
+        <b class="ui">輸出</b>，都在 −20 到 +20 dB 之間，起始為 0。Input 把擷取推得更猛，
+        這就是讓一個音色多一點或少一點破音的辦法；Output 則在之後修整結果。</p>
+      <p>電平是實測出來的，不是猜的：兩個聲源在同一段參考 DI 上都是單位增益，所以一個預設
+        的輸出增益無論哪一側在發聲都表示同一件事，換音色也不會把你的電平搞得忽高忽低。</p>
+      <p><b class="ui">加載文件</b> 可以一次接受多個 <b class="ui">.nam</b> 文件。選中不止
+        一個時，應用會詢問 <b class="ui">將這些模型合併為一個模型庫？</b>——
+        <b class="ui">合併</b> 會把它們做成一個音色庫，<b class="ui">僅第一個</b> 則只加載
+        一個。</p>
       <div class="note">
-        <div class="t">NAM 音箱是單聲道的</div>
-        <p>一個 NAM 模型是一個單聲道設備——到達 <b class="ui">音箱</b> 模塊的立體聲信號會先
-          被合併為單聲道再輸入。請把立體聲效果放在 Amp 之後，而不是之前。</p>
+        <div class="t">擷取是單聲道的</div>
+        <p>一個 NAM 擷取是一個單聲道設備——到達 <b class="ui">音箱</b> 模塊的立體聲信號會先
+          被合併為單聲道再輸入。請把立體聲效果放在音箱之後，而不是之前。</p>
       </div>
 
-      <h3>加載模型的三種方式</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">瀏覽 TONE3000</b>——在線音色庫，下一節會講到。</li>
-        <li>書本圖標，會打開一個標題為 <b class="ui">NAM 音色</b> 的面板。點擊任意一行
-          即可將其加載到當前的 Amp 中。</li>
-        <li>出廠預設會自帶各自的模型，所以加載 <b class="ui">過載</b> 會連帶它的音箱
-          一起帶過來。</li>
-      </ol>
-      <p><b class="ui">NAM 音色</b> 面板就是你的本地音色庫。為空時它會顯示
-        <b class="ui">從 TONE3000 下載的音色會匯集在這裡。</b> 它的工具欄菜單裡有
-        <b class="ui">導入 .nam 文件…</b>——一個只接受 <b class="ui">.nam</b> 文件、
-        支持多選的文件選擇器——以及 <b class="ui">Export all (N files)</b> 和
-        <b class="ui">全部更新</b>。每一行都帶有 <b class="ui">分享 .nam 文件</b>、
-        <b class="ui">刪除</b> 和一個刷新按鈕（<b class="ui">從 TONE3000 刷新</b>）。</p>
-      <p>如果一個模型無法讀取，你會看到 <b class="ui r">Could not load amp model
-        {filename}.</b>——通常是因為文件在音色組不知情的情況下被移動或刪除了。</p>
+      <h3>音色庫與 Model 旋鈕</h3>
+      <p>一個 TONE3000 音色常常自帶許多模型：同一台音箱經過不同的麥克風、通道或箱體。把它們
+        一起下載，它們就成了這個模塊的<b>音色庫</b>。面板隨後會顯示
+        <b class="ui">音色庫：6</b>（當有一些被排除在掃描範圍之外時則是
+        <b class="ui">音色庫：4 / 6</b>），並且在兩個修整旋鈕之間出現一個
+        <b class="ui">模型</b> 旋鈕，轉動時顯示 <b class="ui">1/6 · SM57</b>。它就是一個普通
+        旋鈕，所以長按會給出 <b class="ui">MIDI Learn</b>：之後一個 CC 就能從你的踏板上走遍
+        整個音色庫，而且切換是交叉淡化而不是硬切，所以不會有咔噠聲或聲音中斷。</p>
+
+      <h3>NAM 模塊：單塊與外接器材</h3>
+      <p>另有一個獨立的 <b class="ui">NAM</b> 模塊，它只有同樣的擷取這一側，沒有內建音箱，
+        單塊和外接器材的擷取就該放在那裡。你不必自己去擺它：在對準某個
+        <b class="ui">音箱</b> 模塊時加載一個單塊擷取，NAMper 會在那台音箱正前方插入一個
+        <b class="ui">NAM</b> 模塊，並為你打開它。</p>
+
+      <h3>資料庫</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="NAM 音色面板：頂部是 NAM 和 IR 晶片，下面是歸在音箱一組下的音色，帶封面圖、作者和模型數量。">
+        <figcaption>資料庫：分成兩側，音色按採集對象分組</figcaption>
+      </figure>
+      <p><b class="ui">資料庫</b> 按鈕會打開一個標題為 <b class="ui">NAM 音色</b> 的面板——
+        你下載過的一切，離線可用。頂部的兩個晶片把它一分為二：<b class="ui">NAM</b> 對應
+        擷取，<b class="ui">IR</b> 對應脈衝，各自帶一個數量。一個模塊只接受兩者之一，所以
+        它們從不列在一起，而你從哪個模塊打開資料庫，就由它替你選定哪一側。</p>
+      <p>在某一側內部，音色按採集對象分組：<b class="ui">音箱</b>、<b class="ui">單塊</b>、
+        <b class="ui">外接器材</b>、<b class="ui">箱體</b>、<b class="ui">空間</b> 和
+        <b class="ui">其他</b>。每一行是一個音色，而不是一個文件：封面圖、標題、
+        <b class="ui">@author</b> 以及它自帶多少個模型。點擊即可加載——只有一個模型的音色
+        單獨播放，有多個的音色則成為這個模塊的音色庫——而且音色會落到它該去的地方：音箱進
+        <b class="ui">音箱</b> 模塊，單塊或外接器材進它前面的一個 <b class="ui">NAM</b>
+        模塊，箱體進它後面的 <b class="ui">箱體</b>，空間進 <b class="ui">IR混響</b>。</p>
+      <p>箭頭可以展開這個音色的各個模型。在<em>正是</em>該模塊音色庫的那個音色裡，每個模型
+        都帶一個勾：勾把該模型留在 <b class="ui">模型</b> 旋鈕的掃描範圍內，點擊則把旋鈕移
+        到它上面。在其他任何音色裡，點擊一個模型會單獨播放該模型並清空音色庫。網站上列出但
+        你還沒有的模型會變暗並帶一個雲朵圖標；點擊即可獲取，而在音色庫所屬的那個音色裡，它
+        會加入掃描範圍。</p>
+      <p>每個音色行的右側：星標（收藏——給一個音色加星就是給它的所有模型加星）和刷新按鈕
+        （<b class="ui">從 TONE3000 刷新</b>，會重新獲取元數據、封面和文件）。長按，或者在
+        某一行上右鍵，會給出 <b class="ui">在 TONE3000 開啟</b>、
+        <b class="ui">分享 .nam 文件</b> / <b class="ui">分享 IR 檔案</b> 和
+        <b class="ui">刪除</b>。工具欄裡有 <b class="ui">匯入檔案…</b>——一個支持多選、接受
+        <b class="ui">.nam</b> 擷取和 <b class="ui">.wav</b> 脈衝的文件選擇器——以及
+        <b class="ui">導出全部（N 個文件）</b> 和 <b class="ui">全部更新</b>。</p>
+      <p>為空時，面板在 NAM 那一側顯示
+        <b class="ui">從 TONE3000 下載的音色會匯集在這裡。</b>，在 IR 那一側顯示
+        <b class="ui">你從 TONE3000 下載的箱體與空間會集中在這裡。</b>。如果一個模型無法
+        讀取，你會看到 <b class="ui r">無法加載音箱模型 {filename}。</b>——通常是因為文件
+        在音色組不知情的情況下被移動或刪除了。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 是一個免費的音箱模型庫，NAMper 直接從中獲取內容。應用內沒有單獨的瀏覽界面：
+      <p>TONE3000 是一個免費的擷取庫，NAMper 直接從中獲取內容。應用內沒有單獨的瀏覽界面：
         <b class="ui">瀏覽 TONE3000</b> 會在一個安全的網頁面板中打開 tone3000.com。你在網站
         本身上搜索和篩選，選中一個音色，剩下的交給應用處理——在獲取過程中，按鈕會顯示
-        <b class="ui">正在加載…</b> 並處于禁用狀態。</p>
+        <b class="ui">正在加載…</b> 並處於禁用狀態。</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Rig 標籤頁上方彈出的 Connect TONE3000 面板，提供 Sign in to TONE3000 和 Play offline 按鈕，以及一個 Don't ask again 開關。">
-        <figcaption>登錄提示，未登錄時每次啟動出現一次</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="設置裡的 TONE3000 頁面：帶有 Sign in to TONE3000 按鈕的帳戶行，以及在內建音箱和 TONE3000 擷取之間切換的出廠預設開關。">
+        <figcaption>TONE3000 既在設置裡，也在每個能接受擷取的模塊裡</figcaption>
       </figure>
       <p>登錄是普通的網頁登錄方式，而不是粘貼 API 密鑰；如果你在瀏覽器裡已經登錄了
-        tone3000.com，應用會直接復用該會話。音色庫在伺服器端被限定為 A2 架構的音箱、
-        完整音色組和效果器的 NAM 模型——這是固定的，不是你可以更改的設置。</p>
-      <p>選中一個音色會下載該音色的第一個模型——沒有模型選擇器——連同其封面圖和元數據一起。
-        一切都會落在應用的 <b class="ui">tones/</b> 文件夾中，並出現在
-        <b class="ui">NAM 音色</b> 面板裡。</p>
+        tone3000.com，應用會直接復用該會話。NAMper 從不在啟動時要求它——出廠預設用內建音箱
+        和隨附箱體發聲，登錄發生在你第一次按下 <b class="ui">瀏覽 TONE3000</b> 的時候，或者
+        從設置 → <b class="ui">TONE3000</b> 進入。</p>
+      <p>音色庫提供什麼，取決於是哪個模塊打開了它。從一個 <b class="ui">音箱</b> 或
+        <b class="ui">NAM</b> 模塊進入時，它在伺服器端被限定為 A2 架構的音箱、完整音色組、
+        單塊和外接器材的 <b class="ui">.nam</b> 擷取。從一個 <b class="ui">箱體</b> 模塊進入
+        時，它提供網站的箱體脈衝；從一個 <b class="ui">IR混響</b> 進入時提供它的空間——都是
+        <b class="ui">.wav</b> 文件，而不是擷取。這個篩選是固定的，不是你可以更改的設置。</p>
+      <p>當你選中的音色只有一個模型時，它會連同封面圖和元數據一起直接落入模塊。有多個時，會
+        打開一個選擇器：點擊其中一個即可單獨播放，或者勾選幾個然後
+        <b class="ui">將所選 {n} 個下載到模型庫</b>——整個音色則是
+        <b class="ui">將全部 {n} 個模型下載到音色庫</b>。一切都會落在應用的
+        <b class="ui">tones/</b> 文件夾中，並加入資料庫。</p>
 
-      <h3>登錄提示</h3>
-      <p>標題為 <b class="ui">連接 TONE3000</b> 的面板會在你未登錄時每次啟動出現一次，
-        說明出廠預設會從這個免費音色庫中流式播放真實音箱模型。它提供
-        <b class="ui">登錄 TONE3000</b> 和 <b class="ui">離線使用</b> 兩個選項，
-        以及一個 <b class="ui">不再詢問</b> 開關。你也可以在設置 →
-        <b class="ui">提示</b> → <b class="ui">啟動時提示登錄 TONE3000</b>
-        中永久關閉它。</p>
+      <h3>出廠預設，用擷取或用內建</h3>
+      <p>設置 → <b class="ui">TONE3000</b> 帶一個開關：<b class="ui">內建音箱</b> 或
+        <b class="ui">TONE3000 擷取</b>。四個出廠音色組是圍繞四個公開擷取調校的——一台
+        Fender Deluxe Reverb、一台 Marshall Plexi、一台 Victory Kraken 和一台 VOX AC30——
+        而這個開關決定這一組播放兩者中的哪一個。NAMper 只在你第一次選擇自己的擷取時詢問
+        一次。</p>
 
       <h3>離線播放</h3>
-      <p>任何已經下載過的內容在完全沒有網絡的情況下也照常工作。一個出廠音色組如果其模型
-        沒有被緩存，會退回到旁通狀態下的內置 <b class="ui">電子管音箱</b> 和一個自帶箱體，
-        並且頂部會顯示 <b class="ui">內置電子管音箱</b>，讓你清楚知道聽到的是什麼。
-        以後再登錄，這些音色組會原地解析為真實模型——不需要重新搭建任何東西。</p>
+      <p>任何已經下載過的內容在完全沒有網絡的情況下也照常工作。一個 <b class="ui">音箱</b>
+        模塊如果它的擷取沒有被緩存，就先用自己的內建風味發聲，並如實說明
+        （<b class="ui">尚未下載——暫時由內建音箱發聲</b>），它後面的 <b class="ui">箱體</b>
+        也會為內建音箱而醒著。以後再登錄，這些模塊會原地解析為真實的擷取——不需要重新搭建
+        任何東西。</p>
       <div class="note warn">
         <div class="t">沒有退出登錄</div>
         <p>NAMper 沒有 TONE3000 的退出登錄按鈕。一旦會話存在，唯一清除它的方法就是刪除
@@ -342,24 +381,40 @@
         <b class="ui r">TONE3000：無法連接——請檢查網絡。</b></p>
       <div class="note tip">
         <div class="t">下載與備份</div>
-        <p><b class="ui">tones/</b> 文件夾被特意排除在 iCloud 備份之外——從備份恢復
-          不會帶回你下載過的模型，因為 TONE3000 可以重新獲取它們。如果某個特定的模型
-          對你很重要，就從 <b class="ui">NAM 音色</b> 面板導出並保留這個文件。</p>
+        <p><b class="ui">tones/</b> 文件夾被特意排除在 iCloud 備份之外——從備份恢復不會帶回
+          你下載過的音色，因為 TONE3000 可以重新獲取它們。如果某個特定的擷取對你很重要，
+          就從 <b class="ui">NAM 音色</b> 面板導出並保留這個文件。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>箱體與 IR</h2>
       <p><b class="ui">箱體</b> 模塊播放一個脈衝響應——一個用麥克風採集的音箱箱體。它的面板
-        顯示當前 IR 的名稱、一個標為 <b class="ui">箱體</b> 的菜單按鈕、一個
-        <b class="ui">加載文件</b> 按鈕，以及一個旋鈕：<b class="ui">電平</b>，
-        −12 到 +12 dB。加載了一個 IR 之後，旁邊會出現一個 <b class="ui">清除 IR</b>
-        按鈕。</p>
+        和擷取模塊的構造一樣：頂部橫排是脈衝的名稱和 <b class="ui">@author</b>、一個通往該
+        音色頁面的箭頭，旁邊是 <b class="ui">清除 IR</b>，左側是封面圖，右側是四種加載方式
+        ——<b class="ui">瀏覽 TONE3000</b>、<b class="ui">資料庫</b>、<b class="ui">箱體</b>
+        和 <b class="ui">加載文件</b>。它們下面是這個模塊自己的旋鈕：<b class="ui">電平</b>，
+        −12 到 +12 dB。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="箱體模塊面板：頂部橫排是脈衝名稱和作者，左側是封面圖，右側是瀏覽 TONE3000、資料庫、箱體和加載文件按鈕，下方是電平旋鈕。">
+        <figcaption>箱體模塊，構造和音箱的擷取那一側一樣</figcaption>
+      </figure>
+      <p>同一個模塊用作 <b class="ui">IR混響</b> 時，菜單會改為標註 <b class="ui">空間</b>，
+        加載的是混響脈衝而不是箱體，並帶有 <b class="ui">混合</b>、<b class="ui">預延遲</b>
+        和 <b class="ui">電平</b>。</p>
+      <p><b class="ui">瀏覽 TONE3000</b> 從一個 <b class="ui">箱體</b> 打開網站的箱體，從一個
+        <b class="ui">IR混響</b> 打開它的空間。一個帶多個脈衝的音色會打開擷取用的同一個選擇
+        器：播放其中一個，或者勾選幾個並把它們下載到這個模塊的音色庫。面板隨後會顯示
+        <b class="ui">音色庫：6</b>，並在 <b class="ui">電平</b> 旁邊出現一個
+        <b class="ui">模型</b> 旋鈕，轉動時顯示 <b class="ui">1/6 · R121</b>——長按它會給出
+        <b class="ui">MIDI Learn</b>，和音箱上一模一樣，所以一個表情踏板或一個旋鈕就能走遍
+        一整套麥克風。</p>
       <p><b class="ui">加載文件</b> 會打開一個文件選擇器，接受 <b class="ui">.wav</b>
         及其他音頻格式；無論你選擇什麼，都會被複製到應用的 <b class="ui">irs/</b>
-        文件夾中，所以即使刪除原始文件它也依然可用。同一個模塊用作
-        <b class="ui">IR混響</b> 時，菜單會改為標註 <b class="ui">空間</b>，
-        加載的是混響脈衝而不是箱體。</p>
+        文件夾中，所以即使刪除原始文件它也依然可用。你下載過的脈衝會出現在
+        <b class="ui">箱體</b> / <b class="ui">空間</b> 菜單的 <b class="ui">已下載</b>
+        之下，也會出現在資料庫的 <b class="ui">IR</b> 那一側。</p>
       <div class="tw">
         <table>
           <thead><tr><th>菜單</th><th>內置脈衝響應</th></tr></thead>
@@ -379,16 +434,19 @@
       </div>
       <div class="note">
         <div class="t">不是每個音箱都需要箱體</div>
-        <p>一個空的 <b class="ui">箱體</b> 模塊會直接告訴你它為什麼可能應該保持空置：
-          <b class="ui">未加載 IR——含箱體的 NAM 音色
-無需 IR</b>。相當多的
-          TONE3000 模型採樣自音箱的揚聲器輸出，本身已經包含箱體和麥克風；在這類模型後面
-          再加一個箱體只會讓聲音變得沉悶、發悶。空的 <b class="ui">IR混響</b> 則會顯示
-          <b class="ui">未加載 IR——選擇空間或文件</b>。</p>
+        <p>相當多的 TONE3000 擷取採樣自揚聲器輸出，本身已經包含箱體和麥克風；在這類擷取後面
+          再加一個箱體只會讓聲音變得沉悶、發悶。NAMper 會從音色裡讀出這一點並替你處理好：
+          一個完整音色組的擷取會讓緊隨其後的 <b class="ui">箱體</b> 休眠，一台裸機頭或一段
+          DI 則會喚醒它。一個處於休眠、裡面又沒有脈衝的箱體甚至不會被畫進信號鏈——往它裡面
+          加載一個脈衝，或者把音箱換回裸機頭，它就會立刻回來。箱體自己的腳踏開關始終擁有
+          最終決定權。</p>
+        <p>一個空的 <b class="ui">箱體</b> 模塊會說明它為什麼可能保持空置：
+          <b class="ui">未加載 IR——含箱體的 NAM 音色無需 IR</b>。空的
+          <b class="ui">IR混響</b> 則顯示 <b class="ui">未加載 IR——選擇空間或文件</b>。</p>
       </div>
-      <p>IR 相關的問題會顯示為 <b class="ui r">IR file missing: {name}</b>、
-        <b class="ui r">Could not read IR {name}.</b> 或
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>IR 相關的問題會顯示為 <b class="ui r">缺少 IR 文件：{name}</b>、
+        <b class="ui r">無法讀取 IR {name}。</b> 或
+        <b class="ui r">無法導入 {name}。</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

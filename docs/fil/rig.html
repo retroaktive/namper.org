@@ -73,7 +73,7 @@
         <li><a href="#blocks">Ang blocks palette</a></li>
         <li><a href="#models">Mga model sa loob ng mga block</a></li>
         <li><a href="#eq">Ang limang EQ model</a></li>
-        <li><a href="#nam">Mga NAM amp profile</a></li>
+        <li><a href="#nam">Mga NAM capture</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Mga cab at IR</a></li>
         <li><a href="#presets">Mga preset</a></li>
@@ -200,7 +200,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="Ang EQ block sheet na napili ang Passive na model, ipinapakita ang walong knob nito: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Lapad, Hi Atten at Atten Hz, may IN at OUT na meter sa itaas.">
         <figcaption>Ang EQ block sa Passive na model</figcaption>
       </figure>
@@ -208,52 +208,59 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>Mga NAM amp profile</h2>
-      <p>May dalawang magkaibang block sa ilalim ng <b class="ui">Amp at Cab</b> at mabuting maging malinaw kung alin ang alin. Ang <b class="ui">Tube Amp</b> ang sariling amp simulation ng NAMper, na may pitong model na nakalista sa itaas. Ang <b class="ui">Amp</b> ang Neural Amp Modeler player: nagla-load ito ng <b class="ui">.nam</b> na capture ng totoong amplifier at pinapatakbo ito.</p>
+      <h2 id="nam"><span class="n">02.4</span>Mga NAM capture</h2>
+      <p>Iisang block ang <b class="ui">Amp</b> na may dalawang pinagkukunan. Dalawang chip sa itaas ng sheet nito ang pumipili sa pagitan nila: ang <b class="ui">Built-in</b> ang sariling amp simulation ng NAMper, na may pitong voicing na nakalista sa itaas, at ang <b class="ui">NAM</b> ang Neural Amp Modeler player na nagpapatakbo ng <b class="ui">.nam</b> na capture ng totoong amplifier. Nasa iisang block silang dalawa, kaya dala ng preset ang voicing na pinagbuuan nito <em>at</em> ang capture na pinagtonohan nito, at isang tap lang ang paglipat sa kanila.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Ang Rig tab na may naka-load na NAM profile: cover art, pamagat ng tono at may-akda sa amp card, patayong IN at OUT na meter sa magkabilang gilid nito, at ang signal chain ng mga block sa ibaba.">
-        <figcaption>Ang amp card na may naka-load na NAM profile</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Ang Rig tab: ang pahigang IN at OUT na meter sa ibabaw ng signal chain card, at ang chain ng mga block sa ibaba kung saan pinapangalanan ng Amp block ang capture na pinapatugtog nito.">
+        <figcaption>Ang Rig tab; pinapangalanan ng Amp tile ang tinutugtog nito</figcaption>
       </figure>
 
-      <h3>Ang amp card</h3>
-      <p>Sa itaas ng Rig tab, sa pagitan ng <b class="ui">IN</b> at <b class="ui">OUT</b> na meter, ipinapakita ng amp card kung ano ang kasalukuyang tinutugtog ng <b class="ui">Amp</b> block: ang cover art, ang pamagat ng tono, ang <b class="ui">@author</b>, hanggang anim na metadata chip, isang bilang ng download, isang <b class="ui">Mag-browse sa TONE3000</b> button at isang icon ng mga libro (<b class="ui">Buksan ang NAM library</b>). Kapag walang naka-load, ganito ang nakikita: <b class="ui">Built-in na tube amp</b>. Kung mahigit isa ang amp sa isang rig, pinipili ng mga chip na <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> at iba pa kung alin ang ine-edit ng card.</p>
-
-      <h3>Input at Output</h3>
-      <p>Sinasadyang maikli ang block sheet ng <b class="ui">Amp</b>: ang pamagat ng profile (o <b class="ui">Walang naka-load na model</b>), isang <b class="ui">Mag-browse sa TONE3000</b> button, at dalawang knob. Pareho ang <b class="ui">Input</b> at <b class="ui">Output</b> na tumatakbo mula −20 hanggang +20 dB at nagsisimula sa 0. Mas malakas na itinutulak ng Input ang capture, at ganoon ka nagkakaroon ng mas marami o mas kaunting breakup mula sa profile; ang Output naman ang nag-aayos sa resulta pagkatapos.</p>
-      <p>Awtomatikong ino-normalize ang NAM output, gamit ang loudness metadata sa loob ng model, tungo sa target na −18 dB. Kaya hindi nagugulo ang mga level mo kapag nagpapalit ka ng profile, at hindi ito inilalantad bilang kontrol.</p>
+      <h3>Ang panig ng capture</h3>
+      <p>Sa panig na <b class="ui">NAM</b>, ipinapakita ng sheet ang pangalan ng model (o <b class="ui">Walang naka-load na model</b>), ang <b class="ui">@author</b> at isang arrow na nagbubukas sa tono sa tone3000.com, ang cover art sa kaliwa, at tatlong paraan para makakuha ng capture sa kanan: <b class="ui">Mag-browse sa TONE3000</b>, <b class="ui">Aklatan</b> at <b class="ui">Mag-load ng file</b>. Sa ilalim nila ang <b class="ui">Input</b> at <b class="ui">Output</b>, pareho mula −20 hanggang +20 dB at nagsisimula sa 0. Mas malakas na itinutulak ng Input ang capture, at ganoon ka nagkakaroon ng mas marami o mas kaunting breakup mula sa profile; ang Output naman ang nag-aayos sa resulta pagkatapos.</p>
+      <p>Sinusukat ang mga level, hindi hinuhula: unity ang dalawang pinagkukunan sa parehong reference DI, kaya iisa ang ibig sabihin ng output gain ng isang preset kahit alin sa dalawa ang tumutugtog, at hindi nagugulo ang mga level mo kapag nagpapalit ka ng profile.</p>
+      <p>Tumatanggap ang <b class="ui">Mag-load ng file</b> ng ilang <b class="ui">.nam</b> na file nang sabay-sabay. Pumili ng mahigit isa at magtatanong ang app: <b class="ui">Pagsamahin ang mga modelo sa isang bank?</b> — gumagawa ng bank sa kanila ang <b class="ui">Pagsamahin</b>, isa lang ang nilo-load ng <b class="ui">Ang una lang</b>.</p>
       <div class="note">
-        <div class="t">Mono ang NAM amp</div>
+        <div class="t">Mono ang isang capture</div>
         <p>Mono device ang isang NAM capture — pinagsasama muna ang stereo signal na dumarating sa <b class="ui">Amp</b> block bago ito pumasok. Ilagay ang mga stereo effect mo pagkatapos ng amp, hindi bago ito.</p>
       </div>
 
-      <h3>Tatlong paraan ng pag-load ng profile</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">Mag-browse sa TONE3000</b> — ang online library, tinatalakay sa susunod na seksyon.</li>
-        <li>Ang icon ng mga libro, na nagbubukas ng sheet na pinamagatang <b class="ui">Mga NAM Profile</b>. I-tap ang kahit anong row para i-load ito sa kasalukuyang amp.</li>
-        <li>Hinahanap ng mga factory preset ang sariling profile nila, kaya ang pag-load ng <b class="ui">Crunch</b> ay may kasamang amp nito.</li>
-      </ol>
-      <p>Ang <b class="ui">Mga NAM Profile</b> sheet ang lokal na library mo. Kapag walang laman, ganito ang nakikita: <b class="ui">Dito nagtitipon ang mga profile na dina-download mo mula sa TONE3000.</b> Nasa toolbar menu nito ang <b class="ui">Mag-import ng mga .nam file…</b> — isang multi-select na file picker na tumatanggap lang ng mga <b class="ui">.nam</b> na file — kasama ang <b class="ui">Export all (N files)</b> at <b class="ui">I-update lahat</b>. Dala ng bawat row ang <b class="ui">Ibahagi ang .nam file</b>, <b class="ui">Tanggalin</b> at isang refresh button (<b class="ui">I-refresh mula sa TONE3000</b>).</p>
-      <p>Kung hindi mabasa ang isang model, makukuha mo ang <b class="ui r">Could not load amp model
-        {filename}.</b> — karaniwang isang file na inilipat o binura mula sa ilalim ng rig.</p>
+      <h3>Mga bank at ang Model knob</h3>
+      <p>Madalas maraming model ang dala ng isang tono sa TONE3000: ang parehong amp sa iba't ibang mikropono, channel o cabinet. I-download silang sabay at magiging <b>bank</b> sila ng block. Ganito na ang mababasa sa sheet: <b class="ui">Bank: 6</b> (o <b class="ui">Bank: 4 sa 6</b> kapag may naiwan sa sweep) at lumalabas ang isang <b class="ui">Model</b> na knob sa pagitan ng dalawang trim, na nagbabasang <b class="ui">1/6 · SM57</b> habang umiikot. Ordinaryong knob ito, kaya nag-aalok ng <b class="ui">MIDI Learn</b> ang matagal na pagpindot: isang CC ang maglalakad sa buong bank mula sa pedalboard mo, at kinu-crossfade ang pagpapalit sa halip na putulin, kaya walang klik o biglaang katahimikan.</p>
+
+      <h3>Ang NAM block: mga pedal at outboard</h3>
+      <p>May hiwalay na <b class="ui">NAM</b> block na dala ang parehong panig ng capture nang walang built-in na amp, at doon nauukol ang mga capture ng pedal at outboard gear. Hindi mo kailangang ilagay ito nang mag-isa: mag-load ng capture ng pedal habang nakatutok ang isang <b class="ui">Amp</b> block, at maglalagay ang NAMper ng <b class="ui">NAM</b> block bago mismo ang amp na iyon at bubuksan ito para sa iyo.</p>
+
+      <h3>Ang aklatan</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="Ang sheet na Mga NAM Profile: mga NAM at IR na chip sa itaas, saka mga tonong nakagrupo sa ilalim ng Mga Amplifier na may cover art, may-akda at bilang ng model.">
+        <figcaption>Ang aklatan: dalawang panig, at mga tonong nakagrupo ayon sa kinuha nila</figcaption>
+      </figure>
+      <p>Binubuksan ng <b class="ui">Aklatan</b> na button ang sheet na pinamagatang <b class="ui">Mga NAM Profile</b> — lahat ng na-download mo, magagamit offline. Hinahati ito sa dalawa ng dalawang chip sa itaas: <b class="ui">NAM</b> para sa mga capture at <b class="ui">IR</b> para sa mga impulse, may bilang ang bawat isa. Isa lang sa dalawa ang tinatanggap ng isang block, kaya hindi sila magkasamang nakalista, at ang block na pinagbuksan mo ng aklatan ang pumipili ng panig para sa iyo.</p>
+      <p>Sa loob ng isang panig, nakagrupo ang mga tono ayon sa kinuha: <b class="ui">Mga Amplifier</b>, <b class="ui">Mga Pedal</b>, <b class="ui">Outboard</b>, <b class="ui">Mga Cabinet</b>, <b class="ui">Mga Space</b> at <b class="ui">Iba pa</b>. Isang tono ang bawat row, hindi isang file: cover art, pamagat, <b class="ui">@author</b> at kung ilang model ang dala nito. Nilo-load ito ng isang tap — mag-isang tumutugtog ang tonong may isang model, nagiging bank ng block ang tonong maraming model — at dumadapo ang tono kung saan ito nauukol: sa <b class="ui">Amp</b> block ang isang amp, sa isang <b class="ui">NAM</b> block bago ito ang isang pedal o outboard box, sa <b class="ui">Cab</b> pagkatapos nito ang isang cabinet, at sa <b class="ui">IR Verb</b> ang isang space.</p>
+      <p>Binubuksan ng chevron ang mga model ng tono. Sa tonong <em>siya</em> mismong bank ng block, may checkmark ang bawat model: pinananatili nito ang model na iyon sa sweep ng <b class="ui">Model</b> na knob, at inililipat doon ng isang tap ang knob. Sa kahit anong ibang tono, ang tap sa isang model ay nagpapatugtog nito nang mag-isa at inaalis ang bank. Nakadim at may icon ng ulap ang mga model na nakalista sa site pero wala ka pa; kinukuha ng isang tap ang isa, at sa tonong bank ay sumasali ito sa sweep.</p>
+      <p>Sa kanan ng bawat row ng tono: ang bituin (isang paborito — ang pagbibituin sa isang tono ay nagbibituin sa lahat ng model nito) at ang refresh button (<b class="ui">I-refresh mula sa TONE3000</b>, na muling kumukuha ng metadata, ng cover at ng mga file). Ang matagal na pagpindot, o ang right-click sa isang row, ay nag-aalok ng <b class="ui">Buksan sa TONE3000</b>, <b class="ui">Ibahagi ang .nam file</b> / <b class="ui">Ibahagi ang IR file</b> at <b class="ui">Tanggalin</b>. Nasa toolbar ang <b class="ui">Mag-import ng file…</b> — isang multi-select na picker na tumatanggap ng mga <b class="ui">.nam</b> na capture at mga <b class="ui">.wav</b> na impulse — kasama ang <b class="ui">I-export lahat (N file)</b> at <b class="ui">I-update lahat</b>.</p>
+      <p>Kapag walang laman, ganito ang nakikita: <b class="ui">Dito nagtitipon ang mga profile na dina-download mo mula sa TONE3000.</b> sa panig ng NAM at <b class="ui">Dito naiipon ang mga cabinet at space na dina-download mo mula sa TONE3000.</b> sa panig ng IR. Kung hindi mabasa ang isang model, makukuha mo ang <b class="ui r">Hindi ma-load ang amp model na {filename}.</b> — karaniwang isang file na inilipat o binura mula sa ilalim ng rig.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>Libreng library ng mga amp capture ang TONE3000, at direktang kumukuha rito ang NAMper. Walang in-app na browse screen: binubuksan ng <b class="ui">Mag-browse sa TONE3000</b> ang tone3000.com sa loob ng ligtas na web sheet. Sa mismong website ka naghahanap at nagsasala, pumili ng tono, at ang app na ang bahala mula roon — habang kumukuha ito, ganito ang button: <b class="ui">Naglo-load…</b> at hindi ito gumagana.</p>
+      <p>Libreng library ng mga capture ang TONE3000, at direktang kumukuha rito ang NAMper. Walang in-app na browse screen: binubuksan ng <b class="ui">Mag-browse sa TONE3000</b> ang tone3000.com sa loob ng ligtas na web sheet. Sa mismong website ka naghahanap at nagsasala, pumili ng tono, at ang app na ang bahala mula roon — habang kumukuha ito, ganito ang button: <b class="ui">Naglo-load…</b> at hindi ito gumagana.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Ang sheet na Ikonekta ang TONE3000 sa ibabaw ng Rig tab, inaalok ang mga button na Mag-sign in sa TONE3000 at Mag-play offline kasama ang toggle na Huwag nang magtanong ulit.">
-        <figcaption>Ang alok na mag-sign in, ipinapakita nang minsan kada pagbukas habang naka-sign out</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="Ang pahina ng TONE3000 sa Settings: ang row ng account na may button na Mag-sign in sa TONE3000, at ang switch ng mga factory preset sa pagitan ng built-in na amp at mga capture ng TONE3000.">
+        <figcaption>Nasa Settings ang TONE3000, at nasa bawat block na tumatanggap ng capture</figcaption>
       </figure>
-      <p>Ordinaryong web sign-in ang pag-sign in, hindi isang idinikit na API key, at kung naka-log in ka na sa tone3000.com sa browser, ginagamit muli ng app ang session na iyon. Sinasala ang library sa panig ng server tungo sa mga NAM capture na A2-architecture ng mga amp, buong rig at pedal — nakatakda iyon, hindi setting na kaya mong baguhin.</p>
-      <p>Ang pagpili ng tono ay nagda-download ng unang model ng tonong iyon — walang model picker — kasama ang cover art at metadata nito. Dumadapo ang lahat sa <b class="ui">tones/</b> na folder ng app at lumalabas sa <b class="ui">Mga NAM Profile</b> sheet.</p>
+      <p>Ordinaryong web sign-in ang pag-sign in, hindi isang idinikit na API key, at kung naka-log in ka na sa tone3000.com sa browser, ginagamit muli ng app ang session na iyon. Hindi ito hinihingi ng NAMper sa pagbukas — tumutugtog ang mga factory preset sa built-in na amp at sa mga kasamang cabinet, at nangyayari ang sign-in sa unang pagpindot mo sa <b class="ui">Mag-browse sa TONE3000</b>, o mula sa Settings → <b class="ui">TONE3000</b>.</p>
+      <p>Nakadepende sa block na nagbukas nito kung ano ang inaalok ng katalogo. Mula sa isang <b class="ui">Amp</b> o <b class="ui">NAM</b> block, sinasala ito sa panig ng server tungo sa mga <b class="ui">.nam</b> na capture na A2-architecture ng mga amp, buong rig, pedal at outboard gear. Mula sa isang <b class="ui">Cab</b> block, inaalok nito ang mga cabinet impulse ng site, at mula sa isang <b class="ui">IR Verb</b>, ang mga space nito — mga <b class="ui">.wav</b> na file, hindi mga capture. Nakatakda ang salaing iyon, hindi setting na kaya mong baguhin.</p>
+      <p>Kapag iisa ang model ng tonong pinili mo, dumadapo ito nang diretso sa block kasama ang cover art at metadata nito. Kapag marami, may bumubukas na picker: i-tap ang isa para mag-isa itong tumugtog, o tikan ang ilan at <b class="ui">I-download ang {n} napili sa bank</b> — ang buong tono naman ay <b class="ui">I-download lahat ng {n} modelo sa bank</b>. Dumadapo ang lahat sa <b class="ui">tones/</b> na folder ng app at sumasali sa aklatan.</p>
 
-      <h3>Ang alok na mag-sign in</h3>
-      <p>Isang sheet na pinamagatang <b class="ui">Ikonekta ang TONE3000</b> ang lumalabas nang minsan kada pagbukas habang naka-sign out ka, na nagpapaliwanag na nagsi-stream ang mga factory preset ng totoong amp capture mula sa libreng library. Inaalok nito ang <b class="ui">Mag-sign in sa TONE3000</b> at <b class="ui">Mag-play offline</b>, kasama ang toggle na <b class="ui">Huwag nang magtanong ulit</b>. Puwede mo rin itong tuluyang patahimikin sa Settings → <b class="ui">MGA PROMPT</b> → <b class="ui">Mag-alok ng TONE3000 sign-in sa pagbukas</b>.</p>
+      <h3>Ang mga factory preset, sa capture o sa built-in</h3>
+      <p>May iisang switch ang Settings → <b class="ui">TONE3000</b>: <b class="ui">Built-in na amp</b> o <b class="ui">Mga capture ng TONE3000</b>. Ang apat na factory rig ay tinono sa apat na pampublikong capture — isang Fender Deluxe Reverb, isang Marshall Plexi, isang Victory Kraken at isang VOX AC30 — at ang switch ang nagpapasya kung alin sa dalawa ang tinutugtog ng bank. Minsan lang inaalok ng NAMper ang pagpiling ito, sa unang pagkuha mo ng sarili mong capture.</p>
 
       <h3>Pagtugtog offline</h3>
-      <p>Patuloy na gumagana ang kahit anong na-download na kahit walang network. Ang factory rig na hindi naka-cache ang profile ay bumabalik sa naka-bypass nitong built-in na <b class="ui">Tube Amp</b> at sa kasamang cab, at ganito ang header: <b class="ui">Built-in na tube amp</b> para alam mo kung ano ang naririnig mo. Mag-sign in mamaya at doon na mismo magiging totoong capture ang mga rig na iyon — hindi mo kailangang muling buuin ang anuman.</p>
+      <p>Patuloy na gumagana ang kahit anong na-download na kahit walang network. Ang <b class="ui">Amp</b> block na hindi naka-cache ang capture ay nagpapatugtog muna ng sariling built-in na voicing nito at sinasabi ito (<b class="ui">Hindi pa na-download — tumutugtog muna ang built-in na amp</b>), habang gising ang <b class="ui">Cab</b> na kasunod nito para sa built-in na amp. Mag-sign in mamaya at doon na mismo magiging totoong capture ang mga block na iyon — hindi mo kailangang muling buuin ang anuman.</p>
       <div class="note warn">
         <div class="t">Walang sign-out</div>
         <p>Walang button na pang-sign out sa TONE3000 ang NAMper. Kapag umiiral na ang session, ang tanging paraan para burahin ito ay tanggalin ang app. Mabuting malaman bago ka mag-sign in sa hiniram na device.</p>
@@ -267,8 +274,15 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Mga cab at IR</h2>
-      <p>Nagpapatugtog ang <b class="ui">Cab</b> block ng impulse response — isang speaker cabinet na nakuha gamit ang mikropono. Ipinapakita ng sheet nito ang kasalukuyang pangalan ng IR, isang menu button na may label na <b class="ui">Mga Cabinet</b>, isang <b class="ui">Mag-load ng file</b> button, at isang knob: <b class="ui">Level</b>, −12 hanggang +12 dB. Kapag may naka-load nang IR, lumalabas sa tabi ang isang <b class="ui">I-clear ang IR</b> button.</p>
-      <p>Binubuksan ng <b class="ui">Mag-load ng file</b> ang file picker para sa <b class="ui">.wav</b> at iba pang audio; kinokopya sa <b class="ui">irs/</b> na folder ng app ang kahit anong piliin mo, kaya nananatili itong available kahit burahin mo ang orihinal. Ang parehong block, kapag ginamit bilang <b class="ui">IR Verb</b>, ay nagla-label sa menu nito bilang <b class="ui">Mga Space</b> at nagla-load ng mga reverb impulse sa halip na mga cabinet.</p>
+      <p>Nagpapatugtog ang <b class="ui">Cab</b> block ng impulse response — isang speaker cabinet na nakuha gamit ang mikropono. Gaya ng sheet ng isang capture block ang pagkakabuo nito: ang pangalan ng impulse sa itaas kasama ang <b class="ui">@author</b>, isang arrow papunta sa pahina ng tono at ang <b class="ui">I-clear ang IR</b> sa tabi nito, ang cover art sa kaliwa, at apat na paraan ng pag-load nito sa kanan — <b class="ui">Mag-browse sa TONE3000</b>, <b class="ui">Aklatan</b>, <b class="ui">Mga Cabinet</b> at <b class="ui">Mag-load ng file</b>. Sa ilalim nila ang sariling knob ng block, ang <b class="ui">Level</b>, −12 hanggang +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="Ang sheet ng Cab block: ang pangalan ng impulse at ang may-akda sa itaas, ang cover art sa kaliwa, at ang mga button na Mag-browse sa TONE3000, Aklatan, Mga Cabinet at Mag-load ng file sa kanan, may Level na knob sa ibaba.">
+        <figcaption>Ang Cab block, binuo gaya ng panig ng capture ng isang amp</figcaption>
+      </figure>
+      <p>Ang parehong block, kapag ginamit bilang <b class="ui">IR Verb</b>, ay nagla-label sa menu nito bilang <b class="ui">Mga Space</b>, nagla-load ng mga reverb impulse sa halip na mga cabinet, at may dalang <b class="ui">Mix</b>, <b class="ui">Predelay</b> at <b class="ui">Level</b>.</p>
+      <p>Binubuksan ng <b class="ui">Mag-browse sa TONE3000</b> ang mga cabinet ng site mula sa isang <b class="ui">Cab</b> at ang mga space nito mula sa isang <b class="ui">IR Verb</b>. Ang tonong maraming impulse ay nagbubukas ng parehong picker na ginagamit ng mga capture: magpatugtog ng isa, o tikan ang ilan at i-download sila sa bank ng block. Ganito na ang mababasa sa sheet: <b class="ui">Bank: 6</b> at lumalabas ang isang <b class="ui">Model</b> na knob sa tabi ng <b class="ui">Level</b>, na nagbabasang <b class="ui">1/6 · R121</b> habang umiikot — nag-aalok ng <b class="ui">MIDI Learn</b> ang matagal na pagpindot dito, tulad na tulad sa amp, kaya isang expression pedal o knob ang maglalakad sa buong set ng mikropono.</p>
+      <p>Binubuksan ng <b class="ui">Mag-load ng file</b> ang file picker para sa <b class="ui">.wav</b> at iba pang audio; kinokopya sa <b class="ui">irs/</b> na folder ng app ang kahit anong piliin mo, kaya nananatili itong available kahit burahin mo ang orihinal. Lumalabas ang mga impulse na na-download mo sa <b class="ui">Mga Cabinet</b> / <b class="ui">Mga Space</b> na menu sa ilalim ng <b class="ui">Na-download</b>, at sa <b class="ui">IR</b> na panig ng aklatan.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menu</th><th>Mga kasamang impulse response</th></tr></thead>
@@ -288,10 +302,10 @@
       </div>
       <div class="note">
         <div class="t">Hindi lahat ng amp ay nangangailangan ng cab</div>
-        <p>Sinasabi sa iyo ng walang lamang <b class="ui">Cab</b> block kung bakit puwede itong manatiling walang laman: <b class="ui">Walang naka-load na IR — hindi ito kailangan
-ng mga amp+cab NAM profile</b>. Maraming TONE3000 capture ang kinuha mula sa speaker output, kasama ang cab at mikropono; ang paglalagay ng isa pang cab pagkatapos ng ganoon ay nagpapapurol at nagpapa-boxy sa tunog. Ang walang lamang <b class="ui">IR Verb</b> naman ay nagpapakita ng <b class="ui">Walang naka-load na IR — pumili ng space o file</b>.</p>
+        <p>Maraming TONE3000 capture ang kinuha mula sa speaker output, kasama na ang cab at mikropono; ang paglalagay ng isa pang cab pagkatapos ng ganoon ay nagpapapurol at nagpapa-boxy sa tunog. Binabasa ito ng NAMper mula sa tono at inaasikaso: pinapahinga ng capture ng buong rig ang <b class="ui">Cab</b> na kasunod mismo ng amp, at ginigising naman ito ng hubad na head o ng DI. Ang Cab na iniwang nakapahinga at walang impulse sa loob ay hindi na iginuguhit sa chain — mag-load ng impulse dito, o ibalik ang amp sa hubad na head, at babalik agad ito. Laging huling salita ang sariling footswitch ng Cab.</p>
+        <p>Sinasabi sa iyo ng walang lamang <b class="ui">Cab</b> block kung bakit puwede itong manatiling walang laman: <b class="ui">Walang naka-load na IR — hindi ito kailangan ng mga amp+cab NAM profile</b>. Ang walang lamang <b class="ui">IR Verb</b> naman ay nagpapakita ng <b class="ui">Walang naka-load na IR — pumili ng space o file</b>.</p>
       </div>
-      <p>Lumalabas ang mga problema sa IR bilang <b class="ui r">IR file missing: {name}</b>, <b class="ui r">Could not read IR {name}.</b> o <b class="ui r">Could not import {name}.</b></p>
+      <p>Lumalabas ang mga problema sa IR bilang <b class="ui r">Nawawala ang IR file: {name}</b>, <b class="ui r">Hindi mabasa ang IR na {name}.</b> o <b class="ui r">Hindi ma-import ang {name}.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

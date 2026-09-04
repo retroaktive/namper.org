@@ -76,7 +76,7 @@
         <li><a href="#blocks">Blok paleti</a></li>
         <li><a href="#models">Bloklar içindeki modeller</a></li>
         <li><a href="#eq">Beş EQ modeli</a></li>
-        <li><a href="#nam">NAM amfi profilleri</a></li>
+        <li><a href="#nam">NAM capture'ları</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Kabinler ve IR'ler</a></li>
         <li><a href="#presets">Preset'ler</a></li>
@@ -247,7 +247,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="Passive modeli seçilmiş EQ blok sayfası; sekiz düğmesi görünüyor: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten ve Atten Hz, üstte IN ve OUT göstergeleriyle.">
         <figcaption>Passive modelindeki EQ bloğu</figcaption>
       </figure>
@@ -258,99 +258,142 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM amfi profilleri</h2>
-      <p><b class="ui">Amfi ve kabin</b> altında iki farklı blok yaşar ve hangisinin hangisi
-        olduğunu netleştirmekte fayda var. <b class="ui">Lamba amfisi</b>, yukarıda listelenen yedi
-        modelle NAMper'ın kendi amfi simülasyonudur. <b class="ui">Amfi</b> ise Neural Amp
-        Modeler oynatıcısıdır: gerçek bir amfinin <b class="ui">.nam</b> capture'ını yükler ve
-        çalıştırır.</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM capture'ları</h2>
+      <p><b class="ui">Amfi</b> bloğu, iki kaynağı olan tek bir bloktur. Sayfasının üstündeki iki
+        çip aralarında seçim yapar: <b class="ui">Dahili</b>, yukarıda listelenen yedi modelle
+        NAMper'ın kendi amfi simülasyonudur; <b class="ui">NAM</b> ise gerçek bir amfinin
+        <b class="ui">.nam</b> capture'ını çalıştıran Neural Amp Modeler oynatıcısıdır. İkisi de
+        aynı blokta yaşar, yani bir preset hem üzerine kurulduğu modeli <em>hem de</em> etrafında
+        seslendirildiği capture'ı taşır; aralarında geçiş yapmak tek dokunuştur.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Bir NAM profili yüklü Rig sekmesi: amfi kartında kapak görseli, ton başlığı ve yazar, iki yanında dikey IN ve OUT göstergeleri, altında blokların sinyal zinciri.">
-        <figcaption>Bir NAM profili yüklü amfi kartı</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Rig sekmesi: sinyal zinciri kartının üstünde yatay IN ve OUT göstergeleri, altında blokların zinciri ve çaldığı capture'ın adını taşıyan Amfi bloğu.">
+        <figcaption>Rig sekmesi; Amfi karosu ne çaldığını söyler</figcaption>
       </figure>
 
-      <h3>Amfi kartı</h3>
-      <p>Rig sekmesinin üstünde, <b class="ui">IN</b> ve <b class="ui">OUT</b> göstergeleri
-        arasında, amfi kartı <b class="ui">Amfi</b> bloğunun şu anda ne çaldığını gösterir: kapak
-        görseli, ton başlığı, <b class="ui">@author</b>, altıya kadar metadata çipi, bir indirme
-        sayısı, bir <b class="ui">TONE3000’e göz at</b> düğmesi ve bir kitap simgesi
-        (<b class="ui">NAM kütüphanesini aç</b>). Hiçbir şey yüklü değilse
-        <b class="ui">Yerleşik lamba amfisi</b> yazar. Bir rig'de birden fazla amfi varsa,
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> gibi çipler kartın hangisini
-        düzenlediğini seçer.</p>
-
-      <h3>Input ve Output</h3>
-      <p><b class="ui">Amfi</b> blok sayfası bilerek kısa tutulmuştur: profil başlığı (ya da
-        <b class="ui">Model yüklü değil</b>), bir <b class="ui">TONE3000’e göz at</b> düğmesi ve iki
-        düğme. <b class="ui">Giriş</b> ve <b class="ui">Çıkış</b> ikisi de −20'den +20 dB'ye
-        kadar gider ve 0'dan başlar. Input, capture'ı daha sert iter; bir profilden daha fazla ya
-        da daha az breakup almanın yolu budur. Output ise sonucu sonradan kırpar.</p>
-      <p>NAM çıkışı, modelin içindeki yükseklik metadata'sı kullanılarak otomatik olarak
-        −18 dB hedefine normalize edilir. Profiller arasında geçiş yapmanın seviyelerini
-        savurmamasının nedeni budur ve bu bir kontrol olarak sunulmaz.</p>
+      <h3>Capture tarafı</h3>
+      <p><b class="ui">NAM</b> tarafında sayfa modelin adını (ya da
+        <b class="ui">Model yüklü değil</b>), <b class="ui">@author</b>'ı ve tonu tone3000.com'da
+        açan bir oku, solda kapak görselini, sağda ise bir capture edinmenin üç yolunu gösterir:
+        <b class="ui">TONE3000’e göz at</b>, <b class="ui">Kitaplık</b> ve
+        <b class="ui">Dosya yükle</b>. Altlarında <b class="ui">Giriş</b> ve
+        <b class="ui">Çıkış</b> vardır; ikisi de −20'den +20 dB'ye gider ve 0'dan başlar. Input,
+        capture'ı daha sert iter — bir profilden daha fazla ya da daha az breakup almanın yolu
+        budur; Output ise sonucu sonradan kırpar.</p>
+      <p>Seviyeler tahmin edilmez, ölçülür: iki kaynak da aynı referans DI üzerinde unity'dir,
+        yani bir preset'in çıkış gain'i hangisi çalarsa çalsın aynı anlama gelir ve profil
+        değiştirmek seviyelerini savurmaz.</p>
+      <p><b class="ui">Dosya yükle</b> aynı anda birden çok <b class="ui">.nam</b> dosyası alır.
+        Birden fazlasını seçersen uygulama <b class="ui">Modeller bir bankada birleştirilsin
+        mi?</b> diye sorar — <b class="ui">Birleştir</b> onlardan bir banka yapar,
+        <b class="ui">Yalnızca ilki</b> tek bir tane yükler.</p>
       <div class="note">
-        <div class="t">NAM amfisi monodur</div>
+        <div class="t">Bir capture monodur</div>
         <p>Bir NAM capture'ı mono bir cihazdır — <b class="ui">Amfi</b> bloğuna gelen stereo bir
           sinyal içeri girmeden önce toplanır. Stereo efektlerini amfiden önce değil sonra
           koy.</p>
       </div>
 
-      <h3>Bir profili yüklemenin üç yolu</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">TONE3000’e göz at</b> — bir sonraki bölümde ele alınan çevrimiçi
-          kütüphane.</li>
-        <li>Kitap simgesi, <b class="ui">NAM profilleri</b> başlıklı bir sayfa açar. Herhangi bir
-          satıra dokunarak onu geçerli amfiye yükle.</li>
-        <li>Fabrika preset'leri kendi profillerini çözer; bu yüzden <b class="ui">Crunch</b>'ı
-          yüklemek kendi amfisini de beraberinde getirir.</li>
-      </ol>
-      <p><b class="ui">NAM profilleri</b> sayfası senin yerel kütüphanendir. Boşken
-        <b class="ui">TONE3000’den indirdiğin profiller burada toplanır.</b> yazar. Araç
-        çubuğu menüsünde <b class="ui">.nam dosyalarını içe aktar…</b> vardır — yalnızca
-        <b class="ui">.nam</b> dosyalarını kabul eden çoklu seçimli bir dosya seçici —
-        yanında <b class="ui">Export all (N files)</b> ve <b class="ui">Hepsini güncelle</b>. Her
-        satır <b class="ui">.nam dosyasını paylaş</b>, <b class="ui">Sil</b> ve bir yenileme
-        düğmesi taşır (<b class="ui">TONE3000’den yenile</b>).</p>
-      <p>Bir model okunamazsa şunu görürsün: <b class="ui r">Could not load amp model
-        {filename}.</b> — genelde rig'in altından taşınmış ya da silinmiş bir dosya
-        yüzünden.</p>
+      <h3>Bankalar ve Model düğmesi</h3>
+      <p>Bir TONE3000 tonu çoğu zaman birçok model taşır: aynı amfi, farklı mikrofonlar, kanallar
+        ya da kabinlerle. Onları birlikte indir, bloğun <b>bankası</b> olurlar. Sayfa o zaman
+        <b class="ui">Banka: 6</b> yazar (bazıları taramanın dışında bırakıldığında
+        <b class="ui">Banka: 4 / 6</b>) ve trim'lerin arasında bir <b class="ui">Model</b> düğmesi
+        belirir; döndükçe <b class="ui">1/6 · SM57</b> okunur. Sıradan bir düğmedir, yani uzun
+        basış <b class="ui">MIDI Learn</b> sunar: tek bir CC bütün bankayı pedalboard'undan gezer
+        ve değişim kesilmek yerine çapraz geçişle yapılır, böylece hiçbir şey tıklamaz ya da
+        kesilmez.</p>
+
+      <h3>NAM bloğu: pedallar ve outboard</h3>
+      <p>Ayrı bir <b class="ui">NAM</b> bloğu aynı capture tarafını dahili amfi olmadan taşır ve
+        pedal ile outboard cihaz capture'larının yeri orasıdır. Onu kendin yerleştirmek zorunda
+        değilsin: bir <b class="ui">Amfi</b> bloğu hedefteyken bir pedal capture'ı yükle, NAMper o
+        amfinin hemen öncesine bir <b class="ui">NAM</b> bloğu ekler ve senin için açar.</p>
+
+      <h3>Kütüphane</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="NAM profilleri sayfası: üstte NAM ve IR çipleri, altında kapak görseli, yazar ve model sayılarıyla Amfiler başlığı altında gruplanmış tonlar.">
+        <figcaption>Kütüphane: iki taraf ve neyi capture ettiklerine göre gruplanmış tonlar</figcaption>
+      </figure>
+      <p><b class="ui">Kitaplık</b> düğmesi <b class="ui">NAM profilleri</b> başlıklı bir sayfa
+        açar — indirdiğin her şey, çevrimdışı kullanılabilir. Üstteki iki çip onu ikiye böler:
+        capture'lar için <b class="ui">NAM</b>, impulse'lar için <b class="ui">IR</b>, her biri bir
+        sayıyla. Bir blok ikisinden yalnızca birini alır, bu yüzden hiçbir zaman birlikte
+        listelenmezler; kütüphaneyi açtığın blok da tarafı senin için seçer.</p>
+      <p>Bir tarafın içinde tonlar neyin capture edildiğine göre gruplanır:
+        <b class="ui">Amfiler</b>, <b class="ui">Pedallar</b>, <b class="ui">Outboard</b>,
+        <b class="ui">Kabinler</b>, <b class="ui">Mekânlar</b> ve <b class="ui">Diğer</b>. Her
+        satır bir dosya değil bir tondur: kapak görseli, başlık, <b class="ui">@author</b> ve kaç
+        model taşıdığı. Dokunuş onu yükler — tek modelli bir ton tek başına çalar, birkaç modelli
+        bir ton bloğun bankası olur — ve ton ait olduğu yere iner: bir amfi
+        <b class="ui">Amfi</b> bloğuna, bir pedal ya da outboard cihaz onun öncesindeki bir
+        <b class="ui">NAM</b> bloğuna, bir kabin sonrasındaki <b class="ui">Kabin</b>'e, bir mekân
+        da <b class="ui">IR reverb</b>'e.</p>
+      <p>Chevron tonun modellerini açar. Bloğun bankası <em>olan</em> tonda her model bir onay
+        işareti taşır: bu, o modeli <b class="ui">Model</b> düğmesinin taramasında tutar ve bir
+        dokunuş düğmeyi onun üzerine taşır. Başka herhangi bir tonda bir modele dokunmak o modeli
+        tek başına çalar ve bankayı temizler. Sitenin listelediği ama sende henüz olmayan modeller
+        bir bulut simgesiyle soluk görünür; bir dokunuş onu getirir ve banka tonunda taramaya
+        katılır.</p>
+      <p>Her ton satırının sağında: yıldız (bir favori — bir tonu yıldızlamak onun tüm modellerini
+        yıldızlar) ve yenileme düğmesi (<b class="ui">TONE3000’den yenile</b>, metadata'yı, kapağı
+        ve dosyaları yeniden çeker). Uzun basış ya da bir satıra sağ tık
+        <b class="ui">TONE3000'de aç</b>, <b class="ui">.nam dosyasını paylaş</b> /
+        <b class="ui">IR dosyasını paylaş</b> ve <b class="ui">Sil</b> sunar. Araç çubuğunda
+        <b class="ui">Dosyaları içe aktar…</b> vardır — <b class="ui">.nam</b> capture'larını ve
+        <b class="ui">.wav</b> impulse'larını kabul eden çoklu seçimli bir seçici — yanında
+        <b class="ui">Hepsini dışa aktar (N dosya)</b> ve <b class="ui">Hepsini güncelle</b>.</p>
+      <p>Boşken sayfa NAM tarafında <b class="ui">TONE3000’den indirdiğin profiller burada
+        toplanır.</b>, IR tarafında ise <b class="ui">TONE3000'den indirdiğin kabinler ve mekânlar
+        burada toplanır.</b> yazar. Bir model okunamazsa şunu görürsün: <b class="ui r">{filename}
+        amfi modeli yüklenemedi.</b> — genelde rig'in altından taşınmış ya da silinmiş bir
+        dosya yüzünden.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000, ücretsiz bir amfi capture kütüphanesidir ve NAMper doğrudan oradan çeker.
-        Uygulama içinde bir gezinme ekranı yoktur: <b class="ui">TONE3000’e göz at</b>,
-        tone3000.com'u güvenli bir web sayfası içinde açar. Arama ve filtrelemeyi web sitesinin
-        kendisinde yaparsın, bir ton seçersin, gerisini uygulama halleder — getirirken düğme
+      <p>TONE3000, ücretsiz bir capture kütüphanesidir ve NAMper doğrudan oradan çeker. Uygulama
+        içinde bir gezinme ekranı yoktur: <b class="ui">TONE3000’e göz at</b>, tone3000.com'u
+        güvenli bir web sayfası içinde açar. Arama ve filtrelemeyi web sitesinin kendisinde
+        yaparsın, bir ton seçersin, gerisini uygulama halleder — getirirken düğme
         <b class="ui">Yükleniyor…</b> yazar ve devre dışı kalır.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Rig sekmesi üzerinde Connect TONE3000 sayfası; Sign in to TONE3000 ve Play offline düğmeleri ile bir Don't ask again anahtarı sunuyor.">
-        <figcaption>Çıkış yapılıyken her açılışta bir kez gösterilen giriş teklifi</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="Ayarlar içindeki TONE3000 sayfası: TONE3000’e giriş yap düğmesini taşıyan hesap satırı ve fabrika preset'lerini dahili amfilerle TONE3000 kayıtları arasında seçtiren anahtar.">
+        <figcaption>TONE3000, Ayarlar'da ve capture alabilen her blokta yaşar</figcaption>
       </figure>
       <p>Giriş yapmak, yapıştırılmış bir API anahtarı değil, sıradan bir web girişidir; ve
         tarayıcında tone3000.com'a zaten giriş yaptıysan uygulama o oturumu yeniden kullanır.
-        Kütüphane, sunucu tarafında A2 mimarili amfi, tam rig ve pedal NAM capture'larıyla
-        sınırlıdır — bu sabittir, değiştirebileceğin bir ayar değildir.</p>
-      <p>Bir ton seçmek, o tonun ilk modelini indirir — model seçici yoktur — kapak görseli ve
-        metadata'sıyla birlikte. Her şey uygulamanın <b class="ui">tones/</b> klasörüne iner ve
-        <b class="ui">NAM profilleri</b> sayfasında görünür.</p>
+        NAMper bunu açılışta hiç istemez — fabrika preset'leri dahili amfilerde ve paketlenmiş
+        kabinlerde çalar, giriş ise ilk kez <b class="ui">TONE3000’e göz at</b>'a bastığında ya da
+        Ayarlar → <b class="ui">TONE3000</b> üzerinden olur.</p>
+      <p>Kataloğun ne sunduğu, onu açan bloğa bağlıdır. Bir <b class="ui">Amfi</b> ya da
+        <b class="ui">NAM</b> bloğundan açıldığında sunucu tarafında A2 mimarili amfi, tam rig,
+        pedal ve outboard cihaz <b class="ui">.nam</b> capture'larıyla sınırlanır. Bir
+        <b class="ui">Kabin</b> bloğundan sitenin kabin impulse'larını, bir
+        <b class="ui">IR reverb</b>'den ise mekânlarını sunar — capture değil,
+        <b class="ui">.wav</b> dosyaları. Bu filtre sabittir, değiştirebileceğin bir ayar
+        değildir.</p>
+      <p>Seçtiğin tonun tek modeli varsa, kapak görseli ve metadata'sıyla birlikte doğrudan bloğa
+        iner. Birkaç modeli varsa bir seçici açılır: birine dokun tek başına çalsın ya da
+        birkaçını işaretleyip <b class="ui">Seçilen {n} modeli bankaya indir</b> — tonun tamamı
+        için <b class="ui">{n} modelin tümünü bankaya indir</b>. Her şey uygulamanın
+        <b class="ui">tones/</b> klasörüne iner ve kütüphaneye katılır.</p>
 
-      <h3>Giriş teklifi</h3>
-      <p>Çıkış yapılıyken her açılışta bir kez <b class="ui">TONE3000’e bağlan</b> başlıklı bir
-        sayfa çıkar; fabrika preset'lerinin ücretsiz kütüphaneden gerçek amfi capture'ları
-        aktardığını açıklar. <b class="ui">TONE3000’e giriş yap</b> ve
-        <b class="ui">Çevrimdışı çal</b> sunar, yanında bir <b class="ui">Bir daha sorma</b>
-        anahtarı vardır. Bunu kalıcı olarak da Ayarlar → <b class="ui">BİLDİRİMLER</b> →
-        <b class="ui">Açılışta TONE3000 girişini öner</b> üzerinden susturabilirsin.</p>
+      <h3>Fabrika preset'leri: capture'larla ya da dahili</h3>
+      <p>Ayarlar → <b class="ui">TONE3000</b> tek bir anahtar taşır: <b class="ui">Dahili
+        amfiler</b> ya da <b class="ui">TONE3000 kayıtları</b>. Dört fabrika rig'i, herkese açık
+        dört capture'ın etrafında seslendirildi — bir Fender Deluxe Reverb, bir Marshall Plexi, bir
+        Victory Kraken ve bir VOX AC30 — ve anahtar, bankanın bu ikisinden hangisini çalacağına
+        karar verir. NAMper bu seçimi bir kez sunar: kendi capture'ını ilk seçtiğinde.</p>
 
       <h3>Çevrimdışı çalmak</h3>
-      <p>Zaten indirilmiş olan her şey ağ hiç olmadan çalışmaya devam eder. Profili önbelleğe
-        alınmamış bir fabrika rig'i, kendi bypass edilmiş dahili <b class="ui">Lamba amfisi</b>'ine
-        ve paketlenmiş bir kabine döner; başlık ne duyduğunu bilesin diye
-        <b class="ui">Yerleşik lamba amfisi</b> yazar. Daha sonra giriş yap, o rig'ler gerçek
-        capture'lara yerinde çözülür — hiçbir şeyi yeniden kurmana gerek kalmaz.</p>
+      <p>Zaten indirilmiş olan her şey ağ hiç olmadan çalışmaya devam eder. Capture'ı önbelleğe
+        alınmamış bir <b class="ui">Amfi</b> bloğu o sırada kendi dahili modelini çalar ve bunu
+        söyler (<b class="ui">Henüz indirilmedi — o sırada dahili amfi çalar</b>); ardındaki
+        <b class="ui">Kabin</b> de dahili amfi için uyanık kalır. Daha sonra giriş yap, o bloklar
+        yerinde gerçek capture'lara çözülür — hiçbir şeyi yeniden kurmana gerek kalmaz.</p>
       <div class="note warn">
         <div class="t">Çıkış yok</div>
         <p>NAMper'da TONE3000 için bir çıkış yapma düğmesi yoktur. Oturum bir kez var
@@ -374,16 +417,35 @@
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Kabinler ve IR'ler</h2>
       <p><b class="ui">Kabin</b> bloğu bir impulse response çalar — bir mikrofonla kaydedilmiş bir
-        hoparlör kabini. Sayfası mevcut IR adını, <b class="ui">Kabinler</b> etiketli bir menü
-        düğmesini, bir <b class="ui">Dosya yükle</b> düğmesini ve tek bir düğmeyi gösterir:
-        <b class="ui">Seviye</b>, −12'den +12 dB'ye. Bir IR yüklendiğinde yanında bir
-        <b class="ui">IR’yi kaldır</b> düğmesi belirir.</p>
+        hoparlör kabini. Sayfası bir capture bloğununki gibi kurulmuştur: üstte impulse'ın adı ve
+        <b class="ui">@author</b>, tonun sayfasına giden bir ok ve yanında
+        <b class="ui">IR’yi kaldır</b>, solda kapak görseli, sağda ise bir tane yüklemenin dört
+        yolu — <b class="ui">TONE3000’e göz at</b>, <b class="ui">Kitaplık</b>,
+        <b class="ui">Kabinler</b> ve <b class="ui">Dosya yükle</b>. Altlarında bloğun kendi
+        düğmesi durur: <b class="ui">Seviye</b>, −12'den +12 dB'ye.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="Kabin blok sayfası: üstte impulse adı ve yazarı, solda kapak görseli, sağda TONE3000’e göz at, Kitaplık, Kabinler ve Dosya yükle düğmeleri, altlarında Seviye düğmesi.">
+        <figcaption>Kabin bloğu, bir amfinin capture tarafı gibi kurulmuş</figcaption>
+      </figure>
+      <p>Aynı blok <b class="ui">IR reverb</b> olarak kullanıldığında menüsünü bunun yerine
+        <b class="ui">Mekânlar</b> olarak etiketler, kabin yerine reverb impulse'ları yükler ve
+        <b class="ui">Miks</b>, <b class="ui">Predelay</b> ile <b class="ui">Seviye</b>
+        taşır.</p>
+      <p><b class="ui">TONE3000’e göz at</b>, bir <b class="ui">Kabin</b>'den sitenin kabinlerini,
+        bir <b class="ui">IR reverb</b>'den mekânlarını açar. Birkaç impulse taşıyan bir ton,
+        capture'ların kullandığı seçicinin aynısını açar: birini çal ya da birkaçını işaretleyip
+        bloğun bankasına indir. Sayfa o zaman <b class="ui">Banka: 6</b> yazar ve
+        <b class="ui">Seviye</b>'nin yanında bir <b class="ui">Model</b> düğmesi belirir; döndükçe
+        <b class="ui">1/6 · R121</b> okunur — üzerine uzun basmak tam amfideki gibi
+        <b class="ui">MIDI Learn</b> sunar, böylece tek bir ekspresyon pedalı ya da düğme koca bir
+        mikrofon setini gezer.</p>
       <p><b class="ui">Dosya yükle</b>, <b class="ui">.wav</b> ve diğer ses dosyaları için bir
         dosya seçici açar; ne seçersen uygulamanın <b class="ui">irs/</b> klasörüne kopyalanır,
-        böylece orijinalini silsen bile erişilebilir kalır. Aynı blok, bir
-        <b class="ui">IR reverb</b> olarak kullanıldığında menüsünü bunun yerine
-        <b class="ui">Mekânlar</b> olarak etiketler ve kabin yerine reverb impulse'ları
-        yükler.</p>
+        böylece orijinalini silsen bile erişilebilir kalır. İndirdiğin impulse'lar
+        <b class="ui">Kabinler</b> / <b class="ui">Mekânlar</b> menüsünde
+        <b class="ui">İndirilenler</b> altında ve kütüphanenin <b class="ui">IR</b> tarafında
+        görünür.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menü</th><th>Paketlenmiş impulse response'lar</th></tr></thead>
@@ -403,17 +465,21 @@
       </div>
       <div class="note">
         <div class="t">Her amfinin bir kabine ihtiyacı yoktur</div>
+        <p>Pek çok TONE3000 capture'ı hoparlör çıkışından alınır, kabin ve mikrofon dahil;
+          bunlardan birinin ardına başka bir kabin koymak sesi donuk ve kutu gibi yapar. NAMper
+          bunu tondan okur ve halleder: tam rig capture'ı amfinin hemen ardındaki
+          <b class="ui">Kabin</b>'i dinlendirir, çıplak bir kafa ya da bir DI onu uyandırır. İçinde
+          impulse olmadan dinlenmeye bırakılmış bir Kabin zincire çizilmez bile — içine bir impulse
+          yükle ya da amfiyi yeniden çıplak bir kafaya çevir, hemen geri gelir. Son sözü her zaman
+          Kabin'in kendi footswitch'i söyler.</p>
         <p>Boş bir <b class="ui">Kabin</b> bloğu neden boş kalabileceğini söyler:
-          <b class="ui">IR yüklü değil — amp+cab NAM profilleri
-IR gerektirmez</b>. Pek çok
-          TONE3000 capture'ı hoparlör çıkışından alınır, kabin ve mikrofon dahil; bunlardan
-          birinin ardına başka bir kabin koymak sesi donuk ve kutu gibi yapar. Boş bir
-          <b class="ui">IR reverb</b> bunun yerine
+          <b class="ui">IR yüklü değil — amp+cab NAM profilleri IR gerektirmez</b>. Boş bir
+          <b class="ui">IR reverb</b> ise bunun yerine
           <b class="ui">IR yüklü değil — bir mekân ya da dosya seç</b> yazar.</p>
       </div>
-      <p>IR sorunları şöyle görünür: <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> ya da
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>IR sorunları şöyle görünür: <b class="ui r">IR dosyası yok: {name}</b>,
+        <b class="ui r">IR {name} okunamadı.</b> ya da
+        <b class="ui r">{name} içe aktarılamadı.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

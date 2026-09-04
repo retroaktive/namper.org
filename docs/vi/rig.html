@@ -76,7 +76,7 @@
         <li><a href="#blocks">Bảng block</a></li>
         <li><a href="#models">Model bên trong block</a></li>
         <li><a href="#eq">Năm model EQ</a></li>
-        <li><a href="#nam">Profile ampli NAM</a></li>
+        <li><a href="#nam">Bản capture NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Cab và IR</a></li>
         <li><a href="#presets">Preset</a></li>
@@ -245,7 +245,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="Sheet của block EQ với model Passive được chọn, hiển thị tám núm vặn của nó: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten và Atten Hz, cùng đồng hồ IN và OUT ở trên cùng.">
         <figcaption>Block EQ ở model Passive</figcaption>
       </figure>
@@ -256,95 +256,141 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>Profile ampli NAM</h2>
-      <p>Hai block khác nhau nằm dưới <b class="ui">Amp &amp; Cab</b>, và đáng để làm rõ cái nào
-        là cái nào. <b class="ui">Amp đèn</b> là mô phỏng ampli riêng của NAMper, với bảy model
-        liệt kê ở trên. <b class="ui">Amp</b> là trình phát Neural Amp Modeler: nó tải một bản
-        capture <b class="ui">.nam</b> của một ampli thật và chạy nó.</p>
+      <h2 id="nam"><span class="n">02.4</span>Bản capture NAM</h2>
+      <p>Block <b class="ui">Amp</b> là một block với hai nguồn. Hai chip ở đầu sheet của nó chọn
+        giữa hai bên: <b class="ui">Tích hợp</b> là mô phỏng ampli riêng của NAMper với bảy kiểu
+        tiếng liệt kê ở trên, <b class="ui">NAM</b> là trình phát Neural Amp Modeler chạy một bản
+        capture <b class="ui">.nam</b> của một ampli thật. Cả hai nằm trong cùng một block, nên một
+        preset mang theo kiểu tiếng mà nó được dựng lên <em>và</em> bản capture mà nó được chỉnh
+        tiếng quanh đó, và chuyển qua lại chỉ là một lần chạm.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Tab Rig với một profile NAM đã tải: ảnh bìa, tên tone và tác giả trên thẻ ampli, đồng hồ IN và OUT dọc ở hai bên, và chuỗi tín hiệu các block bên dưới.">
-        <figcaption>Thẻ ampli với một profile NAM đã tải</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Tab Rig: đồng hồ VÀO và RA nằm ngang trên đầu thẻ chuỗi tín hiệu, và chuỗi các block bên dưới, với block Amp ghi tên bản capture nó đang phát.">
+        <figcaption>Tab Rig; ô Amp ghi tên thứ nó đang phát</figcaption>
       </figure>
 
-      <h3>Thẻ ampli</h3>
-      <p>Ở trên cùng tab Rig, giữa đồng hồ <b class="ui">VÀO</b> và <b class="ui">RA</b>, thẻ
-        ampli hiển thị những gì block <b class="ui">Amp</b> đang phát: ảnh bìa, tên tone,
-        <b class="ui">@author</b>, tối đa sáu chip metadata, số lượt tải, nút
-        <b class="ui">Duyệt TONE3000</b> và biểu tượng sách (<b class="ui">Mở thư viện NAM</b>).
-        Khi chưa tải gì, nó hiện <b class="ui">Amp đèn tích hợp</b>. Nếu một rig có nhiều hơn
-        một amp, các chip <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> và tiếp tục như vậy sẽ
-        chọn cái nào thẻ đang chỉnh sửa.</p>
-
-      <h3>Input và Output</h3>
-      <p>Sheet của block <b class="ui">Amp</b> được làm ngắn gọn có chủ đích: tên profile (hoặc
-        <b class="ui">Chưa nạp model</b>), nút <b class="ui">Duyệt TONE3000</b>, và hai núm
-        vặn. <b class="ui">Đầu vào</b> và <b class="ui">Đầu ra</b> đều chạy từ −20 tới +20 dB và
-        bắt đầu ở 0. Input đẩy bản capture mạnh hơn, đó là cách bạn lấy được nhiều hay ít breakup
-        hơn từ một profile; Output chỉnh lại kết quả sau đó.</p>
-      <p>Output của NAM được tự động chuẩn hoá, dùng metadata độ to bên trong model, về mục tiêu
-        −18 dB. Đó là lý do vì sao chuyển đổi giữa các profile không làm mức tín hiệu của bạn
-        nhảy loạn, và điều này không được hiển thị như một điều khiển.</p>
+      <h3>Phía bản capture</h3>
+      <p>Ở phía <b class="ui">NAM</b>, sheet hiển thị tên model (hoặc
+        <b class="ui">Chưa nạp model</b>), <b class="ui">@author</b> và một mũi tên mở tone đó trên
+        tone3000.com, ảnh bìa bên trái, và ba cách lấy một bản capture ở bên phải:
+        <b class="ui">Duyệt TONE3000</b>, <b class="ui">Thư viện</b> và
+        <b class="ui">Nạp tệp</b>. Bên dưới là <b class="ui">Đầu vào</b> và
+        <b class="ui">Đầu ra</b>, cả hai chạy từ −20 tới +20 dB và bắt đầu ở 0. Input đẩy bản
+        capture mạnh hơn, đó là cách bạn lấy được nhiều hay ít breakup hơn từ một profile; Output
+        chỉnh lại kết quả sau đó.</p>
+      <p>Mức tín hiệu được đo chứ không phải đoán: cả hai nguồn đều unity trên cùng một DI tham
+        chiếu, nên gain đầu ra của một preset mang cùng một ý nghĩa dù bên nào đang phát, và đổi
+        profile không làm mức tín hiệu của bạn nhảy loạn.</p>
+      <p><b class="ui">Nạp tệp</b> nhận nhiều tệp <b class="ui">.nam</b> cùng lúc. Chọn nhiều hơn
+        một và app sẽ hỏi <b class="ui">Gộp các mô hình thành một bank?</b> —
+        <b class="ui">Gộp</b> tạo một bank từ chúng, <b class="ui">Chỉ cái đầu</b> chỉ nạp một.</p>
       <div class="note">
-        <div class="t">Ampli NAM là mono</div>
+        <div class="t">Một bản capture là mono</div>
         <p>Một bản capture NAM là một thiết bị mono — tín hiệu stereo tới block <b class="ui">Amp</b>
           sẽ bị cộng dồn (sum) trước khi đi vào. Hãy đặt các hiệu ứng stereo của bạn sau ampli,
           không phải trước nó.</p>
       </div>
 
-      <h3>Ba cách để tải một profile</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">Duyệt TONE3000</b> — thư viện online, được nói tới ở phần tiếp theo.</li>
-        <li>Biểu tượng sách, mở ra một sheet có tên <b class="ui">Profile NAM</b>. Chạm vào bất
-          kỳ hàng nào để tải nó vào amp hiện tại.</li>
-        <li>Các preset gốc tự phân giải profile riêng của chúng, nên tải <b class="ui">Crunch</b>
-          sẽ mang theo amp của nó.</li>
-      </ol>
-      <p>Sheet <b class="ui">Profile NAM</b> là thư viện cục bộ của bạn. Khi trống, nó hiện
-        <b class="ui">Các profile bạn tải từ TONE3000 nằm ở đây.</b> Menu thanh công cụ
-        của nó có <b class="ui">Nhập tệp .nam…</b> — một file picker chọn nhiều, chỉ nhận
-        file <b class="ui">.nam</b> — cùng với <b class="ui">Export all (N files)</b> và
-        <b class="ui">Cập nhật tất cả</b>. Mỗi hàng mang theo <b class="ui">Chia sẻ tệp .nam</b>,
-        <b class="ui">Xoá</b> và một nút làm mới (<b class="ui">Làm mới từ TONE3000</b>).</p>
-      <p>Nếu một model không đọc được, bạn sẽ thấy <b class="ui r">Could not load amp model
-        {filename}.</b> — thường là do file đã bị di chuyển hoặc xoá trong khi rig vẫn đang trỏ
-        tới nó.</p>
+      <h3>Bank và núm Model</h3>
+      <p>Một tone TONE3000 thường đi kèm nhiều model: cùng một ampli qua các micro, kênh hay thùng
+        loa khác nhau. Tải chúng về cùng lúc và chúng trở thành <b>bank</b> của block. Sheet khi đó
+        ghi <b class="ui">Bank: 6</b> (hoặc <b class="ui">Bank: 4/6</b> khi một vài cái bị để ngoài
+        dải quét) và một núm <b class="ui">Model</b> xuất hiện giữa hai núm chỉnh mức, hiện
+        <b class="ui">1/6 · SM57</b> khi bạn xoay. Nó là một núm vặn bình thường, nên nhấn giữ sẽ
+        cho ra <b class="ui">MIDI Learn</b>: từ đó một CC duy nhất đi hết cả bank ngay trên
+        pedalboard của bạn, và thay đổi được chuyển mượt (crossfade) chứ không cắt phựt, nên không
+        có tiếng click hay khoảng trống nào.</p>
+
+      <h3>Block NAM: pedal và thiết bị ngoài</h3>
+      <p>Một block <b class="ui">NAM</b> riêng mang đúng phía bản capture đó nhưng không có ampli
+        tích hợp, và đó là chỗ dành cho các bản capture của pedal và thiết bị ngoài. Bạn không cần
+        tự đặt nó: hãy nạp một bản capture pedal khi đang nhắm vào một block
+        <b class="ui">Amp</b>, và NAMper sẽ chèn một block <b class="ui">NAM</b> ngay trước ampli
+        đó rồi mở nó ra cho bạn.</p>
+
+      <h3>Thư viện</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="Sheet Profile NAM: các chip NAM và IR ở trên cùng, rồi các tone được nhóm dưới mục Ampli với ảnh bìa, tác giả và số lượng model.">
+        <figcaption>Thư viện: hai phía, và các tone được nhóm theo thứ chúng capture</figcaption>
+      </figure>
+      <p>Nút <b class="ui">Thư viện</b> mở một sheet có tên <b class="ui">Profile NAM</b> — mọi thứ
+        bạn đã tải về, dùng được offline. Hai chip ở trên cùng chia nó làm đôi:
+        <b class="ui">NAM</b> cho các bản capture và <b class="ui">IR</b> cho các impulse, mỗi cái
+        kèm một con số. Một block chỉ nhận một trong hai, nên chúng không bao giờ được liệt kê
+        chung, và block mà bạn mở thư viện từ đó sẽ chọn sẵn phía cho bạn.</p>
+      <p>Bên trong mỗi phía, các tone được nhóm theo thứ đã được capture: <b class="ui">Ampli</b>,
+        <b class="ui">Pedal</b>, <b class="ui">Outboard</b>, <b class="ui">Cabinet</b>,
+        <b class="ui">Không gian</b> và <b class="ui">Khác</b>. Mỗi hàng là một tone, không phải một
+        tệp: ảnh bìa, tiêu đề, <b class="ui">@author</b> và số model nó đi kèm. Một lần chạm sẽ nạp
+        nó — một tone có một model thì phát riêng, một tone có nhiều model thì trở thành bank của
+        block — và tone rơi đúng chỗ của nó: một ampli vào block <b class="ui">Amp</b>, một pedal
+        hay một thiết bị ngoài vào một block <b class="ui">NAM</b> trước đó, một thùng loa vào
+        <b class="ui">Cab</b> sau đó, một không gian vào <b class="ui">IR Verb</b>.</p>
+      <p>Chevron mở ra các model của tone. Trong tone <em>đang</em> là bank của block, mỗi model
+        mang một dấu tích: nó giữ model đó trong dải quét của núm <b class="ui">Model</b>, và một
+        lần chạm sẽ đưa núm tới đúng model đó. Ở bất kỳ tone nào khác, chạm vào một model sẽ phát
+        riêng model đó và xoá bank. Các model mà trang web có liệt kê nhưng bạn chưa có thì bị làm
+        mờ kèm biểu tượng đám mây; một lần chạm sẽ tải một cái về, và trong tone đang là bank nó sẽ
+        gia nhập dải quét.</p>
+      <p>Bên phải mỗi hàng tone: ngôi sao (yêu thích — đánh dấu sao một tone là đánh dấu tất cả
+        model của nó) và nút làm mới (<b class="ui">Làm mới từ TONE3000</b>, lấy lại metadata, ảnh
+        bìa và các tệp). Nhấn giữ, hoặc click phải vào một hàng, sẽ cho ra
+        <b class="ui">Mở trên TONE3000</b>, <b class="ui">Chia sẻ tệp .nam</b> /
+        <b class="ui">Chia sẻ tệp IR</b> và <b class="ui">Xoá</b>. Thanh công cụ có
+        <b class="ui">Nhập tệp…</b> — một file picker chọn nhiều, nhận cả bản capture
+        <b class="ui">.nam</b> lẫn impulse <b class="ui">.wav</b> — cùng với
+        <b class="ui">Xuất tất cả (N tệp)</b> và <b class="ui">Cập nhật tất cả</b>.</p>
+      <p>Khi trống, sheet hiện <b class="ui">Các profile bạn tải từ TONE3000 nằm ở đây.</b>
+        ở phía NAM và <b class="ui">Các cabinet và không gian bạn tải từ TONE3000 sẽ nằm ở
+        đây.</b> ở phía IR. Nếu một model không đọc được, bạn sẽ thấy <b class="ui r">Không tải được
+        model amp {filename}.</b> — thường là do file đã bị di chuyển hoặc xoá trong khi rig vẫn
+        đang trỏ tới nó.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 là một thư viện miễn phí gồm các bản capture ampli, và NAMper lấy trực tiếp từ
-        đó. Không có màn hình duyệt trong app: <b class="ui">Duyệt TONE3000</b> mở tone3000.com
-        bên trong một web sheet an toàn. Bạn tìm kiếm và lọc ngay trên website, chọn một tone, và
-        app sẽ lo phần còn lại — trong lúc tải, nút hiện <b class="ui">Đang tải…</b> và bị vô hiệu
+      <p>TONE3000 là một thư viện miễn phí gồm các bản capture, và NAMper lấy trực tiếp từ đó.
+        Không có màn hình duyệt trong app: <b class="ui">Duyệt TONE3000</b> mở tone3000.com bên
+        trong một web sheet an toàn. Bạn tìm kiếm và lọc ngay trên website, chọn một tone, và app
+        sẽ lo phần còn lại — trong lúc tải, nút hiện <b class="ui">Đang tải…</b> và bị vô hiệu
         hoá.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Sheet Connect TONE3000 hiện trên tab Rig, cung cấp nút Sign in to TONE3000 và Play offline cùng công tắc Don't ask again.">
-        <figcaption>Lời mời đăng nhập, hiện một lần mỗi lần mở app khi bạn chưa đăng nhập</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="Trang TONE3000 trong Cài đặt: hàng tài khoản với nút Đăng nhập TONE3000, và công tắc chọn preset gốc chạy trên amp tích hợp hay trên capture TONE3000.">
+        <figcaption>TONE3000 nằm trong Cài đặt và trong mọi block có thể nhận một bản capture</figcaption>
       </figure>
       <p>Đăng nhập là một lượt đăng nhập web thông thường, không phải dán API key, và nếu bạn đã
-        đăng nhập tone3000.com trên trình duyệt thì app sẽ dùng lại session đó. Thư viện được lọc
-        phía server chỉ còn các bản capture NAM kiến trúc A2 của ampli, full rig và pedal — điều
-        này cố định, không phải một cài đặt bạn có thể thay đổi.</p>
-      <p>Chọn một tone sẽ tải về model đầu tiên của tone đó — không có bộ chọn model — cùng với
-        ảnh bìa và metadata của nó. Mọi thứ được lưu vào thư mục <b class="ui">tones/</b> của app
-        và xuất hiện trong sheet <b class="ui">Profile NAM</b>.</p>
+        đăng nhập tone3000.com trên trình duyệt thì app sẽ dùng lại session đó. NAMper không bao giờ
+        hỏi ngay khi mở app — các preset gốc chạy trên các amp tích hợp và cabinet đi kèm, còn việc
+        đăng nhập xảy ra lần đầu tiên bạn bấm <b class="ui">Duyệt TONE3000</b>, hoặc từ
+        Cài đặt → <b class="ui">TONE3000</b>.</p>
+      <p>Catalogue cho bạn những gì là tuỳ vào block đã mở nó. Từ một block <b class="ui">Amp</b>
+        hoặc <b class="ui">NAM</b>, nó được lọc phía server chỉ còn các bản capture
+        <b class="ui">.nam</b> kiến trúc A2 của ampli, full rig, pedal và thiết bị ngoài. Từ một
+        block <b class="ui">Cab</b>, nó đưa ra các impulse thùng loa của trang, còn từ một
+        <b class="ui">IR Verb</b> là các không gian — tệp <b class="ui">.wav</b>, không phải bản
+        capture. Bộ lọc đó là cố định, không phải một cài đặt bạn có thể thay đổi.</p>
+      <p>Khi tone bạn chọn chỉ có một model, nó rơi thẳng vào block cùng ảnh bìa và metadata. Khi nó
+        có nhiều model, một bộ chọn mở ra: chạm vào một cái để phát riêng nó, hoặc tích vài cái rồi
+        <b class="ui">Tải {n} mô hình đã chọn vào bank</b> — cả tone là
+        <b class="ui">Tải cả {n} model vào bank</b>. Mọi thứ được lưu vào thư mục
+        <b class="ui">tones/</b> của app và gia nhập thư viện.</p>
 
-      <h3>Lời mời đăng nhập</h3>
-      <p>Một sheet có tên <b class="ui">Kết nối TONE3000</b> xuất hiện một lần mỗi lần mở app
-        khi bạn chưa đăng nhập, giải thích rằng các preset gốc stream các bản capture ampli thật
-        từ thư viện miễn phí. Nó đưa ra <b class="ui">Đăng nhập TONE3000</b> và
-        <b class="ui">Chơi offline</b>, cùng công tắc <b class="ui">Đừng hỏi lại</b>. Bạn cũng
-        có thể tắt hẳn nó trong Cài đặt → <b class="ui">LỜI NHẮC</b> →
-        <b class="ui">Mời đăng nhập TONE3000 khi mở app</b>.</p>
+      <h3>Preset gốc, trên capture hay trên amp tích hợp</h3>
+      <p>Cài đặt → <b class="ui">TONE3000</b> có một công tắc: <b class="ui">Amp tích hợp</b> hoặc
+        <b class="ui">Capture TONE3000</b>. Bốn rig gốc được tinh chỉnh quanh bốn bản capture công
+        khai — một Fender Deluxe Reverb, một Marshall Plexi, một Victory Kraken và một VOX AC30 —
+        và công tắc quyết định bank chạy cái nào trong hai. NAMper đưa ra lựa chọn này một lần, lần
+        đầu tiên bạn chọn một bản capture của riêng mình.</p>
 
       <h3>Chơi offline</h3>
-      <p>Bất cứ thứ gì đã tải về vẫn hoạt động dù không có mạng chút nào. Một rig gốc mà profile
-        chưa được cache sẽ quay về <b class="ui">Amp đèn</b> tích hợp đang bypass và một cab đi
-        kèm, và tiêu đề hiện <b class="ui">Amp đèn tích hợp</b> để bạn biết mình đang nghe gì.
-        Đăng nhập sau đó và các rig này sẽ tự phân giải về đúng bản capture thật tại chỗ — bạn
-        không cần dựng lại bất cứ thứ gì.</p>
+      <p>Bất cứ thứ gì đã tải về vẫn hoạt động dù không có mạng chút nào. Một block
+        <b class="ui">Amp</b> có bản capture chưa được cache sẽ tạm thời phát kiểu tiếng tích hợp
+        của chính nó và nói rõ điều đó
+        (<b class="ui">Chưa tải về — tạm thời amp tích hợp phát</b>), với block
+        <b class="ui">Cab</b> phía sau vẫn bật cho amp tích hợp. Đăng nhập sau đó và các block này
+        sẽ tự phân giải về đúng bản capture thật tại chỗ — bạn không cần dựng lại bất cứ thứ gì.</p>
       <div class="note warn">
         <div class="t">Không có chức năng đăng xuất</div>
         <p>NAMper không có nút đăng xuất TONE3000. Một khi session đã tồn tại, cách duy nhất để
@@ -366,15 +412,34 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Cab và IR</h2>
-      <p>Block <b class="ui">Cab</b> phát một impulse response — một thùng loa được thu bằng
-        micro. Sheet của nó hiển thị tên IR hiện tại, một nút menu ghi <b class="ui">Cabinet</b>,
-        một nút <b class="ui">Nạp tệp</b>, và một núm vặn: <b class="ui">Mức</b>, từ −12 tới
-        +12 dB. Khi một IR đã được tải, một nút <b class="ui">Bỏ IR</b> xuất hiện bên cạnh.</p>
-      <p><b class="ui">Nạp tệp</b> mở một file picker cho <b class="ui">.wav</b> và các định
-        dạng audio khác; bất cứ file nào bạn chọn đều được copy vào thư mục <b class="ui">irs/</b>
-        của app, nên nó vẫn còn dùng được kể cả khi bạn xoá file gốc. Cùng một block đó, khi dùng
-        như <b class="ui">IR Verb</b>, đổi tên menu thành <b class="ui">Không gian</b> và tải impulse
-        reverb thay vì thùng loa.</p>
+      <p>Block <b class="ui">Cab</b> phát một impulse response — một thùng loa được thu bằng micro.
+        Sheet của nó được dựng giống hệt một block capture: tên impulse chạy ngang trên cùng cùng
+        với <b class="ui">@author</b>, một mũi tên tới trang của tone và
+        <b class="ui">Bỏ IR</b> bên cạnh, ảnh bìa bên trái, và bốn cách nạp một impulse ở bên phải
+        — <b class="ui">Duyệt TONE3000</b>, <b class="ui">Thư viện</b>,
+        <b class="ui">Cabinet</b> và <b class="ui">Nạp tệp</b>. Dưới chúng là núm vặn riêng của
+        block, <b class="ui">Mức</b>, từ −12 tới +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="Sheet của block Cab: tên impulse và tác giả chạy ngang trên cùng, ảnh bìa bên trái, và các nút Duyệt TONE3000, Thư viện, Cabinet cùng Nạp tệp bên phải, với núm Mức bên dưới.">
+        <figcaption>Block Cab, được dựng giống phía capture của một ampli</figcaption>
+      </figure>
+      <p>Cùng block đó khi dùng như một <b class="ui">IR Verb</b> sẽ đổi tên menu thành
+        <b class="ui">Không gian</b>, nạp impulse reverb thay vì thùng loa, và mang theo
+        <b class="ui">Mix</b>, <b class="ui">Predelay</b> và <b class="ui">Mức</b>.</p>
+      <p><b class="ui">Duyệt TONE3000</b> mở các cabinet của trang khi đi từ một
+        <b class="ui">Cab</b> và các không gian của nó khi đi từ một <b class="ui">IR Verb</b>. Một
+        tone có nhiều impulse sẽ mở đúng bộ chọn mà các bản capture dùng: phát một cái, hoặc tích
+        vài cái và tải chúng vào bank của block. Sheet khi đó ghi <b class="ui">Bank: 6</b> và một
+        núm <b class="ui">Model</b> xuất hiện bên cạnh <b class="ui">Mức</b>, hiện
+        <b class="ui">1/6 · R121</b> khi bạn xoay — nhấn giữ nó sẽ cho ra
+        <b class="ui">MIDI Learn</b>, y hệt như trên ampli, nên một pedal expression hay một núm vặn
+        đi hết cả một bộ micro.</p>
+      <p><b class="ui">Nạp tệp</b> mở một file picker cho <b class="ui">.wav</b> và các định dạng
+        audio khác; bất cứ file nào bạn chọn đều được copy vào thư mục <b class="ui">irs/</b> của
+        app, nên nó vẫn còn dùng được kể cả khi bạn xoá file gốc. Các impulse bạn đã tải về xuất
+        hiện trong menu <b class="ui">Cabinet</b> / <b class="ui">Không gian</b> dưới mục
+        <b class="ui">Đã tải</b>, và ở phía <b class="ui">IR</b> của thư viện.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menu</th><th>Impulse response đi kèm</th></tr></thead>
@@ -394,16 +459,21 @@
       </div>
       <div class="note">
         <div class="t">Không phải ampli nào cũng cần cab</div>
-        <p>Một block <b class="ui">Cab</b> trống sẽ tự nói cho bạn biết vì sao nó có thể để
-          trống: <b class="ui">Chưa nạp IR — profile NAM amp+cab
-không cần IR</b>. Rất nhiều
-          bản capture TONE3000 được lấy từ output loa, đã bao gồm cả cab và micro; đặt thêm một
-          cab khác sau một bản như vậy sẽ khiến âm thanh đục và bí. Một <b class="ui">IR Verb</b>
-          trống thì hiện <b class="ui">Chưa nạp IR — chọn một không gian hoặc tệp</b> thay vào đó.</p>
+        <p>Rất nhiều bản capture TONE3000 được lấy từ output loa, đã bao gồm cả cab và micro; đặt
+          thêm một cab khác sau một bản như vậy sẽ khiến âm thanh đục và bí. NAMper đọc được điều đó
+          từ tone và tự xử lý: một bản capture full rig sẽ cho block <b class="ui">Cab</b> ngay sau
+          ampli nghỉ, còn một head trần hay một bản DI sẽ đánh thức nó. Một Cab đang nghỉ mà không
+          có impulse nào bên trong thì thậm chí không được vẽ trong chuỗi — nạp một impulse vào nó,
+          hoặc chuyển ampli về lại một head trần, và nó quay lại ngay. Footswitch của chính Cab luôn
+          có tiếng nói cuối cùng.</p>
+        <p>Một block <b class="ui">Cab</b> trống sẽ tự nói cho bạn biết vì sao nó có thể để trống:
+          <b class="ui">Chưa nạp IR — profile NAM amp+cab không cần IR</b>. Một
+          <b class="ui">IR Verb</b> trống thì hiện
+          <b class="ui">Chưa nạp IR — chọn một không gian hoặc tệp</b> thay vào đó.</p>
       </div>
-      <p>Sự cố IR hiện ra dưới dạng <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> hoặc
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>Sự cố IR hiện ra dưới dạng <b class="ui r">Thiếu tệp IR: {name}</b>,
+        <b class="ui r">Không đọc được IR {name}.</b> hoặc
+        <b class="ui r">Không nhập được {name}.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

@@ -77,7 +77,7 @@
         <li><a href="#blocks">La palette de blocs</a></li>
         <li><a href="#models">Modèles à l'intérieur des blocs</a></li>
         <li><a href="#eq">Les cinq modèles d'EQ</a></li>
-        <li><a href="#nam">Profils d'ampli NAM</a></li>
+        <li><a href="#nam">Captures NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Baffles et IR</a></li>
         <li><a href="#presets">Presets</a></li>
@@ -250,7 +250,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="La fiche du bloc EQ avec le modèle Passive sélectionné, montrant ses huit boutons : Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten et Atten Hz, avec les vumètres IN et OUT en haut.">
         <figcaption>Le bloc EQ sur le modèle Passive</figcaption>
       </figure>
@@ -261,96 +261,150 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>Profils d'ampli NAM</h2>
-      <p>Deux blocs différents vivent sous <b class="ui">Ampli &amp; Cab</b>, et ça vaut le coup
-        d'être clair sur lequel est lequel. <b class="ui">Ampli Lampes</b> est la propre simulation
-        d'ampli de NAMper, avec les sept modèles listés ci-dessus. <b class="ui">Ampli</b> est le
-        lecteur Neural Amp Modeler : il charge une capture <b class="ui">.nam</b> d'un véritable
-        amplificateur et la fait tourner.</p>
+      <h2 id="nam"><span class="n">02.4</span>Captures NAM</h2>
+      <p>Le bloc <b class="ui">Ampli</b> est un seul bloc avec deux sources. Deux puces en haut de
+        sa fiche choisissent entre les deux : <b class="ui">Intégré</b> est la propre simulation
+        d'ampli de NAMper, avec les sept voicings listés ci-dessus, <b class="ui">NAM</b> est le
+        lecteur Neural Amp Modeler qui fait tourner une capture <b class="ui">.nam</b> d'un
+        véritable amplificateur. Les deux vivent dans le même bloc, donc un preset transporte le
+        voicing sur lequel il a été construit <em>et</em> la capture autour de laquelle il a été
+        réglé, et passer de l'un à l'autre tient en un appui.</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="L'onglet Rig avec un profil NAM chargé : pochette, titre du tone et auteur sur la carte de l'ampli, vumètres verticaux IN et OUT de chaque côté, et la chaîne du signal de blocs en dessous.">
-        <figcaption>La carte de l'ampli avec un profil NAM chargé</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="L'onglet Rig : les vumètres IN et OUT en haut de la carte de la chaîne du signal, et en dessous la chaîne de blocs, avec le bloc Ampli qui nomme la capture qu'il joue.">
+        <figcaption>L'onglet Rig ; la puce Ampli nomme ce qu'elle joue</figcaption>
       </figure>
 
-      <h3>La carte de l'ampli</h3>
-      <p>En haut de l'onglet Rig, entre les vumètres <b class="ui">IN</b> et <b class="ui">OUT</b>,
-        la carte de l'ampli montre ce que le bloc <b class="ui">Ampli</b> joue actuellement : la
-        pochette, le titre du tone, le <b class="ui">@author</b>, jusqu'à six puces de métadonnées,
-        un compteur de téléchargements, un bouton <b class="ui">Parcourir TONE3000</b> et une icône de
-        livres (<b class="ui">Ouvrir la bibliothèque NAM</b>). Quand rien n'est chargé, elle affiche
-        <b class="ui">Ampli à lampes intégré</b>. Si un rig contient plus d'un ampli, des puces
-        <b class="ui">AMP 1</b>, <b class="ui">AMP 2</b> et ainsi de suite choisissent lequel la
-        carte modifie.</p>
-
-      <h3>Entrée et sortie</h3>
-      <p>La fiche du bloc <b class="ui">Ampli</b> est volontairement courte : le titre du profil (ou
-        <b class="ui">Aucun modèle chargé</b>), un bouton <b class="ui">Parcourir TONE3000</b>, et deux
-        boutons. <b class="ui">Entrée</b> et <b class="ui">Sortie</b> vont tous les deux de −20 à
-        +20 dB et démarrent à 0. Input pousse la capture plus fort, c'est comme ça que tu obtiens
-        plus ou moins de saturation d'un profil ; Output ajuste le résultat après coup.</p>
-      <p>La sortie NAM est normalisée automatiquement, à partir des métadonnées de loudness
-        contenues dans le modèle, vers une cible de −18 dB. C'est pour ça que passer d'un profil à
-        l'autre ne bouleverse pas tes niveaux, et ce n'est pas exposé comme un contrôle.</p>
+      <h3>Le côté capture</h3>
+      <p>Du côté <b class="ui">NAM</b>, la fiche affiche le nom du modèle (ou
+        <b class="ui">Aucun modèle chargé</b>), le <b class="ui">@author</b> et une flèche qui ouvre
+        le tone sur tone3000.com, la pochette à gauche, et trois façons d'obtenir une capture à
+        droite : <b class="ui">Parcourir TONE3000</b>, <b class="ui">Bibliothèque</b> et
+        <b class="ui">Charger un fichier</b>. En dessous se trouvent <b class="ui">Entrée</b> et
+        <b class="ui">Sortie</b>, tous deux de −20 à +20 dB et démarrant à 0. Input pousse la
+        capture plus fort, c'est comme ça que tu obtiens plus ou moins de saturation d'un profil ;
+        Output ajuste le résultat après coup.</p>
+      <p>Les niveaux sont mesurés, pas devinés : les deux sources sont à gain unitaire sur le même
+        DI de référence, donc le gain de sortie d'un preset veut dire la même chose quelle que soit
+        celle qui joue, et changer de profil ne bouleverse pas tes niveaux.</p>
+      <p><b class="ui">Charger un fichier</b> accepte plusieurs fichiers <b class="ui">.nam</b> à la
+        fois. Choisis-en plus d'un et l'appli demande <b class="ui">Regrouper les modèles dans une
+        banque ?</b> — <b class="ui">Regrouper</b> en fait une banque,
+        <b class="ui">Seulement le premier</b> n'en charge qu'un.</p>
       <div class="note">
-        <div class="t">L'ampli NAM est mono</div>
+        <div class="t">Une capture est mono</div>
         <p>Une capture NAM est un appareil mono — un signal stéréo qui arrive sur le bloc
           <b class="ui">Ampli</b> est sommé avant d'y entrer. Place tes effets stéréo après l'ampli,
           pas avant.</p>
       </div>
 
-      <h3>Trois façons de charger un profil</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">Parcourir TONE3000</b> — la bibliothèque en ligne, couverte dans la section
-          suivante.</li>
-        <li>L'icône de livres, qui ouvre une fiche intitulée <b class="ui">Profils NAM</b>. Appuie
-          sur une ligne pour la charger dans l'ampli actuel.</li>
-        <li>Les presets d'usine résolvent leurs propres profils, donc charger <b class="ui">Crunch</b>
-          ramène son ampli avec lui.</li>
-      </ol>
-      <p>La fiche <b class="ui">Profils NAM</b> est ta bibliothèque locale. Vide, elle affiche
-        <b class="ui">Les profils téléchargés depuis TONE3000 se rassemblent ici.</b> Son menu de barre
-        d'outils a <b class="ui">Importer des fichiers .nam…</b> — un sélecteur de fichiers multi-sélection
-        qui n'accepte que les fichiers <b class="ui">.nam</b> — ainsi que
-        <b class="ui">Export all (N files)</b> et <b class="ui">Tout mettre à jour</b>. Chaque ligne porte
-        <b class="ui">Partager le fichier .nam</b>, <b class="ui">Supprimer</b> et un bouton de rafraîchissement
-        (<b class="ui">Actualiser depuis TONE3000</b>).</p>
-      <p>Si un modèle ne peut pas être lu, tu obtiens <b class="ui r">Could not load amp model
-        {filename}.</b> — généralement un fichier qui a été déplacé ou supprimé sous le nez du
-        rig.</p>
+      <h3>Les banques et le bouton Modèle</h3>
+      <p>Un tone TONE3000 embarque souvent plusieurs modèles : le même ampli à travers différents
+        microphones, canaux ou baffles. Télécharge-les ensemble et ils deviennent la <b>banque</b>
+        du bloc. La fiche affiche alors <b class="ui">Banque : 6</b> (ou <b class="ui">Banque : 4
+        sur 6</b> quand certains sont laissés hors du balayage) et un bouton
+        <b class="ui">Modèle</b> apparaît entre les deux trims, affichant
+        <b class="ui">1/6 · SM57</b> quand il tourne. C'est un bouton ordinaire, donc un appui long
+        propose <b class="ui">MIDI Learn</b> : un seul CC parcourt alors toute la banque depuis ton
+        pedalboard, et le changement est fondu plutôt que coupé, donc rien ne clique ni ne
+        décroche.</p>
+
+      <h3>Le bloc NAM : pédales et périphériques externes</h3>
+      <p>Un bloc <b class="ui">NAM</b> séparé porte le même côté capture sans l'ampli intégré, et
+        c'est là que vont les captures de pédales et de périphériques externes. Tu n'as pas à le
+        placer toi-même : charge une capture de pédale alors qu'un bloc <b class="ui">Ampli</b> est
+        visé, et NAMper insère un bloc <b class="ui">NAM</b> juste avant cet ampli et l'ouvre pour
+        toi.</p>
+
+      <h3>La bibliothèque</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="La fiche Profils NAM : les puces NAM et IR en haut, puis les tones regroupés sous Amplis avec pochette, auteur et nombre de modèles.">
+        <figcaption>La bibliothèque : deux côtés, et les tones regroupés par ce qu'ils ont capturé</figcaption>
+      </figure>
+      <p>Le bouton <b class="ui">Bibliothèque</b> ouvre une fiche intitulée
+        <b class="ui">Profils NAM</b> — tout ce que tu as téléchargé, disponible hors ligne. Deux
+        puces en haut la coupent en deux : <b class="ui">NAM</b> pour les captures et
+        <b class="ui">IR</b> pour les impulsions, chacune avec un compteur. Un bloc ne prend que
+        l'un des deux, donc ils ne sont jamais listés ensemble, et le bloc depuis lequel tu as
+        ouvert la bibliothèque choisit le côté pour toi.</p>
+      <p>À l'intérieur d'un côté, les tones sont regroupés par ce qui a été capturé :
+        <b class="ui">Amplis</b>, <b class="ui">Pédales</b>, <b class="ui">Outboard</b>,
+        <b class="ui">Baffles</b>, <b class="ui">Espaces</b> et <b class="ui">Autres</b>. Chaque
+        ligne est un tone, pas un fichier : pochette, titre, <b class="ui">@author</b> et le nombre
+        de modèles qu'il embarque. Un appui le charge — un tone à un seul modèle joue seul, un tone
+        qui en a plusieurs devient la banque du bloc — et le tone atterrit là où il faut : un ampli
+        dans le bloc <b class="ui">Ampli</b>, une pédale ou un périphérique externe dans un bloc
+        <b class="ui">NAM</b> avant lui, un baffle dans le <b class="ui">Baffle</b> après lui, un
+        espace dans le <b class="ui">Réverb IR</b>.</p>
+      <p>Le chevron ouvre les modèles du tone. Dans le tone qui <em>est</em> la banque du bloc,
+        chaque modèle porte une coche : elle le garde dans le balayage du bouton
+        <b class="ui">Modèle</b>, et un appui amène le bouton dessus. Dans n'importe quel autre tone,
+        un appui sur un modèle joue ce modèle seul et vide la banque. Les modèles que le site liste
+        mais que tu n'as pas encore sont grisés avec une icône de nuage ; un appui en récupère un,
+        et dans le tone de la banque il rejoint le balayage.</p>
+      <p>À droite de chaque ligne de tone : l'étoile (un favori — mettre un tone en favori met tous
+        ses modèles en favori) et le bouton de rafraîchissement
+        (<b class="ui">Actualiser depuis TONE3000</b>, qui récupère à nouveau les métadonnées, la
+        pochette et les fichiers). Un appui long, ou un clic droit sur une ligne, propose
+        <b class="ui">Ouvrir sur TONE3000</b>, <b class="ui">Partager le fichier .nam</b> /
+        <b class="ui">Partager le fichier IR</b> et <b class="ui">Supprimer</b>. La barre d'outils a
+        <b class="ui">Importer des fichiers…</b> — un sélecteur multi-sélection qui accepte les
+        captures <b class="ui">.nam</b> et les impulsions <b class="ui">.wav</b> — ainsi que
+        <b class="ui">Tout exporter (N fichiers)</b> et <b class="ui">Tout mettre à jour</b>.</p>
+      <p>Vide, la fiche affiche <b class="ui">Les profils téléchargés depuis TONE3000 se rassemblent
+        ici.</b> du côté NAM et <b class="ui">Les baffles et les espaces téléchargés depuis TONE3000
+        s'accumulent ici.</b> du côté IR. Si un modèle ne peut pas être lu, tu obtiens
+        <b class="ui r">Impossible de charger le modèle d'ampli {filename}.</b> — généralement un
+        fichier qui a été déplacé ou supprimé sous le nez du rig.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 est une bibliothèque gratuite de captures d'amplis, et NAMper y puise
-        directement. Il n'y a pas d'écran de navigation dans l'appli : <b class="ui">Parcourir TONE3000</b> ouvre tone3000.com dans une fiche web sécurisée. Tu cherches et filtres sur
-        le site lui-même, tu choisis un tone, et l'appli prend le relais à partir de là — pendant
-        le téléchargement, le bouton affiche <b class="ui">Chargement…</b> et est désactivé.</p>
+      <p>TONE3000 est une bibliothèque gratuite de captures, et NAMper y puise directement. Il n'y
+        a pas d'écran de navigation dans l'appli : <b class="ui">Parcourir TONE3000</b> ouvre
+        tone3000.com dans une fiche web sécurisée. Tu cherches et filtres sur le site lui-même, tu
+        choisis un tone, et l'appli prend le relais à partir de là — pendant le téléchargement, le
+        bouton affiche <b class="ui">Chargement…</b> et est désactivé.</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="La fiche Connect TONE3000 au-dessus de l'onglet Rig, proposant les boutons Sign in to TONE3000 et Play offline avec un interrupteur Don't ask again.">
-        <figcaption>La proposition de connexion, affichée une fois par lancement tant que tu n'es
-          pas connecté</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="La page TONE3000 dans les Réglages : la ligne du compte avec un bouton Se connecter à TONE3000, et l'interrupteur des presets d'usine entre amplis intégrés et captures TONE3000.">
+        <figcaption>TONE3000 vit dans les Réglages et dans chaque bloc qui accepte une capture</figcaption>
       </figure>
       <p>La connexion est une connexion web ordinaire, pas une clé API à coller, et si tu es déjà
-        connecté à tone3000.com dans le navigateur, l'appli réutilise cette session. La bibliothèque
-        est filtrée côté serveur pour ne montrer que les captures NAM d'architecture A2 d'amplis,
-        de rigs complets et de pédales — c'est fixe, pas un réglage que tu peux changer.</p>
-      <p>Choisir un tone télécharge le premier modèle de ce tone — il n'y a pas de sélecteur de
-        modèle — avec sa pochette et ses métadonnées. Tout atterrit dans le dossier
-        <b class="ui">tones/</b> de l'appli et apparaît dans la fiche <b class="ui">Profils NAM</b>.</p>
+        connecté à tone3000.com dans le navigateur, l'appli réutilise cette session. NAMper ne la
+        demande jamais au lancement — les presets d'usine jouent sur les amplis intégrés et les
+        baffles fournis, et la connexion se fait la première fois que tu appuies sur
+        <b class="ui">Parcourir TONE3000</b>, ou depuis Réglages → <b class="ui">TONE3000</b>.</p>
+      <p>Ce que le catalogue propose dépend du bloc qui l'a ouvert. Depuis un bloc
+        <b class="ui">Ampli</b> ou un bloc <b class="ui">NAM</b>, il est filtré côté serveur pour ne
+        montrer que les captures <b class="ui">.nam</b> d'architecture A2 d'amplis, de rigs
+        complets, de pédales et de périphériques externes. Depuis un bloc <b class="ui">Baffle</b>,
+        il propose les impulsions de baffles du site, et depuis un <b class="ui">Réverb IR</b> ses
+        espaces — des fichiers <b class="ui">.wav</b>, pas des captures. Ce filtre est fixe, pas un
+        réglage que tu peux changer.</p>
+      <p>Quand le tone que tu as choisi n'a qu'un modèle, il atterrit directement dans le bloc avec
+        sa pochette et ses métadonnées. Quand il en a plusieurs, un sélecteur s'ouvre : appuie sur
+        l'un pour le jouer seul, ou coches-en quelques-uns et <b class="ui">Télécharger les {n}
+        sélectionnés dans la banque</b> — le tone entier, c'est <b class="ui">Télécharger les {n}
+        modèles dans la banque</b>. Tout atterrit dans le dossier <b class="ui">tones/</b> de
+        l'appli et rejoint la bibliothèque.</p>
 
-      <h3>La proposition de connexion</h3>
-      <p>Une fiche intitulée <b class="ui">Connecter TONE3000</b> apparaît une fois par lancement
-        tant que tu n'es pas connecté, expliquant que les presets d'usine diffusent de vraies
-        captures d'amplis depuis la bibliothèque gratuite. Elle propose <b class="ui">Se connecter à TONE3000</b> et <b class="ui">Jouer hors ligne</b>, avec un interrupteur <b class="ui">Ne plus demander</b>. Tu peux aussi la faire taire définitivement dans Réglages →
-        <b class="ui">INVITES</b> → <b class="ui">Proposer la connexion TONE3000 au lancement</b>.</p>
+      <h3>Les presets d'usine, sur captures ou intégrés</h3>
+      <p>Réglages → <b class="ui">TONE3000</b> porte un seul interrupteur :
+        <b class="ui">Amplis intégrés</b> ou <b class="ui">Captures TONE3000</b>. Les quatre rigs
+        d'usine ont été réglés autour de quatre captures publiques — un Fender Deluxe Reverb, un
+        Marshall Plexi, un Victory Kraken et un VOX AC30 — et l'interrupteur décide laquelle des
+        deux la banque joue. NAMper propose le choix une fois, la première fois que tu choisis une
+        capture à toi.</p>
 
       <h3>Jouer hors ligne</h3>
-      <p>Tout ce qui est déjà téléchargé continue de fonctionner sans réseau du tout. Un rig
-        d'usine dont le profil n'est pas mis en cache retombe sur son <b class="ui">Ampli Lampes</b>
-        intégré en bypass et un baffle fourni, et l'en-tête affiche <b class="ui">Ampli à lampes intégré</b> pour que tu saches ce que tu entends. Connecte-toi plus tard et ces rigs basculent
-        vers les vraies captures sur place — tu n'as rien à reconstruire.</p>
+      <p>Tout ce qui est déjà téléchargé continue de fonctionner sans réseau du tout. Un bloc
+        <b class="ui">Ampli</b> dont la capture n'est pas en cache joue son propre voicing intégré
+        en attendant et le dit (<b class="ui">Pas encore téléchargée : l'ampli intégré joue en
+        attendant</b>), avec le <b class="ui">Baffle</b> qui le suit réveillé pour l'ampli intégré.
+        Connecte-toi plus tard et ces blocs se résolvent en vraies captures sur place — tu n'as rien
+        à reconstruire.</p>
       <div class="note warn">
         <div class="t">Il n'y a pas de déconnexion</div>
         <p>NAMper n'a pas de bouton de déconnexion TONE3000. Une fois la session créée, le seul
@@ -373,16 +427,36 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Baffles et IR</h2>
-      <p>Le bloc <b class="ui">Baffle</b> joue une réponse impulsionnelle — un baffle capturé avec un
-        microphone. Sa fiche affiche le nom de l'IR actuelle, un bouton de menu intitulé
-        <b class="ui">Baffles</b>, un bouton <b class="ui">Charger un fichier</b>, et un bouton :
-        <b class="ui">Niveau</b>, −12 à +12 dB. Une fois une IR chargée, un bouton
-        <b class="ui">Effacer l'IR</b> apparaît à côté.</p>
+      <p>Le bloc <b class="ui">Baffle</b> joue une réponse impulsionnelle — un baffle capturé avec
+        un microphone. Sa fiche est construite comme celle d'un bloc de capture : le nom de
+        l'impulsion en haut avec le <b class="ui">@author</b>, une flèche vers la page du tone et
+        <b class="ui">Effacer l'IR</b> à côté, la pochette à gauche, et quatre façons d'en charger
+        une à droite — <b class="ui">Parcourir TONE3000</b>, <b class="ui">Bibliothèque</b>,
+        <b class="ui">Baffles</b> et <b class="ui">Charger un fichier</b>. En dessous se trouve le
+        bouton propre au bloc, <b class="ui">Niveau</b>, −12 à +12 dB.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="La fiche du bloc Baffle : le nom de l'impulsion et l'auteur en haut, la pochette à gauche, et les boutons Parcourir TONE3000, Bibliothèque, Baffles et Charger un fichier à droite, avec le bouton Niveau en dessous.">
+        <figcaption>Le bloc Baffle, construit comme le côté capture d'un ampli</figcaption>
+      </figure>
+      <p>Le même bloc utilisé comme <b class="ui">Réverb IR</b> intitule son menu
+        <b class="ui">Espaces</b> à la place, charge des impulsions de réverbération plutôt que des
+        baffles, et porte <b class="ui">Mix</b>, <b class="ui">Pré-delay</b> et
+        <b class="ui">Niveau</b>.</p>
+      <p><b class="ui">Parcourir TONE3000</b> ouvre les baffles du site depuis un
+        <b class="ui">Baffle</b> et ses espaces depuis un <b class="ui">Réverb IR</b>. Un tone qui a
+        plusieurs impulsions ouvre le même sélecteur que les captures : joues-en une, ou coches-en
+        quelques-unes et télécharge-les dans la banque du bloc. La fiche affiche alors
+        <b class="ui">Banque : 6</b> et un bouton <b class="ui">Modèle</b> apparaît à côté de
+        <b class="ui">Niveau</b>, affichant <b class="ui">1/6 · R121</b> quand il tourne — un appui
+        long dessus propose <b class="ui">MIDI Learn</b>, exactement comme sur l'ampli, donc une
+        seule pédale d'expression ou un seul bouton parcourt tout un jeu de microphones.</p>
       <p><b class="ui">Charger un fichier</b> ouvre un sélecteur de fichiers pour les <b class="ui">.wav</b>
         et autres formats audio ; ce que tu choisis est copié dans le dossier <b class="ui">irs/</b>
-        de l'appli, donc ça reste disponible même si tu supprimes l'original. Le même bloc, utilisé
-        comme <b class="ui">Réverb IR</b>, intitule son menu <b class="ui">Espaces</b> à la place et
-        charge des impulsions de réverbération plutôt que des baffles.</p>
+        de l'appli, donc ça reste disponible même si tu supprimes l'original. Les impulsions que tu
+        as téléchargées apparaissent dans le menu <b class="ui">Baffles</b> /
+        <b class="ui">Espaces</b> sous <b class="ui">Téléchargés</b>, et du côté
+        <b class="ui">IR</b> de la bibliothèque.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Menu</th><th>Réponses impulsionnelles fournies</th></tr></thead>
@@ -402,16 +476,21 @@
       </div>
       <div class="note">
         <div class="t">Tous les amplis n'ont pas besoin d'un baffle</div>
-        <p>Un bloc <b class="ui">Baffle</b> vide te dit pourquoi il pourrait rester vide :
-          <b class="ui">Aucune IR chargée — les profils NAM ampli+cab
-n'en ont pas besoin</b>. Beaucoup de
-          captures TONE3000 sont prises à la sortie du haut-parleur, baffle et micro inclus ;
-          ajouter un autre baffle après l'une d'elles rend le son terne et boîteux. Un
-          <b class="ui">Réverb IR</b> vide affiche <b class="ui">Aucune IR chargée — choisissez un espace ou un fichier</b> à la place.</p>
+        <p>Beaucoup de captures TONE3000 sont prises à la sortie du haut-parleur, baffle et micro
+          inclus ; ajouter un autre baffle après l'une d'elles rend le son terne et boîteux. NAMper
+          lit ça dans le tone et s'en occupe : une capture de rig complet met le
+          <b class="ui">Baffle</b> juste après l'ampli au repos, une tête seule ou un DI le
+          réveille. Un Baffle laissé au repos sans impulsion dedans n'est même pas dessiné dans la
+          chaîne — charge une impulsion dedans, ou remets l'ampli sur une tête seule, et il revient
+          aussitôt. Le footswitch du Baffle a toujours le dernier mot.</p>
+        <p>Un bloc <b class="ui">Baffle</b> vide dit pourquoi il pourrait rester vide :
+          <b class="ui">Aucune IR chargée — les profils NAM ampli+cab n'en ont pas besoin</b>. Un
+          <b class="ui">Réverb IR</b> vide affiche <b class="ui">Aucune IR chargée — choisissez un
+          espace ou un fichier</b> à la place.</p>
       </div>
-      <p>Les problèmes d'IR s'affichent comme <b class="ui r">IR file missing: {name}</b>,
-        <b class="ui r">Could not read IR {name}.</b> ou
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>Les problèmes d'IR s'affichent comme <b class="ui r">Fichier IR manquant : {name}</b>,
+        <b class="ui r">Impossible de lire l'IR {name}.</b> ou
+        <b class="ui r">Impossible d'importer {name}.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

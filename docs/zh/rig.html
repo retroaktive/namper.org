@@ -75,7 +75,7 @@
         <li><a href="#blocks">模块面板</a></li>
         <li><a href="#models">模块内部的型号</a></li>
         <li><a href="#eq">五种均衡模型</a></li>
-        <li><a href="#nam">NAM 音箱模型</a></li>
+        <li><a href="#nam">NAM 采样</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">箱体与 IR</a></li>
         <li><a href="#presets">预设</a></li>
@@ -237,7 +237,7 @@
         </table>
       </div>
       <figure>
-        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1304"
+        <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
              alt="EQ 模块面板，选中 Passive 模型，显示其八个旋钮：Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten 和 Atten Hz，顶部有 IN 和 OUT 电平表。">
         <figcaption>选中 Passive 模型的 EQ 模块</figcaption>
       </figure>
@@ -247,89 +247,128 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="nam"><span class="n">02.4</span>NAM 音箱模型</h2>
-      <p><b class="ui">音箱与箱体</b> 下面有两个不同的模块，值得弄清楚谁是谁。
-        <b class="ui">电子管音箱</b> 是 NAMper 自带的音箱模拟，上面列出的七种模型都在这里。
-        <b class="ui">音箱</b> 则是 Neural Amp Modeler 播放器：它加载一个真实音箱的
-        <b class="ui">.nam</b> 模型并运行它。</p>
+      <h2 id="nam"><span class="n">02.4</span>NAM 采样</h2>
+      <p><b class="ui">音箱</b> 是一个模块，两种声源。面板顶部的两个标签用来在它们之间切换：
+        <b class="ui">内置</b> 是 NAMper 自带的音箱模拟，上面列出的七种音色都在这里；
+        <b class="ui">NAM</b> 则是 Neural Amp Modeler 播放器，运行一个真实音箱的
+        <b class="ui">.nam</b> 采样。两者住在同一个模块里，所以一个预设既带着它所基于的
+        内置音色，<em>也</em>带着它围绕调校的那个采样，而在两者之间切换只需一次点击。</p>
       <figure>
-        <img class="phone" src="/docs/assets/rig.png" width="600" height="1304"
-             alt="Rig 标签页加载了一个 NAM 模型：音箱卡片上有封面图、音色标题和作者，两侧是竖直的 IN 和 OUT 电平表，下方是模块信号链。">
-        <figcaption>加载了 NAM 模型的音箱卡片</figcaption>
+        <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
+             alt="Rig 标签页：信号链卡片顶部横跨的 IN 和 OUT 电平表，下方是模块信号链，其中的 Amp 模块标注着它正在播放的采样。">
+        <figcaption>Rig 标签页；Amp 方块标注着它正在播放的内容</figcaption>
       </figure>
 
-      <h3>音箱卡片</h3>
-      <p>在 Rig 标签页顶部，<b class="ui">入</b> 和 <b class="ui">出</b> 电平表之间，
-        音箱卡片显示 <b class="ui">音箱</b> 模块当前正在播放的内容：封面图、音色标题、
-        <b class="ui">@author</b>、最多六个元数据标签、下载次数、一个
-        <b class="ui">浏览 TONE3000</b> 按钮，以及一个书本图标
-        （<b class="ui">打开 NAM 库</b>）。没有加载任何内容时会显示
-        <b class="ui">内置电子管音箱</b>。如果一个音色组里有不止一个 Amp，
-        <b class="ui">AMP 1</b>、<b class="ui">AMP 2</b> 等标签用来选择卡片编辑的是哪一个。</p>
-
-      <h3>Input 和 Output</h3>
-      <p><b class="ui">音箱</b> 模块面板刻意做得很简短：模型标题（或
-        <b class="ui">未加载模型</b>）、一个 <b class="ui">浏览 TONE3000</b> 按钮，
-        以及两个旋钮。<b class="ui">输入</b> 和 <b class="ui">输出</b> 都在 −20 到 +20 dB
-        之间，起始为 0。Input 把信号推得更猛，用来获得或多或少的破音；Output 则在之后
-        修整结果。</p>
-      <p>NAM 的输出会利用模型内部的响度元数据自动归一化到 −18 dB 的目标值。这就是为什么
-        在不同模型间切换时电平不会乱跳，而且它也没有作为一个可调控件暴露出来。</p>
+      <h3>采样一侧</h3>
+      <p>在 <b class="ui">NAM</b> 一侧，面板显示模型名称（或
+        <b class="ui">未加载模型</b>）、<b class="ui">@author</b> 以及一个在 tone3000.com
+        上打开该音色的箭头，左边是封面图，右边是获取采样的三种方式：
+        <b class="ui">浏览 TONE3000</b>、<b class="ui">资料库</b> 和
+        <b class="ui">加载文件</b>。下面是 <b class="ui">输入</b> 和
+        <b class="ui">输出</b>，都在 −20 到 +20 dB 之间，起始为 0。Input 把采样推得更猛，
+        这就是你从一个音色里得到或多或少破音的方式；Output 则在之后修整结果。</p>
+      <p>电平是实测出来的，不是猜的：两种声源在同一段参考 DI 上都是单位增益，所以无论哪一个
+        在发声，预设的输出增益都是同一个含义，换一个音色也不会把你的电平搞乱。</p>
+      <p><b class="ui">加载文件</b> 一次可以接受多个 <b class="ui">.nam</b> 文件。选中不止
+        一个时，应用会问 <b class="ui">将这些模型合并为一个模型库？</b>——
+        <b class="ui">合并</b> 会把它们做成一个模型库，<b class="ui">仅第一个</b> 则只加载一个。</p>
       <div class="note">
-        <div class="t">NAM 音箱是单声道的</div>
-        <p>一个 NAM 模型是一个单声道设备——到达 <b class="ui">音箱</b> 模块的立体声信号会先
+        <div class="t">采样是单声道的</div>
+        <p>一个 NAM 采样是一个单声道设备——到达 <b class="ui">音箱</b> 模块的立体声信号会先
           被合并为单声道再输入。请把立体声效果放在 Amp 之后，而不是之前。</p>
       </div>
 
-      <h3>加载模型的三种方式</h3>
-      <ol style="--nc:var(--amp)">
-        <li><b class="ui">浏览 TONE3000</b>——在线音色库，下一节会讲到。</li>
-        <li>书本图标，会打开一个标题为 <b class="ui">NAM 音色</b> 的面板。点击任意一行
-          即可将其加载到当前的 Amp 中。</li>
-        <li>出厂预设会自带各自的模型，所以加载 <b class="ui">过载</b> 会连带它的音箱
-          一起带过来。</li>
-      </ol>
-      <p><b class="ui">NAM 音色</b> 面板就是你的本地音色库。为空时它会显示
-        <b class="ui">从 TONE3000 下载的音色会汇集在这里。</b> 它的工具栏菜单里有
-        <b class="ui">导入 .nam 文件…</b>——一个只接受 <b class="ui">.nam</b> 文件、
-        支持多选的文件选择器——以及 <b class="ui">Export all (N files)</b> 和
-        <b class="ui">全部更新</b>。每一行都带有 <b class="ui">分享 .nam 文件</b>、
-        <b class="ui">删除</b> 和一个刷新按钮（<b class="ui">从 TONE3000 刷新</b>）。</p>
-      <p>如果一个模型无法读取，你会看到 <b class="ui r">Could not load amp model
-        {filename}.</b>——通常是因为文件在音色组不知情的情况下被移动或删除了。</p>
+      <h3>模型库与模型旋钮</h3>
+      <p>一个 TONE3000 音色常常自带很多模型：同一台音箱经由不同的麦克风、通道或箱体。把它们
+        一起下载下来，它们就成了这个模块的 <b>模型库</b>。面板随之显示
+        <b class="ui">音色库：6</b>（当有些模型被排除在扫描范围之外时，则是
+        <b class="ui">音色库：4 / 6</b>），两个修整旋钮之间会出现一个
+        <b class="ui">模型</b> 旋钮，转动时显示 <b class="ui">1/6 · SM57</b>。它就是一个
+        普通旋钮，所以长按会提供 <b class="ui">MIDI 学习</b>：一个 CC 就能从你的踏板上走遍
+        整个模型库，而且切换是交叉淡入而不是硬切，所以不会有咔哒声或声音中断。</p>
+
+      <h3>NAM 模块：单块与外置设备</h3>
+      <p>另有一个独立的 <b class="ui">NAM</b> 模块，它带有同样的采样一侧，但没有内置音箱，
+        单块和外置设备的采样就属于这里。你不必自己去摆放它：在瞄准某个
+        <b class="ui">音箱</b> 模块时加载一个单块采样，NAMper 就会在那台音箱之前插入一个
+        <b class="ui">NAM</b> 模块，并替你打开它。</p>
+
+      <h3>资料库</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
+             alt="NAM 音色面板：顶部是 NAM 和 IR 两个标签，下面是归在“音箱”类别下的音色，带有封面图、作者和模型数量。">
+        <figcaption>资料库：两侧分开，音色按采样对象分组</figcaption>
+      </figure>
+      <p><b class="ui">资料库</b> 按钮会打开一个标题为 <b class="ui">NAM 音色</b> 的面板——
+        你下载过的一切，离线也能用。顶部的两个标签把它一分为二：
+        <b class="ui">NAM</b> 放采样，<b class="ui">IR</b> 放脉冲，各自带一个数量。
+        一个模块只接受两者之一，所以它们从不混在一起列出，而你从哪个模块打开资料库，
+        它就替你选好了哪一侧。</p>
+      <p>在每一侧内部，音色按采样对象分组：<b class="ui">音箱</b>、
+        <b class="ui">单块</b>、<b class="ui">外置设备</b>、<b class="ui">箱体</b>、
+        <b class="ui">空间</b> 和 <b class="ui">其他</b>。每一行是一个音色，而不是一个文件：
+        封面图、标题、<b class="ui">@author</b> 以及它自带多少个模型。点击即可加载——只有
+        一个模型的音色单独发声，含多个模型的音色则成为这个模块的模型库——而且音色会落到
+        它该去的地方：音箱进 <b class="ui">音箱</b> 模块，单块或外置设备进它之前的
+        <b class="ui">NAM</b> 模块，箱体进它之后的 <b class="ui">箱体</b>，空间进
+        <b class="ui">IR混响</b>。</p>
+      <p>箭头会展开该音色的模型列表。在<em>正是</em>这个模块模型库的那个音色里，每个模型都
+        带一个勾选标记：它把该模型保留在 <b class="ui">模型</b> 旋钮的扫描范围内，点击则把
+        旋钮移到它上面。在其他任何音色里，点击一个模型会让它单独发声，并清空模型库。
+        网站上列出但你还没有的模型会以灰色加一个云朵图标显示；点击即可获取，
+        在作为模型库的那个音色里，它还会加入扫描范围。</p>
+      <p>每一行音色的右侧：星标（收藏——给一个音色加星会给它的所有模型都加星）和刷新按钮
+        （<b class="ui">从 TONE3000 刷新</b>，会重新获取元数据、封面和文件）。长按，
+        或在一行上右键，会提供 <b class="ui">在 TONE3000 打开</b>、
+        <b class="ui">分享 .nam 文件</b> / <b class="ui">分享 IR 文件</b> 和
+        <b class="ui">删除</b>。工具栏里有 <b class="ui">导入文件…</b>——一个支持多选、
+        接受 <b class="ui">.nam</b> 采样和 <b class="ui">.wav</b> 脉冲的文件选择器——
+        以及 <b class="ui">导出全部（N 个文件）</b> 和 <b class="ui">全部更新</b>。</p>
+      <p>面板为空时，NAM 一侧显示 <b class="ui">从 TONE3000 下载的音色会汇集在这里。</b>，
+        IR 一侧显示 <b class="ui">你从 TONE3000 下载的箱体和空间会集中在这里。</b>。
+        如果一个模型无法读取，你会看到 <b class="ui r">无法加载音箱模型
+        {filename}。</b>——通常是因为文件在音色组不知情的情况下被移动或删除了。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
-      <p>TONE3000 是一个免费的音箱模型库，NAMper 直接从中获取内容。应用内没有单独的浏览界面：
+      <p>TONE3000 是一个免费的采样库，NAMper 直接从中获取内容。应用内没有单独的浏览界面：
         <b class="ui">浏览 TONE3000</b> 会在一个安全的网页面板中打开 tone3000.com。你在网站
         本身上搜索和筛选，选中一个音色，剩下的交给应用处理——在获取过程中，按钮会显示
         <b class="ui">正在加载…</b> 并处于禁用状态。</p>
       <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1304"
-             alt="Rig 标签页上方弹出的 Connect TONE3000 面板，提供 Sign in to TONE3000 和 Play offline 按钮，以及一个 Don't ask again 开关。">
-        <figcaption>登录提示，未登录时每次启动出现一次</figcaption>
+        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
+             alt="设置里的 TONE3000 页面：带有 Sign in to TONE3000 按钮的账户行，以及在内置音箱和 TONE3000 采样之间切换出厂预设的开关。">
+        <figcaption>TONE3000 既在设置里，也在每一个能接受采样的模块里</figcaption>
       </figure>
       <p>登录是普通的网页登录方式，而不是粘贴 API 密钥；如果你在浏览器里已经登录了
-        tone3000.com，应用会直接复用该会话。音色库在服务器端被限定为 A2 架构的音箱、
-        完整音色组和效果器的 NAM 模型——这是固定的，不是你可以更改的设置。</p>
-      <p>选中一个音色会下载该音色的第一个模型——没有模型选择器——连同其封面图和元数据一起。
-        一切都会落在应用的 <b class="ui">tones/</b> 文件夹中，并出现在
-        <b class="ui">NAM 音色</b> 面板里。</p>
+        tone3000.com，应用会直接复用该会话。NAMper 从不在启动时索要它——出厂预设用内置音箱
+        和自带箱体就能发声，登录发生在你第一次按下 <b class="ui">浏览 TONE3000</b> 时，
+        或者从设置 → <b class="ui">TONE3000</b> 进入。</p>
+      <p>音色库提供什么，取决于是哪个模块打开了它。从 <b class="ui">音箱</b> 或
+        <b class="ui">NAM</b> 模块进入时，它在服务器端被限定为 A2 架构的音箱、完整音色组、
+        单块和外置设备的 <b class="ui">.nam</b> 采样。从 <b class="ui">箱体</b> 模块进入时，
+        它提供网站上的箱体脉冲；从 <b class="ui">IR混响</b> 进入时则是空间——
+        <b class="ui">.wav</b> 文件，而不是采样。这个筛选是固定的，不是你可以更改的设置。</p>
+      <p>当你选中的音色只有一个模型时，它会连同封面图和元数据一起直接落进模块。当它有多个
+        模型时，会打开一个选择器：点击其中一个可让它单独发声，或者勾选若干个再
+        <b class="ui">将所选 {n} 个下载到模型库</b>——整个音色则是
+        <b class="ui">将全部 {n} 个模型下载到音色库</b>。一切都会落在应用的
+        <b class="ui">tones/</b> 文件夹中，并加入资料库。</p>
 
-      <h3>登录提示</h3>
-      <p>标题为 <b class="ui">连接 TONE3000</b> 的面板会在你未登录时每次启动出现一次，
-        说明出厂预设会从这个免费音色库中流式播放真实音箱模型。它提供
-        <b class="ui">登录 TONE3000</b> 和 <b class="ui">离线使用</b> 两个选项，
-        以及一个 <b class="ui">不再询问</b> 开关。你也可以在设置 →
-        <b class="ui">提示</b> → <b class="ui">启动时提示登录 TONE3000</b>
-        中永久关闭它。</p>
+      <h3>出厂预设：用采样，还是用内置</h3>
+      <p>设置 → <b class="ui">TONE3000</b> 里有一个开关：<b class="ui">内置音箱</b> 或
+        <b class="ui">TONE3000 采样</b>。四个出厂音色组是围绕四个公开采样调校的——一台
+        Fender Deluxe Reverb、一台 Marshall Plexi、一台 Victory Kraken 和一台 VOX AC30——
+        这个开关决定预设组播放的是两者中的哪一个。NAMper 只会问你一次，就在你第一次选择
+        自己的采样时。</p>
 
       <h3>离线播放</h3>
-      <p>任何已经下载过的内容在完全没有网络的情况下也照常工作。一个出厂音色组如果其模型
-        没有被缓存，会退回到旁通状态下的内置 <b class="ui">电子管音箱</b> 和一个自带箱体，
-        并且顶部会显示 <b class="ui">内置电子管音箱</b>，让你清楚知道听到的是什么。
-        以后再登录，这些音色组会原地解析为真实模型——不需要重新搭建任何东西。</p>
+      <p>任何已经下载过的内容在完全没有网络的情况下也照常工作。采样没有被缓存的
+        <b class="ui">音箱</b> 模块会暂时用自己的内置音色发声，并把这一点写出来
+        （<b class="ui">尚未下载——暂时由内置音箱发声</b>），它之后的
+        <b class="ui">箱体</b> 也会为内置音箱而唤醒。以后再登录，这些模块会原地解析为
+        真实采样——不需要重新搭建任何东西。</p>
       <div class="note warn">
         <div class="t">没有退出登录</div>
         <p>NAMper 没有 TONE3000 的退出登录按钮。一旦会话存在，唯一清除它的方法就是删除
@@ -343,7 +382,7 @@
       <div class="note tip">
         <div class="t">下载与备份</div>
         <p><b class="ui">tones/</b> 文件夹被特意排除在 iCloud 备份之外——从备份恢复
-          不会带回你下载过的模型，因为 TONE3000 可以重新获取它们。如果某个特定的模型
+          不会带回你下载过的音色，因为 TONE3000 可以重新获取它们。如果某个特定的采样
           对你很重要，就从 <b class="ui">NAM 音色</b> 面板导出并保留这个文件。</p>
       </div>
     </section>
@@ -351,15 +390,31 @@
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>箱体与 IR</h2>
       <p><b class="ui">箱体</b> 模块播放一个脉冲响应——一个用麦克风采集的音箱箱体。它的面板
-        显示当前 IR 的名称、一个标为 <b class="ui">箱体</b> 的菜单按钮、一个
-        <b class="ui">加载文件</b> 按钮，以及一个旋钮：<b class="ui">电平</b>，
-        −12 到 +12 dB。加载了一个 IR 之后，旁边会出现一个 <b class="ui">清除 IR</b>
-        按钮。</p>
+        和采样模块的构造一样：顶部横排是脉冲的名称和 <b class="ui">@author</b>、一个通往
+        该音色页面的箭头，旁边是 <b class="ui">清除 IR</b>；左边是封面图，右边是加载脉冲的
+        四种方式——<b class="ui">浏览 TONE3000</b>、<b class="ui">资料库</b>、
+        <b class="ui">箱体</b> 和 <b class="ui">加载文件</b>。它们下面是这个模块自己的旋钮
+        <b class="ui">电平</b>，−12 到 +12 dB。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
+             alt="箱体模块面板：顶部横排是脉冲名称和作者，左边是封面图，右边是 Browse TONE3000、Library、Cabinets 和 Load file 按钮，下方是 Level 旋钮。">
+        <figcaption>箱体模块，构造和音箱的采样一侧一样</figcaption>
+      </figure>
+      <p>同一个模块用作 <b class="ui">IR混响</b> 时，菜单会改为标注
+        <b class="ui">空间</b>，加载的是混响脉冲而不是箱体，并带有
+        <b class="ui">混合</b>、<b class="ui">预延迟</b> 和 <b class="ui">电平</b>。</p>
+      <p><b class="ui">浏览 TONE3000</b> 从 <b class="ui">箱体</b> 进入时打开网站的箱体，
+        从 <b class="ui">IR混响</b> 进入时打开它的空间。含多个脉冲的音色会打开与采样相同的
+        那个选择器：让其中一个发声，或者勾选若干个下载到这个模块的模型库里。面板随之显示
+        <b class="ui">音色库：6</b>，<b class="ui">电平</b> 旁边会出现一个
+        <b class="ui">模型</b> 旋钮，转动时显示 <b class="ui">1/6 · R121</b>——长按它会提供
+        <b class="ui">MIDI 学习</b>，和在音箱上完全一样，于是一个表情踏板或旋钮就能走遍
+        一整套麦克风。</p>
       <p><b class="ui">加载文件</b> 会打开一个文件选择器，接受 <b class="ui">.wav</b>
         及其他音频格式；无论你选择什么，都会被复制到应用的 <b class="ui">irs/</b>
-        文件夹中，所以即使删除原始文件它也依然可用。同一个模块用作
-        <b class="ui">IR混响</b> 时，菜单会改为标注 <b class="ui">空间</b>，
-        加载的是混响脉冲而不是箱体。</p>
+        文件夹中，所以即使删除原始文件它也依然可用。你下载过的脉冲会出现在
+        <b class="ui">箱体</b> / <b class="ui">空间</b> 菜单中的 <b class="ui">已下载</b>
+        之下，也出现在资料库的 <b class="ui">IR</b> 一侧。</p>
       <div class="tw">
         <table>
           <thead><tr><th>菜单</th><th>内置脉冲响应</th></tr></thead>
@@ -379,16 +434,19 @@
       </div>
       <div class="note">
         <div class="t">不是每个音箱都需要箱体</div>
-        <p>一个空的 <b class="ui">箱体</b> 模块会直接告诉你它为什么可能应该保持空置：
+        <p>相当多的 TONE3000 采样取自音箱的扬声器输出，本身已经包含箱体和麦克风；在这类
+          采样后面再加一个箱体只会让声音变得沉闷、发闷。NAMper 会从音色里读出这一点并加以
+          处理：完整音色组的采样会让音箱之后的 <b class="ui">箱体</b> 休眠，而单独的箱头
+          或 DI 则会唤醒它。休眠且里面没有脉冲的箱体甚至不会画进信号链——给它加载一个脉冲，
+          或者把音箱换回单独的箱头，它就会立刻回来。箱体自己的踏板开关永远拥有最终决定权。</p>
+        <p>一个空的 <b class="ui">箱体</b> 模块会说明它为什么可能保持空置：
           <b class="ui">未加载 IR——含箱体的 NAM 音色
-无需 IR</b>。相当多的
-          TONE3000 模型采样自音箱的扬声器输出，本身已经包含箱体和麦克风；在这类模型后面
-          再加一个箱体只会让声音变得沉闷、发闷。空的 <b class="ui">IR混响</b> 则会显示
-          <b class="ui">未加载 IR——选择空间或文件</b>。</p>
+无需 IR</b>。空的
+          <b class="ui">IR混响</b> 则显示 <b class="ui">未加载 IR——选择空间或文件</b>。</p>
       </div>
-      <p>IR 相关的问题会显示为 <b class="ui r">IR file missing: {name}</b>、
-        <b class="ui r">Could not read IR {name}.</b> 或
-        <b class="ui r">Could not import {name}.</b></p>
+      <p>IR 相关的问题会显示为 <b class="ui r">缺少 IR 文件：{name}</b>、
+        <b class="ui r">无法读取 IR {name}。</b> 或
+        <b class="ui r">无法导入 {name}。</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
