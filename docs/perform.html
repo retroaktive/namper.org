@@ -168,9 +168,7 @@
         imports audio files (one song each), adds a <b class="ui">Song without backing</b>, or
         builds a song straight <b class="ui">From rig preset</b>. With <b class="ui">AUTO NEXT</b>
         on, the set walks itself forward as each song finishes.</p>
-      <p>Each row shows a play button (<b class="ui">Play song</b>), the name, what the song brings
-        up underneath it, and an edit button (<b class="ui">Edit song</b>). The list is always in
-        edit mode: drag a row to reorder the set, swipe a row to delete it.</p>
+      <p>Each row shows a play button (<b class="ui">Play song</b>), the name, what the song brings up underneath it, and an edit button (<b class="ui">Edit song</b>). The list is always in edit mode: drag a row to reorder the set. A song leaves the set from its editor — <b class="ui">Delete song</b> at the bottom of the sheet.</p>
       <div class="note tip">
         <div class="t">Tapping a row cues, it does not start</div>
         <p>Tap a song and NAMper applies everything it brings up, loads its backing track, takes its
@@ -197,9 +195,7 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="sections"><span class="n">06.4</span>What a song brings up</h2>
-      <p>The edit button opens the song editor: a <b class="ui">Song name</b> field, a backing
-        picker whose first entry is <b class="ui">Song without backing</b>, the
-        <a href="#lyrics">lyrics</a> row, and the list of what the song recalls.</p>
+      <p>The edit button opens the song editor: a <b class="ui">Song name</b> field, a backing picker whose first entry is <b class="ui">Song without backing</b>, the <a href="#lyrics">lyrics</a> row, the list of what the song recalls, and <b class="ui">Delete song</b> at the bottom.</p>
       <p>A song with no backing track also gets a <b class="ui">Length</b> row — the timeline it
         runs on. Set one and the transport counts it out on a clock instead of on audio: the
         <a href="#lyrics">words scroll</a> across it, markers fire on it, and the song ends when the
@@ -330,11 +326,14 @@
       <p>An anchor is how you teach the text your song. <strong>Hold a line for about a third of a
         second and it is pinned to the current moment.</strong> Hold an already-anchored line to
         remove the anchor. An anchored line is marked with a filled bar in its left margin.</p>
-      <p>An anchor means one thing: <em>at this time, this line is the one being sung</em>. That
-        line is lit while the rest are dimmed, and it sits about a fifth of the way down the page —
-        never flush with the top edge — so there is run-up above it and the next lines are already
-        in view. Between anchors the words move a line at a time, measured in reading time rather
-        than in pixels: a blank line costs nothing, a wrapped line costs the room it fills, and a
+      <p>An anchor means one thing: <em>at this time, this line is the one being sung</em>. Nothing
+        is lit for it: every line is drawn at the same brightness, and only the anchored ones keep
+        their coloured bar in the left margin. Which line is being sung is inferred from the anchors
+        and the reading weight, so it is a guess, and a guess one line out sends the eye to the
+        wrong words — worse than no highlight at all. The page still glides so that line sits about
+        a fifth of the way down — never flush with the top edge — so there is run-up above it and
+        the next lines are already in view. Between anchors the words move a line at a time,
+        measured in reading time rather than in pixels: a blank line costs nothing, a wrapped line costs the room it fills, and a
         long instrumental leaves the page waiting on its line instead of crawling through the verse
         ahead of the singing. It can never scroll backwards, even if you place anchors out of
         order — a teleprompter that jumps back mid-verse is worse than one that is slightly

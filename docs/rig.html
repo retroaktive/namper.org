@@ -308,22 +308,11 @@
       <h3>The library</h3>
       <figure>
         <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
-             alt="The NAM Profiles sheet: NAM and IR chips at the top, then tones grouped under Amplifiers with cover art, author and model counts.">
-        <figcaption>The library: two sides, and tones grouped by what they captured</figcaption>
+             alt="The NAM Profiles sheet: NAM, Cab and IR Verb chips at the top, then the built-in cabinets listed on the Cab side.">
+        <figcaption>The library: three sides, one per block, the built-ins next to your downloads</figcaption>
       </figure>
-      <p>The <b class="ui">Library</b> button opens a sheet titled <b class="ui">NAM Profiles</b> —
-        everything you have downloaded, available offline. Two chips at the top split it in half:
-        <b class="ui">NAM</b> for captures and <b class="ui">IR</b> for impulses, each with a count.
-        A block only takes one of the two, so they are never listed together, and the block you
-        opened the library from picks the side for you.</p>
-      <p>Inside a side, tones are grouped by what was captured: <b class="ui">Amplifiers</b>,
-        <b class="ui">Pedals</b>, <b class="ui">Outboard</b>, <b class="ui">Cabinets</b>,
-        <b class="ui">Spaces</b> and <b class="ui">Other</b>. Each row is a tone, not a file: cover
-        art, title, <b class="ui">@author</b> and how many models it ships. A tap loads it — a tone
-        with one model plays alone, a tone with several becomes the block's bank — and the tone
-        lands where it belongs: an amp in the <b class="ui">Amp</b> block, a pedal or an outboard
-        box in a <b class="ui">NAM</b> block before it, a cabinet in the <b class="ui">Cab</b>
-        after it, a space in the <b class="ui">IR Verb</b>.</p>
+      <p>The <b class="ui">Library</b> button opens a sheet titled <b class="ui">NAM Profiles</b> — everything you have downloaded, available offline. Three chips at the top split it by block: <b class="ui">NAM</b> for captures, <b class="ui">Cab</b> for cabinet impulses and <b class="ui">IR Verb</b> for the reverb's impulses — spaces, outboard boxes and experiments — each with a count. A block only takes one of the three, so they are never listed together, and the block you opened the library from picks the side for you. The impulses shipped with the app sit on their sides under <b class="ui">Built-in</b>, next to the ones you download.</p>
+      <p>Inside a side, tones are grouped by what was captured: <b class="ui">Built-in</b> first, then <b class="ui">Amplifiers</b>, <b class="ui">Pedals</b>, <b class="ui">Outboard</b>, <b class="ui">Experimental</b>, <b class="ui">Cabinets</b>, <b class="ui">Spaces</b> and <b class="ui">Other</b>. Each row is a tone, not a file: cover art, title, <b class="ui">@author</b> and how many models it ships. A tap loads it — a tone with one model plays alone, a tone with several becomes the block's bank — and the tone lands where it belongs: an amp in the <b class="ui">Amp</b> block, a pedal or an outboard box in a <b class="ui">NAM</b> block before it, a cabinet in the <b class="ui">Cab</b> after it, a space in the <b class="ui">IR Verb</b>.</p>
       <p>The chevron opens the tone's models. In the tone that <em>is</em> the block's bank each
         model carries a checkmark: it keeps that model in the <b class="ui">Model</b> knob's sweep,
         and a tap moves the knob onto it. In any other tone a tap on a model plays that model alone
@@ -337,11 +326,8 @@
         <b class="ui">Import files…</b> — a multi-select picker that takes <b class="ui">.nam</b>
         captures and <b class="ui">.wav</b> impulses — along with
         <b class="ui">Export all (N files)</b> and <b class="ui">Update all</b>.</p>
-      <p>Empty, the sheet reads <b class="ui">Profiles you download from TONE3000 collect here.</b>
-        on the NAM side and <b class="ui">Cabinets and spaces you download from TONE3000 collect
-        here.</b> on the IR side. If a model cannot be read you get <b class="ui r">Could not load
-        amp model {filename}.</b> — usually a file that was moved or deleted out from under the
-        rig.</p>
+      <p>Empty, the <b class="ui">NAM</b> side reads <b class="ui">Profiles you download from TONE3000 collect here.</b>; the impulse sides always hold at least the built-ins. If a model cannot be read you get <b class="ui r">Could not load
+        amp model {filename}.</b> — usually a file that was moved or deleted out from under the rig.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -351,16 +337,11 @@
         web sheet. You search and filter on the website itself, pick a tone, and the app takes it
         from there — while it fetches, the button reads <b class="ui">Loading…</b> and is
         disabled.</p>
-      <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
-             alt="The TONE3000 page in Settings: the account row with a Sign in to TONE3000 button, and the factory-presets switch between built-in amps and TONE3000 captures.">
-        <figcaption>TONE3000 lives in Settings and in every block that can take a capture</figcaption>
-      </figure>
       <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
         in to tone3000.com in the browser the app reuses that session. NAMper never asks for it at
         launch — the factory presets play on the built-in amps and the bundled cabinets, and the
-        sign-in happens the first time you press <b class="ui">Browse TONE3000</b>, or from
-        Settings → <b class="ui">TONE3000</b>.</p>
+        sign-in happens the first time you press <b class="ui">Browse TONE3000</b> in a block that
+        takes a capture. Settings has no <b class="ui">TONE3000</b> page.</p>
       <p>What the catalogue offers depends on the block that opened it. From an <b class="ui">Amp</b>
         or a <b class="ui">NAM</b> block it is filtered server-side to A2-architecture
         <b class="ui">.nam</b> captures of amps, full rigs, pedals and outboard gear. From a
@@ -374,8 +355,9 @@
         <b class="ui">tones/</b> folder and joins the library.</p>
 
       <h3>The factory presets, on captures or built-in</h3>
-      <p>Settings → <b class="ui">TONE3000</b> carries one switch: <b class="ui">Built-in amps</b>
-        or <b class="ui">TONE3000 captures</b>. The four factory rigs were voiced around four
+      <p>The Settings index carries one switch, under <b class="ui">FACTORY PRESETS</b>:
+        <b class="ui">Built-in amps</b> or <b class="ui">TONE3000 captures</b>. The four factory
+        rigs were voiced around four
         public captures — a Fender Deluxe Reverb, a Marshall Plexi, a Victory Kraken and a VOX AC30
         — and the switch decides which of the two the bank plays. NAMper offers the choice once,
         the first time you pick a capture of your own.</p>
@@ -407,21 +389,13 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
-      <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with
-        a microphone. Its sheet is built like a capture block's: the impulse's name across the top
-        with the <b class="ui">@author</b>, an arrow to the tone's page and
-        <b class="ui">Clear IR</b> beside it, the cover art on the left, and four ways to load one
-        on the right — <b class="ui">Browse TONE3000</b>, <b class="ui">Library</b>,
-        <b class="ui">Cabinets</b> and <b class="ui">Load file</b>. Under them sits the block's own
-        knob, <b class="ui">Level</b>, −12 to +12 dB.</p>
+      <p>The <b class="ui">Cab</b> block plays an impulse response — a speaker cabinet captured with a microphone. Its sheet is built like a capture block's: the impulse's name across the top with the <b class="ui">@author</b>, an arrow to the tone's page and <b class="ui">Clear IR</b> beside it, the cover art on the left, and three ways to load one on the right — <b class="ui">Browse TONE3000</b>, <b class="ui">Library</b> and <b class="ui">Load file</b>. Under them sits the block's own knob, <b class="ui">Level</b>, −12 to +12 dB.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="The Cab block sheet: the impulse name and author across the top, cover art on the left, and the Browse TONE3000, Library, Cabinets and Load file buttons on the right, with the Level knob below.">
+             alt="The Cab block sheet: the impulse name and author across the top, cover art on the left, and the Browse TONE3000, Library and Load file buttons on the right, with the Level knob below.">
         <figcaption>The Cab block, built like the capture side of an amp</figcaption>
       </figure>
-      <p>The same block used as an <b class="ui">IR Verb</b> labels its menu
-        <b class="ui">Spaces</b> instead, loads reverb impulses rather than cabinets, and carries
-        <b class="ui">Mix</b>, <b class="ui">Predelay</b> and <b class="ui">Level</b>.</p>
+      <p>The same block used as an <b class="ui">IR Verb</b> loads reverb impulses rather than cabinets — the library's <b class="ui">IR Verb</b> side: spaces, outboard boxes and experiments — and carries <b class="ui">Mix</b>, <b class="ui">Predelay</b> and <b class="ui">Level</b>.</p>
       <p><b class="ui">Browse TONE3000</b> opens the site's cabinets from a <b class="ui">Cab</b>
         and its spaces from an <b class="ui">IR Verb</b>. A tone with several impulses opens the
         same picker the captures use: play one, or tick a few and download them into the block's
@@ -429,23 +403,19 @@
         appears beside <b class="ui">Level</b>, reading <b class="ui">1/6 · R121</b> as it turns —
         a long press on it offers <b class="ui">MIDI Learn</b>, exactly as on the amp, so one
         expression pedal or knob walks a whole set of microphones.</p>
-      <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio;
-        whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays
-        available even if you delete the original. Impulses you have downloaded appear in the
-        <b class="ui">Cabinets</b> / <b class="ui">Spaces</b> menu under
-        <b class="ui">Downloaded</b>, and on the <b class="ui">IR</b> side of the library.</p>
+      <p><b class="ui">Load file</b> opens a file picker for <b class="ui">.wav</b> and other audio; whatever you choose is copied into the app's <b class="ui">irs/</b> folder, so it stays available even if you delete the original. A file loaded into a <b class="ui">Cab</b> lands on the library's <b class="ui">Cab</b> side, one loaded into an <b class="ui">IR Verb</b> on its <b class="ui">IR Verb</b> side.</p>
       <div class="tw">
         <table>
-          <thead><tr><th>Menu</th><th>Bundled impulse responses</th></tr></thead>
+          <thead><tr><th>Library side</th><th>Bundled impulse responses</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Cabinets</b></td>
+            <tr><td><b class="ui">Cab</b></td>
               <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
                 <b class="ui">V30 412 SM57 - Cookie Monster</b>,
                 <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
-            <tr><td><b class="ui">Spaces</b></td>
+            <tr><td><b class="ui">IR Verb</b></td>
               <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
                 <b class="ui">Plate 1.6s</b></td></tr>
           </tbody>

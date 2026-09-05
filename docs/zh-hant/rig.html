@@ -297,20 +297,11 @@
       <h3>資料庫</h3>
       <figure>
         <img class="phone" src="/docs/assets/library.png" width="600" height="1303"
-             alt="NAM 音色面板：頂部是 NAM 和 IR 晶片，下面是歸在音箱一組下的音色，帶封面圖、作者和模型數量。">
-        <figcaption>資料庫：分成兩側，音色按採集對象分組</figcaption>
+             alt="NAM Profiles 面板：頂部是 NAM、Cab 和 IR Verb 標籤，下方是 Cab 一側的內建箱體。">
+        <figcaption>資料庫：三側，每個模組一側，內建項與下載項並列</figcaption>
       </figure>
-      <p><b class="ui">資料庫</b> 按鈕會打開一個標題為 <b class="ui">NAM 音色</b> 的面板——
-        你下載過的一切，離線可用。頂部的兩個晶片把它一分為二：<b class="ui">NAM</b> 對應
-        擷取，<b class="ui">IR</b> 對應脈衝，各自帶一個數量。一個模塊只接受兩者之一，所以
-        它們從不列在一起，而你從哪個模塊打開資料庫，就由它替你選定哪一側。</p>
-      <p>在某一側內部，音色按採集對象分組：<b class="ui">音箱</b>、<b class="ui">單塊</b>、
-        <b class="ui">外接器材</b>、<b class="ui">箱體</b>、<b class="ui">空間</b> 和
-        <b class="ui">其他</b>。每一行是一個音色，而不是一個文件：封面圖、標題、
-        <b class="ui">@author</b> 以及它自帶多少個模型。點擊即可加載——只有一個模型的音色
-        單獨播放，有多個的音色則成為這個模塊的音色庫——而且音色會落到它該去的地方：音箱進
-        <b class="ui">音箱</b> 模塊，單塊或外接器材進它前面的一個 <b class="ui">NAM</b>
-        模塊，箱體進它後面的 <b class="ui">箱體</b>，空間進 <b class="ui">IR混響</b>。</p>
+      <p><b class="ui">資料庫</b> 按鈕開啟名為 <b class="ui">NAM 音色</b> 的面板——你下載的一切，離線可用。頂部三個標籤依模組劃分：<b class="ui">NAM</b> 是採樣，<b class="ui">箱體</b> 是箱體脈衝，<b class="ui">IR混響</b> 是殘響的脈衝——空間、外部器材與實驗——各自帶計數。一個模組只接受三者之一，所以它們從不同列，開啟資料庫的那個模組替你選好一側。應用內建的脈衝位於各自一側的 <b class="ui">內建</b> 下，與下載的並列。</p>
+      <p>在一側內，音色依採樣對象分組：先是 <b class="ui">內建</b>，然後是 <b class="ui">音箱</b>、<b class="ui">單塊</b>、<b class="ui">外接器材</b>、<b class="ui">實驗性</b>、<b class="ui">箱體</b>、<b class="ui">空間</b> 和 <b class="ui">其他</b>。每一列是一個音色而非檔案：封面、標題、<b class="ui">@author</b> 和它攜帶的模型數。輕點即載入——單模型音色單獨播放，多模型音色成為模組的音色庫——音色落到該去的地方：音箱頭進 <b class="ui">音箱</b> 模組，踏板或外部器材進它前面的 <b class="ui">NAM</b> 模組，箱體進它後面的 <b class="ui">箱體</b>，空間進 <b class="ui">IR混響</b>。</p>
       <p>箭頭可以展開這個音色的各個模型。在<em>正是</em>該模塊音色庫的那個音色裡，每個模型
         都帶一個勾：勾把該模型留在 <b class="ui">模型</b> 旋鈕的掃描範圍內，點擊則把旋鈕移
         到它上面。在其他任何音色裡，點擊一個模型會單獨播放該模型並清空音色庫。網站上列出但
@@ -323,11 +314,7 @@
         <b class="ui">刪除</b>。工具欄裡有 <b class="ui">匯入檔案…</b>——一個支持多選、接受
         <b class="ui">.nam</b> 擷取和 <b class="ui">.wav</b> 脈衝的文件選擇器——以及
         <b class="ui">導出全部（N 個文件）</b> 和 <b class="ui">全部更新</b>。</p>
-      <p>為空時，面板在 NAM 那一側顯示
-        <b class="ui">從 TONE3000 下載的音色會匯集在這裡。</b>，在 IR 那一側顯示
-        <b class="ui">你從 TONE3000 下載的箱體與空間會集中在這裡。</b>。如果一個模型無法
-        讀取，你會看到 <b class="ui r">無法加載音箱模型 {filename}。</b>——通常是因為文件
-        在音色組不知情的情況下被移動或刪除了。</p>
+      <p>為空時，<b class="ui">NAM</b> 一側顯示 <b class="ui">從 TONE3000 下載的音色會匯集在這裡。</b>；脈衝兩側至少總有內建項。模型無法讀取時會出現 <b class="ui r">無法加載音箱模型 {filename}。</b>——通常是檔案在 rig 之下被移動或刪除了。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -336,15 +323,10 @@
         <b class="ui">瀏覽 TONE3000</b> 會在一個安全的網頁面板中打開 tone3000.com。你在網站
         本身上搜索和篩選，選中一個音色，剩下的交給應用處理——在獲取過程中，按鈕會顯示
         <b class="ui">正在加載…</b> 並處於禁用狀態。</p>
-      <figure>
-        <img class="phone" src="/docs/assets/tone3000.png" width="600" height="1303"
-             alt="設置裡的 TONE3000 頁面：帶有 Sign in to TONE3000 按鈕的帳戶行，以及在內建音箱和 TONE3000 擷取之間切換的出廠預設開關。">
-        <figcaption>TONE3000 既在設置裡，也在每個能接受擷取的模塊裡</figcaption>
-      </figure>
       <p>登錄是普通的網頁登錄方式，而不是粘貼 API 密鑰；如果你在瀏覽器裡已經登錄了
         tone3000.com，應用會直接復用該會話。NAMper 從不在啟動時要求它——出廠預設用內建音箱
-        和隨附箱體發聲，登錄發生在你第一次按下 <b class="ui">瀏覽 TONE3000</b> 的時候，或者
-        從設置 → <b class="ui">TONE3000</b> 進入。</p>
+        和隨附箱體發聲，登錄發生在你第一次在需要擷取的模塊裡按下 <b class="ui">瀏覽 TONE3000</b> 的時候，
+        設置裡已經沒有 <b class="ui">TONE3000</b> 頁面了。</p>
       <p>音色庫提供什麼，取決於是哪個模塊打開了它。從一個 <b class="ui">音箱</b> 或
         <b class="ui">NAM</b> 模塊進入時，它在伺服器端被限定為 A2 架構的音箱、完整音色組、
         單塊和外接器材的 <b class="ui">.nam</b> 擷取。從一個 <b class="ui">箱體</b> 模塊進入
@@ -357,7 +339,7 @@
         <b class="ui">tones/</b> 文件夾中，並加入資料庫。</p>
 
       <h3>出廠預設，用擷取或用內建</h3>
-      <p>設置 → <b class="ui">TONE3000</b> 帶一個開關：<b class="ui">內建音箱</b> 或
+      <p>設置目錄本身帶一個開關，位於 <b class="ui">出廠預設</b> 標題下：<b class="ui">內建音箱</b> 或
         <b class="ui">TONE3000 擷取</b>。四個出廠音色組是圍繞四個公開擷取調校的——一台
         Fender Deluxe Reverb、一台 Marshall Plexi、一台 Victory Kraken 和一台 VOX AC30——
         而這個開關決定這一組播放兩者中的哪一個。NAMper 只在你第一次選擇自己的擷取時詢問
@@ -389,20 +371,13 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>箱體與 IR</h2>
-      <p><b class="ui">箱體</b> 模塊播放一個脈衝響應——一個用麥克風採集的音箱箱體。它的面板
-        和擷取模塊的構造一樣：頂部橫排是脈衝的名稱和 <b class="ui">@author</b>、一個通往該
-        音色頁面的箭頭，旁邊是 <b class="ui">清除 IR</b>，左側是封面圖，右側是四種加載方式
-        ——<b class="ui">瀏覽 TONE3000</b>、<b class="ui">資料庫</b>、<b class="ui">箱體</b>
-        和 <b class="ui">加載文件</b>。它們下面是這個模塊自己的旋鈕：<b class="ui">電平</b>，
-        −12 到 +12 dB。</p>
+      <p><b class="ui">箱體</b> 模組播放脈衝響應——用麥克風採樣的音箱箱體。它的面板與採樣模組相同：頂部是脈衝名稱和 <b class="ui">@author</b>，指向音色頁面的箭頭和旁邊的 <b class="ui">清除 IR</b>，左側是封面，右側是三種載入方式——<b class="ui">瀏覽 TONE3000</b>、<b class="ui">資料庫</b> 和 <b class="ui">加載文件</b>。下面是模組自己的旋鈕 <b class="ui">電平</b>，−12 到 +12 dB。</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="箱體模塊面板：頂部橫排是脈衝名稱和作者，左側是封面圖，右側是瀏覽 TONE3000、資料庫、箱體和加載文件按鈕，下方是電平旋鈕。">
+             alt="Cab 模組面板：頂部是脈衝名稱和作者，左側封面，右側 Browse TONE3000、Library 和 Load file 按鈕，下方 Level 旋鈕。">
         <figcaption>箱體模塊，構造和音箱的擷取那一側一樣</figcaption>
       </figure>
-      <p>同一個模塊用作 <b class="ui">IR混響</b> 時，菜單會改為標註 <b class="ui">空間</b>，
-        加載的是混響脈衝而不是箱體，並帶有 <b class="ui">混合</b>、<b class="ui">預延遲</b>
-        和 <b class="ui">電平</b>。</p>
+      <p>同一模組用作 <b class="ui">IR混響</b> 時載入殘響脈衝而非箱體——資料庫的 <b class="ui">IR混響</b> 一側：空間、外部器材與實驗——並帶有 <b class="ui">混合</b>、<b class="ui">預延遲</b> 和 <b class="ui">電平</b>。</p>
       <p><b class="ui">瀏覽 TONE3000</b> 從一個 <b class="ui">箱體</b> 打開網站的箱體，從一個
         <b class="ui">IR混響</b> 打開它的空間。一個帶多個脈衝的音色會打開擷取用的同一個選擇
         器：播放其中一個，或者勾選幾個並把它們下載到這個模塊的音色庫。面板隨後會顯示
@@ -410,14 +385,10 @@
         <b class="ui">模型</b> 旋鈕，轉動時顯示 <b class="ui">1/6 · R121</b>——長按它會給出
         <b class="ui">MIDI Learn</b>，和音箱上一模一樣，所以一個表情踏板或一個旋鈕就能走遍
         一整套麥克風。</p>
-      <p><b class="ui">加載文件</b> 會打開一個文件選擇器，接受 <b class="ui">.wav</b>
-        及其他音頻格式；無論你選擇什麼，都會被複製到應用的 <b class="ui">irs/</b>
-        文件夾中，所以即使刪除原始文件它也依然可用。你下載過的脈衝會出現在
-        <b class="ui">箱體</b> / <b class="ui">空間</b> 菜單的 <b class="ui">已下載</b>
-        之下，也會出現在資料庫的 <b class="ui">IR</b> 那一側。</p>
+      <p><b class="ui">加載文件</b> 開啟 <b class="ui">.wav</b> 及其他音訊的檔案選擇器；所選檔案會複製到應用的 <b class="ui">irs/</b> 資料夾，刪除原件也仍可用。載入進 <b class="ui">箱體</b> 的檔案落在資料庫的 <b class="ui">箱體</b> 一側，載入進 <b class="ui">IR混響</b> 的落在 <b class="ui">IR混響</b> 一側。</p>
       <div class="tw">
         <table>
-          <thead><tr><th>菜單</th><th>內置脈衝響應</th></tr></thead>
+          <thead><tr><th>資料庫側</th><th>內置脈衝響應</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">箱體</b></td>
               <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
@@ -426,7 +397,7 @@
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
                 <b class="ui">V30 412 SM57 - Cookie Monster</b>,
                 <b class="ui">V30 412 SM57 - World Collider</b></td></tr>
-            <tr><td><b class="ui">空間</b></td>
+            <tr><td><b class="ui">IR混響</b></td>
               <td><b class="ui">Chamber 0.9s</b>, <b class="ui">Hall 2.6s</b>,
                 <b class="ui">Plate 1.6s</b></td></tr>
           </tbody>
