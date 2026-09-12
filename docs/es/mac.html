@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac — Documentación de NAMper</title>
+<meta name="description" content="NAMper en el Mac: el instalador y qué pone dónde, la ventana Interfaz de audio y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mac — Documentación de NAMper">
+<meta property="og:description" content="NAMper en el Mac: el instalador y qué pone dónde, la ventana Interfaz de audio y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/es/mac.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mac.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mac.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mac.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mac.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mac.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mac.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mac.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mac.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mac.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mac.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mac.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mac.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mac.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mac.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mac.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mac.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mac.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mac.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/es/">← TODOS LOS DOCS</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/es/mac.html" aria-current="page">Español</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">CONTENIDO</div>
+    <ol>
+      <li><a href="/docs/es/setup.html">Primeros pasos</a></li>
+      <li><a href="/docs/es/rig.html">Rig y cadena de señal</a></li>
+      <li><a href="/docs/es/plugins.html">Plugins</a></li>
+      <li><a href="/docs/es/looper.html">Looper</a></li>
+      <li><a href="/docs/es/sampler.html">Pads del sampler</a></li>
+      <li><a href="/docs/es/perform.html">Perform y letra</a></li>
+      <li><a href="/docs/es/mix.html">Mezcla y máster</a></li>
+      <li><a href="/docs/es/control.html">MIDI y control</a></li>
+      <li><a href="/docs/es/settings.html">Referencia de ajustes</a></li>
+      <li><a class="on" href="/docs/es/mac.html">Mac</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--amp)">10 · MAC</div>
+    <h1>El mismo rig en un Mac.</h1>
+    <p class="lede">NAMper para Mac es la misma app sobre el mismo motor de audio: cada bloque, el looper, el sampler, el setlist y el mapa de control funcionan como describen los otros capítulos, y los presets .namper viajan entre plataformas como archivos. Lo que cambia es la plataforma — y que un Mac ejecuta NAMper dos veces: como programa y como plugin dentro de un DAW.</p>
+
+    <nav class="toc">
+      <div class="slab">EN ESTA PÁGINA</div>
+      <ul>
+        <li><a href="#install">Instalación</a></li>
+        <li><a href="#interface">La interfaz de audio</a></li>
+        <li><a href="#menus">Menús y teclas</a></li>
+        <li><a href="#files">Archivos</a></li>
+        <li><a href="#plugin">NAMper como plugin</a></li>
+        <li><a href="#hosts">Hosts</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="install"><span class="n">10.1</span>Instalación</h2>
+      <p><a href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg">Un paquete</a> instala tres cosas:</p>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Qué</th><th>Dónde</th></tr></thead>
+          <tbody>
+            <tr><td>NAMper</td><td>/Applications</td></tr>
+            <tr><td>VST3</td><td>/Library/Audio/Plug-Ins/VST3</td></tr>
+            <tr><td>CLAP</td><td>/Library/Audio/Plug-Ins/CLAP</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>El Audio Unit no está en esa tabla porque no es un archivo aparte: un AUv3 viaja dentro de la app. Abre NAMper una vez tras instalar y todo host AU — Logic, GarageBand, MainStage — lo encontrará desde entonces.</p>
+      <div class="note tip">
+        <div class="t">Firmado y notarizado</div>
+        <p>El paquete está firmado con un Developer ID y notarizado por Apple, así que un Mac lo abre sin avisos. macOS 14 o posterior, Apple silicon e Intel en una sola compilación universal. El enlace de descarga apunta siempre a la versión más reciente.</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="interface"><span class="n">10.2</span>La interfaz de audio</h2>
+      <p><b class="ui">Ajustes…</b> → <b class="ui">Audio</b> nombra el dispositivo que escucha el rig, y <b class="ui">Ventana</b> → <b class="ui">Interfaz de audio</b> (⌘0) abre la página que lo elige: dispositivo de entrada, de salida, el par de salida, frecuencia de muestreo y búfer, con la latencia de ida y vuelta medida debajo.</p>
+      <p>Entrada y salida pueden ser dos cajas distintas — una interfaz de guitarra entrando y los altavoces integrados saliendo, por ejemplo. Cuando es así, NAMper construye un <b>dispositivo agregado</b> privado con las dos y corre sobre él, porque un motor de audio solo puede tener un reloj. El reloj se queda con la salida, porque lo que oye el músico es lo que no debe entrecortarse, y la compensación de deriva va en la entrada, el extremo que puede permitirse ceder. Nada de esto aparece en Configuración de Audio MIDI y no queda nada al salir de la app.</p>
+      <p>Una sola interfaz en ambas direcciones no necesita agregado y es la opción de menor latencia: elige el mismo dispositivo en ambas filas.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="menus"><span class="n">10.3</span>Menús y teclas</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Menú</th><th>Qué contiene</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Archivo</b></td>
+                <td><b class="ui">Capturas e impulsos…</b> ⌘L · <b class="ui">Presets…</b> ⇧⌘P · <b class="ui">Guardar preset…</b> ⌘S</td></tr>
+            <tr><td><b class="ui">Equipo</b></td>
+                <td><b class="ui">Preset siguiente</b> ⌘→ · <b class="ui">Preset anterior</b> ⌘← · <b class="ui">Escena</b> 1–4 ⌘1…⌘4 · <b class="ui">Pista de bucle 1</b> ␣ · <b class="ui">Afinador</b> ⌘T · <b class="ui">Tempo…</b> · <b class="ui">Tonalidad…</b></td></tr>
+            <tr><td><b class="ui">Ventana</b></td>
+                <td><b class="ui">Interfaz de audio</b> ⌘0</td></tr>
+            <tr><td><b class="ui">NAMper</b></td>
+                <td><b class="ui">Ajustes…</b> ⌘, · <b class="ui">Acerca de NAMper</b></td></tr>
+            <tr><td><b class="ui">Ayuda</b></td>
+                <td><b class="ui">Manual de NAMper</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Todo lo que hay en el menú Rig es algo que ya se le puede pedir al rig en pantalla — el menú es otra entrada, no otro comportamiento.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="files"><span class="n">10.4</span>Archivos</h2>
+      <p>Suelta una captura .nam, un impulso .wav, un .zip de cualquiera de los dos o un preset .namper <b>sobre la ventana</b> y se une a la biblioteca. Suéltalo sobre un <b>bloque</b> concreto y va adonde ese bloque pueda llevarlo: una captura sobre el Amp se carga en el Amp, un impulso sobre el Amp cae en el Cab que va detrás, una captura sobre un Cab cae en el Amp de delante — y ninguno molesta lo que el otro bloque ya tocaba. El bloque se ilumina mientras el archivo está encima.</p>
+      <p>Un archivo también puede llegar desde el Finder: doble clic en un preset .namper y NAMper lo abre, y una captura .nam sigue el mismo camino mediante <b>Abrir con</b>. En ambos casos el archivo cae donde lo habría dejado arrastrarlo.</p>
+      <p>La biblioteca en sí es una carpeta que puedes abrir — consulta <a href="/docs/es/setup.html#files">Dónde viven tus archivos</a>.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="plugin"><span class="n">10.5</span>NAMper como plugin</h2>
+      <p>El Audio Unit, el VST3 y el CLAP son el mismo efecto: la cadena de NAMper — puerta, compresor, drive, amp, EQ, cab, modulación, delay, reverb — en la pista del DAW en vez de en la entrada de la app. Los tres llevan los mismos parámetros en el mismo orden, así que una sesión se mueve entre ellos, y los tres leen el estado guardado de los demás.</p>
+      <p>Lo que el host te da hoy es su propio panel genérico de mandos: el plugin aún no tiene cara propia. Los parámetros son</p>
+      <ul>
+        <li>Gate On, Gate Threshold</li>
+        <li>Comp On, Comp Threshold, Comp Ratio</li>
+        <li>Drive On, Drive Gain, Drive Level</li>
+        <li>Bass, Mid, Treble</li>
+        <li>Delay On, Delay Time, Delay Feedback, Delay Mix</li>
+        <li>Reverb On, Reverb Decay, Reverb Mix</li>
+      </ul>
+      <p>más <b>Bypass</b>, que pertenece al host: activado, la señal de la pista pasa intacta.</p>
+      <p>La entrada se oye como un solo canal — una guitarra, no una mezcla estéreo: una pista estéreo se promedia antes de llegar a la cadena, y de ella sale la imagen estéreo propia de la cadena. Varias instancias en varias pistas son independientes, cada una con su cadena, y un bounce offline renderiza exactamente lo que renderiza el tiempo real.</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="hosts"><span class="n">10.6</span>Hosts</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Host</th><th>Formato</th></tr></thead>
+          <tbody>
+            <tr><td>Logic Pro, GarageBand, MainStage</td><td>Audio Unit</td></tr>
+            <tr><td>Ableton Live, Cubase, Studio One</td><td>VST3</td></tr>
+            <tr><td>REAPER, Bitwig</td><td>VST3 · CLAP</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Los tres formatos salen del mismo instalador — no hay nada que descargar por separado. <a href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg">Descargar NAMper para Mac</a>.</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/es/settings.html">← 09 · Referencia de ajustes</a>
+      <span class="sp"></span>
+      <a href="/docs/es/">Todos los docs →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/es/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://gitlab.com/retroaktive/namper-support/-/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper es una app independiente, sin afiliación, aprobación ni patrocinio de ningún
+      fabricante de equipos. Todos los nombres de productos, marcas y marcas registradas son
+      propiedad de sus respectivos dueños y se usan únicamente para describir el equipo del que
+      proviene una captura.</p>
+  </div>
+</footer>
+
+</body>
+</html>

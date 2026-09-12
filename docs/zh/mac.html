@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac — NAMper 文档</title>
+<meta name="description" content="Mac 上的 NAMper：安装包及各部分装在哪里，“音频接口”窗口与聚合设备，菜单与快捷键，来自 Finder 的文件，以及 AU、VST3 和 CLAP 插件。">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta property="og:title" content="Mac — NAMper 文档">
+<meta property="og:description" content="Mac 上的 NAMper：安装包及各部分装在哪里，“音频接口”窗口与聚合设备，菜单与快捷键，来自 Finder 的文件，以及 AU、VST3 和 CLAP 插件。">
+<meta property="og:image" content="https://namper.org/assets/og.png">
+<meta property="og:url" content="https://namper.org/docs/zh/mac.html">
+<meta property="og:type" content="article">
+<link rel="alternate" hreflang="en" href="https://namper.org/docs/mac.html">
+<link rel="alternate" hreflang="ru" href="https://namper.org/docs/ru/mac.html">
+<link rel="alternate" hreflang="de" href="https://namper.org/docs/de/mac.html">
+<link rel="alternate" hreflang="es" href="https://namper.org/docs/es/mac.html">
+<link rel="alternate" hreflang="fr" href="https://namper.org/docs/fr/mac.html">
+<link rel="alternate" hreflang="it" href="https://namper.org/docs/it/mac.html">
+<link rel="alternate" hreflang="pt-BR" href="https://namper.org/docs/pt/mac.html">
+<link rel="alternate" hreflang="tr" href="https://namper.org/docs/tr/mac.html">
+<link rel="alternate" hreflang="id" href="https://namper.org/docs/id/mac.html">
+<link rel="alternate" hreflang="vi" href="https://namper.org/docs/vi/mac.html">
+<link rel="alternate" hreflang="th" href="https://namper.org/docs/th/mac.html">
+<link rel="alternate" hreflang="ja" href="https://namper.org/docs/ja/mac.html">
+<link rel="alternate" hreflang="ko" href="https://namper.org/docs/ko/mac.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://namper.org/docs/zh/mac.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://namper.org/docs/zh-hant/mac.html">
+<link rel="alternate" hreflang="hi" href="https://namper.org/docs/hi/mac.html">
+<link rel="alternate" hreflang="fil" href="https://namper.org/docs/fil/mac.html">
+<link rel="alternate" hreflang="x-default" href="https://namper.org/docs/mac.html">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/docs/assets/docs.css?v=3">
+<script defer src="/docs/assets/docs.js?v=2"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/"><img src="/assets/logo-white.png" alt="NAMper" width="902" height="319"></a>
+  <span class="tag">DOCUMENTATION</span>
+  <span class="grow"></span>
+  <a class="home" href="/docs/zh/">← 所有文档</a>
+  <nav class="langs" aria-label="Language">
+    <a class="on" href="/docs/zh/mac.html" aria-current="page">简体中文</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="sidenav">
+    <div class="slab">目录</div>
+    <ol>
+      <li><a href="/docs/zh/setup.html">快速上手</a></li>
+      <li><a href="/docs/zh/rig.html">音色组与信号链</a></li>
+      <li><a href="/docs/zh/plugins.html">插件</a></li>
+      <li><a href="/docs/zh/looper.html">循环乐句器</a></li>
+      <li><a href="/docs/zh/sampler.html">采样打击垫</a></li>
+      <li><a href="/docs/zh/perform.html">演出与歌词</a></li>
+      <li><a href="/docs/zh/mix.html">混合与主控</a></li>
+      <li><a href="/docs/zh/control.html">MIDI 与控制</a></li>
+      <li><a href="/docs/zh/settings.html">设置参考</a></li>
+      <li><a class="on" href="/docs/zh/mac.html">Mac</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="slab" style="--nc:var(--amp)">10 · MAC</div>
+    <h1>同一套设备链，搬到 Mac 上。</h1>
+    <p class="lede">Mac 版 NAMper 是同一个音频引擎上的同一个应用：每个模块、循环器、采样器、演出列表和控制映射都按其他章节所述工作，.namper 预设以文件形式在平台之间流转。不同的是平台本身 — 以及 Mac 上的 NAMper 有两种身份：一个程序，和 DAW 里的一个插件。</p>
+
+    <nav class="toc">
+      <div class="slab">本页内容</div>
+      <ul>
+        <li><a href="#install">安装</a></li>
+        <li><a href="#interface">音频接口</a></li>
+        <li><a href="#menus">菜单与快捷键</a></li>
+        <li><a href="#files">文件</a></li>
+        <li><a href="#plugin">作为插件的 NAMper</a></li>
+        <li><a href="#hosts">宿主</a></li>
+      </ul>
+    </nav>
+
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="install"><span class="n">10.1</span>安装</h2>
+      <p><a href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg">一个安装包</a>装入三样东西：</p>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>什么</th><th>装在哪里</th></tr></thead>
+          <tbody>
+            <tr><td>NAMper</td><td>/Applications</td></tr>
+            <tr><td>VST3</td><td>/Library/Audio/Plug-Ins/VST3</td></tr>
+            <tr><td>CLAP</td><td>/Library/Audio/Plug-Ins/CLAP</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Audio Unit 不在表中，因为它不是单独的文件：AUv3 随应用一起走。安装后启动一次 NAMper，此后每个 AU 宿主 — Logic、GarageBand、MainStage — 都能找到它。</p>
+      <div class="note tip">
+        <div class="t">已签名并公证</div>
+        <p>安装包以 Developer ID 签名并经 Apple 公证，Mac 打开时不会弹出警告。macOS 14 或更新，一个通用构建同时支持 Apple silicon 和 Intel。下载链接始终指向最新版本。</p>
+      </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="interface"><span class="n">10.2</span>音频接口</h2>
+      <p><b class="ui">设置…</b> → <b class="ui">音频</b> 显示设备链正在监听的设备，<b class="ui">窗口</b> → <b class="ui">音频接口</b>（⌘0）打开选择它的页面：输入设备、输出设备、输出对、采样率和缓冲区，下方是实测的往返延迟。</p>
+      <p>输入和输出可以是两台不同的设备 — 比如输入用吉他声卡，输出用内置扬声器。这时 NAMper 会用两者建一个私有的<b>聚合设备</b>并在其上运行，因为一个音频引擎只能有一个时钟。时钟留在输出端，因为演奏者听到的东西不能卡顿；漂移补偿则落在输入端，那是承受得起弯折的一端。这些都不会出现在“音频 MIDI 设置”里，退出应用后也不留任何痕迹。</p>
+      <p>一个接口同时负责输入输出则无需聚合，延迟也最低：在两行里选同一个设备。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--gate)">
+      <h2 id="menus"><span class="n">10.3</span>菜单与快捷键</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>菜单</th><th>里面有什么</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">文件</b></td>
+                <td><b class="ui">采样与脉冲…</b> ⌘L · <b class="ui">预设…</b> ⇧⌘P · <b class="ui">保存预设…</b> ⌘S</td></tr>
+            <tr><td><b class="ui">音色组</b></td>
+                <td><b class="ui">下一个预设</b> ⌘→ · <b class="ui">上一个预设</b> ⌘← · <b class="ui">场景</b> 1–4 ⌘1…⌘4 · <b class="ui">循环轨道 1</b> ␣ · <b class="ui">调音器</b> ⌘T · <b class="ui">速度…</b> · <b class="ui">调…</b></td></tr>
+            <tr><td><b class="ui">窗口</b></td>
+                <td><b class="ui">音频接口</b> ⌘0</td></tr>
+            <tr><td><b class="ui">NAMper</b></td>
+                <td><b class="ui">设置…</b> ⌘, · <b class="ui">关于 NAMper</b></td></tr>
+            <tr><td><b class="ui">帮助</b></td>
+                <td><b class="ui">NAMper 手册</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Rig 菜单里的每一项都是在屏幕上本就能让设备链做的事 — 菜单是另一个入口，不是另一种行为。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--eq)">
+      <h2 id="files"><span class="n">10.4</span>文件</h2>
+      <p>把 .nam 捕获、.wav 脉冲、含有其一的 .zip 或 .namper 预设<b>拖到窗口上</b>，它就进入资料库。拖到某一个<b>模块</b>上，它会去那个模块能接收的地方：拖到 Amp 上的捕获载入 Amp，拖到 Amp 上的脉冲落入其后的 Cab，拖到 Cab 上的捕获落入其前的 Amp — 互不打扰对方模块正在播放的内容。文件悬停期间模块会亮起。</p>
+      <p>文件也可以从 Finder 来：双击 .namper 预设，NAMper 会打开它；.nam 捕获通过<b>打开方式</b>走同一条路。无论哪种方式，文件都会落到拖放本会放置的位置。</p>
+      <p>资料库本身是一个可以打开的文件夹 — 见 <a href="/docs/zh/setup.html#files">文件的存放位置</a>。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--drive)">
+      <h2 id="plugin"><span class="n">10.5</span>作为插件的 NAMper</h2>
+      <p>Audio Unit、VST3 和 CLAP 是同一个效果器：NAMper 的信号链 — 噪声门、压缩、过载、放大器、EQ、箱体、调制、延迟、混响 — 放在 DAW 的轨道上，而不是应用的输入上。三者以相同顺序携带相同参数，工程可以在它们之间迁移，三者也都能读取彼此保存的状态。</p>
+      <p>宿主目前给你的是它自己的通用旋钮面板：插件还没有自己的界面。参数如下：</p>
+      <ul>
+        <li>Gate On, Gate Threshold</li>
+        <li>Comp On, Comp Threshold, Comp Ratio</li>
+        <li>Drive On, Drive Gain, Drive Level</li>
+        <li>Bass, Mid, Treble</li>
+        <li>Delay On, Delay Time, Delay Feedback, Delay Mix</li>
+        <li>Reverb On, Reverb Decay, Reverb Mix</li>
+      </ul>
+      <p>外加宿主拥有的 <b>Bypass</b>：打开后，轨道自身的信号原样通过。</p>
+      <p>输入按单声道处理 — 是一把吉他，不是立体声混音：立体声轨道在进入信号链前先取平均，信号链自身的立体声像从中产生。多条轨道上的多个实例彼此独立，各有各的信号链，离线导出与实时渲染的结果完全一致。</p>
+    </section>
+
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="hosts"><span class="n">10.6</span>宿主</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>宿主</th><th>格式</th></tr></thead>
+          <tbody>
+            <tr><td>Logic Pro, GarageBand, MainStage</td><td>Audio Unit</td></tr>
+            <tr><td>Ableton Live, Cubase, Studio One</td><td>VST3</td></tr>
+            <tr><td>REAPER, Bitwig</td><td>VST3 · CLAP</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>三种格式都来自同一个安装包 — 无需单独下载任何东西。<a href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg">下载 Mac 版 NAMper</a>。</p>
+    </section>
+
+    <nav class="pager">
+      <a href="/docs/zh/settings.html">← 09 · 设置参考</a>
+      <span class="sp"></span>
+      <a href="/docs/zh/">所有文档 →</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="docfoot">
+  <div class="in">
+    <nav>
+      <a href="/">NAMPER.ORG</a>
+      <a href="/docs/">DOCS</a>
+      <a href="https://t.me/namperapp">TELEGRAM</a>
+      <a href="https://gitlab.com/retroaktive/namper-support/-/issues">SUPPORT</a>
+      <a href="https://namper.org/privacy">PRIVACY</a>
+    </nav>
+    <div>© 2026 Evgeny Stepanov</div>
+    <p class="tm">NAMper 是一款独立应用,与任何设备制造商没有任何关联、认可或赞助关系。所有产品名称、品牌和商标均归其各自所有者所有,仅用于说明所使用的录制设备。</p>
+  </div>
+</footer>
+
+</body>
+</html>
