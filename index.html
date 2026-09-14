@@ -112,6 +112,8 @@ try{var t=localStorage.getItem('theme');
   .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .macnote{color:var(--dim);font-size:13.5px;line-height:1.5;max-width:40em;margin:16px 0 0}
   .macnote a{color:var(--amp)}
+  .cta .badge{display:inline-block;line-height:0}
+  .cta .badge img{height:46px;width:auto;display:block}
   .btn{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
     padding:13px 22px;border-radius:12px;border:1px solid var(--line);color:var(--ink)}
   .btn:hover{text-decoration:none;border-color:var(--faint)}
@@ -235,7 +237,7 @@ try{var t=localStorage.getItem('theme');
           <span class="chip" data-i="chip_subs">NO&nbsp;SUBSCRIPTIONS</span>
         </div>
         <div class="cta">
-          <a class="btn primary" href="https://apps.apple.com/app/id6803518334" data-i="cta_store">DOWNLOAD&nbsp;ON&nbsp;THE&nbsp;APP&nbsp;STORE</a>
+          <a class="badge" id="asbadge" href="https://apps.apple.com/app/id6803518334"><img src="/assets/badge/appstore-en-us.svg" alt="Download on the App Store" width="139" height="46"></a>
           <span class="btn primary" data-i="cta_play">GOOGLE&nbsp;PLAY&nbsp;·&nbsp;COMING&nbsp;SOON</span>
           <a class="btn primary" href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg" data-i="cta_mac">DOWNLOAD&nbsp;FOR&nbsp;MAC</a>
           <a class="btn docs" href="/docs/" data-i="cta_docs">READ&nbsp;THE&nbsp;DOCS</a>
@@ -524,6 +526,12 @@ const I18N={"ru": {"h1": "Твой телефон — это<br>полноцен
     md.content=t&&t.meta?t.meta:md.dataset.en;
     document.querySelectorAll('#langs a').forEach(a=>
       a.classList.toggle('on',a.dataset.l===l));
+    // Apple's badge in the page's language (assets/badge/, from Apple's badge service)
+    const BADGE={en:'en-us',ru:'ru-ru',de:'de-de',es:'es-es',fr:'fr-fr',it:'it-it',pt:'pt-br',ja:'ja-jp',ko:'ko-kr',
+      zh:'zh-cn','zh-hant':'zh-tw',tr:'tr-tr',id:'id-id',vi:'vi-vn',th:'th-th',hi:'hi-in',fil:'en-us'};
+    const img=document.querySelector('#asbadge img');
+    if(img){img.src='/assets/badge/appstore-'+(BADGE[l]||'en-us')+'.svg';
+      img.alt=(t&&t.cta_store?t.cta_store:'Download on the App Store').replace(/&nbsp;/g,' ');}
   }
   document.querySelectorAll('#langs a').forEach(a=>
     a.addEventListener('click',()=>{localStorage.setItem('lang',a.dataset.l);apply(a.dataset.l)}));
