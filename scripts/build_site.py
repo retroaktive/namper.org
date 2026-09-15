@@ -11,7 +11,10 @@ import shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_site")
 ITEMS = ["index.html", "privacy.html", "docs", "assets", "robots.txt",
-         "sitemap.xml"]
+         "sitemap.xml",
+         # what the Mac package on the site is: the app from the package
+         # reads it and offers the newer one in About
+         "latest.json"]
 
 
 def main():
