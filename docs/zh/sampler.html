@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>采样打击垫 — NAMper 文档</title>
-<meta name="description" content="十六个采样打击垫：加载与录制声音、带裁剪和 ADSR 的打击垫编辑器、音色包与四套出厂鼓组音色包、触发量化、MIDI 音符 36–51，以及打击垫在混音中的位置。">
+<meta name="description" content="十六个采样打击垫：加载与录制声音、带裁剪和 ADSR 的打击垫编辑器、音色包与四套出厂鼓组音色包、MIDI 音符 36–51，以及打击垫在混音中的位置。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="采样打击垫 — NAMper 文档">
-<meta property="og:description" content="十六个打击垫、音色包、裁剪与 ADSR、量化与 MIDI 触发。">
+<meta property="og:description" content="十六个打击垫、音色包、裁剪与 ADSR，以及 MIDI 触发。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh/sampler.html">
 <meta property="og:type" content="article">
@@ -67,8 +68,8 @@
     <div class="slab" style="--nc:var(--eq)">05 · 采样打击垫</div>
     <h1>十六个打击垫，一页搞定。</h1>
     <p class="lede"><b class="ui a">采样</b> 标签页是一台可以用拇指或 MIDI 踏板演奏的鼓机：
-      十六个打击垫、一个音色包库、每个打击垫各自的裁剪与包络，以及一个在节奏必须精准时
-      使用的量化器。</p>
+      十六个打击垫、一个音色包库、每个打击垫各自的裁剪与包络，以及一个能把你的演奏
+      对齐到网格上记录下来的循环乐句器。</p>
 
     <nav class="toc">
       <div class="slab">本页内容</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">把声音放进打击垫</a></li>
         <li><a href="#editor">打击垫编辑器</a></li>
         <li><a href="#kits">音色包</a></li>
-        <li><a href="#quantize">触发量化</a></li>
+        <li><a href="#quantize">节奏与量化</a></li>
         <li><a href="#trigger">演奏打击垫</a></li>
         <li><a href="#routing">打击垫的信号去向</a></li>
       </ul>
@@ -87,26 +88,29 @@
       <h2 id="grid"><span class="n">05.1</span>网格</h2>
       <p>十六个打击垫，固定为 4×4 的网格。只有一页——没有分组，也没有第二页，所以你能演奏的
         一切都同时显示在屏幕上。</p>
-      <p>把手机横过来，标题栏会变成左边的一列——采样器电平、量化标签和 <b class="ui">全部停止</b>
-        ——而 4×4 的打击垫占据屏幕其余的全部，垫子会拉伸把它填满。</p>
+      <p>把手机横过来，走带栏会变成左边的一列——采样器电平、音色包按键、<b class="ui">REC</b>
+        和 <b class="ui">全部停止</b>——而 4×4 的打击垫占据屏幕其余的全部，垫子会拉伸把它填满。</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="Sample 标签页加载了原声鼓出厂音色包，铺满全部十六个打击垫，每个都显示采样名称、时长和波形，顶部有 LEVEL 和 QUANT 旋钮以及量化网格标签。">
+             alt="Sample 标签页加载了原声鼓出厂音色包，铺满全部十六个打击垫，每个都显示采样名称、时长和经包络塑形的波形，上方是带电平旋钮、音色包按键和 STOP ALL 的走带卡片。">
         <figcaption><b class="ui">鼓 — 原声</b> 出厂音色包铺满全部 16 个打击垫</figcaption>
       </figure>
-      <p>顶部一行从左到右依次是：<b class="ui">采样器</b> 字样、一个
-        <b class="ui">电平</b> 旋钮（0 到 2，默认 1）、一个 <b class="ui">量化</b> 旋钮、
-        量化网格标签、用于音色包的 <b class="ui">预设</b> 标签、一个在打击垫录音时
-        点亮的 <b class="ui">录音</b> 指示灯，以及 <b class="ui">全部停止</b>。</p>
-      <p>底部的提示已经说明了一切：</p>
-      <p><b class="ui">空打击垫：加载或录制 · 已加载：点按播放/停止，长按编辑 · MIDI 音符 36–51</b></p>
+      <p>顶部的走带卡片从左到右依次是：<b class="ui">采样器</b> 字样、采样器的电平旋钮
+        （0 到 2，默认 1，显示为 <b class="ui">+0 dB</b>）、音色包按键、一个在打击垫录音时
+        点亮的 <b class="ui">REC</b> 指示灯（整张卡片也会一起亮起），以及
+        <b class="ui">全部停止</b>。十六个打击垫单独排在它下面，彼此紧挨着。</p>
       <p>一个<b>空打击垫</b>分成两半——<b class="ui">加载</b> 和 <b class="ui">录音</b>。
         一个<b>已加载的打击垫</b>会显示采样名称、时长（例如 <b class="ui">1.4s</b>）、
-        一个变暗的波形（裁剪范围之外的部分被淡化），以及播放时扫过的一条亮色光标。</p>
+        它的波形，以及播放时扫过的一条亮色光标。波形是<b>经过打击垫的包络</b>绘制的：
+        缓慢的起音让它的前沿变成斜坡，衰减让它落到延音电平，释放让尾部渐隐——所以打击垫
+        显示的就是它实际会发出的声音，而裁剪范围之外的部分会被淡化。</p>
+      <p>打击垫发声时会<b>从边缘向内点亮</b>，声音越响亮得越深，并随声音一起淡去——不管它是
+        怎么被触发的：点按、MIDI 音符，还是一个重放其敲击的
+        <a href="/docs/zh/looper.html#midi">MIDI 循环单元</a>。</p>
       <p>长按任意打击垫会打开菜单：<b class="ui">加载声音…</b>、
         <b class="ui">录制混音</b> 或 <b class="ui">停止录音</b>，而在已加载的
         打击垫上还有 <b class="ui">编辑…</b>、<b class="ui">清除</b> 和
-        <b class="ui">MIDI Learn: pad N</b>。</p>
+        <b class="ui">MIDI 学习：打击垫 N</b>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -120,7 +124,7 @@
 
       <h3>录制到打击垫</h3>
       <p>空打击垫上 <b class="ui">录音</b> 的那一半会直接录制到该打击垫。同一时刻只能有
-        一个打击垫在录制，录下的素材会命名为 <b class="ui">Rec N</b>。引擎停止时会拒绝
+        一个打击垫在录制，录下的素材会命名为 <b class="ui">录音 N</b>。引擎停止时会拒绝
         并提示 <b class="ui r">音频已关闭——录音前请点按电源按钮。</b></p>
       <div class="note warn">
         <div class="t">打击垫录音捕获的是你听到的内容</div>
@@ -134,10 +138,16 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="editor"><span class="n">05.3</span>打击垫编辑器</h2>
       <p>长按一个已加载的打击垫 → <b class="ui">编辑…</b>。面板标题为
-        <b class="ui">PAD N</b>，附带采样名称和时长。</p>
+        <b class="ui">打击垫 N</b>，附带采样名称和时长。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="采样器上方的打击垫编辑器：PAD 1、Kick，裁剪手柄之间的波形与 ADSR 曲线及其数值，Gain 和 Pitch 旋钮，MODE 和 TAP 选项，Preview 和 Load file。">
+        <figcaption>打击垫编辑器：裁剪、波形上的包络、Gain、Pitch、MODE 和 TAP</figcaption>
+      </figure>
       <p>波形的起点和终点都有<b>可拖动的裁剪手柄</b>——把起点向内拖可以切掉缓慢的起音，
         把终点向内拖可以缩短过长的尾音。</p>
-      <p><b>ADSR 包络绘制在波形之上</b>，通过拖动三个圆形手柄来编辑：
+      <p>编辑时 <b>ADSR 包络会塑造波形</b>——波形跟着曲线走——
+        通过拖动三个圆形手柄来编辑：
         <b class="ui">起音</b>、<b class="ui">衰减与延音</b> 和
         <b class="ui">释放</b>。上方的读数会显示具体数值，例如
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>。</p>
@@ -185,9 +195,9 @@
         模式设置——<b>再加上每个打击垫音频的一份私有副本</b>。这份副本才是关键：
         音色包一旦保存，无论之后往某个打击垫导入新内容、清空它，还是删除原始文件，
         都无法把这个音色包掏空。六个月后再加载它，它依然能正常播放。</p>
-      <p>用 <b class="ui">预设</b> 标签打开浏览器；面板标题为
+      <p>用走带栏里的音色包按键打开浏览器；面板标题为
         <b class="ui">采样器套件</b>。点击一行即可加载它。行菜单里有
-        <b class="ui">重命名</b>、<b class="ui">Update with current kit</b> 和
+        <b class="ui">重命名</b>、<b class="ui">用当前套件更新</b> 和
         <b class="ui">删除</b>。删除一个音色包永远不会移除仍在被已加载的打击垫或
         另一个已保存的音色包使用的音频。</p>
       <div class="note warn">
@@ -223,30 +233,15 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>触发量化</h2>
-      <p><b class="ui">量化</b> 旋钮控制的是<b>强度</b>，而不是开关。为零时显示
-        <b class="ui">关</b>；高于零则显示一个百分比。在 100% 时，每次敲击都会精确
-        落在网格上；在 30% 时，只有稍微抢拍的敲击会被拉回节奏线，你的演奏感觉得以保留。
-        默认值是 0，即关闭。</p>
-      <p>旁边的标签用来设置网格精度，循环切换 <b class="ui">1/4</b>、<b class="ui">1/8</b>、
-        <b class="ui">1/16</b> 和 <b class="ui">1/32</b>。默认是 <b class="ui">1/16</b>。</p>
-      <p>这两个设置都是<b>全局的</b>——不区分音色包，也不区分打击垫。加载一个音色包
-        不会改变它们。</p>
-      <div class="note warn">
-        <div class="t">必须同时满足三个条件</div>
-        <p>只有以下<b>三个条件全部成立</b>时，量化才会产生可听见的效果，而屏幕上不会
-          提示这一点：</p>
-        <ul style="--nc:var(--drive)">
-          <li>已经<b>设定了速度</b>——否则就没有网格；</li>
-          <li>有一个<b>循环正在运行</b>——循环乐句器提供节拍相位，网格才知道第一拍在
-            哪里；</li>
-          <li>你正在<b>录音</b>——要么是 <b class="ui a">演出</b> 的录音功能，
-            要么是来源为采样器的一条循环音轨。</li>
-        </ul>
-        <p>如果你在没有伴奏的情况下即兴演奏时把旋钮调高，你不会听到任何变化。这是刻意
-          设计的：一个要等到下一个十六分音符才发声的打击垫，在手指下会让人觉得反应
-          不灵，所以自由演奏时始终保持不量化，修正只会应用在最终落到录音里的部分。</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>节奏与量化</h2>
+      <p>打击垫总是在<b>你敲下的那一刻</b>发声。一个要等到下一个十六分音符才发声的打击垫，
+        在手指下会让人觉得反应不灵，所以采样器本身从不移动任何一次敲击。</p>
+      <p>节奏是在演奏被保存下来的地方修正的：把打击垫录进一个 <b class="ui">入</b> 设为
+        <b class="ui">采样器打击垫（MIDI）</b> 的循环乐句器单元。这个单元把每次敲击存为一个事件，
+        并有自己的 <b class="ui">量化</b> 旋钮和 <b class="ui">网格</b>
+        （<b class="ui">1/4</b> 到 <b class="ui">1/32</b>）——可以在录音时用，也可以事后在它的
+        编辑器里用，量化永远不会破坏你原本演奏的那一遍。参见
+        <a href="/docs/zh/looper.html#midi">MIDI 单元</a>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -254,37 +249,32 @@
       <p>用手指：点按会根据打击垫的 <b class="ui">模式</b> 和 <b class="ui">打拍</b>
         设置播放或停止它，长按打开菜单。</p>
       <p>用 MIDI：<b>音符 36 到 51 演奏打击垫 1 到 16</b>，遵循 GM 鼓组约定——音符 36
-        对应打击垫 1。这一映射始终生效，无需任何设置，在任意 MIDI 通道上都可用，
-        除非你自己的某个映射已经先占用了该音符。</p>
+        对应打击垫 1。它们作为出厂映射位于设置 → <b class="ui">控制</b> 中，在任意 MIDI
+        通道上都可用，因此会像点按一样尊重 <b class="ui">循环</b> 和 <b class="ui">锁定</b>
+        ——按一下启动一个循环的打击垫，再按一下停止它——你也可以像其他映射一样移动、删除或
+        恢复它们。</p>
       <p><b>不使用力度。</b>无论你敲击控制器打击垫的力度多大，采样都会以你在编辑器中
         设定的 <b class="ui">增益</b> 播放。在打击垫编辑器中设定一次电平之后，它就会
         固定不变。</p>
-      <div class="note tip">
-        <div class="t">学习到的映射比原始音符表现更好</div>
-        <p>你在设置 → <b class="ui">控制</b> 里创建的映射调用的是 play/stop，因此会尊重
-          <b class="ui">循环</b> 和 <b class="ui">锁定</b>——踩一下开始循环，再踩一下停下。而原始的
-          MIDI 音符 36–51 永远是从头重新触发。如果你要用脚踏驱动循环的打击垫，请学习一条映射，而不是
-          依赖内置的音符范围。</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>打击垫的信号去向</h2>
       <p>打击垫的信号<b>直接汇入主混音</b>——它们不经过吉他信号链，所以你音箱的增益
-        和混响都不会碰到它们。顶部的 <b class="ui">电平</b> 旋钮设置整个采样器相对于
+        和混响都不会碰到它们。走带栏里的电平旋钮设置整个采样器相对于
         音色组的音量。</p>
       <p>在应用的其他地方，它们也可以作为一个信号来源使用：</p>
       <ul style="--nc:var(--power)">
         <li>作为<b>信号链输入</b>——在音色组的 IN 连接点或某条并行分支上选择
           <b class="ui">采样打击垫</b>（标签 <b class="ui">SMPL</b>），打击垫的信号
           就会经过该音色组的效果处理。</li>
-        <li>作为<b>循环音轨来源</b>——把某条循环乐句器音轨的 <b class="ui">入</b>
-          设为 <b class="ui">采样器</b>（标签 <b class="ui">SMP</b>），就可以循环
-          你在打击垫上敲出的节奏。</li>
-        <li>作为<b>压缩器侧链</b>——Comp 模块的 <b class="ui">侧链</b> 菜单
+        <li>作为<b>循环单元来源</b>——把某个循环乐句器单元的 <b class="ui">入</b> 设为
+          <b class="ui">采样器打击垫（MIDI）</b>，它就会把你敲出的节奏录成可以编辑和量化的
+          敲击：一个 <a href="/docs/zh/looper.html#midi">MIDI 单元</a>。</li>
+        <li>作为<b>压缩器侧链</b>——压缩器模块的 <b class="ui">侧链</b> 菜单
           包含 <b class="ui">SMP</b>，这样底鼓就可以压低吉他的音量。</li>
       </ul>
-      <p>顶部的 <b class="ui">全部停止</b> 会一次性释放所有正在播放的打击垫——
+      <p>走带栏里的 <b class="ui">全部停止</b> 会一次性释放所有正在播放的打击垫——
         用来应对一个锁定的持续音，或一个你找不到源头的循环。</p>
     </section>
 

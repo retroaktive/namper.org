@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIDI &amp; 컨트롤 — NAMper 문서</title>
 <meta name="description" content="컨트롤 맵과 MIDI 학습, 매핑할 수 있는 모든 항목, 내장 MIDI 맵, 블루투스 페어링, 학습된 소리 트리거, 튜너까지.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="MIDI &amp; 컨트롤 — NAMper 문서">
@@ -127,7 +128,7 @@
       <ol style="--nc:var(--eq)">
         <li><b class="ui">러닝</b>을 탭합니다. 칩이 켜지고 행이 대기합니다.</li>
         <li>사용할 풋스위치를 누르거나 페달을 움직입니다.</li>
-        <li>소스 칩에 <b class="ui">CC 42</b> 또는 <b class="ui">Note 60</b>처럼 채워지고,
+        <li>소스 칩에 <b class="ui">CC 42</b> 또는 <b class="ui">노트 60</b>처럼 채워지고,
           카드의 <b class="ui">Last:</b> 줄이 이를 확인해줍니다 — <b class="ui">Learned CC
           42</b>.</li>
       </ol>
@@ -138,7 +139,7 @@
       <h3>그 자리에서 학습하기</h3>
       <p>Control 탭에서부터 시작할 필요는 없습니다. 앱 안의 거의 모든 컨트롤 — 노브, 칩 행,
         루퍼 패드, 샘플러 패드, Perform 트랜스포트 버튼 — 을 길게 누르면 메뉴에 바로 그
-        컨트롤을 위한 <b class="ui">MIDI Learn: &lt;name&gt;</b>이 뜹니다. 해당 컨트롤에
+        컨트롤을 위한 <b class="ui">MIDI 러닝: &lt;name&gt;</b>이 뜹니다. 해당 컨트롤에
         테두리가 생기고 <b class="ui">MIDI 컨트롤을 움직이세요…</b>가 표시되며, 페달을 움직이면
         매핑이 완료됩니다. 노브를 잘못 잡았다면 <b class="ui">LEARN 취소</b>으로 빠져나올 수
         있습니다.</p>
@@ -159,9 +160,9 @@
           <tbody>
             <tr><td><b class="ui">동작 없음</b></td><td>행을 비활성 상태로 둡니다.</td></tr>
             <tr><td><b class="ui">샘플러 패드</b></td><td>로드된 패드마다 하나씩,
-              <b class="ui">Pad 1</b>부터 위로.</td></tr>
-            <tr><td><b class="ui">루퍼</b></td><td><b class="ui">Tap track 1</b>부터
-              <b class="ui">Tap track 4</b>까지, <b class="ui">시작 / 정지</b>,
+              <b class="ui">패드 1</b>부터 위로.</td></tr>
+            <tr><td><b class="ui">루퍼</b></td><td><b class="ui">트랙 1 탭</b>부터
+              <b class="ui">트랙 4 탭</b>까지, <b class="ui">시작 / 정지</b>,
               <b class="ui">모두 지우기</b>.</td></tr>
             <tr><td><b class="ui">프리셋</b></td><td>이름별 모든 리그 프리셋, 그리고
               <b class="ui">다음 프리셋</b>.</td></tr>
@@ -177,6 +178,13 @@
         <b class="ui">블록 켜기/끄기 · 활성 리그</b>, <b class="ui">블록 파라미터 · 활성 리그</b>입니다. 이들은 현재 MIDI 포커스를 가진 리그를 따라가므로, 풋스위치 하나로 특정
         리그의 고정된 블록이 아니라 "지금 연주 중인 리그의 드라이브"를 바이패스할 수
         있습니다.</p>
+      <p>프리셋 뱅크와 씬 모프가 생기면서 그룹이 두 개 더 늘었습니다.
+        <b class="ui">프리셋</b> 아래에는 <b class="ui">값으로 프리셋 뱅크</b>(0은 팩토리 뱅크,
+        1–3은 사용자 뱅크), <b class="ui">다음 프리셋 뱅크</b>,
+        <b class="ui">이전 프리셋 뱅크</b>가 있습니다. <b class="ui">장면</b> 아래에는 CC 행용으로
+        <b class="ui">페달로 모프</b>과 씬 한 쌍이 있습니다 — 페달을 움직이면 노브가 두 씬의
+        값 사이를 부드럽게 오가고, 스위치는 중간 지점에서 넘어갑니다.
+        <a href="/docs/ko/rig.html#presets">프리셋과 씬</a>을 참고하세요.</p>
       <p>페달을 연결하기 전에 기억해둘 만한 제약이 두 가지 있습니다:</p>
       <ul style="--nc:var(--amp)">
         <li><b>연속적인 블록 파라미터에는 CC가 필요합니다.</b> 노트와 학습된 소리는
@@ -302,9 +310,10 @@
         사용하세요.</p>
 
       <h3>악기와 튜닝</h3>
-      <p>NAMper는 지금 들고 있는 악기가 무엇인지 스스로 파악해 알약 모양 배지로 보여줍니다:
-        <b class="ui">기타</b>, <b class="ui">베이스</b>, <b class="ui">우쿨렐레</b>입니다.
-        선택기는 따로 없습니다 — 베이스를 연결하면 튜너가 알아서 따라갑니다.</p>
+      <p>모서리의 알약 모양 배지가 악기입니다: <b class="ui">기타</b>, <b class="ui">베이스</b>,
+        <b class="ui">우쿨렐레</b>. 추측이 아니라 직접 고르는 것입니다 — 탭해서 메뉴에서 고르세요.
+        자동 추측은 베이스 E 현의 배음을 자꾸 기타 코드로 읽었기 때문에, 튜너는 더 이상 소리만으로
+        악기를 구분하려 하지 않습니다.</p>
       <p>튜닝 칩은 <b class="ui">POLY</b> 모드에 적용되며, 각 악기는 자신의 선택을 따로
         기억합니다:</p>
       <div class="tw">

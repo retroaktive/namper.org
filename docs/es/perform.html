@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform y letra — Documentación de NAMper</title>
-<meta name="description" content="Pistas de acompañamiento, el setlist y sus secciones, marcadores de preset en la línea de tiempo, el teleprompter de letras a pantalla completa con anclas, grabación multipista y exportación a DAWproject.">
+<meta name="description" content="Pistas de acompañamiento, los botones de escenario, el setlist y sus temas, marcadores de preset en la línea de tiempo, el teleprompter de letras a pantalla completa con anclas, grabación multipista y exportación a DAWproject.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform y letra — Documentación de NAMper">
@@ -67,8 +68,8 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM Y LETRA</div>
     <h1>Tocando el show.</h1>
     <p class="lede">La pestaña <b class="ui a">Escena</b> es la que miras en el escenario: pistas de
-      acompañamiento, un setlist de secciones, cambios de preset que se disparan solos, un
-      teleprompter a pantalla completa para tu letra, y un grabador que captura toda la noche en
+      acompañamiento, un setlist de temas, grandes botones de escenario que cambian de sonido,
+      cambios de preset que se disparan solos, un teleprompter a pantalla completa para tu letra, y un grabador que captura toda la noche en
       stems.</p>
 
     <nav class="toc">
@@ -76,6 +77,7 @@
       <ul>
         <li><a href="#tracks">Pistas de acompañamiento</a></li>
         <li><a href="#player">La tarjeta del reproductor</a></li>
+        <li><a href="#stage">Los botones de escenario</a></li>
         <li><a href="#setlist">Listas y temas</a></li>
         <li><a href="#sections">Qué trae un tema</a></li>
         <li><a href="#markers">Marcadores</a></li>
@@ -94,7 +96,7 @@
         que puedes traer un set entero de una vez, y acepta cualquier cosa que iOS pueda decodificar.
         Cada archivo se copia en <b class="ui">backing/</b> y se convierte en una sección del setlist
         con el nombre del archivo.</p>
-      <p>Si un archivo no se puede leer obtienes <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>Si un archivo no se puede leer obtienes <b class="ui r">No se pudo importar &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="La pestaña Perform: la tarjeta del reproductor con Test Song cargada, su línea de tiempo con forma de onda, 120 BPM y tonalidad A, y el chip de enrutamiento DIRECT; debajo la tarjeta SETLIST con AUTO NEXT activado, y la tarjeta RECORDINGS en la parte inferior.">
@@ -121,22 +123,32 @@
         tempo y la tonalidad globales siguen a la canción, así que las divisiones de sync del delay y
         el trémolo, la rejilla de compases del looper, el armonizador y el autotune caen todos en la
         canción correcta sin que ajustes nada.</p>
-      <p>Cinco botones se sitúan bajo el nombre, de izquierda a derecha:</p>
+      <p>Seis controles se sitúan bajo el nombre, de izquierda a derecha — las mismas teclas de
+        transporte, en el mismo orden, que la cabecera a pantalla completa de los botones de
+        escenario:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Botón</th><th>Hace</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Reproducir</b></td><td>Reproduce y pausa la pista de acompañamiento</td></tr>
-            <tr><td><b class="ui">Detener</b></td><td>Detiene y vuelve al principio</td></tr>
-            <tr><td><b class="ui">Grabar</b></td><td>Inicia y detiene el grabador de la actuación (<a href="#recording">más abajo</a>)</td></tr>
+            <tr><td><b class="ui">Al inicio de la canción</b></td><td>Vuelve al principio del tema que está sonando; atenuada cuando el tema no tiene línea de tiempo. Un tema anterior está a un toque en la lista</td></tr>
+            <tr><td><b class="ui">Reproducir</b> / <b class="ui">Pausa</b></td><td>Una sola tecla: pausa
+              mientras suena el tema y reanuda donde se pausó. Detener — volver al principio — es el
+              botón propio de la fila del tema, o el CC 92</td></tr>
+            <tr><td><b class="ui">Canción siguiente</b></td><td>Pasa al tema siguiente sin tener que ir a la
+              lista</td></tr>
+            <tr><td><b class="ui">AUTO LETRA</b></td><td>Si el teleprompter se abre solo con el
+              tema — el mismo interruptor que <b class="ui">Abrir la letra con la canción</b> en
+              Ajustes</td></tr>
             <tr><td><b class="ui">Añadir marcador</b></td><td>Deja un cambio en la posición de reproducción</td></tr>
             <tr><td><b class="ui">Letra</b></td><td>Abre el teleprompter, o carga un archivo de letra</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Mantén pulsado <b class="ui">Reproducir</b> o <b class="ui">Detener</b> para asignarlos por MIDI Learn
-        — <b class="ui">MIDI Learn: reproducir / pausar</b>, <b class="ui">MIDI Learn: detener</b>,
-        <b class="ui">MIDI Learn: sección siguiente</b> y <b class="ui">MIDI Learn: sección anterior</b> se ofrecen todos ahí. Ver <a href="/docs/es/control.html">MIDI y control</a>.</p>
+      <p>Mantén pulsada una tecla de transporte para asignarla por MIDI Learn —
+        <b class="ui">MIDI Learn: reproducir / pausar</b>,
+        <b class="ui">MIDI Learn: detener</b>, <b class="ui">MIDI Learn: sección siguiente</b>,
+        <b class="ui">MIDI Learn: sección anterior</b> y <b class="ui">MIDI Learn: canción siguiente</b> se
+        ofrecen ahí. Ver <a href="/docs/es/control.html">MIDI y control</a>.</p>
       <h3>Nivel y enrutamiento del acompañamiento</h3>
       <p>Bajo los botones, un fader de mesa tumbado fija el nivel de la base en dB de −60 a +12 y
         muestra <b class="ui">-inf</b> abajo del todo; un doble toque lo devuelve a 0 dB. Es el
@@ -160,16 +172,54 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>Los botones de escenario</h2>
+      <p>La mitad inferior de la pestaña Perform pertenece a unos pocos botones grandes — los que
+        una mano puede pulsar en mitad de un tema sin mirar. Lo que contienen depende de si hay un
+        setlist <b class="ui">EN VIVO</b>:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Ningún setlist en directo</b> — las cuatro <b class="ui">ESCENAS</b> del rig que está
+          activo. Una escena vacía captura lo que está sonando, igual que los chips de escena.</li>
+        <li><b>Un setlist en directo, ningún tema elegido</b> — los temas del set. El primer toque
+          elige uno, y sus sonidos pasan a ocupar los botones.</li>
+        <li><b>Un tema elegido</b> — las entradas propias del tema, cada una un preset con la escena
+          que lleva, en el orden del tema. La que suena está iluminada, y un botón muestra solo las
+          escenas que contiene su preset.</li>
+      </ul>
+      <p>Un botón cambia en el momento en que el dedo toca, no cuando se levanta, así que un golpe
+        rápido entre dos compases nunca se pierde. Hay cuatro u ocho: el chip de cantidad de la
+        cabecera lo alterna y, hasta que elijas, sigue a la pantalla. La cuadrícula elige la forma
+        que deja los botones más cerca de ser cuadrados. Con más entradas que botones, las flechas de
+        la cabecera pasan las páginas, y la página sigue a la entrada que suena cuando un marcador o
+        un pedal hace avanzar el tema.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="Los botones de escenario a pantalla completa: el nombre del tema en grande arriba con las teclas de ir al principio, reproducir y tema siguiente al lado, y grandes botones debajo, cada uno con el nombre de un preset y la letra de su escena A, B o C.">
+        <figcaption>Pantalla completa: el nombre del tema, el transporte y los sonidos del tema</figcaption>
+      </figure>
+      <p>El botón de expandir de la cabecera da a los botones la pestaña entera. A pantalla
+        completa, el nombre del tema aparece en grande, y las teclas del reproductor vienen con él,
+        a su lado — ir al principio, reproducir / pausar y tema siguiente —, ya que el propio
+        reproductor queda fuera de la vista.</p>
+      <p>Mantén pulsado un botón para ver su menú: el menú de pad de la página del rig, en el
+        escenario — <b class="ui">Sustituir sonido…</b>, <b class="ui">Rig actual</b>,
+        <b class="ui">Vaciar pad</b> y MIDI Learn, que vincula un footswitch a ese botón por su
+        número. La pulsación es deliberada (unos 0,8 s), así que nunca estorba a un toque rápido. El
+        program change <em>n</em> pulsa el botón de escenario <em>n</em> mientras hay un set en
+        directo: los temas mientras no hay ninguno elegido, y después las entradas propias del tema
+        elegido.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Listas y temas</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Listas y temas</h2>
       <p>Una <strong>lista de temas</strong> es una lista de canciones; una de ellas está
         <b class="ui">EN VIVO</b> en cada momento, y la lista en directo es la dueña de la tira de
-        presets y del MIDI: el program change <em>n</em> reproduce el tema <em>n</em>. Un
+        presets y del MIDI: el program change <em>n</em> pulsa el botón de escenario <em>n</em>. Un
         <strong>tema</strong> es un nombre, una lista ordenada de lo que trae y una base
         <em>opcional</em> con sus marcadores y su letra. Un tema sin audio alguno vale igual: es el
         sonido con el que lo tocas, llamado desde la misma lista.</p>
-      <p>La cabecera de la tarjeta lleva el botón <b class="ui">SETLISTS</b> — crear, elegir,
-        renombrar, compartir y borrar listas —, un interruptor <b class="ui">AUTO SIG.</b> y un
+      <p>La cabecera de la tarjeta lleva el botón <b class="ui">SETLISTS</b> — solo su icono en el teléfono — para crear, elegir,
+        renombrar, compartir y borrar listas, un interruptor <b class="ui">AUTO SIG.</b> y un
         <b class="ui">+</b> que importa archivos de audio (un tema por archivo), añade un
         <b class="ui">Canción sin pista</b> o construye un tema directamente
         <b class="ui">De preset de rig</b>. Con <b class="ui">AUTO SIG.</b> activado, el set avanza
@@ -201,7 +251,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Qué trae un tema</h2>
+      <h2 id="sections"><span class="n">06.5</span>Qué trae un tema</h2>
       <p>El botón de edición abre el editor de la canción: un campo <b class="ui">Nombre de la canción</b>, un selector de pista de acompañamiento cuya primera entrada es <b class="ui">Canción sin pista</b>, la fila de <a href="#lyrics">letra</a>, la lista de lo que la canción recupera y <b class="ui">Eliminar canción</b> al final.</p>
       <p>Una canción sin pista de acompañamiento tiene además una fila <b class="ui">Duración</b>: la línea
         de tiempo sobre la que corre. Ponle una y el transporte la cuenta con un reloj en vez de con
@@ -222,23 +272,38 @@
             <a href="/docs/es/sampler.html">pads</a>.</td></tr>
         </tbody>
       </table>
-      <p>La lista se aplica en orden cuando se prepara el tema, así que el <em>último</em> preset de
-        rig es el sonido con el que empiezas; los de arriba están ahí para que los alcancen los
-        <a href="#markers">marcadores</a>. Las filas suben, bajan y se borran desde su propio
-        menú.</p>
+      <p>Cuando se prepara el tema, el <em>primer</em> preset de rig de la lista es el sonido con el
+        que empiezas; los de debajo están ahí para que los alcancen los
+        <a href="#markers">marcadores</a>, los botones de escenario y un footswitch, y el orden es lo
+        que recorre <em>preset siguiente / anterior del tema</em>. Para reordenar, arrastra una fila
+        por el asa — las tres líneas de su borde derecho. Las letras de escena de una fila ofrecen
+        solo las escenas que contiene ese preset, y volver a tocar la letra elegida borra la
+        elección.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="El editor del tema: el nombre y la base del tema, y después la lista de lo que recupera — presets de rig, cada uno con sus letras de escena y un asa, un preset de looper y un kit de sampler.">
+        <figcaption>El editor del tema: presets con sus escenas, un preset de looper, un kit</figcaption>
+      </figure>
       <h3>Elegir un preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="El selector de presets de rig: un campo de búsqueda sobre la lista, y filas con el número de programa, el banco, la portada, el nombre del preset y sus etiquetas.">
+        <figcaption>El selector de presets de rig: todos los bancos en una sola lista</figcaption>
+      </figure>
       <p>El selector de presets de rig muestra los mismos números que la tira — <b class="ui">0</b> …
-        <b class="ui">127</b> — con la portada y un campo de búsqueda sobre la lista que filtra por
+        <b class="ui">127</b> — para todos los bancos en una sola lista, el de fábrica primero, cada
+        fila marcada con su banco y con su portada y sus etiquetas; el campo de búsqueda filtra por
         nombre, número y etiqueta. Y <strong>monitoriza</strong> mientras buscas: toca una fila y el
-        rig la carga de verdad, así eliges el sonido con los oídos. Si cierras el selector sin
-        elegir, el rig vuelve a lo que había.</p>
+        rig la carga de verdad, así eliges el sonido con los oídos (el altavoz de la cabecera del
+        selector lo desactiva). La marca de verificación añade el preset resaltado; si cierras el
+        selector sin elegir, el rig vuelve a lo que había.</p>
       <p>La dirección contraria también funciona: el menú de fila de un preset en la tira de la
         pestaña Rig tiene <b class="ui">Asignar a un set…</b> — eliges una lista, luego uno de sus temas
         o <b class="ui">Nueva canción</b>, y el preset se añade al final de la lista de ese tema.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marcadores</h2>
+      <h2 id="markers"><span class="n">06.6</span>Marcadores</h2>
       <p>Un marcador es un momento de la línea de tiempo del tema que trae una de sus propias
         entradas. Estrofa limpia, estribillo con crunch, lead para el solo: se coloca una vez y
         después va solo cada vez que lo tocas.</p>
@@ -269,7 +334,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Letra y el teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Letra y el teleprompter</h2>
       <p>NAMper lleva tu letra por ti. Dale a una pista un archivo de texto plano y se convierte en un
         teleprompter a pantalla completa que se abre solo cuando empieza la canción y se desplaza al
         ritmo que le enseñaste.</p>
@@ -326,8 +391,9 @@
         nombre de la pista, el contador <b class="ui">m:ss / m:ss</b> y un botón de reproducir/pausar.
         <strong>Tocar en cualquier parte de la pantalla alterna reproducir/pausar</strong> — no tienes
         que encontrar un objetivo pequeño con una guitarra en las manos.</p>
-      <p>Que se abra solo es un interruptor: Ajustes → <b class="ui">Escenario</b> →
-        <b class="ui">Abrir la letra con la canción</b>. Desactivado, la pestaña en la que estabas se
+      <p>Que se abra solo es un interruptor: <b class="ui">AUTO LETRA</b> junto al botón de letra
+        en la tarjeta del reproductor, el mismo interruptor en el menú del botón de letra, y Ajustes →
+        <b class="ui">Escenario</b> → <b class="ui">Abrir la letra con la canción</b>. Desactivado, la pestaña en la que estabas se
         queda donde está y el botón <b class="ui">Letra</b> abre la letra cuando la quieras.</p>
 
       <h3>Anclas</h3>
@@ -374,7 +440,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Presets de Perform</h2>
+      <h2 id="presets"><span class="n">06.8</span>Presets de Perform</h2>
       <p>El chip <b class="ui">PRESETS</b> en la cabecera del setlist abre <b class="ui">Presets de Perform</b>. Un preset de Perform guardado lleva el <strong>setlist entero</strong>: cada
         sección con sus pasos y compases, el estado de <b class="ui">AUTO SIG.</b>, y la letra —
         texto, ventana y anclas — de cada pista que la tenga.</p>
@@ -391,9 +457,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Grabación</h2>
-      <p>El botón de grabar en la tarjeta del reproductor captura la actuación como <strong>tres stems
-        alineados</strong>. Se niega con <b class="ui r">El audio está apagado — toca el botón de encendido antes de grabar.</b> si el motor no está funcionando.</p>
+      <h2 id="recording"><span class="n">06.9</span>Grabación</h2>
+      <p>El grabador de la pestaña <a href="/docs/es/mix.html#recorder">Mezcla</a> captura la actuación
+        como <strong>tres stems alineados</strong>. Se niega con <b class="ui r">El audio está apagado — toca el botón de encendido antes de grabar.</b> si el motor no está funcionando.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>Qué contiene</th></tr></thead>
@@ -416,7 +482,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Proyectos de grabación</h2>
+      <h2 id="projects"><span class="n">06.10</span>Proyectos de grabación</h2>
       <p>La tarjeta <b class="ui">GRABACIONES</b> agrupa los stems de una toma en un
         <strong>proyecto</strong>, por su nombre compartido <b class="ui">Perf &lt;date&gt;</b>. Los
         más nuevos primero, y se muestran los cinco proyectos más recientes — las tomas más antiguas
@@ -433,7 +499,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>Exportación a DAWproject</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>Exportación a DAWproject</h2>
       <p>El botón de compartir en una <strong>fila de proyecto</strong> — no en un stem individual —
         exporta la toma entera como un archivo <b class="ui">.dawproject</b> a través de la hoja de
         compartir normal de iOS: guardar en Archivos, enviarlo por AirDrop a un Mac, dejarlo en una

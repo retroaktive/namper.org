@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>设置参考 — NAMper 文档</title>
-<meta name="description" content="NAMper 设置表单中的每一张卡片和每一行:音频接口、通道名称、外观、演出、歌词、节拍器、提示、重置和诊断——外加那些存放在别处的设置。">
+<meta name="description" content="NAMper 设置表单中的每一张卡片和每一行:音频接口、通道名称、外观与主题、演出、歌词、节拍器、循环乐句器、提示、重置和诊断——外加那些存放在别处的设置。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="设置参考 — NAMper 文档">
@@ -79,6 +80,7 @@
         <li><a href="#set">演出信息</a></li>
         <li><a href="#lyrics">歌词</a></li>
         <li><a href="#metronome">节拍器</a></li>
+        <li><a href="#looper">循环乐句器</a></li>
         <li><a href="#prompts">提示</a></li>
         <li><a href="#reset">重置</a></li>
         <li><a href="#diagnostics">诊断</a></li>
@@ -108,9 +110,9 @@
             <tr><td><b class="ui">控制</b></td>
                 <td>MIDI 与输入触发，可映射到任何东西——有自己的页面：<a href="/docs/zh/control.html">MIDI 与控制</a>。</td></tr>
             <tr><td><b class="ui">舞台</b></td>
-                <td>节拍器、整套的速度与调性、歌词字号，以及歌词是否自己打开——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>和 <a href="#metronome">节拍器</a>。</td></tr>
+                <td>节拍器、整套的速度与调性、歌词字号、歌词是否自己打开，以及循环乐句器的自动循环电平——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>、<a href="#metronome">节拍器</a>和 <a href="#looper">循环乐句器</a>。</td></tr>
             <tr><td><b class="ui">外观</b></td>
-                <td>浅色、深色，或者跟随系统——<a href="#appearance">见下文</a>。</td></tr>
+                <td>浅色、深色，或者跟随系统，以及各款主题——<a href="#appearance">见下文</a>。</td></tr>
             <tr><td><b class="ui">提示与导览</b></td>
                 <td>启动提示和快速导览——<a href="#prompts">见下文</a>。</td></tr>
             <tr><td><b class="ui">故障排查</b></td>
@@ -135,14 +137,14 @@
                 <td>以百分比显示处理器负载,停止时显示 <b class="ui">—</b>。60% 以下为绿色,
                   到 85% 为琥珀色,再往上为红色。</td></tr>
             <tr><td>齿轮</td><td>设置——即本页。</td></tr>
-            <tr><td><b class="ui">KEY</b> 芯片</td>
-                <td>当前调性,未设置时显示 <b class="ui">KEY</b> 字样。点按打开
+            <tr><td><b class="ui">指定</b> 芯片</td>
+                <td>当前调性,未设置时显示 <b class="ui">指定</b> 字样。点按打开
                   <b class="ui">设置调</b>。</td></tr>
             <tr><td>节拍器芯片</td>
                 <td>点按可切换节拍器开关;<strong>长按</strong>打开 <b class="ui">设置速度</b> 表单。参见<a href="/docs/zh/looper.html">循环乐句器</a>。</td></tr>
             <tr><td>音叉图标</td><td>打开调音器。参见
                 <a href="/docs/zh/control.html">MIDI 与控制</a>。</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">电源</b></td>
                 <td>启动和停止音频引擎。开启之前,一切都不会发声。参见
                   <a href="/docs/zh/setup.html#power">快速上手</a>。</td></tr>
           </tbody>
@@ -154,7 +156,8 @@
       <h2 id="audio"><span class="n">09.2</span>音频接口</h2>
       <p><b class="ui">音频接口</b> 是最长的一张卡片,也是唯一一个设置需要重新启动应用
         才能生效的卡片。前四行是只读的:它们告诉你 NAMper 实际从系统获取到的信息,这是排查接口
-        异常最快的方式。</p>
+        异常最快的方式。在 Mac 上,同一个页面还负责选择接口——输入和输出设备、输出对——参见
+        <a href="/docs/zh/mac.html#interface">Mac</a>。</p>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
@@ -190,7 +193,11 @@
                 <td>开启每一对输出,让分支、音色组或节拍器都能拥有自己的一对输出。立体声设备
                   不需要开启它。</td></tr>
             <tr><td><b class="ui">精简 NAM 模型</b></td><td>开关</td><td>关</td>
-                <td>TONE3000 的 A2 采样自带一个更轻量的子模型,开启后每个 NAM 模块都会在它上面运行——DSP 负载只剩一小部分,细节略有减少。没有子模型的采样不受影响。立即生效。</td></tr>
+                <td>TONE3000 的 A2 采样自带一个更轻量的子模型,开启后每个采样都会在它上面运行——DSP 负载只剩一小部分,细节略有减少。没有子模型的采样不受影响。立即生效。</td></tr>
+            <tr><td><b class="ui">切换时保留尾音</b></td><td>开关</td><td>开</td>
+                <td>切换预设时被留下的模块会自然衰减——延迟的重复、混响的余响——最长持续八秒,而不是在切换那一刻戛然而止;被场景旁通的延迟、混响、冻结、效果回路或插件也会在干声之上余音延续。在这几秒里会多占用一点 DSP。</td></tr>
+            <tr><td><b class="ui">对齐各机架</b></td><td>开关</td><td>关</td>
+                <td>在调音台汇总不同输入上的音色组时,把它们都延迟到其中最慢的那个,让吉他和麦克风同时到达。关闭时,每个音色组保持各自的延迟;同一路输入上的各条路径无论开关与否都始终对齐。</td></tr>
           </tbody>
         </table>
       </div>
@@ -220,9 +227,20 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>外观</h2>
       <p>芯片选项:<b class="ui">跟随系统</b>、<b class="ui">浅色</b>、<b class="ui">深色</b>。
-        默认是 <b class="ui">跟随系统</b>,这也是整张表单中唯一一个点按后立即生效的设置。</p>
-      <p>NAMper 是按深色风格设计的——电平表、LED 指示灯和信号链图形都是为深色舞台绘制的。
-        <b class="ui">浅色</b> 是为白天需要时准备的,但这款应用在深色环境下最为清晰易读。</p>
+        默认是 <b class="ui">跟随系统</b>,外观的更改在点按的瞬间就会生效。</p>
+      <p>芯片下方是<b>主题</b>,深色和浅色各选一个:选一款深色主题和一款浅色主题,
+        <b class="ui">跟随系统</b> 会在手机处于深色模式时用深色那款,否则用浅色那款。自带四款深色主题
+        ——Studio(应用本来的样子)、Midnight Violet、Ember 和 Deep Sea——以及三款浅色主题:默认的
+        Concrete,一种比纸白略深一档的浅灰;Desk,应用最初发布时的纸白色;还有 Linen。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="Concrete 浅色主题下的音色组标签页:浅灰色的页面、白色的卡片,信号链中的模块方块显示着各自家族的颜色。">
+        <figcaption>Concrete,NAMper 默认启用的浅色主题</figcaption>
+      </figure>
+      <p><b class="ui">自定义颜色…</b> 会把当前使用的主题复制成你自己的一份,让你逐项手动设定各个
+        角色的颜色——背景、卡片、文字、旋钮、电源按钮,以及每个模块家族的强调色。同一个编辑器里的
+        <b class="ui">圆角半径</b> 会一次性缩放应用中所有的圆角,从锐利(30 %)到非常圆润(200 %);
+        各款主题默认为 50 %。重置一行可以把你的副本恢复成它来源的那款主题。</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -239,7 +257,7 @@
             <tr><td>速度</td><td>长按 Rig 页头的节拍器芯片,或
                 <b class="ui a">循环</b> 标签页中的速度模块。循环乐句器也会从你的第一段循环中
                 检测速度,选择伴奏音轨则会应用该歌曲的速度。</td></tr>
-            <tr><td>调性</td><td>Rig 页头中的 <b class="ui">KEY</b> 芯片。选择伴奏音轨会应用
+            <tr><td>调性</td><td>Rig 页头中的 <b class="ui">指定</b> 芯片。选择伴奏音轨会应用
                 该歌曲的调性。</td></tr>
           </tbody>
         </table>
@@ -266,22 +284,42 @@
           <tbody>
             <tr><td>节拍器电平</td><td>滑块,−40…+6 dB</td><td>≈ −3 dB</td>
                 <td>节拍器的响度。</td></tr>
-            <tr><td><b class="ui">节拍声输出</b></td><td>芯片:<b class="ui">主输出</b>、
-                <b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>……</td><td><b class="ui">主输出</b></td>
+            <tr><td><b class="ui">节拍声输出</b></td><td>菜单:<b class="ui">主输出</b>,然后是每一对输出,按接口驱动给通道起的名字显示(驱动没有给名字时显示 <b class="ui">3 / 4</b>)</td><td><b class="ui">主输出</b></td>
                 <td>由哪一对硬件输出承载节拍器声音。仅当存在多于一对输出时才会显示;选择非主输出
                   的一对会强制开启 <b class="ui">使用接口的所有输出</b>。</td></tr>
+            <tr><td><b class="ui">节拍声声道</b></td><td>芯片:<b class="ui">L+R</b>、<b class="ui">L</b>、<b class="ui">R</b>(在其他输出对上显示其通道编号)</td><td><b class="ui">L+R</b></td>
+                <td>输出对的两个声道,或者其中之一:单声道的节拍声送进一个输出,另一个留给混音。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>这张卡片的脚注才是关键部分:<b class="ui">节拍声在主效果链之后混入——混响和限制器不会影响它。可为入耳监听选择单独的输出对。</b></p>
+      <p>这张卡片的脚注才是关键部分:<b class="ui">节拍声在主效果链之后混入——混响和限制器不会影响它。可为入耳监听选择单独的输出对。若节拍声与混音共用同一个耳返包，请只选一个声道。</b></p>
       <p>也就是说,你的主混响不会让节拍器变得模糊,你的主限制器也不会在每次打拍子时压低整个乐队
         的音量。把它送到独立的一对输出,鼓手能听到节拍器,而前场观众听不到。</p>
       <p>节拍器本身的开关由 Rig 页头的节拍器芯片,或 <b class="ui">节拍器</b> 芯片控制——后者位于
         <b class="ui a">循环</b> 标签页中——而不是在这里。</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>循环乐句器</h2>
+      <p><b class="ui">舞台</b> 页面上的 <b class="ui">循环乐句</b> 卡片用来调节循环乐句器的
+        <a href="/docs/zh/looper.html#auto">AUTO 模式</a>。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">关闭自动循环的静音</b></td><td>滑块,0.5–4 拍</td><td>1 拍</td>
+                <td>乐句之后的安静要持续多久——以你演奏中听出的速度的拍数计——这段录制才会自行闭合。乐句间空隙多就调长,乐句紧凑就调短。</td></tr>
+            <tr><td><b class="ui">启动自动循环的信号</b></td><td>滑块,−54…−24 dB</td><td>−40 dB</td>
+                <td>你的演奏必须持续高于这个电平几毫秒,待命的音轨才会开始录制。越低越灵敏;轻轻蹭到琴弦或房间里的杂音都不会越过它。</td></tr>
+            <tr><td><b class="ui">静音期间保持节拍</b></td><td>开关</td><td>开</td>
+                <td>循环从它假如从未停下时应处的位置开始播放,所以拍子永远不会断。关闭时,它在闭合后从头开始播放。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>提示</h2>
+      <h2 id="prompts"><span class="n">09.9</span>提示</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
@@ -305,7 +343,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>重置</h2>
+      <h2 id="reset"><span class="n">09.10</span>重置</h2>
       <p>两个按钮,每个都带有确认步骤。</p>
       <div class="tw">
         <table>
@@ -331,7 +369,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>诊断</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>诊断</h2>
       <p>NAMper 会保留一份纯文本的引擎日志,记录接口路由和峰值。当日志存在时,这张卡片提供
         <b class="ui">分享引擎日志</b> 和 <b class="ui">清除引擎日志</b>;不存在时,
         显示 <b class="ui">暂无引擎日志（记录接口路由与峰值）。</b></p>
@@ -343,7 +381,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>不在设置里的内容</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>不在设置里的内容</h2>
       <p>有三样东西,大家常常在这里找,却找不到。</p>
       <h3>触发量化</h3>
       <p><b class="ui">量化</b> 旋钮及其网格芯片位于 <b class="ui a">采样</b> 标签页页头,

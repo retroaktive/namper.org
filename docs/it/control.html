@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIDI e Control — Documentazione di NAMper</title>
 <meta name="description" content="La mappa di controllo e il MIDI learn, tutto ciò a cui puoi mappare, la mappa MIDI integrata, l'associazione Bluetooth, i trigger dei suoni appresi, e l'accordatore.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="MIDI e Control — Documentazione di NAMper">
@@ -107,7 +108,7 @@
         (<b class="ui">Aggiungi mappatura</b>).</p>
       <p>Ogni mapping è una riga, letta da sinistra a destra: un chip sorgente, un pulsante
         <b class="ui">APPRENDI</b>, una freccia, un chip azione, e una <b class="ui">✕</b> per
-        eliminare la riga. I mapping salvati vivono sotto <b class="ui">Preset Control</b> nel
+        eliminare la riga. I mapping salvati vivono sotto <b class="ui">Preset Controllo</b> nel
         chip dei preset, così la configurazione di una pedalboard per una band non deve seguirti
         fino alla prossima.</p>
 
@@ -131,7 +132,7 @@
       <ol style="--nc:var(--eq)">
         <li>Tocca <b class="ui">APPRENDI</b>. Il chip si illumina e la riga attende.</li>
         <li>Premi il footswitch o muovi il pedale che vuoi usare.</li>
-        <li>Il chip sorgente si riempie come <b class="ui">CC 42</b> o <b class="ui">Note 60</b>,
+        <li>Il chip sorgente si riempie come <b class="ui">CC 42</b> o <b class="ui">Nota 60</b>,
           e la riga <b class="ui">Last:</b> della card lo conferma —
           <b class="ui">Learned CC 42</b>.</li>
       </ol>
@@ -164,8 +165,7 @@
             <tr><td><b class="ui">Nessuna azione</b></td><td>Lascia la riga inerte.</td></tr>
             <tr><td><b class="ui">Pad sampler</b></td><td><b class="ui">Pad 1</b> in su, uno per
               ogni pad caricato.</td></tr>
-            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Avvia / stop</b>, <b class="ui">Cancella tutto</b>.</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tocca traccia 1</b>…<b class="ui">Tocca traccia 4</b>, <b class="ui">Avvia / stop</b>, <b class="ui">Cancella tutto</b>.</td></tr>
             <tr><td><b class="ui">Preset</b></td><td>Ogni preset del rig per nome, più
               <b class="ui">Preset successivo</b>.</td></tr>
             <tr><td><b class="ui">Palco</b></td><td><b class="ui">Play / pausa</b>,
@@ -180,6 +180,13 @@
         Queste seguono qualunque rig abbia il focus MIDI in quel momento, così un footswitch può
         bypassare "il drive di qualunque rig sto suonando" invece di un blocco fisso in un rig
         fisso.</p>
+      <p>Altri due gruppi sono arrivati con i banchi di preset e il morph tra scene. Sotto
+        <b class="ui">Preset</b>: <b class="ui">Banco preset dal valore</b> (0 è il banco di fabbrica,
+        1–3 i banchi utente), <b class="ui">Banco preset successivo</b> e
+        <b class="ui">Banco preset precedente</b>. Sotto <b class="ui">Scena</b>, per una riga CC:
+        <b class="ui">Morph con il pedale</b> e una coppia di scene — le manopole scivolano tra i valori
+        delle due scene mentre il pedale si muove, e gli interruttori scattano a metà corsa. Vedi
+        <a href="/docs/it/rig.html#presets">preset e scene</a>.</p>
       <p>Due vincoli vale la pena ricordare prima di collegare un pedale:</p>
       <ul style="--nc:var(--amp)">
         <li><b>Un parametro di blocco continuo richiede un CC.</b> Le note e i suoni appresi sono
@@ -216,7 +223,7 @@
               tracce 1 a 4</td></tr>
             <tr><td><b class="ui">CC 89 / 90</b></td><td><b class="ui">looper avvio-stop / cancella</b></td></tr>
             <tr><td><b class="ui">CC 91–94</b></td><td><b class="ui">perform: play/pausa · stop · succ · prec</b></td></tr>
-            <tr><td><b class="ui">Note 36–51</b></td><td><b class="ui">pad 1–16</b></td></tr>
+            <tr><td><b class="ui">Nota 36–51</b></td><td><b class="ui">pad 1–16</b></td></tr>
           </tbody>
         </table>
       </div>
@@ -311,9 +318,10 @@
         sola corda.</p>
 
       <h3>Strumento e accordatura</h3>
-      <p>NAMper capisce da solo cosa hai in mano e lo mostra come una pillola:
-        <b class="ui">CHITARRA</b>, <b class="ui">BASSO</b> o <b class="ui">UKULELE</b>. Non c'è un
-        selettore — collega un basso e l'accordatore ti segue.</p>
+      <p>La pillola nell'angolo è lo strumento: <b class="ui">CHITARRA</b>, <b class="ui">BASSO</b>
+        o <b class="ui">UKULELE</b>. È una scelta, non un'ipotesi — toccala e scegli dal menu.
+        Indovinando, l'accordatore continuava a leggere le armoniche del Mi di un basso come un accordo
+        di chitarra, per questo non prova più a distinguerli a orecchio.</p>
       <p>I chip di accordatura si applicano alla modalità <b class="ui">POLY</b>, e ogni strumento
         ricorda la propria scelta:</p>
       <div class="tw">

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform e testi — Documentazione di NAMper</title>
-<meta name="description" content="Le backing track, il setlist e le sue sezioni, i marcatori di preset sulla timeline, il teleprompter dei testi a schermo intero con le ancore, la registrazione multitraccia e l'esportazione DAWproject.">
+<meta name="description" content="Le backing track, i pulsanti da palco, la scaletta e i suoi brani, i marcatori di preset sulla timeline, il teleprompter dei testi a schermo intero con le ancore, la registrazione multitraccia e l'esportazione DAWproject.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform e testi — Documentazione di NAMper">
@@ -67,14 +68,16 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM E TESTI</div>
     <h1>Suonare il set.</h1>
     <p class="lede">La scheda <b class="ui a">Palco</b> è quella che guardi sul palco: backing
-      track, un setlist di sezioni, cambi di preset che scattano da soli, un teleprompter a schermo
-      intero per il tuo testo, e un registratore che cattura l'intera serata in stem.</p>
+      track, una scaletta di brani, grandi pulsanti da palco che cambiano suono, cambi di rig che
+      scattano da soli dalla timeline, un teleprompter a schermo intero per il tuo testo, e un
+      registratore che cattura l'intera serata in stem.</p>
 
     <nav class="toc">
       <div class="slab">IN QUESTA PAGINA</div>
       <ul>
         <li><a href="#tracks">Backing track</a></li>
         <li><a href="#player">La card del player</a></li>
+        <li><a href="#stage">I pulsanti da palco</a></li>
         <li><a href="#setlist">Scalette e brani</a></li>
         <li><a href="#sections">Che cosa richiama un brano</a></li>
         <li><a href="#markers">Marcatori</a></li>
@@ -93,7 +96,7 @@
         puoi importare un intero set in una volta, e accetta tutto ciò che iOS sa decodificare. Ogni
         file viene copiato in <b class="ui">backing/</b> e diventa una sezione del setlist con il
         nome del file.</p>
-      <p>Se un file non può essere letto ottieni <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>Se un file non può essere letto ottieni <b class="ui r">Impossibile importare &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="La scheda Perform: la card del player con Test Song caricata, la sua timeline con la forma d'onda, 120 BPM e tonalità A, e il chip di routing DIRECT; sotto la card SETLIST con AUTO NEXT attivo, e la card RECORDINGS in fondo.">
@@ -121,22 +124,31 @@
         rig</strong>: il tempo e la tonalità globali seguono il brano, così le divisioni di sync del
         delay e del tremolo, la griglia di battute del looper, l'armonizzatore e l'autotune finiscono
         tutti sul brano giusto senza che tu imposti nulla.</p>
-      <p>Cinque pulsanti si trovano sotto il nome, da sinistra a destra:</p>
+      <p>Sei controlli si trovano sotto il nome, da sinistra a destra — gli stessi tasti di
+        transport, nello stesso ordine, dell'intestazione a schermo intero dei pulsanti da palco:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Pulsante</th><th>Fa</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Play</b></td><td>Riproduce e mette in pausa il backing track</td></tr>
-            <tr><td><b class="ui">Stop</b></td><td>Ferma e torna all'inizio</td></tr>
-            <tr><td><b class="ui">Registra</b></td><td>Avvia e ferma il registratore della performance (<a href="#recording">più sotto</a>)</td></tr>
+            <tr><td><b class="ui">All'inizio del brano</b></td><td>Torna all'inizio del brano in corso; attenuato quando il brano non ha una timeline. Un brano precedente è a un tocco nell'elenco</td></tr>
+            <tr><td><b class="ui">Play</b> / <b class="ui">Pausa</b></td><td>Un solo tasto: mette in
+              pausa mentre il brano suona e riprende da dove si era fermato. Lo stop — ritorno
+              all'inizio — è il pulsante sulla riga del brano, oppure il CC 92</td></tr>
+            <tr><td><b class="ui">Brano successivo</b></td><td>Passa al brano successivo senza toccare
+              l'elenco</td></tr>
+            <tr><td><b class="ui">AUTO TESTO</b></td><td>Se il teleprompter si apre da solo con il
+              brano — lo stesso interruttore di <b class="ui">Apri il testo insieme al brano</b> nelle
+              Impostazioni</td></tr>
             <tr><td><b class="ui">Aggiungi marcatore</b></td><td>Lascia un cambio nella posizione di riproduzione</td></tr>
             <tr><td><b class="ui">Testo</b></td><td>Apre il teleprompter, oppure carica un file di testo</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Tieni premuto <b class="ui">Play</b> o <b class="ui">Stop</b> per assegnarli via MIDI
-        Learn — <b class="ui">MIDI Learn: play / pausa</b>, <b class="ui">MIDI Learn: stop</b>,
-        <b class="ui">MIDI Learn: sezione successiva</b> e <b class="ui">MIDI Learn: sezione precedente</b> sono tutti offerti lì. Vedi <a href="/docs/it/control.html">MIDI e Control</a>.</p>
+      <p>Tieni premuto un tasto del transport per assegnarlo via MIDI Learn —
+        <b class="ui">MIDI Learn: play / pausa</b>, <b class="ui">MIDI Learn: stop</b>,
+        <b class="ui">MIDI Learn: sezione successiva</b>, <b class="ui">MIDI Learn: sezione
+        precedente</b> e <b class="ui">MIDI Learn: brano successivo</b> sono offerti lì. Vedi
+        <a href="/docs/it/control.html">MIDI e Control</a>.</p>
       <h3>Livello e routing del backing track</h3>
       <p>Sotto i pulsanti un fader da banco coricato imposta il livello della base in dB da −60 a
         +12 e mostra <b class="ui">-inf</b> in fondo; un doppio tocco lo riporta a 0 dB. È lo stesso
@@ -160,14 +172,51 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>I pulsanti da palco</h2>
+      <p>La metà inferiore della scheda Palco appartiene a pochi grandi pulsanti — quelli che una
+        mano può colpire a metà brano senza guardare. Cosa contengono dipende dal fatto che una
+        scaletta sia <b class="ui">LIVE</b>:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Nessuna scaletta dal vivo</b> — le quattro <b class="ui">SCENA</b> del rig attivo.
+          Una scena vuota cattura ciò che sta suonando, come fanno i chip delle scene.</li>
+        <li><b>Una scaletta dal vivo, nessun brano scelto</b> — i brani del set. Il primo tocco ne
+          sceglie uno, e i suoi suoni prendono il posto sui pulsanti.</li>
+        <li><b>Un brano scelto</b> — le voci del brano stesso, ognuna un preset con la scena che
+          porta, nell'ordine del brano. Quella che suona è accesa, e un pulsante mostra solo le scene
+          che il suo preset contiene.</li>
+      </ul>
+      <p>Un pulsante commuta nell'istante in cui il dito si posa, non quando si solleva, così un
+        colpo rapido fra due battute non va mai perso. Ce ne sono quattro oppure otto: il chip del
+        numero nell'intestazione li alterna, e finché non scegli segue lo schermo. La griglia sceglie
+        la forma che tiene i pulsanti il più vicino possibile al quadrato. Con più voci che pulsanti,
+        le frecce dell'intestazione sfogliano le pagine, e la pagina segue la voce che suona quando
+        un marcatore o un pedale porta avanti il brano.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="I pulsanti da palco a schermo intero: il nome del brano in grande in alto con accanto i tasti inizio brano, play e brano successivo, e sotto grandi pulsanti, ciascuno con il nome di un preset e la lettera della sua scena A, B o C.">
+        <figcaption>A schermo intero: il nome del brano, il transport e i suoni del brano</figcaption>
+      </figure>
+      <p>Il pulsante di espansione nell'intestazione dà ai pulsanti l'intera scheda. A schermo
+        intero il nome del brano è grande, e i tasti del player lo accompagnano di lato — inizio
+        del brano, play / pausa e brano successivo — visto che il player stesso non è più in
+        vista.</p>
+      <p>Tieni premuto un pulsante per il suo menu: il menu dei pad della pagina Rig, sul palco —
+        <b class="ui">Sostituisci suono…</b>, <b class="ui">Rig attuale</b>, <b class="ui">Svuota pad</b>
+        e MIDI Learn, che lega un footswitch a quel pulsante tramite il suo numero. La pressione è
+        voluta (circa 0,8 s), così non intralcia mai un tocco veloce. Il program change <em>n</em>
+        preme il pulsante da palco <em>n</em> mentre un set è dal vivo: i brani finché non ne è
+        scelto nessuno, poi le voci del brano scelto.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Scalette e brani</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Scalette e brani</h2>
       <p>Una <strong>scaletta</strong> è un elenco di brani; una alla volta è <b class="ui">LIVE</b>,
         e la scaletta dal vivo possiede la striscia dei preset e il MIDI: il program change <em>n</em>
-        suona il brano <em>n</em>. Un <strong>brano</strong> è un nome, un elenco ordinato di ciò che
+        preme il pulsante da palco <em>n</em>. Un <strong>brano</strong> è un nome, un elenco ordinato di ciò che
         richiama e una base <em>facoltativa</em> con i suoi marcatori e il suo testo. Un brano senza
         audio è altrettanto valido: è il suono con cui lo suoni, richiamato dallo stesso elenco.</p>
-      <p>L'intestazione della scheda porta il pulsante <b class="ui">SETLIST</b> — creare,
+      <p>L'intestazione della scheda porta il pulsante <b class="ui">SETLIST</b> — sul telefono solo la sua icona — per creare,
         scegliere, rinominare, condividere ed eliminare i set —, un interruttore
         <b class="ui">AUTO AVANTI</b> e un <b class="ui">+</b> che importa file audio (un brano per
         file), aggiunge un <b class="ui">Brano senza backing track</b> o costruisce un brano direttamente
@@ -201,7 +250,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Che cosa richiama un brano</h2>
+      <h2 id="sections"><span class="n">06.5</span>Che cosa richiama un brano</h2>
       <p>Il pulsante di modifica apre l'editor del brano: un campo <b class="ui">Nome del brano</b>, un selettore di base la cui prima voce è <b class="ui">Brano senza backing track</b>, la riga del <a href="#lyrics">testo</a>, l'elenco di ciò che il brano richiama e <b class="ui">Elimina brano</b> in fondo.</p>
       <p>Un brano senza base ha anche una riga <b class="ui">Durata</b>: la timeline su cui gira. Dagliene
         una e il transport la conta a orologio invece che sull’audio: su di essa
@@ -222,23 +271,37 @@
             <a href="/docs/it/sampler.html">pad</a>.</td></tr>
         </tbody>
       </table>
-      <p>L'elenco viene applicato in ordine quando il brano viene preparato, quindi l'<em>ultimo</em>
-        preset di rig è il suono con cui parti; quelli sopra servono ai
-        <a href="#markers">marcatori</a>. Le righe salgono, scendono e si eliminano dal loro
-        menu.</p>
+      <p>Quando il brano viene preparato, il <em>primo</em> preset di rig dell'elenco è il suono con
+        cui parti; quelli sotto servono a essere raggiunti dai <a href="#markers">marcatori</a>, dai
+        pulsanti da palco e da un footswitch, e l'ordine è quello che scorrono <em>preset
+        successivo / precedente nel brano</em>. Per riordinare, trascina una riga dalla maniglia — le
+        tre linee sul suo bordo destro. Le lettere di scena di una riga offrono solo le scene che quel
+        preset contiene, e toccare di nuovo la lettera scelta annulla la scelta.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="L'editor del brano: il nome del brano e la sua base, poi l'elenco di ciò che richiama — preset di rig, ciascuno con le sue lettere di scena e una maniglia, un preset del looper e un kit del sampler.">
+        <figcaption>L'editor del brano: preset con le loro scene, un preset del looper, un kit</figcaption>
+      </figure>
       <h3>Scegliere un preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="Il selettore dei preset di rig: un campo di ricerca sopra l'elenco, e righe con il numero di programma, il banco, la copertina, il nome del preset e le sue etichette.">
+        <figcaption>Il selettore dei preset di rig: tutti i banchi in un solo elenco</figcaption>
+      </figure>
       <p>Il selettore dei preset di rig mostra gli stessi numeri della striscia — <b class="ui">0</b>
-        … <b class="ui">127</b> — con la copertina e un campo di ricerca sopra l'elenco che filtra
-        per nome, numero ed etichetta. E <strong>fa ascoltare</strong> mentre sfogli: tocca una riga
-        e il rig la carica davvero, così scegli il suono con le orecchie. Chiudi il selettore senza
-        scegliere e il rig torna com'era.</p>
+        … <b class="ui">127</b> — per tutti i banchi in un solo elenco, prima quello di fabbrica,
+        con ogni riga segnata dal suo banco e con la sua copertina e le sue etichette; il campo di
+        ricerca filtra per nome, numero ed etichetta. E <strong>fa ascoltare</strong> mentre sfogli:
+        tocca una riga e il rig la carica davvero, così scegli il suono con le orecchie (l'altoparlante
+        nell'intestazione del selettore lo disattiva). Il segno di spunta aggiunge il preset
+        evidenziato; chiudi il selettore senza scegliere e il rig torna com'era.</p>
       <p>Funziona anche il verso opposto: il menu di riga di un preset nella striscia della scheda
         Rig ha <b class="ui">Assegna a un set…</b> — scegli una scaletta, poi uno dei suoi brani o
         <b class="ui">Nuovo brano</b>, e il preset viene aggiunto in fondo all'elenco di quel brano.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marcatori</h2>
+      <h2 id="markers"><span class="n">06.6</span>Marcatori</h2>
       <p>Un marcatore è un momento sulla timeline del brano che richiama una delle sue stesse voci.
         Strofa pulita, ritornello crunch, lead per l'assolo: messo una volta, e poi a mani libere
         ogni volta che lo suoni.</p>
@@ -269,7 +332,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Testi e teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Testi e teleprompter</h2>
       <p>NAMper porta il tuo testo per te. Dai a una traccia un file di testo semplice e diventa un
         teleprompter a schermo intero che si apre da solo quando il brano inizia e scorre al ritmo
         che gli hai insegnato.</p>
@@ -329,8 +392,9 @@
         pulsante riproduci/pausa. <strong>Toccare in un punto qualsiasi dello schermo alterna
         riproduci/pausa</strong> — non devi trovare un bersaglio piccolo con una chitarra tra le
         mani.</p>
-      <p>Che si apra da solo è un interruttore: Impostazioni → <b class="ui">Palco</b> →
-        <b class="ui">Apri il testo insieme al brano</b>. Disattivato, la scheda su cui eri resta dov'è
+      <p>Che si apra da solo è un interruttore: <b class="ui">AUTO TESTO</b> accanto al pulsante del
+        testo nella card del player, lo stesso interruttore nel menu del pulsante del testo, e
+        Impostazioni → <b class="ui">Palco</b> → <b class="ui">Apri il testo insieme al brano</b>. Disattivato, la scheda su cui eri resta dov'è
         e il pulsante <b class="ui">Testo</b> apre il testo quando lo vuoi.</p>
 
       <h3>Ancore</h3>
@@ -378,8 +442,8 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Preset di Perform</h2>
-      <p>Il chip <b class="ui">PRESET</b> nell'intestazione del setlist apre <b class="ui">Preset Perform</b>. Un preset di Perform salvato porta con sé l'<strong>intero setlist</strong>:
+      <h2 id="presets"><span class="n">06.8</span>Preset di Perform</h2>
+      <p>Il chip <b class="ui">PRESET</b> nell'intestazione del setlist apre <b class="ui">Preset Palco</b>. Un preset di Perform salvato porta con sé l'<strong>intero setlist</strong>:
         ogni sezione con i suoi step e le sue battute, lo stato di <b class="ui">AUTO AVANTI</b>, e
         il testo — contenuto, finestra e ancore — di ogni traccia che li ha.</p>
       <p>Ciò che non porta è l'audio. I backing track sono salvati come <strong>riferimenti per
@@ -395,9 +459,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Registrazione</h2>
-      <p>Il pulsante di registrazione nella card del player cattura la performance come
-        <strong>tre stem allineati</strong>. Si rifiuta con <b class="ui r">L'audio è spento — tocca il pulsante di accensione prima di registrare.</b> se il motore non è in funzione.</p>
+      <h2 id="recording"><span class="n">06.9</span>Registrazione</h2>
+      <p>Il registratore nella scheda <a href="/docs/it/mix.html#recorder">Mix</a> cattura la
+        performance come <strong>tre stem allineati</strong>. Si rifiuta con <b class="ui r">L'audio è spento — tocca il pulsante di accensione prima di registrare.</b> se il motore non è in funzione.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>Cosa contiene</th></tr></thead>
@@ -420,7 +484,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Progetti di registrazione</h2>
+      <h2 id="projects"><span class="n">06.10</span>Progetti di registrazione</h2>
       <p>La card <b class="ui">REGISTRAZIONI</b> raggruppa gli stem di una take in un
         <strong>progetto</strong>, tramite il loro nome condiviso <b class="ui">Perf
         &lt;date&gt;</b>. I più recenti per primi, e vengono mostrati i cinque progetti più
@@ -437,7 +501,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>Esportazione DAWproject</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>Esportazione DAWproject</h2>
       <p>Il pulsante di condivisione su una <strong>riga di progetto</strong> — non su un singolo
         stem — esporta l'intera take come file <b class="ui">.dawproject</b> tramite il normale
         foglio di condivisione di iOS: salva su File, invialo via AirDrop a un Mac, mettilo in una

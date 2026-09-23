@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>샘플러 패드 — NAMper 문서</title>
-<meta name="description" content="샘플러 패드 16개: 사운드 불러오기와 녹음, 트림과 ADSR을 갖춘 패드 에디터, 킷과 4종의 팩토리 드럼 킷, 트리거 퀀타이즈, MIDI 노트 36–51, 그리고 패드가 믹스 안에서 어디로 흘러가는지까지.">
+<meta name="description" content="샘플러 패드 16개: 사운드 불러오기와 녹음, 트림과 ADSR을 갖춘 패드 에디터, 킷과 4종의 팩토리 드럼 킷, MIDI 노트 36–51, 그리고 패드가 믹스 안에서 어디로 흘러가는지까지.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="샘플러 패드 — NAMper 문서">
-<meta property="og:description" content="패드 16개, 킷, 트림과 ADSR, 퀀타이즈, MIDI 트리거까지.">
+<meta property="og:description" content="패드 16개, 킷, 트림과 ADSR, 그리고 MIDI 트리거까지.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ko/sampler.html">
 <meta property="og:type" content="article">
@@ -67,8 +68,8 @@
     <div class="slab" style="--nc:var(--eq)">05 · 샘플러 패드</div>
     <h1>패드 16개, 한 페이지.</h1>
     <p class="lede"><b class="ui a">샘플</b> 탭은 엄지손가락이나 MIDI 페달로 연주할 수 있는
-      드럼머신입니다: 패드 16개, 킷 라이브러리, 패드마다 트림과 엔벨로프, 그리고 타이밍이
-      정확해야 할 때를 위한 퀀타이저까지.</p>
+      드럼머신입니다: 패드 16개, 킷 라이브러리, 패드마다 트림과 엔벨로프, 그리고 연주한 것을
+      그리드 위에 새겨 넣을 수 있는 루퍼까지.</p>
 
     <nav class="toc">
       <div class="slab">이 페이지에서</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">패드에 사운드 넣기</a></li>
         <li><a href="#editor">패드 에디터</a></li>
         <li><a href="#kits">킷</a></li>
-        <li><a href="#quantize">트리거 퀀타이즈</a></li>
+        <li><a href="#quantize">타이밍과 퀀타이즈</a></li>
         <li><a href="#trigger">패드 연주하기</a></li>
         <li><a href="#routing">패드가 흘러가는 곳</a></li>
       </ul>
@@ -87,28 +88,33 @@
       <h2 id="grid"><span class="n">05.1</span>그리드</h2>
       <p>고정된 4×4 그리드에 패드 16개가 있습니다. 한 페이지뿐입니다 — 뱅크도 두 번째
         페이지도 없어서, 연주할 수 있는 모든 것이 한 화면에 한꺼번에 들어옵니다.</p>
-      <p>휴대폰을 옆으로 돌리면 헤더가 왼쪽 열이 됩니다 — 샘플러 레벨, 퀀타이즈 칩,
-        <b class="ui">전체 정지</b> — 그리고 4×4 뱅크가 화면의 나머지 전부를 차지하며 패드가 늘어나
+      <p>휴대폰을 옆으로 돌리면 트랜스포트가 왼쪽 열이 됩니다 — 샘플러 레벨, 킷 키,
+        <b class="ui">REC</b>, <b class="ui">전체 정지</b> — 그리고 4×4 뱅크가 화면의 나머지 전부를 차지하며 패드가 늘어나
         그 자리를 채웁니다.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="어쿠스틱 드럼 팩토리 킷이 16개 패드 전체에 로드된 Sample 탭. 각 패드에 샘플 이름, 길이, 파형이 표시되고, 헤더에는 LEVEL, QUANT 노브와 퀀타이즈 그리드 칩이 있음.">
+             alt="어쿠스틱 드럼 팩토리 킷이 16개 패드 전체에 로드된 Sample 탭. 각 패드에 샘플 이름, 길이, 엔벨로프로 모양이 잡힌 파형이 표시되고, 위에는 레벨 노브, 킷 키, STOP ALL이 있는 트랜스포트 카드가 있음.">
         <figcaption><b class="ui">드럼 — 어쿠스틱</b> 팩토리 킷이 16개 패드 전체에 로드된 모습</figcaption>
       </figure>
-      <p>헤더 행에는 왼쪽부터 순서대로: <b class="ui">샘플러</b>라는 글자,
-        <b class="ui">레벨</b> 노브(0에서 2, 기본값 1), <b class="ui">퀀타이즈</b> 노브,
-        퀀타이즈 그리드 칩, 킷을 위한 <b class="ui">프리셋</b> 칩, 패드가 녹음 중일 때
-        켜지는 <b class="ui">녹음</b> 표시등, 그리고 <b class="ui">전체 정지</b>이 있습니다.</p>
-      <p>아래쪽에는 힌트가 모든 것을 말해 줍니다:</p>
-      <p><b class="ui">빈 패드: 불러오기 또는 녹음 · 로드됨: 탭 = 재생/정지, 길게 눌러 편집 · MIDI 노트 36–51</b></p>
+      <p>위쪽의 트랜스포트 카드에는 왼쪽부터 순서대로: <b class="ui">샘플러</b>라는 글자,
+        샘플러 레벨 노브(0에서 2, 기본값 1, <b class="ui">+0 dB</b>로 표시), 킷 키, 패드가
+        녹음 중일 때 카드 전체와 함께 켜지는 <b class="ui">REC</b> 표시등, 그리고
+        <b class="ui">전체 정지</b>이 있습니다. 그 아래에 패드 16개가 따로, 촘촘히 붙어
+        서 있습니다.</p>
       <p><b>빈 패드</b>는 두 반쪽으로 나뉩니다 — <b class="ui">로드</b>와
         <b class="ui">녹음</b>. <b>사운드가 로드된 패드</b>는 샘플 이름, 길이(예:
-        <b class="ui">1.4s</b>), 트림 바깥 부분이 흐리게 처리된 파형, 그리고 재생 중에는
-        밝은 커서가 훑고 지나가는 모습을 보여줍니다.</p>
+        <b class="ui">1.4s</b>), 파형, 그리고 재생 중에는 밝은 커서가 훑고 지나가는 모습을
+        보여줍니다. 파형은 <b>패드의 엔벨로프를 거쳐</b> 그려집니다: 느린 어택은 앞부분을
+        비스듬히 세우고, 디케이는 서스테인 레벨로 가라앉히며, 릴리즈는 꼬리를 흐려 줍니다 —
+        그래서 패드는 실제로 낼 소리를 그대로 보여 주고, 트림 바깥 부분은 흐리게 처리됩니다.</p>
+      <p>패드는 소리가 나는 동안 <b>가장자리부터 안쪽으로 빛나며</b>, 소리가 클수록 깊이
+        빛나고 소리와 함께 사라집니다 — 탭이든, MIDI 노트든,
+        <a href="/docs/ko/looper.html#midi">MIDI 루프 셀</a>이 히트를 재생한 것이든 어떻게
+        울렸는지와 상관없이요.</p>
       <p>아무 패드나 길게 누르면 메뉴가 열립니다: <b class="ui">사운드 불러오기…</b>,
         <b class="ui">믹스 녹음</b> 또는 <b class="ui">녹음 정지</b>, 그리고 —
         사운드가 로드된 패드에서는 — <b class="ui">편집…</b>, <b class="ui">지우기</b>,
-        <b class="ui">MIDI Learn: pad N</b>도 있습니다.</p>
+        <b class="ui">MIDI Learn: 패드 N</b>도 있습니다.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -138,11 +144,17 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="editor"><span class="n">05.3</span>패드 에디터</h2>
       <p>사운드가 로드된 패드를 길게 눌러 → <b class="ui">편집…</b>를 선택하세요. 시트
-        제목은 <b class="ui">PAD N</b>이며 샘플 이름과 길이가 함께 표시됩니다.</p>
+        제목은 <b class="ui">패드 N</b>이며 샘플 이름과 길이가 함께 표시됩니다.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="샘플러 위의 패드 편집기: PAD 1, Kick, 트림 핸들 사이의 파형과 ADSR 곡선 및 그 값, Gain과 Pitch 노브, MODE와 TAP 칩, Preview와 Load file.">
+        <figcaption>패드 편집기: 트림, 파형 위의 엔벌로프, Gain, Pitch, MODE, TAP</figcaption>
+      </figure>
       <p>파형에는 시작과 끝에 <b>드래그 가능한 트림 핸들</b>이 있습니다 — 시작 핸들을
         안으로 당기면 느린 어택을 잘라내고, 끝 핸들을 안으로 당기면 긴 테일을 줄일
         수 있습니다.</p>
-      <p><b>ADSR 엔벨로프는 파형 위에 그려지며</b>, 세 개의 둥근 핸들 —
+      <p><b>ADSR 엔벨로프는 편집하는 대로 파형의 모양을 바꾸며</b> — 파형이 곡선을 따라갑니다 —
+        세 개의 둥근 핸들 —
         <b class="ui">어택</b>, <b class="ui">디케이와 서스테인</b>,
         <b class="ui">릴리즈</b> — 을 드래그해서 편집합니다. 위쪽 표시창에는
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>처럼 값이 표시됩니다.</p>
@@ -197,9 +209,9 @@
         핵심입니다: 킷을 저장하고 나면, 패드에 다른 것을 덮어 씌우거나 지우거나
         원본 파일을 삭제해도 킷 안의 내용은 비워지지 않습니다. 6개월 뒤에 다시
         불러와도 그대로 재생됩니다.</p>
-      <p><b class="ui">프리셋</b> 칩으로 브라우저를 여세요. 시트 제목은
+      <p>트랜스포트의 킷 키로 브라우저를 여세요. 시트 제목은
         <b class="ui">샘플러 키트</b>입니다. 행을 탭하면 불러옵니다. 행 메뉴에는
-        <b class="ui">이름 변경</b>, <b class="ui">Update with current kit</b>,
+        <b class="ui">이름 변경</b>, <b class="ui">현재 키트(으)로 업데이트</b>,
         <b class="ui">삭제</b>가 있습니다. 킷을 삭제해도 현재 로드된 패드나 다른
         저장된 킷이 여전히 사용 중인 오디오는 지워지지 않습니다.</p>
       <div class="note warn">
@@ -237,34 +249,17 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>트리거 퀀타이즈</h2>
-      <p><b class="ui">퀀타이즈</b> 노브는 스위치가 아니라 <b>강도</b>입니다. 0일 때는
-        <b class="ui">오프</b>로 표시되고, 그 이상에서는 퍼센트로 표시됩니다. 100%에서는
-        모든 히트가 정확히 그리드에 맞춰지고, 30%에서는 살짝 빠른 히트만 정렬되어
-        당신의 필이 그대로 살아남습니다. 기본값은 0, 즉 꺼짐입니다.</p>
-      <p>옆에 있는 칩은 그리드를 설정하며, <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b>, <b class="ui">1/32</b>를 순환합니다. 기본값은
-        <b class="ui">1/16</b>입니다.</p>
-      <p>두 설정 모두 <b>전역</b> 값입니다 — 킷별도, 패드별도 아닙니다. 킷을 불러와도
-        이 값들은 바뀌지 않습니다.</p>
-      <div class="note warn">
-        <div class="t">세 가지가 모두 충족되어야 합니다</div>
-        <p>퀀타이즈가 실제로 들리는 효과를 내려면 다음 <b>세 가지 모두</b>가
-          충족되어야 하며, 화면에는 이 사실이 표시되지 않습니다:</p>
-        <ul style="--nc:var(--drive)">
-          <li><b>템포가 설정되어 있어야</b> 합니다 — 그렇지 않으면 그리드 자체가
-            없습니다;</li>
-          <li><b>루프가 재생 중이어야</b> 합니다 — 루퍼가 위상 정보를 제공해야
-            그리드가 1박이 어디인지 알 수 있습니다;</li>
-          <li><b>녹음 중이어야</b> 합니다 — <b class="ui a">퍼폼</b> 레코더이거나,
-            소스가 샘플러인 루프 트랙이어야 합니다.</li>
-        </ul>
-        <p>아무것도 없는 상태에서 그냥 잼을 하며 노브를 올려도 차이를 느끼지
-          못할 것입니다. 이는 의도된 동작입니다: 다음 16분음표를 기다렸다가
-          소리를 내는 패드는 손가락 아래서 고장난 것처럼 느껴지므로, 자유
-          연주는 항상 퀀타이즈되지 않은 채로 남고, 보정은 오직 녹음에 반영되는
-          부분에만 적용됩니다.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>타이밍과 퀀타이즈</h2>
+      <p>패드는 언제나 <b>치는 그 순간</b> 소리가 납니다. 다음 16분음표를 기다렸다가 소리를
+        내는 패드는 손가락 아래서 고장난 것처럼 느껴지므로, 샘플러 자체는 히트를 절대 옮기지
+        않습니다.</p>
+      <p>타이밍은 연주가 보관되는 곳에서 바로잡습니다: <b class="ui">인</b>이
+        <b class="ui">샘플러 패드 (MIDI)</b>인 루퍼 셀에 패드를 녹음하세요. 그 셀은 히트
+        하나하나를 이벤트로 저장하고 자신만의 <b class="ui">퀀타이즈</b> 노브와
+        <b class="ui">그리드</b>(<b class="ui">1/4</b>에서 <b class="ui">1/32</b>)를 가집니다 —
+        녹음하는 동안에도, 나중에 에디터에서도 쓸 수 있고, 에디터에서의 퀀타이즈는 연주한
+        그대로의 테이크를 절대 망가뜨리지 않습니다.
+        <a href="/docs/ko/looper.html#midi">MIDI 셀</a>을 참고하세요.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -272,41 +267,35 @@
       <p>터치로: 탭하면 <b class="ui">모드</b>와 <b class="ui">탭</b> 설정에 따라
         패드가 재생되거나 멈추고, 길게 누르면 메뉴가 열립니다.</p>
       <p>MIDI로: GM 드럼 규약을 따라 <b>노트 36부터 51까지가 패드 1부터 16까지를
-        연주</b>합니다 — 노트 36이 패드 1입니다. 이는 항상 활성화되어 있고 어떤
-        MIDI 채널에서든 별도 설정이 필요 없습니다. 단, 직접 만든 매핑이 그
-        노트를 먼저 차지하고 있지 않다면요.</p>
+        연주</b>합니다 — 노트 36이 패드 1입니다. 이 노트들은 설정 →
+        <b class="ui">컨트롤</b>에 팩토리 매핑으로 들어 있고 어떤 MIDI 채널에서든 동작하므로,
+        탭과 똑같이 <b class="ui">루프</b>와 <b class="ui">래치</b>를 존중합니다 — 한 번 누르면
+        루프되는 패드가 시작되고, 다음 번에 멈춥니다 — 그리고 다른 매핑처럼 옮기거나 지우거나
+        되살릴 수 있습니다.</p>
       <p><b>벨로시티는 사용되지 않습니다.</b> 컨트롤러 패드를 아무리 세게 쳐도
         샘플은 에디터에서 설정한 <b class="ui">게인</b>으로 재생됩니다. 패드
         에디터에서 레벨을 한 번 설정해 두면 그대로 유지됩니다.</p>
-      <div class="note tip">
-        <div class="t">학습된 매핑이 원시 노트보다 낫습니다</div>
-        <p>설정 → <b class="ui">컨트롤</b>에서 만든 매핑은 play/stop을 부르므로
-          <b class="ui">루프</b>와 <b class="ui">래치</b>를 존중합니다. 풋스위치를 한 번 밟으면
-          루프가 시작되고, 다음 번에 멈춥니다. 날 MIDI 노트 36–51은 언제나 처음부터 다시
-          울립니다. 루프되는 패드를 페달로 몰 생각이라면 내장 노트 범위에 기대지 말고 매핑을
-          가르치세요.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>패드가 흘러가는 곳</h2>
       <p>패드는 <b>메인 믹스로 곧장</b> 합쳐집니다 — 기타 체인을 거치지 않으므로
-        앰프의 게인이나 리버브가 패드에 전혀 영향을 주지 않습니다. 헤더의
-        <b class="ui">레벨</b> 노브는 샘플러 전체가 리그에 비해 얼마나 크게
+        앰프의 게인이나 리버브가 패드에 전혀 영향을 주지 않습니다. 트랜스포트의
+        레벨 노브는 샘플러 전체가 리그에 비해 얼마나 크게
         들릴지를 정합니다.</p>
       <p>패드는 앱의 다른 곳에서도 소스로 사용할 수 있습니다:</p>
       <ul style="--nc:var(--power)">
         <li><b>체인 입력</b>으로 — 리그의 IN 커넥터나 병렬 브랜치(칩
           <b class="ui">SMPL</b>)에서 <b class="ui">샘플러 패드</b>를 고르면 패드
           소리가 그 리그의 이펙트를 거쳐 나갑니다.</li>
-        <li><b>루프 트랙 소스</b>로 — 루퍼 트랙의 <b class="ui">인</b>을
-          <b class="ui">샘플러</b>(칩 <b class="ui">SMP</b>)로 설정하면 패드로
-          탭한 비트를 루프로 만들 수 있습니다.</li>
-        <li><b>컴프레서 사이드체인</b>으로 — Comp 블록의 <b class="ui">사이드체인</b>
+        <li><b>루프 셀 소스</b>로 — 루퍼 셀의 <b class="ui">인</b>을
+          <b class="ui">샘플러 패드 (MIDI)</b>로 설정하면 패드로 탭한 비트를 편집하고
+          퀀타이즈할 수 있는 히트로 녹음합니다: <a href="/docs/ko/looper.html#midi">MIDI 셀</a>.</li>
+        <li><b>컴프레서 사이드체인</b>으로 — 컴프레서 블록의 <b class="ui">사이드체인</b>
           메뉴에 <b class="ui">SMP</b>가 포함되어 있어서, 킥이 기타 소리를
           덕킹할 수 있습니다.</li>
       </ul>
-      <p><b class="ui">전체 정지</b>은 재생 중인 모든 패드를 한 번에 멈춥니다 —
+      <p>트랜스포트의 <b class="ui">전체 정지</b>은 재생 중인 모든 패드를 한 번에 멈춥니다 —
         래치된 드론이나 찾을 수 없는 루프를 위한 패닉 버튼입니다.</p>
     </section>
 

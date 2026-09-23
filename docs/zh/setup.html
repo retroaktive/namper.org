@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>快速上手 — NAMper 文档</title>
 <meta name="description" content="接线入门：音频接口、采样率与缓冲区大小、电源按钮、输入与输出电平表、啸叫保护，以及 NAMper 保存文件的位置。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="快速上手 — NAMper 文档">
@@ -129,14 +130,15 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="meters"><span class="n">01.3</span>电平表与电平</h2>
-      <p>两条竖直的表条分列在 Rig 标签页音箱卡片的两侧：左边是 <b class="ui">入</b>，
-        右边是 <b class="ui">出</b>。两者都从底部的 −60 dBFS 一直到顶部的 0，
-        颜色从绿色经琥珀色到红色。这里没有单独的削波指示灯——削波就是表条顶到最上方的红色区域。</p>
+      <p>Rig 标签页的信号链卡片上有两个电平表，<b class="ui">入</b> 和
+        <b class="ui">出</b>：竖握手机时是卡片标题下方的一条，在宽屏或横放的手机上则就在标题
+        那一行里。两者都从 −60 dBFS 到 0，颜色从绿色经琥珀色到红色。这里没有单独的削波指示灯
+        ——削波就是表条顶到最末端的红色区域。</p>
 
       <h3>设置输入电平</h3>
       <ol style="--nc:var(--eq)">
         <li>打开音频，然后用你平时最大力的弹法弹奏。</li>
-        <li><b class="ui">入</b> 电平表应到达上三分之一处，且不进入红色区域。</li>
+        <li><b class="ui">入</b> 电平表应到达最后三分之一处，且不进入红色区域。</li>
         <li>如果你的接口有增益旋钮，就用它。如果没有，打开设置 →
           <b class="ui">输入微调增益</b>，把对应通道的滑块调高——范围是
           −12 dB 到 +24 dB，每格 1 dB，默认为 0。</li>
@@ -168,7 +170,7 @@
         <b class="ui">内置音频仅支持 48 kHz。连接音频接口可使用更多采样率。</b> 接上接口之后就能看到完整列表——但会减去该接口已经拒绝过的采样率，
         NAMper 会记住这一点，不再提供它们。</p>
       <p>如果某个采样率被拒绝，应用会退回上一个采样率，并用红色文字说明：
-        <b class="ui r">This interface doesn't support … Hz — staying at … Hz.</b></p>
+        <b class="ui r">此接口不支持 … Hz——保持 … Hz。</b></p>
       <div class="note tip">
         <div class="t">应该用哪个采样率？</div>
         <p>更高并不等于更好——它会占用更多处理余量，而且 NAM 模型本来就是在常见采样率下
@@ -239,9 +241,12 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="files"><span class="n">01.7</span>文件的存放位置</h2>
-      <p>NAMper 保存的一切内容都能在"文件"应用中的
-        <b class="ui">On My iPhone → NAMper</b>（或 <b class="ui">On My iPad</b>）下看到。
-        你可以用"文件"应用把东西复制进出、备份整个文件夹，或者把它转移到电脑上。</p>
+      <p>NAMper 把一切都放在一个资料库里——这是它和自己的 Audio Unit 共用的文件夹：在应用里保存的预设，
+        会出现在 GarageBand 或 AUM 里插件的列表中；在宿主里下载的采样，也会出现在应用里。"文件"应用中的
+        NAMper 文件夹，<b class="ui">On My iPhone → NAMper</b>（或 <b class="ui">On My iPad</b>），就是
+        进入这个资料库的大门：把 <b class="ui">.nam</b> 采样、<b class="ui">.wav</b> 脉冲、它们的 zip
+        压缩包、<b class="ui">.namper</b> 预设，或者下表中的整个文件夹放进去，下次应用回到前台时就会被
+        收入。想要取出的东西则通过分享菜单导出。</p>
       <div class="tw">
         <table>
           <thead><tr><th>文件夹</th><th>存放内容</th></tr></thead>

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plugin — Tài liệu NAMper</title>
-<meta name="description" content="Host hiệu ứng Audio Unit bên trong một chuỗi NAMper, giao diện plugin nhúng, các giới hạn, cách trạng thái plugin được lưu — và NAMper tự làm gì khi là một hiệu ứng AUv3 trong app khác.">
+<meta name="description" content="Host hiệu ứng Audio Unit bên trong một chuỗi NAMper, giao diện plugin nhúng, các giới hạn, cách trạng thái plugin được lưu — và chính NAMper bên trong một app khác, với giao diện và thư viện riêng của nó.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Plugin — Tài liệu NAMper">
@@ -153,9 +154,10 @@
             <tr><td>Stereo</td>
                 <td>Input và output của plugin chạy ở stereo, ở bất kỳ sample rate nào engine
                     đang dùng.</td></tr>
-            <tr><td>Chỉ trong chuỗi rig</td>
-                <td>Plugin AU chỉ đặt được bên trong chuỗi rig. Phần <b class="ui">MASTER</b>
-                    chỉ nhận block riêng của NAMper.</td></tr>
+            <tr><td>Chuỗi, master, return</td>
+                <td>Plugin AU đặt được bên trong chuỗi rig, trên phần <b class="ui">MASTER</b> và trên
+                    hai send return — cùng một mục <b class="ui">Plugin</b> nằm trong menu thêm của
+                    tất cả chúng.</td></tr>
           </tbody>
         </table>
       </div>
@@ -210,11 +212,46 @@
         trong: một đầu vào mono kiểu guitar đưa vào một ampli. Đây là chủ đích, và đó là điều bạn
         muốn cho một cây guitar DI trên một track mono.</p>
 
+      <h3>Giao diện của app trong host</h3>
+      <p>Plugin mở ra với chính rig của app trong cửa sổ của host: chuỗi block, các scene, trình
+        chỉnh block, thư viện capture và impulse, các preset và phần cài đặt. Đó là cùng một giao
+        diện trên iPhone và iPad (bản AUv3 trong GarageBand, AUM, Cubasis và các host khác) và trên
+        Mac (Audio Unit, VST3 và CLAP — xem <a href="/docs/vi/mac.html#plugin">Mac</a>). Chọn một
+        preset và plugin dựng rig đó trên track, với các capture lấy từ thư viện và các impulse lấy
+        từ bộ đi kèm; phiên làm việc mang theo chính rig đó, nên một project vẫn mở được trên máy
+        không có thư viện.</p>
+      <p>Header là một hàng duy nhất: logo NAMper (nó mở <b class="ui">Giới thiệu</b> — phiên bản, các
+        liên kết trợ giúp, phần ghi công và lối vào hũ tip của app), preset, các scene, đồng hồ
+        đo, thư viện, công cụ, cài đặt và bypass. Trên một host hẹp, hàng này cuộn ngang, còn cài
+        đặt và bypass được ghim ở cuối để công tắc luôn trong tầm tay.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>Công cụ</b> là các công cụ trên header của app: tải DSP, giọng, metronome kèm tempo
+          (chạm để bật/tắt click, giữ để đặt tempo) và tuner, mỗi thứ mở thành một panel phủ lên
+          chuỗi.</li>
+        <li><b>Cài đặt</b> chứa giao diện sáng/tối và các theme, dùng chung với app; tài khoản
+          TONE3000, đăng nhập và đăng xuất ngay trong plugin; các công tắc DSP —
+          <b class="ui">Mô hình NAM nhẹ</b>, <b class="ui">Amp stereo</b>,
+          <b class="ui">Đuôi âm khi chuyển</b>, <b class="ui">Căn chỉnh các rig</b>; và lối vào bản đồ
+          điều khiển của app. Audio interface là của host, nên nó không có ở đó.</li>
+      </ul>
+      <p>Những gì thuộc về cả một app chứ không phải một track thì được để ngoài: looper, sampler,
+        các track loop, nhạc nền và block <b class="ui">Send</b> bị ẩn bên trong host. Ngõ vào của
+        chuỗi là input của plugin và sidechain của host, thứ mà compressor có thể dùng để kích.</p>
+
+      <h3>Một thư viện chung với app</h3>
+      <p>Trên iOS, app và Audio Unit của nó dùng chung một thư viện. Một preset bạn lưu trong app
+        sẽ có trong danh sách của plugin vào lần tới GarageBand hay AUM mở nó, và một capture bạn
+        tải về bên trong host sẽ có trong thư viện của app. Danh sách preset của plugin hiện từng
+        bank một, giống như trong app: menu bank dưới ô tìm kiếm chuyển đổi nó, và Người dùng 1 là
+        nơi một lần lưu rơi vào. Thư mục NAMper trong app Files (<b class="ui">On My iPhone → NAMper</b>)
+        là cửa vào thư viện đó: capture, impulse, file zip và preset thả vào đó sẽ được nhận vào lần
+        tới app được đưa lên phía trước.</p>
+
       <h3>18 tham số</h3>
-      <p>Panel riêng của plugin là một dải nhỏ có thương hiệu, ghi <b class="ui">NAMper</b> và
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. Mọi điều khiển
-        thực sự đều là các tham số có thể tự động hoá (automate) từ host, và có mười tám tham số
-        như vậy:</p>
+      <p>Host vẫn thấy một bộ tham số cố định có thể tự động hoá — những hàng nó liệt kê trong panel
+        riêng và ghi vào automation. Mỗi tham số đến block đầu tiên cùng loại trong rig đang được
+        nạp: <b class="ui">Gate On</b> là gate của rig, <b class="ui">Bass</b> là EQ của nó,
+        <b class="ui">Reverb Mix</b> là reverb của nó, giống cách bản đồ MIDI của app vẫn làm.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Block</th><th>Tham số</th></tr></thead>
@@ -233,26 +270,23 @@
           </tbody>
         </table>
       </div>
-      <p>Mỗi tham số trong số đó đều có thể tự động hoá từ host. Các tham số on/off là giá trị
-        dấu phẩy động từ 0 tới 1, nên hầu hết host vẽ chúng thành thanh trượt thay vì công tắc —
-        bất cứ gì từ nửa chừng trở lên là bật. Ba preset gốc cũng được đưa ra cho host:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> và <b class="ui">Lead</b>.</p>
+      <p>Các tham số on/off là giá trị dấu phẩy động từ 0 tới 1, nên hầu hết host vẽ chúng thành
+        thanh trượt thay vì công tắc — bất cứ gì từ nửa chừng trở lên là bật. Trong Audio Unit,
+        danh sách rig chính là menu preset của host: mọi rig gốc, rồi mọi preset bạn đã lưu, theo
+        tên.</p>
 
       <div class="note warn">
-        <div class="t">Những gì plugin không mang theo</div>
-        <p>Không có model NAM. Không có IR cab. Không có block modulation. Không có tài liệu rig
-          nào cả — host chỉ lưu 18 giá trị tham số đó và không gì khác, nên một rig bạn dựng
-          trong app không đi theo vào plugin. Cũng không có input MIDI trong bản plugin.</p>
+        <div class="t">MIDI trong host</div>
+        <p>VST3 và CLAP trên Mac nhận MIDI từ host — controller, nốt và program change đến bản đồ
+          điều khiển của rig giống như trong app. Audio Unit không có input MIDI: hãy điều khiển nó
+          bằng automation của host.</p>
       </div>
-      <p>Hãy hiểu đúng: bên trong một host, NAMper là một kênh amp-và-hiệu-ứng gọn nhẹ, không
-        phải cả app. Nếu bạn muốn các bản capture NAM, các thùng loa, looper hay setlist của
-        mình, hãy chạy chính app và ghi âm từ đó.</p>
       <div class="note tip">
         <div class="t">Dùng cả hai cùng lúc</div>
         <p>Bạn có thể chạy cả app đầy đủ và định tuyến output của nó vào một DAW, hoặc dùng
           plugin cho một kênh guitar nhanh trên một track bạn đã đang thu trong một host. Trình
-          ghi âm của tab Perform và tính năng xuất DAWproject của nó tồn tại cho hướng đầu tiên
-          — xem <a href="/docs/vi/perform.html">Trình diễn &amp; lời bài hát</a>.</p>
+          ghi âm và tính năng xuất DAWproject của nó tồn tại cho hướng đầu tiên — xem
+          <a href="/docs/vi/perform.html#recording">Trình diễn &amp; lời bài hát</a>.</p>
       </div>
     </section>
 
@@ -270,9 +304,10 @@
         y như trên iOS.</p>
       <h3>NAMper như một hiệu ứng AAP</h3>
       <p>Bất kỳ host AAP nào cũng tìm thấy NAMper như một hiệu ứng tên <b class="ui">NAMper</b> của
-        <b class="ui">retroaktive</b>: stereo vào, stereo ra, cùng mười tám tham số như bản AUv3
-        và cùng ba preset, với trạng thái do host lưu. Giới hạn cũng giống vậy — đây là kênh
-        ampli-và-hiệu-ứng gọn, không phải cả app.</p>
+        <b class="ui">retroaktive</b>: stereo vào, stereo ra, cùng mười tám tham số như bản AUv3,
+        với trạng thái do host lưu. Khác với bản AUv3, nó vẫn là kênh ampli-và-hiệu-ứng gọn — chuỗi
+        đứng sau các tham số đó và ba preset, <b class="ui">Clean</b>, <b class="ui">Crunch</b> và
+        <b class="ui">Lead</b> — không phải cả app.</p>
     </section>
 
     <nav class="pager">

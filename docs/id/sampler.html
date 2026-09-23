@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pad sampler — Dokumentasi NAMper</title>
-<meta name="description" content="Enam belas pad sampler: memuat dan merekam suara, editor pad dengan trim dan ADSR, kit serta empat kit drum pabrik, trigger quantize, not MIDI 36–51, dan ke mana pad-pad ini masuk ke dalam mix.">
+<meta name="description" content="Enam belas pad sampler: memuat dan merekam suara, editor pad dengan trim dan ADSR, kit serta empat kit drum pabrik, not MIDI 36–51, dan ke mana pad-pad ini masuk ke dalam mix.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Pad sampler — Dokumentasi NAMper">
-<meta property="og:description" content="Enam belas pad, kit, trim dan ADSR, quantize dan triggering MIDI.">
+<meta property="og:description" content="Enam belas pad, kit, trim dan ADSR, serta triggering MIDI.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/id/sampler.html">
 <meta property="og:type" content="article">
@@ -68,7 +69,7 @@
     <h1>Enam belas pad, satu halaman.</h1>
     <p class="lede">Tab <b class="ui a">Sampel</b> adalah drum machine yang bisa kamu mainkan dengan
       ibu jari atau pedal MIDI: enam belas pad, library kit, trim dan envelope per pad, serta
-      quantizer untuk saat timing harus pas.</p>
+      looper yang bisa mencetak permainanmu ke grid.</p>
 
     <nav class="toc">
       <div class="slab">DI HALAMAN INI</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">Memasukkan suara ke pad</a></li>
         <li><a href="#editor">Editor pad</a></li>
         <li><a href="#kits">Kit</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
+        <li><a href="#quantize">Timing dan quantize</a></li>
         <li><a href="#trigger">Memainkan pad</a></li>
         <li><a href="#routing">Ke mana pad pergi</a></li>
       </ul>
@@ -87,24 +88,29 @@
       <h2 id="grid"><span class="n">05.1</span>Grid pad</h2>
       <p>Enam belas pad dalam grid 4×4 yang tetap. Satu halaman — tidak ada bank dan tidak ada
         halaman kedua, jadi semua yang bisa kamu mainkan ada di layar sekaligus.</p>
-      <p>Putar ponsel ke samping dan kepala halaman menjadi kolom di kiri — level sampler, chip
-        kuantisasi, dan <b class="ui">HENTIKAN SEMUA</b> — sementara bank 4×4 mengambil seluruh sisa layar,
-        dengan pad-nya memanjang mengisi ruang itu.</p>
+      <p>Putar ponsel ke samping dan transport menjadi kolom di kiri — level sampler, tombol kit,
+        <b class="ui">REC</b> dan <b class="ui">HENTIKAN SEMUA</b> — sementara bank 4×4 mengambil
+        seluruh sisa layar, dengan pad-nya memanjang mengisi ruang itu.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="Tab Sample dengan kit drum akustik pabrik dimuat di semua enam belas pad, masing-masing menampilkan nama sample, panjang, dan waveform-nya, dengan knob LEVEL dan QUANT serta chip grid quantize di header.">
+             alt="Tab Sample dengan kit drum akustik pabrik dimuat di semua enam belas pad, masing-masing menampilkan nama sample, panjang, dan waveform yang dibentuk oleh envelope-nya, di bawah kartu transport dengan knob level, tombol kit, dan STOP ALL.">
         <figcaption>Kit pabrik <b class="ui">Drum — akustik</b> dimuat di semua 16 pad</figcaption>
       </figure>
-      <p>Baris header memuat, dari kiri ke kanan: kata <b class="ui">SAMPLER</b>, knob
-        <b class="ui">LEVEL</b> (0 sampai 2, default 1), knob <b class="ui">QUANT</b>, chip
-        grid quantize, chip <b class="ui">PRESET</b> untuk kit, indikator <b class="ui">REC</b>
-        yang menyala saat sebuah pad sedang merekam, dan <b class="ui">HENTIKAN SEMUA</b>.</p>
-      <p>Di bagian bawah, hint-nya sudah menjelaskan semuanya:</p>
-      <p><b class="ui">Pad kosong: muat atau rekam · terisi: ketuk = putar/berhenti, tekan lama untuk edit · not MIDI 36–51</b></p>
+      <p>Kartu transport di atas memuat, dari kiri ke kanan: kata <b class="ui">SAMPLER</b>, knob
+        level sampler (0 sampai 2, default 1, terbaca <b class="ui">+0 dB</b>), tombol kit, indikator
+        <b class="ui">REC</b> yang menyala — bersama seluruh kartu — saat sebuah pad sedang merekam,
+        dan <b class="ui">HENTIKAN SEMUA</b>. Enam belas pad berdiri sendiri di bawahnya, rapat satu
+        sama lain.</p>
       <p><b>Pad kosong</b> terbagi jadi dua bagian — <b class="ui">MUAT</b> dan
         <b class="ui">REC</b>. <b>Pad yang sudah dimuat</b> menampilkan nama sample, panjangnya
-        (misalnya <b class="ui">1.4s</b>), waveform yang diredupkan dengan semua bagian di luar
-        trim dipudarkan, dan kursor terang yang bergerak melintasinya saat diputar.</p>
+        (misalnya <b class="ui">1.4s</b>), waveform-nya, dan kursor terang yang bergerak
+        melintasinya saat diputar. Gelombangnya digambar <b>melalui envelope pad</b>: attack yang
+        lambat membuat bagian depannya landai, decay menurunkannya ke level sustain, release
+        memudarkan ekornya — jadi pad menampilkan suara yang benar-benar akan dihasilkannya, dan
+        semua bagian di luar trim tetap dipudarkan.</p>
+      <p>Pad <b>menyala dari tepi ke dalam</b> saat berbunyi, makin keras makin dalam, dan memudar
+        bersama suaranya — bagaimanapun ia dipicu: tap, not MIDI, atau
+        <a href="/docs/id/looper.html#midi">sel MIDI looper</a> yang memutar ulang pukulannya.</p>
       <p>Tekan lama pad mana pun untuk membuka menu: <b class="ui">Muat suara…</b>,
         <b class="ui">Rekam mix</b> atau <b class="ui">Hentikan rekaman</b>, dan — pada pad yang
         sudah dimuat — <b class="ui">Edit…</b>, <b class="ui">Hapus</b> dan
@@ -138,10 +144,16 @@
       <h2 id="editor"><span class="n">05.3</span>Editor pad</h2>
       <p>Tekan lama pad yang sudah dimuat → <b class="ui">Edit…</b>. Sheet-nya berjudul
         <b class="ui">PAD N</b> dengan nama sample dan panjangnya.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="Editor pad di atas sampler: PAD 1, Kick, bentuk gelombang di antara pegangan trim dengan kurva ADSR dan nilainya, kenop Gain dan Pitch, chip MODE dan TAP, Preview dan Load file.">
+        <figcaption>Editor pad: trim, envelope di atas gelombang, Gain, Pitch, MODE dan TAP</figcaption>
+      </figure>
       <p>Waveform-nya punya <b>handle trim yang bisa digeser</b> di awal dan akhir — geser awalnya
         ke dalam untuk memotong attack yang lambat, geser akhirnya ke dalam untuk memperpendek
         tail yang panjang.</p>
-      <p><b>Envelope ADSR digambar di atas waveform</b> dan diedit dengan menggeser tiga handle
+      <p><b>Envelope ADSR membentuk waveform</b> saat kamu mengeditnya — gelombangnya mengikuti kurva —
+        dan diedit dengan menggeser tiga handle
         bulat: <b class="ui">Attack</b>, <b class="ui">Decay dan sustain</b> dan
         <b class="ui">Release</b>. Sebuah readout di atasnya menampilkan nilainya, seperti
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
@@ -192,9 +204,9 @@
         setelah kit disimpan, mengimpor file baru ke atas pad, menghapusnya (clear), atau
         menghapus file aslinya tidak bisa mengosongkan isi kit. Muat lagi enam bulan kemudian dan
         kit itu masih tetap bisa diputar.</p>
-      <p>Buka browser-nya dengan chip <b class="ui">PRESET</b>; sheet-nya berjudul
+      <p>Buka browser-nya dengan tombol kit di transport; sheet-nya berjudul
         <b class="ui">Kit sampler</b>. Tap sebuah baris untuk memuatnya. Menu baris punya
-        <b class="ui">Ganti nama</b>, <b class="ui">Update with current kit</b> dan
+        <b class="ui">Ganti nama</b>, <b class="ui">Perbarui dengan kit saat ini</b> dan
         <b class="ui">Hapus</b>. Menghapus kit tidak akan pernah menghapus audio yang masih
         dipakai pad yang sedang dimuat atau kit tersimpan lainnya.</p>
       <div class="note warn">
@@ -232,32 +244,16 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>Knob <b class="ui">QUANT</b> adalah <b>strength</b>, bukan saklar. Di angka nol,
-        tampilannya <b class="ui">MATI</b>; di atas itu, ditampilkan sebagai persentase. Di 100 %,
-        setiap hit jatuh tepat di grid; di 30 %, hanya yang sedikit terlalu awal yang ditarik ke
-        garis, dan feel kamu tetap terjaga. Default-nya 0, off.</p>
-      <p>Chip di sebelahnya mengatur grid, berputar antara <b class="ui">1/4</b>,
-        <b class="ui">1/8</b>, <b class="ui">1/16</b> dan <b class="ui">1/32</b>. Default-nya
-        adalah <b class="ui">1/16</b>.</p>
-      <p>Kedua pengaturan ini bersifat <b>global</b> — bukan per kit, bukan per pad. Memuat kit
-        tidak mengubahnya.</p>
-      <div class="note warn">
-        <div class="t">Tiga hal ini harus semuanya terpenuhi</div>
-        <p>Quantize baru terdengar efeknya kalau <b>ketiga</b> hal ini terpenuhi, dan layarnya
-          tidak memberitahumu soal ini:</p>
-        <ul style="--nc:var(--drive)">
-          <li><b>tempo sudah diatur</b> — kalau tidak, tidak ada grid;</li>
-          <li><b>loop sedang berjalan</b> — looper menyediakan fase, jadi grid tahu di mana
-            ketukan pertama berada;</li>
-          <li>kamu sedang <b>merekam</b> — baik dengan recorder di tab <b class="ui a">Panggung</b>,
-            atau loop track yang sumbernya adalah sampler.</li>
-        </ul>
-        <p>Putar knob-nya sambil jamming tanpa apa-apa dan kamu tidak akan mendengar perbedaan
-          apa pun. Itu memang disengaja: pad yang menunggu ketukan enam belas berikutnya sebelum
-          berbunyi terasa rusak di bawah jarimu, jadi permainan bebas selalu dibiarkan tanpa
-          quantize, dan koreksinya hanya diterapkan pada bagian yang berakhir di rekaman.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>Timing dan quantize</h2>
+      <p>Pad selalu berbunyi <b>tepat saat kamu memukulnya</b>. Pad yang menunggu ketukan enam belas
+        berikutnya sebelum berbunyi akan terasa rusak di bawah jarimu, jadi sampler sendiri tidak
+        pernah menggeser satu pukulan pun.</p>
+      <p>Timing dirapikan di tempat permainan disimpan: rekam pad ke sel looper yang
+        <b class="ui">IN</b>-nya <b class="ui">Pad sampler (MIDI)</b>. Sel itu menyimpan setiap
+        pukulan sebagai event dan punya knob <b class="ui">Kuantisasi</b> serta <b class="ui">KISI</b>
+        sendiri (<b class="ui">1/4</b> sampai <b class="ui">1/32</b>) — saat kamu merekam, atau
+        sesudahnya di editornya, tempat quantize tidak pernah merusak take seperti yang kamu
+        mainkan. Lihat <a href="/docs/id/looper.html#midi">Sel MIDI</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -266,39 +262,34 @@
         <b class="ui">MODE</b> dan <b class="ui">TAP</b>-nya, dan tekan lama membuka
         menu.</p>
       <p>Lewat MIDI: <b>not 36 sampai 51 memainkan pad 1 sampai 16</b>, mengikuti konvensi drum
-        GM — not 36 adalah pad 1. Ini selalu aktif dan tidak butuh setup apa pun, di channel MIDI
-        mana pun, kecuali salah satu mapping buatanmu sendiri sudah mengklaim not itu lebih
-        dulu.</p>
+        GM — not 36 adalah pad 1. Not-not ini hadir sebagai mapping pabrik di Setelan →
+        <b class="ui">Kontrol</b>, di channel MIDI mana pun, jadi menghormati <b class="ui">Loop</b>
+        dan <b class="ui">Latch</b> seperti tap — satu tekanan memulai pad berloop, tekanan
+        berikutnya menghentikannya — dan kamu bisa memindahkan, menghapus, atau memulihkannya seperti
+        mapping lain.</p>
       <p><b>Velocity tidak digunakan.</b> Sekeras apa pun kamu memukul pad controller, sample akan
         diputar pada <b class="ui">Gain</b> yang kamu atur di editor. Atur level-nya sekali saja
         di editor pad dan pengaturannya akan tetap begitu.</p>
-      <div class="note tip">
-        <div class="t">Mapping yang dipelajari berperilaku lebih baik daripada not mentah</div>
-        <p>Pemetaan yang kamu buat di Setelan → <b class="ui">Kontrol</b> memanggil play/stop,
-          sehingga menghormati <b class="ui">Loop</b> dan <b class="ui">Latch</b> — satu injakan
-          memulai loop, injakan berikutnya menghentikannya. Not MIDI 36–51 mentah selalu memicu ulang
-          dari awal. Kalau kamu menjalankan pad berloop dari pedal, ajarkan pemetaannya alih-alih
-          mengandalkan rentang not bawaan.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>Ke mana pad pergi</h2>
       <p>Pad dijumlahkan <b>langsung ke main mix</b> — tidak melewati chain gitar, jadi gain
-        ampli dan reverb kamu tidak pernah menyentuhnya. Knob <b class="ui">LEVEL</b> di header
+        ampli dan reverb kamu tidak pernah menyentuhnya. Knob level di transport
         mengatur seberapa keras keseluruhan sampler ini terdengar dibanding rig.</p>
       <p>Pad juga tersedia di tempat lain di aplikasi sebagai sumber:</p>
       <ul style="--nc:var(--power)">
         <li>Sebagai <b>chain input</b> — pilih <b class="ui">Pad sampler</b> pada konektor IN
           sebuah rig atau pada cabang paralel (chip <b class="ui">SMPL</b>) dan pad akan melewati
           efek rig tersebut.</li>
-        <li>Sebagai <b>sumber loop track</b> — set <b class="ui">IN</b> sebuah track looper ke
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) dan kamu bisa nge-loop beat yang
-          kamu mainkan di pad.</li>
-        <li>Sebagai <b>sidechain compressor</b> — menu <b class="ui">Sidechain</b> pada blok Comp
+        <li>Sebagai <b>sumber sel loop</b> — set <b class="ui">IN</b> sebuah sel looper ke
+          <b class="ui">Pad sampler (MIDI)</b> dan sel itu merekam beat yang kamu mainkan sebagai
+          pukulan yang bisa diedit dan di-quantize: sebuah
+          <a href="/docs/id/looper.html#midi">sel MIDI</a>.</li>
+        <li>Sebagai <b>sidechain compressor</b> — menu <b class="ui">Sidechain</b> pada blok Kompresor
           menyertakan <b class="ui">SMP</b>, jadi kick bisa nge-duck gitar.</li>
       </ul>
-      <p><b class="ui">HENTIKAN SEMUA</b> di header melepaskan semua pad yang sedang bermain sekaligus
+      <p><b class="ui">HENTIKAN SEMUA</b> di transport melepaskan semua pad yang sedang bermain sekaligus
         — tombol panik untuk drone yang ter-latch atau loop yang tidak bisa kamu temukan.</p>
     </section>
 

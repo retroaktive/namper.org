@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plugin — Dokumentasi NAMper</title>
-<meta name="description" content="Menjalankan efek Audio Unit di dalam rantai NAMper, antarmuka plugin bawaan, batasannya, cara status plugin disimpan — dan apa yang dilakukan NAMper sendiri sebagai efek AUv3 di aplikasi lain.">
+<meta name="description" content="Menjalankan efek Audio Unit di dalam rantai NAMper, antarmuka plugin bawaan, batasannya, cara status plugin disimpan — dan NAMper sendiri di dalam aplikasi lain, dengan tampilan dan pustaka milik aplikasinya.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Plugin — Dokumentasi NAMper">
@@ -152,9 +153,10 @@
             <tr><td>Stereo</td>
                 <td>Input dan output plugin berjalan dalam stereo, pada sample rate berapa pun yang
                     sedang dipakai engine.</td></tr>
-            <tr><td>Hanya rantai rig</td>
-                <td>Plugin AU masuk ke dalam rantai rig. Bagian <b class="ui">MASTER</b> hanya
-                    menerima blok NAMper sendiri.</td></tr>
+            <tr><td>Rantai, master, return</td>
+                <td>Plugin AU bisa masuk ke dalam rantai rig, ke bagian <b class="ui">MASTER</b>, dan
+                    ke kedua return send — bagian <b class="ui">Plugin</b> yang sama ada di semua
+                    menu tambahnya.</td></tr>
           </tbody>
         </table>
       </div>
@@ -208,12 +210,48 @@
         menjadi mono di dalamnya: front-end mono ala gitar yang memberi makan sebuah amp. Ini
         disengaja, dan memang itulah yang kamu butuhkan untuk gitar yang di-DI pada track mono.</p>
 
+      <h3>Tampilan aplikasi di dalam host</h3>
+      <p>Plugin terbuka dengan rig aplikasi itu sendiri di jendela host: rantai blok, scene, editor
+        blok, pustaka capture dan impuls, preset, dan pengaturan. Tampilannya sama di iPhone dan iPad
+        (AUv3 di GarageBand, AUM, Cubasis, dan lainnya) maupun di Mac (Audio Unit, VST3, dan CLAP —
+        lihat <a href="/docs/id/mac.html#plugin">Mac</a>). Pilih preset dan plugin membangun rig itu
+        di track, dengan capture dari pustaka dan impuls dari set bawaan; sesi membawa rig itu
+        sendiri, jadi proyek tetap terbuka di komputer yang tidak punya pustakanya.</p>
+      <p>Header-nya satu baris: logo NAMper (membuka <b class="ui">Tentang</b> — versi, tautan
+        bantuan, kredit, dan jalan ke kotak tip aplikasi), preset, scene, meter, pustaka, alat,
+        pengaturan, dan bypass. Di host yang sempit baris itu bisa digeser ke samping, dengan
+        pengaturan dan bypass tetap menempel di ujung supaya sakelarnya selalu terjangkau.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>Alat</b> adalah alat header milik aplikasi: beban DSP, nada dasar, metronom dengan
+          tempo-nya (ketuk untuk menyalakan click, tahan untuk mengatur tempo), dan tuner, masing-masing
+          terbuka sebagai panel di atas rantai.</li>
+        <li><b>Pengaturan</b> berisi tampilan dan tema, yang dibagi dengan aplikasi; akun TONE3000,
+          yang bisa masuk dan keluar di dalam plugin; sakelar DSP —
+          <b class="ui">Model NAM ringan</b>, <b class="ui">Amp stereo</b>,
+          <b class="ui">Ekor saat berpindah</b>, <b class="ui">Sejajarkan rig</b>; dan pintu ke peta
+          kontrol aplikasi. Antarmuka audio milik host, jadi tidak ada di sana.</li>
+      </ul>
+      <p>Yang menjadi milik seluruh aplikasi dan bukan milik satu track tetap di luar: looper,
+        sampler, track loop, backing track, dan blok <b class="ui">Send</b> disembunyikan di dalam
+        host. Input rantai adalah input plugin dan sidechain host, yang bisa dipakai kompresor
+        sebagai pemicu.</p>
+
+      <h3>Satu pustaka dengan aplikasi</h3>
+      <p>Di iOS, aplikasi dan Audio Unit-nya berbagi satu pustaka. Preset yang kamu simpan di
+        aplikasi ada di daftar plugin saat GarageBand atau AUM membukanya lagi, dan capture yang kamu
+        unduh di dalam host ada di pustaka aplikasi. Daftar preset plugin menampilkan satu bank
+        sekaligus, seperti di aplikasi: menu bank di bawah kolom pencarian menggantinya, dan
+        Pengguna 1 adalah tempat preset yang disimpan mendarat. Folder NAMper di aplikasi Files
+        (<b class="ui">On My iPhone → NAMper</b>) adalah pintu masuk ke pustaka itu: capture, impuls,
+        file zip, dan preset yang ditaruh di sana akan diambil saat aplikasi berikutnya dibuka ke
+        depan.</p>
+
       <h3>18 parameter</h3>
-      <p>Panel plugin itu sendiri adalah strip bermerek kecil yang bertuliskan
-        <b class="ui">NAMper</b> dan
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. Semua kontrol
-        sebenarnya adalah parameter yang bisa diotomatisasi dari host, dan ada delapan belas
-        parameter:</p>
+      <p>Host tetap melihat sekumpulan parameter tetap yang bisa diotomatisasi — baris-baris yang
+        ia tampilkan di panelnya sendiri dan ia tulis ke otomasi. Masing-masing mencapai blok
+        pertama dari jenisnya di rig yang sedang dimuat: <b class="ui">Gate On</b> adalah gate rig
+        itu, <b class="ui">Bass</b> EQ-nya, <b class="ui">Reverb Mix</b> reverb-nya, sama seperti
+        peta MIDI aplikasi.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Blok</th><th>Parameter</th></tr></thead>
@@ -232,27 +270,23 @@
           </tbody>
         </table>
       </div>
-      <p>Semuanya bisa diotomatisasi dari host. Parameter on/off berupa nilai floating-point dari 0
-        sampai 1, jadi kebanyakan host menggambarnya sebagai slider, bukan saklar — apa pun yang
-        berada di setengah atau lebih dianggap on. Tiga preset pabrik juga diekspos ke host:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> dan <b class="ui">Lead</b>.</p>
+      <p>Parameter on/off berupa nilai floating-point dari 0 sampai 1, jadi kebanyakan host
+        menggambarnya sebagai slider, bukan saklar — apa pun yang berada di setengah atau lebih
+        dianggap on. Di Audio Unit, daftar rig adalah menu preset milik host: setiap rig pabrik,
+        lalu setiap preset yang kamu simpan, berdasarkan nama.</p>
 
       <div class="note warn">
-        <div class="t">Yang tidak dibawa oleh plugin ini</div>
-        <p>Tidak ada model NAM. Tidak ada IR cab. Tidak ada blok modulasi. Tidak ada dokumen rig
-          sama sekali — host hanya menyimpan 18 nilai parameter itu dan tidak lebih, jadi rig yang
-          kamu susun di aplikasi tidak ikut pindah ke plugin ini. Versi plugin ini juga tidak punya
-          input MIDI.</p>
+        <div class="t">MIDI di dalam host</div>
+        <p>VST3 dan CLAP di Mac menerima MIDI dari host — controller, not, dan program change sampai
+          ke peta kontrol rig seperti di aplikasi. Audio Unit tidak punya input MIDI: kendalikan
+          lewat otomasi host.</p>
       </div>
-      <p>Terus terang saja: di dalam sebuah host, NAMper adalah channel amp-dan-efek yang ringkas,
-        bukan seluruh aplikasi. Kalau kamu ingin capture NAM-mu, cabinet-mu, looper atau setlist,
-        jalankan aplikasinya sendiri dan rekam dari sana.</p>
       <div class="note tip">
         <div class="t">Memakai keduanya</div>
         <p>Kamu bisa menjalankan aplikasi penuh dan merutekan outputnya ke DAW, atau memakai plugin
           ini untuk channel gitar cepat pada sebuah track yang sudah kamu rekam di host. Recorder
-          di tab Perform dan ekspor DAWproject-nya ada untuk jalur yang pertama — lihat
-          <a href="/docs/id/perform.html">Perform &amp; lirik</a>.</p>
+          dan ekspor DAWproject-nya ada untuk jalur yang pertama — lihat
+          <a href="/docs/id/perform.html#recording">Perform &amp; lirik</a>.</p>
       </div>
     </section>
 
@@ -271,8 +305,10 @@
       <h3>NAMper sebagai efek AAP</h3>
       <p>Host AAP mana pun menemukan NAMper sebagai efek bernama <b class="ui">NAMper</b> dari
         <b class="ui">retroaktive</b>: input stereo, output stereo, delapan belas parameter yang
-        sama dengan AUv3 dan tiga preset yang sama, dengan state disimpan oleh host. Batasan yang
-        sama berlaku — ini channel amp-dan-efek yang ringkas, bukan seluruh aplikasi.</p>
+        sama dengan AUv3, dengan state disimpan oleh host. Berbeda dari AUv3, ini tetap channel
+        amp-dan-efek yang ringkas — rantai di balik parameter-parameter itu dan tiga preset,
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b> dan <b class="ui">Lead</b> — bukan seluruh
+        aplikasi.</p>
     </section>
 
     <nav class="pager">

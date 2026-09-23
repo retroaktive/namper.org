@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Referensi pengaturan — Dokumentasi NAMper</title>
-<meta name="description" content="Setiap kartu dan setiap baris pada sheet Pengaturan NAMper: audio interface, nama channel, tampilan, set, lirik, metronom, prompts, reset, dan diagnostik — plus pengaturan yang berada di tempat lain.">
+<meta name="description" content="Setiap kartu dan setiap baris pada sheet Pengaturan NAMper: audio interface, nama channel, tampilan dan tema, set, lirik, metronom, looper, prompts, reset, dan diagnostik — plus pengaturan yang berada di tempat lain.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Referensi pengaturan — Dokumentasi NAMper">
@@ -81,6 +82,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Lirik</a></li>
         <li><a href="#metronome">Metronom</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Prompts</a></li>
         <li><a href="#reset">Reset</a></li>
         <li><a href="#diagnostics">Diagnostik</a></li>
@@ -111,9 +113,9 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI dan pemicu input, bisa dipetakan ke apa saja — halaman sendiri: <a href="/docs/id/control.html">MIDI &amp; kontrol</a>.</td></tr>
             <tr><td><b class="ui">Panggung</b></td>
-                <td>Klik, tempo dan nada dasar set, ukuran teks lirik, dan apakah lirik terbuka sendiri — <a href="#set">Set</a>, <a href="#lyrics">Lirik</a>, dan <a href="#metronome">Metronom</a> di bawah.</td></tr>
+                <td>Klik, tempo dan nada dasar set, ukuran teks lirik, apakah lirik terbuka sendiri, serta level auto-loop looper — <a href="#set">Set</a>, <a href="#lyrics">Lirik</a>, <a href="#metronome">Metronom</a>, dan <a href="#looper">Looper</a> di bawah.</td></tr>
             <tr><td><b class="ui">Tampilan</b></td>
-                <td>Terang, gelap, atau mengikuti sistem — <a href="#appearance">di bawah</a>.</td></tr>
+                <td>Terang, gelap, atau mengikuti sistem, serta tema — <a href="#appearance">di bawah</a>.</td></tr>
             <tr><td><b class="ui">Prompt &amp; tur</b></td>
                 <td>Pesan saat peluncuran dan tur singkat — <a href="#prompts">di bawah</a>.</td></tr>
             <tr><td><b class="ui">Pemecahan masalah</b></td>
@@ -137,12 +139,12 @@
             <tr><td>Chip <b class="ui">Beban DSP</b></td>
                 <td>Beban prosesor dalam persen, <b class="ui">—</b> saat berhenti. Hijau di bawah 60%, kuning hingga 85%, merah di atasnya.</td></tr>
             <tr><td>Roda gigi</td><td>Pengaturan — halaman ini.</td></tr>
-            <tr><td>Chip <b class="ui">KEY</b></td>
-                <td>Nada dasar saat ini, atau kata <b class="ui">KEY</b> saat belum diatur. Membuka <b class="ui">SETEL NADA DASAR</b>.</td></tr>
+            <tr><td>Chip <b class="ui">PILIH</b></td>
+                <td>Nada dasar saat ini, atau kata <b class="ui">PILIH</b> saat belum diatur. Membuka <b class="ui">SETEL NADA DASAR</b>.</td></tr>
             <tr><td>Chip metronom</td>
                 <td>Ketuk untuk menyalakan dan mematikan click; <strong>tekan lama</strong> untuk sheet <b class="ui">SETEL TEMPO</b>. Lihat <a href="/docs/id/looper.html">looper</a>.</td></tr>
             <tr><td>Garpu tala</td><td>Membuka tuner. Lihat <a href="/docs/id/control.html">MIDI &amp; kontrol</a>.</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">Daya</b></td>
                 <td>Memulai dan menghentikan audio engine. Tidak ada suara apa pun sampai ini aktif. Lihat <a href="/docs/id/setup.html#power">memulai</a>.</td></tr>
           </tbody>
         </table>
@@ -154,7 +156,9 @@
       <p>Kartu <b class="ui">AUDIO INTERFACE</b> adalah yang terpanjang, dan satu-satunya yang
         pengaturannya perlu relaunch untuk berlaku. Empat baris pertama bersifat read-only:
         baris-baris ini memberitahumu apa yang sebenarnya diterima NAMper dari sistem, cara
-        tercepat untuk mencari tahu kenapa sebuah interface berperilaku aneh.</p>
+        tercepat untuk mencari tahu kenapa sebuah interface berperilaku aneh. Di Mac, halaman yang
+        sama juga tempat memilih interface — perangkat input dan output, pasangan output — lihat
+        <a href="/docs/id/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Baris</th><th>Kontrol</th><th>Default</th><th>Fungsinya</th></tr></thead>
@@ -182,7 +186,11 @@
             <tr><td><b class="ui">Pakai semua output interface</b></td><td>Switch</td><td>Off</td>
                 <td>Membuka setiap pasangan output, sehingga sebuah branch, rig, atau click bisa punya pasangannya sendiri. Perangkat stereo tidak membutuhkan ini.</td></tr>
             <tr><td><b class="ui">Model NAM ringan</b></td><td>Switch</td><td>Off</td>
-                <td>Capture A2 dari TONE3000 membawa sub-model yang lebih ringan; ini menjalankan setiap blok NAM di atasnya — sebagian kecil saja dari beban DSP, detail sedikit berkurang. Capture yang tidak punya sub-model tidak terpengaruh. Langsung berlaku.</td></tr>
+                <td>Capture A2 dari TONE3000 membawa sub-model yang lebih ringan; ini menjalankan setiap capture di atasnya — sebagian kecil saja dari beban DSP, detail sedikit berkurang. Capture yang tidak punya sub-model tidak terpengaruh. Langsung berlaku.</td></tr>
+            <tr><td><b class="ui">Ekor saat berpindah</b></td><td>Switch</td><td>On</td>
+                <td>Blok yang ditinggalkan saat berganti preset tetap berbunyi sampai habis — pengulangan delay, peluruhan reverb — hingga delapan detik alih-alih berhenti saat berganti, dan delay, reverb, freeze, FX loop, atau plugin yang di-bypass oleh scene tetap berbunyi sampai habis di atas sinyal kering. Sedikit tambahan DSP selama detik-detik itu.</td></tr>
+            <tr><td><b class="ui">Sejajarkan rig</b></td><td>Switch</td><td>Off</td>
+                <td>Rig di input yang berbeda ditunda mengikuti yang paling lambat di titik mixer menjumlahkannya, sehingga gitar dan mik tiba bersamaan. Kalau Off, tiap rig mempertahankan latensinya sendiri; jalur-jalur dari satu input selalu sejajar dalam kedua kasus.</td></tr>
           </tbody>
         </table>
       </div>
@@ -214,11 +222,25 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Tampilan</h2>
       <p>Chip: <b class="ui">Sistem</b>, <b class="ui">Terang</b>, <b class="ui">Gelap</b>.
-        Default-nya adalah <b class="ui">Sistem</b>, dan ini satu-satunya pengaturan di
-        seluruh sheet yang langsung berlaku begitu kamu mengetuknya.</p>
-      <p>NAMper dirancang gelap — meter, LED, dan grafik chain digambar untuk panggung yang
-        gelap. <b class="ui">Terang</b> tersedia kalau kamu membutuhkannya di siang hari, tapi
-        aplikasi ini paling mudah dibaca dalam mode gelap.</p>
+        Default-nya adalah <b class="ui">Sistem</b>, dan perubahan tampilan langsung berlaku
+        begitu kamu mengetuknya.</p>
+      <p>Di bawah chip ada <b>tema</b>, satu pilihan untuk tiap polaritas: pilih satu tema gelap
+        dan satu tema terang, dan <b class="ui">Sistem</b> memakai yang gelap saat ponsel dalam mode
+        gelap dan yang terang saat tidak. Ada empat tema gelap — Studio (milik aplikasi sendiri),
+        Midnight Violet, Ember, dan Deep Sea — dan tiga tema terang: Concrete, default-nya, abu-abu
+        muda satu tingkat lebih gelap dari kertas; Desk, putih kertas yang dipakai aplikasi saat
+        pertama rilis; dan Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="Tab Rig dalam tema terang Concrete: halaman abu-abu muda, kartu putih, dan tile chain dalam warna keluarganya masing-masing.">
+        <figcaption>Concrete, tema terang yang dipakai NAMper sejak awal</figcaption>
+      </figure>
+      <p><b class="ui">Sesuaikan warna…</b> menyalin tema yang sedang dipakai menjadi tema milikmu
+        sendiri dan membiarkanmu mengatur tiap peran secara manual — latar belakang, kartu, teks,
+        knob, tombol power, dan warna aksen tiap keluarga blok. <b class="ui">Radius sudut</b> di
+        editor yang sama mengubah skala semua sudut membulat di aplikasi sekaligus, dari tajam
+        (30 %) sampai sangat bulat (200 %); tema bawaan memakai 50 %. Baris reset mengembalikan
+        salinanmu ke tema asalnya.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -233,7 +255,7 @@
           <thead><tr><th>Nilai</th><th>Diatur dari</th></tr></thead>
           <tbody>
             <tr><td>Tempo</td><td>Tekan lama chip metronom di header Rig, atau blok tempo di tab <b class="ui a">Loop</b>. Looper juga mendeteksinya dari loop pertamamu, dan memilih backing track menerapkan tempo lagu tersebut.</td></tr>
-            <tr><td>Key</td><td>Chip <b class="ui">KEY</b> di header Rig. Memilih backing track menerapkan nada dasar lagu tersebut.</td></tr>
+            <tr><td>Key</td><td>Chip <b class="ui">PILIH</b> di header Rig. Memilih backing track menerapkan nada dasar lagu tersebut.</td></tr>
           </tbody>
         </table>
       </div>
@@ -262,12 +284,14 @@
           <tbody>
             <tr><td>Level click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>Seberapa keras click-nya.</td></tr>
-            <tr><td><b class="ui">Output click</b></td><td>Chips: <b class="ui">Utama</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Utama</b></td>
+            <tr><td><b class="ui">Output click</b></td><td>Menu: <b class="ui">Utama</b>, lalu setiap pasangan output dengan nama yang diberikan driver interface untuk kanalnya (<b class="ui">3 / 4</b> kalau tidak ada)</td><td><b class="ui">Utama</b></td>
                 <td>Pasangan output hardware mana yang membawa click. Ditampilkan hanya saat ada lebih dari satu pasangan; memilih pasangan selain main akan otomatis mengaktifkan <b class="ui">Pakai semua output interface</b>.</td></tr>
+            <tr><td><b class="ui">Kanal click</b></td><td>Chips: <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (pada pasangan lain, nomor kanalnya)</td><td><b class="ui">L+R</b></td>
+                <td>Kedua kanal pasangan itu, atau salah satunya: click mono ke satu output, yang lain dibiarkan untuk mix.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Catatan kaki kartu ini adalah bagian yang berguna: <b class="ui">Click dicampur SETELAH rantai FX master — reverb dan limiter tidak menyentuhnya. Pilih pasangan output terpisah untuk monitor in-ear.</b></p>
+      <p>Catatan kaki kartu ini adalah bagian yang berguna: <b class="ui">Click dicampur SETELAH rantai FX master — reverb dan limiter tidak menyentuhnya. Pilih pasangan output terpisah untuk monitor in-ear. Dan satu kanal saja bila click berbagi pack dengan mix.</b></p>
       <p>Artinya reverb master-mu tidak akan mengaburkan click, dan limiter master-mu tidak
         akan menekan band setiap kali click berbunyi. Kirim ke pasangannya sendiri dan drummer
         mendengar click sementara front of house tidak.</p>
@@ -275,8 +299,27 @@
         chip <b class="ui">CLICK</b> di tab <b class="ui a">Loop</b> — bukan dari sini.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p>Kartu <b class="ui">LOOPER</b> di halaman <b class="ui">Panggung</b> menyetel
+        <a href="/docs/id/looper.html#auto">mode AUTO</a> looper.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Baris</th><th>Kontrol</th><th>Default</th><th>Fungsinya</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Keheningan yang menutup auto-loop</b></td><td>Slider, 0.5–4 ketuk</td><td>1 ketuk</td>
+                <td>Berapa lama hening setelah sebuah frasa harus berlangsung, dalam ketukan tempo yang terdengar dari permainanmu, sebelum take menutup sendiri. Lebih panjang untuk frasa yang banyak jedanya, lebih pendek untuk yang rapat.</td></tr>
+            <tr><td><b class="ui">Sinyal yang memulai auto-loop</b></td><td>Slider, −54…−24 dB</td><td>−40 dB</td>
+                <td>Level yang harus terus dilewati permainanmu selama beberapa milidetik sebelum sel yang di-arm mulai merekam. Makin rendah makin peka; senar yang tersenggol atau suara ruangan tetap berada di bawahnya.</td></tr>
+            <tr><td><b class="ui">Jaga hitungan selama hening</b></td><td>Switch</td><td>On</td>
+                <td>Loop mulai diputar di posisi yang seharusnya seandainya tidak pernah berhenti, jadi hitungan tidak pernah putus. Kalau Off, loop mulai dari awal saat menutup.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Prompts</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Prompts</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Baris</th><th>Kontrol</th><th>Default</th><th>Fungsinya</th></tr></thead>
@@ -299,7 +342,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Reset</h2>
+      <h2 id="reset"><span class="n">09.10</span>Reset</h2>
       <p>Dua tombol, masing-masing di balik sebuah konfirmasi.</p>
       <div class="tw">
         <table>
@@ -326,7 +369,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Diagnostik</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Diagnostik</h2>
       <p>NAMper menyimpan log engine berupa teks biasa yang mencatat routing interface dan
         peak. Kalau sudah ada, kartu ini menawarkan <b class="ui">Bagikan log mesin</b> dan
         <b class="ui">Hapus log mesin</b>; kalau belum, tampilannya <b class="ui">Belum ada log mesin (mencatat routing interface dan level puncak).</b></p>
@@ -340,7 +383,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Tidak ada di Pengaturan</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Tidak ada di Pengaturan</h2>
       <p>Tiga hal yang dicari orang di sini tapi tidak ditemukan.</p>
       <h3>Trigger quantize</h3>
       <p>Knob <b class="ui">QUANT</b> dan chip grid-nya berada di header tab

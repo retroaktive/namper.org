@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sanggunian sa mga setting — Dokumentasyon ng NAMper</title>
-<meta name="description" content="Bawat card at bawat row sa Settings sheet ng NAMper: audio interface, mga pangalan ng channel, itsura, set, lyrics, metronome, mga prompt, reset at diagnostics — pati ang mga setting na nasa ibang lugar.">
+<meta name="description" content="Bawat card at bawat row sa Settings sheet ng NAMper: audio interface, mga pangalan ng channel, itsura at mga tema, set, lyrics, metronome, looper, mga prompt, reset at diagnostics — pati ang mga setting na nasa ibang lugar.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Sanggunian sa mga setting — Dokumentasyon ng NAMper">
@@ -78,6 +79,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Lyrics</a></li>
         <li><a href="#metronome">Metronome</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Mga prompt</a></li>
         <li><a href="#reset">Reset</a></li>
         <li><a href="#diagnostics">Diagnostics</a></li>
@@ -108,9 +110,9 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI at mga input trigger, puwedeng imapa sa kahit ano — may sariling pahina: <a href="/docs/fil/control.html">MIDI at kontrol</a>.</td></tr>
             <tr><td><b class="ui">Entablado</b></td>
-                <td>Ang click, ang tempo at key ng set, ang laki ng teksto ng lyrics, at kung kusang bumubukas ang lyrics — <a href="#set">Set</a>, <a href="#lyrics">Liriko</a> at <a href="#metronome">Metronome</a> sa ibaba.</td></tr>
+                <td>Ang click, ang tempo at key ng set, ang laki ng teksto ng lyrics, kung kusang bumubukas ang lyrics, at ang mga level ng auto-loop ng looper — <a href="#set">Set</a>, <a href="#lyrics">Liriko</a>, <a href="#metronome">Metronome</a> at <a href="#looper">Looper</a> sa ibaba.</td></tr>
             <tr><td><b class="ui">Hitsura</b></td>
-                <td>Maliwanag, madilim, o kung ano ang sabi ng sistema — <a href="#appearance">sa ibaba</a>.</td></tr>
+                <td>Maliwanag, madilim, o kung ano ang sabi ng sistema, at ang mga tema — <a href="#appearance">sa ibaba</a>.</td></tr>
             <tr><td><b class="ui">Prompts at tour</b></td>
                 <td>Ang mga paalala sa pagbukas at ang mabilisang tour — <a href="#prompts">sa ibaba</a>.</td></tr>
             <tr><td><b class="ui">Pag-troubleshoot</b></td>
@@ -133,8 +135,8 @@
             <tr><td><b class="ui">DSP load</b> chip</td>
                 <td>Load ng processor bilang porsiyento, <b class="ui">—</b> kapag nakahinto. Berde kapag mababa sa 60 %, amber hanggang 85 %, pula kapag lampas.</td></tr>
             <tr><td>Gear</td><td>Settings — ang pahinang ito.</td></tr>
-            <tr><td><b class="ui">KEY</b> chip</td>
-                <td>Ang kasalukuyang key, o ang salitang <b class="ui">KEY</b> kapag walang nakatakda. Binubuksan ang <b class="ui">ITAKDA ANG KEY</b>.</td></tr>
+            <tr><td><b class="ui">PILI</b> chip</td>
+                <td>Ang kasalukuyang key, o ang salitang <b class="ui">PILI</b> kapag walang nakatakda. Binubuksan ang <b class="ui">ITAKDA ANG KEY</b>.</td></tr>
             <tr><td>Metronome chip</td>
                 <td>I-tap para i-on at i-off ang click; <strong>pindutin nang matagal</strong> para sa <b class="ui">ITAKDA ANG TEMPO</b> sheet. Tingnan ang <a href="/docs/fil/looper.html">looper</a>.</td></tr>
             <tr><td>Tuning fork</td><td>Binubuksan ang tuner. Tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</td></tr>
@@ -147,7 +149,7 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="audio"><span class="n">09.2</span>Audio interface</h2>
-      <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa system, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface.</p>
+      <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa system, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface. Sa Mac, ang parehong pahina rin ang pumipili ng interface — ang mga input at output device, ang output pair — tingnan ang <a href="/docs/fil/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
@@ -175,7 +177,11 @@
             <tr><td><b class="ui">Gamitin lahat ng output ng interface</b></td><td>Switch</td><td>Off</td>
                 <td>Binubuksan ang bawat output pair, para magkaroon ng sariling pair ang isang branch, rig o ang click. Hindi ito kailangan ng mga stereo device.</td></tr>
             <tr><td><b class="ui">Magaan na NAM models</b></td><td>Switch</td><td>Off</td>
-                <td>May kasamang mas magaan na sub-model ang mga A2 capture ng TONE3000; pinapatakbo nito ang bawat NAM block doon — isang maliit na bahagi lang ng DSP load, bahagyang mas kaunting detalye. Hindi apektado ang mga capture na walang nito. Agad na umeepekto.</td></tr>
+                <td>May kasamang mas magaan na sub-model ang mga A2 capture ng TONE3000; pinapatakbo nito ang bawat capture doon — isang maliit na bahagi lang ng DSP load, bahagyang mas kaunting detalye. Hindi apektado ang mga capture na walang nito. Agad na umeepekto.</td></tr>
+            <tr><td><b class="ui">Tails sa paglipat</b></td><td>Switch</td><td>On</td>
+                <td>Patuloy na tumutunog ang mga block na naiiwan ng pagpapalit ng preset — ang mga ulit ng delay, ang pagkupas ng reverb — nang hanggang walong segundo sa halip na huminto sa pagpapalit, at ang delay, reverb, freeze, FX loop o plugin na bina-bypass ng isang scene ay patuloy na tumutunog sa ibabaw ng dry. Kaunti pang DSP sa mga segundong iyon.</td></tr>
+            <tr><td><b class="ui">Ihanay ang mga rig</b></td><td>Switch</td><td>Off</td>
+                <td>Inaantala ang mga rig na nasa magkakaibang input hanggang sa pinakamabagal sa kanila kung saan pinagsasama sila ng desk, kaya sabay na dumarating ang gitara at ang mic. Kapag off, kanya-kanyang latency ang bawat rig; laging magkatugma ang mga path ng iisang input alinman ang piliin.</td></tr>
           </tbody>
         </table>
       </div>
@@ -197,8 +203,14 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Itsura</h2>
-      <p>Mga chip: <b class="ui">System</b>, <b class="ui">Maliwanag</b>, <b class="ui">Madilim</b>. Ang default ay <b class="ui">System</b>, at ito ang iisang setting sa buong sheet na nagkakabisa agad sa pag-tap mo.</p>
-      <p>Madilim ang disenyo ng NAMper — para sa madilim na entablado iginuhit ang mga meter, ang mga LED at ang graphics ng chain. Nariyan ang <b class="ui">Maliwanag</b> kung kailangan mo ito sa liwanag ng araw, pero pinakamadaling basahin ang app sa dilim.</p>
+      <p>Mga chip: <b class="ui">System</b>, <b class="ui">Maliwanag</b>, <b class="ui">Madilim</b>. Ang default ay <b class="ui">System</b>, at nagkakabisa agad ang mga pagbabago sa itsura sa pag-tap mo.</p>
+      <p>Nasa ilalim ng mga chip ang mga <b>tema</b>, isang pili sa bawat polarity: pumili ng madilim na tema at ng maliwanag, at isinusuot ng <b class="ui">System</b> ang madilim kapag madilim ang telepono at ang maliwanag kapag hindi. Apat na madilim na tema ang kasama — Studio (ang sarili ng app), Midnight Violet, Ember at Deep Sea — at tatlong maliwanag: Concrete, ang default, isang mapusyaw na abo na isang antas na mas madilim kaysa papel; Desk, ang puting-papel na unang dala ng app; at Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="Ang Rig tab sa maliwanag na temang Concrete: mapusyaw na abong pahina, mga puting card at ang mga tile ng chain sa mga kulay ng kanilang pamilya.">
+        <figcaption>Concrete, ang maliwanag na temang pinagsisimulan ng NAMper</figcaption>
+      </figure>
+      <p>Kinokopya ng <b class="ui">I-customize ang kulay…</b> ang kung anong temang suot sa sarili mong tema at hinahayaan kang itakda nang mano-mano ang bawat papel — ang background, ang mga card, ang teksto, ang mga knob, ang power button at ang accent ng bawat pamilya ng block. Sabay na binabago ng <b class="ui">Radius ng sulok</b> sa parehong editor ang bawat bilugang sulok sa app, mula matulis (30 %) hanggang napakabilog (200 %); nasa 50 % ang mga tema. Ibinabalik ng isang reset row ang kopya mo sa temang pinagmulan nito.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -210,7 +222,7 @@
           <thead><tr><th>Halaga</th><th>Itakda ito mula sa</th></tr></thead>
           <tbody>
             <tr><td>Tempo</td><td>Pindutin nang matagal ang metronome chip sa Rig header, o ang tempo block sa <b class="ui a">Loop</b> tab. Natutukoy din ito ng looper mula sa unang loop mo, at ang pagpili ng backing track ay naglalagay ng tempo ng kanta.</td></tr>
-            <tr><td>Key</td><td>Ang <b class="ui">KEY</b> chip sa Rig header. Ang pagpili ng backing track ay naglalagay ng key ng kanta.</td></tr>
+            <tr><td>Key</td><td>Ang <b class="ui">PILI</b> chip sa Rig header. Ang pagpili ng backing track ay naglalagay ng key ng kanta.</td></tr>
           </tbody>
         </table>
       </div>
@@ -235,18 +247,38 @@
           <tbody>
             <tr><td>Level ng click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>Gaano kalakas ang click.</td></tr>
-            <tr><td><b class="ui">Click output</b></td><td>Mga chip: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+            <tr><td><b class="ui">Click output</b></td><td>Menu: <b class="ui">Main</b>, pagkatapos ay bawat output pair ayon sa mga pangalang ibinibigay ng driver ng interface sa mga channel nito (<b class="ui">3 / 4</b> kapag wala itong ibinibigay)</td><td><b class="ui">Main</b></td>
                 <td>Kung aling hardware output pair ang nagdadala ng click. Ipinapakita lang kapag mahigit isa ang pair; ang pagpili ng hindi pangunahing pair ay sapilitang nag-o-on sa <b class="ui">Gamitin lahat ng output ng interface</b>.</td></tr>
+            <tr><td><b class="ui">Channel ng click</b></td><td>Mga chip: <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (sa ibang pair, ang mga numero ng channel nito)</td><td><b class="ui">L+R</b></td>
+                <td>Parehong channel ng pair, o isa lang sa kanila: monong click sa iisang output, at iniiwan ang isa para sa mix.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Ang footnote ng card ang kapaki-pakinabang na bahagi: <b class="ui">Isinasama ang click PAGKATAPOS ng master FX chain — hindi ito nahahawakan ng mga reverb at limiter. Pumili ng hiwalay na output pair para sa in-ear monitoring.</b></p>
+      <p>Ang footnote ng card ang kapaki-pakinabang na bahagi: <b class="ui">Isinasama ang click PAGKATAPOS ng master FX chain — hindi ito nahahawakan ng mga reverb at limiter. Pumili ng hiwalay na output pair para sa in-ear monitoring. At isang channel lang kung magkasama ang click at ang mix sa pack.</b></p>
       <p>Ibig sabihin, hindi lalabo ang click sa master reverb mo at hindi ibababa ng master limiter mo ang banda sa bawat tiktak. Ipadala ito sa sariling pair at maririnig ng drummer ang click habang hindi ito naririnig ng front of house.</p>
       <p>Ang click mismo ay ino-on at ino-off sa metronome chip sa Rig header, o sa <b class="ui">CLICK</b> chip sa <b class="ui a">Loop</b> tab — hindi dito.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p>Inaayos ng <b class="ui">LOOPER</b> card sa pahinang <b class="ui">Entablado</b> ang <a href="/docs/fil/looper.html#auto">AUTO mode</a> ng looper.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Katahimikang nagsasara ng auto-loop</b></td><td>Slider, 0.5–4 beat</td><td>1 beat</td>
+                <td>Gaano katagal dapat tumagal ang katahimikan pagkatapos ng isang parirala, sa mga beat ng tempong naririnig sa pagtugtog mo, bago kusang magsara ang take. Mas mahaba para sa mga pariralang may puwang, mas maikli para sa mga masinsin.</td></tr>
+            <tr><td><b class="ui">Signal na nagsisimula ng auto-loop</b></td><td>Slider, −54…−24 dB</td><td>−40 dB</td>
+                <td>Ang level na kailangang lampasan ng pagtugtog mo nang ilang millisecond bago magsimulang mag-record ang nakahandang cell. Mas sensitibo kapag mas mababa; nananatili sa ilalim nito ang bahagyang pagdampi sa mga kuwerdas o ang ingay ng kuwarto.</td></tr>
+            <tr><td><b class="ui">Panatilihin ang bilang sa katahimikan</b></td><td>Switch</td><td>On</td>
+                <td>Nagsisimulang tumugtog ang loop kung saan ito dapat naroon kung hindi ito huminto, kaya hindi kailanman napuputol ang bilang. Kapag off, nagsisimula ito sa simula pagkasara nito.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Mga prompt</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Mga prompt</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Row</th><th>Kontrol</th><th>Default</th><th>Ano ang ginagawa nito</th></tr></thead>
@@ -264,7 +296,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Reset</h2>
+      <h2 id="reset"><span class="n">09.10</span>Reset</h2>
       <p>Dalawang button, bawat isa'y may kumpirmasyon.</p>
       <div class="tw">
         <table>
@@ -287,14 +319,14 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Diagnostics</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Diagnostics</h2>
       <p>Nag-iingat ang NAMper ng plain-text na engine log na nagtatala ng routing ng interface at ng mga peak. Kapag may ganito, inaalok ng card na ito ang <b class="ui">Ibahagi ang engine log</b> at <b class="ui">I-clear ang engine log</b>; kapag wala, ganito ang nakasulat: <b class="ui">Wala pang engine log (itinatala nito ang routing ng interface at ang mga peak).</b></p>
       <p>Ibinibigay ng <b class="ui">Ibahagi ang engine log</b> ang file sa system share sheet — i-mail, i-AirDrop, o ilakip sa isang support issue. Ito ang pinakakapaki-pakinabang na bagay na maisasama mo sa ulat ng bug tungkol sa interface na ayaw bumukas, rate na tinatanggihan o engine na kusang humihinto, dahil itinatala nito kung ano talaga ang nangyari sa antas ng audio.</p>
       <p>Inaalis ng <b class="ui">I-clear ang engine log</b> ang laman nito. Gawin iyon bago mo ulitin ang isang problema at ang ipapadala mong log ay maglalaman ng problemang iyon at wala nang iba.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Wala sa Settings</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Wala sa Settings</h2>
       <p>Tatlong bagay na hinahanap dito ng mga tao at hindi nakikita.</p>
       <h3>Trigger quantize</h3>
       <p>Nasa header ng <b class="ui a">Sample</b> tab ang <b class="ui">QUANT</b> knob at ang grid chip nito, hindi sa Settings — kahit na pareho silang global sa halip na kada kit o kada pad. Tingnan ang <a href="/docs/fil/sampler.html#quantize">trigger quantize</a>.</p>

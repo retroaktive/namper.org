@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mac — NAMper Documentation</title>
-<meta name="description" content="NAMper on the Mac: the installer and what it puts where, the Audio Interface window and aggregate devices, menus and keys, files from the Finder, and the AU, VST3 and CLAP plug-ins.">
+<meta name="description" content="NAMper on the Mac: the installer and what it puts where, the audio interface in Settings and aggregate devices, menus and keys, files from the Finder, and the AU, VST3 and CLAP plug-ins.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Mac — NAMper Documentation">
-<meta property="og:description" content="NAMper on the Mac: the installer and what it puts where, the Audio Interface window and aggregate devices, menus and keys, files from the Finder, and the AU, VST3 and CLAP plug-ins.">
+<meta property="og:description" content="NAMper on the Mac: the installer and what it puts where, the audio interface in Settings and aggregate devices, menus and keys, files from the Finder, and the AU, VST3 and CLAP plug-ins.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/mac.html">
 <meta property="og:type" content="article">
@@ -102,7 +103,7 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="interface"><span class="n">10.2</span>The audio interface</h2>
-      <p><b class="ui">Settings…</b> → <b class="ui">Audio</b> names the device the rig is listening to, and <b class="ui">Window</b> → <b class="ui">Audio Interface</b> (⌘0) opens the page that chooses it: input device, output device, the output pair, sample rate and buffer, with the measured round trip underneath.</p>
+      <p><b class="ui">Settings…</b> → <b class="ui">Audio</b> chooses it: input device, output device, the output pair, sample rate and buffer, with the measured round trip underneath. <b class="ui">File</b> → <b class="ui">Audio Interface…</b> (⌘0) opens that page directly.</p>
       <p>Input and output may be two different boxes — a guitar interface in and the built-in speakers out, say. When they are, NAMper builds a private <b>aggregate device</b> from the two and runs on that, because one audio engine can only have one clock. The clock stays with the output, since what the player hears is what must not stutter, and drift compensation rides the input, which is the end that can afford to bend. None of this appears in Audio MIDI Setup and nothing is left behind when the app quits.</p>
       <p>A single interface for both directions needs no aggregate and is the lowest-latency choice: pick the same device on both rows.</p>
     </section>
@@ -114,11 +115,9 @@
           <thead><tr><th>Menu</th><th>What is in it</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">File</b></td>
-                <td><b class="ui">Captures & Impulses…</b> ⌘L · <b class="ui">Presets…</b> ⇧⌘P · <b class="ui">Save Preset…</b> ⌘S</td></tr>
+                <td><b class="ui">Captures & Impulses…</b> ⌘L · <b class="ui">Presets…</b> ⇧⌘P · <b class="ui">Audio Interface…</b> ⌘0 · <b class="ui">Save Preset…</b> ⌘S</td></tr>
             <tr><td><b class="ui">Rig</b></td>
                 <td><b class="ui">Next Preset</b> ⌘→ · <b class="ui">Previous Preset</b> ⌘← · <b class="ui">Scene</b> 1–4 ⌘1…⌘4 · <b class="ui">Loop Track 1</b> ␣ · <b class="ui">Tuner</b> ⌘T · <b class="ui">Tempo…</b> · <b class="ui">Key…</b></td></tr>
-            <tr><td><b class="ui">Window</b></td>
-                <td><b class="ui">Audio Interface</b> ⌘0</td></tr>
             <tr><td><b class="ui">NAMper</b></td>
                 <td><b class="ui">Settings…</b> ⌘, · <b class="ui">About NAMper</b></td></tr>
             <tr><td><b class="ui">Help</b></td>
@@ -131,7 +130,7 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="files"><span class="n">10.4</span>Files</h2>
-      <p>Drop a .nam capture, a .wav impulse, a .zip of either or a .namper preset <b>on the window</b> and it joins the library. Drop one on a single <b>block</b> and it goes where that block can take it: a capture on the Amp loads into the Amp, an impulse on the Amp lands in the Cab behind it, a capture on a Cab lands in the Amp in front of it — and neither disturbs what the other block was already playing. The block lights up while the file is over it.</p>
+      <p>Drop a .nam capture, a .wav impulse, a .zip of either or a .namper preset <b>on the window</b> and it joins the library. Drop one on a single <b>block</b> and it goes where that block can take it: a capture on the Amplifier loads into the Amplifier, an impulse on the Amplifier lands in the Cabinet behind it, a capture on a Cabinet lands in the Amplifier in front of it — and neither disturbs what the other block was already playing. The block lights up while the file is over it.</p>
       <p>A file can also arrive from the Finder: double-click a .namper preset and NAMper opens it, and a .nam capture takes the same road through <b>Open With</b>. Either way the file lands where dropping it would have landed it.</p>
       <p>The library itself is a folder you can open — see <a href="/docs/setup.html#files">Where your files live</a>.</p>
     </section>
@@ -139,7 +138,7 @@
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="plugin"><span class="n">10.5</span>NAMper as a plug-in</h2>
       <p>The Audio Unit, the VST3 and the CLAP are the same effect: NAMper's chain — gate, compressor, drive, amp, EQ, cab, modulation, delay, reverb — on the DAW's track instead of on the app's input. All three carry the same parameters in the same order, so a session moves between them, and all three read each other's saved state.</p>
-      <p>The plug-in opens in a window of its own: the <b>Preset</b> list, <b>Bypass</b> and the parameter rows — the same rows the host lists and writes into automation. Preset is the fixed chain, then every factory rig, then every preset you saved in the app, by name — pick one and the plug-in builds that rig's main chain on the track, captures from your library, impulses from the bundled set, and the session carries the rig itself. The other parameters then reach the first block of their kind in that rig. In the Audio Unit the same list is the host's own preset menu.</p>
+      <p>The plug-in opens with the app's own face in a window of the host's: the chain of blocks, the scenes, the block editors, the library of captures and impulses, the presets and the settings, with the header tools — the DSP load, the key, the metronome and the tuner — in its top row. Pick a preset and the plug-in builds that rig on the track, captures from your library, impulses from the bundled set, and the session carries the rig itself. The VST3 and the CLAP take MIDI from the host: controllers, notes and program changes reach the rig's control map as they do in the app. The host's parameter rows below reach the first block of their kind in that rig. In the Audio Unit the preset list is the host's own preset menu. More on the face on the <a href="/docs/plugins.html#auv3">Plugins</a> page.</p>
       <ul>
         <li>Gate On, Gate Threshold</li>
         <li>Comp On, Comp Threshold, Comp Ratio</li>
@@ -150,6 +149,7 @@
       </ul>
       <p>plus <b>Bypass</b>, which the host owns: switched on, the track's own signal passes through untouched.</p>
       <p>The input is heard as one channel — a guitar, not a stereo mix: a stereo track is averaged before it reaches the chain, and the chain's own stereo image comes out of it. Several instances on several tracks are independent, each with its own chain, and an offline bounce renders exactly what real time renders.</p>
+      <p>Files work inside the DAW as they do in the app: the Audio Unit's open and save panels import captures, impulses and presets and export them again. A plug-in has no share sheet, so where the app shares, the Audio Unit saves a copy — <b class="ui">Save a copy…</b> in the preset menu, <b class="ui">Save .nam file…</b> and <b class="ui">Save IR file…</b> in the library — and several files at once go into a folder you pick with <b class="ui">Save here</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

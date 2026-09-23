@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — NAMper Dokümantasyonu</title>
-<meta name="description" content="Dört parçalı senkron looper: dairesel pad'ler, transport, AUTO ile tetikleme ve sınır hizalama, tempo ve click, loop editörü, geri alma, parça bazında yönlendirme ve nelerin kaydedildiği.">
+<meta name="description" content="Dört hücreli senkron looper: loop hücreleri ve köşe tuşları, transport, AUTO ile tetikleme ve sınır hizalama, tempo ve click, loop editörü, yıkıcı olmayan kuantalamalı MIDI hücreleri, geri alma, her hücrenin girişi, çıkışı ve preset'i, WAV dosyası olarak loop'lar ve nelerin kaydedildiği.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Looper — NAMper Dokümantasyonu">
@@ -74,116 +75,142 @@
       <div class="slab">BU SAYFADA</div>
       <ul>
         <li><a href="#basics">Looper nasıl düşünür</a></li>
-        <li><a href="#pads">Dairesel pad'ler</a></li>
+        <li><a href="#pads">Loop hücreleri</a></li>
         <li><a href="#transport">Transport</a></li>
         <li><a href="#auto">AUTO modu</a></li>
         <li><a href="#tempo">Tempo ve click</a></li>
         <li><a href="#editor">Loop editörü</a></li>
-        <li><a href="#undo">Geri al</a></li>
-        <li><a href="#routing">Parça bazında yönlendirme</a></li>
+        <li><a href="#midi">MIDI hücreleri</a></li>
+        <li><a href="#undo">Geri alma ve temizleme</a></li>
+        <li><a href="#routing">Bir hücrenin ayarları</a></li>
         <li><a href="#saving">Neler kaydedilir</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="basics"><span class="n">04.1</span>Looper nasıl düşünür</h2>
-      <p>Her şeyin altında yatan tek bir kural var, uygulama da bunu ekranın alt kısmına
-        yazar:</p>
-      <p><b class="ui">İlk loop döngüyü belirler · diğerleri ona senkronlanır · MIDI CC 85–88 tap · 89 çalıştır/durdur · 90 temizle</b></p>
-      <p>İlk kaydettiğin parça döngüyü belirler. Diğer her parça kendi başına savrulmak yerine
-        buna uydurulur; bu döngüyü sonradan hiçbir şey değiştirmez — döngüyü belirleyen parçayı
+      <p>Her şeyin altında yatan tek bir kural var: <b>ilk loop döngüyü belirler, diğer her loop
+        ona senkronlanır.</b></p>
+      <p>İlk kaydettiğin hücre döngüyü belirler. Diğer her hücre kendi başına savrulmak yerine
+        buna uydurulur; bu döngüyü sonradan hiçbir şey değiştirmez — döngüyü belirleyen hücreyi
         düzenlemek ya da her şeyi temizleyip yeniden başlamak dışında.</p>
-      <p>Dört parça vardır, her biri en fazla <b>60 saniye</b> tutabilir. Dikey modda pad'ler
-        2×2'lik bir ızgarada durur; yatay modda transport sola, bir sütuna taşınır ve dört pad
-        yan yana bir sıra oluşturur.</p>
+      <p>Dört hücre vardır ve bir loop, sen ne kadar çalarsan o kadar uzundur: ilk dakikayı
+        geçince hücre, cihazın belleği yettiği sürece büyümeye devam eder. Ekran dikken transport
+        üstte durur ve dört hücre sayfayı ikişer ikişer doldurur; yan çevrildiğinde transport
+        solda bir sütuna dönüşür ve her hücrenin ayarları pad'inin yanında durur. iPad de aynı
+        kuralı izler — cihaza göre değil, sayfanın biçimine göre.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="Loop sekmesi: 1. parça yeşil dairesel bir dalga formu ve dönen bir ışınla çalıyor, 2. parça kesik kırmızı kenarlıkla tetikte, 3. ve 4. parçalar boş, AUTO çipi yeşil yanıyor ve tempo 124 BPM gösteriyor.">
-        <figcaption>1. parça çalıyor, 2. parça tetikte ve bekliyor, AUTO açık, 124 BPM</figcaption>
+             alt="Loop sekmesi: üstte tempo, AUTO ve CLICK ile transport kartı; altında dört loop hücresi, her biri dört köşe tuşundan oluşan bir karenin içinde yuvarlak bir pad ve altında ayar karoları; 1. hücre yeşil bir dalga halkasıyla çalıyor, 2. hücre kaydediyor, 3. hücre susturulmuş, 4. hücre boş.">
+        <figcaption>Üstte transport, altta dört hücre: bir pad, dört köşe tuşu, ayar karoları</figcaption>
       </figure>
-      <p>Her parça kartı aynı şekilde düzenlenir: büyük parça numarasını, durum etiketini ve bir
-        LED noktasını içeren bir başlık satırı; dairesel pad; <b class="ui">IN</b> ve
-        <b class="ui">UZN</b>'in üstte, <b class="ui">DUB</b> ve <b class="ui">OUT</b>'un altta
-        olduğu 2×2'lik bir çip ızgarası; ve altında bir kontrol satırı.</p>
+      <p>Her hücre aynı şekilde kuruludur: bir karenin ortasında yuvarlak <b>pad</b>, karenin dört
+        köşesinin her birinde bir <b>köşe tuşu</b> ve bir sıra <b>ayar karosu</b> — pad'in altında,
+        ya da hücre yüksekliğinden genişse yanında. Kart da başlık da yoktur: hücrenin numarası
+        kendi dairesinin üzerine iri ve soluk çizilir.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>Dairesel pad'ler</h2>
-      <p>Pad, loop'un dalga formunu halka etrafında <em>radyal</em> olarak çizer — çemberin bir
-        turu, döngünün bir turudur — çalma konumunu işaretleyen dönen bir ışınla birlikte.
-        Vuruşlar halka üzerinde sivri uçlar olarak belirir, böylece odanın diğer ucundan bile
-        nerede olduğunu okuyabilirsin.</p>
+      <h2 id="pads"><span class="n">04.2</span>Loop hücreleri</h2>
+      <p>Pad, loop'un dalga formunu <em>bir halka olarak</em> çizer — çemberin bir turu, döngünün
+        bir turudur — çalma konumunu işaretleyen bir ışınla birlikte. Yüksek pasajlar halkayı
+        kalınlaştırır, böylece odanın diğer ucundan bile loop'un neresinde olduğunu
+        okuyabilirsin. Loop çaldıkça pad <b>kenarından içe doğru da ışır</b>; ses ne kadar
+        yüksekse o kadar derine.</p>
       <p>İlk loop kaydedilirken henüz bir döngü olmadığından halka farklı davranır: tüm çember,
-        <em>o ana kadar</em> kaydedilen her şeyi temsil eder. Kayıt uzadıkça dalga formu daha sıkı
-        paketlenir, ışın saat 12 yönünde sabit durur — bu yazma kafasıdır — ve pad'in merkezi
-        geçen saniyeleri sayar. Loop kapandığında ışın döngüyü koşmaya başlar.</p>
+        <em>o ana kadar</em> kaydedilen her şeyi temsil eder, ışın saat 12 yönünde sabit durur —
+        bu yazma kafasıdır — ve merkez geçen saniyeleri sayar. Loop kapandığında ışın döngüyü
+        koşmaya başlar. Çalışan bir döngüye kaydeden bir hücre, dalgasını büyüyen bir yay olarak
+        çizer.</p>
 
       <h3>Pad'e dokunmak</h3>
-      <p>Tek bir dokunuş, parçayı merdivende bir basamak yukarı taşır:</p>
+      <p>Dokunuşu yalnızca daire alır. Tek bir dokunuş, hücreyi merdivende bir basamak yukarı
+        taşır:</p>
       <ul style="--nc:var(--eq)">
-        <li>empty → recording</li>
-        <li>recording → loop kapanır ve playing'e geçer</li>
-        <li>playing → overdub</li>
-        <li>overdub → tekrar playing'e döner</li>
-        <li>muted → susturma kalkar</li>
+        <li>boş → kayıt</li>
+        <li>kayıt → loop kapanır ve çalmaya başlar</li>
+        <li>çalma → overdub</li>
+        <li>overdub → tekrar çalmaya döner</li>
+        <li>susturulmuş → çalma</li>
       </ul>
       <p><b class="ui">AUTO</b> açıkken boş bir pad'e dokunmak onu hemen kaydetmek yerine
-        <b>tetikler</b>, tetikte olan bir pad'e dokunmak ise tetiklemeyi iptal eder. AUTO'nun bu
-        merdivende yaptığı tek değişiklik budur.</p>
+        <b>tetikler</b> — hücrenin etrafında kesik kırmızı bir halka belirir — tetikte olan bir
+        pad'e dokunmak ise tetiklemeyi iptal eder. AUTO'nun bu merdivende yaptığı tek değişiklik
+        budur.</p>
 
-      <h3>Uzun basma</h3>
-      <p>Yuvarlak pad'e uzun bas: <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4 için de
-        aynısı) — bir footswitch'i bir parçaya bu şekilde bağlarsın. Bunun yerine etrafındaki
-        <em>karta</em> uzun basarsan yönlendirme menüsünü açarsın: <b class="ui">Input · …</b>,
-        <b class="ui">Output · …</b>, <b class="ui">Loop’u düzenle…</b>, ayrıca
-        <b class="ui">Uzunluk · serbest</b> ya da <b class="ui">Length · N bars</b> ve
-        <b class="ui">Overdubs · N</b>.</p>
+      <h3>Köşe tuşları</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Köşe</th><th>Tuş</th><th>Ne yapar</th></tr></thead>
+          <tbody>
+            <tr><td>Sol üst</td><td><b class="ui">Sustur</b></td>
+                <td>Loop çalışmaya devam ederken onu susturur; açıkken sarı yanar.</td></tr>
+            <tr><td>Sağ üst</td><td><b class="ui">Solo</b></td>
+                <td>Çalan diğer hücreleri susturur; onları geri getirmek için tekrar bas. Başka bir
+                  hücreyi solo yapmak soloyu ona devreder.</td></tr>
+            <tr><td>Sol alt</td><td><b class="ui">Geri al</b></td>
+                <td>Bu hücrenin son overdub'ını geri alır ya da kaydını temizler — bkz.
+                  <a href="#undo">Geri alma ve temizleme</a>.</td></tr>
+            <tr><td>Sağ alt</td><td><b class="ui">Çal</b> / <b class="ui">Durdur</b></td>
+                <td>Yalnızca bu loop'u durdurur ya da başlatır.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Hücrenin o anki durumunda yapacak işi olmayan tuş soluk çizilir. Köşeler de loop'la
+        birlikte ışır, pad'den biraz daha sığ.</p>
+      <p><b>Tek bir hücreyi durdurmak</b> zamanı durdurmaz: loop döngüyle birlikte sessizce
+        dönmeye devam eder ve <b class="ui">Çal</b>'e basmak onu tam zamanında geri getirir,
+        asla baştan değil. Looper'ın tamamı durmuşken bir hücrenin <b class="ui">Çal</b> tuşu
+        looper'ı yalnızca o hücreyle başlatır; transport'un çal tuşu tüm hücreleri geri getirir.</p>
 
       <h3>Durumlar</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Durum</th><th>Etiket</th><th>Renk</th></tr></thead>
+          <thead><tr><th>Durum</th><th>Ne görürsün</th></tr></thead>
           <tbody>
-            <tr><td>Hiçbir şey kaydedilmedi</td><td><b class="ui">boş</b></td><td>Soluk</td></tr>
-            <tr><td>Kaydediyor</td><td><b class="ui">kaydediyor</b></td><td>Kırmızı</td></tr>
-            <tr><td>Döngüde çalıyor</td><td><b class="ui">çalıyor</b></td><td>Yeşil</td></tr>
-            <tr><td>Katman ekliyor</td><td><b class="ui">overdub</b></td><td>Turuncu</td></tr>
-            <tr><td>Sessiz, ama çalışıyor</td><td><b class="ui">sustu</b></td><td>Sarı</td></tr>
-            <tr><td>Bekliyor (AUTO)</td><td><b class="ui">hazır</b></td>
-                <td>Kırmızı, kartın etrafında kesik çizgili kenarlık</td></tr>
+            <tr><td>Hiçbir şey kaydedilmedi</td><td>Soluk kenar, dalga yok</td></tr>
+            <tr><td>Kaydediyor</td><td>Kırmızı</td></tr>
+            <tr><td>Çalıyor</td><td>Yeşil</td></tr>
+            <tr><td>Overdub</td><td>Turuncu</td></tr>
+            <tr><td>Susturulmuş</td><td>Sarı, dalga sönük</td></tr>
+            <tr><td>Tek başına durdurulmuş</td><td>Mürekkep renginde, dalga hâlâ çizili</td></tr>
+            <tr><td>Tetikte (AUTO)</td><td>Kırmızı, hücrenin etrafında kesik çizgili halka</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Her pad'in altındaki kontrol satırında dört şey bulunur: sustur
-        (<b class="ui">Mute track N</b>, sarıya döner), düzenle
-        (<b class="ui">Edit loop N</b>), temizle (<b class="ui">Clear track N</b>) ve küçük bir
-        seviye düğmesi (<b class="ui">Loop track N level</b>, 0 ile 1.5 arası).</p>
+
+      <h3>Uzun basma</h3>
+      <p>Hücrenin menüsü için pad'e — ya da hücrenin herhangi bir yerine — uzun bas:
+        <b class="ui">Giriş · …</b>, <b class="ui">Çıkış · …</b>, <b class="ui">Loop preseti · …</b>,
+        <b class="ui">Loop’u düzenle…</b>, <b class="ui">Uzunluk · serbest</b> ya da
+        <b class="ui">Uzunluk · N ölçü</b>, <b class="ui">Overdub · N</b>; dosya olarak loop —
+        <b class="ui">Loop’u WAV olarak dışa aktar…</b>, <b class="ui">Tüm loop’ları dışa aktar…</b>,
+        <b class="ui">Dosyadan loop yükle…</b> (bkz. <a href="#saving">aşağısı</a>); ve en altta
+        <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — bir footswitch'i bir hücreye
+        bu şekilde bağlarsın.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Transport</h2>
-      <p><b class="ui">LOOPER</b> yazısının yanında transport satırı bulunur:</p>
+      <p>Transport kartında <b class="ui">LOOPER</b> yazısı — looper'da bir şey olduğu sürece
+        kırmızı — ve dik tutulduğunda iki sıra bulunur:</p>
       <ul style="--nc:var(--gate)">
-        <li>Döngü uzunluğunu saniye cinsinden gösteren bir <b>master halka</b>, ya da henüz
-          hiçbir şey kaydedilmediyse <b class="ui">—</b>.</li>
-        <li>Bir <b class="ui">PRESET’LER</b> çipi — bkz. <a href="#saving">neler kaydedilir</a>.</li>
+        <li>Bir <b>preset</b> tuşu — bkz. <a href="#saving">neler kaydedilir</a>.</li>
         <li><b class="ui">Loop’ları çal</b> / <b class="ui">Loop’ları durdur</b>, bir döngü oluşana kadar
           devre dışı.</li>
-        <li>Sadece geri alınacak bir şey olduğunda etkin olan bir <b>geri al</b> düğmesi.</li>
-        <li>Bir çöp kutusu düğmesi, <b class="ui">Tüm loop’ları temizle</b>.</li>
+        <li>Bir <b>geri al</b> tuşu — bkz. <a href="#undo">Geri alma ve temizleme</a>.</li>
+        <li>Bir çöp kutusu tuşu, <b class="ui">Tüm loop’ları temizle</b>.</li>
+        <li>Altlarında tempo, <b class="ui">AUTO</b> ve <b class="ui">KLİK</b>.</li>
       </ul>
-      <p>Altında, tek bir durum satırı nerede olduğunu söyler:
-        ilk kayıt sürerken <b class="ui">master loop kaydediliyor…</b>, bir döngü oluştuktan
-        sonra akan <b class="ui">4.2 / 8.0 s</b> konumu, <b class="ui">durdu</b>, ya da looper
-        boşken <b class="ui">kaydetmek için bir kanala dokun</b>.</p>
+      <p>Yan çevrildiğinde aynı tuşlar bir sütunda durur: tempo, AUTO ve CLICK üstte, çal, geri al
+        ve çöp kutusu altta. İlk loop kaydedilirken kart ışır.</p>
+      <p><b class="ui">MIDI Learn: looper çalıştır / durdur</b> için çal tuşuna, <b class="ui">MIDI Learn: tüm loop'ları temizle</b> için çöp kutusu tuşuna uzun bas.</p>
       <div class="note">
         <div class="t">Footswitch kontrolü</div>
-          <p>Yerleşik MIDI haritası looper'ı hiçbir ayar gerekmeden kapsar: <b class="ui">CC 85–88</b>
-          1'den 4'e kanallara dokunur, <b class="ui">CC 89</b> başlatır, <b class="ui">CC 90</b>
-          temizler. Dikkat: CC 89 bir <em>play</em> komutu gönderir — döngüleri kapatmak yerine baştan
-          başlatır. Tek anahtarda gerçek bir başlat/durdur için Ayarlar → <b class="ui">Kontrol</b>
-          içinde bir eşleme ekle ve onu <b class="ui">Çalıştır / durdur</b> üzerine öğret; o, mevcut durumu
-          okur.</p>
+        <p>Yerleşik MIDI haritası looper'ı hiçbir ayar gerekmeden kapsar: <b class="ui">CC 85–88</b>
+          1'den 4'e hücrelere dokunur, <b class="ui">CC 89</b> başlatır ve durdurur,
+          <b class="ui">CC 90</b> temizler. CC 89 gerçek bir aç/kapadır — bkz.
+          <a href="/docs/tr/control.html">MIDI ve kontrol</a>.</p>
       </div>
     </section>
 
@@ -194,22 +221,30 @@
         gerçekte nerede olduğunu bulur.</p>
 
       <h3>Kaydetmek yerine tetiklemek</h3>
-      <p>AUTO açıkken boş bir pad'e dokunmak onu tetikler: kart kesik kırmızı bir kenarlık alır
-        ve <b class="ui">hazır</b> yazar. Sonrasında ne olacağı zaten bir döngü olup olmamasına
-        bağlıdır:</p>
+      <p>AUTO açıkken boş bir pad'e dokunmak onu tetikler: hücrenin etrafında kesik kırmızı bir
+        halka belirir. Sonrasında ne olacağı zaten bir döngü olup olmamasına bağlıdır:</p>
       <ul style="--nc:var(--amp)">
         <li><b>Henüz döngü yok.</b> Kayıt, tetikleme eşiğinin üzerindeki <b>ilk notanla</b>
-          başlar. Gitarı eline alıp rahatlayabilirsin — kayıt, dokunduğun anda değil, çaldığın
+          başlar — Ayarlar → <b class="ui">Sahne</b> → <b class="ui">LOOPER</b> →
+          <b class="ui">Otomatik loop’u başlatan sinyal</b>; sen değiştirmedikçe −40 dB'dir,
+          düştükçe daha hassas olur. Tellere hafifçe sürtünmek ya da odanın sesi bunun altında
+          kalır. Gitarı eline alıp rahatlayabilirsin — kayıt, dokunduğun anda değil, çaldığın
           anda başlar.</li>
         <li><b>Zaten çalışan bir döngü var.</b> Kayıt, <b>bir sonraki döngü sınırında</b> başlar,
           böylece kayıt tam olarak ölçünün üzerinde başlar. Kısa bir tolerans penceresi, biraz
           geç kalan bir vuruşu affeder, yani ilk vuruşu ışının hemen arkasından vursan bile bu
           sayılır.</li>
       </ul>
-      <p>Serbest tetiklenmiş bir kayıt — yerinde bir döngü olmadan kaydedilen — yaklaşık 1.2
-        saniyelik sessizlikten sonra <b>kendi kendine durur</b> ve duyulabilir kısma kadar
-        kırpılır. Eşik bilerek cömert tutulmuştur: reverb kuyrukları ve cümleler arası boşluklar
-        sessizlik sayılmaz, böylece seyrek bir riff ikiye bölünmez.</p>
+      <p>Serbest tetiklenmiş bir kayıt — yerinde bir döngü olmadan kaydedilen — cümle bittiğinde
+        <b>kendi kendine de durur</b>: sessizlik <b class="ui">Otomatik döngüyü kapatan sessizlik</b> ayarındaki vuruş sayısı kadar sürdüğünde (sen değiştirmedikçe bir) ve kendi
+        çalışındaki duraklardan daha uzun sürdüğünde, kayıt duyduğu ölçü sonunda kapanır.
+        Duyulacak bir tempo yoksa — bir drone, bir pad — onun yerine iki saniyelik sessizlik
+        kaydı kapatır. Reverb kuyrukları ve cümleler arası boşluklar sessizlik sayılmaz, böylece
+        seyrek bir riff ikiye bölünmez.</p>
+      <p>Bir combo amfiden mikrofonuna ya da manyetiklerine zaten bir loop çalıyorsa, tetiklenmiş
+        bir hücre o loop'un ne kadarının geri geldiğini öğrenir ve onun geçmesini bekler: bir
+        notanın onun belirgin şekilde, yaklaşık 9 dB üzerine çıkması gerekir; o yüzden tellere
+        sürtünme, notayı çal.</p>
       <p>Her loop kapandığında AUTO <b>bir sonraki boş hücreyi kendiliğinden tetikler</b>,
         böylece ekrana tekrar dokunmadan dört parçayı da oluşturabilirsin.</p>
 
@@ -227,8 +262,8 @@
       </ol>
       <p>Ekranda hepsi tek bir anda gerçekleşir: halka yeniden çizilir, uzunluk temiz bir
         rakama oturur, ve o ana kadar boş olan BPM göstergesi dolar. Bu noktadan itibaren click,
-        LEN çipleri, sampler'ın kuantalaması ve setlist'in ölçü saati çalışacak bir ızgaraya sahip
-        olur.</p>
+        LEN karoları, sampler'ın kuantalaması ve setlist'in ölçü saati çalışacak bir ızgaraya
+        sahip olur.</p>
       <p><b class="ui">KLİK</b> açıkken tempo, ayarlanmış olan tempoya <b>kilitlenir</b> ve
         sadece faz oturtulur. Bu, bir click'e ya da bir altyapıya çalarken ve temponun
         kımıldamaması gerektiğinde kullanılacak moddur.</p>
@@ -273,17 +308,19 @@
       </div>
     </section>
 
-    <section class="blk" style="--nc:var(--pitch)">
+    <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>Loop editörü</h2>
-      <p>Onu bir pad'in kontrol satırındaki düzenle düğmesiyle aç, ya da karta uzun bas →
-        <b class="ui">Loop’u düzenle…</b>. Sayfanın başlığı, canlı bir uzunluk etiketiyle birlikte
-        <b class="ui">LOOP N</b>'dir.</p>
+      <p>Onu bir hücrenin ayarları arasındaki düzenle karosuyla (<b class="ui">Loop N’i düzenle</b>)
+        aç, ya da hücreye uzun bas → <b class="ui">Loop’u düzenle…</b>. Düzenle karosu <b>boş ya da
+        tetikte bir hücrede de</b> çalışır; böylece bir kaydın içinden geçeceği preset — ve bir
+        MIDI hücresinde ızgarası — sen çalmadan önce ayarlanabilir. Sayfanın başlığı, canlı bir
+        uzunluk etiketiyle birlikte <b class="ui">LOOP N</b>'dir.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="Looper üzerindeki loop editörü sayfası: ölçü ve vuruş ızgaralı bir dalga formu, sürüklenebilir başlangıç ve bitiş tutamaçları, START ve LENGTH TEMPO KEPT düğme sıraları, Level ve Pan düğmeleri, ve Mute, Undo ve Clear düğmeleri.">
+             alt="Looper üzerindeki loop editörü sayfası: ölçü ve vuruş ızgaralı bir dalga formu, sürüklenebilir başlangıç ve bitiş tutamaçları, RECORD THROUGH satırı, START ve LENGTH TEMPO KEPT düğme sıraları, Level ve Pan düğmeleri, ve Mute, Undo ve Clear düğmeleri.">
         <figcaption>Loop editörü: ızgara, tutamaçlar, ince ayar düğmeleri ve alt sıra</figcaption>
       </figure>
-      <p>Etiket, <b class="ui">8.00 s · 4.0 bars</b> gibi bir şey gösterir. Bitiş tutamacını
+      <p>Etiket, <b class="ui">8.00 sn · 4.0 ölçü</b> gibi bir şey gösterir. Bitiş tutamacını
         sürüklemek o uzunluğun üreteceği tempoyu ekler; başlangıç tutamacını sürüklemek onu
         <b class="ui">start +0.50 beats</b> olarak değiştirir.</p>
       <p>Dalga formu, loop başlangıcına sabitlenmiş bir ölçü ve vuruş <b>ızgara katmanı</b> taşır
@@ -292,16 +329,22 @@
         sağlar.</p>
 
       <h3>İki tutamaç</h3>
-      <ul style="--nc:var(--pitch)">
+      <ul style="--nc:var(--eq)">
         <li><b>Başlangıç</b> (<b class="ui">Loop başı tutamacı</b>) fazı döndürür: loop daha geç
           başlar ve atlanan parça sona sarılır. Uzunluk ve tempo değişmez. Yarım vuruş erken
           başlayan bir loop için bunu düzeltir.</li>
         <li><b>Bitiş</b> (<b class="ui">Loop sonu tutamacı</b>) loop'u yeniden boyutlandırır ve
-          <b>sadece döngüyü belirleyen parçada</b> çalışır. Ölçü sayısı korunur ve ayarlanan
+          <b>sadece döngüyü belirleyen hücrede</b> çalışır. Ölçü sayısı korunur ve ayarlanan
           tempo buna uyar, yani loop'u uzatmak tüm seti yavaşlatır. Sayfa da bunu söyler:
           <b class="ui">Başlangıcı kaydırmak ve loop’u yeniden boyutlandırmak için kenarları sürükle — boyut değişimi set tempo’sunu yeniden ayarlar.</b></li>
       </ul>
-      <p>Boş bir parça <b class="ui">ses yok</b> gösterir ve sürüklenecek hiçbir şey yoktur.</p>
+      <p>Boş bir hücre ses göstermez ve sürüklenecek hiçbir şey yoktur.</p>
+
+      <h3>Kaydın içinden geçtiği preset</h3>
+      <p><b class="ui">ÜZERİNDEN KAYDET</b> satırı, hücrenin içinden kaydettiği preset'in adını
+        verir — sen bir tane seçmedikçe canlı rig. Bir preset seçmek için ona dokun; <b>×</b>
+        işareti hücreyi <b class="ui">Canlı rig</b>'e geri döndürür. Bkz.
+        <a href="#preset">loop'un preset'i</a>.</p>
 
       <h3>Düğme sıraları</h3>
       <p>Dalga formunun altında, <b class="ui">BAŞLAT</b> dört faz ince ayarı sunar —
@@ -314,76 +357,157 @@
         katına yayılan bir ifadeyi overdub'lamak için yer açar.</p>
       <div class="note">
         <div class="t">Uzunluk düğmeleri neden gri</div>
-        <p>Altı <b class="ui">UZUNLUK · TEMPO KORUNUR</b> düğmesinin tamamı, düzenlediğin parça
-          döngüyü belirleyen parça olmadıkça devre dışıdır ve sayfa nedenini açıklar:
+        <p>Altı <b class="ui">UZUNLUK · TEMPO KORUNUR</b> düğmesinin tamamı, düzenlediğin hücre
+          döngüyü belirleyen hücre olmadıkça devre dışıdır ve sayfa nedenini açıklar:
           <b class="ui">Uzunluğu yalnızca döngüyü belirleyen kanal değiştirebilir.</b>
-          Uzunluk bir takipçi parçada yanlışsa, düzenlenecek loop master olandır.</p>
+          Uzunluk bir takipçi hücrede yanlışsa, düzenlenecek loop master olandır.</p>
       </div>
       <p>Alt sıra; bir <b class="ui">Seviye</b> düğmesi (0 ile 1.5 arası), <b class="ui">C</b>,
         <b class="ui">L50</b> ya da <b class="ui">R50</b> gösteren bir <b class="ui">Pan</b>
-        düğmesi, ve <b class="ui">Sustur</b>, <b class="ui">Geri al</b> ve <b class="ui">Temizle</b>
-        düğmelerini içerir.</p>
+        düğmesi, ve <b class="ui">Sustur</b>, <b class="ui">Geri al</b> (son overdub) ve hücreyi
+        temizleyip sayfayı kapatan <b class="ui">Temizle</b> düğmelerini içerir.</p>
       <p>Tersine çalma yoktur. Loop'lar sadece ileri çalar.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="midi"><span class="n">04.7</span>MIDI hücreleri</h2>
+      <p>Bir hücrenin <b class="ui">IN</b>'ini <b class="ui">Sampler pad'leri (MIDI)</b> yap, ses
+        kaydetmeyi bırakır: <b>hangi pad'e, ne zaman ve ne kadar sert vurduğunu</b> kaydeder ve
+        vuruşları <a href="/docs/tr/sampler.html">sampler</a> üzerinden geri çalar. Böyle
+        kaydedilen bir davul partisi neredeyse hiçbir şeye mal olmaz, vuruş vuruş düzenlenebilir
+        kalır ve hangi kit yüklüyse onu izler — kiti değiştir, aynı parti yeni sesleri çalsın.</p>
+      <p>Bir MIDI hücresi halkasına dalga yerine her vuruş için bir çentik çizer ve ışın bir
+        vuruşun üzerinden her geçtiğinde pad'i parlar. <b class="ui">OUT</b> karosu
+        <b class="ui">QNT</b>'ye dönüşür — pad'ler zaten sampler nereye gidiyorsa oraya gider.</p>
+
+      <h3>Kayıt sırasında kuantalama</h3>
+      <p><b class="ui">QNT</b> karosu <b class="ui">KAPALI</b>, <b class="ui">1/4</b>,
+        <b class="ui">1/8</b>, <b class="ui">1/16</b> ve <b class="ui">1/32</b> arasında döner.
+        Duyduğunu değil, yalnızca <em>kaydedileni</em> kaydırır: çaldığın vuruş her zaman anında
+        duyulur, ızgaraya oturan ise kaydedilen kopyadır.</p>
+
+      <h3>MIDI editörü</h3>
+      <p>Bir MIDI hücresinin editöründe pembe bir <b class="ui">MIDI</b> rozeti ve dalga formunun
+        yerinde bir <b>roll</b> bulunur: kitin yüklediği her pad için bir satır, her ızgara adımı
+        için bir sütun, vuruş ve ölçülerde daha kalın çizgiler, çalma kafası için kırmızı bir
+        çizgi. Kayıt her zaman roll'un genişliğini doldurur; daha ince bir ızgara yalnızca daha
+        fazla çizgi çizer.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
+             alt="Bir MIDI loop hücresinin editörü: pembe MIDI rozetli LOOP 1 başlığı, Quantize düğmesi, 1/4'ten 1/32'ye GRID çipleri ve vuruş sayısı, her sampler pad'i için bir satır ve ilk satırda sekiz vuruş bulunan bir roll, ve altında END tutamacıyla cetvel.">
+        <figcaption>Bir MIDI hücresinin editörü: kuantalama, ızgara çipleri ve roll</figcaption>
+      </figure>
+      <ul style="--nc:var(--pitch)">
+        <li>Oraya bir vuruş koymak ya da kaldırmak için bir kareye <b>dokun</b> — pad'i
+          duyarsın.</li>
+        <li>Vurgusunu değiştirmek için bir kareye <b>basılı tut</b>: tam, üçte iki, üçte bir.
+          Bloğun tonu bunu gösterir.</li>
+        <li>Loop'un uzunluğunu adım adım değiştirmek için roll'un altındaki cetvelde kırmızı
+          <b class="ui">SON</b> tutamacını sürükle; tempo korunur.</li>
+      </ul>
+      <p>Roll'un üstünde <b class="ui">Kuantize</b> düğmesi ve <b class="ui">IZGARA</b> çipleri
+        (<b class="ui">1/4</b>'ten <b class="ui">1/32</b>'ye) kaydı <b>sonradan — ve onu yok
+        etmeden — kuantalar.</b> Çaldığın haliyle kayıt saklanır ve ızgara her zaman bu
+        orijinale uygulanır, asla son sonuca değil: düğmeyi kıs, vuruşlar çaldığın yere geri
+        yürüsün; <b class="ui">KAPALI</b>'ta zamanlama yeniden senindir. 1/8 ile 1/16'yı istediğin
+        kadar birbiriyle dene. Roll'da elle yapılan bir düzenleme yeni çalınmış kayıt olur.
+        Satır ayrıca kaydı sayar — <b class="ui">8 vuruş</b>.</p>
+      <p>Hiç kit yüklü değilse roll şunu söyler: <b class="ui">Bu kaydı ızgarada düzenlemek için Sample sekmesinde bir kit yükle.</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Geri al</h2>
-      <p>Geri al bir <b>anahtar</b>dır, bir yığın değil. Her overdub oturumu, dub eklenmeden
-        önce sesin bir anlık görüntüsünü alır; geri al bu anlık görüntüyü geri getirir, tekrar
-        basmak ise overdub'unu geri getirir. Bu, bir geri al düğmesi kadar bir karşılaştırma
-        düğmesidir de.</p>
-      <p>İki sınırı var: <b>tek oturum derinliğindedir</b>, yani ikinci bir overdub, geri al'ın
-        tuttuğu şeyin yerini alır; ve <b>parçalar arasında paylaşılır</b> — tüm looper için tek
-        bir anlık görüntü, parça başına bir tane değil. 2. parçayı overdub'larsan 1. parça için
-        sakladığın geri al kaybolur.</p>
+      <h2 id="undo"><span class="n">04.8</span>Geri alma ve temizleme</h2>
+      <p>Her hücrenin <b class="ui">Geri al</b> köşesi o hücre için bariz olanı yapar. Son overdub
+        o hücredeyse, overdub'ı geri alır — tekrar basmak overdub'ı geri getirir, yani bir
+        karşılaştırma düğmesi olarak da iş görür. Aksi halde <b>hücrenin kaydını
+        temizler</b>.</p>
+      <p>Overdub geri alma <b>tek oturum derinliğindedir</b> ve <b>hücreler arasında
+        paylaşılır</b>: herhangi bir hücredeki ikinci bir overdub, geri al'ın tuttuğu şeyin
+        yerini alır. 2. hücreyi overdub'larsan 1. hücre için sakladığın geri al kaybolur — 1.
+        hücrenin köşesi bu durumda onun yerine kaydı temizler.</p>
+      <p id="undo-transport">Transport'taki geri al tuşu aynı şeyi hücre seçmeden yapar: varsa
+        son overdub'ı geri alır, yoksa en son kapanan kaydı temizler. Çöp kutusu tuşu,
+        <b class="ui">Tüm loop’ları temizle</b>, looper'ı boşaltır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Parça bazında yönlendirme</h2>
-      <p><b class="ui">IN</b> ve <b class="ui">OUT</b>, bir parçanın sesinin nereden gelip nereye
-        gittiğine karar verir; <b class="ui">UZN</b> ve <b class="ui">DUB</b> ise ne kadar
-        sürdüğüne ve kaç geçiş yapıldığına karar verir.</p>
+      <h2 id="routing"><span class="n">04.9</span>Bir hücrenin ayarları</h2>
+      <p>Her pad'in yanındaki karolar hücrenin ayarlarıdır; her biri küçük bir etiket ve değerini
+        gösterir. <b class="ui">IN</b> ve <b class="ui">OUT</b>, loop'un sesinin nereden gelip
+        nereye gittiğine, <b class="ui">UZN</b> ve <b class="ui">DUB</b> ise ne kadar sürdüğüne
+        ve kaç geçiş yapıldığına karar verir; hücrenin kendi preset'i olduğunda bir
+        <b class="ui">PRESET</b> karosu belirir; düzenle karosu <a href="#editor">loop
+        editörünü</a> açar ve düğme hücrenin seviyesidir (<b class="ui">Loop kanalı N seviyesi</b>,
+        0 ile 1.5 arası).</p>
 
       <h3>IN</h3>
       <p><b class="ui">IN</b> menüsü genelde istediğin şey olan işlenmiş gitar sesi
         <b class="ui">FX sonrası (rig)</b>'i sunar. Birden fazla rig varken bu, rig başına
-        <b class="ui">Post FX · &lt;rig name&gt;</b> olur ve çip <b class="ui">FX ·
+        <b class="ui">FX sonrası · &lt;rig name&gt;</b> olur ve karo <b class="ui">FX ·
         &lt;rig&gt;</b> gösterir. Onun altında, her donanım giriş kanalı için kendi adı altında
         bir girdi — kuru bir vokal ya da arayüzden doğrudan gelen ikinci bir çalgıcı — ve
-        pad'leri loop'lamak için <b class="ui">Sampler</b>, çip <b class="ui">SMP</b> bulunur.</p>
+        <b class="ui">Sampler pad'leri (MIDI)</b>, karo <b class="ui">MIDI</b>; bu onu bir
+        <a href="#midi">MIDI hücresi</a> yapar.</p>
+      <p><b class="ui">Yalnızca bu loop · &lt;rig&gt;</b> bir rig'i yalnızca looper'a verir: o rig
+        canlı duyduğundan çıkarılır ve onu kaydeden bir hücre tetikteyken, kaydederken ya da
+        overdub yaparken <b>duyulan tek canlı rig</b> odur — diğerleri kayıt boyunca susar ve
+        sonra geri gelir. Yalnızca bir loop partisi için bir rig kur — bir bas oktavı, bir pad
+        sesi — ve çalışına asla sızmasın. Karo <b class="ui">Yalnız · &lt;rig&gt;</b> gösterir.</p>
 
       <h3>OUT</h3>
-      <p><b class="ui">OUT</b> menüsü <b class="ui">Ana miks</b>'i (çip <b class="ui">ANA</b>)
-        sunar, ekstra her donanım çıkış çifti için bir girdi — <b class="ui">Out 3/4</b>,
-        <b class="ui">Out 5/6</b> ve benzerleri, bunlar için Ayarlar'da <b class="ui">Tüm arabirim çıkışlarını kullan</b>'un açık olması gerekir — ve <b class="ui">Into &lt;rig
-        name&gt;</b>.</p>
+      <p><b class="ui">OUT</b> menüsü <b class="ui">Ana miks</b>'i (karo <b class="ui">ANA</b>)
+        sunar, ekstra her donanım çıkış çifti için bir girdi — <b class="ui">Çıkış 3/4</b>,
+        <b class="ui">Çıkış 5/6</b> ve benzerleri, bunlar için Ayarlar'da
+        <b class="ui">Tüm arabirim çıkışlarını kullan</b>'un açık olması gerekir — ve
+        <b class="ui">&lt;rig name&gt; içine</b>.</p>
       <p>Sonuncusu ilginç olanıdır: doğrudan mikse gitmek yerine loop, o rig'in <em>içine</em>
         çalar, böylece rig'in efektleri onu canlı işler. Temiz bir parçayı loop'la, onu bir delay
-        ve bir filtreye sahip bir rig'e gönder, ve loop çalışırken filtreyi süpür. Parçanın kayıt
+        ve bir filtreye sahip bir rig'e gönder, ve loop çalışırken filtreyi süpür. Hücrenin kayıt
         yaptığı bir rig sunulmaz — bu bir geri besleme yolu olurdu.</p>
 
       <h3>LEN ve DUB</h3>
-      <p><b class="ui">UZN</b> çipi 0, 1, 2, 4 ve 8 ölçü arasında döner. 0'da
-        <b class="ui">SERBEST</b> yazar; aksi halde <b class="ui">N BAR</b> yazar ve kayıt o kadar
+      <p><b class="ui">UZN</b> karosu 0, 1, 2, 4 ve 8 ölçü arasında döner. 0'da
+        <b class="ui">SERBEST</b> yazar; aksi halde <b class="ui">N ÖLÇÜ</b> yazar ve kayıt o kadar
         ölçüye sabitlenir. Tempo ayarlanmamışken menü şunu söyler:
         <b class="ui">Henüz tempo yok — ilk loop’u AUTO açıkken kaydet</b>.</p>
-      <p><b class="ui">DUB</b> çipi 0, 1, 2 ve 4 otomatik overdub geçişi arasında döner — parça,
-        bu kadar tur attıktan sonra kendiliğinden tekrar playing'e döner.</p>
+      <p><b class="ui">DUB</b> karosu 0, 1, 2 ve 4 otomatik overdub geçişi arasında döner — hücre,
+        bu kadar tur attıktan sonra kendiliğinden tekrar çalmaya döner.</p>
+
+      <h3 id="preset">Loop'un preset'i</h3>
+      <p>Bir hücre, girişinden ayrı olarak kendi sesinin içinden kaydedebilir. Hücreye uzun bas →
+        <b class="ui">Loop preseti · …</b> şunları sunar: <b class="ui">Canlı rig</b> (varsayılan:
+        o an ne açıksa onu çal), <b class="ui">Geçerli rig’in A sahnesi</b>'den D'ye kadar, ve
+        <b class="ui">Bir preset seç…</b> — önce sahnedeki şarkının kendi preset'leri, sonra
+        kategoriler ve aramayla birlikte tüm bank'lar.</p>
+      <p>Preset, hücre kayda başladığında, bir overdub başlattığında ya da tetiklendiğinde devreye
+        girer ve kayıt bittiğinde elindeki rig geri gelir — meğer bu arada başka bir preset
+        seçmiş ol; o zaman o kalır. Temiz bir preset'le bir ritim partisi kaydet ve hiçbir şeye
+        dokunmadan lead sesinle üzerine solo at.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>Neler kaydedilir</h2>
-      <p><b class="ui">PRESET’LER</b> çipi <b class="ui">Looper preset’leri</b>'i açar ve bunlar
-        <b>sadece kurulumu</b> tutar: her parçanın IN, OUT, LEN, DUB ve pan değeri, artı AUTO
-        bayrağı. Bu, bir şarkının başında çağırdığın bir yönlendirme şablonudur — bir kayıt
-        değil.</p>
-      <div class="note warn">
-        <div class="t">Loop sesi dışa aktarılamaz</div>
-        <p>Bir loop'u dosya olarak kaydetmenin bir yolu yoktur — ne dışa aktarma, ne paylaşım
-          sayfası. Looper'ın çaldığını yakalamanın tek yolu <b class="ui a">Sahne</b>
-          sekmesinin kaydedicisidir; bu, çıkış miksini (rig, looper, pad'ler ve altyapı birlikte,
-          artı ayrı bir kuru giriş kaydı) kaydeder. Bir loop saklamaya değerse Perform'da kayda
-          bas ve bırak çalışsın.</p>
+      <h2 id="saving"><span class="n">04.10</span>Neler kaydedilir</h2>
+      <p>Preset tuşu <b class="ui">Looper preset’leri</b>'i açar ve bunlar <b>kurulumu</b> tutar: her
+        hücrenin IN, OUT, LEN, DUB, pan, loop preset'i ve kuantalaması, artı AUTO bayrağı — ve
+        küçük oldukları için MIDI hücrelerinin kayıtları. Bir şarkının başında çağırdığın bir
+        şablon; ses kayıtları dışarıda kalır.</p>
+      <h3>Dosya olarak loop'lar</h3>
+      <p>Bir hücrenin uzun basma menüsü loop'unu dışa aktarır — <b class="ui">Loop’u WAV olarak dışa aktar…</b> — oturumun örnekleme hızında 32-bit float stereo bir WAV olarak;
+        <b class="ui">Tüm loop’ları dışa aktar…</b> ise bütün loop'ları tek seferde dışa aktarır. Her
+        dosya döngünün ilk vuruşunda başlar, böylece hepsini birlikte bir DAW'a bıraktığında
+        dosyalar hizalanır.</p>
+      <p><b class="ui">Dosyadan loop yükle…</b> herhangi bir ses dosyasını hücreye çalar durumda
+        koyar. Boş bir looper'da dosya, sınır hizalaması olmadan olduğu gibi loop olur ve kendi
+        temposunu getirir: <em>Loop 2 - 96.5 BPM</em> gibi bir addan okunur — dışa aktarılan
+        dosyaların adı böyledir — ya da uzunluğundan hesaplanır. Bir MIDI hücresinde ses yoktur,
+        bu yüzden ikisini de sunmaz.</p>
+      <div class="note">
+        <div class="t">Preset'ler kurulumu taşır, dosyalar sesi</div>
+        <p>Bir looper preset'i asla kaydedilmiş ses tutmaz — bunun için fazlasıyla büyüktür;
+          içinde yalnızca pad'lerin MIDI kaydı taşınır. Bir loop'u saklamak için onu dışa
+          aktar; bütün bir performansı saklamak için
+          <a href="/docs/tr/mix.html#recorder">Miks</a> sekmesindeki kaydediciyi kullan; bu,
+          çıkış miksini ve ayrı bir kuru giriş kaydını kaydeder.</p>
       </div>
     </section>
 

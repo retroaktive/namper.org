@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plugins — NAMper Documentation</title>
-<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and what NAMper itself does as an AUv3 effect in another app.">
+<meta name="description" content="Hosting Audio Unit effects inside a NAMper chain, the embedded plugin interface, the limits, how plugin state is saved — and NAMper itself inside another app, with the app's own face and library.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Plugins — NAMper Documentation">
@@ -153,9 +154,10 @@
             <tr><td>Stereo</td>
                 <td>Plugin input and output run in stereo, at whatever sample rate the engine is
                     on.</td></tr>
-            <tr><td>Rig chains only</td>
-                <td>AU plugins go inside rig chains. The <b class="ui">MASTER</b> section takes
-                    NAMper's own blocks only.</td></tr>
+            <tr><td>Chains, master, returns</td>
+                <td>AU plugins go inside rig chains, on the <b class="ui">MASTER</b> section and on
+                    the two send returns — the same <b class="ui">Plugins</b> section sits in all
+                    their add menus.</td></tr>
           </tbody>
         </table>
       </div>
@@ -208,10 +210,48 @@
         inside: a guitar-style mono front end feeding an amp. That is deliberate, and it is what you
         want for a DI'd guitar on a mono track.</p>
 
+      <h3>The app's face in the host</h3>
+      <p>The plug-in opens with the app's own rig in the host's window: the chain of blocks, the
+        scenes, the block editors, the library of captures and impulses, the presets and the
+        settings. It is the same face on the iPhone and iPad (the AUv3 in GarageBand, AUM, Cubasis
+        and the rest) and on the Mac (Audio Unit, VST3 and CLAP — see
+        <a href="/docs/mac.html#plugin">Mac</a>). Pick a preset and the plug-in builds that rig on
+        the track, with its captures from the library and its impulses from the bundled set; the
+        session carries the rig itself, so a project opens on a machine without the library.</p>
+      <p>The header is one row: the NAMper mark (it opens <b class="ui">About</b> — the version,
+        the help links, the credits, and a way to the app's tip jar), the preset, the scenes, the
+        meters, the library, the tools, the settings and the bypass. On a narrow host the row
+        scrolls sideways, with the settings and the bypass pinned at the end so the switch is always
+        in reach.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>The tools</b> are the app's header tools: the DSP load, the key, the metronome with
+          its tempo (a tap switches the click, a hold sets the tempo) and the tuner, each opening as
+          a panel over the chain.</li>
+        <li><b>Settings</b> carries the appearance and the themes, shared with the app; the
+          TONE3000 account, signed in and out inside the plug-in; the DSP switches —
+          <b class="ui">Lite NAM models</b>, <b class="ui">Stereo amp</b>,
+          <b class="ui">Tails on a switch</b>, <b class="ui">Align the rigs</b>; and the door to the
+          app's control map. The audio interface is the host's, so it is not there.</li>
+      </ul>
+      <p>What belongs to a whole app rather than a track stays out: the looper, the sampler, the
+        loop tracks, backing tracks and the <b class="ui">Send</b> block are hidden inside a host.
+        The chain's inputs are the plug-in's input and the host's sidechain, which the compressor
+        can key off.</p>
+
+      <h3>One library with the app</h3>
+      <p>On iOS the app and its Audio Unit share one library. A preset you save in the app is in
+        the plug-in's list the next time GarageBand or AUM opens it, and a capture you download
+        inside the host is in the app's library. The plug-in's preset list shows one bank at a time,
+        like the app's: the bank menu under the search field switches it, and User 1 is where a save
+        lands. The NAMper folder in the Files app (<b class="ui">On My iPhone → NAMper</b>) is the
+        door into that library: captures, impulses, zips and presets dropped there are taken in the
+        next time the app comes to the front.</p>
+
       <h3>The 18 parameters</h3>
-      <p>The plugin's own panel is a small branded strip reading <b class="ui">NAMper</b> and
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. All the actual
-        controls are host-automatable parameters, and there are eighteen of them:</p>
+      <p>The host still sees a fixed set of automatable parameters — the rows it lists in its own
+        panel and writes into automation. Each reaches the first block of its kind in the rig that
+        is loaded: <b class="ui">Gate On</b> is the rig's gate, <b class="ui">Bass</b> its EQ,
+        <b class="ui">Reverb Mix</b> its reverb, the way the app's MIDI map does.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Block</th><th>Parameters</th></tr></thead>
@@ -230,26 +270,23 @@
           </tbody>
         </table>
       </div>
-      <p>Every one of them can be automated from the host. The on/off parameters are floating-point
-        values from 0 to 1, so most hosts draw them as sliders rather than switches — anything at or
-        above the halfway mark is on. Three factory presets are exposed to the host as well:
-        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b>.</p>
+      <p>The on/off parameters are floating-point values from 0 to 1, so most hosts draw them as
+        sliders rather than switches — anything at or above the halfway mark is on. In the Audio
+        Unit the rig list is the host's own preset menu: every factory rig, then every preset you
+        saved, by name.</p>
 
       <div class="note warn">
-        <div class="t">What the plugin does not carry</div>
-        <p>No NAM model. No cab IR. No modulation blocks. No rig document at all — the host saves
-          those 18 parameter values and nothing else, so a rig you built in the app does not travel
-          into the plugin. There is also no MIDI input in the plugin version.</p>
+        <div class="t">MIDI in a host</div>
+        <p>The Mac's VST3 and CLAP take MIDI from the host — controllers, notes and program changes
+          reach the rig's control map as they do in the app. The Audio Unit has no MIDI input: drive
+          it with the host's automation instead.</p>
       </div>
-      <p>Read that honestly: inside a host, NAMper is a compact amp-and-effects channel, not the
-        whole app. If you want your NAM captures, your cabinets, the looper or the setlist, run the
-        app itself and record from there.</p>
       <div class="note tip">
         <div class="t">Working with both</div>
         <p>You can run the full app and route its output into a DAW, or use the plugin for a quick
-          guitar channel on a track you are already tracking in a host. The Perform tab's recorder
-          and its DAWproject export exist for the first route — see
-          <a href="/docs/perform.html">Perform &amp; lyrics</a>.</p>
+          guitar channel on a track you are already tracking in a host. The recorder and its
+          DAWproject export exist for the first route — see
+          <a href="/docs/perform.html#recording">Perform &amp; lyrics</a>.</p>
       </div>
     </section>
 
@@ -269,8 +306,10 @@
       <h3>NAMper as an AAP effect</h3>
       <p>Any AAP host finds NAMper as an effect named <b class="ui">NAMper</b> by
         <b class="ui">retroaktive</b>: stereo in, stereo out, the same eighteen parameters as the
-        AUv3 and the same three presets, with its state saved by the host. The same limits apply —
-        it is the compact amp-and-effects channel, not the whole app.</p>
+        AUv3, with its state saved by the host. Unlike the AUv3 it is still the compact
+        amp-and-effects channel — the chain behind those parameters and three presets,
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b> and <b class="ui">Lead</b> — not the whole
+        app.</p>
     </section>
 
     <nav class="pager">

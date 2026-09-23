@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tham chiếu cài đặt — Tài liệu NAMper</title>
-<meta name="description" content="Mọi thẻ và mọi hàng trong sheet Settings của NAMper: audio interface, tên kênh, giao diện, set, lyrics, metronome, prompt, reset và diagnostics — cùng những cài đặt nằm ở nơi khác.">
+<meta name="description" content="Mọi thẻ và mọi hàng trong sheet Settings của NAMper: audio interface, tên kênh, giao diện và theme, set, lyrics, metronome, looper, prompt, reset và diagnostics — cùng những cài đặt nằm ở nơi khác.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Tham chiếu cài đặt — Tài liệu NAMper">
@@ -80,6 +81,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Lyrics</a></li>
         <li><a href="#metronome">Metronome</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Prompt</a></li>
         <li><a href="#reset">Reset</a></li>
         <li><a href="#diagnostics">Diagnostics</a></li>
@@ -110,9 +112,9 @@
             <tr><td><b class="ui">Điều khiển</b></td>
                 <td>MIDI và các trigger đầu vào, ánh xạ tới bất cứ thứ gì — có trang riêng: <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</td></tr>
             <tr><td><b class="ui">Sân khấu</b></td>
-                <td>Click, tempo và tông của set, cỡ chữ lời bài hát và việc lời có tự mở hay không — <a href="#set">Set</a>, <a href="#lyrics">Lời</a> và <a href="#metronome">Máy đập nhịp</a> bên dưới.</td></tr>
+                <td>Click, tempo và tông của set, cỡ chữ lời bài hát và việc lời có tự mở hay không, cùng các mức auto-loop của looper — <a href="#set">Set</a>, <a href="#lyrics">Lời</a>, <a href="#metronome">Máy đập nhịp</a> và <a href="#looper">Looper</a> bên dưới.</td></tr>
             <tr><td><b class="ui">Giao diện</b></td>
-                <td>Sáng, tối, hoặc theo hệ thống — <a href="#appearance">bên dưới</a>.</td></tr>
+                <td>Sáng, tối, hoặc theo hệ thống, cùng các theme — <a href="#appearance">bên dưới</a>.</td></tr>
             <tr><td><b class="ui">Nhắc nhở &amp; hướng dẫn</b></td>
                 <td>Các lời nhắc khi mở ứng dụng và chuyến tham quan nhanh — <a href="#prompts">bên dưới</a>.</td></tr>
             <tr><td><b class="ui">Khắc phục sự cố</b></td>
@@ -136,12 +138,12 @@
             <tr><td>Chip <b class="ui">Tải DSP</b></td>
                 <td>Tải xử lý tính theo phần trăm, <b class="ui">—</b> khi đã dừng. Xanh lá dưới 60%, hổ phách tới 85%, đỏ ở trên.</td></tr>
             <tr><td>Bánh răng</td><td>Settings — chính trang này.</td></tr>
-            <tr><td>Chip <b class="ui">KEY</b></td>
-                <td>Giọng hiện tại, hoặc chữ <b class="ui">KEY</b> khi chưa đặt. Mở <b class="ui">ĐẶT GIỌNG</b>.</td></tr>
+            <tr><td>Chip <b class="ui">CHỌN</b></td>
+                <td>Giọng hiện tại, hoặc chữ <b class="ui">CHỌN</b> khi chưa đặt. Mở <b class="ui">ĐẶT GIỌNG</b>.</td></tr>
             <tr><td>Chip metronome</td>
                 <td>Chạm để bật/tắt click; <strong>nhấn giữ</strong> để mở sheet <b class="ui">ĐẶT TEMPO</b>. Xem <a href="/docs/vi/looper.html">looper</a>.</td></tr>
             <tr><td>Nĩa lên dây</td><td>Mở tuner. Xem <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">Nguồn</b></td>
                 <td>Bật và tắt audio engine. Không gì phát ra âm thanh cho tới khi nó bật. Xem <a href="/docs/vi/setup.html#power">bắt đầu</a>.</td></tr>
           </tbody>
         </table>
@@ -153,7 +155,8 @@
       <p>Thẻ <b class="ui">AUDIO INTERFACE</b> là thẻ dài nhất, và là thẻ duy nhất mà các cài
         đặt cần khởi động lại app mới có hiệu lực. Bốn hàng đầu tiên chỉ đọc: chúng cho bạn biết
         NAMper thực sự nhận được gì từ hệ thống, cách nhanh nhất để tìm ra vì sao một interface không
-        hoạt động đúng.</p>
+        hoạt động đúng. Trên Mac, chính trang này cũng là nơi chọn interface — thiết bị vào và ra,
+        cặp output — xem <a href="/docs/vi/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
@@ -181,7 +184,11 @@
             <tr><td><b class="ui">Dùng mọi ngõ ra của interface</b></td><td>Công tắc</td><td>Tắt</td>
                 <td>Mở mọi cặp output, để một branch, một rig hoặc click có thể sở hữu cặp riêng của nó. Thiết bị stereo không cần cái này.</td></tr>
             <tr><td><b class="ui">Mô hình NAM nhẹ</b></td><td>Công tắc</td><td>Tắt</td>
-                <td>Các capture A2 của TONE3000 mang theo một sub-model nhẹ hơn; bật cái này thì mọi block NAM đều chạy trên nó — chỉ tốn một phần nhỏ tải DSP, chi tiết bớt đi một chút. Capture nào không có sub-model thì không bị ảnh hưởng. Có hiệu lực ngay.</td></tr>
+                <td>Các capture A2 của TONE3000 mang theo một sub-model nhẹ hơn; bật cái này thì mọi bản capture đều chạy trên nó — chỉ tốn một phần nhỏ tải DSP, chi tiết bớt đi một chút. Capture nào không có sub-model thì không bị ảnh hưởng. Có hiệu lực ngay.</td></tr>
+            <tr><td><b class="ui">Đuôi âm khi chuyển</b></td><td>Công tắc</td><td>Bật</td>
+                <td>Các block mà một lần đổi preset bỏ lại sẽ ngân tiếp — tiếng lặp của delay, đuôi tắt dần của reverb — tới tám giây thay vì dừng ngay lúc đổi, và một delay, reverb, freeze, FX loop hoặc plugin bị một scene bypass sẽ ngân tiếp đè lên tín hiệu dry. Tốn thêm chút DSP trong những giây đó.</td></tr>
+            <tr><td><b class="ui">Căn chỉnh các rig</b></td><td>Công tắc</td><td>Tắt</td>
+                <td>Các rig trên những input khác nhau được làm trễ theo rig chậm nhất ở chỗ bàn trộn cộng chúng lại, để guitar và mic vào cùng lúc. Tắt đi thì mỗi rig giữ độ trễ riêng của nó; các đường tín hiệu của cùng một input thì dù thế nào cũng luôn khớp nhau.</td></tr>
           </tbody>
         </table>
       </div>
@@ -213,11 +220,23 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Giao diện</h2>
       <p>Chip: <b class="ui">Hệ thống</b>, <b class="ui">Sáng</b>, <b class="ui">Tối</b>. Mặc
-        định là <b class="ui">Hệ thống</b>, và đây là cài đặt duy nhất trên cả sheet có hiệu lực
-        ngay khi bạn chạm vào nó.</p>
-      <p>NAMper được thiết kế cho giao diện tối — các đồng hồ, LED và hình vẽ chuỗi tín hiệu
-        được vẽ cho một sân khấu tối. <b class="ui">Sáng</b> có sẵn nếu bạn cần dùng dưới ánh
-        sáng ban ngày, nhưng app dễ đọc nhất khi ở chế độ tối.</p>
+        định là <b class="ui">Hệ thống</b>, và thay đổi giao diện có hiệu lực ngay khi bạn chạm
+        vào.</p>
+      <p>Dưới các chip là các <b>theme</b>, mỗi chế độ một lựa chọn: chọn một theme tối và một
+        theme sáng, và <b class="ui">Hệ thống</b> dùng theme tối khi điện thoại ở chế độ tối và theme
+        sáng khi không. Có bốn theme tối — Studio (theme riêng của app), Midnight Violet, Ember và
+        Deep Sea — và ba theme sáng: Concrete, mặc định, một màu xám nhạt tối hơn giấy một chút;
+        Desk, màu trắng giấy mà app dùng từ bản đầu tiên; và Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="Tab Rig trong theme sáng Concrete: trang màu xám nhạt, các thẻ trắng và các ô của chuỗi mang màu của họ block.">
+        <figcaption>Concrete, theme sáng mà NAMper khởi đầu</figcaption>
+      </figure>
+      <p><b class="ui">Tùy chỉnh màu…</b> sao chép theme đang dùng thành theme của riêng bạn và
+        cho bạn đặt từng vai trò bằng tay — nền, các thẻ, chữ, các núm, nút nguồn và màu nhấn của
+        từng họ block. <b class="ui">Bán kính góc</b> trong cùng trình chỉnh này thay đổi mọi góc bo
+        tròn trong app cùng lúc, từ vuông sắc (30 %) đến rất tròn (200 %); các theme đi kèm ở mức
+        50 %. Một hàng reset đưa bản sao của bạn về lại theme gốc của nó.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -232,7 +251,7 @@
           <thead><tr><th>Giá trị</th><th>Đặt từ đâu</th></tr></thead>
           <tbody>
             <tr><td>Tempo</td><td>Nhấn giữ chip metronome trong header Rig, hoặc khối tempo ở tab <b class="ui a">Vòng lặp</b>. Looper cũng tự phát hiện nó từ loop đầu tiên của bạn, và chọn một nhạc nền sẽ áp tempo của bài hát đó.</td></tr>
-            <tr><td>Key</td><td>Chip <b class="ui">KEY</b> trong header Rig. Chọn một nhạc nền sẽ áp giọng của bài hát đó.</td></tr>
+            <tr><td>Key</td><td>Chip <b class="ui">CHỌN</b> trong header Rig. Chọn một nhạc nền sẽ áp giọng của bài hát đó.</td></tr>
           </tbody>
         </table>
       </div>
@@ -261,12 +280,14 @@
           <tbody>
             <tr><td>Mức click</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>Click to đến mức nào.</td></tr>
-            <tr><td><b class="ui">Ngõ ra click</b></td><td>Chip: <b class="ui">Chính</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Chính</b></td>
+            <tr><td><b class="ui">Ngõ ra click</b></td><td>Menu: <b class="ui">Chính</b>, rồi từng cặp ngõ ra theo tên mà driver của interface đặt cho các kênh (<b class="ui">3 / 4</b> khi nó không đặt tên)</td><td><b class="ui">Chính</b></td>
                 <td>Cặp output phần cứng nào mang tiếng click. Chỉ hiện khi có nhiều hơn một cặp; chọn một cặp không phải main sẽ tự bật <b class="ui">Dùng mọi ngõ ra của interface</b>.</td></tr>
+            <tr><td><b class="ui">Kênh click</b></td><td>Chip: <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (trên cặp khác là số kênh của nó)</td><td><b class="ui">L+R</b></td>
+                <td>Cả hai kênh của cặp, hoặc một trong hai: click mono vào một ngõ ra duy nhất, kênh kia để dành cho mix.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Ghi chú của thẻ mới là phần hữu ích: <b class="ui">Tiếng click được trộn SAU chuỗi master FX — reverb và limiter không chạm tới nó. Chọn một cặp ngõ ra riêng cho in-ear.</b></p>
+      <p>Ghi chú của thẻ mới là phần hữu ích: <b class="ui">Tiếng click được trộn SAU chuỗi master FX — reverb và limiter không chạm tới nó. Chọn một cặp ngõ ra riêng cho in-ear, và một kênh đơn khi click dùng chung bộ in-ear với mix.</b></p>
       <p>Nghĩa là reverb master của bạn sẽ không làm nhoè tiếng click và limiter master của bạn
         sẽ không đè ban nhạc xuống mỗi lần nó tích. Gửi nó ra một cặp riêng và tay trống sẽ nghe
         được click trong khi khán phòng thì không.</p>
@@ -274,8 +295,27 @@
         <b class="ui">CLICK</b> ở tab <b class="ui a">Vòng lặp</b> — không phải từ đây.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p>Thẻ <b class="ui">LOOPER</b> trên trang <b class="ui">Sân khấu</b> tinh chỉnh
+        <a href="/docs/vi/looper.html#auto">chế độ AUTO</a> của looper.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Khoảng lặng khép lại auto-loop</b></td><td>Slider, 0.5–4 phách</td><td>1 phách</td>
+                <td>Khoảng lặng sau một câu nhạc phải kéo dài bao lâu, tính bằng phách của tempo nghe được trong lối chơi của bạn, trước khi bản ghi tự khép lại. Dài hơn cho những câu có khoảng nghỉ, ngắn hơn cho những câu chặt.</td></tr>
+            <tr><td><b class="ui">Tín hiệu bắt đầu auto-loop</b></td><td>Slider, −54…−24 dB</td><td>−40 dB</td>
+                <td>Mức mà tiếng đàn của bạn phải giữ ở trên trong vài mili giây trước khi một ô đã arm bắt đầu ghi. Càng thấp càng nhạy; một cú lướt nhẹ qua dây hay tiếng ồn trong phòng vẫn nằm dưới mức này.</td></tr>
+            <tr><td><b class="ui">Giữ nhịp qua khoảng lặng</b></td><td>Công tắc</td><td>Bật</td>
+                <td>Loop bắt đầu phát ở đúng chỗ lẽ ra nó đang ở nếu chưa từng dừng, nên nhịp đếm không bao giờ đứt. Tắt đi thì nó phát từ đầu khi khép lại.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Prompt</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Prompt</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Hàng</th><th>Control</th><th>Mặc định</th><th>Chức năng</th></tr></thead>
@@ -297,7 +337,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Reset</h2>
+      <h2 id="reset"><span class="n">09.10</span>Reset</h2>
       <p>Hai nút, mỗi nút có một xác nhận phía sau.</p>
       <div class="tw">
         <table>
@@ -324,7 +364,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Diagnostics</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Diagnostics</h2>
       <p>NAMper giữ một engine log dạng text thuần ghi lại việc định tuyến interface và các
         đỉnh tín hiệu. Khi có một log, thẻ này cho <b class="ui">Chia sẻ nhật ký engine</b> và
         <b class="ui">Xoá nhật ký engine</b>; khi không có, nó hiện <b class="ui">Chưa có nhật ký engine (nó ghi định tuyến interface và mức đỉnh).</b></p>
@@ -337,7 +377,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Không nằm trong Settings</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Không nằm trong Settings</h2>
       <p>Ba thứ mọi người tìm ở đây mà không thấy.</p>
       <h3>Trigger quantize</h3>
       <p>Núm <b class="ui">QUANT</b> và chip lưới của nó nằm trong header tab

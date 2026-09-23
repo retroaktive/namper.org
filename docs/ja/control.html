@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIDIとコントロール — NAMperドキュメント</title>
 <meta name="description" content="コントロールマップとMIDIラーン、マッピングできるすべての対象、内蔵MIDIマップ、Bluetoothペアリング、学習したサウンドトリガー、そしてチューナーについて。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="MIDIとコントロール — NAMperドキュメント">
@@ -127,7 +128,7 @@
       <ol style="--nc:var(--eq)">
         <li><b class="ui">ラーン</b>をタップします。チップが点灯し、行が待機状態になります。</li>
         <li>使いたいフットスイッチを踏むか、ペダルを動かします。</li>
-        <li>ソースチップに<b class="ui">CC 42</b>や<b class="ui">Note 60</b>のように入力され、
+        <li>ソースチップに<b class="ui">CC 42</b>や<b class="ui">ノート 60</b>のように入力され、
           カードの<b class="ui">Last:</b>行にも<b class="ui">Learned CC 42</b>のように
           反映されます。</li>
       </ol>
@@ -139,7 +140,7 @@
       <p>Controlタブから始める必要はありません。アプリ内のほぼどんなコントロールでも —
         つまみ、チップの行、ルーパーパッド、サンプラーパッド、Performのトランスポート
         ボタン — 長押しすると、そのコントロールそのものに対する
-        <b class="ui">MIDI Learn: &lt;name&gt;</b>がメニューに現れます。そのコントロールは
+        <b class="ui">MIDIラーン: &lt;name&gt;</b>がメニューに現れます。そのコントロールは
         自ら輪郭を示し、<b class="ui">MIDIコントロールを動かしてください…</b>と表示します。ペダルを動かせば
         マッピングが作られます。違うつまみをつかんでしまった場合は<b class="ui">ラーンをキャンセル</b>で取り消せます。</p>
       <div class="note tip">
@@ -158,9 +159,8 @@
           <thead><tr><th>セクション</th><th>アクション</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">アクションなし</b></td><td>行を無効のままにします。</td></tr>
-            <tr><td><b class="ui">サンプラーパッド</b></td><td>読み込まれたパッドごとに<b class="ui">Pad 1</b>から順に。</td></tr>
-            <tr><td><b class="ui">ルーパー</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>、<b class="ui">再生/停止</b>、<b class="ui">すべてクリア</b>。</td></tr>
+            <tr><td><b class="ui">サンプラーパッド</b></td><td>読み込まれたパッドごとに<b class="ui">パッド 1</b>から順に。</td></tr>
+            <tr><td><b class="ui">ルーパー</b></td><td><b class="ui">トラック 1 をタップ</b>…<b class="ui">トラック 4 をタップ</b>、<b class="ui">再生/停止</b>、<b class="ui">すべてクリア</b>。</td></tr>
             <tr><td><b class="ui">プリセット</b></td><td>名前ごとのすべてのリグプリセット、加えて
               <b class="ui">次のプリセット</b>。</td></tr>
             <tr><td><b class="ui">パフォーム</b></td><td><b class="ui">再生/一時停止</b>、
@@ -174,6 +174,13 @@
         <b class="ui">ブロック オン/オフ · アクティブリグ</b>、<b class="ui">ブロックパラメータ · アクティブリグ</b>です。これらはそのときMIDIフォーカスを持っているリグに追従するので、
         1つのフットスイッチで「決まったリグの決まったブロック」ではなく「今弾いている
         リグのドライブ」をバイパスできます。</p>
+      <p>プリセットバンクとシーンのモーフに合わせて、さらに2つのグループが加わりました。
+        <b class="ui">プリセット</b>の下には<b class="ui">値でプリセットバンク</b>(0がファクトリー
+        バンク、1〜3がユーザーバンク)、<b class="ui">次のプリセットバンク</b>、
+        <b class="ui">前のプリセットバンク</b>があります。<b class="ui">シーン</b>の下には、CCの行用に
+        <b class="ui">ペダルでモーフ</b>とシーンのペアがあります — ペダルの動きに合わせて
+        つまみが2つのシーンの値の間を滑らかに移り、スイッチ類は中間点で切り替わります。
+        <a href="/docs/ja/rig.html#presets">プリセットとシーン</a>を参照してください。</p>
       <p>ペダルを配線する前に覚えておきたい制約が2つあります。</p>
       <ul style="--nc:var(--amp)">
         <li><b>連続的なブロックパラメータにはCCが必要です。</b>ノートと学習したサウンドは
@@ -306,9 +313,10 @@
         ときに使ってください。</p>
 
       <h3>楽器とチューニング</h3>
-      <p>NAMperは今持っている楽器を自動的に判別し、ピルとして表示します:
-        <b class="ui">ギター</b>、<b class="ui">ベース</b>、<b class="ui">ウクレレ</b>です。
-        選択画面はありません — ベースを挿せば、チューナーはそれに合わせて切り替わります。</p>
+      <p>隅のピルが楽器を表します: <b class="ui">ギター</b>、<b class="ui">ベース</b>、
+        <b class="ui">ウクレレ</b>です。これは推測ではなく選択です — タップしてメニューから
+        選んでください。自動判別ではベースのE弦の倍音をギターのコードと読み違えることが
+        続いたため、チューナーはもう音から楽器を聞き分けようとはしません。</p>
       <p>チューニングチップは<b class="ui">POLY</b>モードに適用され、楽器ごとに選択が
         記憶されます。</p>
       <div class="tw">

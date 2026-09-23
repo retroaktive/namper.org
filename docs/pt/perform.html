@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform e letra — Documentação do NAMper</title>
-<meta name="description" content="Backing tracks, o setlist e suas seções, marcadores de preset na linha do tempo, o teleprompter de letra em tela cheia com âncoras, gravação multitrilha e exportação DAWproject.">
+<meta name="description" content="Backing tracks, os botões de palco, o setlist e suas músicas, marcadores de preset na linha do tempo, o teleprompter de letra em tela cheia com âncoras, gravação multitrilha e exportação DAWproject.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform e letra — Documentação do NAMper">
@@ -67,14 +68,16 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM E LETRA</div>
     <h1>Tocando o set.</h1>
     <p class="lede">A aba <b class="ui a">Palco</b> é a que você olha no palco: backing
-      tracks, um setlist de seções, trocas de preset que disparam sozinhas, um teleprompter em
-      tela cheia para sua letra, e um gravador que captura a noite inteira em stems.</p>
+      tracks, um setlist de músicas, botões grandes de palco que trocam de som, trocas de rig que
+      disparam sozinhas pela linha do tempo, um teleprompter em tela cheia para sua letra, e um
+      gravador que captura a noite inteira em stems.</p>
 
     <nav class="toc">
       <div class="slab">NESTA PÁGINA</div>
       <ul>
         <li><a href="#tracks">Backing tracks</a></li>
         <li><a href="#player">O cartão do player</a></li>
+        <li><a href="#stage">Os botões de palco</a></li>
         <li><a href="#setlist">Repertórios e músicas</a></li>
         <li><a href="#sections">O que uma música traz</a></li>
         <li><a href="#markers">Marcadores</a></li>
@@ -93,7 +96,7 @@
         para trazer um set inteiro de uma vez, e aceita qualquer coisa que o iOS consiga
         decodificar. Cada arquivo é copiado para <b class="ui">backing/</b> e vira uma seção do
         setlist com o nome do arquivo.</p>
-      <p>Se um arquivo não puder ser lido, você recebe <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>Se um arquivo não puder ser lido, você recebe <b class="ui r">Não foi possível importar &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="A aba Perform: o cartão do player com Test Song carregada, sua linha do tempo em forma de onda, 120 BPM e tom A, e o chip de roteamento DIRECT; abaixo dele o cartão SETLIST com AUTO NEXT ligado, e o cartão RECORDINGS na parte inferior.">
@@ -121,22 +124,31 @@
         o tempo e o tom globais seguem a música, então as divisões sincronizadas do delay e do
         tremolo, a grade de compassos do looper, o harmonizador e o autotune caem todos na música
         certa sem que você precise configurar nada.</p>
-      <p>Cinco botões ficam sob o nome, da esquerda para a direita:</p>
+      <p>Seis controles ficam sob o nome, da esquerda para a direita — as mesmas teclas de
+        transporte, na mesma ordem, do cabeçalho em tela cheia dos botões de palco:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Botão</th><th>Faz</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Play</b></td><td>Toca e pausa o backing track</td></tr>
-            <tr><td><b class="ui">Parar</b></td><td>Para e volta para o início</td></tr>
-            <tr><td><b class="ui">Gravar</b></td><td>Inicia e para o gravador de performance (<a href="#recording">abaixo</a>)</td></tr>
+            <tr><td><b class="ui">Para o início da música</b></td><td>Volta ao começo da música que está tocando; fica apagado quando a música não tem timeline. Uma música anterior está a um toque na lista</td></tr>
+            <tr><td><b class="ui">Play</b> / <b class="ui">Pausar</b></td><td>Uma tecla só: ela pausa
+              enquanto a música toca e retoma de onde pausou. Parar — voltar ao início — é o botão
+              da própria linha da música, ou o CC 92</td></tr>
+            <tr><td><b class="ui">Próxima música</b></td><td>Passa para a próxima música sem precisar ir
+              até a lista</td></tr>
+            <tr><td><b class="ui">LETRA AUTO</b></td><td>Se o teleprompter abre sozinho junto com
+              a música — a mesma chave de <b class="ui">Abrir a letra junto com a música</b> nos
+              Ajustes</td></tr>
             <tr><td><b class="ui">Adicionar marcador</b></td><td>Deixa uma mudança na posição de reprodução</td></tr>
             <tr><td><b class="ui">Letra</b></td><td>Abre o teleprompter, ou carrega um arquivo de letra</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Toque e segure <b class="ui">Play</b> ou <b class="ui">Parar</b> para fazer o MIDI Learn
-        deles — <b class="ui">MIDI Learn: play / pausa</b>, <b class="ui">MIDI Learn: parar</b>,
-        <b class="ui">MIDI Learn: próxima seção</b> e <b class="ui">MIDI Learn: seção anterior</b> são todos oferecidos ali. Veja <a href="/docs/pt/control.html">MIDI e controle</a>.</p>
+      <p>Toque e segure uma tecla de transporte para fazer o MIDI Learn dela —
+        <b class="ui">MIDI Learn: play / pausa</b>, <b class="ui">MIDI Learn: parar</b>,
+        <b class="ui">MIDI Learn: próxima seção</b>, <b class="ui">MIDI Learn: seção anterior</b> e
+        <b class="ui">MIDI Learn: próxima música</b> são oferecidos ali. Veja
+        <a href="/docs/pt/control.html">MIDI e controle</a>.</p>
       <h3>Nível do backing e roteamento</h3>
       <p>Abaixo dos botões, um fader de mesa deitado define o nível do playback em dB de −60 a +12 e
         mostra <b class="ui">-inf</b> lá embaixo; um toque duplo o devolve a 0 dB. É o mesmo fader e
@@ -160,15 +172,51 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>Os botões de palco</h2>
+      <p>A metade de baixo da aba Palco pertence a alguns botões grandes — os que a mão acerta no
+        meio da música sem olhar. O que eles guardam depende de haver um setlist
+        <b class="ui">AO VIVO</b>:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Nenhum setlist ao vivo</b> — as quatro <b class="ui">CENAS</b> do rig que está no
+          ar. Uma cena vazia captura o que está tocando, como fazem os chips de cena.</li>
+        <li><b>Um setlist ao vivo, nenhuma música escolhida</b> — as músicas do set. O primeiro
+          toque escolhe uma, e os sons dela assumem os botões.</li>
+        <li><b>Uma música escolhida</b> — os itens da própria música, cada um um preset com a cena
+          que ele traz, na ordem da música. O que está tocando fica aceso, e um botão mostra só as
+          cenas que o seu preset tem.</li>
+      </ul>
+      <p>Um botão troca no instante em que o dedo encosta, não quando ele sobe, então um toque
+        rápido entre dois compassos nunca se perde. São quatro ou oito: o chip de quantidade no
+        cabeçalho alterna entre os dois, e enquanto você não escolher, ele segue a tela. A grade
+        escolhe o formato que deixa os botões mais perto de quadrados. Com mais itens do que botões,
+        as setas do cabeçalho passam as páginas, e a página acompanha o item que está tocando quando
+        um marcador ou um pedal leva a música adiante.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="Os botões de palco em tela cheia: o nome da música grande no topo com as teclas de voltar ao início, play e próxima música ao lado, e botões grandes embaixo, cada um com o nome de um preset e a letra da sua cena, A, B ou C.">
+        <figcaption>Tela cheia: o nome da música, o transporte e os sons da música</figcaption>
+      </figure>
+      <p>O botão de expandir no cabeçalho dá a aba inteira para os botões. Em tela cheia, o nome da
+        música fica grande, e as teclas do player vêm junto ao lado dele — voltar ao início,
+        play / pausa e próxima música — já que o player em si sai de vista.</p>
+      <p>Segure um botão para abrir o menu dele: o menu de pad da página do rig, no palco —
+        <b class="ui">Substituir som…</b>, <b class="ui">Rig atual</b>, <b class="ui">Limpar pad</b>
+        e MIDI Learn, que associa um footswitch àquele botão pelo número. O toque longo é deliberado
+        (cerca de 0,8 s), então nunca atrapalha um toque rápido. O program change <em>n</em> aperta
+        o botão de palco <em>n</em> enquanto um set está ao vivo: as músicas enquanto nenhuma está
+        escolhida, depois os itens da música escolhida.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Repertórios e músicas</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Repertórios e músicas</h2>
       <p>Um <strong>repertório</strong> é uma lista de músicas; um deles fica <b class="ui">AO VIVO</b>
         por vez, e o repertório no ar é dono da régua de presets e do MIDI: o program change
-        <em>n</em> toca a música <em>n</em>. Uma <strong>música</strong> é um nome, uma lista ordenada
+        <em>n</em> aperta o botão de palco <em>n</em>. Uma <strong>música</strong> é um nome, uma lista ordenada
         do que ela traz e um playback <em>opcional</em> com seus marcadores e sua letra. Uma música
         sem áudio nenhum vale do mesmo jeito: ela é o som com que você a toca, chamado da mesma
         lista.</p>
-      <p>O cabeçalho do cartão tem o botão <b class="ui">SETLISTS</b> — criar, escolher, renomear,
+      <p>O cabeçalho do cartão tem o botão <b class="ui">SETLISTS</b> — só o ícone, no celular — para criar, escolher, renomear,
         compartilhar e apagar repertórios —, uma chave <b class="ui">AVANÇO AUTO</b> e um
         <b class="ui">+</b> que importa arquivos de áudio (uma música por arquivo), acrescenta um
         <b class="ui">Música sem backing track</b> ou monta uma música direto
@@ -201,7 +249,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>O que uma música traz</h2>
+      <h2 id="sections"><span class="n">06.5</span>O que uma música traz</h2>
       <p>O botão de edição abre o editor da música: um campo <b class="ui">Nome da música</b>, um seletor de playback cuja primeira entrada é <b class="ui">Música sem backing track</b>, a linha de <a href="#lyrics">letra</a>, a lista do que a música recupera e <b class="ui">Excluir música</b> no fim.</p>
       <p>Uma música sem faixa de acompanhamento ganha também uma linha <b class="ui">Duração</b>: a linha
         do tempo em que ela corre. Defina uma e o transporte a conta por relógio em vez de por áudio:
@@ -223,23 +271,37 @@
             <a href="/docs/pt/sampler.html">pads</a>.</td></tr>
         </tbody>
       </table>
-      <p>A lista é aplicada em ordem quando a música é preparada, então o <em>último</em> preset de
-        rig é o som com que ela começa; os de cima estão ali para os
-        <a href="#markers">marcadores</a> alcançarem. As linhas sobem, descem e são apagadas pelo
-        menu delas.</p>
+      <p>Quando a música é preparada, o <em>primeiro</em> preset de rig da lista é o som com que
+        você começa a música; os de baixo estão ali para os <a href="#markers">marcadores</a>, os
+        botões de palco e um footswitch alcançarem, e a ordem é o que <em>próximo / anterior preset
+        na música</em> percorre. Para reordenar, arraste uma linha pela alça — as três linhas na
+        borda direita dela. As letras de cena de uma linha oferecem só as cenas que aquele preset
+        tem, e tocar de novo na letra escolhida desfaz a escolha.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="O editor de música: o nome e o playback da música, e depois a lista do que ela traz — presets de rig, cada um com as suas letras de cena e uma alça, um preset do looper e um kit do sampler.">
+        <figcaption>O editor de música: presets com as suas cenas, um preset do looper, um kit</figcaption>
+      </figure>
       <h3>Escolher um preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="O seletor de presets de rig: um campo de busca acima da lista, e linhas com o número de programa, o banco, a capa, o nome do preset e as suas etiquetas.">
+        <figcaption>O seletor de presets de rig: todos os bancos numa lista só</figcaption>
+      </figure>
       <p>O seletor de presets de rig mostra os mesmos números da régua — <b class="ui">0</b> …
-        <b class="ui">127</b> — com a capa e um campo de busca acima da lista, que filtra por nome,
-        número e etiqueta. E ele <strong>monitora</strong> enquanto você navega: toque numa linha e o
-        rig carrega mesmo, então você escolhe o som de ouvido. Feche o seletor sem escolher e o rig
-        volta ao que estava.</p>
+        <b class="ui">127</b> — para todos os bancos numa lista só, o de fábrica primeiro, cada linha
+        marcada com o seu banco e trazendo a sua capa e as suas etiquetas; o campo de busca filtra por
+        nome, número e etiqueta. E ele <strong>monitora</strong> enquanto você navega: toque numa
+        linha e o rig carrega mesmo, então você escolhe o som de ouvido (o alto-falante no cabeçalho
+        do seletor desliga isso). O visto adiciona o preset destacado; feche o seletor sem escolher e
+        o rig volta ao que estava.</p>
       <p>O caminho contrário também funciona: o menu de linha de um preset na régua da aba Rig tem
         <b class="ui">Adicionar ao set…</b> — escolha um repertório, depois uma das músicas dele ou
         <b class="ui">Nova música</b>, e o preset é acrescentado à lista daquela música.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marcadores</h2>
+      <h2 id="markers"><span class="n">06.6</span>Marcadores</h2>
       <p>Um marcador é um momento na linha do tempo da música que traz um dos itens dela mesma. Verso
         limpo, refrão com crunch, lead no solo: colocado uma vez, e depois sem tirar as mãos das
         cordas toda vez que você tocar.</p>
@@ -270,7 +332,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Letra e o teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Letra e o teleprompter</h2>
       <p>O NAMper carrega sua letra para você. Dê a uma faixa um arquivo de texto simples e ela
         vira um teleprompter em tela cheia que abre sozinho quando a música começa e rola no ritmo
         que você ensinou a ele.</p>
@@ -327,9 +389,11 @@
         nome da faixa, o marcador <b class="ui">m:ss / m:ss</b> e um botão de play/pause.
         <strong>Tocar em qualquer lugar da tela alterna entre play e pause</strong> — você não
         precisa acertar um alvo pequeno com uma guitarra nas mãos.</p>
-      <p>Abrir sozinho é uma chave: Ajustes → <b class="ui">Palco</b> →
-        <b class="ui">Abrir a letra junto com a música</b>. Desligado, a aba em que você estava fica
-        onde está e o botão <b class="ui">Letra</b> abre a letra quando você quiser.</p>
+      <p>Abrir sozinho é uma chave: <b class="ui">LETRA AUTO</b> ao lado do botão de letra no
+        cartão do player, a mesma chave no menu do botão de letra, e Ajustes →
+        <b class="ui">Palco</b> → <b class="ui">Abrir a letra junto com a música</b>. Desligado, a
+        aba em que você estava fica onde está e o botão <b class="ui">Letra</b> abre a letra quando
+        você quiser.</p>
 
       <h3>Âncoras</h3>
       <p>Uma âncora é como você ensina o texto à sua música. <strong>Segure uma linha por cerca de
@@ -375,7 +439,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Presets do Perform</h2>
+      <h2 id="presets"><span class="n">06.8</span>Presets do Perform</h2>
       <p>O chip <b class="ui">PRESETS</b> no cabeçalho do setlist abre <b class="ui">Presets do Perform</b>. Um preset de perform salvo carrega o <strong>setlist inteiro</strong>: cada
         seção com seus passos e compassos, o estado de <b class="ui">AVANÇO AUTO</b>, e a letra —
         texto, janela e âncoras — de toda faixa que a tiver.</p>
@@ -392,9 +456,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Gravação</h2>
-      <p>O botão de gravar no cartão do player captura a performance como <strong>três stems
-        alinhados</strong>. Ele recusa com <b class="ui r">O áudio está desligado — toque no botão liga/desliga antes de gravar.</b> se o motor de áudio não estiver rodando.</p>
+      <h2 id="recording"><span class="n">06.9</span>Gravação</h2>
+      <p>O gravador da aba <a href="/docs/pt/mix.html#recorder">Mix</a> captura a performance
+        como <strong>três stems alinhados</strong>. Ele recusa com <b class="ui r">O áudio está desligado — toque no botão liga/desliga antes de gravar.</b> se o motor de áudio não estiver rodando.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>O que ele guarda</th></tr></thead>
@@ -417,7 +481,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Projetos de gravação</h2>
+      <h2 id="projects"><span class="n">06.10</span>Projetos de gravação</h2>
       <p>O cartão <b class="ui">GRAVAÇÕES</b> agrupa os stems de uma tomada em um
         <strong>projeto</strong>, pelo nome compartilhado <b class="ui">Perf &lt;date&gt;</b>. Mais
         recentes primeiro, e os cinco projetos mais recentes são mostrados — tomadas mais antigas
@@ -434,7 +498,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>Exportação DAWproject</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>Exportação DAWproject</h2>
       <p>O botão de compartilhar em uma <strong>linha de projeto</strong> — não em um stem
         individual — exporta a tomada inteira como um arquivo <b class="ui">.dawproject</b> pela
         tela de compartilhamento padrão do iOS: salvar em Arquivos, mandar por AirDrop para um Mac,

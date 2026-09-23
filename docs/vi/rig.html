@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig &amp; chuỗi tín hiệu — Tài liệu NAMper</title>
-<meta name="description" content="Xây dựng một rig: bảng block, năm model EQ, profile ampli NAM và TONE3000, IR cab, preset và slot MIDI PC, nhiều rig, nhánh song song và phần master.">
+<meta name="description" content="Xây dựng một rig: bảng block và từng block một, bảy model EQ, profile ampli NAM và TONE3000, IR cab, bank preset, scene và slot MIDI PC, nhiều rig, nhánh song song và phần master.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Rig &amp; chuỗi tín hiệu — Tài liệu NAMper">
@@ -76,7 +77,7 @@
       <ul>
         <li><a href="#blocks">Bảng block</a></li>
         <li><a href="#models">Model bên trong block</a></li>
-        <li><a href="#eq">Năm model EQ</a></li>
+        <li><a href="#eq">Bảy model EQ</a></li>
         <li><a href="#nam">Bản capture NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Cab và IR</a></li>
@@ -97,19 +98,28 @@
         <table>
           <thead><tr><th>Phần</th><th>Block</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Động lực</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Saturator</b></td></tr>
-            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Amp</b>, <b class="ui">EQ</b>, <b class="ui">Cab</b></td></tr>
-            <tr><td><b class="ui">Bộ lọc</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Điều biến</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b>, <b class="ui">Ensemble</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Reverb</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmony</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octaver</b></td></tr>
-            <tr><td><b class="ui">Tiện ích</b></td><td><b class="ui">Âm lượng</b>, <b class="ui">Send</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b></td></tr>
+            <tr><td><b class="ui">Amp &amp; Cab</b></td><td><b class="ui">Ampli</b>, <b class="ui">Thùng loa</b></td></tr>
+            <tr><td><b class="ui">Delay &amp; Reverb</b></td><td><b class="ui">Delay</b>, <b class="ui">Freeze</b>, <b class="ui">Reverb</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Lo-fi</b>, <b class="ui">Saturator</b></td></tr>
+            <tr><td><b class="ui">Động lực</b></td><td><b class="ui">Bộ nén</b>, <b class="ui">De-Esser</b>, <b class="ui">Gate</b>, <b class="ui">Limiter</b>, <b class="ui">Đa băng</b>, <b class="ui">Swell</b>, <b class="ui">Transient</b>, <b class="ui">Giọng hát</b></td></tr>
+            <tr><td><b class="ui">EQ &amp; Bộ lọc</b></td><td><b class="ui">Bộ cân bằng</b>, <b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Điều biến</b></td><td><b class="ui">Chorus</b>, <b class="ui">Doubler</b>, <b class="ui">Ensemble</b>, <b class="ui">Flanger</b>, <b class="ui">Phaser</b>, <b class="ui">Rotary</b>, <b class="ui">Slicer</b>, <b class="ui">Tremolo</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">12 dây</b>, <b class="ui">Autotune</b>, <b class="ui">Harmony</b>, <b class="ui">Octaver</b>, <b class="ui">Pitch</b>, <b class="ui">Synth</b>, <b class="ui">Vocoder</b></td></tr>
+            <tr><td><b class="ui">Tiện ích</b></td><td><b class="ui">FB Guard</b>, <b class="ui">Vòng FX</b>, <b class="ui">Send</b>, <b class="ui">Âm lượng</b></td></tr>
             <tr><td><b class="ui">Plugin</b></td><td>menu con <b class="ui">Plugin AU</b> trên iOS, các hiệu ứng AAP đã cài trên Android</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Ampli và cab của nó đứng đầu; mọi phần khác, và các block bên trong mỗi phần, xếp theo
+        thứ tự bảng chữ cái. Một block có preset sẽ mở ra một menu con thay vì rơi thẳng vào chuỗi:
+        <b class="ui">Cài đặt mặc định</b>, các preset gốc và đã lưu của block đó, và bên dưới
+        <b class="ui">Từ preset rig</b> là chính block ấy được lấy ra từ một preset rig — drive
+        từ rig này, delay từ rig khác.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
+             alt="Tab Rig với một chuỗi ambient: một Swell trước ampli, rồi cab, một Ensemble, một delay, một Freeze và một reverb, mỗi block là một ô trong chuỗi.">
+        <figcaption>Một chuỗi ambient: <b class="ui">Swell</b>, <b class="ui">Freeze</b> và <b class="ui">Ensemble</b> quanh ampli</figcaption>
+      </figure>
       <p>Không gì ngăn bạn thêm cùng một block hai lần. Các bản sao được đánh số theo thứ tự xuất
         hiện — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — và tên block luôn được viết
         hoa trên chip. Hai drive liên tiếp, một gate ở đầu và một gate khác sau ampli: đều ổn cả.</p>
@@ -146,6 +156,122 @@
           thứ hai với cùng cài đặt, hãy thêm một block mới và chỉnh lại từ đầu. Để tái sử dụng cả
           một chuỗi, lưu nó thành preset và dựng rig tiếp theo từ preset đó thay vì làm lại.</p>
       </div>
+
+      <h3>Các block mới</h3>
+      <p>Mười hai block gia nhập bảng block gần đây nhất. Mỗi block dùng để làm gì, trong một
+        hai câu:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Block</th><th>Chức năng</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Doubler</b></td><td>Một lần thu nghe như hai người chơi: một bản
+              sao thấp đi vài cent và một bản cao lên chừng ấy, mỗi bản trễ một chút, pan ra hai bên
+              với tín hiệu dry ở giữa. Không có gì chuyển động, nên nó không phải chorus.
+              <b class="ui">Lệch tông</b>, <b class="ui">Delay</b>, <b class="ui">Độ rộng</b>,
+              <b class="ui">Mix</b>.</td></tr>
+            <tr><td><b class="ui">Swell</b></td><td>Tiếng vuốt kiểu violin mà không cần pedal âm
+              lượng: mỗi nốt mới to dần lên trong khoảng thời gian <b class="ui">Attack</b>.
+              <b class="ui">Nhạy</b> quyết định phải gảy mạnh cỡ nào mới tính là nốt mới,
+              <b class="ui">Độ sâu</b> quyết định tiếng to dần bắt đầu từ đâu.</td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td>Bốn cách phá tín hiệu trên các chip kiểu của nó —
+              <b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Điện thoại</b> và
+              <b class="ui">Loa phóng thanh</b> — mỗi cách có núm riêng và một <b class="ui">Mix</b>.</td></tr>
+            <tr><td><b class="ui">Freeze</b></td><td>Một nốt ngân mãi mãi: bật <b class="ui">Freeze</b>
+              (bằng footswitch, bằng một nút MIDI) và một phần tư giây cuối cùng trở thành một lớp âm
+              bất tận nằm dưới tín hiệu dry trong khi bạn chơi tiếp bên trên. <b class="ui">Attack</b>,
+              <b class="ui">Release</b>, <b class="ui">Mức</b>, <b class="ui">Tone</b>.</td></tr>
+            <tr><td><b class="ui">Transient</b></td><td>Tiếng gảy và tiếng ngân của một nốt thành hai
+              núm, không có ngưỡng: <b class="ui">Attack</b> đẩy tiếng gảy lên hoặc làm nó mềm đi,
+              <b class="ui">Sustain</b> nâng tiếng ngân lên hoặc làm nó ngắn lại.</td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td>Một gate giữ nhịp: mười sáu bước, mở hay đóng
+              theo <b class="ui">Mẫu</b>. <b class="ui">Sync</b> lấy độ dài bước từ tempo của set;
+              <b class="ui">Độ sâu</b> là một bước đóng kín đến đâu, <b class="ui">Cạnh</b> là gate
+              chuyển nhanh đến đâu.</td></tr>
+            <tr><td><b class="ui">Đa băng</b></td><td>Ba dải tần chia ở <b class="ui">Cắt thấp</b>
+              và <b class="ui">Cắt cao</b>, mỗi dải được nén bằng một núm —
+              <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b> — với gain riêng
+              cho từng dải cùng <b class="ui">Attack</b> và <b class="ui">Release</b> dùng chung. Nó
+              làm đều tiếng ù ở dải trầm mà không làm dải cao bị "thở": cho bass, guitar thùng, cả một
+              bản mix.</td></tr>
+            <tr><td><b class="ui">Giọng hát</b></td><td>Một channel strip cho giọng hát theo đúng thứ tự
+              một phòng thu vẫn dùng: <b class="ui">HPF</b>, <b class="ui">De-ess</b>,
+              <b class="ui">Comp</b>, <b class="ui">Bass</b>, <b class="ui">Presence</b>,
+              <b class="ui">Air</b>, <b class="ui">Ấm</b> và <b class="ui">Đầu ra</b>.</td></tr>
+            <tr><td><b class="ui">12 dây</b></td><td>Các cặp dây được nhân đôi: một dây quãng tám cho
+              những gì nằm dưới <b class="ui">Chia</b> và một dây đồng âm cao hơn vài cent cho toàn
+              bộ.
+              <b class="ui">Quãng tám</b>, <b class="ui">Đồng âm</b>, <b class="ui">Lệch tông</b>,
+              <b class="ui">Tone</b>.</td></tr>
+            <tr><td><b class="ui">Synth</b></td><td>Một synth đơn âm bám theo dây đàn: một
+              <b class="ui">Sóng</b> đi qua bộ lọc ladder (<b class="ui">Cutoff</b>,
+              <b class="ui">Reso</b>, <b class="ui">Env</b>), được dịch bằng <b class="ui">Quãng tám</b> và
+              <b class="ui">Quãng</b>. <b class="ui">Nốt</b> chọn dây <b class="ui">To nhất</b>
+              hoặc dây <b class="ui">Thấp nhất</b>, để một bè synth bass dưới các hợp âm luôn ở nốt
+              gốc.</td></tr>
+            <tr><td><b class="ui">Vocoder</b></td><td>Mười sáu dải đặt nguyên âm của một giọng hát lên
+              một âm thanh khác. Với <b class="ui">Voice</b> ở <b class="ui">Đầu vào này</b>, block nằm
+              trên giọng hát và tự phát <b class="ui">Sóng mang</b> của nó — giọng robot; trỏ vào một rig
+              khác thì nó nằm trên guitar và lấy giọng từ rig đó — kiểu talkbox.
+              <b class="ui">Formant</b>, <b class="ui">Đáp ứng</b>, <b class="ui">Âm xuýt</b>,
+              <b class="ui">Quãng tám</b>.</td></tr>
+            <tr><td><b class="ui">Vòng FX</b></td><td>Thiết bị ngoài ngay trong chuỗi: block gửi ra
+              một trong các cặp output của interface (<b class="ui">Ra</b>) và nhận tín hiệu trả về ở
+              một trong các input của nó (<b class="ui">Vào</b>). <b class="ui">Send</b> và
+              <b class="ui">Trả về</b> chỉnh mức hai phía, <b class="ui">Trả về stereo</b> đọc hai
+              input, <b class="ui">Pha</b> đảo pha tín hiệu trả về. Với loop song song (một
+              <b class="ui">Mix</b> dưới 100 %), hãy đặt <b class="ui">Độ trễ</b> bằng độ trễ khứ hồi
+              của interface để tín hiệu dry không bị rỗng tiếng.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-doubler.png" width="600" height="1303"
+               alt="Sheet của block Doubler: đồng hồ IN và OUT cùng các núm Detune, Delay, Width và Mix.">
+          <figcaption>Block <b class="ui">Doubler</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-freeze.png" width="600" height="1303"
+               alt="Sheet của block Freeze: công tắc Freeze phía trên các núm Attack, Release, Level và Tone.">
+          <figcaption>Block <b class="ui">Freeze</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocal.png" width="600" height="1303"
+               alt="Sheet của block Vocal: các núm HPF, De-ess, Comp, Warmth, Low, Presence, Air và Output.">
+          <figcaption>Channel strip <b class="ui">Giọng hát</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-mbcomp.png" width="600" height="1303"
+               alt="Sheet của block Multiband: các núm Low, Mid và High, hai điểm cắt tần, Attack, Release và gain cho từng dải.">
+          <figcaption>Block <b class="ui">Đa băng</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-synth.png" width="600" height="1303"
+               alt="Sheet của block Synth: các menu Wave và Octave, các núm Interval, Cutoff, Reso, Env, Glide, Attack và Mix, và menu Note.">
+          <figcaption>Block <b class="ui">Synth</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocoder.png" width="600" height="1303"
+               alt="Sheet của block Vocoder: các menu Voice, Carrier và Octave cùng các núm Response, Formant, Sibilance và Mix.">
+          <figcaption>Block <b class="ui">Vocoder</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-extloop.png" width="600" height="1303"
+               alt="Sheet của block FX Loop: các menu Out và In ghi tên các cổng của interface, các núm Send, Return, Mix và Latency, cùng các công tắc Stereo return và Phase.">
+          <figcaption>Block <b class="ui">Vòng FX</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-slicer.png" width="600" height="1303"
+               alt="Sheet của block Slicer: menu Pattern, công tắc Sync và các núm Rate, Depth và Edge.">
+          <figcaption>Block <b class="ui">Slicer</b></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -159,55 +285,122 @@
           <tbody>
             <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
               <td><b class="ui">Cổ điển</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
+            <tr><td><b class="ui">Bộ nén</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
               <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
                 <b class="ui">TẮT</b>, <b class="ui">VÀO 1</b>…<b class="ui">VÀO 4</b>, <b class="ui">SMP</b></td></tr>
-                        <tr><td><b class="ui">Drive</b></td><td><b class="ui">Tích hợp</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
-              <td><b class="ui">Đèn</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b></td></tr>
-                        <tr><td><b class="ui">Amp</b></td><td><b class="ui">Tích hợp</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Tích hợp</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
+              <td><b class="ui">Boost</b>: <b class="ui">Boost sạch</b>, <b class="ui">Boost treble</b> ·
+                <b class="ui">Overdrive</b>: <b class="ui">Đèn</b>, <b class="ui">Blues</b>, <b class="ui">Trong suốt</b> ·
+                <b class="ui">Distortion</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
+                <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Fuzz quãng tám</b></td></tr>
+            <tr><td><b class="ui">Ampli</b></td><td><b class="ui">Tích hợp</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
               <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Mộc</b></td></tr>
             <tr><td><b class="ui">Saturator</b></td><td><b class="ui">Kiểu</b></td>
               <td><b class="ui">Đèn</b>, <b class="ui">Tape</b>, <b class="ui">NAM</b></td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Kiểu</b></td>
+              <td><b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Điện thoại</b>, <b class="ui">Loa phóng thanh</b></td></tr>
             <tr><td><b class="ui">Wah</b></td><td><b class="ui">Chế độ</b></td>
               <td><b class="ui">Tự động</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
-                <b class="ui">TẮT</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Chế độ</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">TẮT</b>,
-                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-                        <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Kiểu</b></td>
-              <td><b class="ui">Phòng</b>, <b class="ui">Hội trường</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voice</b> · <b class="ui">Tap 2</b></td>
+              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> ·
+                <b class="ui">TẮT</b>, <b class="ui">1/2</b>, <b class="ui">3/4</b>, <b class="ui">2/3</b>,
+                <b class="ui">3/2</b>, <b class="ui">2x</b> của thời gian delay</td></tr>
+            <tr><td><b class="ui">Tremolo</b></td><td><b class="ui">Chế độ</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b>, <b class="ui">Hài</b></td></tr>
+            <tr><td><b class="ui">Phaser</b></td><td><b class="ui">Chế độ</b></td>
+              <td><b class="ui">Phaser</b>, <b class="ui">Vibe</b>, <b class="ui">Vibrato</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Kiểu</b></td>
+              <td><b class="ui">Phòng</b>, <b class="ui">Hội trường</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b>, <b class="ui">Gated</b>, <b class="ui">Đảo ngược</b></td></tr>
             <tr><td><b class="ui">Ensemble</b></td><td><b class="ui">Chế độ</b> · <b class="ui">Định tuyến</b></td>
               <td><b class="ui">Velvet</b>, <b class="ui">Allpass</b> · <b class="ui">Stereo</b>, <b class="ui">Mono kép</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Tốc độ</b></td>
-              <td><b class="ui">Chậm</b>, <b class="ui">Nhanh</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Số voice</b></td>
-              <td><b class="ui">Mono</b>, <b class="ui">Poly</b></td></tr>
-            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Giọng</b> · <b class="ui">Quãng</b> · <b class="ui">Nghe thử</b></td>
-              <td>12 nốt cộng thêm <b class="ui">AUTO</b> và <b class="ui">TRACK</b> ·
-                <b class="ui">-quãng 8</b>, <b class="ui">-5</b>, <b class="ui">-3</b>, <b class="ui">+3</b>,
-                <b class="ui">+4</b>, <b class="ui">+5</b>, <b class="ui">+6</b>, <b class="ui">+quãng 8</b> ·
-                <b class="ui">RIÊNG</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Giọng</b></td>
-              <td>danh sách giọng tương tự, cộng thêm <b class="ui">CHROM</b> và <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td><b class="ui">Mẫu</b></td>
+              <td><b class="ui">Bật-tắt</b>, <b class="ui">Nghịch phách</b>, <b class="ui">Gallop</b>, <b class="ui">Chấm dôi</b>, <b class="ui">Stutter</b>, <b class="ui">Cặp</b>, <b class="ui">Đảo phách</b>, <b class="ui">Ngẫu nhiên</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Engine</b> · <b class="ui">Điều khiển</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poly</b>, <b class="ui">Voice</b> ·
+                <b class="ui">Cố định</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Harmony</b></td><td><b class="ui">Giọng từ</b> · <b class="ui">Phạm vi</b> · <b class="ui">Bè 1</b>…<b class="ui">Bè 4</b></td>
+              <td><b class="ui">Đặt giọng</b>, <b class="ui">Nhạc nền</b>, <b class="ui">Đầu vào này</b> hoặc một rig khác theo tên ·
+                <b class="ui">THẤP</b>, <b class="ui">VỪA</b>, <b class="ui">CAO</b> ·
+                <b class="ui">TẮT</b> hoặc một quãng tính từ nốt đang hát, tới hai quãng tám lên hoặc xuống</td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Giọng từ</b> · <b class="ui">Phạm vi</b></td>
+              <td><b class="ui">Chromatic</b>, <b class="ui">Nhạc nền</b>, <b class="ui">Đặt giọng</b> ·
+                <b class="ui">THẤP</b>, <b class="ui">VỪA</b>, <b class="ui">CAO</b></td></tr>
+            <tr><td><b class="ui">Synth</b></td><td><b class="ui">Sóng</b> · <b class="ui">Nốt</b></td>
+              <td><b class="ui">Răng cưa</b>, <b class="ui">Vuông</b>, <b class="ui">Xung</b>, <b class="ui">Sin</b> ·
+                <b class="ui">To nhất</b>, <b class="ui">Thấp nhất</b></td></tr>
+            <tr><td><b class="ui">Vocoder</b></td><td><b class="ui">Voice</b> · <b class="ui">Sóng mang</b></td>
+              <td><b class="ui">Đầu vào này</b> hoặc một rig khác · <b class="ui">Răng cưa</b>, <b class="ui">Xung</b>,
+                <b class="ui">Hợp âm</b>, <b class="ui">Nhiễu</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>Phía <b class="ui">Tích hợp</b> của khối <b class="ui">Amp</b> là ampli đèn của chính NAMper, với các núm bạn mong đợi: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, <b class="ui">Presence</b> và <b class="ui">Master</b>, cùng bảy voicing trên các chip <b class="ui">Model</b>. Nó không cần tải về hay tài khoản — vì thế nó gánh buổi diễn khi bạn ngoại tuyến; chip <b class="ui">NAM</b> bên cạnh thay bằng một capture, xem bên dưới.</p>
+      <p>Phía <b class="ui">Tích hợp</b> của khối <b class="ui">Ampli</b> là ampli đèn của chính NAMper, với các núm bạn mong đợi: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, <b class="ui">Presence</b> và <b class="ui">Master</b>, cùng bảy voicing trên các chip <b class="ui">Model</b>. Nó không cần tải về hay tài khoản — vì thế nó gánh buổi diễn khi bạn ngoại tuyến; chip <b class="ui">NAM</b> bên cạnh thay bằng một capture, xem bên dưới.</p>
       <p><b class="ui">Saturator</b> là nơi Tube Sat và Tape Sat cũ chuyển đến: một khối, với <b class="ui">Đèn</b>, <b class="ui">Tape</b> hoặc capture <b class="ui">NAM</b> của một thiết bị ngoài trên các chip kiểu. <b class="ui">Ensemble</b> là một nhạc cụ được nghe như nhiều người chơi trải khắp panorama — không LFO, không lệch tông, và tổng mono chính là tín hiệu vào; <b class="ui">Velvet</b> hoặc <b class="ui">Allpass</b> trên các chip chế độ.</p>
+
+      <h3>Drive, dynamics và thời gian</h3>
+      <p>Phía tích hợp của block <b class="ui">Drive</b> chứa mười mạch trong bốn họ, chọn từ một danh sách, và mỗi họ có bộ núm riêng: boost có <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Treble</b>, <b class="ui">Mức</b> và <b class="ui">Mix</b> (trộn lại tiếng guitar sạch); overdrive có <b class="ui">Gain</b>, <b class="ui">Tone</b>, <b class="ui">Mức</b>, <b class="ui">Mix</b>; distortion có <b class="ui">Gain</b>, <b class="ui">Tone</b>, <b class="ui">Bass</b>, <b class="ui">Treble</b>, <b class="ui">Mức</b>; fuzz có <b class="ui">Gain</b>, <b class="ui">Tone</b>, <b class="ui">Bias</b> (điểm làm việc), <b class="ui">Điện áp</b> (pin — quá nửa vòng thì tiếng bị sụt và ngắt quãng) và <b class="ui">Mức</b>. Menu THÊM chỉ liệt kê một Drive, và chuỗi đặt tên block theo mạch của nó, nên một chồng pedal hiện là TREBLE BOOST, TUBE, FUZZ GE.</p>
+      <p>Mọi kiểu <b class="ui">Bộ nén</b> giờ đều có thêm <b class="ui">Knee</b>, <b class="ui">Mix</b> (dưới mức tối đa là nén song song) và <b class="ui">HPF</b>, một bộ lọc thông cao chỉ đặt trên mạch dò, để dải trầm không làm phần còn lại bị "thở".</p>
+      <p><b class="ui">Delay</b> có thêm một tap thứ hai theo tỉ lệ của thời gian delay — <b class="ui">Tap 2</b> với <b class="ui">Mức tap</b> của nó, cho delay kép và delay theo tiết tấu — cùng <b class="ui">Đảo ngược</b>, <b class="ui">Mod</b> trên các tiếng lặp, <b class="ui">Cắt trầm</b> và <b class="ui">Cắt cao</b> bên trong vòng feedback (mỗi tiếng lặp tối hơn hoặc mỏng hơn tiếng trước) và <b class="ui">Duck</b>, thứ nén các tiếng lặp xuống khi bạn chơi và thả chúng lên trong các khoảng nghỉ.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-drive.png" width="600" height="1303"
+               alt="Sheet của block Drive ở phía tích hợp: danh sách mạch với bốn họ và các núm của họ đang chọn.">
+          <figcaption>Block <b class="ui">Drive</b>: bốn họ, mười mạch</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-delay.png" width="600" height="1303"
+               alt="Sheet của block Delay: menu Voice, công tắc Sync, các núm Time, FB và Mix, Tap 2 với mức của nó, Mod, Low cut, High cut và Duck.">
+          <figcaption>Block <b class="ui">Delay</b> với tap thứ hai</figcaption>
+        </figure>
+      </div>
+      <p><b class="ui">Reverb</b> có hai kiểu mới. <b class="ui">Gated</b> là phòng trống thập niên tám mươi: một plate dày bị cắt bởi một gate mở ra khi có tiếng đánh, giữ trong <b class="ui">Hold</b> và đóng lại trong <b class="ui">Release</b>. <b class="ui">Đảo ngược</b> phát ngược <b class="ui">Thời gian</b> giây cuối cùng, liên tục, nên một nốt đang tắt dần quay lại thành một tiếng vuốt lên; <b class="ui">Regen</b> đưa nó quay vòng lại. Trên <b class="ui">Cloud</b>, <b class="ui">Quãng</b> của shimmer giờ là một lựa chọn: <b class="ui">+quãng 8</b>, <b class="ui">+5</b>, một quãng tám cộng một quãng năm, hoặc <b class="ui">-quãng 8</b>.</p>
+      <p><b class="ui">Chế độ</b> của <b class="ui">Phaser</b> thêm <b class="ui">Vibe</b> — bốn tầng lệch nhau được quét bởi dạng sóng của bóng đèn, tiếng rung dập dình chứ không phải các khe lõm — và <b class="ui">Vibrato</b>, chính là Vibe chỉ nghe phần wet. <b class="ui">Tremolo</b> thêm <b class="ui">Hài</b>: tín hiệu được chia ở 800 Hz và hai nửa đung đưa ngược nhau, một tremolo nghe như một phaser chậm.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-verb.png" width="600" height="1303"
+               alt="Sheet của block Reverb ở kiểu Gated: các chip kiểu ở trên cùng và các núm Decay, Hold, Release, Damp và Predelay.">
+          <figcaption>Block <b class="ui">Reverb</b> ở kiểu <b class="ui">Gated</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-cloud.png" width="600" height="1303"
+               alt="Sheet của block Reverb ở kiểu Cloud: núm Shimmer với các chip Interval bên cạnh các núm Decay, Mix, Tone, Predelay và Size cùng công tắc Freeze.">
+          <figcaption><b class="ui">Cloud</b> và <b class="ui">Quãng</b> của shimmer</figcaption>
+        </figure>
+      </div>
+
+      <h3>Cao độ và giọng hát</h3>
+      <p><b class="ui">Harmony</b> hát tới bốn bè, cho ca sĩ hay cho guitar. <b class="ui">Giọng từ</b> cho biết giọng (tông) lấy từ đâu: <b class="ui">Đặt giọng</b> dùng danh sách giọng, <b class="ui">Nhạc nền</b> theo giọng phát hiện được của bài hát, <b class="ui">Đầu vào này</b> học giọng từ những gì được hát vào chuỗi này, và các rig khác được liệt kê theo tên. <b class="ui">Bè 1</b>…<b class="ui">Bè 4</b> mỗi bè là một quãng tính từ nốt đang hát, hoặc <b class="ui">TẮT</b>, nên một quãng ba, một quãng năm và một quãng tám tạo thành một hợp âm. Các bè giữ formant của ca sĩ — lên một quãng năm vẫn nghe như cùng một người — và <b class="ui">Formant</b> dịch chúng một cách có chủ ý. <b class="ui">Hợp xướng</b> biến mỗi bè thành một nhóm bốn ca sĩ, mỗi người trôi theo cách riêng, và <b class="ui">Độ rộng</b> trải họ khắp trường stereo.</p>
+      <p><b class="ui">Autotune</b> lấy giọng từ <b class="ui">Chromatic</b>, <b class="ui">Nhạc nền</b> hoặc <b class="ui">Đặt giọng</b>, giữ formant của ca sĩ và để phụ âm đi qua. Ngoài <b class="ui">Tốc độ</b> và <b class="ui">Mức</b>, giờ nó có cả những điều khiển dành cho ca sĩ: <b class="ui">Tự nhiên hóa</b> (một nốt ngân dài được chỉnh chậm hơn), <b class="ui">Vibrato</b> (giữ lại bao nhiêu vibrato của ca sĩ), <b class="ui">Linh hoạt</b> (một nốt lệch xa hơn mức này thì được để yên — một cú luyến có chủ ý), <b class="ui">Formant</b> và <b class="ui">Chuẩn âm</b>, nốt La chuẩn.</p>
+      <p>Block <b class="ui">Pitch</b> có ba engine: <b class="ui">Mono</b> cho các câu đơn nốt và nhấn dây, <b class="ui">Poly</b> cho hợp âm, và <b class="ui">Voice</b> cho ca sĩ — nguyên âm giữ nguyên hình dạng khi lên hay xuống một quãng tám, và <b class="ui">Formant</b> (chỉ trên engine đó) tạo ra một ca sĩ to con hơn hoặc nhỏ nhắn hơn ở cùng cao độ. <b class="ui">Điều khiển</b> ở <b class="ui">Pedal</b> biến nó thành một whammy: quãng trượt từ <b class="ui">Gót</b> đến <b class="ui">Mũi</b> khi một expression pedal di chuyển <b class="ui">Pedal</b>.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-harm.png" width="600" height="1303"
+               alt="Sheet của block Harmony: các menu Key from và giọng, các chip Range, bốn menu bè, và các núm Harmony, Dry, Formant, Glide, Choir và Spread.">
+          <figcaption><b class="ui">Harmony</b>: bốn bè, một dàn hợp xướng</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-atune.png" width="600" height="1303"
+               alt="Sheet của block Autotune: menu Key from, các chip Range, và các núm Speed, Amount, Humanize, Vibrato, Flex, Formant và Tuning.">
+          <figcaption><b class="ui">Autotune</b> với các điều khiển dành cho ca sĩ</figcaption>
+        </figure>
+      </div>
+
+      <h3>Mix, đồng bộ tempo và đuôi âm</h3>
+      <p><b>Mọi block đều có Mix.</b> Những block vốn xây quanh việc pha trộn mang nó ngay trên mặt của mình — <b class="ui">Mix</b> của delay, <b class="ui">Dry</b> của harmoniser, <b class="ui">Mức</b> của freeze; mọi block khác, kể cả một plugin được host, có một núm <b class="ui">Mix</b> làm núm cuối cùng: block được trộn với chính tín hiệu vào của nó, nên một tremolo có thể chặt nửa chừng và một ampli có thể mang theo chút tín hiệu trực tiếp. Tín hiệu dry được làm trễ cho khớp với block, nên không có gì bị lọc lược (comb filter), và scene, preset cùng MIDI xử lý nó như mọi núm khác.</p>
+      <p><b>Đồng bộ tempo là một công tắc.</b> Delay, tremolo, slicer, phaser, flanger, chorus và rotary mỗi cái có một công tắc <b class="ui">Sync</b>. Bật lên, núm rate hoặc time chuyển thành các phân nhịp nốt (1/1 tới 1/16, có chấm dôi và chùm ba trên delay) đi theo tempo của set; tắt đi, nó lại là Hz hoặc ms thuần.</p>
+      <p><b>Đuôi âm ngân hết.</b> Một delay, reverb, freeze, FX loop hay plugin được host mà một scene hoặc footswitch bypass sẽ tiếp tục ngân đè lên tín hiệu dry cho tới khi lặng hẳn, và một lần đổi preset để đuôi âm của rig cũ ngân tiếp tới tám giây thay vì cắt ngang. Công tắc cho việc này là <b class="ui">Đuôi âm khi chuyển</b> trong Cài đặt → <b class="ui">Âm thanh</b>, bật theo mặc định.</p>
       <div class="note tip">
         <div class="t">Harmony lắng nghe một rig khác</div>
-        <p>Hàng <b class="ui">Nghe thử</b> của Harmony không phải là điều khiển định tuyến — nó xác
-          định harmoniser lấy hợp âm từ đâu. Để nguyên ở <b class="ui">RIÊNG</b> thì nó theo tín
-          hiệu trong chính chuỗi của nó; trỏ nó vào <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b>
-          thì một line vocal có thể được hoà âm theo đúng những gì rig guitar đang chơi.</p>
+        <p><b class="ui">Giọng từ</b> của Harmony không phải là điều khiển định tuyến — nó là nơi
+          harmoniser lấy giọng. Ở <b class="ui">Đầu vào này</b>, nó học giọng từ tín hiệu trong chính
+          chuỗi của nó; trỏ nó vào một rig khác theo tên thì một line vocal có thể được hoà âm theo
+          đúng những gì rig guitar đang chơi.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>Năm model EQ</h2>
-      <p>Chỉ có một block <b class="ui">EQ</b>, nhưng bên trong nó là năm equalizer hoàn toàn
+      <h2 id="eq"><span class="n">02.3</span>Bảy model EQ</h2>
+      <p>Chỉ có một block <b class="ui">Bộ cân bằng</b>, nhưng bên trong nó là bảy equalizer hoàn toàn
         khác nhau. Đổi model sẽ đổi cả bộ núm vặn lẫn âm thanh, nên hãy chọn cái phù hợp với việc
         bạn cần làm — một chỉnh tone nhanh, một cắt phẫu thuật chính xác, hay một shelf kiểu
         mastering.</p>
@@ -242,13 +435,20 @@
               <td>Baxandall — hai shelf rất rộng, rất nhẹ nhàng. Đây là cái để dùng khi bạn muốn
                 cả âm thanh tối hơn một chút hoặc sáng hơn một chút.</td>
               <td><b class="ui">Bass</b>, <b class="ui">Treble</b></td></tr>
+            <tr><td><b class="ui">Đồ họa 7</b></td>
+              <td>EQ graphic dạng pedal: bảy dải quãng tám từ 100 Hz tới 6.4 kHz, mỗi dải một fader.
+                Chạm đúp vào một fader để đưa nó về phẳng.</td>
+              <td>100 … 6.4k, mỗi dải ±12 dB</td></tr>
+            <tr><td><b class="ui">Đồ họa 10</b></td>
+              <td>EQ graphic dạng rack: mười dải quãng tám từ 31 Hz tới 16 kHz, mỗi dải một fader.</td>
+              <td>31 … 16k, mỗi dải ±12 dB</td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
-             alt="Sheet của block EQ với model Passive được chọn, hiển thị tám núm vặn của nó: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten và Atten Hz, cùng đồng hồ IN và OUT ở trên cùng.">
-        <figcaption>Block EQ ở model Passive</figcaption>
+             alt="Sheet của block Bộ cân bằng với model Passive được chọn, hiển thị tám núm vặn của nó: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten và Atten Hz, cùng đồng hồ IN và OUT ở trên cùng.">
+        <figcaption>Block Bộ cân bằng ở model Passive</figcaption>
       </figure>
       <p>Mọi sheet của block, kể cả cái này, đều có đồng hồ <b class="ui">VÀO</b> và
         <b class="ui">RA</b> nằm ngang. Trên một EQ, chúng đáng để theo dõi: vài decibel boost
@@ -258,7 +458,7 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>Bản capture NAM</h2>
-      <p>Block <b class="ui">Amp</b> là một block với hai nguồn. Hai chip ở đầu sheet của nó chọn
+      <p>Block <b class="ui">Ampli</b> là một block với hai nguồn. Hai chip ở đầu sheet của nó chọn
         giữa hai bên: <b class="ui">Tích hợp</b> là mô phỏng ampli riêng của NAMper với bảy kiểu
         tiếng liệt kê ở trên, <b class="ui">NAM</b> là trình phát Neural Amp Modeler chạy một bản
         capture <b class="ui">.nam</b> của một ampli thật. Cả hai nằm trong cùng một block, nên một
@@ -266,8 +466,8 @@
         tiếng quanh đó, và chuyển qua lại chỉ là một lần chạm.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
-             alt="Tab Rig: đồng hồ VÀO và RA nằm ngang trên đầu thẻ chuỗi tín hiệu, và chuỗi các block bên dưới, với block Amp ghi tên bản capture nó đang phát.">
-        <figcaption>Tab Rig; ô Amp ghi tên thứ nó đang phát</figcaption>
+             alt="Tab Rig: đồng hồ VÀO và RA nằm ngang trên đầu thẻ chuỗi tín hiệu, và chuỗi các block bên dưới, với block Ampli ghi tên bản capture nó đang phát.">
+        <figcaption>Tab Rig; ô Ampli ghi tên thứ nó đang phát</figcaption>
       </figure>
 
       <h3>Phía bản capture</h3>
@@ -287,7 +487,7 @@
         <b class="ui">Gộp</b> tạo một bank từ chúng, <b class="ui">Chỉ cái đầu</b> chỉ nạp một.</p>
       <div class="note">
         <div class="t">Một bản capture là mono</div>
-        <p>Một bản capture NAM là một thiết bị mono — tín hiệu stereo tới block <b class="ui">Amp</b>
+        <p>Một bản capture NAM là một thiết bị mono — tín hiệu stereo tới block <b class="ui">Ampli</b>
           sẽ bị cộng dồn (sum) trước khi đi vào. Hãy đặt các hiệu ứng stereo của bạn sau ampli,
           không phải trước nó.</p>
       </div>
@@ -304,7 +504,7 @@
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
-             alt="Khối Amp ở mặt NAM: tên và ảnh bìa của bản capture, các nút Browse TONE3000, Library và Load file, bên dưới là Bank: 3 và núm Model hiện 1/3 giữa hai núm trim.">
+             alt="Khối Ampli ở mặt NAM: tên và ảnh bìa của bản capture, các nút Browse TONE3000, Library và Load file, bên dưới là Bank: 3 và núm Model hiện 1/3 giữa hai núm trim.">
         <figcaption>Một bank ba mô hình: <b class="ui">Bank: 3</b>, và núm <b class="ui">Model</b> giữa các trim</figcaption>
       </figure>
 
@@ -317,12 +517,17 @@
       <p>Một tone có nhiều mô hình sẽ mở <b class="ui">Chọn model</b>, và các dấu tích trong trang đó <em>chính là</em> bank. Chúng bắt đầu ở những mô hình khối đang mang, nên trang mở ra với thứ bạn đã có chứ không phải khoảng trống, và dòng trên cùng ghi <b class="ui">Bank: 3 mô hình — núm Model chuyển qua chúng</b>. Tích và bỏ tích để định hình vòng quét: <b class="ui">Chọn tất cả 6</b> tích tất cả rồi đổi thành <b class="ui">Bỏ chọn tất cả</b> — cả hai đều không tải gì. Nút bên dưới mới là nút hành động, và chỉ với những gì được tích: <b class="ui">Tải 5 mô hình đã chọn vào bank</b>. Chừng nào các dấu tích còn khớp với bank, nút ấy im lặng vì chẳng có gì để tải.</p>
       <p>Đó cũng là cách tỉa bớt một bank chứ không chỉ dựng nên nó: mở lại bộ chọn, bỏ tích những mô hình bạn không bao giờ dùng, tải về, và vòng quét được viết lại quanh phần còn lại — tệp đã có sẽ không tải lần hai. Con đường kia là chạm vào tên một mô hình, và trang nói rõ cái giá ngay dưới danh sách: <b class="ui">Chỉ một mô hình phát: chọn nó sẽ xóa bank gồm 3.</b> Những mô hình mà trang web liệt kê nhưng bạn chưa có sẽ mờ đi kèm biểu tượng đám mây cho tới khi bạn tích chọn.</p>
 
-      <h3>Block NAM: pedal và thiết bị ngoài</h3>
-      <p>Một block <b class="ui">NAM</b> riêng mang đúng phía bản capture đó nhưng không có ampli
-        tích hợp, và đó là chỗ dành cho các bản capture của pedal và thiết bị ngoài. Bạn không cần
-        tự đặt nó: hãy nạp một bản capture pedal khi đang nhắm vào một block
-        <b class="ui">Amp</b>, và NAMper sẽ chèn một block <b class="ui">NAM</b> ngay trước ampli
-        đó rồi mở nó ra cho bạn.</p>
+      <h3>Pedal và thiết bị ngoài: capture trong các block khác</h3>
+      <p>Không còn một block capture riêng nữa: những block mô phỏng một loại thiết bị giờ tự mang
+        một phía capture của riêng mình. <b class="ui">Drive</b> nhận các bản capture pedal,
+        <b class="ui">Saturator</b> và <b class="ui">Bộ nén</b> nhận thiết bị ngoài — block nào
+        cũng có cùng chip <b class="ui">NAM</b>, các núm trim và núm <b class="ui">Model</b> của bank
+        như ampli. Bạn không cần tự đặt chúng: hãy nạp một bản capture pedal khi đang nhắm vào một
+        block <b class="ui">Ampli</b>, và NAMper sẽ đưa nó vào block Drive của rig — chèn một
+        block ngay trước ampli nếu chưa có — rồi mở nó ra cho bạn; một thiết bị ngoài cũng vào
+        Saturator theo cách đó. Còn thiết bị ngoài thật, chứ không phải bản capture của nó, đi vào
+        chuỗi qua block <b class="ui">Vòng FX</b>. Các preset cũ có dùng block NAM sẽ mở ra với block
+        đó đã được chuyển đổi.</p>
 
       <h3>Thư viện</h3>
       <figure>
@@ -331,7 +536,7 @@
         <figcaption>Thư viện ở mặt amp: mọi thứ đã tải, ngoại tuyến</figcaption>
       </figure>
       <p>Nút <b class="ui">Thư viện</b> mở một trang có tên <b class="ui">Profile NAM</b> — mọi thứ bạn đã tải, dùng được ngoại tuyến. Nó có năm mặt, mỗi loại khối một mặt: <b class="ui">Amp</b> và <b class="ui">Drive</b> cho các bản capture, <b class="ui">Outboard</b> cho saturator và compressor, <b class="ui">Cab</b> cho xung của thùng loa và <b class="ui">Reverb</b> cho xung của reverb — không gian, thiết bị ngoài và các thử nghiệm. Một khối chỉ nhận một trong năm, nên chúng không bao giờ nằm chung một danh sách: khối mà bạn mở thư viện từ đó sẽ chọn mặt và giữ nguyên, còn khi không có khối nào để nhắm tới, các chip ở trên cùng gọi tên cả năm kèm số lượng. Những xung đi kèm ứng dụng nằm ở mặt của chúng dưới mục <b class="ui">Tích hợp</b>, ngay cạnh những thứ bạn tải về.</p>
-      <p>Trong một phía, các tone được nhóm theo thứ đã capture: <b class="ui">Tích hợp</b> trước, rồi <b class="ui">Ampli</b>, <b class="ui">Pedal</b>, <b class="ui">Outboard</b>, <b class="ui">Thử nghiệm</b>, <b class="ui">Cabinet</b>, <b class="ui">Không gian</b> và <b class="ui">Khác</b>. Mỗi hàng là một tone, không phải tệp: ảnh bìa, tiêu đề, <b class="ui">@author</b> và số model nó mang theo. Chạm để tải — tone một model chơi một mình, tone nhiều model trở thành bank của khối — và tone rơi đúng chỗ: amp vào khối <b class="ui">Amp</b>, pedal hay thiết bị outboard vào khối <b class="ui">NAM</b> trước đó, cabinet vào <b class="ui">Cab</b> sau đó, không gian vào <b class="ui">Reverb</b>.</p>
+      <p>Trong một phía, các tone được nhóm theo thứ đã capture: <b class="ui">Tích hợp</b> trước, rồi <b class="ui">Ampli</b>, <b class="ui">Pedal</b>, <b class="ui">Outboard</b>, <b class="ui">Thử nghiệm</b>, <b class="ui">Thùng loa</b>, <b class="ui">Không gian</b> và <b class="ui">Khác</b>. Mỗi hàng là một tone, không phải tệp: ảnh bìa, tiêu đề, <b class="ui">@author</b> và số model nó mang theo. Chạm để tải — tone một model chơi một mình, tone nhiều model trở thành bank của khối — và tone rơi đúng chỗ: amp vào khối <b class="ui">Ampli</b>, pedal vào <b class="ui">Drive</b> trước đó, thiết bị outboard vào <b class="ui">Saturator</b>, cabinet vào <b class="ui">Thùng loa</b> sau đó, không gian vào <b class="ui">Reverb</b>.</p>
       <p>Chevron mở ra các model của tone. Trong tone <em>đang</em> là bank của block, mỗi model
         mang một dấu tích: nó giữ model đó trong dải quét của núm <b class="ui">Model</b>, và một
         lần chạm sẽ đưa núm tới đúng model đó. Ở bất kỳ tone nào khác, chạm vào một model sẽ phát
@@ -352,8 +557,9 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h3 id="capture-own">Chụp thiết bị của chính bạn</h3>
-      <p><b class="ui">Chụp hồ sơ NAM…</b> trên thanh công cụ thư viện tạo bản chụp amp, pedal hoặc cả rig của bạn ngay trên thiết bị, chỉ với một audio interface. Đó là vòng reamp mà mọi bản chụp NAM đều sinh ra từ đó: tín hiệu của ứng dụng đi ra khỏi interface ở một ngõ ra, qua thiết bị và quay về ở một ngõ vào. Chọn ngõ ra và ngõ vào đó, đặt mức gửi, rồi <b class="ui">Kiểm tra mức</b> phát phần đầu tín hiệu với hai đồng hồ và một ghi chú về việc dịch mức gửi bao nhiêu — tín hiệu trả về nên đạt đỉnh gần −6 dBFS và không bao giờ bị cắt.</p>
-      <p><b class="ui">Bắt đầu chụp</b> phát một phút tín hiệu trong khi rig im lặng. Bản thu được xem xét trước khi huấn luyện: các điểm đánh dấu ở hai đầu xác định thời gian đi-về và độ trôi giữa hai đồng hồ, và bản thu không có gì quay về, bị cắt đỉnh hoặc vòng lặp không thay đổi gì sẽ bị từ chối. <b class="ui">Huấn luyện</b> chạy trên thiết bị — Nano, Feather (mặc định), Lite hoặc Standard — và hiển thị epoch cùng ESR trên âm thanh mà bộ huấn luyện chưa từng thấy (0,02 là một bản chụp tốt). Kết quả nằm trong thư viện như tone của riêng bạn, gắn nhãn thiết bị, và <b class="ui">Chia sẻ tệp .nam</b> trao nó cho bất kỳ trình phát NAM nào.</p>
+      <p><b class="ui">Chụp hồ sơ NAM…</b> trên thanh công cụ thư viện tạo bản chụp amp, pedal hoặc cả rig của bạn ngay trên thiết bị, chỉ với một audio interface. Đó là vòng reamp mà mọi bản chụp NAM đều sinh ra từ đó: tín hiệu đi ra khỏi interface ở một ngõ ra, qua thiết bị và quay về ở một ngõ vào. Cửa sổ <b class="ui">Capture</b> chọn ngõ ra và ngõ vào đó theo chính tên kênh của interface; khi cửa sổ mở, rig trực tiếp bị ngắt, để một rig nối vòng không thể tự nuôi chính nó và hú. Đặt mức gửi, rồi <b class="ui">Kiểm tra mức</b> phát phần đầu tín hiệu với hai đồng hồ và một ghi chú về việc dịch mức gửi bao nhiêu — tín hiệu trả về nên đạt đỉnh gần −6 dBFS và không bao giờ bị cắt. Nếu ngõ vào đã mang âm thanh mà mức gửi không gây ra — thiết bị hồi tiếp qua vòng, hoặc host đang phát track của nó qua plug-in — ghi chú sẽ báo điều đó: vặn nhỏ ngõ vào của thiết bị hoặc mức gửi, hoặc dừng phát, rồi kiểm tra lại.</p>
+      <p><b class="ui">Bắt đầu chụp (190 giây)</b> phát tín hiệu chuẩn hoá của chính bộ huấn luyện NAM, <b>v3_0_0.wav</b>, nên bản thu làm ở đây huấn luyện được ở đây và ở bất kỳ bộ huấn luyện NAM nào khác. Bản thu được xem xét trước khi huấn luyện: các tiếng blip gần đầu xác định thời gian đi-về, hai bản sao của cùng một đoạn ở hai đầu đo độ trôi giữa hai đồng hồ, và bản thu không có gì quay về, bị cắt đỉnh hoặc vòng lặp không thay đổi gì sẽ bị từ chối. <b class="ui">Huấn luyện</b> chạy trên thiết bị — Nano, Feather (mặc định), Lite hoặc Standard, với bao nhiêu epoch tuỳ bạn đặt — và hiển thị epoch cùng ESR trên âm thanh mà bộ huấn luyện chưa từng thấy (0,02 là một bản chụp tốt). Kết quả nằm trong thư viện như tone của riêng bạn, gắn nhãn thiết bị, và <b class="ui">Chia sẻ tệp .nam</b> trao nó cho bất kỳ trình phát NAM nào.</p>
+      <p>Muốn huấn luyện ở nơi khác? <b class="ui">Chia sẻ cặp bản thu</b> (trên Mac là <b class="ui">Lưu cặp bản thu…</b>) trao tín hiệu và tín hiệu trả về dưới dạng file WAV 48 kHz — đúng thứ mà bộ huấn luyện của TONE3000 và bộ huấn luyện NAM nhận.</p>
 
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
       <p>TONE3000 là một thư viện miễn phí gồm các bản capture, và NAMper lấy trực tiếp từ đó.
@@ -366,10 +572,10 @@
         hỏi ngay khi mở app — các preset gốc chạy trên các amp tích hợp và cabinet đi kèm, còn việc
         đăng nhập xảy ra lần đầu tiên bạn bấm <b class="ui">Duyệt TONE3000</b> trong khối cần một bản
         capture. Trong Cài đặt không còn trang <b class="ui">TONE3000</b>.</p>
-      <p>Catalogue cho bạn những gì là tuỳ vào block đã mở nó. Từ một block <b class="ui">Amp</b>
-        hoặc <b class="ui">NAM</b>, nó được lọc phía server chỉ còn các bản capture
-        <b class="ui">.nam</b> kiến trúc A2 của ampli, full rig, pedal và thiết bị ngoài. Từ một
-        block <b class="ui">Cab</b>, nó đưa ra các impulse thùng loa của trang, còn từ một
+      <p>Catalogue cho bạn những gì là tuỳ vào block đã mở nó. Từ một block <b class="ui">Ampli</b>, nó được lọc phía server chỉ còn các bản capture
+        <b class="ui">.nam</b> kiến trúc A2 của ampli và full rig; từ một <b class="ui">Drive</b> là
+        pedal, còn từ một <b class="ui">Saturator</b> hoặc <b class="ui">Bộ nén</b> là thiết bị ngoài. Từ một
+        block <b class="ui">Thùng loa</b>, nó đưa ra các impulse thùng loa của trang, còn từ một
         <b class="ui">Reverb</b> là các không gian — tệp <b class="ui">.wav</b>, không phải bản
         capture. Bộ lọc đó là cố định, không phải một cài đặt bạn có thể thay đổi.</p>
       <p>Khi tone bạn chọn chỉ có một model, nó rơi thẳng vào block cùng ảnh bìa và metadata. Khi nó
@@ -388,10 +594,10 @@
 
       <h3>Chơi offline</h3>
       <p>Bất cứ thứ gì đã tải về vẫn hoạt động dù không có mạng chút nào. Một block
-        <b class="ui">Amp</b> có bản capture chưa được cache sẽ tạm thời phát kiểu tiếng tích hợp
+        <b class="ui">Ampli</b> có bản capture chưa được cache sẽ tạm thời phát kiểu tiếng tích hợp
         của chính nó và nói rõ điều đó
         (<b class="ui">Chưa tải về — tạm thời amp tích hợp phát</b>), với block
-        <b class="ui">Cab</b> phía sau vẫn bật cho amp tích hợp. Đăng nhập sau đó và các block này
+        <b class="ui">Thùng loa</b> phía sau vẫn bật cho amp tích hợp. Đăng nhập sau đó và các block này
         sẽ tự phân giải về đúng bản capture thật tại chỗ — bạn không cần dựng lại bất cứ thứ gì.</p>
       <div class="note warn">
         <div class="t">Không có chức năng đăng xuất</div>
@@ -414,26 +620,26 @@
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="cabs"><span class="n">02.6</span>Cab và IR</h2>
-      <p>Khối <b class="ui">Cab</b> phát một đáp ứng xung — cabinet loa thu bằng micro. Bảng của nó được dựng như khối capture: tên xung ở trên cùng với <b class="ui">@author</b>, mũi tên tới trang của tone và <b class="ui">Bỏ IR</b> bên cạnh, ảnh bìa bên trái, và ba cách tải xung bên phải — <b class="ui">Duyệt TONE3000</b>, <b class="ui">Thư viện</b> và <b class="ui">Nạp tệp</b>. Bên dưới là núm riêng của khối, <b class="ui">Mức</b>, từ −12 đến +12 dB.</p>
+      <p>Khối <b class="ui">Thùng loa</b> phát một đáp ứng xung — cabinet loa thu bằng micro. Bảng của nó được dựng như khối capture: tên xung ở trên cùng với <b class="ui">@author</b>, mũi tên tới trang của tone và <b class="ui">Bỏ IR</b> bên cạnh, ảnh bìa bên trái, và ba cách tải xung bên phải — <b class="ui">Duyệt TONE3000</b>, <b class="ui">Thư viện</b> và <b class="ui">Nạp tệp</b>. Bên dưới là núm riêng của khối, <b class="ui">Mức</b>, từ −12 đến +12 dB.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="Bảng khối Cab: tên xung và tác giả ở trên, ảnh bìa bên trái, các nút Browse TONE3000, Library và Load file bên phải, núm Level bên dưới.">
-        <figcaption>Block Cab, được dựng giống phía capture của một ampli</figcaption>
+             alt="Bảng khối Thùng loa: tên xung và tác giả ở trên, ảnh bìa bên trái, các nút Browse TONE3000, Library và Load file bên phải, núm Level bên dưới.">
+        <figcaption>Block Thùng loa, được dựng giống phía capture của một ampli</figcaption>
       </figure>
       <p>Một <b class="ui">Reverb</b> ở kiểu <b class="ui">IR</b> nạp một không gian thay vì thùng loa, từ phía <b class="ui">Không gian</b> của thư viện: những cái có sẵn, những cái bạn tải về, tập tin của riêng bạn. Nạp một không gian vào bất kỳ Reverb nào sẽ chuyển nó sang kiểu IR.</p>
-      <p><b class="ui">Duyệt TONE3000</b> mở các thùng loa của trang khi gọi từ <b class="ui">Cab</b>, và các không gian khi gọi từ <b class="ui">Reverb</b>. Một tone có nhiều xung sẽ mở đúng bộ chọn như với các bản capture: nghe thử một cái, hoặc tích vài cái rồi tải cùng lúc. Từ đây hai khối rẽ hướng. Trong <b class="ui">Reverb</b>, các xung được tích trở thành một bank như của amp — <b class="ui">Bank: 6</b> và một núm <b class="ui">Model</b> bên cạnh <b class="ui">Mix</b>, mỗi lần một không gian, có cả MIDI Learn. <b class="ui">Cab</b> thì không bước qua từng cái: mỗi xung nó nhận trở thành một khe, và các khe kêu <em>cùng nhau</em>.</p>
+      <p><b class="ui">Duyệt TONE3000</b> mở các thùng loa của trang khi gọi từ <b class="ui">Thùng loa</b>, và các không gian khi gọi từ <b class="ui">Reverb</b>. Một tone có nhiều xung sẽ mở đúng bộ chọn như với các bản capture: nghe thử một cái, hoặc tích vài cái rồi tải cùng lúc. Từ đây hai khối rẽ hướng. Trong <b class="ui">Reverb</b>, các xung được tích trở thành một bank như của amp — <b class="ui">Bank: 6</b> và một núm <b class="ui">Model</b> bên cạnh <b class="ui">Mix</b>, mỗi lần một không gian, có cả MIDI Learn. <b class="ui">Thùng loa</b> thì không bước qua từng cái: mỗi xung nó nhận trở thành một khe, và các khe kêu <em>cùng nhau</em>.</p>
 
       <h3>Nhiều xung trong một thùng loa</h3>
       <figure>
         <img class="phone" src="/docs/assets/cab-slots.png" width="600" height="1303"
              alt="Trang Cabinet với tám xung từ một gói TONE3000: ảnh bìa, mỗi khe một chip màu kèm mức của nó, vùng hòa trộn với tám chấm quanh một vòng tròn và con trượt ở giữa, cùng thẻ đang mở của khe được chọn.">
-        <figcaption>Một <b class="ui">Cab</b>, tám xung: các chip, vùng hòa trộn, khe đang mở</figcaption>
+        <figcaption>Một <b class="ui">Thùng loa</b>, tám xung: các chip, vùng hòa trộn, khe đang mở</figcaption>
       </figure>
-      <p>Hai micro trên một thùng loa, một 4×12 và một 1×12 cạnh nhau, cả một gói thùng loa — một khối <b class="ui">Cab</b> giữ hết. <b class="ui">Thêm</b> bên cạnh các chip mở ba cửa quen thuộc — <b class="ui">Từ thư viện</b>, <b class="ui">Duyệt TONE3000</b> và <b class="ui">Nạp tệp</b> — và bất cứ thứ gì vào qua đó đều thành một khe với màu riêng. Một tone nhiều xung lấp đầy khối trong một lần: được tích trong bộ chọn, chúng đến dưới dạng các khe. Đường đặc tuyến phía trên các chip có thêm một nét cho mỗi khe và một nét trắng đè lên — tổng hòa, thứ bạn thực sự nghe.</p>
+      <p>Hai micro trên một thùng loa, một 4×12 và một 1×12 cạnh nhau, cả một gói thùng loa — một khối <b class="ui">Thùng loa</b> giữ hết. <b class="ui">Thêm</b> bên cạnh các chip mở ba cửa quen thuộc — <b class="ui">Từ thư viện</b>, <b class="ui">Duyệt TONE3000</b> và <b class="ui">Nạp tệp</b> — và bất cứ thứ gì vào qua đó đều thành một khe với màu riêng. Một tone nhiều xung lấp đầy khối trong một lần: được tích trong bộ chọn, chúng đến dưới dạng các khe. Đường đặc tuyến phía trên các chip có thêm một nét cho mỗi khe và một nét trắng đè lên — tổng hòa, thứ bạn thực sự nghe.</p>
       <p>Mỗi chip mang màu đó, tên xung và một huy hiệu ghi mức mà khe đang kêu. Chạm vào chip để mở thẻ của nó; chạm vào huy hiệu để đưa khe ra khỏi bản trộn hoặc đưa trở lại; nhấn giữ để solo — khe đang solo được gọi tên trên một dòng riêng dưới các chip, kèm dấu nhân cho phần còn lại quay về. Một gói hơn chục xung sẽ cuộn trong khung riêng thay vì kéo dài cả trang.</p>
       <p>Vùng bên dưới chính là bản trộn. Các khe nằm quanh một vòng tròn, con trượt ở giữa, và kéo nó sẽ dịch chuyển thế cân bằng đúng như khi bạn dịch một chiếc micro — không menu, không con số. <b class="ui">Trộn X</b> và <b class="ui">Trộn Y</b> là tham số bình thường, nên nhấn giữ con trượt sẽ mời MIDI Learn cho từng cái: hai bàn đạp, và vị trí micro trở thành thứ để chơi. Bản trộn được dựng lại ngay khi bạn kéo và đưa vào phép chập dưới dạng crossfade chứ không phải thay thế, nên dịch con trượt giữa bài không gây tiếng lách cách.</p>
       <p>Thẻ này thuộc về khe đang chọn: <b class="ui">Trim</b>, <b class="ui">Pan</b> và <b class="ui">Delay</b> dưới một hàng nút. NAMper đo độ lệch giữa các xung và tự căn cho bạn, còn <b class="ui">Tự động</b> giữ phép đo ấy cho tới khi bạn tự xoay <b class="ui">Delay</b> — chạm lại để trả việc căn chỉnh về cho máy. Các nút bên cạnh tắt tiếng khe, đảo cực của nó (đáng thử mỗi khi hai micro trên cùng một loa nghe mỏng) và gỡ nó ra.</p>
-      <p><b class="ui">Nạp tệp</b> mở bộ chọn tệp cho <b class="ui">.wav</b> và âm thanh khác; tệp bạn chọn được sao chép vào thư mục <b class="ui">irs/</b> của ứng dụng, nên vẫn dùng được dù bạn xóa bản gốc. Tệp tải vào <b class="ui">Cab</b> nằm ở phía <b class="ui">Cab</b> của thư viện, tệp tải vào <b class="ui">Reverb</b> nằm ở phía <b class="ui">Reverb</b>.</p>
+      <p><b class="ui">Nạp tệp</b> mở bộ chọn tệp cho <b class="ui">.wav</b> và âm thanh khác; tệp bạn chọn được sao chép vào thư mục <b class="ui">irs/</b> của ứng dụng, nên vẫn dùng được dù bạn xóa bản gốc. Tệp tải vào <b class="ui">Thùng loa</b> nằm ở phía <b class="ui">Cab</b> của thư viện, tệp tải vào <b class="ui">Reverb</b> nằm ở phía <b class="ui">Reverb</b>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Phía thư viện</th><th>Impulse response đi kèm</th></tr></thead>
@@ -455,12 +661,12 @@
         <div class="t">Không phải ampli nào cũng cần cab</div>
         <p>Rất nhiều bản capture TONE3000 được lấy từ output loa, đã bao gồm cả cab và micro; đặt
           thêm một cab khác sau một bản như vậy sẽ khiến âm thanh đục và bí. NAMper đọc được điều đó
-          từ tone và tự xử lý: một bản capture full rig sẽ cho block <b class="ui">Cab</b> ngay sau
+          từ tone và tự xử lý: một bản capture full rig sẽ cho block <b class="ui">Thùng loa</b> ngay sau
           ampli nghỉ, còn một head trần hay một bản DI sẽ đánh thức nó. Một Cab đang nghỉ mà không
           có impulse nào bên trong thì thậm chí không được vẽ trong chuỗi — nạp một impulse vào nó,
           hoặc chuyển ampli về lại một head trần, và nó quay lại ngay. Footswitch của chính Cab luôn
           có tiếng nói cuối cùng.</p>
-        <p>Một block <b class="ui">Cab</b> trống sẽ tự nói cho bạn biết vì sao nó có thể để trống:
+        <p>Một block <b class="ui">Thùng loa</b> trống sẽ tự nói cho bạn biết vì sao nó có thể để trống:
           <b class="ui">Chưa nạp IR — profile NAM amp+cab không cần IR</b>. Một
           <b class="ui">Reverb</b> trống thì hiện
           <b class="ui">Chưa nạp IR — chọn một không gian hoặc tệp</b> thay vào đó.</p>
@@ -472,57 +678,99 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="presets"><span class="n">02.7</span>Preset</h2>
-      <p>Một preset rig lưu toàn bộ chuỗi — block, model, vị trí núm vặn, profile ampli, cab. Lưu
-        một preset từ nút <b class="ui">+</b> trên thẻ <b class="ui">PRESET</b>, hoặc từ trình
-        quản lý preset. Lời nhắc là một alert có tên <b class="ui">Lưu preset</b>, thông báo cho
-        bạn biết chuyện gì sắp xảy ra: <b class="ui">Rig hiện tại nhận khe MIDI PC trống kế tiếp.</b> Gõ tên và chạm <b class="ui">Lưu</b>. Để trống ô nhập và nó sẽ lưu với tên
-        <b class="ui">Preset</b>.</p>
-      <div class="note warn">
-        <div class="t">Slot PC không thể chỉnh sửa</div>
-        <p>Mỗi preset nằm trên một slot MIDI program-change, và NAMper tự gán nó cho bạn: bốn
-          preset gốc chiếm PC 0–3, và preset của người dùng lấy số tự do tiếp theo từ 4 trở lên.
-          Không có cách nào để đổi slot bằng tay. Hãy lên kế hoạch bố trí footswitch theo thứ tự
-          bạn lưu preset, chứ không phải ngược lại.</p>
+      <p>Một preset rig lưu toàn bộ chuỗi — block, model, vị trí núm vặn, scene, profile ampli,
+        cab. Preset nằm trên các slot MIDI program-change trong bốn bank, mỗi bank 128 slot:
+        <b class="ui">Gốc</b> và Người dùng 1–3. Lưu một preset từ nút <b class="ui">+</b> trên
+        thẻ <b class="ui">PRESET</b>, hoặc từ trình quản lý preset: sheet <b class="ui">Lưu preset</b>
+        hỏi mọi thứ mà một preset có.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Trường</th><th>Đặt cái gì</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tên</b></td><td>Để trống thì nó lưu với tên <b class="ui">Preset</b>.</td></tr>
+            <tr><td><b class="ui">Ngân hàng</b></td><td>Bank người dùng mà nó được lưu vào.</td></tr>
+            <tr><td><b class="ui">Chương trình</b></td><td>Số program-change, bắt đầu từ số trống đầu
+              tiên. Một menu liệt kê cả 128 số; số đã có chủ ghi rõ nó sẽ thay thế preset nào, số
+              trống ghi <b class="ui">trống</b>.</td></tr>
+            <tr><td><b class="ui">Danh mục</b></td><td>Các chip để đánh dấu — cũng chính là các danh
+              mục mà danh sách preset dùng để lọc.</td></tr>
+            <tr><td><b class="ui">Thẻ</b></td><td>Từ ngữ của riêng bạn, cách nhau bằng dấu phẩy; tìm
+              kiếm sẽ tìm thấy chúng.</td></tr>
+          </tbody>
+        </table>
       </div>
 
+      <h3>Bank</h3>
+      <p>Chip bank bên cạnh tiêu đề <b class="ui">PRESET</b>, và trong trình quản lý preset, cho biết
+        bank nào đang được dùng và chuyển đổi nó. Bank đang dùng là thứ các danh sách hiển thị và là
+        thứ program change <em>n</em> phát. Từ một pedalboard, MIDI Bank Select (CC 0) chọn bank — 0 là
+        <b class="ui">Gốc</b>, 1–3 là các bank người dùng — và <b class="ui">Ngân hàng preset tiếp theo</b> /
+        <b class="ui">Ngân hàng preset trước</b> có thể được learn vào bất kỳ công tắc nào. Menu của một
+        preset có <b class="ui">Chuyển vào ngân hàng</b> cho preset của bạn và <b class="ui">Sao chép vào ngân hàng</b>
+        cho preset gốc. Một setlist không gắn với bank nào: các preset của nó phát theo bank đang
+        được dùng.</p>
+      <div class="note warn">
+        <div class="t">Bank gốc chỉ đọc</div>
+        <p><b class="ui">Cập nhật bằng rig hiện tại</b> trên một preset gốc sẽ hỏi trước, rồi
+          <b class="ui">Lưu bản sao</b> đặt phiên bản của bạn vào bank người dùng ở số trống đầu tiên,
+          chuyển sang bank đó và phát nó; đổi tên một preset gốc cũng tạo ra bản sao như vậy.
+          Cập nhật lại chính preset gốc đó thì nó sẽ sửa bản sao ấy — và mọi bài hát từng gọi preset
+          gốc từ đó trở đi sẽ gọi bản sao của bạn, kể cả scene.</p>
+      </div>
+
+      <h3>Tìm kiếm và danh mục</h3>
+      <p>Dải preset và trình quản lý có cùng ô tìm kiếm và các chip danh mục. Tìm kiếm khớp cả tên <em>lẫn</em> thẻ, nên "vocal" kéo ra cả
+        bank vocal và "delay" mọi rig mang hơi hướng echo. Các chip thu hẹp danh sách:
+        <b class="ui">Tất cả</b>, <b class="ui">Của tôi</b> (chỉ preset của riêng bạn), rồi đến các danh mục —
+        <b class="ui">Clean</b>, <b class="ui">Lead</b>, <b class="ui">Blues</b>,
+        <b class="ui">Ambient</b>, <b class="ui">Metal</b>, <b class="ui">Bass</b>,
+        <b class="ui">Giọng hát</b>, <b class="ui">Tiện ích</b> và nhiều hơn nữa.</p>
+
       <h3>Dải preset có hai gương mặt</h3>
-      <p>Thẻ <b class="ui">PRESET</b> — dải dọc bên cạnh thẻ Rig trên máy tính bảng, dải ngang dưới
-        chuỗi trên điện thoại — hiển thị một trong hai thứ, tuỳ vào việc có setlist nào đang
+      <p>Thẻ <b class="ui">PRESET</b> — dải dọc bên cạnh chuỗi trên máy tính bảng và trên điện thoại cầm dọc,
+        dù có bao nhiêu rig; dải ngang dưới chuỗi trên điện thoại xoay ngang — hiển thị một trong hai thứ, tuỳ vào việc có setlist nào đang
         <b class="ui">LIVE</b> hay không:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>Không có setlist live</b> — thư viện: mỗi preset trên khe MIDI PC của nó, kèm ảnh bìa,
-          ô tìm kiếm khi đã hơn tám preset, và menu dòng gồm <b class="ui">Đổi tên</b>,
-          <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Thêm vào set…</b>,
-          <b class="ui">Chia sẻ</b> và <b class="ui">Xoá</b>. Program change <em>n</em> áp dụng
-          preset <em>n</em>.</li>
+        <li><b>Không có setlist live</b> — bank: mỗi preset trên khe MIDI PC của nó, kèm ảnh bìa,
+          ô tìm kiếm và các chip danh mục, và menu dòng gồm
+          <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Đổi tên…</b>,
+          <b class="ui">Thêm vào set…</b>, <b class="ui">Chuyển vào ngân hàng</b>, <b class="ui">Chia sẻ</b>
+          và <b class="ui">Xoá</b>. Program change <em>n</em> áp dụng preset <em>n</em> của bank
+          đang được dùng.</li>
         <li><b>Có setlist live</b> — chính bộ set: tên set, bộ chuyển bài (<b class="ui">‹</b> tên
-          <b class="ui">›</b>, và bấm vào tên sẽ mở cả danh sách để nhảy bài), cùng một thẻ cho mỗi
-          preset rig <em>mà bài hiện tại gọi lên</em> — không phải 128 khe, mà là bốn năm âm thanh
-          bài đó thực sự cần. Giờ program change <em>n</em> phát bài <em>n</em>.</li>
+          <b class="ui">›</b>, và bấm vào tên sẽ mở cả danh sách để nhảy bài), cùng một pad cho mỗi
+          preset rig <em>mà bài hiện tại gọi lên</em> — không phải 128 khe, mà là bốn hoặc tám âm
+          thanh bài đó thực sự cần — với bank nằm bên dưới. Giờ program change <em>n</em> nhấn nút sân
+          khấu <em>n</em>: các bài hát khi chưa chọn bài nào, rồi đến các pad riêng của bài đã
+          chọn.</li>
       </ul>
       <p>Trên sân khấu, gương mặt thứ hai mới quan trọng: bài được chọn một lần, và giữa các điệp
-        khúc thứ bạn với tay tới là âm thanh của chính bài đó. Mỗi thẻ mang tên preset và hàng scene
-        của nó — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b> <b class="ui">C</b>
-        <b class="ui">D</b> — trong đó scene của mục được viền lại, và cả thẻ sáng lên khi đúng mục
-        đó đang vang.</p>
-      <p><strong>Các chữ cái chỉ để xem, không phải để đặt.</strong> Chạm vào bất cứ đâu trên thẻ, kể
-        cả chữ cái, sẽ gọi mục đó lên đúng như bài đã ghi. Mục dùng scene nào là chuyện của bài, nên
-        thay đổi ở trình sửa bài trong thẻ <a href="/docs/vi/perform.html#sections">Perform</a> —
-        một cú chạm nhầm trên sân khấu không được phép viết lại bộ set.</p>
+        khúc thứ bạn với tay tới là âm thanh của chính bài đó. Mỗi pad mang tên preset và hàng scene
+        của nó — chỉ những scene mà preset đó có — trong đó scene của mục được viền lại, và cả pad
+        sáng lên khi đúng mục đó đang vang. Chạm vào pad sẽ gọi mục đó lên đúng như bài đã ghi; chạm
+        vào một chữ cái sẽ biến scene đó thành scene của mục, và chạm lại chữ đã chọn sẽ bỏ nó.</p>
+      <p>Bộ set được sửa ngay tại chỗ. Kéo một preset từ bank bên dưới thả lên một pad (giữ, rồi
+        di chuyển — một cú vuốt thường vẫn là cuộn) và nó thế chỗ pad đó, giữ nguyên scene và các
+        mốc của pad; thả nó vào một ô trống thì nó được thêm vào bài. Menu của một preset có
+        <b class="ui">Thêm vào bài hát này</b>, liệt kê các pad của bài và một <b class="ui">Pad mới</b>.
+        Menu nhấn giữ của chính một pad có <b class="ui">Thay âm thanh…</b> (một bộ chọn trên mọi
+        bank), <b class="ui">Rig hiện tại</b> (rig như hiện tại được lưu vào preset của pad),
+        <b class="ui">Xóa pad</b> và MIDI Learn. Nhấn giữ một ô trống sẽ đưa ra
+        <b class="ui">Chọn preset…</b> và <b class="ui">Rig hiện tại</b>.</p>
       <p>Biểu tượng chồng ở đầu bảng set vẫn mở toàn bộ thư viện preset, còn <b class="ui">⊗</b> rời
-        khỏi setlist: dải quay về 128 khe, và các số program cũng vậy.</p>
+        khỏi setlist: dải quay về bank, và các số program cũng vậy.</p>
+      <p>Giữa thẻ chuỗi và các preset có một tay nắm và hai mũi tên. Kéo tay nắm để dành thêm chỗ cho
+        chuỗi hoặc cho preset, chạm đúp vào nó để quay về cách chia mặc định của trang; một mũi tên
+        gập chuỗi hoặc preset lại thành một dải mỏng, và chạm vào dải đó sẽ mở nó ra lại.</p>
       <h3>Cập nhật và quản lý</h3>
-      <p>Ghi đè luôn được xác nhận. <b class="ui">Cập nhật bằng rig hiện tại</b> hiện một hộp thoại
-        ghi <b class="ui">Overwrite "{name}" with the current rig?</b> cùng
-        <b class="ui">Ghi đè</b> và <b class="ui">Huỷ</b>. Bản thân trình quản lý có tiêu
-        đề điều hướng <b class="ui">Preset</b> và hai phần: <b class="ui">Rig · khe MIDI PC</b>,
+      <p>Ghi đè luôn được xác nhận. <b class="ui">Cập nhật bằng rig hiện tại</b> trên một preset của
+        riêng bạn hiện <b class="ui">Overwrite "{name}" with the current rig?</b> cùng
+        <b class="ui">Ghi đè</b> và <b class="ui">Huỷ</b>. <b class="ui">Đổi tên…</b> cũng đặt số
+        program: preset đang giữ số đó sẽ đổi sang số cũ. Bản thân trình quản lý có tiêu đề điều
+        hướng <b class="ui">Preset</b>, chip bank, ô tìm kiếm và các chip danh mục, và hai phần:
+        <b class="ui">Rig · khe MIDI PC</b>,
         và <b class="ui">Tất cả cùng lúc</b> → <b class="ui">Snapshot toàn cục</b>, được mô tả
         là rig, looper, sampler, setlist và bản đồ control được lưu và khôi phục cùng nhau.</p>
-      <p>Menu ngữ cảnh của mỗi dòng có <b class="ui">Đổi tên</b>,
-        <b class="ui">Cập nhật bằng rig hiện tại</b>, <b class="ui">Thêm vào set…</b>,
-        <b class="ui">Chia sẻ</b> và <b class="ui">Xoá</b>. Đổi tên chỉ có trong trình quản lý —
-        menu chip preset ở thẻ Rig không có. Khi đã hơn tám preset, phía trên xuất hiện ô
-        <b class="ui">Tìm preset</b>.</p>
       <div class="note warn">
         <div class="t">Xoá không được xác nhận lại</div>
         <p><b class="ui">Xoá</b> trong menu hàng preset có hiệu lực ngay lập tức, không hỏi
@@ -539,17 +787,32 @@
         nó qua AirDrop, và NAMper sẽ nhập nó và mở trình quản lý preset. Mỗi preset được nhập vào
         đều nhận một slot mới, nên việc nhập sẽ không bao giờ âm thầm ghi đè lên thứ bạn đã có.</p>
 
-      <h3>Bộ bốn gốc</h3>
-      <p>NAMper đi kèm bốn rig ở PC 0–3, mỗi cái được dựng quanh một bản capture thật:
-        <b class="ui">Clean</b> (một combo blackface Mỹ), <b class="ui">Crunch</b> (một head Anh
-        50 watt đời 1969), <b class="ui">Lead</b> (một amp+cab high-gain hiện đại) và
-        <b class="ui">Ambient</b> (một combo class-A chime Anh). Bản capture mỗi rig stream mang
-        tên riêng do người upload đặt, đó là những gì block amp hiển thị. Mỗi rig cũng mang theo
-        một <b class="ui">Amp</b> tích hợp đang bypass và một cab đi kèm làm phương án dự
-        phòng offline, và mỗi rig được đánh dấu <b class="ui">GỐC</b> trong trình quản lý.
-        Đưa tất cả trở lại từ Cài đặt → <b class="ui">ĐẶT LẠI</b> →
-        <b class="ui">Về preset gốc</b>; hộp thoại cảnh báo
-        <b class="ui">Xoá TẤT CẢ preset của bạn? Bốn rig gốc sẽ quay lại.</b></p>
+      <h3>Bank gốc</h3>
+      <p>Bank <b class="ui">Gốc</b> có sẵn đủ cả 128 slot: bộ bốn kinh điển ở PC 0–3 —
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b>, <b class="ui">Lead</b> và
+        <b class="ui">Ambient</b>, mỗi cái được lên tiếng quanh một bản capture thật — tiếp theo là
+        các rig theo chủ đề đi qua nhiều phong cách và thời kỳ, nhạc cụ acoustic, một bank bass, một
+        bank vocal và các chuỗi tiện ích. Các block mới cũng góp phần trong đó: swell và freeze trong
+        các rig ambient, một giọng hát được nhân đôi, một cây mười hai dây, một synth bass và các
+        channel strip vocal. Mọi rig gốc đều chơi trên các ampli tích hợp và các thùng loa đi kèm ngay
+        từ giây đầu tiên, và mỗi rig được đánh dấu <b class="ui">GỐC</b> trong trình quản
+        lý. <b class="ui">Ẩn preset gốc</b> trong menu nhập/xuất của trình quản lý đưa bank này
+        ra khỏi menu bank; cùng công tắc đó đưa nó trở lại. Cài đặt →
+        <b class="ui">ĐẶT LẠI</b> → <b class="ui">Về preset gốc</b> xoá các preset của riêng
+        bạn; hộp thoại cảnh báo <b class="ui">Xoá TẤT CẢ preset của bạn? Bốn rig gốc sẽ quay lại.</b></p>
+
+      <h3>Scene và pedal morph</h3>
+      <p>Mỗi rig có bốn scene, <b class="ui">A</b>–<b class="ui">D</b>: trạng thái bypass và vị trí
+        núm của mọi block, còn chuỗi và các model đã nạp thì giữ nguyên, nên việc chuyển scene không
+        có khoảng hở. Scene đang sáng đi theo các chỉnh sửa của bạn — một núm vặn trong lúc
+        <b class="ui">A</b> đang bật sẽ thuộc về <b class="ui">A</b> từ đó trở đi, nên một lần tinh
+        chỉnh không bao giờ mất khi bạn chuyển sang scene khác.</p>
+      <p>Một expression pedal cũng có thể <b>morph</b> giữa hai scene. Trong Cài đặt →
+        <b class="ui">Điều khiển</b>, gán cho một hàng CC hành động <b class="ui">Cảnh</b> →
+        <b class="ui">Morph bằng pedal</b> và chọn cặp scene: mọi núm mà hai scene khác nhau sẽ đi
+        theo pedal giữa hai giá trị của nó, còn một công tắc, một chế độ hay một bypass sẽ lật ở điểm
+        giữa — một cú chuyển từ clean sang lead trong đó drive, mức mix của delay và reverb cùng dâng
+        lên dưới một bàn chân.</p>
       <p>Các tab khác cũng có sheet preset riêng, mở từ chip <b class="ui">PRESET</b> của chúng
         và đều dùng chung một thiết kế: <b class="ui">Preset looper</b>,
         <b class="ui">Bộ kit sampler</b>, <b class="ui">Preset perform</b>,
@@ -605,7 +868,7 @@
       <p>Đầu nối OUT mở một sheet có tiêu đề <b class="ui">ĐẦU RA RIG</b>, với các núm vặn
         <b class="ui">Mức</b> và <b class="ui">Pan</b>, một menu <b class="ui">Cặp ngõ ra phần cứng</b> (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — cần bật
         <b class="ui">Dùng mọi ngõ ra của interface</b> trong Cài đặt), và
-        <b class="ui">Ghi rig này vào</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>.
+        <b class="ui">Ghi rig này vào</b> → <b class="ui">Track loop 1</b>–<b class="ui">Track loop 4</b>.
         Hàng tóm tắt bên dưới hiện <b class="ui">Looper: not assigned</b> hoặc, khi bạn đã chọn
         một vài track, <b class="ui">Looper: track 1, 3</b>.</p>
     </section>
@@ -618,7 +881,7 @@
         (<b class="ui">Thêm chuỗi song song</b>).</p>
       <p>Menu của nó có một phần duy nhất, <b class="ui">Rẽ nhánh từ</b>, liệt kê từng kênh
         input, <b class="ui">Pad sampler</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-        và <b class="ui">After {Block}</b> cho mỗi block trên chuỗi chính. Nhóm cuối cùng đó là
+        và <b class="ui">Sau {Block}</b> cho mỗi block trên chuỗi chính. Nhóm cuối cùng đó là
         nhóm thú vị nhất: tách nhánh sau ampli cho bạn hai reverb khác nhau trên cùng một tone
         ampli, tách nhánh trước ampli cho bạn hai ampli khác nhau trên cùng một cây guitar.</p>
 
@@ -631,14 +894,14 @@
           <thead><tr><th>Thao tác</th><th>Nó làm gì</th></tr></thead>
           <tbody>
             <tr><td>Chạm vào một điểm neo</td><td>Mở sheet mixer có tiêu đề
-              <b class="ui">LANE {n} MIX</b>, với <b class="ui">Mức</b> và
+              <b class="ui">MIX LÀN {n}</b>, với <b class="ui">Mức</b> và
               <b class="ui">Pan</b></td></tr>
             <tr><td>Nhấn giữ điểm neo vào</td><td>Menu <b class="ui">Đầu vào nhánh</b>: input
               riêng, <b class="ui">Pad sampler</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-              <b class="ui">Branch after {Block}</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
+              <b class="ui">Rẽ nhánh sau {Block}</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
             <tr><td>Nhấn giữ điểm neo trộn</td><td>Menu <b class="ui">Đầu ra nhánh</b>:
-              <b class="ui">Vào mix chính</b>, <b class="ui">Merge before {Block}</b>,
-              <b class="ui">Own output 1-2</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
+              <b class="ui">Vào mix chính</b>, <b class="ui">Hợp trước {Block}</b>,
+              <b class="ui">Đầu ra riêng 1-2</b>, và <b class="ui">Bỏ nhánh</b></td></tr>
             <tr><td>Kéo một điểm neo</td><td>Gắn lại nó tại một điểm khác dọc theo chuỗi
               chính</td></tr>
           </tbody>
@@ -664,7 +927,7 @@
           riêng lẻ.</p>
       </div>
       <p>Một nhánh cũng có thể bỏ qua hoàn toàn mix chính: trỏ output của nó vào
-        <b class="ui">Own output 1-2</b> và nó sẽ đi thẳng ra cặp phần cứng riêng của nó, việc
+        <b class="ui">Đầu ra riêng 1-2</b> và nó sẽ đi thẳng ra cặp phần cứng riêng của nó, việc
         này cần bật <b class="ui">Dùng mọi ngõ ra của interface</b> trong Cài đặt trước.</p>
     </section>
 
@@ -674,15 +937,14 @@
         send cộng lại ở đó trước khi ra phần cứng. Bạn làm gì với master là làm với tất cả. Trước
         đây nó nằm ở cuối thẻ Rig; giờ nó sống ở thẻ <a href="/docs/vi/mix.html">Mix</a>, trong cột
         cạnh các fader — mục này là bản rút gọn, cả bàn trộn quanh nó nằm ở trang đó.</p>
-      <p>Thanh <b class="ui">+</b> nét đứt thêm xử lý master — tối đa sáu block. Bạn có thể chọn
-        <b class="ui">Âm lượng</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>, <b class="ui">Saturator</b>, <b class="ui">Limiter</b>, <b class="ui">FB Guard</b>, <b class="ui">De-Esser</b>, <b class="ui">Reverb</b> và
-        <b class="ui">Delay</b>. Chúng cư xử như block trong chuỗi: chạm chip để chỉnh, giữ lâu để
+      <p>Thanh <b class="ui">+</b> nét đứt thêm xử lý master — tối đa sáu block, từ chính các họ
+        block mà một chuỗi cung cấp, trừ ampli và <b class="ui">Send</b>. Chúng cư xử như block trong chuỗi: chạm chip để chỉnh, giữ lâu để
         <b class="ui">Bật</b> / <b class="ui">Bypass</b> và <b class="ui">Bỏ</b>.</p>
-      <div class="note warn">
-        <div class="t">Không có plugin AU trong master</div>
-        <p>Plugin Audio Unit được host chỉ có thể đặt bên trong một chuỗi rig. Menu FX của master
-          không cung cấp chúng. Nếu bạn muốn một limiter bên thứ ba áp lên toàn bộ, điều đó không
-          thể — hãy dùng block <b class="ui">Limiter</b> tích hợp thay thế.</p>
+      <div class="note tip">
+        <div class="t">Plugin trên master</div>
+        <p>Master và hai send return cũng nhận plugin được host: cùng một mục
+          <b class="ui">Plugin</b> nằm ở cuối menu thêm của chúng, nên một limiter bên thứ ba có
+          thể đặt áp lên mọi thứ.</p>
       </div>
       <p>Ở đây không có bộ xử lý master luôn bật. Bão hòa là một khối bạn thêm vào — <b class="ui">Saturator</b>, với <b class="ui">Đèn</b>, <b class="ui">Tape</b> hoặc capture <b class="ui">NAM</b> trên các chip kiểu cùng <b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Mix</b> và <b class="ui">Mức</b> — và giới hạn là khối <b class="ui">Limiter</b>, với <b class="ui">Gain</b>, <b class="ui">Ceiling</b> (−12 đến 0 dB, mặc định −1) và <b class="ui">Release</b>. Nếu bạn chưa thêm chúng, chúng không nằm trong đường tín hiệu.</p>
 

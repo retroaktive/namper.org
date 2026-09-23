@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mac — Documentación de NAMper</title>
-<meta name="description" content="NAMper en el Mac: el instalador y qué pone dónde, la ventana Interfaz de audio y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
+<meta name="description" content="NAMper en el Mac: el instalador y qué pone dónde, la interfaz de audio en Ajustes y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Mac — Documentación de NAMper">
-<meta property="og:description" content="NAMper en el Mac: el instalador y qué pone dónde, la ventana Interfaz de audio y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
+<meta property="og:description" content="NAMper en el Mac: el instalador y qué pone dónde, la interfaz de audio en Ajustes y los dispositivos agregados, menús y teclas, archivos desde el Finder, y los plugins AU, VST3 y CLAP.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/es/mac.html">
 <meta property="og:type" content="article">
@@ -102,7 +103,7 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="interface"><span class="n">10.2</span>La interfaz de audio</h2>
-      <p><b class="ui">Ajustes…</b> → <b class="ui">Audio</b> nombra el dispositivo que escucha el rig, y <b class="ui">Ventana</b> → <b class="ui">Interfaz de audio</b> (⌘0) abre la página que lo elige: dispositivo de entrada, de salida, el par de salida, frecuencia de muestreo y búfer, con la latencia de ida y vuelta medida debajo.</p>
+      <p><b class="ui">Ajustes…</b> → <b class="ui">Audio</b> lo elige: dispositivo de entrada, de salida, el par de salida, frecuencia de muestreo y búfer, con la latencia de ida y vuelta medida debajo. <b class="ui">Archivo</b> → <b class="ui">Interfaz de audio…</b> (⌘0) abre esa página directamente.</p>
       <p>Entrada y salida pueden ser dos cajas distintas — una interfaz de guitarra entrando y los altavoces integrados saliendo, por ejemplo. Cuando es así, NAMper construye un <b>dispositivo agregado</b> privado con las dos y corre sobre él, porque un motor de audio solo puede tener un reloj. El reloj se queda con la salida, porque lo que oye el músico es lo que no debe entrecortarse, y la compensación de deriva va en la entrada, el extremo que puede permitirse ceder. Nada de esto aparece en Configuración de Audio MIDI y no queda nada al salir de la app.</p>
       <p>Una sola interfaz en ambas direcciones no necesita agregado y es la opción de menor latencia: elige el mismo dispositivo en ambas filas.</p>
     </section>
@@ -114,11 +115,9 @@
           <thead><tr><th>Menú</th><th>Qué contiene</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">Archivo</b></td>
-                <td><b class="ui">Capturas e impulsos…</b> ⌘L · <b class="ui">Presets…</b> ⇧⌘P · <b class="ui">Guardar preset…</b> ⌘S</td></tr>
+                <td><b class="ui">Capturas e impulsos…</b> ⌘L · <b class="ui">Presets…</b> ⇧⌘P · <b class="ui">Interfaz de audio…</b> ⌘0 · <b class="ui">Guardar preset…</b> ⌘S</td></tr>
             <tr><td><b class="ui">Equipo</b></td>
                 <td><b class="ui">Preset siguiente</b> ⌘→ · <b class="ui">Preset anterior</b> ⌘← · <b class="ui">Escena</b> 1–4 ⌘1…⌘4 · <b class="ui">Pista de bucle 1</b> ␣ · <b class="ui">Afinador</b> ⌘T · <b class="ui">Tempo…</b> · <b class="ui">Tonalidad…</b></td></tr>
-            <tr><td><b class="ui">Ventana</b></td>
-                <td><b class="ui">Interfaz de audio</b> ⌘0</td></tr>
             <tr><td><b class="ui">NAMper</b></td>
                 <td><b class="ui">Ajustes…</b> ⌘, · <b class="ui">Acerca de NAMper</b></td></tr>
             <tr><td><b class="ui">Ayuda</b></td>
@@ -131,7 +130,7 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="files"><span class="n">10.4</span>Archivos</h2>
-      <p>Suelta una captura .nam, un impulso .wav, un .zip de cualquiera de los dos o un preset .namper <b>sobre la ventana</b> y se une a la biblioteca. Suéltalo sobre un <b>bloque</b> concreto y va adonde ese bloque pueda llevarlo: una captura sobre el Amp se carga en el Amp, un impulso sobre el Amp cae en el Cab que va detrás, una captura sobre un Cab cae en el Amp de delante — y ninguno molesta lo que el otro bloque ya tocaba. El bloque se ilumina mientras el archivo está encima.</p>
+      <p>Suelta una captura .nam, un impulso .wav, un .zip de cualquiera de los dos o un preset .namper <b>sobre la ventana</b> y se une a la biblioteca. Suéltalo sobre un <b>bloque</b> concreto y va adonde ese bloque pueda llevarlo: una captura sobre el Amplificador se carga en el Amplificador, un impulso sobre el Amplificador cae en la Pantalla que va detrás, una captura sobre una Pantalla cae en el Amplificador de delante — y ninguno molesta lo que el otro bloque ya tocaba. El bloque se ilumina mientras el archivo está encima.</p>
       <p>Un archivo también puede llegar desde el Finder: doble clic en un preset .namper y NAMper lo abre, y una captura .nam sigue el mismo camino mediante <b>Abrir con</b>. En ambos casos el archivo cae donde lo habría dejado arrastrarlo.</p>
       <p>La biblioteca en sí es una carpeta que puedes abrir — consulta <a href="/docs/es/setup.html#files">Dónde viven tus archivos</a>.</p>
     </section>
@@ -139,7 +138,7 @@
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="plugin"><span class="n">10.5</span>NAMper como plugin</h2>
       <p>El Audio Unit, el VST3 y el CLAP son el mismo efecto: la cadena de NAMper — puerta, compresor, drive, amp, EQ, cab, modulación, delay, reverb — en la pista del DAW en vez de en la entrada de la app. Los tres llevan los mismos parámetros en el mismo orden, así que una sesión se mueve entre ellos, y los tres leen el estado guardado de los demás.</p>
-      <p>El plugin se abre en una ventana propia: la lista <b>Preset</b>, <b>Bypass</b> y las filas de parámetros — las mismas filas que el host enumera y escribe en la automatización. Preset es la cadena fija, luego cada rig de fábrica, luego cada preset guardado en la app, por nombre — elige uno y el plugin construye la cadena principal de ese rig en la pista: capturas de tu biblioteca, impulsos del juego incluido, y la sesión lleva el rig consigo. Los demás parámetros llegan entonces al primer bloque de su clase en ese rig. En el Audio Unit esa misma lista es el menú de presets del propio host.</p>
+      <p>El plugin se abre con la propia cara de la app en una ventana del host: la cadena de bloques, las escenas, los editores de bloque, la biblioteca de capturas e impulsos, los presets y los ajustes, con las herramientas de la cabecera — la carga de DSP, la tonalidad, el metrónomo y el afinador — en su fila superior. Elige un preset y el plugin construye ese rig en la pista: capturas de tu biblioteca, impulsos del juego incluido, y la sesión lleva el rig consigo. El VST3 y el CLAP reciben MIDI del host: los controladores, las notas y los cambios de programa llegan al mapa de control del rig igual que en la app. Las filas de parámetros del host, más abajo, llegan al primer bloque de su clase en ese rig. En el Audio Unit la lista de presets es el menú de presets del propio host. Más sobre la cara del plugin en la página <a href="/docs/es/plugins.html#auv3">Plugins</a>.</p>
       <ul>
         <li>Gate On, Gate Threshold</li>
         <li>Comp On, Comp Threshold, Comp Ratio</li>
@@ -150,6 +149,7 @@
       </ul>
       <p>más <b>Bypass</b>, que pertenece al host: activado, la señal de la pista pasa intacta.</p>
       <p>La entrada se oye como un solo canal — una guitarra, no una mezcla estéreo: una pista estéreo se promedia antes de llegar a la cadena, y de ella sale la imagen estéreo propia de la cadena. Varias instancias en varias pistas son independientes, cada una con su cadena, y un bounce offline renderiza exactamente lo que renderiza el tiempo real.</p>
+      <p>Los archivos funcionan dentro del DAW igual que en la app: los paneles de abrir y guardar del Audio Unit importan capturas, impulsos y presets y los vuelven a exportar. Un plug-in no tiene hoja de compartir, así que donde la app comparte, el Audio Unit guarda una copia — <b class="ui">Guardar una copia…</b> en el menú de presets, <b class="ui">Guardar archivo .nam…</b> y <b class="ui">Guardar archivo IR…</b> en la biblioteca — y varios archivos a la vez van a una carpeta que eliges con <b class="ui">Guardar aquí</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

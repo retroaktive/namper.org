@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pad sampler — Tài liệu NAMper</title>
-<meta name="description" content="Mười sáu pad sampler: tải và ghi âm âm thanh, trình chỉnh sửa pad với trim và ADSR, kit và bốn kit trống gốc, trigger quantize, note MIDI 36–51 và các pad đi vào đâu trong mix.">
+<meta name="description" content="Mười sáu pad sampler: tải và ghi âm âm thanh, trình chỉnh sửa pad với trim và ADSR, kit và bốn kit trống gốc, note MIDI 36–51 và các pad đi vào đâu trong mix.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Pad sampler — Tài liệu NAMper">
-<meta property="og:description" content="Mười sáu pad, kit, trim và ADSR, quantize và trigger qua MIDI.">
+<meta property="og:description" content="Mười sáu pad, kit, trim và ADSR, và trigger qua MIDI.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/sampler.html">
 <meta property="og:type" content="article">
@@ -68,7 +69,7 @@
     <h1>Mười sáu pad, một trang.</h1>
     <p class="lede">Tab <b class="ui a">Mẫu</b> là một drum machine bạn có thể chơi bằng ngón
       tay cái hoặc bằng một pedal MIDI: mười sáu pad, một thư viện kit, trim và envelope cho từng
-      pad, và một bộ quantize cho khi timing cần phải chuẩn.</p>
+      pad, và một looper có thể in những gì bạn chơi lên lưới nhịp.</p>
 
     <nav class="toc">
       <div class="slab">TRONG TRANG NÀY</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">Đưa âm thanh vào một pad</a></li>
         <li><a href="#editor">Trình chỉnh sửa pad</a></li>
         <li><a href="#kits">Kit</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
+        <li><a href="#quantize">Timing và quantize</a></li>
         <li><a href="#trigger">Chơi các pad</a></li>
         <li><a href="#routing">Các pad đi vào đâu</a></li>
       </ul>
@@ -87,24 +88,27 @@
       <h2 id="grid"><span class="n">05.1</span>Lưới pad</h2>
       <p>Mười sáu pad trong một lưới 4×4 cố định. Một trang duy nhất — không có bank, không có
         trang thứ hai, nên mọi thứ bạn có thể chơi đều nằm trên màn hình cùng lúc.</p>
-      <p>Xoay ngang điện thoại và phần đầu trở thành một cột bên trái — mức sampler, chip quantize
-        và <b class="ui">DỪNG TẤT CẢ</b> — còn dàn 4×4 chiếm toàn bộ phần còn lại của màn hình, các pad
-        giãn ra để lấp đầy.</p>
+      <p>Xoay ngang điện thoại và thanh transport trở thành một cột bên trái — mức sampler, phím
+        kit, <b class="ui">REC</b> và <b class="ui">DỪNG TẤT CẢ</b> — còn dàn 4×4 chiếm toàn bộ phần còn
+        lại của màn hình, các pad giãn ra để lấp đầy.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="Tab Sample với kit trống acoustic gốc được tải trên cả mười sáu pad, mỗi pad hiển thị tên sample, độ dài và waveform của nó, cùng núm LEVEL và QUANT và chip lưới quantize trong header.">
+             alt="Tab Sample với kit trống acoustic gốc được tải trên cả mười sáu pad, mỗi pad hiển thị tên sample, độ dài và waveform đã được định hình theo envelope của nó, bên dưới thẻ transport với núm mức, phím kit và STOP ALL.">
         <figcaption>Kit gốc <b class="ui">Trống — mộc</b> được tải trên cả 16 pad</figcaption>
       </figure>
-      <p>Hàng header mang theo, từ trái sang phải: chữ <b class="ui">SAMPLER</b>, một núm
-        <b class="ui">MỨC</b> (0 tới 2, mặc định 1), một núm <b class="ui">QUANT</b>, chip lưới
-        quantize, chip <b class="ui">PRESET</b> cho kit, một đèn báo <b class="ui">GHI</b> sáng
-        lên khi một pad đang ghi âm, và <b class="ui">DỪNG TẤT CẢ</b>.</p>
-      <p>Ở dưới cùng, gợi ý nói lên tất cả:</p>
-      <p><b class="ui">Pad trống: nạp hoặc ghi · đã có: chạm = phát/dừng, nhấn giữ để sửa · nốt MIDI 36–51</b></p>
+      <p>Thẻ transport ở trên cùng mang theo, từ trái sang phải: chữ <b class="ui">SAMPLER</b>,
+        núm mức của sampler (0 tới 2, mặc định 1, hiển thị là <b class="ui">+0 dB</b>), phím kit,
+        một đèn báo <b class="ui">REC</b> sáng lên — cùng với cả thẻ — khi một pad đang ghi âm, và
+        <b class="ui">DỪNG TẤT CẢ</b>. Mười sáu pad đứng riêng bên dưới nó, sát nhau.</p>
       <p>Một <b>pad trống</b> chia thành hai nửa — <b class="ui">NẠP</b> và <b class="ui">GHI</b>.
         Một <b>pad đã tải</b> hiển thị tên sample, độ dài của nó (ví dụ <b class="ui">1.4s</b>),
-        một waveform mờ với mọi thứ ngoài vùng trim bị làm nhạt đi, và một con trỏ sáng quét qua
-        trong lúc phát.</p>
+        waveform của nó, và một con trỏ sáng quét qua trong lúc phát. Waveform được vẽ
+        <b>qua envelope của pad</b>: attack chậm làm dốc phần đầu, decay hạ nó xuống mức sustain,
+        release làm đuôi nhạt dần — nên pad hiển thị đúng âm thanh nó sẽ phát ra, và mọi thứ ngoài
+        vùng trim bị làm nhạt đi.</p>
+      <p>Một pad <b>sáng từ viền vào trong</b> khi nó kêu, càng to càng sáng sâu, và mờ dần theo âm
+        thanh của nó — dù nó được kích hoạt bằng cách nào: một cú chạm, một nốt MIDI, hay một
+        <a href="/docs/vi/looper.html#midi">ô loop MIDI</a> phát lại các cú đánh của nó.</p>
       <p>Nhấn giữ bất kỳ pad nào để mở menu: <b class="ui">Nạp âm…</b>,
         <b class="ui">Ghi bản mix</b> hoặc <b class="ui">Dừng ghi</b>, và — trên một pad đã
         tải — <b class="ui">Sửa…</b>, <b class="ui">Xoá</b> và <b class="ui">MIDI Learn: pad N</b>.</p>
@@ -137,9 +141,15 @@
       <h2 id="editor"><span class="n">05.3</span>Trình chỉnh sửa pad</h2>
       <p>Nhấn giữ một pad đã tải → <b class="ui">Sửa…</b>. Sheet có tiêu đề <b class="ui">PAD N</b>
         cùng tên sample và độ dài của nó.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="Trình chỉnh sửa pad trên sampler: PAD 1, Kick, dạng sóng giữa các tay cắt với đường cong ADSR và giá trị của nó, núm Gain và Pitch, chip MODE và TAP, Preview và Load file.">
+        <figcaption>Trình chỉnh sửa pad: cắt, đường bao trên dạng sóng, Gain, Pitch, MODE và TAP</figcaption>
+      </figure>
       <p>Waveform có <b>các tay cầm trim kéo được</b> ở đầu và cuối — kéo tay cầm đầu vào để cắt
         bỏ một attack chậm, kéo tay cầm cuối vào để rút ngắn một đuôi âm dài.</p>
-      <p><b>Envelope ADSR được vẽ đè lên waveform</b> và chỉnh bằng cách kéo ba tay cầm tròn:
+      <p><b>Envelope ADSR định hình waveform</b> ngay khi bạn chỉnh nó — waveform đi theo đường
+        cong — và được chỉnh bằng cách kéo ba tay cầm tròn:
         <b class="ui">Attack</b>, <b class="ui">Decay và sustain</b> và <b class="ui">Release</b>.
         Một chỉ số phía trên hiển thị các giá trị, ví dụ
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
@@ -189,9 +199,9 @@
         mode — <b>cộng thêm một bản sao riêng của audio từng pad</b>. Bản sao đó chính là điểm
         mấu chốt: một khi kit đã được lưu, việc nhập đè lên một pad, xoá nó hay xoá file gốc đều
         không thể làm rỗng ruột kit đó. Tải lại nó sau sáu tháng và nó vẫn phát được.</p>
-      <p>Mở trình duyệt bằng chip <b class="ui">PRESET</b>; sheet có tên
+      <p>Mở trình duyệt bằng phím kit trong transport; sheet có tên
         <b class="ui">Bộ kit sampler</b>. Chạm vào một hàng để tải nó. Menu của hàng có
-        <b class="ui">Đổi tên</b>, <b class="ui">Update with current kit</b> và
+        <b class="ui">Đổi tên</b>, <b class="ui">Cập nhật bằng kit hiện tại</b> và
         <b class="ui">Xoá</b>. Xoá một kit không bao giờ xoá audio mà các pad đang tải hoặc
         một kit đã lưu khác vẫn còn dùng.</p>
       <div class="note warn">
@@ -229,31 +239,16 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>Núm <b class="ui">QUANT</b> là một <b>cường độ</b>, không phải một công tắc. Ở mức 0 nó
-        hiện <b class="ui">TẮT</b>; trên mức đó nó hiện phần trăm. Ở 100% mọi cú đánh đều rơi
-        chính xác vào lưới nhịp; ở 30% chỉ những cú hơi sớm mới bị kéo vào đúng vị trí và feel
-        của bạn vẫn còn nguyên. Mặc định là 0, tắt.</p>
-      <p>Chip bên cạnh nó đặt lưới nhịp, luân phiên qua <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> và <b class="ui">1/32</b>. Mặc định là <b class="ui">1/16</b>.</p>
-      <p>Cả hai cài đặt đều là <b>toàn cục</b> — không riêng cho từng kit, không riêng cho từng
-        pad. Tải một kit không làm thay đổi chúng.</p>
-      <div class="note warn">
-        <div class="t">Cả ba điều này đều phải đúng</div>
-        <p>Quantize chỉ tạo ra khác biệt nghe được khi <b>cả ba</b> điều này đều đúng, và màn
-          hình không nói cho bạn biết điều đó:</p>
-        <ul style="--nc:var(--drive)">
-          <li>một <b>tempo đã được đặt</b> — nếu không thì không có lưới nhịp;</li>
-          <li>một <b>loop đang chạy</b> — looper cung cấp pha (phase), để lưới nhịp biết phách
-            một nằm ở đâu;</li>
-          <li>bạn đang <b>ghi âm</b> — hoặc trình ghi âm của <b class="ui a">Biểu diễn</b>, hoặc
-            một loop track có nguồn là sampler.</li>
-        </ul>
-        <p>Vặn núm lên trong khi chơi tự do không có gì nền và bạn sẽ không nghe thấy khác biệt
-          gì. Đó là chủ đích: một pad chờ tới nốt móc đơn thứ mười sáu tiếp theo mới kêu sẽ cảm
-          giác như bị hỏng dưới ngón tay bạn, nên chơi tự do luôn được để nguyên không quantize,
-          và việc chỉnh sửa chỉ áp dụng ở nơi nó thực sự nằm trên một bản ghi âm.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>Timing và quantize</h2>
+      <p>Pad luôn kêu <b>ngay khoảnh khắc bạn đánh vào</b>. Một pad chờ tới nốt móc kép tiếp theo
+        mới kêu sẽ cảm giác như bị hỏng dưới ngón tay bạn, nên bản thân sampler không bao giờ dịch
+        một cú đánh.</p>
+      <p>Timing được sửa ở nơi phần chơi được giữ lại: ghi các pad vào một ô looper có
+        <b class="ui">VÀO</b> là <b class="ui">Pad của sampler (MIDI)</b>. Ô đó lưu mỗi cú đánh như một
+        sự kiện và có núm <b class="ui">Định lượng</b> và <b class="ui">LƯỚI</b> riêng
+        (<b class="ui">1/4</b> tới <b class="ui">1/32</b>) — trong lúc bạn ghi, hoặc sau đó trong
+        trình chỉnh sửa của nó, nơi quantize không bao giờ phá hủy bản ghi đúng như bạn đã chơi. Xem
+        <a href="/docs/vi/looper.html#midi">Ô MIDI</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -261,37 +256,32 @@
       <p>Bằng chạm tay: một cú chạm phát hoặc dừng pad theo cài đặt <b class="ui">CHẾ ĐỘ</b> và
         <b class="ui">TAP</b> của nó, và nhấn giữ sẽ mở menu.</p>
       <p>Bằng MIDI: <b>note 36 tới 51 chơi pad 1 tới 16</b>, theo quy ước trống GM — note 36 là
-        pad 1. Điều này luôn hoạt động và không cần thiết lập gì, trên bất kỳ kênh MIDI nào, trừ
-        khi một trong các mapping của riêng bạn đã chiếm note đó trước.</p>
+        pad 1. Chúng có sẵn như các ánh xạ gốc trong Cài đặt → <b class="ui">Điều khiển</b>, trên bất kỳ
+        kênh MIDI nào, nên chúng tôn trọng <b class="ui">Vòng lặp</b> và <b class="ui">Latch</b> như một
+        cú chạm — nhấn một lần khởi động một pad lặp, nhấn lần nữa dừng nó — và bạn có thể di chuyển,
+        xoá hoặc khôi phục chúng như bất kỳ ánh xạ nào khác.</p>
       <p><b>Velocity không được dùng.</b> Dù bạn đánh vào pad điều khiển mạnh cỡ nào, sample vẫn
         phát ở đúng <b class="ui">Gain</b> bạn đặt trong trình chỉnh sửa. Đặt mức một lần trong
         trình chỉnh sửa pad và chúng sẽ giữ nguyên.</p>
-      <div class="note tip">
-        <div class="t">Mapping đã học hoạt động tốt hơn note thô</div>
-        <p>Một ánh xạ bạn tạo trong Cài đặt → <b class="ui">Điều khiển</b> sẽ gọi play/stop, nên nó tôn
-          trọng <b class="ui">Vòng lặp</b> và <b class="ui">Latch</b> — đạp một lần khởi động vòng lặp,
-          đạp lần nữa dừng lại. Nốt MIDI 36–51 thô thì luôn phát lại từ đầu. Nếu bạn điều khiển các
-          pad lặp bằng pedal, hãy dạy ánh xạ thay vì dựa vào dải nốt có sẵn.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>Các pad đi vào đâu</h2>
       <p>Pad cộng dồn <b>thẳng vào mix chính</b> — chúng không chạy qua chuỗi guitar, nên gain
-        ampli và reverb của bạn không bao giờ chạm vào chúng. Núm <b class="ui">MỨC</b> trong
-        header đặt cả sampler to tới đâu so với rig.</p>
+        ampli và reverb của bạn không bao giờ chạm vào chúng. Núm mức trong
+        transport đặt cả sampler to tới đâu so với rig.</p>
       <p>Chúng cũng có sẵn ở nơi khác trong app như một nguồn:</p>
       <ul style="--nc:var(--power)">
         <li>Như một <b>input của chuỗi</b> — chọn <b class="ui">Pad sampler</b> trên đầu nối IN
           của một rig hoặc trên một nhánh song song (chip <b class="ui">SMPL</b>) và các pad sẽ
           chạy qua hiệu ứng của rig đó.</li>
-        <li>Như một <b>nguồn cho loop track</b> — đặt <b class="ui">VÀO</b> của một track looper
-          thành <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) và bạn có thể loop một
-          beat bạn gõ ra trên các pad.</li>
+        <li>Như một <b>nguồn cho ô loop</b> — đặt <b class="ui">VÀO</b> của một ô looper thành
+          <b class="ui">Pad của sampler (MIDI)</b> và nó ghi beat bạn gõ ra dưới dạng các cú đánh bạn có
+          thể chỉnh sửa và quantize: một <a href="/docs/vi/looper.html#midi">ô MIDI</a>.</li>
         <li>Như một <b>sidechain cho compressor</b> — menu <b class="ui">Sidechain</b> của một
-          block Comp có <b class="ui">SMP</b>, để tiếng kick có thể duck guitar.</li>
+          block Bộ nén có <b class="ui">SMP</b>, để tiếng kick có thể duck guitar.</li>
       </ul>
-      <p><b class="ui">DỪNG TẤT CẢ</b> trong header thả tất cả các pad đang phát cùng lúc — nút
+      <p><b class="ui">DỪNG TẤT CẢ</b> trong transport thả tất cả các pad đang phát cùng lúc — nút
         hoảng loạn cho một drone đã latch hoặc một loop bạn không tìm ra được.</p>
     </section>
 

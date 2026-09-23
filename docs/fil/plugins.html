@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mga plugin — Dokumentasyon ng NAMper</title>
-<meta name="description" content="Pagpapatakbo ng mga Audio Unit effect sa loob ng isang NAMper chain, ang nakalagay na interface ng plugin, ang mga limitasyon, kung paano sine-save ang estado ng plugin — at kung ano ang ginagawa ng NAMper mismo bilang AUv3 effect sa ibang app.">
+<meta name="description" content="Pagpapatakbo ng mga Audio Unit effect sa loob ng isang NAMper chain, ang nakalagay na interface ng plugin, ang mga limitasyon, kung paano sine-save ang estado ng plugin — at ang NAMper mismo sa loob ng ibang app, na may sariling mukha at aklatan ng app.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Mga plugin — Dokumentasyon ng NAMper">
@@ -122,8 +123,8 @@
                 <td>Labing-anim na plugin nang sabay, binibilang sa lahat ng rig at lahat ng branch. Sa totoo lang, mauubusan ka ng processor bago ka mauubusan ng slot.</td></tr>
             <tr><td>Stereo</td>
                 <td>Stereo ang takbo ng input at output ng plugin, sa kahit anong sample rate ang engine.</td></tr>
-            <tr><td>Mga rig chain lang</td>
-                <td>Sa loob ng mga rig chain napupunta ang mga AU plugin. Mga sariling block lang ng NAMper ang tinatanggap ng seksyong <b class="ui">MASTER</b>.</td></tr>
+            <tr><td>Mga chain, master, return</td>
+                <td>Napupunta ang mga AU plugin sa loob ng mga rig chain, sa seksyong <b class="ui">MASTER</b> at sa dalawang send return — nasa lahat ng add menu nila ang parehong seksyong <b class="ui">Mga Plugin</b>.</td></tr>
           </tbody>
         </table>
       </div>
@@ -158,8 +159,20 @@
       </div>
       <p>Stereo ang pinapasok at stereo ang inilalabas nito, pero pinagsasama sa mono ang dalawang input channel sa loob: isang mono na front end na parang gitara na nagpapakain sa amp. Sinasadya iyon, at iyon ang gusto mo para sa DI na gitara sa isang mono track.</p>
 
+      <h3>Ang mukha ng app sa host</h3>
+      <p>Bumubukas ang plug-in na dala ang sariling rig ng app sa window ng host: ang chain ng mga block, ang mga scene, ang mga block editor, ang aklatan ng mga capture at impulse, ang mga preset at ang mga setting. Iisa ang mukhang ito sa iPhone at iPad (ang AUv3 sa GarageBand, AUM, Cubasis at iba pa) at sa Mac (Audio Unit, VST3 at CLAP — tingnan ang <a href="/docs/fil/mac.html#plugin">Mac</a>). Pumili ng preset at bubuuin ng plug-in ang rig na iyon sa track, kasama ang mga capture nito mula sa aklatan at ang mga impulse nito mula sa kasamang set; dala ng session ang rig mismo, kaya bumubukas ang proyekto kahit sa makinang walang aklatan.</p>
+      <p>Iisang hanay ang header: ang marka ng NAMper (binubuksan nito ang <b class="ui">Tungkol Dito</b> — ang bersyon, ang mga link ng tulong, ang mga credit, at daan papunta sa tip jar ng app), ang preset, ang mga scene, ang mga meter, ang aklatan, ang mga tool, ang mga setting at ang bypass. Sa makitid na host, nag-i-scroll pagilid ang hanay, habang nakapako sa dulo ang mga setting at ang bypass para laging abot-kamay ang switch.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>Ang mga tool</b> ay ang mga tool ng header ng app: ang DSP load, ang key, ang metronome kasama ang tempo nito (binubuksan o pinapatay ng tap ang click, itinatakda ng pagpindot nang matagal ang tempo) at ang tuner, na bawat isa'y bumubukas bilang panel sa ibabaw ng chain.</li>
+        <li><b>Ang Settings</b> ay may dalang itsura at mga tema, kahati ng app; ang TONE3000 account, na nagsa-sign in at sign out sa loob mismo ng plug-in; ang mga DSP switch — <b class="ui">Magaan na NAM models</b>, <b class="ui">Stereo na amp</b>, <b class="ui">Tails sa paglipat</b>, <b class="ui">Ihanay ang mga rig</b>; at ang pintuan papunta sa control map ng app. Sa host ang audio interface, kaya wala ito roon.</li>
+      </ul>
+      <p>Nananatili sa labas ang para sa buong app sa halip na sa isang track: nakatago sa loob ng host ang looper, ang sampler, ang mga loop track, ang mga backing track at ang block na <b class="ui">Send</b>. Ang mga input ng chain ay ang input ng plug-in at ang sidechain ng host, na puwedeng gawing key ng compressor.</p>
+
+      <h3>Iisang aklatan kasama ng app</h3>
+      <p>Sa iOS, iisang aklatan ang pinagsasaluhan ng app at ng Audio Unit nito. Nasa listahan ng plug-in ang preset na na-save mo sa app sa susunod na pagbukas dito ng GarageBand o AUM, at nasa aklatan ng app ang capture na na-download mo sa loob ng host. Isang bangko lang sa bawat pagkakataon ang ipinapakita ng listahan ng preset ng plug-in, gaya ng sa app: ang bank menu sa ilalim ng search field ang nagpapalit nito, at sa User 1 napupunta ang bawat save. Ang folder ng NAMper sa Files app (<b class="ui">On My iPhone → NAMper</b>) ang pintuan papasok sa aklatang iyon: kinukuha ang mga capture, impulse, zip at preset na inihulog doon sa susunod na pagbalik ng app sa harap.</p>
+
       <h3>Ang 18 parameter</h3>
-      <p>Ang sariling panel ng plugin ay maliit na branded na guhit na nagsasabing <b class="ui">NAMper</b> at <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>. Ang lahat ng tunay na kontrol ay mga parameter na kayang i-automate ng host, at labingwalo ang mga ito:</p>
+      <p>Nakikita pa rin ng host ang nakapirming hanay ng mga parameter na puwedeng i-automate — ang mga hanay na inililista nito sa sarili nitong panel at isinusulat sa automation. Umaabot ang bawat isa sa unang block ng uri nito sa rig na naka-load: ang <b class="ui">Gate On</b> ang gate ng rig, ang <b class="ui">Bass</b> ang EQ nito, ang <b class="ui">Reverb Mix</b> ang reverb nito, gaya ng ginagawa ng MIDI map ng app.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Block</th><th>Mga parameter</th></tr></thead>
@@ -178,17 +191,16 @@
           </tbody>
         </table>
       </div>
-      <p>Bawat isa sa kanila ay puwedeng i-automate mula sa host. Ang mga on/off na parameter ay mga floating-point na halaga mula 0 hanggang 1, kaya iginuguhit ng karamihan sa mga host ang mga ito bilang slider sa halip na switch — naka-on ang kahit anong nasa kalahatian pataas. May tatlo ring factory preset na inilalantad sa host: <b class="ui">Clean</b>, <b class="ui">Crunch</b> at <b class="ui">Lead</b>.</p>
+      <p>Ang mga on/off na parameter ay mga floating-point na halaga mula 0 hanggang 1, kaya iginuguhit ng karamihan sa mga host ang mga ito bilang slider sa halip na switch — naka-on ang kahit anong nasa kalahatian pataas. Sa Audio Unit, ang listahan ng rig ang sariling preset menu ng host: bawat factory rig, pagkatapos ang bawat preset na na-save mo, ayon sa pangalan.</p>
 
       <div class="note warn">
-        <div class="t">Ano ang hindi dala ng plugin</div>
-        <p>Walang NAM model. Walang cab IR. Walang modulation block. Walang rig document man lang — ang 18 halaga ng parameter na iyon lang ang sine-save ng host at wala nang iba, kaya hindi napupunta sa plugin ang rig na binuo mo sa app. Wala ring MIDI input sa bersyong plugin.</p>
+        <div class="t">MIDI sa isang host</div>
+        <p>Tumatanggap ng MIDI mula sa host ang VST3 at CLAP ng Mac — umaabot sa control map ng rig ang mga controller, note at program change gaya ng sa app. Walang MIDI input ang Audio Unit: patakbuhin ito gamit ang automation ng host.</p>
       </div>
-      <p>Basahin iyan nang tapat: sa loob ng isang host, ang NAMper ay isang siksik na amp-at-effects na channel, hindi ang buong app. Kung gusto mo ang mga NAM capture mo, ang mga cabinet mo, ang looper o ang setlist, patakbuhin ang app mismo at doon mag-record.</p>
       <div class="note tip">
         <div class="t">Paggamit ng dalawa</div>
-        <p>Puwede mong patakbuhin ang buong app at iruta ang output nito sa isang DAW, o gamitin ang plugin para sa mabilisang guitar channel sa track na nire-record mo na sa isang host. Umiiral ang recorder ng Perform tab at ang DAWproject export nito para sa unang ruta — tingnan ang
-          <a href="/docs/fil/perform.html">Perform at lyrics</a>.</p>
+        <p>Puwede mong patakbuhin ang buong app at iruta ang output nito sa isang DAW, o gamitin ang plugin para sa mabilisang guitar channel sa track na nire-record mo na sa isang host. Umiiral ang recorder at ang DAWproject export nito para sa unang ruta — tingnan ang
+          <a href="/docs/fil/perform.html#recording">Perform at lyrics</a>.</p>
       </div>
     </section>
 
@@ -198,7 +210,7 @@
       <h3>Pagpapatakbo ng mga AAP effect</h3>
       <p>Nakalista sa seksyong <b class="ui">Mga Plugin</b> sa pinakailalim ng blocks palette ang bawat AAP effect na naka-install sa telepono. Kung walang laman, ganito ang nakasulat: <b class="ui">Walang naka-install na AAP effect. Lilitaw dito ang mga app na may Audio Plugins for Android.</b> Pumili ng isa at bubukas ang block na may mga parameter ng plugin bilang mga slider; kung may sariling interface ang plugin, binubuksan ito ng <b class="ui">Open plugin UI</b> sa sarili nitong window. Pinapalitan ng replace menu ng block ang plugin, at ang mga halaga ng parameter at ang estado ng plugin ay sumasama sa preset mo gaya ng ginagawa nila sa iOS.</p>
       <h3>Ang NAMper bilang AAP effect</h3>
-      <p>Nahahanap ng kahit anong AAP host ang NAMper bilang effect na pinangalanang <b class="ui">NAMper</b> mula sa <b class="ui">retroaktive</b>: stereo in, stereo out, ang parehong labingwalong parameter ng AUv3 at ang parehong tatlong preset, na ang estado ay sine-save ng host. Pareho rin ang mga limitasyon — ito ang compact na amp-at-effects channel, hindi ang buong app.</p>
+      <p>Nahahanap ng kahit anong AAP host ang NAMper bilang effect na pinangalanang <b class="ui">NAMper</b> mula sa <b class="ui">retroaktive</b>: stereo in, stereo out, ang parehong labingwalong parameter ng AUv3, na ang estado ay sine-save ng host. Hindi tulad ng AUv3, ito pa rin ang compact na amp-at-effects channel — ang chain sa likod ng mga parameter na iyon at tatlong preset, <b class="ui">Clean</b>, <b class="ui">Crunch</b> at <b class="ui">Lead</b> — hindi ang buong app.</p>
     </section>
 
     <nav class="pager">

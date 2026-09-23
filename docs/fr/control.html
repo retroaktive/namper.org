@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIDI et contrôle — Documentation NAMper</title>
 <meta name="description" content="La carte de contrôle et le MIDI learn, tout ce à quoi tu peux mapper, le mapping MIDI intégré, l'appairage Bluetooth, les déclencheurs de sons appris, et l'accordeur.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="MIDI et contrôle — Documentation NAMper">
@@ -142,7 +143,7 @@
       <p>Tu n'as pas besoin de partir de l'onglet Control. Fais un appui long sur presque
         n'importe quel contrôle dans l'app — un potentiomètre, une ligne de puces, un pad du
         looper, un pad du sampler, les boutons de transport de Perform — et le menu propose
-        <b class="ui">MIDI Learn: &lt;name&gt;</b> pour ce contrôle précis. Il se met en
+        <b class="ui">MIDI Learn : &lt;name&gt;</b> pour ce contrôle précis. Il se met en
         surbrillance et affiche <b class="ui">BOUGEZ UN CONTRÔLE MIDI…</b> ; bouge la pédale et le
         mapping est fait. <b class="ui">Annuler le learn</b> permet de revenir en arrière si tu as
         saisi le mauvais potentiomètre.</p>
@@ -165,8 +166,7 @@
             <tr><td><b class="ui">Aucune action</b></td><td>Laisse la ligne inerte.</td></tr>
             <tr><td><b class="ui">Pad du sampler</b></td><td><b class="ui">Pad 1</b> et suivants, un
               par pad chargé.</td></tr>
-            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap track 1</b>…<b class="ui">Tap
-              track 4</b>, <b class="ui">Marche / arrêt</b>, <b class="ui">Tout effacer</b>.</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Tap piste 1</b>…<b class="ui">Tap piste 4</b>, <b class="ui">Marche / arrêt</b>, <b class="ui">Tout effacer</b>.</td></tr>
             <tr><td><b class="ui">Preset</b></td><td>Chaque preset de rig par son nom, plus
               <b class="ui">Preset suivant</b>.</td></tr>
             <tr><td><b class="ui">Scène</b></td><td><b class="ui">Lecture / pause</b>,
@@ -181,6 +181,13 @@
         <b class="ui">Param de bloc · Rig actif</b>. Elles suivent le rig qui a actuellement le
         focus MIDI, si bien qu'un seul footswitch peut basculer « le drive du rig que je joue en
         ce moment », plutôt qu'un bloc fixe dans un rig fixe.</p>
+      <p>Deux groupes de plus sont arrivés avec les banques de presets et le morph de scènes. Sous
+        <b class="ui">Preset</b> : <b class="ui">Banque de presets selon la valeur</b> (0 est la banque d'usine,
+        1–3 les banques utilisateur), <b class="ui">Banque de presets suivante</b> et
+        <b class="ui">Banque de presets précédente</b>. Sous <b class="ui">Scènes</b>, pour une ligne CC :
+        <b class="ui">Morph à la pédale</b> et une paire de scènes — les potards glissent entre les
+        valeurs des deux scènes à mesure que la pédale bouge, et les interrupteurs basculent à
+        mi-course. Voir <a href="/docs/fr/rig.html#presets">presets et scènes</a>.</p>
       <p>Deux contraintes valent la peine d'être retenues avant de câbler une pédale :</p>
       <ul style="--nc:var(--amp)">
         <li><b>Un paramètre de bloc continu a besoin d'un CC.</b> Les notes et les sons appris
@@ -316,9 +323,11 @@
         être précis sur une corde.</p>
 
       <h3>Instrument et accordage</h3>
-      <p>NAMper détermine tout seul ce que tu tiens et l'affiche sous forme de pastille :
-        <b class="ui">GUITARE</b>, <b class="ui">BASSE</b> ou <b class="ui">UKULÉLÉ</b>. Il n'y a pas
-        de sélecteur — branche une basse et l'accordeur suit.</p>
+      <p>La pastille dans le coin, c'est l'instrument : <b class="ui">GUITARE</b>,
+        <b class="ui">BASSE</b> ou <b class="ui">UKULÉLÉ</b>. C'est un choix, pas une devinette —
+        touche-la et choisis dans le menu. À deviner, l'accordeur prenait sans cesse les harmoniques
+        du Mi d'une basse pour un accord de guitare, alors il n'essaie plus de les distinguer à
+        l'oreille.</p>
       <p>Les puces d'accordage s'appliquent au mode <b class="ui">POLY</b>, et chaque instrument se
         souvient de son propre choix :</p>
       <div class="tw">

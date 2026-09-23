@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>設定リファレンス — NAMperドキュメント</title>
-<meta name="description" content="NAMperの設定シートにあるすべてのカードとすべての行: オーディオインターフェース、チャンネル名、外観、セット、歌詞、メトロノーム、プロンプト、リセット、診断 — さらに他の場所にある設定について。">
+<meta name="description" content="NAMperの設定シートにあるすべてのカードとすべての行: オーディオインターフェース、チャンネル名、外観とテーマ、セット、歌詞、メトロノーム、ルーパー、プロンプト、リセット、診断 — さらに他の場所にある設定について。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="設定リファレンス — NAMperドキュメント">
@@ -80,6 +81,7 @@
         <li><a href="#set">セット</a></li>
         <li><a href="#lyrics">歌詞</a></li>
         <li><a href="#metronome">メトロノーム</a></li>
+        <li><a href="#looper">ルーパー</a></li>
         <li><a href="#prompts">プロンプト</a></li>
         <li><a href="#reset">リセット</a></li>
         <li><a href="#diagnostics">診断</a></li>
@@ -110,9 +112,9 @@
             <tr><td><b class="ui">コントロール</b></td>
                 <td>MIDIと入力トリガー、何にでも割り当て可能――専用ページ：<a href="/docs/ja/control.html">MIDIとコントロール</a>。</td></tr>
             <tr><td><b class="ui">ステージ</b></td>
-                <td>クリック、セットのテンポとキー、歌詞の文字サイズ、そして歌詞が自分で開くかどうか――下記の<a href="#set">セット</a>、<a href="#lyrics">歌詞</a>、<a href="#metronome">メトロノーム</a>。</td></tr>
+                <td>クリック、セットのテンポとキー、歌詞の文字サイズ、歌詞が自分で開くかどうか、そしてルーパーのオートループのレベル――下記の<a href="#set">セット</a>、<a href="#lyrics">歌詞</a>、<a href="#metronome">メトロノーム</a>、<a href="#looper">ルーパー</a>。</td></tr>
             <tr><td><b class="ui">外観</b></td>
-                <td>ライト、ダーク、あるいはシステムに従う――<a href="#appearance">下記</a>。</td></tr>
+                <td>ライト、ダーク、あるいはシステムに従う、そしてテーマ――<a href="#appearance">下記</a>。</td></tr>
             <tr><td><b class="ui">案内とツアー</b></td>
                 <td>起動時の案内とクイックツアー――<a href="#prompts">下記</a>。</td></tr>
             <tr><td><b class="ui">トラブルシューティング</b></td>
@@ -136,12 +138,12 @@
             <tr><td><b class="ui">DSP負荷</b>チップ</td>
                 <td>プロセッサー負荷をパーセントで表示。停止中は<b class="ui">—</b>。60 %未満は緑、85 %までアンバー、それ以上は赤。</td></tr>
             <tr><td>歯車</td><td>設定 — このページです。</td></tr>
-            <tr><td><b class="ui">KEY</b>チップ</td>
-                <td>現在のキー、未設定なら<b class="ui">KEY</b>という文字。<b class="ui">キー設定</b>を開きます。</td></tr>
+            <tr><td><b class="ui">指定</b>チップ</td>
+                <td>現在のキー、未設定なら<b class="ui">指定</b>という文字。<b class="ui">キー設定</b>を開きます。</td></tr>
             <tr><td>メトロノームチップ</td>
                 <td>タップでクリックのオン/オフ。<strong>長押し</strong>で<b class="ui">テンポ設定</b>シート。<a href="/docs/ja/looper.html">ルーパー</a>を参照。</td></tr>
             <tr><td>音叉</td><td>チューナーを開きます。<a href="/docs/ja/control.html">MIDIとコントロール</a>を参照。</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">電源</b></td>
                 <td>オーディオエンジンの開始と停止。オンになるまで音は一切鳴りません。<a href="/docs/ja/setup.html#power">はじめに</a>を参照。</td></tr>
           </tbody>
         </table>
@@ -153,7 +155,8 @@
       <p><b class="ui">オーディオインターフェイス</b>カードは最も長いカードであり、設定の反映に
         再起動が必要な唯一のカードです。最初の4行は読み取り専用です: NAMperが実際に
         システムから何を受け取っているかを示すもので、インターフェースの調子が悪い理由を
-        調べる最も早い方法です。</p>
+        調べる最も早い方法です。Macでは同じページでインターフェースも選びます — 入力と出力の
+        デバイス、出力ペア — <a href="/docs/ja/mac.html#interface">Mac</a>を参照してください。</p>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
@@ -181,7 +184,11 @@
             <tr><td><b class="ui">インターフェイスの全出力を使用</b></td><td>スイッチ</td><td>オフ</td>
                 <td>すべての出力ペアを開き、ブランチやリグ、クリックがそれぞれ専用ペアを持てるようにします。ステレオ機器には不要です。</td></tr>
             <tr><td><b class="ui">軽量NAMモデル</b></td><td>スイッチ</td><td>オフ</td>
-                <td>TONE3000のA2キャプチャには軽量なサブモデルが含まれています。これをオンにするとすべてのNAMブロックがそのサブモデルで動作します — DSP負荷はごくわずか、ディテールはほんの少し減ります。サブモデルのないキャプチャには影響しません。すぐに反映されます。</td></tr>
+                <td>TONE3000のA2キャプチャには軽量なサブモデルが含まれています。これをオンにするとすべてのキャプチャがそのサブモデルで動作します — DSP負荷はごくわずか、ディテールはほんの少し減ります。サブモデルのないキャプチャには影響しません。すぐに反映されます。</td></tr>
+            <tr><td><b class="ui">切り替え時のテール</b></td><td>スイッチ</td><td>オン</td>
+                <td>プリセットを切り替えたとき、後に残るブロック — ディレイのリピート、リバーブの減衰 — を切り替えの瞬間に止めず、最大8秒まで鳴らし切ります。シーンがバイパスしたディレイ、リバーブ、フリーズ、FXループ、プラグインも、ドライ音の上で余韻を鳴らし切ります。その数秒間はDSP負荷が少し増えます。</td></tr>
+            <tr><td><b class="ui">リグを揃える</b></td><td>スイッチ</td><td>オフ</td>
+                <td>異なる入力のリグを、卓で合算される地点で最も遅いリグに合わせて遅延させるので、ギターとマイクが揃って届きます。オフでは各リグが自分のレイテンシのままです。1つの入力の経路同士はどちらの場合も常に揃います。</td></tr>
           </tbody>
         </table>
       </div>
@@ -214,11 +221,24 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>外観</h2>
       <p>チップ: <b class="ui">システム</b>、<b class="ui">ライト</b>、<b class="ui">ダーク</b>。
-        デフォルトは<b class="ui">システム</b>で、これはシート全体の中で唯一、タップした
-        瞬間に反映される設定です。</p>
-      <p>NAMperはダークを前提にデザインされています — メーター、LED、チェーンの
-        グラフィックはすべて暗いステージ向けに描かれています。<b class="ui">ライト</b>は
-        日中に必要な場合のためにありますが、アプリが最も見やすいのはダークの状態です。</p>
+        デフォルトは<b class="ui">システム</b>で、外観の変更はタップした瞬間に反映されます。</p>
+      <p>チップの下には<b>テーマ</b>があり、明暗それぞれに1つずつ選びます: ダークテーマと
+        ライトテーマを1つずつ選ぶと、<b class="ui">システム</b>はスマートフォンがダークのときは
+        ダークテーマを、そうでないときはライトテーマをまといます。ダークテーマは4つ —
+        Studio(アプリ本来のもの)、Midnight Violet、Ember、Deep Sea — ライトテーマは3つ
+        あります: デフォルトのConcrete(紙より一段暗いライトグレー)、アプリが最初に採用していた
+        紙のような白のDesk、そしてLinenです。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="ライトテーマConcreteのリグタブ: ライトグレーのページ、白いカード、ファミリーカラーで彩られたチェーンのタイル。">
+        <figcaption>Concrete — NAMperが最初に使うライトテーマ</figcaption>
+      </figure>
+      <p><b class="ui">色をカスタマイズ…</b>は今使っているテーマを自分用にコピーし、各役割を
+        手で設定できるようにします — 背景、カード、文字、つまみ、パワーボタン、そして各ブロック
+        ファミリーのアクセントカラー。同じエディタの<b class="ui">角の丸み</b>は、アプリ中の
+        角の丸みを一度にまとめて拡大縮小します。シャープ(30 %)からとても丸い(200 %)まで
+        で、各テーマは50 %で出荷されています。リセットの行を使うと、コピーを元のテーマに
+        戻せます。</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -235,7 +255,7 @@
           <thead><tr><th>値</th><th>設定方法</th></tr></thead>
           <tbody>
             <tr><td>テンポ</td><td>Rigヘッダーのメトロノームチップを長押しするか、<b class="ui a">ループ</b>タブのテンポブロックから。ルーパーは最初のループからも検出し、バッキングトラックを選ぶとその曲のテンポが適用されます。</td></tr>
-            <tr><td>キー</td><td>Rigヘッダーの<b class="ui">KEY</b>チップ。バッキングトラックを選ぶとその曲のキーが適用されます。</td></tr>
+            <tr><td>キー</td><td>Rigヘッダーの<b class="ui">指定</b>チップ。バッキングトラックを選ぶとその曲のキーが適用されます。</td></tr>
           </tbody>
         </table>
       </div>
@@ -265,12 +285,14 @@
           <tbody>
             <tr><td>クリックレベル</td><td>スライダー、−40…+6 dB</td><td>約−3 dB</td>
                 <td>クリックの音量。</td></tr>
-            <tr><td><b class="ui">クリック出力</b></td><td>チップ: <b class="ui">メイン</b>、<b class="ui">Out 3/4</b>、<b class="ui">Out 5/6</b>…</td><td><b class="ui">メイン</b></td>
+            <tr><td><b class="ui">クリック出力</b></td><td>メニュー: <b class="ui">メイン</b>、続いて各出力ペアをインターフェースのドライバーが付けたチャンネル名で(名前がなければ<b class="ui">3 / 4</b>)</td><td><b class="ui">メイン</b></td>
                 <td>どのハードウェア出力ペアがクリックを運ぶか。ペアが複数あるときのみ表示され、メイン以外のペアを選ぶと<b class="ui">インターフェイスの全出力を使用</b>が強制的に有効になります。</td></tr>
+            <tr><td><b class="ui">クリックのチャンネル</b></td><td>チップ: <b class="ui">L+R</b>、<b class="ui">L</b>、<b class="ui">R</b>(別のペアではそのチャンネル番号)</td><td><b class="ui">L+R</b></td>
+                <td>ペアの両チャンネル、またはどちらか一方: モノラルのクリックを1つの出力に送り、もう一方はミックス用に残せます。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>このカードの注記こそが役に立つ部分です: <b class="ui">クリックはマスターFXチェーンの後でミックスされるため、リバーブやリミッターの影響を受けません。イヤモニ用には別の出力ペアを選択してください。</b></p>
+      <p>このカードの注記こそが役に立つ部分です: <b class="ui">クリックはマスターFXチェーンの後でミックスされるため、リバーブやリミッターの影響を受けません。イヤモニ用には別の出力ペアを選択してください。クリックがミックスと同じパックを共有する場合は、片方のチャンネルだけを選んでください。</b></p>
       <p>つまり、マスターリバーブがクリックをにじませることも、マスターリミッターが
         クリックが鳴るたびにバンド全体をダッキングさせることもありません。専用ペアへ
         送れば、ドラマーにはクリックが聞こえ、フロントオブハウスには聞こえません。</p>
@@ -279,8 +301,27 @@
         — ここからではありません。</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>ルーパー</h2>
+      <p><b class="ui">ステージ</b>ページの<b class="ui">ルーパー</b>カードで、ルーパーの
+        <a href="/docs/ja/looper.html#auto">AUTOモード</a>を調整します。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">オートループを閉じる無音</b></td><td>スライダー、0.5…4拍</td><td>1拍</td>
+                <td>フレーズの後の静けさが、演奏から聞き取ったテンポの拍数でどれだけ続いたらテイクが自動で閉じるか。隙間の多いフレーズなら長めに、詰まったフレーズなら短めに。</td></tr>
+            <tr><td><b class="ui">オートループを開始する信号</b></td><td>スライダー、−54…−24 dB</td><td>−40 dB</td>
+                <td>アームされたセルが録音を始めるまでに、演奏がほんの数ミリ秒上回り続ける必要があるレベル。低いほど敏感になります。弦に軽く触れた音や部屋の音はその下にとどまります。</td></tr>
+            <tr><td><b class="ui">無音の間もテンポを保つ</b></td><td>スイッチ</td><td>オン</td>
+                <td>ループは、一度も止まらなかったとしたらいたはずの位置から再生を始めるので、カウントが途切れません。オフでは、閉じたときに頭から再生します。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>プロンプト</h2>
+      <h2 id="prompts"><span class="n">09.9</span>プロンプト</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
@@ -303,7 +344,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>リセット</h2>
+      <h2 id="reset"><span class="n">09.10</span>リセット</h2>
       <p>ボタンは2つで、それぞれ確認ダイアログの先にあります。</p>
       <div class="tw">
         <table>
@@ -331,7 +372,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>診断</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>診断</h2>
       <p>NAMperはインターフェースのルーティングとピークを記録するプレーンテキストの
         エンジンログを保持しています。ログが存在する場合、このカードには
         <b class="ui">エンジンログを共有</b>と<b class="ui">エンジンログをクリア</b>が
@@ -346,7 +387,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>設定にないもの</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>設定にないもの</h2>
       <p>ここで探しても見つからないものが3つあります。</p>
       <h3>トリガークオンタイズ</h3>
       <p><b class="ui">クオンタイズ</b>つまみとそのグリッドチップは、キットやパッドごとではなく

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform at lyrics — Dokumentasyon ng NAMper</title>
-<meta name="description" content="Mga backing track, ang setlist at ang mga section nito, mga preset marker sa timeline, ang full-screen na lyrics teleprompter na may mga anchor, multitrack recording at DAWproject export.">
+<meta name="description" content="Mga backing track, ang mga stage button, ang setlist at ang mga awit nito, mga preset marker sa timeline, ang full-screen na lyrics teleprompter na may mga anchor, multitrack recording at DAWproject export.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform at lyrics — Dokumentasyon ng NAMper">
@@ -66,13 +67,14 @@
   <main>
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM AT LYRICS</div>
     <h1>Pagtugtog ng set.</h1>
-    <p class="lede">Ang <b class="ui a">Tanghal</b> tab ang tinitingnan mo sa entablado: mga backing track, setlist ng mga section, mga pagbabago ng preset na kusang pumuputok, full-screen na teleprompter para sa mga salita mo, at recorder na kumukuha sa buong gabi bilang mga stem.</p>
+    <p class="lede">Ang <b class="ui a">Tanghal</b> tab ang tinitingnan mo sa entablado: mga backing track, setlist ng mga awit, malalaking stage button na nagpapalit ng tunog, mga pagbabago ng rig na kusang pumuputok mula sa timeline, full-screen na teleprompter para sa mga salita mo, at recorder na kumukuha sa buong gabi bilang mga stem.</p>
 
     <nav class="toc">
       <div class="slab">SA PAHINANG ITO</div>
       <ul>
         <li><a href="#tracks">Mga backing track</a></li>
         <li><a href="#player">Ang player card</a></li>
+        <li><a href="#stage">Ang mga stage button</a></li>
         <li><a href="#setlist">Mga setlist at awit</a></li>
         <li><a href="#sections">Ano ang inilalabas ng isang awit</a></li>
         <li><a href="#markers">Mga marker</a></li>
@@ -87,7 +89,7 @@
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tracks"><span class="n">06.1</span>Mga backing track</h2>
       <p>Binubuksan ng <b class="ui">+</b> button sa header ng <b class="ui">SETLIST</b> (<b class="ui">Mag-import ng track</b>) ang Files picker. Multi-select ito, kaya magdala ng buong set nang sabay, at tinatanggap nito ang kahit anong kayang i-decode ng iOS. Kinokopya ang bawat file papunta sa <b class="ui">backing/</b> at nagiging setlist section na ipinangalan sa file.</p>
-      <p>Kung hindi mabasa ang isang file, makukuha mo ang <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>Kung hindi mabasa ang isang file, makukuha mo ang <b class="ui r">Hindi ma-import ang &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="Ang Perform tab: ang player card na naka-load ang Test Song, ang waveform timeline nito, 120 BPM at key A, at ang DIRECT routing chip; sa ilalim nito ang SETLIST card na naka-on ang AUTO NEXT, at ang RECORDINGS card sa ibaba.">
@@ -105,20 +107,21 @@
       <h2 id="player"><span class="n">06.2</span>Ang player card</h2>
       <p>Ang card sa itaas ang transport. Ipinapakita ng name row ang naka-load na track, o ang <b class="ui">Walang piniling track</b>, kasama ang oras bilang <b class="ui">m:ss / m:ss</b>. Kapag nasuri na ng NAMper ang audio, idinaragdag nito ang tempo — <b class="ui">120 BPM</b> — at ang key.</p>
       <p>Hindi palamuti ang pagsusuring iyon. <strong>Ang pagpili ng track ay muling nag-aayos sa buong rig</strong>: sumusunod sa kanta ang global na tempo at key, kaya ang mga sync division ng delay at tremolo, ang bar grid ng looper, ang harmoniser at ang autotune ay pare-parehong dumadapo sa tamang kanta nang wala kang itinatakda.</p>
-      <p>Limang button ang nakaupo sa ilalim ng pangalan, mula kaliwa pakanan:</p>
+      <p>Anim na kontrol ang nakaupo sa ilalim ng pangalan, mula kaliwa pakanan — ang parehong mga transport key, sa parehong pagkakasunod, gaya ng full-screen na header ng mga stage button:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Button</th><th>Ginagawa</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">I-play</b></td><td>I-play at i-pause ang backing track</td></tr>
-            <tr><td><b class="ui">Ihinto</b></td><td>Ihinto at bumalik sa simula</td></tr>
-            <tr><td><b class="ui">Mag-record</b></td><td>Simulan at ihinto ang performance recorder (<a href="#recording">sa ibaba</a>)</td></tr>
+            <tr><td><b class="ui">Sa simula ng kanta</b></td><td>Bumalik sa simula ng awit na tumutugtog; malabo kapag walang timeline ang awit. Ang naunang awit ay isang tap sa listahan</td></tr>
+            <tr><td><b class="ui">I-play</b> / <b class="ui">I-pause</b></td><td>Iisang key: nagpa-pause ito habang tumutugtog ang awit at nagpapatuloy kung saan ito huminto. Ang stop — balik sa simula — ay sariling button ng hilera ng awit, o CC 92</td></tr>
+            <tr><td><b class="ui">Susunod na kanta</b></td><td>Tuloy sa susunod na awit nang hindi inaabot ang listahan</td></tr>
+            <tr><td><b class="ui">AUTO LYRICS</b></td><td>Kung kusang bumubukas ang teleprompter kasabay ng awit — ang parehong switch ng <b class="ui">Buksan ang lyrics kasabay ng kanta</b> sa Settings</td></tr>
             <tr><td><b class="ui">Magdagdag ng marker</b></td><td>Naglalapag ng pagbabago sa kinaroroonan ng playhead</td></tr>
             <tr><td><b class="ui">Lyrics</b></td><td>Buksan ang teleprompter, o mag-load ng lyrics file</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Pindutin nang matagal ang <b class="ui">I-play</b> o <b class="ui">Ihinto</b> para MIDI-learn ang mga ito — inaalok doon ang <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>, <b class="ui">MIDI Learn: susunod na section</b> at <b class="ui">MIDI Learn: nakaraang section</b>. Tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</p>
+      <p>Pindutin nang matagal ang isang transport key para MIDI-learn ito — inaalok doon ang <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>, <b class="ui">MIDI Learn: susunod na section</b>, <b class="ui">MIDI Learn: nakaraang section</b> at <b class="ui">MIDI Learn: susunod na kanta</b>. Tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</p>
       <h3>Level at routing ng backing</h3>
       <p>Sa ilalim ng mga buton, itinatakda ng isang nakahigang console fader ang antas ng backing sa
         dB mula −60 hanggang +12 at nagpapakita ng <b class="ui">-inf</b> sa pinakailalim; ibinabalik
@@ -136,15 +139,33 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>Ang mga stage button</h2>
+      <p>Pag-aari ng ilang malalaking button ang ibabang kalahati ng Perform tab — iyong kayang tamaan ng kamay sa gitna ng awit nang hindi tumitingin. Ang laman nila ay nakadepende kung may setlist na <b class="ui">LIVE</b>:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Walang live na setlist</b> — ang apat na <b class="ui">MGA SCENE</b> ng rig na nakabukas. Kinukuha ng walang lamang scene ang tumutugtog, gaya ng ginagawa ng mga scene chip.</li>
+        <li><b>May live na setlist, walang piniling awit</b> — ang mga awit ng set. Ang unang tap ang pumipili ng isa, at ang mga tunog nito ang pumapalit sa mga button.</li>
+        <li><b>May piniling awit</b> — ang sariling mga entry ng awit, bawat isa'y preset kasama ang scene na dala nito, ayon sa pagkakasunod ng awit. May ilaw ang tumutugtog, at ipinapakita lang ng button ang mga scene na hawak ng preset nito.</li>
+      </ul>
+      <p>Nagpapalit ang button sa sandaling lumapag ang daliri, hindi kapag iniangat ito, kaya hindi kailanman nawawala ang mabilis na tusok sa pagitan ng dalawang bar. Apat o walo ang mga ito: pinapalitan ito ng count chip sa header, at hangga't hindi ka pumipili, sumusunod ito sa screen. Pinipili ng grid ang hugis na nagpapanatiling pinakamalapit sa parisukat ang mga button. Kapag mas marami ang entry kaysa sa button, inililipat ng mga arrow ng header ang mga pahina, at sumusunod ang pahina sa entry na tumutugtog kapag inusad ng marker o pedal ang awit.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="Ang mga stage button sa full screen: malaki ang pangalan ng awit sa itaas kasama ang mga key na pabalik-sa-simula, play at susunod na awit sa tabi nito, at malalaking button sa ibaba, bawat isa'y nagpapangalan ng preset kasama ang letra ng scene nito na A, B o C.">
+        <figcaption>Full screen: ang pangalan ng awit, ang transport at ang mga tunog ng awit</figcaption>
+      </figure>
+      <p>Ibinibigay ng expand button sa header ang buong tab sa mga button. Sa full screen, malaki ang pangalan ng awit, at kasama sa tabi nito ang mga key ng player — pabalik sa simula, play / pause at susunod na awit — dahil hindi na nakikita ang player mismo.</p>
+      <p>Pindutin nang matagal ang button para sa menu nito: ang pad menu ng pahina ng rig, sa entablado — <b class="ui">Palitan ang tunog…</b>, <b class="ui">Kasalukuyang rig</b>, <b class="ui">Alisin ang pad</b> at MIDI Learn, na nagtatali ng footswitch sa button na iyon ayon sa numero nito. Sinasadya ang pagpindot nang matagal (mga 0.8 s), kaya hindi ito kailanman humahadlang sa mabilis na tap. Pinipindot ng program change <em>n</em> ang stage button <em>n</em> habang live ang isang set: ang mga awit habang wala pang napipili, pagkatapos ay ang sariling mga entry ng piniling awit.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Mga setlist at awit</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Mga setlist at awit</h2>
       <p>Listahan ng mga awit ang <strong>setlist</strong>; isa lang ang <b class="ui">LIVE</b> sa
-        bawat sandali, at ang live na setlist ang may hawak ng preset rail at ng MIDI: pinatutugtog ng
-        program change <em>n</em> ang awit <em>n</em>. Ang <strong>awit</strong> ay isang pangalan,
+        bawat sandali, at ang live na setlist ang may hawak ng preset rail at ng MIDI: pinipindot ng
+        program change <em>n</em> ang stage button <em>n</em>. Ang <strong>awit</strong> ay isang pangalan,
         isang nakaayos na listahan ng inilalabas nito, at isang <em>opsyonal</em> na backing track
         kasama ang mga marker at liriko nito. Kasing-tibay rin ang awit na walang anumang audio: iyon
         ang tunog na ipapatugtog mo rito, tinawag mula sa parehong listahan.</p>
-      <p>Dala ng ulo ng card ang <b class="ui">SETLISTS</b> na buton — lumikha, pumili, magpalit ng
+      <p>Dala ng ulo ng card ang <b class="ui">SETLISTS</b> na buton — icon lang nito sa telepono — para lumikha, pumili, magpalit ng
         pangalan, magbahagi at magbura ng set —, isang <b class="ui">AUTO NEXT</b> na switch, at isang
         <b class="ui">+</b> na nag-a-import ng mga audio file (isang awit sa bawat file), nagdaragdag
         ng <b class="ui">Kantang walang backing track</b>, o gumagawa ng awit mismo
@@ -179,7 +200,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Ano ang inilalabas ng isang awit</h2>
+      <h2 id="sections"><span class="n">06.5</span>Ano ang inilalabas ng isang awit</h2>
       <p>Binubuksan ng edit button ang editor ng kanta: field na <b class="ui">Pangalan ng kanta</b>, backing picker na ang unang entry ay <b class="ui">Kantang walang backing track</b>, ang row ng <a href="#lyrics">lyrics</a>, ang listahan ng dinadala ng kanta, at <b class="ui">Tanggalin ang kanta</b> sa ibaba.</p>
       <p>May dagdag na hilerang <b class="ui">Haba</b> ang kantang walang backing track — ang
         timeline na tinatakbuhan nito. Magtakda ng haba at binibilang ito ng transport sa orasan sa
@@ -202,16 +223,22 @@
             <a href="/docs/fil/sampler.html">pad</a>.</td></tr>
         </tbody>
       </table>
-      <p>Sunod-sunod na ipinapataw ang listahan kapag inihanda ang awit, kaya ang <em>huling</em>
-        preset ng rig doon ang tunog na pagsisimulan mo; ang mga nasa itaas nito ay nariyan para
-        maabot ng mga <a href="#markers">marker</a>. Umaakyat, bumababa at nabubura ang mga hilera
-        mula sa sarili nilang menu.</p>
+      <p>Kapag inihanda ang awit, ang <em>unang</em> preset ng rig sa listahan ang tunog na pagsisimulan mo ng awit; ang mga nasa ibaba nito ay nariyan para maabot ng mga <a href="#markers">marker</a>, ng mga stage button at ng footswitch, at ang pagkakasunod ang dinaraanan ng <em>susunod / nakaraang preset sa awit</em>. Para ayusin muli, hilahin ang isang hilera sa grip — ang tatlong guhit sa kanang gilid nito. Iniaalok lang ng mga letra ng scene ng isang hilera ang mga scene na hawak ng preset na iyon, at binubura ng muling pag-tap sa napiling letra ang pinili.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="Ang editor ng awit: ang pangalan at backing ng awit, pagkatapos ang listahan ng tinatawag nito — mga preset ng rig na bawat isa'y may mga letra ng scene at grip, isang looper preset at isang sampler kit.">
+        <figcaption>Ang editor ng awit: mga preset kasama ang mga scene nila, isang looper preset, isang kit</figcaption>
+      </figure>
       <h3>Pagpili ng preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="Ang pampiling preset ng rig: isang search field sa ibabaw ng listahan, at mga hilera na may program number, ang bangko, ang takip, ang pangalan ng preset at ang mga tag nito.">
+        <figcaption>Ang pampiling preset ng rig: bawat bangko sa iisang listahan</figcaption>
+      </figure>
       <p>Ipinapakita ng pampiling preset ng rig ang parehong numero gaya ng rail — <b class="ui">0</b>
-        … <b class="ui">127</b> — kasama ang takip at isang search field sa ibabaw ng listahan na
-        sumasala ayon sa pangalan, numero at tag. At <strong>pinakikinggan ka nito</strong> habang
+        … <b class="ui">127</b> — para sa bawat bangko sa iisang listahan, nauuna ang sa factory, bawat hilera ay may marka ng bangko nito at dala ang takip at mga tag nito; sumasala ang search field ayon sa pangalan, numero at tag. At <strong>pinakikinggan ka nito</strong> habang
         naghahanap: i-tap ang isang hilera at talagang ilo-load ito ng rig, kaya sa tainga mo pipiliin
-        ang tunog. Isara ang pampili nang walang piniling anuman at babalik ang rig sa dating
+        ang tunog (pinapatay iyon ng speaker sa header ng pampili). Idinaragdag ng check mark ang naka-highlight na preset; isara ang pampili nang walang piniling anuman at babalik ang rig sa dating
         kalagayan.</p>
       <p>Gumagana rin ang kabaligtaran: sa menu ng hilera ng isang preset sa rail ng Rig tab ay may
         <b class="ui">Idagdag sa set…</b> — pumili ng setlist, tapos ng isa sa mga awit nito o ng
@@ -219,7 +246,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Mga marker</h2>
+      <h2 id="markers"><span class="n">06.6</span>Mga marker</h2>
       <p>Ang marker ay isang sandali sa timeline ng awit na naglalabas ng isa sa sariling entry ng awit
         na iyon. Malinis na verse, crunch na chorus, lead para sa solo — minsan lang ilagay, at
         pagkatapos ay hands-free na sa tuwing tutugtugin mo ito.</p>
@@ -251,7 +278,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Lyrics at ang teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Lyrics at ang teleprompter</h2>
       <p>Dinadala ng NAMper ang mga salita mo para sa iyo. Bigyan ang isang track ng plain text file at magiging full-screen na teleprompter ito na kusang bumubukas kapag nagsimula ang kanta at gumugulong sa bilis na itinuro mo rito.</p>
 
       <h3>Pag-load ng lyrics</h3>
@@ -287,7 +314,7 @@
       </figure>
       <p>Buong screen ang teleprompter, at ito ay <strong>kusang bumubukas kapag nagsimula ang pagtugtog</strong>
         sa track na may lyrics. Nasa header nito ang isang back button, ang pangalan ng track, ang <b class="ui">m:ss / m:ss</b> readout at isang play/pause button. <strong>Ang pag-tap kahit saan sa screen ay nagpapalit ng play/pause</strong>  — hindi mo kailangang maghanap ng maliit na target habang may hawak kang gitara.</p>
-      <p>Switch ang pagbukas nito nang kusa: Settings → <b class="ui">Entablado</b> →
+      <p>Switch ang pagbukas nito nang kusa: <b class="ui">AUTO LYRICS</b> sa tabi ng lyrics button sa player card, ang parehong switch sa menu ng lyrics button, at Settings → <b class="ui">Entablado</b> →
         <b class="ui">Buksan ang lyrics kasabay ng kanta</b>. Kapag naka-off, nananatili sa kinaroroonan
         ang tab na binubuksan mo, at binubuksan ng button na <b class="ui">Lyrics</b> ang lyrics
         kapag kailangan mo.</p>
@@ -324,7 +351,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Mga perform preset</h2>
+      <h2 id="presets"><span class="n">06.8</span>Mga perform preset</h2>
       <p>Binubuksan ng <b class="ui">MGA PRESET</b> chip sa header ng setlist ang <b class="ui">Mga Perform Preset</b>. Dala ng naka-save na perform preset ang <strong>buong setlist</strong>: bawat section kasama ang mga hakbang at bar nito, ang estado ng <b class="ui">AUTO NEXT</b>, at ang lyrics — teksto, window at mga anchor — ng bawat track na mayroon nito.</p>
       <p>Ang hindi nito dala ay ang audio. Itinatago ang mga backing track bilang <strong>mga reference sa pangalan ng file</strong>, kaya nananatiling maliit ang preset at naibabahagi ito. I-load ito sa ibang device at babalik sa mga hakbang lamang ang mga section na wala ang backing file; ang lyrics ng mga track na <em>naroon</em>  ay isinusulat pabalik sa disk gaya ng dati.</p>
       <div class="note tip">
@@ -334,8 +361,8 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Pag-record</h2>
-      <p>Kinukuha ng record button sa player card ang performance bilang <strong>tatlong nakahanay na stem</strong>. Tumatanggi ito nang may <b class="ui r">Naka-off ang audio — i-tap ang power button bago mag-record.</b> kung hindi tumatakbo ang engine.</p>
+      <h2 id="recording"><span class="n">06.9</span>Pag-record</h2>
+      <p>Kinukuha ng recorder sa <a href="/docs/fil/mix.html#recorder">Mix</a> tab ang performance bilang <strong>tatlong nakahanay na stem</strong>. Tumatanggi ito nang may <b class="ui r">Naka-off ang audio — i-tap ang power button bago mag-record.</b> kung hindi tumatakbo ang engine.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>Ano ang laman nito</th></tr></thead>
@@ -352,7 +379,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Mga recording project</h2>
+      <h2 id="projects"><span class="n">06.10</span>Mga recording project</h2>
       <p>Pinagsasama-sama ng <b class="ui">MGA RECORDING</b> card ang mga stem ng isang take sa isang
         <strong>project</strong>, ayon sa magkatulad nilang pangalang <b class="ui">Perf &lt;date&gt;</b>. Pinakabago muna, at ang limang pinakabagong project ang ipinapakita — nananatili sa disk sa <b class="ui">recordings/</b> ang mas lumang take, na naaabot sa pamamagitan ng Files app.</p>
       <p>May preview button ang isang project row na nagpapatugtog sa mix stem, ang pangalan ng project, isang share button (<b class="ui">I-export ang DAWproject</b>), isang delete button (<b class="ui">Tanggalin ang project</b>) at isang chevron (<b class="ui">Ipakita ang mga stem</b>). Nagpapalawak din dito ang pag-tap sa row.</p>
@@ -360,7 +387,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject export</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>DAWproject export</h2>
       <p>Ang share button sa isang <strong>project row</strong>  — hindi sa isang indibidwal na stem — ay nag-e-export sa buong take bilang <b class="ui">.dawproject</b> na file sa pamamagitan ng normal na iOS share sheet: I-save sa Files, i-AirDrop sa isang Mac, ilagay sa isang cloud folder. Bukas na interchange format ang DAWproject, kaya bubuksan ng kahit anong DAW na nagbabasa nito ang take nang walang converter.</p>
       <p>Sa loob, makakakuha ka ng isang track kada stem, ipinangalan sa stem, bawat isa'y may iisang clip na nagsisimula sa <strong>0</strong>  — kaya pumapantay ang lahat sa sandaling bumukas ang project. Isinusulat ang audio bilang <strong>24-bit na WAV</strong> sa orihinal na sample rate at bilang ng channel.</p>
       <div class="note warn">

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plugin — Documentazione NAMper</title>
-<meta name="description" content="Ospitare effetti Audio Unit dentro una catena NAMper, l'interfaccia del plugin incorporata, i limiti, come viene salvato lo stato del plugin — e cosa fa NAMper stesso come effetto AUv3 in un'altra app.">
+<meta name="description" content="Ospitare effetti Audio Unit dentro una catena NAMper, l'interfaccia del plugin incorporata, i limiti, come viene salvato lo stato del plugin — e NAMper stesso dentro un'altra app, con l'interfaccia e la libreria dell'app.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Plugin — Documentazione NAMper">
@@ -154,9 +155,10 @@
             <tr><td>Stereo</td>
                 <td>Ingresso e uscita del plugin funzionano in stereo, a qualunque frequenza di
                     campionamento sia impostato il motore.</td></tr>
-            <tr><td>Solo catene di rig</td>
-                <td>I plugin AU vanno dentro le catene di rig. La sezione <b class="ui">MASTER</b>
-                    accetta solo i blocchi propri di NAMper.</td></tr>
+            <tr><td>Catene, master, ritorni</td>
+                <td>I plugin AU vanno dentro le catene di rig, nella sezione <b class="ui">MASTER</b>
+                    e sui due ritorni di mandata — la stessa sezione <b class="ui">Plugin</b> compare
+                    in tutti i loro menu di aggiunta.</td></tr>
           </tbody>
         </table>
       </div>
@@ -212,11 +214,50 @@
         sommati a mono internamente: un front end mono in stile chitarra che alimenta un ampli. È
         deliberato, ed è ciò che vuoi per una chitarra in DI su una traccia mono.</p>
 
+      <h3>L'interfaccia dell'app nell'host</h3>
+      <p>Il plugin si apre con il rig dell'app stessa nella finestra dell'host: la catena dei
+        blocchi, le scene, gli editor dei blocchi, la libreria di catture e impulsi, i preset e le
+        impostazioni. È la stessa interfaccia su iPhone e iPad (l'AUv3 in GarageBand, AUM, Cubasis
+        e gli altri) e su Mac (Audio Unit, VST3 e CLAP — vedi
+        <a href="/docs/it/mac.html#plugin">Mac</a>). Scegli un preset e il plugin costruisce quel rig
+        sulla traccia, con le sue catture dalla libreria e i suoi impulsi dal set incluso; la
+        sessione porta con sé il rig stesso, quindi un progetto si apre anche su una macchina senza
+        la libreria.</p>
+      <p>L'intestazione è una sola riga: il marchio NAMper (apre <b class="ui">Informazioni</b> — la
+        versione, i link di aiuto, i credits e una via per il barattolo delle mance dell'app), il
+        preset, le scene, i misuratori, la libreria, gli strumenti, le impostazioni e il bypass. In
+        un host stretto la riga scorre di lato, con le impostazioni e il bypass fissati in fondo,
+        così l'interruttore è sempre a portata di mano.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>Gli strumenti</b> sono quelli dell'intestazione dell'app: il carico DSP, la tonalità,
+          il metronomo con il suo tempo (un tocco attiva il click, una pressione prolungata imposta il
+          tempo) e l'accordatore, ciascuno aperto come pannello sopra la catena.</li>
+        <li><b>Le impostazioni</b> contengono l'aspetto e i temi, condivisi con l'app; l'account
+          TONE3000, con accesso e uscita dentro il plugin; gli interruttori DSP —
+          <b class="ui">Modelli NAM leggeri</b>, <b class="ui">Amplificatore stereo</b>,
+          <b class="ui">Code al cambio</b>, <b class="ui">Allinea i rig</b>; e la porta verso la
+          mappa di controllo dell'app. L'interfaccia audio è quella dell'host, quindi lì non c'è.</li>
+      </ul>
+      <p>Ciò che appartiene a un'app intera e non a una traccia resta fuori: il looper, il sampler,
+        le tracce di loop, le basi e il blocco <b class="ui">Mandata</b> sono nascosti dentro un host.
+        Gli ingressi della catena sono l'ingresso del plugin e il sidechain dell'host, su cui il
+        compressore può agganciarsi.</p>
+
+      <h3>Una sola libreria con l'app</h3>
+      <p>Su iOS l'app e la sua Audio Unit condividono un'unica libreria. Un preset salvato nell'app
+        compare nell'elenco del plugin la volta successiva che GarageBand o AUM lo apre, e una
+        cattura scaricata dentro l'host è nella libreria dell'app. L'elenco dei preset del plugin
+        mostra un banco alla volta, come quello dell'app: il menu dei banchi sotto il campo di
+        ricerca lo cambia, e Utente 1 è dove finisce un salvataggio. La cartella NAMper nell'app File
+        (<b class="ui">On My iPhone → NAMper</b>) è la porta d'ingresso a quella libreria: catture,
+        impulsi, zip e preset trascinati lì vengono importati la prossima volta che l'app torna in
+        primo piano.</p>
+
       <h3>I 18 parametri</h3>
-      <p>Il pannello proprio del plugin è una piccola striscia con il marchio che mostra
-        <b class="ui">NAMper</b> e <b class="ui">Amp &amp; FX chain — tweak the parameters in the
-        host</b>. Tutti i controlli veri e propri sono parametri automatizzabili dall'host, e ce ne
-        sono diciotto:</p>
+      <p>L'host vede comunque un insieme fisso di parametri automatizzabili — le righe che elenca
+        nel proprio pannello e scrive nell'automazione. Ognuno raggiunge il primo blocco del suo tipo
+        nel rig caricato: <b class="ui">Gate On</b> è il gate del rig, <b class="ui">Bassi</b> il suo
+        EQ, <b class="ui">Reverb Mix</b> il suo riverbero, come fa la mappa MIDI dell'app.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Blocco</th><th>Parametri</th></tr></thead>
@@ -235,28 +276,23 @@
           </tbody>
         </table>
       </div>
-      <p>Ognuno di questi può essere automatizzato dall'host. I parametri on/off sono valori in
-        virgola mobile da 0 a 1, quindi la maggior parte degli host li disegna come cursori invece
-        che come interruttori — qualsiasi cosa a metà o oltre è attivo. Vengono esposti all'host
-        anche tre preset di fabbrica: <b class="ui">Clean</b>, <b class="ui">Crunch</b> e
-        <b class="ui">Lead</b>.</p>
+      <p>I parametri on/off sono valori in virgola mobile da 0 a 1, quindi la maggior parte degli
+        host li disegna come cursori invece che come interruttori — qualsiasi cosa a metà o oltre è
+        attivo. Nell'Audio Unit l'elenco dei rig è il menu dei preset dell'host stesso: ogni rig di
+        fabbrica, poi ogni preset che hai salvato, per nome.</p>
 
       <div class="note warn">
-        <div class="t">Cosa non porta con sé il plugin</div>
-        <p>Nessun modello NAM. Nessuna IR di cassa. Nessun blocco di modulazione. Nessun documento
-          di rig affatto — l'host salva solo quei 18 valori di parametro e nient'altro, quindi un
-          rig che hai costruito nell'app non passa nel plugin. Non c'è nemmeno ingresso MIDI nella
-          versione plugin.</p>
+        <div class="t">MIDI in un host</div>
+        <p>VST3 e CLAP su Mac ricevono MIDI dall'host — controller, note e program change arrivano
+          alla mappa di controllo del rig come nell'app. L'Audio Unit non ha ingresso MIDI: pilotala
+          invece con l'automazione dell'host.</p>
       </div>
-      <p>Prendilo alla lettera: dentro un host, NAMper è un canale compatto di ampli ed effetti,
-        non l'app intera. Se vuoi le tue catture NAM, le tue casse, il looper o la setlist, avvia
-        l'app stessa e registra da lì.</p>
       <div class="note tip">
         <div class="t">Usarli entrambi</div>
         <p>Puoi eseguire l'app completa e instradarne l'uscita in una DAW, oppure usare il plugin
           per un rapido canale chitarra su una traccia che stai già registrando in un host. Il
-          registratore della scheda Perform e la sua esportazione DAWproject esistono per la prima
-          strada — vedi <a href="/docs/it/perform.html">Perform e testi</a>.</p>
+          registratore e la sua esportazione DAWproject esistono per la prima strada — vedi
+          <a href="/docs/it/perform.html#recording">Perform e testi</a>.</p>
       </div>
     </section>
 
@@ -275,8 +311,10 @@
       <h3>NAMper come effetto AAP</h3>
       <p>Qualsiasi host AAP trova NAMper come effetto chiamato <b class="ui">NAMper</b> di
         <b class="ui">retroaktive</b>: ingresso stereo, uscita stereo, gli stessi diciotto
-        parametri dell'AUv3 e gli stessi tre preset, con lo stato salvato dall'host. Valgono gli
-        stessi limiti — è il canale compatto ampli-ed-effetti, non l'intera app.</p>
+        parametri dell'AUv3, con lo stato salvato dall'host. A differenza dell'AUv3 è ancora il
+        canale compatto ampli-ed-effetti — la catena dietro quei parametri e tre preset,
+        <b class="ui">Clean</b>, <b class="ui">Crunch</b> e <b class="ui">Lead</b> — non l'intera
+        app.</p>
     </section>
 
     <nav class="pager">

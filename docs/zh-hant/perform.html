@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>演出與歌詞 — NAMper 文檔</title>
-<meta name="description" content="伴奏音軌、曲目單及其段落、時間線上的預設標記點、帶錨點的全屏歌詞提詞器、多軌錄音以及 DAWproject 導出。">
+<meta name="description" content="伴奏音軌、舞臺按鈕、曲目單及其歌曲、時間線上的預設標記點、帶錨點的全屏歌詞提詞器、多軌錄音以及 DAWproject 導出。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="演出與歌詞 — NAMper 文檔">
@@ -67,7 +68,7 @@
     <div class="slab" style="--nc:var(--cloud)">06 · 演出與歌詞</div>
     <h1>演出這一套曲目。</h1>
     <p class="lede"><b class="ui a">演出</b> 標籤頁是你在臺上會盯著看的那一個:伴奏音軌、
-      由段落組成的曲目單、自動觸發的預設切換、一個顯示你詞句的全屏提詞器,還有一個把整晚演出
+      由歌曲組成的曲目單、用來切換音色的大號舞臺按鈕、自動觸發的預設切換、一個顯示你詞句的全屏提詞器,還有一個把整晚演出
       按音軌分別錄下來的錄音功能。</p>
 
     <nav class="toc">
@@ -75,6 +76,7 @@
       <ul>
         <li><a href="#tracks">伴奏音軌</a></li>
         <li><a href="#player">播放器卡片</a></li>
+        <li><a href="#stage">舞臺按鈕</a></li>
         <li><a href="#setlist">歌單與歌曲</a></li>
         <li><a href="#sections">一首歌會叫出什麼</a></li>
         <li><a href="#markers">標記</a></li>
@@ -92,7 +94,7 @@
         (<b class="ui">導入音軌</b>)會打開文件選擇器。它支持多選,可以一次性導入整套曲目,
         並且能接受 iOS 能解碼的任何格式。每個文件都會複製到 <b class="ui">backing/</b> 中,
         並成為一個以該文件命名的曲目單段落。</p>
-      <p>如果文件無法讀取,會顯示 <b class="ui r">Could not import &lt;name&gt;.</b></p>
+      <p>如果文件無法讀取,會顯示 <b class="ui r">無法導入 &lt;name&gt;。</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="Perform 標籤頁:已加載 Test Song 的播放器卡片,顯示其波形時間線、120 BPM 與 A 調,以及 DIRECT 路由晶片;下方是開啟了 AUTO NEXT 的 SETLIST 卡片,底部是 RECORDINGS 卡片。">
@@ -117,24 +119,26 @@
       <p>這項分析並不只是擺設。<strong>選擇一條音軌會重新調整整個音色組</strong>:全局速度和調性
         會跟隨歌曲變化,這樣延遲和顫音的同步分頻、循環樂句器的小節網格、和聲器與自動修音都會自動
         對上這首歌,無需你手動設置。</p>
-      <p>名稱下方有五個按鈕,從左到右依次是:</p>
+      <p>名稱下方有六個控件,從左到右依次排列——與舞臺按鈕全屏頁頭上的走帶鍵相同,順序也相同:</p>
       <div class="tw">
         <table>
           <thead><tr><th>按鈕</th><th>作用</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">播放</b></td><td>播放和暫停伴奏音軌</td></tr>
-            <tr><td><b class="ui">停止</b></td><td>停止並返回開頭</td></tr>
-            <tr><td><b class="ui">錄製</b></td><td>啟動和停止演出錄音功能(見<a href="#recording">下文</a>)</td></tr>
+            <tr><td><b class="ui">回到歌曲開頭</b></td><td>回到正在播放的這首歌的開頭；歌曲沒有時間線時變暗。更早的歌在列表裡點一下即可</td></tr>
+            <tr><td><b class="ui">播放</b> / <b class="ui">暫停</b></td><td>同一個鍵:歌曲播放時按下
+              暫停,再按從暫停處繼續。停止——回到開頭——是歌曲行自己的按鈕,或者 CC 92</td></tr>
+            <tr><td><b class="ui">下一首</b></td><td>直接進入下一首歌,不用去翻列表</td></tr>
+            <tr><td><b class="ui">自動歌詞</b></td><td>提詞器是否隨歌曲自動打開——與設置中的
+              <b class="ui">隨歌曲開啟歌詞</b> 是同一個開關</td></tr>
             <tr><td><b class="ui">新增標記</b></td><td>在播放位置放下一次切換</td></tr>
             <tr><td><b class="ui">歌詞</b></td><td>打開提詞器,或加載歌詞文件</td></tr>
           </tbody>
         </table>
       </div>
-      <p>長按 <b class="ui">播放</b> 或 <b class="ui">停止</b> 即可進行 MIDI 學習——
-        <b class="ui">MIDI 學習：播放/暫停</b>、<b class="ui">MIDI 學習：停止</b>、
-        <b class="ui">MIDI 學習：下一段落</b> 和
-        <b class="ui">MIDI 學習：上一段落</b> 都可以在那裡設置。參見
-        <a href="/docs/control.html">MIDI 與控制</a>。</p>
+      <p>長按任一走帶鍵即可進行 MIDI 學習——<b class="ui">MIDI 學習：播放/暫停</b>、<b class="ui">MIDI 學習：停止</b>、
+        <b class="ui">MIDI 學習：下一段落</b>、<b class="ui">MIDI 學習：上一段落</b>
+        和 <b class="ui">MIDI 學習：下一首</b> 都可以在那裡設置。參見
+        <a href="/docs/zh-hant/control.html">MIDI 與控制</a>。</p>
       <h3>伴奏電平與路由</h3>
       <p>按鈕下面是一條橫放的混音台推桿，把伴奏電平設在 −60 到 +12 dB 之間，最下方顯示
         <b class="ui">-inf</b>；點兩下可回到 0 dB。它和 <b class="ui">伴奏</b> 通道條是同一條
@@ -154,14 +158,44 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>舞臺按鈕</h2>
+      <p>演出標籤頁的下半部分屬於幾個大按鈕——演奏到一半,手不用看就能拍中的那種。按鈕上放什麼,
+        取決於是否有歌單處於 <b class="ui">現場</b> 狀態:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>沒有歌單在演出中</b>——當前音色組的四個 <b class="ui">場景</b>。空的場景會像場景
+          芯片那樣,把正在響的聲音存進去。</li>
+        <li><b>有歌單在演出中,但還沒選歌</b>——歌單裡的歌。第一次點按選中一首,它的聲音隨即佔據
+          這些按鈕。</li>
+        <li><b>已選中一首歌</b>——這首歌自己的條目,每個都是一個預設連同它攜帶的場景,按歌曲中的順序
+          排列。正在使用的那個會亮起,每個按鈕只顯示其預設實際包含的場景。</li>
+      </ul>
+      <p>按鈕在手指落下的瞬間就切換,而不是等手指抬起,所以兩個小節之間飛快的一戳永遠不會落空。按鈕
+        有四個或八個:頁頭的數量芯片可以切換,在你做出選擇之前,它跟隨屏幕大小。網格會選擇讓按鈕最接近
+        正方形的排布。條目比按鈕多時,用頁頭的箭頭翻頁;當標記或踏板讓歌曲往下走時,頁面會跟隨正在
+        使用的條目。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="全屏顯示的舞臺按鈕:頂部是大號的歌曲名稱,旁邊是回到開頭、播放和下一首鍵,下方是大按鈕,每個按鈕標著一個預設名和它的場景字母 A、B 或 C。">
+        <figcaption>全屏:歌曲名稱、走帶控制和這首歌的聲音</figcaption>
+      </figure>
+      <p>頁頭的展開按鈕讓這些按鈕佔滿整個標籤頁。全屏時,歌曲名稱會放大顯示,播放器的按鍵也會一起
+        出現在它旁邊——回到開頭、播放/暫停和下一首——因為播放器本身已經看不到了。</p>
+      <p>按住一個按鈕可打開它的菜單:就是音色組頁面上打擊墊的那份菜單,搬到了舞臺上——
+        <b class="ui">替換音色…</b>、<b class="ui">目前機架</b>、<b class="ui">清除打擊墊</b>
+        以及 MIDI 學習,它按編號把一個踏板開關綁定到該按鈕。按住需要刻意一點(約 0.8 秒),所以絕不會
+        妨礙快速點按。歌單處於演出中時,程序切換 <em>n</em> 會按下第 <em>n</em> 個舞臺按鈕:沒選歌時
+        對應歌曲,選中之後對應這首歌自己的條目。</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>歌單與歌曲</h2>
+      <h2 id="setlist"><span class="n">06.4</span>歌單與歌曲</h2>
       <p><strong>歌單</strong>就是一串歌；同一時間只有一份處於 <b class="ui">現場</b>，而處於演出中
-        的那份歌單擁有預設條與 MIDI：程式切換 <em>n</em> 播放第 <em>n</em> 首歌。一首
+        的那份歌單擁有預設條和 MIDI：程序切換 <em>n</em> 按下第 <em>n</em> 個舞臺按鈕。一首
         <strong>歌</strong>由名稱、它要叫出的東西的有序清單，以及一條<em>可有可無</em>的伴奏（連同
         標記與歌詞）組成。完全沒有音訊的歌同樣成立：它就是你用來演奏它的聲音，從同一份清單裡叫
         出來。</p>
-      <p>卡片標題列上有 <b class="ui">設定單</b> 按鈕——新增、選擇、重新命名、分享與刪除歌單——一個
+      <p>卡片標題列上有 <b class="ui">設定單</b> 按鈕——在手機上只顯示圖示——用來新增、選擇、重新命名、分享與刪除歌單——一個
         <b class="ui">自動切換</b> 開關，以及一個 <b class="ui">+</b>：匯入音訊檔（每個檔案成為
         一首歌）、新增 <b class="ui">無伴奏歌曲</b>，或者直接
         <b class="ui">來自機架預設</b> 建一首歌。打開 <b class="ui">自動切換</b> 之後，每首歌
@@ -189,7 +223,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>一首歌會叫出什麼</h2>
+      <h2 id="sections"><span class="n">06.5</span>一首歌會調出什麼</h2>
       <p>編輯按鈕開啟歌曲編輯器：<b class="ui">歌曲名稱</b> 欄位、第一項為 <b class="ui">無伴奏歌曲</b> 的伴奏選擇器、<a href="#lyrics">歌詞</a>列、歌曲調出內容的清單，以及底部的 <b class="ui">刪除歌曲</b>。</p>
       <p>沒有伴奏的歌曲還會多出一行 <b class="ui">時長</b>——它執行的時間軸。設定之後，走帶就用時鐘而
         不是音訊來計時：<a href="#lyrics">歌詞在上面捲動</a>，標記在上面觸發，長度走完歌曲也就結束，於是
@@ -209,20 +243,33 @@
             <a href="/docs/zh-hant/sampler.html">打擊墊</a>用的一組音色。</td></tr>
         </tbody>
       </table>
-      <p>歌曲就位時，這份清單按順序套用，所以清單上<em>最後</em>一個機架預設就是你開始這首歌時的
-        聲音；排在上面的那些，是留給<a href="#markers">標記</a>去拿的。每一列都能從自己的選單上移、
-        下移與刪除。</p>
+      <p>歌曲就位時，清單上<em>第一個</em>機架預設就是你開始這首歌時的聲音；排在它下面的那些，是留給
+        <a href="#markers">標記</a>、舞臺按鈕和腳踏開關去夠的，而這個順序也正是
+        <em>歌曲內下一個 / 上一個預設</em>依次經過的順序。要重新排序，按住一行右側的抓手——那三條橫線
+        ——拖動即可。每一行的場景字母只提供該預設實際包含的場景，再點一次已選中的字母則取消選擇。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="歌曲編輯器：歌曲名稱和伴奏，下面是它調出內容的清單——每個機架預設都帶著場景字母和抓手，另有一個循環器預設和一套採樣器套件。">
+        <figcaption>歌曲編輯器：帶場景的預設、一個循環器預設、一套套件</figcaption>
+      </figure>
       <h3>挑一個預設</h3>
-      <p>機架預設選擇器顯示和預設條相同的編號——<b class="ui">0</b> … <b class="ui">127</b>——帶封面，
-        清單上方還有依名稱、編號與標籤過濾的搜尋框。而且你翻的時候它會<strong>試聽</strong>：點一列，
-        機架就真的載入它，於是你是用耳朵挑聲音。不挑就關掉選擇器，機架會回到原來的樣子。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="機架預設選擇器：列表上方是搜索框，每一行有程序編號、所在的庫、封面、預設名稱和它的標籤。">
+        <figcaption>機架預設選擇器：所有庫都在同一個列表裡</figcaption>
+      </figure>
+      <p>機架預設選擇器顯示和預設條相同的編號——<b class="ui">0</b> … <b class="ui">127</b>——所有庫
+        都在同一個列表裡，出廠庫排在最前，每一行都標明所在的庫，並帶著封面和標籤；搜索框按名稱、編號和
+        標籤過濾。而且你翻的時候它會<strong>試聽</strong>：點一行，機架就真的載入它，於是你是用耳朵挑
+        聲音（選擇器頁頭的揚聲器可以關掉這一功能）。勾號會添加高亮的預設；不挑就關掉選擇器，機架會
+        回到原來的樣子。</p>
       <p>反方向也行：Rig 分頁預設條上某個預設的列選單裡有 <b class="ui">加入歌單…</b>——先選
         一份歌單，再選它的某首歌或 <b class="ui">新歌曲</b>，這個預設就會被附加到那首歌的清單
         末尾。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>標記</h2>
+      <h2 id="markers"><span class="n">06.6</span>標記</h2>
       <p>標記是歌曲時間軸上的一個時刻，它會叫出這首歌自己的某個項目。乾淨的主歌、破音的副歌、solo
         用的主音——放好一次，以後每次演奏都不用再動手。</p>
       <ol style="--nc:var(--drive)">
@@ -247,7 +294,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>歌詞與提詞器</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>歌詞與提詞器</h2>
       <p>NAMper 會替你記住歌詞。給一條音軌配上一個純文本文件,它就會變成一個全屏提詞器,在歌曲
         開始時自動打開,並按你教給它的節奏滾動。</p>
 
@@ -296,7 +343,8 @@
         它的頁頭包含一個返回按鈕、音軌名稱、<b class="ui">m:ss / m:ss</b> 讀數以及一個播放/暫停
         按鈕。<strong>點按屏幕任意位置即可切換播放/暫停</strong>——手裡拿著吉他時,你不必去找一個
         很小的按鈕。</p>
-      <p>它是否自己開啟是一個開關：設定 → <b class="ui">舞台</b> →
+      <p>它是否自己打開是一個開關：播放器卡片上歌詞按鈕旁邊的 <b class="ui">自動歌詞</b>，
+        歌詞按鈕菜單裡的同一個開關，以及設置 → <b class="ui">舞台</b> →
         <b class="ui">隨歌曲開啟歌詞</b>。關閉後，你原本所在的分頁保持不動，
         <b class="ui">歌詞</b> 按鈕會在你需要時開啟歌詞。</p>
 
@@ -335,7 +383,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>演出預設</h2>
+      <h2 id="presets"><span class="n">06.8</span>演出預設</h2>
       <p>曲目單頁頭的 <b class="ui">預設</b> 晶片會打開 <b class="ui">演出預設</b>。
         一個已保存的演出預設承載<strong>整份曲目單</strong>:每個段落及其步驟和小節數、
         <b class="ui">自動切換</b> 狀態,以及每條帶歌詞音軌的歌詞——文本、窗口和錨點。</p>
@@ -350,20 +398,20 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>錄製</h2>
-      <p>播放器卡片中的錄製按鈕會把整場演出捕捉為<strong>三條對齊的音軌</strong>。如果引擎尚未
+      <h2 id="recording"><span class="n">06.9</span>錄製</h2>
+      <p><a href="/docs/zh-hant/mix.html#recorder">混合</a> 標籤頁上的錄音機會把整場演出捕捉為<strong>三條對齊的音軌</strong>。如果引擎尚未
         運行,會拒絕執行並顯示 <b class="ui r">音頻已關閉——錄音前請點按電源按鈕。</b></p>
       <div class="tw">
         <table>
           <thead><tr><th>音軌</th><th>包含內容</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">mix</b></td><td>主輸出:音色組、循環樂句器、採樣打擊墊與伴奏合在一起</td></tr>
-            <tr><td><b class="ui">input</b></td><td>幹聲音效卡輸入,聲道數取決於你的音頻接口</td></tr>
+            <tr><td><b class="ui">input</b></td><td>乾聲音效卡輸入,聲道數取決於你的音頻接口</td></tr>
             <tr><td><b class="ui">伴奏</b></td><td>僅伴奏音軌本身,前提是已掛載伴奏</td></tr>
           </tbody>
         </table>
       </div>
-      <p>幹聲 <b class="ui">input</b> 音軌,是能在你選錯音箱音色時挽救一條好素材的關鍵——之後可以
+      <p>乾聲 <b class="ui">input</b> 音軌,是能在你選錯音箱音色時挽救一條好素材的關鍵——之後可以
         重新過箱。<strong>循環樂句器的音軌不會單獨輸出</strong>;它們已經包含在 mix 裡。</p>
       <p>文件會保存到 <b class="ui">recordings/</b> 中,命名為
         <b class="ui">Perf yyyy-MM-dd HH.mm.ss mix</b>、<b class="ui">… input</b> 和
@@ -374,7 +422,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>錄音工程</h2>
+      <h2 id="projects"><span class="n">06.10</span>錄音工程</h2>
       <p><b class="ui">錄音</b> 卡片會把同一次錄製的各條音軌歸組為一個<strong>工程</strong>,
         依據是它們共同的 <b class="ui">Perf &lt;date&gt;</b> 名稱。按最新排序,並只顯示最新的五個
         工程——更早的錄音仍保存在磁碟的 <b class="ui">recordings/</b> 中,可通過文件 App
@@ -390,7 +438,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject 導出</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>DAWproject 導出</h2>
       <p><strong>工程行</strong>上的分享按鈕——而不是單條音軌上的——會通過常規的 iOS 分享菜單,
         把整次錄製導出為一個 <b class="ui">.dawproject</b> 文件:保存到文件 App、通過 AirDrop
         發送到 Mac,或者放進雲端文件夾。DAWproject 是一種開放的交換格式,任何支持讀取它的 DAW

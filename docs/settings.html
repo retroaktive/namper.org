@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Settings reference — NAMper Documentation</title>
-<meta name="description" content="Every card and every row in NAMper's Settings sheet: audio interface, channel names, appearance, set, lyrics, metronome, prompts, reset and diagnostics — plus the settings that live elsewhere.">
+<meta name="description" content="Every card and every row in NAMper's Settings sheet: audio interface, channel names, appearance and themes, set, lyrics, metronome, looper, prompts, reset and diagnostics — plus the settings that live elsewhere.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Settings reference — NAMper Documentation">
@@ -80,6 +81,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Lyrics</a></li>
         <li><a href="#metronome">Metronome</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Prompts</a></li>
         <li><a href="#reset">Reset</a></li>
         <li><a href="#diagnostics">Diagnostics</a></li>
@@ -110,9 +112,9 @@
             <tr><td><b class="ui">Control</b></td>
                 <td>MIDI and input triggers, mapped to anything — its own page: <a href="/docs/control.html">MIDI &amp; control</a>.</td></tr>
             <tr><td><b class="ui">Stage</b></td>
-                <td>The click, the set tempo and key, the lyrics text size and whether the words open themselves — <a href="#set">Set</a>, <a href="#lyrics">Lyrics</a> and <a href="#metronome">Metronome</a> below.</td></tr>
+                <td>The click, the set tempo and key, the lyrics text size and whether the words open themselves, and the looper's auto-loop levels — <a href="#set">Set</a>, <a href="#lyrics">Lyrics</a>, <a href="#metronome">Metronome</a> and <a href="#looper">Looper</a> below.</td></tr>
             <tr><td><b class="ui">Appearance</b></td>
-                <td>Light, dark, or whatever the system says — <a href="#appearance">below</a>.</td></tr>
+                <td>Light, dark, or whatever the system says, and the themes — <a href="#appearance">below</a>.</td></tr>
             <tr><td><b class="ui">Prompts &amp; tour</b></td>
                 <td>Launch prompts and the quick tour — <a href="#prompts">below</a>.</td></tr>
             <tr><td><b class="ui">Troubleshooting</b></td>
@@ -152,7 +154,8 @@
       <p>The <b class="ui">AUDIO INTERFACE</b> card is the longest one, and the only one whose
         settings need a relaunch to take effect. The first four rows are read-only: they tell you
         what NAMper actually got from the system, which is the fastest way to find out why an interface is
-        not behaving.</p>
+        not behaving. On a Mac the same page also chooses the interface — the input and output
+        devices, the output pair — see <a href="/docs/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
@@ -180,7 +183,11 @@
             <tr><td><b class="ui">Use all interface outputs</b></td><td>Switch</td><td>Off</td>
                 <td>Opens every output pair, so a branch, a rig or the click can own its own pair. Stereo devices do not need it.</td></tr>
             <tr><td><b class="ui">Lite NAM models</b></td><td>Switch</td><td>Off</td>
-                <td>TONE3000's A2 captures carry a lighter sub-model; this runs every NAM block on it — a fraction of the DSP load, a shade less detail. Captures without one are unaffected. Takes effect at once.</td></tr>
+                <td>TONE3000's A2 captures carry a lighter sub-model; this runs every capture on it — a fraction of the DSP load, a shade less detail. Captures without one are unaffected. Takes effect at once.</td></tr>
+            <tr><td><b class="ui">Tails on a switch</b></td><td>Switch</td><td>On</td>
+                <td>The blocks a preset switch leaves behind ring out — a delay's repeats, a reverb's decay — for up to eight seconds instead of stopping at the switch, and a delay, reverb, freeze, FX loop or plugin that a scene bypasses rings out over the dry. A little more DSP for those seconds.</td></tr>
+            <tr><td><b class="ui">Align the rigs</b></td><td>Switch</td><td>Off</td>
+                <td>Rigs on different inputs are delayed to the slowest of them where the desk sums them, so a guitar and a mic land together. Off, each rig keeps its own latency; the paths of one input always line up either way.</td></tr>
           </tbody>
         </table>
       </div>
@@ -212,11 +219,24 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Appearance</h2>
       <p>Chips: <b class="ui">System</b>, <b class="ui">Light</b>, <b class="ui">Dark</b>. The
-        default is <b class="ui">System</b>, and this is the one setting on the whole sheet that
-        applies the instant you tap it.</p>
-      <p>NAMper is designed dark — the meters, the LEDs and the chain graphics are drawn for a dark
-        stage. <b class="ui">Light</b> is there if you need it in daylight, but the app is at its
-        most legible in the dark.</p>
+        default is <b class="ui">System</b>, and appearance changes apply the instant you tap
+        them.</p>
+      <p>Under the chips are the <b>themes</b>, one choice per polarity: pick a dark theme and a
+        light one, and <b class="ui">System</b> wears the dark one when the phone is dark and the
+        light one when it is not. Four dark themes ship — Studio (the app's own),
+        Midnight Violet, Ember and Deep Sea — and three light ones: Concrete, the default, a light
+        grey a shade down from paper; Desk, the paper-white the app first shipped with; and
+        Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="The Rig tab in the Concrete light theme: a light grey page, white cards and the chain's tiles in their family colours.">
+        <figcaption>Concrete, the light theme NAMper starts on</figcaption>
+      </figure>
+      <p><b class="ui">Customize colors…</b> copies whatever theme is worn into your own and lets you
+        set each role by hand — the background, the cards, the text, the knobs, the power button and
+        every block family's accent. <b class="ui">Corner radius</b> in the same editor scales every
+        rounded corner in the app at once, from sharp (30 %) to very round (200 %); the themes ship
+        at 50 %. A reset row puts your copy back to the theme it came from.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -260,14 +280,16 @@
           <tbody>
             <tr><td>Click level</td><td>Slider, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>How loud the click is.</td></tr>
-            <tr><td><b class="ui">Click output</b></td><td>Chips: <b class="ui">Main</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Main</b></td>
+            <tr><td><b class="ui">Click output</b></td><td>Menu: <b class="ui">Main</b>, then each output pair by the names the interface's driver gives its channels (<b class="ui">3 / 4</b> when it gives none)</td><td><b class="ui">Main</b></td>
                 <td>Which hardware output pair carries the click. Shown only when there is more than one pair; picking a non-main pair force-enables <b class="ui">Use all interface outputs</b>.</td></tr>
+            <tr><td><b class="ui">Click channel</b></td><td>Chips: <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (on another pair, its channel numbers)</td><td><b class="ui">L+R</b></td>
+                <td>Both channels of the pair, or one of them: a mono click into a single output, the other left for the mix.</td></tr>
           </tbody>
         </table>
       </div>
       <p>The card's footnote is the useful part: <b class="ui">The click is mixed in AFTER the master
         FX chain — reverbs and limiters never touch it. Pick a separate output pair for in-ear
-        monitoring.</b></p>
+        monitoring, and a single channel when the click shares the pack with the mix.</b></p>
       <p>That means your master reverb will not smear the click and your master limiter will not
         duck the band every time it ticks. Send it to its own pair and the drummer hears the click
         while front of house does not.</p>
@@ -275,8 +297,27 @@
         <b class="ui">CLICK</b> chip in the <b class="ui a">Loop</b> tab — not from here.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p>The <b class="ui">LOOPER</b> card on the <b class="ui">Stage</b> page tunes the looper's
+        <a href="/docs/looper.html#auto">AUTO mode</a>.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Silence that closes an auto-loop</b></td><td>Slider, 0.5–4 beats</td><td>1 beat</td>
+                <td>How long the quiet after a phrase must last, in beats of the tempo heard in your playing, before the take closes itself. Longer for phrases with gaps, shorter for tight ones.</td></tr>
+            <tr><td><b class="ui">Signal that starts an auto-loop</b></td><td>Slider, −54…−24 dB</td><td>−40 dB</td>
+                <td>The level your playing has to stay over for a couple of milliseconds before an armed cell starts recording. Lower is more sensitive; a brush of the strings or the room stays under it.</td></tr>
+            <tr><td><b class="ui">Keep time through the silence</b></td><td>Switch</td><td>On</td>
+                <td>The loop starts playing where it would be had it never stopped, so the count never breaks. Off, it starts from the top when it closes.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Prompts</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Prompts</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Row</th><th>Control</th><th>Default</th><th>What it does</th></tr></thead>
@@ -298,7 +339,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Reset</h2>
+      <h2 id="reset"><span class="n">09.10</span>Reset</h2>
       <p>Two buttons, each behind a confirmation.</p>
       <div class="tw">
         <table>
@@ -325,7 +366,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Diagnostics</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Diagnostics</h2>
       <p>NAMper keeps a plain-text engine log recording interface routing and peaks. When one
         exists, this card offers <b class="ui">Share engine log</b> and <b class="ui">Clear engine
         log</b>; when it does not, it reads <b class="ui">No engine log yet (it records interface
@@ -340,7 +381,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Not in Settings</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Not in Settings</h2>
       <p>Three things people look for here and do not find.</p>
       <h3>Trigger quantize</h3>
       <p>The <b class="ui">QUANT</b> knob and its grid chip live in the <b class="ui a">Sample</b>

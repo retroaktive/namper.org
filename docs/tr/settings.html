@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ayarlar referansı — NAMper Dokümantasyonu</title>
-<meta name="description" content="NAMper'ın Ayarlar sayfasındaki her kart ve her satır: ses arayüzü, kanal isimleri, görünüm, set, şarkı sözü, metronom, uyarılar, sıfırlama ve tanılama — artı başka yerde yaşayan ayarlar.">
+<meta name="description" content="NAMper'ın Ayarlar sayfasındaki her kart ve her satır: ses arayüzü, kanal isimleri, görünüm ve temalar, set, şarkı sözü, metronom, looper, uyarılar, sıfırlama ve tanılama — artı başka yerde yaşayan ayarlar.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Ayarlar referansı — NAMper Dokümantasyonu">
@@ -80,6 +81,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Şarkı sözü</a></li>
         <li><a href="#metronome">Metronom</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Uyarılar</a></li>
         <li><a href="#reset">Sıfırlama</a></li>
         <li><a href="#diagnostics">Tanılama</a></li>
@@ -110,9 +112,9 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI ve giriş tetikleyicileri, her şeye eşlenebilir — kendi sayfası: <a href="/docs/tr/control.html">MIDI ve kontrol</a>.</td></tr>
             <tr><td><b class="ui">Sahne</b></td>
-                <td>Klik, setin temposu ve tonu, şarkı sözü yazı boyutu ve sözlerin kendiliğinden açılıp açılmayacağı — aşağıda <a href="#set">Set</a>, <a href="#lyrics">Sözler</a> ve <a href="#metronome">Metronom</a>.</td></tr>
+                <td>Klik, setin temposu ve tonu, şarkı sözü yazı boyutu ve sözlerin kendiliğinden açılıp açılmayacağı, ayrıca looper'ın otomatik loop seviyeleri — aşağıda <a href="#set">Set</a>, <a href="#lyrics">Sözler</a>, <a href="#metronome">Metronom</a> ve <a href="#looper">Looper</a>.</td></tr>
             <tr><td><b class="ui">Görünüm</b></td>
-                <td>Açık, koyu ya da sistem ne diyorsa — <a href="#appearance">aşağıda</a>.</td></tr>
+                <td>Açık, koyu ya da sistem ne diyorsa, ayrıca temalar — <a href="#appearance">aşağıda</a>.</td></tr>
             <tr><td><b class="ui">Bildirimler ve tur</b></td>
                 <td>Açılış uyarıları ve hızlı tur — <a href="#prompts">aşağıda</a>.</td></tr>
             <tr><td><b class="ui">Sorun giderme</b></td>
@@ -136,12 +138,12 @@
             <tr><td><b class="ui">DSP yükü</b> çipi</td>
                 <td>İşlemci yükünü yüzde olarak gösterir, durduğunda <b class="ui">—</b>. %60'ın altında yeşil, %85'e kadar kehribar, üzerinde kırmızı.</td></tr>
             <tr><td>Dişli</td><td>Ayarlar — bu sayfa.</td></tr>
-            <tr><td><b class="ui">KEY</b> çipi</td>
-                <td>Mevcut tonu, ayarlanmamışsa <b class="ui">KEY</b> yazısını gösterir. <b class="ui">TON BELİRLE</b>'i açar.</td></tr>
+            <tr><td><b class="ui">SEÇİM</b> çipi</td>
+                <td>Mevcut tonu, ayarlanmamışsa <b class="ui">SEÇİM</b> yazısını gösterir. <b class="ui">TON BELİRLE</b>'i açar.</td></tr>
             <tr><td>Metronom çipi</td>
                 <td>Click'i açıp kapatmak için dokun; <strong>uzun basmak</strong> <b class="ui">TEMPO BELİRLE</b> sayfasını açar. Bkz. <a href="/docs/tr/looper.html">looper</a>.</td></tr>
             <tr><td>Akort çatalı</td><td>Tuner'ı açar. Bkz. <a href="/docs/tr/control.html">MIDI &amp; kontrol</a>.</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">Güç</b></td>
                 <td>Ses motorunu başlatır ve durdurur. Açılana kadar hiçbir şey ses çıkarmaz. Bkz. <a href="/docs/tr/setup.html#power">başlarken</a>.</td></tr>
           </tbody>
         </table>
@@ -153,7 +155,8 @@
       <p><b class="ui">SES ARABİRİMİ</b> kartı en uzun olanıdır, ve ayarlarının etkili olması
         için yeniden başlatma gerektiren tek karttır. İlk dört satır salt okunurdur: NAMper'ın
         sistemden gerçekte ne aldığını söylerler, bu da bir arayüzün neden düzgün davranmadığını
-        bulmanın en hızlı yoludur.</p>
+        bulmanın en hızlı yoludur. Mac'te aynı sayfa arayüzü de seçer — giriş ve çıkış aygıtlarını,
+        çıkış çiftini — bkz. <a href="/docs/tr/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
@@ -181,7 +184,11 @@
             <tr><td><b class="ui">Tüm arabirim çıkışlarını kullan</b></td><td>Anahtar</td><td>Kapalı</td>
                 <td>Her çıkış çiftini açar, böylece bir dal, bir rig ya da click kendi çiftine sahip olabilir. Stereo cihazların buna ihtiyacı yoktur.</td></tr>
             <tr><td><b class="ui">Hafif NAM modelleri</b></td><td>Anahtar</td><td>Kapalı</td>
-                <td>TONE3000’in A2 capture’ları daha hafif bir alt model taşır; bu, her NAM bloğunu onun üzerinde çalıştırır — DSP yükünün küçük bir kısmı, bir tık daha az ayrıntı. Alt modeli olmayan capture’lar etkilenmez. Anında etkili olur.</td></tr>
+                <td>TONE3000’in A2 capture’ları daha hafif bir alt model taşır; bu, her capture’ı onun üzerinde çalıştırır — DSP yükünün küçük bir kısmı, bir tık daha az ayrıntı. Alt modeli olmayan capture’lar etkilenmez. Anında etkili olur.</td></tr>
+            <tr><td><b class="ui">Geçişte kuyruklar</b></td><td>Anahtar</td><td>Açık</td>
+                <td>Bir preset değişiminin geride bıraktığı bloklar — bir delay’in tekrarları, bir reverb’ün sönümü — değişimde kesilmek yerine sekiz saniyeye kadar çalmaya devam eder; bir sahnenin bypass ettiği delay, reverb, freeze, FX loop ya da eklenti de kuru sesin üzerinde sönümlenir. O birkaç saniye için biraz daha fazla DSP.</td></tr>
+            <tr><td><b class="ui">Rig'leri hizala</b></td><td>Anahtar</td><td>Kapalı</td>
+                <td>Farklı girişlerdeki rig’ler, mikserin onları topladığı yerde en yavaş olanlarına göre geciktirilir; böylece bir gitar ve bir mikrofon aynı anda gelir. Kapalıyken her rig kendi gecikmesini korur; tek bir girişin yolları her iki durumda da hep hizalıdır.</td></tr>
           </tbody>
         </table>
       </div>
@@ -213,11 +220,23 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Görünüm</h2>
       <p>Çipler: <b class="ui">Sistem</b>, <b class="ui">Açık</b>, <b class="ui">Koyu</b>.
-        Varsayılan <b class="ui">Sistem</b>'dir, ve bu, tüm sayfada dokunduğun an uygulanan tek
-        ayardır.</p>
-      <p>NAMper karanlık için tasarlanmıştır — göstergeler, LED'ler ve zincir grafikleri karanlık
-        bir sahne için çizilmiştir. Gün ışığında ihtiyacın olursa <b class="ui">Açık</b>
-        oradadır, ama uygulama en okunaklı halini karanlıkta gösterir.</p>
+        Varsayılan <b class="ui">Sistem</b>'dir, ve görünüm değişiklikleri dokunduğun an
+        uygulanır.</p>
+      <p>Çiplerin altında <b>temalar</b> bulunur, her kutup için bir seçim: bir koyu ve bir açık
+        tema seç; <b class="ui">Sistem</b> telefon koyu moddayken koyu olanı, değilken açık olanı
+        giyer. Dört koyu tema gelir — Studio (uygulamanın kendi teması), Midnight Violet, Ember ve
+        Deep Sea — ve üç açık tema: varsayılan olan Concrete, kâğıttan bir ton koyu açık bir gri;
+        uygulamanın ilk çıktığı kâğıt beyazı Desk; ve Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="Concrete açık temasında Rig sekmesi: açık gri bir sayfa, beyaz kartlar ve aile renklerindeki zincir karoları.">
+        <figcaption>Concrete, NAMper'ın açıldığı açık tema</figcaption>
+      </figure>
+      <p><b class="ui">Renkleri özelleştir…</b> o an giyilen temayı kendi temana kopyalar ve her rolü
+        elle ayarlamana izin verir — arka plan, kartlar, metin, knob'lar, power düğmesi ve her blok
+        ailesinin vurgu rengi. Aynı editördeki <b class="ui">Köşe yarıçapı</b> uygulamadaki bütün
+        yuvarlak köşeleri bir kerede ölçekler, keskinden (%30) çok yuvarlağa (%200); temalar %50
+        ile gelir. Bir sıfırlama satırı kopyanı geldiği temaya geri döndürür.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -232,7 +251,7 @@
           <thead><tr><th>Değer</th><th>Şuradan ayarlanır</th></tr></thead>
           <tbody>
             <tr><td>Tempo</td><td>Rig başlığındaki metronom çipine uzun bas, ya da <b class="ui a">Döngü</b> sekmesindeki tempo bloğuna. Looper onu ilk loop'undan da algılar, ve bir altyapı seçmek şarkının temposunu uygular.</td></tr>
-            <tr><td>Ton</td><td>Rig başlığındaki <b class="ui">KEY</b> çipi. Bir altyapı seçmek şarkının tonunu uygular.</td></tr>
+            <tr><td>Ton</td><td>Rig başlığındaki <b class="ui">SEÇİM</b> çipi. Bir altyapı seçmek şarkının tonunu uygular.</td></tr>
           </tbody>
         </table>
       </div>
@@ -260,12 +279,14 @@
           <tbody>
             <tr><td>Click seviyesi</td><td>Kaydırıcı, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>Click'in ne kadar yüksek sesli olduğu.</td></tr>
-            <tr><td><b class="ui">Klik çıkışı</b></td><td>Çipler: <b class="ui">Ana</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Ana</b></td>
+            <tr><td><b class="ui">Klik çıkışı</b></td><td>Menü: <b class="ui">Ana</b>, ardından her çıkış çifti, arabirimin sürücüsünün kanallarına verdiği adlarla (hiç ad vermiyorsa <b class="ui">3 / 4</b>)</td><td><b class="ui">Ana</b></td>
                 <td>Click'i hangi donanım çıkış çiftinin taşıdığı. Sadece birden fazla çift olduğunda gösterilir; ana olmayan bir çift seçmek <b class="ui">Tüm arabirim çıkışlarını kullan</b>'u zorla etkinleştirir.</td></tr>
+            <tr><td><b class="ui">Klik kanalı</b></td><td>Çipler: <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (başka bir çiftte, onun kanal numaraları)</td><td><b class="ui">L+R</b></td>
+                <td>Çiftin iki kanalı ya da yalnızca biri: tek bir çıkışa mono bir click, diğeri miks için kalır.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Kartın dipnotu asıl işe yarayan kısımdır: <b class="ui">Klik, master FX zincirinden SONRA miksleniyor — reverb ve limiter ona dokunmaz. Kulak içi monitör için ayrı bir çıkış çifti seç.</b></p>
+      <p>Kartın dipnotu asıl işe yarayan kısımdır: <b class="ui">Klik, master FX zincirinden SONRA miksleniyor — reverb ve limiter ona dokunmaz. Kulak içi monitör için ayrı bir çıkış çifti seç. Klik, miksle aynı paketi paylaşıyorsa tek bir kanal seç.</b></p>
       <p>Bu, master reverb'ünün click'i bulaştırmayacağı ve master limiter'ının her tık
         attığında grubu bastırmayacağı anlamına gelir. Onu kendi çiftine gönder, davulcu click'i
         duysun, ön ses masası duymasın.</p>
@@ -273,8 +294,27 @@
         çipiyle açılıp kapatılır (<b class="ui a">Döngü</b> sekmesinde) — burada değil.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p><b class="ui">Sahne</b> sayfasındaki <b class="ui">LOOPER</b> kartı, looper'ın
+        <a href="/docs/tr/looper.html#auto">AUTO modunu</a> ayarlar.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Otomatik döngüyü kapatan sessizlik</b></td><td>Kaydırıcı, 0,5–4 vuruş</td><td>1 vuruş</td>
+                <td>Bir cümleden sonraki sessizliğin, kayıt kendi kendine kapanmadan önce, çalışında duyulan temponun vuruşları cinsinden ne kadar sürmesi gerektiği. Boşluklu cümleler için daha uzun, sıkı olanlar için daha kısa.</td></tr>
+            <tr><td><b class="ui">Otomatik loop’u başlatan sinyal</b></td><td>Kaydırıcı, −54…−24 dB</td><td>−40 dB</td>
+                <td>Tetiklenmiş bir hücrenin kayda başlaması için çalışının birkaç milisaniye boyunca üzerinde kalması gereken seviye. Düşük değer daha hassastır; tellere hafifçe sürtünmek ya da odanın sesi bunun altında kalır.</td></tr>
+            <tr><td><b class="ui">Sessizlik boyunca zamanı koru</b></td><td>Anahtar</td><td>Açık</td>
+                <td>Loop, hiç durmamış olsaydı nerede olacaksa oradan çalmaya başlar, böylece sayım hiç bozulmaz. Kapalıyken kapandığında baştan başlar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Uyarılar</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Uyarılar</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Satır</th><th>Kontrol</th><th>Varsayılan</th><th>Ne yapar</th></tr></thead>
@@ -296,7 +336,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Sıfırlama</h2>
+      <h2 id="reset"><span class="n">09.10</span>Sıfırlama</h2>
       <p>İki düğme, her biri bir onayın arkasında.</p>
       <div class="tw">
         <table>
@@ -322,7 +362,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Tanılama</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Tanılama</h2>
       <p>NAMper, arayüz yönlendirmesini ve tepe seviyelerini kaydeden düz metin bir motor
         günlüğü tutar. Bir tanesi varken bu kart <b class="ui">Motor günlüğünü paylaş</b> ve
         <b class="ui">Motor günlüğünü temizle</b> sunar; yokken <b class="ui">Henüz motor günlüğü yok (arabirim yönlendirmesini ve tepe seviyelerini kaydeder).</b> yazar.</p>
@@ -335,7 +375,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Ayarlarda olmayanlar</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Ayarlarda olmayanlar</h2>
       <p>İnsanların burada aradığı ama bulamadığı üç şey.</p>
       <h3>Tetikleme kuantalaması</h3>
       <p><b class="ui">KUANT</b> düğmesi ve onun ızgara çipi, Ayarlarda değil <b class="ui a">Örnek</b>

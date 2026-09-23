@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform &amp; lyrics — NAMper Documentation</title>
-<meta name="description" content="Backing tracks, the setlist and its sections, preset markers on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
+<meta name="description" content="Backing tracks, the stage buttons, the setlist and its songs, preset markers on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform &amp; lyrics — NAMper Documentation">
@@ -67,14 +68,16 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
     <h1>Playing the set.</h1>
     <p class="lede">The <b class="ui a">Perform</b> tab is the one you look at on stage: backing
-      tracks, a setlist of songs, rig changes that fire themselves off the timeline, a full-screen
-      teleprompter for your words, and a recorder that captures the whole night in stems.</p>
+      tracks, a setlist of songs, big stage buttons that switch sounds, rig changes that fire
+      themselves off the timeline, a full-screen teleprompter for your words, and a recorder that
+      captures the whole night in stems.</p>
 
     <nav class="toc">
       <div class="slab">ON THIS PAGE</div>
       <ul>
         <li><a href="#tracks">Backing tracks</a></li>
         <li><a href="#player">The player card</a></li>
+        <li><a href="#stage">The stage buttons</a></li>
         <li><a href="#setlist">Setlists and songs</a></li>
         <li><a href="#sections">What a song brings up</a></li>
         <li><a href="#markers">Markers</a></li>
@@ -119,23 +122,30 @@
         the global tempo and key follow the song, so the delay and tremolo sync divisions, the
         looper's bar grid, the harmoniser and the autotune all land on the right song without you
         setting anything.</p>
-      <p>Five buttons sit under the name, left to right:</p>
+      <p>Six controls sit under the name, left to right — the same transport keys, in the same
+        order, as the stage buttons' full-screen header:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Button</th><th>Does</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Play</b></td><td>Play and pause the backing track</td></tr>
-            <tr><td><b class="ui">Stop</b></td><td>Stop and return to the start</td></tr>
-            <tr><td><b class="ui">Record</b></td><td>Start and stop the performance recorder (<a href="#recording">below</a>)</td></tr>
+            <tr><td><b class="ui">To the start of the song</b></td><td>Back to the top of the song that is on; dimmed when the song has no timeline. An earlier song is a tap in the list</td></tr>
+            <tr><td><b class="ui">Play</b> / <b class="ui">Pause</b></td><td>One key: it pauses while
+              the song plays and resumes where it paused. Stop — back to the top — is the song row's
+              own button, or CC 92</td></tr>
+            <tr><td><b class="ui">Next song</b></td><td>On to the next song without reaching for the
+              list</td></tr>
+            <tr><td><b class="ui">AUTO LYRICS</b></td><td>Whether the teleprompter opens by itself
+              with the song — the same switch as <b class="ui">Open the lyrics with the song</b> in
+              Settings</td></tr>
             <tr><td><b class="ui">Add marker</b></td><td>Drop a change at the playhead</td></tr>
             <tr><td><b class="ui">Lyrics</b></td><td>Open the teleprompter, or load a lyrics file</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Long-press <b class="ui">Play</b> or <b class="ui">Stop</b> to MIDI-learn them —
-        <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>,
-        <b class="ui">MIDI Learn: next section</b> and <b class="ui">MIDI Learn: previous
-        section</b> are all offered there. See <a href="/docs/control.html">MIDI &amp; control</a>.</p>
+      <p>Long-press a transport key to MIDI-learn it — <b class="ui">MIDI Learn: play / pause</b>, <b class="ui">MIDI Learn: stop</b>,
+        <b class="ui">MIDI Learn: next section</b>, <b class="ui">MIDI Learn: previous
+        section</b> and <b class="ui">MIDI Learn: next song</b> are offered there. See
+        <a href="/docs/control.html">MIDI &amp; control</a>.</p>
       <h3>Backing level and routing</h3>
       <p>Below the buttons, a console fader on its side sets the backing level in dB from −60 to
         +12, reading <b class="ui">-inf</b> at the bottom; a double tap brings it back to 0 dB. It
@@ -157,14 +167,50 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>The stage buttons</h2>
+      <p>The bottom half of the Perform tab belongs to a few big buttons — the ones a hand can hit
+        mid-song without looking. What they hold depends on whether a setlist is
+        <b class="ui">LIVE</b>:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>No setlist live</b> — the four <b class="ui">SCENES</b> of the rig that is up. An
+          empty scene captures what is playing, as the scene chips do.</li>
+        <li><b>A setlist live, no song picked</b> — the set's songs. The first tap picks one, and
+          its sounds take the buttons.</li>
+        <li><b>A song picked</b> — the song's own entries, each a preset with the scene it carries,
+          in the song's order. The one playing is lit, and a button shows only the scenes its
+          preset holds.</li>
+      </ul>
+      <p>A button switches the moment the finger lands, not when it lifts, so a quick stab between
+        two bars is never lost. There are four or eight of them: the count chip in the header
+        toggles it, and until you choose, it follows the screen. The grid picks the shape that keeps
+        the buttons closest to square. With more entries than buttons, the header's arrows step the
+        pages, and the page follows the entry that is playing when a marker or a pedal moves the song
+        on.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="The stage buttons full screen: the song's name large at the top with the to-the-start, play and next-song keys beside it, and big buttons below, each naming a preset with its scene letter A, B or C.">
+        <figcaption>Full screen: the song's name, the transport and the song's sounds</figcaption>
+      </figure>
+      <p>The expand button in the header gives the buttons the whole tab. Full screen, the song's
+        name is large, and the player's keys come along beside it — to the start, play / pause and
+        next song — since the player itself is out of sight.</p>
+      <p>Hold a button for its menu: the rig page's pad menu, on the stage —
+        <b class="ui">Replace sound…</b>, <b class="ui">Current rig</b>, <b class="ui">Clear pad</b>
+        and MIDI Learn, which binds a footswitch to that button by its number. The hold is deliberate
+        (about 0.8 s), so it never gets in the way of a fast tap. Program change <em>n</em> presses
+        stage button <em>n</em> while a set is live: the songs while none is picked, then the picked
+        song's own entries.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlists and songs</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Setlists and songs</h2>
       <p>A <strong>setlist</strong> is a list of songs; one of them is <b class="ui">LIVE</b> at a
-        time, and the live one owns the preset strip and MIDI — program change <em>n</em> plays song
-        <em>n</em>. A <strong>song</strong> is a name, an ordered list of what it brings up, and an
+        time, and the live one owns the preset strip and MIDI — program change <em>n</em> presses
+        stage button <em>n</em>. A <strong>song</strong> is a name, an ordered list of what it brings up, and an
         <em>optional</em> backing track with its markers and lyrics. A song with no audio at all is
         just as valid: it is the sound you play it with, cued from the same list.</p>
-      <p>The card header carries the <b class="ui">SETLISTS</b> button — create, pick, rename, share
+      <p>The card header carries the <b class="ui">SETLISTS</b> button — just its icon on a phone — to create, pick, rename, share
         and delete sets — an <b class="ui">AUTO NEXT</b> toggle, and a <b class="ui">+</b> that
         imports audio files (one song each), adds a <b class="ui">Song without backing</b>, or
         builds a song straight <b class="ui">From rig preset</b>. With <b class="ui">AUTO NEXT</b>
@@ -195,7 +241,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>What a song brings up</h2>
+      <h2 id="sections"><span class="n">06.5</span>What a song brings up</h2>
       <p>The edit button opens the song editor: a <b class="ui">Song name</b> field, a backing picker whose first entry is <b class="ui">Song without backing</b>, the <a href="#lyrics">lyrics</a> row, the list of what the song recalls, and <b class="ui">Delete song</b> at the bottom.</p>
       <p>A song with no backing track also gets a <b class="ui">Length</b> row — the timeline it
         runs on. Set one and the transport counts it out on a clock instead of on audio: the
@@ -216,23 +262,37 @@
             <a href="/docs/sampler.html">pads</a>.</td></tr>
         </tbody>
       </table>
-      <p>The list is applied in order when the song is cued, so the <em>last</em> rig preset on it is
-        the sound you start the song with; the ones above it are there for the
-        <a href="#markers">markers</a> to reach. Rows move up and down and delete from their own
-        menu.</p>
+      <p>When the song is cued, the <em>first</em> rig preset on the list is the sound you start the
+        song with; the ones below it are there for the <a href="#markers">markers</a>, the stage
+        buttons and a footswitch to reach, and the order is what <em>next / prev preset in song</em>
+        steps through. To reorder, drag a row by the grip — the three lines at its right edge. A
+        row's scene letters offer only the scenes that preset holds, and tapping the chosen letter
+        again clears the choice.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="The song editor: the song's name and backing, then the list of what it recalls — rig presets each with its scene letters and a grip, a looper preset and a sampler kit.">
+        <figcaption>The song editor: presets with their scenes, a looper preset, a kit</figcaption>
+      </figure>
       <h3>Picking a preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="The rig-preset picker: a search field over the list, and rows with the program number, the bank, the cover, the preset's name and its tags.">
+        <figcaption>The rig-preset picker: every bank in one list</figcaption>
+      </figure>
       <p>The rig-preset picker shows the same numbers as the preset rail — <b class="ui">0</b> …
-        <b class="ui">127</b> — with the cover art and a search field over the list that filters by
-        name, number and tag. It <strong>monitors</strong> while you browse: tap a row and the rig
-        actually loads it, so you choose the sound with your ears. Close the picker without choosing
-        and the rig goes back to what it was.</p>
+        <b class="ui">127</b> — for every bank in one list, the factory's first, each row marked
+        with its bank and carrying its cover and tags; the search field filters by name, number and
+        tag. It <strong>monitors</strong> while you browse: tap a row and the rig actually loads it, so you
+        choose the sound with your ears (the speaker in the picker's header turns that off). The
+        checkmark adds the highlighted preset; close the picker without choosing and the rig goes
+        back to what it was.</p>
       <p>The other direction works too: the row menu on a preset in the Rig tab's rail has
         <b class="ui">Assign to set…</b> — pick a setlist, then one of its songs or
         <b class="ui">New song</b>, and the preset is appended to that song's list.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Markers</h2>
+      <h2 id="markers"><span class="n">06.6</span>Markers</h2>
       <p>A marker is a moment on the song's timeline that brings up one of the song's own entries.
         Clean verse, crunch chorus, lead for the solo — placed once, then hands-free every time you
         play it.</p>
@@ -263,7 +323,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Lyrics and the teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Lyrics and the teleprompter</h2>
       <p>NAMper carries your words for you. Give a track a plain text file and it becomes a
         full-screen teleprompter that opens by itself when the song starts and scrolls at the pace
         you taught it.</p>
@@ -319,9 +379,11 @@
         <b class="ui">m:ss / m:ss</b> readout and a play/pause button. <strong>Tapping anywhere on
         the screen toggles play/pause</strong> — you do not have to find a small target with a
         guitar in your hands.</p>
-      <p>Opening itself is a switch: Settings → <b class="ui">Stage</b> →
-        <b class="ui">Open the lyrics with the song</b>. Off, the tab you were on stays where it is,
-        and the <b class="ui">Lyrics</b> button opens the words when you want them.</p>
+      <p>Opening itself is a switch: <b class="ui">AUTO LYRICS</b> beside the lyrics button on the
+        player card, the same switch in the lyrics button's menu, and Settings →
+        <b class="ui">Stage</b> → <b class="ui">Open the lyrics with the song</b>. Off, the tab you
+        were on stays where it is, and the <b class="ui">Lyrics</b> button opens the words when you
+        want them.</p>
 
       <h3>Anchors</h3>
       <p>An anchor is how you teach the text your song. <strong>Hold a line for about a third of a
@@ -365,7 +427,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Perform presets</h2>
+      <h2 id="presets"><span class="n">06.8</span>Perform presets</h2>
       <p>The <b class="ui">PRESETS</b> chip in the setlist header opens <b class="ui">Perform
         Presets</b>. A saved perform preset carries the <strong>whole setlist</strong>: every
         section with its steps and bars, the <b class="ui">AUTO NEXT</b> state, and the lyrics —
@@ -382,9 +444,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Recording</h2>
-      <p>The record button in the player card captures the performance as <strong>three aligned
-        stems</strong>. It refuses with <b class="ui r">Audio is off — tap the power button before
+      <h2 id="recording"><span class="n">06.9</span>Recording</h2>
+      <p>The recorder on the <a href="/docs/mix.html#recorder">Mix</a> tab captures the performance
+        as <strong>three aligned stems</strong>. It refuses with <b class="ui r">Audio is off — tap the power button before
         recording.</b> if the engine is not running.</p>
       <div class="tw">
         <table>
@@ -410,7 +472,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Recording projects</h2>
+      <h2 id="projects"><span class="n">06.10</span>Recording projects</h2>
       <p>The <b class="ui">RECORDINGS</b> card groups the stems of one take into a
         <strong>project</strong>, by their shared <b class="ui">Perf &lt;date&gt;</b> name. Newest
         first, and the five newest projects are shown — older takes stay on disk in
@@ -425,7 +487,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject export</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>DAWproject export</h2>
       <p>The share button on a <strong>project row</strong> — not on an individual stem — exports
         the whole take as a <b class="ui">.dawproject</b> file through the normal iOS share sheet:
         Save to Files, AirDrop it to a Mac, drop it in a cloud folder. DAWproject is an open

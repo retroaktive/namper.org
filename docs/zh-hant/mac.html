@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mac — NAMper 文檔</title>
-<meta name="description" content="Mac 上的 NAMper：安裝程式及各部分裝在哪裡，「音訊介面」視窗與聚合裝置，選單與快速鍵，來自 Finder 的檔案，以及 AU、VST3 和 CLAP 外掛。">
+<meta name="description" content="Mac 上的 NAMper：安裝程式及各部分裝在哪裡，設定中的音訊介面與聚合裝置，選單與快速鍵，來自 Finder 的檔案，以及 AU、VST3 和 CLAP 外掛。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Mac — NAMper 文檔">
-<meta property="og:description" content="Mac 上的 NAMper：安裝程式及各部分裝在哪裡，「音訊介面」視窗與聚合裝置，選單與快速鍵，來自 Finder 的檔案，以及 AU、VST3 和 CLAP 外掛。">
+<meta property="og:description" content="Mac 上的 NAMper：安裝程式及各部分裝在哪裡，設定中的音訊介面與聚合裝置，選單與快速鍵，來自 Finder 的檔案，以及 AU、VST3 和 CLAP 外掛。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/mac.html">
 <meta property="og:type" content="article">
@@ -102,7 +103,7 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="interface"><span class="n">10.2</span>音訊介面</h2>
-      <p><b class="ui">設置…</b> → <b class="ui">音訊</b> 顯示設備鏈正在監聽的裝置，<b class="ui">視窗</b> → <b class="ui">音訊介面</b>（⌘0）開啟選擇它的頁面：輸入裝置、輸出裝置、輸出對、取樣率和緩衝區，下方是實測的往返延遲。</p>
+      <p><b class="ui">設置…</b> → <b class="ui">音訊</b> 負責選擇它：輸入裝置、輸出裝置、輸出對、取樣率和緩衝區，下方是實測的往返延遲。<b class="ui">檔案</b> → <b class="ui">音訊介面…</b>（⌘0）可直接開啟這個頁面。</p>
       <p>輸入和輸出可以是兩台不同的裝置 — 比如輸入用吉他錄音介面，輸出用內建喇叭。這時 NAMper 會用兩者建一個私有的<b>聚合裝置</b>並在其上運作，因為一個音訊引擎只能有一個時脈。時脈留在輸出端，因為演奏者聽到的東西不能卡頓；漂移補償則落在輸入端，那是承受得起彎折的一端。這些都不會出現在「音訊 MIDI 設定」裡，結束應用程式後也不留任何痕跡。</p>
       <p>一個介面同時負責輸入輸出則無需聚合，延遲也最低：在兩列裡選同一個裝置。</p>
     </section>
@@ -114,11 +115,9 @@
           <thead><tr><th>選單</th><th>裡面有什麼</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">檔案</b></td>
-                <td><b class="ui">擷取與脈衝…</b> ⌘L · <b class="ui">預設…</b> ⇧⌘P · <b class="ui">儲存預設…</b> ⌘S</td></tr>
+                <td><b class="ui">擷取與脈衝…</b> ⌘L · <b class="ui">預設…</b> ⇧⌘P · <b class="ui">音訊介面…</b> ⌘0 · <b class="ui">儲存預設…</b> ⌘S</td></tr>
             <tr><td><b class="ui">音色組</b></td>
                 <td><b class="ui">下一個預設</b> ⌘→ · <b class="ui">上一個預設</b> ⌘← · <b class="ui">場景</b> 1–4 ⌘1…⌘4 · <b class="ui">循環軌道 1</b> ␣ · <b class="ui">調音器</b> ⌘T · <b class="ui">速度…</b> · <b class="ui">調…</b></td></tr>
-            <tr><td><b class="ui">視窗</b></td>
-                <td><b class="ui">音訊介面</b> ⌘0</td></tr>
             <tr><td><b class="ui">NAMper</b></td>
                 <td><b class="ui">設置…</b> ⌘, · <b class="ui">關於 NAMper</b></td></tr>
             <tr><td><b class="ui">輔助說明</b></td>
@@ -131,7 +130,7 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="files"><span class="n">10.4</span>檔案</h2>
-      <p>把 .nam 擷取、.wav 脈衝、含有其一的 .zip 或 .namper 預設<b>拖到視窗上</b>，它就進入資料庫。拖到某一個<b>模組</b>上，它會去那個模組能接收的地方：拖到 Amp 上的擷取載入 Amp，拖到 Amp 上的脈衝落入其後的 Cab，拖到 Cab 上的擷取落入其前的 Amp — 互不打擾對方模組正在播放的內容。檔案懸停期間模組會亮起。</p>
+      <p>把 .nam 擷取、.wav 脈衝、含有其一的 .zip 或 .namper 預設<b>拖到視窗上</b>，它就進入資料庫。拖到某一個<b>模組</b>上，它會去那個模組能接收的地方：拖到音箱上的擷取載入音箱，拖到音箱上的脈衝落入其後的箱體，拖到箱體上的擷取落入其前的音箱 — 互不打擾對方模組正在播放的內容。檔案懸停期間模組會亮起。</p>
       <p>檔案也可以從 Finder 來：按兩下 .namper 預設，NAMper 會開啟它；.nam 擷取透過<b>打開檔案的應用程式</b>走同一條路。無論哪種方式，檔案都會落到拖放本會放置的位置。</p>
       <p>資料庫本身是一個可以開啟的資料夾 — 見 <a href="/docs/zh-hant/setup.html#files">文件的存放位置</a>。</p>
     </section>
@@ -139,7 +138,7 @@
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="plugin"><span class="n">10.5</span>作為外掛的 NAMper</h2>
       <p>Audio Unit、VST3 和 CLAP 是同一個效果器：NAMper 的訊號鏈 — 噪音閘、壓縮、破音、擴大機、EQ、音箱、調變、延遲、殘響 — 放在 DAW 的軌道上，而不是應用程式的輸入上。三者以相同順序攜帶相同參數，工作階段可以在它們之間遷移，三者也都能讀取彼此儲存的狀態。</p>
-      <p>外掛會在自己的視窗中開啟：<b>Preset</b> 清單、<b>Bypass</b> 和參數列 —— 與宿主列出並寫入自動化的列完全相同。Preset 依序是固定鏈、每個出廠 rig、以及你在應用程式裡儲存的每個預設，按名稱排列 —— 選一個，外掛就在音軌上搭起該 rig 的主鏈：擷取來自你的資料庫，脈衝來自內建集合，工作階段則隨身帶著 rig 本身。其餘參數隨後作用於該 rig 中同類的第一個模組。在 Audio Unit 中，同一清單就是宿主自己的預設選單。</p>
+      <p>外掛在宿主提供的視窗裡開啟，帶著應用程式自己的介面：模組鏈、場景、模組編輯器、擷取與脈衝資料庫、預設和設定，頂部一行是標題列工具 — DSP 負載、調式、節拍器和調音器。選一個預設，外掛就在音軌上搭起該 rig：擷取來自你的資料庫，脈衝來自內建集合，工作階段則隨身帶著 rig 本身。VST3 和 CLAP 接收宿主發來的 MIDI：控制器、音符和音色切換（Program Change）會像在應用程式裡一樣送達 rig 的控制對應。下方宿主的參數列作用於該 rig 中同類的第一個模組。在 Audio Unit 中，預設清單就是宿主自己的預設選單。關於這套介面的更多內容見 <a href="/docs/zh-hant/plugins.html#auv3">外掛</a> 頁面。</p>
       <ul>
         <li>Gate On, Gate Threshold</li>
         <li>Comp On, Comp Threshold, Comp Ratio</li>
@@ -150,6 +149,7 @@
       </ul>
       <p>外加宿主擁有的 <b>Bypass</b>：開啟後，軌道自身的訊號原樣通過。</p>
       <p>輸入按單聲道處理 — 是一把吉他，不是立體聲混音：立體聲軌道在進入訊號鏈前先取平均，訊號鏈自身的立體聲像從中產生。多條軌道上的多個實例彼此獨立，各有各的訊號鏈，離線匯出與即時算繪的結果完全一致。</p>
+      <p>在 DAW 裡處理檔案和在應用程式裡一樣：Audio Unit 的開啟與儲存面板可以匯入擷取、脈衝響應和預設，也能再匯出它們。外掛沒有分享面板，所以在應用程式分享的地方，Audio Unit 改為儲存一份副本——預設選單裡的 <b class="ui">儲存副本…</b>，資料庫裡的 <b class="ui">儲存 .nam 檔案…</b> 和 <b class="ui">儲存 IR 檔案…</b>——一次多個檔案則會用 <b class="ui">儲存到這裡</b> 存進你挑選的資料夾。</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">

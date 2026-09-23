@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform et paroles — Documentation NAMper</title>
-<meta name="description" content="Les backing tracks, la setlist et ses sections, les marqueurs de preset sur la timeline, le télésouffleur de paroles plein écran avec des ancres, l'enregistrement multipiste et l'export DAWproject.">
+<meta name="description" content="Les backing tracks, les boutons de scène, la setlist et ses morceaux, les marqueurs de preset sur la timeline, le télésouffleur de paroles plein écran avec des ancres, l'enregistrement multipiste et l'export DAWproject.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform et paroles — Documentation NAMper">
@@ -67,8 +68,8 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM ET PAROLES</div>
     <h1>Jouer le set.</h1>
     <p class="lede">L'onglet <b class="ui a">Scène</b> est celui que tu regardes sur scène : des
-      backing tracks, une setlist de sections, des changements de preset qui se déclenchent tout
-      seuls, un télésouffleur plein écran pour tes paroles, et un enregistreur qui capture toute la
+      backing tracks, une setlist de morceaux, de gros boutons de scène qui changent de son, des
+      changements de preset qui se déclenchent tout seuls, un télésouffleur plein écran pour tes paroles, et un enregistreur qui capture toute la
       soirée en stems.</p>
 
     <nav class="toc">
@@ -76,6 +77,7 @@
       <ul>
         <li><a href="#tracks">Backing tracks</a></li>
         <li><a href="#player">La carte lecteur</a></li>
+        <li><a href="#stage">Les boutons de scène</a></li>
         <li><a href="#setlist">Setlists et morceaux</a></li>
         <li><a href="#sections">Ce qu'un morceau rappelle</a></li>
         <li><a href="#markers">Marqueurs</a></li>
@@ -94,8 +96,7 @@
         peux donc importer tout un set d'un coup, et il accepte tout ce qu'iOS sait décoder. Chaque
         fichier est copié dans <b class="ui">backing/</b> et devient une section de la setlist
         nommée d'après le fichier.</p>
-      <p>Si un fichier ne peut pas être lu, tu obtiens <b class="ui r">Could not import
-        &lt;name&gt;.</b></p>
+      <p>Si un fichier ne peut pas être lu, tu obtiens <b class="ui r">Impossible d'importer &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
              alt="L'onglet Perform : la carte lecteur avec Test Song chargée, sa timeline en forme d'onde, 120 BPM et la tonalité A, et la puce de routage DIRECT ; en dessous la carte SETLIST avec AUTO NEXT activé, et la carte RECORDINGS en bas.">
@@ -125,23 +126,31 @@
         divisions synchronisées du delay et du tremolo, la grille de mesures du looper,
         l'harmoniseur et l'autotune se retrouvent tous calés sur le bon morceau sans que tu règles
         quoi que ce soit.</p>
-      <p>Cinq boutons se trouvent sous le nom, de gauche à droite :</p>
+      <p>Six commandes se trouvent sous le nom, de gauche à droite — les mêmes touches de transport,
+        dans le même ordre, que l'en-tête plein écran des boutons de scène :</p>
       <div class="tw">
         <table>
           <thead><tr><th>Bouton</th><th>Fait</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Lecture</b></td><td>Joue et met en pause le backing track</td></tr>
-            <tr><td><b class="ui">Stop</b></td><td>Arrête et revient au début</td></tr>
-            <tr><td><b class="ui">Enregistrer</b></td><td>Démarre et arrête l'enregistreur de performance (<a href="#recording">plus bas</a>)</td></tr>
+            <tr><td><b class="ui">Au début du morceau</b></td><td>Revient au début du morceau en cours ; grisé quand le morceau n'a pas de timeline. Un morceau précédent, c'est un tap dans la liste</td></tr>
+            <tr><td><b class="ui">Lecture</b> / <b class="ui">Pause</b></td><td>Une seule touche : elle met
+              en pause pendant que le morceau joue et reprend là où elle s'est arrêtée. Stop — retour
+              au début — c'est le bouton de la ligne du morceau, ou le CC 92</td></tr>
+            <tr><td><b class="ui">Titre suivant</b></td><td>Passe au morceau suivant sans aller chercher
+              la liste</td></tr>
+            <tr><td><b class="ui">AUTO PAROLES</b></td><td>Si le télésouffleur s'ouvre tout seul avec
+              le morceau — le même interrupteur que <b class="ui">Ouvrir les paroles avec le
+              morceau</b> dans les Réglages</td></tr>
             <tr><td><b class="ui">Ajouter un repère</b></td><td>Pose un changement à la tête de lecture</td></tr>
             <tr><td><b class="ui">Paroles</b></td><td>Ouvre le télésouffleur, ou charge un fichier de paroles</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Fais un appui long sur <b class="ui">Lecture</b> ou <b class="ui">Stop</b> pour les
-        apprendre en MIDI — <b class="ui">MIDI Learn : lecture / pause</b>,
-        <b class="ui">MIDI Learn : stop</b>, <b class="ui">MIDI Learn : section suivante</b> et
-        <b class="ui">MIDI Learn : section précédente</b> sont tous proposés là. Voir
+      <p>Fais un appui long sur une touche de transport pour l'apprendre en MIDI —
+        <b class="ui">MIDI Learn : lecture / pause</b>,
+        <b class="ui">MIDI Learn : stop</b>, <b class="ui">MIDI Learn : section suivante</b>,
+        <b class="ui">MIDI Learn : section précédente</b> et <b class="ui">MIDI Learn : titre suivant</b>
+        sont proposés là. Voir
         <a href="/docs/fr/control.html">MIDI et contrôle</a>.</p>
       <h3>Niveau et routage du backing</h3>
       <p>Sous les boutons, un fader de console couché règle le niveau du playback en dB de −60 à
@@ -166,16 +175,53 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>Les boutons de scène</h2>
+      <p>La moitié inférieure de l'onglet Perform appartient à quelques gros boutons — ceux qu'une
+        main peut frapper en plein morceau sans regarder. Ce qu'ils contiennent dépend de l'état de
+        la setlist, <b class="ui">LIVE</b> ou non :</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Aucune setlist en scène</b> — les quatre <b class="ui">SCÈNES</b> du rig en cours. Une
+          scène vide capture ce qui joue, comme le font les puces de scène.</li>
+        <li><b>Une setlist en scène, aucun morceau choisi</b> — les morceaux du set. Le premier
+          appui en choisit un, et ses sons prennent les boutons.</li>
+        <li><b>Un morceau choisi</b> — les entrées du morceau lui-même, chacune un preset avec la
+          scène qu'il porte, dans l'ordre du morceau. Celle qui joue est allumée, et un bouton
+          n'affiche que les scènes que contient son preset.</li>
+      </ul>
+      <p>Un bouton bascule dès que le doigt se pose, pas quand il se lève, si bien qu'un coup rapide
+        entre deux mesures n'est jamais perdu. Il y en a quatre ou huit : la puce de nombre dans
+        l'en-tête bascule entre les deux et, tant que tu n'as pas choisi, elle suit l'écran. La
+        grille prend la forme qui garde les boutons le plus près du carré. Avec plus d'entrées que
+        de boutons, les flèches de l'en-tête font défiler les pages, et la page suit l'entrée qui
+        joue quand un marqueur ou une pédale fait avancer le morceau.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="Les boutons de scène en plein écran : le nom du morceau en grand en haut avec les touches retour au début, lecture et morceau suivant à côté, et de gros boutons en dessous, chacun portant le nom d'un preset avec sa lettre de scène A, B ou C.">
+        <figcaption>Plein écran : le nom du morceau, le transport et les sons du morceau</figcaption>
+      </figure>
+      <p>Le bouton d'agrandissement dans l'en-tête donne tout l'onglet aux boutons. En plein écran,
+        le nom du morceau s'affiche en grand, et les touches du lecteur viennent à côté — retour au
+        début, lecture / pause et morceau suivant — puisque le lecteur lui-même est hors de
+        vue.</p>
+      <p>Maintiens un bouton pour son menu : le menu de pad de la page Rig, sur scène —
+        <b class="ui">Remplacer le son…</b>, <b class="ui">Rig actuel</b>, <b class="ui">Vider le pad</b>
+        et MIDI Learn, qui lie un footswitch à ce bouton par son numéro. L'appui est volontairement
+        long (environ 0,8 s), pour ne jamais gêner un appui rapide. Le program change <em>n</em>
+        presse le bouton de scène <em>n</em> tant qu'un set est en scène : les morceaux tant qu'aucun
+        n'est choisi, puis les entrées du morceau choisi.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlists et morceaux</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Setlists et morceaux</h2>
       <p>Une <strong>setlist</strong> est une liste de morceaux ; l'une d'elles est
         <b class="ui">LIVE</b> à la fois, et la setlist en scène possède la barre de presets et le
-        MIDI : le program change <em>n</em> joue le morceau <em>n</em>. Un <strong>morceau</strong>
+        MIDI : le program change <em>n</em> presse le bouton de scène <em>n</em>. Un <strong>morceau</strong>
         est un nom, une liste ordonnée de ce qu'il rappelle et un playback <em>optionnel</em> avec
         ses marqueurs et ses paroles. Un morceau sans aucun audio est tout aussi valable : c'est le
         son avec lequel tu le joues, rappelé depuis la même liste.</p>
-      <p>L'en-tête de la carte porte le bouton <b class="ui">SETLISTS</b> — créer, choisir, renommer,
-        partager et supprimer des sets —, un interrupteur <b class="ui">AUTO SUIVANT</b> et un
+      <p>L'en-tête de la carte porte le bouton <b class="ui">SETLISTS</b> — juste son icône sur téléphone — pour créer, choisir,
+        renommer, partager et supprimer des sets —, un interrupteur <b class="ui">AUTO SUIVANT</b> et un
         <b class="ui">+</b> qui importe des fichiers audio (un morceau par fichier), ajoute un
         <b class="ui">Titre sans backing track</b> ou construit un morceau directement
         <b class="ui">Depuis un preset de rig</b>. Avec <b class="ui">AUTO SUIVANT</b>, le set avance tout seul
@@ -208,7 +254,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Ce qu'un morceau rappelle</h2>
+      <h2 id="sections"><span class="n">06.5</span>Ce qu'un morceau rappelle</h2>
       <p>Le bouton d'édition ouvre l'éditeur du morceau : un champ <b class="ui">Nom du titre</b>, un sélecteur de backing dont la première entrée est <b class="ui">Titre sans backing track</b>, la ligne des <a href="#lyrics">paroles</a>, la liste de ce que le morceau rappelle, et <b class="ui">Supprimer le morceau</b> en bas.</p>
       <p>Un morceau sans bande d’accompagnement reçoit en plus une ligne <b class="ui">Durée</b> : la
         timeline sur laquelle il tourne. Donnez-lui une durée et le transport la décompte à l’horloge
@@ -231,23 +277,39 @@
             <a href="/docs/fr/sampler.html">pads</a>.</td></tr>
         </tbody>
       </table>
-      <p>La liste est appliquée dans l'ordre quand le morceau est préparé : le <em>dernier</em>
-        preset de rig est donc le son avec lequel tu commences ; ceux du dessus sont là pour que les
-        <a href="#markers">marqueurs</a> les atteignent. Les lignes montent, descendent et se
-        suppriment depuis leur propre menu.</p>
+      <p>Quand le morceau est préparé, le <em>premier</em> preset de rig de la liste est le son avec
+        lequel tu commences ; ceux du dessous sont là pour que les <a href="#markers">marqueurs</a>,
+        les boutons de scène et un footswitch les atteignent, et l'ordre est celui que parcourt
+        <em>preset suivant / précédent du morceau</em>. Pour réordonner, fais glisser une ligne par
+        sa poignée — les trois traits sur son bord droit. Les lettres de scène d'une ligne ne
+        proposent que les scènes que contient ce preset, et toucher à nouveau la lettre choisie
+        annule le choix.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="L'éditeur de morceau : le nom et le playback du morceau, puis la liste de ce qu'il rappelle — des presets de rig, chacun avec ses lettres de scène et une poignée, un preset de looper et un kit de sampler.">
+        <figcaption>L'éditeur de morceau : des presets avec leurs scènes, un preset de looper, un kit</figcaption>
+      </figure>
       <h3>Choisir un preset</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="Le sélecteur de presets de rig : un champ de recherche au-dessus de la liste, et des lignes avec le numéro de programme, la banque, la pochette, le nom du preset et ses étiquettes.">
+        <figcaption>Le sélecteur de presets de rig : toutes les banques dans une seule liste</figcaption>
+      </figure>
       <p>Le sélecteur de presets de rig affiche les mêmes numéros que la barre — <b class="ui">0</b>
-        … <b class="ui">127</b> — avec la pochette et un champ de recherche au-dessus de la liste,
-        qui filtre par nom, numéro et étiquette. Et il <strong>écoute</strong> pendant que tu
-        parcours : touche une ligne et le rig la charge vraiment, tu choisis donc le son à
-        l'oreille. Ferme le sélecteur sans choisir et le rig revient à ce qu'il était.</p>
+        … <b class="ui">127</b> — pour toutes les banques dans une seule liste, celle d'usine en
+        premier, chaque ligne marquée de sa banque et portant sa pochette et ses étiquettes ; le
+        champ de recherche filtre par nom, numéro et étiquette. Et il <strong>écoute</strong> pendant
+        que tu parcours : touche une ligne et le rig la charge vraiment, tu choisis donc le son à
+        l'oreille (le haut-parleur dans l'en-tête du sélecteur désactive cela). La coche ajoute le
+        preset en surbrillance ; ferme le sélecteur sans choisir et le rig revient à ce qu'il
+        était.</p>
       <p>L'autre sens marche aussi : le menu de ligne d'un preset dans la barre de l'onglet Rig
         contient <b class="ui">Ajouter à un set…</b> — choisis une setlist, puis l'un de ses morceaux ou
         <b class="ui">Nouveau morceau</b>, et le preset est ajouté à la liste de ce morceau.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>Marqueurs</h2>
+      <h2 id="markers"><span class="n">06.6</span>Marqueurs</h2>
       <p>Un marqueur est un instant de la timeline du morceau qui rappelle l'une de ses propres
         entrées. Couplet clair, refrain saturé, lead pour le solo : posé une fois, puis mains libres
         à chaque fois que tu le joues.</p>
@@ -278,7 +340,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Paroles et télésouffleur</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Paroles et télésouffleur</h2>
       <p>NAMper porte tes mots à ta place. Donne à une piste un simple fichier texte et il devient
         un télésouffleur plein écran qui s'ouvre tout seul au démarrage du morceau et défile au
         rythme que tu lui as appris.</p>
@@ -339,8 +401,9 @@
         nom de la piste, l'affichage <b class="ui">m:ss / m:ss</b> et un bouton lecture/pause.
         <strong>Appuyer n'importe où sur l'écran bascule lecture/pause</strong> — tu n'as pas
         besoin de viser une petite cible avec une guitare dans les mains.</p>
-      <p>Qu'il s'ouvre tout seul est un réglage : Réglages → <b class="ui">Scène</b> →
-        <b class="ui">Ouvrir les paroles avec le morceau</b>. Désactivé, l'onglet où vous étiez reste en
+      <p>Qu'il s'ouvre tout seul est un interrupteur : <b class="ui">AUTO PAROLES</b> à côté du bouton
+        des paroles sur la carte lecteur, le même interrupteur dans le menu du bouton des paroles, et
+        Réglages → <b class="ui">Scène</b> → <b class="ui">Ouvrir les paroles avec le morceau</b>. Désactivé, l'onglet où vous étiez reste en
         place, et le bouton <b class="ui">Paroles</b> ouvre les paroles quand vous le voulez.</p>
 
       <h3>Ancres</h3>
@@ -388,7 +451,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Presets Perform</h2>
+      <h2 id="presets"><span class="n">06.8</span>Presets Perform</h2>
       <p>La puce <b class="ui">PRESETS</b> dans l'en-tête de la setlist ouvre
         <b class="ui">Presets Perform</b>. Un preset Perform sauvegardé porte
         <strong>toute la setlist</strong> : chaque section avec ses étapes et ses mesures, l'état
@@ -407,9 +470,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Enregistrement</h2>
-      <p>Le bouton d'enregistrement dans la carte lecteur capture la performance en
-        <strong>trois stems alignés</strong>. Il refuse avec <b class="ui r">L'audio est coupé — touchez le bouton d'alimentation avant d'enregistrer.</b> si le moteur audio ne tourne pas.</p>
+      <h2 id="recording"><span class="n">06.9</span>Enregistrement</h2>
+      <p>L'enregistreur de l'onglet <a href="/docs/fr/mix.html#recorder">Mix</a> capture la
+        performance en <strong>trois stems alignés</strong>. Il refuse avec <b class="ui r">L'audio est coupé — touchez le bouton d'alimentation avant d'enregistrer.</b> si le moteur audio ne tourne pas.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>Ce qu'il contient</th></tr></thead>
@@ -434,7 +497,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Projets d'enregistrement</h2>
+      <h2 id="projects"><span class="n">06.10</span>Projets d'enregistrement</h2>
       <p>La carte <b class="ui">ENREGISTREMENTS</b> regroupe les stems d'une prise en un
         <strong>projet</strong>, via leur nom commun <b class="ui">Perf &lt;date&gt;</b>. Les plus
         récents en premier, et les cinq projets les plus récents sont affichés — les prises plus
@@ -452,7 +515,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>Export DAWproject</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>Export DAWproject</h2>
       <p>Le bouton de partage sur une <strong>ligne de projet</strong> — pas sur un stem
         individuel — exporte toute la prise sous forme de fichier <b class="ui">.dawproject</b>
         via la feuille de partage iOS habituelle : Enregistrer dans Fichiers, l'envoyer par

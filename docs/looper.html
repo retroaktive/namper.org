@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — NAMper Documentation</title>
-<meta name="description" content="The four-track sync looper: circular pads, the transport, AUTO arming and boundary snapping, tempo and the click, the loop editor, undo, per-track routing and what gets saved.">
+<meta name="description" content="The four-cell sync looper: the loop cells and their corner keys, the transport, AUTO arming and boundary snapping, tempo and the click, the loop editor, MIDI cells with non-destructive quantize, undo, each cell's input, output and preset, loops as WAV files and what gets saved.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Looper — NAMper Documentation">
@@ -74,115 +75,139 @@
       <div class="slab">ON THIS PAGE</div>
       <ul>
         <li><a href="#basics">How the looper thinks</a></li>
-        <li><a href="#pads">The circular pads</a></li>
+        <li><a href="#pads">The loop cells</a></li>
         <li><a href="#transport">The transport</a></li>
         <li><a href="#auto">AUTO mode</a></li>
         <li><a href="#tempo">Tempo and the click</a></li>
         <li><a href="#editor">The loop editor</a></li>
-        <li><a href="#undo">Undo</a></li>
-        <li><a href="#routing">Per-track routing</a></li>
+        <li><a href="#midi">MIDI cells</a></li>
+        <li><a href="#undo">Undo and clear</a></li>
+        <li><a href="#routing">A cell's settings</a></li>
         <li><a href="#saving">What gets saved</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="basics"><span class="n">04.1</span>How the looper thinks</h2>
-      <p>One rule sits underneath everything else, and the app prints it along the bottom of the
-        screen:</p>
-      <p><b class="ui">First loop sets the cycle · others sync to it · MIDI CC 85–88 tap · 89
-        run/stop · 90 clear</b></p>
-      <p>Whichever track you record first defines the cycle. Every other track is fitted to it
+      <p>One rule sits underneath everything else: <b>the first loop sets the cycle, and every
+        other loop syncs to it.</b></p>
+      <p>Whichever cell you record first defines the cycle. Every other cell is fitted to it
         rather than drifting off on its own, and nothing shifts that cycle afterwards except editing
-        the track that set it, or clearing everything and starting again.</p>
-      <p>There are four tracks, each holding up to <b>60 seconds</b>. In portrait the pads sit in a
-        2×2 grid; in landscape the transport moves to a left-hand column and the four pads line up
-        in a row.</p>
+        the cell that set it, or clearing everything and starting again.</p>
+      <p>There are four cells, and a loop is as long as you play it: past the first minute a cell
+        keeps growing for as long as the device has the memory for it. With the screen upright the
+        transport sits on top and the four cells fill the page two by two; turned on its side, the
+        transport becomes a column on the left and each cell's settings stand beside its pad. The
+        iPad follows the same rule by the shape of the page, not by the device.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="The Loop tab: track 1 playing with a green radial waveform and a spinning beam, track 2 armed with a dashed red border, tracks 3 and 4 empty, the AUTO chip lit green and the tempo reading 124 BPM.">
-        <figcaption>Track 1 playing, track 2 armed and waiting, AUTO on at 124 BPM</figcaption>
+             alt="The Loop tab: the transport card on top with the tempo, AUTO and CLICK; below it four loop cells, each a round pad in a square of four corner keys with its settings tiles underneath; cell 1 playing with a green wave ring, cell 2 recording, cell 3 muted, cell 4 empty.">
+        <figcaption>The transport on top, four cells below: a pad, four corner keys, the settings tiles</figcaption>
       </figure>
-      <p>Every track card is laid out the same way: a header row with the big track number, the
-        state label and an LED dot; the circular pad; a 2×2 grid of chips — <b class="ui">IN</b> and
-        <b class="ui">LEN</b> over <b class="ui">DUB</b> and <b class="ui">OUT</b>; and a control
-        row underneath.</p>
+      <p>Every cell is built the same way: the round <b>pad</b> in the middle of a square, a
+        <b>corner key</b> in each of the square's four corners, and a strip of <b>settings
+        tiles</b> — under the pad, or beside it when the cell is wider than tall. There is no card
+        and no header: the cell's number is drawn huge and faint across its own circle.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>The circular pads</h2>
-      <p>The pad draws the loop's waveform <em>radially</em> around the ring — one lap of the circle
-        is one lap of the cycle — with a spinning beam marking the play position. Attacks show up as
-        spikes on the ring, so you can read where you are from across a room.</p>
+      <h2 id="pads"><span class="n">04.2</span>The loop cells</h2>
+      <p>The pad draws the loop's waveform <em>as a ring</em> — one lap of the circle is one lap of
+        the cycle — with a beam marking the play position. Loud passages make the ring thicker, so
+        you can read where you are in the loop from across a room. The pad also <b>lights from its
+        rim inward</b> as the loop sounds, the deeper the louder.</p>
       <p>While the very first loop records there is no cycle yet, so the ring behaves differently:
-        the whole circle maps to everything recorded <em>so far</em>. The waveform packs tighter as
-        the take grows, the beam holds still at 12 o'clock — that is the write head — and the centre
-        of the pad counts the elapsed seconds. Once the loop closes, the beam runs the cycle.</p>
+        the whole circle maps to everything recorded <em>so far</em>, the beam holds still at
+        12 o'clock — that is the write head — and the centre counts the elapsed seconds. Once the
+        loop closes, the beam runs the cycle. A cell recording into a running cycle draws its wave
+        as a growing arc.</p>
 
       <h3>Tapping the pad</h3>
-      <p>One tap moves the track one rung up the ladder:</p>
+      <p>Only the circle takes the tap. One tap moves the cell one rung up the ladder:</p>
       <ul style="--nc:var(--eq)">
         <li>empty → recording</li>
         <li>recording → close the loop, and it starts playing</li>
         <li>playing → overdub</li>
         <li>overdub → back to playing</li>
-        <li>muted → unmute</li>
+        <li>muted → playing</li>
       </ul>
       <p>With <b class="ui">AUTO</b> on, tapping an empty pad <b>arms</b> it instead of recording
-        immediately, and tapping an armed pad cancels the arm. That is the only change AUTO makes to
-        the ladder.</p>
+        immediately — a dashed red ring goes round the cell — and tapping an armed pad cancels the
+        arm. That is the only change AUTO makes to the ladder.</p>
 
-      <h3>Long-press</h3>
-      <p>Long-press the round pad for <b class="ui">MIDI Learn: tap loop track 1</b> (and 2, 3, 4) —
-        that is how a footswitch gets bound to one track. Long-press the <em>card</em> around it and
-        you get the routing menu instead: <b class="ui">Input · …</b>, <b class="ui">Output · …</b>,
-        <b class="ui">Edit loop…</b>, plus <b class="ui">Length · Free</b> or
-        <b class="ui">Length · N bars</b> and <b class="ui">Overdubs · N</b>.</p>
+      <h3>The corner keys</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Corner</th><th>Key</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Top left</td><td><b class="ui">Mute</b></td>
+                <td>Silences the loop while it keeps running; lit amber while on.</td></tr>
+            <tr><td>Top right</td><td><b class="ui">Solo</b></td>
+                <td>Mutes the other playing cells; press again to bring them back. Soloing another
+                  cell hands the solo over.</td></tr>
+            <tr><td>Bottom left</td><td><b class="ui">Undo</b></td>
+                <td>Takes back this cell's last overdub, or clears its take — see
+                  <a href="#undo">Undo and clear</a>.</td></tr>
+            <tr><td>Bottom right</td><td><b class="ui">Play</b> / <b class="ui">Stop</b></td>
+                <td>Stops or starts this loop alone.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A key that has nothing to do on the cell's current state is drawn faint. The corners light
+        with the loop too, a little shallower than the pad.</p>
+      <p><b>Stopping one cell</b> does not stop time: the loop runs on silently with the cycle, and
+        pressing <b class="ui">Play</b> brings it back exactly in time, never from its start. With
+        the whole looper stopped, a cell's <b class="ui">Play</b> starts the looper with that cell
+        alone; the transport's play brings every cell back.</p>
 
       <h3>States</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>State</th><th>Label</th><th>Colour</th></tr></thead>
+          <thead><tr><th>State</th><th>What you see</th></tr></thead>
           <tbody>
-            <tr><td>Nothing recorded</td><td><b class="ui">empty</b></td><td>Dim</td></tr>
-            <tr><td>Capturing</td><td><b class="ui">recording</b></td><td>Red</td></tr>
-            <tr><td>Looping back</td><td><b class="ui">playing</b></td><td>Green</td></tr>
-            <tr><td>Layering</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
-            <tr><td>Silent, still running</td><td><b class="ui">muted</b></td><td>Yellow</td></tr>
-            <tr><td>Waiting (AUTO)</td><td><b class="ui">armed</b></td>
-                <td>Red, dashed border round the card</td></tr>
+            <tr><td>Nothing recorded</td><td>Faint rim, no wave</td></tr>
+            <tr><td>Recording</td><td>Red</td></tr>
+            <tr><td>Playing</td><td>Green</td></tr>
+            <tr><td>Overdub</td><td>Orange</td></tr>
+            <tr><td>Muted</td><td>Amber, the wave dimmed</td></tr>
+            <tr><td>Stopped on its own</td><td>In the ink colour, the wave still drawn</td></tr>
+            <tr><td>Armed (AUTO)</td><td>Red, dashed ring round the cell</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The control row under each pad holds four things: mute
-        (<b class="ui">Mute track N</b>, which turns yellow), edit
-        (<b class="ui">Edit loop N</b>), clear (<b class="ui">Clear track N</b>) and a small level
-        knob (<b class="ui">Loop track N level</b>, 0 to 1.5).</p>
+
+      <h3>Long-press</h3>
+      <p>Long-press the pad — or anywhere on the cell — for the cell's menu:
+        <b class="ui">Input · …</b>, <b class="ui">Output · …</b>, <b class="ui">Loop preset · …</b>,
+        <b class="ui">Edit loop…</b>, <b class="ui">Length · Free</b> or
+        <b class="ui">Length · N bars</b>, <b class="ui">Overdubs · N</b>; the loop as a file —
+        <b class="ui">Export loop as WAV…</b>, <b class="ui">Export all loops…</b>,
+        <b class="ui">Load loop from file…</b> (see <a href="#saving">below</a>); and at the foot
+        <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — that is how a footswitch gets
+        bound to one cell.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>The transport</h2>
-      <p>Next to the word <b class="ui">LOOPER</b> sits the transport row:</p>
+      <p>The transport card holds the word <b class="ui">LOOPER</b> — red while the looper holds
+        anything — and, upright, two rows:</p>
       <ul style="--nc:var(--gate)">
-        <li>A <b>master ring</b> showing the cycle length in seconds, or <b class="ui">—</b> when
-          nothing is recorded yet.</li>
-        <li>A <b class="ui">PRESETS</b> chip — see <a href="#saving">what gets saved</a>.</li>
+        <li>A <b>presets</b> key — see <a href="#saving">what gets saved</a>.</li>
         <li><b class="ui">Play loops</b> / <b class="ui">Stop loops</b>, disabled until there is a
           cycle.</li>
-        <li>An <b>undo</b> button, enabled only when there is something to undo.</li>
-        <li>A trash button, <b class="ui">Clear all loops</b>.</li>
+        <li>An <b>undo</b> key — see <a href="#undo">Undo and clear</a>.</li>
+        <li>A trash key, <b class="ui">Clear all loops</b>.</li>
+        <li>Under them, the tempo, <b class="ui">AUTO</b> and <b class="ui">CLICK</b>.</li>
       </ul>
-      <p>Under it, one status line tells you where you are:
-        <b class="ui">recording the master loop…</b> while the first take runs, a running
-        <b class="ui">4.2 / 8.0 s</b> position once there is a cycle, <b class="ui">stopped</b>, or
-        <b class="ui">tap a track to record</b> when the looper is empty.</p>
+      <p>On its side the same keys stand in a column: the tempo, AUTO and CLICK on top, play, undo
+        and trash at the foot. The card lights up while the first loop records.</p>
+      <p>Long-press play for <b class="ui">MIDI Learn: looper run / stop</b>, or the trash key for
+        <b class="ui">MIDI Learn: clear all loops</b>.</p>
       <div class="note">
         <div class="t">Footswitch control</div>
         <p>The built-in MIDI map covers the looper with no setup: <b class="ui">CC 85–88</b> tap
-          tracks 1 to 4, <b class="ui">CC 89</b> runs, <b class="ui">CC 90</b> clears. Note that
-          CC 89 sends a <em>play</em> command — it restarts the loops from the top rather than
-          toggling them off. For a true run/stop toggle on one switch, add a mapping in Settings →
-          <b class="ui">Control</b> and learn it to <b class="ui">Run / stop</b>, which reads
-          the current state.</p>
+          cells 1 to 4, <b class="ui">CC 89</b> runs and stops, <b class="ui">CC 90</b> clears.
+          CC 89 is a true toggle — see <a href="/docs/control.html">MIDI &amp; control</a>.</p>
       </div>
     </section>
 
@@ -193,20 +218,27 @@
         lines actually are.</p>
 
       <h3>Arming instead of recording</h3>
-      <p>With AUTO on, tapping an empty pad arms it: the card gets a dashed red border and reads
-        <b class="ui">armed</b>. What happens next depends on whether there is already a cycle:</p>
+      <p>With AUTO on, tapping an empty pad arms it: a dashed red ring goes round the cell. What happens next depends on whether there is already a cycle:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>No cycle yet.</b> Recording begins <b>on your first note</b> above the arm threshold.
+        <li><b>No cycle yet.</b> Recording begins <b>on your first note</b> above the arm threshold
+          — Settings → <b class="ui">Stage</b> → <b class="ui">LOOPER</b> →
+          <b class="ui">Signal that starts an auto-loop</b>, −40 dB unless you move it, lower being
+          more sensitive. A brush of the strings or the room stays under it.
           You can pick the guitar up, get comfortable, and the take starts when you play — not when
           you tapped.</li>
         <li><b>A cycle already running.</b> Recording begins on the <b>next cycle boundary</b>, so
           the take starts exactly on the bar. A short grace window forgives an attack that lands
           slightly late, so hitting the downbeat a hair behind the beam still counts.</li>
       </ul>
-      <p>A free armed take — one recorded with no cycle in place — also <b>stops itself</b> after
-        about 1.2 seconds of silence, trimmed back to the audible part. The threshold is generous on
-        purpose: reverb tails and gaps between phrases do not count as silence, so a sparse riff is
-        not cut in half.</p>
+      <p>A free armed take — one recorded with no cycle in place — also <b>stops itself</b> when the
+        phrase does: once the quiet has lasted the beats set in <b class="ui">Silence that closes an
+        auto-loop</b> (one unless you change it) and outlasted the rests in your own playing, the
+        take closes on the bar end it heard. With no tempo to hear — a drone, a pad — two seconds of
+        quiet close it instead. Reverb tails and gaps between phrases do not count as silence, so a
+        sparse riff is not cut in half.</p>
+      <p>With a loop already playing out of a combo amp into your mic or pickups, an armed cell
+        learns how much of that loop comes back and waits through it: a note has to rise clearly
+        above it, about 9 dB, so play it rather than brush it.</p>
       <p>After each loop closes, AUTO <b>arms the next empty cell by itself</b>, so you can build up
         all four tracks without touching the screen again.</p>
 
@@ -224,7 +256,7 @@
       </ol>
       <p>On screen it all happens in one moment: the ring re-draws, the length snaps to a clean
         figure, and the BPM readout — blank until now — fills in. From there the click, the LEN
-        chips, the sampler's quantize and the setlist's bar clock all have a grid to work from.</p>
+        tiles, the sampler's quantize and the setlist's bar clock all have a grid to work from.</p>
       <p>With <b class="ui">CLICK</b> on, the tempo is <b>locked</b> to whatever tempo is set and
         only the phase is fitted. That is the mode to use when you are playing to a click or to a
         backing track and the tempo must not move.</p>
@@ -268,35 +300,42 @@
       </div>
     </section>
 
-    <section class="blk" style="--nc:var(--pitch)">
+    <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>The loop editor</h2>
-      <p>Open it with the edit button in a pad's control row, or long-press the card →
-        <b class="ui">Edit loop…</b>. The sheet is headed <b class="ui">LOOP N</b> with a live length
-        label.</p>
+      <p>Open it with the edit tile (<b class="ui">Edit loop N</b>) among a cell's settings, or
+        long-press the cell → <b class="ui">Edit loop…</b>. The edit tile works on an
+        <b>empty or armed cell too</b>, so the preset a take records through — and, on a MIDI cell,
+        its grid — can be set before you play. The sheet is headed <b class="ui">LOOP N</b> with a
+        live length label.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="The loop editor sheet over the looper: a waveform with a bar and beat grid, draggable start and end handles, the START and LENGTH TEMPO KEPT button rows, Level and Pan knobs, and Mute, Undo and Clear buttons.">
+             alt="The loop editor sheet over the looper: a waveform with a bar and beat grid, draggable start and end handles, the RECORD THROUGH row, the START and LENGTH TEMPO KEPT button rows, Level and Pan knobs, and Mute, Undo and Clear buttons.">
         <figcaption>The loop editor: grid, handles, nudge buttons and the bottom row</figcaption>
       </figure>
       <p>The label reads something like <b class="ui">8.00 s · 4.0 bars</b>. Dragging the end handle
         adds the tempo that length would produce; dragging the start handle changes it to
         <b class="ui">start +0.50 beats</b>.</p>
-      <p>The waveform carries a bar and beat <b>grid overlay</b> — beat ticks and numbered bar
+      <p>The waveform carries a <b>bar and beat grid</b> overlay — beat ticks and numbered bar
         lines, anchored at the loop start. Audio past the loop end is drawn dimmed: kept but silent,
         which is what lets you push the end handle back out again later.</p>
 
       <h3>The two handles</h3>
-      <ul style="--nc:var(--pitch)">
+      <ul style="--nc:var(--eq)">
         <li><b>The start</b> (<b class="ui">Loop start handle</b>) rotates the phase: the loop
           begins later and the skipped piece wraps round to the end. Length and tempo do not change.
           This is the fix for a loop that starts half a beat early.</li>
         <li><b>The end</b> (<b class="ui">Loop end handle</b>) resizes the loop, and works
-          <b>only on the track that defines the cycle</b>. The bar count is preserved and the set
+          <b>only on the cell that defines the cycle</b>. The bar count is preserved and the set
           tempo follows, so stretching the loop slows the whole set down. The sheet says as much:
           <b class="ui">Drag the edges to move the start and resize the loop — resizing retunes the
           set tempo.</b></li>
       </ul>
-      <p>An empty track shows <b class="ui">no audio</b> and nothing to drag.</p>
+      <p>An empty cell shows no audio and nothing to drag.</p>
+
+      <h3>Record through</h3>
+      <p>The <b class="ui">RECORD THROUGH</b> row names the preset the cell records through — the
+        live rig unless you choose one. Tap it to pick a preset; its <b>×</b> puts the cell back on
+        <b class="ui">The live rig</b>. See <a href="#preset">the loop's preset</a>.</p>
 
       <h3>The button rows</h3>
       <p>Under the waveform, <b class="ui">START</b> gives four phase nudges —
@@ -308,72 +347,153 @@
         you meant to play; doubling gives room to overdub a phrase spanning twice the cycle.</p>
       <div class="note">
         <div class="t">Why the length buttons are greyed out</div>
-        <p>All six <b class="ui">LENGTH · TEMPO KEPT</b> buttons are disabled unless the track you
+        <p>All six <b class="ui">LENGTH · TEMPO KEPT</b> buttons are disabled unless the cell you
           are editing is the one that defines the cycle, and the sheet explains why:
           <b class="ui">Only the track that defines the cycle can change its length.</b> If the
-          length is wrong on a follower track, the loop to edit is the master one.</p>
+          length is wrong on a follower cell, the loop to edit is the master one.</p>
       </div>
       <p>The bottom row holds a <b class="ui">Level</b> knob (0 to 1.5), a <b class="ui">Pan</b> knob
         reading <b class="ui">C</b>, <b class="ui">L50</b> or <b class="ui">R50</b>, and the buttons
-        <b class="ui">Mute</b>, <b class="ui">Undo</b> and <b class="ui">Clear</b>.</p>
+        <b class="ui">Mute</b>, <b class="ui">Undo</b> (the last overdub) and
+        <b class="ui">Clear</b>, which clears the cell and closes the sheet.</p>
       <p>There is no reverse. Loops play forwards only.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="midi"><span class="n">04.7</span>MIDI cells</h2>
+      <p>Set a cell's <b class="ui">IN</b> to <b class="ui">Sampler pads (MIDI)</b> and it stops
+        recording sound: it records <b>which pad you hit, when, and how hard</b>, and plays the
+        hits back through the <a href="/docs/sampler.html">sampler</a>. A drum part recorded this
+        way costs almost nothing, stays editable hit by hit, and follows whatever kit is loaded —
+        change the kit and the same part plays the new sounds.</p>
+      <p>A MIDI cell draws a tick per hit on its ring instead of a wave, and its pad flashes each
+        time the beam passes a hit. Its <b class="ui">OUT</b> tile becomes <b class="ui">QNT</b>
+        — the pads already go wherever the sampler goes.</p>
+
+      <h3>Quantize while you record</h3>
+      <p>The <b class="ui">QNT</b> tile cycles <b class="ui">OFF</b>, <b class="ui">1/4</b>,
+        <b class="ui">1/8</b>, <b class="ui">1/16</b> and <b class="ui">1/32</b>. It moves what
+        is <em>printed</em>, never what you hear: the hit you play always sounds at once, and what
+        lands on the grid is the recorded copy.</p>
+
+      <h3>The MIDI editor</h3>
+      <p>The editor of a MIDI cell has a pink <b class="ui">MIDI</b> badge and, in place of the
+        waveform, a <b>roll</b>: one row per pad the kit has loaded, one column per grid step,
+        heavier lines on beats and bars, a red line for the playhead. The take always fills the
+        roll's width; a finer grid only draws more lines.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
+             alt="The editor of a MIDI loop cell: the LOOP 1 header with a pink MIDI badge, the Quantize knob, the GRID chips 1/4 to 1/32 and the hit count, a roll with one row per sampler pad and eight hits on the first row, and the ruler with the END handle under it.">
+        <figcaption>A MIDI cell's editor: quantize, the grid chips and the roll</figcaption>
+      </figure>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Tap</b> a square to put a hit there or take it away — you hear the pad.</li>
+        <li><b>Hold</b> a square to change its accent: full, two thirds, one third. The shade of
+          the block shows it.</li>
+        <li>Drag the red <b class="ui">END</b> handle on the ruler under the roll to change the
+          loop's length in steps; the tempo stays.</li>
+      </ul>
+      <p>Above the roll, the <b class="ui">Quantize</b> knob and the <b class="ui">GRID</b> chips
+        (<b class="ui">1/4</b> to <b class="ui">1/32</b>) quantize the take <b>after the fact —
+        and without destroying it.</b> The take as you played it is kept, and the grid is always
+        applied to that original, never to the last result: turn the knob down and the hits walk
+        back to where you played them; at <b class="ui">OFF</b> the timing is yours again. Try
+        1/8 and 1/16 against each other as often as you like. An edit by hand in the roll becomes
+        the new played take. The row also counts the take — <b class="ui">8 hits</b>.</p>
+      <p>With no kit loaded the roll says <b class="ui">Load a kit on the Sample tab to edit this
+        take on a grid.</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Undo</h2>
-      <p>Undo is a <b>toggle</b>, not a stack. Every overdub session snapshots the audio before the
-        dub goes on; undo swaps that snapshot back in, and pressing it again swaps your overdub
-        back. It is a compare button as much as an undo button.</p>
-      <p>Two limits: it is <b>one session deep</b>, so a second overdub replaces what undo was
-        holding, and it is <b>shared across tracks</b> — one snapshot for the whole looper, not one
-        per track. Overdub track 2 and the undo you were saving for track 1 is gone.</p>
+      <h2 id="undo"><span class="n">04.8</span>Undo and clear</h2>
+      <p>Each cell's <b class="ui">Undo</b> corner does the obvious thing for that cell. If the
+        cell holds the last overdub, it takes the overdub back — and pressing it again puts the
+        overdub back, so it doubles as a compare button. Otherwise it <b>clears the cell's
+        take</b>.</p>
+      <p>The overdub undo is <b>one session deep</b> and <b>shared across cells</b>: a second
+        overdub, on any cell, replaces what undo was holding. Overdub cell 2 and the undo you were
+        saving for cell 1 is gone — cell 1's corner then clears it instead.</p>
+      <p id="undo-transport">The undo key in the transport does the same without choosing a cell:
+        it takes back the last overdub if there is one, and otherwise clears the take that closed
+        last. The trash key, <b class="ui">Clear all loops</b>, empties the looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Per-track routing</h2>
-      <p><b class="ui">IN</b> and <b class="ui">OUT</b> decide where a track's audio comes from and
-        goes to; <b class="ui">LEN</b> and <b class="ui">DUB</b> decide how long and how many
-        passes.</p>
+      <h2 id="routing"><span class="n">04.9</span>A cell's settings</h2>
+      <p>The tiles next to each pad are the cell's settings; each shows a small tag and its value.
+        <b class="ui">IN</b> and <b class="ui">OUT</b> decide where the loop's sound comes from and
+        goes to, <b class="ui">LEN</b> and <b class="ui">DUB</b> how long and how many passes; a
+        <b class="ui">PRESET</b> tile appears when the cell has a preset of its own; the edit tile
+        opens the <a href="#editor">loop editor</a>, and the knob is the cell's level
+        (<b class="ui">Loop track N level</b>, 0 to 1.5).</p>
 
       <h3>IN</h3>
       <p>The <b class="ui">IN</b> menu offers <b class="ui">Post FX (the rig)</b> — the processed
         guitar, which is what you usually want. With several rigs it becomes
-        <b class="ui">Post FX · &lt;rig name&gt;</b> per rig and the chip reads
+        <b class="ui">Post FX · &lt;rig name&gt;</b> per rig and the tile reads
         <b class="ui">FX · &lt;rig&gt;</b>. Below that, one entry per hardware input channel under
         its own name — a dry vocal or a second player straight off the interface — and
-        <b class="ui">Sampler</b>, chip <b class="ui">SMP</b>, for looping the pads.</p>
+        <b class="ui">Sampler pads (MIDI)</b>, tile <b class="ui">MIDI</b>, which makes it a
+        <a href="#midi">MIDI cell</a>.</p>
+      <p><b class="ui">Only this loop · &lt;rig&gt;</b> gives a rig to the looper alone: that rig
+        is taken out of what you hear live, and while a cell recording it is armed, recording or
+        overdubbing, it is <b>the one live rig heard</b> — the others fall silent for the take and
+        come back after it. Build a rig just for a loop part — a bass octave, a pad sound — and it
+        never leaks into your playing. The tile reads <b class="ui">Only · &lt;rig&gt;</b>.</p>
 
       <h3>OUT</h3>
-      <p>The <b class="ui">OUT</b> menu offers <b class="ui">Main mix</b> (chip
+      <p>The <b class="ui">OUT</b> menu offers <b class="ui">Main mix</b> (tile
         <b class="ui">MAIN</b>), one entry per extra hardware output pair —
         <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> and so on, which need
         <b class="ui">Use all interface outputs</b> switched on in Settings — and
         <b class="ui">Into &lt;rig name&gt;</b>.</p>
       <p>That last one is the interesting one: rather than going straight to the mix, the loop plays
         <em>into</em> that rig, so the rig's effects process it live. Loop a clean part, send it into
-        a rig with a delay and a filter, and sweep the filter while the loop runs. A rig the track
+        a rig with a delay and a filter, and sweep the filter while the loop runs. A rig the cell
         records from is not offered — that would be a feedback path.</p>
 
       <h3>LEN and DUB</h3>
-      <p>The <b class="ui">LEN</b> chip cycles 0, 1, 2, 4 and 8 bars. At 0 it reads
+      <p>The <b class="ui">LEN</b> tile cycles 0, 1, 2, 4 and 8 bars. At 0 it reads
         <b class="ui">FREE</b>; otherwise <b class="ui">N BAR</b>, and the take is fixed to that many
         bars. With no tempo set the menu says
         <b class="ui">No tempo yet — record the first loop with AUTO on</b>.</p>
-      <p>The <b class="ui">DUB</b> chip cycles 0, 1, 2 and 4 automatic overdub passes — the track
+      <p>The <b class="ui">DUB</b> tile cycles 0, 1, 2 and 4 automatic overdub passes — the cell
         drops back to playing by itself after that many laps.</p>
+
+      <h3 id="preset">The loop's preset</h3>
+      <p>A cell can record through a sound of its own, apart from its input. Long-press the cell →
+        <b class="ui">Loop preset · …</b> offers <b class="ui">The live rig</b> (the default: play
+        whatever is on), <b class="ui">Scene A of the live rig</b> to D, and
+        <b class="ui">Choose a preset…</b> — the staged song's own presets first, then every bank,
+        with categories and search.</p>
+      <p>The preset goes on when the cell starts recording, starts an overdub or is armed, and when
+        the take is done the rig you had comes back — unless you picked another preset in the
+        meantime, which then stays. Record a rhythm part on a clean preset and solo over it on your
+        lead sound without touching a thing.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>What gets saved</h2>
-      <p>The <b class="ui">PRESETS</b> chip opens <b class="ui">Looper Presets</b>, and they hold
-        <b>the setup only</b>: each track's IN, OUT, LEN, DUB and pan, plus the AUTO flag. A routing
-        template you recall at the start of a song — not a recording.</p>
-      <div class="note warn">
-        <div class="t">Loop audio cannot be exported</div>
-        <p>There is no way to save a loop as a file — no export, no share sheet. The only way to
-          capture what the looper played is the <b class="ui a">Perform</b> tab's recorder, which
-          records the output mix (rig, looper, pads and backing together, plus a separate dry input
-          stem). If a loop is worth keeping, hit record on Perform and let it run.</p>
+      <h2 id="saving"><span class="n">04.10</span>What gets saved</h2>
+      <p>The presets key opens <b class="ui">Looper Presets</b>, and they hold <b>the setup</b>:
+        each cell's IN, OUT, LEN, DUB, pan, loop preset and quantize, plus the AUTO flag — and the
+        takes of MIDI cells, which are small. A template you recall at the start of a song; audio
+        takes stay out.</p>
+      <h3>Loops as files</h3>
+      <p>A cell's long-press menu exports its loop — <b class="ui">Export loop as WAV…</b> — as a
+        32-bit float stereo WAV at the session's sample rate, and <b class="ui">Export all loops…</b>
+        exports every loop at once. Each file starts on the cycle's downbeat, so the files line up
+        when you drop them into a DAW together.</p>
+      <p><b class="ui">Load loop from file…</b> puts any audio file into the cell, playing. Into an
+        empty looper the file is the loop exactly as it is, with no boundary snap, and it brings its
+        tempo: read off a name like <em>Loop 2 - 96.5 BPM</em> — what an export is called —
+        or worked out from its length. A MIDI cell has no audio, so it offers neither.</p>
+      <div class="note">
+        <div class="t">Presets carry the setup, files carry the sound</div>
+        <p>A looper preset never holds recorded audio — it is far too big; only a MIDI take of the
+          pads travels inside it. To keep a loop, export
+          it; to keep a whole performance, use the recorder on the
+          <a href="/docs/mix.html#recorder">Mix</a> tab, which records the output mix plus a separate
+          dry input stem.</p>
       </div>
     </section>
 

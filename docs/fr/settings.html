@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Référence des réglages — Documentation NAMper</title>
-<meta name="description" content="Chaque carte et chaque ligne de la feuille Réglages de NAMper : interface audio, noms de canaux, apparence, set, paroles, métronome, invites, réinitialisation et diagnostics — plus les réglages qui vivent ailleurs.">
+<meta name="description" content="Chaque carte et chaque ligne de la feuille Réglages de NAMper : interface audio, noms de canaux, apparence et thèmes, set, paroles, métronome, looper, invites, réinitialisation et diagnostics — plus les réglages qui vivent ailleurs.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Référence des réglages — Documentation NAMper">
@@ -81,6 +82,7 @@
         <li><a href="#set">Set</a></li>
         <li><a href="#lyrics">Paroles</a></li>
         <li><a href="#metronome">Métronome</a></li>
+        <li><a href="#looper">Looper</a></li>
         <li><a href="#prompts">Invites</a></li>
         <li><a href="#reset">Réinitialisation</a></li>
         <li><a href="#diagnostics">Diagnostics</a></li>
@@ -111,9 +113,9 @@
             <tr><td><b class="ui">Contrôle</b></td>
                 <td>MIDI et déclencheurs d'entrée, affectables à tout — sa propre page : <a href="/docs/fr/control.html">MIDI &amp; contrôle</a>.</td></tr>
             <tr><td><b class="ui">Scène</b></td>
-                <td>Le clic, le tempo et la tonalité du set, la taille du texte des paroles et si les paroles s'ouvrent toutes seules — <a href="#set">Set</a>, <a href="#lyrics">Paroles</a> et <a href="#metronome">Métronome</a> plus bas.</td></tr>
+                <td>Le clic, le tempo et la tonalité du set, la taille du texte des paroles et si les paroles s'ouvrent toutes seules, et les niveaux d'auto-loop du looper — <a href="#set">Set</a>, <a href="#lyrics">Paroles</a>, <a href="#metronome">Métronome</a> et <a href="#looper">Looper</a> plus bas.</td></tr>
             <tr><td><b class="ui">Apparence</b></td>
-                <td>Clair, sombre, ou ce que dit le système — <a href="#appearance">plus bas</a>.</td></tr>
+                <td>Clair, sombre, ou ce que dit le système, et les thèmes — <a href="#appearance">plus bas</a>.</td></tr>
             <tr><td><b class="ui">Invites et visite</b></td>
                 <td>Les invites de lancement et la visite guidée — <a href="#prompts">plus bas</a>.</td></tr>
             <tr><td><b class="ui">Dépannage</b></td>
@@ -137,12 +139,12 @@
             <tr><td>Puce <b class="ui">Charge DSP</b></td>
                 <td>Charge processeur en pourcentage, <b class="ui">—</b> à l'arrêt. Vert en dessous de 60 %, ambre jusqu'à 85 %, rouge au-delà.</td></tr>
             <tr><td>Engrenage</td><td>Réglages — cette page.</td></tr>
-            <tr><td>Puce <b class="ui">KEY</b></td>
-                <td>La tonalité actuelle, ou le mot <b class="ui">KEY</b> quand rien n'est réglé. Ouvre <b class="ui">TONALITÉ</b>.</td></tr>
+            <tr><td>Puce <b class="ui">CHOIX</b></td>
+                <td>La tonalité actuelle, ou le mot <b class="ui">CHOIX</b> quand rien n'est réglé. Ouvre <b class="ui">TONALITÉ</b>.</td></tr>
             <tr><td>Puce métronome</td>
                 <td>Appuie pour activer ou couper le clic ; <strong>appui long</strong> pour la feuille <b class="ui">RÉGLER TEMPO</b>. Voir <a href="/docs/fr/looper.html">le looper</a>.</td></tr>
             <tr><td>Diapason</td><td>Ouvre l'accordeur. Voir <a href="/docs/fr/control.html">MIDI et contrôle</a>.</td></tr>
-            <tr><td><b class="ui g">Power</b></td>
+            <tr><td><b class="ui g">Alimentation</b></td>
                 <td>Démarre et arrête le moteur audio. Rien ne fait de son tant qu'il n'est pas activé. Voir <a href="/docs/fr/setup.html#power">la prise en main</a>.</td></tr>
           </tbody>
         </table>
@@ -154,7 +156,9 @@
       <p>La carte <b class="ui">INTERFACE AUDIO</b> est la plus longue, et la seule dont les
         réglages nécessitent un relancement pour prendre effet. Les quatre premières lignes sont
         en lecture seule : elles t'indiquent ce que NAMper a réellement obtenu du système, ce qui est
-        le moyen le plus rapide de comprendre pourquoi une interface se comporte mal.</p>
+        le moyen le plus rapide de comprendre pourquoi une interface se comporte mal. Sur Mac, la
+        même page choisit aussi l'interface — les périphériques d'entrée et de sortie, la paire de
+        sortie — voir <a href="/docs/fr/mac.html#interface">Mac</a>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Ligne</th><th>Contrôle</th><th>Par défaut</th><th>Ce que ça fait</th></tr></thead>
@@ -182,7 +186,11 @@
             <tr><td><b class="ui">Utiliser toutes les sorties de l'interface</b></td><td>Interrupteur</td><td>Désactivé</td>
                 <td>Ouvre toutes les paires de sortie, pour qu'une branche, un rig ou le clic puisse avoir sa propre paire. Les appareils stéréo n'en ont pas besoin.</td></tr>
             <tr><td><b class="ui">Modèles NAM allégés</b></td><td>Interrupteur</td><td>Désactivé</td>
-                <td>Les captures A2 de TONE3000 embarquent un sous-modèle plus léger ; ceci fait tourner chaque bloc NAM dessus — une fraction de la charge DSP, un soupçon de détail en moins. Les captures qui n'en ont pas ne sont pas concernées. Prend effet immédiatement.</td></tr>
+                <td>Les captures A2 de TONE3000 embarquent un sous-modèle plus léger ; ceci fait tourner chaque capture dessus — une fraction de la charge DSP, un soupçon de détail en moins. Les captures qui n'en ont pas ne sont pas concernées. Prend effet immédiatement.</td></tr>
+            <tr><td><b class="ui">Queues au changement</b></td><td>Interrupteur</td><td>Activé</td>
+                <td>Les blocs qu'un changement de preset laisse derrière lui continuent de sonner — les répétitions d'un delay, la décroissance d'une réverb — jusqu'à huit secondes au lieu de s'arrêter au changement, et un delay, une réverb, un freeze, une boucle d'effets ou un plugin qu'une scène bypasse continue de sonner par-dessus le signal sec. Un peu plus de DSP pendant ces secondes.</td></tr>
+            <tr><td><b class="ui">Aligner les rigs</b></td><td>Interrupteur</td><td>Désactivé</td>
+                <td>Les rigs sur des entrées différentes sont retardés au niveau du plus lent d'entre eux là où la console les additionne, pour qu'une guitare et un micro arrivent ensemble. Désactivé, chaque rig garde sa propre latence ; les chemins d'une même entrée restent alignés dans tous les cas.</td></tr>
           </tbody>
         </table>
       </div>
@@ -215,11 +223,25 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="appearance"><span class="n">09.4</span>Apparence</h2>
       <p>Puces : <b class="ui">Système</b>, <b class="ui">Clair</b>, <b class="ui">Sombre</b>. La
-        valeur par défaut est <b class="ui">Système</b>, et c'est le seul réglage de toute la
-        feuille qui s'applique à l'instant où tu appuies dessus.</p>
-      <p>NAMper est conçu pour le sombre — les vumètres, les LED et les graphismes de chaîne sont
-        dessinés pour une scène sombre. <b class="ui">Clair</b> est là si tu en as besoin en
-        plein jour, mais l'app est la plus lisible dans le noir.</p>
+        valeur par défaut est <b class="ui">Système</b>, et les changements d'apparence s'appliquent
+        à l'instant où tu appuies dessus.</p>
+      <p>Sous les puces se trouvent les <b>thèmes</b>, un choix par polarité : choisis un thème
+        sombre et un clair, et <b class="ui">Système</b> porte le sombre quand le téléphone est en
+        mode sombre et le clair sinon. Quatre thèmes sombres sont fournis — Studio (celui de l'appli),
+        Midnight Violet, Ember et Deep Sea — et trois clairs : Concrete, celui par défaut, un gris
+        clair d'un ton plus sombre que le papier ; Desk, le blanc papier avec lequel l'appli est
+        sortie ; et Linen.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/theme-light.png" width="600" height="1303"
+             alt="L'onglet Rig dans le thème clair Concrete : une page gris clair, des cartes blanches et les tuiles de la chaîne dans les couleurs de leur famille.">
+        <figcaption>Concrete, le thème clair sur lequel NAMper démarre</figcaption>
+      </figure>
+      <p><b class="ui">Personnaliser les couleurs…</b> copie le thème porté dans le tien et te laisse régler
+        chaque rôle à la main — le fond, les cartes, le texte, les potards, le bouton power et
+        l'accent de chaque famille de blocs. <b class="ui">Rayon des coins</b>, dans le même éditeur,
+        met à l'échelle tous les coins arrondis de l'appli d'un coup, du plus vif (30 %) au très rond
+        (200 %) ; les thèmes sont livrés à 50 %. Une ligne de réinitialisation ramène ta copie au
+        thème dont elle vient.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
@@ -235,7 +257,7 @@
           <thead><tr><th>Valeur</th><th>Se règle depuis</th></tr></thead>
           <tbody>
             <tr><td>Tempo</td><td>Appui long sur la puce métronome dans l'en-tête Rig, ou le bloc tempo dans l'onglet <b class="ui a">Boucle</b>. Le looper le détecte aussi à partir de ta première loop, et sélectionner un backing track applique le tempo du morceau.</td></tr>
-            <tr><td>Tonalité</td><td>La puce <b class="ui">KEY</b> dans l'en-tête Rig. Sélectionner un backing track applique la tonalité du morceau.</td></tr>
+            <tr><td>Tonalité</td><td>La puce <b class="ui">CHOIX</b> dans l'en-tête Rig. Sélectionner un backing track applique la tonalité du morceau.</td></tr>
           </tbody>
         </table>
       </div>
@@ -265,12 +287,14 @@
           <tbody>
             <tr><td>Niveau du clic</td><td>Curseur, −40…+6 dB</td><td>≈ −3 dB</td>
                 <td>À quel volume est le clic.</td></tr>
-            <tr><td><b class="ui">Sortie du clic</b></td><td>Puces : <b class="ui">Principal</b>, <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b>…</td><td><b class="ui">Principal</b></td>
+            <tr><td><b class="ui">Sortie du clic</b></td><td>Menu : <b class="ui">Principal</b>, puis chaque paire de sorties sous les noms que le pilote de l'interface donne à ses canaux (<b class="ui">3 / 4</b> s'il n'en donne aucun)</td><td><b class="ui">Principal</b></td>
                 <td>Quelle paire de sortie matérielle porte le clic. Affiché seulement s'il y a plus d'une paire ; choisir une paire autre que main active de force <b class="ui">Utiliser toutes les sorties de l'interface</b>.</td></tr>
+            <tr><td><b class="ui">Canal du clic</b></td><td>Puces : <b class="ui">L+R</b>, <b class="ui">L</b>, <b class="ui">R</b> (sur une autre paire, ses numéros de canaux)</td><td><b class="ui">L+R</b></td>
+                <td>Les deux canaux de la paire, ou l'un d'eux : un clic mono vers une seule sortie, l'autre laissée au mix.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>La note de bas de carte est la partie utile : <b class="ui">Le clic est mixé APRÈS la chaîne de FX master — les réverbs et limiteurs ne le touchent jamais. Choisissez une paire de sorties séparée pour le retour in-ear.</b></p>
+      <p>La note de bas de carte est la partie utile : <b class="ui">Le clic est mixé APRÈS la chaîne de FX master — les réverbs et limiteurs ne le touchent jamais. Choisissez une paire de sorties séparée pour le retour in-ear. Et un seul canal quand le clic partage le pack avec le mix.</b></p>
       <p>Ça veut dire que ta reverb master ne va pas étaler le clic et que ton limiteur master ne
         va pas faire baisser le groupe à chaque tic. Envoie-le sur sa propre paire et le batteur
         entend le clic pendant que la façade ne l'entend pas.</p>
@@ -278,8 +302,27 @@
         puce <b class="ui">CLIC</b> dans l'onglet <b class="ui a">Boucle</b> — pas depuis ici.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--power)">
+      <h2 id="looper"><span class="n">09.8</span>Looper</h2>
+      <p>La carte <b class="ui">LOOPER</b> de la page <b class="ui">Scène</b> règle le
+        <a href="/docs/fr/looper.html#auto">mode AUTO</a> du looper.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Ligne</th><th>Contrôle</th><th>Par défaut</th><th>Ce que ça fait</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Silence qui referme une boucle auto</b></td><td>Curseur, 0,5–4 temps</td><td>1 temps</td>
+                <td>Combien de temps le silence après une phrase doit durer, en temps du tempo entendu dans ton jeu, avant que la prise se referme d'elle-même. Plus long pour des phrases avec des trous, plus court pour des phrases serrées.</td></tr>
+            <tr><td><b class="ui">Signal qui démarre une boucle auto</b></td><td>Curseur, −54…−24 dB</td><td>−40 dB</td>
+                <td>Le niveau au-dessus duquel ton jeu doit rester pendant quelques millisecondes avant qu'une case armée commence à enregistrer. Plus bas, c'est plus sensible ; un effleurement des cordes ou le bruit de la pièce reste en dessous.</td></tr>
+            <tr><td><b class="ui">Garder le tempo pendant le silence</b></td><td>Interrupteur</td><td>Activé</td>
+                <td>La loop repart là où elle serait si elle ne s'était jamais arrêtée, pour que le compte ne se casse jamais. Désactivé, elle repart du début quand elle se referme.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.8</span>Invites</h2>
+      <h2 id="prompts"><span class="n">09.9</span>Invites</h2>
       <div class="tw">
         <table>
           <thead><tr><th>Ligne</th><th>Contrôle</th><th>Par défaut</th><th>Ce que ça fait</th></tr></thead>
@@ -302,7 +345,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.9</span>Réinitialisation</h2>
+      <h2 id="reset"><span class="n">09.10</span>Réinitialisation</h2>
       <p>Deux boutons, chacun derrière une confirmation.</p>
       <div class="tw">
         <table>
@@ -330,7 +373,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.10</span>Diagnostics</h2>
+      <h2 id="diagnostics"><span class="n">09.11</span>Diagnostics</h2>
       <p>NAMper conserve un journal moteur en texte brut qui enregistre le routage de l'interface
         et les crêtes. Quand il en existe un, cette carte propose <b class="ui">Partager le journal du moteur</b> et <b class="ui">Effacer le journal du moteur</b> ; quand ce n'est pas le cas, elle affiche
         <b class="ui">Pas encore de journal du moteur (il consigne le routage de l'interface et les crêtes).</b></p>
@@ -344,7 +387,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.11</span>Pas dans les réglages</h2>
+      <h2 id="elsewhere"><span class="n">09.12</span>Pas dans les réglages</h2>
       <p>Trois choses que les gens cherchent ici et ne trouvent pas.</p>
       <h3>Quantification du déclenchement</h3>
       <p>Le potentiomètre <b class="ui">QUANT</b> et sa puce de grille vivent dans l'en-tête de

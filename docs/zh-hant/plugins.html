@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>插件 — NAMper 文檔</title>
-<meta name="description" content="在 NAMper 信號鏈中加載 Audio Unit 效果、內嵌插件界面、各項限制、插件狀態如何保存——以及 NAMper 自身作為 AUv3 效果器在其他應用中的表現。">
+<meta name="description" content="在 NAMper 信號鏈中加載 Audio Unit 效果、內嵌插件界面、各項限制、插件狀態如何保存——以及在其他應用中運行、帶著應用自己的界面和資料庫的 NAMper。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="插件 — NAMper 文檔">
@@ -147,13 +148,13 @@
                     你的處理器往往會先於插槽數量耗盡。</td></tr>
             <tr><td>立體聲</td>
                 <td>插件的輸入和輸出都是立體聲，採樣率跟隨引擎當前所用的採樣率。</td></tr>
-            <tr><td>僅限音色組信號鏈</td>
-                <td>AU 插件只能放在音色組信號鏈內。<b class="ui">主控</b> 部分只接受
-                    NAMper 自帶的模塊。</td></tr>
+            <tr><td>信號鏈、主控、返回</td>
+                <td>AU 插件可以放在音色組信號鏈內、<b class="ui">主控</b> 部分以及兩條發送返回上——
+                    它們的添加菜單裡都有同樣的 <b class="ui">插件</b> 區域。</td></tr>
           </tbody>
         </table>
       </div>
-      <p>如果一個插件渲染失敗，NAMper 會讓該模塊的信號保持幹聲通過，而不是直接斷開。
+      <p>如果一個插件渲染失敗，NAMper 會讓該模塊的信號保持乾聲通過，而不是直接斷開。
         你仍然能聽到自己的吉他，只是少了那一個效果——這在舞臺上是正確的失敗方式，
         但也意味著一個插件可能悄無聲息地失效而沒有明顯的警報。如果某個效果不再起作用，
         去檢查它面板裡的狀態行。</p>
@@ -201,10 +202,39 @@
         一個吉他風格的單聲道前端，送入一個音箱。這是刻意設計的，也正是單聲道音軌上
         直接輸入（DI）的吉他所需要的效果。</p>
 
+      <h3>宿主裡的應用界面</h3>
+      <p>插件在宿主的窗口裡打開的是應用自己的音色組：模塊鏈、場景、模塊編輯器、採樣與脈衝資料庫、
+        預設和設置。在 iPhone 和 iPad 上（GarageBand、AUM、Cubasis 等宿主中的 AUv3）與在 Mac 上
+        （Audio Unit、VST3 和 CLAP——參見 <a href="/docs/zh-hant/mac.html#plugin">Mac</a>）都是同一套界面。
+        選一個預設，插件就在軌道上搭起那個音色組，採樣來自資料庫，脈衝來自內置集合；會話本身攜帶
+        音色組，所以工程在沒有這個資料庫的機器上也能打開。</p>
+      <p>頁頭只有一行：NAMper 標誌（點它打開 <b class="ui">關於</b>——版本、幫助鏈接、致謝，以及
+        通往應用打賞罐的入口）、預設、場景、電平表、資料庫、工具、設置和旁通。在窄的宿主窗口裡，
+        這一行可以橫向滾動，設置和旁通固定在末端，所以開關始終夠得著。</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>工具</b>就是應用頁頭的那些工具：DSP 負載、調式、帶速度的節拍器（點一下開關點擊聲，
+          按住設定速度）以及調音器，每個都以面板形式浮在模塊鏈上方打開。</li>
+        <li><b>設置</b>包含外觀與主題（與應用共享）；TONE3000 賬戶，可在插件內登錄和退出；DSP 開關——
+          <b class="ui">精簡 NAM 模型</b>、<b class="ui">立體聲放大器</b>、
+          <b class="ui">切換時保留尾音</b>、<b class="ui">對齊各機架</b>；以及通往應用控制映射的
+          入口。音頻接口歸宿主管，所以這裡沒有。</li>
+      </ul>
+      <p>屬於整個應用而不是一條音軌的東西不在這裡：循環樂句器、採樣器、循環軌、伴奏音軌和
+        <b class="ui">發送</b> 模塊在宿主中都會隱藏。信號鏈的輸入是插件的輸入和宿主的側鏈，
+        壓縮器可以用側鏈來觸發。</p>
+
+      <h3>與應用共用一個資料庫</h3>
+      <p>在 iOS 上，應用和它的 Audio Unit 共用一個資料庫。你在應用裡保存的預設，下次 GarageBand 或
+        AUM 打開插件時就會出現在它的列表裡；在宿主裡下載的採樣也會出現在應用的資料庫中。插件的預設
+        列表和應用一樣，一次只顯示一個庫：搜索框下方的庫菜單用來切換，保存時落在用戶 1。“文件”應用
+        裡的 NAMper 文件夾（<b class="ui">On My iPhone → NAMper</b>）就是進入這個資料庫的大門：放進去的
+        採樣、脈衝、zip 壓縮包和預設，會在下次應用回到前臺時被收入。</p>
+
       <h3>18 個參數</h3>
-      <p>插件自己的面板是一條小小的品牌條，顯示 <b class="ui">NAMper</b> 和
-        <b class="ui">Amp &amp; FX chain — tweak the parameters in the host</b>。所有實際
-        控制項都是宿主可自動化的參數，一共十八個：</p>
+      <p>宿主看到的仍然是一組固定的可自動化參數——也就是它在自己的面板中列出並寫入自動化的那些行。
+        每個參數作用於已加載音色組中同類的第一個模塊：<b class="ui">Gate On</b> 是這個音色組的噪聲門，
+        <b class="ui">低音</b> 是它的 EQ，<b class="ui">Reverb Mix</b> 是它的混響，就像應用的
+        MIDI 映射那樣。</p>
       <div class="tw">
         <table>
           <thead><tr><th>模塊</th><th>參數</th></tr></thead>
@@ -223,26 +253,21 @@
           </tbody>
         </table>
       </div>
-      <p>每一個參數都可以從宿主端自動化。開關類參數是 0 到 1 之間的浮點數值，所以大多數
-        宿主會把它們繪製成滑塊而不是開關——達到或超過中點即為開啟。三個出廠預設也會
-        暴露給宿主：<b class="ui">清音</b>、<b class="ui">過載</b> 和
-        <b class="ui">主音</b>。</p>
+      <p>開關類參數是 0 到 1 之間的浮點數值，所以大多數宿主會把它們繪製成滑塊而不是開關——
+        達到或超過中點即為開啟。在 Audio Unit 中，音色組列表就是宿主自己的預設菜單：先是每個
+        出廠音色組，然後是你保存的每個預設，按名稱排列。</p>
 
       <div class="note warn">
-        <div class="t">這個插件不攜帶什麼</div>
-        <p>沒有 NAM 模型。沒有箱體 IR。沒有調製類模塊。完全沒有音色組文檔——宿主只保存
-          這 18 個參數值，別無其他，所以你在應用裡搭建的音色組不會帶入這個插件。
-          插件版本裡也沒有 MIDI 輸入。</p>
+        <div class="t">宿主中的 MIDI</div>
+        <p>Mac 上的 VST3 和 CLAP 接收宿主發來的 MIDI——控制器、音符和程序切換會像在應用裡一樣
+          送達音色組的控制映射。Audio Unit 沒有 MIDI 輸入：請改用宿主的自動化來控制它。</p>
       </div>
-      <p>說得直白一點：在宿主裡，NAMper 是一條緊湊的音箱+效果通道，而不是整個應用。
-        如果你想要自己的 NAM 模型、自己的箱體、循環樂句器或曲目單，就運行完整的應用，
-        並從那裡錄音。</p>
       <div class="note tip">
         <div class="t">兩者結合使用</div>
         <p>你可以運行完整的應用，把它的輸出路由進一個 DAW；也可以在宿主裡已經在錄製的
-          某條音軌上，用這個插件快速加一路吉他通道。Perform 標籤頁的錄音功能及其
-          DAWproject 導出正是為第一種方式而存在的——參見
-          <a href="/docs/zh-hant/perform.html">演出與歌詞</a>。</p>
+          某條音軌上，用這個插件快速加一路吉他通道。錄音機及其 DAWproject 導出正是為
+          第一種方式而存在的——參見
+          <a href="/docs/zh-hant/perform.html#recording">演出與歌詞</a>。</p>
       </div>
     </section>
 
@@ -258,9 +283,10 @@
         插件，參數值和插件狀態會和在 iOS 上一樣隨預設一起保存。</p>
       <h3>作為 AAP 效果的 NAMper</h3>
       <p>任何 AAP 宿主都能找到一個名為 <b class="ui">NAMper</b>、由
-        <b class="ui">retroaktive</b> 提供的效果：立體聲輸入、立體聲輸出，與 AUv3 相同的十八個參數
-        和相同的三個預設，狀態由宿主保存。同樣的限制也適用——它是精簡的音箱加效果通道，
-        而不是整個應用。</p>
+        <b class="ui">retroaktive</b> 提供的效果：立體聲輸入、立體聲輸出，與 AUv3 相同的十八個參數，
+        狀態由宿主保存。與 AUv3 不同，它仍是精簡的音箱加效果通道——也就是這些參數背後的
+        信號鏈，外加三個預設 <b class="ui">清音</b>、<b class="ui">過載</b> 和
+        <b class="ui">主音</b>——而不是整個應用。</p>
     </section>
 
     <nav class="pager">

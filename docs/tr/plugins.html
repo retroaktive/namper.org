@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eklentiler — NAMper Dokümantasyonu</title>
-<meta name="description" content="Bir NAMper zincirinin içinde Audio Unit efektlerini barındırmak, gömülü eklenti arayüzü, sınırlar, eklenti durumunun nasıl kaydedildiği — ve NAMper'ın kendisinin başka bir uygulamada bir AUv3 efekti olarak ne yaptığı.">
+<meta name="description" content="Bir NAMper zincirinin içinde Audio Unit efektlerini barındırmak, gömülü eklenti arayüzü, sınırlar, eklenti durumunun nasıl kaydedildiği — ve başka bir uygulamanın içinde, uygulamanın kendi yüzü ve kütüphanesiyle NAMper'ın kendisi.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Eklentiler — NAMper Dokümantasyonu">
@@ -154,9 +155,10 @@
             <tr><td>Stereo</td>
                 <td>Eklenti girişi ve çıkışı, motorun bulunduğu her hangi bir örnekleme hızında
                     stereo çalışır.</td></tr>
-            <tr><td>Sadece rig zincirleri</td>
-                <td>AU eklentileri rig zincirlerinin içine girer. <b class="ui">MASTER</b>
-                    bölümü sadece NAMper'ın kendi bloklarını alır.</td></tr>
+            <tr><td>Zincirler, master, dönüşler</td>
+                <td>AU eklentileri rig zincirlerinin içine, <b class="ui">MASTER</b> bölümüne ve
+                    iki gönderim dönüşüne girer — aynı <b class="ui">Eklentiler</b> bölümü hepsinin
+                    ekleme menüsünde bulunur.</td></tr>
           </tbody>
         </table>
       </div>
@@ -211,11 +213,47 @@
         toplanır: bir amfiyi besleyen gitar tarzı mono bir ön uç. Bu bilerek yapılmıştır ve mono
         bir parçadaki DI'lanmış bir gitar için istediğin şey de budur.</p>
 
+      <h3>Host'ta uygulamanın yüzü</h3>
+      <p>Eklenti, host'un penceresinde uygulamanın kendi rig'iyle açılır: blok zinciri, sahneler,
+        blok editörleri, capture ve impuls kütüphanesi, preset'ler ve ayarlar. iPhone ve iPad'de
+        (GarageBand, AUM, Cubasis ve diğerlerindeki AUv3) ve Mac'te (Audio Unit, VST3 ve CLAP —
+        bkz. <a href="/docs/tr/mac.html#plugin">Mac</a>) aynı yüzdür. Bir preset seç, eklenti o
+        rig'i parçada kurar: capture'ları kütüphaneden, impulsları paketteki setten gelir; oturum
+        rig'in kendisini taşır, bu yüzden bir proje kütüphanesi olmayan bir makinede de açılır.</p>
+      <p>Başlık tek bir satırdır: NAMper işareti (<b class="ui">Hakkında</b> sayfasını açar — sürüm,
+        yardım bağlantıları, emeği geçenler ve uygulamanın bahşiş kutusuna bir yol), preset,
+        sahneler, göstergeler, kütüphane, araçlar, ayarlar ve bypass. Dar bir host'ta satır yana
+        kayar; ayarlar ve bypass sona sabitlenmiştir, böylece anahtar hep elinin altındadır.</p>
+      <ul style="--nc:var(--gate)">
+        <li><b>Araçlar</b> uygulamanın başlık araçlarıdır: DSP yükü, ton, temposuyla birlikte
+          metronom (dokunmak klik'i açıp kapatır, basılı tutmak tempoyu ayarlar) ve akort cihazı;
+          her biri zincirin üzerinde bir panel olarak açılır.</li>
+        <li><b>Ayarlar</b>, uygulamayla paylaşılan görünümü ve temaları taşır; eklentinin içinde
+          giriş ve çıkış yapılan TONE3000 hesabını; DSP anahtarlarını —
+          <b class="ui">Hafif NAM modelleri</b>, <b class="ui">Stereo amfi</b>,
+          <b class="ui">Geçişte kuyruklar</b>, <b class="ui">Rig'leri hizala</b>; ve uygulamanın
+          kontrol haritasına giden kapıyı. Ses arayüzü host'a aittir, bu yüzden orada yoktur.</li>
+      </ul>
+      <p>Bir parçaya değil de bütün bir uygulamaya ait olan şeyler dışarıda kalır: looper,
+        sampler, loop parçaları, altyapı parçaları ve <b class="ui">Gönderim</b> bloğu bir host'un
+        içinde gizlidir. Zincirin girişleri eklentinin girişi ve host'un sidechain'idir;
+        kompresör bu sidechain'den tetiklenebilir.</p>
+
+      <h3>Uygulamayla tek kütüphane</h3>
+      <p>iOS'ta uygulama ve Audio Unit'i tek bir kütüphaneyi paylaşır. Uygulamada kaydettiğin bir
+        preset, GarageBand ya da AUM eklentiyi bir sonraki açışında eklentinin listesindedir; host
+        içinde indirdiğin bir capture da uygulamanın kütüphanesindedir. Eklentinin preset listesi,
+        uygulamanınki gibi her seferinde bir bankayı gösterir: arama alanının altındaki banka menüsü
+        onu değiştirir, kaydedilenler de Kullanıcı 1'e düşer. Files uygulamasındaki NAMper klasörü
+        (<b class="ui">On My iPhone → NAMper</b>) o kütüphanenin kapısıdır: oraya bırakılan
+        capture'lar, impulslar, zip'ler ve preset'ler uygulama bir sonraki öne gelişinde içeri
+        alınır.</p>
+
       <h3>18 parametre</h3>
-      <p>Eklentinin kendi paneli, <b class="ui">NAMper</b> ve <b class="ui">Amp &amp; FX
-        chain — tweak the parameters in the host</b> yazan küçük, markalı bir şerittir.
-        Gerçek kontrollerin hepsi host tarafından otomatikleştirilebilir parametrelerdir ve on
-        sekiz tanesi vardır:</p>
+      <p>Host yine de sabit bir otomatikleştirilebilir parametre setini görür — kendi panelinde
+        listelediği ve otomasyona yazdığı satırlar. Her biri yüklü rig'deki kendi türünden ilk
+        bloğa ulaşır: <b class="ui">Gate On</b> rig'in gate'i, <b class="ui">Bas</b> EQ'su,
+        <b class="ui">Reverb Mix</b> reverb'üdür — uygulamanın MIDI haritasının yaptığı gibi.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Blok</th><th>Parametreler</th></tr></thead>
@@ -234,27 +272,23 @@
           </tbody>
         </table>
       </div>
-      <p>Bunların her biri host'tan otomatikleştirilebilir. Açma/kapama parametreleri 0 ile 1
-        arasında ondalıklı değerlerdir; bu yüzden çoğu host bunları anahtar yerine kaydırıcı
-        olarak çizer — yarının üzerindeki her şey açıktır. Host'a üç fabrika preset'i de
-        sunulur: <b class="ui">Clean</b>, <b class="ui">Crunch</b> ve <b class="ui">Lead</b>.</p>
+      <p>Açma/kapama parametreleri 0 ile 1 arasında ondalıklı değerlerdir; bu yüzden çoğu host
+        bunları anahtar yerine kaydırıcı olarak çizer — yarının üzerindeki her şey açıktır. Audio
+        Unit'te rig listesi host'un kendi preset menüsüdür: her fabrika rig'i, ardından
+        kaydettiğin her preset, adıyla.</p>
 
       <div class="note warn">
-        <div class="t">Eklentinin taşımadığı şeyler</div>
-        <p>NAM modeli yok. Kabin IR'i yok. Modülasyon blokları yok. Rig belgesi hiç yok — host
-          sadece o 18 parametre değerini kaydeder, başka hiçbir şeyi; bu yüzden uygulamada
-          kurduğun bir rig eklentiye taşınmaz. Eklenti sürümünde ayrıca MIDI girişi de
-          yoktur.</p>
+        <div class="t">Host'ta MIDI</div>
+        <p>Mac'teki VST3 ve CLAP, MIDI'yi host'tan alır — kontrolcüler, notalar ve program
+          değişiklikleri, uygulamada olduğu gibi rig'in kontrol haritasına ulaşır. Audio Unit'in
+          MIDI girişi yoktur: onu bunun yerine host'un otomasyonuyla yönet.</p>
       </div>
-      <p>Bunu dürüstçe oku: bir host'un içinde NAMper, tüm uygulama değil, kompakt bir
-        amfi-ve-efekt kanalıdır. NAM capture'larını, kabinlerini, looper'ı ya da setlist'i
-        istiyorsan uygulamanın kendisini çalıştır ve oradan kaydet.</p>
       <div class="note tip">
         <div class="t">İkisiyle birden çalışmak</div>
         <p>Tam uygulamayı çalıştırıp çıkışını bir DAW'a yönlendirebilir, ya da bir host'ta zaten
-          kaydettiğin bir parçada hızlı bir gitar kanalı için eklentiyi kullanabilirsin. Perform
-          sekmesinin kaydedicisi ve DAWproject dışa aktarımı ilk yol için var — bkz.
-          <a href="/docs/tr/perform.html">Perform ve şarkı sözleri</a>.</p>
+          kaydettiğin bir parçada hızlı bir gitar kanalı için eklentiyi kullanabilirsin. Kaydedici
+          ve DAWproject dışa aktarımı ilk yol için var — bkz.
+          <a href="/docs/tr/perform.html#recording">Perform ve şarkı sözleri</a>.</p>
       </div>
     </section>
 
@@ -272,9 +306,10 @@
         preset'inin içinde gezer.</p>
       <h3>Bir AAP efekti olarak NAMper</h3>
       <p>Her AAP host'u NAMper'ı <b class="ui">NAMper</b> adlı, <b class="ui">retroaktive</b>
-        imzalı bir efekt olarak bulur: stereo giriş, stereo çıkış, AUv3 ile aynı on sekiz parametre
-        ve aynı üç preset, durumu host tarafından kaydedilir. Aynı sınırlar geçerlidir — bu, tüm
-        uygulama değil, kompakt amfi-ve-efekt kanalıdır.</p>
+        imzalı bir efekt olarak bulur: stereo giriş, stereo çıkış, AUv3 ile aynı on sekiz parametre,
+        durumu host tarafından kaydedilir. AUv3'ün aksine o hâlâ kompakt amfi-ve-efekt kanalıdır —
+        o parametrelerin arkasındaki zincir ve üç preset, <b class="ui">Clean</b>,
+        <b class="ui">Crunch</b> ve <b class="ui">Lead</b> — tüm uygulama değil.</p>
     </section>
 
     <nav class="pager">

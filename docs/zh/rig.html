@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>音色组与信号链 — NAMper 文档</title>
-<meta name="description" content="搭建音色组：模块面板、五种均衡模型、NAM 音箱模型与 TONE3000、箱体 IR、预设与 MIDI PC 插槽、多个音色组、并行分支与主控部分。">
+<meta name="description" content="搭建音色组：模块面板与每一个模块、七种均衡模型、NAM 音箱模型与 TONE3000、采样库、箱体与混响脉冲、预设库、场景与 MIDI PC 插槽、多个音色组、并行分支与主控部分。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="音色组与信号链 — NAMper 文档">
@@ -75,7 +76,7 @@
       <ul>
         <li><a href="#blocks">模块面板</a></li>
         <li><a href="#models">模块内部的型号</a></li>
-        <li><a href="#eq">五种均衡模型</a></li>
+        <li><a href="#eq">七种均衡模型</a></li>
         <li><a href="#nam">NAM 采样</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">箱体与 IR</a></li>
@@ -95,22 +96,30 @@
         <table>
           <thead><tr><th>分类</th><th>模块</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">动态</b></td><td><b class="ui">门限</b>, <b class="ui">压缩</b>, <b class="ui">去齿音</b></td></tr>
-            <tr><td><b class="ui">过载</b></td><td><b class="ui">过载</b>, <b class="ui">饱和器</b></td></tr>
-            <tr><td><b class="ui">音箱与箱体</b></td><td><b class="ui">音箱</b>, <b class="ui">均衡</b>, <b class="ui">箱体</b></td></tr>
-            <tr><td><b class="ui">滤波</b></td><td><b class="ui">哇音</b></td></tr>
-            <tr><td><b class="ui">调制</b></td><td><b class="ui">移相</b>, <b class="ui">镶边</b>, <b class="ui">合唱</b>, <b class="ui">震音</b>, <b class="ui">旋转</b>, <b class="ui">合奏</b></td></tr>
-            <tr><td><b class="ui">延迟</b></td><td><b class="ui">延迟</b></td></tr>
-            <tr><td><b class="ui">混响</b></td><td><b class="ui">混响</b></td></tr>
-            <tr><td><b class="ui">音高</b></td><td><b class="ui">和声</b>, <b class="ui">自动修音</b>, <b class="ui">音高</b>, <b class="ui">八度</b></td></tr>
-            <tr><td><b class="ui">实用工具</b></td><td><b class="ui">音量</b>, <b class="ui">发送</b>, <b class="ui">限制器</b>, <b class="ui">FB抑制</b></td></tr>
+            <tr><td><b class="ui">音箱与箱体</b></td><td><b class="ui">音箱</b>, <b class="ui">箱体</b></td></tr>
+            <tr><td><b class="ui">延迟与混响</b></td><td><b class="ui">延迟</b>, <b class="ui">冻结</b>, <b class="ui">混响</b></td></tr>
+            <tr><td><b class="ui">过载</b></td><td><b class="ui">过载</b>, <b class="ui">Lo-fi</b>, <b class="ui">饱和器</b></td></tr>
+            <tr><td><b class="ui">动态</b></td><td><b class="ui">压缩器</b>, <b class="ui">去齿音</b>, <b class="ui">门限</b>, <b class="ui">限制器</b>, <b class="ui">多段</b>, <b class="ui">渐强</b>, <b class="ui">瞬态</b>, <b class="ui">人声</b></td></tr>
+            <tr><td><b class="ui">均衡与滤波</b></td><td><b class="ui">均衡器</b>, <b class="ui">哇音</b></td></tr>
+            <tr><td><b class="ui">调制</b></td><td><b class="ui">合唱</b>, <b class="ui">加倍</b>, <b class="ui">合奏</b>, <b class="ui">镶边</b>, <b class="ui">移相</b>, <b class="ui">旋转</b>, <b class="ui">切片器</b>, <b class="ui">震音</b></td></tr>
+            <tr><td><b class="ui">音高</b></td><td><b class="ui">十二弦</b>, <b class="ui">自动修音</b>, <b class="ui">和声</b>, <b class="ui">八度</b>, <b class="ui">音高</b>, <b class="ui">合成器</b>, <b class="ui">声码器</b></td></tr>
+            <tr><td><b class="ui">实用工具</b></td><td><b class="ui">FB抑制</b>, <b class="ui">效果环路</b>, <b class="ui">发送</b>, <b class="ui">音量</b></td></tr>
             <tr><td><b class="ui">插件</b></td><td>iOS 上是 <b class="ui">AU 插件</b> 子菜单，Android 上是已安装的 AAP 效果</td></tr>
           </tbody>
         </table>
       </div>
+      <p>音箱和它的箱体排在最前；其余每个分类，以及分类内的模块，都按字母顺序排列。带有预设的模块
+        不会直接落进信号链，而是打开一个子菜单：<b class="ui">默认设置</b>、该模块的出厂预设和
+        已保存预设，以及在 <b class="ui">来自机架预设</b> 下从某个音色组预设里单独取出的同一种模块
+        ——这个音色组的过载，那个音色组的延迟。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
+             alt="带有氛围信号链的 Rig 标签页：音箱之前是一个渐强模块，之后依次是箱体、合奏、延迟、冻结和混响，每个模块都是信号链中的一个方块。">
+        <figcaption>一条氛围信号链：<b class="ui">渐强</b>、<b class="ui">冻结</b> 和 <b class="ui">合奏</b> 围绕着音箱</figcaption>
+      </figure>
       <p>没有什么能阻止你添加两个相同的模块。重复的模块会按到来的顺序编号——
         <b class="ui">GATE 1</b>、<b class="ui">GATE 2</b>——模块名称在标签上永远以大写字母
-        显示。连续两个 Drive、前面一个 Gate 后面又在 Amp 之后再来一个：都没问题。</p>
+        显示。连续两个 Drive、前面一个 Gate 后面又在音箱之后再来一个：都没问题。</p>
 
       <h3>操作一个模块</h3>
       <div class="tw">
@@ -141,6 +150,113 @@
           只能重新添加一个再调一遍。要重复使用整条信号链，就把它保存为预设，
           然后从这个预设去搭建下一个音色组。</p>
       </div>
+
+      <h3>新加入的模块</h3>
+      <p>模块面板最近新增了十二个模块。每个模块是做什么用的，一两句话说清：</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>模块</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">加倍</b></td><td>把一次演奏听成两位乐手：一个副本低几音分，另一个
+              高同样多，各自稍晚一点，分别声像到两侧，干声留在中间。没有任何东西在调制，所以它不是
+              合唱。<b class="ui">失谐</b>、<b class="ui">延迟</b>、<b class="ui">宽度</b>、
+              <b class="ui">混合</b>。</td></tr>
+            <tr><td><b class="ui">渐强</b></td><td>不用音量踏板的小提琴式渐强：每个新音符都在
+              <b class="ui">起音</b> 时间内淡入。<b class="ui">灵敏度</b> 决定拨弦要多用力才算一个新音符，
+              <b class="ui">深度</b> 决定淡入从哪里开始。</td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td>类型芯片上有四种毁掉信号的方式——
+              <b class="ui">环形调制</b>、<b class="ui">比特压碎</b>、<b class="ui">电话</b> 和
+              <b class="ui">扩音器</b>——各有自己的旋钮和一个 <b class="ui">混合</b>。</td></tr>
+            <tr><td><b class="ui">冻结</b></td><td>一个永远延续的音：打开 <b class="ui">冻结</b>
+              （用脚踏开关或 MIDI 按钮），最后四分之一秒就会变成干声之下绵延不绝的声音铺底，你可以在上面
+              继续演奏。<b class="ui">起音</b>、<b class="ui">释放</b>、
+              <b class="ui">电平</b>、<b class="ui">音色</b>。</td></tr>
+            <tr><td><b class="ui">瞬态</b></td><td>把一个音的拨弦瞬态和余音做成两个旋钮，不需要
+              阈值：<b class="ui">起音</b> 突出或柔化拨弦，
+              <b class="ui">延音</b> 提升或缩短余音。</td></tr>
+            <tr><td><b class="ui">切片器</b></td><td>一个踩着拍子的门：十六步，每一步开还是关由
+              <b class="ui">节奏型</b> 决定。<b class="ui">同步</b> 让步长跟随设定的速度；
+              <b class="ui">深度</b> 是关闭的一步关得多彻底，<b class="ui">边沿</b> 是门开合得多快。</td></tr>
+            <tr><td><b class="ui">多段</b></td><td>在 <b class="ui">低分频</b> 和
+              <b class="ui">高分频</b> 处分成三个频段，每个频段都由一个旋钮控制压缩——
+              <b class="ui">低频</b>、<b class="ui">中频</b>、<b class="ui">高频</b>——每段各有增益，
+              <b class="ui">起音</b> 和 <b class="ui">释放</b> 共用。它能压平低频的轰鸣而不让高频
+              跟着抽吸：适合贝斯、原声吉他，乃至整个混音。</td></tr>
+            <tr><td><b class="ui">人声</b></td><td>一条人声通道条，顺序和录音棚里一样：
+              <b class="ui">HPF</b>、<b class="ui">去齿音</b>、<b class="ui">压缩</b>、
+              <b class="ui">低频</b>、<b class="ui">临场</b>、<b class="ui">空气感</b>、
+              <b class="ui">温暖</b> 和 <b class="ui">输出</b>。</td></tr>
+            <tr><td><b class="ui">十二弦</b></td><td>把每组弦加倍：<b class="ui">分割点</b>
+              以下的部分加一根八度弦，整个音域再加一根高几音分的同度弦。
+              <b class="ui">八度</b>、<b class="ui">同度</b>、<b class="ui">失谐</b>、
+              <b class="ui">音色</b>。</td></tr>
+            <tr><td><b class="ui">合成器</b></td><td>一台跟随琴弦的单音合成器：
+              <b class="ui">波形</b> 经过一个梯形滤波器（<b class="ui">截止</b>、
+              <b class="ui">共振</b>、<b class="ui">包络</b>），由 <b class="ui">八度</b> 和
+              <b class="ui">音程</b> 移调。<b class="ui">音符</b> 选择跟随 <b class="ui">最响</b>
+              （最响的）还是 <b class="ui">最低</b>（最低的）那根弦，这样和弦下的合成贝斯就会一直待在
+              根音上。</td></tr>
+            <tr><td><b class="ui">声码器</b></td><td>十六个频段把人声的元音加到另一个声音上。
+              <b class="ui">声部</b> 设为 <b class="ui">此输入</b> 时，模块放在人声上，演奏自己的
+              <b class="ui">载波</b>——机器人声；指向另一个音色组时，它放在吉他上，从那个音色组取人声
+              ——也就是 talkbox。<b class="ui">共振峰</b>、<b class="ui">响应</b>、
+              <b class="ui">齿音</b>、<b class="ui">八度</b>。</td></tr>
+            <tr><td><b class="ui">效果环路</b></td><td>把外置设备接进信号链：模块发送到接口的某一对输出
+              （<b class="ui">输出</b>），并从接口的某个输入接收返回（<b class="ui">输入</b>）。
+              <b class="ui">发送</b> 和 <b class="ui">返回</b> 分别微调两端，<b class="ui">立体声返回</b> 读取两路输入，<b class="ui">相位</b> 翻转返回信号的相位。做并联回路时（
+              <b class="ui">混合</b> 低于 100 %），把 <b class="ui">延迟</b> 设为接口的往返延迟，
+              干声才不会变空洞。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-doubler.png" width="600" height="1303"
+               alt="加倍模块面板：IN 和 OUT 电平表，以及 Detune、Delay、Width 和 Mix 旋钮。">
+          <figcaption><b class="ui">加倍</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-freeze.png" width="600" height="1303"
+               alt="冻结模块面板：Freeze 开关，下方是 Attack、Release、Level 和 Tone 旋钮。">
+          <figcaption><b class="ui">冻结</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocal.png" width="600" height="1303"
+               alt="人声模块面板：HPF、De-ess、Comp、Warmth、Low、Presence、Air 和 Output 旋钮。">
+          <figcaption><b class="ui">人声</b> 通道条</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-mbcomp.png" width="600" height="1303"
+               alt="多段模块面板：Low、Mid 和 High 旋钮，两个分频点，Attack、Release，以及每个频段的增益。">
+          <figcaption><b class="ui">多段</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-synth.png" width="600" height="1303"
+               alt="合成器模块面板：Wave 和 Octave 菜单，Interval、Cutoff、Reso、Env、Glide、Attack 和 Mix 旋钮，以及 Note 菜单。">
+          <figcaption><b class="ui">合成器</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocoder.png" width="600" height="1303"
+               alt="声码器模块面板：Voice、Carrier 和 Octave 菜单，以及 Response、Formant、Sibilance 和 Mix 旋钮。">
+          <figcaption><b class="ui">声码器</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-extloop.png" width="600" height="1303"
+               alt="效果环路模块面板：标着接口插孔名称的 Out 和 In 菜单，Send、Return、Mix 和 Latency 旋钮，以及 Stereo return 和 Phase 开关。">
+          <figcaption><b class="ui">效果环路</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-slicer.png" width="600" height="1303"
+               alt="切片器模块面板：Pattern 菜单、Sync 开关，以及 Rate、Depth 和 Edge 旋钮。">
+          <figcaption><b class="ui">切片器</b></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -153,55 +269,121 @@
           <tbody>
             <tr><td><b class="ui">门限</b></td><td><b class="ui">模型</b></td>
               <td><b class="ui">经典</b>, <b class="ui">智能</b>, <b class="ui">3段</b>, <b class="ui">降噪</b></td></tr>
-            <tr><td><b class="ui">压缩</b></td><td><b class="ui">模型</b> · <b class="ui">侧链</b></td>
+            <tr><td><b class="ui">压缩器</b></td><td><b class="ui">模型</b> · <b class="ui">侧链</b></td>
               <td><b class="ui">VCA</b>, <b class="ui">光电</b>, <b class="ui">FET</b>, <b class="ui">踏板</b> · 侧链
                 <b class="ui">关</b>, <b class="ui">输入1</b>…<b class="ui">输入4</b>, <b class="ui">SMP</b></td></tr>
-                        <tr><td><b class="ui">过载</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">模型</b></td>
-              <td><b class="ui">电子管</b>, <b class="ui">布鲁斯</b>, <b class="ui">失真</b>, <b class="ui">法兹 Ge</b>, <b class="ui">法兹 Si</b></td></tr>
-                        <tr><td><b class="ui">音箱</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">模型</b></td>
+            <tr><td><b class="ui">过载</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">模型</b></td>
+              <td><b class="ui">激励</b>: <b class="ui">清音激励</b>, <b class="ui">高频激励</b> ·
+                <b class="ui">过载</b>: <b class="ui">电子管</b>, <b class="ui">布鲁斯</b>, <b class="ui">透明</b> ·
+                <b class="ui">失真</b>: <b class="ui">失真</b>, <b class="ui">金属</b> ·
+                <b class="ui">法兹</b>: <b class="ui">法兹 Ge</b>, <b class="ui">法兹 Si</b>, <b class="ui">八度法兹</b></td></tr>
+            <tr><td><b class="ui">音箱</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">模型</b></td>
               <td><b class="ui">清音</b>, <b class="ui">Tweed</b>, <b class="ui">英式</b>, <b class="ui">钟音</b>, <b class="ui">现代</b>, <b class="ui">低音</b>, <b class="ui">原声</b></td></tr>
             <tr><td><b class="ui">饱和器</b></td><td><b class="ui">类型</b></td>
               <td><b class="ui">电子管</b>, <b class="ui">磁带</b>, <b class="ui">NAM</b></td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">类型</b></td>
+              <td><b class="ui">环形调制</b>, <b class="ui">比特压碎</b>, <b class="ui">电话</b>, <b class="ui">扩音器</b></td></tr>
             <tr><td><b class="ui">哇音</b></td><td><b class="ui">模式</b></td>
               <td><b class="ui">自动</b>, <b class="ui">LFO</b>, <b class="ui">踏板</b></td></tr>
-            <tr><td><b class="ui">延迟</b></td><td><b class="ui">声部</b> · <b class="ui">同步</b></td>
-              <td><b class="ui">数字</b>, <b class="ui">BBD</b>, <b class="ui">磁带</b> · 同步
-                <b class="ui">关</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">震音</b></td><td><b class="ui">模式</b> · <b class="ui">同步</b></td>
-              <td><b class="ui">震音</b>, <b class="ui">颤音</b> · 同步 <b class="ui">关</b>,
-                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-                        <tr><td><b class="ui">混响</b></td><td><b class="ui">类型</b></td>
-              <td><b class="ui">房间</b>, <b class="ui">大厅</b>, <b class="ui">板式</b>, <b class="ui">弹簧</b>, <b class="ui">云雾</b>, <b class="ui">IR</b></td></tr>
+            <tr><td><b class="ui">延迟</b></td><td><b class="ui">声部</b> · <b class="ui">抽头 2</b></td>
+              <td><b class="ui">数字</b>, <b class="ui">BBD</b>, <b class="ui">磁带</b> ·
+                <b class="ui">关</b>, <b class="ui">1/2</b>, <b class="ui">3/4</b>, <b class="ui">2/3</b>,
+                <b class="ui">3/2</b>, <b class="ui">2x</b> 倍的延迟时间</td></tr>
+            <tr><td><b class="ui">震音</b></td><td><b class="ui">模式</b></td>
+              <td><b class="ui">震音</b>, <b class="ui">颤音</b>, <b class="ui">谐波</b></td></tr>
+            <tr><td><b class="ui">移相</b></td><td><b class="ui">模式</b></td>
+              <td><b class="ui">移相</b>, <b class="ui">Vibe</b>, <b class="ui">颤音</b></td></tr>
+            <tr><td><b class="ui">混响</b></td><td><b class="ui">类型</b></td>
+              <td><b class="ui">房间</b>, <b class="ui">大厅</b>, <b class="ui">板式</b>, <b class="ui">弹簧</b>, <b class="ui">云雾</b>, <b class="ui">IR</b>, <b class="ui">门限</b>, <b class="ui">反向</b></td></tr>
             <tr><td><b class="ui">合奏</b></td><td><b class="ui">模式</b> · <b class="ui">路由</b></td>
               <td><b class="ui">天鹅绒</b>, <b class="ui">全通</b> · <b class="ui">立体声</b>, <b class="ui">双单声道</b></td></tr>
-            <tr><td><b class="ui">旋转</b></td><td><b class="ui">速度</b></td>
-              <td><b class="ui">慢</b>, <b class="ui">快</b></td></tr>
-            <tr><td><b class="ui">音高</b></td><td><b class="ui">声部</b></td>
-              <td><b class="ui">单音</b>, <b class="ui">复音</b></td></tr>
-            <tr><td><b class="ui">和声</b></td><td><b class="ui">调</b> · <b class="ui">音程</b> · <b class="ui">监听</b></td>
-              <td>12 个音名，另加 <b class="ui">自动</b> 和 <b class="ui">跟随</b> ·
-                <b class="ui">-8度</b>, <b class="ui">-5度</b>, <b class="ui">-3度</b>, <b class="ui">+3度</b>,
-                <b class="ui">+4度</b>, <b class="ui">+5度</b>, <b class="ui">+6度</b>, <b class="ui">+8度</b> ·
-                <b class="ui">自定</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">自动修音</b></td><td><b class="ui">调</b></td>
-              <td>同样的调式列表，另加 <b class="ui">半音阶</b> 和 <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">切片器</b></td><td><b class="ui">节奏型</b></td>
+              <td><b class="ui">开关</b>, <b class="ui">反拍</b>, <b class="ui">奔驰</b>, <b class="ui">附点</b>, <b class="ui">结巴</b>, <b class="ui">成对</b>, <b class="ui">切分</b>, <b class="ui">随机</b></td></tr>
+            <tr><td><b class="ui">音高</b></td><td><b class="ui">引擎</b> · <b class="ui">控制</b></td>
+              <td><b class="ui">单音</b>, <b class="ui">复音</b>, <b class="ui">声部</b> ·
+                <b class="ui">固定</b>, <b class="ui">踏板</b></td></tr>
+            <tr><td><b class="ui">和声</b></td><td><b class="ui">调性来源</b> · <b class="ui">范围</b> · <b class="ui">声部 1</b>…<b class="ui">声部 4</b></td>
+              <td><b class="ui">设置调</b>、<b class="ui">伴奏</b>、<b class="ui">此输入</b> 或按名称选另一个音色组 ·
+                <b class="ui">低</b>, <b class="ui">中</b>, <b class="ui">高</b> ·
+                <b class="ui">关</b> 或相对所唱音符的某个音程，上下各两个八度</td></tr>
+            <tr><td><b class="ui">自动修音</b></td><td><b class="ui">调性来源</b> · <b class="ui">范围</b></td>
+              <td><b class="ui">半音阶</b>, <b class="ui">伴奏</b>, <b class="ui">设置调</b> ·
+                <b class="ui">低</b>, <b class="ui">中</b>, <b class="ui">高</b></td></tr>
+            <tr><td><b class="ui">合成器</b></td><td><b class="ui">波形</b> · <b class="ui">音符</b></td>
+              <td><b class="ui">锯齿</b>, <b class="ui">方波</b>, <b class="ui">脉冲</b>, <b class="ui">正弦</b> ·
+                <b class="ui">最响</b>, <b class="ui">最低</b></td></tr>
+            <tr><td><b class="ui">声码器</b></td><td><b class="ui">声部</b> · <b class="ui">载波</b></td>
+              <td><b class="ui">此输入</b> 或另一个音色组 · <b class="ui">锯齿</b>, <b class="ui">脉冲</b>,
+                <b class="ui">和弦</b>, <b class="ui">噪声</b></td></tr>
           </tbody>
         </table>
       </div>
       <p><b class="ui">音箱</b> 模块的 <b class="ui">内置</b> 一侧是 NAMper 自带的电子管放大器，旋钮一如所料：<b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">中频</b>、<b class="ui">高音</b>、<b class="ui">临场</b> 和 <b class="ui">主音量</b>，<b class="ui">模型</b> 芯片上有七种音色取向。它不需要下载也不需要账号，所以离线时靠它撑场；旁边的 <b class="ui">NAM</b> 芯片换成捕获 — 见下文。</p>
       <p><b class="ui">饱和器</b> 是旧的 Tube Sat 和 Tape Sat 的去处：一个模块，类型芯片上选 <b class="ui">电子管</b>、<b class="ui">磁带</b> 或外部设备的 <b class="ui">NAM</b> 捕获。<b class="ui">合奏</b> 让一件乐器听起来像分布在声场各处的几位演奏者 — 没有 LFO，没有失谐，单声道求和就是输入本身；模式芯片上选 <b class="ui">天鹅绒</b> 或 <b class="ui">全通</b>。</p>
+
+      <h3>过载、动态与时间</h3>
+      <p><b class="ui">过载</b> 模块的内置一侧有分属四个家族的十种电路，从列表中选择，每个家族都有自己的一套旋钮：boost 是 <b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b> 和 <b class="ui">混合</b>（把干净的吉他声混回来）；overdrive 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">电平</b>、<b class="ui">混合</b>；distortion 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b>；fuzz 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">偏置</b>（工作点）、<b class="ui">电压</b>（电池——过了中点就会塌陷并开始断续）和 <b class="ui">电平</b>。添加菜单里只列出一个过载模块，信号链按电路来命名模块，所以一组叠在一起的效果读作 TREBLE BOOST、TUBE、FUZZ GE。</p>
+      <p>现在每一种 <b class="ui">压缩器</b> 面板上还多了 <b class="ui">拐点</b>、<b class="ui">混合</b>（不全开就是并联压缩）和 <b class="ui">HPF</b>——一个只作用于检测器的高通，这样低频就不会带着其余部分一起抽吸。</p>
+      <p><b class="ui">延迟</b> 新增了第二个抽头，时间按主延迟时间的比例设定——<b class="ui">抽头 2</b> 及其 <b class="ui">抽头电平</b>，用于双重延迟和节奏型延迟——另外还有 <b class="ui">反向</b>、作用于重复音的 <b class="ui">调制</b>、位于反馈回路内的 <b class="ui">低切</b> 和 <b class="ui">高切</b>（每一次重复都比上一次更暗或更薄），以及 <b class="ui">闪避</b>——你演奏时压住重复音，在间隙里再让它们浮上来。</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-drive.png" width="600" height="1303"
+               alt="过载模块面板的内置一侧：分为四个家族的电路列表，以及所选家族的旋钮。">
+          <figcaption><b class="ui">过载</b>：四个家族，十种电路</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-delay.png" width="600" height="1303"
+               alt="延迟模块面板：Voice 菜单、Sync 开关，Time、FB 和 Mix 旋钮，Tap 2 及其电平，Mod、Low cut、High cut 和 Duck。">
+          <figcaption>带第二个抽头的 <b class="ui">延迟</b></figcaption>
+        </figure>
+      </div>
+      <p><b class="ui">混响</b> 新增了两种类型。<b class="ui">门限</b> 是八十年代的鼓房声：一个浓密的板式混响被门截断，门在击打时打开，保持 <b class="ui">保持</b> 的时长，再在 <b class="ui">释放</b> 内关闭。<b class="ui">反向</b> 把最后 <b class="ui">时间</b> 秒的声音持续地倒着播放，于是一个正在衰减的音会以渐强的形式回来；<b class="ui">再生</b> 把它反馈回去。在 <b class="ui">云雾</b> 上，shimmer 的 <b class="ui">音程</b> 现在可以选择：<b class="ui">+8度</b>、<b class="ui">+5度</b>、八度加五度，或者 <b class="ui">-8度</b>。</p>
+      <p><b class="ui">移相</b> 的 <b class="ui">模式</b> 新增了 <b class="ui">Vibe</b>——四个错开的级，由灯泡的波形扫动，要的是那种律动而不是陷波——以及 <b class="ui">颤音</b>，也就是只听湿声的 Vibe。<b class="ui">震音</b> 新增了 <b class="ui">谐波</b>：信号在 800 Hz 处一分为二，两半相互反向摆动，听起来像一个慢速的移相器。</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-verb.png" width="600" height="1303"
+               alt="混响模块面板，类型为 Gated：顶部是类型芯片，下方是 Decay、Hold、Release、Damp 和 Predelay 旋钮。">
+          <figcaption><b class="ui">门限</b> 类型的 <b class="ui">混响</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-cloud.png" width="600" height="1303"
+               alt="混响模块面板，类型为 Cloud：Shimmer 旋钮旁是 Interval 芯片，另有 Decay、Mix、Tone、Predelay 和 Size 旋钮，以及 Freeze 开关。">
+          <figcaption><b class="ui">云雾</b> 及其 shimmer 的 <b class="ui">音程</b></figcaption>
+        </figure>
+      </div>
+
+      <h3>音高与人声</h3>
+      <p><b class="ui">和声</b> 最多可唱出四个声部，适用于歌手，也适用于吉他。<b class="ui">调性来源</b> 说明调从哪里来：<b class="ui">设置调</b> 使用调式列表，<b class="ui">伴奏</b> 跟随歌曲检测到的调，<b class="ui">此输入</b> 从唱进这条信号链的内容中学习调，其他音色组则按名称列出。<b class="ui">声部 1</b>…<b class="ui">声部 4</b> 各自是相对所唱音符的一个音程，或 <b class="ui">关</b>，所以三度、五度加八度就构成一个和弦。这些声部保留歌手的共振峰——升高五度听起来依然是同一个人——而 <b class="ui">共振峰</b> 可以有意地移动它们。<b class="ui">合唱</b> 把每个声部变成一组四位歌手，各自独立地飘移，<b class="ui">扩展</b> 把他们分布到整个立体声声场中。</p>
+      <p><b class="ui">自动修音</b> 的调取自 <b class="ui">半音阶</b>、<b class="ui">伴奏</b> 或 <b class="ui">设置调</b>，保留歌手的共振峰，并放过辅音。除了 <b class="ui">速度</b> 和 <b class="ui">量</b>，它现在还有歌手专属的控制：<b class="ui">人性化</b>（长音修正得更慢）、<b class="ui">颤音</b>（保留多少歌手自己的颤音）、<b class="ui">宽容度</b>（偏离超过这个值的音不做修正——那是有意的滑音）、<b class="ui">共振峰</b> 和 <b class="ui">调音</b>（参考音 A）。</p>
+      <p><b class="ui">音高</b> 模块有三种引擎：<b class="ui">单音</b> 用于单音旋律和推弦，<b class="ui">复音</b> 用于和弦，<b class="ui">声部</b> 用于歌手——升降一个八度时元音仍保持原来的形状，而 <b class="ui">共振峰</b>（仅这个引擎有）能在同一音高上造出更大或更小的歌手。<b class="ui">控制</b> 设为 <b class="ui">踏板</b> 时它就变成一台 whammy：随着表情踏板推动 <b class="ui">踏板</b>，音程从 <b class="ui">踏板抬起</b> 滑向 <b class="ui">踏板踩下</b>。</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-harm.png" width="600" height="1303"
+               alt="和声模块面板：Key from 和调式菜单，Range 芯片，四个声部菜单，以及 Harmony、Dry、Formant、Glide、Choir 和 Spread 旋钮。">
+          <figcaption><b class="ui">和声</b>：四个声部，一个合唱团</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-atune.png" width="600" height="1303"
+               alt="自动修音模块面板：Key from 菜单，Range 芯片，以及 Speed、Amount、Humanize、Vibrato、Flex、Formant 和 Tuning 旋钮。">
+          <figcaption>带有歌手专属控制的 <b class="ui">自动修音</b></figcaption>
+        </figure>
+      </div>
+
+      <h3>Mix、速度同步与尾音</h3>
+      <p><b>每个模块都有 Mix。</b>以混合为核心的模块把它放在自己的面板上——延迟的 <b class="ui">混合</b>、和声器的 <b class="ui">干声</b>、冻结的 <b class="ui">电平</b>；其他每个模块，包括宿主插件，都会得到一个 <b class="ui">混合</b> 旋钮作为最后一个旋钮：模块与自己的输入混合，于是颤音可以只切一半，音箱也可以带一点直通信号。干声会被延迟到与模块对齐，所以不会产生梳状滤波，场景、预设和 MIDI 也把它当作普通旋钮对待。</p>
+      <p><b>速度同步是一个开关。</b>延迟、震音、切片器、移相、镶边、合唱和旋转各有一个 <b class="ui">同步</b> 开关。打开时，速率或时间旋钮变成跟随设定速度的音符时值（1/1 到 1/16，延迟上还有附点和三连音）；关闭时，又回到普通的 Hz 或 ms。</p>
+      <p><b>尾音会自然延续。</b>被场景或脚踏开关旁通的延迟、混响、冻结、效果回路或宿主插件会在干声之上继续鸣响，直到安静下来；切换预设时，旧音色组的尾音最长可以继续播放八秒，而不是被切断。控制它的开关是设置 → <b class="ui">音频</b> 中的 <b class="ui">切换时保留尾音</b>，默认开启。</p>
       <div class="note tip">
         <div class="t">聆听另一个音色组的和声</div>
-        <p>Harmony 的 <b class="ui">监听</b> 一行不是一个路由控件——它决定和声器从哪里获取
-          和弦信息。保持在 <b class="ui">自定</b> 上时，它跟随自己信号链中的信号；指向
-          <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> 时，人声就可以根据吉他音色组
-          正在演奏的内容来配和声。</p>
+        <p>Harmony 的 <b class="ui">调性来源</b> 不是一个路由控件——它决定和声器从哪里获取
+          调。设为 <b class="ui">此输入</b> 时，它从自己信号链中的信号学习调；按名称指向
+          另一个音色组时，人声就可以根据吉他音色组正在演奏的内容来配和声。</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>五种均衡模型</h2>
-      <p>只有一个 <b class="ui">均衡</b> 模块，但里面藏着五种完全不同的均衡器。切换模型
+      <h2 id="eq"><span class="n">02.3</span>七种均衡模型</h2>
+      <p>只有一个 <b class="ui">均衡器</b> 模块，但里面藏着七种完全不同的均衡器。切换模型
         会同时更换旋钮组和声音，所以要根据任务选择合适的一种——快速调音、精准切除，
         或是母带风格的搁架式均衡。</p>
       <div class="tw">
@@ -234,13 +416,20 @@
               <td>Baxandall 式——两个非常宽、非常温和的搁架。当你想让整体声音略暗
                 或略亮一点时，就用它。</td>
               <td><b class="ui">低音</b>, <b class="ui">高音</b></td></tr>
+            <tr><td><b class="ui">图示 7</b></td>
+              <td>单块效果器式的图示均衡：七个倍频程频段，从 100 Hz 到 6.4 kHz，每段一个推子。
+                双击推子可将其归零。</td>
+              <td>100 … 6.4k，各 ±12 dB</td></tr>
+            <tr><td><b class="ui">图示 10</b></td>
+              <td>机架式图示均衡：十个倍频程频段，从 31 Hz 到 16 kHz，每段一个推子。</td>
+              <td>31 … 16k，各 ±12 dB</td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
-             alt="EQ 模块面板，选中 Passive 模型，显示其八个旋钮：Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten 和 Atten Hz，顶部有 IN 和 OUT 电平表。">
-        <figcaption>选中 Passive 模型的 EQ 模块</figcaption>
+             alt="均衡器模块面板，选中 Passive 模型，显示其八个旋钮：Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten 和 Atten Hz，顶部有 IN 和 OUT 电平表。">
+        <figcaption>选中 Passive 模型的均衡器模块</figcaption>
       </figure>
       <p>每个模块面板，包括这一个，都有横向的 <b class="ui">入</b> 和
         <b class="ui">出</b> 电平表。在 EQ 上尤其值得留意：三个频段各加几个分贝很快就
@@ -256,8 +445,8 @@
         内置音色，<em>也</em>带着它围绕调校的那个采样，而在两者之间切换只需一次点击。</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
-             alt="Rig 标签页：信号链卡片顶部横跨的 IN 和 OUT 电平表，下方是模块信号链，其中的 Amp 模块标注着它正在播放的采样。">
-        <figcaption>Rig 标签页；Amp 方块标注着它正在播放的内容</figcaption>
+             alt="Rig 标签页：信号链卡片顶部横跨的 IN 和 OUT 电平表，下方是模块信号链，其中的音箱模块标注着它正在播放的采样。">
+        <figcaption>Rig 标签页；音箱方块标注着它正在播放的内容</figcaption>
       </figure>
 
       <h3>采样一侧</h3>
@@ -276,7 +465,7 @@
       <div class="note">
         <div class="t">采样是单声道的</div>
         <p>一个 NAM 采样是一个单声道设备——到达 <b class="ui">音箱</b> 模块的立体声信号会先
-          被合并为单声道再输入。请把立体声效果放在 Amp 之后，而不是之前。</p>
+          被合并为单声道再输入。请把立体声效果放在音箱之后，而不是之前。</p>
       </div>
 
       <h3>模型库与模型旋钮</h3>
@@ -290,7 +479,7 @@
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
-             alt="NAM 一侧的 Amp 模块：采样配置的名称与封面、Browse TONE3000、Library 与 Load file 按钮，下方是 Bank: 3，以及在输入输出微调之间显示 1/3 的 Model 旋钮。">
+             alt="NAM 一侧的音箱模块：采样配置的名称与封面、Browse TONE3000、Library 与 Load file 按钮，下方是 Bank: 3，以及在输入输出微调之间显示 1/3 的 Model 旋钮。">
         <figcaption>三个一组的音色库：<b class="ui">音色库：3</b>，以及微调之间的 <b class="ui">模型</b> 旋钮</figcaption>
       </figure>
 
@@ -303,11 +492,15 @@
       <p>有多个模型的音色会打开 <b class="ui">选择模型</b>，而这张面板上的勾选<em>就是</em>音色库。勾选从模块已有的模型开始，所以面板打开时呈现的是你已有的内容，而不是一片空白，顶部那行写着 <b class="ui">模型库：3 个模型 — Model 旋钮逐个切换</b>。勾选与取消勾选，塑造旋钮扫过的范围：<b class="ui">全选 6 个</b> 会全选并变成 <b class="ui">取消全选</b>——两者都不会下载任何东西。真正动手的是下面那个按钮，且只针对勾选项：<b class="ui">将所选 5 个下载到模型库</b>。只要勾选与音色库一致，它就保持沉默，因为没有什么要取。</p>
       <p>音色库因此既能建立也能修剪：再次打开选择器，取消那些你从不使用的模型，下载，扫描顺序便围绕剩下的重新写就——已有的文件不会再取一次。另一条路是点按模型名称，面板在列表下方老实说明代价：<b class="ui">只用一个模型：选择后将清空含 3 个的模型库。</b> 网站上有而你还没有的模型会以云朵图标淡显，直到你勾选它们。</p>
 
-      <h3>NAM 模块：单块与外置设备</h3>
-      <p>另有一个独立的 <b class="ui">NAM</b> 模块，它带有同样的采样一侧，但没有内置音箱，
-        单块和外置设备的采样就属于这里。你不必自己去摆放它：在瞄准某个
-        <b class="ui">音箱</b> 模块时加载一个单块采样，NAMper 就会在那台音箱之前插入一个
-        <b class="ui">NAM</b> 模块，并替你打开它。</p>
+      <h3>踏板与外置设备：其他模块里的采样</h3>
+      <p>单独的采样模块已经不存在了：模拟某一类设备的模块各自带有自己的采样一侧。
+        <b class="ui">过载</b> 接收踏板的采样，<b class="ui">饱和器</b> 和
+        <b class="ui">压缩器</b> 接收外置设备——每个都带着与音箱相同的 <b class="ui">NAM</b>
+        标签、微调旋钮和切换音色库的 <b class="ui">模型</b> 旋钮。你不必自己去摆放它们：在瞄准某个
+        <b class="ui">音箱</b> 时加载一个踏板采样，NAMper 就会把它放进 rig 里的过载模块——
+        如果还没有，就在音箱之前插入一个——并替你打开它；外置设备也以同样的方式落进饱和器。
+        真实的外置设备（而不是它的采样）则通过 <b class="ui">效果环路</b> 模块接入信号链。
+        用过 NAM 模块的旧预设在打开时会自动转换。</p>
 
       <h3>资料库</h3>
       <figure>
@@ -316,7 +509,7 @@
         <figcaption>音箱一侧的资源库：下载过的一切，离线可用</figcaption>
       </figure>
       <p><b class="ui">资料库</b> 按钮打开名为 <b class="ui">NAM 音色</b> 的面板——你下载过的一切，离线可用。它有五个面，每类模块一个：采样配置放在 <b class="ui">音箱</b> 与 <b class="ui">过载</b>，饱和与压缩放在 <b class="ui">外置设备</b>，音箱脉冲放在 <b class="ui">箱体</b>，混响脉冲（空间、外置设备与实验）放在 <b class="ui">混响</b>。一个模块只取其中一个面，因此它们从不混在一张列表里：你从哪个模块打开资源库，它就选定并保持那个面；没有模块可指向时，顶部的标签会列出五个面并各带计数。随应用附带的脉冲位于各自面的 <b class="ui">内置</b> 之下，与你下载的并排。</p>
-      <p>在一侧内，音色按采样对象分组：先是 <b class="ui">内置</b>，然后是 <b class="ui">音箱</b>、<b class="ui">单块</b>、<b class="ui">外置设备</b>、<b class="ui">实验性</b>、<b class="ui">箱体</b>、<b class="ui">空间</b> 和 <b class="ui">其他</b>。每一行是一个音色而非文件：封面、标题、<b class="ui">@author</b> 和它携带的模型数。轻点即加载——单模型音色单独播放，多模型音色成为模块的音色库——音色落到该去的地方：音箱头进 <b class="ui">音箱</b> 模块，踏板或外部设备进它前面的 <b class="ui">NAM</b> 模块，箱体进它后面的 <b class="ui">箱体</b>，空间进 <b class="ui">混响</b>。</p>
+      <p>在一侧内，音色按采样对象分组：先是 <b class="ui">内置</b>，然后是 <b class="ui">音箱</b>、<b class="ui">单块</b>、<b class="ui">外置设备</b>、<b class="ui">实验性</b>、<b class="ui">箱体</b>、<b class="ui">空间</b> 和 <b class="ui">其他</b>。每一行是一个音色而非文件：封面、标题、<b class="ui">@author</b> 和它携带的模型数。轻点即加载——单模型音色单独播放，多模型音色成为模块的音色库——音色落到该去的地方：音箱头进 <b class="ui">音箱</b> 模块，踏板进它前面的 <b class="ui">过载</b>，外置设备进 <b class="ui">饱和器</b>，箱体进它后面的 <b class="ui">箱体</b>，空间进 <b class="ui">混响</b>。</p>
       <p>箭头会展开该音色的模型列表。在<em>正是</em>这个模块模型库的那个音色里，每个模型都
         带一个勾选标记：它把该模型保留在 <b class="ui">模型</b> 旋钮的扫描范围内，点击则把
         旋钮移到它上面。在其他任何音色里，点击一个模型会让它单独发声，并清空模型库。
@@ -335,8 +528,9 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h3 id="capture-own">采样你自己的设备</h3>
-      <p>库工具栏中的<b class="ui">采样一个 NAM 模型…</b>只用一块音频接口，就能在设备上采样你自己的音箱、踏板或整套 rig。这就是每一个 NAM 采样诞生的 reamp 回路：应用自己的信号从接口的一个输出出去，经过设备，再从一个输入回来。选好那个输出和输入，设置发送电平，<b class="ui">检查电平</b>会播放信号开头，配两个电平表和一条提示，告诉你发送该调多少——返回信号应在 −6 dBFS 附近达到峰值且绝不削波。</p>
-      <p><b class="ui">开始采样</b>在 rig 静音时播放一分钟信号。录音会在训练前先被检查：两端的标记定位回路往返延迟和两个时钟之间的漂移；没有信号返回、返回削波或回路没有改变信号的录音会被拒绝。<b class="ui">训练</b>在设备上运行——Nano、Feather（默认）、Lite 或 Standard——并显示轮数以及在训练器从未见过的音频上的 ESR（0.02 已是不错的采样）。结果作为你自己的音色进入库，带着设备标签，<b class="ui">分享 .nam 文件</b>可把它交给任何 NAM 播放器。</p>
+      <p>库工具栏中的<b class="ui">采样一个 NAM 模型…</b>只用一块音频接口，就能在设备上采样你自己的音箱、踏板或整套 rig。这就是每一个 NAM 采样诞生的 reamp 回路：信号从接口的一个输出出去，经过设备，再从一个输入回来。<b class="ui">采样</b> 窗口按接口自己的通道名称来选择那个输出和输入；窗口打开期间现场 rig 会被切断，这样回环接线的 rig 就不会自己喂自己而啸叫。设置发送电平，<b class="ui">检查电平</b>会播放信号开头，配两个电平表和一条提示，告诉你发送该调多少——返回信号应在 −6 dBFS 附近达到峰值且绝不削波。如果输入端已经带有并非发送信号造成的声音——设备通过回路反馈，或者宿主正通过插件播放它的音轨——提示会指出来：把设备的输入或发送调低，或者停止播放，然后再检查一次。</p>
+      <p><b class="ui">开始采样（190 秒）</b>播放 NAM 训练器自己的标准化信号 <b>v3_0_0.wav</b>，所以在这里录下的素材既能在这里训练，也能在任何其他 NAM 训练器中训练。录音会在训练前先被检查：开头附近的提示音定位回路往返延迟，两端同一段信号的两份拷贝测量两个时钟之间的漂移；没有信号返回、返回削波或回路没有改变信号的录音会被拒绝。<b class="ui">训练</b>在设备上运行——Nano、Feather（默认）、Lite 或 Standard，轮数由你设定——并显示轮数以及在训练器从未见过的音频上的 ESR（0.02 已是不错的采样）。结果作为你自己的音色进入库，带着设备标签，<b class="ui">分享 .nam 文件</b>可把它交给任何 NAM 播放器。</p>
+      <p>想在别处训练？<b class="ui">分享录音对</b>（在 Mac 上是 <b class="ui">保存录音对…</b>）会把信号和返回作为 48 kHz 的 WAV 文件交出来——正是 TONE3000 的训练器和 NAM 训练器所需要的。</p>
 
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
       <p>TONE3000 是一个免费的采样库，NAMper 直接从中获取内容。应用内没有单独的浏览界面：
@@ -347,9 +541,10 @@
         tone3000.com，应用会直接复用该会话。NAMper 从不在启动时索要它——出厂预设用内置音箱
         和自带箱体就能发声，登录发生在你第一次在需要采样的模块里按下 <b class="ui">浏览 TONE3000</b> 的时候，
         设置里已经没有 <b class="ui">TONE3000</b> 页面了。</p>
-      <p>音色库提供什么，取决于是哪个模块打开了它。从 <b class="ui">音箱</b> 或
-        <b class="ui">NAM</b> 模块进入时，它在服务器端被限定为 A2 架构的音箱、完整音色组、
-        单块和外置设备的 <b class="ui">.nam</b> 采样。从 <b class="ui">箱体</b> 模块进入时，
+      <p>音色库提供什么，取决于是哪个模块打开了它。从 <b class="ui">音箱</b>
+        进入时，它在服务器端被限定为 A2 架构的音箱与完整音色组的 <b class="ui">.nam</b> 采样；
+        从 <b class="ui">过载</b> 进入时限定为踏板，从 <b class="ui">饱和器</b> 或
+        <b class="ui">压缩器</b> 进入时则限定为外置设备。从 <b class="ui">箱体</b> 模块进入时，
         它提供网站上的箱体脉冲；从 <b class="ui">混响</b> 进入时则是空间——
         <b class="ui">.wav</b> 文件，而不是采样。这个筛选是固定的，不是你可以更改的设置。</p>
       <p>当你选中的音色只有一个模型时，它会连同封面图和元数据一起直接落进模块。当它有多个
@@ -394,7 +589,7 @@
       <p><b class="ui">箱体</b> 模块播放脉冲响应——用麦克风采样的音箱箱体。它的面板与采样模块相同：顶部是脉冲名称和 <b class="ui">@author</b>，指向音色页面的箭头和旁边的 <b class="ui">清除 IR</b>，左侧是封面，右侧是三种加载方式——<b class="ui">浏览 TONE3000</b>、<b class="ui">资料库</b> 和 <b class="ui">加载文件</b>。下面是模块自己的旋钮 <b class="ui">电平</b>，−12 到 +12 dB。</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="Cab 模块面板：顶部是脉冲名称和作者，左侧封面，右侧 Browse TONE3000、Library 和 Load file 按钮，下方 Level 旋钮。">
+             alt="箱体模块面板：顶部是脉冲名称和作者，左侧封面，右侧 Browse TONE3000、Library 和 Load file 按钮，下方 Level 旋钮。">
         <figcaption>箱体模块，构造和音箱的采样一侧一样</figcaption>
       </figure>
       <p><b class="ui">IR</b> 类型的 <b class="ui">混响</b> 加载的是空间而不是箱体，来自资料库的 <b class="ui">空间</b> 一侧：内置的、下载的、你自己的文件。往任何 Reverb 里加载一个空间，它就切换到 IR 类型。</p>
@@ -403,7 +598,7 @@
       <h3>一只音箱里的多个脉冲</h3>
       <figure>
         <img class="phone" src="/docs/assets/cab-slots.png" width="600" height="1303"
-             alt="装有同一个 TONE3000 音色包八个脉冲的 Cabinet 面板：封面照片、每个槽位一枚带电平的彩色标签、八个点围绕圆周而滑块居中的混合区域，以及所选槽位展开的卡片。">
+             alt="装有同一个 TONE3000 音色包八个脉冲的箱体面板：封面照片、每个槽位一枚带电平的彩色标签、八个点围绕圆周而滑块居中的混合区域，以及所选槽位展开的卡片。">
         <figcaption>一个 <b class="ui">箱体</b>，八个脉冲：标签、混合区域与展开的槽位</figcaption>
       </figure>
       <p>一只音箱上的两支话筒，一台 4×12 与一台 1×12 并排，甚至整包音箱——一个 <b class="ui">箱体</b> 模块全都装得下。标签旁的 <b class="ui">添加</b> 提供三扇老门——<b class="ui">从资料库</b>、<b class="ui">浏览 TONE3000</b> 与 <b class="ui">加载文件</b>——从任意一扇进来的都会成为一个自带颜色的槽位。带多个脉冲的音色一次就能把模块填满：在选择器里勾选的，会作为槽位到达。标签上方的频响曲线会为每个槽位添一条线，并在其上覆一条白线——那是合成结果，也就是你听到的声音。</p>
@@ -447,55 +642,87 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="presets"><span class="n">02.7</span>预设</h2>
-      <p>一个音色组预设保存整条信号链——模块、型号、旋钮位置、音箱模型、箱体。可以从
-        <b class="ui">预设</b> 卡片上的 <b class="ui">+</b>，或者从预设管理器中保存一个。
-        提示是一个标题为 <b class="ui">保存预设</b> 的警告框，其中的信息会告诉你即将
-        发生的事：<b class="ui">当前音色组将占用下一个空闲的 MIDI PC 预设位。</b>
-        输入一个名字并点击 <b class="ui">保存</b>。留空则会以 <b class="ui">预设</b>
-        的名字保存。</p>
-      <div class="note warn">
-        <div class="t">PC 插槽不可编辑</div>
-        <p>每个预设都占据一个 MIDI 程序变更插槽，由 NAMper 自动分配：四个出厂预设占用
-          PC 0–3，用户预设从 4 开始依次占用下一个空闲编号。没有办法手动更改插槽。
-          请围绕你保存预设的顺序来规划脚踏板的布局，而不是反过来。</p>
+      <p>一个音色组预设保存整条信号链——模块、型号、旋钮位置、场景、音箱模型、箱体。预设存放在
+        MIDI 程序切换插槽上，分为四个各 128 个的库：<b class="ui">出厂</b> 和用户 1–3。可以从
+        <b class="ui">预设</b> 卡片上的 <b class="ui">+</b>，或者从预设管理器中保存一个：
+        <b class="ui">保存预设</b> 面板会询问一个预设所包含的一切。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>字段</th><th>设置什么</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">名称</b></td><td>留空则以 <b class="ui">预设</b> 的名字保存。</td></tr>
+            <tr><td><b class="ui">库</b></td><td>放进哪一个用户库。</td></tr>
+            <tr><td><b class="ui">程序号</b></td><td>程序切换编号，默认从第一个空闲编号开始。菜单列出全部
+              128 个；已被占用的编号会显示它将替换哪个预设，空闲的则显示 <b class="ui">空闲</b>。</td></tr>
+            <tr><td><b class="ui">类别</b></td><td>可勾选的芯片——与预设列表用来筛选的类别相同。</td></tr>
+            <tr><td><b class="ui">标签</b></td><td>你自己的关键词，用逗号分隔；搜索能找到它们。</td></tr>
+          </tbody>
+        </table>
       </div>
 
+      <h3>预设库</h3>
+      <p><b class="ui">预设</b> 标题旁边以及预设管理器里的库芯片，显示当前是哪个库并用来切换。当前的库
+        决定了列表显示什么，也决定了程序切换 <em>n</em> 播放什么。在踏板板上，用 MIDI Bank Select
+        （CC 0）选择库——0 是 <b class="ui">出厂</b>，1–3 是用户库——<b class="ui">下一个预设库</b>
+        / <b class="ui">上一个预设库</b> 也可以学习到任意开关上。预设的菜单里，你自己的预设有
+        <b class="ui">移到库</b>，出厂预设有 <b class="ui">复制到库</b>。歌单不绑定某个库：
+        它里面的预设在哪个库当前启用，就从哪个库播放。</p>
+      <div class="note warn">
+        <div class="t">出厂库是只读的</div>
+        <p>对出厂预设使用 <b class="ui">用当前音色组更新</b> 时会先询问，然后
+          <b class="ui">保存副本</b> 会把你的版本存进用户库的第一个空闲编号，切换到那个库并播放它；
+          重命名出厂预设也会生成同样的副本。再次更新同一个出厂预设时，编辑的就是那份副本——而且从那以后，
+          每一首调用这个出厂预设的歌都会改为调用你的副本，场景也包括在内。</p>
+      </div>
+
+      <h3>搜索与类别</h3>
+      <p>预设条和管理器都带有同样的搜索框和类别芯片。搜索同时匹配名称<em>和</em>标签，所以搜 "vocal" 会调出
+        整个人声库，搜 "delay" 会调出所有带回声味道的音色组。芯片用来缩小列表：
+        <b class="ui">全部</b>、<b class="ui">我的</b>（只看你自己的预设），然后是各个类别——
+        <b class="ui">清音</b>、<b class="ui">主音</b>、<b class="ui">布鲁斯</b>、
+        <b class="ui">氛围</b>、<b class="ui">金属</b>、<b class="ui">低音</b>、
+        <b class="ui">人声</b>、<b class="ui">实用工具</b> 等等。</p>
+
       <h3>预设条有两副面孔</h3>
-      <p><b class="ui">预设</b> 卡片——在平板上是 Rig 标签页侧边的长条，在手机上是链下方的横带
-        ——显示两样东西中的一样，取决于有没有一份处于 <b class="ui">现场</b> 的歌单：</p>
+      <p><b class="ui">预设</b> 卡片——在平板上和竖握的手机上是信号链旁边的长条，不管有几个音色组；
+        在横放的手机上是链下方的横带——显示两样东西中的一样，取决于有没有一份处于 <b class="ui">现场</b> 的歌单：</p>
       <ul style="--nc:var(--amp)">
-        <li><b>没有歌单在演出中</b>——它是预设库：每个预设待在自己的 MIDI PC 槽位上，带封面；超过八个
-          就出现搜索框；行菜单里有 <b class="ui">重命名</b>、
-          <b class="ui">用当前音色组更新</b>、<b class="ui">添加到歌单…</b>、
-          <b class="ui">分享</b> 和 <b class="ui">删除</b>。程序切换 <em>n</em> 调用预设
+        <li><b>没有歌单在演出中</b>——它是当前的库：每个预设待在自己的 MIDI PC 槽位上，带封面、
+          搜索框和类别芯片；行菜单里有
+          <b class="ui">用当前音色组更新</b>、<b class="ui">重命名…</b>、
+          <b class="ui">添加到歌单…</b>、<b class="ui">移到库</b>、<b class="ui">分享</b>
+          和 <b class="ui">删除</b>。程序切换 <em>n</em> 调用当前库中的预设
           <em>n</em>。</li>
         <li><b>有歌单在演出中</b>——它就是这份歌单：歌单名、歌曲步进器（<b class="ui">‹</b> 歌名
           <b class="ui">›</b>，点歌名会展开整份列表以便跳转），以及<em>当前这首歌调出的</em>每个机架
-          预设各一张卡片——不是 128 个槽位，而是这首歌真正需要的那四五个声音。此时程序切换 <em>n</em>
-          播放的是第 <em>n</em> 首歌。</li>
+          预设各一个打击垫——不是 128 个槽位，而是这首歌真正需要的那四个或八个声音——下方是预设库。
+          此时程序切换 <em>n</em> 会按下第 <em>n</em> 个舞台按钮：没选歌时对应歌曲，选中之后对应
+          这首歌自己的打击垫。</li>
       </ul>
       <p>在台上真正重要的是第二副面孔：歌只挑一次，而副歌之间你伸手去够的，就是这首歌自己的那些声音。
-        每张卡片上有预设名和它的场景行——<b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b>
-        <b class="ui">C</b> <b class="ui">D</b>——该条目自己的场景带有描边，而正在发声的那张卡片整张
-        亮起。</p>
-      <p><strong>这些字母只是显示，并不设置。</strong>点卡片上的任意位置，包括字母，都会按歌单里写好
-        的样子把那个条目调出来。某个条目用哪个场景是歌的一部分，所以要在
-        <a href="/docs/zh/perform.html#sections">Perform</a> 标签页的歌曲编辑器里改——台上一次误触，
-        不该改写整份歌单。</p>
+        每个打击垫上有预设名和它的场景行——只显示该预设实际包含的场景——该条目自己的场景带有描边，
+        而正在发声的那个打击垫整个亮起。点打击垫会按歌单里写好的样子把那个条目调出来；点某个字母则把
+        那个场景设为该条目自己的场景，再点一次已选中的字母就取消。</p>
+      <p>歌单就在这里直接编辑。把下方库里的一个预设拖到某个打击垫上（先按住，再移动——普通的滑动仍然是
+        滚动），它就会取代那个打击垫的位置，并保留原来的场景和标记；拖到空槽位上，它就加入这首歌。预设
+        的菜单里有 <b class="ui">添加到这首歌曲</b>，列出这首歌的打击垫和一个
+        <b class="ui">新建打击垫</b>。打击垫自己的长按菜单里有 <b class="ui">替换音色…</b>
+        （一个横跨所有库的选择器）、<b class="ui">当前机架</b>（把音色组的当前状态存进这个打击垫的
+        预设）、<b class="ui">清空打击垫</b> 和 MIDI 学习。长按空槽位则提供
+        <b class="ui">选择预设…</b> 和 <b class="ui">当前机架</b>。</p>
       <p>歌单面板标题里的堆叠图标照样能打开完整的预设库，而 <b class="ui">⊗</b> 会离开歌单：长条回到
-        128 个槽位，程序号也跟着回去。</p>
+        当前的库，程序号也跟着回去。</p>
+      <p>信号链卡片和预设之间有一个抓手和两个箭头。拖动抓手可以给信号链或预设更多空间，双击它则回到
+        页面默认的分割比例；箭头把信号链或预设折叠成一条细条，点一下细条就能恢复。</p>
       <h3>更新与管理</h3>
-      <p>覆盖操作总是需要确认的。<b class="ui">用当前音色组更新</b> 会弹出一个对话框，
-        显示 <b class="ui">Overwrite "{name}" with the current rig?</b>，附带
-        <b class="ui">覆盖</b> 和 <b class="ui">取消</b>。管理器本身的导航标题是
-        <b class="ui">预设</b>，分为两个部分：<b class="ui">音色组 · MIDI PC 预设位</b>，
-        以及 <b class="ui">一次搞定全部</b> → <b class="ui">全局快照</b>，
+      <p>覆盖操作总是需要确认的。对你自己的预设使用 <b class="ui">用当前音色组更新</b> 会弹出
+        <b class="ui">用当前音色组覆盖“{name}”？</b>，附带
+        <b class="ui">覆盖</b> 和 <b class="ui">取消</b>。<b class="ui">重命名…</b> 同时可以设置
+        程序编号：原本占用该编号的预设会换到旧编号上。管理器本身的导航标题是
+        <b class="ui">预设</b>，带有库芯片、搜索框和类别芯片，分为两个部分：
+        <b class="ui">音色组 · MIDI PC 预设位</b>，以及
+        <b class="ui">一次搞定全部</b> → <b class="ui">全局快照</b>，
         后者说明会把音色组、循环乐句器、采样器、曲目单和控制映射一起保存和恢复。</p>
-      <p>每一行的上下文菜单里有 <b class="ui">重命名</b>、
-        <b class="ui">用当前音色组更新</b>、<b class="ui">添加到歌单…</b>、
-        <b class="ui">分享</b> 和 <b class="ui">删除</b>。重命名只在管理器里有——Rig 标签页上预设
-        标签的菜单没有它。预设超过八个之后，顶部会出现一个 <b class="ui">搜索预设</b>
-        搜索框。</p>
       <div class="note warn">
         <div class="t">删除不会二次确认</div>
         <p>预设行菜单中的 <b class="ui">删除</b> 会立即生效，不会问"是否确定"。
@@ -512,16 +739,26 @@
         AirDrop 接收一个，NAMper 就会导入它并打开预设管理器。每个导入的预设都会得到一个
         全新的插槽，所以导入永远不会悄悄覆盖你已有的东西。</p>
 
-      <h3>四套出厂预设</h3>
-      <p>NAMper 自带四个占用 PC 0–3 的音色组，每一个都围绕一个真实模型搭建：
-        <b class="ui">清音</b>（一台美产 blackface 一体式音箱）、<b class="ui">过载</b>
-        （一台 1969 年英国产 50 瓦音箱头）、<b class="ui">主音</b>（一套现代高增益
-        音箱+箱体）和 <b class="ui">Ambient</b>（一台英国产 A 类清脆音色一体式音箱）。
-        每一个流式传输的模型都带有其上传者自己的标题，这就是音箱卡片显示的内容。
-        每个音色组还各自带有一个作为离线备用的旁通状态内置 <b class="ui">音箱</b>
-        和一个自带箱体，并在管理器中标记为 <b class="ui">出厂</b>。可以从设置 →
-        <b class="ui">重置</b> → <b class="ui">恢复出厂预设</b> 把它们全部
-        恢复；对话框会警告 <b class="ui">删除所有用户预设？四个出厂音色组将恢复。</b></p>
+      <h3>出厂库</h3>
+      <p><b class="ui">出厂</b> 库出厂时 128 个槽位全部填满：PC 0–3 是经典的四个——
+        <b class="ui">清音</b>、<b class="ui">过载</b>、<b class="ui">主音</b> 和
+        <b class="ui">氛围</b>，每一个都围绕一个真实采样调校——后面是一系列主题音色组，遍历各种风格和
+        年代，还有原声乐器、一个贝斯库、一个人声库和实用信号链。新加入的模块也在其中发挥作用：氛围音色组里的
+        渐强和冻结、加倍的人声、十二弦、合成贝斯以及人声通道条。每个出厂音色组从第一秒起就在内置音箱和
+        自带箱体上发声，并在管理器中标记为 <b class="ui">出厂</b>。管理器导入/导出菜单中的
+        <b class="ui">隐藏出厂预设</b> 会把这个库从库菜单中移除；同一个开关也能把它找回来。设置 →
+        <b class="ui">重置</b> → <b class="ui">恢复出厂预设</b> 会清除你自己的预设；
+        对话框会警告 <b class="ui">删除所有用户预设？四个出厂音色组将恢复。</b></p>
+
+      <h3>场景与渐变踏板</h3>
+      <p>每个音色组有四个场景，<b class="ui">A</b>–<b class="ui">D</b>：保存每个模块的旁通状态和旋钮
+        位置，信号链和已加载的模型不动，所以切换场景没有间断。亮着的场景会跟随你的编辑——在
+        <b class="ui">A</b> 启用时转动的旋钮从此就属于 <b class="ui">A</b>，所以切走也不会丢失任何微调。</p>
+      <p>表情踏板还可以在两个场景之间<b>渐变</b>。在设置 →
+        <b class="ui">控制</b> 中，给某个 CC 行指定动作 <b class="ui">场景</b> →
+        <b class="ui">用踏板渐变</b> 并选好一对场景：两个场景中取值不同的每个旋钮都会随踏板在两个
+        值之间移动，而开关、模式或旁通会在中点处翻转——一脚踩下，从清音推到主音，过载、延迟混合和混响
+        一起上来。</p>
       <p>其他标签页也各自有自己的预设面板，通过各自的 <b class="ui">预设</b> 标签
         进入，设计都是一样的：<b class="ui">循环乐句预设</b>、
         <b class="ui">采样器套件</b>、<b class="ui">演出预设</b>、
@@ -554,7 +791,7 @@
         （Strum · Fingers · Room · DI）。支路的电源开关属于场景的一部分，换场景时它会和其他一切
         一起开合——而且每个模板都跑在内置电子管放大器和随附箱体上，落地那一秒就能离线出声。</p>
       <p>音色组会根据模板命名为 <b class="ui">吉他</b>、<b class="ui">贝斯</b>、
-        <b class="ui">人声</b>、<b class="ui">原声</b> 或 <b class="ui">RIG n</b>；由预设建立的音色组会沿用
+        <b class="ui">人声</b>、<b class="ui">原声</b> 或 <b class="ui">音色组 n</b>；由预设建立的音色组会沿用
         该预设的名字。只有当你拥有不止一个音色组时，标题栏才会出现。</p>
 
       <h3>焦点、固定与移除</h3>
@@ -569,15 +806,15 @@
       <h3>每个音色组的输入与输出</h3>
       <p>信号链开头的 IN 连接点是一个菜单。它的 <b class="ui">声卡输入</b>
         部分会按名称列出你的通道——<b class="ui">In 1</b>、<b class="ui">In 2</b> 等——
-        并加上 <b class="ui">采样打击垫</b> 和 <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>，
+        并加上 <b class="ui">采样打击垫</b> 和 <b class="ui">循环 1</b>–<b class="ui">循环 4</b>，
         这样一个音色组就可以处理一个循环或采样器的信号，而不是实时输入。</p>
       <p>OUT 连接点会打开一个标题为 <b class="ui">音色组输出</b> 的面板，里面有
         <b class="ui">电平</b> 和 <b class="ui">声像</b> 旋钮、一个
-        <b class="ui">硬件输出对</b> 菜单（<b class="ui">Out 1-2</b>、
-        <b class="ui">Out 3-4</b>……——这需要在设置中打开
-        <b class="ui">使用接口的所有输出</b>），以及 <b class="ui">将此音色组录制到</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b>。
+        <b class="ui">硬件输出对</b> 菜单（<b class="ui">输出 1-2</b>、
+        <b class="ui">输出 3-4</b>……——这需要在设置中打开
+        <b class="ui">使用接口的所有输出</b>），以及 <b class="ui">将此音色组录制到</b> → <b class="ui">循环音轨 1</b>–<b class="ui">循环音轨 4</b>。
         下方的摘要行会显示 <b class="ui">Looper: not assigned</b>，或者在你选定之后
-        显示 <b class="ui">Looper: track 1, 3</b>。</p>
+        显示 <b class="ui">循环器：轨道 1, 3</b>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -586,10 +823,10 @@
         三条分支——这样你就可以拆分信号、分别处理再混合回去。用信号链下方的分支图标
         按钮（<b class="ui">添加并联链</b>）创建一条。</p>
       <p>它的菜单只有一个部分，<b class="ui">分支起点</b>，列出每个输入通道、
-        <b class="ui">采样打击垫</b>、<b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>，
-        以及主信号链上每个模块对应的 <b class="ui">After {Block}</b>。最后这一组才是
-        有意思的地方：在 Amp 之后分支，可以让同一个音箱音色拥有两种不同的混响；
-        在 Amp 之前分支，则可以让同一把吉他拥有两个不同的音箱。</p>
+        <b class="ui">采样打击垫</b>、<b class="ui">循环 1</b>–<b class="ui">循环 4</b>，
+        以及主信号链上每个模块对应的 <b class="ui">{Block} 之后</b>。最后这一组才是
+        有意思的地方：在音箱之后分支，可以让同一个音箱音色拥有两种不同的混响；
+        在音箱之前分支，则可以让同一把吉他拥有两个不同的音箱。</p>
 
       <h3>两个锚点</h3>
       <p>一条分支会以一条并行的列显示出来，一端是它离开主信号链的起点锚点，
@@ -599,14 +836,14 @@
         <table>
           <thead><tr><th>手势</th><th>作用</th></tr></thead>
           <tbody>
-            <tr><td>点击一个锚点</td><td>打开标题为 <b class="ui">LANE {n} MIX</b> 的
+            <tr><td>点击一个锚点</td><td>打开标题为 <b class="ui">线路 {n} 混音</b> 的
               混音面板，包含 <b class="ui">电平</b> 和 <b class="ui">声像</b></td></tr>
             <tr><td>长按起点锚点</td><td><b class="ui">分支输入</b> 菜单：
-              自身输入、<b class="ui">采样打击垫</b>、<b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>、
-              <b class="ui">Branch after {Block}</b>，以及 <b class="ui">移除分支</b></td></tr>
+              自身输入、<b class="ui">采样打击垫</b>、<b class="ui">循环 1</b>–<b class="ui">循环 4</b>、
+              <b class="ui">在 {Block} 之后分支</b>，以及 <b class="ui">移除分支</b></td></tr>
             <tr><td>长按合并锚点</td><td><b class="ui">分支输出</b> 菜单：
-              <b class="ui">进入主混音</b>、<b class="ui">Merge before {Block}</b>、
-              <b class="ui">Own output 1-2</b>，以及 <b class="ui">移除分支</b></td></tr>
+              <b class="ui">进入主混音</b>、<b class="ui">在 {Block} 之前汇合</b>、
+              <b class="ui">独立输出 1-2</b>，以及 <b class="ui">移除分支</b></td></tr>
             <tr><td>拖动一个锚点</td><td>将它重新接到主信号链上的另一个位置</td></tr>
           </tbody>
         </table>
@@ -629,7 +866,7 @@
           得到一个小型混音台，而不必逐个打开锚点面板。</p>
       </div>
       <p>一条分支也可以完全跳过主混音：把它的输出指向
-        <b class="ui">Own output 1-2</b>，它就会直接送到自己的硬件输出对——前提是先在
+        <b class="ui">独立输出 1-2</b>，它就会直接送到自己的硬件输出对——前提是先在
         设置中启用 <b class="ui">使用接口的所有输出</b>。</p>
     </section>
 
@@ -639,14 +876,14 @@
         输出之前在那里相加。你对主控做的事，就是对全部做的事。它过去在 Rig 标签页的最下面；现在它
         住在 <a href="/docs/zh/mix.html">Mix</a> 标签页里，在推子旁边的那一列——这里是简短版本，
         它周围的整台调音台在那一页上。</p>
-      <p>虚线的 <b class="ui">+</b> 条添加主控处理——最多六个模块。可选的有 <b class="ui">音量</b>, <b class="ui">均衡</b>, <b class="ui">压缩</b>, <b class="ui">饱和器</b>, <b class="ui">限制器</b>, <b class="ui">FB抑制</b>, <b class="ui">去齿音</b>, <b class="ui">混响</b> 和 <b class="ui">延迟</b>。它们的行为和链上
+      <p>虚线的 <b class="ui">+</b> 条添加主控处理——最多六个模块，来自与信号链相同的模块家族，只是没有
+        音箱和 <b class="ui">发送</b>。它们的行为和链上
         的模块一样：点标签编辑，长按可 <b class="ui">启用</b> / <b class="ui">旁通</b> 和
         <b class="ui">移除</b>。</p>
-      <div class="note warn">
-        <div class="t">主控中没有 AU 插件</div>
-        <p>宿主的 Audio Unit 插件只能放在音色组信号链内部。主控的 FX 菜单不提供它们。
-          如果你想在全局使用第三方限制器，这是不可能的——请改用内置的
-          <b class="ui">限制器</b> 模块。</p>
+      <div class="note tip">
+        <div class="t">主控上的插件</div>
+        <p>主控和两条发送返回同样可以加载宿主插件：它们的添加菜单底部有同样的
+          <b class="ui">插件</b> 区域，所以第三方限制器可以横跨全局。</p>
       </div>
       <p>这里没有常开的总线处理器。饱和是你自己添加的模块 — <b class="ui">饱和器</b>，类型芯片上选 <b class="ui">电子管</b>、<b class="ui">磁带</b> 或 <b class="ui">NAM</b> 捕获，旋钮为 <b class="ui">过载</b>、<b class="ui">音色</b>、<b class="ui">混合</b> 和 <b class="ui">电平</b> — 限制则是 <b class="ui">限制器</b> 模块，带 <b class="ui">增益</b>、<b class="ui">上限</b>（−12 到 0 dB，默认 −1）和 <b class="ui">释放</b>。没添加，它们就不在信号链里。</p>
 

@@ -44,12 +44,41 @@ def catalog():
     return out
 
 
+# a format key ("Loop preset · %@", "%lld hits", "MIDI Learn: %@"): the docs
+# quote it filled in, so match its literal parts and carry the values over
+SPEC = re.compile(r"%(?:(\d+)\$)?(?:@|lld|ld|d|lf|f|\.\df)")
+
+
+def patterns(cat):
+    out = []
+    for k, (key, vals) in cat.items():
+        if not SPEC.search(k):
+            continue
+        lit = SPEC.sub("", k)
+        if len(lit.strip(" ·:,.…-")) < 3:
+            continue                        # "%@ · %@" would match anything
+        rx = "".join("(.+?)" if SPEC.fullmatch(t) else re.escape(t)
+                     for t in re.split(r"(%(?:\d+\$)?(?:@|lld|ld|d|lf|f|\.\df))", k))
+        out.append((len(lit), re.compile("^" + rx + "$"), vals))
+    out.sort(key=lambda t: -t[0])           # the most specific key first
+    return out
+
+
+def fill(template, args):
+    n = iter(range(len(args)))
+    def one(m):
+        i = int(m.group(1)) - 1 if m.group(1) else next(n)
+        return args[i] if i < len(args) else m.group(0)
+    return SPEC.sub(one, template)
+
+
 def norm(s):
     return re.sub(r"\s+", " ", html.unescape(s)).strip()
 
 
 def main(dry=False):
     cat = catalog()
+    pats = patterns(cat)
     swapped = missed = 0
     misses = {}
     for d, lang in LOCALES.items():
@@ -62,6 +91,19 @@ def main(dry=False):
                 key = norm(text)
                 hit = cat.get(key)
                 if not hit:
+                    for _, rx, vals in pats:
+                        mm = rx.match(key)
+                        if not mm or not vals.get(lang):
+                            continue
+                        args = []
+                        for a in mm.groups():   # a filled-in value may be a key itself
+                            t = cat.get(norm(a))
+                            args.append(t[1].get(lang, a) if t else a)
+                        v = fill(vals[lang], args)
+                        if v == key:
+                            break
+                        swapped += 1
+                        return m.group(1) + html.escape(v, quote=False) + m.group(4)
                     missed += 1
                     misses[key] = misses.get(key, 0) + 1
                     return m.group(0)

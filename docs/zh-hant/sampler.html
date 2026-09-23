@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>採樣打擊墊 — NAMper 文檔</title>
-<meta name="description" content="十六個採樣打擊墊：加載與錄製聲音、帶裁剪和 ADSR 的打擊墊編輯器、音色包與四套出廠鼓組音色包、觸發量化、MIDI 音符 36–51，以及打擊墊在混音中的位置。">
+<meta name="description" content="十六個採樣打擊墊：加載與錄製聲音、帶裁剪和 ADSR 的打擊墊編輯器、音色包與四套出廠鼓組音色包、MIDI 音符 36–51，以及打擊墊在混音中的位置。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="採樣打擊墊 — NAMper 文檔">
-<meta property="og:description" content="十六個打擊墊、音色包、裁剪與 ADSR、量化與 MIDI 觸發。">
+<meta property="og:description" content="十六個打擊墊、音色包、裁剪與 ADSR、以及 MIDI 觸發。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh-hant/sampler.html">
 <meta property="og:type" content="article">
@@ -67,8 +68,8 @@
     <div class="slab" style="--nc:var(--eq)">05 · 採樣打擊墊</div>
     <h1>十六個打擊墊，一頁搞定。</h1>
     <p class="lede"><b class="ui a">採樣</b> 標籤頁是一臺可以用拇指或 MIDI 踏板演奏的鼓機：
-      十六個打擊墊、一個音色包庫、每個打擊墊各自的裁剪與包絡，以及一個在節奏必須精準時
-      使用的量化器。</p>
+      十六個打擊墊、一個音色包庫、每個打擊墊各自的裁剪與包絡，以及一個能把你演奏的內容
+      印到網格上的循環樂句器。</p>
 
     <nav class="toc">
       <div class="slab">本頁內容</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">把聲音放進打擊墊</a></li>
         <li><a href="#editor">打擊墊編輯器</a></li>
         <li><a href="#kits">音色包</a></li>
-        <li><a href="#quantize">觸發量化</a></li>
+        <li><a href="#quantize">時值與量化</a></li>
         <li><a href="#trigger">演奏打擊墊</a></li>
         <li><a href="#routing">打擊墊的信號去向</a></li>
       </ul>
@@ -87,26 +88,30 @@
       <h2 id="grid"><span class="n">05.1</span>網格</h2>
       <p>十六個打擊墊，固定為 4×4 的網格。只有一頁——沒有分組，也沒有第二頁，所以你能演奏的
         一切都同時顯示在屏幕上。</p>
-      <p>把手機轉成橫向，標題列會變成左邊的一欄——取樣器電平、量化標籤與 <b class="ui">全部停止</b>
-        ——而 4×4 的打擊墊佔據螢幕其餘的全部，墊子會拉伸把它填滿。</p>
+      <p>把手機轉成橫向，走帶控制會變成左邊的一欄——取樣器電平、音色包鍵、<b class="ui">REC</b>
+        與 <b class="ui">全部停止</b>——而 4×4 的打擊墊佔據螢幕其餘的全部，墊子會拉伸把它填滿。</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="Sample 標籤頁加載了原聲鼓出廠音色包，鋪滿全部十六個打擊墊，每個都顯示採樣名稱、時長和波形，頂部有 LEVEL 和 QUANT 旋鈕以及量化網格標籤。">
+             alt="Sample 標籤頁加載了原聲鼓出廠音色包，鋪滿全部十六個打擊墊，每個都顯示採樣名稱、時長以及按其包絡塑形的波形，上方是帶電平旋鈕、音色包鍵和 STOP ALL 的走帶卡片。">
         <figcaption><b class="ui">鼓 — 原聲</b> 出廠音色包鋪滿全部 16 個打擊墊</figcaption>
       </figure>
-      <p>頂部一行從左到右依次是：<b class="ui">採樣器</b> 字樣、一個
-        <b class="ui">電平</b> 旋鈕（0 到 2，默認 1）、一個 <b class="ui">量化</b> 旋鈕、
-        量化網格標籤、用於音色包的 <b class="ui">預設</b> 標籤、一個在打擊墊錄音時
-        點亮的 <b class="ui">錄音</b> 指示燈，以及 <b class="ui">全部停止</b>。</p>
-      <p>底部的提示已經說明了一切：</p>
-      <p><b class="ui">空打擊墊：加載或錄製 · 已加載：點按播放/停止，長按編輯 · MIDI 音符 36–51</b></p>
+      <p>頂部的走帶卡片從左到右依次是：<b class="ui">採樣器</b> 字樣、採樣器的電平旋鈕
+        （0 到 2，默認 1，顯示為 <b class="ui">+0 dB</b>）、音色包鍵、一個在打擊墊錄音時
+        點亮（整張卡片也一起亮起）的 <b class="ui">REC</b> 指示燈，以及
+        <b class="ui">全部停止</b>。十六個打擊墊獨立排在它下方，彼此緊挨。</p>
       <p>一個<b>空打擊墊</b>分成兩半——<b class="ui">加載</b> 和 <b class="ui">錄音</b>。
         一個<b>已加載的打擊墊</b>會顯示採樣名稱、時長（例如 <b class="ui">1.4s</b>）、
-        一個變暗的波形（裁剪範圍之外的部分被淡化），以及播放時掃過的一條亮色光標。</p>
+        它的波形，以及播放時掃過的一條亮色光標。
+        波形是<b>透過打擊墊的包絡</b>繪製的：緩慢的起音讓它的前沿呈斜坡，衰減讓它回落到
+        延音電平，釋放讓尾部淡出——所以打擊墊顯示的就是它實際會發出的聲音，而裁剪範圍之外的
+        部分都被淡化。</p>
+      <p>打擊墊發聲時會<b>從邊緣向內亮起</b>，越響亮得越深，並隨聲音一起淡去——無論它是
+        怎麼被觸發的：點按、MIDI 音符，或是重播其敲擊的
+        <a href="/docs/zh-hant/looper.html#midi">MIDI 循環格子</a>。</p>
       <p>長按任意打擊墊會打開菜單：<b class="ui">加載聲音…</b>、
         <b class="ui">錄製混音</b> 或 <b class="ui">停止錄音</b>，而在已加載的
         打擊墊上還有 <b class="ui">編輯…</b>、<b class="ui">清除</b> 和
-        <b class="ui">MIDI Learn: pad N</b>。</p>
+        <b class="ui">MIDI 學習：打擊墊 N</b>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -120,7 +125,7 @@
 
       <h3>錄製到打擊墊</h3>
       <p>空打擊墊上 <b class="ui">錄音</b> 的那一半會直接錄製到該打擊墊。同一時刻只能有
-        一個打擊墊在錄製，錄下的素材會命名為 <b class="ui">Rec N</b>。引擎停止時會拒絕
+        一個打擊墊在錄製，錄下的素材會命名為 <b class="ui">錄音 N</b>。引擎停止時會拒絕
         並提示 <b class="ui r">音頻已關閉——錄音前請點按電源按鈕。</b></p>
       <div class="note warn">
         <div class="t">打擊墊錄音捕獲的是你聽到的內容</div>
@@ -134,10 +139,16 @@
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="editor"><span class="n">05.3</span>打擊墊編輯器</h2>
       <p>長按一個已加載的打擊墊 → <b class="ui">編輯…</b>。面板標題為
-        <b class="ui">PAD N</b>，附帶採樣名稱和時長。</p>
+        <b class="ui">打擊墊 N</b>，附帶採樣名稱和時長。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="取樣器上方的打擊墊編輯器：PAD 1、Kick，裁剪把手之間的波形與 ADSR 曲線及其數值，Gain 和 Pitch 旋鈕，MODE 和 TAP 選項，Preview 和 Load file。">
+        <figcaption>打擊墊編輯器：裁剪、波形上的包絡、Gain、Pitch、MODE 和 TAP</figcaption>
+      </figure>
       <p>波形的起點和終點都有<b>可拖動的裁剪手柄</b>——把起點向內拖可以切掉緩慢的起音，
         把終點向內拖可以縮短過長的尾音。</p>
-      <p><b>ADSR 包絡繪製在波形之上</b>，通過拖動三個圓形手柄來編輯：
+      <p>編輯時 <b>ADSR 包絡會塑造波形</b>——波形跟著曲線走——
+        通過拖動三個圓形手柄來編輯：
         <b class="ui">起音</b>、<b class="ui">衰減與延音</b> 和
         <b class="ui">釋放</b>。上方的讀數會顯示具體數值，例如
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>。</p>
@@ -185,9 +196,9 @@
         模式設置——<b>再加上每個打擊墊音頻的一份私有副本</b>。這份副本才是關鍵：
         音色包一旦保存，無論之後往某個打擊墊導入新內容、清空它，還是刪除原始文件，
         都無法把這個音色包掏空。六個月後再加載它，它依然能正常播放。</p>
-      <p>用 <b class="ui">預設</b> 標籤打開瀏覽器；面板標題為
+      <p>用走帶卡片上的音色包鍵打開瀏覽器；面板標題為
         <b class="ui">採樣器套件</b>。點擊一行即可加載它。行菜單裡有
-        <b class="ui">重命名</b>、<b class="ui">Update with current kit</b> 和
+        <b class="ui">重命名</b>、<b class="ui">用當前套件更新</b> 和
         <b class="ui">刪除</b>。刪除一個音色包永遠不會移除仍在被已加載的打擊墊或
         另一個已保存的音色包使用的音頻。</p>
       <div class="note warn">
@@ -223,30 +234,15 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>觸發量化</h2>
-      <p><b class="ui">量化</b> 旋鈕控制的是<b>強度</b>，而不是開關。為零時顯示
-        <b class="ui">關</b>；高於零則顯示一個百分比。在 100% 時，每次敲擊都會精確
-        落在網格上；在 30% 時，只有稍微搶拍的敲擊會被拉回節奏線，你的演奏感覺得以保留。
-        默認值是 0，即關閉。</p>
-      <p>旁邊的標籤用來設置網格精度，循環切換 <b class="ui">1/4</b>、<b class="ui">1/8</b>、
-        <b class="ui">1/16</b> 和 <b class="ui">1/32</b>。默認是 <b class="ui">1/16</b>。</p>
-      <p>這兩個設置都是<b>全局的</b>——不區分音色包，也不區分打擊墊。加載一個音色包
-        不會改變它們。</p>
-      <div class="note warn">
-        <div class="t">必須同時滿足三個條件</div>
-        <p>只有以下<b>三個條件全部成立</b>時，量化才會產生可聽見的效果，而屏幕上不會
-          提示這一點：</p>
-        <ul style="--nc:var(--drive)">
-          <li>已經<b>設定了速度</b>——否則就沒有網格；</li>
-          <li>有一個<b>循環正在運行</b>——循環樂句器提供節拍相位，網格才知道第一拍在
-            哪裡；</li>
-          <li>你正在<b>錄音</b>——要麼是 <b class="ui a">演出</b> 的錄音功能，
-            要麼是來源為採樣器的一條循環音軌。</li>
-        </ul>
-        <p>如果你在沒有伴奏的情況下即興演奏時把旋鈕調高，你不會聽到任何變化。這是刻意
-          設計的：一個要等到下一個十六分音符才發聲的打擊墊，在手指下會讓人覺得反應
-          不靈，所以自由演奏時始終保持不量化，修正只會應用在最終落到錄音裡的部分。</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>時值與量化</h2>
+      <p>打擊墊總是<b>在你敲下的那一刻</b>發聲。一個要等到下一個十六分音符才發聲的打擊墊，
+        在手指下會讓人覺得反應不靈，所以採樣器本身從不移動任何一次敲擊。</p>
+      <p>時值是在保存演奏的地方修正的：把打擊墊錄進一個 <b class="ui">入</b> 設為
+        <b class="ui">取樣器打擊墊（MIDI）</b> 的循環格子。這個格子會把每次敲擊存成一個事件，
+        並有自己的 <b class="ui">量化</b> 旋鈕和 <b class="ui">格線</b>
+        （<b class="ui">1/4</b> 到 <b class="ui">1/32</b>）——可以在錄音時用，也可以事後在它的
+        編輯器裡用，量化永遠不會破壞你原本演奏的那一遍。見
+        <a href="/docs/zh-hant/looper.html#midi">MIDI 格子</a>。</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -254,37 +250,32 @@
       <p>用手指：點按會根據打擊墊的 <b class="ui">模式</b> 和 <b class="ui">打拍</b>
         設置播放或停止它，長按打開菜單。</p>
       <p>用 MIDI：<b>音符 36 到 51 演奏打擊墊 1 到 16</b>，遵循 GM 鼓組約定——音符 36
-        對應打擊墊 1。這一映射始終生效，無需任何設置，在任意 MIDI 通道上都可用，
-        除非你自己的某個映射已經先佔用了該音符。</p>
+        對應打擊墊 1。它們作為出廠映射放在設定 → <b class="ui">控制</b> 裡，在任意
+        MIDI 通道上都可用，因此會像點按一樣尊重 <b class="ui">循環</b> 和 <b class="ui">鎖定</b>
+        ——按一下開始一個循環的打擊墊，再按一下停下——你也可以像其他映射一樣移動、刪除或
+        恢復它們。</p>
       <p><b>不使用力度。</b>無論你敲擊控制器打擊墊的力度多大，採樣都會以你在編輯器中
         設定的 <b class="ui">增益</b> 播放。在打擊墊編輯器中設定一次電平之後，它就會
         固定不變。</p>
-      <div class="note tip">
-        <div class="t">學習到的映射比原始音符表現更好</div>
-        <p>你在設定 → <b class="ui">控制</b> 裡建立的對應叫用的是 play/stop，因此會尊重
-          <b class="ui">循環</b> 與 <b class="ui">鎖定</b>——踩一下開始循環，再踩一下停下。而原始的
-          MIDI 音符 36–51 永遠是從頭重新觸發。如果你要用腳踏驅動循環的打擊墊，請學習一條對應，而不是
-          依賴內建的音符範圍。</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>打擊墊的信號去向</h2>
       <p>打擊墊的信號<b>直接匯入主混音</b>——它們不經過吉他信號鏈，所以你音箱的增益
-        和混響都不會碰到它們。頂部的 <b class="ui">電平</b> 旋鈕設置整個採樣器相對於
+        和混響都不會碰到它們。走帶卡片上的電平旋鈕設置整個採樣器相對於
         音色組的音量。</p>
       <p>在應用的其他地方，它們也可以作為一個信號來源使用：</p>
       <ul style="--nc:var(--power)">
         <li>作為<b>信號鏈輸入</b>——在音色組的 IN 連接點或某條並行分支上選擇
           <b class="ui">採樣打擊墊</b>（標籤 <b class="ui">SMPL</b>），打擊墊的信號
           就會經過該音色組的效果處理。</li>
-        <li>作為<b>循環音軌來源</b>——把某條循環樂句器音軌的 <b class="ui">入</b>
-          設為 <b class="ui">採樣器</b>（標籤 <b class="ui">SMP</b>），就可以循環
-          你在打擊墊上敲出的節奏。</li>
-        <li>作為<b>壓縮器側鏈</b>——Comp 模塊的 <b class="ui">側鏈</b> 菜單
+        <li>作為<b>循環格子來源</b>——把某個循環格子的 <b class="ui">入</b> 設為
+          <b class="ui">取樣器打擊墊（MIDI）</b>，它就會把你敲出的節奏錄成可以編輯和量化的
+          敲擊：一個 <a href="/docs/zh-hant/looper.html#midi">MIDI 格子</a>。</li>
+        <li>作為<b>壓縮器側鏈</b>——壓縮器模塊的 <b class="ui">側鏈</b> 菜單
           包含 <b class="ui">SMP</b>，這樣底鼓就可以壓低吉他的音量。</li>
       </ul>
-      <p>頂部的 <b class="ui">全部停止</b> 會一次性釋放所有正在播放的打擊墊——
+      <p>走帶卡片上的 <b class="ui">全部停止</b> 會一次性釋放所有正在播放的打擊墊——
         用來應對一個鎖定的持續音，或一個你找不到源頭的循環。</p>
     </section>
 

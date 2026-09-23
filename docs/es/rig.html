@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig y cadena de señal — Documentación de NAMper</title>
-<meta name="description" content="Cómo construir un rig: la paleta de bloques, los cinco modelos de EQ, los perfiles de ampli NAM y TONE3000, las IR de pantalla, los presets y las ranuras MIDI PC, varios rigs, ramas paralelas y la sección master.">
+<meta name="description" content="Cómo construir un rig: la paleta de bloques y cada bloque, los siete modelos de EQ, los perfiles de ampli NAM y TONE3000, los bancos de capturas, las IR de pantalla y de reverb, los bancos de presets, las escenas y las ranuras MIDI PC, varios rigs, ramas paralelas y la sección master.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Rig y cadena de señal — Documentación de NAMper">
@@ -77,7 +78,7 @@
       <ul>
         <li><a href="#blocks">La paleta de bloques</a></li>
         <li><a href="#models">Modelos dentro de los bloques</a></li>
-        <li><a href="#eq">Los cinco modelos de EQ</a></li>
+        <li><a href="#eq">Los siete modelos de EQ</a></li>
         <li><a href="#nam">Capturas NAM</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Pantallas e IR</a></li>
@@ -98,19 +99,28 @@
         <table>
           <thead><tr><th>Sección</th><th>Bloques</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Dinámica</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-esser</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Saturador</b></td></tr>
-            <tr><td><b class="ui">Amp y gabinete</b></td><td><b class="ui">Ampli</b>, <b class="ui">EQ</b>, <b class="ui">Pantalla</b></td></tr>
-            <tr><td><b class="ui">Filtro</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Modulación</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b>, <b class="ui">Ensemble</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Reverb</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Armonía</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Octavador</b></td></tr>
-            <tr><td><b class="ui">Utilidad</b></td><td><b class="ui">Volumen</b>, <b class="ui">Envío</b>, <b class="ui">Limitador</b>, <b class="ui">Prot. FB</b></td></tr>
+            <tr><td><b class="ui">Amp y gabinete</b></td><td><b class="ui">Amplificador</b>, <b class="ui">Pantalla</b></td></tr>
+            <tr><td><b class="ui">Delay y reverb</b></td><td><b class="ui">Delay</b>, <b class="ui">Freeze</b>, <b class="ui">Reverb</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Lo-fi</b>, <b class="ui">Saturador</b></td></tr>
+            <tr><td><b class="ui">Dinámica</b></td><td><b class="ui">Compresor</b>, <b class="ui">De-esser</b>, <b class="ui">Gate</b>, <b class="ui">Limitador</b>, <b class="ui">Multibanda</b>, <b class="ui">Swell</b>, <b class="ui">Transitorio</b>, <b class="ui">Voz</b></td></tr>
+            <tr><td><b class="ui">EQ y filtro</b></td><td><b class="ui">Ecualizador</b>, <b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Modulación</b></td><td><b class="ui">Chorus</b>, <b class="ui">Doubler</b>, <b class="ui">Ensemble</b>, <b class="ui">Flanger</b>, <b class="ui">Phaser</b>, <b class="ui">Rotary</b>, <b class="ui">Slicer</b>, <b class="ui">Trémolo</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">12 cuerdas</b>, <b class="ui">Autotune</b>, <b class="ui">Armonía</b>, <b class="ui">Octavador</b>, <b class="ui">Pitch</b>, <b class="ui">Sinte</b>, <b class="ui">Vocoder</b></td></tr>
+            <tr><td><b class="ui">Utilidad</b></td><td><b class="ui">Prot. FB</b>, <b class="ui">Bucle FX</b>, <b class="ui">Envío</b>, <b class="ui">Volumen</b></td></tr>
             <tr><td><b class="ui">Plugins</b></td><td>el submenú <b class="ui">Plugins AU</b> en iOS, los efectos AAP instalados en Android</td></tr>
           </tbody>
         </table>
       </div>
+      <p>El ampli y su pantalla van primero; todas las demás secciones, y los bloques dentro de cada
+        una, están en orden alfabético. Un bloque que tiene presets abre un submenú en vez de caer
+        directamente en la cadena: <b class="ui">Ajustes predeterminados</b>, los presets de fábrica y los
+        guardados para ese bloque, y bajo <b class="ui">De presets de rig</b> el mismo bloque sacado de
+        un preset de rig — el drive de un rig, el delay de otro.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
+             alt="La pestaña Rig con una cadena ambient: un Swell antes del ampli, después la pantalla, un Ensemble, un delay, un Freeze y una reverb, cada bloque una ficha de la cadena.">
+        <figcaption>Una cadena ambient: <b class="ui">Swell</b>, <b class="ui">Freeze</b> y <b class="ui">Ensemble</b> alrededor del ampli</figcaption>
+      </figure>
       <p>Nada te impide añadir el mismo bloque dos veces. Los duplicados se numeran según van
         llegando — <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — y los nombres de bloque
         siempre se dibujan en mayúsculas en los chips. Dos drives seguidos, un gate al principio y
@@ -147,6 +157,124 @@
           una cadena completa, guárdala como preset y construye el siguiente rig a partir de ese
           preset.</p>
       </div>
+
+      <h3>Los bloques nuevos</h3>
+      <p>Doce bloques se sumaron a la paleta más recientemente. Para qué sirve cada uno, en una o dos
+        frases:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Bloque</th><th>Qué hace</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Doubler</b></td><td>Una toma oída como dos músicos: una copia unos
+              cents por debajo y otra otros tantos por encima, cada una un poco retrasada, abiertas a
+              los lados con la señal seca en el centro. Nada se mueve, así que no es un chorus.
+              <b class="ui">Desafinación</b>, <b class="ui">Delay</b>, <b class="ui">Ancho</b>,
+              <b class="ui">Mezcla</b>.</td></tr>
+            <tr><td><b class="ui">Swell</b></td><td>El efecto violín sin pedal de volumen: cada nota
+              nueva entra en fundido durante el tiempo de <b class="ui">Ataque</b>.
+              <b class="ui">Sens.</b> decide con qué fuerza hay que atacar para que cuente como nota
+              nueva, <b class="ui">Depth</b> desde dónde empieza el fundido.</td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td>Cuatro maneras de destrozar una señal en sus chips
+              de tipo — <b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Teléfono</b>
+              y <b class="ui">Megáfono</b> —, cada una con sus propios mandos y un
+              <b class="ui">Mezcla</b>.</td></tr>
+            <tr><td><b class="ui">Freeze</b></td><td>Una nota sostenida para siempre: activa
+              <b class="ui">Freeze</b> (un footswitch, un botón MIDI) y el último cuarto de segundo se
+              convierte en un colchón infinito bajo la señal seca mientras tocas encima.
+              <b class="ui">Ataque</b>, <b class="ui">Release</b>, <b class="ui">Nivel</b>,
+              <b class="ui">Tono</b>.</td></tr>
+            <tr><td><b class="ui">Transitorio</b></td><td>El ataque y la resonancia de una nota como dos
+              mandos, sin umbral: <b class="ui">Ataque</b> realza el golpe de púa o lo suaviza,
+              <b class="ui">Sustain</b> levanta la resonancia o la acorta.</td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td>Una puerta que lleva el tiempo: dieciséis pasos,
+              abiertos o cerrados según el <b class="ui">Patrón</b>. <b class="ui">Sync</b> toma el
+              paso del tempo del set; <b class="ui">Depth</b> es cuánto se cierra un paso,
+              <b class="ui">Borde</b> lo rápido que se mueve la puerta.</td></tr>
+            <tr><td><b class="ui">Multibanda</b></td><td>Tres bandas separadas en
+              <b class="ui">XOver grave</b> y <b class="ui">XOver agudo</b>, cada una comprimida con un solo
+              mando — <b class="ui">Bajos</b>, <b class="ui">Medios</b>, <b class="ui">Altos</b> —, con una
+              ganancia por banda y <b class="ui">Ataque</b> y <b class="ui">Release</b> compartidos.
+              Controla el retumbe sin bombear los agudos: un bajo, una acústica, una mezcla
+              entera.</td></tr>
+            <tr><td><b class="ui">Voz</b></td><td>El channel strip de una voz en el orden en que lo
+              monta un estudio: <b class="ui">HPF</b>, <b class="ui">De-esser</b>, <b class="ui">Comp</b>,
+              <b class="ui">Bajos</b>, <b class="ui">Presencia</b>, <b class="ui">Aire</b>,
+              <b class="ui">Calidez</b> y <b class="ui">Salida</b>.</td></tr>
+            <tr><td><b class="ui">12 cuerdas</b></td><td>Los órdenes duplicados: una cuerda a la octava
+              para lo que queda por debajo de <b class="ui">Corte</b> y una cuerda al unísono unos
+              cents por encima sobre todo el conjunto.
+              <b class="ui">Octava</b>, <b class="ui">Unísono</b>, <b class="ui">Desafinación</b>,
+              <b class="ui">Tono</b>.</td></tr>
+            <tr><td><b class="ui">Sinte</b></td><td>Un sintetizador monofónico que sigue a la cuerda:
+              una <b class="ui">Onda</b> a través de un filtro ladder (<b class="ui">Corte</b>,
+              <b class="ui">Reso</b>, <b class="ui">Env.</b>), desplazada por <b class="ui">Octava</b> e
+              <b class="ui">Intervalo</b>. <b class="ui">Nota</b> elige la cuerda
+              <b class="ui">Más fuerte</b> o la <b class="ui">Más grave</b>, así que un bajo de synth bajo
+              los acordes se queda en la fundamental.</td></tr>
+            <tr><td><b class="ui">Vocoder</b></td><td>Dieciséis bandas ponen las vocales de una voz
+              sobre otro sonido. Con <b class="ui">Voz</b> en <b class="ui">Esta entrada</b> el bloque
+              va sobre la voz y toca su propio <b class="ui">Portadora</b> — el robot; apuntado a otro
+              rig, va sobre la guitarra y toma la voz de ese rig — el talkbox.
+              <b class="ui">Formante</b>, <b class="ui">Respuesta</b>, <b class="ui">Sibilancia</b>,
+              <b class="ui">Octava</b>.</td></tr>
+            <tr><td><b class="ui">Bucle FX</b></td><td>Equipo externo en la cadena: el bloque envía a
+              uno de los pares de salida de la interfaz (<b class="ui">Salida</b>) y recoge el retorno en
+              una de sus entradas (<b class="ui">Ent</b>). <b class="ui">Envío</b> y
+              <b class="ui">Retorno</b> ajustan los dos lados, <b class="ui">Retorno estéreo</b> lee dos
+              entradas, <b class="ui">Fase</b> invierte el retorno. Para un bucle en paralelo (un
+              <b class="ui">Mezcla</b> por debajo del 100 %) ajusta <b class="ui">Latencia</b> a la ida y
+              vuelta de la interfaz para que la señal seca no se quede hueca.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-doubler.png" width="600" height="1303"
+               alt="La hoja del bloque Doubler: medidores IN y OUT y los mandos Detune, Delay, Width y Mix.">
+          <figcaption>El <b class="ui">Doubler</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-freeze.png" width="600" height="1303"
+               alt="La hoja del bloque Freeze: el interruptor Freeze sobre los mandos Attack, Release, Level y Tone.">
+          <figcaption>El <b class="ui">Freeze</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocal.png" width="600" height="1303"
+               alt="La hoja del bloque Vocal: los mandos HPF, De-ess, Comp, Warmth, Low, Presence, Air y Output.">
+          <figcaption>El canal <b class="ui">Voz</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-mbcomp.png" width="600" height="1303"
+               alt="La hoja del bloque Multiband: los mandos Low, Mid y High, los dos cruces, Attack, Release y una ganancia por banda.">
+          <figcaption>El <b class="ui">Multibanda</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-synth.png" width="600" height="1303"
+               alt="La hoja del bloque Synth: los menús Wave y Octave, los mandos Interval, Cutoff, Reso, Env, Glide, Attack y Mix y el menú Note.">
+          <figcaption>El <b class="ui">Sinte</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocoder.png" width="600" height="1303"
+               alt="La hoja del bloque Vocoder: los menús Voice, Carrier y Octave con los mandos Response, Formant, Sibilance y Mix.">
+          <figcaption>El <b class="ui">Vocoder</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-extloop.png" width="600" height="1303"
+               alt="La hoja del bloque FX Loop: los menús Out e In con los nombres de las tomas de la interfaz, los mandos Send, Return, Mix y Latency, y los interruptores Stereo return y Phase.">
+          <figcaption>El <b class="ui">Bucle FX</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-slicer.png" width="600" height="1303"
+               alt="La hoja del bloque Slicer: el menú Pattern, el interruptor Sync y los mandos Rate, Depth y Edge.">
+          <figcaption>El <b class="ui">Slicer</b></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -160,55 +288,122 @@
           <tbody>
             <tr><td><b class="ui">Gate</b></td><td><b class="ui">Modelo</b></td>
               <td><b class="ui">Classic</b>, <b class="ui">Smart</b>, <b class="ui">3 bandas</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Modelo</b> · <b class="ui">Sidechain</b></td>
+            <tr><td><b class="ui">Compresor</b></td><td><b class="ui">Modelo</b> · <b class="ui">Sidechain</b></td>
               <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
                 <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
-                        <tr><td><b class="ui">Drive</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modelo</b></td>
-              <td><b class="ui">Válvula</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b></td></tr>
-                        <tr><td><b class="ui">Ampli</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modelo</b></td>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modelo</b></td>
+              <td><b class="ui">Boost</b>: <b class="ui">Boost limpio</b>, <b class="ui">Boost de agudos</b> ·
+                <b class="ui">Overdrive</b>: <b class="ui">Válvula</b>, <b class="ui">Blues</b>, <b class="ui">Transparente</b> ·
+                <b class="ui">Distorsión</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
+                <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Fuzz de octava</b></td></tr>
+            <tr><td><b class="ui">Amplificador</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modelo</b></td>
               <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Moderno</b>, <b class="ui">Graves</b>, <b class="ui">Acoustic</b></td></tr>
             <tr><td><b class="ui">Saturador</b></td><td><b class="ui">Tipo</b></td>
               <td><b class="ui">Válvula</b>, <b class="ui">Tape</b>, <b class="ui">NAM</b></td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Tipo</b></td>
+              <td><b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Teléfono</b>, <b class="ui">Megáfono</b></td></tr>
             <tr><td><b class="ui">Wah</b></td><td><b class="ui">Modo</b></td>
               <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voz</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> · sync
-                <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Modo</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Trémolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">OFF</b>,
-                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-                        <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Tipo</b></td>
-              <td><b class="ui">Room</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Voz</b> · <b class="ui">Tap 2</b></td>
+              <td><b class="ui">Digital</b>, <b class="ui">BBD</b>, <b class="ui">Tape</b> ·
+                <b class="ui">OFF</b>, <b class="ui">1/2</b>, <b class="ui">3/4</b>, <b class="ui">2/3</b>,
+                <b class="ui">3/2</b>, <b class="ui">2x</b> del tiempo</td></tr>
+            <tr><td><b class="ui">Trémolo</b></td><td><b class="ui">Modo</b></td>
+              <td><b class="ui">Trémolo</b>, <b class="ui">Vibrato</b>, <b class="ui">Armónico</b></td></tr>
+            <tr><td><b class="ui">Phaser</b></td><td><b class="ui">Modo</b></td>
+              <td><b class="ui">Phaser</b>, <b class="ui">Vibe</b>, <b class="ui">Vibrato</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Tipo</b></td>
+              <td><b class="ui">Room</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b>, <b class="ui">Gated</b>, <b class="ui">Reverso</b></td></tr>
             <tr><td><b class="ui">Ensemble</b></td><td><b class="ui">Modo</b> · <b class="ui">Ruta</b></td>
               <td><b class="ui">Velvet</b>, <b class="ui">Allpass</b> · <b class="ui">Estéreo</b>, <b class="ui">Doble mono</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Velocidad</b></td>
-              <td><b class="ui">Lento</b>, <b class="ui">Rápido</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Voces</b></td>
-              <td><b class="ui">Mono</b>, <b class="ui">Poli</b></td></tr>
-            <tr><td><b class="ui">Armonía</b></td><td><b class="ui">Tonalidad</b> · <b class="ui">Intervalo</b> · <b class="ui">Escucha</b></td>
-              <td>12 notas más <b class="ui">AUTO</b> y <b class="ui">PISTA</b> ·
-                <b class="ui">-8ª</b>, <b class="ui">-5ª</b>, <b class="ui">-3ª</b>, <b class="ui">+3ª</b>,
-                <b class="ui">+4ª</b>, <b class="ui">+5ª</b>, <b class="ui">+6ª</b>, <b class="ui">+8ª</b> ·
-                <b class="ui">PROPIO</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Tonalidad</b></td>
-              <td>la misma lista de tonalidades, más <b class="ui">CROM</b> y <b class="ui">FIJAR</b></td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td><b class="ui">Patrón</b></td>
+              <td><b class="ui">On-off</b>, <b class="ui">Contratiempo</b>, <b class="ui">Galope</b>, <b class="ui">Puntillo</b>, <b class="ui">Tartamudeo</b>, <b class="ui">Pares</b>, <b class="ui">Sincopado</b>, <b class="ui">Aleatorio</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Motor</b> · <b class="ui">Control</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poli</b>, <b class="ui">Voz</b> ·
+                <b class="ui">Fijo</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Armonía</b></td><td><b class="ui">Tonalidad de</b> · <b class="ui">Rango</b> · <b class="ui">Voz 1</b>…<b class="ui">Voz 4</b></td>
+              <td><b class="ui">Fijar tonalidad</b>, <b class="ui">Pista de acompañamiento</b>, <b class="ui">Esta entrada</b> u otro rig por su nombre ·
+                <b class="ui">GRAVE</b>, <b class="ui">MEDIO</b>, <b class="ui">AGUDO</b> ·
+                <b class="ui">OFF</b> o un intervalo respecto a la nota cantada, dos octavas hacia arriba o hacia abajo</td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Tonalidad de</b> · <b class="ui">Rango</b></td>
+              <td><b class="ui">Cromático</b>, <b class="ui">Pista de acompañamiento</b>, <b class="ui">Fijar tonalidad</b> ·
+                <b class="ui">GRAVE</b>, <b class="ui">MEDIO</b>, <b class="ui">AGUDO</b></td></tr>
+            <tr><td><b class="ui">Sinte</b></td><td><b class="ui">Onda</b> · <b class="ui">Nota</b></td>
+              <td><b class="ui">Sierra</b>, <b class="ui">Cuadrada</b>, <b class="ui">Pulso</b>, <b class="ui">Seno</b> ·
+                <b class="ui">Más fuerte</b>, <b class="ui">Más grave</b></td></tr>
+            <tr><td><b class="ui">Vocoder</b></td><td><b class="ui">Voz</b> · <b class="ui">Portadora</b></td>
+              <td><b class="ui">Esta entrada</b> u otro rig · <b class="ui">Sierra</b>, <b class="ui">Pulso</b>,
+                <b class="ui">Acorde</b>, <b class="ui">Ruido</b></td></tr>
           </tbody>
         </table>
       </div>
-      <p>El lado <b class="ui">Integrado</b> del bloque <b class="ui">Ampli</b> es el amplificador a válvulas propio de NAMper, con los mandos que esperas: <b class="ui">Gain</b>, <b class="ui">Graves</b>, <b class="ui">Medios</b>, <b class="ui">Agudos</b>, <b class="ui">Presencia</b> y <b class="ui">Master</b>, y siete voces en los chips <b class="ui">Modelo</b>. No necesita descarga ni cuenta, por eso es el que sostiene el concierto sin conexión; el chip <b class="ui">NAM</b> de al lado lo cambia por una captura — ver más abajo.</p>
+      <p>El lado <b class="ui">Integrado</b> del bloque <b class="ui">Amplificador</b> es el amplificador a válvulas propio de NAMper, con los mandos que esperas: <b class="ui">Gain</b>, <b class="ui">Graves</b>, <b class="ui">Medios</b>, <b class="ui">Agudos</b>, <b class="ui">Presencia</b> y <b class="ui">Master</b>, y siete voces en los chips <b class="ui">Modelo</b>. No necesita descarga ni cuenta, por eso es el que sostiene el concierto sin conexión; el chip <b class="ui">NAM</b> de al lado lo cambia por una captura — ver más abajo.</p>
       <p><b class="ui">Saturador</b> es adonde fueron los antiguos Tube Sat y Tape Sat: un bloque, con <b class="ui">Válvula</b>, <b class="ui">Tape</b> o una captura <b class="ui">NAM</b> de un equipo externo en sus chips de tipo. <b class="ui">Ensemble</b> es un instrumento oído como varios músicos repartidos por el panorama — sin LFO, nada desafinado, y la suma mono es la entrada; <b class="ui">Velvet</b> o <b class="ui">Allpass</b> en sus chips de modo.</p>
+
+      <h3>Drive, dinámica y tiempo</h3>
+      <p>El lado integrado del bloque <b class="ui">Drive</b> contiene diez circuitos en cuatro familias, elegidos de una lista, y cada familia lleva sus propios mandos: un boost <b class="ui">Gain</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nivel</b> y <b class="ui">Mezcla</b> (la guitarra limpia mezclada de vuelta); un overdrive <b class="ui">Gain</b>, <b class="ui">Tono</b>, <b class="ui">Nivel</b>, <b class="ui">Mezcla</b>; una distorsión <b class="ui">Gain</b>, <b class="ui">Tono</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nivel</b>; un fuzz <b class="ui">Gain</b>, <b class="ui">Tono</b>, <b class="ui">Bias</b> (el punto de trabajo), <b class="ui">Voltaje</b> (la pila — pasada la mitad se hunde y corta) y <b class="ui">Nivel</b>. El menú AÑADIR muestra un solo Drive, y la cadena nombra el bloque por su circuito, así que una pila se lee BOOST DE AGUDOS, VÁLVULA, FUZZ GE.</p>
+      <p>Cada cara del <b class="ui">Compresor</b> lleva ahora también <b class="ui">Knee</b>, <b class="ui">Mezcla</b> (menos del total es compresión en paralelo) y <b class="ui">HPF</b>, un paso alto solo en el detector, para que los graves no hagan bombear al resto.</p>
+      <p>El <b class="ui">Delay</b> ganó una segunda repetición a una proporción del tiempo — <b class="ui">Tap 2</b> con su <b class="ui">Nivel tap</b>, para delays dobles y rítmicos —, además de <b class="ui">Reverso</b>, <b class="ui">Mod</b> en las repeticiones, <b class="ui">Corte bajos</b> y <b class="ui">Corte agudos</b> dentro del bucle de realimentación (cada repetición más oscura o más fina que la anterior) y <b class="ui">Duck</b>, que mantiene bajas las repeticiones mientras tocas y las deja subir en los huecos.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-drive.png" width="600" height="1303"
+               alt="La hoja del bloque Drive en su lado integrado: la lista de circuitos con sus cuatro familias y los mandos de la familia elegida.">
+          <figcaption>El <b class="ui">Drive</b>: cuatro familias, diez circuitos</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-delay.png" width="600" height="1303"
+               alt="La hoja del bloque Delay: el menú Voice, el interruptor Sync, los mandos Time, FB y Mix, Tap 2 con su nivel, Mod, Low cut, High cut y Duck.">
+          <figcaption>El <b class="ui">Delay</b> con su segunda repetición</figcaption>
+        </figure>
+      </div>
+      <p>La <b class="ui">Reverb</b> tiene dos tipos nuevos. <b class="ui">Gated</b> es la sala de batería de los ochenta: un plate denso cortado por una puerta que se abre con un golpe, se mantiene durante <b class="ui">Hold</b> y se cierra a lo largo de <b class="ui">Release</b>. <b class="ui">Reverso</b> reproduce al revés los últimos <b class="ui">Tiempo</b> segundos, de forma continua, así que una nota que se apaga vuelve como un crescendo; <b class="ui">Regen</b> la realimenta. En <b class="ui">Cloud</b> el <b class="ui">Intervalo</b> del shimmer es ahora una elección: <b class="ui">+8ª</b>, <b class="ui">+5ª</b>, una octava y una quinta, o <b class="ui">-8ª</b>.</p>
+      <p>El <b class="ui">Modo</b> del <b class="ui">Phaser</b> añade <b class="ui">Vibe</b> — cuatro etapas escalonadas barridas por la forma de onda de la lámpara, el latido más que las muescas — y <b class="ui">Vibrato</b>, el Vibe oído solo en húmedo. El <b class="ui">Trémolo</b> añade <b class="ui">Armónico</b>: la señal dividida en 800 Hz y las dos mitades oscilando una contra otra, un trémolo que suena como un phaser lento.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-verb.png" width="600" height="1303"
+               alt="La hoja del bloque Reverb en el tipo Gated: los chips de tipo arriba y los mandos Decay, Hold, Release, Damp y Predelay.">
+          <figcaption>La <b class="ui">Reverb</b> en <b class="ui">Gated</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-cloud.png" width="600" height="1303"
+               alt="La hoja del bloque Reverb en el tipo Cloud: el mando Shimmer con los chips Interval junto a los mandos Decay, Mix, Tone, Predelay y Size y el interruptor Freeze.">
+          <figcaption><b class="ui">Cloud</b> y el <b class="ui">Intervalo</b> de su shimmer</figcaption>
+        </figure>
+      </div>
+
+      <h3>Tono y voz</h3>
+      <p><b class="ui">Armonía</b> canta hasta cuatro voces, para un cantante o una guitarra. <b class="ui">Tonalidad de</b> dice de dónde sale la tonalidad: <b class="ui">Fijar tonalidad</b> usa la lista de tonalidades, <b class="ui">Pista de acompañamiento</b> sigue la tonalidad detectada del tema, <b class="ui">Esta entrada</b> la aprende de lo que se canta en esta cadena, y los demás rigs aparecen por su nombre. <b class="ui">Voz 1</b>…<b class="ui">Voz 4</b> son cada una un intervalo respecto a la nota cantada, u <b class="ui">OFF</b>, así que una tercera, una quinta y una octava forman un acorde. Las voces conservan los formantes del cantante — una quinta arriba sigue sonando a la misma persona — y <b class="ui">Formante</b> los mueve a propósito. <b class="ui">Coro</b> convierte cada voz en una sección de cuatro cantantes, cada uno derivando por su cuenta, y <b class="ui">Spread</b> los reparte por el campo estéreo.</p>
+      <p><b class="ui">Autotune</b> toma su tonalidad de <b class="ui">Cromático</b>, <b class="ui">Pista de acompañamiento</b> o <b class="ui">Fijar tonalidad</b>, conserva los formantes del cantante y deja pasar las consonantes. Además de <b class="ui">Velocidad</b> y <b class="ui">Cantidad</b> ahora tiene los controles propios del cantante: <b class="ui">Humanizar</b> (una nota sostenida se reafina más despacio), <b class="ui">Vibrato</b> (cuánto sobrevive del vibrato del cantante), <b class="ui">Flex</b> (una nota más alejada que esto se deja en paz — un portamento a propósito), <b class="ui">Formante</b> y <b class="ui">Afinación</b>, el La de referencia.</p>
+      <p>El bloque <b class="ui">Pitch</b> tiene tres motores: <b class="ui">Mono</b> para líneas de una sola nota y bendings, <b class="ui">Poli</b> para acordes, y <b class="ui">Voz</b> para un cantante — las vocales conservan su forma una octava arriba o abajo, y <b class="ui">Formante</b> (solo en ese motor) crea un cantante más grande o más pequeño a la misma altura. <b class="ui">Control</b> en <b class="ui">Pedal</b> lo convierte en un whammy: el intervalo se desliza de <b class="ui">Talón</b> a <b class="ui">Punta</b> a medida que un pedal de expresión mueve <b class="ui">Pedal</b>.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-harm.png" width="600" height="1303"
+               alt="La hoja del bloque Harmony: los menús Key from y de tonalidad, los chips Range, los cuatro menús de voz, y los mandos Harmony, Dry, Formant, Glide, Choir y Spread.">
+          <figcaption><b class="ui">Armonía</b>: cuatro voces, un coro</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-atune.png" width="600" height="1303"
+               alt="La hoja del bloque Autotune: el menú Key from, los chips Range, y los mandos Speed, Amount, Humanize, Vibrato, Flex, Formant y Tuning.">
+          <figcaption><b class="ui">Autotune</b> con los controles propios del cantante</figcaption>
+        </figure>
+      </div>
+
+      <h3>Mezcla, sincronía de tempo y colas</h3>
+      <p><b>Cada bloque tiene un Mix.</b> Los que están construidos en torno a una mezcla lo llevan en su propia cara — el <b class="ui">Mezcla</b> de un delay, el <b class="ui">Dry</b> de un armonizador, el <b class="ui">Nivel</b> de un freeze; todos los demás bloques, incluido un plugin alojado, reciben un mando <b class="ui">Mezcla</b> como último mando: el bloque mezclado con su propia entrada, así que un trémolo puede cortar a medias y un ampli puede llevar un poco de señal directa. La señal seca se retrasa para coincidir con el bloque, así que nada produce filtrado en peine, y las escenas, los presets y el MIDI lo tratan como cualquier otro mando.</p>
+      <p><b>La sincronía de tempo es un interruptor.</b> El delay, el trémolo, el slicer, el phaser, el flanger, el chorus y el rotary tienen cada uno un interruptor <b class="ui">Sync</b>. Activado, el mando de velocidad o de tiempo pasa a divisiones de nota (de 1/1 a 1/16, con puntillo y tresillo en el delay) que siguen el tempo del set; desactivado, vuelve a ser Hz o ms a secas.</p>
+      <p><b>Las colas se extinguen solas.</b> Un delay, una reverb, un freeze, un bucle de efectos o un plugin alojado que una escena o un footswitch pone en bypass sigue sonando sobre la señal seca hasta quedar en silencio, y un cambio de preset deja que las colas del rig anterior sigan hasta ocho segundos en vez de cortarlas. El interruptor para esto es <b class="ui">Colas al cambiar</b> en Ajustes → <b class="ui">Audio</b>, activado por defecto.</p>
       <div class="note tip">
         <div class="t">Harmony que escucha a otro rig</div>
-        <p>La fila <b class="ui">Escucha</b> de Harmony no es un control de enrutamiento — es de
-          dónde toma su acorde el armonizador. Déjala en <b class="ui">PROPIO</b> y sigue la señal de su
-          propia cadena; apúntala a <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b> y una línea vocal
-          puede armonizarse contra lo que está tocando el rig de guitarra.</p>
+        <p>El <b class="ui">Tonalidad de</b> de Harmony no es un control de enrutamiento — es de dónde
+          toma su tonalidad el armonizador. En <b class="ui">Esta entrada</b> aprende la tonalidad de la
+          señal de su propia cadena; apúntalo a otro rig por su nombre y una línea vocal puede
+          armonizarse contra lo que está tocando el rig de guitarra.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>Los cinco modelos de EQ</h2>
-      <p>Hay un solo bloque <b class="ui">EQ</b>, y dentro cinco ecualizadores completamente
+      <h2 id="eq"><span class="n">02.3</span>Los siete modelos de EQ</h2>
+      <p>Hay un solo bloque <b class="ui">Ecualizador</b>, y dentro siete ecualizadores completamente
         distintos. Cambiar de modelo cambia el juego de mandos además del sonido, así que elige el
         que encaje con el trabajo — un ajuste rápido de tono, un corte quirúrgico, o un shelf al
         estilo de mastering.</p>
@@ -245,13 +440,20 @@
               <td>Baxandall — dos shelves muy anchos y muy suaves. El que buscas cuando quieres que
                 todo el sonido sea un poco más oscuro o un poco más brillante.</td>
               <td><b class="ui">Graves</b>, <b class="ui">Agudos</b></td></tr>
+            <tr><td><b class="ui">Gráfico 7</b></td>
+              <td>El gráfico de pedal: siete bandas de octava de 100 Hz a 6,4 kHz, un fader por banda.
+                Toca dos veces un fader para dejarlo plano.</td>
+              <td>100 … 6.4k, cada una ±12 dB</td></tr>
+            <tr><td><b class="ui">Gráfico 10</b></td>
+              <td>El gráfico de rack: diez bandas de octava de 31 Hz a 16 kHz, un fader por banda.</td>
+              <td>31 … 16k, cada una ±12 dB</td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
-             alt="La hoja del bloque EQ con el modelo Passive seleccionado, mostrando sus ocho mandos: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten y Atten Hz, con medidores IN y OUT arriba.">
-        <figcaption>El bloque EQ en el modelo Passive</figcaption>
+             alt="La hoja del bloque Ecualizador con el modelo Passive seleccionado, mostrando sus ocho mandos: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten y Atten Hz, con medidores IN y OUT arriba.">
+        <figcaption>El bloque Ecualizador en el modelo Passive</figcaption>
       </figure>
       <p>Cada hoja de bloque, esta incluida, tiene medidores horizontales <b class="ui">IN</b> y
         <b class="ui">OUT</b>. En un EQ vale la pena vigilarlos: unos pocos decibelios de realce en
@@ -261,7 +463,7 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>Capturas NAM</h2>
-      <p>El bloque <b class="ui">Ampli</b> es un solo bloque con dos fuentes. Dos chips en la parte
+      <p>El bloque <b class="ui">Amplificador</b> es un solo bloque con dos fuentes. Dos chips en la parte
         superior de su hoja eligen entre ellas: <b class="ui">Integrado</b> es la propia simulación
         de ampli de NAMper, con las siete voces listadas arriba; <b class="ui">NAM</b> es el
         reproductor de Neural Amp Modeler reproduciendo una captura <b class="ui">.nam</b> de un
@@ -270,8 +472,8 @@
         es un solo toque.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
-             alt="La pestaña Rig: los medidores IN y OUT en la parte superior de la tarjeta de la cadena de señal, y debajo la cadena de bloques con el bloque Ampli nombrando la captura que reproduce.">
-        <figcaption>La pestaña Rig; la casilla del ampli nombra lo que está reproduciendo</figcaption>
+             alt="La pestaña Rig: los medidores IN y OUT en la parte superior de la tarjeta de la cadena de señal, y debajo la cadena de bloques con el bloque Amplificador nombrando la captura que reproduce.">
+        <figcaption>La pestaña Rig; la casilla Amplificador nombra lo que está reproduciendo</figcaption>
       </figure>
 
       <h3>El lado de la captura</h3>
@@ -292,7 +494,7 @@
       <div class="note">
         <div class="t">Una captura es mono</div>
         <p>Una captura NAM es un dispositivo mono — una señal estéreo que llega al bloque
-          <b class="ui">Ampli</b> se suma antes de entrar. Pon tus efectos estéreo después del ampli, no antes.</p>
+          <b class="ui">Amplificador</b> se suma antes de entrar. Pon tus efectos estéreo después del ampli, no antes.</p>
       </div>
 
       <h3>Bancos y el mando Modelo</h3>
@@ -307,7 +509,7 @@
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
-             alt="El bloque Amp en su lado NAM: el título y la carátula de la captura, los botones Browse TONE3000, Library y Load file, debajo Bank: 3 y el mando Model marcando 1/3 entre los trims.">
+             alt="El bloque Amplificador en su lado NAM: el título y la carátula de la captura, los botones Browse TONE3000, Library y Load file, debajo Bank: 3 y el mando Model marcando 1/3 entre los trims.">
         <figcaption>Un banco de tres: <b class="ui">Banco: 3</b>, y el mando <b class="ui">Modelo</b> entre los trims</figcaption>
       </figure>
 
@@ -320,11 +522,17 @@
       <p>Un tono con más de un modelo abre <b class="ui">Elige un modelo</b>, y en esa hoja las marcas <em>son</em> el banco. Empiezan sobre los modelos que el bloque ya lleva, así que la hoja se abre con lo que tienes y no en blanco, y la línea de arriba dice <b class="ui">Banco: 3 modelos — el mando Model los recorre</b>. Marca y desmarca para dar forma al recorrido: <b class="ui">Seleccionar los 6</b> marca todo y se convierte en <b class="ui">Deseleccionar todo</b>; ninguno de los dos descarga nada. Quien actúa es el botón de abajo, y solo sobre lo marcado: <b class="ui">Descargar 5 seleccionados al banco</b>. Mientras las marcas coincidan con el banco, se queda callado: no hay nada que traer.</p>
       <p>Así se recorta un banco además de construirlo: abre de nuevo el selector, desmarca los modelos que nunca usas, descarga, y el recorrido se reescribe con lo que queda; los archivos que ya tienes no se descargan dos veces. La otra vía es tocar el nombre de un modelo, y la hoja dice bajo la lista lo que eso cuesta: <b class="ui">Un modelo suena solo: elegirlo vacía el banco de 3.</b> Los modelos que el sitio lista pero aún no tienes aparecen atenuados con un icono de nube hasta que los marques.</p>
 
-      <h3>El bloque NAM: pedales y equipo externo</h3>
-      <p>Un bloque <b class="ui">NAM</b> aparte lleva el mismo lado de captura sin el ampli
-        integrado, y ahí es donde van las capturas de pedales y de equipo externo. No tienes que
-        colocarlo tú: carga una captura de pedal con un bloque <b class="ui">Ampli</b> enfocado y
-        NAMper inserta un bloque <b class="ui">NAM</b> justo antes de ese ampli y te lo abre.</p>
+      <h3>Pedales y equipo externo: capturas en otros bloques</h3>
+      <p>Ya no hay un bloque de capturas aparte: los bloques que modelan un tipo de equipo llevan
+        su propio lado de captura. El bloque <b class="ui">Drive</b> acepta capturas de pedales, y
+        los bloques <b class="ui">Saturador</b> y <b class="ui">Compresor</b>, de equipo externo,
+        cada uno con el mismo chip <b class="ui">NAM</b>, los mismos trims y el mismo mando de banco
+        <b class="ui">Modelo</b> que el ampli. No tienes que colocarlos tú: carga una captura de pedal
+        con un bloque <b class="ui">Amplificador</b> enfocado y NAMper la pone en el Drive del rig
+        (insertando uno justo antes del ampli si no lo hay) y te lo abre; un equipo externo cae de
+        la misma manera en un Saturador. El equipo externo de verdad, y no una captura suya, entra en
+        la cadena a través del bloque <b class="ui">Bucle FX</b>. Los presets antiguos que usaban un
+        bloque NAM se abren ya convertidos.</p>
 
       <h3>La biblioteca</h3>
       <figure>
@@ -333,7 +541,7 @@
         <figcaption>La biblioteca en el lado del ampli: todo lo descargado, sin conexión</figcaption>
       </figure>
       <p>El botón <b class="ui">Biblioteca</b> abre una hoja titulada <b class="ui">Perfiles NAM</b>: todo lo que has descargado, disponible sin conexión. Tiene cinco lados, uno por tipo de bloque: <b class="ui">Ampli</b> y <b class="ui">Drive</b> para capturas, <b class="ui">Outboard</b> para el saturador y el compresor, <b class="ui">Pantalla</b> para impulsos de pantalla y <b class="ui">Reverb</b> para los de la reverb: espacios, equipos externos y experimentos. Un bloque solo acepta uno de los cinco, así que nunca aparecen juntos: el bloque desde el que abriste la biblioteca elige el lado y lo conserva, y cuando no hay bloque al que apuntar, unos chips arriba nombran los cinco con su recuento. Los impulsos incluidos con la app están en sus lados bajo <b class="ui">Integrado</b>, junto a los que descargas.</p>
-      <p>Dentro de un lado, los tonos se agrupan por lo capturado: primero <b class="ui">Integrado</b>, luego <b class="ui">Amplificadores</b>, <b class="ui">Pedales</b>, <b class="ui">Outboard</b>, <b class="ui">Experimental</b>, <b class="ui">Gabinetes</b>, <b class="ui">Espacios</b> y <b class="ui">Otros</b>. Cada fila es un tono, no un archivo: carátula, título, <b class="ui">@author</b> y cuántos modelos trae. Un toque lo carga (un tono con un modelo suena solo; uno con varios se convierte en el banco del bloque) y el tono aterriza donde corresponde: un ampli en el bloque <b class="ui">Ampli</b>, un pedal o un equipo externo en un bloque <b class="ui">NAM</b> antes, una pantalla en el <b class="ui">Pantalla</b> después, un espacio en el <b class="ui">Reverb</b>.</p>
+      <p>Dentro de un lado, los tonos se agrupan por lo capturado: primero <b class="ui">Integrado</b>, luego <b class="ui">Amplificadores</b>, <b class="ui">Pedales</b>, <b class="ui">Outboard</b>, <b class="ui">Experimental</b>, <b class="ui">Gabinetes</b>, <b class="ui">Espacios</b> y <b class="ui">Otros</b>. Cada fila es un tono, no un archivo: carátula, título, <b class="ui">@author</b> y cuántos modelos trae. Un toque lo carga (un tono con un modelo suena solo; uno con varios se convierte en el banco del bloque) y el tono aterriza donde corresponde: un ampli en el bloque <b class="ui">Amplificador</b>, un pedal en el <b class="ui">Drive</b> que va antes, un equipo externo en el <b class="ui">Saturador</b>, una pantalla en la <b class="ui">Pantalla</b> que va después, un espacio en el <b class="ui">Reverb</b>.</p>
       <p>El chevrón abre los modelos del tono. En el tono que <em>es</em> el banco del bloque cada
         modelo lleva una marca de verificación: la marca lo mantiene en el barrido del mando
         <b class="ui">Modelo</b>, y un toque lleva el mando hasta él. En cualquier otro tono, un
@@ -355,8 +563,9 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h3 id="capture-own">Captura tu propio equipo</h3>
-      <p><b class="ui">Capturar un perfil NAM…</b> en la barra de la biblioteca captura tu propio ampli, pedal o rig completo en el dispositivo, solo con una interfaz de audio. Es el bucle de reamp del que nace toda captura NAM: la señal de la app sale de la interfaz por una salida, pasa por el equipo y vuelve por una entrada. Elige esa salida y esa entrada, fija el nivel de envío, y <b class="ui">Comprobar niveles</b> reproduce el inicio de la señal con dos medidores y una nota sobre cuánto mover el envío: el retorno debe picar cerca de −6 dBFS y nunca saturar.</p>
-      <p><b class="ui">Iniciar captura</b> reproduce un minuto de señal con el rig en silencio. La toma se examina antes de entrenar nada: los marcadores de ambos extremos localizan la ida y vuelta y la deriva entre dos relojes, y se rechaza una toma en la que no volvió nada, el retorno saturó o el bucle no cambió nada. <b class="ui">Entrenar</b> corre en el dispositivo — Nano, Feather (por defecto), Lite o Standard — y muestra la época y el ESR sobre audio que el entrenador nunca vio (0,02 es una buena captura). El resultado llega a la biblioteca como tu propio tono, etiquetado con su equipo, y <b class="ui">Compartir archivo .nam</b> lo entrega a cualquier reproductor NAM.</p>
+      <p><b class="ui">Capturar un perfil NAM…</b> en la barra de la biblioteca captura tu propio ampli, pedal o rig completo en el dispositivo, solo con una interfaz de audio. Es el bucle de reamp del que nace toda captura NAM: la señal sale de la interfaz por una salida, pasa por el equipo y vuelve por una entrada. La ventana <b class="ui">Captura</b> elige esa salida y esa entrada por los propios nombres de canal de la interfaz; mientras está abierta, el rig en vivo se corta, así un rig conectado en bucle no puede realimentarse y aullar. Fija el nivel de envío, y <b class="ui">Comprobar niveles</b> reproduce el inicio de la señal con dos medidores y una nota sobre cuánto mover el envío: el retorno debe picar cerca de −6 dBFS y nunca saturar. Si la entrada ya trae sonido que no causó el envío — el equipo realimentándose por el bucle, o un host reproduciendo su pista a través del plug-in —, la nota lo dice: baja la entrada del equipo o el envío, o detén la reproducción, y vuelve a comprobar.</p>
+      <p><b class="ui">Iniciar captura (190 s)</b> reproduce la señal estandarizada del propio entrenador NAM, <b>v3_0_0.wav</b>, así una toma hecha aquí se entrena aquí y también en cualquier otro entrenador NAM. La toma se examina antes de entrenar nada: los blips cerca del inicio localizan la ida y vuelta, dos copias del mismo tramo en ambos extremos miden la deriva entre dos relojes, y se rechaza una toma en la que no volvió nada, el retorno saturó o el bucle no cambió nada. <b class="ui">Entrenar</b> corre en el dispositivo — Nano, Feather (por defecto), Lite o Standard, durante tantas épocas como fijes — y muestra la época y el ESR sobre audio que el entrenador nunca vio (0,02 es una buena captura). El resultado llega a la biblioteca como tu propio tono, etiquetado con su equipo, y <b class="ui">Compartir archivo .nam</b> lo entrega a cualquier reproductor NAM.</p>
+      <p>¿Prefieres entrenar en otro sitio? <b class="ui">Compartir el par de la toma</b> (en el Mac, <b class="ui">Guardar el par de la toma…</b>) entrega la señal y el retorno como archivos WAV de 48 kHz — justo lo que aceptan el entrenador de TONE3000 y el entrenador NAM.</p>
 
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
       <p>TONE3000 es una biblioteca gratuita de capturas, y NAMper toma de ahí directamente. No hay
@@ -371,8 +580,9 @@
         <b class="ui">Explorar TONE3000</b> en un bloque que quiere una captura. En Ajustes ya no
         hay página de <b class="ui">TONE3000</b>.</p>
       <p>Lo que ofrece el catálogo depende del bloque que lo abrió. Desde un bloque
-        <b class="ui">Ampli</b> o <b class="ui">NAM</b> se filtra en el servidor a capturas
-        <b class="ui">.nam</b> de arquitectura A2 de amplis, rigs completos, pedales y equipo
+        <b class="ui">Amplificador</b> se filtra en el servidor a capturas <b class="ui">.nam</b> de
+        arquitectura A2 de amplis y rigs completos; desde un <b class="ui">Drive</b>, a pedales, y
+        desde un <b class="ui">Saturador</b> o un <b class="ui">Compresor</b>, a equipo
         externo. Desde un bloque <b class="ui">Pantalla</b> ofrece los impulsos de pantallas del
         sitio, y desde un <b class="ui">Reverb</b> sus espacios — archivos
         <b class="ui">.wav</b>, no capturas. Ese filtro es fijo, no un ajuste que puedas cambiar.</p>
@@ -393,7 +603,7 @@
 
       <h3>Tocar sin conexión</h3>
       <p>Todo lo que ya está descargado sigue funcionando sin ninguna conexión. Un bloque
-        <b class="ui">Ampli</b> cuya captura no está en caché reproduce mientras tanto su propia voz
+        <b class="ui">Amplificador</b> cuya captura no está en caché reproduce mientras tanto su propia voz
         integrada y lo dice (<b class="ui">Aún no descargada: mientras tanto suena el ampli
         integrado</b>), con la <b class="ui">Pantalla</b> que va después despierta para el ampli
         integrado. Inicia sesión más tarde y esos bloques se resuelven a las capturas reales en su
@@ -423,23 +633,23 @@
       <p>El bloque <b class="ui">Pantalla</b> reproduce una respuesta al impulso: una pantalla de altavoz capturada con micrófono. Su hoja está construida como la de un bloque de captura: el nombre del impulso arriba con <b class="ui">@author</b>, una flecha a la página del tono y <b class="ui">Quitar IR</b> al lado, la carátula a la izquierda y tres maneras de cargar uno a la derecha: <b class="ui">Explorar TONE3000</b>, <b class="ui">Biblioteca</b> y <b class="ui">Cargar archivo</b>. Debajo, el mando propio del bloque, <b class="ui">Nivel</b>, de −12 a +12 dB.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="La hoja del bloque Cab: nombre del impulso y autor arriba, carátula a la izquierda, botones Browse TONE3000, Library y Load file a la derecha, y el mando Level debajo.">
+             alt="La hoja del bloque Pantalla: nombre del impulso y autor arriba, carátula a la izquierda, botones Browse TONE3000, Library y Load file a la derecha, y el mando Level debajo.">
         <figcaption>El bloque Pantalla, construido como el lado de captura de un ampli</figcaption>
       </figure>
       <p>Un <b class="ui">Reverb</b> en su tipo <b class="ui">IR</b> carga un espacio en vez de una pantalla, desde el lado <b class="ui">Espacios</b> de la biblioteca: los incluidos, los descargados, tus propios archivos. Cargar un espacio en cualquier Reverb lo pasa al tipo IR.</p>
-      <p><b class="ui">Explorar TONE3000</b> abre las pantallas del sitio desde un <b class="ui">Pantalla</b> y sus espacios desde un <b class="ui">Reverb</b>. Un tono con varios impulsos abre el mismo selector que las capturas: suena uno, o marca varios y descárgalos juntos. Ahí es donde los dos bloques se separan. En un <b class="ui">Reverb</b> los impulsos marcados se vuelven un banco como el de un ampli: <b class="ui">Banco: 6</b> y un mando <b class="ui">Modelo</b> junto a <b class="ui">Mezcla</b>, un espacio cada vez, con MIDI Learn incluido. Un <b class="ui">Pantalla</b> no los recorre: cada impulso que toma se convierte en una ranura, y las ranuras suenan <em>a la vez</em>.</p>
+      <p><b class="ui">Explorar TONE3000</b> abre las pantallas del sitio desde una <b class="ui">Pantalla</b> y sus espacios desde un <b class="ui">Reverb</b>. Un tono con varios impulsos abre el mismo selector que las capturas: suena uno, o marca varios y descárgalos juntos. Ahí es donde los dos bloques se separan. En un <b class="ui">Reverb</b> los impulsos marcados se vuelven un banco como el de un ampli: <b class="ui">Banco: 6</b> y un mando <b class="ui">Modelo</b> junto a <b class="ui">Mezcla</b>, un espacio cada vez, con MIDI Learn incluido. Una <b class="ui">Pantalla</b> no los recorre: cada impulso que toma se convierte en una ranura, y las ranuras suenan <em>a la vez</em>.</p>
 
       <h3>Varios impulsos en una sola pantalla</h3>
       <figure>
         <img class="phone" src="/docs/assets/cab-slots.png" width="600" height="1303"
              alt="La hoja del bloque Cabinet con ocho impulsos de un pack de TONE3000: la foto de portada, un chip de color por ranura con su nivel, el campo de mezcla con ocho puntos en círculo y el disco en el centro, y la tarjeta abierta de la ranura seleccionada.">
-        <figcaption>Un <b class="ui">Pantalla</b>, ocho impulsos: los chips, el campo de mezcla, la ranura abierta</figcaption>
+        <figcaption>Una <b class="ui">Pantalla</b>, ocho impulsos: los chips, el campo de mezcla, la ranura abierta</figcaption>
       </figure>
       <p>Dos micrófonos en una pantalla, un 4×12 y un 1×12 juntos, un pack entero de cabinets: un solo bloque <b class="ui">Pantalla</b> los sostiene todos. <b class="ui">Añadir</b> junto a los chips ofrece las tres puertas de siempre — <b class="ui">Desde la biblioteca</b>, <b class="ui">Explorar TONE3000</b> y <b class="ui">Cargar archivo</b> — y lo que entra por cualquiera de ellas se suma como una ranura con su propio color. Un tono con varios impulsos llena el bloque de una vez: marcados en el selector, llegan como ranuras. Las curvas de respuesta sobre los chips ganan un trazo por ranura y uno blanco por encima: la suma, que es lo que oyes.</p>
       <p>Cada chip lleva ese color, el nombre del impulso y una insignia con el nivel al que suena la ranura. Un toque en el chip abre su tarjeta; un toque en la insignia saca la ranura de la mezcla o la devuelve; una pulsación larga la pone en solo, y entonces una línea propia bajo los chips nombra la ranura en solo, con una cruz que deja volver al resto. Un pack de más de una docena de impulsos se desplaza en su propio recuadro en vez de estirar la hoja.</p>
       <p>El campo de abajo es la mezcla misma. Las ranuras se colocan en círculo, el disco entre ellas, y arrastrarlo mueve el equilibrio como se movería un micrófono: sin menús ni cifras. <b class="ui">Mezcla X</b> y <b class="ui">Mezcla Y</b> son parámetros normales, así que una pulsación larga sobre el disco ofrece MIDI Learn para cada uno: dos pedales, y la posición del micrófono pasa a ser algo que se toca. La mezcla se recalcula mientras arrastras y llega a la convolución como un fundido, no como un cambio brusco, así que mover el disco en mitad de una canción no chasquea.</p>
       <p>La tarjeta pertenece a la ranura seleccionada: <b class="ui">Ajuste</b>, <b class="ui">Pan</b> y <b class="ui">Delay</b> bajo una fila de botones. NAMper mide cuánto se separan los impulsos y los alinea por ti, y <b class="ui">Auto</b> mantiene esa medición hasta que giras <b class="ui">Delay</b> a mano; tócalo otra vez y devuelve la alineación. Los botones de al lado silencian la ranura, invierten su polaridad (vale la pena probarlo siempre que dos micrófonos en un mismo altavoz suenen delgados) y la eliminan.</p>
-      <p><b class="ui">Cargar archivo</b> abre un selector de archivos para <b class="ui">.wav</b> y otros audios; lo que elijas se copia a la carpeta <b class="ui">irs/</b> de la app, así que sigue disponible aunque borres el original. Un archivo cargado en un <b class="ui">Pantalla</b> aterriza en el lado <b class="ui">Pantalla</b> de la biblioteca; uno cargado en un <b class="ui">Reverb</b>, en su lado <b class="ui">Reverb</b>.</p>
+      <p><b class="ui">Cargar archivo</b> abre un selector de archivos para <b class="ui">.wav</b> y otros audios; lo que elijas se copia a la carpeta <b class="ui">irs/</b> de la app, así que sigue disponible aunque borres el original. Un archivo cargado en una <b class="ui">Pantalla</b> aterriza en el lado <b class="ui">Pantalla</b> de la biblioteca; uno cargado en un <b class="ui">Reverb</b>, en su lado <b class="ui">Reverb</b>.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Lado de la biblioteca</th><th>Respuestas de impulso incluidas</th></tr></thead>
@@ -477,61 +687,105 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="presets"><span class="n">02.7</span>Presets</h2>
-      <p>Un preset de rig guarda toda la cadena — bloques, modelos, posiciones de mando, el perfil de
-        ampli, la pantalla. Guarda uno desde el <b class="ui">+</b> en la tarjeta
-        <b class="ui">PRESETS</b>, o desde el gestor de presets. El aviso es una alerta titulada
-        <b class="ui">Guardar preset</b> cuyo mensaje te dice qué va a pasar:
-        <b class="ui">El rig actual ocupa la siguiente ranura MIDI PC libre.</b> Escribe un nombre y toca
-        <b class="ui">Guardar</b>. Deja el campo vacío y se guarda como <b class="ui">Preset</b>.</p>
-      <div class="note warn">
-        <div class="t">La ranura PC no es editable</div>
-        <p>Cada preset ocupa una ranura de cambio de programa MIDI, y NAMper te la asigna: los cuatro
-          presets de fábrica ocupan PC 0–3, y los presets de usuario toman el siguiente número libre
-          a partir de 4. No hay forma de cambiar una ranura a mano. Planea la distribución de tu
-          footswitch según el orden en que guardas los presets, no al revés.</p>
+      <p>Un preset de rig guarda toda la cadena — bloques, modelos, posiciones de mando, escenas, el
+        perfil de ampli, la pantalla. Los presets viven en ranuras de cambio de programa MIDI, en
+        cuatro bancos de 128: <b class="ui">Fábrica</b> y Usuario 1–3. Guarda uno desde el
+        <b class="ui">+</b> en la tarjeta <b class="ui">PRESETS</b>, o desde el gestor de presets: la
+        hoja <b class="ui">Guardar preset</b> pide todo lo que tiene un preset.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Campo</th><th>Qué fija</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Nombre</b></td><td>Si lo dejas vacío, se guarda como <b class="ui">Preset</b>.</td></tr>
+            <tr><td><b class="ui">Banco</b></td><td>En qué banco de usuario entra.</td></tr>
+            <tr><td><b class="ui">Programa</b></td><td>El número de cambio de programa, empezando por
+              el primero libre. Un menú lista los 128; un número ocupado dice qué preset
+              sustituiría, uno libre dice <b class="ui">libre</b>.</td></tr>
+            <tr><td><b class="ui">Categorías</b></td><td>Chips para marcar — las mismas categorías
+              por las que filtran las listas de presets.</td></tr>
+            <tr><td><b class="ui">Etiquetas</b></td><td>Tus propias palabras, separadas por comas; la
+              búsqueda las encuentra.</td></tr>
+          </tbody>
+        </table>
       </div>
 
+      <h3>Bancos</h3>
+      <p>El chip de banco junto al título <b class="ui">PRESETS</b>, y en el gestor de presets, dice
+        qué banco está activo y lo cambia. El banco activo es lo que muestran las listas y lo que
+        reproduce el program change <em>n</em>. Desde una pedalera, el MIDI Bank Select (CC 0) lo
+        elige — 0 es <b class="ui">Fábrica</b>, 1–3 los bancos de usuario — y
+        <b class="ui">Siguiente banco de presets</b> / <b class="ui">Banco de presets anterior</b> se pueden aprender
+        en cualquier pulsador. El menú de un preset tiene <b class="ui">Mover al banco</b> para los tuyos
+        y <b class="ui">Copiar al banco</b> para uno de fábrica. Un setlist no está atado a un banco: sus
+        presets suenan en el banco que esté activo.</p>
+      <div class="note warn">
+        <div class="t">El banco de fábrica es de solo lectura</div>
+        <p><b class="ui">Actualizar con el rig actual</b> en un preset de fábrica pregunta primero, y
+          luego <b class="ui">Guardar copia</b> pone tu versión en el banco de usuario en su primer número
+          libre, cambia a ese banco y la reproduce; renombrar un preset de fábrica hace la misma
+          copia. Vuelve a actualizar el mismo preset de fábrica y se edita esa copia — y cada tema que
+          recuperaba el preset de fábrica recupera tu copia a partir de entonces, escenas
+          incluidas.</p>
+      </div>
+
+      <h3>Búsqueda y categorías</h3>
+      <p>La tira y el gestor llevan el mismo campo de búsqueda y los mismos chips de categoría. La
+        búsqueda encuentra nombres <em>y</em> etiquetas, así que "vocal" saca todo el banco vocal y
+        "delay" cada rig con sabor a eco. Los chips acotan la lista: <b class="ui">Todos</b>,
+        <b class="ui">Míos</b> (solo tus propios presets), y luego las categorías —
+        <b class="ui">Clean</b>, <b class="ui">Lead</b>, <b class="ui">Blues</b>,
+        <b class="ui">Ambient</b>, <b class="ui">Metal</b>, <b class="ui">Graves</b>,
+        <b class="ui">Voz</b>, <b class="ui">Utilidad</b> y más.</p>
+
       <h3>La tira tiene dos caras</h3>
-      <p>La tarjeta <b class="ui">PRESETS</b> — la tira lateral de la pestaña Rig en una tableta, la
-        franja bajo la cadena en el teléfono — muestra una de dos cosas, y cuál depende de si hay
+      <p>La tarjeta <b class="ui">PRESETS</b> — la tira junto a la cadena en una tableta y en un teléfono en
+        vertical, haya los rigs que haya; la franja bajo la cadena en un teléfono en horizontal — muestra una de dos cosas, y cuál depende de si hay
         una lista de temas <b class="ui">EN VIVO</b>:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>Sin lista en directo</b> — la biblioteca: cada preset en su slot de MIDI PC, con su
-          portada, un campo de búsqueda en cuanto pasas de ocho y un menú de fila con
-          <b class="ui">Renombrar</b>, <b class="ui">Actualizar con el rig actual</b>,
-          <b class="ui">Asignar a un set…</b>, <b class="ui">Compartir</b> y <b class="ui">Eliminar</b>. El
-          program change <em>n</em> aplica el preset <em>n</em>.</li>
+        <li><b>Sin lista en directo</b> — el banco: cada preset en su slot de MIDI PC, con su
+          portada, la búsqueda y los chips de categoría, y un menú de fila con
+          <b class="ui">Actualizar con el rig actual</b>, <b class="ui">Renombrar…</b>,
+          <b class="ui">Asignar a un set…</b>, <b class="ui">Mover al banco</b>, <b class="ui">Compartir</b>
+          y <b class="ui">Eliminar</b>. El program change <em>n</em> aplica el preset <em>n</em> del
+          banco activo.</li>
         <li><b>Con una lista en directo</b> — el set: su nombre, un paso a paso de temas
           (<b class="ui">‹</b> nombre <b class="ui">›</b>, y el propio nombre despliega la lista
-          entera para saltar) y una tarjeta por cada preset de rig <em>que trae el tema actual</em>
-          — no los 128 slots, sino los cuatro o cinco sonidos que ese tema necesita de verdad. Ahora
-          el program change <em>n</em> reproduce el tema <em>n</em>.</li>
+          entera para saltar) y un pad por cada preset de rig <em>que trae el tema actual</em>
+          — no los 128 slots, sino los cuatro u ocho sonidos que ese tema necesita de verdad —, con el
+          banco debajo. Ahora el program change <em>n</em> pulsa el botón de escenario <em>n</em>: los
+          temas mientras no hay ninguno elegido, y después los pads propios del tema elegido.</li>
       </ul>
       <p>En el escenario importa la segunda cara: el tema se elige una vez, y entre estribillos lo
-        que buscas son los sonidos de ese tema. Cada tarjeta lleva el nombre del preset y su fila de
-        escenas — <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b> <b class="ui">C</b>
-        <b class="ui">D</b> — con la escena propia de la entrada rodeada y toda la tarjeta encendida
-        mientras es la que suena.</p>
-      <p><strong>Las letras solo muestran, no asignan.</strong> Un toque en cualquier punto de la
-        tarjeta, letras incluidas, trae esa entrada tal y como la tiene el tema. Qué escena usa una
-        entrada forma parte del tema, así que se cambia en el editor de temas de la pestaña
-        <a href="/docs/es/perform.html#sections">Perform</a>: un toque despistado en el escenario no
-        puede reescribir el set.</p>
+        que buscas son los sonidos de ese tema. Cada pad lleva el nombre del preset y su fila de
+        escenas — solo las escenas que contiene ese preset — con la escena propia de la entrada
+        rodeada y todo el pad encendido mientras es el que suena. Un toque en el pad trae esa entrada
+        tal y como la tiene el tema; un toque en una letra hace de esa escena la propia de la entrada,
+        y volver a tocar la letra elegida la borra.</p>
+      <p>El set se edita ahí mismo. Arrastra un preset del banco de abajo sobre un pad (mantén
+        pulsado y luego mueve — un deslizamiento normal sigue desplazando la lista) y ocupa el lugar
+        de ese pad, conservando su escena y sus marcadores; suéltalo en un hueco vacío y se suma al
+        tema. El menú de un preset tiene <b class="ui">Añadir a esta canción</b>, que lista los pads del
+        tema y un <b class="ui">Nuevo pad</b>. El menú de pulsación larga de un pad tiene
+        <b class="ui">Sustituir sonido…</b> (un selector que abarca todos los bancos),
+        <b class="ui">Rig actual</b> (el rig tal como está, guardado en el preset del pad),
+        <b class="ui">Vaciar pad</b> y MIDI Learn. Una pulsación larga en un hueco vacío ofrece
+        <b class="ui">Elegir preset…</b> y <b class="ui">Rig actual</b>.</p>
       <p>El icono de pila de la cabecera del panel del set abre igualmente la biblioteca completa, y
-        <b class="ui">⊗</b> sale de la lista: la tira vuelve a los 128 slots, y los números de
-        programa con ella.</p>
+        <b class="ui">⊗</b> sale de la lista: la tira vuelve al banco, y los números de programa con
+        ella.</p>
+      <p>Entre la tarjeta de la cadena y los presets hay un asa y dos chevrones. Arrastra el asa para
+        dar más espacio a la cadena o a los presets, y tócala dos veces para volver al reparto propio
+        de la página; un chevrón pliega la cadena o los presets en una franja fina, y un toque en la
+        franja los recupera.</p>
       <h3>Actualizar y gestionar</h3>
-      <p>Sobrescribir siempre se confirma. <b class="ui">Actualizar con el rig actual</b> muestra un
-        diálogo que dice <b class="ui">Overwrite "{name}" with the current rig?</b> con
-        <b class="ui">Sobrescribir</b> y <b class="ui">Cancelar</b>. El propio gestor tiene el título de
-        navegación <b class="ui">Presets</b> y dos secciones: <b class="ui">Rigs · ranuras MIDI PC</b>, y <b class="ui">Todo a la vez</b> → <b class="ui">Snapshots globales</b>,
+      <p>Sobrescribir siempre se confirma. <b class="ui">Actualizar con el rig actual</b> en uno de
+        tus propios presets muestra <b class="ui">Overwrite "{name}" with the current rig?</b> con
+        <b class="ui">Sobrescribir</b> y <b class="ui">Cancelar</b>. <b class="ui">Renombrar…</b> también
+        fija el número de programa: el preset que ya tenía ese número se queda con el antiguo a
+        cambio. El propio gestor tiene el título de navegación <b class="ui">Presets</b>, el chip de
+        banco, la búsqueda y los chips de categoría, y dos secciones: <b class="ui">Rigs · ranuras MIDI PC</b>, y <b class="ui">Todo a la vez</b> → <b class="ui">Snapshots globales</b>,
         descrito como rig, looper, sampler, setlist y mapa de control guardados y restaurados
         juntos.</p>
-      <p>El menú contextual de cada fila ofrece <b class="ui">Renombrar</b>,
-        <b class="ui">Actualizar con el rig actual</b>, <b class="ui">Asignar a un set…</b>,
-        <b class="ui">Compartir</b> y <b class="ui">Eliminar</b>. Renombrar solo existe en el gestor — el
-        menú de la ficha de preset de la pestaña Rig no lo tiene. En cuanto tienes más de ocho
-        presets aparece arriba un campo <b class="ui">Buscar presets</b>.</p>
       <div class="note warn">
         <div class="t">Delete no se confirma</div>
         <p><b class="ui">Eliminar</b> en el menú de fila del preset surte efecto de inmediato, sin
@@ -548,17 +802,32 @@
         ranura nueva, así que una importación nunca puede sobrescribir en silencio algo que ya
         tenías.</p>
 
-      <h3>Los cuatro de fábrica</h3>
-      <p>NAMper viene con cuatro rigs en PC 0–3, cada uno construido en torno a una captura real:
-        <b class="ui">Clean</b> (un combo americano blackface), <b class="ui">Crunch</b> (un cabezal
-        británico de 50 vatios de 1969), <b class="ui">Lead</b> (un amp+cab moderno de alta ganancia)
-        y <b class="ui">Ambient</b> (un combo británico de clase A con brillo). La captura que
-        transmite cada uno lleva el título propio de quien la subió, que es lo que muestra el bloque
-        de ampli. Cada rig también trae un <b class="ui">Ampli</b> integrado en bypass y una
-        pantalla incluida como respaldo sin conexión, y cada uno está marcado
-        <b class="ui">FÁBRICA</b> en el gestor. Recupéralos todos desde Ajustes →
-        <b class="ui">RESET</b> → <b class="ui">Restablecer presets de fábrica</b>; el diálogo advierte
+      <h3>El banco de fábrica</h3>
+      <p>El banco <b class="ui">Fábrica</b> viene con sus 128 ranuras llenas: los cuatro clásicos en
+        PC 0–3 — <b class="ui">Clean</b>, <b class="ui">Crunch</b>, <b class="ui">Lead</b> y
+        <b class="ui">Ambient</b>, cada uno construido en torno a una captura real —, seguidos de rigs
+        temáticos que recorren estilos y épocas, instrumentos acústicos, un banco de bajo, un banco
+        vocal y cadenas de utilidad. Los bloques nuevos hacen su parte: swells y freezes en los rigs
+        ambient, una voz doblada, una doce cuerdas, un bajo de synth y canales de voz. Cada rig de
+        fábrica suena con los amplis integrados y las pantallas incluidas desde el primer segundo, y
+        cada uno está marcado <b class="ui">FÁBRICA</b> en el gestor. <b class="ui">Ocultar presets de fábrica</b>
+        en el menú de importar/exportar del gestor saca el banco del menú de bancos; el mismo
+        interruptor lo devuelve. Ajustes → <b class="ui">RESET</b> →
+        <b class="ui">Restablecer presets de fábrica</b> borra tus propios presets; el diálogo advierte
         <b class="ui">¿Eliminar TODOS los presets de usuario? Los cuatro rigs de fábrica volverán.</b></p>
+
+      <h3>Escenas y el pedal de morph</h3>
+      <p>Cada rig tiene cuatro escenas, <b class="ui">A</b>–<b class="ui">D</b>: bypass y posiciones
+        de mando para cada bloque, dejando intactos la cadena y los modelos cargados, así que cambiar
+        de una a otra no deja huecos. La escena encendida sigue tus ediciones — un mando girado con
+        <b class="ui">A</b> activa pertenece a <b class="ui">A</b> desde ese momento, así que un ajuste
+        nunca se pierde por cambiar de escena.</p>
+      <p>Un pedal de expresión también puede hacer <b>morph</b> entre dos escenas. En Ajustes →
+        <b class="ui">Control</b>, dale a una fila CC la acción <b class="ui">Escenas</b> →
+        <b class="ui">Morph con pedal</b> y elige el par: cada mando en el que las dos escenas
+        difieren sigue al pedal entre sus dos valores, y un interruptor, un modo o un bypass cambia a
+        mitad de recorrido — un paso de limpio a solo en el que el drive, la mezcla del delay y la
+        reverb suben todos bajo un solo pie.</p>
       <p>Las otras pestañas tienen sus propias hojas de presets, accesibles desde su chip
         <b class="ui">PRESETS</b> y todas compartiendo el mismo diseño: <b class="ui">Presets del looper</b>, <b class="ui">Kits del sampler</b>, <b class="ui">Presets de Perform</b>,
         <b class="ui">Presets de control</b> y <b class="ui">Snapshots globales</b>. Dos de ellas no se
@@ -613,11 +882,10 @@
         <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>, para que un rig pueda procesar un loop o
         el sampler en lugar de una entrada en vivo.</p>
       <p>El conector OUT abre una hoja encabezada <b class="ui">SALIDA DEL RIG</b>, con mandos
-        <b class="ui">Nivel</b> y <b class="ui">Pan</b>, un menú <b class="ui">Par de salidas de hardware</b> (<b class="ui">Out 1-2</b>, <b class="ui">Out 3-4</b>… — esto necesita
+        <b class="ui">Nivel</b> y <b class="ui">Pan</b>, un menú <b class="ui">Par de salidas de hardware</b> (<b class="ui">Sal. 1-2</b>, <b class="ui">Sal. 3-4</b>… — esto necesita
         <b class="ui">Usar todas las salidas de la interfaz</b> activado en Ajustes), y
-        <b class="ui">Grabar este rig en</b> → <b class="ui">Loop track 1</b>–<b class="ui">Loop
-        track 4</b>. La fila de resumen debajo dice <b class="ui">Looper: not assigned</b> o, una
-        vez que has elegido alguna, <b class="ui">Looper: track 1, 3</b>.</p>
+        <b class="ui">Grabar este rig en</b> → <b class="ui">Pista de loop 1</b>–<b class="ui">Pista de loop 4</b>. La fila de resumen debajo dice <b class="ui">Looper: not assigned</b> o, una
+        vez que has elegido alguna, <b class="ui">Looper: pista 1, 3</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -628,7 +896,7 @@
         (<b class="ui">Añadir cadena paralela</b>).</p>
       <p>Su menú tiene una sola sección, <b class="ui">Ramificar desde</b>, que lista cada canal de
         entrada, <b class="ui">Pads del sampler</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-        y <b class="ui">After {Block}</b> para cada bloque de la cadena principal. Ese último grupo
+        y <b class="ui">Después de {Block}</b> para cada bloque de la cadena principal. Ese último grupo
         es el interesante: ramificar después del ampli te da dos reverbs distintos sobre el mismo
         tono de ampli, ramificar antes te da dos amplis distintos sobre la misma guitarra.</p>
 
@@ -641,12 +909,11 @@
           <thead><tr><th>Gesto</th><th>Qué hace</th></tr></thead>
           <tbody>
             <tr><td>Toca un ancla</td><td>Abre la hoja de mezclador encabezada
-              <b class="ui">LANE {n} MIX</b>, con <b class="ui">Nivel</b> y <b class="ui">Pan</b></td></tr>
+              <b class="ui">MEZCLA CARRIL {n}</b>, con <b class="ui">Nivel</b> y <b class="ui">Pan</b></td></tr>
             <tr><td>Mantén pulsada el ancla de entrada</td><td>El menú <b class="ui">Entrada de la rama</b>: entrada propia, <b class="ui">Pads del sampler</b>, <b class="ui">Loop
-              1</b>–<b class="ui">Loop 4</b>, <b class="ui">Branch after {Block}</b>, y
+              1</b>–<b class="ui">Loop 4</b>, <b class="ui">Ramificar después de {Block}</b>, y
               <b class="ui">Quitar rama</b></td></tr>
-            <tr><td>Mantén pulsada el ancla de fusión</td><td>El menú <b class="ui">Salida de la rama</b>: <b class="ui">Hacia la mezcla principal</b>, <b class="ui">Merge before
-              {Block}</b>, <b class="ui">Own output 1-2</b>, y <b class="ui">Quitar rama</b></td></tr>
+            <tr><td>Mantén pulsada el ancla de fusión</td><td>El menú <b class="ui">Salida de la rama</b>: <b class="ui">Hacia la mezcla principal</b>, <b class="ui">Unir antes de {Block}</b>, <b class="ui">Salida propia 1-2</b>, y <b class="ui">Quitar rama</b></td></tr>
             <tr><td>Arrastra un ancla</td><td>Lo vuelve a fijar en otro punto de la cadena
               principal</td></tr>
           </tbody>
@@ -674,7 +941,7 @@
           individuales.</p>
       </div>
       <p>Una rama también puede saltarse la mezcla principal por completo: apunta su salida a
-        <b class="ui">Own output 1-2</b> y va directa a su propio par de hardware, lo cual antes
+        <b class="ui">Salida propia 1-2</b> y va directa a su propio par de hardware, lo cual antes
         necesita <b class="ui">Usar todas las salidas de la interfaz</b> activado en Ajustes.</p>
     </section>
 
@@ -685,16 +952,15 @@
         haces a todo. Antes estaba al pie de la pestaña Rig; ahora vive en la pestaña
         <a href="/docs/es/mix.html">Mix</a>, en la columna junto a los faders — esta sección es la
         versión corta, y la mesa que lo rodea está en esa página.</p>
-      <p>La barra punteada <b class="ui">+</b> añade procesado de master — hasta seis bloques. Puedes
-        elegir entre <b class="ui">Volumen</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>, <b class="ui">Saturador</b>, <b class="ui">Limitador</b>, <b class="ui">Prot. FB</b>, <b class="ui">De-esser</b>, <b class="ui">Reverb</b> y
-        <b class="ui">Delay</b>. Se comportan como bloques de cadena: toca una ficha para editarla y
+      <p>La barra punteada <b class="ui">+</b> añade procesado de master — hasta seis bloques, de las
+        mismas familias que ofrece una cadena, sin el ampli ni el <b class="ui">Envío</b>. Se comportan como bloques de cadena: toca una ficha para editarla y
         mantén pulsado para <b class="ui">Activar</b> / <b class="ui">Bypass</b> y
         <b class="ui">Quitar</b>.</p>
-      <div class="note warn">
-        <div class="t">Sin plugins AU en el master</div>
-        <p>Los plugins Audio Unit alojados solo pueden ir dentro de una cadena de rig. El menú FX
-          del master no los ofrece. Si quieres un limitador de terceros sobre todo, eso no es
-          posible — usa en su lugar el bloque <b class="ui">Limitador</b> integrado.</p>
+      <div class="note tip">
+        <div class="t">Plugins en el master</div>
+        <p>El master y los dos retornos de envío también aceptan plugins alojados: la misma sección
+          <b class="ui">Plugins</b> está al pie de sus menús de añadir, así que un limitador de terceros
+          puede ir sobre todo.</p>
       </div>
       <p>Aquí no hay un procesador de master siempre activo. La saturación es un bloque que añades — <b class="ui">Saturador</b>, con <b class="ui">Válvula</b>, <b class="ui">Tape</b> o una captura <b class="ui">NAM</b> en sus chips de tipo y <b class="ui">Drive</b>, <b class="ui">Tono</b>, <b class="ui">Mezcla</b> y <b class="ui">Nivel</b> — y la limitación es el bloque <b class="ui">Limitador</b>, con <b class="ui">Gain</b>, <b class="ui">Techo</b> (−12 a 0 dB, por defecto −1) y <b class="ui">Release</b>. Si no los has añadido, no están en la señal.</p>
 

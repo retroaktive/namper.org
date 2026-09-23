@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — Documentation NAMper</title>
-<meta name="description" content="Le looper synchronisé à quatre pistes : pads circulaires, le transport, l'armement AUTO et l'alignement des limites, le tempo et le clic, l'éditeur de loop, l'annulation, le routage par piste et ce qui est sauvegardé.">
+<meta name="description" content="Le looper synchronisé à quatre cellules : les cellules de loop et leurs touches d'angle, le transport, l'armement AUTO et l'alignement des limites, le tempo et le clic, l'éditeur de loop, les cellules MIDI avec quantification non destructive, l'annulation, l'entrée, la sortie et le preset de chaque cellule, les loops en fichiers WAV et ce qui est sauvegardé.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Looper — Documentation NAMper">
@@ -74,118 +75,150 @@
       <div class="slab">SUR CETTE PAGE</div>
       <ul>
         <li><a href="#basics">Comment pense le looper</a></li>
-        <li><a href="#pads">Les pads circulaires</a></li>
+        <li><a href="#pads">Les cellules de loop</a></li>
         <li><a href="#transport">Le transport</a></li>
         <li><a href="#auto">Le mode AUTO</a></li>
         <li><a href="#tempo">Tempo et clic</a></li>
         <li><a href="#editor">L'éditeur de loop</a></li>
-        <li><a href="#undo">Annuler</a></li>
-        <li><a href="#routing">Routage par piste</a></li>
+        <li><a href="#midi">Cellules MIDI</a></li>
+        <li><a href="#undo">Annuler et effacer</a></li>
+        <li><a href="#routing">Les réglages d'une cellule</a></li>
         <li><a href="#saving">Ce qui est sauvegardé</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="basics"><span class="n">04.1</span>Comment pense le looper</h2>
-      <p>Une règle sous-tend tout le reste, et l'app l'affiche en bas de l'écran :</p>
-      <p><b class="ui">La première boucle définit le cycle · les autres s'y calent · CC MIDI 85–88 tap · 89 marche/arrêt · 90 effacer</b></p>
-      <p>La piste que tu enregistres en premier définit le cycle. Chaque autre piste s'aligne
+      <p>Une règle sous-tend tout le reste : <b>la première loop définit le cycle, et toutes les
+        autres s'y calent.</b></p>
+      <p>La cellule que tu enregistres en premier définit le cycle. Chaque autre cellule s'aligne
         dessus au lieu de dériver de son côté, et rien ne déplace ensuite ce cycle, sauf si tu
-        modifies la piste qui l'a défini, ou si tu effaces tout pour repartir de zéro.</p>
-      <p>Il y a quatre pistes, chacune pouvant contenir jusqu'à <b>60 secondes</b>. En portrait,
-        les pads sont disposés en grille 2×2 ; en paysage, le transport passe dans une colonne à
-        gauche et les quatre pads s'alignent en ligne.</p>
+        modifies la cellule qui l'a défini, ou si tu effaces tout pour repartir de zéro.</p>
+      <p>Il y a quatre cellules, et une loop dure aussi longtemps que tu la joues : passé la
+        première minute, une cellule continue de s'allonger tant que l'appareil a la mémoire pour
+        ça. Écran droit, le transport est en haut et les quatre cellules remplissent la page deux
+        par deux ; à l'horizontale, le transport devient une colonne à gauche et les réglages de
+        chaque cellule se placent à côté de son pad. L'iPad suit la même règle selon la forme de la
+        page, pas selon l'appareil.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="L'onglet Loop : piste 1 en lecture avec une forme d'onde radiale verte et un faisceau tournant, piste 2 armée avec une bordure rouge en pointillés, pistes 3 et 4 vides, la puce AUTO allumée en vert et le tempo affichant 124 BPM.">
-        <figcaption>Piste 1 en lecture, piste 2 armée et en attente, AUTO activé à 124 BPM</figcaption>
+             alt="L'onglet Loop : la carte de transport en haut avec le tempo, AUTO et CLICK ; en dessous, quatre cellules de loop, chacune un pad rond dans un carré de quatre touches d'angle avec ses tuiles de réglages en dessous ; la cellule 1 en lecture avec un anneau d'onde vert, la cellule 2 en enregistrement, la cellule 3 coupée, la cellule 4 vide.">
+        <figcaption>Le transport en haut, quatre cellules en dessous : un pad, quatre touches d'angle, les tuiles de réglages</figcaption>
       </figure>
-      <p>Chaque carte de piste est organisée de la même façon : une ligne d'en-tête avec le grand
-        numéro de piste, le libellé d'état et un voyant LED ; le pad circulaire ; une grille 2×2
-        de puces — <b class="ui">IN</b> et <b class="ui">DURÉE</b> au-dessus de <b class="ui">DUB</b>
-        et <b class="ui">OUT</b> ; et une ligne de contrôles en dessous.</p>
+      <p>Chaque cellule est construite de la même façon : le <b>pad</b> rond au milieu d'un carré,
+        une <b>touche d'angle</b> dans chacun des quatre coins du carré, et une bande de <b>tuiles
+        de réglages</b> — sous le pad, ou à côté quand la cellule est plus large que haute. Pas de
+        carte ni d'en-tête : le numéro de la cellule est dessiné en très grand et en transparence
+        sur son propre cercle.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>Les pads circulaires</h2>
-      <p>Le pad dessine la forme d'onde de la loop <em>radialement</em> autour de l'anneau — un
-        tour du cercle correspond à un tour du cycle — avec un faisceau tournant qui marque la
-        position de lecture. Les attaques apparaissent comme des pics sur l'anneau, tu peux donc
-        lire où tu en es depuis l'autre bout de la pièce.</p>
+      <h2 id="pads"><span class="n">04.2</span>Les cellules de loop</h2>
+      <p>Le pad dessine la forme d'onde de la loop <em>en anneau</em> — un tour du cercle
+        correspond à un tour du cycle — avec un faisceau qui marque la position de lecture. Les
+        passages forts épaississent l'anneau, tu peux donc lire où tu en es dans la loop depuis
+        l'autre bout de la pièce. Le pad <b>s'allume aussi depuis son bord vers l'intérieur</b>
+        quand la loop sonne, d'autant plus profondément que c'est fort.</p>
       <p>Pendant que la toute première loop s'enregistre, il n'y a pas encore de cycle, donc
         l'anneau se comporte différemment : le cercle entier correspond à tout ce qui a été
-        enregistré <em>jusqu'ici</em>. La forme d'onde se resserre à mesure que la prise s'allonge,
-        le faisceau reste immobile à midi — c'est la tête d'écriture — et le centre du pad compte
-        les secondes écoulées. Une fois la loop bouclée, le faisceau parcourt le cycle.</p>
+        enregistré <em>jusqu'ici</em>, le faisceau reste immobile à midi — c'est la tête
+        d'écriture — et le centre compte les secondes écoulées. Une fois la loop bouclée, le
+        faisceau parcourt le cycle. Une cellule qui enregistre dans un cycle en cours dessine son
+        onde comme un arc qui grandit.</p>
 
       <h3>Appuyer sur le pad</h3>
-      <p>Un appui fait monter la piste d'un cran :</p>
+      <p>Seul le cercle prend l'appui. Un appui fait monter la cellule d'un cran :</p>
       <ul style="--nc:var(--eq)">
-        <li>empty → recording</li>
-        <li>recording → referme la loop, qui passe alors en playing</li>
-        <li>playing → overdub</li>
-        <li>overdub → retour à playing</li>
-        <li>muted → unmute</li>
+        <li>vide → enregistrement</li>
+        <li>enregistrement → referme la loop, qui passe alors en lecture</li>
+        <li>lecture → overdub</li>
+        <li>overdub → retour à la lecture</li>
+        <li>coupée → lecture</li>
       </ul>
       <p>Avec <b class="ui">AUTO</b> activé, appuyer sur un pad vide l'<b>arme</b> au lieu
-        d'enregistrer immédiatement, et appuyer sur un pad armé annule l'armement. C'est le seul
-        changement qu'AUTO apporte à cette progression.</p>
+        d'enregistrer immédiatement — un anneau rouge en pointillés entoure la cellule — et appuyer
+        sur un pad armé annule l'armement. C'est le seul changement qu'AUTO apporte à cette
+        progression.</p>
 
-      <h3>Appui long</h3>
-      <p>Fais un appui long sur le pad rond pour <b class="ui">MIDI Learn: tap loop track 1</b>
-        (et 2, 3, 4) — c'est comme ça qu'une pédale footswitch se lie à une piste. Fais un appui
-        long sur la <em>carte</em> qui l'entoure et tu obtiens à la place le menu de routage :
-        <b class="ui">Input · …</b>, <b class="ui">Output · …</b>, <b class="ui">Modifier la boucle…</b>,
-        plus <b class="ui">Longueur · libre</b> ou <b class="ui">Length · N bars</b> et
-        <b class="ui">Overdubs · N</b>.</p>
+      <h3>Les touches d'angle</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Coin</th><th>Touche</th><th>Ce qu'elle fait</th></tr></thead>
+          <tbody>
+            <tr><td>En haut à gauche</td><td><b class="ui">Mute</b></td>
+                <td>Rend la loop muette pendant qu'elle continue de tourner ; allumée en ambre tant
+                  qu'elle est active.</td></tr>
+            <tr><td>En haut à droite</td><td><b class="ui">Solo</b></td>
+                <td>Coupe les autres cellules en lecture ; appuie de nouveau pour les faire
+                  revenir. Mettre une autre cellule en solo lui passe le solo.</td></tr>
+            <tr><td>En bas à gauche</td><td><b class="ui">Annuler</b></td>
+                <td>Annule le dernier overdub de cette cellule, ou efface sa prise — voir
+                  <a href="#undo">Annuler et effacer</a>.</td></tr>
+            <tr><td>En bas à droite</td><td><b class="ui">Lecture</b> / <b class="ui">Stop</b></td>
+                <td>Arrête ou lance cette loop seule.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Une touche qui n'a rien à faire dans l'état actuel de la cellule est dessinée en
+        transparence. Les coins s'allument eux aussi avec la loop, un peu moins profondément que
+        le pad.</p>
+      <p><b>Arrêter une cellule</b> n'arrête pas le temps : la loop continue de tourner en silence
+        avec le cycle, et appuyer sur <b class="ui">Lecture</b> la ramène exactement en place, jamais
+        depuis son début. Quand tout le looper est arrêté, le <b class="ui">Lecture</b> d'une cellule
+        lance le looper avec cette cellule seule ; la lecture du transport ramène toutes les
+        cellules.</p>
 
       <h3>États</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>État</th><th>Libellé</th><th>Couleur</th></tr></thead>
+          <thead><tr><th>État</th><th>Ce que tu vois</th></tr></thead>
           <tbody>
-            <tr><td>Rien d'enregistré</td><td><b class="ui">vide</b></td><td>Atténuée</td></tr>
-            <tr><td>Capture en cours</td><td><b class="ui">enregistrement</b></td><td>Rouge</td></tr>
-            <tr><td>Bouclage</td><td><b class="ui">lecture</b></td><td>Vert</td></tr>
-            <tr><td>Superposition</td><td><b class="ui">overdub</b></td><td>Orange</td></tr>
-            <tr><td>Silencieuse, toujours active</td><td><b class="ui">muet</b></td><td>Jaune</td></tr>
-            <tr><td>En attente (AUTO)</td><td><b class="ui">armé</b></td>
-                <td>Rouge, bordure en pointillés autour de la carte</td></tr>
+            <tr><td>Rien d'enregistré</td><td>Bord atténué, pas d'onde</td></tr>
+            <tr><td>Enregistrement</td><td>Rouge</td></tr>
+            <tr><td>Lecture</td><td>Vert</td></tr>
+            <tr><td>Overdub</td><td>Orange</td></tr>
+            <tr><td>Coupée</td><td>Ambre, l'onde atténuée</td></tr>
+            <tr><td>Arrêtée seule</td><td>Couleur de l'encre, l'onde toujours dessinée</td></tr>
+            <tr><td>Armée (AUTO)</td><td>Rouge, anneau en pointillés autour de la cellule</td></tr>
           </tbody>
         </table>
       </div>
-      <p>La ligne de contrôles sous chaque pad comporte quatre éléments : couper le son
-        (<b class="ui">Mute track N</b>, qui passe au jaune), modifier
-        (<b class="ui">Edit loop N</b>), effacer (<b class="ui">Clear track N</b>) et un petit
-        potentiomètre de niveau (<b class="ui">Loop track N level</b>, de 0 à 1,5).</p>
+
+      <h3>Appui long</h3>
+      <p>Fais un appui long sur le pad — ou n'importe où sur la cellule — pour le menu de la
+        cellule : <b class="ui">Entrée · …</b>, <b class="ui">Sortie · …</b>,
+        <b class="ui">Preset de la boucle · …</b>, <b class="ui">Modifier la boucle…</b>,
+        <b class="ui">Longueur · libre</b> ou <b class="ui">Length · N bars</b>,
+        <b class="ui">Overdubs · N</b> ; la loop en tant que fichier —
+        <b class="ui">Exporter la boucle en WAV…</b>, <b class="ui">Exporter toutes les boucles…</b>,
+        <b class="ui">Charger une boucle depuis un fichier…</b> (voir <a href="#saving">plus bas</a>) ; et tout en
+        bas <b class="ui">MIDI Learn : tap loop track 1</b> (2, 3, 4) — c'est comme ça qu'une
+        pédale footswitch se lie à une cellule.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Le transport</h2>
-      <p>À côté du mot <b class="ui">LOOPER</b> se trouve la ligne de transport :</p>
+      <p>La carte de transport porte le mot <b class="ui">LOOPER</b> — rouge tant que le looper
+        contient quelque chose — et, écran droit, deux rangées :</p>
       <ul style="--nc:var(--gate)">
-        <li>Un <b>anneau master</b> affichant la longueur du cycle en secondes, ou
-          <b class="ui">—</b> quand rien n'est encore enregistré.</li>
-        <li>Une puce <b class="ui">PRESETS</b> — voir <a href="#saving">ce qui est
-          sauvegardé</a>.</li>
+        <li>Une touche <b>presets</b> — voir <a href="#saving">ce qui est sauvegardé</a>.</li>
         <li><b class="ui">Lancer les boucles</b> / <b class="ui">Arrêter les boucles</b>, désactivés tant qu'il n'y
           a pas de cycle.</li>
-        <li>Un bouton <b>d'annulation</b>, actif seulement s'il y a quelque chose à annuler.</li>
-        <li>Un bouton corbeille, <b class="ui">Effacer toutes les boucles</b>.</li>
+        <li>Une touche <b>d'annulation</b> — voir <a href="#undo">Annuler et effacer</a>.</li>
+        <li>Une touche corbeille, <b class="ui">Effacer toutes les boucles</b>.</li>
+        <li>En dessous, le tempo, <b class="ui">AUTO</b> et <b class="ui">CLIC</b>.</li>
       </ul>
-      <p>En dessous, une ligne de statut t'indique où tu en es :
-        <b class="ui">enregistrement de la boucle master…</b> pendant que la première prise tourne, une
-        position qui défile <b class="ui">4.2 / 8.0 s</b> une fois qu'il y a un cycle,
-        <b class="ui">arrêté</b>, ou <b class="ui">touchez une piste pour enregistrer</b> quand le looper est
-        vide.</p>
+      <p>À l'horizontale, les mêmes touches se rangent en colonne : le tempo, AUTO et CLICK en
+        haut, lecture, annulation et corbeille en bas. La carte s'allume pendant que la première
+        loop s'enregistre.</p>
+      <p>Appui long sur la lecture pour <b class="ui">MIDI Learn : looper marche / arrêt</b>, ou sur la
+        corbeille pour <b class="ui">MIDI Learn : effacer toutes les boucles</b>.</p>
       <div class="note">
         <div class="t">Contrôle au footswitch</div>
-          <p>Le mapping MIDI intégré couvre le looper sans rien régler : <b class="ui">CC 85–88</b>
-          tapent les pistes 1 à 4, <b class="ui">CC 89</b> lance, <b class="ui">CC 90</b> efface.
-          Attention : le CC 89 envoie une commande <em>play</em> — il relance les boucles depuis le
-          début au lieu de les basculer. Pour un vrai marche/arrêt sur un seul interrupteur, ajoute
-          une affectation dans Réglages → <b class="ui">Contrôle</b> et apprends-la sur
-          <b class="ui">Marche / arrêt</b>, qui lit l'état courant.</p>
+        <p>Le mapping MIDI intégré couvre le looper sans rien régler : <b class="ui">CC 85–88</b>
+          tapent les cellules 1 à 4, <b class="ui">CC 89</b> lance et arrête, <b class="ui">CC 90</b>
+          efface. Le CC 89 est une vraie bascule — voir
+          <a href="/docs/fr/control.html">MIDI et contrôle</a>.</p>
       </div>
     </section>
 
@@ -196,12 +229,13 @@
         se referme, elle détermine où se trouvent vraiment les lignes de mesure.</p>
 
       <h3>Armer plutôt qu'enregistrer</h3>
-      <p>Avec AUTO activé, appuyer sur un pad vide l'arme : la carte prend une bordure rouge en
-        pointillés et affiche <b class="ui">armé</b>. Ce qui se passe ensuite dépend de
-        l'existence ou non d'un cycle :</p>
+      <p>Avec AUTO activé, appuyer sur un pad vide l'arme : un anneau rouge en pointillés entoure la cellule. Ce qui se passe ensuite dépend de l'existence ou non d'un cycle :</p>
       <ul style="--nc:var(--amp)">
         <li><b>Pas encore de cycle.</b> L'enregistrement démarre <b>à ta première note</b>
-          au-dessus du seuil d'armement. Tu peux reprendre ta guitare, t'installer confortablement,
+          au-dessus du seuil d'armement — Réglages → <b class="ui">Scène</b> →
+          <b class="ui">LOOPER</b> → <b class="ui">Signal qui démarre une boucle auto</b>, −40 dB sauf si
+          tu le déplaces, plus bas étant plus sensible. Un effleurement des cordes ou le bruit de la
+          pièce reste en dessous. Tu peux reprendre ta guitare, t'installer confortablement,
           la prise démarre quand tu joues — pas quand tu as appuyé.</li>
         <li><b>Un cycle est déjà en cours.</b> L'enregistrement démarre à la <b>prochaine limite de
           cycle</b>, la prise commence donc exactement sur la mesure. Une courte marge de
@@ -209,11 +243,17 @@
           juste derrière le faisceau compte quand même.</li>
       </ul>
       <p>Une prise armée libre — enregistrée sans cycle en place — <b>s'arrête aussi toute
-        seule</b> après environ 1,2 seconde de silence, puis est ramenée à sa partie audible. Le
-        seuil est volontairement généreux : les traînées de réverbe et les pauses entre les
-        phrases ne comptent pas comme du silence, un riff épars n'est donc pas coupé en deux.</p>
-      <p>Une fois chaque loop refermée, AUTO <b>arme automatiquement la prochaine case vide</b>, tu
-        peux ainsi construire les quatre pistes sans plus toucher à l'écran.</p>
+        seule</b> quand la phrase s'arrête : dès que le silence a duré le nombre de temps réglé dans
+        <b class="ui">Silence qui referme une boucle auto</b> (un, sauf si tu le changes) et dépassé les
+        silences de ton propre jeu, la prise se referme sur la fin de mesure qu'elle a entendue. Sans
+        tempo à entendre — un bourdon, une nappe — ce sont deux secondes de silence qui la
+        referment. Les traînées de réverbe et les pauses entre les phrases ne comptent pas comme du
+        silence, un riff épars n'est donc pas coupé en deux.</p>
+      <p>Quand une loop joue déjà dans un combo et revient dans ton micro ou tes micros de guitare,
+        une cellule armée apprend quelle part de cette loop lui revient et attend par-dessus : une note
+        doit clairement en ressortir, d'environ 9 dB, alors joue-la au lieu de l'effleurer.</p>
+      <p>Une fois chaque loop refermée, AUTO <b>arme automatiquement la prochaine cellule vide</b>, tu
+        peux ainsi construire les quatre cellules sans plus toucher à l'écran.</p>
 
       <h3>Alignement des limites</h3>
       <p>Quand la loop master se referme, NAMper analyse le signal d'entrée propre — le signal
@@ -229,7 +269,7 @@
       </ol>
       <p>À l'écran, tout se passe en un instant : l'anneau se redessine, la longueur se cale sur un
         chiffre net, et l'affichage BPM — vide jusque-là — se remplit. À partir de là, le clic, les
-        puces LEN, la quantification du sampler et l'horloge de mesures de la setlist disposent
+        tuiles LEN, la quantification du sampler et l'horloge de mesures de la setlist disposent
         tous d'une grille de référence.</p>
       <p>Avec <b class="ui">CLIC</b> activé, le tempo est <b>verrouillé</b> à la valeur réglée et
         seule la phase est ajustée. C'est le mode à utiliser quand tu joues avec un clic ou un
@@ -275,37 +315,46 @@
       </div>
     </section>
 
-    <section class="blk" style="--nc:var(--pitch)">
+    <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>L'éditeur de loop</h2>
-      <p>Ouvre-le avec le bouton edit dans la ligne de contrôles d'un pad, ou par un appui long sur
-        la carte → <b class="ui">Modifier la boucle…</b>. La feuille est intitulée <b class="ui">LOOP N</b>
-        avec un libellé de longueur en direct.</p>
+      <p>Ouvre-le avec la tuile d'édition (<b class="ui">Modifier la boucle N</b>) parmi les réglages d'une
+        cellule, ou par un appui long sur la cellule → <b class="ui">Modifier la boucle…</b>. La tuile
+        d'édition fonctionne <b>aussi sur une cellule vide ou armée</b>, pour que le preset à
+        travers lequel une prise s'enregistre — et, sur une cellule MIDI, sa grille — puisse être
+        réglé avant de jouer. La feuille est intitulée <b class="ui">BOUCLE N</b> avec un libellé de
+        longueur en direct.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="La feuille de l'éditeur de loop par-dessus le looper : une forme d'onde avec une grille de mesures et de temps, des poignées de début et de fin déplaçables, les rangées de boutons START et LENGTH TEMPO KEPT, les potentiomètres Level et Pan, et les boutons Mute, Undo et Clear.">
+             alt="La feuille de l'éditeur de loop par-dessus le looper : une forme d'onde avec une grille de mesures et de temps, des poignées de début et de fin déplaçables, la rangée RECORD THROUGH, les rangées de boutons START et LENGTH TEMPO KEPT, les potentiomètres Level et Pan, et les boutons Mute, Undo et Clear.">
         <figcaption>L'éditeur de loop : grille, poignées, boutons de décalage et la ligne du
           bas</figcaption>
       </figure>
-      <p>Le libellé affiche quelque chose comme <b class="ui">8.00 s · 4.0 bars</b>. Faire glisser
+      <p>Le libellé affiche quelque chose comme <b class="ui">8.00 s · 4.0 mesures</b>. Faire glisser
         la poignée de fin ajoute le tempo que produirait cette longueur ; faire glisser la poignée
         de début le change en <b class="ui">start +0.50 beats</b>.</p>
-      <p>La forme d'onde porte une <b>grille superposée</b> de mesures et de temps — des
+      <p>La forme d'onde porte une <b>grille de mesures et de temps</b> superposée — des
         graduations de temps et des lignes de mesure numérotées, ancrées au début de la loop.
         L'audio au-delà de la fin de la loop est dessiné en grisé : conservé mais silencieux, ce
         qui permet de repousser la poignée de fin plus tard.</p>
 
       <h3>Les deux poignées</h3>
-      <ul style="--nc:var(--pitch)">
+      <ul style="--nc:var(--eq)">
         <li><b>Le début</b> (<b class="ui">Poignée de début de boucle</b>) fait pivoter la phase : la loop
           commence plus tard et le morceau sauté se retrouve reporté à la fin. La longueur et le
           tempo ne changent pas. C'est la solution pour une loop qui démarre un demi-temps trop
           tôt.</li>
         <li><b>La fin</b> (<b class="ui">Poignée de fin de boucle</b>) redimensionne la loop, et ne
-          fonctionne <b>que sur la piste qui définit le cycle</b>. Le nombre de mesures est
+          fonctionne <b>que sur la cellule qui définit le cycle</b>. Le nombre de mesures est
           préservé et le tempo réglé suit, donc étirer la loop ralentit tout le set. La feuille le
           précise : <b class="ui">Faites glisser les bords pour déplacer le début et redimensionner la boucle — le redimensionnement recale le tempo du set.</b></li>
       </ul>
-      <p>Une piste vide affiche <b class="ui">pas d'audio</b> et rien à glisser.</p>
+      <p>Une cellule vide n'affiche pas d'audio et rien à glisser.</p>
+
+      <h3>Enregistrer à travers</h3>
+      <p>La rangée <b class="ui">ENREGISTRER VIA</b> nomme le preset à travers lequel la cellule
+        enregistre — le rig en direct, sauf si tu en choisis un. Appuie dessus pour choisir un
+        preset ; son <b>×</b> remet la cellule sur <b class="ui">Le rig en cours</b>. Voir
+        <a href="#preset">le preset de la loop</a>.</p>
 
       <h3>Les rangées de boutons</h3>
       <p>Sous la forme d'onde, <b class="ui">START</b> propose quatre décalages de phase —
@@ -319,79 +368,164 @@
         cycle.</p>
       <div class="note">
         <div class="t">Pourquoi les boutons de longueur sont grisés</div>
-        <p>Les six boutons <b class="ui">LONGUEUR · TEMPO CONSERVÉ</b> sont désactivés sauf si la piste
+        <p>Les six boutons <b class="ui">LONGUEUR · TEMPO CONSERVÉ</b> sont désactivés sauf si la cellule
           que tu modifies est celle qui définit le cycle, et la feuille en explique la raison :
           <b class="ui">Seule la piste qui définit le cycle peut changer sa longueur.</b> Si la
-          longueur est incorrecte sur une piste suiveuse, la loop à modifier est celle du
+          longueur est incorrecte sur une cellule suiveuse, la loop à modifier est celle du
           master.</p>
       </div>
       <p>La ligne du bas comporte un potentiomètre <b class="ui">Niveau</b> (0 à 1,5), un
         potentiomètre <b class="ui">Pan</b> affichant <b class="ui">C</b>, <b class="ui">L50</b>
-        ou <b class="ui">R50</b>, et les boutons <b class="ui">Mute</b>, <b class="ui">Annuler</b> et
-        <b class="ui">Effacer</b>.</p>
+        ou <b class="ui">R50</b>, et les boutons <b class="ui">Mute</b>, <b class="ui">Annuler</b>
+        (le dernier overdub) et <b class="ui">Effacer</b>, qui vide la cellule et ferme la
+        feuille.</p>
       <p>Il n'y a pas de lecture inversée. Les loops ne se lisent que vers l'avant.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="midi"><span class="n">04.7</span>Cellules MIDI</h2>
+      <p>Règle l'<b class="ui">IN</b> d'une cellule sur <b class="ui">Pads du sampler (MIDI)</b> et
+        elle cesse d'enregistrer du son : elle enregistre <b>quel pad tu frappes, quand, et avec
+        quelle force</b>, et rejoue les frappes à travers le
+        <a href="/docs/fr/sampler.html">sampler</a>. Une partie de batterie enregistrée ainsi ne
+        coûte presque rien, reste modifiable frappe par frappe, et suit le kit chargé, quel qu'il
+        soit — change de kit et la même partie joue les nouveaux sons.</p>
+      <p>Une cellule MIDI dessine un trait par frappe sur son anneau au lieu d'une onde, et son pad
+        clignote chaque fois que le faisceau passe sur une frappe. Sa tuile <b class="ui">OUT</b>
+        devient <b class="ui">QNT</b> — les pads vont déjà là où va le sampler.</p>
+
+      <h3>Quantifier pendant l'enregistrement</h3>
+      <p>La tuile <b class="ui">QNT</b> parcourt <b class="ui">OFF</b>, <b class="ui">1/4</b>,
+        <b class="ui">1/8</b>, <b class="ui">1/16</b> et <b class="ui">1/32</b>. Elle déplace ce
+        qui est <em>imprimé</em>, jamais ce que tu entends : la frappe que tu joues sonne toujours
+        tout de suite, et ce qui atterrit sur la grille, c'est la copie enregistrée.</p>
+
+      <h3>L'éditeur MIDI</h3>
+      <p>L'éditeur d'une cellule MIDI porte un badge rose <b class="ui">MIDI</b> et, à la place de
+        la forme d'onde, une <b>grille de notes</b> : une ligne par pad chargé dans le kit, une
+        colonne par pas de la grille, des traits plus épais sur les temps et les mesures, une ligne
+        rouge pour la tête de lecture. La prise remplit toujours toute la largeur de la grille ;
+        une grille plus fine ne fait que dessiner plus de lignes.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
+             alt="L'éditeur d'une cellule de loop MIDI : l'en-tête LOOP 1 avec un badge MIDI rose, le bouton Quantize, les puces GRID de 1/4 à 1/32 et le nombre de frappes, une grille de notes avec une ligne par pad du sampler et huit frappes sur la première ligne, et la règle avec la poignée END en dessous.">
+        <figcaption>L'éditeur d'une cellule MIDI : quantification, les puces de grille et la grille de notes</figcaption>
+      </figure>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Appuie</b> sur une case pour y placer une frappe ou l'enlever — tu entends le
+          pad.</li>
+        <li><b>Maintiens</b> une case pour changer son accent : plein, deux tiers, un tiers. La
+          teinte du bloc l'indique.</li>
+        <li>Fais glisser la poignée rouge <b class="ui">FIN</b> sur la règle sous la grille pour
+          changer la longueur de la loop par pas ; le tempo reste.</li>
+      </ul>
+      <p>Au-dessus de la grille, le bouton <b class="ui">Quantifier</b> et les puces
+        <b class="ui">GRILLE</b> (<b class="ui">1/4</b> à <b class="ui">1/32</b>) quantifient la
+        prise <b>après coup — et sans la détruire.</b> La prise telle que tu l'as jouée est
+        conservée, et la grille s'applique toujours à cet original, jamais au dernier résultat :
+        baisse le bouton et les frappes reviennent là où tu les as jouées ; sur
+        <b class="ui">OFF</b>, le timing redevient le tien. Compare 1/8 et 1/16 autant de fois que
+        tu veux. Une modification à la main dans la grille devient la nouvelle prise jouée. La
+        rangée compte aussi la prise — <b class="ui">8 frappes</b>.</p>
+      <p>Sans kit chargé, la grille indique <b class="ui">Chargez un kit dans l'onglet Sample pour éditer cette prise sur la grille.</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Annuler</h2>
-      <p>L'annulation est un <b>bouton bascule</b>, pas une pile. Chaque session d'overdub capture
-        l'audio avant l'ajout de la couche ; annuler restaure cet instantané, et appuyer de
-        nouveau restaure ton overdub. C'est autant un bouton de comparaison qu'un bouton
-        d'annulation.</p>
-      <p>Deux limites : elle ne remonte <b>qu'une session en arrière</b>, donc un second overdub
-        remplace ce que l'annulation retenait, et elle est <b>partagée entre les pistes</b> — un
-        seul instantané pour tout le looper, pas un par piste. Fais un overdub sur la piste 2 et
-        l'annulation que tu gardais pour la piste 1 disparaît.</p>
+      <h2 id="undo"><span class="n">04.8</span>Annuler et effacer</h2>
+      <p>La touche d'angle <b class="ui">Annuler</b> de chaque cellule fait la chose évidente pour
+        cette cellule. Si la cellule contient le dernier overdub, elle l'annule — et appuyer de
+        nouveau le remet, c'est donc aussi un bouton de comparaison. Sinon, elle <b>efface la prise
+        de la cellule</b>.</p>
+      <p>L'annulation d'overdub ne remonte <b>qu'une session en arrière</b> et elle est
+        <b>partagée entre les cellules</b> : un second overdub, sur n'importe quelle cellule,
+        remplace ce que l'annulation retenait. Fais un overdub sur la cellule 2 et l'annulation que
+        tu gardais pour la cellule 1 disparaît — la touche d'angle de la cellule 1 l'efface alors
+        à la place.</p>
+      <p id="undo-transport">La touche d'annulation du transport fait la même chose sans choisir de
+        cellule : elle annule le dernier overdub s'il y en a un, et sinon efface la prise refermée
+        en dernier. La touche corbeille, <b class="ui">Effacer toutes les boucles</b>, vide le looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Routage par piste</h2>
-      <p><b class="ui">IN</b> et <b class="ui">OUT</b> déterminent d'où vient l'audio d'une piste
-        et où il va ; <b class="ui">DURÉE</b> et <b class="ui">DUB</b> déterminent sa durée et son
-        nombre de passes.</p>
+      <h2 id="routing"><span class="n">04.9</span>Les réglages d'une cellule</h2>
+      <p>Les tuiles à côté de chaque pad sont les réglages de la cellule ; chacune affiche une
+        petite étiquette et sa valeur. <b class="ui">IN</b> et <b class="ui">OUT</b> déterminent
+        d'où vient le son de la loop et où il va, <b class="ui">DURÉE</b> et <b class="ui">DUB</b>
+        sa durée et son nombre de passes ; une tuile <b class="ui">PRESET</b> apparaît quand la
+        cellule a son propre preset ; la tuile d'édition ouvre l'<a href="#editor">éditeur de
+        loop</a>, et le potentiomètre est le niveau de la cellule
+        (<b class="ui">Niveau de la piste de boucle N</b>, de 0 à 1,5).</p>
 
       <h3>IN</h3>
       <p>Le menu <b class="ui">IN</b> propose <b class="ui">Post FX (le rig)</b> — la guitare
         traitée, ce que tu veux généralement. Avec plusieurs rigs, ça devient
-        <b class="ui">Post FX · &lt;rig name&gt;</b> par rig et la puce affiche
+        <b class="ui">Post FX · &lt;rig name&gt;</b> par rig et la tuile affiche
         <b class="ui">FX · &lt;rig&gt;</b>. En dessous, une entrée par canal d'entrée matériel sous
         son propre nom — une voix sans effet ou un second musicien directement depuis l'interface
-        — et <b class="ui">Sampler</b>, puce <b class="ui">SMP</b>, pour boucler les pads.</p>
+        — et <b class="ui">Pads du sampler (MIDI)</b>, tuile <b class="ui">MIDI</b>, qui en fait une
+        <a href="#midi">cellule MIDI</a>.</p>
+      <p><b class="ui">Cette boucle seule · &lt;rig&gt;</b> donne un rig au looper seul : ce rig est
+        retiré de ce que tu entends en direct, et tant qu'une cellule qui l'enregistre est armée,
+        en enregistrement ou en overdub, c'est <b>le seul rig en direct qu'on entend</b> — les
+        autres se taisent pendant la prise et reviennent après. Construis un rig juste pour une
+        partie de loop — une octave de basse, une nappe — et il ne déborde jamais sur ton jeu. La
+        tuile affiche <b class="ui">Seul · &lt;rig&gt;</b>.</p>
 
       <h3>OUT</h3>
-      <p>Le menu <b class="ui">OUT</b> propose <b class="ui">Mix principal</b> (puce
+      <p>Le menu <b class="ui">OUT</b> propose <b class="ui">Mix principal</b> (tuile
         <b class="ui">MIX</b>), une entrée par paire de sorties matérielles supplémentaire —
         <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> et ainsi de suite, qui nécessitent
         d'activer <b class="ui">Utiliser toutes les sorties de l'interface</b> dans Réglages — et
-        <b class="ui">Into &lt;rig name&gt;</b>.</p>
+        <b class="ui">Vers &lt;rig name&gt;</b>.</p>
       <p>Ce dernier est le plus intéressant : au lieu d'aller directement dans le mix, la loop joue
         <em>dans</em> ce rig, pour que les effets du rig la traitent en direct. Fais une loop
         d'une partie clean, envoie-la dans un rig avec un delay et un filtre, et balaie le filtre
-        pendant que la loop tourne. Un rig depuis lequel la piste enregistre n'est pas proposé —
+        pendant que la loop tourne. Un rig depuis lequel la cellule enregistre n'est pas proposé —
         ce serait une boucle de larsen.</p>
 
       <h3>LEN et DUB</h3>
-      <p>La puce <b class="ui">DURÉE</b> parcourt 0, 1, 2, 4 et 8 mesures. À 0, elle affiche
-        <b class="ui">LIBRE</b> ; sinon <b class="ui">N BAR</b>, et la prise est fixée à ce nombre
+      <p>La tuile <b class="ui">DURÉE</b> parcourt 0, 1, 2, 4 et 8 mesures. À 0, elle affiche
+        <b class="ui">LIBRE</b> ; sinon <b class="ui">N MES</b>, et la prise est fixée à ce nombre
         de mesures. Sans tempo réglé, le menu indique
         <b class="ui">Pas encore de tempo — enregistrez la première boucle avec AUTO activé</b>.</p>
-      <p>La puce <b class="ui">DUB</b> parcourt 0, 1, 2 et 4 passes d'overdub automatiques — la
-        piste repasse d'elle-même en lecture après ce nombre de tours.</p>
+      <p>La tuile <b class="ui">DUB</b> parcourt 0, 1, 2 et 4 passes d'overdub automatiques — la
+        cellule repasse d'elle-même en lecture après ce nombre de tours.</p>
+
+      <h3 id="preset">Le preset de la loop</h3>
+      <p>Une cellule peut enregistrer à travers un son à elle, indépendamment de son entrée. Appui
+        long sur la cellule → <b class="ui">Preset de la boucle · …</b> propose <b class="ui">Le rig en cours</b> (par défaut : joue ce qui est en place), <b class="ui">Scène A du rig actuel</b>
+        à D, et <b class="ui">Choisir un preset…</b> — d'abord les presets du morceau sur scène, puis
+        toutes les banques, avec catégories et recherche.</p>
+      <p>Le preset s'active quand la cellule commence à enregistrer, commence un overdub ou est
+        armée, et quand la prise est terminée, le rig que tu avais revient — sauf si tu as choisi
+        un autre preset entre-temps, qui reste alors en place. Enregistre une partie rythmique sur
+        un preset clean et prends un solo par-dessus avec ton son lead sans rien toucher.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>Ce qui est sauvegardé</h2>
-      <p>La puce <b class="ui">PRESETS</b> ouvre <b class="ui">Presets de looper</b>, qui ne
-        conservent <b>que la configuration</b> : les IN, OUT, LEN, DUB et pan de chaque piste,
-        plus l'indicateur AUTO. Un modèle de routage que tu rappelles au début d'un morceau — pas
-        un enregistrement.</p>
-      <div class="note warn">
-        <div class="t">L'audio des loops ne peut pas être exporté</div>
-        <p>Il n'y a aucun moyen de sauvegarder une loop sous forme de fichier — pas d'export, pas
-          de feuille de partage. Le seul moyen de capturer ce que le looper a joué est
-          l'enregistreur de l'onglet <b class="ui a">Scène</b>, qui enregistre le mix de sortie
-          (rig, looper, pads et backing ensemble, plus une piste d'entrée sèche séparée). Si une
-          loop mérite d'être conservée, lance l'enregistrement sur Perform et laisse-le tourner.</p>
+      <h2 id="saving"><span class="n">04.10</span>Ce qui est sauvegardé</h2>
+      <p>La touche presets ouvre <b class="ui">Presets de looper</b>, qui conservent <b>la
+        configuration</b> : les IN, OUT, LEN, DUB, pan, preset de loop et quantification de chaque
+        cellule, plus l'indicateur AUTO — et les prises des cellules MIDI, qui sont légères. Un
+        modèle que tu rappelles au début d'un morceau ; les prises audio restent en dehors.</p>
+      <h3>Les loops en fichiers</h3>
+      <p>Le menu d'appui long d'une cellule exporte sa loop — <b class="ui">Exporter la boucle en WAV…</b> — en
+        WAV stéréo 32 bits flottant à la fréquence d'échantillonnage de la session, et
+        <b class="ui">Exporter toutes les boucles…</b> exporte toutes les loops d'un coup. Chaque fichier
+        commence sur le premier temps du cycle, si bien que les fichiers tombent en place quand tu
+        les déposes ensemble dans une DAW.</p>
+      <p><b class="ui">Charger une boucle depuis un fichier…</b> place n'importe quel fichier audio dans la cellule, en
+        lecture. Dans un looper vide, le fichier devient la loop telle quelle, sans alignement des
+        limites, et il apporte son tempo : lu dans un nom comme <em>Loop 2 - 96.5 BPM</em> — le nom
+        que porte un export — ou déduit de sa durée. Une cellule MIDI n'a pas d'audio, elle ne propose
+        donc ni l'un ni l'autre.</p>
+      <div class="note">
+        <div class="t">Les presets portent la configuration, les fichiers portent le son</div>
+        <p>Un preset de looper ne contient jamais d'audio enregistré — c'est bien trop lourd ; seule
+          une prise MIDI des pads voyage dedans. Pour garder une loop, exporte-la ; pour garder une
+          performance entière, utilise l'enregistreur de l'onglet
+          <a href="/docs/fr/mix.html#recorder">Mix</a>, qui enregistre le mix de sortie plus une piste
+          d'entrée sèche séparée.</p>
       </div>
     </section>
 

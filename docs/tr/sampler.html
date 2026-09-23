@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sampler pad'leri — NAMper Dokümantasyonu</title>
-<meta name="description" content="On altı sampler pad'i: ses yükleme ve kaydetme, trim ve ADSR'li pad editörü, kitler ve dört fabrika drum kiti, trigger quantize, MIDI notaları 36–51 ve pad'lerin miksde nereye gittiği.">
+<meta name="description" content="On altı sampler pad'i: ses yükleme ve kaydetme, trim ve ADSR'li pad editörü, kitler ve dört fabrika drum kiti, MIDI notaları 36–51 ve pad'lerin miksde nereye gittiği.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Sampler pad'leri — NAMper Dokümantasyonu">
-<meta property="og:description" content="On altı pad, kitler, trim ve ADSR, quantize ve MIDI tetikleme.">
+<meta property="og:description" content="On altı pad, kitler, trim ve ADSR ile MIDI tetikleme.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/sampler.html">
 <meta property="og:type" content="article">
@@ -68,7 +69,7 @@
     <h1>On altı pad, tek sayfa.</h1>
     <p class="lede"><b class="ui a">Örnek</b> sekmesi, başparmaklarınla ya da bir MIDI pedalıyla
       çalabileceğin bir drum machine'dir: on altı pad, bir kit kütüphanesi, pad başına trim ve
-      zarf, ve zamanlamanın tam olması gerektiğinde bir quantizer.</p>
+      zarf, ve çaldığını bir ızgaraya basabilen bir looper.</p>
 
     <nav class="toc">
       <div class="slab">BU SAYFADA</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">Bir pad'e ses aktarmak</a></li>
         <li><a href="#editor">Pad editörü</a></li>
         <li><a href="#kits">Kitler</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
+        <li><a href="#quantize">Zamanlama ve quantize</a></li>
         <li><a href="#trigger">Pad'leri çalmak</a></li>
         <li><a href="#routing">Pad'ler nereye gider</a></li>
       </ul>
@@ -87,25 +88,30 @@
       <h2 id="grid"><span class="n">05.1</span>Izgara</h2>
       <p>Sabit bir 4×4 ızgarada on altı pad. Tek sayfa — banka yok, ikinci sayfa yok; çalabileceğin
         her şey aynı anda ekrandadır.</p>
-      <p>Telefonu yan çevir: başlık sola bir sütuna dönüşür — sampler seviyesi, quantize etiketi ve
-        <b class="ui">HEPSİNİ DURDUR</b> — 4×4'lük banko ise ekranın geri kalanının tamamını kaplar, pad'ler
-        onu dolduracak şekilde uzar.</p>
+      <p>Telefonu yan çevir: transport sola bir sütuna dönüşür — sampler seviyesi, kit tuşu,
+        <b class="ui">REC</b> ve <b class="ui">HEPSİNİ DURDUR</b> — 4×4'lük banko ise ekranın geri
+        kalanının tamamını kaplar, pad'ler onu dolduracak şekilde uzar.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="Akustik davul fabrika kitinin on altı pad'in tamamına yüklü olduğu Sample sekmesi; her biri sample adını, uzunluğunu ve dalga formunu gösteriyor, başlıkta LEVEL ve QUANT düğmeleri ile quantize ızgara çipi var.">
+             alt="Akustik davul fabrika kitinin on altı pad'in tamamına yüklü olduğu Sample sekmesi; her biri sample adını, uzunluğunu ve zarfıyla şekillenmiş dalga formunu gösteriyor, üstte seviye düğmesi, kit tuşu ve STOP ALL bulunan transport kartı var.">
         <figcaption><b class="ui">Davul — akustik</b> fabrika kiti on altı pad'in tamamına
           yüklü</figcaption>
       </figure>
-      <p>Başlık satırı soldan sağa şunları taşır: <b class="ui">SAMPLER</b> kelimesi, bir
-        <b class="ui">SEVİYE</b> düğmesi (0'dan 2'ye, varsayılan 1), bir <b class="ui">KUANT</b>
-        düğmesi, quantize ızgara çipi, kitler için <b class="ui">PRESET’LER</b> çipi, bir pad kayıt
-        yaparken yanan bir <b class="ui">REC</b> göstergesi ve <b class="ui">HEPSİNİ DURDUR</b>.</p>
-      <p>En altta, ipucu her şeyi anlatıyor:</p>
-      <p><b class="ui">Boş pad: yükle ya da kaydet · dolu: dokun = çal/dur, düzenlemek için basılı tut · MIDI notaları 36–51</b></p>
+      <p>Üstteki transport kartı soldan sağa şunları taşır: <b class="ui">SAMPLER</b> kelimesi,
+        sampler'ın seviye düğmesi (0'dan 2'ye, varsayılan 1, <b class="ui">+0 dB</b> olarak okunur),
+        kit tuşu, bir pad kayıt yaparken — tüm kartla birlikte — yanan bir <b class="ui">REC</b>
+        göstergesi ve <b class="ui">HEPSİNİ DURDUR</b>. On altı pad onun altında, kendi başlarına,
+        birbirine yakın durur.</p>
       <p><b>Boş bir pad</b> iki yarıya bölünür — <b class="ui">YÜKLE</b> ve <b class="ui">REC</b>.
-        <b>Yüklü bir pad</b> sample adını, uzunluğunu (örneğin <b class="ui">1.4s</b>), trim
-        dışındaki her şeyin soluklaştığı bir dalga formunu ve çalarken içinden geçen parlak bir
-        imleci gösterir.</p>
+        <b>Yüklü bir pad</b> sample adını, uzunluğunu (örneğin <b class="ui">1.4s</b>), dalga
+        formunu ve çalarken içinden geçen parlak bir imleci gösterir. Dalga <b>pad'in zarfından
+        geçirilerek</b> çizilir: yavaş bir attack önünü eğimli yapar, decay onu sustain seviyesine
+        indirir, release kuyruğu söndürür — böylece pad gerçekten çıkaracağı sesi gösterir, trim
+        dışındaki her şey de soluk kalır.</p>
+      <p>Bir pad ses verirken <b>kenarından içe doğru yanar</b>, ses yükseldikçe daha derine, ve
+        sesiyle birlikte söner — nasıl tetiklenmiş olursa olsun: bir dokunuş, bir MIDI notası ya da
+        vuruşlarını yeniden çalan bir <a href="/docs/tr/looper.html#midi">MIDI loop
+        hücresi</a>.</p>
       <p>Menü için herhangi bir pad'e uzun bas: <b class="ui">Ses yükle…</b>,
         <b class="ui">Miksi kaydet</b> ya da <b class="ui">Kaydı durdur</b>, ve — yüklü bir
         pad'de — <b class="ui">Düzenle…</b>, <b class="ui">Temizle</b> ve <b class="ui">MIDI Learn:
@@ -123,7 +129,7 @@
 
       <h3>Bir pad'e kaydetmek</h3>
       <p>Boş bir pad'in <b class="ui">REC</b> yarısı doğrudan içine kaydeder. Aynı anda sadece
-        bir pad kayıt yapabilir ve alım <b class="ui">Rec N</b> olarak adlandırılır. Motor
+        bir pad kayıt yapabilir ve alım <b class="ui">Kayıt N</b> olarak adlandırılır. Motor
         durduğunda şu mesajla reddeder:
         <b class="ui r">Ses kapalı — kayıttan önce güç düğmesine dokun.</b></p>
       <div class="note warn">
@@ -139,10 +145,16 @@
       <h2 id="editor"><span class="n">05.3</span>Pad editörü</h2>
       <p>Yüklü bir pad'e uzun bas → <b class="ui">Düzenle…</b>. Sayfa, sample adı ve uzunluğuyla
         birlikte <b class="ui">PAD N</b> başlığını taşır.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="Sampler'ın üzerinde pad düzenleyici: PAD 1, Kick, kırpma tutamaçları arasındaki dalga biçimi ile ADSR eğrisi ve değerleri, Gain ve Pitch düğmeleri, MODE ve TAP çipleri, Preview ve Load file.">
+        <figcaption>Pad düzenleyici: kırpma, dalganın üzerindeki zarf, Gain, Pitch, MODE ve TAP</figcaption>
+      </figure>
       <p>Dalga formunun başında ve sonunda <b>sürüklenebilir trim tutamaçları</b> vardır — yavaş
         bir attack'ı kesmek için başlangıcı içeri sürükle, uzun bir kuyruğu kısaltmak için bitişi
         içeri sürükle.</p>
-      <p><b>ADSR zarfı dalga formunun üzerine çizilir</b> ve üç yuvarlak tutamaç sürüklenerek
+      <p><b>ADSR zarfı, sen düzenledikçe dalga formunu şekillendirir</b> — dalga eğriyi izler —
+        ve üç yuvarlak tutamaç sürüklenerek
         düzenlenir: <b class="ui">Attack</b>, <b class="ui">Decay ve sustain</b> ve
         <b class="ui">Release</b>. Üstteki bir okuma değerleri gösterir, örneğin
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
@@ -194,9 +206,9 @@
         ve mod ayarı — <b>artı her pad'in sesinin özel bir kopyası</b>. O kopya asıl mesele: bir
         kit kaydedildikten sonra bir pad'in üzerine bir şey içe aktarmak, onu temizlemek ya da
         orijinal dosyayı silmek kiti boşaltamaz. Altı ay sonra geri yükle, yine çalar.</p>
-      <p>Tarayıcıyı <b class="ui">PRESET’LER</b> çipiyle aç; sayfanın başlığı
+      <p>Tarayıcıyı transport'taki kit tuşuyla aç; sayfanın başlığı
         <b class="ui">Sampler kitleri</b>'tir. Yüklemek için bir satıra dokun. Satır menüsünde
-        <b class="ui">Yeniden adlandır</b>, <b class="ui">Update with current kit</b> ve
+        <b class="ui">Yeniden adlandır</b>, <b class="ui">Mevcut kit ile güncelle</b> ve
         <b class="ui">Sil</b> vardır. Bir kiti silmek, yüklü pad'lerin ya da başka kayıtlı
         bir kitin hâlâ kullandığı sesi asla kaldırmaz.</p>
       <div class="note warn">
@@ -233,32 +245,16 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p><b class="ui">KUANT</b> düğmesi bir anahtar değil, bir <b>güçtür</b>. Sıfırda
-        <b class="ui">KAPALI</b> yazar; üstünde bir yüzde gösterir. %100'de her vuruş tam olarak
-        ızgaraya oturur; %30'da sadece hafif erken olanlar hizaya çekilir ve feel'in hayatta
-        kalır. Varsayılan 0, kapalıdır.</p>
-      <p>Yanındaki çip ızgarayı ayarlar, <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> ve <b class="ui">1/32</b> arasında döner. Varsayılan
-        <b class="ui">1/16</b>'dır.</p>
-      <p>Her iki ayar da <b>globaldir</b> — kit başına değil, pad başına değil. Bir kit yüklemek
-        onları değiştirmez.</p>
-      <div class="note warn">
-        <div class="t">Üç şeyin hepsi doğru olmalı</div>
-        <p>Quantize, ancak bunların <b>üçü de</b> geçerliyken duyulabilir bir şey yapar ve ekran
-          bunu sana söylemez:</p>
-        <ul style="--nc:var(--drive)">
-          <li>bir <b>tempo ayarlı</b> olmalı — aksi halde ızgara yoktur;</li>
-          <li>bir <b>loop çalıyor</b> olmalı — looper fazı sağlar, böylece ızgara birinci
-            vuruşun nerede olduğunu bilir;</li>
-          <li><b>kayıt yapıyor</b> olmalısın — ya <b class="ui a">Sahne</b> kaydedicisi, ya da
-            kaynağı sampler olan bir loop parçası.</li>
-        </ul>
-        <p>Hiçbir şeyin üzerinde jam yaparken düğmeyi açarsan hiçbir fark duymazsın. Bu bilerek
-          böyle: konuşmadan önce bir sonraki on altılığı bekleyen bir pad parmaklarının altında
-          bozuk hissettirir; bu yüzden serbest çalma her zaman quantize edilmemiş bırakılır ve
-          düzeltme sadece bir kayda düştüğü yerde uygulanır.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>Zamanlama ve quantize</h2>
+      <p>Pad'ler her zaman <b>vurduğun anda</b> ses verir. Konuşmadan önce bir sonraki on altılığı
+        bekleyen bir pad parmaklarının altında bozuk hissettirirdi; bu yüzden sampler'ın kendisi bir
+        vuruşu asla kaydırmaz.</p>
+      <p>Zamanlama, çalınanın saklandığı yerde düzeltilir: pad'leri <b class="ui">IN</b>'i
+        <b class="ui">Sampler pad'leri (MIDI)</b> olan bir looper hücresine kaydet. O hücre her vuruşu
+        bir olay olarak saklar; kendi <b class="ui">Kuantize</b> düğmesi ve <b class="ui">IZGARA</b>'i
+        (<b class="ui">1/4</b> ile <b class="ui">1/32</b> arası) vardır — kayıt sırasında ya da
+        sonradan editöründe; orada quantize, take'i çaldığın haliyle asla bozmaz. Bkz.
+        <a href="/docs/tr/looper.html#midi">MIDI hücreleri</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -266,39 +262,35 @@
       <p>Dokunarak: bir dokunuş, <b class="ui">MOD</b> ve <b class="ui">TAP</b> ayarlarına göre
         pad'i çalar ya da durdurur, uzun bir basış menüyü açar.</p>
       <p>MIDI ile: <b>36'dan 51'e kadar notalar 1'den 16'ya kadar pad'leri çalar</b>, GM drum
-        kuralını izleyerek — nota 36, pad 1'dir. Bu her zaman etkindir ve herhangi bir MIDI
-        kanalında kurulum gerektirmez, kendi eşleştirmelerinden biri o notayı önceden almadıkça.</p>
+        kuralını izleyerek — nota 36, pad 1'dir. Bunlar Ayarlar → <b class="ui">Kontrol</b> içinde
+        fabrika eşlemeleri olarak, herhangi bir MIDI kanalında gelir; bu yüzden bir dokunuş gibi
+        <b class="ui">Döngü</b> ve <b class="ui">Latch</b> ayarlarına uyarlar — bir basış döngülü bir
+        pad'i başlatır, sonraki durdurur — ve onları diğer eşlemeler gibi taşıyabilir, silebilir ya
+        da geri yükleyebilirsin.</p>
       <p><b>Velocity kullanılmaz.</b> Bir kontrolcü pad'ine ne kadar sert vurursan vur, sample
         editörde ayarladığın <b class="ui">Gain</b>'de çalar. Seviyeleri pad editöründe bir kez
         ayarla, öyle kalırlar.</p>
-      <div class="note tip">
-        <div class="t">Öğrenilmiş eşleştirmeler ham notalardan daha iyi davranır</div>
-        <p>Ayarlar → <b class="ui">Kontrol</b> içinde oluşturduğun bir eşleme play/stop çağırır ve
-          böylece <b class="ui">Döngü</b> ile <b class="ui">Latch</b> ayarlarına uyar: pedala bir
-          basış döngüyü başlatır, ikincisi durdurur. Ham MIDI notaları 36–51 ise her zaman baştan
-          tetikler. Döngülü pad'leri pedalla sürüyorsan, yerleşik nota aralığına güvenmek yerine
-          eşlemeyi öğret.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>Pad'ler nereye gider</h2>
       <p>Pad'ler <b>doğrudan ana mikse</b> toplanır — gitar zincirinden geçmezler, yani amfinin
-        gain'i ve reverb'in onlara asla dokunmaz. Başlıktaki <b class="ui">SEVİYE</b> düğmesi tüm
+        gain'i ve reverb'in onlara asla dokunmaz. Transport'taki seviye düğmesi tüm
         sampler'ın rig'e karşı ne kadar yüksek oturduğunu ayarlar.</p>
       <p>Uygulamanın başka yerlerinde de bir kaynak olarak kullanılabilirler:</p>
       <ul style="--nc:var(--power)">
         <li>Bir <b>zincir girişi</b> olarak — bir rig'in IN konektöründe ya da paralel bir dalda
           (çip <b class="ui">SMPL</b>) <b class="ui">Sampler pad’leri</b>'i seç, pad'ler o rig'in
           efektlerinden geçer.</li>
-        <li>Bir <b>loop parça kaynağı</b> olarak — bir looper parçasının <b class="ui">IN</b>'ini
-          <b class="ui">Sampler</b>'a ayarla (çip <b class="ui">SMP</b>), pad'lerde çaldığın bir
-          beat'i loop'layabilirsin.</li>
-        <li>Bir <b>compressor sidechain</b>'i olarak — bir Comp bloğunun
+        <li>Bir <b>loop hücresi kaynağı</b> olarak — bir looper hücresinin <b class="ui">IN</b>'ini
+          <b class="ui">Sampler pad'leri (MIDI)</b>'e ayarla; pad'lerde çaldığın beat'i düzenleyip
+          quantize edebileceğin vuruşlar olarak kaydeder: bir
+          <a href="/docs/tr/looper.html#midi">MIDI hücresi</a>.</li>
+        <li>Bir <b>compressor sidechain</b>'i olarak — bir Kompresör bloğunun
           <b class="ui">Sidechain</b> menüsü <b class="ui">SMP</b>'yi içerir, yani kick gitarı
           bastırabilir.</li>
       </ul>
-      <p>Başlıktaki <b class="ui">HEPSİNİ DURDUR</b>, çalan her pad'i aynı anda serbest bırakır —
+      <p>Transport'taki <b class="ui">HEPSİNİ DURDUR</b>, çalan her pad'i aynı anda serbest bırakır —
         kilitlenmiş bir drone ya da bulamadığın bir loop için panik düğmesi.</p>
     </section>
 

@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sampler pads — NAMper Documentation</title>
-<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, trigger quantize, MIDI notes 36–51 and where the pads go in the mix.">
+<meta name="description" content="Sixteen sampler pads: loading and recording sounds, the pad editor with trim and ADSR, kits and the four factory drum kits, MIDI notes 36–51 and where the pads go in the mix.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Sampler pads — NAMper Documentation">
-<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, quantize and MIDI triggering.">
+<meta property="og:description" content="Sixteen pads, kits, trim and ADSR, and MIDI triggering.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/sampler.html">
 <meta property="og:type" content="article">
@@ -68,7 +69,7 @@
     <h1>Sixteen pads, one page.</h1>
     <p class="lede">The <b class="ui a">Sample</b> tab is a drum machine you can play with your
       thumbs or a MIDI pedal: sixteen pads, a kit library, trim and envelope per pad, and a
-      quantizer for when the timing has to be right.</p>
+      looper that can print what you play onto a grid.</p>
 
     <nav class="toc">
       <div class="slab">ON THIS PAGE</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">Getting sound into a pad</a></li>
         <li><a href="#editor">The pad editor</a></li>
         <li><a href="#kits">Kits</a></li>
-        <li><a href="#quantize">Trigger quantize</a></li>
+        <li><a href="#quantize">Timing and quantize</a></li>
         <li><a href="#trigger">Playing the pads</a></li>
         <li><a href="#routing">Where the pads go</a></li>
       </ul>
@@ -87,25 +88,28 @@
       <h2 id="grid"><span class="n">05.1</span>The grid</h2>
       <p>Sixteen pads in a fixed 4×4 grid. One page — there are no banks and no second page, so
         everything you can play is on screen at once.</p>
-      <p>Turn the phone on its side and the header becomes a column down the left — the sampler
-        level, the quantize chip and <b class="ui">STOP ALL</b> — while the 4×4 bank takes the whole
-        of the rest of the screen, the pads stretching to fill it.</p>
+      <p>Turn the phone on its side and the transport becomes a column down the left — the sampler
+        level, the kits key, <b class="ui">REC</b> and <b class="ui">STOP ALL</b> — while the 4×4
+        bank takes the whole of the rest of the screen, the pads stretching to fill it.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform, with the LEVEL and QUANT knobs and the quantize grid chip in the header.">
+             alt="The Sample tab with the acoustic drum factory kit loaded across all sixteen pads, each showing its sample name, length and waveform shaped by its envelope, under the transport card with the level knob, the kits key and STOP ALL.">
         <figcaption>The <b class="ui">Drums — Acoustic</b> factory kit loaded across all 16 pads</figcaption>
       </figure>
-      <p>The header row carries, left to right: the word <b class="ui">SAMPLER</b>, a
-        <b class="ui">LEVEL</b> knob (0 to 2, default 1), a <b class="ui">QUANT</b> knob, the
-        quantize grid chip, the <b class="ui">PRESETS</b> chip for kits, a <b class="ui">REC</b>
-        indicator that lights while a pad is recording, and <b class="ui">STOP ALL</b>.</p>
-      <p>Along the bottom, the hint says it all:</p>
-      <p><b class="ui">Empty pad: load or record · loaded: tap = play/stop, hold to edit · MIDI notes
-        36–51</b></p>
+      <p>The transport card on top carries, left to right: the word <b class="ui">SAMPLER</b>, the
+        sampler's level knob (0 to 2, default 1, read as <b class="ui">+0 dB</b>), the kits key, a
+        <b class="ui">REC</b> indicator that lights — with the whole card — while a pad is
+        recording, and <b class="ui">STOP ALL</b>. The sixteen pads stand under it on their own,
+        close together.</p>
       <p>An <b>empty pad</b> splits into two halves — <b class="ui">LOAD</b> and
         <b class="ui">REC</b>. A <b>loaded pad</b> shows the sample name, its length (for example
-        <b class="ui">1.4s</b>), a dimmed waveform with everything outside the trim faded back, and
-        a bright cursor sweeping through while it plays.</p>
+        <b class="ui">1.4s</b>), its waveform, and a bright cursor sweeping through while it plays.
+        The wave is drawn <b>through the pad's envelope</b>: a slow attack slopes its front, the
+        decay settles it to the sustain level, the release fades the tail — so the pad shows the
+        sound it will actually make, and everything outside the trim is faded back.</p>
+      <p>A pad <b>lights from its edge inward</b> as it sounds, the deeper the louder, and fades
+        with its sound — however it was fired: a tap, a MIDI note, or a
+        <a href="/docs/looper.html#midi">MIDI loop cell</a> replaying its hits.</p>
       <p>Long-press any pad for the menu: <b class="ui">Load sound…</b>,
         <b class="ui">Record mix</b> or <b class="ui">Stop recording</b>, and — on a loaded pad —
         <b class="ui">Edit…</b>, <b class="ui">Clear</b> and <b class="ui">MIDI Learn: pad N</b>.</p>
@@ -137,9 +141,15 @@
       <h2 id="editor"><span class="n">05.3</span>The pad editor</h2>
       <p>Long-press a loaded pad → <b class="ui">Edit…</b>. The sheet is headed
         <b class="ui">PAD N</b> with the sample name and its length.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="The pad editor sheet over the sampler: PAD 1, Kick, its waveform between the trim handles with the ADSR curve and its readout, the Gain and Pitch knobs, the MODE and TAP chips, Preview and Load file.">
+        <figcaption>The pad editor: trim, the envelope over the wave, Gain, Pitch, MODE and TAP</figcaption>
+      </figure>
       <p>The waveform has <b>draggable trim handles</b> at the start and end — drag the start in to
         cut off a slow attack, drag the end in to shorten a long tail.</p>
-      <p>The <b>ADSR envelope is drawn on top of the waveform</b> and edited by dragging three round
+      <p>The <b>ADSR envelope shapes the waveform</b> as you edit it — the wave follows the curve —
+        and is edited by dragging three round
         handles: <b class="ui">Attack</b>, <b class="ui">Decay and sustain</b> and
         <b class="ui">Release</b>. A readout above shows the values, like
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
@@ -188,7 +198,7 @@
         setting — <b>plus a private copy of every pad's audio</b>. That copy is the point: once a
         kit is saved, importing over a pad, clearing it or deleting the original file cannot hollow
         the kit out. Load it back in six months and it still plays.</p>
-      <p>Open the browser with the <b class="ui">PRESETS</b> chip; the sheet is titled
+      <p>Open the browser with the kits key in the transport; the sheet is titled
         <b class="ui">Sampler Kits</b>. Tap a row to load it. The row menu has
         <b class="ui">Rename</b>, <b class="ui">Update with current kit</b> and
         <b class="ui">Delete</b>. Deleting a kit never removes audio that the loaded pads or another
@@ -228,32 +238,16 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Trigger quantize</h2>
-      <p>The <b class="ui">QUANT</b> knob is a <b>strength</b>, not a switch. At zero it reads
-        <b class="ui">OFF</b>; above that it shows a percentage. At 100 % every hit lands exactly on
-        the grid; at 30 % only the slightly-early ones get pulled into line and your feel survives.
-        The default is 0, off.</p>
-      <p>The chip beside it sets the grid, cycling <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> and <b class="ui">1/32</b>. The default is
-        <b class="ui">1/16</b>.</p>
-      <p>Both settings are <b>global</b> — not per kit, not per pad. Loading a kit does not change
-        them.</p>
-      <div class="note warn">
-        <div class="t">Three things must all be true</div>
-        <p>Quantize only does something audible when <b>all three</b> of these hold, and the screen
-          does not tell you so:</p>
-        <ul style="--nc:var(--drive)">
-          <li>a <b>tempo is set</b> — there is no grid otherwise;</li>
-          <li>a <b>loop is running</b> — the looper supplies the phase, so the grid knows where beat
-            one is;</li>
-          <li>you are <b>recording</b> — either the <b class="ui a">Perform</b> recorder, or a loop
-            track whose source is the sampler.</li>
-        </ul>
-        <p>Turn the knob up while jamming over nothing and you will hear no difference. That is
-          deliberate: a pad that waits for the next sixteenth before it speaks feels broken under
-          your fingers, so free playing is always left unquantized and the correction is applied
-          only where it ends up on a recording.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>Timing and quantize</h2>
+      <p>Pads always sound <b>the moment you hit them</b>. A pad that waited for the next
+        sixteenth before it spoke would feel broken under your fingers, so the sampler itself never
+        moves a hit.</p>
+      <p>Timing is fixed where the playing is kept: record the pads into a looper cell whose
+        <b class="ui">IN</b> is <b class="ui">Sampler pads (MIDI)</b>. That cell stores each hit
+        as an event and has its own <b class="ui">Quantize</b> knob and <b class="ui">GRID</b>
+        (<b class="ui">1/4</b> to <b class="ui">1/32</b>) — while you record, or afterwards in its
+        editor, where quantizing never destroys the take as you played it. See
+        <a href="/docs/looper.html#midi">MIDI cells</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -262,38 +256,32 @@
         <b class="ui">MODE</b> and <b class="ui">TAP</b> settings, and a long-press opens the
         menu.</p>
       <p>By MIDI: <b>notes 36 to 51 play pads 1 to 16</b>, following the GM drum convention — note
-        36 is pad 1. This is always active and needs no setup, on any MIDI channel, unless one of
-        your own mappings has claimed that note first.</p>
+        36 is pad 1. They come as factory mappings in Settings → <b class="ui">Control</b>, on any
+        MIDI channel, so they respect <b class="ui">Loop</b> and <b class="ui">Latch</b> like a tap
+        does — one press starts a looping pad, the next stops it — and you can move, delete or
+        restore them like any other mapping.</p>
       <p><b>Velocity is not used.</b> However hard you hit a controller pad, the sample plays at the
         <b class="ui">Gain</b> you set in the editor. Set the levels once in the pad editor and they
         stay put.</p>
-      <div class="note tip">
-        <div class="t">Learned mappings behave better than raw notes</div>
-        <p>A mapping you create in Settings → <b class="ui">Control</b> calls play/stop, so it
-          respects <b class="ui">Loop</b> and <b class="ui">Latch</b> — one footswitch press starts
-          the loop, the next stops it. Raw MIDI notes 36–51 always retrigger from the start. If you
-          are driving looping pads from a pedal, learn the mapping rather than relying on the
-          built-in note range.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>Where the pads go</h2>
       <p>Pads sum <b>straight into the main mix</b> — they do not run through the guitar chain, so
-        your amp's gain and your reverb never touch them. The <b class="ui">LEVEL</b> knob in the
-        header sets how loud the whole sampler sits against the rig.</p>
+        your amp's gain and your reverb never touch them. The level knob in the
+        transport sets how loud the whole sampler sits against the rig.</p>
       <p>They are also available elsewhere in the app as a source:</p>
       <ul style="--nc:var(--power)">
         <li>As a <b>chain input</b> — pick <b class="ui">Sampler pads</b> on a rig's IN connector or
           on a parallel branch (chip <b class="ui">SMPL</b>) and the pads run through that rig's
           effects.</li>
-        <li>As a <b>loop track source</b> — set a looper track's <b class="ui">IN</b> to
-          <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) and you can loop a beat you tap out
-          on the pads.</li>
-        <li>As a <b>compressor sidechain</b> — a Comp block's <b class="ui">Sidechain</b> menu
+        <li>As a <b>loop cell source</b> — set a looper cell's <b class="ui">IN</b> to
+          <b class="ui">Sampler pads (MIDI)</b> and it records the beat you tap out as hits you can
+          edit and quantize: a <a href="/docs/looper.html#midi">MIDI cell</a>.</li>
+        <li>As a <b>compressor sidechain</b> — a Compressor block's <b class="ui">Sidechain</b> menu
           includes <b class="ui">SMP</b>, so the kick can duck the guitar.</li>
       </ul>
-      <p><b class="ui">STOP ALL</b> in the header releases every playing pad at once — the panic
+      <p><b class="ui">STOP ALL</b> in the transport releases every playing pad at once — the panic
         button for a latched drone or a loop you cannot find.</p>
     </section>
 

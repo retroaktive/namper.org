@@ -14,7 +14,7 @@ ITEMS = ["index.html", "privacy.html", "docs", "assets", "robots.txt",
          "sitemap.xml",
          # what the Mac package on the site is: the app from the package
          # reads it and offers the newer one in About
-         "latest.json"]
+         "latest.json", "favicon.ico"]
 
 
 def main():

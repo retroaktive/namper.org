@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pads do sampler — Documentação do NAMper</title>
-<meta name="description" content="Dezesseis pads do sampler: carregando e gravando sons, o editor de pads com trim e ADSR, kits e os quatro kits de bateria de fábrica, quantização de disparo, notas MIDI 36–51 e onde os pads entram na mixagem.">
+<meta name="description" content="Dezesseis pads do sampler: carregando e gravando sons, o editor de pads com trim e ADSR, kits e os quatro kits de bateria de fábrica, notas MIDI 36–51 e onde os pads entram na mixagem.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Pads do sampler — Documentação do NAMper">
-<meta property="og:description" content="Dezesseis pads, kits, trim e ADSR, quantização e disparo por MIDI.">
+<meta property="og:description" content="Dezesseis pads, kits, trim e ADSR, e disparo por MIDI.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/pt/sampler.html">
 <meta property="og:type" content="article">
@@ -68,7 +69,7 @@
     <h1>Dezesseis pads, uma página.</h1>
     <p class="lede">A aba <b class="ui a">Amostra</b> é uma bateria eletrônica que você toca com os
       polegares ou um pedal MIDI: dezesseis pads, uma biblioteca de kits, trim e envelope por pad,
-      e um quantizador para quando o tempo precisa estar certo.</p>
+      e um looper que consegue imprimir o que você toca em uma grade.</p>
 
     <nav class="toc">
       <div class="slab">NESTA PÁGINA</div>
@@ -77,7 +78,7 @@
         <li><a href="#loading">Colocando som em um pad</a></li>
         <li><a href="#editor">O editor de pads</a></li>
         <li><a href="#kits">Kits</a></li>
-        <li><a href="#quantize">Quantização de disparo</a></li>
+        <li><a href="#quantize">Timing e quantização</a></li>
         <li><a href="#trigger">Tocando os pads</a></li>
         <li><a href="#routing">Para onde os pads vão</a></li>
       </ul>
@@ -87,24 +88,29 @@
       <h2 id="grid"><span class="n">05.1</span>A grade</h2>
       <p>Dezesseis pads em uma grade fixa 4×4. Uma página — não há bancos nem uma segunda página,
         então tudo que você pode tocar está na tela de uma vez.</p>
-      <p>Vire o celular e o cabeçalho vira uma coluna à esquerda — o nível do sampler, a ficha de
-        quantização e <b class="ui">PARAR TUDO</b> — enquanto a grade 4×4 ocupa todo o resto da tela,
-        com os pads se esticando para preenchê-la.</p>
+      <p>Vire o celular e o transporte vira uma coluna à esquerda — o nível do sampler, a tecla
+        de kits, <b class="ui">REC</b> e <b class="ui">PARAR TUDO</b> — enquanto a grade 4×4 ocupa
+        todo o resto da tela, com os pads se esticando para preenchê-la.</p>
       <figure>
         <img class="phone" src="/docs/assets/pads.png" width="600" height="1303"
-             alt="A aba Sample com o kit de bateria acústica de fábrica carregado em todos os dezesseis pads, cada um mostrando o nome do sample, a duração e a forma de onda, com os botões LEVEL e QUANT e o chip de grade de quantização no cabeçalho.">
+             alt="A aba Sample com o kit de bateria acústica de fábrica carregado em todos os dezesseis pads, cada um mostrando o nome do sample, a duração e a forma de onda moldada pelo seu envelope, sob o cartão do transporte com o botão de nível, a tecla de kits e STOP ALL.">
         <figcaption>O kit de fábrica <b class="ui">Bateria — Acústica</b> carregado nos 16 pads</figcaption>
       </figure>
-      <p>A linha de cabeçalho traz, da esquerda para a direita: a palavra <b class="ui">SAMPLER</b>,
-        um botão <b class="ui">NÍVEL</b> (0 a 2, padrão 1), um botão <b class="ui">QUANT</b>, o
-        chip de grade de quantização, o chip <b class="ui">PRESETS</b> para kits, um indicador
-        <b class="ui">REC</b> que acende enquanto um pad está gravando, e <b class="ui">PARAR TUDO</b>.</p>
-      <p>Na parte de baixo, a dica diz tudo:</p>
-      <p><b class="ui">Pad vazio: carregue ou grave · carregado: toque = play/stop, segure para editar · notas MIDI 36–51</b></p>
+      <p>O cartão do transporte no topo traz, da esquerda para a direita: a palavra
+        <b class="ui">SAMPLER</b>, o botão de nível do sampler (0 a 2, padrão 1, lido como
+        <b class="ui">+0 dB</b>), a tecla de kits, um indicador <b class="ui">REC</b> que acende —
+        junto com o cartão inteiro — enquanto um pad está gravando, e
+        <b class="ui">PARAR TUDO</b>. Os dezesseis pads ficam logo abaixo, sozinhos, bem
+        juntos.</p>
       <p>Um <b>pad vazio</b> se divide em duas metades — <b class="ui">CARREGAR</b> e
         <b class="ui">REC</b>. Um <b>pad carregado</b> mostra o nome do sample, sua duração (por
-        exemplo <b class="ui">1.4s</b>), uma forma de onda escurecida com tudo fora do trim
-        apagado, e um cursor brilhante varrendo enquanto toca.</p>
+        exemplo <b class="ui">1.4s</b>), sua forma de onda e um cursor brilhante varrendo enquanto
+        toca. A onda é desenhada <b>através do envelope do pad</b>: um ataque lento inclina a
+        frente, o decaimento a assenta no nível de sustain, o release esvai a cauda — assim o pad
+        mostra o som que ele vai realmente fazer, e tudo fora do trim fica apagado.</p>
+      <p>Um pad <b>acende da borda para dentro</b> enquanto soa, mais fundo quanto mais alto, e se
+        apaga junto com o som — seja qual for o disparo: um toque, uma nota MIDI ou uma
+        <a href="/docs/pt/looper.html#midi">célula MIDI do looper</a> repetindo seus toques.</p>
       <p>Pressione e segure qualquer pad para o menu: <b class="ui">Carregar som…</b>,
         <b class="ui">Gravar mix</b> ou <b class="ui">Parar gravação</b>, e — em um pad carregado —
         <b class="ui">Editar…</b>, <b class="ui">Limpar</b> e <b class="ui">MIDI Learn: pad N</b>.</p>
@@ -137,10 +143,16 @@
       <h2 id="editor"><span class="n">05.3</span>O editor de pads</h2>
       <p>Pressione e segure um pad carregado → <b class="ui">Editar…</b>. A folha é intitulada
         <b class="ui">PAD N</b> com o nome do sample e sua duração.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/pad-editor.png" width="600" height="1303"
+             alt="O editor do pad sobre o sampler: PAD 1, Kick, a forma de onda entre as alças de corte com a curva ADSR e seus valores, os botões Gain e Pitch, os chips MODE e TAP, Preview e Load file.">
+        <figcaption>O editor do pad: corte, envelope sobre a onda, Gain, Pitch, MODE e TAP</figcaption>
+      </figure>
       <p>A forma de onda tem <b>alças de trim arrastáveis</b> no início e no fim — arraste o início
         para dentro para cortar um ataque lento, arraste o fim para dentro para encurtar uma cauda
         longa.</p>
-      <p>O <b>envelope ADSR é desenhado sobre a forma de onda</b> e editado arrastando três alças
+      <p>O <b>envelope ADSR molda a forma de onda</b> enquanto você o edita — a onda segue a curva —
+        e é editado arrastando três alças
         redondas: <b class="ui">Ataque</b>, <b class="ui">Decaimento e sustain</b> e
         <b class="ui">Release</b>. Uma leitura acima mostra os valores, como
         <b class="ui">A 0 ms · D 120 ms · S 100% · R 0 ms</b>.</p>
@@ -193,9 +205,9 @@
         uma vez que um kit é salvo, importar por cima de um pad, limpá-lo ou apagar o arquivo
         original não consegue esvaziar o kit. Carregue-o de volta daqui a seis meses e ele ainda
         toca.</p>
-      <p>Abra o navegador com o chip <b class="ui">PRESETS</b>; a folha é intitulada
+      <p>Abra o navegador com a tecla de kits no transporte; a folha é intitulada
         <b class="ui">Kits do sampler</b>. Toque em uma linha para carregá-la. O menu da linha tem
-        <b class="ui">Renomear</b>, <b class="ui">Update with current kit</b> e
+        <b class="ui">Renomear</b>, <b class="ui">Atualizar com o estado atual de kit</b> e
         <b class="ui">Apagar</b>. Apagar um kit nunca remove áudio que os pads carregados ou outro
         kit salvo ainda estejam usando.</p>
       <div class="note warn">
@@ -232,31 +244,16 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="quantize"><span class="n">05.5</span>Quantização de disparo</h2>
-      <p>O botão <b class="ui">QUANT</b> é uma <b>intensidade</b>, não um interruptor. Em zero ele
-        mostra <b class="ui">OFF</b>; acima disso mostra uma porcentagem. A 100 % cada toque cai
-        exatamente na grade; a 30 % só os ligeiramente adiantados são puxados para a linha e seu
-        feel sobrevive. O padrão é 0, desligado.</p>
-      <p>O chip ao lado ajusta a grade, ciclando <b class="ui">1/4</b>, <b class="ui">1/8</b>,
-        <b class="ui">1/16</b> e <b class="ui">1/32</b>. O padrão é <b class="ui">1/16</b>.</p>
-      <p>Os dois ajustes são <b>globais</b> — não por kit, não por pad. Carregar um kit não os
-        muda.</p>
-      <div class="note warn">
-        <div class="t">Três coisas precisam ser verdadeiras ao mesmo tempo</div>
-        <p>A quantização só faz algo audível quando <b>todas as três</b> destas se sustentam, e a
-          tela não avisa isso:</p>
-        <ul style="--nc:var(--drive)">
-          <li>um <b>tempo está definido</b> — não há grade sem isso;</li>
-          <li>um <b>loop está rodando</b> — o looper fornece a fase, para que a grade saiba onde
-            fica o tempo um;</li>
-          <li>você está <b>gravando</b> — seja o gravador de <b class="ui a">Palco</b>, seja uma
-            faixa de loop cuja fonte é o sampler.</li>
-        </ul>
-        <p>Suba o botão enquanto toca sem gravar nada e você não vai ouvir diferença alguma. Isso é
-          proposital: um pad que espera pela próxima semicolcheia antes de soar parece quebrado sob
-          seus dedos, então a execução livre fica sempre sem quantização e a correção é aplicada
-          somente onde ela acaba entrando em uma gravação.</p>
-      </div>
+      <h2 id="quantize"><span class="n">05.5</span>Timing e quantização</h2>
+      <p>Os pads sempre soam <b>no instante em que você os toca</b>. Um pad que esperasse a
+        próxima semicolcheia antes de soar pareceria quebrado sob seus dedos, então o próprio
+        sampler nunca move um toque.</p>
+      <p>O timing é corrigido onde a execução fica guardada: grave os pads em uma célula do looper
+        cujo <b class="ui">IN</b> seja <b class="ui">Pads do sampler (MIDI)</b>. Essa célula guarda cada
+        toque como um evento e tem seu próprio botão <b class="ui">Quantizar</b> e sua
+        <b class="ui">GRADE</b> (<b class="ui">1/4</b> a <b class="ui">1/32</b>) — enquanto você grava,
+        ou depois, no editor dela, onde quantizar nunca destrói a tomada como você a tocou. Veja
+        <a href="/docs/pt/looper.html#midi">Células MIDI</a>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -264,40 +261,34 @@
       <p>Por toque: um toque toca ou para o pad de acordo com seus ajustes de
         <b class="ui">MODO</b> e <b class="ui">TAP</b>, e pressionar e segurar abre o menu.</p>
       <p>Por MIDI: <b>as notas 36 a 51 tocam os pads 1 a 16</b>, seguindo a convenção de bateria
-        GM — a nota 36 é o pad 1. Isso está sempre ativo e não precisa de configuração, em
-        qualquer canal MIDI, a menos que um dos seus próprios mapeamentos já tenha reivindicado
-        aquela nota primeiro.</p>
+        GM — a nota 36 é o pad 1. Elas vêm como mapeamentos de fábrica em Ajustes →
+        <b class="ui">Controle</b>, em qualquer canal MIDI, então respeitam <b class="ui">Loop</b> e
+        <b class="ui">Latch</b> como um toque — uma pisada inicia um pad em loop, a seguinte o para —
+        e você pode movê-los, apagá-los ou restaurá-los como qualquer outro mapeamento.</p>
       <p><b>Velocity não é usada.</b> Por mais forte que você acerte um pad do controlador, o
         sample toca no <b class="ui">Ganho</b> que você definiu no editor. Ajuste os níveis uma vez
         no editor de pads e eles ficam assim.</p>
-      <div class="note tip">
-        <div class="t">Mapeamentos aprendidos se comportam melhor do que notas cruas</div>
-        <p>Um mapeamento criado em Ajustes → <b class="ui">Controle</b> chama play/stop e por isso
-          respeita <b class="ui">Loop</b> e <b class="ui">Latch</b>: uma pisada começa o loop, a
-          seguinte para. Notas MIDI 36–51 puras sempre reiniciam do começo. Se você dispara pads em
-          loop por uma pedaleira, aprenda o mapeamento em vez de contar com a faixa de notas
-          embutida.</p>
-      </div>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="routing"><span class="n">05.7</span>Para onde os pads vão</h2>
       <p>Os pads se somam <b>direto na mixagem principal</b> — eles não passam pela cadeia de
         guitarra, então o ganho do seu amplificador e seu reverb nunca os tocam. O botão
-        <b class="ui">NÍVEL</b> no cabeçalho ajusta o quanto o sampler inteiro fica alto em
+        de nível no transporte ajusta o quanto o sampler inteiro fica alto em
         relação ao rig.</p>
       <p>Eles também estão disponíveis em outros lugares do app como uma fonte:</p>
       <ul style="--nc:var(--power)">
         <li>Como uma <b>entrada de cadeia</b> — escolha <b class="ui">Pads do sampler</b> no
           conector IN de um rig ou em um ramo paralelo (chip <b class="ui">SMPL</b>) e os pads
           passam pelos efeitos daquele rig.</li>
-        <li>Como uma <b>fonte de faixa de loop</b> — ajuste o <b class="ui">IN</b> de uma faixa do
-          looper para <b class="ui">Sampler</b> (chip <b class="ui">SMP</b>) e você pode colocar
-          em loop uma batida que você toca nos pads.</li>
+        <li>Como uma <b>fonte de célula de loop</b> — ajuste o <b class="ui">IN</b> de uma célula do
+          looper para <b class="ui">Pads do sampler (MIDI)</b> e ela grava a batida que você toca como
+          toques que você pode editar e quantizar: uma <a href="/docs/pt/looper.html#midi">célula
+          MIDI</a>.</li>
         <li>Como um <b>sidechain de compressor</b> — o menu <b class="ui">Sidechain</b> de um
-          bloco Comp inclui <b class="ui">SMP</b>, para que o kick possa abaixar a guitarra.</li>
+          bloco Compressor inclui <b class="ui">SMP</b>, para que o kick possa abaixar a guitarra.</li>
       </ul>
-      <p><b class="ui">PARAR TUDO</b> no cabeçalho solta todo pad em execução de uma vez — o botão de
+      <p><b class="ui">PARAR TUDO</b> no transporte solta todo pad em execução de uma vez — o botão de
         pânico para um drone travado ou um loop que você não consegue achar.</p>
     </section>
 

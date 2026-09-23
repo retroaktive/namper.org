@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIDI 与控制 — NAMper 文档</title>
 <meta name="description" content="控制映射表与 MIDI 学习、所有可映射的目标、内置 MIDI 映射表、蓝牙配对、已学习声音触发,以及调音器。">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="MIDI 与控制 — NAMper 文档">
@@ -123,7 +124,7 @@
       <ol style="--nc:var(--eq)">
         <li>点按 <b class="ui">学习</b>。芯片会亮起,该行进入等待状态。</li>
         <li>按下你想使用的踏板开关,或扫动表情踏板。</li>
-        <li>来源芯片会自动填入 <b class="ui">CC 42</b> 或 <b class="ui">Note 60</b> 之类的内容,
+        <li>来源芯片会自动填入 <b class="ui">CC 42</b> 或 <b class="ui">音符 60</b> 之类的内容,
           卡片下方的 <b class="ui">Last:</b> 一行会加以确认——<b class="ui">Learned CC 42</b>。</li>
       </ol>
       <p>再次点按 <b class="ui">学习</b> 可解除等待状态。来源芯片自身的菜单中有一个
@@ -134,7 +135,7 @@
       <h3>就地学习</h3>
       <p>你不必从 Control 标签页开始。长按应用中几乎任何一个控件——一个旋钮、一行芯片、一个循环垫、
         一个采样垫、Perform 的传输按钮——菜单都会提供针对该控件本身的
-        <b class="ui">MIDI Learn: &lt;name&gt;</b>。它会以边框高亮自身,并显示
+        <b class="ui">MIDI 学习：&lt;name&gt;</b>。它会以边框高亮自身,并显示
         <b class="ui">拨动一个 MIDI 控制器…</b>;移动踏板,映射即完成。如果抓错了旋钮,
         <b class="ui">取消学习</b> 可以退出。</p>
       <div class="note tip">
@@ -152,10 +153,10 @@
           <thead><tr><th>分区</th><th>动作</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">无操作</b></td><td>让该行保持无效。</td></tr>
-            <tr><td><b class="ui">采样打击垫</b></td><td>从 <b class="ui">Pad 1</b> 起,每个已加载
+            <tr><td><b class="ui">采样打击垫</b></td><td>从 <b class="ui">打击垫 1</b> 起,每个已加载
               的打击垫各一项。</td></tr>
-            <tr><td><b class="ui">循环乐句器</b></td><td><b class="ui">Tap track 1</b>……
-              <b class="ui">Tap track 4</b>、<b class="ui">运行/停止</b>、
+            <tr><td><b class="ui">循环乐句器</b></td><td><b class="ui">点按音轨 1</b>……
+              <b class="ui">点按音轨 4</b>、<b class="ui">运行/停止</b>、
               <b class="ui">全部清除</b>。</td></tr>
             <tr><td><b class="ui">预设</b></td><td>按名称列出的每个音色组预设,外加
               <b class="ui">下一个预设</b>。</td></tr>
@@ -170,6 +171,12 @@
       <p>当你拥有一个以上的音色组时,会额外出现三项:<b class="ui">下一个音色组</b>、
         <b class="ui">模块开/关 · 当前音色组</b> 和 <b class="ui">模块参数 · 当前音色组</b>。这些会跟随当前拥有 MIDI 焦点的音色组,所以一个踏板开关就能旁通"无论我正在弹哪个
         音色组的过载",而不是绑死在某一个固定的音色组上。</p>
+      <p>随预设库和场景渐变一起,又多了两组。在 <b class="ui">预设</b> 下:
+        <b class="ui">按数值选预设库</b>(0 是出厂预设库,1–3 是用户预设库)、
+        <b class="ui">下一个预设库</b> 和 <b class="ui">上一个预设库</b>。在
+        <b class="ui">场景</b> 下,针对 CC 行:<b class="ui">用踏板渐变</b> 加上一对场景——
+        踏板移动时,旋钮在两个场景的数值之间平滑过渡,开关则在中点处翻转。参见
+        <a href="/docs/zh/rig.html#presets">预设与场景</a>。</p>
       <p>接线之前,有两条限制值得记住:</p>
       <ul style="--nc:var(--amp)">
         <li><b>连续型的模块参数需要一个 CC。</b>音符和已学习的声音都是事件——它们无法连续扫动一个
@@ -280,9 +287,9 @@
         <b class="ui">弹一个音…</b>。想对某一根弦精确调音时使用它。</p>
 
       <h3>乐器与调弦</h3>
-      <p>NAMper 会自行判断你手上拿的是什么乐器,并以徽章形式显示:<b class="ui">吉他</b>、
-        <b class="ui">贝斯</b> 或 <b class="ui">尤克里里</b>。没有手动选择器——接上贝斯,
-        调音器就会跟着切换。</p>
+      <p>角落里的徽章就是乐器:<b class="ui">吉他</b>、<b class="ui">贝斯</b>
+        或 <b class="ui">尤克里里</b>。它是你的选择,而不是猜测——点一下,从菜单里选。
+        自动猜测总是把贝斯 E 弦的泛音误认成吉他和弦,所以调音器不再尝试靠听来区分它们。</p>
       <p>调弦芯片适用于 <b class="ui">POLY</b> 模式,并且每种乐器都会记住自己的选择:</p>
       <div class="tw">
         <table>

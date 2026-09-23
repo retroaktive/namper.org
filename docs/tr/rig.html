@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig ve sinyal zinciri — NAMper Dokümantasyonu</title>
-<meta name="description" content="Bir rig kurmak: blok paleti, beş EQ modeli, NAM amfi profilleri ve TONE3000, kabin IR'leri, preset'ler ve MIDI PC slotları, birden çok rig, paralel dallar ve master bölümü.">
+<meta name="description" content="Bir rig kurmak: blok paleti ve tüm bloklar, yedi EQ modeli, NAM amfi profilleri ve TONE3000, capture bankaları, kabin ve reverb impulsları, preset bankaları, sahneler ve MIDI PC slotları, birden çok rig, paralel dallar ve master bölümü.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Rig ve sinyal zinciri — NAMper Dokümantasyonu">
@@ -76,7 +77,7 @@
       <ul>
         <li><a href="#blocks">Blok paleti</a></li>
         <li><a href="#models">Bloklar içindeki modeller</a></li>
-        <li><a href="#eq">Beş EQ modeli</a></li>
+        <li><a href="#eq">Yedi EQ modeli</a></li>
         <li><a href="#nam">NAM capture'ları</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
         <li><a href="#cabs">Kabinler ve IR'ler</a></li>
@@ -97,19 +98,28 @@
         <table>
           <thead><tr><th>Bölüm</th><th>Bloklar</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Dinamikler</b></td><td><b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">De-Esser</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Satüratör</b></td></tr>
-            <tr><td><b class="ui">Amfi ve kabin</b></td><td><b class="ui">Amfi</b>, <b class="ui">EQ</b>, <b class="ui">Kabin</b></td></tr>
-            <tr><td><b class="ui">Filtre</b></td><td><b class="ui">Wah</b></td></tr>
-            <tr><td><b class="ui">Modülasyon</b></td><td><b class="ui">Phaser</b>, <b class="ui">Flanger</b>, <b class="ui">Chorus</b>, <b class="ui">Trem</b>, <b class="ui">Rotary</b>, <b class="ui">Ensemble</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Delay</b></td></tr>
-            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Reverb</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Harmoni</b>, <b class="ui">Autotune</b>, <b class="ui">Pitch</b>, <b class="ui">Oktavcı</b></td></tr>
-            <tr><td><b class="ui">Yardımcı</b></td><td><b class="ui">Ses düzeyi</b>, <b class="ui">Gönderim</b>, <b class="ui">Limiter</b>, <b class="ui">FB koruma</b></td></tr>
+            <tr><td><b class="ui">Amfi ve kabin</b></td><td><b class="ui">Amfi</b>, <b class="ui">Kabin</b></td></tr>
+            <tr><td><b class="ui">Delay ve reverb</b></td><td><b class="ui">Delay</b>, <b class="ui">Freeze</b>, <b class="ui">Reverb</b></td></tr>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Lo-fi</b>, <b class="ui">Satüratör</b></td></tr>
+            <tr><td><b class="ui">Dinamikler</b></td><td><b class="ui">Kompresör</b>, <b class="ui">De-Esser</b>, <b class="ui">Gate</b>, <b class="ui">Limiter</b>, <b class="ui">Çok bantlı</b>, <b class="ui">Swell</b>, <b class="ui">Transient</b>, <b class="ui">Vokal</b></td></tr>
+            <tr><td><b class="ui">EQ ve filtre</b></td><td><b class="ui">Ekolayzer</b>, <b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">Modülasyon</b></td><td><b class="ui">Chorus</b>, <b class="ui">Doubler</b>, <b class="ui">Ensemble</b>, <b class="ui">Flanger</b>, <b class="ui">Phaser</b>, <b class="ui">Rotary</b>, <b class="ui">Slicer</b>, <b class="ui">Tremolo</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">12 telli</b>, <b class="ui">Autotune</b>, <b class="ui">Harmoni</b>, <b class="ui">Oktavcı</b>, <b class="ui">Pitch</b>, <b class="ui">Synth</b>, <b class="ui">Vokoder</b></td></tr>
+            <tr><td><b class="ui">Yardımcı</b></td><td><b class="ui">FB koruma</b>, <b class="ui">FX Döngüsü</b>, <b class="ui">Gönderim</b>, <b class="ui">Ses düzeyi</b></td></tr>
             <tr><td><b class="ui">Eklentiler</b></td><td>iOS'ta <b class="ui">AU eklentileri</b> alt menüsü, Android'de kurulu AAP efektleri</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Önce amfi ve kabini gelir; diğer her bölüm ve içindeki bloklar alfabetik sıradadır.
+        Preset'i olan bir blok doğrudan zincire düşmek yerine bir alt menü açar:
+        <b class="ui">Varsayılan ayarlar</b>, o bloğun fabrika ve kaydedilmiş preset'leri, ve
+        <b class="ui">Rig hazır ayarlarından</b> altında bir rig preset'inden alınmış aynı blok — bir
+        rig'den drive, bir başkasından delay.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
+             alt="Ambient bir zincirle Rig sekmesi: amfiden önce bir Swell, sonra kabin, bir Ensemble, bir delay, bir Freeze ve bir reverb; her blok zincirde bir karo.">
+        <figcaption>Ambient bir zincir: amfinin etrafında <b class="ui">Swell</b>, <b class="ui">Freeze</b> ve <b class="ui">Ensemble</b></figcaption>
+      </figure>
       <p>Aynı bloğu iki kez eklemek seni durdurmaz. Kopyalar geldikçe numaralanır —
         <b class="ui">GATE 1</b>, <b class="ui">GATE 2</b> — ve blok adları çiplerin üzerinde
         her zaman büyük harfle yazılır. Art arda iki drive, başta bir gate ve amfiden sonra bir
@@ -149,6 +159,123 @@
           Bütün bir zinciri tekrar kullanmak için onu bir preset olarak kaydet ve bir sonraki
           rig'i o preset'ten kur.</p>
       </div>
+
+      <h3>Yeni bloklar</h3>
+      <p>Palete en son on iki blok katıldı. Her birinin ne işe yaradığı, bir iki
+        cümleyle:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Blok</th><th>Ne yapar</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Doubler</b></td><td>Tek bir kaydı iki çalgıcı gibi duyurur: birkaç
+              sent pes ve bir o kadar tiz iki kopya, her biri biraz gecikmeli, kuru ses ortada kalırken
+              yanlara açılır. Hiçbir şey hareket etmez, yani bu bir chorus değildir.
+              <b class="ui">Detune</b>, <b class="ui">Delay</b>, <b class="ui">Genişlik</b>,
+              <b class="ui">Miks</b>.</td></tr>
+            <tr><td><b class="ui">Swell</b></td><td>Volume pedalı olmadan keman swell'i: her yeni
+              nota <b class="ui">Attack</b> süresi boyunca yükselerek girer. <b class="ui">Hassas.</b>
+              bir penanın yeni nota sayılması için ne kadar sert olması gerektiğine,
+              <b class="ui">Depth</b> ise yükselişin nereden başladığına karar verir.</td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td>Tür çiplerinde bir sinyali mahvetmenin dört yolu —
+              <b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Telefon</b> ve
+              <b class="ui">Megafon</b> — her birinin kendi düğmeleri ve bir <b class="ui">Miks</b>'i
+              var.</td></tr>
+            <tr><td><b class="ui">Freeze</b></td><td>Sonsuza dek tutulan bir nota: <b class="ui">Freeze</b>'i
+              aç (bir footswitch, bir MIDI düğmesi) ve son çeyrek saniye, sen üstünde çalmaya devam
+              ederken kuru sesin altında bitmeyen bir dokuya dönüşür. <b class="ui">Attack</b>,
+              <b class="ui">Release</b>, <b class="ui">Seviye</b>, <b class="ui">Ton</b>.</td></tr>
+            <tr><td><b class="ui">Transient</b></td><td>Bir notanın pena vuruşu ve çınlaması iki düğme
+              olarak, eşik olmadan: <b class="ui">Attack</b> vuruşu öne çıkarır ya da yumuşatır,
+              <b class="ui">Sustain</b> çınlamayı yükseltir ya da kısaltır.</td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td>Tempo tutan bir gate: on altı adım,
+              <b class="ui">Desen</b>'e göre açık ya da kapalı. <b class="ui">Sync</b> adımı setin
+              temposundan alır; <b class="ui">Depth</b> bir adımın ne kadar kapandığı,
+              <b class="ui">Kenar</b> gate'in ne kadar hızlı hareket ettiğidir.</td></tr>
+            <tr><td><b class="ui">Çok bantlı</b></td><td><b class="ui">Alt geçiş</b> ve
+              <b class="ui">Üst geçiş</b> noktalarında ayrılan üç bant, her biri tek bir düğmenin
+              arkasında sıkıştırılır — <b class="ui">Bas</b>, <b class="ui">Orta</b>,
+              <b class="ui">Tiz</b> — bant başına bir kazanç ve ortak <b class="ui">Attack</b> ile
+              <b class="ui">Release</b>. Üst frekansları pompalatmadan gümbürtüyü dengeler: bir bas,
+              bir akustik, bütün bir miks.</td></tr>
+            <tr><td><b class="ui">Vokal</b></td><td>Bir sesin kanal şeridi, stüdyodaki sırasıyla:
+              <b class="ui">HPF</b>, <b class="ui">De-ess</b>, <b class="ui">Comp</b>,
+              <b class="ui">Bas</b>, <b class="ui">Presence</b>, <b class="ui">Hava</b>,
+              <b class="ui">Sıcaklık</b> ve <b class="ui">Çıkış</b>.</td></tr>
+            <tr><td><b class="ui">12 telli</b></td><td>Çift teller: <b class="ui">Ayrım</b>'in
+              altındakiler için bir oktav teli, tamamının üzerinde de birkaç sent tiz bir unison
+              teli.
+              <b class="ui">Oktav</b>, <b class="ui">Ünison</b>, <b class="ui">Detune</b>,
+              <b class="ui">Ton</b>.</td></tr>
+            <tr><td><b class="ui">Synth</b></td><td>Teli takip eden monofonik bir synth: ladder
+              filtreden (<b class="ui">Kesim</b>, <b class="ui">Rezonans</b>, <b class="ui">Zarf</b>)
+              geçen bir <b class="ui">Dalga</b>, <b class="ui">Oktav</b> ve
+              <b class="ui">Aralık</b> ile kaydırılır. <b class="ui">Nota</b>, en
+              <b class="ui">En yüksek</b> teli ya da en <b class="ui">En pes</b> teli seçer; böylece
+              akorların altındaki bir synth bas kökte kalır.</td></tr>
+            <tr><td><b class="ui">Vokoder</b></td><td>On altı bant bir sesin ünlülerini başka bir
+              sese giydirir. <b class="ui">Ses</b>, <b class="ui">Bu giriş</b> üzerindeyken blok
+              vokalin üzerinde durur ve kendi <b class="ui">Taşıyıcı</b>'ını çalar — robot; başka bir
+              rig'e yönlendirildiğinde gitarın üzerinde durur ve sesi o rig'den alır — talkbox.
+              <b class="ui">Formant</b>, <b class="ui">Tepki</b>, <b class="ui">Islık</b>,
+              <b class="ui">Oktav</b>.</td></tr>
+            <tr><td><b class="ui">FX Döngüsü</b></td><td>Zincirde harici ekipman: blok, arabirimin çıkış
+              çiftlerinden birine gönderir (<b class="ui">Çıkış</b>) ve dönüşü girişlerinden birinden
+              alır (<b class="ui">Giriş</b>). <b class="ui">Gönderim</b> ve <b class="ui">Dönüş</b> iki
+              tarafı ayarlar, <b class="ui">Stereo dönüş</b> iki giriş okur, <b class="ui">Faz</b>
+              dönüşün fazını çevirir. Paralel bir loop için (%100'ün altında bir
+              <b class="ui">Miks</b>) <b class="ui">Gecikme</b>'yi arabirimin gidiş-dönüş süresine
+              ayarla ki kuru ses oyuklaşmasın.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-doubler.png" width="600" height="1303"
+               alt="Doubler blok sayfası: IN ve OUT göstergeleri ile Detune, Delay, Width ve Mix düğmeleri.">
+          <figcaption><b class="ui">Doubler</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-freeze.png" width="600" height="1303"
+               alt="Freeze blok sayfası: Attack, Release, Level ve Tone düğmelerinin üstünde Freeze anahtarı.">
+          <figcaption><b class="ui">Freeze</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocal.png" width="600" height="1303"
+               alt="Vocal blok sayfası: HPF, De-ess, Comp, Warmth, Low, Presence, Air ve Output düğmeleri.">
+          <figcaption><b class="ui">Vokal</b> şeridi</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-mbcomp.png" width="600" height="1303"
+               alt="Multiband blok sayfası: Low, Mid ve High düğmeleri, iki crossover, Attack, Release ve bant başına bir kazanç.">
+          <figcaption><b class="ui">Çok bantlı</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-synth.png" width="600" height="1303"
+               alt="Synth blok sayfası: Wave ve Octave menüleri; Interval, Cutoff, Reso, Env, Glide, Attack ve Mix düğmeleri ve Note menüsü.">
+          <figcaption><b class="ui">Synth</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-vocoder.png" width="600" height="1303"
+               alt="Vocoder blok sayfası: Voice, Carrier ve Octave menüleri ile Response, Formant, Sibilance ve Mix düğmeleri.">
+          <figcaption><b class="ui">Vokoder</b></figcaption>
+        </figure>
+      </div>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-extloop.png" width="600" height="1303"
+               alt="FX Loop blok sayfası: arabirimin jaklarını adlandıran Out ve In menüleri; Send, Return, Mix ve Latency düğmeleri; Stereo return ve Phase anahtarları.">
+          <figcaption><b class="ui">FX Döngüsü</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-slicer.png" width="600" height="1303"
+               alt="Slicer blok sayfası: Pattern menüsü, Sync anahtarı ve Rate, Depth ve Edge düğmeleri.">
+          <figcaption><b class="ui">Slicer</b></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
@@ -161,55 +288,122 @@
           <tbody>
             <tr><td><b class="ui">Gate</b></td><td><b class="ui">Model</b></td>
               <td><b class="ui">Klasik</b>, <b class="ui">Smart</b>, <b class="ui">3-Band</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Comp</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
+            <tr><td><b class="ui">Kompresör</b></td><td><b class="ui">Model</b> · <b class="ui">Sidechain</b></td>
               <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
                 <b class="ui">KAPALI</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
-                        <tr><td><b class="ui">Drive</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
-              <td><b class="ui">Lamba</b>, <b class="ui">Blues</b>, <b class="ui">Dist</b>, <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b></td></tr>
-                        <tr><td><b class="ui">Amfi</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
+              <td><b class="ui">Boost</b>: <b class="ui">Temiz boost</b>, <b class="ui">Tiz boost</b> ·
+                <b class="ui">Overdrive</b>: <b class="ui">Lamba</b>, <b class="ui">Blues</b>, <b class="ui">Şeffaf</b> ·
+                <b class="ui">Distortion</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
+                <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Oktav fuzz</b></td></tr>
+            <tr><td><b class="ui">Amfi</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
               <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bas</b>, <b class="ui">Akustik</b></td></tr>
             <tr><td><b class="ui">Satüratör</b></td><td><b class="ui">Tür</b></td>
               <td><b class="ui">Lamba</b>, <b class="ui">Bant</b>, <b class="ui">NAM</b></td></tr>
+            <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Tür</b></td>
+              <td><b class="ui">Ring mod</b>, <b class="ui">Crusher</b>, <b class="ui">Telefon</b>, <b class="ui">Megafon</b></td></tr>
             <tr><td><b class="ui">Wah</b></td><td><b class="ui">Mod</b></td>
               <td><b class="ui">Auto</b>, <b class="ui">LFO</b>, <b class="ui">Pedal</b></td></tr>
-            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Ses</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Dijital</b>, <b class="ui">BBD</b>, <b class="ui">Bant</b> · sync
-                <b class="ui">KAPALI</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/8.</b>, <b class="ui">1/16</b></td></tr>
-            <tr><td><b class="ui">Trem</b></td><td><b class="ui">Mod</b> · <b class="ui">Sync</b></td>
-              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b> · sync <b class="ui">KAPALI</b>,
-                <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b></td></tr>
-                        <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Tür</b></td>
-              <td><b class="ui">Room</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b></td></tr>
+            <tr><td><b class="ui">Delay</b></td><td><b class="ui">Ses</b> · <b class="ui">Tap 2</b></td>
+              <td><b class="ui">Dijital</b>, <b class="ui">BBD</b>, <b class="ui">Bant</b> ·
+                <b class="ui">KAPALI</b>, <b class="ui">1/2</b>, <b class="ui">3/4</b>, <b class="ui">2/3</b>,
+                <b class="ui">3/2</b>, <b class="ui">2x</b>, zamana oranla</td></tr>
+            <tr><td><b class="ui">Tremolo</b></td><td><b class="ui">Mod</b></td>
+              <td><b class="ui">Tremolo</b>, <b class="ui">Vibrato</b>, <b class="ui">Harmonik</b></td></tr>
+            <tr><td><b class="ui">Phaser</b></td><td><b class="ui">Mod</b></td>
+              <td><b class="ui">Phaser</b>, <b class="ui">Vibe</b>, <b class="ui">Vibrato</b></td></tr>
+            <tr><td><b class="ui">Reverb</b></td><td><b class="ui">Tür</b></td>
+              <td><b class="ui">Room</b>, <b class="ui">Hall</b>, <b class="ui">Plate</b>, <b class="ui">Spring</b>, <b class="ui">Cloud</b>, <b class="ui">IR</b>, <b class="ui">Kapılı</b>, <b class="ui">Ters</b></td></tr>
             <tr><td><b class="ui">Ensemble</b></td><td><b class="ui">Mod</b> · <b class="ui">Yön</b></td>
               <td><b class="ui">Velvet</b>, <b class="ui">Allpass</b> · <b class="ui">Stereo</b>, <b class="ui">Çift mono</b></td></tr>
-            <tr><td><b class="ui">Rotary</b></td><td><b class="ui">Hız</b></td>
-              <td><b class="ui">Yavaş</b>, <b class="ui">Hızlı</b></td></tr>
-            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Sesler</b></td>
-              <td><b class="ui">Mono</b>, <b class="ui">Poli</b></td></tr>
-            <tr><td><b class="ui">Harmoni</b></td><td><b class="ui">Ton</b> · <b class="ui">Aralık</b> · <b class="ui">Dinle</b></td>
-              <td>12 nota artı <b class="ui">AUTO</b> ve <b class="ui">KANAL</b> ·
-                <b class="ui">-okt</b>, <b class="ui">-5</b>, <b class="ui">-3</b>, <b class="ui">+3</b>,
-                <b class="ui">+4</b>, <b class="ui">+5</b>, <b class="ui">+6</b>, <b class="ui">+okt</b> ·
-                <b class="ui">KENDİ</b>, <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b></td></tr>
-            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Ton</b></td>
-              <td>aynı ton listesi, artı <b class="ui">KROM</b> ve <b class="ui">SET</b></td></tr>
+            <tr><td><b class="ui">Slicer</b></td><td><b class="ui">Desen</b></td>
+              <td><b class="ui">Aç-kapa</b>, <b class="ui">Off-beat</b>, <b class="ui">Dörtnal</b>, <b class="ui">Noktalı</b>, <b class="ui">Kekeme</b>, <b class="ui">Çiftler</b>, <b class="ui">Senkoplu</b>, <b class="ui">Rastgele</b></td></tr>
+            <tr><td><b class="ui">Pitch</b></td><td><b class="ui">Motor</b> · <b class="ui">Kontrol</b></td>
+              <td><b class="ui">Mono</b>, <b class="ui">Poli</b>, <b class="ui">Ses</b> ·
+                <b class="ui">Sabit</b>, <b class="ui">Pedal</b></td></tr>
+            <tr><td><b class="ui">Harmoni</b></td><td><b class="ui">Ton kaynağı</b> · <b class="ui">Aralık</b> · <b class="ui">Ses 1</b>…<b class="ui">Ses 4</b></td>
+              <td><b class="ui">Tonu belirle</b>, <b class="ui">Altyapı</b>, <b class="ui">Bu giriş</b> ya da adıyla başka bir rig ·
+                <b class="ui">PES</b>, <b class="ui">ORTA</b>, <b class="ui">TİZ</b> ·
+                <b class="ui">KAPALI</b> ya da söylenen notadan, iki yönde iki oktava kadar bir aralık</td></tr>
+            <tr><td><b class="ui">Autotune</b></td><td><b class="ui">Ton kaynağı</b> · <b class="ui">Aralık</b></td>
+              <td><b class="ui">Kromatik</b>, <b class="ui">Altyapı</b>, <b class="ui">Tonu belirle</b> ·
+                <b class="ui">PES</b>, <b class="ui">ORTA</b>, <b class="ui">TİZ</b></td></tr>
+            <tr><td><b class="ui">Synth</b></td><td><b class="ui">Dalga</b> · <b class="ui">Nota</b></td>
+              <td><b class="ui">Testere</b>, <b class="ui">Kare</b>, <b class="ui">Darbe</b>, <b class="ui">Sinüs</b> ·
+                <b class="ui">En yüksek</b>, <b class="ui">En pes</b></td></tr>
+            <tr><td><b class="ui">Vokoder</b></td><td><b class="ui">Ses</b> · <b class="ui">Taşıyıcı</b></td>
+              <td><b class="ui">Bu giriş</b> ya da başka bir rig · <b class="ui">Testere</b>, <b class="ui">Darbe</b>,
+                <b class="ui">Akor</b>, <b class="ui">Gürültü</b></td></tr>
           </tbody>
         </table>
       </div>
       <p><b class="ui">Amfi</b> bloğunun <b class="ui">Dahili</b> tarafı NAMper’ın kendi lambalı amfisidir; beklediğiniz düğmelerle: <b class="ui">Gain</b>, <b class="ui">Bas</b>, <b class="ui">Orta</b>, <b class="ui">Tiz</b>, <b class="ui">Presence</b> ve <b class="ui">Master</b>, artı <b class="ui">Model</b> çiplerinde yedi voicing. Ne indirme ister ne hesap — çevrimdışıyken konseri o taşır; yanındaki <b class="ui">NAM</b> çipi yerine bir yakalama koyar, aşağıya bakın.</p>
       <p><b class="ui">Satüratör</b>, eski Tube Sat ve Tape Sat’in gittiği yer: tek blok, tür çiplerinde <b class="ui">Lamba</b>, <b class="ui">Bant</b> ya da bir outboard cihazın <b class="ui">NAM</b> yakalaması. <b class="ui">Ensemble</b>, tek bir enstrümanın panoramaya yayılmış birkaç çalgıcı gibi duyulmasıdır — LFO yok, akort kayması yok ve mono toplam girişin kendisidir; mod çiplerinde <b class="ui">Velvet</b> ya da <b class="ui">Allpass</b>.</p>
+
+      <h3>Drive, dinamikler ve zaman</h3>
+      <p><b class="ui">Drive</b> bloğunun dahili tarafı dört ailede on devre barındırır; bir listeden seçilirler ve her aile kendi düğmelerini taşır: boost <b class="ui">Gain</b>, <b class="ui">Bas</b>, <b class="ui">Tiz</b>, <b class="ui">Seviye</b> ve <b class="ui">Miks</b> (temiz gitar geri karıştırılır); overdrive <b class="ui">Gain</b>, <b class="ui">Ton</b>, <b class="ui">Seviye</b>, <b class="ui">Miks</b>; distortion <b class="ui">Gain</b>, <b class="ui">Ton</b>, <b class="ui">Bas</b>, <b class="ui">Tiz</b>, <b class="ui">Seviye</b>; fuzz <b class="ui">Gain</b>, <b class="ui">Ton</b>, <b class="ui">Bias</b> (çalışma noktası), <b class="ui">Voltaj</b> (pil — ortayı geçince çöker ve kesik kesik gate'lenir) ve <b class="ui">Seviye</b>. EKLE menüsünde tek bir Drive vardır, zincir de bloğu devresinin adıyla anar; böylece bir yığın TREBLE BOOST, TUBE, FUZZ GE diye okunur.</p>
+      <p>Her <b class="ui">Kompresör</b> yüzü artık <b class="ui">Knee</b>, <b class="ui">Miks</b> (tamamından azı paralel kompresyondur) ve <b class="ui">HPF</b> da taşır; bu yalnızca dedektör üzerinde bir high-pass'tir, böylece baslar geri kalanı pompalatmaz.</p>
+      <p><b class="ui">Delay</b>, zamanın bir oranında ikinci bir tap kazandı — ikili ve ritmik delay'ler için <b class="ui">Tap seviyesi</b> ile birlikte <b class="ui">Tap 2</b> — artı <b class="ui">Ters</b>, tekrarlarda <b class="ui">Mod</b>, feedback döngüsünün içinde <b class="ui">Bas kesme</b> ve <b class="ui">Tiz kesme</b> (her tekrar bir öncekinden daha karanlık ya da daha ince) ve sen çalarken tekrarları bastırıp boşluklarda yükselten <b class="ui">Duck</b>.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-drive.png" width="600" height="1303"
+               alt="Dahili tarafıyla Drive blok sayfası: dört ailesiyle devre listesi ve seçilen ailenin düğmeleri.">
+          <figcaption><b class="ui">Drive</b>: dört aile, on devre</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-delay.png" width="600" height="1303"
+               alt="Delay blok sayfası: Voice menüsü, Sync anahtarı, Time, FB ve Mix düğmeleri, seviyesiyle Tap 2, Mod, Low cut, High cut ve Duck.">
+          <figcaption>İkinci tap'iyle <b class="ui">Delay</b></figcaption>
+        </figure>
+      </div>
+      <p><b class="ui">Reverb</b>'ün iki yeni türü var. <b class="ui">Kapılı</b> seksenlerin davul odasıdır: bir vuruşta açılan, <b class="ui">Hold</b> kadar tutan ve <b class="ui">Release</b> boyunca kapanan bir gate'in kestiği yoğun bir plate. <b class="ui">Ters</b> son <b class="ui">Süre</b> saniyeyi kesintisiz olarak tersten çalar, böylece sönen bir nota bir swell olarak geri gelir; <b class="ui">Regen</b> onu geri besler. <b class="ui">Cloud</b>'da shimmer'ın <b class="ui">Aralık</b>'ı artık bir seçimdir: <b class="ui">+okt</b>, <b class="ui">+5</b>, bir oktav artı bir beşli ya da <b class="ui">-okt</b>.</p>
+      <p><b class="ui">Phaser</b>'ın <b class="ui">Mod</b>'u <b class="ui">Vibe</b> ekler — lambanın dalga biçimiyle taranan dört kaydırılmış kademe, çentikler değil nabız gibi atış — ve yalnızca efektli sesiyle duyulan Vibe olan <b class="ui">Vibrato</b>'yu. <b class="ui">Tremolo</b> ise <b class="ui">Harmonik</b> ekler: sinyal 800 Hz'de ikiye ayrılır ve yarılar birbirine karşı salınır; yavaş bir phaser gibi duyulan bir tremolo.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-verb.png" width="600" height="1303"
+               alt="Gated türündeki Reverb blok sayfası: üstte tür çipleri ve Decay, Hold, Release, Damp ve Predelay düğmeleri.">
+          <figcaption><b class="ui">Kapılı</b> türünde <b class="ui">Reverb</b></figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-cloud.png" width="600" height="1303"
+               alt="Cloud türündeki Reverb blok sayfası: Decay, Mix, Tone, Predelay ve Size düğmelerinin ve Freeze anahtarının yanında Interval çipleriyle Shimmer düğmesi.">
+          <figcaption><b class="ui">Cloud</b> ve shimmer <b class="ui">Aralık</b>'ı</figcaption>
+        </figure>
+      </div>
+
+      <h3>Pitch ve ses</h3>
+      <p><b class="ui">Harmoni</b> bir şarkıcı ya da bir gitar için dört sese kadar söyler. <b class="ui">Ton kaynağı</b> tonun nereden geldiğini söyler: <b class="ui">Tonu belirle</b> ton listesini kullanır, <b class="ui">Altyapı</b> şarkının algılanan tonunu takip eder, <b class="ui">Bu giriş</b> tonu bu zincire söylenenden öğrenir, diğer rig'ler de adlarıyla listelenir. <b class="ui">Ses 1</b>…<b class="ui">Ses 4</b>'ün her biri söylenen notadan bir aralıktır ya da <b class="ui">KAPALI</b>; böylece bir üçlü, bir beşli ve bir oktav bir akor oluşturur. Sesler şarkıcının formantlarını korur — bir beşli yukarısı hâlâ aynı kişi gibi duyulur — ve <b class="ui">Formant</b> onları bilerek kaydırır. <b class="ui">Koro</b> her sesi, her biri kendi başına kayan dört şarkıcılık bir gruba dönüştürür, <b class="ui">Spread</b> de onları stereo alana yayar.</p>
+      <p><b class="ui">Autotune</b> tonunu <b class="ui">Kromatik</b>, <b class="ui">Altyapı</b> ya da <b class="ui">Tonu belirle</b>'den alır, şarkıcının formantlarını korur ve ünsüzlerin geçmesine izin verir. <b class="ui">Hız</b> ve <b class="ui">Miktar</b>'un yanında artık şarkıcının kendi kontrolleri de var: <b class="ui">İnsanlaştır</b> (tutulan bir nota daha yavaş düzeltilir), <b class="ui">Vibrato</b> (şarkıcının vibratosunun ne kadarının korunacağı), <b class="ui">Esneklik</b> (bundan daha uzaktaki bir notaya dokunulmaz — bilerek yapılmış bir kayış), <b class="ui">Formant</b> ve referans La olan <b class="ui">Akort</b>.</p>
+      <p><b class="ui">Pitch</b> bloğunun üç motoru var: tek nota ezgileri ve bend'ler için <b class="ui">Mono</b>, akorlar için <b class="ui">Poli</b> ve bir şarkıcı için <b class="ui">Ses</b> — ünlüler bir oktav yukarıda ya da aşağıda şekillerini korur, <b class="ui">Formant</b> (yalnızca bu motorda) aynı perdede daha iri ya da daha ufak bir şarkıcı yaratır. <b class="ui">Kontrol</b>, <b class="ui">Pedal</b>'dayken bloğu bir whammy'ye çevirir: bir expression pedalı <b class="ui">Pedal</b>'ı hareket ettirdikçe aralık <b class="ui">Topuk</b>'den <b class="ui">Uç</b>'ya kayar.</p>
+      <div class="figrow">
+        <figure>
+          <img class="phone" src="/docs/assets/block-harm.png" width="600" height="1303"
+               alt="Harmony blok sayfası: Key from ve ton menüleri, Range çipleri, dört ses menüsü ve Harmony, Dry, Formant, Glide, Choir ve Spread düğmeleri.">
+          <figcaption><b class="ui">Harmoni</b>: dört ses, bir koro</figcaption>
+        </figure>
+        <figure>
+          <img class="phone" src="/docs/assets/block-atune.png" width="600" height="1303"
+               alt="Autotune blok sayfası: Key from menüsü, Range çipleri ve Speed, Amount, Humanize, Vibrato, Flex, Formant ve Tuning düğmeleri.">
+          <figcaption>Şarkıcının kendi kontrolleriyle <b class="ui">Autotune</b></figcaption>
+        </figure>
+      </div>
+
+      <h3>Mix, tempo senkronu ve kuyruklar</h3>
+      <p><b>Her blokta bir Mix vardır.</b> Bir karışım üzerine kurulu olanlar onu kendi yüzlerinde taşır — bir delay'in <b class="ui">Miks</b>'i, bir harmonizerin <b class="ui">Dry</b>'ı, bir freeze'in <b class="ui">Seviye</b>'ı; diğer her blok, barındırılan bir eklenti dahil, son düğmesi olarak bir <b class="ui">Miks</b> düğmesi alır: blok kendi girişiyle karıştırılır, böylece bir tremolo yarı yarıya kesebilir, bir amfi de biraz doğrudan sinyal taşıyabilir. Kuru ses bloğa uyacak şekilde geciktirilir, böylece hiçbir şey comb-filter yapmaz; sahneler, preset'ler ve MIDI de onu diğer her düğme gibi ele alır.</p>
+      <p><b>Tempo senkronu bir anahtardır.</b> Delay, tremolo, slicer, phaser, flanger, chorus ve rotary'nin her birinde bir <b class="ui">Sync</b> anahtarı vardır. Açıkken hız ya da zaman düğmesi setin temposunu takip eden nota bölümlerine döner (1/1'den 1/16'ya, delay'de noktalı ve triole); kapalıyken yine düz Hz ya da ms olur.</p>
+      <p><b>Kuyruklar sönümlenir.</b> Bir sahnenin ya da footswitch'in bypass ettiği bir delay, reverb, freeze, FX loop ya da barındırılan eklenti, sessizleşene kadar kuru sesin üzerinde çınlamaya devam eder; bir preset değişimi de eski rig'in kuyruklarını kesmek yerine sekiz saniyeye kadar çalmaya bırakır. Bunun anahtarı Ayarlar → <b class="ui">Ses</b> içindeki <b class="ui">Geçişte kuyruklar</b>'tir, varsayılan olarak açıktır.</p>
       <div class="note tip">
         <div class="t">Başka bir rig'i dinleyen Harmony</div>
-        <p>Harmony'nin <b class="ui">Dinle</b> satırı bir yönlendirme kontrolü değildir — bu,
-          harmonizerin akorunu nereden aldığıdır. <b class="ui">KENDİ</b>'da bırak, kendi
-          zincirindeki sinyali izler; <b class="ui">RIG 1</b>…<b class="ui">RIG 4</b>'e
-          yönlendir, bir vokal hattı gitar rig'inin çaldığına göre harmonize edilsin.</p>
+        <p>Harmony'nin <b class="ui">Ton kaynağı</b> satırı bir yönlendirme kontrolü değildir — bu,
+          harmonizerin tonunu nereden aldığıdır. <b class="ui">Bu giriş</b>'tayken tonu kendi
+          zincirindeki sinyalden öğrenir; adıyla başka bir rig'e yönlendir, bir vokal hattı gitar
+          rig'inin çaldığına göre harmonize edilsin.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>Beş EQ modeli</h2>
-      <p>Tek bir <b class="ui">EQ</b> bloğu vardır ve içinde beş tamamen farklı ekolayzır. Modeli
+      <h2 id="eq"><span class="n">02.3</span>Yedi EQ modeli</h2>
+      <p>Tek bir <b class="ui">Ekolayzer</b> bloğu vardır ve içinde yedi tamamen farklı ekolayzır. Modeli
         değiştirmek düğme setini de sesi de değiştirir; bu yüzden işe uyanı seç — hızlı bir ton
         ayarı, cerrahi bir kesim ya da mastering tarzı bir shelf.</p>
       <div class="tw">
@@ -244,13 +438,20 @@
               <td>Baxandall — çok geniş, çok yumuşak iki shelf. Bütün sesi biraz daha karanlık
                 ya da biraz daha parlak yapmak istediğinde başvurulacak model.</td>
               <td><b class="ui">Bas</b>, <b class="ui">Tiz</b></td></tr>
+            <tr><td><b class="ui">Grafik 7</b></td>
+              <td>Pedal tipi grafik EQ: 100 Hz'den 6.4 kHz'e yedi oktav bandı, her birine bir fader.
+                Bir faderi düzleştirmek için ona çift dokun.</td>
+              <td>100 … 6.4k, her biri ±12 dB</td></tr>
+            <tr><td><b class="ui">Grafik 10</b></td>
+              <td>Rack tipi grafik EQ: 31 Hz'den 16 kHz'e on oktav bandı, her birine bir fader.</td>
+              <td>31 … 16k, her biri ±12 dB</td></tr>
           </tbody>
         </table>
       </div>
       <figure>
         <img class="phone" src="/docs/assets/eq-passive.png" width="600" height="1303"
-             alt="Passive modeli seçilmiş EQ blok sayfası; sekiz düğmesi görünüyor: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten ve Atten Hz, üstte IN ve OUT göstergeleriyle.">
-        <figcaption>Passive modelindeki EQ bloğu</figcaption>
+             alt="Passive modeli seçilmiş Ekolayzer blok sayfası; sekiz düğmesi görünüyor: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten ve Atten Hz, üstte IN ve OUT göstergeleriyle.">
+        <figcaption>Passive modelindeki Ekolayzer bloğu</figcaption>
       </figure>
       <p>Bu da dahil olmak üzere her blok sayfasında yatay <b class="ui">IN</b> ve
         <b class="ui">OUT</b> göstergeleri vardır. Bir EQ'da izlemeye değerler: üç bantta birkaç
@@ -307,7 +508,7 @@
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
-             alt="NAM yanındaki Amp bloğu: yakalamanın adı ve kapak görseli, Browse TONE3000, Library ve Load file düğmeleri, altında Bank: 3 ve trimler arasında 1/3 gösteren Model düğmesi.">
+             alt="NAM yanındaki Amfi bloğu: yakalamanın adı ve kapak görseli, Browse TONE3000, Library ve Load file düğmeleri, altında Bank: 3 ve trimler arasında 1/3 gösteren Model düğmesi.">
         <figcaption>Üçlü bir banka: <b class="ui">Banka: 3</b> ve trimler arasında <b class="ui">Model</b> düğmesi</figcaption>
       </figure>
 
@@ -320,11 +521,17 @@
       <p>Birden çok modeli olan bir tone <b class="ui">Model seç</b> sayfasını açar ve o sayfadaki işaretler <em>bankanın kendisidir</em>. Bloğun hâlihazırda taşıdığı modellerden başlarlar, yani sayfa boşlukla değil elindekiyle açılır ve üstteki satır <b class="ui">Banka: 3 model — Model düğmesi aralarında gezer</b> yazar. Taramayı biçimlendirmek için işaretle ve kaldır: <b class="ui">Tümünü seç (6)</b> hepsini işaretler ve <b class="ui">Tüm seçimi kaldır</b> olur — ikisi de bir şey indirmez. İşi alttaki düğme yapar, yalnızca işaretlenenler üzerinde: <b class="ui">Seçilen 5 modeli bankaya indir</b>. İşaretler bankayla aynı kaldığı sürece sessiz durur, çünkü indirilecek bir şey yoktur.</p>
       <p>Bir banka böyle kurulduğu gibi böyle budanır da: seçiciyi yeniden aç, hiç uzanmadığın modellerin işaretini kaldır, indir — tarama kalanların etrafında yeniden yazılır, elinde olan dosyalar ikinci kez inmez. Diğer yol bir modelin adına dokunmaktır; sayfa bunun bedelini listenin altında söyler: <b class="ui">Tek model çalar: seçmek 3 modellik bankayı temizler.</b> Sitenin listelediği ama sende olmayan modeller, sen işaretleyene kadar bulut simgesiyle soluk durur.</p>
 
-      <h3>NAM bloğu: pedallar ve outboard</h3>
-      <p>Ayrı bir <b class="ui">NAM</b> bloğu aynı capture tarafını dahili amfi olmadan taşır ve
-        pedal ile outboard cihaz capture'larının yeri orasıdır. Onu kendin yerleştirmek zorunda
-        değilsin: bir <b class="ui">Amfi</b> bloğu hedefteyken bir pedal capture'ı yükle, NAMper o
-        amfinin hemen öncesine bir <b class="ui">NAM</b> bloğu ekler ve senin için açar.</p>
+      <h3>Pedallar ve outboard: diğer bloklarda capture'lar</h3>
+      <p>Artık ayrı bir capture bloğu yok: bir tür ekipmanı modelleyen bloklar kendi capture
+        tarafını taşır. <b class="ui">Drive</b> bloğu pedal capture'larını,
+        <b class="ui">Satüratör</b> ve <b class="ui">Kompresör</b> ise outboard cihazları alır —
+        her birinde amfidekiyle aynı <b class="ui">NAM</b> çipi, trimler ve bankayı gezen
+        <b class="ui">Model</b> düğmesi vardır. Onları kendin yerleştirmek zorunda değilsin: bir
+        <b class="ui">Amfi</b> bloğu hedefteyken bir pedal capture'ı yükle, NAMper onu rig'in
+        Drive bloğuna koyar — yoksa amfinin hemen öncesine bir tane ekler — ve senin için açar; bir
+        outboard cihaz da aynı şekilde bir Satüratör bloğuna iner. Capture'ı değil de gerçek
+        outboard donanımın kendisi zincire <b class="ui">FX Döngüsü</b> bloğu üzerinden girer. NAM
+        bloğu kullanan eski preset'ler, o blok dönüştürülmüş olarak açılır.</p>
 
       <h3>Kütüphane</h3>
       <figure>
@@ -333,7 +540,7 @@
         <figcaption>Kütüphanenin amfi yanı: indirdiğin her şey, çevrimdışı</figcaption>
       </figure>
       <p><b class="ui">Kitaplık</b> düğmesi <b class="ui">NAM profilleri</b> başlıklı bir sayfa açar — indirdiğin her şey, çevrimdışı da kullanılabilir. Beş yanı vardır, her blok türü için bir tane: yakalamalar için <b class="ui">Amfi</b> ve <b class="ui">Drive</b>, satüratör ile kompresör için <b class="ui">Outboard</b>, kabin impulsları için <b class="ui">Kabin</b> ve reverb'ünkiler için <b class="ui">Reverb</b> — mekânlar, harici cihazlar ve denemeler. Bir blok beşten yalnızca birini alır, bu yüzden hiçbir zaman birlikte listelenmezler: kütüphaneyi hangi bloktan açtıysan yanı o seçer ve öyle tutar; nişan alınacak blok yoksa üstteki çipler beşini de sayılarıyla adlandırır. Uygulamayla gelen impulslar kendi yanlarında <b class="ui">Dahili</b> altında, indirdiklerinin yanında durur.</p>
-      <p>Bir tarafın içinde tonlar yakalanan şeye göre gruplanır: önce <b class="ui">Dahili</b>, sonra <b class="ui">Amfiler</b>, <b class="ui">Pedallar</b>, <b class="ui">Outboard</b>, <b class="ui">Deneysel</b>, <b class="ui">Kabinler</b>, <b class="ui">Mekânlar</b> ve <b class="ui">Diğer</b>. Her satır bir tondur, dosya değil: kapak, başlık, <b class="ui">@author</b> ve kaç model taşıdığı. Bir dokunuş onu yükler — tek modelli ton tek başına çalar, birden çok modelli ton bloğun bankası olur — ve ton ait olduğu yere iner: bir amfi <b class="ui">Amfi</b> bloğuna, bir pedal ya da harici ünite ondan önceki bir <b class="ui">NAM</b> bloğuna, bir kabin sonrasındaki <b class="ui">Kabin</b> bloğuna, bir mekân <b class="ui">Reverb</b> bloğuna.</p>
+      <p>Bir tarafın içinde tonlar yakalanan şeye göre gruplanır: önce <b class="ui">Dahili</b>, sonra <b class="ui">Amfiler</b>, <b class="ui">Pedallar</b>, <b class="ui">Outboard</b>, <b class="ui">Deneysel</b>, <b class="ui">Kabinler</b>, <b class="ui">Mekânlar</b> ve <b class="ui">Diğer</b>. Her satır bir tondur, dosya değil: kapak, başlık, <b class="ui">@author</b> ve kaç model taşıdığı. Bir dokunuş onu yükler — tek modelli ton tek başına çalar, birden çok modelli ton bloğun bankası olur — ve ton ait olduğu yere iner: bir amfi <b class="ui">Amfi</b> bloğuna, bir pedal ondan önceki <b class="ui">Drive</b> bloğuna, bir outboard cihaz <b class="ui">Satüratör</b> bloğuna, bir kabin sonrasındaki <b class="ui">Kabin</b> bloğuna, bir mekân <b class="ui">Reverb</b> bloğuna.</p>
       <p>Chevron tonun modellerini açar. Bloğun bankası <em>olan</em> tonda her model bir onay
         işareti taşır: bu, o modeli <b class="ui">Model</b> düğmesinin taramasında tutar ve bir
         dokunuş düğmeyi onun üzerine taşır. Başka herhangi bir tonda bir modele dokunmak o modeli
@@ -354,8 +561,9 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h3 id="capture-own">Kendi ekipmanını yakala</h3>
-      <p>Kütüphane araç çubuğundaki <b class="ui">NAM profili yakala…</b>, kendi amfinizi, pedalınızı ya da tüm rig'inizi cihaz üzerinde, yalnızca bir ses arayüzüyle yakalar. Bu, her NAM yakalamasının doğduğu reamp döngüsüdür: uygulamanın sinyali arayüzün bir çıkışından çıkar, ekipmandan geçer ve bir girişten geri döner. O çıkışı ve o girişi seçin, gönderim seviyesini ayarlayın; <b class="ui">Seviyeleri kontrol et</b> sinyalin başını iki ölçerle ve gönderimi ne kadar kaydıracağınıza dair bir notla çalar — dönüş −6 dBFS civarında tepe yapmalı ve asla kırpılmamalı.</p>
-      <p><b class="ui">Yakalamayı başlat</b>, rig sessizken bir dakikalık sinyal çalar. Kayıt, herhangi bir eğitimden önce incelenir: iki uçtaki işaretler gidiş-dönüşü ve iki saat arasındaki kaymayı bulur; hiçbir şeyin geri gelmediği, dönüşün kırpıldığı ya da döngünün hiçbir şeyi değiştirmediği bir kayıt reddedilir. <b class="ui">Eğit</b> cihazda çalışır — Nano, Feather (varsayılan), Lite veya Standard — ve eğiticinin hiç görmediği ses üzerinde dönemi ve ESR'yi gösterir (0,02 iyi bir yakalamadır). Sonuç, ekipmanıyla etiketlenmiş kendi tonunuz olarak kütüphaneye düşer ve <b class="ui">.nam dosyasını paylaş</b> onu her NAM oynatıcıya verir.</p>
+      <p>Kütüphane araç çubuğundaki <b class="ui">NAM profili yakala…</b>, kendi amfinizi, pedalınızı ya da tüm rig'inizi cihaz üzerinde, yalnızca bir ses arayüzüyle yakalar. Bu, her NAM yakalamasının doğduğu reamp döngüsüdür: sinyal arayüzün bir çıkışından çıkar, ekipmandan geçer ve bir girişten geri döner. <b class="ui">Kayıt</b> penceresi o çıkışı ve o girişi arayüzün kendi kanal adlarıyla seçer; pencere açıkken canlı rig kesilir, böylece geri döngüye bağlı bir rig kendini besleyip feedback'e giremez. Gönderim seviyesini ayarlayın; <b class="ui">Seviyeleri kontrol et</b> sinyalin başını iki ölçerle ve gönderimi ne kadar kaydıracağınıza dair bir notla çalar — dönüş −6 dBFS civarında tepe yapmalı ve asla kırpılmamalı. Girişte gönderimin yol açmadığı bir ses zaten varsa — ekipmanın döngü üzerinden geri beslemesi ya da bir host'un kendi parçasını eklenti üzerinden çalması — not bunu söyler: ekipmanın girişini ya da gönderimi kısın veya çalmayı durdurun ve yeniden kontrol edin.</p>
+      <p><b class="ui">Yakalamayı başlat (190 sn)</b>, NAM eğiticisinin kendi standart sinyali <b>v3_0_0.wav</b>'ı çalar; böylece burada yapılan bir kayıt hem burada hem de başka herhangi bir NAM eğiticisinde eğitilebilir. Kayıt, herhangi bir eğitimden önce incelenir: başa yakın blipler gidiş-dönüşü bulur, iki uçtaki aynı bölümün iki kopyası iki saat arasındaki kaymayı ölçer; hiçbir şeyin geri gelmediği, dönüşün kırpıldığı ya da döngünün hiçbir şeyi değiştirmediği bir kayıt reddedilir. <b class="ui">Eğit</b> cihazda çalışır — Nano, Feather (varsayılan), Lite veya Standard, ayarladığınız kadar dönem boyunca — ve eğiticinin hiç görmediği ses üzerinde dönemi ve ESR'yi gösterir (0,02 iyi bir yakalamadır). Sonuç, ekipmanıyla etiketlenmiş kendi tonunuz olarak kütüphaneye düşer ve <b class="ui">.nam dosyasını paylaş</b> onu her NAM oynatıcıya verir.</p>
+      <p>Başka yerde eğitmeyi mi tercih edersiniz? <b class="ui">Kayıt çiftini paylaş</b> (Mac'te <b class="ui">Kayıt çiftini kaydet…</b>) sinyali ve dönüşü 48 kHz WAV dosyaları olarak verir — tam da TONE3000'in eğiticisinin ve NAM eğiticisinin aldığı şey.</p>
 
       <h2 id="tone3000"><span class="n">02.5</span>TONE3000</h2>
       <p>TONE3000, ücretsiz bir capture kütüphanesidir ve NAMper doğrudan oradan çeker. Uygulama
@@ -368,9 +576,11 @@
         NAMper bunu açılışta hiç istemez — fabrika preset'leri dahili amfilerde ve paketlenmiş
         kabinlerde çalar, giriş ise capture isteyen bir blokta <b class="ui">TONE3000’e göz at</b>'a
         ilk bastığında olur. Ayarlar'da artık <b class="ui">TONE3000</b> sayfası yok.</p>
-      <p>Kataloğun ne sunduğu, onu açan bloğa bağlıdır. Bir <b class="ui">Amfi</b> ya da
-        <b class="ui">NAM</b> bloğundan açıldığında sunucu tarafında A2 mimarili amfi, tam rig,
-        pedal ve outboard cihaz <b class="ui">.nam</b> capture'larıyla sınırlanır. Bir
+      <p>Kataloğun ne sunduğu, onu açan bloğa bağlıdır. Bir <b class="ui">Amfi</b> bloğundan
+        açıldığında sunucu tarafında A2 mimarili amfi ve tam rig <b class="ui">.nam</b>
+        capture'larıyla, bir <b class="ui">Drive</b> bloğundan pedallarla, bir
+        <b class="ui">Satüratör</b> ya da <b class="ui">Kompresör</b> bloğundan ise outboard
+        cihazlarla sınırlanır. Bir
         <b class="ui">Kabin</b> bloğundan sitenin kabin impulse'larını, bir
         <b class="ui">Reverb</b>'den ise mekânlarını sunar — capture değil,
         <b class="ui">.wav</b> dosyaları. Bu filtre sabittir, değiştirebileceğin bir ayar
@@ -420,7 +630,7 @@
       <p><b class="ui">Kabin</b> bloğu bir impuls yanıtı çalar — mikrofonla yakalanmış bir hoparlör kabini. Sayfası bir yakalama bloğununki gibi kurulmuştur: üstte impulsun adı ve <b class="ui">@author</b>, tonun sayfasına bir ok ve yanında <b class="ui">IR’yi kaldır</b>, solda kapak ve sağda impuls yüklemenin üç yolu — <b class="ui">TONE3000’e göz at</b>, <b class="ui">Kitaplık</b> ve <b class="ui">Dosya yükle</b>. Altında bloğun kendi düğmesi, <b class="ui">Seviye</b>, −12 ile +12 dB arası.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
-             alt="Cab bloğunun sayfası: üstte impuls adı ve yazar, solda kapak, sağda Browse TONE3000, Library ve Load file düğmeleri, altta Level düğmesi.">
+             alt="Kabin bloğunun sayfası: üstte impuls adı ve yazar, solda kapak, sağda Browse TONE3000, Library ve Load file düğmeleri, altta Level düğmesi.">
         <figcaption>Kabin bloğu, bir amfinin capture tarafı gibi kurulmuş</figcaption>
       </figure>
       <p><b class="ui">IR</b> türündeki bir <b class="ui">Reverb</b> kabin yerine bir mekân yükler; kitaplığın <b class="ui">Mekânlar</b> tarafından: dahili olanlar, indirdikleriniz, kendi dosyalarınız. Herhangi bir Reverb’e mekân yüklemek onu IR türüne çevirir.</p>
@@ -475,63 +685,103 @@
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="presets"><span class="n">02.7</span>Preset'ler</h2>
-      <p>Bir rig preset'i tüm zinciri saklar — bloklar, modeller, düğme konumları, amfi profili,
-        kabin. <b class="ui">PRESET’LER</b> kartındaki <b class="ui">+</b>'dan ya da preset
-        yöneticisinden bir tane kaydet. İstem, ne olacağını söyleyen mesajıyla
-        <b class="ui">Preset’i kaydet</b> başlıklı bir uyarıdır:
-        <b class="ui">Mevcut rig, boştaki ilk MIDI PC slotunu alır.</b> Bir ad yaz ve
-        <b class="ui">Kaydet</b>'e dokun. Alanı boş bırakırsan <b class="ui">Preset</b> olarak
-        kaydedilir.</p>
-      <div class="note warn">
-        <div class="t">PC slotu düzenlenemez</div>
-        <p>Her preset bir MIDI program-change slotunda oturur ve NAMper bunu senin için atar:
-          dört fabrika preset'i PC 0–3'ü tutar, kullanıcı preset'leri ise 4'ten yukarı bir
-          sonraki boş numarayı alır. Bir slotu elle değiştirmenin yolu yoktur. Footswitch
-          düzenini preset'leri kaydettiğin sıraya göre planla, tersini değil.</p>
+      <p>Bir rig preset'i tüm zinciri saklar — bloklar, modeller, düğme konumları, sahneler, amfi
+        profili, kabin. Preset'ler dört adet 128'lik bankada, MIDI program-change slotlarında
+        yaşar: <b class="ui">Fabrika</b> ve Kullanıcı 1–3. <b class="ui">PRESET’LER</b> kartındaki
+        <b class="ui">+</b>'dan ya da preset yöneticisinden bir tane kaydet:
+        <b class="ui">Preset’i kaydet</b> sayfası bir preset'in sahip olduğu her şeyi sorar.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Alan</th><th>Neyi ayarlar</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Ad</b></td><td>Boş bırakılırsa <b class="ui">Preset</b> olarak kaydedilir.</td></tr>
+            <tr><td><b class="ui">Banka</b></td><td>Hangi kullanıcı bankasına gideceği.</td></tr>
+            <tr><td><b class="ui">Program</b></td><td>Program-change numarası; ilk boş numaradan
+              başlar. Bir menü 128'inin hepsini listeler; dolu bir numara hangi preset'in yerine
+              geçeceğini söyler, boş olan <b class="ui">boş</b> yazar.</td></tr>
+            <tr><td><b class="ui">Kategoriler</b></td><td>İşaretlenecek çipler — preset listelerinin
+              süzdüğü kategorilerin aynısı.</td></tr>
+            <tr><td><b class="ui">Etiketler</b></td><td>Kendi kelimelerin, virgülle ayrılmış; arama
+              onları bulur.</td></tr>
+          </tbody>
+        </table>
       </div>
 
+      <h3>Bankalar</h3>
+      <p><b class="ui">PRESET’LER</b> başlığının yanındaki ve preset yöneticisindeki banka çipi
+        hangi bankanın açık olduğunu söyler ve onu değiştirir. Açık olan banka, listelerin
+        gösterdiği ve program change <em>n</em>'nin çaldığı bankadır. Bir pedalboard'dan MIDI Bank
+        Select (CC 0) onu seçer — 0 <b class="ui">Fabrika</b>, 1–3 kullanıcı bankalarıdır — ve
+        <b class="ui">Sonraki preset bankası</b> / <b class="ui">Önceki preset bankası</b> herhangi bir
+        anahtara öğretilebilir. Bir preset'in menüsünde kendi preset'lerin için
+        <b class="ui">Bankaya taşı</b>, fabrika preset'i için <b class="ui">Bankaya kopyala</b> vardır.
+        Bir setlist bir bankaya bağlı değildir: preset'leri hangi banka açıksa onu çalar.</p>
+      <div class="note warn">
+        <div class="t">Fabrika bankası salt okunurdur</div>
+        <p>Bir fabrika preset'inde <b class="ui">Mevcut rig ile güncelle</b> önce sorar, ardından
+          <b class="ui">Kopya kaydet</b> senin sürümünü kullanıcı bankasındaki ilk boş numaraya koyar,
+          o bankaya geçer ve onu çalar; bir fabrika preset'ini yeniden adlandırmak da aynı kopyayı
+          oluşturur. Aynı fabrika preset'ini tekrar güncellersen o kopya düzenlenir — ve fabrika
+          preset'ini çağıran her şarkı o andan itibaren, sahneler dahil, senin kopyanı çağırır.</p>
+      </div>
+
+      <h3>Arama ve kategoriler</h3>
+      <p>Şerit ve yönetici aynı arama alanını ve kategori çiplerini taşır. Arama adlarla <em>ve</em> etiketlerle eşleşir; yani "vocal" bütün
+        vokal bankasını, "delay" de yankı tadındaki her rig'i getirir. Çipler listeyi daraltır:
+        <b class="ui">Tümü</b>, <b class="ui">Benimkiler</b> (yalnızca kendi preset'lerin), ardından
+        kategoriler — <b class="ui">Clean</b>, <b class="ui">Lead</b>, <b class="ui">Blues</b>,
+        <b class="ui">Ambient</b>, <b class="ui">Metal</b>, <b class="ui">Bas</b>,
+        <b class="ui">Vokal</b>, <b class="ui">Yardımcı</b> ve daha fazlası.</p>
+
       <h3>Şeridin iki yüzü var</h3>
-      <p><b class="ui">PRESET’LER</b> kartı — tablette Rig sekmesinin yanındaki şerit, telefonda
-        zincirin altındaki bant — iki şeyden birini gösterir; hangisi olduğu bir setlistin
+      <p><b class="ui">PRESET’LER</b> kartı — tablette ve dik tutulan telefonda, kaç rig olursa olsun zincirin yanındaki şerit;
+        yan çevrilmiş telefonda zincirin altındaki bant — iki şeyden birini gösterir; hangisi olduğu bir setlistin
         <b class="ui">CANLI</b> olup olmamasına bağlıdır:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>Sahnede setlist yoksa</b> — kütüphane: her preset kendi MIDI PC yuvasında, kapağıyla,
-          sekizi geçtiğinde çıkan arama alanıyla ve satır menüsüyle: <b class="ui">Yeniden adlandır</b>,
-          <b class="ui">Mevcut rig ile güncelle</b>, <b class="ui">Sete ekle…</b>,
-          <b class="ui">Paylaş</b> ve <b class="ui">Sil</b>. Program change <em>n</em>,
-          <em>n</em> numaralı preset'i uygular.</li>
+        <li><b>Sahnede setlist yoksa</b> — banka: her preset kendi MIDI PC yuvasında, kapağıyla,
+          arama ve kategori çipleriyle ve satır menüsüyle: <b class="ui">Mevcut rig ile güncelle</b>,
+          <b class="ui">Yeniden adlandır…</b>, <b class="ui">Sete ekle…</b>, <b class="ui">Bankaya taşı</b>,
+          <b class="ui">Paylaş</b> ve <b class="ui">Sil</b>. Program change <em>n</em>, açık olan
+          bankanın <em>n</em> numaralı preset'ini uygular.</li>
         <li><b>Sahnede bir setlist varsa</b> — setin kendisi: setin adı, bir şarkı adımlayıcısı
           (<b class="ui">‹</b> ad <b class="ui">›</b>, ve adın kendisi atlamak için tüm listeyi
-          açar) ve <em>o anki şarkının getirdiği</em> her rig preset'i için bir kart — 128 yuva
-          değil, o parçanın gerçekten ihtiyaç duyduğu dört beş ses. Artık program change <em>n</em>,
-          <em>n</em> numaralı şarkıyı çalar.</li>
+          açar) ve <em>o anki şarkının getirdiği</em> her rig preset'i için bir pad — 128 yuva
+          değil, o parçanın gerçekten ihtiyaç duyduğu dört ya da sekiz ses — altlarında da banka.
+          Artık program change <em>n</em>, <em>n</em> numaralı sahne düğmesine basar: şarkı
+          seçilmemişken şarkılara, sonra seçilen şarkının kendi pad'lerine.</li>
       </ul>
       <p>Sahnede önemli olan ikinci yüzdür: şarkı bir kez seçilir, nakaratlar arasında elin o
-        şarkının seslerine gider. Her kart preset'in adını ve sahne satırını taşır —
-        <b class="ui">-</b> <b class="ui">A</b> <b class="ui">B</b> <b class="ui">C</b>
-        <b class="ui">D</b> — kaydın kendi sahnesi çerçevelenir ve çalan kayıt oysa kartın tamamı
-        yanar.</p>
-      <p><strong>Harfler yalnızca gösterir, ayarlamaz.</strong> Kartın herhangi bir yerine, harfler
-        dâhil, dokunmak o kaydı şarkının listelediği hâliyle getirir. Bir kaydın hangi sahneyi
-        kullandığı şarkının parçasıdır; bu yüzden <a href="/docs/tr/perform.html#sections">Perform</a>
-        sekmesindeki şarkı düzenleyicisinde değiştirilir — sahnede yanlışlıkla atılan bir dokunuş
-        seti yeniden yazmamalı.</p>
+        şarkının seslerine gider. Her pad preset'in adını ve sahne satırını taşır — yalnızca o
+        preset'in tuttuğu sahneler — kaydın kendi sahnesi çerçevelenir ve çalan kayıt oysa pad'in
+        tamamı yanar. Pad'e dokunmak o kaydı şarkının listelediği hâliyle getirir; bir harfe
+        dokunmak o sahneyi kaydın kendi sahnesi yapar, seçili harfe tekrar dokunmak da onu
+        temizler.</p>
+      <p>Set tam orada düzenlenir. Aşağıdaki bankadan bir preset'i bir pad'in üzerine sürükle
+        (basılı tut, sonra kaydır — sıradan bir kaydırma hâlâ listeyi kaydırır), o pad'in yerini
+        alır, sahnesini ve işaretçilerini korur; boş bir yuvaya bırakırsan şarkıya katılır. Bir
+        preset'in menüsünde şarkının pad'lerini ve bir <b class="ui">Yeni pad</b> seçeneğini
+        listeleyen <b class="ui">Bu şarkıya ekle</b> vardır. Bir pad'in kendi uzun basma menüsünde
+        <b class="ui">Sesi değiştir…</b> (bütün bankalarda bir seçici), <b class="ui">Geçerli rig</b>
+        (rig'in o anki hâli pad'in preset'ine kaydedilir), <b class="ui">Pad'i temizle</b> ve MIDI Learn
+        bulunur. Boş bir yuvaya uzun basmak <b class="ui">Preset seç…</b> ve
+        <b class="ui">Geçerli rig</b> sunar.</p>
       <p>Set panelinin başlığındaki yığın simgesi yine de tüm preset kütüphanesini açar,
-        <b class="ui">⊗</b> ise setlistten çıkar: şerit 128 yuvaya döner, program numaraları da
+        <b class="ui">⊗</b> ise setlistten çıkar: şerit bankaya döner, program numaraları da
         onunla birlikte.</p>
+      <p>Zincir kartıyla preset'ler arasında bir tutamak ve iki köşeli ok bulunur. Zincire ya da
+        preset'lere daha fazla yer vermek için tutamağı sürükle, sayfanın kendi bölünmesine dönmek
+        için ona çift dokun; bir ok zinciri ya da preset'leri ince bir şeride katlar, şeride
+        dokunmak onu geri getirir.</p>
       <h3>Güncellemek ve yönetmek</h3>
-      <p>Üzerine yazma her zaman onaylanır. <b class="ui">Mevcut rig ile güncelle</b>,
-        <b class="ui">Overwrite "{name}" with the current rig?</b> yazan bir diyalog açar;
-        yanında <b class="ui">Üzerine yaz</b> ve <b class="ui">Vazgeç</b>. Yöneticinin kendisinin
-        gezinme başlığı <b class="ui">Preset’ler</b>'tir ve iki bölümü vardır:
+      <p>Üzerine yazma her zaman onaylanır. Kendi preset'lerinden birinde
+        <b class="ui">Mevcut rig ile güncelle</b>, <b class="ui">Overwrite "{name}" with the current
+        rig?</b> sorusunu açar; yanında <b class="ui">Üzerine yaz</b> ve <b class="ui">Vazgeç</b>.
+        <b class="ui">Yeniden adlandır…</b> program numarasını da ayarlar: o numarayı zaten tutan preset
+        karşılığında eski numarayı alır. Yöneticinin kendisinin gezinme başlığı
+        <b class="ui">Preset’ler</b>'dir; banka çipi, arama ve kategori çipleri ve iki bölümü vardır:
         <b class="ui">Rig’ler · MIDI PC slotları</b> ve <b class="ui">Hepsi birden</b> →
         <b class="ui">Global snapshot’lar</b>; rig, looper, sampler, setlist ve control haritasının
         birlikte kaydedilip geri yüklendiği yer olarak tanımlanır.</p>
-      <p>Her satırın bağlam menüsünde <b class="ui">Yeniden adlandır</b>,
-        <b class="ui">Mevcut rig ile güncelle</b>, <b class="ui">Sete ekle…</b>,
-        <b class="ui">Paylaş</b> ve <b class="ui">Sil</b> var. Yeniden adlandırma yalnızca
-        yöneticide bulunur — Rig sekmesindeki preset etiketinin menüsünde yoktur. Sekizden fazla
-        preset olunca üstte bir <b class="ui">Preset ara</b> alanı belirir.</p>
       <div class="note warn">
         <div class="t">Delete onaylanmaz</div>
         <p>Preset satırı menüsündeki <b class="ui">Sil</b>, "emin misin" sorusu olmadan
@@ -548,17 +798,31 @@
         preset yeni bir slot alır, yani bir içe aktarma zaten sahip olduğun bir şeyin üzerine
         asla sessizce yazamaz.</p>
 
-      <h3>Fabrika dörtlüsü</h3>
-      <p>NAMper, PC 0–3'te dört rig'le birlikte gelir; her biri gerçek bir capture etrafında
-        kurulmuştur: <b class="ui">Clean</b> (Amerikan blackface bir combo),
-        <b class="ui">Crunch</b> (1969 İngiliz 50 watt'lık bir kafa), <b class="ui">Lead</b>
-        (modern yüksek gainli bir amp+cab) ve <b class="ui">Ambient</b> (İngiliz class-A bir
-        chime combo). Her birinin aktardığı capture, yükleyicisinin kendi başlığını taşır; amfi
-        bloğunun gösterdiği de budur. Her rig ayrıca çevrimdışı yedek olarak bypass edilmiş bir
-        dahili <b class="ui">Amfi</b> ve paketlenmiş bir kabin taşır ve her biri yöneticide
-        <b class="ui">FABRİKA</b> olarak işaretlenir. Hepsini Ayarlar →
-        <b class="ui">RESET</b> → <b class="ui">Fabrika preset’lerine dön</b>'ten geri getir;
-        diyalog şunu uyarır: <b class="ui">TÜM kullanıcı preset’leri silinsin mi? Dört fabrika rig’i geri gelir.</b></p>
+      <h3>Fabrika bankası</h3>
+      <p><b class="ui">Fabrika</b> bankası 128 yuvanın hepsi dolu olarak gelir: PC 0–3'te klasik
+        dörtlü — <b class="ui">Clean</b>, <b class="ui">Crunch</b>, <b class="ui">Lead</b> ve
+        <b class="ui">Ambient</b>, her biri gerçek bir capture etrafında seslendirilmiş — ardından
+        tarzları ve dönemleri gezen temalı rig'ler, akustik enstrümanlar, bir bas bankası, bir vokal
+        bankası ve yardımcı zincirler. Yeni bloklar da burada rol alır: ambient rig'lerde swell'ler
+        ve freeze'ler, çiftlenmiş bir vokal, bir on iki telli, bir synth bas ve vokal şeritleri. Her fabrika rig'i ilk saniyeden dahili amfiler ve paketteki
+        kabinlerle çalar ve her biri yöneticide <b class="ui">FABRİKA</b> olarak işaretlenir.
+        Yöneticinin içe/dışa aktarma menüsündeki <b class="ui">Fabrika preset’lerini gizle</b> bankayı
+        banka menüsünden çıkarır; aynı anahtar onu geri getirir. Ayarlar →
+        <b class="ui">RESET</b> → <b class="ui">Fabrika preset’lerine dön</b> kendi preset'lerini
+        temizler; diyalog şunu uyarır: <b class="ui">TÜM kullanıcı preset’leri silinsin mi? Dört fabrika rig’i geri gelir.</b></p>
+
+      <h3>Sahneler ve morf pedalı</h3>
+      <p>Her rig'in dört sahnesi vardır, <b class="ui">A</b>–<b class="ui">D</b>: her blok için
+        bypass ve düğme konumları; zincire ve yüklü modellere dokunulmaz, bu yüzden sahne
+        değiştirmek kesintisizdir. Yanan sahne düzenlemelerini takip eder — <b class="ui">A</b>
+        açıkken çevrilen bir düğme o andan itibaren <b class="ui">A</b>'ya aittir; böylece başka
+        sahneye geçince hiçbir ayar kaybolmaz.</p>
+      <p>Bir expression pedalı iki sahne arasında <b>morf</b> da yapabilir. Ayarlar →
+        <b class="ui">Kontrol</b> içinde bir CC satırına <b class="ui">Sahneler</b> →
+        <b class="ui">Pedalla morf</b> eylemini ver ve çifti seç: iki sahnenin farklı
+        olduğu her düğme pedalı iki değeri arasında takip eder, bir anahtar, mod ya da bypass ise
+        yarı yolda değişir — drive'ın, delay mix'in ve reverb'ün tek bir ayağın altında birlikte
+        yükseldiği bir clean'den lead'e geçiş.</p>
       <p>Diğer sekmelerin de kendi <b class="ui">PRESET’LER</b> çipinden erişilen ve hepsi aynı
         tasarımı paylaşan kendi preset sayfaları vardır: <b class="ui">Looper preset’leri</b>,
         <b class="ui">Sampler kitleri</b>, <b class="ui">Perform preset’leri</b>,
@@ -616,11 +880,11 @@
         da sampler'ı işleyebilir.</p>
       <p>OUT konektörü, <b class="ui">RIG ÇIKIŞI</b> başlıklı bir sayfa açar; içinde
         <b class="ui">Seviye</b> ve <b class="ui">Pan</b> düğmeleri, bir
-        <b class="ui">Donanım çıkış çifti</b> menüsü (<b class="ui">Out 1-2</b>,
-        <b class="ui">Out 3-4</b>… — bunun için Ayarlar'da <b class="ui">Tüm arabirim çıkışlarını kullan</b>'ın açık olması gerekir) ve <b class="ui">Bu rig’i şuraya kaydet</b> →
-        <b class="ui">Loop track 1</b>–<b class="ui">Loop track 4</b> vardır. Altındaki özet
+        <b class="ui">Donanım çıkış çifti</b> menüsü (<b class="ui">Çıkış 1-2</b>,
+        <b class="ui">Çıkış 3-4</b>… — bunun için Ayarlar'da <b class="ui">Tüm arabirim çıkışlarını kullan</b>'ın açık olması gerekir) ve <b class="ui">Bu rig’i şuraya kaydet</b> →
+        <b class="ui">Loop kanalı 1</b>–<b class="ui">Loop kanalı 4</b> vardır. Altındaki özet
         satırı <b class="ui">Looper: not assigned</b> ya da, birkaçını seçtiğinde,
-        <b class="ui">Looper: track 1, 3</b> yazar.</p>
+        <b class="ui">Looper: parça 1, 3</b> yazar.</p>
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
@@ -631,7 +895,7 @@
         oluştur (<b class="ui">Paralel zincir ekle</b>).</p>
       <p>Menüsünün tek bir bölümü vardır, <b class="ui">Dallanma noktası</b>; her giriş kanalını,
         <b class="ui">Sampler pad’leri</b>'ı, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>'ü ve
-        ana zincirdeki her blok için <b class="ui">After {Block}</b>'u listeler. Son grup en
+        ana zincirdeki her blok için <b class="ui">{Block} sonrası</b>'u listeler. Son grup en
         ilginç olanıdır: amfiden sonra dallanmak aynı amfi tonunda iki farklı reverb verir,
         ondan önce dallanmak aynı gitarda iki farklı amfi verir.</p>
 
@@ -643,14 +907,13 @@
         <table>
           <thead><tr><th>Hareket</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td>Bir bağlantıya dokun</td><td><b class="ui">LANE {n} MIX</b> başlıklı mikser
+            <tr><td>Bir bağlantıya dokun</td><td><b class="ui">HAT {n} MİKS</b> başlıklı mikser
               sayfasını açar; <b class="ui">Seviye</b> ve <b class="ui">Pan</b> ile</td></tr>
             <tr><td>Giriş bağlantısına uzun bas</td><td><b class="ui">Dal girişi</b> menüsü:
               kendi girişi, <b class="ui">Sampler pad’leri</b>, <b class="ui">Loop 1</b>–<b class="ui">Loop 4</b>,
-              <b class="ui">Branch after {Block}</b> ve <b class="ui">Dalı kaldır</b></td></tr>
+              <b class="ui">{Block} sonrası dallan</b> ve <b class="ui">Dalı kaldır</b></td></tr>
             <tr><td>Birleşme bağlantısına uzun bas</td><td><b class="ui">Dal çıkışı</b>
-              menüsü: <b class="ui">Ana mikse</b>, <b class="ui">Merge before
-              {Block}</b>, <b class="ui">Own output 1-2</b> ve <b class="ui">Dalı kaldır</b></td></tr>
+              menüsü: <b class="ui">Ana mikse</b>, <b class="ui">{Block} öncesinde birleştir</b>, <b class="ui">Kendi çıkışı 1-2</b> ve <b class="ui">Dalı kaldır</b></td></tr>
             <tr><td>Bir bağlantıyı sürükle</td><td>Onu ana zincir boyunca farklı bir noktaya
               yeniden bağlar</td></tr>
           </tbody>
@@ -675,7 +938,7 @@
           <b class="ui">Line 1</b>, <b class="ui">Line 2</b> ve benzeri. Bu sana tek tek
           bağlantı sayfalarını kovalamak yerine rig'in ortasında küçük bir mikser verir.</p>
       </div>
-      <p>Bir dal ana miksi tamamen de atlayabilir: çıkışını <b class="ui">Own output 1-2</b>'ye
+      <p>Bir dal ana miksi tamamen de atlayabilir: çıkışını <b class="ui">Kendi çıkışı 1-2</b>'ye
         yönlendir, doğrudan kendi donanım çiftine gider; bunun için önce Ayarlar'da
         <b class="ui">Tüm arabirim çıkışlarını kullan</b>'ın açık olması gerekir.</p>
     </section>
@@ -687,15 +950,15 @@
         Eskiden Rig sekmesinin dibindeydi; artık <a href="/docs/tr/mix.html">Mix</a> sekmesinde,
         faderlerin yanındaki sütunda yaşıyor — burada kısa hâli var, etrafındaki konsol o
         sayfada.</p>
-      <p>Kesik çizgili <b class="ui">+</b> çubuğu master işlemesi ekler — en fazla altı blok. Şunlar
-        arasından seçebilirsin: <b class="ui">Ses düzeyi</b>, <b class="ui">EQ</b>, <b class="ui">Comp</b>, <b class="ui">Satüratör</b>, <b class="ui">Limiter</b>, <b class="ui">FB koruma</b>, <b class="ui">De-Esser</b>, <b class="ui">Reverb</b> ve <b class="ui">Delay</b>. Zincir blokları gibi davranırlar:
-        düzenlemek için etikete dokun, <b class="ui">Etkinleştir</b> / <b class="ui">Bypass</b> ve
-        <b class="ui">Kaldır</b> için basılı tut.</p>
-      <div class="note warn">
-        <div class="t">Master'da AU eklentisi yok</div>
-        <p>Barındırılan Audio Unit eklentileri sadece bir rig zincirinin içine girebilir. Master
-          FX menüsü bunları sunmaz. Her şeyin üzerinde üçüncü taraf bir limiter istiyorsan bu
-          mümkün değil — bunun yerine dahili <b class="ui">Limiter</b> bloğunu kullan.</p>
+      <p>Kesik çizgili <b class="ui">+</b> çubuğu master işlemesi ekler — en fazla altı blok,
+        bir zincirin sunduğu ailelerden, amfi ve <b class="ui">Gönderim</b> hariç. Zincir blokları gibi
+        davranırlar: düzenlemek için etikete dokun, <b class="ui">Etkinleştir</b> /
+        <b class="ui">Bypass</b> ve <b class="ui">Kaldır</b> için basılı tut.</p>
+      <div class="note tip">
+        <div class="t">Master'da eklentiler</div>
+        <p>Master ve iki gönderim dönüşü de barındırılan eklentileri alır: aynı
+          <b class="ui">Eklentiler</b> bölümü ekleme menülerinin en altında durur, böylece üçüncü
+          taraf bir limiter her şeyin üzerinde yer alabilir.</p>
       </div>
       <p>Burada sürekli açık bir master işlemci yok. Doygunluk eklediğiniz bir bloktur — <b class="ui">Satüratör</b>: tür çiplerinde <b class="ui">Lamba</b>, <b class="ui">Bant</b> ya da bir <b class="ui">NAM</b> yakalaması ve <b class="ui">Drive</b>, <b class="ui">Ton</b>, <b class="ui">Miks</b>, <b class="ui">Seviye</b> — sınırlama ise <b class="ui">Limiter</b> bloğudur: <b class="ui">Gain</b>, <b class="ui">Tavan</b> (−12 ile 0 dB arası, varsayılan −1) ve <b class="ui">Release</b>. Eklemediyseniz sinyal yolunda değillerdir.</p>
 

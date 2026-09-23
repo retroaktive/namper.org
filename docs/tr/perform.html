@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform &amp; şarkı sözü — NAMper Dokümantasyonu</title>
-<meta name="description" content="Altyapılar, setlist ve bölümleri, zaman çizelgesindeki preset marker'ları, anchor'lı tam ekran şarkı sözü teleprompter'ı, çok parçalı kayıt ve DAWproject dışa aktarımı.">
+<meta name="description" content="Altyapılar, sahne düğmeleri, setlist ve şarkıları, zaman çizelgesindeki preset marker'ları, anchor'lı tam ekran şarkı sözü teleprompter'ı, çok parçalı kayıt ve DAWproject dışa aktarımı.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Perform &amp; şarkı sözü — NAMper Dokümantasyonu">
@@ -67,7 +68,8 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; ŞARKI SÖZÜ</div>
     <h1>Seti çalmak.</h1>
     <p class="lede"><b class="ui a">Sahne</b> sekmesi, sahnede baktığın sekmedir: altyapılar,
-      bölümlerden oluşan bir setlist, kendiliğinden tetiklenen preset değişimleri, sözlerin için
+      şarkılardan oluşan bir setlist, sesleri değiştiren büyük sahne düğmeleri, zaman
+      çizelgesinden kendiliğinden tetiklenen rig değişimleri, sözlerin için
       tam ekran bir teleprompter, ve tüm geceyi stem'ler halinde yakalayan bir kaydedici.</p>
 
     <nav class="toc">
@@ -75,6 +77,7 @@
       <ul>
         <li><a href="#tracks">Altyapılar</a></li>
         <li><a href="#player">Player kartı</a></li>
+        <li><a href="#stage">Sahne düğmeleri</a></li>
         <li><a href="#setlist">Setlistler ve şarkılar</a></li>
         <li><a href="#sections">Bir şarkı neyi getirir</a></li>
         <li><a href="#markers">İşaretçiler</a></li>
@@ -93,7 +96,7 @@
         bütün bir seti tek seferde içeri alabilirsin, ve iOS'un çözebildiği her şeyi kabul eder.
         Her dosya <b class="ui">backing/</b> içine kopyalanır ve dosyanın adını taşıyan bir
         setlist bölümü olur.</p>
-      <p>Bir dosya okunamazsa <b class="ui r">Could not import &lt;name&gt;.</b> uyarısını
+      <p>Bir dosya okunamazsa <b class="ui r">&lt;name&gt; içe aktarılamadı.</b> uyarısını
         görürsün.</p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
@@ -123,23 +126,31 @@
         global tempo ve ton şarkıyı takip eder, böylece delay ve tremolo'nun sync bölmeleri,
         looper'ın ölçü ızgarası, harmonizer ve autotune hiçbir şey ayarlamana gerek kalmadan
         doğru şarkıya oturur.</p>
-      <p>İsmin altında soldan sağa beş düğme bulunur:</p>
+      <p>İsmin altında soldan sağa altı kontrol bulunur — sahne düğmelerinin tam ekran başlığındaki
+        transport tuşlarının aynısı, aynı sırayla:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Düğme</th><th>Ne yapar</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">Çal</b></td><td>Altyapıyı çalar ve duraklatır</td></tr>
-            <tr><td><b class="ui">Durdur</b></td><td>Durdurur ve başa döner</td></tr>
-            <tr><td><b class="ui">Kaydet</b></td><td>Performans kaydediciyi başlatır ve durdurur (<a href="#recording">aşağıda</a>)</td></tr>
+            <tr><td><b class="ui">Şarkının başına</b></td><td>Çalan şarkının başına döner; şarkının zaman çizelgesi yoksa soluk görünür. Önceki bir şarkı listede bir dokunuş uzağındadır</td></tr>
+            <tr><td><b class="ui">Çal</b> / <b class="ui">Duraklat</b></td><td>Tek tuş: şarkı çalarken
+              duraklatır, duraklattığı yerden devam ettirir. Durdurmak — başa dönmek — şarkı
+              satırının kendi düğmesiyle ya da CC 92 ile olur</td></tr>
+            <tr><td><b class="ui">Sonraki şarkı</b></td><td>Listeye uzanmadan bir sonraki
+              şarkıya geçer</td></tr>
+            <tr><td><b class="ui">OTO SÖZ</b></td><td>Teleprompter'ın şarkıyla birlikte
+              kendiliğinden açılıp açılmayacağı — Ayarlar'daki
+              <b class="ui">Şarkı sözünü şarkıyla birlikte aç</b> ile aynı anahtar</td></tr>
             <tr><td><b class="ui">İşaret ekle</b></td><td>Oynatma konumuna bir değişim bırakır</td></tr>
             <tr><td><b class="ui">Şarkı sözü</b></td><td>Teleprompter'ı açar, ya da bir şarkı sözü dosyası yükler</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Onları MIDI-learn yapmak için <b class="ui">Çal</b> ya da <b class="ui">Durdur</b>'a uzun
-        bas — <b class="ui">MIDI Learn: çal / duraklat</b>, <b class="ui">MIDI Learn: durdur</b>,
-        <b class="ui">MIDI Learn: sonraki bölüm</b> ve <b class="ui">MIDI Learn: önceki bölüm</b> hepsi orada sunulur. Bkz. <a href="/docs/tr/control.html">MIDI &amp;
-        kontrol</a>.</p>
+      <p>Bir transport tuşunu MIDI-learn yapmak için ona uzun bas — orada
+        <b class="ui">MIDI Learn: çal / duraklat</b>, <b class="ui">MIDI Learn: durdur</b>,
+        <b class="ui">MIDI Learn: sonraki bölüm</b>, <b class="ui">MIDI Learn: önceki bölüm</b>
+        ve <b class="ui">MIDI Learn: sonraki şarkı</b> sunulur. Bkz.
+        <a href="/docs/tr/control.html">MIDI &amp; kontrol</a>.</p>
       <h3>Altyapı seviyesi ve yönlendirme</h3>
       <p>Düğmelerin altında yan yatmış bir konsol faderi altyapı seviyesini −60 ile +12 dB arasında
         ayarlar, en altta <b class="ui">-inf</b> yazar; çift dokunuş onu 0 dB'ye döndürür. Bu fader
@@ -163,15 +174,50 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="stage"><span class="n">06.3</span>Sahne düğmeleri</h2>
+      <p>Sahne sekmesinin alt yarısı birkaç büyük düğmeye aittir — şarkının ortasında bakmadan
+        vurabileceğin düğmeler. Ne tuttukları, bir setlist'in <b class="ui">CANLI</b> olup
+        olmamasına bağlıdır:</p>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Canlı setlist yok</b> — o an açık olan rig'in dört <b class="ui">SAHNELER</b>
+          öğesi. Boş bir sahne, sahne çiplerinin yaptığı gibi o an çalanı yakalar.</li>
+        <li><b>Canlı bir setlist var, şarkı seçilmedi</b> — setin şarkıları. İlk dokunuş birini
+          seçer ve onun sesleri düğmelere yerleşir.</li>
+        <li><b>Bir şarkı seçildi</b> — şarkının kendi girdileri, her biri taşıdığı sahneyle
+          birlikte bir preset, şarkının sırasıyla. Çalan yanar; bir düğme yalnızca preset'inin
+          tuttuğu sahneleri gösterir.</li>
+      </ul>
+      <p>Düğme parmak kalktığında değil, dokunduğu anda geçiş yapar; böylece iki ölçü arasındaki
+        hızlı bir dokunuş hiç kaybolmaz. Dört ya da sekiz düğme vardır: başlıktaki sayı çipi bunu
+        değiştirir, sen seçene kadar da ekrana uyar. Izgara, düğmeleri kareye en yakın tutan
+        biçimi seçer. Girdi sayısı düğmelerden fazlaysa başlıktaki oklar sayfaları gezer; bir
+        işaretçi ya da pedal şarkıyı ilerlettiğinde sayfa çalan girdiyi takip eder.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
+             alt="Tam ekran sahne düğmeleri: üstte büyük harflerle şarkının adı, yanında başa dön, çal ve sonraki şarkı tuşları; altta her biri bir preset'i sahne harfi A, B ya da C ile adlandıran büyük düğmeler.">
+        <figcaption>Tam ekran: şarkının adı, transport ve şarkının sesleri</figcaption>
+      </figure>
+      <p>Başlıktaki genişletme düğmesi bütün sekmeyi düğmelere verir. Tam ekranda şarkının adı
+        büyüktür ve player'ın tuşları da yanına gelir — başa dön, çal / duraklat ve sonraki
+        şarkı — çünkü player'ın kendisi görünmez olur.</p>
+      <p>Menüsü için bir düğmeyi basılı tut: rig sayfasının pad menüsü, sahnede —
+        <b class="ui">Sesi değiştir…</b>, <b class="ui">Geçerli rig</b>, <b class="ui">Pad'i temizle</b>
+        ve bir footswitch'i numarasıyla o düğmeye bağlayan MIDI Learn. Basılı tutma kasıtlıdır
+        (yaklaşık 0,8 sn), bu yüzden hızlı bir dokunuşun yoluna asla çıkmaz. Bir set canlıyken
+        program change <em>n</em>, <em>n</em> numaralı sahne düğmesine basar: şarkı seçilmemişken
+        şarkılara, sonra seçilen şarkının kendi girdilerine.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.3</span>Setlistler ve şarkılar</h2>
+      <h2 id="setlist"><span class="n">06.4</span>Setlistler ve şarkılar</h2>
       <p><strong>Setlist</strong> bir şarkı listesidir; her seferinde biri <b class="ui">CANLI</b>
         olur ve sahnedeki setlist preset şeridine ve MIDI'ye sahiptir: program change <em>n</em>,
-        <em>n</em> numaralı şarkıyı çalar. <strong>Şarkı</strong> ise bir ad, getirdiklerinin sıralı
+        <em>n</em> numaralı sahne düğmesine basar. <strong>Şarkı</strong> ise bir ad, getirdiklerinin sıralı
         listesi ve işaretçileriyle ve sözleriyle birlikte <em>isteğe bağlı</em> bir altyapı
         parçasıdır. Hiç sesi olmayan bir şarkı da geçerlidir: o, aynı listeden çağrılan, onu
         çaldığın sestir.</p>
-      <p>Kartın başlığında <b class="ui">SETLIST'LER</b> düğmesi — set oluştur, seç, yeniden adlandır,
+      <p>Kartın başlığında <b class="ui">SETLIST'LER</b> düğmesi — telefonda yalnızca simgesi — set oluştur, seç, yeniden adlandır,
         paylaş ve sil —, bir <b class="ui">OTO GEÇİŞ</b> anahtarı ve ses dosyalarını içe aktaran (her
         dosya bir şarkı), <b class="ui">Altyapısız şarkı</b> ekleyen ya da doğrudan
         <b class="ui">Rig hazır ayarından</b> ile şarkı kuran bir <b class="ui">+</b> var.
@@ -201,7 +247,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.4</span>Bir şarkı neyi getirir</h2>
+      <h2 id="sections"><span class="n">06.5</span>Bir şarkı neyi getirir</h2>
       <p>Düzenleme düğmesi şarkı düzenleyicisini açar: bir <b class="ui">Şarkı adı</b> alanı, ilk girdisi <b class="ui">Altyapısız şarkı</b> olan bir altyapı seçici, <a href="#lyrics">sözler</a> satırı, şarkının getirdiklerinin listesi ve en altta <b class="ui">Şarkıyı sil</b>.</p>
       <p>Fon müziği olmayan bir şarkıda ayrıca bir <b class="ui">Uzunluk</b> satırı olur: üzerinde
         koştuğu zaman çizgisi. Bir uzunluk ver, transport onu sesle değil saatle sayar: üzerinde
@@ -222,22 +268,37 @@
             <a href="/docs/tr/sampler.html">pad</a> için bir kit.</td></tr>
         </tbody>
       </table>
-      <p>Şarkı hazırlanırken liste sırayla uygulanır, yani listedeki <em>son</em> rig preset'i şarkıya
-        başladığın sestir; üstündekiler <a href="#markers">işaretçilerin</a> ulaşması içindir.
-        Satırlar kendi menülerinden yukarı aşağı taşınır ve silinir.</p>
+      <p>Şarkı hazırlandığında listedeki <em>ilk</em> rig preset'i şarkıya başladığın sestir;
+        altındakiler <a href="#markers">işaretçilerin</a>, sahne düğmelerinin ve bir footswitch'in
+        ulaşması içindir; sıra da <em>şarkıda sonraki / önceki preset</em> komutunun adım adım
+        gezdiği sıradır. Yeniden sıralamak için bir satırı tutamağından — sağ kenarındaki üç
+        çizgiden — sürükle. Bir satırın sahne harfleri yalnızca o preset'in tuttuğu sahneleri
+        sunar; seçili harfe tekrar dokunmak seçimi temizler.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/song-edit.png" width="600" height="1303"
+             alt="Şarkı editörü: şarkının adı ve altyapısı, ardından çağırdıklarının listesi — her biri sahne harfleri ve bir tutamakla rig preset'leri, bir looper preset'i ve bir sampler kiti.">
+        <figcaption>Şarkı editörü: sahneleriyle preset'ler, bir looper preset'i, bir kit</figcaption>
+      </figure>
       <h3>Preset seçmek</h3>
+      <figure>
+        <img class="phone" src="/docs/assets/preset-picker.png" width="600" height="1303"
+             alt="Rig preset seçici: listenin üstünde bir arama alanı, ve program numarası, banka, kapak, preset'in adı ve etiketlerinden oluşan satırlar.">
+        <figcaption>Rig preset seçici: bütün bankalar tek listede</figcaption>
+      </figure>
       <p>Rig preset seçici, şeritteki numaraların aynısını gösterir — <b class="ui">0</b> …
-        <b class="ui">127</b> — kapak resmiyle ve listenin üstünde ada, numaraya ve etikete göre
-        süzen bir arama alanıyla. Ve gezerken <strong>dinletir</strong>: bir satıra dokun, rig onu
-        gerçekten yükler, yani sesi kulağınla seçersin. Seçim yapmadan kapatırsan rig eski hâline
-        döner.</p>
+        <b class="ui">127</b> — bütün bankalar için tek bir listede, önce fabrikanınki; her satır
+        bankasıyla işaretlidir, kapağını ve etiketlerini taşır; arama alanı ada, numaraya ve
+        etikete göre süzer. Ve gezerken <strong>dinletir</strong>: bir satıra dokun, rig onu
+        gerçekten yükler, yani sesi kulağınla seçersin (seçicinin başlığındaki hoparlör bunu
+        kapatır). Onay işareti vurgulanan preset'i ekler; seçim yapmadan kapatırsan rig eski
+        hâline döner.</p>
       <p>Ters yön de çalışır: Rig sekmesindeki şeritte bir preset'in satır menüsünde
         <b class="ui">Sete ekle…</b> vardır — bir setlist seç, sonra onun şarkılarından birini ya
         da <b class="ui">Yeni şarkı</b>'u, preset o şarkının listesinin sonuna eklenir.</p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.5</span>İşaretçiler</h2>
+      <h2 id="markers"><span class="n">06.6</span>İşaretçiler</h2>
       <p>İşaretçi, şarkının zaman çizgisinde onun kendi girdilerinden birini getiren bir andır. Temiz
         kıta, crunch nakarat, solo için lead — bir kez konur, sonra her çalışında eller serbest.</p>
       <ol style="--nc:var(--drive)">
@@ -266,7 +327,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.6</span>Şarkı sözü ve teleprompter</h2>
+      <h2 id="lyrics"><span class="n">06.7</span>Şarkı sözü ve teleprompter</h2>
       <p>NAMper sözlerini senin için taşır. Bir parçaya düz metin bir dosya ver, o da şarkı
         başladığında kendiliğinden açılan ve ona öğrettiğin hızda kayan tam ekran bir
         teleprompter'a dönüşsün.</p>
@@ -323,9 +384,11 @@
         m:ss</b> göstergesi ve bir çal/duraklat düğmesi taşır. <strong>Ekranın herhangi bir
         yerine dokunmak çal/duraklatı değiştirir</strong> — elinde gitarla küçük bir hedef
         aramana gerek kalmaz.</p>
-      <p>Kendiliğinden açılması bir anahtardır: Ayarlar → <b class="ui">Sahne</b> →
-        <b class="ui">Şarkı sözünü şarkıyla birlikte aç</b>. Kapalıyken bulunduğun sekme yerinde kalır,
-        sözleri istediğinde <b class="ui">Şarkı sözü</b> düğmesi açar.</p>
+      <p>Kendiliğinden açılması bir anahtardır: player kartında şarkı sözü düğmesinin yanındaki
+        <b class="ui">OTO SÖZ</b>, şarkı sözü düğmesinin menüsündeki aynı anahtar ve
+        Ayarlar → <b class="ui">Sahne</b> → <b class="ui">Şarkı sözünü şarkıyla birlikte aç</b>.
+        Kapalıyken bulunduğun sekme yerinde kalır, sözleri istediğinde <b class="ui">Şarkı
+        sözü</b> düğmesi açar.</p>
 
       <h3>Anchor'lar</h3>
       <p>Bir anchor, metne şarkını öğretme yöntemindir. <strong>Bir satırı yaklaşık üçte bir
@@ -367,7 +430,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.7</span>Perform preset'leri</h2>
+      <h2 id="presets"><span class="n">06.8</span>Perform preset'leri</h2>
       <p>Setlist başlığındaki <b class="ui">PRESET’LER</b> çipi <b class="ui">Perform preset’leri</b>'i
         açar. Kaydedilmiş bir perform preset'i <strong>tüm setlist'i</strong> taşır: adımları ve
         ölçüleriyle her bölüm, <b class="ui">OTO GEÇİŞ</b> durumu, ve şarkı sözü olan her
@@ -384,9 +447,9 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.8</span>Kayıt</h2>
-      <p>Player kartındaki kayıt düğmesi, performansı <strong>üç hizalı stem</strong> olarak
-        yakalar. Motor çalışmıyorsa <b class="ui r">Ses kapalı — kayıttan önce güç düğmesine dokun.</b> uyarısıyla reddeder.</p>
+      <h2 id="recording"><span class="n">06.9</span>Kayıt</h2>
+      <p><a href="/docs/tr/mix.html#recorder">Miks</a> sekmesindeki kaydedici, performansı
+        <strong>üç hizalı stem</strong> olarak yakalar. Motor çalışmıyorsa <b class="ui r">Ses kapalı — kayıttan önce güç düğmesine dokun.</b> uyarısıyla reddeder.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Stem</th><th>Ne içerir</th></tr></thead>
@@ -409,7 +472,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.9</span>Kayıt projeleri</h2>
+      <h2 id="projects"><span class="n">06.10</span>Kayıt projeleri</h2>
       <p><b class="ui">KAYITLAR</b> kartı, bir take'in stem'lerini bir <strong>proje</strong>de
         toplar — paylaştıkları <b class="ui">Perf &lt;date&gt;</b> ismine göre. En yeni önce
         gelir, ve en yeni beş proje gösterilir — daha eski take'ler <b class="ui">recordings/</b>
@@ -425,7 +488,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.10</span>DAWproject dışa aktarımı</h2>
+      <h2 id="dawproject"><span class="n">06.11</span>DAWproject dışa aktarımı</h2>
       <p>Bir <strong>proje satırındaki</strong> paylaş düğmesi — tek bir stem'deki değil — tüm
         take'i normal iOS paylaşım sayfası üzerinden bir <b class="ui">.dawproject</b> dosyası
         olarak dışa aktarır: Dosyalar'a kaydet, bir Mac'e AirDrop'la, bir bulut klasörüne bırak.

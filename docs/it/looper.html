@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — Documentazione di NAMper</title>
-<meta name="description" content="Il looper sincronizzato a quattro tracce: pad circolari, il transport, l'armamento AUTO e l'allineamento alle battute, tempo e click, l'editor del loop, annulla, il routing per traccia e cosa viene salvato.">
+<meta name="description" content="Il looper sincronizzato a quattro celle: le celle di loop e i loro tasti d'angolo, il transport, l'armamento AUTO e l'allineamento alle battute, tempo e click, l'editor del loop, le celle MIDI con quantizzazione non distruttiva, annulla, ingresso, uscita e preset di ogni cella, i loop come file WAV e cosa viene salvato.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta property="og:title" content="Looper — Documentazione di NAMper">
@@ -74,117 +75,143 @@
       <div class="slab">IN QUESTA PAGINA</div>
       <ul>
         <li><a href="#basics">Come pensa il looper</a></li>
-        <li><a href="#pads">I pad circolari</a></li>
+        <li><a href="#pads">Le celle di loop</a></li>
         <li><a href="#transport">Il transport</a></li>
         <li><a href="#auto">Modalità AUTO</a></li>
         <li><a href="#tempo">Tempo e click</a></li>
         <li><a href="#editor">L'editor del loop</a></li>
-        <li><a href="#undo">Annulla</a></li>
-        <li><a href="#routing">Routing per traccia</a></li>
+        <li><a href="#midi">Celle MIDI</a></li>
+        <li><a href="#undo">Annulla e cancella</a></li>
+        <li><a href="#routing">Le impostazioni di una cella</a></li>
         <li><a href="#saving">Cosa viene salvato</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="basics"><span class="n">04.1</span>Come pensa il looper</h2>
-      <p>Una regola sta alla base di tutto il resto, e l'app la stampa in fondo allo
-        schermo:</p>
-      <p><b class="ui">Il primo loop definisce il ciclo · gli altri si sincronizzano · MIDI CC 85–88 tap · 89 run/stop · 90 clear</b></p>
-      <p>La prima traccia che registri definisce il ciclo. Ogni altra traccia si adatta ad essa invece
+      <p>Una regola sta alla base di tutto il resto: <b>il primo loop definisce il ciclo, e ogni
+        altro loop si sincronizza con esso.</b></p>
+      <p>La prima cella che registri definisce il ciclo. Ogni altra cella si adatta ad esso invece
         di andare per conto proprio, e nulla sposta quel ciclo in seguito, a parte modificare la
-        traccia che lo ha definito, oppure cancellare tutto e ricominciare da capo.</p>
-      <p>Ci sono quattro tracce, ognuna con spazio per fino a <b>60 secondi</b>. In verticale i pad si
-        dispongono in una griglia 2×2; in orizzontale il transport si sposta in una colonna a sinistra
-        e i quattro pad si allineano in una riga.</p>
+        cella che lo ha definito, oppure cancellare tutto e ricominciare da capo.</p>
+      <p>Ci sono quattro celle, e un loop dura quanto lo suoni: oltre il primo minuto una cella
+        continua a crescere finché il dispositivo ha memoria per contenerla. Con lo schermo in
+        verticale il transport sta in alto e le quattro celle riempiono la pagina due a due; in
+        orizzontale il transport diventa una colonna a sinistra e le impostazioni di ogni cella
+        stanno accanto al suo pad. L'iPad segue la stessa regola in base alla forma della pagina,
+        non al dispositivo.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="La scheda Loop: traccia 1 in riproduzione con una forma d'onda radiale verde e un raggio rotante, traccia 2 armata con un bordo rosso tratteggiato, tracce 3 e 4 vuote, il chip AUTO acceso in verde e il tempo che segna 124 BPM.">
-        <figcaption>Traccia 1 in riproduzione, traccia 2 armata e in attesa, AUTO attivo a 124 BPM</figcaption>
+             alt="La scheda Loop: la card del transport in alto con il tempo, AUTO e CLICK; sotto, quattro celle di loop, ognuna un pad rotondo in un quadrato con quattro tasti agli angoli e le sue tessere di impostazioni sotto; cella 1 in riproduzione con un anello d'onda verde, cella 2 in registrazione, cella 3 in muto, cella 4 vuota.">
+        <figcaption>Il transport in alto, quattro celle sotto: un pad, quattro tasti agli angoli, le tessere delle impostazioni</figcaption>
       </figure>
-      <p>Ogni card di traccia è organizzata allo stesso modo: una riga di intestazione con il grande
-        numero di traccia, l'etichetta di stato e un puntino LED; il pad circolare; una griglia 2×2 di
-        chip — <b class="ui">IN</b> e <b class="ui">DURATA</b> sopra <b class="ui">DUB</b> e
-        <b class="ui">OUT</b>; e una riga di controlli sotto.</p>
+      <p>Ogni cella è costruita allo stesso modo: il <b>pad</b> rotondo al centro di un quadrato, un
+        <b>tasto d'angolo</b> in ciascuno dei quattro angoli del quadrato, e una fila di
+        <b>tessere di impostazioni</b> — sotto il pad, o accanto quando la cella è più larga che
+        alta. Non ci sono card né intestazioni: il numero della cella è disegnato enorme e tenue
+        attraverso il suo cerchio.</p>
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="pads"><span class="n">04.2</span>I pad circolari</h2>
-      <p>Il pad disegna la forma d'onda del loop <em>radialmente</em> attorno all'anello — un giro del
-        cerchio corrisponde a un giro del ciclo — con un raggio rotante che segna la posizione di
-        riproduzione. Gli attacchi appaiono come picchi sull'anello, così puoi capire dove sei anche
-        dall'altra parte della stanza.</p>
+      <h2 id="pads"><span class="n">04.2</span>Le celle di loop</h2>
+      <p>Il pad disegna la forma d'onda del loop <em>come un anello</em> — un giro del cerchio
+        corrisponde a un giro del ciclo — con un raggio che segna la posizione di riproduzione. I
+        passaggi forti rendono l'anello più spesso, così puoi capire dove sei nel loop anche
+        dall'altra parte della stanza. Il pad inoltre <b>si illumina dal bordo verso l'interno</b>
+        mentre il loop suona, tanto più in profondità quanto più è forte.</p>
       <p>Mentre il primissimo loop è in registrazione non c'è ancora un ciclo, quindi l'anello si
         comporta diversamente: l'intero cerchio rappresenta tutto ciò che è stato registrato
-        <em>finora</em>. La forma d'onda si comprime man mano che il take cresce, il raggio resta
-        fermo alle ore 12 — quella è la testina di scrittura — e il centro del pad conta i secondi
-        trascorsi. Una volta chiuso il loop, il raggio percorre il ciclo.</p>
+        <em>finora</em>, il raggio resta fermo alle ore 12 — quella è la testina di scrittura — e il
+        centro conta i secondi trascorsi. Una volta chiuso il loop, il raggio percorre il ciclo. Una
+        cella che registra dentro un ciclo in corso disegna la sua onda come un arco che cresce.</p>
 
       <h3>Toccare il pad</h3>
-      <p>Un tocco fa salire la traccia di un gradino nella scala:</p>
+      <p>Solo il cerchio accetta il tocco. Un tocco fa salire la cella di un gradino nella scala:</p>
       <ul style="--nc:var(--eq)">
-        <li>vuoto → registrazione</li>
+        <li>vuota → registrazione</li>
         <li>registrazione → chiude il loop, e inizia la riproduzione</li>
         <li>riproduzione → overdub</li>
         <li>overdub → torna alla riproduzione</li>
-        <li>muto → disattiva il muto</li>
+        <li>muto → riproduzione</li>
       </ul>
       <p>Con <b class="ui">AUTO</b> attivo, toccare un pad vuoto lo <b>arma</b> invece di registrare
-        subito, e toccare un pad armato annulla l'armamento. Questo è l'unico cambiamento che AUTO
-        introduce nella scala.</p>
+        subito — un anello rosso tratteggiato circonda la cella — e toccare un pad armato annulla
+        l'armamento. Questo è l'unico cambiamento che AUTO introduce nella scala.</p>
 
-      <h3>Pressione prolungata</h3>
-      <p>Tieni premuto il pad rotondo per <b class="ui">MIDI Learn: tap loop track 1</b> (e 2, 3, 4) —
-        è così che si associa un footswitch a una traccia. Tieni premuta invece la <em>card</em> che
-        lo circonda e ottieni il menu di routing: <b class="ui">Input · …</b>,
-        <b class="ui">Output · …</b>, <b class="ui">Modifica loop…</b>, più
-        <b class="ui">Durata · Libera</b> o <b class="ui">Length · N bars</b> e
-        <b class="ui">Overdubs · N</b>.</p>
+      <h3>I tasti d'angolo</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Angolo</th><th>Tasto</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td>In alto a sinistra</td><td><b class="ui">Mute</b></td>
+                <td>Silenzia il loop mentre continua a girare; acceso in giallo finché è attivo.</td></tr>
+            <tr><td>In alto a destra</td><td><b class="ui">Solo</b></td>
+                <td>Silenzia le altre celle in riproduzione; premilo di nuovo per riportarle. Mettere
+                  in solo un'altra cella gli passa il solo.</td></tr>
+            <tr><td>In basso a sinistra</td><td><b class="ui">Annulla</b></td>
+                <td>Annulla l'ultimo overdub di questa cella, oppure ne cancella la take — vedi
+                  <a href="#undo">Annulla e cancella</a>.</td></tr>
+            <tr><td>In basso a destra</td><td><b class="ui">Play</b> / <b class="ui">Stop</b></td>
+                <td>Ferma o avvia solo questo loop.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Un tasto che non ha nulla da fare nello stato attuale della cella è disegnato tenue. Anche
+        gli angoli si illuminano con il loop, un po' meno in profondità del pad.</p>
+      <p><b>Fermare una cella</b> non ferma il tempo: il loop continua a girare in silenzio con il
+        ciclo, e premere <b class="ui">Play</b> lo riporta esattamente a tempo, mai dal suo inizio.
+        Con l'intero looper fermo, il <b class="ui">Play</b> di una cella avvia il looper con quella
+        cella sola; il play del transport riporta tutte le celle.</p>
 
       <h3>Stati</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Stato</th><th>Etichetta</th><th>Colore</th></tr></thead>
+          <thead><tr><th>Stato</th><th>Cosa vedi</th></tr></thead>
           <tbody>
-            <tr><td>Niente registrato</td><td><b class="ui">vuota</b></td><td>Attenuato</td></tr>
-            <tr><td>Cattura in corso</td><td><b class="ui">in registrazione</b></td><td>Rosso</td></tr>
-            <tr><td>Riproduzione in loop</td><td><b class="ui">in riproduzione</b></td><td>Verde</td></tr>
-            <tr><td>Sovrapposizione</td><td><b class="ui">overdub</b></td><td>Arancione</td></tr>
-            <tr><td>Silenziato, ancora attivo</td><td><b class="ui">in mute</b></td><td>Giallo</td></tr>
-            <tr><td>In attesa (AUTO)</td><td><b class="ui">armata</b></td>
-                <td>Rosso, bordo tratteggiato attorno alla card</td></tr>
+            <tr><td>Niente registrato</td><td>Bordo tenue, nessuna onda</td></tr>
+            <tr><td>In registrazione</td><td>Rosso</td></tr>
+            <tr><td>In riproduzione</td><td>Verde</td></tr>
+            <tr><td>Overdub</td><td>Arancione</td></tr>
+            <tr><td>In muto</td><td>Giallo, l'onda attenuata</td></tr>
+            <tr><td>Fermata da sola</td><td>Nel colore dell'inchiostro, l'onda ancora disegnata</td></tr>
+            <tr><td>Armata (AUTO)</td><td>Rosso, anello tratteggiato attorno alla cella</td></tr>
           </tbody>
         </table>
       </div>
-      <p>La riga di controlli sotto ogni pad contiene quattro elementi: muto
-        (<b class="ui">Mute track N</b>, che diventa giallo), modifica
-        (<b class="ui">Edit loop N</b>), cancella (<b class="ui">Clear track N</b>) e una piccola
-        manopola di livello (<b class="ui">Loop track N level</b>, da 0 a 1.5).</p>
+
+      <h3>Pressione prolungata</h3>
+      <p>Tieni premuto il pad — o un punto qualsiasi della cella — per il menu della cella:
+        <b class="ui">Ingresso · …</b>, <b class="ui">Uscita · …</b>, <b class="ui">Preset del loop · …</b>,
+        <b class="ui">Modifica loop…</b>, <b class="ui">Durata · Libera</b> o
+        <b class="ui">Length · N bars</b>, <b class="ui">Overdub · N</b>; il loop come file —
+        <b class="ui">Esporta loop come WAV…</b>, <b class="ui">Esporta tutti i loop…</b>,
+        <b class="ui">Carica loop da file…</b> (vedi <a href="#saving">sotto</a>); e in fondo
+        <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — è così che si associa un
+        footswitch a una cella.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Il transport</h2>
-      <p>Accanto alla parola <b class="ui">LOOPER</b> si trova la riga del transport:</p>
+      <p>La card del transport contiene la parola <b class="ui">LOOPER</b> — rossa finché il looper
+        contiene qualcosa — e, in verticale, due righe:</p>
       <ul style="--nc:var(--gate)">
-        <li>Un <b>anello master</b> che mostra la durata del ciclo in secondi, oppure
-          <b class="ui">—</b> quando non è stato ancora registrato nulla.</li>
-        <li>Un chip <b class="ui">PRESET</b> — vedi <a href="#saving">cosa viene salvato</a>.</li>
+        <li>Un tasto <b>preset</b> — vedi <a href="#saving">cosa viene salvato</a>.</li>
         <li><b class="ui">Avvia loop</b> / <b class="ui">Ferma loop</b>, disattivato finché non c'è
           un ciclo.</li>
-        <li>Un pulsante <b>Annulla</b>, attivo solo quando c'è qualcosa da annullare.</li>
-        <li>Un pulsante cestino, <b class="ui">Cancella tutti i loop</b>.</li>
+        <li>Un tasto <b>annulla</b> — vedi <a href="#undo">Annulla e cancella</a>.</li>
+        <li>Un tasto cestino, <b class="ui">Cancella tutti i loop</b>.</li>
+        <li>Sotto, il tempo, <b class="ui">AUTO</b> e <b class="ui">CLICK</b>.</li>
       </ul>
-      <p>Sotto, una riga di stato ti dice a che punto sei:
-        <b class="ui">registrazione del loop master…</b> mentre la prima take è in corso, una posizione
-        che avanza <b class="ui">4.2 / 8.0 s</b> una volta che c'è un ciclo, <b class="ui">ferma</b>,
-        oppure <b class="ui">tocca una traccia per registrare</b> quando il looper è vuoto.</p>
+      <p>In orizzontale gli stessi tasti stanno in una colonna: il tempo, AUTO e CLICK in alto,
+        play, annulla e cestino in fondo. La card si illumina mentre il primo loop registra.</p>
+      <p>Tieni premuto play per <b class="ui">MIDI Learn: looper avvio / stop</b>, oppure il cestino
+        per <b class="ui">MIDI Learn: cancella tutti i loop</b>.</p>
       <div class="note">
         <div class="t">Controllo da footswitch</div>
-          <p>La mappa MIDI integrata copre il looper senza configurare nulla: <b class="ui">CC 85–88</b>
-          toccano le tracce da 1 a 4, <b class="ui">CC 89</b> avvia, <b class="ui">CC 90</b> pulisce.
-          Attenzione: il CC 89 manda un comando di <em>play</em> — fa ripartire i loop dall'inizio
-          invece di alternarli. Per un vero avvio/arresto su un solo interruttore aggiungi
-          un'assegnazione in Impostazioni → <b class="ui">Controllo</b> e imparala su
-          <b class="ui">Avvia / stop</b>, che legge lo stato corrente.</p>
+        <p>La mappa MIDI integrata copre il looper senza configurare nulla: <b class="ui">CC 85–88</b>
+          toccano le celle da 1 a 4, <b class="ui">CC 89</b> avvia e ferma, <b class="ui">CC 90</b>
+          cancella. Il CC 89 è un vero interruttore — vedi <a href="/docs/it/control.html">MIDI e
+          controllo</a>.</p>
       </div>
     </section>
 
@@ -195,11 +222,13 @@
         determina dove si trovano davvero le battute.</p>
 
       <h3>Armare invece di registrare</h3>
-      <p>Con AUTO attivo, toccare un pad vuoto lo arma: la card riceve un bordo rosso tratteggiato e
-        mostra <b class="ui">armata</b>. Cosa succede dopo dipende dal fatto che ci sia già un ciclo:</p>
+      <p>Con AUTO attivo, toccare un pad vuoto lo arma: un anello rosso tratteggiato circonda la
+        cella. Cosa succede dopo dipende dal fatto che ci sia già un ciclo:</p>
       <ul style="--nc:var(--amp)">
         <li><b>Nessun ciclo ancora.</b> La registrazione inizia <b>alla tua prima nota</b> sopra la
-          soglia di armamento. Puoi imbracciare la chitarra, metterti comodo, e la take parte quando
+          soglia di armamento — Impostazioni → <b class="ui">Palco</b> → <b class="ui">LOOPER</b> →
+          <b class="ui">Segnale che avvia un loop automatico</b>, −40 dB se non la sposti; più bassa è, più
+          è sensibile. Uno sfioramento delle corde o il rumore della stanza restano sotto. Puoi imbracciare la chitarra, metterti comodo, e la take parte quando
           suoni — non quando hai toccato lo schermo.</li>
         <li><b>Un ciclo già in corso.</b> La registrazione inizia al <b>confine del ciclo
           successivo</b>, così la take parte esattamente sulla battuta. Una breve finestra di
@@ -207,9 +236,15 @@
           con un filo di ritardo rispetto al raggio conta comunque.</li>
       </ul>
       <p>Una take armata libera — una registrata senza alcun ciclo in corso — si <b>ferma anche da
-        sola</b> dopo circa 1.2 secondi di silenzio, tagliata sulla parte udibile. La soglia è
-        volutamente generosa: le code di riverbero e le pause tra le frasi non contano come silenzio,
-        quindi un riff rado non viene tagliato a metà.</p>
+        sola</b> quando finisce la frase: una volta che il silenzio è durato i beat impostati in
+        <b class="ui">Silenzio che chiude un loop automatico</b> (uno, se non lo cambi) e ha superato le pause
+        del tuo stesso modo di suonare, la take si chiude sulla fine di battuta che ha sentito. Se non
+        c'è un tempo da sentire — un bordone, un pad — la chiudono invece due secondi di silenzio. Le
+        code di riverbero e le pause tra le frasi non contano come silenzio, quindi un riff rado non
+        viene tagliato a metà.</p>
+      <p>Se un loop sta già suonando da un combo e rientra nel tuo microfono o nei pickup, una cella
+        armata impara quanto di quel loop ritorna e lo aspetta: una nota deve salire nettamente sopra,
+        circa 9 dB, quindi suonala invece di sfiorarla.</p>
       <p>Dopo che ogni loop si chiude, AUTO <b>arma da solo la prossima cella vuota</b>, così puoi
         costruire tutte e quattro le tracce senza più toccare lo schermo.</p>
 
@@ -227,7 +262,7 @@
       </ol>
       <p>Sullo schermo succede tutto in un istante: l'anello si ridisegna, la durata si allinea a una
         cifra pulita, e il valore BPM — vuoto fino a quel momento — si riempie. Da lì in poi il click,
-        i chip LEN, la quantizzazione del sampler e l'orologio a battute del setlist hanno tutti una
+        le tessere LEN, la quantizzazione del sampler e l'orologio a battute del setlist hanno tutti una
         griglia da cui partire.</p>
       <p>Con <b class="ui">CLICK</b> attivo, il tempo è <b>bloccato</b> a qualunque valore sia
         impostato e viene adattata solo la fase. È questa la modalità da usare quando suoni su un
@@ -274,17 +309,19 @@
       </div>
     </section>
 
-    <section class="blk" style="--nc:var(--pitch)">
+    <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>L'editor del loop</h2>
-      <p>Aprilo con il pulsante di modifica nella riga di controlli di un pad, oppure tieni premuta la
-        card → <b class="ui">Modifica loop…</b>. Il foglio è intitolato <b class="ui">LOOP N</b> con
-        un'etichetta di durata in tempo reale.</p>
+      <p>Aprilo con la tessera di modifica (<b class="ui">Modifica loop N</b>) tra le impostazioni di una
+        cella, oppure tieni premuta la cella → <b class="ui">Modifica loop…</b>. La tessera di modifica
+        funziona <b>anche su una cella vuota o armata</b>, così il preset con cui una take verrà
+        registrata — e, su una cella MIDI, la sua griglia — si può impostare prima di suonare. Il
+        foglio è intitolato <b class="ui">LOOP N</b> con un'etichetta di durata in tempo reale.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="Il foglio dell'editor del loop sopra il looper: una forma d'onda con una griglia di battute e beat, maniglie di inizio e fine trascinabili, le righe di pulsanti START e LENGTH TEMPO KEPT, le manopole Level e Pan, e i pulsanti Mute, Undo e Clear.">
+             alt="Il foglio dell'editor del loop sopra il looper: una forma d'onda con una griglia di battute e beat, maniglie di inizio e fine trascinabili, la riga RECORD THROUGH, le righe di pulsanti START e LENGTH TEMPO KEPT, le manopole Level e Pan, e i pulsanti Mute, Undo e Clear.">
         <figcaption>L'editor del loop: griglia, maniglie, pulsanti di regolazione fine e la riga inferiore</figcaption>
       </figure>
-      <p>L'etichetta mostra qualcosa come <b class="ui">8.00 s · 4.0 bars</b>. Trascinare la maniglia
+      <p>L'etichetta mostra qualcosa come <b class="ui">8.00 s · 4.0 battute</b>. Trascinare la maniglia
         di fine aggiunge il tempo che quella durata produrrebbe; trascinare la maniglia di inizio la
         cambia in <b class="ui">start +0.50 beats</b>.</p>
       <p>La forma d'onda porta una <b>sovrapposizione a griglia</b> di battute e beat — tacche dei
@@ -293,16 +330,22 @@
         spingere di nuovo fuori la maniglia di fine più tardi.</p>
 
       <h3>Le due maniglie</h3>
-      <ul style="--nc:var(--pitch)">
+      <ul style="--nc:var(--eq)">
         <li><b>L'inizio</b> (<b class="ui">Maniglia inizio loop</b>) ruota la fase: il loop inizia più
           tardi e la parte saltata si sposta in fondo. Durata e tempo non cambiano. È la correzione
           per un loop che parte con mezzo beat di anticipo.</li>
         <li><b>La fine</b> (<b class="ui">Maniglia fine loop</b>) ridimensiona il loop, e funziona
-          <b>solo sulla traccia che definisce il ciclo</b>. Il numero di battute viene mantenuto e il
+          <b>solo sulla cella che definisce il ciclo</b>. Il numero di battute viene mantenuto e il
           tempo impostato lo segue, quindi allungare il loop rallenta l'intero set. Il foglio lo dice
           chiaramente: <b class="ui">Trascina i bordi per spostare l'inizio e ridimensionare il loop: il ridimensionamento riaccorda il tempo del set.</b></li>
       </ul>
-      <p>Una traccia vuota mostra <b class="ui">niente audio</b> e niente da trascinare.</p>
+      <p>Una cella vuota non mostra audio né niente da trascinare.</p>
+
+      <h3>Registra attraverso</h3>
+      <p>La riga <b class="ui">REGISTRA ATTRAVERSO</b> indica il preset attraverso cui la cella registra —
+        il rig dal vivo, a meno che tu non ne scelga uno. Toccala per scegliere un preset; la sua
+        <b>×</b> riporta la cella su <b class="ui">Il rig attivo</b>. Vedi
+        <a href="#preset">il preset del loop</a>.</p>
 
       <h3>Le righe di pulsanti</h3>
       <p>Sotto la forma d'onda, <b class="ui">START</b> offre quattro regolazioni di fase —
@@ -316,76 +359,158 @@
       <div class="note">
         <div class="t">Perché i pulsanti di durata sono in grigio</div>
         <p>Tutti e sei i pulsanti <b class="ui">DURATA · TEMPO INVARIATO</b> sono disattivati a meno che
-          la traccia che stai modificando non sia quella che definisce il ciclo, e il foglio spiega
+          la cella che stai modificando non sia quella che definisce il ciclo, e il foglio spiega
           perché: <b class="ui">Solo la traccia che definisce il ciclo può cambiarne la durata.</b> Se
-          la durata è sbagliata su una traccia che segue, il loop da modificare è quello master.</p>
+          la durata è sbagliata su una cella che segue, il loop da modificare è quello master.</p>
       </div>
       <p>La riga inferiore contiene una manopola <b class="ui">Livello</b> (da 0 a 1.5), una manopola
         <b class="ui">Pan</b> che mostra <b class="ui">C</b>, <b class="ui">L50</b> o
-        <b class="ui">R50</b>, e i pulsanti <b class="ui">Mute</b>, <b class="ui">Annulla</b> e
-        <b class="ui">Cancella</b>.</p>
+        <b class="ui">R50</b>, e i pulsanti <b class="ui">Mute</b>, <b class="ui">Annulla</b> (l'ultimo
+        overdub) e <b class="ui">Cancella</b>, che svuota la cella e chiude il foglio.</p>
       <p>Non c'è la marcia indietro. I loop si riproducono solo in avanti.</p>
     </section>
 
+    <section class="blk" style="--nc:var(--pitch)">
+      <h2 id="midi"><span class="n">04.7</span>Celle MIDI</h2>
+      <p>Imposta l'<b class="ui">IN</b> di una cella su <b class="ui">Pad del sampler (MIDI)</b> e
+        smette di registrare suono: registra <b>quale pad colpisci, quando e con quanta forza</b>, e
+        riproduce i colpi attraverso il <a href="/docs/it/sampler.html">sampler</a>. Una parte di
+        batteria registrata così non costa quasi nulla, resta modificabile colpo per colpo e segue il
+        kit caricato — cambia kit e la stessa parte suona i nuovi suoni.</p>
+      <p>Una cella MIDI disegna sul suo anello una tacca per ogni colpo invece di un'onda, e il suo
+        pad lampeggia ogni volta che il raggio passa su un colpo. La sua tessera
+        <b class="ui">OUT</b> diventa <b class="ui">QNT</b> — i pad vanno già dove va il
+        sampler.</p>
+
+      <h3>Quantizzare mentre registri</h3>
+      <p>La tessera <b class="ui">QNT</b> cicla tra <b class="ui">OFF</b>, <b class="ui">1/4</b>,
+        <b class="ui">1/8</b>, <b class="ui">1/16</b> e <b class="ui">1/32</b>. Sposta ciò che viene
+        <em>inciso</em>, mai ciò che senti: il colpo che suoni suona sempre subito, e sulla griglia
+        finisce la copia registrata.</p>
+
+      <h3>L'editor MIDI</h3>
+      <p>L'editor di una cella MIDI ha un badge rosa <b class="ui">MIDI</b> e, al posto della forma
+        d'onda, un <b>roll</b>: una riga per ogni pad caricato dal kit, una colonna per ogni passo
+        della griglia, linee più marcate su beat e battute, una linea rossa per la testina di
+        riproduzione. La take riempie sempre tutta la larghezza del roll; una griglia più fine
+        disegna solo più linee.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
+             alt="L'editor di una cella di loop MIDI: l'intestazione LOOP 1 con un badge MIDI rosa, la manopola Quantize, i chip GRID da 1/4 a 1/32 e il conteggio dei colpi, un roll con una riga per ogni pad del sampler e otto colpi sulla prima riga, e il righello con la maniglia END sotto.">
+        <figcaption>L'editor di una cella MIDI: quantizzazione, i chip della griglia e il roll</figcaption>
+      </figure>
+      <ul style="--nc:var(--pitch)">
+        <li><b>Tocca</b> un quadrato per mettere lì un colpo o toglierlo — senti il pad.</li>
+        <li><b>Tieni premuto</b> un quadrato per cambiarne l'accento: pieno, due terzi, un terzo. La
+          tonalità del blocco lo mostra.</li>
+        <li>Trascina la maniglia rossa <b class="ui">FINE</b> sul righello sotto il roll per cambiare
+          la durata del loop a passi; il tempo resta invariato.</li>
+      </ul>
+      <p>Sopra il roll, la manopola <b class="ui">Quantizza</b> e i chip <b class="ui">GRIGLIA</b>
+        (da <b class="ui">1/4</b> a <b class="ui">1/32</b>) quantizzano la take <b>a posteriori —
+        e senza distruggerla.</b> La take come l'hai suonata viene conservata, e la griglia si
+        applica sempre a quell'originale, mai all'ultimo risultato: abbassa la manopola e i colpi
+        tornano dove li hai suonati; su <b class="ui">OFF</b> il timing torna tuo. Confronta 1/8 e
+        1/16 tutte le volte che vuoi. Una modifica a mano nel roll diventa la nuova take suonata. La
+        riga conta anche la take — <b class="ui">8 colpi</b>.</p>
+      <p>Senza un kit caricato il roll dice <b class="ui">Carica un kit nella scheda Sample per modificare questa ripresa sulla griglia.</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="undo"><span class="n">04.7</span>Annulla</h2>
-      <p>Annulla è un <b>interruttore</b>, non uno stack. Ogni sessione di overdub salva
-        un'istantanea dell'audio prima che venga applicata la sovraincisione; annulla riporta
-        indietro quell'istantanea, e premerlo di nuovo riporta indietro il tuo overdub. È tanto un
-        pulsante di confronto quanto un pulsante di annullamento.</p>
-      <p>Due limiti: è profondo <b>una sola sessione</b>, quindi un secondo overdub sostituisce ciò
-        che annulla stava conservando, ed è <b>condiviso tra le tracce</b> — un'unica istantanea per
-        l'intero looper, non una per traccia. Sovraincidi la traccia 2 e l'annullamento che stavi
-        conservando per la traccia 1 sparisce.</p>
+      <h2 id="undo"><span class="n">04.8</span>Annulla e cancella</h2>
+      <p>L'angolo <b class="ui">Annulla</b> di ogni cella fa la cosa ovvia per quella cella. Se la
+        cella contiene l'ultimo overdub, lo annulla — e premerlo di nuovo rimette l'overdub, quindi
+        funziona anche come pulsante di confronto. Altrimenti <b>cancella la take della
+        cella</b>.</p>
+      <p>L'annullamento dell'overdub è profondo <b>una sola sessione</b> ed è <b>condiviso tra le
+        celle</b>: un secondo overdub, su qualsiasi cella, sostituisce ciò che annulla stava
+        conservando. Sovraincidi la cella 2 e l'annullamento che stavi conservando per la cella 1
+        sparisce — l'angolo della cella 1 a quel punto la cancella.</p>
+      <p id="undo-transport">Il tasto annulla del transport fa lo stesso senza scegliere una cella:
+        annulla l'ultimo overdub se c'è, altrimenti cancella la take chiusa per ultima. Il tasto
+        cestino, <b class="ui">Cancella tutti i loop</b>, svuota il looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="routing"><span class="n">04.8</span>Routing per traccia</h2>
-      <p><b class="ui">IN</b> e <b class="ui">OUT</b> decidono da dove arriva e dove va l'audio di
-        una traccia; <b class="ui">DURATA</b> e <b class="ui">DUB</b> decidono per quanto tempo e
-        quante passate.</p>
+      <h2 id="routing"><span class="n">04.9</span>Le impostazioni di una cella</h2>
+      <p>Le tessere accanto a ogni pad sono le impostazioni della cella; ognuna mostra una piccola
+        etichetta e il suo valore. <b class="ui">IN</b> e <b class="ui">OUT</b> decidono da dove
+        arriva e dove va il suono del loop, <b class="ui">DURATA</b> e <b class="ui">DUB</b> per quanto
+        tempo e quante passate; una tessera <b class="ui">PRESET</b> compare quando la cella ha un
+        preset tutto suo; la tessera di modifica apre l'<a href="#editor">editor del loop</a>, e la
+        manopola è il livello della cella (<b class="ui">Livello traccia loop N</b>, da 0 a 1.5).</p>
 
       <h3>IN</h3>
       <p>Il menu <b class="ui">IN</b> offre <b class="ui">Post FX (il rig)</b> — la chitarra
         elaborata, che di solito è ciò che vuoi. Con più rig diventa
-        <b class="ui">Post FX · &lt;rig name&gt;</b> per ciascun rig e il chip mostra
+        <b class="ui">Post FX · &lt;rig name&gt;</b> per ciascun rig e la tessera mostra
         <b class="ui">FX · &lt;rig&gt;</b>. Sotto, una voce per ogni canale di ingresso hardware con
         il proprio nome — una voce pulita o un secondo musicista direttamente dall'interfaccia — e
-        <b class="ui">Sampler</b>, chip <b class="ui">SMP</b>, per fare il loop dei pad.</p>
+        <b class="ui">Pad del sampler (MIDI)</b>, tessera <b class="ui">MIDI</b>, che la trasforma in
+        una <a href="#midi">cella MIDI</a>.</p>
+      <p><b class="ui">Solo questo loop · &lt;rig&gt;</b> assegna un rig solo al looper: quel rig viene
+        tolto da ciò che senti dal vivo, e mentre una cella che lo registra è armata, in
+        registrazione o in overdub, è <b>l'unico rig dal vivo che si sente</b> — gli altri tacciono
+        durante la take e tornano dopo. Costruisci un rig apposta per una parte di loop — un'ottava
+        di basso, un suono di pad — e non finirà mai nel tuo modo di suonare. La tessera mostra
+        <b class="ui">Solo · &lt;rig&gt;</b>.</p>
 
       <h3>OUT</h3>
-      <p>Il menu <b class="ui">OUT</b> offre <b class="ui">Mix principale</b> (chip
+      <p>Il menu <b class="ui">OUT</b> offre <b class="ui">Mix principale</b> (tessera
         <b class="ui">MIX</b>), una voce per ogni coppia di uscite hardware extra —
         <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> e così via, che richiedono
         <b class="ui">Usa tutte le uscite dell'interfaccia</b> attivato in Impostazioni — e
-        <b class="ui">Into &lt;rig name&gt;</b>.</p>
+        <b class="ui">In &lt;rig name&gt;</b>.</p>
       <p>Quest'ultima è quella interessante: invece di andare direttamente al mix, il loop suona
         <em>dentro</em> quel rig, così gli effetti del rig lo elaborano dal vivo. Fai il loop di una
         parte pulita, mandala in un rig con un delay e un filtro, e muovi il filtro mentre il loop
-        gira. Un rig da cui la traccia registra non viene offerto — sarebbe un percorso di
+        gira. Un rig da cui la cella registra non viene offerto — sarebbe un percorso di
         feedback.</p>
 
       <h3>LEN e DUB</h3>
-      <p>Il chip <b class="ui">DURATA</b> cicla tra 0, 1, 2, 4 e 8 battute. A 0 mostra
-        <b class="ui">LIBERO</b>; altrimenti <b class="ui">N BAR</b>, e la take viene fissata a quel
+      <p>La tessera <b class="ui">DURATA</b> cicla tra 0, 1, 2, 4 e 8 battute. A 0 mostra
+        <b class="ui">LIBERO</b>; altrimenti <b class="ui">N BATT</b>, e la take viene fissata a quel
         numero di battute. Senza tempo impostato il menu dice
         <b class="ui">Ancora nessun tempo — registra il primo loop con AUTO attivo</b>.</p>
-      <p>Il chip <b class="ui">DUB</b> cicla tra 0, 1, 2 e 4 passate di overdub automatiche — la
-        traccia torna a riprodursi da sola dopo quel numero di giri.</p>
+      <p>La tessera <b class="ui">DUB</b> cicla tra 0, 1, 2 e 4 passate di overdub automatiche — la
+        cella torna a riprodursi da sola dopo quel numero di giri.</p>
+
+      <h3 id="preset">Il preset del loop</h3>
+      <p>Una cella può registrare attraverso un suono tutto suo, indipendente dal suo ingresso. Tieni
+        premuta la cella → <b class="ui">Preset del loop · …</b> offre <b class="ui">Il rig attivo</b>
+        (il predefinito: suona quello che è attivo), da <b class="ui">Scena A del rig attuale</b> a
+        D, e <b class="ui">Scegli un preset…</b> — prima i preset del brano in scena, poi tutti i
+        banchi, con categorie e ricerca.</p>
+      <p>Il preset si attiva quando la cella inizia a registrare, avvia un overdub o viene armata, e
+        quando la take è finita torna il rig che avevi — a meno che nel frattempo tu non abbia scelto
+        un altro preset, che allora resta. Registra una parte ritmica su un preset pulito e fai un
+        assolo sopra con il tuo suono solista senza toccare nulla.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.9</span>Cosa viene salvato</h2>
-      <p>Il chip <b class="ui">PRESET</b> apre <b class="ui">Preset looper</b>, che contengono
-        <b>solo la configurazione</b>: IN, OUT, LEN, DUB e pan di ogni traccia, più il flag AUTO. Un
-        modello di routing che richiami all'inizio di un brano — non una registrazione.</p>
-      <div class="note warn">
-        <div class="t">L'audio del loop non può essere esportato</div>
-        <p>Non c'è modo di salvare un loop come file — niente esportazione, niente foglio di
-          condivisione. L'unico modo per catturare ciò che il looper ha suonato è il registratore
-          della scheda <b class="ui a">Palco</b>, che registra il mix di uscita (rig, looper, pad
-          e base insieme, più uno stem separato dell'ingresso pulito). Se un loop merita di essere
-          conservato, premi registra su Perform e lascialo andare.</p>
+      <h2 id="saving"><span class="n">04.10</span>Cosa viene salvato</h2>
+      <p>Il tasto preset apre <b class="ui">Preset looper</b>, che contengono <b>la
+        configurazione</b>: IN, OUT, LEN, DUB, pan, preset del loop e quantizzazione di ogni cella,
+        più il flag AUTO — e le take delle celle MIDI, che sono piccole. Un modello che richiami
+        all'inizio di un brano; le take audio restano fuori.</p>
+      <h3>I loop come file</h3>
+      <p>Il menu a pressione prolungata di una cella esporta il suo loop —
+        <b class="ui">Esporta loop come WAV…</b> — come WAV stereo a 32 bit float alla frequenza di
+        campionamento della sessione, e <b class="ui">Esporta tutti i loop…</b> esporta tutti i loop in una
+        volta. Ogni file comincia sul battere del ciclo, così i file si allineano quando li trascini
+        insieme in una DAW.</p>
+      <p><b class="ui">Carica loop da file…</b> mette qualsiasi file audio nella cella, già in
+        riproduzione. In un looper vuoto il file diventa il loop esattamente com'è, senza allineamento
+        alle battute, e porta con sé il suo tempo: letto da un nome come <em>Loop 2 - 96.5 BPM</em> —
+        il nome che riceve un'esportazione — oppure ricavato dalla sua durata. Una cella MIDI non ha
+        audio, quindi non offre nessuna delle due voci.</p>
+      <div class="note">
+        <div class="t">I preset portano la configurazione, i file portano il suono</div>
+        <p>Un preset del looper non contiene mai audio registrato — è troppo pesante; al suo interno
+          viaggia solo una take MIDI dei pad. Per conservare un loop, esportalo; per conservare
+          un'intera esibizione, usa il registratore nella scheda
+          <a href="/docs/it/mix.html#recorder">Mix</a>, che registra il mix di uscita più uno stem
+          separato dell'ingresso pulito.</p>
       </div>
     </section>
 
