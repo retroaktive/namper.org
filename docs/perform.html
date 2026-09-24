@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform &amp; lyrics — NAMper Documentation</title>
-<meta name="description" content="Backing tracks, the stage buttons, the setlist and its songs, preset markers on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
+<meta name="description" content="Backing tracks, the stage buttons, the setlist and its songs, the song's automation on the timeline, the full-screen lyrics teleprompter with anchors, multitrack recording and DAWproject export.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Perform &amp; lyrics — NAMper Documentation">
-<meta property="og:description" content="Backing tracks, the setlist, preset markers, the lyrics teleprompter and multitrack recording.">
+<meta property="og:description" content="Backing tracks, the setlist, the song's automation, the lyrics teleprompter and multitrack recording.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/perform.html">
 <meta property="og:type" content="article">
@@ -69,8 +69,8 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LYRICS</div>
     <h1>Playing the set.</h1>
     <p class="lede">The <b class="ui a">Perform</b> tab is the one you look at on stage: backing
-      tracks, a setlist of songs, big stage buttons that switch sounds, rig changes that fire
-      themselves off the timeline, a full-screen teleprompter for your words, and a recorder that
+      tracks, a setlist of songs, big stage buttons that switch sounds, a song's automation that plays
+      back your moves off the timeline, a full-screen teleprompter for your words, and a recorder that
       captures the whole night in stems.</p>
 
     <nav class="toc">
@@ -81,7 +81,7 @@
         <li><a href="#stage">The stage buttons</a></li>
         <li><a href="#setlist">Setlists and songs</a></li>
         <li><a href="#sections">What a song brings up</a></li>
-        <li><a href="#markers">Markers</a></li>
+        <li><a href="#automation">Song automation</a></li>
         <li><a href="#lyrics">Lyrics and the teleprompter</a></li>
         <li><a href="#presets">Perform presets</a></li>
         <li><a href="#recording">Recording</a></li>
@@ -99,8 +99,8 @@
       <p>If a file cannot be read you get <b class="ui r">Could not import &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="The Perform tab: the player card with Test Song loaded, its waveform timeline, 120 BPM and key A, and the DIRECT routing chip; below it the SETLIST card with AUTO NEXT switched on, and the RECORDINGS card at the bottom.">
-        <figcaption>The Perform tab: player, setlist, recordings</figcaption>
+             alt="The Perform tab: the player card with NAMper (full) loaded at 146 BPM in D#m, the add, record and lyrics keys on its name row, the transport keys and AUTO LYRICS under it, the waveform, and under the waveform the song's Preset lane naming the presets and scenes it brings up, then the lyrics strip and the backing fader with the DIRECT chip; below it the DEMO SET card with AUTO NEXT on, and the song's stage buttons.">
+        <figcaption>The Perform tab: the player with the song's automation, the set, the stage buttons</figcaption>
       </figure>
       <div class="note tip">
         <div class="t">Loading a set from a computer</div>
@@ -123,8 +123,10 @@
         the global tempo and key follow the song, so the delay and tremolo sync divisions, the
         looper's bar grid, the harmoniser and the autotune all land on the right song without you
         setting anything.</p>
-      <p>Six controls sit under the name, left to right — the same transport keys, in the same
-        order, as the stage buttons' full-screen header:</p>
+      <p>The card's keys, left to right — the first three are the same transport keys, in the same
+        order, as the stage buttons' full-screen header. On a phone the automation and lyrics keys
+        sit on the name row, and the transport keys with <b class="ui">AUTO LYRICS</b> on the row
+        under it:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Button</th><th>Does</th></tr></thead>
@@ -138,7 +140,10 @@
             <tr><td><b class="ui">AUTO LYRICS</b></td><td>Whether the teleprompter opens by itself
               with the song — the same switch as <b class="ui">Open the lyrics with the song</b> in
               Settings</td></tr>
-            <tr><td><b class="ui">Add marker</b></td><td>Drop a change at the playhead</td></tr>
+            <tr><td><b class="ui">Add to the automation</b></td><td>Put a point on the song's
+              <a href="#automation">automation</a> at the playhead, by hand</td></tr>
+            <tr><td><b class="ui">Record automation</b></td><td>Tap: write your moves onto the song
+              while it plays. Hold: the switch and <b class="ui">Clear the song's automation</b></td></tr>
             <tr><td><b class="ui">Lyrics</b></td><td>Open the teleprompter, or load a lyrics file</td></tr>
           </tbody>
         </table>
@@ -158,9 +163,10 @@
         FX</b>) puts the track through the master chain instead.</p>
       <h3>The timeline</h3>
       <p>The waveform under the card is a mirror-bar display with the played part lit and a cursor
-        at the playhead. <strong>Tap anywhere on it to seek.</strong> Seeking also re-applies the
-        newest <a href="#markers">marker</a> at or before that point, so jumping into the
-        last chorus still gets you the last chorus's sound.</p>
+        at the playhead. <strong>Tap anywhere on it to seek.</strong> Seeking also chases the song's
+        <a href="#automation">automation</a>: the preset, scene, switches and knobs the song has at
+        that point are put in place, so jumping into the last chorus still gets you the last
+        chorus's sound. The automation's lanes sit under the waveform.</p>
       <div class="note">
         <div class="t">What the player does not do</div>
         <p>There is no A/B loop region, no speed change and no pitch shift for backing tracks. If
@@ -186,7 +192,7 @@
         two bars is never lost. There are four or eight of them: the count chip in the header
         toggles it, and until you choose, it follows the screen. The grid picks the shape that keeps
         the buttons closest to square. With more entries than buttons, the header's arrows step the
-        pages, and the page follows the entry that is playing when a marker or a pedal moves the song
+        pages, and the page follows the entry that is playing when the automation or a pedal moves the song
         on.</p>
       <figure>
         <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
@@ -209,7 +215,7 @@
       <p>A <strong>setlist</strong> is a list of songs; one of them is <b class="ui">LIVE</b> at a
         time, and the live one owns the preset strip and MIDI — program change <em>n</em> presses
         stage button <em>n</em>. A <strong>song</strong> is a name, an ordered list of what it brings up, and an
-        <em>optional</em> backing track with its markers and lyrics. A song with no audio at all is
+        <em>optional</em> backing track with its automation and lyrics. A song with no audio at all is
         just as valid: it is the sound you play it with, cued from the same list.</p>
       <p>The card header carries the <b class="ui">SETLISTS</b> button — just its icon on a phone — to create, pick, rename, share
         and delete sets — an <b class="ui">AUTO NEXT</b> toggle, and a <b class="ui">+</b> that
@@ -232,7 +238,7 @@
         <div class="t">The demo set</div>
         <p>A first launch with no setlists brings one: the song <em>NAMper</em> twice — the full mix
           and a play-along without the guitars. It is a worked example of this whole page. The
-          timeline carries markers that switch the factory rigs <b class="ui">One-Man Riot</b> (verse,
+          song's automation switches the factory rigs <b class="ui">One-Man Riot</b> (verse,
           pre-chorus, chorus and a clean bridge as scenes, a second clean amp on a branch) and
           <b class="ui">Friday Night Lead</b> (solo and breakdown scenes, a sub-octave branch); the
           lyrics are pinned to their sections; and each song also recalls a looper preset of four
@@ -246,7 +252,7 @@
       <p>The edit button opens the song editor: a <b class="ui">Song name</b> field, a backing picker whose first entry is <b class="ui">Song without backing</b>, the <a href="#lyrics">lyrics</a> row, the list of what the song recalls, and <b class="ui">Delete song</b> at the bottom.</p>
       <p>A song with no backing track also gets a <b class="ui">Length</b> row — the timeline it
         runs on. Set one and the transport counts it out on a clock instead of on audio: the
-        <a href="#lyrics">words scroll</a> across it, markers fire on it, and the song ends when the
+        <a href="#lyrics">words scroll</a> across it, its automation plays on it, and the song ends when the
         length does, so <b class="ui">AUTO NEXT</b> carries the set on. Left at
         <b class="ui">no timeline</b> the song is a bare recall: it arrives armed and waits for
         you.</p>
@@ -264,7 +270,7 @@
         </tbody>
       </table>
       <p>When the song is cued, the <em>first</em> rig preset on the list is the sound you start the
-        song with; the ones below it are there for the <a href="#markers">markers</a>, the stage
+        song with; the ones below it are there for the <a href="#automation">automation</a>, the stage
         buttons and a footswitch to reach, and the order is what <em>next / prev preset in song</em>
         steps through. To reorder, drag a row by the grip — the three lines at its right edge. A
         row's scene letters offer only the scenes that preset holds, and tapping the chosen letter
@@ -293,34 +299,121 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.6</span>Markers</h2>
-      <p>A marker is a moment on the song's timeline that brings up one of the song's own entries.
-        Clean verse, crunch chorus, lead for the solo — placed once, then hands-free every time you
-        play it.</p>
-      <ol style="--nc:var(--drive)">
-        <li>Cue the song and put the playhead where the switch belongs — tap the timeline to seek,
-          or let it play.</li>
-        <li>Tap the pin button (<b class="ui">Add marker</b>).</li>
-        <li>The marker sheet lists what the song brings up —
-          <b class="ui">Which of the song's parts this moment brings up.</b> — and you tick the ones
-          this moment should fire. A marker can bring up more than one: a rig preset and a kit
-          together, say.</li>
-      </ol>
-      <p>Picking a <b class="ui">SCENE</b> on a marker's row that the song does not carry yet adds
-        it to the song as an entry of its own, so the list stays the whole truth about what the song
-        can do.</p>
-      <p>Crossing a marker during playback applies it exactly as if a MIDI program change had
-        arrived from a pedalboard. Markers draw as amber dots on the timeline with a generous touch
-        area, and below the waveform a row of chips lists them as
-        <b class="ui">m:ss  &lt;name&gt;</b>. Tap a chip to open its sheet, long-press for
-        <b class="ui">Delete marker</b>.</p>
-      <div class="note">
-        <div class="t">Snapping</div>
-        <p>A marker you have just created sits at the raw playhead, wherever your finger left it.
-          <strong>Drag a marker and it snaps to the bar grid</strong> — so the way to tighten a
-          rough placement is to nudge it. With no detected tempo there is no grid, and placement
-          stays free.</p>
+      <h2 id="automation"><span class="n">06.6</span>Song automation</h2>
+      <p>A song remembers what you did while it played — a knob turned, a block switched, a scene
+        or a preset brought up, a pad hit, a looper key, a fader moved — on its own timeline, and
+        does it again every time the song plays. Clean verse, crunch chorus, the delay opening up
+        for the solo: played once, then hands-free.</p>
+      <p>It replaces the markers of earlier versions. What a marker did — bring a preset and its
+        scene up at a moment — is now a point on the song's <b class="ui">Preset</b> lane, and a
+        song's old markers are moved in once, by themselves.</p>
+
+      <h3>Recording</h3>
+      <p>The <strong>record key</strong> — the circle beside the add key on the player card,
+        <b class="ui">Record automation</b> — arms it. Tap it and every move is written onto the
+        song while the song plays: from the next play on, or at once if it is already playing. The
+        key lights red while it records. Hold it for its menu: the same
+        <b class="ui">Record automation</b> switch and <b class="ui">Clear the song's
+        automation</b>, which asks once more before it goes.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>What is written</th><th>From</th></tr></thead>
+          <tbody>
+            <tr><td>A knob, a block's on/off, a scene, the scene morph</td><td>The screen, a pedal,
+              a plug-in host. A sweep keeps a point every 20 ms</td></tr>
+            <tr><td>A rig preset with the scene it lands on, a looper preset, a pad kit</td><td>A tap
+              on the song's entries — the stage buttons, the set panel, a pedal</td></tr>
+            <tr><td>Pad hits and stops, with how hard</td><td>The screen, a key, a pedal</td></tr>
+            <tr><td>The looper's keys</td><td>Record/play, arm, mute, solo, clear, a cell's stop/play,
+              undo, peel, fades, the swap, stop/play all</td></tr>
+            <tr><td>The mixer</td><td>Every strip's level and pan, and the sends</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p>What a preset or the tempo sets on its way in — a synced delay's time, say — is not a move
+        and is not written, and neither is the automation's own playback.</p>
+      <div class="note tip">
+        <div class="t">Touch recording</div>
+        <p>A lane is overwritten only while you move it, and for 0.6 s after your hand comes off.
+          The rest of that lane, and every lane you do not touch, stays as it was and keeps playing
+          — so a second pass can fix one knob in the chorus without redoing the song.</p>
+      </div>
+      <p>Playback needs no switch: the automation runs whenever the song plays. A start or a
+        seek chases the song's state — preset, scenes, switches, knobs, faders — so the sound is
+        right wherever you drop in. Pad hits and looper actions are events: they fire only when the
+        song passes them. A preset that is already up is not loaded again.</p>
+
+      <h3>The lanes</h3>
+      <p>Under the timeline, each thing the song moves gets a lane of its own, its name at the
+        right:</p>
+      <ul style="--nc:var(--drive)">
+        <li><b>A knob, a fader or the morph</b> draws its curve, across its own range.</li>
+        <li><b>A step lane</b> draws a tick at each point with its words beside it:
+          <b class="ui">Preset</b> the preset's name and the scene it lands on,
+          <b class="ui">Scene</b> the letter, a block's <b class="ui">on/off</b> lane
+          <b class="ui">On</b> or <b class="ui">Off</b>, <b class="ui">Looper preset</b> and
+          <b class="ui">Sampler kit</b> their names.</li>
+        <li><b class="ui">Pads</b> shows which pad is hit; <b class="ui">Looper</b> the action and
+          its cell — <b class="ui">Stop/Play</b> 2, <b class="ui">Mute</b> 3.</li>
+      </ul>
+      <p>A point's words take the room up to the next point, and are cut short where points crowd.
+        With more than four lanes the rows scroll.</p>
+
+      <h3>Editing a point</h3>
+      <ul style="--nc:var(--drive)">
+        <li><strong>Tap</strong> a lane and its nearest point opens. At the top is when it happens:
+          <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
+          <b class="ui">+BAR</b>, or <b class="ui">To the playhead</b>. Under it, what it is — the
+          song's preset and its <b class="ui">SCENE</b>, a scene, <b class="ui">On</b> or
+          <b class="ui">Off</b>, a pad with <b class="ui">Hit</b> or <b class="ui">Stop</b> and its
+          <b class="ui">VELOCITY</b>, the looper's <b class="ui">ACTION</b> and
+          <b class="ui">CELL</b>. A knob's, a fader's or the morph's <b class="ui">VALUE</b> has a
+          slider and a field: type the number in the parameter's own units, it is held to its
+          range, and the range is shown under it. The trash key deletes the point.</li>
+        <li><strong>Drag</strong> a point along its lane to move it. When the song's tempo is known,
+          it lands on the song's beats.</li>
+        <li><strong>Hold</strong> a lane for <b class="ui">Delete this lane</b>.</li>
+      </ul>
+
+      <h3>Adding a point by hand</h3>
+      <p>The <strong>add key</strong> (<b class="ui">Add to the automation</b>) puts a point down at
+        the playhead without recording anything. Its sheet, <b class="ui">ADD TO THE
+        AUTOMATION</b>, shows the playhead's time and a folded tree — each level opens with a
+        tap:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Group</th><th>Opens to</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">The song's presets</b></td><td>The song's own entries: a rig preset
+              with its scene, a looper preset, a kit</td></tr>
+            <tr><td><b class="ui">Scenes</b></td><td>The scene each rig is on now</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Stop/Play</b> 1 to 4 — see
+              <a href="#looper-sections">below</a></td></tr>
+            <tr><td><b class="ui">Blocks</b></td><td>Rig → block → its <b class="ui">On/off</b> and
+              each knob, with the value it has now</td></tr>
+            <tr><td><b class="ui">Mixer</b></td><td>Strip → level and pan</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A choice puts the point down with the value it has now and opens it right there in the
+        sheet, to type or slide the value and move the time. A lane the song does not have yet is
+        made for it. Both automation keys are dimmed while the song has no timeline — no backing
+        track and no <b class="ui">Length</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/automation-add.png" width="600" height="1303"
+             alt="The ADD TO THE AUTOMATION sheet over the player card, the playhead at 0:00.0: the folded groups THE SONG'S PRESETS, SCENES, LOOPER, BLOCKS and MIXER, the Looper group open with its hint and Stop/Play 1 to 4, each with an add button.">
+        <figcaption>Add to the automation: a folded tree, the Looper group open</figcaption>
+      </figure>
+
+      <h3 id="looper-sections">Loops as song sections</h3>
+      <p>A looper point that starts a stopped cell brings that loop in <strong>from its top on the
+        next bar line</strong>, not in time with wherever the cycle happens to be: a verse loop, then
+        a chorus loop, each starting where it starts. The sheet says so under the
+        <b class="ui">Looper</b> group — <b class="ui">A stopped loop the song starts comes in from
+        its top on the next bar.</b> A cell you start by hand stays in time. See
+        <a href="/docs/looper.html">the looper</a>.</p>
+      <p>The automation is kept beside the song's track, as <b class="ui">&lt;song&gt;.auto.json</b>
+        in <b class="ui">backing/</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -499,7 +592,7 @@
       <div class="note warn">
         <div class="t">What the export does not carry</div>
         <p>No tempo and no time signature — the timeline is in <strong>seconds</strong>, not bars.
-          No preset markers, no setlist, no plugin state and no automation. It is a clean multitrack
+          No setlist, no plugin state and no automation. It is a clean multitrack
           of the audio you played, and you will set the session tempo yourself at the other end.</p>
       </div>
     </section>

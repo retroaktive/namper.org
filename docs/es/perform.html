@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform y letra — Documentación de NAMper</title>
-<meta name="description" content="Pistas de acompañamiento, los botones de escenario, el setlist y sus temas, marcadores de preset en la línea de tiempo, el teleprompter de letras a pantalla completa con anclas, grabación multipista y exportación a DAWproject.">
+<meta name="description" content="Pistas de acompañamiento, los botones de escenario, el setlist y sus temas, la automatización de la canción en la línea de tiempo, el teleprompter de letras a pantalla completa con anclas, grabación multipista y exportación a DAWproject.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Perform y letra — Documentación de NAMper">
-<meta property="og:description" content="Pistas de acompañamiento, el setlist, marcadores de preset, el teleprompter de letras y la grabación multipista.">
+<meta property="og:description" content="Pistas de acompañamiento, el setlist, la automatización de la canción, el teleprompter de letras y la grabación multipista.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/es/perform.html">
 <meta property="og:type" content="article">
@@ -70,7 +70,7 @@
     <h1>Tocando el show.</h1>
     <p class="lede">La pestaña <b class="ui a">Escena</b> es la que miras en el escenario: pistas de
       acompañamiento, un setlist de temas, grandes botones de escenario que cambian de sonido,
-      cambios de preset que se disparan solos, un teleprompter a pantalla completa para tu letra, y un grabador que captura toda la noche en
+      la automatización de un tema, que repite tus movimientos desde la línea de tiempo, un teleprompter a pantalla completa para tu letra, y un grabador que captura toda la noche en
       stems.</p>
 
     <nav class="toc">
@@ -81,7 +81,7 @@
         <li><a href="#stage">Los botones de escenario</a></li>
         <li><a href="#setlist">Listas y temas</a></li>
         <li><a href="#sections">Qué trae un tema</a></li>
-        <li><a href="#markers">Marcadores</a></li>
+        <li><a href="#automation">Automatización de la canción</a></li>
         <li><a href="#lyrics">Letra y el teleprompter</a></li>
         <li><a href="#presets">Presets de Perform</a></li>
         <li><a href="#recording">Grabación</a></li>
@@ -100,8 +100,8 @@
       <p>Si un archivo no se puede leer obtienes <b class="ui r">No se pudo importar &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="La pestaña Perform: la tarjeta del reproductor con Test Song cargada, su línea de tiempo con forma de onda, 120 BPM y tonalidad A, y el chip de enrutamiento DIRECT; debajo la tarjeta SETLIST con AUTO NEXT activado, y la tarjeta RECORDINGS en la parte inferior.">
-        <figcaption>La pestaña Perform: reproductor, setlist, grabaciones</figcaption>
+             alt="La pestaña Perform: la tarjeta del reproductor con NAMper (full) cargada a 146 BPM en D#m, las teclas de añadir, grabar y letra en la fila del nombre, debajo las teclas de transporte y AUTO LYRICS, la forma de onda y, bajo ella, el carril Preset de la canción con los presets y escenas que trae, luego la tira de la letra y el fader de la base con el chip DIRECT; debajo la tarjeta DEMO SET con AUTO NEXT activado y los botones de escenario de la canción.">
+        <figcaption>La pestaña Perform: el reproductor con la automatización de la canción, el set, los botones de escenario</figcaption>
       </figure>
       <div class="note tip">
         <div class="t">Cargar un set desde un ordenador</div>
@@ -124,9 +124,10 @@
         tempo y la tonalidad globales siguen a la canción, así que las divisiones de sync del delay y
         el trémolo, la rejilla de compases del looper, el armonizador y el autotune caen todos en la
         canción correcta sin que ajustes nada.</p>
-      <p>Seis controles se sitúan bajo el nombre, de izquierda a derecha — las mismas teclas de
-        transporte, en el mismo orden, que la cabecera a pantalla completa de los botones de
-        escenario:</p>
+      <p>Las teclas de la tarjeta, de izquierda a derecha — las tres primeras son las mismas teclas
+        de transporte, en el mismo orden, que la cabecera a pantalla completa de los botones de
+        escenario. En un teléfono, las teclas de automatización y de letra van en la fila del
+        nombre, y las de transporte con <b class="ui">AUTO LETRA</b> en la fila de debajo:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Botón</th><th>Hace</th></tr></thead>
@@ -140,7 +141,10 @@
             <tr><td><b class="ui">AUTO LETRA</b></td><td>Si el teleprompter se abre solo con el
               tema — el mismo interruptor que <b class="ui">Abrir la letra con la canción</b> en
               Ajustes</td></tr>
-            <tr><td><b class="ui">Añadir marcador</b></td><td>Deja un cambio en la posición de reproducción</td></tr>
+            <tr><td><b class="ui">Añadir a la automatización</b></td><td>Pone a mano un punto en la
+              <a href="#automation">automatización</a> de la canción, en la posición de reproducción</td></tr>
+            <tr><td><b class="ui">Grabar automatización</b></td><td>Toque: escribe tus movimientos en la
+              canción mientras suena. Mantener: el interruptor y <b class="ui">Borrar la automatización de la canción</b></td></tr>
             <tr><td><b class="ui">Letra</b></td><td>Abre el teleprompter, o carga un archivo de letra</td></tr>
           </tbody>
         </table>
@@ -162,9 +166,10 @@
       <h3>La línea de tiempo</h3>
       <p>La forma de onda bajo la tarjeta es una visualización de barras espejadas con la parte
         reproducida iluminada y un cursor en el punto de reproducción. <strong>Toca en cualquier
-        parte para buscar.</strong> Buscar también reaplica el <a href="#markers">marcador de
-        preset</a> más reciente en ese punto o antes, así que saltar al último coro te sigue dando el
-        sonido del último coro.</p>
+        parte para buscar.</strong> Buscar también persigue la <a href="#automation">automatización</a>
+        de la canción: el preset, la escena, los interruptores y las perillas que la canción tiene en
+        ese punto se ponen en su sitio, así que saltar al último coro te sigue dando el sonido del
+        último coro. Los carriles de la automatización están bajo la forma de onda.</p>
       <div class="note">
         <div class="t">Lo que el reproductor no hace</div>
         <p>No hay región de loop A/B, ni cambio de velocidad ni transposición para las pistas de
@@ -191,7 +196,7 @@
         rápido entre dos compases nunca se pierde. Hay cuatro u ocho: el chip de cantidad de la
         cabecera lo alterna y, hasta que elijas, sigue a la pantalla. La cuadrícula elige la forma
         que deja los botones más cerca de ser cuadrados. Con más entradas que botones, las flechas de
-        la cabecera pasan las páginas, y la página sigue a la entrada que suena cuando un marcador o
+        la cabecera pasan las páginas, y la página sigue a la entrada que suena cuando la automatización o
         un pedal hace avanzar el tema.</p>
       <figure>
         <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
@@ -217,7 +222,7 @@
         <b class="ui">EN VIVO</b> en cada momento, y la lista en directo es la dueña de la tira de
         presets y del MIDI: el program change <em>n</em> pulsa el botón de escenario <em>n</em>. Un
         <strong>tema</strong> es un nombre, una lista ordenada de lo que trae y una base
-        <em>opcional</em> con sus marcadores y su letra. Un tema sin audio alguno vale igual: es el
+        <em>opcional</em> con su automatización y su letra. Un tema sin audio alguno vale igual: es el
         sonido con el que lo tocas, llamado desde la misma lista.</p>
       <p>La cabecera de la tarjeta lleva el botón <b class="ui">SETLISTS</b> — solo su icono en el teléfono — para crear, elegir,
         renombrar, compartir y borrar listas, un interruptor <b class="ui">AUTO SIG.</b> y un
@@ -241,7 +246,7 @@
         <div class="t">El set de demostración</div>
         <p>Un primer arranque sin listas trae uno: el tema <em>NAMper</em> dos veces — la mezcla
           completa y una versión sin las guitarras. Es un ejemplo trabajado de toda esta página. Su
-          línea de tiempo lleva marcadores que cambian entre los rigs de fábrica
+          automatización cambia entre los rigs de fábrica
           <b class="ui">One-Man Riot</b> (estrofa, pre-estribillo, estribillo y un puente limpio como
           escenas, y un segundo ampli limpio en una rama) y <b class="ui">Friday Night Lead</b>
           (escenas de solo y de breakdown, con una rama de suboctava); la letra está anclada a sus
@@ -256,7 +261,7 @@
       <p>El botón de edición abre el editor de la canción: un campo <b class="ui">Nombre de la canción</b>, un selector de pista de acompañamiento cuya primera entrada es <b class="ui">Canción sin pista</b>, la fila de <a href="#lyrics">letra</a>, la lista de lo que la canción recupera y <b class="ui">Eliminar canción</b> al final.</p>
       <p>Una canción sin pista de acompañamiento tiene además una fila <b class="ui">Duración</b>: la línea
         de tiempo sobre la que corre. Ponle una y el transporte la cuenta con un reloj en vez de con
-        audio: sobre ella <a href="#lyrics">corre la letra</a>, se disparan los marcadores y la
+        audio: sobre ella <a href="#lyrics">corre la letra</a>, suena su automatización y la
         canción termina cuando termina su duración, así que <b class="ui">AUTO SIG.</b> sigue con el
         set. Si la dejas en <b class="ui">sin línea de tiempo</b>, la canción es solo una llamada de sonido:
         llega preparada y te espera.</p>
@@ -274,8 +279,8 @@
         </tbody>
       </table>
       <p>Cuando se prepara el tema, el <em>primer</em> preset de rig de la lista es el sonido con el
-        que empiezas; los de debajo están ahí para que los alcancen los
-        <a href="#markers">marcadores</a>, los botones de escenario y un footswitch, y el orden es lo
+        que empiezas; los de debajo están ahí para que los alcancen la
+        <a href="#automation">automatización</a>, los botones de escenario y un footswitch, y el orden es lo
         que recorre <em>preset siguiente / anterior del tema</em>. Para reordenar, arrastra una fila
         por el asa — las tres líneas de su borde derecho. Las letras de escena de una fila ofrecen
         solo las escenas que contiene ese preset, y volver a tocar la letra elegida borra la
@@ -304,34 +309,130 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.6</span>Marcadores</h2>
-      <p>Un marcador es un momento de la línea de tiempo del tema que trae una de sus propias
-        entradas. Estrofa limpia, estribillo con crunch, lead para el solo: se coloca una vez y
-        después va solo cada vez que lo tocas.</p>
-      <ol style="--nc:var(--drive)">
-        <li>Prepara el tema y pon la posición de reproducción donde toca el cambio — toca la línea
-          de tiempo para buscar, o déjala correr.</li>
-        <li>Toca el botón del alfiler (<b class="ui">Añadir marcador</b>).</li>
-        <li>La hoja del marcador enumera lo que trae el tema —
-          <b class="ui">Qué partes de la canción recupera este momento.</b> — y tú marcas lo que
-          debe dispararse en ese momento. Un marcador puede traer más de una cosa: un preset de rig
-          y un kit a la vez, por ejemplo.</li>
-      </ol>
-      <p>Si eliges en la fila de un marcador una <b class="ui">ESCENA</b> que el tema todavía no
-        tiene, se añade al tema como entrada propia, de modo que la lista sigue siendo toda la verdad
-        sobre lo que el tema sabe hacer.</p>
-      <p>Al cruzar un marcador durante la reproducción se aplica exactamente como si hubiera llegado
-        un program change MIDI desde una pedalera. Los marcadores se dibujan como puntos ámbar en la
-        línea de tiempo con una zona de toque generosa, y bajo la forma de onda una fila de fichas
-        los lista como <b class="ui">m:ss  &lt;nombre&gt;</b>. Toca una ficha para abrir su hoja y
-        mantén pulsado para <b class="ui">Eliminar marcador</b>.</p>
-      <div class="note">
-        <div class="t">Ajuste a la rejilla</div>
-        <p>Un marcador recién creado se queda en la posición cruda, donde lo dejó tu dedo.
-          <strong>Arrastra un marcador y se ajusta a la rejilla de compases</strong>, así que la
-          forma de afinar una colocación tosca es moverlo un poco. Sin tempo detectado no hay
-          rejilla, y la colocación queda libre.</p>
+      <h2 id="automation"><span class="n">06.6</span>Automatización de la canción</h2>
+      <p>Una canción recuerda lo que hiciste mientras sonaba — una perilla girada, un bloque
+        activado, una escena o un preset recuperados, un golpe de pad, una tecla del looper, un
+        fader movido — en su propia línea de tiempo, y lo repite cada vez que suena. Estrofa limpia,
+        estribillo con crunch, el delay que se abre para el solo: se toca una vez y después va
+        solo.</p>
+      <p>Sustituye a los marcadores de versiones anteriores. Lo que hacía un marcador — traer un
+        preset con su escena en un momento dado — es ahora un punto en el carril
+        <b class="ui">Preset</b> de la canción, y los marcadores antiguos de una canción se pasan
+        ahí una sola vez, solos.</p>
+
+      <h3>Grabación</h3>
+      <p>La <strong>tecla de grabar</strong> — el círculo junto a la tecla de añadir en la tarjeta
+        del reproductor, <b class="ui">Grabar automatización</b> — la arma. Tócala y cada movimiento
+        se escribe en la canción mientras suena: desde la siguiente reproducción, o al momento si ya
+        está sonando. La tecla se ilumina en rojo mientras graba. Mantenla pulsada para su menú: el
+        mismo interruptor <b class="ui">Grabar automatización</b> y <b class="ui">Borrar la
+        automatización de la canción</b>, que pregunta una vez más antes de borrar.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Qué se escribe</th><th>Desde</th></tr></thead>
+          <tbody>
+            <tr><td>Una perilla, el encendido de un bloque, una escena, el morph de escenas</td><td>La
+              pantalla, un pedal, un host de plugins. Un barrido guarda un punto cada 20 ms</td></tr>
+            <tr><td>Un preset de rig con la escena en la que cae, un preset de looper, un kit de
+              pads</td><td>Un toque en las entradas de la canción — los botones de escenario, el panel
+              del set, un pedal</td></tr>
+            <tr><td>Golpes y paradas de pads, con su fuerza</td><td>La pantalla, una tecla, un
+              pedal</td></tr>
+            <tr><td>Las teclas del looper</td><td>Grabar/reproducir, armar, silenciar, solo, borrar,
+              parar/reproducir una celda, deshacer, quitar capa, fundidos, el intercambio,
+              parar/reproducir todo</td></tr>
+            <tr><td>El mezclador</td><td>El nivel y el panorama de cada canal, y los envíos</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p>Lo que un preset o el tempo fijan al entrar — el tiempo de un delay sincronizado, por
+        ejemplo — no es un movimiento y no se escribe, como tampoco la reproducción de la propia
+        automatización.</p>
+      <div class="note tip">
+        <div class="t">Grabación por toque</div>
+        <p>Un carril solo se sobrescribe mientras lo mueves, y durante 0,6 s después de que sueltes
+          la mano. El resto de ese carril, y todos los carriles que no tocas, se quedan como
+          estaban y siguen sonando — así que una segunda pasada puede arreglar una perilla del
+          estribillo sin rehacer la canción.</p>
+      </div>
+      <p>La reproducción no necesita interruptor: la automatización corre siempre que suena la
+        canción. Un inicio o una búsqueda persiguen el estado de la canción — preset, escenas,
+        interruptores, perillas, faders — para que el sonido sea el correcto entres donde entres.
+        Los golpes de pad y las acciones del looper son eventos: solo se disparan cuando la canción
+        pasa por ellos. Un preset que ya está puesto no se vuelve a cargar.</p>
+
+      <h3>Los carriles</h3>
+      <p>Bajo la línea de tiempo, cada cosa que la canción mueve tiene su propio carril, con su
+        nombre a la derecha:</p>
+      <ul style="--nc:var(--drive)">
+        <li><b>Una perilla, un fader o el morph</b> dibuja su curva a lo largo de su propio
+          rango.</li>
+        <li><b>Un carril por pasos</b> dibuja una marca en cada punto con sus palabras al lado:
+          <b class="ui">Preset</b> el nombre del preset y la escena en la que cae,
+          <b class="ui">Escena</b> la letra, el carril <b class="ui">on/off</b> de un bloque
+          <b class="ui">Activado</b> u <b class="ui">Off</b>, <b class="ui">Preset de looper</b> y
+          <b class="ui">Kit de sampler</b> sus nombres.</li>
+        <li><b class="ui">Pads</b> muestra qué pad se golpea; <b class="ui">Looper</b>, la acción y
+          su celda — <b class="ui">Parar/Repr.</b> 2, <b class="ui">Silenciar</b> 3.</li>
+      </ul>
+      <p>Las palabras de un punto ocupan el espacio hasta el siguiente punto, y se recortan donde
+        los puntos se amontonan. Con más de cuatro carriles, las filas se desplazan.</p>
+
+      <h3>Editar un punto</h3>
+      <ul style="--nc:var(--drive)">
+        <li><strong>Toca</strong> un carril y se abre su punto más cercano. Arriba está cuándo
+          ocurre: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
+          <b class="ui">+BAR</b> o <b class="ui">Al cabezal</b>. Debajo, qué es — el preset de la
+          canción y su <b class="ui">ESCENA</b>, una escena, <b class="ui">Activado</b> u
+          <b class="ui">Off</b>, un pad con <b class="ui">Golpe</b> o <b class="ui">Detener</b> y su
+          <b class="ui">VELOCIDAD</b>, la <b class="ui">ACCIÓN</b> y la <b class="ui">CELDA</b> del
+          looper. El <b class="ui">VALOR</b> de una perilla, un fader o el morph tiene un deslizador
+          y un campo: escribe el número en las unidades propias del parámetro, se mantiene dentro
+          de su rango, y el rango aparece debajo. La tecla de la papelera borra el punto.</li>
+        <li><strong>Arrastra</strong> un punto a lo largo de su carril para moverlo. Cuando se conoce
+          el tempo de la canción, cae en los pulsos de la canción.</li>
+        <li><strong>Mantén pulsado</strong> un carril para <b class="ui">Borrar este carril</b>.</li>
+      </ul>
+
+      <h3>Añadir un punto a mano</h3>
+      <p>La <strong>tecla de añadir</strong> (<b class="ui">Añadir a la automatización</b>) pone un
+        punto en la posición de reproducción sin grabar nada. Su hoja, <b class="ui">AÑADIR A LA
+        AUTOMATIZACIÓN</b>, muestra el tiempo de la posición y un árbol plegado — cada nivel se abre
+        con un toque:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Grupo</th><th>Se abre a</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Presets de la canción</b></td><td>Las entradas propias de la
+              canción: un preset de rig con su escena, un preset de looper, un kit</td></tr>
+            <tr><td><b class="ui">Escenas</b></td><td>La escena en la que está ahora cada rig</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Parar/Repr.</b> 1 a 4 — ver
+              <a href="#looper-sections">abajo</a></td></tr>
+            <tr><td><b class="ui">Bloques</b></td><td>Rig → bloque → su
+              <b class="ui">Encendido/apagado</b> y cada perilla, con el valor que tiene ahora</td></tr>
+            <tr><td><b class="ui">Mezclador</b></td><td>Canal → nivel y panorama</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Una elección pone el punto con el valor que tiene ahora y lo abre ahí mismo en la hoja,
+        para escribir o deslizar el valor y mover el tiempo. Si la canción aún no tiene ese carril,
+        se crea. Las dos teclas de automatización están atenuadas mientras la canción no tiene
+        línea de tiempo — ni pista de acompañamiento ni <b class="ui">Duración</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/automation-add.png" width="600" height="1303"
+             alt="La hoja ADD TO THE AUTOMATION sobre la tarjeta del reproductor, la posición en 0:00.0: los grupos plegados THE SONG'S PRESETS, SCENES, LOOPER, BLOCKS y MIXER, el grupo Looper abierto con su indicación y Stop/Play 1 a 4, cada uno con un botón de añadir.">
+        <figcaption>Añadir a la automatización: un árbol plegado, el grupo Looper abierto</figcaption>
+      </figure>
+
+      <h3 id="looper-sections">Loops como secciones de la canción</h3>
+      <p>Un punto del looper que arranca una celda detenida hace entrar ese loop <strong>desde su
+        comienzo en la siguiente línea de compás</strong>, no a tiempo con el punto del ciclo en que
+        se encuentre: un loop de estrofa, luego uno de estribillo, cada uno empezando donde empieza.
+        La hoja lo dice bajo el grupo <b class="ui">Looper</b> — <b class="ui">Un loop detenido que
+        inicia la canción entra desde su comienzo en el siguiente compás.</b> Una celda que arrancas
+        a mano se queda a tiempo. Consulta <a href="/docs/es/looper.html">el looper</a>.</p>
+      <p>La automatización se guarda junto a la pista de la canción, como
+        <b class="ui">&lt;song&gt;.auto.json</b> en <b class="ui">backing/</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -513,7 +614,7 @@
       <div class="note warn">
         <div class="t">Lo que la exportación no lleva</div>
         <p>Sin tempo y sin compás — la línea de tiempo está en <strong>segundos</strong>, no en
-          compases. Sin marcadores de preset, sin setlist, sin estado de plugins y sin automatización.
+          compases. Sin setlist, sin estado de plugins y sin automatización.
           Es un multipista limpio del audio que tocaste, y tú fijarás el tempo de la sesión por tu
           cuenta al otro lado.</p>
       </div>

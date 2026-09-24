@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>演出与歌词 — NAMper 文档</title>
-<meta name="description" content="伴奏音轨、舞台按钮、曲目单及其歌曲、时间线上的预设标记点、带锚点的全屏歌词提词器、多轨录音以及 DAWproject 导出。">
+<meta name="description" content="伴奏音轨、舞台按钮、曲目单及其歌曲、时间线上的歌曲自动化、带锚点的全屏歌词提词器、多轨录音以及 DAWproject 导出。">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="演出与歌词 — NAMper 文档">
-<meta property="og:description" content="伴奏音轨、曲目单、预设标记点、歌词提词器与多轨录音。">
+<meta property="og:description" content="伴奏音轨、曲目单、歌曲自动化、歌词提词器与多轨录音。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/zh/perform.html">
 <meta property="og:type" content="article">
@@ -69,7 +69,7 @@
     <div class="slab" style="--nc:var(--cloud)">06 · 演出与歌词</div>
     <h1>演出这一套曲目。</h1>
     <p class="lede"><b class="ui a">演出</b> 标签页是你在台上会盯着看的那一个:伴奏音轨、
-      由歌曲组成的曲目单、用来切换音色的大号舞台按钮、自动触发的预设切换、一个显示你词句的全屏提词器,还有一个把整晚演出
+      由歌曲组成的曲目单、用来切换音色的大号舞台按钮、按时间线重放你的操作的歌曲自动化、一个显示你词句的全屏提词器,还有一个把整晚演出
       按音轨分别录下来的录音功能。</p>
 
     <nav class="toc">
@@ -80,7 +80,7 @@
         <li><a href="#stage">舞台按钮</a></li>
         <li><a href="#setlist">歌单与歌曲</a></li>
         <li><a href="#sections">一首歌会调出什么</a></li>
-        <li><a href="#markers">标记</a></li>
+        <li><a href="#automation">歌曲自动化</a></li>
         <li><a href="#lyrics">歌词与提词器</a></li>
         <li><a href="#presets">演出预设</a></li>
         <li><a href="#recording">录制</a></li>
@@ -98,8 +98,8 @@
       <p>如果文件无法读取,会显示 <b class="ui r">无法导入 &lt;name&gt;。</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="Perform 标签页:已加载 Test Song 的播放器卡片,显示其波形时间线、120 BPM 与 A 调,以及 DIRECT 路由芯片;下方是开启了 AUTO NEXT 的 SETLIST 卡片,底部是 RECORDINGS 卡片。">
-        <figcaption>Perform 标签页:播放器、曲目单、录音记录</figcaption>
+             alt="演出标签页:播放器卡片已载入 NAMper (full),146 BPM、D#m 调,名称行上有添加、录制和歌词键,其下是走带键和 AUTO LYRICS,然后是波形;波形下方是歌曲的 Preset 通道,标出它调出的预设和场景,再往下是歌词条和带 DIRECT 标签的伴奏推子;下方是开启了 AUTO NEXT 的 DEMO SET 卡片,以及这首歌的舞台按钮。">
+        <figcaption>演出标签页:带歌曲自动化的播放器、歌单、舞台按钮</figcaption>
       </figure>
       <div class="note tip">
         <div class="t">从电脑加载一整套曲目</div>
@@ -120,7 +120,8 @@
       <p>这项分析并不只是摆设。<strong>选择一条音轨会重新调整整个音色组</strong>:全局速度和调性
         会跟随歌曲变化,这样延迟和颤音的同步分频、循环乐句器的小节网格、和声器与自动修音都会自动
         对上这首歌,无需你手动设置。</p>
-      <p>名称下方有六个控件,从左到右依次排列——与舞台按钮全屏页头上的走带键相同,顺序也相同:</p>
+      <p>卡片上的按键,从左到右——前三个与舞台按钮全屏页头上的走带键相同,顺序也相同。在手机上,
+        自动化键和歌词键位于名称行,走带键和 <b class="ui">自动歌词</b> 位于其下一行:</p>
       <div class="tw">
         <table>
           <thead><tr><th>按钮</th><th>作用</th></tr></thead>
@@ -131,7 +132,10 @@
             <tr><td><b class="ui">下一首</b></td><td>直接进入下一首歌,不用去翻列表</td></tr>
             <tr><td><b class="ui">自动歌词</b></td><td>提词器是否随歌曲自动打开——与设置中的
               <b class="ui">随歌曲打开歌词</b> 是同一个开关</td></tr>
-            <tr><td><b class="ui">添加标记</b></td><td>在播放位置放下一次切换</td></tr>
+            <tr><td><b class="ui">添加到自动化</b></td><td>在播放位置手动给歌曲的
+              <a href="#automation">自动化</a>放一个点</td></tr>
+            <tr><td><b class="ui">录制自动化</b></td><td>点按:歌曲播放时把你的操作写进歌曲。按住:这个开关以及
+              <b class="ui">清除歌曲的自动化</b></td></tr>
             <tr><td><b class="ui">歌词</b></td><td>打开提词器,或加载歌词文件</td></tr>
           </tbody>
         </table>
@@ -150,8 +154,9 @@
         链。</p>
       <h3>时间线</h3>
       <p>卡片下方的波形是一个镜像条形显示,已播放部分会点亮,并带有一个位于播放头处的光标。
-        <strong>点按其上任意位置即可跳转。</strong>跳转还会重新应用该位置或之前最新的
-        <a href="#markers">预设标记点</a>,所以直接跳到最后的副歌部分,仍然能得到最后副歌该有的音色。</p>
+        <strong>点按其上任意位置即可跳转。</strong>跳转还会追随歌曲的
+        <a href="#automation">自动化</a>:这首歌在该位置应有的预设、场景、开关和旋钮都会就位,所以直接跳到最后的副歌部分,
+        仍然能得到最后副歌该有的音色。自动化的各条通道位于波形下方。</p>
       <div class="note">
         <div class="t">播放器不具备的功能</div>
         <p>没有 A/B 循环区间,也不能对伴奏音轨进行变速或变调。如果你需要另一个调性或速度的版本,
@@ -173,7 +178,7 @@
       </ul>
       <p>按钮在手指落下的瞬间就切换,而不是等手指抬起,所以两个小节之间飞快的一戳永远不会落空。按钮
         有四个或八个:页头的数量芯片可以切换,在你做出选择之前,它跟随屏幕大小。网格会选择让按钮最接近
-        正方形的排布。条目比按钮多时,用页头的箭头翻页;当标记或踏板让歌曲往下走时,页面会跟随正在
+        正方形的排布。条目比按钮多时,用页头的箭头翻页;当自动化或踏板让歌曲往下走时,页面会跟随正在
         使用的条目。</p>
       <figure>
         <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
@@ -194,7 +199,7 @@
       <p><strong>歌单</strong>就是一串歌；同一时间只有一份处于 <b class="ui">现场</b>，而处于演出中
         的那份歌单拥有预设条和 MIDI：程序切换 <em>n</em> 按下第 <em>n</em> 个舞台按钮。一首
         <strong>歌</strong>由名字、它要调出的东西的有序清单，以及一条<em>可有可无</em>的伴奏（连同
-        标记和歌词）组成。完全没有音频的歌同样成立：它就是你用来演奏它的声音，从同一份清单里调出
+        自动化和歌词）组成。完全没有音频的歌同样成立：它就是你用来演奏它的声音，从同一份清单里调出
         来。</p>
       <p>卡片标题栏上有 <b class="ui">设置单</b> 按钮——在手机上只显示图标——用来新建、选择、重命名、分享和删除歌单——一个
         <b class="ui">自动切换</b> 开关，以及一个 <b class="ui">+</b>：导入音频文件（每个文件成为
@@ -214,7 +219,7 @@
       <div class="note">
         <div class="t">演示歌单</div>
         <p>第一次启动、还没有任何歌单时，应用会带来一份：歌曲 <em>NAMper</em> 两遍——完整混音，以及
-          抽掉吉他的伴奏版。它就是整页内容的一个做好的示例。它的时间轴上有标记，在出厂机架
+          抽掉吉他的伴奏版。它就是整页内容的一个做好的示例。这首歌的自动化会在出厂机架
           <b class="ui">One-Man Riot</b>（主歌、预副歌、副歌，以及作为场景的干净桥段，还有一条分支上
           的第二台干净功放）和 <b class="ui">Friday Night Lead</b>（solo 与 breakdown 场景，加一条低
           八度分支）之间切换；歌词钉在各自的段落上；而且每首歌还会调出一个四轨、每轨 8 小节的循环器
@@ -227,7 +232,7 @@
       <h2 id="sections"><span class="n">06.5</span>一首歌会调出什么</h2>
       <p>编辑按钮打开歌曲编辑器：<b class="ui">歌曲名称</b> 字段、第一项为 <b class="ui">无伴奏歌曲</b> 的伴奏选择器、<a href="#lyrics">歌词</a>行、歌曲调出内容的列表，以及底部的 <b class="ui">删除歌曲</b>。</p>
       <p>没有伴奏的歌曲还会多出一行 <b class="ui">时长</b>——它运行的时间轴。设定之后，走带就用时钟而
-        不是音频来计时：<a href="#lyrics">歌词在上面滚动</a>，标记在上面触发，长度走完歌曲也就结束，于是
+        不是音频来计时：<a href="#lyrics">歌词在上面滚动</a>，它的自动化在上面播放，长度走完歌曲也就结束，于是
         <b class="ui">自动切换</b> 会带着整套继续往下走。若保持 <b class="ui">没有时间轴</b>，这首歌
         只是一次声音调用：它备好等你。</p>
       <p><b class="ui">添加预设、循环器、鼓组…</b> 会往清单里加一项：</p>
@@ -245,7 +250,7 @@
         </tbody>
       </table>
       <p>歌曲就位时，清单上<em>第一个</em>机架预设就是你开始这首歌时的声音；排在它下面的那些，是留给
-        <a href="#markers">标记</a>、舞台按钮和脚踏开关去够的，而这个顺序也正是
+        <a href="#automation">自动化</a>、舞台按钮和脚踏开关去够的，而这个顺序也正是
         <em>歌曲内下一个 / 上一个预设</em>依次经过的顺序。要重新排序，按住一行右侧的抓手——那三条横线
         ——拖动即可。每一行的场景字母只提供该预设实际包含的场景，再点一次已选中的字母则取消选择。</p>
       <figure>
@@ -270,28 +275,109 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.6</span>标记</h2>
-      <p>标记是歌曲时间轴上的一个时刻，它会调出这首歌自己的某个条目。干净的主歌、失真的副歌、solo 用
-        的主音——放好一次，以后每次演奏都不用再动手。</p>
-      <ol style="--nc:var(--drive)">
-        <li>让这首歌就位，把播放位置放到该切换的地方——点时间轴跳过去，或者干脆让它播。</li>
-        <li>点图钉按钮（<b class="ui">添加标记</b>）。</li>
-        <li>标记面板会列出这首歌调出的东西——
-          <b class="ui">这一刻调用歌曲的哪些部分。</b>——你勾选此刻该触发的那
-          几项。一个标记可以调出不止一样：比如一个机架预设和一套打击垫音色一起。</li>
-      </ol>
-      <p>如果在某个标记那一行选了这首歌还没有的 <b class="ui">场景</b>，它会作为一个独立条目被加进
-        这首歌，于是这份清单始终是"这首歌能做什么"的全部真相。</p>
-      <p>播放时越过一个标记，应用会像收到脚踏板发来的 MIDI 程序切换一样把它应用上。标记在时间轴上画
-        成琥珀色的圆点，触摸区域给得很宽裕，波形下方还有一行标签把它们列成
-        <b class="ui">m:ss  &lt;名称&gt;</b>。点标签打开它的面板，长按可
-        <b class="ui">删除标记</b>。</p>
-      <div class="note">
-        <div class="t">吸附</div>
-        <p>刚创建的标记待在原始位置，也就是你手指离开的地方。<strong>拖动标记，它就会吸附到小节
-          网格上</strong>——所以要把大致的位置调准，推它一下就行。如果没检测到速度，就没有网格，
-          位置也就自由。</p>
+      <h2 id="automation"><span class="n">06.6</span>歌曲自动化</h2>
+      <p>歌曲会记住它播放时你做过的事——转了一个旋钮、切换了一个模块、调出了一个场景或预设、敲了一个
+        打击垫、按了一个循环器键、推了一个推子——都记在它自己的时间轴上，并在每次播放时再做一遍。
+        干净的主歌、失真的副歌、solo 时打开的延迟：演奏一次，以后就不用再动手。</p>
+      <p>它取代了早期版本中的标记。标记过去做的事——在某个时刻调出一个预设及其场景——现在是歌曲
+        <b class="ui">预设</b> 通道上的一个点，一首歌原有的标记会自动迁移过来，只迁移一次。</p>
+
+      <h3>录制</h3>
+      <p><strong>录制键</strong>——播放器卡片上添加键旁边的圆圈，<b class="ui">录制自动化</b>——
+        让它进入待命。点一下，歌曲播放时你的每个操作都会写进歌曲：从下一次播放开始，如果已经在播放
+        则立即开始。录制时这个键亮红色。按住它可打开菜单：同样的 <b class="ui">录制自动化</b> 开关，
+        以及 <b class="ui">清除歌曲的自动化</b>，清除之前会再确认一次。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>写入什么</th><th>来自</th></tr></thead>
+          <tbody>
+            <tr><td>旋钮、模块的开/关、场景、场景渐变</td><td>屏幕、踏板、插件宿主。连续扫动时每 20 ms
+              保留一个点</td></tr>
+            <tr><td>机架预设及其落到的场景、循环器预设、打击垫套件</td><td>点按歌曲的条目——舞台按钮、
+              歌单面板、踏板</td></tr>
+            <tr><td>打击垫的敲击和停止，连同力度</td><td>屏幕、按键、踏板</td></tr>
+            <tr><td>循环器的按键</td><td>录音/播放、待命、静音、独奏、清除、单元的停/放、撤销、剥离、
+              淡变、互换、全部停/放</td></tr>
+            <tr><td>调音台</td><td>每条通道条的电平和声像，以及发送</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p>预设或速度在载入时顺带设定的东西——比如同步延迟的时间——不算操作，不会被写入；自动化自己的
+        回放也不会。</p>
+      <div class="note tip">
+        <div class="t">触摸录制</div>
+        <p>一条通道只在你移动它的时候被覆盖，以及手松开之后的 0.6 秒内。这条通道的其余部分、以及你
+          没碰的每条通道，都保持原样并继续播放——所以第二遍可以只修副歌里的一个旋钮，而不必重录
+          整首歌。</p>
+      </div>
+      <p>回放不需要开关：只要歌曲在播放，自动化就在运行。开始播放或跳转时会追随歌曲的状态——预设、
+        场景、开关、旋钮、推子——所以无论从哪里切入，声音都是对的。打击垫敲击和循环器动作是事件：只有
+        歌曲经过它们时才会触发。已经在用的预设不会再次载入。</p>
+
+      <h3>通道</h3>
+      <p>在时间轴下方，歌曲控制的每样东西都有自己的一条通道，名称在右侧：</p>
+      <ul style="--nc:var(--drive)">
+        <li><b>旋钮、推子或渐变</b>在自己的范围内画出曲线。</li>
+        <li><b>阶梯通道</b>在每个点画一道刻线，旁边写着文字：
+          <b class="ui">预设</b> 写预设名和它落到的场景，
+          <b class="ui">场景</b> 写字母，模块的 <b class="ui">开/关</b> 通道写
+          <b class="ui">开</b> 或 <b class="ui">关</b>，<b class="ui">循环预设</b> 和
+          <b class="ui">采样器套件</b> 写它们的名称。</li>
+        <li><b class="ui">打击垫</b> 显示敲的是哪个打击垫；<b class="ui">循环乐句器</b> 显示动作和
+          单元——<b class="ui">停/放</b> 2、<b class="ui">静音</b> 3。</li>
+      </ul>
+      <p>一个点的文字占据到下一个点为止的空间，点挤在一起时文字会被截短。超过四条通道时，各行可以
+        滚动。</p>
+
+      <h3>编辑一个点</h3>
+      <ul style="--nc:var(--drive)">
+        <li><strong>点按</strong>一条通道，会打开离得最近的点。最上面是它发生的时间：
+          <b class="ui">−BAR</b>、<b class="ui">−BEAT</b>、<b class="ui">+BEAT</b>、
+          <b class="ui">+BAR</b>，或 <b class="ui">移到播放位置</b>。下面是它的内容——歌曲的预设及其
+          <b class="ui">场景</b>、一个场景、<b class="ui">开</b> 或
+          <b class="ui">关</b>、带有 <b class="ui">击打</b> 或 <b class="ui">停止</b> 及其
+          <b class="ui">力度</b> 的打击垫、循环器的 <b class="ui">动作</b> 和
+          <b class="ui">单元</b>。旋钮、推子或渐变的 <b class="ui">数值</b> 有一个滑块和一个输入框：
+          按参数自己的单位输入数字，它会被限制在范围内，范围显示在下方。垃圾桶键删除这个点。</li>
+        <li>沿通道<strong>拖动</strong>一个点即可移动它。已知歌曲速度时，它会落在歌曲的拍子上。</li>
+        <li><strong>按住</strong>一条通道可选择 <b class="ui">删除此通道</b>。</li>
+      </ul>
+
+      <h3>手动添加一个点</h3>
+      <p><strong>添加键</strong>（<b class="ui">添加到自动化</b>）在播放位置放下一个点，不录制任何
+        东西。它的面板 <b class="ui">添加到自动化</b> 显示播放位置的时间和一棵折叠的树——每一层点一下
+        就展开：</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>分组</th><th>展开后</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">歌曲的预设</b></td><td>歌曲自己的条目：带场景的机架预设、循环器
+              预设、套件</td></tr>
+            <tr><td><b class="ui">场景</b></td><td>每个机架当前所在的场景</td></tr>
+            <tr><td><b class="ui">循环乐句器</b></td><td><b class="ui">停/放</b> 1 到 4——见
+              <a href="#looper-sections">下文</a></td></tr>
+            <tr><td><b class="ui">模块</b></td><td>机架 → 模块 → 它的 <b class="ui">开/关</b> 和
+              每个旋钮，带着当前的数值</td></tr>
+            <tr><td><b class="ui">混音台</b></td><td>通道条 → 电平和声像</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>选中一项，就会以它当前的数值放下一个点，并直接在面板里打开它，可以输入或滑动数值、移动时间。
+        歌曲还没有的通道会为它新建。歌曲没有时间轴时——没有伴奏，也没有
+        <b class="ui">时长</b>——两个自动化键都会变暗。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/automation-add.png" width="600" height="1303"
+             alt="播放器卡片上方的 ADD TO THE AUTOMATION 面板，播放位置为 0:00.0：折叠的分组 THE SONG'S PRESETS、SCENES、LOOPER、BLOCKS 和 MIXER，其中 Looper 分组已展开，显示提示和 Stop/Play 1 到 4，每一项都带一个添加按钮。">
+        <figcaption>添加到自动化：一棵折叠的树，Looper 分组已展开</figcaption>
+      </figure>
+
+      <h3 id="looper-sections">把循环当作歌曲段落</h3>
+      <p>启动一个已停止单元的循环器点，会让那个循环<strong>在下一个小节线处从头进入</strong>，而不是
+        对齐到循环周期碰巧走到的位置：先是一个主歌循环，接着一个副歌循环，各自从自己的开头开始。面板在
+        <b class="ui">循环乐句器</b> 分组下这样说明——<b class="ui">由歌曲启动的已停止循环会在下一小节从头进入。</b>
+        你手动启动的单元则保持同步。参见<a href="/docs/zh/looper.html">循环器</a>。</p>
+      <p>自动化以 <b class="ui">&lt;song&gt;.auto.json</b> 的形式保存在歌曲音轨旁边，即
+        <b class="ui">backing/</b> 中。</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -449,8 +535,7 @@
         <strong>24 位 WAV</strong>。</p>
       <div class="note warn">
         <div class="t">导出不会包含的内容</div>
-        <p>没有速度,也没有拍号——时间线以<strong>秒</strong>为单位,而不是小节。没有预设标记点,
-          没有曲目单,没有插件状态,也没有自动化。这只是你所演奏音频的一份干净多轨记录,速度需要你
+        <p>没有速度,也没有拍号——时间线以<strong>秒</strong>为单位,而不是小节。没有曲目单,没有插件状态,也没有自动化。这只是你所演奏音频的一份干净多轨记录,速度需要你
           在对方那一端自行设定。</p>
       </div>
     </section>

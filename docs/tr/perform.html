@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform &amp; şarkı sözü — NAMper Dokümantasyonu</title>
-<meta name="description" content="Altyapılar, sahne düğmeleri, setlist ve şarkıları, zaman çizelgesindeki preset marker'ları, anchor'lı tam ekran şarkı sözü teleprompter'ı, çok parçalı kayıt ve DAWproject dışa aktarımı.">
+<meta name="description" content="Altyapılar, sahne düğmeleri, setlist ve şarkıları, zaman çizelgesindeki şarkı otomasyonu, anchor'lı tam ekran şarkı sözü teleprompter'ı, çok parçalı kayıt ve DAWproject dışa aktarımı.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Perform &amp; şarkı sözü — NAMper Dokümantasyonu">
-<meta property="og:description" content="Altyapılar, setlist, preset marker'ları, şarkı sözü teleprompter'ı ve çok parçalı kayıt.">
+<meta property="og:description" content="Altyapılar, setlist, şarkı otomasyonu, şarkı sözü teleprompter'ı ve çok parçalı kayıt.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/perform.html">
 <meta property="og:type" content="article">
@@ -69,8 +69,7 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; ŞARKI SÖZÜ</div>
     <h1>Seti çalmak.</h1>
     <p class="lede"><b class="ui a">Sahne</b> sekmesi, sahnede baktığın sekmedir: altyapılar,
-      şarkılardan oluşan bir setlist, sesleri değiştiren büyük sahne düğmeleri, zaman
-      çizelgesinden kendiliğinden tetiklenen rig değişimleri, sözlerin için
+      şarkılardan oluşan bir setlist, sesleri değiştiren büyük sahne düğmeleri, hareketlerini zaman çizelgesinden yeniden çalan şarkı otomasyonu, sözlerin için
       tam ekran bir teleprompter, ve tüm geceyi stem'ler halinde yakalayan bir kaydedici.</p>
 
     <nav class="toc">
@@ -81,7 +80,7 @@
         <li><a href="#stage">Sahne düğmeleri</a></li>
         <li><a href="#setlist">Setlistler ve şarkılar</a></li>
         <li><a href="#sections">Bir şarkı neyi getirir</a></li>
-        <li><a href="#markers">İşaretçiler</a></li>
+        <li><a href="#automation">Şarkı otomasyonu</a></li>
         <li><a href="#lyrics">Şarkı sözü ve teleprompter</a></li>
         <li><a href="#presets">Perform preset'leri</a></li>
         <li><a href="#recording">Kayıt</a></li>
@@ -101,8 +100,8 @@
         görürsün.</p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="Perform sekmesi: Test Song yüklü player kartı, dalga formu zaman çizelgesi, 120 BPM ve A tonu, ve DIRECT yönlendirme çipi; altında AUTO NEXT açık SETLIST kartı, ve en altta RECORDINGS kartı.">
-        <figcaption>Perform sekmesi: player, setlist, kayıtlar</figcaption>
+             alt="Perform sekmesi: 146 BPM ve D#m'de yüklü NAMper (full) ile player kartı, isim satırında ekle, kaydet ve şarkı sözü tuşları, altında transport tuşları ve AUTO LYRICS, dalga formu, dalga formunun altında şarkının getirdiği preset'leri ve sahneleri adlandıran Preset şeridi, ardından şarkı sözü şeridi ve DIRECT çipiyle altyapı fader'ı; altında AUTO NEXT açık DEMO SET kartı ve şarkının sahne düğmeleri.">
+        <figcaption>Perform sekmesi: şarkının otomasyonuyla player, set, sahne düğmeleri</figcaption>
       </figure>
       <div class="note tip">
         <div class="t">Bir seti bilgisayardan yüklemek</div>
@@ -127,8 +126,9 @@
         global tempo ve ton şarkıyı takip eder, böylece delay ve tremolo'nun sync bölmeleri,
         looper'ın ölçü ızgarası, harmonizer ve autotune hiçbir şey ayarlamana gerek kalmadan
         doğru şarkıya oturur.</p>
-      <p>İsmin altında soldan sağa altı kontrol bulunur — sahne düğmelerinin tam ekran başlığındaki
-        transport tuşlarının aynısı, aynı sırayla:</p>
+      <p>Kartın tuşları, soldan sağa — ilk üçü sahne düğmelerinin tam ekran başlığındaki
+        transport tuşlarının aynısıdır, aynı sırayla. Telefonda otomasyon ve şarkı sözü tuşları isim
+        satırında, transport tuşları ise <b class="ui">OTO SÖZ</b> ile birlikte altındaki satırda durur:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Düğme</th><th>Ne yapar</th></tr></thead>
@@ -142,7 +142,10 @@
             <tr><td><b class="ui">OTO SÖZ</b></td><td>Teleprompter'ın şarkıyla birlikte
               kendiliğinden açılıp açılmayacağı — Ayarlar'daki
               <b class="ui">Şarkı sözünü şarkıyla birlikte aç</b> ile aynı anahtar</td></tr>
-            <tr><td><b class="ui">İşaret ekle</b></td><td>Oynatma konumuna bir değişim bırakır</td></tr>
+            <tr><td><b class="ui">Otomasyona ekle</b></td><td>Şarkının <a href="#automation">otomasyonuna</a>
+              çalma konumunda elle bir nokta koyar</td></tr>
+            <tr><td><b class="ui">Otomasyonu kaydet</b></td><td>Dokun: şarkı çalarken hareketlerini şarkıya
+              yazar. Basılı tut: anahtar ve <b class="ui">Şarkının otomasyonunu sil</b></td></tr>
             <tr><td><b class="ui">Şarkı sözü</b></td><td>Teleprompter'ı açar, ya da bir şarkı sözü dosyası yükler</td></tr>
           </tbody>
         </table>
@@ -164,9 +167,10 @@
       <h3>Zaman çizelgesi</h3>
       <p>Kartın altındaki dalga formu, çalınan kısmı aydınlık gösteren ve çalma başlığında bir
         imleç bulunan bir ayna-çubuk görünümüdür. <strong>Sarmak için herhangi bir yerine
-        dokun.</strong> Sarma işlemi ayrıca o noktada ya da öncesindeki en yeni
-        <a href="#markers">preset marker'ı</a> yeniden uygular, böylece son nakarata atlamak yine
-        de sana son nakaratın sesini verir.</p>
+        dokun.</strong> Sarma işlemi ayrıca şarkının <a href="#automation">otomasyonunu</a> yakalar: şarkının o
+        noktadaki preset'i, sahnesi, anahtarları ve düğmeleri yerine konur, böylece son nakarata
+        atlamak yine de sana son nakaratın sesini verir. Otomasyonun şeritleri dalga formunun
+        altında durur.</p>
       <div class="note">
         <div class="t">Player'ın yapmadıkları</div>
         <p>Altyapılar için A/B loop bölgesi, hız değişimi ya da pitch kaydırma yoktur. Bir şarkıyı
@@ -192,8 +196,7 @@
       <p>Düğme parmak kalktığında değil, dokunduğu anda geçiş yapar; böylece iki ölçü arasındaki
         hızlı bir dokunuş hiç kaybolmaz. Dört ya da sekiz düğme vardır: başlıktaki sayı çipi bunu
         değiştirir, sen seçene kadar da ekrana uyar. Izgara, düğmeleri kareye en yakın tutan
-        biçimi seçer. Girdi sayısı düğmelerden fazlaysa başlıktaki oklar sayfaları gezer; bir
-        işaretçi ya da pedal şarkıyı ilerlettiğinde sayfa çalan girdiyi takip eder.</p>
+        biçimi seçer. Girdi sayısı düğmelerden fazlaysa başlıktaki oklar sayfaları gezer; otomasyon ya da bir pedal şarkıyı ilerlettiğinde sayfa çalan girdiyi takip eder.</p>
       <figure>
         <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
              alt="Tam ekran sahne düğmeleri: üstte büyük harflerle şarkının adı, yanında başa dön, çal ve sonraki şarkı tuşları; altta her biri bir preset'i sahne harfi A, B ya da C ile adlandıran büyük düğmeler.">
@@ -215,7 +218,7 @@
       <p><strong>Setlist</strong> bir şarkı listesidir; her seferinde biri <b class="ui">CANLI</b>
         olur ve sahnedeki setlist preset şeridine ve MIDI'ye sahiptir: program change <em>n</em>,
         <em>n</em> numaralı sahne düğmesine basar. <strong>Şarkı</strong> ise bir ad, getirdiklerinin sıralı
-        listesi ve işaretçileriyle ve sözleriyle birlikte <em>isteğe bağlı</em> bir altyapı
+        listesi ve otomasyonuyla ve sözleriyle birlikte <em>isteğe bağlı</em> bir altyapı
         parçasıdır. Hiç sesi olmayan bir şarkı da geçerlidir: o, aynı listeden çağrılan, onu
         çaldığın sestir.</p>
       <p>Kartın başlığında <b class="ui">SETLIST'LER</b> düğmesi — telefonda yalnızca simgesi — set oluştur, seç, yeniden adlandır,
@@ -240,7 +243,7 @@
           miks ve gitarsız versiyon. Bu sayfanın tamamının işlenmiş bir örneğidir. Zaman çizgisinde,
           fabrika rig'leri <b class="ui">One-Man Riot</b> (kıta, ön nakarat, nakarat ve sahne olarak
           temiz bir köprü, bir dalda ikinci bir temiz amfi) ile <b class="ui">Friday Night Lead</b>
-          (solo ve breakdown sahneleri, bir alt oktav dalı) arasında geçiş yapan işaretçiler var;
+          (solo ve breakdown sahneleri, bir alt oktav dalı) arasında şarkının otomasyonu geçiş yapar;
           sözler bölümlerine sabitlenmiş; ve her şarkı ayrıca dört adet 8 ölçülük kanaldan oluşan bir
           looper preset'i ile <b class="ui">FX ve dokular</b> kitini çağırır. Sıradan bir settir:
           adını değiştir, kendi şarkılarını ekle ya da sil — silersen geri gelmez.</p>
@@ -252,7 +255,7 @@
       <p>Düzenleme düğmesi şarkı düzenleyicisini açar: bir <b class="ui">Şarkı adı</b> alanı, ilk girdisi <b class="ui">Altyapısız şarkı</b> olan bir altyapı seçici, <a href="#lyrics">sözler</a> satırı, şarkının getirdiklerinin listesi ve en altta <b class="ui">Şarkıyı sil</b>.</p>
       <p>Fon müziği olmayan bir şarkıda ayrıca bir <b class="ui">Uzunluk</b> satırı olur: üzerinde
         koştuğu zaman çizgisi. Bir uzunluk ver, transport onu sesle değil saatle sayar: üzerinde
-        <a href="#lyrics">sözler akar</a>, işaretler tetiklenir ve şarkı uzunluğuyla birlikte biter —
+        <a href="#lyrics">sözler akar</a>, otomasyonu çalar ve şarkı uzunluğuyla birlikte biter —
         böylece <b class="ui">OTO GEÇİŞ</b> seti sürdürür. <b class="ui">zaman çizgisi yok</b> olarak
         bırakılırsa şarkı yalnızca bir çağrıdır: hazır bekler.</p>
       <p><b class="ui">Preset, looper, kit ekle…</b> bu listeye bir girdi ekler:</p>
@@ -270,7 +273,7 @@
         </tbody>
       </table>
       <p>Şarkı hazırlandığında listedeki <em>ilk</em> rig preset'i şarkıya başladığın sestir;
-        altındakiler <a href="#markers">işaretçilerin</a>, sahne düğmelerinin ve bir footswitch'in
+        altındakiler <a href="#automation">otomasyonun</a>, sahne düğmelerinin ve bir footswitch'in
         ulaşması içindir; sıra da <em>şarkıda sonraki / önceki preset</em> komutunun adım adım
         gezdiği sıradır. Yeniden sıralamak için bir satırı tutamağından — sağ kenarındaki üç
         çizgiden — sürükle. Bir satırın sahne harfleri yalnızca o preset'in tuttuğu sahneleri
@@ -299,32 +302,119 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.6</span>İşaretçiler</h2>
-      <p>İşaretçi, şarkının zaman çizgisinde onun kendi girdilerinden birini getiren bir andır. Temiz
-        kıta, crunch nakarat, solo için lead — bir kez konur, sonra her çalışında eller serbest.</p>
-      <ol style="--nc:var(--drive)">
-        <li>Şarkıyı hazırla ve oynatma konumunu değişimin olması gereken yere getir — zaman
-          çizgisine dokunarak atla ya da bırak çalsın.</li>
-        <li>Raptiye düğmesine dokun (<b class="ui">İşaret ekle</b>).</li>
-        <li>İşaretçi kartı şarkının getirdiklerini sıralar —
-          <b class="ui">Bu anın şarkının hangi parçalarını çağırdığı.</b> — sen de o anda neyin
-          tetiklenmesi gerektiğini işaretlersin. Bir işaretçi birden fazlasını getirebilir: örneğin
-          bir rig preset'i ile bir kit birlikte.</li>
-      </ol>
-      <p>Bir işaretçinin satırında şarkının henüz taşımadığı bir <b class="ui">SAHNE</b> seçmek, onu
-        şarkıya kendi girdisi olarak ekler; böylece liste, şarkının neler yapabildiğine dair tüm
-        gerçeği taşımaya devam eder.</p>
-      <p>Çalarken bir işaretçinin üzerinden geçmek, sanki pedalboarddan bir MIDI program change
-        gelmiş gibi onu uygular. İşaretçiler zaman çizgisinde geniş dokunma alanlı kehribar noktalar
-        olarak çizilir ve dalga biçiminin altındaki etiket sırası onları
-        <b class="ui">m:ss  &lt;ad&gt;</b> olarak listeler. Kartını açmak için etikete dokun,
-        <b class="ui">İşareti sil</b> için basılı tut.</p>
-      <div class="note">
-        <div class="t">Izgaraya oturma</div>
-        <p>Yeni oluşturduğun işaretçi, parmağının bıraktığı ham konumda durur. <strong>Bir işaretçiyi
-          sürüklersen ölçü ızgarasına oturur</strong> — yani kaba bir yerleşimi düzeltmenin yolu onu
-          biraz itmektir. Tempo algılanmadıysa ızgara da yoktur, yerleşim serbest kalır.</p>
+      <h2 id="automation"><span class="n">06.6</span>Şarkı otomasyonu</h2>
+      <p>Bir şarkı, çalarken yaptıklarını kendi zaman çizelgesinde hatırlar — çevrilen bir düğme,
+        açılıp kapanan bir blok, çağrılan bir sahne ya da preset, vurulan bir pad, bir looper tuşu,
+        oynatılan bir fader — ve şarkı her çaldığında hepsini yeniden yapar. Temiz kıta, crunch
+        nakarat, solo için açılan delay: bir kez çalınır, sonra eller serbest.</p>
+      <p>Önceki sürümlerin işaretçilerinin yerini alır. Bir işaretçinin yaptığı — bir anda bir
+        preset'i ve sahnesini getirmek — artık şarkının <b class="ui">Preset</b> şeridinde bir noktadır, ve bir
+        şarkının eski işaretçileri bir kereliğine, kendiliğinden buraya taşınır.</p>
+
+      <h3>Kayıt</h3>
+      <p><strong>Kayıt tuşu</strong> — player kartında ekle tuşunun yanındaki daire,
+        <b class="ui">Otomasyonu kaydet</b> — kaydı hazırlar. Ona dokun, şarkı çalarken her hareketin şarkıya
+        yazılır: bir sonraki çalmadan itibaren, ya da şarkı zaten çalıyorsa hemen. Tuş kayıt
+        sırasında kırmızı yanar. Menüsü için basılı tut: aynı <b class="ui">Otomasyonu kaydet</b> anahtarı ve
+        silmeden önce bir kez daha soran <b class="ui">Şarkının otomasyonunu sil</b>.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Ne yazılır</th><th>Nereden</th></tr></thead>
+          <tbody>
+            <tr><td>Bir düğme, bir bloğun açık/kapalısı, bir sahne, sahne morph'u</td><td>Ekran,
+              bir pedal, bir plug-in host'u. Bir süpürme her 20 ms'de bir nokta tutar</td></tr>
+            <tr><td>Oturduğu sahneyle bir rig preset'i, bir looper preset'i, bir pad kiti</td><td>Şarkının
+              girdilerine bir dokunuş — sahne düğmeleri, set paneli, bir pedal</td></tr>
+            <tr><td>Pad vuruşları ve durdurmaları, şiddetleriyle</td><td>Ekran, bir tuş, bir
+              pedal</td></tr>
+            <tr><td>Looper'ın tuşları</td><td>Kaydet/çal, hazırla, sustur, solo, temizle, bir
+              hücrenin dur/çal'ı, geri al, peel, geçişler, takas, hepsini dur/çal</td></tr>
+            <tr><td>Mikser</td><td>Her kanalın seviyesi ve pan'ı, ve gönderimler</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p>Bir preset'in ya da temponun gelirken ayarladığı şeyler — örneğin senkronlu bir delay'in
+        süresi — bir hareket değildir ve yazılmaz; otomasyonun kendi çalınışı da yazılmaz.</p>
+      <div class="note tip">
+        <div class="t">Dokunarak kayıt</div>
+        <p>Bir şerit yalnızca sen onu oynatırken, ve elin kalktıktan sonraki 0,6 s boyunca üzerine
+          yazılır. O şeridin geri kalanı ve dokunmadığın her şerit olduğu gibi kalır ve çalmaya
+          devam eder — böylece ikinci bir geçiş, şarkıyı baştan yapmadan nakarattaki tek bir
+          düğmeyi düzeltebilir.</p>
+      </div>
+      <p>Çalma için anahtar gerekmez: otomasyon, şarkı her çaldığında çalışır. Bir başlatma ya da
+        sarma şarkının durumunu yakalar — preset, sahneler, anahtarlar, düğmeler, fader'lar —
+        böylece nereden girersen gir ses doğrudur. Pad vuruşları ve looper eylemleri olaydır:
+        yalnızca şarkı üzerlerinden geçtiğinde tetiklenirler. Zaten açık olan bir preset yeniden
+        yüklenmez.</p>
+
+      <h3>Şeritler</h3>
+      <p>Zaman çizelgesinin altında, şarkının oynattığı her şeyin kendi şeridi vardır, adı
+        sağda:</p>
+      <ul style="--nc:var(--drive)">
+        <li><b>Bir düğme, bir fader ya da morph</b> kendi aralığında eğrisini çizer.</li>
+        <li><b>Bir basamak şeridi</b> her noktada yanında sözcükleriyle bir çentik çizer:
+          <b class="ui">Preset</b> preset'in adını ve oturduğu sahneyi, <b class="ui">Sahne</b> harfi, bir bloğun <b class="ui">Açık/kapalı</b>
+          şeridi <b class="ui">Açık</b> ya da <b class="ui">Kapalı</b>, <b class="ui">Looper hazır ayarı</b> ve <b class="ui">Sampler kiti</b> adlarını.</li>
+        <li><b class="ui">Pad’ler</b> hangi pad'e vurulduğunu gösterir; <b class="ui">Looper</b> eylemi ve hücresini —
+          <b class="ui">Dur/Çal</b> 2, <b class="ui">Sustur</b> 3.</li>
+      </ul>
+      <p>Bir noktanın sözcükleri bir sonraki noktaya kadar yer kaplar, noktaların sıklaştığı yerde
+        kısalır. Dörtten fazla şerit olduğunda satırlar kayar.</p>
+
+      <h3>Bir noktayı düzenlemek</h3>
+      <ul style="--nc:var(--drive)">
+        <li>Bir şeride <strong>dokun</strong>, en yakın noktası açılır. En üstte ne zaman olduğu:
+          <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
+          <b class="ui">+BAR</b> ya da <b class="ui">Çalma konumuna</b>. Altında ne olduğu — şarkının preset'i ve
+          <b class="ui">SAHNE</b>'si, bir sahne, <b class="ui">Açık</b> ya da <b class="ui">Kapalı</b>, <b class="ui">Vuruş</b> ya da <b class="ui">Durdur</b> ile bir pad ve
+          <b class="ui">VELOCITY</b>'si, looper'ın <b class="ui">EYLEM</b>'i ve <b class="ui">HÜCRE</b>'si. Bir düğmenin, bir fader'ın ya da
+          morph'un <b class="ui">DEĞER</b>'inde bir kaydırıcı ve bir alan vardır: sayıyı parametrenin kendi
+          biriminde yaz, aralığında tutulur ve aralık altında gösterilir. Çöp kutusu tuşu noktayı
+          siler.</li>
+        <li>Taşımak için bir noktayı şeridi boyunca <strong>sürükle</strong>. Şarkının temposu
+          biliniyorsa şarkının vuruşlarına oturur.</li>
+        <li>Bir şeridi <strong>basılı tut</strong>: <b class="ui">Bu şeridi sil</b>.</li>
+      </ul>
+
+      <h3>Elle nokta eklemek</h3>
+      <p><strong>Ekle tuşu</strong> (<b class="ui">Otomasyona ekle</b>) hiçbir şey kaydetmeden çalma
+        konumuna bir nokta koyar. Sayfası, <b class="ui">OTOMASYONA EKLE</b>, çalma konumunun zamanını ve
+        katlanmış bir ağacı gösterir — her seviye bir dokunuşla açılır:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Grup</th><th>Açtığı</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Şarkının preset’leri</b></td><td>Şarkının kendi girdileri: sahnesiyle bir rig
+              preset'i, bir looper preset'i, bir kit</td></tr>
+            <tr><td><b class="ui">Sahneler</b></td><td>Her rig'in şu an bulunduğu sahne</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td>1'den 4'e <b class="ui">Dur/Çal</b> —
+              <a href="#looper-sections">aşağıya</a> bak</td></tr>
+            <tr><td><b class="ui">Bloklar</b></td><td>Rig → blok → onun <b class="ui">Açık/kapalı</b>'sı ve her düğme, şu anki
+              değeriyle</td></tr>
+            <tr><td><b class="ui">Mikser</b></td><td>Kanal → seviye ve pan</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Bir seçim noktayı şu anki değeriyle koyar ve değeri yazmak ya da kaydırmak ve zamanı
+        taşımak için onu hemen orada, sayfada açar. Şarkıda henüz olmayan bir şerit onun için
+        oluşturulur. Şarkının zaman çizelgesi yokken — altyapı da <b class="ui">Uzunluk</b> da yokken — iki otomasyon
+        tuşu da soluk kalır.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/automation-add.png" width="600" height="1303"
+             alt="Player kartının üzerinde ADD TO THE AUTOMATION sayfası, çalma konumu 0:00.0'da: katlanmış THE SONG'S PRESETS, SCENES, LOOPER, BLOCKS ve MIXER grupları; Looper grubu ipucuyla ve her birinde bir ekle düğmesi olan 1'den 4'e Stop/Play ile açık.">
+        <figcaption>Otomasyona ekle: katlanmış bir ağaç, Looper grubu açık</figcaption>
+      </figure>
+
+      <h3 id="looper-sections">Şarkı bölümleri olarak döngüler</h3>
+      <p>Durmuş bir hücreyi başlatan bir looper noktası o döngüyü, döngünün o an nerede olduğuna
+        göre zamanında değil, <strong>bir sonraki ölçü çizgisinde baştan</strong> getirir: bir kıta
+        döngüsü, ardından bir nakarat döngüsü, her biri kendi başından başlar. Sayfa bunu
+        <b class="ui">Looper</b> grubunun altında söyler — <b class="ui">Şarkının başlattığı durmuş bir döngü, bir sonraki ölçüde baştan girer.</b>
+        Elle başlattığın bir hücre zamanında kalır. Bkz.
+        <a href="/docs/tr/looper.html">looper</a>.</p>
+      <p>Otomasyon şarkının parçasının yanında,
+        <b class="ui">backing/</b> içinde <b class="ui">&lt;şarkı&gt;.auto.json</b> olarak saklanır.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -501,7 +591,7 @@
       <div class="note warn">
         <div class="t">Dışa aktarımın taşımadıkları</div>
         <p>Tempo yok, ölçü birimi yok — zaman çizelgesi ölçü değil, <strong>saniye</strong>
-          cinsindendir. Preset marker yok, setlist yok, plugin durumu yok ve otomasyon yok. Bu,
+          cinsindendir. Setlist yok, plugin durumu yok ve otomasyon yok. Bu,
           çaldığın sesin temiz bir multitrack'idir, oturum temposunu diğer uçta kendin
           ayarlayacaksın.</p>
       </div>

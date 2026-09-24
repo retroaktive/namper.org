@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perform &amp; lirik — Dokumentasi NAMper</title>
-<meta name="description" content="Backing track, tombol panggung, setlist dan lagu-lagunya, marker preset pada timeline, teleprompter lirik layar penuh dengan anchor, rekaman multitrack dan ekspor DAWproject.">
+<meta name="description" content="Backing track, tombol panggung, setlist dan lagu-lagunya, otomasi lagu pada timeline, teleprompter lirik layar penuh dengan anchor, rekaman multitrack dan ekspor DAWproject.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Perform &amp; lirik — Dokumentasi NAMper">
-<meta property="og:description" content="Backing track, setlist, marker preset, teleprompter lirik, dan rekaman multitrack.">
+<meta property="og:description" content="Backing track, setlist, otomasi lagu, teleprompter lirik, dan rekaman multitrack.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/id/perform.html">
 <meta property="og:type" content="article">
@@ -69,8 +69,7 @@
     <div class="slab" style="--nc:var(--cloud)">06 · PERFORM &amp; LIRIK</div>
     <h1>Memainkan set.</h1>
     <p class="lede">Tab <b class="ui a">Panggung</b> adalah yang kamu lihat di atas panggung:
-      backing track, setlist berisi lagu, tombol panggung besar yang mengganti suara, perubahan
-      rig yang memicu dirinya sendiri dari timeline, sebuah
+      backing track, setlist berisi lagu, tombol panggung besar yang mengganti suara, otomasi lagu yang memutar ulang gerakanmu dari timeline, sebuah
       teleprompter layar penuh untuk lirikmu, dan recorder yang merekam seluruh malam dalam bentuk
       stem.</p>
 
@@ -82,7 +81,7 @@
         <li><a href="#stage">Tombol panggung</a></li>
         <li><a href="#setlist">Setlist dan lagu</a></li>
         <li><a href="#sections">Apa yang dibawa sebuah lagu</a></li>
-        <li><a href="#markers">Penanda</a></li>
+        <li><a href="#automation">Otomasi lagu</a></li>
         <li><a href="#lyrics">Lirik dan teleprompter</a></li>
         <li><a href="#presets">Preset Perform</a></li>
         <li><a href="#recording">Perekaman</a></li>
@@ -101,8 +100,8 @@
       <p>Jika file tidak bisa dibaca, kamu akan melihat <b class="ui r">&lt;name&gt; tidak bisa diimpor.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="Tab Perform: kartu player dengan Test Song termuat, timeline bentuk gelombangnya, 120 BPM dan nada dasar A, serta chip routing DIRECT; di bawahnya kartu SETLIST dengan AUTO NEXT aktif, dan kartu RECORDINGS di bagian bawah.">
-        <figcaption>Tab Perform: player, setlist, recordings</figcaption>
+             alt="Tab Perform: kartu player dengan NAMper (full) termuat pada 146 BPM dalam D#m, tombol tambah, rekam, dan lirik di baris namanya, tombol transport dan AUTO LYRICS di bawahnya, bentuk gelombang, dan di bawah bentuk gelombang jalur Preset lagu yang menamai preset dan scene yang dibawanya, lalu strip lirik dan fader backing dengan chip DIRECT; di bawahnya kartu DEMO SET dengan AUTO NEXT aktif, dan tombol panggung lagu itu.">
+        <figcaption>Tab Perform: player dengan otomasi lagu, set, tombol panggung</figcaption>
       </figure>
       <div class="note tip">
         <div class="t">Memuat set dari komputer</div>
@@ -127,8 +126,10 @@
         rig</strong>: tempo dan nada dasar global mengikuti lagu, sehingga divisi sync delay dan
         tremolo, grid birama looper, harmonizer, dan autotune semuanya pas dengan lagu yang benar
         tanpa kamu perlu mengatur apa pun.</p>
-      <p>Enam kontrol berjejer di bawah nama, dari kiri ke kanan — tombol transport yang sama,
-        dengan urutan yang sama, seperti di header layar penuh tombol panggung:</p>
+      <p>Tombol-tombol kartu, dari kiri ke kanan — tiga yang pertama adalah tombol transport yang
+        sama, dengan urutan yang sama, seperti di header layar penuh tombol panggung. Di ponsel,
+        tombol otomasi dan lirik ada di baris nama, dan tombol transport bersama <b class="ui">AUTO LIRIK</b> di
+        baris bawahnya:</p>
       <div class="tw">
         <table>
           <thead><tr><th>Tombol</th><th>Fungsi</th></tr></thead>
@@ -142,7 +143,10 @@
             <tr><td><b class="ui">AUTO LIRIK</b></td><td>Apakah teleprompter terbuka sendiri
               bersama lagu — sakelar yang sama dengan <b class="ui">Buka lirik bersama lagu</b> di
               Pengaturan</td></tr>
-            <tr><td><b class="ui">Tambah penanda</b></td><td>Menjatuhkan sebuah perubahan di posisi pemutaran</td></tr>
+            <tr><td><b class="ui">Tambahkan ke otomasi</b></td><td>Menaruh satu titik di
+              <a href="#automation">otomasi</a> lagu pada playhead, secara manual</td></tr>
+            <tr><td><b class="ui">Rekam otomasi</b></td><td>Ketuk: menulis gerakanmu ke lagu selama lagu
+              diputar. Tahan: sakelarnya dan <b class="ui">Hapus otomasi lagu</b></td></tr>
             <tr><td><b class="ui">Lirik</b></td><td>Membuka teleprompter, atau memuat file lirik</td></tr>
           </tbody>
         </table>
@@ -163,9 +167,9 @@
       <h3>Timeline</h3>
       <p>Bentuk gelombang di bawah kartu adalah tampilan mirror-bar dengan bagian yang sudah
         diputar menyala dan kursor pada playhead. <strong>Ketuk di mana pun untuk seek.</strong>
-        Seek juga menerapkan ulang <a href="#markers">marker preset</a> terbaru pada atau
-        sebelum titik itu, jadi melompat ke chorus terakhir tetap memberimu suara chorus
-        terakhir.</p>
+        Seek juga mengejar <a href="#automation">otomasi</a> lagu: preset, scene, sakelar, dan knob
+        yang dimiliki lagu di titik itu dipasang di tempatnya, jadi melompat ke chorus terakhir tetap
+        memberimu suara chorus terakhir. Jalur-jalur otomasi ada di bawah bentuk gelombang.</p>
       <div class="note">
         <div class="t">Apa yang tidak dilakukan player</div>
         <p>Tidak ada region loop A/B, tidak ada perubahan kecepatan, dan tidak ada pitch shift
@@ -192,8 +196,7 @@
         dua birama tidak pernah hilang. Jumlahnya empat atau delapan: chip jumlah di header
         mengubahnya, dan selama kamu belum memilih, jumlahnya mengikuti layar. Grid memilih bentuk
         yang membuat tombol paling mendekati persegi. Kalau entrinya lebih banyak dari tombol, panah
-        di header berpindah halaman, dan halaman mengikuti entri yang sedang berbunyi saat penanda
-        atau pedal memajukan lagu.</p>
+        di header berpindah halaman, dan halaman mengikuti entri yang sedang berbunyi saat otomasi atau pedal memajukan lagu.</p>
       <figure>
         <img class="phone" src="/docs/assets/stage-full.png" width="600" height="1303"
              alt="Tombol panggung layar penuh: nama lagu besar di atas dengan tombol ke awal lagu, putar, dan lagu berikutnya di sampingnya, serta tombol-tombol besar di bawahnya, masing-masing menyebut preset dengan huruf scene A, B, atau C.">
@@ -216,7 +219,7 @@
         <b class="ui">LIVE</b> pada satu waktu, dan setlist yang live memiliki rel preset dan MIDI:
         program change <em>n</em> menekan tombol panggung <em>n</em>. Sebuah <strong>lagu</strong> adalah
         nama, daftar berurutan tentang apa yang dibawanya, dan sebuah trek backing
-        <em>opsional</em> beserta penanda dan liriknya. Lagu tanpa audio sama sahnya: ia adalah suara
+        <em>opsional</em> beserta otomasi dan liriknya. Lagu tanpa audio sama sahnya: ia adalah suara
         yang kamu pakai memainkannya, dipanggil dari daftar yang sama.</p>
       <p>Kepala kartu memuat tombol <b class="ui">SETLIST</b> — di ponsel hanya ikonnya — untuk membuat, memilih, mengganti nama,
         membagikan, dan menghapus set —, sakelar <b class="ui">AUTO NEXT</b>, dan
@@ -239,8 +242,7 @@
       <div class="note">
         <div class="t">Set demo</div>
         <p>Peluncuran pertama tanpa setlist membawa satu: lagu <em>NAMper</em> dua kali — mix penuh
-          dan versi tanpa gitar. Ia contoh yang dikerjakan untuk seluruh halaman ini. Lini masanya
-          memuat penanda yang berganti antara rig pabrik <b class="ui">One-Man Riot</b> (bait,
+          dan versi tanpa gitar. Ia contoh yang dikerjakan untuk seluruh halaman ini. Otomasi lagunya berganti antara rig pabrik <b class="ui">One-Man Riot</b> (bait,
           pra-refrain, refrain, dan bridge bersih sebagai scene, plus amp bersih kedua di sebuah
           cabang) dan <b class="ui">Friday Night Lead</b> (scene solo dan breakdown, dengan cabang
           sub-oktaf); liriknya dipatok ke bagiannya; dan tiap lagu juga memanggil preset looper berisi
@@ -254,7 +256,7 @@
       <p>Tombol edit membuka editor lagu: kolom <b class="ui">Nama lagu</b>, pemilih backing yang entri pertamanya <b class="ui">Lagu tanpa minus one</b>, baris <a href="#lyrics">lirik</a>, daftar apa yang dipanggil lagu, dan <b class="ui">Hapus lagu</b> di bagian bawah.</p>
       <p>Lagu tanpa trek pengiring juga mendapat baris <b class="ui">Durasi</b>: lini masa tempat ia
         berjalan. Beri satu dan transport menghitungnya dengan jam, bukan dengan audio: di atasnya
-        <a href="#lyrics">lirik bergulir</a>, marker menyala, dan lagu berakhir bersama durasinya,
+        <a href="#lyrics">lirik bergulir</a>, otomasinya berjalan, dan lagu berakhir bersama durasinya,
         jadi <b class="ui">AUTO NEXT</b> membawa set terus jalan. Kalau dibiarkan di
         <b class="ui">tanpa lini masa</b>, lagu itu hanya panggilan suara: ia datang siap dan menunggumu.</p>
       <p><b class="ui">Tambahkan preset, looper, kit…</b> menaruh satu entri di daftar itu:</p>
@@ -273,7 +275,7 @@
         </tbody>
       </table>
       <p>Ketika lagu disiapkan, preset rig <em>pertama</em> di daftar adalah suara yang kamu pakai
-        memulai lagu; yang di bawahnya ada untuk dijangkau <a href="#markers">penanda</a>, tombol
+        memulai lagu; yang di bawahnya ada untuk dijangkau <a href="#automation">otomasi</a>, tombol
         panggung, dan footswitch, dan urutannya adalah yang dilalui <em>preset berikutnya /
         sebelumnya dalam lagu</em>. Untuk mengubah urutan, seret baris lewat pegangannya — tiga garis
         di tepi kanannya. Huruf scene sebuah baris hanya menawarkan scene yang dimiliki preset itu,
@@ -302,34 +304,118 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="markers"><span class="n">06.6</span>Penanda</h2>
-      <p>Penanda adalah satu momen di lini masa lagu yang memanggil salah satu entri milik lagu itu
-        sendiri. Bait bersih, refrain crunch, lead untuk solo — dipasang sekali, lalu bebas tangan
-        setiap kali kamu memainkannya.</p>
-      <ol style="--nc:var(--drive)">
-        <li>Siapkan lagunya dan letakkan posisi pemutaran di tempat pergantian seharusnya terjadi —
-          ketuk lini masa untuk melompat, atau biarkan berjalan.</li>
-        <li>Ketuk tombol pin (<b class="ui">Tambah penanda</b>).</li>
-        <li>Lembar penanda mendaftar apa saja yang dibawa lagu —
-          <b class="ui">Bagian lagu mana yang dipanggil pada momen ini.</b> — dan kamu mencentang
-          yang harus dipicu pada momen itu. Satu penanda boleh membawa lebih dari satu: preset rig
-          dan kit sekaligus, misalnya.</li>
-      </ol>
-      <p>Memilih <b class="ui">SCENE</b> pada baris sebuah penanda yang belum dimiliki lagu akan
-        menambahkannya ke lagu sebagai entri tersendiri, sehingga daftarnya tetap menjadi kebenaran
-        utuh tentang apa yang bisa dilakukan lagu itu.</p>
-      <p>Melewati sebuah penanda saat pemutaran menerapkannya persis seperti jika program change MIDI
-        datang dari pedalboard. Penanda digambar sebagai titik kuning-kecokelatan di lini masa dengan
-        area sentuh yang lapang, dan di bawah gelombang sederet chip mendaftarnya sebagai
-        <b class="ui">m:ss  &lt;nama&gt;</b>. Ketuk chip untuk membuka lembarnya, tahan untuk
-        <b class="ui">Hapus penanda</b>.</p>
-      <div class="note">
-        <div class="t">Pengancingan ke kisi</div>
-        <p>Penanda yang baru dibuat berada di posisi mentah, tepat di tempat jarimu meninggalkannya.
-          <strong>Seret sebuah penanda dan ia mengancing ke kisi birama</strong> — jadi cara
-          merapikan penempatan kasar adalah menyenggolnya. Tanpa tempo yang terdeteksi tidak ada
-          kisi, dan penempatannya bebas.</p>
+      <h2 id="automation"><span class="n">06.6</span>Otomasi lagu</h2>
+      <p>Sebuah lagu mengingat apa yang kamu lakukan selama ia diputar — knob yang diputar, blok yang
+        dinyalakan atau dimatikan, scene atau preset yang dipanggil, pad yang dipukul, tombol looper,
+        fader yang digeser — di lini masanya sendiri, dan melakukannya lagi setiap kali lagu itu
+        diputar. Bait bersih, refrain crunch, delay yang terbuka untuk solo: dimainkan sekali, lalu
+        bebas tangan.</p>
+      <p>Otomasi menggantikan penanda di versi-versi sebelumnya. Apa yang dulu dilakukan penanda —
+        memanggil preset dan scene-nya pada satu momen — kini adalah satu titik di jalur <b class="ui">Preset</b>
+        lagu, dan penanda lama sebuah lagu dipindahkan ke sini sekali, dengan sendirinya.</p>
+
+      <h3>Merekam</h3>
+      <p><strong>Tombol rekam</strong> — lingkaran di samping tombol tambah pada kartu player,
+        <b class="ui">Rekam otomasi</b> — menyiapkannya. Ketuk dan setiap gerakan ditulis ke lagu selama lagu
+        diputar: mulai pemutaran berikutnya, atau langsung jika lagu sudah berjalan. Tombol itu
+        menyala merah selama merekam. Tahan untuk menunya: sakelar <b class="ui">Rekam otomasi</b> yang sama
+        dan <b class="ui">Hapus otomasi lagu</b>, yang bertanya sekali lagi sebelum menghapus.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Apa yang ditulis</th><th>Dari</th></tr></thead>
+          <tbody>
+            <tr><td>Knob, nyala/mati sebuah blok, scene, morph scene</td><td>Layar, pedal, host
+              plug-in. Sapuan menyimpan satu titik tiap 20 ms</td></tr>
+            <tr><td>Preset rig beserta scene tempat ia mendarat, preset looper, kit pad</td><td>Ketukan
+              pada entri lagu — tombol panggung, panel set, pedal</td></tr>
+            <tr><td>Pukulan dan henti pad, beserta kekuatannya</td><td>Layar, tombol, pedal</td></tr>
+            <tr><td>Tombol-tombol looper</td><td>Rekam/putar, siapkan, mute, solo, hapus, henti/putar
+              satu sel, undo, peel, fade, tukar, henti/putar semua</td></tr>
+            <tr><td>Mixer</td><td>Level dan pan setiap strip, serta send-nya</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p>Apa yang diatur preset atau tempo saat masuk — waktu delay yang tersinkron, misalnya —
+        bukan gerakan dan tidak ditulis, begitu juga pemutaran otomasi itu sendiri.</p>
+      <div class="note tip">
+        <div class="t">Perekaman sentuh</div>
+        <p>Sebuah jalur hanya ditimpa selama kamu menggerakkannya, dan selama 0,6 dtk setelah
+          tanganmu lepas. Sisa jalur itu, dan setiap jalur yang tidak kamu sentuh, tetap seperti
+          semula dan terus berjalan — jadi putaran kedua bisa membetulkan satu knob di refrain tanpa
+          mengulang seluruh lagu.</p>
+      </div>
+      <p>Pemutaran tidak butuh sakelar: otomasi berjalan setiap kali lagu diputar. Mulai atau seek
+        mengejar keadaan lagu — preset, scene, sakelar, knob, fader — jadi suaranya tepat di mana
+        pun kamu masuk. Pukulan pad dan aksi looper adalah event: hanya terpicu saat lagu
+        melewatinya. Preset yang sudah aktif tidak dimuat lagi.</p>
+
+      <h3>Jalur-jalur</h3>
+      <p>Di bawah timeline, setiap hal yang digerakkan lagu mendapat jalurnya sendiri, dengan nama
+        di sebelah kanan:</p>
+      <ul style="--nc:var(--drive)">
+        <li><b>Knob, fader, atau morph</b> menggambar kurvanya, pada rentangnya sendiri.</li>
+        <li><b>Jalur bertingkat</b> menggambar tanda di setiap titik dengan kata-katanya di samping:
+          <b class="ui">Preset</b> nama preset dan scene tempat ia mendarat, <b class="ui">Scene</b> hurufnya, jalur <b class="ui">Nyala/mati</b>
+          sebuah blok <b class="ui">Aktif</b> atau <b class="ui">Mati</b>, <b class="ui">Preset looper</b> dan <b class="ui">Kit sampler</b> namanya.</li>
+        <li><b class="ui">Pad</b> menunjukkan pad mana yang dipukul; <b class="ui">Looper</b> aksinya dan selnya —
+          <b class="ui">Henti/Putar</b> 2, <b class="ui">Mute</b> 3.</li>
+      </ul>
+      <p>Kata-kata sebuah titik memakai ruang sampai titik berikutnya, dan dipotong di tempat titik
+        berdesakan. Dengan lebih dari empat jalur, barisnya bisa digulir.</p>
+
+      <h3>Mengedit titik</h3>
+      <ul style="--nc:var(--drive)">
+        <li><strong>Ketuk</strong> sebuah jalur dan titik terdekatnya terbuka. Di atas adalah kapan
+          ia terjadi: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
+          <b class="ui">+BAR</b>, atau <b class="ui">Ke playhead</b>. Di bawahnya, apa isinya — preset lagu dan
+          <b class="ui">SCENE</b>-nya, sebuah scene, <b class="ui">Aktif</b> atau <b class="ui">Mati</b>, pad dengan <b class="ui">Pukul</b> atau <b class="ui">Berhenti</b> dan
+          <b class="ui">VELOCITY</b>-nya, <b class="ui">AKSI</b> dan <b class="ui">SEL</b> looper. <b class="ui">NILAI</b> sebuah knob, fader, atau morph punya
+          slider dan kolom: ketik angkanya dalam satuan parameter itu sendiri, nilainya dijaga
+          dalam rentangnya, dan rentang itu ditampilkan di bawahnya. Tombol tempat sampah menghapus
+          titik.</li>
+        <li><strong>Seret</strong> sebuah titik di sepanjang jalurnya untuk memindahkannya. Bila
+          tempo lagu diketahui, titik itu mendarat di ketukan lagu.</li>
+        <li><strong>Tahan</strong> sebuah jalur untuk <b class="ui">Hapus jalur ini</b>.</li>
+      </ul>
+
+      <h3>Menambah titik secara manual</h3>
+      <p><strong>Tombol tambah</strong> (<b class="ui">Tambahkan ke otomasi</b>) menaruh satu titik di playhead
+        tanpa merekam apa pun. Lembarnya, <b class="ui">TAMBAHKAN KE OTOMASI</b>, menampilkan waktu playhead dan
+        pohon terlipat — setiap tingkat terbuka dengan satu ketukan:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Grup</th><th>Membuka ke</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Preset lagu</b></td><td>Entri milik lagu itu sendiri: preset rig beserta
+              scene-nya, preset looper, kit</td></tr>
+            <tr><td><b class="ui">Scene</b></td><td>Scene tempat setiap rig berada sekarang</td></tr>
+            <tr><td><b class="ui">Looper</b></td><td><b class="ui">Henti/Putar</b> 1 sampai 4 — lihat
+              <a href="#looper-sections">di bawah</a></td></tr>
+            <tr><td><b class="ui">Blok</b></td><td>Rig → blok → <b class="ui">Nyala/mati</b>-nya dan setiap knob, dengan nilainya
+              saat ini</td></tr>
+            <tr><td><b class="ui">Mixer</b></td><td>Strip → level dan pan</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Satu pilihan menaruh titik dengan nilai yang dimilikinya saat ini dan membukanya langsung
+        di lembar itu, untuk mengetik atau menggeser nilainya dan memindahkan waktunya. Jalur yang
+        belum dimiliki lagu dibuatkan untuknya. Kedua tombol otomasi redup selama lagu tidak punya
+        timeline — tanpa backing track dan tanpa <b class="ui">Durasi</b>.</p>
+      <figure>
+        <img class="phone" src="/docs/assets/automation-add.png" width="600" height="1303"
+             alt="Lembar ADD TO THE AUTOMATION di atas kartu player, playhead di 0:00.0: grup terlipat THE SONG'S PRESETS, SCENES, LOOPER, BLOCKS, dan MIXER, grup Looper terbuka dengan petunjuknya dan Stop/Play 1 sampai 4, masing-masing dengan tombol tambah.">
+        <figcaption>Tambahkan ke otomasi: pohon terlipat, grup Looper terbuka</figcaption>
+      </figure>
+
+      <h3 id="looper-sections">Loop sebagai bagian lagu</h3>
+      <p>Titik looper yang memulai sel yang berhenti membawa loop itu masuk <strong>dari awalnya di
+        garis birama berikutnya</strong>, bukan selaras dengan posisi siklus saat itu: loop bait,
+        lalu loop refrain, masing-masing mulai dari awalnya. Lembar itu menyebutkannya di bawah
+        grup <b class="ui">Looper</b> — <b class="ui">Loop yang berhenti dan dimulai oleh lagu masuk dari awalnya di birama berikutnya.</b>
+        Sel yang kamu mulai dengan tangan tetap selaras. Lihat
+        <a href="/docs/id/looper.html">looper</a>.</p>
+      <p>Otomasi disimpan di samping trek lagu, sebagai
+        <b class="ui">&lt;lagu&gt;.auto.json</b> di <b class="ui">backing/</b>.</p>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -511,7 +597,7 @@
       <div class="note warn">
         <div class="t">Apa yang tidak dibawa oleh ekspor ini</div>
         <p>Tidak ada tempo dan tidak ada time signature — timeline-nya dalam
-          <strong>detik</strong>, bukan birama. Tidak ada marker preset, tidak ada setlist,
+          <strong>detik</strong>, bukan birama. Tidak ada setlist,
           tidak ada status plugin dan tidak ada automation. Ini adalah multitrack bersih dari
           audio yang kamu mainkan, dan kamu perlu mengatur sendiri tempo sesi di ujung sana.</p>
       </div>
