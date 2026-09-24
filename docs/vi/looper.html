@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — Tài liệu NAMper</title>
-<meta name="description" content="Looper đồng bộ bốn ô: các ô loop và phím góc của chúng, thanh transport, arm bằng AUTO và tự động khớp biên ô nhịp, tempo và click, trình chỉnh loop, ô MIDI với quantize không phá hủy, hoàn tác, input, output và preset của từng ô, loop dưới dạng file WAV và những gì được lưu lại.">
+<meta name="description" content="Looper đồng bộ bốn ô: các ô loop và phím góc của chúng, thanh transport và các phím của nó, arm bằng AUTO và tự động khớp biên ô nhịp, tempo, click và MIDI clock, trình chỉnh loop, ô MIDI với quantize không phá hủy, hoàn tác theo từng ô, input, output, độ dài, mức và preset của từng ô, thư viện loop, các đoạn bài hát và khử tiếng vọng.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Looper — Tài liệu NAMper">
-<meta property="og:description" content="Bốn track đồng bộ, arm bằng AUTO, tự động khớp biên ô nhịp và trình chỉnh loop.">
+<meta property="og:description" content="Bốn track đồng bộ, arm bằng AUTO, tự động khớp biên ô nhịp, trình chỉnh loop và thư viện loop.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/vi/looper.html">
 <meta property="og:type" content="article">
@@ -84,7 +84,8 @@
         <li><a href="#midi">Ô MIDI</a></li>
         <li><a href="#undo">Hoàn tác và xoá</a></li>
         <li><a href="#routing">Thiết lập của một ô</a></li>
-        <li><a href="#saving">Những gì được lưu lại</a></li>
+        <li><a href="#saving">Thư viện và những gì được lưu lại</a></li>
+        <li><a href="#live">Bài hát, căn phòng và đồng hồ</a></li>
       </ul>
     </nav>
 
@@ -92,9 +93,10 @@
       <h2 id="basics"><span class="n">04.1</span>Looper vận hành thế nào</h2>
       <p>Có một quy tắc nằm bên dưới tất cả mọi thứ khác: <b>loop đầu tiên định ra chu kỳ, và mọi
         loop khác đồng bộ theo nó.</b></p>
-      <p>Ô nào bạn ghi trước sẽ định ra chu kỳ. Mọi ô khác được khớp theo nó thay vì trôi tự do,
-        và không gì làm dịch chuyển chu kỳ đó về sau, trừ khi bạn chỉnh sửa ô đã đặt ra nó, hoặc
-        xoá hết và ghi lại từ đầu.</p>
+      <p>Ô nào bạn ghi trước sẽ định ra chu kỳ. Mọi ô khác được khớp theo nó: độ dài của nó đi theo
+        các bước của loop đầu tiên — một phần tư, một nửa, gấp đôi, gấp bốn hoặc gấp tám — nên nó
+        không bao giờ trôi lệch pha. Không có chế độ nào phải chọn. Không gì làm dịch chuyển chu kỳ
+        đó về sau, trừ khi bạn chỉnh sửa ô đã đặt ra nó, hoặc xoá hết và ghi lại từ đầu.</p>
       <p>Có bốn ô, và một loop dài đúng bằng thời gian bạn chơi: qua phút đầu tiên, ô vẫn tiếp tục
         dài ra chừng nào thiết bị còn đủ bộ nhớ cho nó. Khi màn hình dựng dọc, thanh transport nằm
         ở trên và bốn ô lấp đầy trang theo từng cặp hai; khi xoay ngang, thanh transport chuyển
@@ -102,7 +104,7 @@
         tắc đó dựa trên hình dạng của trang, không phải loại thiết bị.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="Tab Loop: thẻ transport ở trên với tempo, AUTO và CLICK; bên dưới là bốn ô loop, mỗi ô là một pad tròn trong một hình vuông có bốn phím ở góc và các ô thiết lập bên dưới; ô 1 đang phát với vòng sóng xanh lá, ô 2 đang ghi, ô 3 bị tắt tiếng, ô 4 còn trống.">
+          alt="Tab Loop: thanh transport ở trên, một hàng phím biểu tượng phía trên tempo, AUTO và CLICK; bên dưới là bốn ô loop, mỗi ô là một pad tròn trong một hình vuông có bốn phím ở góc, bên dưới là các ô thiết lập và một phím mức hình loa; ô 1 đang phát với vòng sóng xanh lá, ô 2 đang ghi, ô 3 bị tắt tiếng, ô 4 còn trống.">
         <figcaption>Transport ở trên, bốn ô bên dưới: một pad, bốn phím góc, các ô thiết lập</figcaption>
       </figure>
       <p>Mỗi ô đều được dựng giống nhau: <b>pad</b> tròn ở giữa một hình vuông, một <b>phím góc</b>
@@ -114,15 +116,18 @@
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="pads"><span class="n">04.2</span>Các ô loop</h2>
       <p>Pad vẽ dạng sóng của loop <em>thành một vòng</em> — một vòng của hình tròn là một vòng
-        của chu kỳ — với một tia quét đánh dấu vị trí phát. Những đoạn to làm vòng dày hơn, để bạn
-        đọc được vị trí hiện tại trong loop từ bên kia phòng. Pad cũng <b>sáng từ viền vào
-        trong</b> khi loop kêu, càng to càng sáng sâu.</p>
+        của chính loop của ô — với một tia quét đánh dấu vị trí phát. Những đoạn to làm vòng dày
+        hơn, để bạn đọc được vị trí hiện tại trong loop từ bên kia phòng. Pad cũng
+        <b>sáng từ viền vào trong</b> khi loop kêu, càng to càng sáng sâu.</p>
       <p>Trong lúc loop đầu tiên đang ghi thì chưa có chu kỳ nào cả, nên vòng hoạt động khác:
         cả vòng tròn ánh xạ mọi thứ đã ghi được <em>cho đến lúc đó</em>, tia quét đứng yên ở vị
         trí 12 giờ — đó là đầu ghi — và tâm pad đếm số giây đã trôi qua. Khi loop khép lại, tia
         quét bắt đầu chạy theo chu kỳ. Một ô ghi vào một chu kỳ đang chạy vẽ sóng của nó thành một
         cung dài dần ra.</p>
-
+      <p>Tâm pad cũng cho biết loop phát thế nào khi điều đó không hiển nhiên: <b class="ui">ĐẢO</b>
+        cho một loop phát ngược, tốc độ của nó (<b>×½</b>, <b>×2</b>…), <b>1×</b> cho một loop chỉ
+        phát một lần, và <b>L2</b>, <b>L3</b>… cho các lớp chồng lên bản ghi gốc. Một lần fade đang
+        chạy hiện hướng của nó và đã đi được bao xa.</p>
       <h3>Chạm vào pad</h3>
       <p>Chỉ vòng tròn nhận cú chạm. Mỗi lần chạm đưa ô lên một nấc trong chuỗi trạng thái:</p>
       <ul style="--nc:var(--eq)">
@@ -135,22 +140,21 @@
       <p>Khi <b class="ui">AUTO</b> bật, chạm vào một pad trống sẽ <b>arm</b> nó thay vì ghi
         ngay lập tức — một vòng đỏ nét đứt bao quanh ô — và chạm vào một pad đã arm sẽ huỷ arm. Đó
         là thay đổi duy nhất mà AUTO tạo ra trong chuỗi trạng thái này.</p>
-
       <h3>Các phím góc</h3>
       <div class="tw">
         <table>
           <thead><tr><th>Góc</th><th>Phím</th><th>Tác dụng</th></tr></thead>
           <tbody>
             <tr><td>Trên trái</td><td><b class="ui">Tắt tiếng</b></td>
-                <td>Làm im loop trong khi nó vẫn chạy; sáng màu vàng khi bật.</td></tr>
+              <td>Làm im loop trong khi nó vẫn chạy; sáng màu vàng khi bật.</td></tr>
             <tr><td>Trên phải</td><td><b class="ui">Solo</b></td>
-                <td>Tắt tiếng các ô khác đang phát; nhấn lần nữa để đưa chúng trở lại. Solo một ô
-                  khác sẽ chuyển solo sang ô đó.</td></tr>
+              <td>Tắt tiếng các ô khác đang phát; nhấn lần nữa để đưa chúng trở lại. Solo một ô
+                khác sẽ chuyển solo sang ô đó.</td></tr>
             <tr><td>Dưới trái</td><td><b class="ui">Hoàn tác</b></td>
-                <td>Lấy lại lần overdub cuối của ô này, hoặc xoá bản ghi của nó — xem
-                  <a href="#undo">Hoàn tác và xoá</a>.</td></tr>
+              <td>Mỗi lần chạm lùi ô này một lớp, cho tới bản ghi gốc — xem
+                <a href="#undo">Hoàn tác và xoá</a>.</td></tr>
             <tr><td>Dưới phải</td><td><b class="ui">Phát</b> / <b class="ui">Dừng</b></td>
-                <td>Dừng hoặc chạy riêng loop này.</td></tr>
+              <td>Dừng hoặc chạy riêng loop này.</td></tr>
           </tbody>
         </table>
       </div>
@@ -160,7 +164,6 @@
         <b class="ui">Phát</b> đưa nó trở lại đúng nhịp, không bao giờ từ đầu. Khi cả looper đang
         dừng, <b class="ui">Phát</b> của một ô khởi động looper chỉ với riêng ô đó; nút phát của
         transport đưa mọi ô trở lại.</p>
-
       <h3>Trạng thái</h3>
       <div class="tw">
         <table>
@@ -176,39 +179,82 @@
           </tbody>
         </table>
       </div>
-
-      <h3>Nhấn giữ</h3>
-      <p>Nhấn giữ pad — hoặc bất kỳ chỗ nào trên ô — để mở menu của ô:
-        <b class="ui">Đầu vào · …</b>, <b class="ui">Đầu ra · …</b>, <b class="ui">Preset của loop · …</b>,
-        <b class="ui">Sửa loop…</b>, <b class="ui">Độ dài · tự do</b> hoặc
-        <b class="ui">Độ dài · N ô nhịp</b>, <b class="ui">Overdub · N</b>; loop dưới dạng file —
-        <b class="ui">Xuất loop thành WAV…</b>, <b class="ui">Xuất tất cả loop…</b>,
-        <b class="ui">Tải loop từ tệp…</b> (xem <a href="#saving">bên dưới</a>); và ở cuối
+      <h3>MIDI learn</h3>
+      <p>Mỗi bộ phận của ô học MIDI bằng cú nhấn giữ của riêng nó, và chỉ học chính nó: pad cho
         <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — đây là cách gán một footswitch
-        cho một ô.</p>
+        cho một ô — và mỗi phím góc cho hành động riêng của nó, <b>Loop 1 · Mute</b>,
+        <b>Loop 1 · Solo</b>, <b>Loop 1 · Undo</b>, <b>Loop 1 · Play / stop</b>. Mọi hàng và mọi chip
+        trong <a href="#editor">trình chỉnh loop</a> cũng vậy. Mức của một ô học từ núm
+        <b class="ui">Mức</b> của trình chỉnh: cú nhấn của chính phím mức dùng để chỉnh mức.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Thanh transport</h2>
-      <p>Thẻ transport mang chữ <b class="ui">LOOPER</b> — màu đỏ khi looper đang chứa bất cứ thứ
-        gì — và, khi dựng dọc, hai hàng:</p>
+      <p>Thanh transport không có tiêu đề — tab đã gọi tên trang rồi. Khi dựng dọc nó gồm hai hàng:
+        một hàng phím biểu tượng, và bên dưới là tempo, <b class="ui">AUTO</b> và
+        <b class="ui">CLICK</b>. Khi xoay ngang, cũng những thành phần đó xếp thành một cột: tempo
+        với phím tốc độ bên cạnh, AUTO và CLICK, và các phím xếp từng cặp hai ở dưới cùng. Thẻ sáng
+        lên trong lúc loop đầu tiên đang ghi.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Phím</th><th>Tác dụng</th></tr></thead>
+          <tbody>
+            <tr><td>Preset</td><td><b class="ui">Preset looper</b> — thiết lập của các ô; xem
+              <a href="#saving">những gì được lưu lại</a>.</td></tr>
+            <tr><td>Thư viện (hình chồng sách)</td><td>Các loop đã lưu, và đưa loop vào/ra dưới
+              dạng file — xem <a href="#saving">thư viện</a>.</td></tr>
+            <tr><td>Bounce</td><td><b class="ui">GỘP LOOP</b>: các loop bạn chọn gộp thành
+              một, trộn đúng như bạn đang nghe. <b class="ui">Để phần đuôi vang qua điểm loop</b>
+              và <b class="ui">Giữ các loop nguồn</b> (cần một ô trống để bounce vào). Mờ đi khi
+              chưa có loop âm thanh nào.</td></tr>
+            <tr><td>Cài đặt (bánh răng)</td><td>Những gì tác động lên mọi loop cùng lúc — xem bên
+              dưới.</td></tr>
+            <tr><td>Tốc độ</td><td>Tốc độ của mọi loop âm thanh — xem bên dưới.</td></tr>
+            <tr><td>Hoán đổi</td><td><b class="ui">Đổi loop đang phát và loop đã dừng</b>: mọi ô đang
+              kêu fade out trong khi mọi ô đang dừng fade in, trong khoảng crossfade. Chỉ sáng khi
+              có ô đang phát và có ô đang dừng.</td></tr>
+            <tr><td>Phát / dừng</td><td><b class="ui">Phát loop</b> /
+              <b class="ui">Dừng loop</b>, bị vô hiệu hoá cho tới khi có chu kỳ.</td></tr>
+            <tr><td>Thùng rác</td><td><b class="ui">Xoá mọi loop</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Không có hoàn tác trên thanh transport: hoàn tác luôn gắn với một ô. Nhấn giữ một phím là
+        MIDI learn của nó — nút phát cho <b class="ui">MIDI Learn: looper chạy / dừng</b>, thùng rác cho
+        <b class="ui">MIDI Learn: xoá tất cả loop</b>, và cứ thế.</p>
+      <h3>Bánh răng</h3>
+      <p>Bánh răng mở một menu gồm những gì tác động lên mọi loop:</p>
       <ul style="--nc:var(--gate)">
-        <li>Một phím <b>preset</b> — xem <a href="#saving">những gì được lưu lại</a>.</li>
-        <li><b class="ui">Phát loop</b> / <b class="ui">Dừng loop</b>, bị vô hiệu hoá cho tới
-          khi có chu kỳ.</li>
-        <li>Một phím <b>hoàn tác</b> — xem <a href="#undo">Hoàn tác và xoá</a>.</li>
-        <li>Một phím thùng rác, <b class="ui">Xoá mọi loop</b>.</li>
-        <li>Bên dưới chúng là tempo, <b class="ui">AUTO</b> và <b class="ui">CLICK</b>.</li>
+        <li><b class="ui">Mọi loop theo nhịp độ</b> /
+          <b class="ui">Không loop nào theo nhịp độ</b> — một loop đi theo tempo sẽ phát ở tempo đang
+          đặt mà vẫn giữ cao độ.</li>
+        <li><b class="ui">Đảo ngược mọi loop</b> / <b class="ui">Mọi loop phát xuôi</b>.</li>
+        <li><b class="ui">Khử tiếng vọng</b> — cùng công tắc với Cài đặt → Âm thanh; xem
+          <a href="#live">căn phòng</a>.</li>
+        <li><b class="ui">Độ dài chuyển mờ</b> — khoảng mà phép hoán đổi fade qua: 1 phách, 1 ô
+          nhịp, 2 ô nhịp hoặc 4 ô nhịp; mặc định 1 ô nhịp. Fade riêng của một ô giữ độ dài riêng của
+          nó.</li>
       </ul>
-      <p>Khi xoay ngang, cũng những phím đó xếp thành một cột: tempo, AUTO và CLICK ở trên, phát,
-        hoàn tác và thùng rác ở dưới cùng. Thẻ sáng lên trong lúc loop đầu tiên đang ghi.</p>
-      <p>Nhấn giữ nút phát để vào <b class="ui">MIDI Learn: looper chạy / dừng</b>, hoặc phím thùng
-        rác để vào <b class="ui">MIDI Learn: xoá tất cả loop</b>.</p>
+      <p>Các mục của menu học MIDI từ Cài đặt → <b class="ui">Điều khiển</b>, nơi các hành động
+        <b>Every loop follows the tempo on/off</b>, <b>Every loop reversed on/off</b> và
+        <b>Echo cancelling</b> nằm trong nhóm Looper.</p>
+      <h3>Phím tốc độ</h3>
+      <p>Đồng hồ tốc độ giữ tốc độ của mọi loop âm thanh. <b>Nhấn giữ nó</b> và một thang từ
+        <b>×½</b> tới <b>×8</b> hiện ra với con trượt ngay dưới ngón tay; <b>kéo</b> lên hoặc xuống
+        và mọi loop nhận từng tốc độ khi con trượt đi qua, nghe được ngay khi bạn kéo; <b>thả tay</b>
+        thì thang biến mất. <b>Chạm nhanh hai lần</b> đưa mọi loop về ×1. Khi các loop không ở ×1,
+        phím sáng lên với tốc độ ở góc. Cú nhấn của nó là của riêng nó, nên nó không có MIDI learn;
+        <b>Next speed</b> của một ô được gán trong Cài đặt → Control.</p>
       <div class="note">
         <div class="t">Điều khiển bằng footswitch</div>
         <p>Bản đồ MIDI có sẵn phủ hết looper mà không cần cài gì: <b class="ui">CC 85–88</b> gõ vào
           ô 1 tới 4, <b class="ui">CC 89</b> chạy và dừng, <b class="ui">CC 90</b> xoá. CC 89 là một
-          công tắc bật/tắt thật sự — xem <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</p>
+          công tắc bật/tắt thật sự — xem <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>. Với
+          một bảng nhiều footswitch, hãy gọi <b class="ui">Bàn loop bốn công tắc</b> từ các preset trên
+          trang Control (nó thay thế bản đồ): <b>CC 80–83</b> gõ ô 1–4, <b>CC 84</b> chạy/dừng,
+          <b>CC 86</b> xoá hết, <b>CC 87</b> AUTO, <b>CC 88–91</b> phát/dừng ô 1–4,
+          <b>CC 92–95</b> hoàn tác ô 1–4, <b>CC 96</b> click, <b>CC 97</b> hoán đổi và
+          <b>CC 11</b> mức của ô 1.</p>
       </div>
     </section>
 
@@ -217,7 +263,6 @@
       <p><b class="ui">AUTO</b> — chip hình đũa phép, cạnh <b class="ui">CLICK</b> — làm hai
         việc: nó tự bắt đầu và dừng các bản ghi giúp bạn, và khi master loop khép lại, nó tính
         ra vạch ô nhịp thực sự nằm ở đâu.</p>
-
       <h3>Arm thay vì ghi</h3>
       <p>Khi AUTO bật, chạm vào một pad trống sẽ arm nó: một vòng đỏ nét đứt bao quanh ô. Điều xảy
         ra tiếp theo phụ thuộc vào việc đã có chu kỳ hay chưa:</p>
@@ -225,15 +270,18 @@
         <li><b>Chưa có chu kỳ.</b> Ghi âm bắt đầu <b>ngay ở nốt đầu tiên</b> của bạn vượt
           ngưỡng arm — Cài đặt → <b class="ui">Sân khấu</b> → <b class="ui">LOOPER</b> →
           <b class="ui">Tín hiệu bắt đầu auto-loop</b>, −40 dB nếu bạn không đổi, càng thấp
-          càng nhạy. Một cú lướt nhẹ qua dây hay tiếng ồn trong phòng vẫn nằm dưới ngưỡng. Bạn có thể cầm đàn lên, chỉnh tư thế thoải mái, và bản ghi bắt đầu khi bạn
-          chơi — không phải khi bạn chạm.</li>
+          càng nhạy. Một cú lướt nhẹ qua dây hay tiếng ồn trong phòng vẫn nằm dưới ngưỡng.
+          Bạn có thể cầm đàn lên, chỉnh tư thế thoải mái, và bản ghi bắt đầu khi bạn
+          chơi — không phải khi bạn chạm. Khi có MIDI clock đi vào, nó bắt đầu ở phách mạnh tiếp
+          theo của clock.</li>
         <li><b>Đã có chu kỳ đang chạy.</b> Ghi âm bắt đầu ở <b>ranh giới chu kỳ tiếp theo</b>,
           nên bản ghi bắt đầu đúng vào đầu ô nhịp. Một khoảng ân hạn ngắn bỏ qua tiếng đánh đến
           hơi trễ, nên đánh vào phách mạnh đầu ô nhịp trễ hơn tia quét một chút vẫn được
           tính.</li>
       </ul>
       <p>Một bản ghi armed tự do — ghi khi chưa có chu kỳ nào — cũng <b>tự dừng</b> khi câu nhạc
-        kết thúc: khi khoảng lặng đã kéo dài đủ số phách đặt trong <b class="ui">Khoảng lặng khép lại auto-loop</b> (một phách nếu bạn không đổi) và dài hơn các chỗ nghỉ trong chính lối chơi của
+        kết thúc: khi khoảng lặng đã kéo dài đủ số phách đặt trong <b class="ui">Khoảng lặng khép lại
+        auto-loop</b> (một phách nếu bạn không đổi) và dài hơn các chỗ nghỉ trong chính lối chơi của
         bạn, bản ghi khép lại ở điểm cuối ô nhịp mà nó nghe được. Khi không có tempo nào để nghe — một
         nốt drone, một pad — thì hai giây yên lặng sẽ khép nó lại. Đuôi reverb và khoảng nghỉ giữa
         các câu nhạc không bị tính là im lặng, nên một riff thưa nốt sẽ không bị cắt làm đôi.</p>
@@ -242,7 +290,6 @@
         lên trên mức đó, khoảng 9 dB, nên hãy chơi hẳn nốt đó chứ đừng chỉ lướt nhẹ.</p>
       <p>Sau khi mỗi loop khép lại, AUTO <b>tự arm ô trống tiếp theo</b>, để bạn có thể xây
         dựng cả bốn track mà không cần chạm màn hình thêm lần nào nữa.</p>
-
       <h3>Tự động khớp biên ô nhịp</h3>
       <p>Khi master loop khép lại, NAMper phân tích tín hiệu clean input — tín hiệu trước khi
         qua hiệu ứng của bạn — và tìm các tiếng đánh (attack). Nó khớp một lưới ô nhịp theo
@@ -257,12 +304,14 @@
           bị đọc thành 240 BPM và một nhịp chậm không bị đọc thành 45.</li>
       </ol>
       <p>Trên màn hình, tất cả diễn ra trong một khoảnh khắc: vòng vẽ lại, độ dài khớp về một
-        con số gọn gàng, và chỉ số BPM — trống cho tới lúc này — được điền vào. Từ đó, click,
-        các ô LEN, quantize của sampler và đồng hồ ô nhịp của setlist đều có một lưới để dựa
-        vào.</p>
-      <p>Khi <b class="ui">CLICK</b> bật, tempo bị <b>khoá</b> ở bất kỳ tempo nào đang đặt, và
-        chỉ pha (điểm bắt đầu) mới được khớp lại. Đây là chế độ dùng khi bạn chơi theo click
-        hoặc theo nhạc nền và tempo không được phép thay đổi.</p>
+        con số gọn gàng, chỉ số BPM — trống cho tới lúc này — được điền vào, và ô
+        <b class="ui">DÀI</b> của một ô FREE cho thấy bản ghi ra kết quả thế nào, <b>AUTO · 4</b>.
+        Từ đó, click, các ô LEN, quantize của sampler và đồng hồ ô nhịp của setlist đều có một
+        lưới để dựa vào.</p>
+      <p>Khi <b class="ui">CLICK</b> bật — hoặc có một bài hát đã cue, hoặc có MIDI clock đi vào —
+        tempo bị <b>khoá</b> ở bất kỳ tempo nào đang đặt, và chỉ pha (điểm bắt đầu) mới được khớp
+        lại. Đây là chế độ dùng khi bạn chơi theo click hoặc theo nhạc nền và tempo không được
+        phép thay đổi.</p>
       <div class="note tip">
         <div class="t">Drone và rubato</div>
         <p>Nếu không có lưới nào khả dụng để tìm ra — một pad ngân dài, một đoạn intro chơi tự
@@ -288,14 +337,26 @@
         với <b class="ui">BPM</b> bên cạnh, một nút <b class="ui">TAP</b> lớn hiện chữ
         <b class="ui">lần nữa…</b> sau lần chạm đầu tiên của bạn, cùng với
         <b class="ui">Xoá (AUTO dò lại)</b> và <b class="ui">Xong</b>. Xoá nó khi bạn
-        muốn AUTO tự tính tempo từ cách bạn chơi thay vì đặt sẵn.</p>
+        muốn AUTO tự tính tempo từ cách bạn chơi thay vì đặt sẵn. Sheet cũng cho biết ai đang giữ
+        tempo: <b class="ui">từ clock</b>, <b class="ui">từ bài hát</b>,
+        <b class="ui">từ vòng lặp</b> hoặc <b class="ui">đặt thủ công</b>.</p>
+      <p>Chúng được xếp hạng theo đúng thứ tự đó. MIDI clock đi vào xếp trên một bài hát đã cue,
+        một bài hát xếp trên một loop khép lại ở chế độ AUTO, và tempo bạn gõ vào là yếu nhất: nó
+        luôn được áp dụng, và bài hát hay loop AUTO tiếp theo sẽ lấy lại tempo. Một nguồn yếu hơn
+        không bao giờ ghi đè một nguồn mạnh hơn — một loop ghi dưới một bài hát sẽ được khớp theo
+        tempo của bài hát.</p>
       <p>Cùng sheet đó cũng có thể mở từ header <b class="ui a">Bộ tiếng</b>: chip metronome bật/tắt
-        click khi <b>chạm</b> và mở <b class="ui">ĐẶT TEMPO</b> khi <b>nhấn giữ</b>.</p>
+        click khi <b>chạm</b> và mở <b class="ui">ĐẶT TEMPO</b> khi
+        <b>nhấn giữ</b>.</p>
       <p><b class="ui">CLICK</b> bật metronome. Bật nó khi chưa đặt tempo sẽ <b>ép về 120
         BPM</b> và khởi động lại ô nhịp, nên bật click không bao giờ là một hành động trung
         tính. Mức click và bus output của click nằm trong Settings →
         <b class="ui">MÁY ĐẬP NHỊP</b>, nơi nó có thể có một cặp output riêng để nghe
         in-ear.</p>
+      <p>Bản ghi đầu tiên có <b class="ui">DÀI</b> đặt theo ô nhịp cũng đọc đồng hồ theo cách đó.
+        Khi không có đồng hồ nào chạy — click tắt, không có bài hát, không có MIDI clock — bạn chơi
+        tự do và số ô nhịp của nó <b>đặt ra tempo</b> khi nó khép lại. Khi có đồng hồ, nó khép lại
+        sau đúng số ô nhịp đó và chuyển thẳng sang overdub, cho tới khi bạn chạm.</p>
       <div class="note warn">
         <div class="t">Không có count-in</div>
         <p>Chạm record là bắt đầu ghi ngay. Nếu bạn muốn có một ô nhịp click trước khi chơi,
@@ -306,61 +367,88 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>Trình chỉnh loop</h2>
-      <p>Mở nó bằng ô sửa (<b class="ui">Sửa loop N</b>) trong phần thiết lập của một ô, hoặc
-        nhấn giữ ô → <b class="ui">Sửa loop…</b>. Ô sửa cũng hoạt động trên <b>một ô trống hoặc đã
-        arm</b>, nên preset mà bản ghi đi qua — và, trên một ô MIDI, lưới của nó — có thể được đặt
-        trước khi bạn chơi. Sheet có tiêu đề <b class="ui">LOOP N</b> với một nhãn độ dài cập nhật
-        trực tiếp.</p>
+      <p>Mở nó bằng ô sửa (biểu tượng thanh trượt, <b class="ui">Sửa loop N</b>) trong phần thiết
+        lập của một ô. Nó cũng hoạt động trên <b>một ô trống hoặc đã arm</b>, nên lưới, preset mà
+        bản ghi đi qua và, trên một ô MIDI, quantize có thể được đặt trước khi bạn chơi. Sheet có
+        tiêu đề <b class="ui">LOOP N</b> với một nhãn độ dài cập nhật trực tiếp, và cao đúng bằng
+        những gì nó chứa.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="Sheet trình chỉnh loop đè lên looper: một dạng sóng với lưới ô nhịp và phách, các tay cầm start/end có thể kéo, hàng RECORD THROUGH, các hàng nút START và LENGTH TEMPO KEPT, núm Level và Pan, cùng các nút Mute, Undo và Clear.">
-        <figcaption>Trình chỉnh loop: lưới, tay cầm, nút nudge và hàng dưới cùng</figcaption>
+          alt="Sheet trình chỉnh loop đè lên looper: một dạng sóng với lưới ô nhịp và phách cùng thước ô nhịp bên dưới, rồi mỗi thiết lập một dòng — GRID, LENGTH với Follow tempo, ÷2 và ×2, PLAYBACK với Reverse và Play once, TRANSPOSE, FADE, OVERDUB DECAY, MULTIPLY — rồi INPUT, OUTPUT và ASSIGN RIG PRESET, và ở dưới cùng là núm Level và Pan cùng các phím thư viện, sampler, Mute, Undo và Clear.">
+        <figcaption>Trình chỉnh loop: dạng sóng và thước của nó, mỗi thiết lập một dòng, các phím ở dưới cùng</figcaption>
       </figure>
       <p>Nhãn hiện đại loại <b class="ui">8.00 giây · 4.0 ô nhịp</b>. Kéo tay cầm end sẽ thêm vào
-        tempo mà độ dài đó tạo ra; kéo tay cầm start sẽ đổi nó thành <b class="ui">start +0.50
-        beats</b>.</p>
-      <p>Dạng sóng có một <b>lớp lưới phủ</b> ô nhịp và phách — các vạch phách và vạch ô nhịp
-        đánh số, neo tại điểm bắt đầu loop. Âm thanh sau điểm kết thúc loop được vẽ mờ đi: vẫn
-        giữ lại nhưng im lặng, đó là điều cho phép bạn kéo tay cầm end ra xa hơn sau này.</p>
-
-      <h3>Hai tay cầm</h3>
+        tempo mà độ dài đó tạo ra; kéo điểm bắt đầu sẽ đổi nó thành
+        <b class="ui">start +0.50 phách</b>.</p>
+      <h3>Dạng sóng và thước</h3>
+      <p>Dạng sóng có một <b>lưới ô nhịp và phách</b> — các vạch phách và vạch ô nhịp đánh số, neo
+        tại điểm bắt đầu loop, và một vạch ở mỗi bước lưới của ô khi lưới bật. Âm thanh sau điểm kết
+        thúc loop được vẽ mờ đi: vẫn giữ lại nhưng im lặng, đó là điều cho phép bạn kéo độ dài ra
+        xa hơn sau này.</p>
       <ul style="--nc:var(--eq)">
-        <li><b>Start</b> (<b class="ui">Tay kéo đầu loop</b>) xoay pha: loop bắt đầu muộn hơn
-          và phần bị bỏ qua vòng ra cuối. Độ dài và tempo không đổi. Đây là cách sửa cho một
-          loop bắt đầu sớm nửa phách.</li>
-        <li><b>End</b> (<b class="ui">Tay kéo cuối loop</b>) đổi kích thước loop, và chỉ hoạt
-          động <b>trên ô định ra chu kỳ</b>. Số ô nhịp được giữ nguyên và tempo đang đặt sẽ
-          thay đổi theo, nên kéo dài loop sẽ làm chậm cả set lại. Sheet cũng nói rõ điều này:
-          <b class="ui">Kéo hai mép để dời điểm bắt đầu và đổi độ dài loop — đổi độ dài sẽ chỉnh lại tempo của set.</b></li>
+        <li><b>Kéo dạng sóng</b> để dời điểm bắt đầu theo từng phách tròn (theo bước lưới khi lưới
+          bật); <b>tay cầm start</b> dời nó tự do. Loop bắt đầu muộn hơn và phần bị bỏ qua vòng ra
+          cuối; độ dài và tempo không đổi. Đây là cách sửa cho một loop bắt đầu sớm nửa
+          phách.</li>
+        <li><b>Thước</b> bên dưới dạng sóng giữ độ dài của loop như một tay cầm: kéo nó và loop dài
+          ra hoặc ngắn lại theo phách <b>mà vẫn giữ tempo</b>. Phần độ dài vượt quá bản ghi là
+          khoảng lặng.</li>
+        <li><b>Tay cầm end</b> đổi kích thước loop và <b>chỉnh lại tempo của set</b>, giữ nguyên
+          số ô nhịp — kéo dài loop và cả set chậm lại. Nó có trên loop đầu tiên, hoặc loop duy
+          nhất.</li>
       </ul>
-      <p>Một ô trống không hiện âm thanh và không có gì để kéo.</p>
-
-      <h3>Ghi qua preset</h3>
-      <p>Hàng <b class="ui">GHI QUA</b> ghi tên preset mà ô ghi qua — rig trực tiếp trừ khi
-        bạn chọn một cái. Chạm vào để chọn một preset; dấu <b>×</b> của nó đưa ô trở lại
-        <b class="ui">Rig đang dùng</b>. Xem <a href="#preset">preset của loop</a>.</p>
-
-      <h3>Các hàng nút</h3>
-      <p>Bên dưới dạng sóng, <b class="ui">BẮT ĐẦU</b> cho bốn nút chỉnh pha —
-        <b class="ui">-Ô NHỊP</b>, <b class="ui">-PHÁCH</b>, <b class="ui">+PHÁCH</b>,
-        <b class="ui">+Ô NHỊP</b> — dùng khi ngón tay của bạn không chính xác bằng lưới. Chúng chỉ
-        dịch chuyển start.</p>
-      <p><b class="ui">ĐỘ DÀI · GIỮ TEMPO</b> cho sáu nút: bốn nút như trên cộng thêm
-        <b class="ui">÷2</b> và <b class="ui">×2</b>. Chia đôi biến một bản ghi tám ô nhịp lỡ
-        tay thành loop bốn ô nhịp bạn thực sự muốn chơi; nhân đôi tạo chỗ để overdub một câu
-        nhạc trải dài gấp đôi chu kỳ.</p>
-      <div class="note">
-        <div class="t">Vì sao các nút length bị mờ đi</div>
-        <p>Cả sáu nút <b class="ui">ĐỘ DÀI · GIỮ TEMPO</b> đều bị vô hiệu hoá trừ khi ô bạn đang
-          chỉnh là ô định ra chu kỳ, và sheet giải thích lý do:
-          <b class="ui">Chỉ track định ra chu kỳ mới đổi được độ dài.</b> Nếu
-          độ dài sai trên một ô theo sau, loop cần chỉnh chính là loop master.</p>
+      <p>Độ dài của mọi ô khác đi theo <b>các bước của loop đầu tiên</b> — ¼, ½, ×2, ×4, ×8 — để nó
+        luôn cùng pha: thước dừng ở những bước đó, và sheet cũng nói rõ như vậy.</p>
+      <h3>Mỗi thiết lập một dòng</h3>
+      <p>Bên dưới dạng sóng, mỗi thiết lập là một dòng: tên của nó, giá trị trên một chip, các lựa
+        chọn sau một cú chạm.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Dòng</th><th>Nó đặt gì</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">LƯỚI</b></td><td>Tắt, 1 ô nhịp, 1/2 … 1/16: điểm bắt đầu và khép
+              lại chạm bằng tay được làm tròn về đâu, và các mép cùng thước bắt dính vào đâu.</td></tr>
+            <tr><td><b class="ui">ĐỘ DÀI</b></td><td>Độ dài, chọn thẳng — tới 64 ô nhịp theo tempo
+              đang đặt trên loop đầu tiên, các bước của loop đầu tiên trên mọi ô khác — và ba chip:
+              <b class="ui">Theo tempo</b> (loop phát ở tempo đang đặt, giữ nguyên cao độ),
+              <b>÷2</b> và <b>×2</b>.</td></tr>
+            <tr><td><b class="ui">PHÁT</b></td><td>Tốc độ, ×½ tới ×8, và hai chip:
+              <b class="ui">Đảo ngược</b> và <b class="ui">Phát một lần</b>.</td></tr>
+            <tr><td><b class="ui">DỊCH GIỌNG</b></td><td>Một phím bạn nhấn giữ và kéo, giống như mức:
+              một thang từ −12 tới +12 nửa cung hiện ra dưới ngón tay và loop dịch từng nửa cung
+              một, nghe được ngay; chạm nhanh hai lần đưa nó về 0. Nó được dựng từ bản ghi gốc, nên
+              luôn quay về chính xác.</td></tr>
+            <tr><td><b class="ui">FADE</b></td><td>Độ dài fade riêng của ô, và một chip:
+              <b class="ui">Giảm dần</b> khi ô đang kêu (nó dừng, đúng nhịp), nếu không thì
+              <b class="ui">Tăng dần</b>.</td></tr>
+            <tr><td><b class="ui">SUY GIẢM OVERDUB</b></td><td>100, 90, 75, 50 hoặc 25 %: một lần
+              overdub giữ lại bao nhiêu phần của các lớp bên dưới.</td></tr>
+            <tr><td><b class="ui">NHÂN</b></td><td><b class="ui">Tắt</b>, ×2, ×4 hoặc ×8 —
+              bản ghi được lặp lại thành một loop dài hơn, <b>mà không phá hủy nó</b>. Khi chưa có
+              gì được chơi đè lên các lần lặp, chúng được vẽ mờ, và giảm hệ số hoặc tắt nó sẽ trả
+              lại đúng bản ghi. Sau một lần overdub, ứng dụng hỏi trước
+              (<b class="ui">Giảm</b>): phần đã dub sau lần lặp đầu tiên sẽ mất.</td></tr>
+            <tr><td><b class="ui">ĐẦU VÀO</b>, <b class="ui">ĐẦU RA</b></td><td>Như các
+              <a href="#routing">ô IN và OUT</a>.</td></tr>
+            <tr><td><b class="ui">GÁN PRESET RIG</b></td><td>Preset mà ô ghi qua
+              — xem <a href="#preset">preset của loop</a>.</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p>Hàng dưới cùng có một núm <b class="ui">Mức</b> (0 đến 1.5), một núm
-        <b class="ui">Pan</b> hiện <b class="ui">C</b>, <b class="ui">L50</b> hoặc
-        <b class="ui">R50</b>, và các nút <b class="ui">Tắt tiếng</b>, <b class="ui">Hoàn tác</b>
-        (lần overdub cuối) và <b class="ui">Xoá</b>, nút này xoá ô và đóng sheet.</p>
-      <p>Không có chế độ tua ngược. Loop chỉ phát xuôi.</p>
+      <p>Nhấn giữ một dòng sẽ học thứ mà nó chuyển qua (<b>Next grid</b>, <b>Next speed</b>…); một
+        chip trên dòng học hành động riêng của chip đó. Dòng transpose học trên tên của nó, vì cú
+        nhấn của phím là dành cho phím.</p>
+      <h3>Phần dưới cùng của sheet</h3>
+      <p>Núm <b class="ui">Mức</b> (tới +12 dB) và núm <b class="ui">Pan</b>
+        (<b class="ui">C</b>, <b class="ui">L50</b>, <b class="ui">R50</b>…), rồi đến các phím:</p>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Lưu vào thư viện</b> — riêng bản ghi của ô này vào
+          <a href="#saving">thư viện</a>; phím hiện dấu tích khi đã lưu vào.</li>
+        <li>Phím sampler — <b class="ui">Sang sampler</b> đặt bản ghi lên một pad bạn chọn;
+          <b class="ui">Từ sampler</b> đưa sample của một pad vào ô này.</li>
+        <li><b class="ui">Tắt tiếng</b>, <b class="ui">Hoàn tác</b> (kèm số bước còn lại) và
+          <b class="ui">Xoá</b>, nút này xoá ô và đóng sheet.</li>
+      </ul>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -370,16 +458,17 @@
         đánh qua <a href="/docs/vi/sampler.html">sampler</a>. Một phần trống ghi theo cách này gần
         như không tốn gì, vẫn chỉnh sửa được từng cú đánh, và đi theo bất kỳ kit nào đang được tải —
         đổi kit và cùng phần đó sẽ phát các âm thanh mới.</p>
+      <p>Nó cũng ghi <b>các thao tác điều khiển</b> cùng với cú đánh: một preset, một cảnh, một núm
+        hay morph, do pedal hoặc host tạo ra trong lúc ô đang ghi, và phát lại đúng như cũ. Thao tác
+        trên màn hình không được ghi, và riêng một thao tác không bao giờ khởi động một bản ghi.</p>
       <p>Một ô MIDI vẽ một vạch cho mỗi cú đánh trên vòng của nó thay vì sóng, và pad của nó loé
         sáng mỗi lần tia quét đi qua một cú đánh. Ô <b class="ui">RA</b> của nó trở thành
         <b class="ui">QNT</b> — các pad vốn đã đi tới bất cứ đâu sampler đi.</p>
-
       <h3>Quantize trong lúc ghi</h3>
       <p>Ô <b class="ui">QNT</b> xoay vòng <b class="ui">TẮT</b>, <b class="ui">1/4</b>,
         <b class="ui">1/8</b>, <b class="ui">1/16</b> và <b class="ui">1/32</b>. Nó dịch những gì
         được <em>ghi lại</em>, không bao giờ dịch những gì bạn nghe: cú đánh bạn chơi luôn kêu ngay
         lập tức, và thứ rơi vào lưới là bản sao đã ghi.</p>
-
       <h3>Trình chỉnh MIDI</h3>
       <p>Trình chỉnh của một ô MIDI có huy hiệu <b class="ui">MIDI</b> màu hồng và, thay cho dạng
         sóng, một <b>roll</b>: mỗi hàng là một pad mà kit đã tải, mỗi cột là một bước lưới, vạch
@@ -387,7 +476,7 @@
         roll; lưới mịn hơn chỉ vẽ thêm vạch.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
-             alt="Trình chỉnh của một ô loop MIDI: header LOOP 1 với huy hiệu MIDI màu hồng, núm Quantize, các chip GRID từ 1/4 tới 1/32 và số cú đánh, một roll với mỗi hàng cho một pad sampler và tám cú đánh trên hàng đầu tiên, và thước bên dưới với tay cầm END.">
+          alt="Trình chỉnh của một ô loop MIDI: header LOOP 1 với huy hiệu MIDI màu hồng, núm Quantize, các chip GRID từ 1/4 tới 1/32, số cú đánh và MAX VELOCITY, một roll với mỗi hàng cho một pad sampler và tám cú đánh trên hàng đầu tiên, thước với tay cầm END bên dưới, và các hàng START và LENGTH.">
         <figcaption>Trình chỉnh của ô MIDI: quantize, các chip lưới và roll</figcaption>
       </figure>
       <ul style="--nc:var(--pitch)">
@@ -403,21 +492,28 @@
         lên bản gốc đó, không bao giờ lên kết quả gần nhất: vặn núm xuống và các cú đánh đi dần về
         chỗ bạn đã chơi chúng; ở <b class="ui">TẮT</b> timing lại là của bạn. Thử 1/8 và 1/16 so
         với nhau bao nhiêu lần tuỳ thích. Một chỉnh sửa bằng tay trong roll trở thành bản ghi đã
-        chơi mới. Hàng này cũng đếm bản ghi — <b class="ui">8 cú gõ</b>.</p>
+        chơi mới. Hàng này cũng đếm bản ghi — <b class="ui">8 cú gõ</b> — và
+        <b class="ui">VELOCITY TỐI ĐA</b> phát mọi cú đánh ở velocity tối đa, bất kể nó được chơi mạnh
+        nhẹ thế nào.</p>
+      <p>Bên dưới roll, <b class="ui">BẮT ĐẦU</b> dời bản ghi theo <b class="ui">-Ô NHỊP</b>,
+        <b class="ui">-PHÁCH</b>, <b class="ui">+PHÁCH</b> và <b class="ui">+Ô NHỊP</b>, còn
+        <b class="ui">ĐỘ DÀI</b> hoạt động như trên một ô âm thanh.</p>
       <p>Khi chưa tải kit nào, roll ghi <b class="ui">Nạp một kit ở tab Sample để sửa bản thu này trên lưới.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="undo"><span class="n">04.8</span>Hoàn tác và xoá</h2>
-      <p>Góc <b class="ui">Hoàn tác</b> của mỗi ô làm điều hiển nhiên cho ô đó. Nếu ô đang giữ lần
-        overdub cuối, nó lấy lại lần overdub đó — và nhấn lần nữa sẽ đưa lớp overdub quay về, nên
-        nó kiêm luôn nút so sánh. Nếu không, nó <b>xoá bản ghi của ô</b>.</p>
-      <p>Hoàn tác overdub chỉ <b>sâu một phiên</b> và <b>dùng chung cho mọi ô</b>: một lần overdub
-        thứ hai, trên bất kỳ ô nào, sẽ thay thế thứ mà undo đang giữ. Overdub ô 2 và undo bạn đang
-        để dành cho ô 1 sẽ mất — khi đó góc của ô 1 sẽ xoá bản ghi thay vào đó.</p>
-      <p id="undo-transport">Phím hoàn tác trên thanh transport làm điều tương tự mà không cần chọn
-        ô: nó lấy lại lần overdub cuối nếu có, và nếu không thì xoá bản ghi khép lại gần nhất. Phím
-        thùng rác, <b class="ui">Xoá mọi loop</b>, làm trống looper.</p>
+      <p>Hoàn tác luôn thuộc về một ô. Góc <b class="ui">Hoàn tác</b> của mỗi ô — và phím
+        <b class="ui">Hoàn tác</b> trong trình chỉnh của nó — <b>lùi một lớp mỗi lần chạm</b>: trước hết
+        là lần overdub đang diễn ra, rồi lần lượt từng lớp chồng trên bản ghi gốc, cho tới chính bản
+        ghi gốc. Nó không bao giờ tiến lại và không bao giờ vượt qua bản ghi gốc: ở bản ghi gốc phím
+        bị mờ. Phím trong trình chỉnh hiện số bước còn lại, và tâm của ô hiện lớp hiện tại
+        (<b>L3</b>, <b>L2</b>…). Những cú chạm nhanh hơn màn hình cập nhật vẫn được tính từng cái.
+        Trên một ô MIDI, hoàn tác lấy lại lần overdub cuối của nó.</p>
+      <p id="undo-transport">Thanh transport không còn phím hoàn tác, và không có hành động MIDI nào
+        kiểu "hoàn tác thứ vừa làm": một pedal hoàn tác một ô cụ thể (<b>Loop 1 · Undo</b>…). Xoá là
+        việc riêng. <b class="ui">Xoá</b> trong trình chỉnh làm trống một ô; phím thùng rác,
+        <b class="ui">Xoá mọi loop</b>, làm trống looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
@@ -426,9 +522,7 @@
         nó. <b class="ui">VÀO</b> và <b class="ui">RA</b> quyết định âm thanh của loop đến từ đâu và
         đi đến đâu, <b class="ui">DÀI</b> và <b class="ui">DUB</b> quyết định dài bao lâu và bao
         nhiêu lượt; một ô <b class="ui">PRESET</b> xuất hiện khi ô có preset riêng; ô sửa mở
-        <a href="#editor">trình chỉnh loop</a>, và núm là mức của ô
-        (<b class="ui">Mức track loop N</b>, từ 0 đến 1.5).</p>
-
+        <a href="#editor">trình chỉnh loop</a>, và chiếc loa là mức của ô.</p>
       <h3>IN</h3>
       <p>Menu <b class="ui">VÀO</b> có <b class="ui">Sau FX (rig)</b> — tín hiệu guitar đã
         qua xử lý, thứ bạn thường muốn dùng nhất. Với nhiều rig, nó trở thành
@@ -442,29 +536,42 @@
         đang overdub, nó là <b>rig trực tiếp duy nhất được nghe</b> — các rig khác im lặng trong lúc
         ghi và trở lại sau đó. Dựng một rig chỉ cho một phần loop — một bass quãng tám, một âm pad —
         và nó không bao giờ lọt vào tiếng chơi của bạn. Ô hiện <b class="ui">Riêng · &lt;rig&gt;</b>.</p>
-
       <h3>OUT</h3>
-      <p>Menu <b class="ui">RA</b> có <b class="ui">Mix chính</b> (ô <b class="ui">CHÍNH</b>),
-        mỗi cặp output phần cứng thêm có một mục — <b class="ui">Out 3/4</b>,
-        <b class="ui">Out 5/6</b> và tương tự, cần bật <b class="ui">Dùng mọi ngõ ra của interface</b> trong Settings — và <b class="ui">Vào &lt;rig name&gt;</b>.</p>
+      <p>Menu <b class="ui">RA</b> có <b class="ui">Mix chính</b> (ô
+        <b class="ui">CHÍNH</b>), mỗi cặp output phần cứng thêm có một mục —
+        <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> và tương tự, cần bật
+        <b class="ui">Dùng mọi ngõ ra của interface</b> trong Settings — và
+        <b class="ui">Vào &lt;rig name&gt;</b>.</p>
       <p>Cái cuối cùng đó thú vị nhất: thay vì đi thẳng vào mix, loop phát <em>vào</em> rig đó,
         để hiệu ứng của rig xử lý nó trực tiếp. Loop một phần clean, gửi nó vào một rig có delay
         và filter, rồi quét filter trong lúc loop chạy. Một rig mà ô đang ghi từ đó thì
         không được đưa ra để chọn — vì đó sẽ là một đường hồi tiếp (feedback).</p>
-
       <h3>LEN và DUB</h3>
-      <p>Ô <b class="ui">DÀI</b> xoay vòng 0, 1, 2, 4 và 8 ô nhịp. Ở 0 nó hiện
-        <b class="ui">TỰ DO</b>; nếu không thì <b class="ui">N Ô NHỊP</b>, và bản ghi bị cố định
-        đúng bằng số ô nhịp đó. Khi chưa đặt tempo, menu ghi <b class="ui">Chưa có tempo — ghi loop đầu tiên khi bật AUTO</b>.</p>
+      <p>Một cú chạm vào ô <b class="ui">DÀI</b> chuyển qua <b class="ui">TỰ DO</b>, rồi 1, 2, 4, 8,
+        16, 32 và 64 ô nhịp (<b class="ui">4 Ô NHỊP</b>…), và bản ghi bị cố định đúng bằng số ô nhịp
+        đó theo tempo đang đặt. <b>Nhấn giữ</b> sẽ liệt kê mọi lựa chọn: <b class="ui">TỰ DO</b>, mọi
+        số ô nhịp từ 1 tới 64 trong <b class="ui">Ô nhịp</b>, và <b class="ui">Theo vòng lặp đầu</b> —
+        ×¼, ×½, ×2, ×4, ×8 của loop đầu tiên, vốn không cần tempo nào cả. Một bản ghi FREE, khi đã
+        khép lại, cho thấy nó ra kết quả thế nào: <b>AUTO · 4</b>. Một độ dài không chia hết chu kỳ
+        sẽ được bắt về bước gần nhất của loop đầu tiên.</p>
       <p>Ô <b class="ui">DUB</b> xoay vòng 0, 1, 2 và 4 lượt overdub tự động — ô tự chuyển về
         playing sau đúng số vòng đó.</p>
-
+      <h3>Phím mức</h3>
+      <p>Chiếc loa là mức của ô: được tô từ trái sang tương ứng với độ to của mức, bị gạch chéo khi
+        im lặng. <b>Nhấn giữ nó</b> và fader của ô hiện ra với nắp fader ngay dưới ngón tay;
+        <b>kéo</b> lên hoặc xuống để đặt mức, nghe được ngay khi bạn kéo; <b>thả tay</b> thì fader
+        biến mất — một cú chạm để nó hiện thêm một lúc, đủ để đọc. <b>Chạm nhanh hai lần</b> đưa mức
+        về <b>0 dB</b>. Mức lên tới <b>+12 dB</b>, như mọi mức khác trong ứng dụng. Không có gì khác
+        mở ra khi bạn đang giữ nó; MIDI learn của mức nằm trên núm <b class="ui">Mức</b> của trình
+        chỉnh. Trên một CC, mức theo thang dB của các fader: CC 0 là im lặng, 0 dB nằm quanh CC 106,
+        đỉnh là +12 dB.</p>
       <h3 id="preset">Preset của loop</h3>
-      <p>Một ô có thể ghi qua một âm thanh của riêng nó, tách khỏi input. Nhấn giữ ô →
-        <b class="ui">Preset của loop · …</b> có <b class="ui">Rig đang dùng</b> (mặc định: chơi bất cứ
-        thứ gì đang bật), <b class="ui">Cảnh A của rig hiện tại</b> tới D, và
+      <p>Một ô có thể ghi qua một âm thanh của riêng nó, tách khỏi input. Dòng
+        <b class="ui">GÁN PRESET RIG</b> của trình chỉnh có <b class="ui">Rig đang dùng</b> (mặc
+        định: chơi bất cứ thứ gì đang bật), <b class="ui">Cảnh A của rig hiện tại</b> tới D, và
         <b class="ui">Chọn preset…</b> — các preset của chính bài đang lên sân khấu trước, rồi
-        tới mọi bank, có danh mục và tìm kiếm.</p>
+        tới mọi bank, có danh mục và tìm kiếm. Khi ô đã có preset, ô <b class="ui">PRESET</b> của nó
+        mở cùng bộ chọn đó.</p>
       <p>Preset được bật khi ô bắt đầu ghi, bắt đầu một lần overdub hoặc được arm, và khi bản ghi
         xong thì rig bạn đang có quay trở lại — trừ khi trong lúc đó bạn đã chọn một preset khác,
         khi ấy preset đó được giữ. Ghi một phần đệm trên một preset clean và solo đè lên nó bằng
@@ -472,29 +579,71 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.10</span>Những gì được lưu lại</h2>
-      <p>Phím preset mở <b class="ui">Preset looper</b>, và chúng giữ <b>phần thiết lập</b>: IN,
-        OUT, LEN, DUB, pan, preset của loop và quantize của từng ô, cộng với cờ AUTO — và các bản
-        ghi của ô MIDI, vốn nhỏ. Một mẫu bạn gọi lại vào đầu bài hát; bản ghi âm thanh không nằm
-        trong đó.</p>
+      <h2 id="saving"><span class="n">04.10</span>Thư viện và những gì được lưu lại</h2>
+      <p>Có hai nơi giữ loop, và chúng giữ những thứ khác nhau.</p>
+      <p>Phím preset mở <b class="ui">Preset looper</b>, và chúng giữ <b>phần thiết lập</b>: thiết
+        lập của từng ô — IN, OUT, LEN, DUB, pan, preset của nó, quantize, tốc độ, phát ngược, fade,
+        transpose và các thứ khác — cộng với cờ AUTO, và các bản ghi của ô MIDI, vốn nhỏ. Một mẫu
+        bạn gọi lại vào đầu bài hát; bản ghi âm thanh không nằm trong đó.</p>
+      <h3>Thư viện</h3>
+      <p>Phím thư viện (hình chồng sách) mở <b class="ui">LOOP</b>, nơi giữ loop <b>kèm theo âm
+        thanh</b>. <b class="ui">Lưu loop</b> lưu looper đúng như hiện trạng — mọi bản ghi,
+        thiết lập của các ô, các mức và tempo — dưới tên bạn gõ (hoặc
+        <b>Loop 1</b>, <b>Loop 2</b>…); <b class="ui">Lưu vào thư viện</b> trong trình chỉnh lưu
+        bản ghi của một ô. Mỗi loop đã lưu hiện ngày, độ dài, tempo và số ô mà nó chứa.</p>
+      <p>Chạm vào một loop đã lưu để mở menu của nó:</p>
+      <ul style="--nc:var(--power)">
+        <li><b class="ui">Tải vào</b> <b>Loop 1</b>…<b>Loop 4</b> — các bản ghi của nó, trộn
+          đúng như đã nghe, vào ô bạn chọn; các ô khác giữ nguyên.</li>
+        <li><b class="ui">Mọi loop, như đã lưu</b> — thay thế những gì looper đang chứa (hỏi trước
+          nếu looper đang chứa bất cứ thứ gì): thiết lập, tempo, mức và bản ghi.</li>
+        <li><b class="ui">Đổi tên</b>, <b class="ui">Chia sẻ…</b>, <b class="ui">Xuất dạng WAV…</b>
+          và <b class="ui">Xoá</b>.</li>
+      </ul>
       <h3>Loop dưới dạng file</h3>
-      <p>Menu nhấn giữ của một ô xuất loop của nó — <b class="ui">Xuất loop thành WAV…</b> — thành
-        một file WAV stereo 32-bit float ở sample rate của phiên, và <b class="ui">Xuất tất cả loop…</b>
-        xuất mọi loop cùng lúc. Mỗi file bắt đầu ở phách mạnh đầu chu kỳ, nên các file khớp nhau
-        khi bạn thả chúng cùng lúc vào một DAW.</p>
-      <p><b class="ui">Tải loop từ tệp…</b> đưa bất kỳ file âm thanh nào vào ô, và nó phát
-        ngay. Vào một looper trống, file chính là loop y nguyên như nó vốn có, không khớp biên ô
-        nhịp, và nó mang theo tempo của mình: đọc từ một cái tên như <em>Loop 2 - 96.5 BPM</em> — tên
-        mà một file export mang — hoặc tính ra từ độ dài của nó. Một ô MIDI không có âm thanh, nên
-        nó không có cả hai tuỳ chọn này.</p>
+      <p>Hai phím ở cuối thư viện tác động lên chính thư viện.
+        <b>Nhập</b> (<b class="ui">Nhập vào thư viện</b>) nhận loop NAMper và file âm thanh;
+        mỗi file vào thành một loop đã lưu, để tải vào một ô từ danh sách. Một file âm thanh mang
+        theo tempo của nó khi tên file có ghi — <em>Loop 2 - 96.5 BPM</em>, tên mà một file export
+        mang. <b>Xuất</b> (<b class="ui">Xuất thư viện</b>) gửi các loop đang hiện — tất cả,
+        hoặc những gì tìm kiếm tìm được — <b class="ui">Dạng loop NAMper</b> hoặc
+        <b class="ui">Dạng tệp WAV</b>: mỗi bản ghi một file riêng, đặt tên theo loop, ô và tempo
+        của nó, sẵn sàng thả vào một DAW.</p>
+      <p>Cài đặt → <b class="ui">Sân khấu</b> → <b class="ui">LOOPER</b> cho biết có bao nhiêu loop
+        đã lưu và chúng chiếm bao nhiêu dung lượng.</p>
       <div class="note">
-        <div class="t">Preset mang thiết lập, file mang âm thanh</div>
-        <p>Một preset looper không bao giờ chứa âm thanh đã ghi — nó quá lớn; chỉ một bản ghi MIDI
-          của các pad đi kèm bên trong. Để giữ một loop, hãy export
-          nó; để giữ cả một buổi diễn, hãy dùng recorder trên tab
-          <a href="/docs/vi/mix.html#recorder">Mix</a>, cái ghi lại mix output cộng thêm một stem
-          input dry riêng.</p>
+        <div class="t">Preset mang thiết lập, thư viện mang âm thanh</div>
+        <p>Một preset looper không bao giờ chứa âm thanh đã ghi — chỉ một bản ghi MIDI của các pad
+          đi kèm bên trong. Để giữ một loop, hãy lưu nó vào thư viện; để giữ cả một buổi diễn, hãy
+          dùng recorder trên tab <a href="/docs/vi/mix.html#recorder">Mix</a>, cái ghi lại mix
+          output cộng thêm một stem input dry riêng.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="live"><span class="n">04.11</span>Bài hát, căn phòng và đồng hồ</h2>
+      <h3>Các đoạn của bài hát</h3>
+      <p>Looper không có chế độ bài hát: phần phối của một bài nằm trong automation của nó trên tab
+        <a href="/docs/vi/perform.html">Biểu diễn</a>, nơi có một làn cho looper — ghi, arm, tắt
+        tiếng, solo, phát và dừng một ô, hoàn tác, fade và hoán đổi. Một ô <b>do automation của bài
+        khởi động</b> sẽ vào <b>từ đầu loop ở vạch ô nhịp tiếp theo</b>: một đoạn nhạc. Một ô bạn
+        khởi động bằng tay sẽ vào giữa chu kỳ, đúng nhịp, như mọi khi. Giữ một ô phát liên tục bên
+        dưới các đoạn và nó thành phần nền của một bản phối cho cả ban nhạc.</p>
+      <h3>Khử tiếng vọng</h3>
+      <p>Micro của điện thoại trong phòng nghe thấy những gì ứng dụng phát ra — các loop, các pad,
+        nhạc nền và click — và một lớp mới sẽ ghi lại chúng lần nữa: tốt nhất là đục ngầu, tệ nhất
+        là một loop tự chồng lên chính nó. <b class="ui">Khử tiếng vọng</b>, bật theo mặc định, loại
+        tiếng vọng đó khỏi những gì một ô đang ghi, đang overdub hoặc đã arm ghi vào, và không ở đâu
+        khác: những gì bạn nghe trực tiếp không bao giờ bị động tới và không thêm độ trễ. Nó học căn
+        phòng từ các loop tự phát trong chốc lát; khi không có tiếng vọng ở micro, bản ghi đúng bằng
+        input. Công tắc nằm trong Cài đặt → <b class="ui">Âm thanh</b> và trong bánh răng của thanh
+        transport.</p>
+      <h3>MIDI clock</h3>
+      <p>Cài đặt → <b class="ui">Điều khiển</b> → <b class="ui">MIDI clock</b> đặt clock theo cả hai
+        chiều. <b class="ui">Theo MIDI clock</b> biến tempo của clock thành tempo của set — trên
+        cả bài hát, loop hay tempo bạn đặt tay — và một ô đã arm bắt đầu ghi ở phách mạnh tiếp theo
+        của nó; chọn nguồn và một độ lệch cho thiết bị gửi chạy sớm hay muộn. <b class="ui">Gửi MIDI clock</b> gửi 24 tick mỗi phách tới đích bạn chọn, theo đồng hồ âm thanh mà click chạy trên
+        đó: start được gửi ở đầu loop, stop khi nó dừng.</p>
     </section>
 
     <nav class="pager">

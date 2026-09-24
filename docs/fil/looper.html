@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — Dokumentasyon ng NAMper</title>
-<meta name="description" content="Ang four-cell na sync looper: ang mga loop cell at ang mga corner key nila, ang transport, AUTO arming at boundary snapping, tempo at ang click, ang loop editor, mga MIDI cell na may non-destructive na quantize, undo, ang input, output at preset ng bawat cell, mga loop bilang WAV file at kung ano ang nase-save.">
+<meta name="description" content="Ang four-cell na sync looper: ang mga loop cell at ang mga corner key nila, ang transport at ang mga key nito, AUTO arming at boundary snapping, tempo, ang click at MIDI clock, ang loop editor, mga MIDI cell na may non-destructive na quantize, undo kada cell, ang input, output, haba, level at preset ng bawat cell, ang loop library, mga seksyon ng kanta at echo cancelling.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Looper — Dokumentasyon ng NAMper">
-<meta property="og:description" content="Apat na naka-sync na track, AUTO arming, boundary snapping at ang loop editor.">
+<meta property="og:description" content="Apat na naka-sync na track, AUTO arming, boundary snapping, ang loop editor at ang loop library.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/fil/looper.html">
 <meta property="og:type" content="article">
@@ -82,18 +82,19 @@
         <li><a href="#midi">Mga MIDI cell</a></li>
         <li><a href="#undo">Undo at clear</a></li>
         <li><a href="#routing">Mga setting ng cell</a></li>
-        <li><a href="#saving">Ano ang nase-save</a></li>
+        <li><a href="#saving">Ang library at ano ang nase-save</a></li>
+        <li><a href="#live">Mga kanta, ang kuwarto at ang clock</a></li>
       </ul>
     </nav>
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="basics"><span class="n">04.1</span>Paano nag-iisip ang looper</h2>
       <p>May isang patakarang nakaupo sa ilalim ng lahat: <b>ang unang loop ang nagtatakda ng cycle, at sumasabay dito ang bawat ibang loop.</b></p>
-      <p>Ang cell na unang na-record mo ang nagtatakda ng cycle. Iniaayon dito ang bawat ibang cell sa halip na kusang mawala sa timing, at wala nang naglilipat ng cycle na iyon pagkatapos maliban sa pag-edit ng cell na nagtakda nito, o pag-clear ng lahat at pagsisimula ulit.</p>
+      <p>Ang cell na unang na-record mo ang nagtatakda ng cycle. Iniaayon dito ang bawat ibang cell: gumagalaw ang haba nito sa mga hakbang ng unang loop — isang-kapat, kalahati, doble, apat o walong ulit ang haba — kaya hindi ito kailanman naliligaw sa phase. Walang mode na kailangang piliin. Wala nang naglilipat ng cycle pagkatapos maliban sa pag-edit ng cell na nagtakda nito, o pag-clear ng lahat at pagsisimula ulit.</p>
       <p>May apat na cell, at kasinghaba ng pagtugtog mo ang isang loop: lampas sa unang minuto, patuloy na humahaba ang cell hangga't may memory pa ang device para dito. Kapag nakatayo ang screen, nasa itaas ang transport at pinupuno ng apat na cell ang pahina nang dalawa-dalawa; kapag nakahiga, nagiging column sa kaliwa ang transport at nakatayo ang mga setting ng bawat cell sa tabi ng pad nito. Sinusunod din ng iPad ang parehong patakaran ayon sa hugis ng pahina, hindi ayon sa device.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="Ang Loop tab: ang transport card sa itaas na may tempo, AUTO at CLICK; sa ilalim nito, apat na loop cell, bawat isa'y bilog na pad sa loob ng parisukat na may apat na corner key at mga settings tile sa ilalim; tumutugtog ang cell 1 na may berdeng singsing ng wave, nagre-record ang cell 2, naka-mute ang cell 3, walang laman ang cell 4.">
+          alt="Ang Loop tab: ang transport sa itaas, isang hanay ng mga icon key sa ibabaw ng tempo, AUTO at CLICK; sa ilalim nito, apat na loop cell, bawat isa'y bilog na pad sa loob ng parisukat na may apat na corner key at mga settings tile at isang level key na hugis speaker sa ilalim; tumutugtog ang cell 1 na may berdeng singsing ng wave, nagre-record ang cell 2, naka-mute ang cell 3, walang laman ang cell 4.">
         <figcaption>Ang transport sa itaas, apat na cell sa ibaba: isang pad, apat na corner key, ang mga settings tile</figcaption>
       </figure>
       <p>Pare-pareho ang pagkakabuo ng bawat cell: ang bilog na <b>pad</b> sa gitna ng isang parisukat, isang <b>corner key</b> sa bawat isa sa apat na sulok ng parisukat, at isang hanay ng <b>settings tile</b> — sa ilalim ng pad, o sa tabi nito kapag mas malapad ang cell kaysa sa taas nito. Walang card at walang header: iginuguhit ang numero ng cell nang napakalaki at malabo sa ibabaw ng sarili nitong bilog.</p>
@@ -101,9 +102,9 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="pads"><span class="n">04.2</span>Ang mga loop cell</h2>
-      <p>Iginuguhit ng pad ang waveform ng loop <em>bilang singsing</em> — isang ikot ng bilog ay isang ikot ng cycle — na may sinag na nagmamarka ng puwesto ng pagtugtog. Pinapakapal ng malalakas na bahagi ang singsing, kaya nababasa mo kung nasaan ka sa loop kahit mula sa kabilang dulo ng kuwarto. Ang pad ay <b>nagliliwanag din mula sa gilid papaloob</b> habang tumutunog ang loop, mas malalim kapag mas malakas.</p>
+      <p>Iginuguhit ng pad ang waveform ng loop <em>bilang singsing</em> — isang ikot ng bilog ay isang ikot ng sariling loop ng cell — na may sinag na nagmamarka ng puwesto ng pagtugtog. Pinapakapal ng malalakas na bahagi ang singsing, kaya nababasa mo kung nasaan ka sa loop kahit mula sa kabilang dulo ng kuwarto. Ang pad ay <b>nagliliwanag din mula sa gilid papaloob</b> habang tumutunog ang loop, mas malalim kapag mas malakas.</p>
       <p>Habang nire-record ang kauna-unahang loop ay wala pang cycle, kaya iba ang kilos ng singsing: ang buong bilog ay kumakatawan sa lahat ng na-record <em>hanggang ngayon</em>, nananatiling nakatigil ang sinag sa alas-dose — iyon ang write head — at binibilang ng gitna ang lumipas na mga segundo. Kapag nagsara na ang loop, tumatakbo ang sinag sa cycle. Ang cell na nagre-record papasok sa tumatakbong cycle ay gumuguhit ng wave nito bilang lumalaking arko.</p>
-
+      <p>Sinasabi rin ng gitna kung paano tumutugtog ang loop kapag hindi ito halata: <b class="ui">REV</b> para sa baligtad na loop, ang bilis nito (<b>×½</b>, <b>×2</b>…), <b>1×</b> para sa loop na minsan lang tumutugtog, at <b>L2</b>, <b>L3</b>… para sa mga layer sa ibabaw ng take. Ipinapakita ng tumatakbong fade ang direksyon nito at kung gaano na ito kalayo.</p>
       <h3>Pag-tap sa pad</h3>
       <p>Ang bilog lang ang tumatanggap ng tap. Isang tap ang naglilipat sa cell ng isang baitang pataas sa hagdan:</p>
       <ul style="--nc:var(--eq)">
@@ -114,27 +115,25 @@
         <li>naka-mute → tumutugtog</li>
       </ul>
       <p>Kapag naka-on ang <b class="ui">AUTO</b>, ang pag-tap sa walang lamang pad ay <b>naghahanda</b> dito sa halip na agad na mag-record — may putol-putol na pulang singsing na umiikot sa cell — at kinakansela ng pag-tap sa nakahandang pad ang paghahanda. Iyon lang ang binabago ng AUTO sa hagdan.</p>
-
       <h3>Ang mga corner key</h3>
       <div class="tw">
         <table>
           <thead><tr><th>Sulok</th><th>Key</th><th>Ano ang ginagawa nito</th></tr></thead>
           <tbody>
             <tr><td>Kaliwa sa itaas</td><td><b class="ui">I-mute</b></td>
-                <td>Pinapatahimik ang loop habang patuloy itong tumatakbo; dilaw ang ilaw habang naka-on.</td></tr>
+              <td>Pinapatahimik ang loop habang patuloy itong tumatakbo; dilaw ang ilaw habang naka-on.</td></tr>
             <tr><td>Kanan sa itaas</td><td><b class="ui">Solo</b></td>
-                <td>Mina-mute ang ibang tumutugtog na cell; pindutin ulit para ibalik sila. Kapag nag-solo ka ng ibang cell, doon lilipat ang solo.</td></tr>
+              <td>Mina-mute ang ibang tumutugtog na cell; pindutin ulit para ibalik sila. Kapag nag-solo ka ng ibang cell, doon lilipat ang solo.</td></tr>
             <tr><td>Kaliwa sa ibaba</td><td><b class="ui">I-undo</b></td>
-                <td>Binabawi ang huling overdub ng cell na ito, o kaya'y kini-clear ang take nito — tingnan ang
-                  <a href="#undo">Undo at clear</a>.</td></tr>
+              <td>Ibinabalik ang cell na ito nang isang layer kada tap, hanggang sa take — tingnan ang
+                <a href="#undo">Undo at clear</a>.</td></tr>
             <tr><td>Kanan sa ibaba</td><td><b class="ui">I-play</b> / <b class="ui">Ihinto</b></td>
-                <td>Hinihinto o sinisimulan ang loop na ito nang mag-isa.</td></tr>
+              <td>Hinihinto o sinisimulan ang loop na ito nang mag-isa.</td></tr>
           </tbody>
         </table>
       </div>
       <p>Malabong iginuguhit ang key na walang magagawa sa kasalukuyang estado ng cell. Nagliliwanag din ang mga sulok kasabay ng loop, medyo mas mababaw kaysa sa pad.</p>
       <p>Ang <b>paghinto sa isang cell</b> ay hindi humihinto sa oras: patuloy na tumatakbo nang tahimik ang loop kasabay ng cycle, at ang pagpindot sa <b class="ui">I-play</b> ay ibinabalik ito nang eksakto sa timing, hindi kailanman mula sa simula nito. Kapag nakahinto ang buong looper, sinisimulan ng <b class="ui">I-play</b> ng isang cell ang looper na iyon lang na cell; ibinabalik ng play ng transport ang bawat cell.</p>
-
       <h3>Mga estado</h3>
       <div class="tw">
         <table>
@@ -150,49 +149,64 @@
           </tbody>
         </table>
       </div>
-
-      <h3>Matagal na pagpindot</h3>
-      <p>Pindutin nang matagal ang pad — o kahit saan sa cell — para sa menu ng cell:
-        <b class="ui">Input · …</b>, <b class="ui">Output · …</b>, <b class="ui">Preset ng loop · …</b>,
-        <b class="ui">I-edit ang loop…</b>, <b class="ui">Haba · Free</b> o
-        <b class="ui">Length · N bars</b>, <b class="ui">Mga overdub · N</b>; ang loop bilang file —
-        <b class="ui">I-export ang loop bilang WAV…</b>, <b class="ui">I-export ang lahat ng loop…</b>,
-        <b class="ui">I-load ang loop mula sa file…</b> (tingnan <a href="#saving">sa ibaba</a>); at sa dulo,
-        <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — ganito naitatali ang footswitch sa isang cell.</p>
+      <h3>MIDI learn</h3>
+      <p>Natututo ang bawat bahagi ng cell sa sarili nitong matagal na pagpindot, at sarili lang nito ang natututunan: iniaalok ng pad ang <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — ganito naitatali ang footswitch sa isang cell — at iniaalok ng bawat corner key ang sarili nitong action, <b>Loop 1 · Mute</b>, <b>Loop 1 · Solo</b>, <b>Loop 1 · Undo</b>, <b>Loop 1 · Play / stop</b>. Ganoon din sa bawat row at chip sa <a href="#editor">loop editor</a>. Natututo ang level ng cell mula sa <b class="ui">Level</b> knob ng editor: ang sariling pindot ng level key ang gumagalaw sa level.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Ang transport</h2>
-      <p>Hawak ng transport card ang salitang <b class="ui">LOOPER</b> — pula habang may laman ang looper — at, kapag nakatayo, dalawang row:</p>
+      <p>Walang pamagat ang transport — pinapangalanan na ng tab ang pahina. Kapag nakatayo, dalawang row ito: isang hanay ng mga icon key, at sa ilalim nito ang tempo, <b class="ui">AUTO</b> at <b class="ui">CLICK</b>. Kapag nakahiga, nakatayo ang parehong mga piraso sa isang column: ang tempo na may speed key sa tabi nito, ang AUTO at CLICK, at ang mga key nang dalawa-dalawa sa ibaba. Nagliliwanag ang card habang nire-record ang unang loop.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Key</th><th>Ano ang ginagawa nito</th></tr></thead>
+          <tbody>
+            <tr><td>Presets</td><td><b class="ui">Mga Looper Preset</b> — ang setup ng mga cell; tingnan ang
+              <a href="#saving">kung ano ang nase-save</a>.</td></tr>
+            <tr><td>Library (ang mga libro)</td><td>Ang mga naka-save na loop, at mga loop papasok at palabas bilang file —
+              tingnan ang <a href="#saving">library</a>.</td></tr>
+            <tr><td>Bounce</td><td><b class="ui">PAGSAMAHIN ANG MGA LOOP</b>: nagiging iisa ang mga loop na pinili mo, naka-mix kung paano mo sila naririnig ngayon. <b class="ui">Hayaang tumunog ang tail lampas sa loop point</b>
+              at <b class="ui">Panatilihin ang mga pinagmulang loop</b> (na nangangailangan ng walang lamang cell na pagba-bounce-an). Malabo habang walang audio loop.</td></tr>
+            <tr><td>Settings (ang gear)</td><td>Ang umaapekto sa bawat loop nang sabay — nasa ibaba.</td></tr>
+            <tr><td>Speed</td><td>Ang bilis ng bawat audio loop — nasa ibaba.</td></tr>
+            <tr><td>Swap</td><td><b class="ui">Pagpalitin ang tumutugtog at nakahintong loop</b>: nagfe-fade out ang bawat tumutunog na cell habang nagfe-fade in ang bawat nakahinto, sa haba ng crossfade. Nakailaw lang habang may ilang cell na tumutugtog at ilang nakahinto.</td></tr>
+            <tr><td>Play / stop</td><td><b class="ui">I-play ang mga loop</b> /
+              <b class="ui">Ihinto ang mga loop</b>, hindi gumagana hangga't walang cycle.</td></tr>
+            <tr><td>Trash</td><td><b class="ui">I-clear lahat ng loop</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Walang undo sa transport: laging pinapangalanan ng undo ang cell nito. Ang matagal na pagpindot sa isang key ang MIDI learn nito — play para sa <b class="ui">MIDI Learn: looper run / stop</b>, ang trash para sa <b class="ui">MIDI Learn: i-clear lahat ng loop</b>, at iba pa.</p>
+      <h3>Ang gear</h3>
+      <p>Binubuksan ng gear ang menu ng mga umaapekto sa bawat loop:</p>
       <ul style="--nc:var(--gate)">
-        <li>Isang <b>presets</b> key — tingnan ang <a href="#saving">kung ano ang nase-save</a>.</li>
-        <li><b class="ui">I-play ang mga loop</b> / <b class="ui">Ihinto ang mga loop</b>, hindi gumagana hangga't walang cycle.</li>
-        <li>Isang <b>undo</b> key — tingnan ang <a href="#undo">Undo at clear</a>.</li>
-        <li>Isang trash key, <b class="ui">I-clear lahat ng loop</b>.</li>
-        <li>Sa ilalim nila, ang tempo, <b class="ui">AUTO</b> at <b class="ui">CLICK</b>.</li>
+        <li><b class="ui">Lahat ng loop ay sumusunod sa tempo</b> /
+          <b class="ui">Walang loop na sumusunod sa tempo</b> — ang loop na sumusunod ay tumutugtog sa nakatakdang tempo nang nananatili ang pitch nito.</li>
+        <li><b class="ui">I-reverse ang lahat ng loop</b> / <b class="ui">Lahat ng loop pasulong</b>.</li>
+        <li><b class="ui">Pag-alis ng echo</b> — ang parehong switch na nasa Settings → Audio; tingnan ang
+          <a href="#live">kuwarto</a>.</li>
+        <li><b class="ui">Haba ng crossfade</b> — kung gaano katagal nagfe-fade ang swap: 1 beat, 1 bar, 2 bar o 4 bar; 1 bar maliban kung babaguhin mo. Pinapanatili ng sariling fade ng cell ang sarili nitong haba.</li>
       </ul>
-      <p>Kapag nakahiga, nakatayo ang parehong mga key sa isang column: ang tempo, AUTO at CLICK sa itaas, ang play, undo at trash sa ibaba. Nagliliwanag ang card habang nire-record ang unang loop.</p>
-      <p>Pindutin nang matagal ang play para sa <b class="ui">MIDI Learn: looper run / stop</b>, o ang trash key para sa <b class="ui">MIDI Learn: i-clear lahat ng loop</b>.</p>
+      <p>Natututo ang mga item ng menu mula sa Settings → <b class="ui">Kontrol</b>, kung saan nasa grupong Looper ang mga action na <b>Every loop follows the tempo on/off</b>, <b>Every loop reversed on/off</b> at <b>Echo cancelling</b>.</p>
+      <h3>Ang speed key</h3>
+      <p>Hawak ng speedometer ang bilis ng bawat audio loop. <b>Pindutin ito nang matagal</b> at lalabas ang iskala mula <b>×½</b> hanggang <b>×8</b> na nasa ilalim ng daliri mo ang thumb nito; <b>hilahin</b> pataas o pababa at kukunin ng bawat loop ang bawat bilis habang dinadaanan ito ng thumb, naririnig habang gumagalaw ka; <b>bitawan</b> at mawawala ang iskala. Ibinabalik ng <b>dalawang mabilis na tap</b> ang bawat loop sa ×1. Habang wala sa ×1 ang mga loop, nakailaw ang key, na may bilis sa sulok nito. Sarili nito ang pindot nito, kaya wala itong MIDI learn; naka-map ang <b>Next speed</b> ng isang cell sa Settings → Control.</p>
       <div class="note">
         <div class="t">Kontrol sa footswitch</div>
-        <p>Saklaw ng built-in na MIDI map ang looper nang walang anumang setup: <b class="ui">CC 85–88</b> ang tumatapik sa mga cell 1 hanggang 4, <b class="ui">CC 89</b> ang nagpapatakbo at humihinto, <b class="ui">CC 90</b> ang naglilinis. Tunay na toggle ang CC 89 — tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>.</p>
+        <p>Saklaw ng built-in na MIDI map ang looper nang walang anumang setup: <b class="ui">CC 85–88</b> ang tumatapik sa mga cell 1 hanggang 4, <b class="ui">CC 89</b> ang nagpapatakbo at humihinto, <b class="ui">CC 90</b> ang naglilinis. Tunay na toggle ang CC 89 — tingnan ang <a href="/docs/fil/control.html">MIDI at control</a>. Para sa isang board ng mga switch, i-recall ang <b class="ui">Four-Switch Loop Deck</b> mula sa mga preset sa Control page (pinapalitan nito ang map): <b>CC 80–83</b> tap sa mga cell 1–4, <b>CC 84</b> run/stop, <b>CC 86</b> clear lahat, <b>CC 87</b> AUTO, <b>CC 88–91</b> play/stop ng mga cell 1–4, <b>CC 92–95</b> undo ng mga cell 1–4, <b>CC 96</b> ang click, <b>CC 97</b> ang swap at <b>CC 11</b> ang level ng cell 1.</p>
       </div>
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="auto"><span class="n">04.4</span>AUTO mode</h2>
       <p>Dalawa ang trabaho ng <b class="ui">AUTO</b> — ang wand chip, katabi ng <b class="ui">CLICK</b>: sinisimulan at hinihinto nito ang mga take para sa iyo, at kapag nagsara ang master loop, inaalam nito kung nasaan talaga ang mga bar line.</p>
-
       <h3>Paghahanda sa halip na pag-record</h3>
       <p>Kapag naka-on ang AUTO, inihahanda ng pag-tap sa walang lamang pad ang pad na iyon: may putol-putol na pulang singsing na umiikot sa cell. Ang susunod na mangyayari ay nakadepende kung may cycle na:</p>
       <ul style="--nc:var(--amp)">
-        <li><b>Wala pang cycle.</b> Nagsisimula ang recording <b>sa unang note mo</b> na lampas sa threshold ng paghahanda — Settings → <b class="ui">Entablado</b> → <b class="ui">LOOPER</b> → <b class="ui">Signal na nagsisimula ng auto-loop</b>, −40 dB maliban kung ililipat mo, at mas sensitibo kapag mas mababa. Nananatili sa ilalim nito ang bahagyang pagdampi sa mga kuwerdas o ang ingay ng kuwarto. Puwede mong damputin ang gitara, mag-ayos ng puwesto, at magsisimula ang take kapag tumugtog ka — hindi noong nag-tap ka.</li>
+        <li><b>Wala pang cycle.</b> Nagsisimula ang recording <b>sa unang note mo</b> na lampas sa threshold ng paghahanda — Settings → <b class="ui">Entablado</b> → <b class="ui">LOOPER</b> → <b class="ui">Signal na nagsisimula ng auto-loop</b>, −40 dB maliban kung ililipat mo, at mas sensitibo kapag mas mababa. Nananatili sa ilalim nito ang bahagyang pagdampi sa mga kuwerdas o ang ingay ng kuwarto. Puwede mong damputin ang gitara, mag-ayos ng puwesto, at magsisimula ang take kapag tumugtog ka — hindi noong nag-tap ka. Kapag may pumapasok na MIDI clock, nagsisimula ito sa susunod na downbeat ng clock.</li>
         <li><b>May tumatakbo nang cycle.</b> Nagsisimula ang recording sa <b>susunod na hangganan ng cycle</b>, kaya eksaktong nagsisimula sa bar ang take. May maikling palugit na nagpapatawad sa attack na bahagyang nahuli, kaya bilang pa rin ang pagtama sa downbeat nang kaunting huli sa sinag.</li>
       </ul>
       <p>Ang malayang nakahandang take — iyong na-record nang walang cycle — ay <b>kusa ring humihinto</b> kapag huminto ang parirala: kapag tumagal na ang katahimikan nang kasing-dami ng beat na itinakda sa <b class="ui">Katahimikang nagsasara ng auto-loop</b> (isa maliban kung babaguhin mo) at nalampasan nito ang mga pahinga sa sarili mong pagtugtog, nagsasara ang take sa dulo ng bar na narinig nito. Kapag walang tempong maririnig — isang drone, isang pad — dalawang segundo ng katahimikan ang magsasara nito. Hindi binibilang na katahimikan ang mga buntot ng reverb at ang mga puwang sa pagitan ng mga parirala, kaya hindi napuputol sa gitna ang isang kalat-kalat na riff.</p>
       <p>Kapag may loop nang tumutugtog mula sa combo amp papunta sa mic o mga pickup mo, inaalam ng nakahandang cell kung gaano karami sa loop na iyon ang bumabalik at hinihintay itong lumampas: kailangang malinaw na umangat ang note sa ibabaw nito, mga 9 dB, kaya tugtugin ito nang totoo at huwag lang dampian.</p>
       <p>Pagkatapos magsara ng bawat loop, ang AUTO ay <b>kusang naghahanda ng susunod na walang lamang cell</b>, kaya kaya mong buuin ang lahat ng apat na track nang hindi na muling hinahawakan ang screen.</p>
-
       <h3>Pag-snap sa hangganan</h3>
       <p>Kapag nagsara ang master loop, sinusuri ng NAMper ang malinis na input — ang signal bago ang mga effect mo — at naghahanap ng mga attack. Iniaayon nito ang isang bar grid sa mga ito, tapos:</p>
       <ol style="--nc:var(--amp)">
@@ -200,8 +214,8 @@
         <li><b>Iniikot ang loop</b> para magsimula ito sa unang beat. Ang ingay ng kuwerdas, ang paghinga at ang lagitik ng daliri na nangyari bago ang downbeat mo ay inililipat sa dulo ng loop, kung saan sila nabibilang sa musika.</li>
         <li><b>Ipinipilipit ang natukoy na tempo</b> papasok sa saklaw na 70–180 BPM, kaya hindi nababasang 240 BPM ang mabilis na strum at hindi nababasang 45 ang mabagal.</li>
       </ol>
-      <p>Sa screen, nangyayari ang lahat sa isang saglit: muling gumuguhit ang singsing, dumadapo ang haba sa malinis na bilang, at napupunan ang readout ng BPM na blangko hanggang ngayon. Mula roon, may grid nang mapagbabatayan ang click, ang mga LEN tile, ang quantize ng sampler at ang bar clock ng setlist.</p>
-      <p>Kapag naka-on ang <b class="ui">CLICK</b>, ang tempo ay <b>naka-lock</b> sa kahit anong tempo ang nakatakda at ang phase lang ang iniaayon. Iyon ang mode na gagamitin kapag tumutugtog ka kasabay ng click o ng backing track at hindi dapat gumalaw ang tempo.</p>
+      <p>Sa screen, nangyayari ang lahat sa isang saglit: muling gumuguhit ang singsing, dumadapo ang haba sa malinis na bilang, napupunan ang readout ng BPM na blangko hanggang ngayon, at ipinapakita ng <b class="ui">LEN</b> tile ng FREE na cell kung ano ang kinalabasan ng take, <b>AUTO · 4</b>. Mula roon, may grid nang mapagbabatayan ang click, ang mga LEN tile, ang quantize ng sampler at ang bar clock ng setlist.</p>
+      <p>Kapag naka-on ang <b class="ui">CLICK</b> — o may naka-cue na kanta, o may pumapasok na MIDI clock — ang tempo ay <b>naka-lock</b> sa kahit anong tempo ang nakatakda at ang phase lang ang iniaayon. Iyon ang mode na gagamitin kapag tumutugtog ka kasabay ng click o ng backing track at hindi dapat gumalaw ang tempo.</p>
       <div class="note tip">
         <div class="t">Mga drone at rubato</div>
         <p>Kung walang magamit na grid na mahahanap — isang hinatak na pad, isang malayang tinitimpla na intro, isang swell na binow — hindi ito pinipilit ng NAMper. Bumabalik ito sa pagputol sa huling attack at pagpili ng buong bilang ng bar. Makakakuha ka ng malinis na loop, hindi lang ng muling natukoy na tempo.</p>
@@ -215,11 +229,13 @@
     <section class="blk" style="--nc:var(--cloud)">
       <h2 id="tempo"><span class="n">04.5</span>Tempo at ang click</h2>
       <p>Nagpapakita ng malaking numero na may caption na <b class="ui">BPM</b> ang tempo block sa Loop tab. Kapag walang nakatakdang tempo, <b class="ui">ITAKDA ANG TEMPO</b> ang nakikita sa ibabaw ng <b class="ui">—</b>. I-tap ito para sa tempo sheet.</p>
-      <p>May numeric field ang sheet (placeholder na <b class="ui">120</b>, saklaw na <b>20 hanggang 300</b>) na may <b class="ui">BPM</b> sa tabi nito, isang malaking <b class="ui">TAP</b> button na nagbabasang <b class="ui">ulit…</b> pagkatapos ng unang tap mo, pati ang <b class="ui">I-clear (muling tutukuyin ng AUTO)</b> at <b class="ui">Tapos na</b>. I-clear ito kapag gusto mong ang AUTO na ang umalam ng tempo mula sa pagtugtog mo.</p>
+      <p>May numeric field ang sheet (placeholder na <b class="ui">120</b>, saklaw na <b>20 hanggang 300</b>) na may <b class="ui">BPM</b> sa tabi nito, isang malaking <b class="ui">TAP</b> button na nagbabasang <b class="ui">ulit…</b> pagkatapos ng unang tap mo, pati ang <b class="ui">I-clear (muling tutukuyin ng AUTO)</b> at <b class="ui">Tapos na</b>. I-clear ito kapag gusto mong ang AUTO na ang umalam ng tempo mula sa pagtugtog mo. Sinasabi rin ng sheet kung sino ang may hawak ng tempo: <b class="ui">mula sa clock</b>, <b class="ui">mula sa kanta</b>, <b class="ui">mula sa loop</b> o <b class="ui">manual na itinakda</b>.</p>
+      <p>Ganoon din ang pagkakasunod ng ranggo nila. Mas mataas ang pumapasok na MIDI clock kaysa sa naka-cue na kanta, mas mataas ang kanta kaysa sa loop na nagsara sa AUTO, at pinakamahina ang tempong tina-type mo: lagi itong tumatama, at binabawi ng susunod na kanta o AUTO loop ang tempo. Hindi kailanman binabago ng mas mahinang pinagmulan ang mas malakas — ang loop na na-record sa ilalim ng kanta ay sa tempo ng kanta na lang sina-snap.</p>
       <p>Naaabot din ang parehong sheet mula sa header ng <b class="ui a">Rig</b>: ino-on at ino-off ng metronome chip ang click sa isang <b>tap</b> at binubuksan ang <b class="ui">ITAKDA ANG TEMPO</b> sa
         <b>matagal na pagpindot</b>.</p>
       <p>Ino-on ng <b class="ui">CLICK</b> ang metronome. Ang pag-on nito nang walang nakatakdang tempo ay
         <b>sapilitang naglalagay ng 120 BPM</b> at muling sinisimulan ang bar, kaya hindi kailanman neutral na gawain ang pag-on ng click. Nasa Settings → <b class="ui">METRONOME</b> ang level ng click at ang output bus ng click, kung saan puwede itong magkaroon ng sariling output pair para sa in-ear monitoring.</p>
+      <p>Ganoon din binabasa ang clock ng unang take na may <b class="ui">LEN</b> na nakatakda sa bar. Kapag walang tumatakbong clock — naka-off ang click, walang kanta, walang MIDI clock — malaya mo itong tinutugtog at <b>itinatakda ng mga bar nito ang tempo</b> kapag nagsara ito. Sa isang clock, nagsasara ito pagkatapos ng ganoong dami ng bar at dumidiretso sa overdub, hanggang mag-tap ka.</p>
       <div class="note warn">
         <div class="t">Walang count-in</div>
         <p>Nagsisimula ang recording sa pag-tap ng record. Kung gusto mo ng isang bar ng click bago ka tumugtog, ihanda ang pad gamit ang AUTO at hayaang ang unang note mo ang magsimula ng take, o i-record ang unang loop kasabay ng cycle na tumatakbo na.</p>
@@ -228,50 +244,64 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>Ang loop editor</h2>
-      <p>Buksan ito gamit ang edit tile (<b class="ui">I-edit ang loop N</b>) sa mga setting ng isang cell, o pindutin nang matagal ang cell → <b class="ui">I-edit ang loop…</b>. Gumagana rin ang edit tile <b>sa walang laman o nakahandang cell</b>, kaya maitatakda bago ka tumugtog ang preset na dadaanan ng take sa pag-record — at, sa MIDI cell, ang grid nito. Ang pamagat ng sheet ay <b class="ui">LOOP N</b> na may live na label ng haba.</p>
+      <p>Buksan ito gamit ang edit tile (ang mga slider, <b class="ui">I-edit ang loop N</b>) sa mga setting ng isang cell. Gumagana rin ito <b>sa walang laman o nakahandang cell</b>, kaya maitatakda bago ka tumugtog ang grid, ang preset na dadaanan ng take sa pag-record at, sa MIDI cell, ang quantize. Ang pamagat ng sheet ay <b class="ui">LOOP N</b> na may live na label ng haba, at kasintaas ito ng laman nito.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="Ang loop editor sheet sa ibabaw ng looper: isang waveform na may grid ng bar at beat, mga nahihilang start at end handle, ang row na RECORD THROUGH, ang mga hanay ng button na START at LENGTH TEMPO KEPT, ang Level at Pan na knob, at ang mga button na Mute, Undo at Clear.">
-        <figcaption>Ang loop editor: grid, mga handle, mga nudge button at ang row sa ibaba</figcaption>
+          alt="Ang loop editor sheet sa ibabaw ng looper: isang waveform na may grid ng bar at beat at isang bar ruler sa ilalim nito, tapos isang linya kada setting — GRID, LENGTH na may Follow tempo, ÷2 at ×2, PLAYBACK na may Reverse at Play once, TRANSPOSE, FADE, OVERDUB DECAY, MULTIPLY — tapos INPUT, OUTPUT at ASSIGN RIG PRESET, at sa ibaba ang Level at Pan na knob at ang mga key ng library, sampler, Mute, Undo at Clear.">
+        <figcaption>Ang loop editor: ang waveform at ang ruler nito, isang linya kada setting, ang mga key sa ibaba</figcaption>
       </figure>
-      <p>Ganito ang nakikita sa label: <b class="ui">8.00 s · 4.0 bar</b>. Ang paghila sa end handle ay nagdaragdag ng tempo na malilikha ng habang iyon; ang paghila sa start handle ay nagbabago nito sa <b class="ui">start +0.50 beats</b>.</p>
-      <p>May patong na <b>grid ng bar at beat</b> ang waveform — mga tik ng beat at mga bar line na may numero, nakaangkla sa simula ng loop. Malabong iginuguhit ang audio na lampas sa dulo ng loop: itinatago pero tahimik, at iyon ang nagpapahintulot sa iyong itulak palabas muli ang end handle mamaya.</p>
-
-      <h3>Ang dalawang handle</h3>
+      <p>Ganito ang nakikita sa label: <b class="ui">8.00 s · 4.0 bar</b>. Ang paghila sa end handle ay nagdaragdag ng tempo na malilikha ng habang iyon; ang paghila sa simula ay nagbabago nito sa <b class="ui">start +0.50 beat</b>.</p>
+      <h3>Ang waveform at ang ruler</h3>
+      <p>May <b>grid ng bar at beat</b> ang waveform — mga tik ng beat at mga bar line na may numero, nakaangkla sa simula ng loop, at isang linya sa bawat hakbang ng grid ng cell kapag naka-on ito. Malabong iginuguhit ang audio na lampas sa dulo ng loop: itinatago pero tahimik, at iyon ang nagpapahintulot sa iyong itulak palabas muli ang haba mamaya.</p>
       <ul style="--nc:var(--eq)">
-        <li><b>Ang simula</b> (<b class="ui">Handle ng simula ng loop</b>) ay umiikot sa phase: mas huli nagsisimula ang loop at umiikot sa dulo ang nilaktawang piraso. Hindi nagbabago ang haba at ang tempo. Ito ang lunas sa loop na nagsisimula nang kalahating beat na maaga.</li>
-        <li><b>Ang dulo</b> (<b class="ui">Handle ng dulo ng loop</b>) ay nagbabago ng laki ng loop, at gumagana ito
-          <b>sa cell lang na nagtatakda ng cycle</b>. Napapanatili ang bilang ng bar at sumusunod ang nakatakdang tempo, kaya ang pag-unat sa loop ay nagpapabagal sa buong set. Ganito rin ang sabi ng sheet: <b class="ui">Hilahin ang mga gilid para igalaw ang simula at baguhin ang laki ng loop — inaayos din nito ang nakatakdang tempo.</b></li>
+        <li><b>Hilahin ang waveform</b> para ilipat ang simula nang buong beat (mga hakbang ng grid kapag naka-on ang grid); malayang inililipat ito ng <b>start handle</b>. Mas huli nagsisimula ang loop at umiikot sa dulo ang nilaktawang piraso; hindi nagbabago ang haba at ang tempo. Ito ang lunas sa loop na nagsisimula nang kalahating beat na maaga.</li>
+        <li>Hawak ng <b>ruler</b> sa ilalim ng waveform ang haba ng loop bilang isang handle: hilahin ito at hahaba o iikli ang loop nang kada beat <b>nang nananatili ang tempo</b>. Katahimikan ang habang lampas sa recording.</li>
+        <li>Binabago ng <b>end handle</b> ang laki ng loop at <b>inaayos ang nakatakdang tempo</b>, nang napapanatili ang bilang ng bar — iunat ang loop at babagal ang buong set. Nasa unang loop ito, o sa nag-iisang loop.</li>
       </ul>
-      <p>Walang audio at walang mahihila sa walang lamang cell.</p>
-
-      <h3>Record through</h3>
-      <p>Pinapangalanan ng row na <b class="ui">I-RECORD SA</b> ang preset na dinadaanan ng pag-record ng cell — ang live rig maliban kung pipili ka. I-tap ito para pumili ng preset; ibinabalik ng <b>×</b> nito ang cell sa <b class="ui">Ang live na rig</b>. Tingnan ang <a href="#preset">preset ng loop</a>.</p>
-
-      <h3>Ang mga hanay ng button</h3>
-      <p>Sa ilalim ng waveform, nagbibigay ang <b class="ui">SIMULA</b> ng apat na nudge sa phase — <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b>, <b class="ui">+BAR</b> — para sa mga pagkakataong mas hindi tumpak ang hinlalaki mo kaysa sa grid. Ang simula lang ang ginagalaw nila.</p>
-      <p>Anim ang ibinibigay ng <b class="ui">HABA · NANATILING TEMPO</b>: ang parehong apat pati ang <b class="ui">÷2</b> at <b class="ui">×2</b>. Ginagawa ng paghahati ang aksidenteng walong-bar na take na apat-na-bar na loop na sinadya mong tugtugin; nagbibigay ang pagdodoble ng puwang para mag-overdub ng pariralang doble ang haba sa cycle.</p>
-      <div class="note">
-        <div class="t">Bakit kulay-abo ang mga button ng haba</div>
-        <p>Hindi gumagana ang lahat ng anim na button ng <b class="ui">HABA · NANATILING TEMPO</b> maliban kung ang cell na ine-edit mo ang siyang nagtatakda ng cycle, at ipinapaliwanag ng sheet kung bakit: <b class="ui">Ang track lang na nagtatakda ng cycle ang puwedeng magbago ng haba nito.</b> Kung mali ang haba sa isang sumusunod na cell, ang master loop ang dapat i-edit.</p>
+      <p>Gumagalaw ang haba ng anumang ibang cell sa <b>mga hakbang ng unang loop</b> — ¼, ½, ×2, ×4, ×8 — kaya nananatili ito sa phase: dumadapo ang ruler sa mga hakbang na iyon, at sinasabi iyon ng sheet.</p>
+      <h3>Isang linya kada setting</h3>
+      <p>Sa ilalim ng waveform, isang linya ang bawat setting: ang pangalan nito, ang halaga nito sa isang chip, ang mga pagpipilian sa likod ng isang tap.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Row</th><th>Ano ang itinatakda nito</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">GRID</b></td><td>Off, 1 bar, 1/2 … 1/16: kung saan iniikot ang simula at pagsara na tina-tap ng kamay, at kung saan sina-snap ang mga gilid at ang ruler.</td></tr>
+            <tr><td><b class="ui">HABA</b></td><td>Ang haba, tuwirang pinili — hanggang 64 bar sa nakatakdang tempo sa unang loop, ang mga hakbang ng unang loop sa anumang ibang cell — at tatlong chip: <b class="ui">Sundan ang tempo</b> (tumutugtog ang loop sa nakatakdang tempo, nananatili ang pitch nito), <b>÷2</b> at <b>×2</b>.</td></tr>
+            <tr><td><b class="ui">PAG-PLAY</b></td><td>Ang bilis, ×½ hanggang ×8, at dalawang chip:
+              <b class="ui">Reverse</b> at <b class="ui">I-play nang isang beses</b>.</td></tr>
+            <tr><td><b class="ui">TRANSPOSE</b></td><td>Isang key na pinipindot nang matagal at hinihila, tulad ng level: lalabas sa ilalim ng daliri mo ang iskala mula −12 hanggang +12 semitone at gumagalaw ang loop nang isang semitone kada hakbang, naririnig nang live; ibinabalik ito sa 0 ng dalawang mabilis na tap. Nire-render ito mula sa take kung paano ito na-record, kaya laging eksakto itong bumabalik.</td></tr>
+            <tr><td><b class="ui">FADE</b></td><td>Ang haba ng sariling fade ng cell, at isang chip: <b class="ui">I-fade out</b> habang tumutunog ang cell (humihinto ito, sa timing), kung hindi ay <b class="ui">I-fade in</b>.</td></tr>
+            <tr><td><b class="ui">DECAY NG OVERDUB</b></td><td>100, 90, 75, 50 o 25 %: gaano karami sa mga layer sa ilalim nito ang itinatabi ng isang overdub.</td></tr>
+            <tr><td><b class="ui">PARAMIHIN</b></td><td><b class="ui">Off</b>, ×2, ×4 o ×8 — inuulit ang take para maging mas mahabang loop, <b>nang hindi ito sinisira</b>. Habang walang tinugtog sa ibabaw ng mga ulit, malabo silang iginuguhit, at ang pagbaba o pag-off sa factor ay eksaktong nagbabalik ng take. Pagkatapos ng overdub, nagtatanong muna ang app (<b class="ui">Ibaba</b>): mawawala ang na-dub lampas sa unang ulit.</td></tr>
+            <tr><td><b class="ui">INPUT</b>, <b class="ui">OUTPUT</b></td><td>Tulad ng
+              <a href="#routing">mga IN at OUT tile</a>.</td></tr>
+            <tr><td><b class="ui">ITAKDA ANG RIG PRESET</b></td><td>Ang preset na dinadaanan ng pag-record ng cell — tingnan ang <a href="#preset">preset ng loop</a>.</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p>Naglalaman ang row sa ibaba ng isang <b class="ui">Level</b> knob (0 hanggang 1.5), isang <b class="ui">Pan</b> knob na nagbabasang <b class="ui">C</b>, <b class="ui">L50</b> o <b class="ui">R50</b>, at ng mga button na <b class="ui">I-mute</b>, <b class="ui">I-undo</b> (ang huling overdub) at <b class="ui">I-clear</b>, na kini-clear ang cell at isinasara ang sheet.</p>
-      <p>Walang reverse. Pasulong lang tumutugtog ang mga loop.</p>
+      <p>Natututunan ng matagal na pagpindot sa isang row ang dinadaanan nito (<b>Next grid</b>, <b>Next speed</b>…); natututunan ng chip dito ang sarili nitong action. Sa pangalan nito natututo ang transpose row, dahil sa key ang pindot ng key.</p>
+      <h3>Ang ibaba ng sheet</h3>
+      <p>Ang <b class="ui">Level</b> knob (hanggang +12 dB) at ang <b class="ui">Pan</b> knob (<b class="ui">C</b>, <b class="ui">L50</b>, <b class="ui">R50</b>…), tapos ang mga key:</p>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">I-save sa library</b> — ang take ng cell na ito nang mag-isa papasok sa
+          <a href="#saving">library</a>; nagpapakita ng tsek ang key kapag naipasok na.</li>
+        <li>Ang sampler key — inilalagay ng <b class="ui">Sa sampler</b> ang take sa pad na pipiliin mo; dinadala ng <b class="ui">Mula sa sampler</b> ang sample ng isang pad papasok sa cell na ito.</li>
+        <li><b class="ui">I-mute</b>, <b class="ui">I-undo</b> (kasama ang mga hakbang na natitira pa) at <b class="ui">I-clear</b>, na kini-clear ang cell at isinasara ang sheet.</li>
+      </ul>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
       <h2 id="midi"><span class="n">04.7</span>Mga MIDI cell</h2>
       <p>Itakda ang <b class="ui">IN</b> ng isang cell sa <b class="ui">Mga pad ng sampler (MIDI)</b> at hihinto itong mag-record ng tunog: ire-record nito <b>kung aling pad ang pinindot mo, kailan, at gaano kalakas</b>, at pinapatugtog muli ang mga hit sa pamamagitan ng <a href="/docs/fil/sampler.html">sampler</a>. Halos walang gastos ang drum part na na-record nang ganito, nananatili itong nae-edit kada hit, at sinusundan nito ang kahit anong kit na naka-load — palitan ang kit at tutugtugin ng parehong part ang mga bagong tunog.</p>
+      <p>Nire-record din nito ang mga <b>galaw ng control</b> kasama ng mga hit: isang preset, isang scene, isang knob o ang morph, na ginawa ng pedal o host habang nagre-record ang cell, at pinapatugtog muli kung paano sila ginawa. Hindi nire-record ang galaw na ginawa sa screen, at hindi kailanman nagsisimula ng take ang galaw nang mag-isa.</p>
       <p>Gumuguhit ang MIDI cell ng isang tik kada hit sa singsing nito sa halip na wave, at kumikislap ang pad nito tuwing nadadaanan ng sinag ang isang hit. Nagiging <b class="ui">QNT</b> ang <b class="ui">OUT</b> tile nito — napupunta na ang mga pad kung saan man napupunta ang sampler.</p>
-
       <h3>Quantize habang nagre-record</h3>
       <p>Umiikot ang <b class="ui">QNT</b> tile sa <b class="ui">OFF</b>, <b class="ui">1/4</b>, <b class="ui">1/8</b>, <b class="ui">1/16</b> at <b class="ui">1/32</b>. Ginagalaw nito ang <em>naitatala</em>, hindi kailanman ang naririnig mo: laging tumutunog agad ang hit na tinugtog mo, at ang na-record na kopya ang dumadapo sa grid.</p>
-
       <h3>Ang MIDI editor</h3>
       <p>May pink na <b class="ui">MIDI</b> badge ang editor ng MIDI cell at, sa halip na waveform, isang <b>roll</b>: isang row kada pad na naka-load sa kit, isang column kada hakbang ng grid, mas makakapal na linya sa mga beat at bar, at pulang linya para sa playhead. Laging pinupuno ng take ang lapad ng roll; mas maraming linya lang ang iginuguhit ng mas pinong grid.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
-             alt="Ang editor ng isang MIDI loop cell: ang header na LOOP 1 na may pink na MIDI badge, ang Quantize knob, ang mga GRID chip na 1/4 hanggang 1/32 at ang bilang ng hit, isang roll na may isang row kada sampler pad at walong hit sa unang row, at ang ruler na may END handle sa ilalim nito.">
+          alt="Ang editor ng isang MIDI loop cell: ang header na LOOP 1 na may pink na MIDI badge, ang Quantize knob, ang mga GRID chip na 1/4 hanggang 1/32, ang bilang ng hit at MAX VELOCITY, isang roll na may isang row kada sampler pad at walong hit sa unang row, ang ruler na may END handle sa ilalim nito, at ang mga row na START at LENGTH.">
         <figcaption>Ang editor ng MIDI cell: quantize, ang mga grid chip at ang roll</figcaption>
       </figure>
       <ul style="--nc:var(--pitch)">
@@ -279,49 +309,68 @@
         <li><b>Pindutin nang matagal</b> ang isang parisukat para baguhin ang accent nito: buo, dalawang-katlo, isang-katlo. Ipinapakita ito ng lilim ng block.</li>
         <li>Hilahin ang pulang <b class="ui">DULO</b> handle sa ruler sa ilalim ng roll para baguhin ang haba ng loop sa mga hakbang; nananatili ang tempo.</li>
       </ul>
-      <p>Sa itaas ng roll, kina-quantize ng <b class="ui">Quantize</b> knob at ng mga <b class="ui">GRID</b> chip (<b class="ui">1/4</b> hanggang <b class="ui">1/32</b>) ang take <b>pagkatapos na — at nang hindi ito sinisira.</b> Itinatabi ang take kung paano mo ito tinugtog, at laging sa orihinal na iyon inilalapat ang grid, hindi kailanman sa huling resulta: ibaba ang knob at babalik ang mga hit sa kung saan mo sila tinugtog; sa <b class="ui">OFF</b>, sa iyo na ulit ang timing. Subukan ang 1/8 at 1/16 laban sa isa't isa nang ilang beses mo man gusto. Ang pag-edit sa roll gamit ang kamay ang nagiging bagong tinugtog na take. Binibilang din ng row ang take — <b class="ui">8 hit</b>.</p>
+      <p>Sa itaas ng roll, kina-quantize ng <b class="ui">Quantize</b> knob at ng mga <b class="ui">GRID</b> chip (<b class="ui">1/4</b> hanggang <b class="ui">1/32</b>) ang take <b>pagkatapos na — at nang hindi ito sinisira.</b> Itinatabi ang take kung paano mo ito tinugtog, at laging sa orihinal na iyon inilalapat ang grid, hindi kailanman sa huling resulta: ibaba ang knob at babalik ang mga hit sa kung saan mo sila tinugtog; sa <b class="ui">OFF</b>, sa iyo na ulit ang timing. Subukan ang 1/8 at 1/16 laban sa isa't isa nang ilang beses mo man gusto. Ang pag-edit sa roll gamit ang kamay ang nagiging bagong tinugtog na take. Binibilang din ng row ang take — <b class="ui">8 hit</b> — at pinapatugtog ng <b class="ui">MAX VELOCITY</b> ang bawat hit sa buong velocity, gaano man kalakas ito tinugtog.</p>
+      <p>Sa ilalim ng roll, inililipat ng <b class="ui">SIMULA</b> ang take nang <b class="ui">-BAR</b>, <b class="ui">-BEAT</b>, <b class="ui">+BEAT</b> at <b class="ui">+BAR</b>, at gumagana ang <b class="ui">HABA</b> tulad sa isang audio cell.</p>
       <p>Kapag walang naka-load na kit, sinasabi ng roll ang <b class="ui">Mag-load ng kit sa Sample tab para i-edit ang take na ito sa grid.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="undo"><span class="n">04.8</span>Undo at clear</h2>
-      <p>Ginagawa ng <b class="ui">I-undo</b> na sulok ng bawat cell ang halatang bagay para sa cell na iyon. Kung hawak ng cell ang huling overdub, binabawi nito ang overdub — at ibinabalik ito ng muling pagpindot, kaya nagsisilbi rin itong compare button. Kung hindi, <b>kini-clear nito ang take ng cell</b>.</p>
-      <p>Ang overdub undo ay <b>isang session lang ang lalim</b> at <b>hinahati sa mga cell</b>: pinapalitan ng pangalawang overdub, sa kahit anong cell, ang hawak ng undo. Mag-overdub sa cell 2 at mawawala ang undo na iniingatan mo para sa cell 1 — kini-clear na lang ito ng sulok ng cell 1.</p>
-      <p id="undo-transport">Ganoon din ang ginagawa ng undo key sa transport nang hindi pumipili ng cell: binabawi nito ang huling overdub kung mayroon, at kung wala, kini-clear ang take na huling nagsara. Inaalisan ng laman ng trash key, <b class="ui">I-clear lahat ng loop</b>, ang looper.</p>
+      <p>Laging pag-aari ng isang cell ang undo. Ang <b class="ui">I-undo</b> na sulok ng bawat cell — at ang <b class="ui">I-undo</b> key sa editor nito — ay <b>umaatras nang isang layer kada tap</b>: una ang overdub na nangyayari ngayon, tapos ang mga layer sa ibabaw ng take isa-isa, hanggang sa take mismo. Hindi na ito umaabante ulit at hindi kailanman lumalampas sa take: sa take, malabo na ang key. Ipinapakita ng key ng editor kung ilang hakbang pa ang natitira, at ipinapakita ng gitna ng cell kung nasaang layer ito (<b>L3</b>, <b>L2</b>…). Bilang ang bawat tap na mas mabilis pa sa screen. Sa isang MIDI cell, binabawi ng undo ang huling overdub nito.</p>
+      <p id="undo-transport">Wala nang undo sa transport, at walang MIDI action para sa "i-undo ang kung anuman ang huli": nag-a-undo ang pedal ng isang pinangalanang cell (<b>Loop 1 · Undo</b>…). Hiwalay ang pag-clear. Inaalisan ng laman ng <b class="ui">I-clear</b> ng editor ang isang cell; inaalisan ng laman ng trash key, <b class="ui">I-clear lahat ng loop</b>, ang looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="routing"><span class="n">04.9</span>Mga setting ng cell</h2>
-      <p>Ang mga tile sa tabi ng bawat pad ang mga setting ng cell; bawat isa ay nagpapakita ng maliit na tag at ng halaga nito. Ang <b class="ui">IN</b> at <b class="ui">OUT</b> ang nagpapasya kung saan nanggagaling at saan pupunta ang tunog ng loop, ang <b class="ui">LEN</b> at <b class="ui">DUB</b> kung gaano katagal at ilang ikot; lumalabas ang <b class="ui">PRESET</b> tile kapag may sariling preset ang cell; binubuksan ng edit tile ang <a href="#editor">loop editor</a>, at ang knob ang level ng cell (<b class="ui">Level ng loop track N</b>, 0 hanggang 1.5).</p>
-
+      <p>Ang mga tile sa tabi ng bawat pad ang mga setting ng cell; bawat isa ay nagpapakita ng maliit na tag at ng halaga nito. Ang <b class="ui">IN</b> at <b class="ui">OUT</b> ang nagpapasya kung saan nanggagaling at saan pupunta ang tunog ng loop, ang <b class="ui">LEN</b> at <b class="ui">DUB</b> kung gaano katagal at ilang ikot; lumalabas ang <b class="ui">PRESET</b> tile kapag may sariling preset ang cell; binubuksan ng edit tile ang <a href="#editor">loop editor</a>, at ang speaker ang level ng cell.</p>
       <h3>IN</h3>
       <p>Inaalok ng <b class="ui">IN</b> menu ang <b class="ui">Post FX (ang rig)</b> — ang naprosesong gitara, na siyang karaniwang gusto mo. Kapag maraming rig, nagiging <b class="ui">Post FX · &lt;rig name&gt;</b> ito kada rig at ang tile ay nagbabasang <b class="ui">FX · &lt;rig&gt;</b>. Sa ilalim niyon, isang entry kada hardware input channel sa sarili nitong pangalan — isang dry na vocal o pangalawang manunugtog diretso mula sa interface — at ang <b class="ui">Mga pad ng sampler (MIDI)</b>, tile na <b class="ui">MIDI</b>, na ginagawa itong <a href="#midi">MIDI cell</a>.</p>
       <p>Ibinibigay ng <b class="ui">Para lang sa loop na ito · &lt;rig&gt;</b> ang isang rig sa looper lamang: inaalis ang rig na iyon sa naririnig mo nang live, at habang nakahanda, nagre-record o nag-o-overdub ang cell na nagre-record nito, ito ang <b>nag-iisang live rig na naririnig</b> — tumatahimik ang iba habang may take at bumabalik pagkatapos nito. Bumuo ng rig para lang sa isang bahagi ng loop — isang bass octave, isang pad sound — at hindi ito kailanman tatagas sa pagtugtog mo. Ang tile ay nagbabasang <b class="ui">Para lang · &lt;rig&gt;</b>.</p>
-
       <h3>OUT</h3>
       <p>Inaalok ng <b class="ui">OUT</b> menu ang <b class="ui">Main mix</b> (tile na <b class="ui">MAIN</b>), isang entry kada dagdag na hardware output pair — <b class="ui">Out 3/4</b>, <b class="ui">Out 5/6</b> at iba pa, na nangangailangang naka-on ang <b class="ui">Gamitin lahat ng output ng interface</b> sa Settings — at ang <b class="ui">Papunta sa &lt;rig name&gt;</b>.</p>
       <p>Ang huli ang kawili-wili: sa halip na dumiretso sa mix, tumutugtog ang loop
         <em>papasok sa</em> rig na iyon, kaya pinoproseso ito nang live ng mga effect ng rig. Mag-loop ng malinis na bahagi, ipadala ito sa rig na may delay at filter, at galawin ang filter habang tumatakbo ang loop. Hindi inaalok ang rig na pinagre-record ng cell — magiging daan iyon ng feedback.</p>
-
       <h3>LEN at DUB</h3>
-      <p>Umiikot ang <b class="ui">LEN</b> tile sa 0, 1, 2, 4 at 8 na bar. Sa 0, <b class="ui">LIBRE</b> ang nakikita; kung hindi, <b class="ui">N BAR</b>, at nakapirmi ang take sa ganoong dami ng bar. Kapag walang nakatakdang tempo, sinasabi ng menu ang <b class="ui">Wala pang tempo — i-record ang unang loop na naka-on ang AUTO</b>.</p>
+      <p>Ang tap sa <b class="ui">LEN</b> tile ay dumadaan sa <b class="ui">LIBRE</b>, tapos 1, 2, 4, 8, 16, 32 at 64 na bar (<b class="ui">4 BAR</b>…), at nakapirmi ang take sa ganoong dami ng bar ng nakatakdang tempo. Inililista ng <b>matagal na pagpindot</b> ang bawat pagpipilian: <b class="ui">LIBRE</b>, bawat bilang ng bar mula 1 hanggang 64 sa ilalim ng <b class="ui">Mga bar</b>, at <b class="ui">Ng unang loop</b> — ×¼, ×½, ×2, ×4, ×8 ng unang loop, na hindi nangangailangan ng tempo. Ang FREE na take, kapag nagsara na, ay nagpapakita kung ano ang kinalabasan nito: <b>AUTO · 4</b>. Ang habang hindi eksaktong naghahati sa cycle ay sina-snap sa pinakamalapit na hakbang ng unang loop.</p>
       <p>Umiikot ang <b class="ui">DUB</b> tile sa 0, 1, 2 at 4 na awtomatikong ikot ng overdub — kusang bumabalik sa pagtugtog ang cell pagkatapos ng ganoong dami ng ikot.</p>
-
+      <h3>Ang level key</h3>
+      <p>Ang speaker ang level ng cell: napupuno mula sa kaliwa kasinlayo ng lakas ng level, may guhit na pahalang kapag tahimik. <b>Pindutin ito nang matagal</b> at lalabas ang fader ng cell na nasa ilalim ng daliri mo ang cap nito; <b>hilahin</b> pataas o pababa para itakda ang level, naririnig habang gumagalaw ka; <b>bitawan</b> at mawawala ang fader — iniiwan ito ng isang tap nang sandali, sapat para mabasa. Ibinabalik ng <b>dalawang mabilis na tap</b> ang level sa <b>0 dB</b>. Umaabot ang mga level hanggang <b>+12 dB</b>, gaya ng bawat level sa app. Walang ibang nagbubukas habang pinipindot mo ito; nasa <b class="ui">Level</b> knob ng editor ang MIDI learn ng level. Sa isang CC, sinusunod ng level ang dB na iskala ng mga fader: katahimikan ang CC 0, nasa bandang CC 106 ang 0 dB, +12 dB ang pinakamataas.</p>
       <h3 id="preset">Ang preset ng loop</h3>
-      <p>Puwedeng mag-record ang isang cell sa sarili nitong tunog, hiwalay sa input nito. Pindutin nang matagal ang cell → inaalok ng <b class="ui">Preset ng loop · …</b> ang <b class="ui">Ang live na rig</b> (ang default: tugtugin kung ano ang naka-on), ang <b class="ui">Eksena A ng kasalukuyang rig</b> hanggang D, at ang <b class="ui">Pumili ng preset…</b> — una ang sariling mga preset ng kantang nasa entablado, tapos ang bawat bank, na may mga kategorya at paghahanap.</p>
+      <p>Puwedeng mag-record ang isang cell sa sarili nitong tunog, hiwalay sa input nito. Inaalok ng row na <b class="ui">ITAKDA ANG RIG PRESET</b> ng editor ang <b class="ui">Ang live na rig</b> (ang default: tugtugin kung ano ang naka-on), ang <b class="ui">Eksena A ng kasalukuyang rig</b> hanggang D, at ang <b class="ui">Pumili ng preset…</b> — una ang sariling mga preset ng kantang nasa entablado, tapos ang bawat bank, na may mga kategorya at paghahanap. Kapag may preset na ang cell, binubuksan ng <b class="ui">PRESET</b> tile nito ang parehong picker.</p>
       <p>Nag-o-on ang preset kapag nagsimulang mag-record ang cell, nagsimula ng overdub o inihanda, at kapag tapos na ang take, bumabalik ang rig na hawak mo — maliban kung pumili ka ng ibang preset sa pagitan, na siyang mananatili. Mag-record ng rhythm part sa malinis na preset at mag-solo sa ibabaw nito sa lead sound mo nang walang ginagalaw na kahit ano.</p>
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.10</span>Ano ang nase-save</h2>
-      <p>Binubuksan ng presets key ang <b class="ui">Mga Looper Preset</b>, at hawak nila ang <b>setup</b>: ang IN, OUT, LEN, DUB, pan, loop preset at quantize ng bawat cell, pati ang AUTO flag — at ang mga take ng mga MIDI cell, na maliliit. Isang template na binabalikan mo sa simula ng kanta; hindi kasama ang mga audio take.</p>
+      <h2 id="saving"><span class="n">04.10</span>Ang library at ano ang nase-save</h2>
+      <p>Dalawang bagay ang nagtatabi ng mga loop, at magkaiba ang itinatabi nila.</p>
+      <p>Binubuksan ng presets key ang <b class="ui">Mga Looper Preset</b>, at hawak nila ang <b>setup</b>: ang mga setting ng bawat cell — IN, OUT, LEN, DUB, pan, ang preset nito, quantize, bilis, reverse, fade, transpose at iba pa — pati ang AUTO flag, at ang mga take ng mga MIDI cell, na maliliit. Isang template na binabalikan mo sa simula ng kanta; hindi kasama ang mga audio take.</p>
+      <h3>Ang library</h3>
+      <p>Binubuksan ng library key (ang mga libro) ang <b class="ui">MGA LOOP</b>, na nagtatabi ng mga loop <b>kasama ang audio nila</b>. Sine-save ng <b class="ui">I-save ang loop</b> ang looper kung ano ito ngayon — bawat take, ang mga setting ng mga cell, ang mga level at ang tempo — sa pangalang ita-type mo (o <b>Loop 1</b>, <b>Loop 2</b>…); sine-save ng <b class="ui">I-save sa library</b> ng editor ang take ng isang cell. Ipinapakita ng bawat naka-save na loop ang petsa, haba, tempo at kung ilang cell ang laman nito.</p>
+      <p>I-tap ang isang naka-save na loop para sa menu nito:</p>
+      <ul style="--nc:var(--power)">
+        <li><b class="ui">I-load sa</b> <b>Loop 1</b>…<b>Loop 4</b> — ang mga take nito, naka-mix kung paano sila narinig, papasok sa cell na pipiliin mo; nananatili ang ibang cell.</li>
+        <li><b class="ui">Lahat ng loop, gaya ng na-save</b> — pinapalitan nito ang laman ng looper (nagtatanong muna kapag may laman ang looper): mga setting, tempo, mga level at mga take.</li>
+        <li><b class="ui">Palitan ang pangalan</b>, <b class="ui">Ibahagi…</b>, <b class="ui">I-export bilang WAV…</b>
+          at <b class="ui">Tanggalin</b>.</li>
+      </ul>
       <h3>Mga loop bilang file</h3>
-      <p>Ine-export ng long-press menu ng cell ang loop nito — <b class="ui">I-export ang loop bilang WAV…</b> — bilang 32-bit float stereo WAV sa sample rate ng session, at ine-export ng <b class="ui">I-export ang lahat ng loop…</b> ang bawat loop nang sabay-sabay. Nagsisimula ang bawat file sa downbeat ng cycle, kaya nagtutugma ang mga file kapag sabay mong inihulog ang mga ito sa isang DAW.</p>
-      <p>Inilalagay ng <b class="ui">I-load ang loop mula sa file…</b> ang kahit anong audio file sa cell, na tumutugtog na. Sa walang lamang looper, ang file mismo ang loop, eksakto kung ano ito, nang walang boundary snap, at dala nito ang tempo nito: binabasa mula sa pangalang tulad ng <em>Loop 2 - 96.5 BPM</em> — ang ipinapangalan sa isang export — o kinakalkula mula sa haba nito. Walang audio ang MIDI cell, kaya wala itong iniaalok sa dalawa.</p>
+      <p>Ang dalawang key sa ibaba ng library ay kumikilos sa library mismo.
+        Tumatanggap ang <b>Import</b> (<b class="ui">I-import sa library</b>) ng mga NAMper loop at audio file; bawat isa'y pumapasok bilang naka-save na loop, na ilo-load sa isang cell mula sa listahan. Dala ng audio file ang tempo nito kapag sinasabi ito ng pangalan nito — <em>Loop 2 - 96.5 BPM</em>, ang ipinapangalan sa isang export. Ipinapadala ng <b>Export</b> (<b class="ui">I-export ang library</b>) ang mga loop na nakikita — lahat, o ang nahanap ng search — <b class="ui">Bilang NAMper loops</b> o <b class="ui">Bilang mga WAV file</b>: bawat take ay sariling file, ipinangalan sa loop, sa cell at sa tempo nito, handang ihulog sa isang DAW.</p>
+      <p>Ipinapakita ng Settings → <b class="ui">Entablado</b> → <b class="ui">LOOPER</b> kung ilang loop ang naka-save at gaano kalaking espasyo ang kinukuha nila.</p>
       <div class="note">
-        <div class="t">Dala ng preset ang setup, dala ng file ang tunog</div>
-        <p>Hindi kailanman naglalaman ng na-record na audio ang looper preset — napakalaki nito; tanging MIDI take ng mga pad ang nakasakay dito. Para itago ang isang loop, i-export ito; para itago ang buong pagtatanghal, gamitin ang recorder sa <a href="/docs/fil/mix.html#recorder">Mix</a> tab, na nagre-record ng output mix pati ang hiwalay na dry input stem.</p>
+        <div class="t">Dala ng preset ang setup, dala ng library ang tunog</div>
+        <p>Hindi kailanman naglalaman ng na-record na audio ang looper preset — tanging MIDI take ng mga pad ang nakasakay dito. Para itago ang isang loop, i-save ito sa library; para itago ang buong pagtatanghal, gamitin ang recorder sa <a href="/docs/fil/mix.html#recorder">Mix</a> tab, na nagre-record ng output mix pati ang hiwalay na dry input stem.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="live"><span class="n">04.11</span>Mga kanta, ang kuwarto at ang clock</h2>
+      <h3>Mga seksyon ng kanta</h3>
+      <p>Walang song mode sa looper: nakatira ang arrangement ng isang kanta sa automation nito sa <a href="/docs/fil/perform.html">Perform</a> tab, na may looper lane — i-record, ihanda, i-mute, i-solo, i-play at ihinto ang isang cell, undo, mga fade at ang swap. Ang cell na <b>sinisimulan ng automation ng kanta</b> ay pumapasok <b>mula sa simula nito sa susunod na bar line</b>: isang seksyon. Ang cell na sinimulan mo gamit ang kamay ay pumapasok sa gitna ng cycle, sa timing, gaya ng dati. Panatilihing tumutugtog ang isang cell sa ilalim ng mga seksyon at ito ang magiging higaan ng isang band arrangement.</p>
+      <h3>Echo cancelling</h3>
+      <p>Naririnig ng mic ng telepono sa kuwarto ang pinapatugtog ng app — ang mga loop, ang mga pad, ang backing track at ang click — at ire-record silang muli ng bagong layer: putik sa pinakamabuti, at sa pinakamasama, isang loop na nagpapatong-patong sa sarili nito. Ang <b class="ui">Pag-alis ng echo</b>, naka-on bilang default, ay nag-aalis ng echo na iyon sa isinusulat ng cell na nagre-record, nag-o-overdub o nakahanda, at wala nang iba pa: hindi kailanman ginagalaw ang naririnig mo nang live at hindi ito nadadagdagan ng latency. Inaalam nito ang kuwarto mula sa mga loop na tumutugtog nang mag-isa nang sandali; kapag walang echo sa mic, eksaktong ang input ang take. Nasa Settings → <b class="ui">Audio</b> at sa gear ng transport ang switch.</p>
+      <h3>MIDI clock</h3>
+      <p>Itinatakda ng Settings → <b class="ui">Kontrol</b> → <b class="ui">MIDI clock</b> ang clock sa magkabilang direksyon. Ginagawa ng <b class="ui">Sundan ang MIDI clock</b> na tempo ng set ang tempo ng clock — mas mataas sa kanta, sa loop o sa kamay mo — at nagsisimulang mag-record ang nakahandang cell sa susunod na downbeat nito; piliin ang pinagmulan at isang offset para sa sender na maaga o huli. Nagpapadala ang <b class="ui">Magpadala ng MIDI clock</b> ng 24 tick kada beat sa destinasyong pipiliin mo, mula sa audio clock na pinagtatakbuhan ng click: lumalabas ang start sa simula ng loop, ang stop kapag huminto ito.</p>
     </section>
 
     <nav class="pager">

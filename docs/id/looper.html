@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Looper — Dokumentasi NAMper</title>
-<meta name="description" content="Looper sinkron empat-sel: sel loop dan tombol sudutnya, transport, arming AUTO dan snapping batas, tempo dan click, editor loop, sel MIDI dengan quantize non-destruktif, undo, input, output, dan preset setiap sel, loop sebagai file WAV, dan apa yang disimpan.">
+<meta name="description" content="Looper sinkron empat-sel: sel loop dan tombol sudutnya, transport dan tombol-tombolnya, arming AUTO dan snapping batas, tempo, click, dan MIDI clock, editor loop, sel MIDI dengan quantize non-destruktif, undo per sel, input, output, panjang, level, dan preset setiap sel, pustaka loop, bagian lagu, dan peredam gema.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Looper — Dokumentasi NAMper">
-<meta property="og:description" content="Empat trek sinkron, arming AUTO, snapping batas, dan editor loop.">
+<meta property="og:description" content="Empat trek sinkron, arming AUTO, snapping batas, editor loop, dan pustaka loop.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/id/looper.html">
 <meta property="og:type" content="article">
@@ -84,7 +84,8 @@
         <li><a href="#midi">Sel MIDI</a></li>
         <li><a href="#undo">Undo dan hapus</a></li>
         <li><a href="#routing">Setelan sebuah sel</a></li>
-        <li><a href="#saving">Apa yang disimpan</a></li>
+        <li><a href="#saving">Pustaka dan apa yang disimpan</a></li>
+        <li><a href="#live">Lagu, ruangan, dan clock</a></li>
       </ul>
     </nav>
 
@@ -93,9 +94,10 @@
       <p>Satu aturan mendasari semuanya: <b>loop pertama menentukan siklus, dan setiap loop lain
         sinkron ke sana.</b></p>
       <p>Sel mana pun yang kamu rekam pertama kali menentukan siklusnya. Setiap sel lain
-        disesuaikan dengannya, bukan melenceng sendiri-sendiri, dan tidak ada yang mengubah siklus
-        itu setelahnya kecuali mengedit sel yang menetapkannya, atau menghapus semuanya dan
-        merekam ulang dari awal.</p>
+        disesuaikan dengannya: panjangnya bergerak dalam kelipatan loop pertama — seperempat,
+        setengah, dua, empat, atau delapan kali lipat — sehingga tidak pernah keluar dari fase.
+        Tidak ada mode yang perlu dipilih. Tidak ada yang mengubah siklus itu setelahnya kecuali
+        mengedit sel yang menetapkannya, atau menghapus semuanya dan merekam ulang dari awal.</p>
       <p>Ada empat sel, dan panjang loop mengikuti permainanmu: lewat menit pertama, sel terus
         bertambah panjang selama memori perangkat masih cukup. Dengan layar tegak, transport ada
         di atas dan keempat sel mengisi halaman dua-dua; saat layar dimiringkan, transport menjadi
@@ -103,7 +105,7 @@
         aturan yang sama menurut bentuk halaman, bukan menurut perangkatnya.</p>
       <figure>
         <img class="phone" src="/docs/assets/looper.png" width="600" height="1303"
-             alt="Tab Loop: kartu transport di atas dengan tempo, AUTO, dan CLICK; di bawahnya empat sel loop, masing-masing pad bundar dalam persegi dengan empat tombol sudut dan ubin setelan di bawahnya; sel 1 memutar dengan cincin gelombang hijau, sel 2 merekam, sel 3 di-mute, sel 4 kosong.">
+          alt="Tab Loop: transport di atas, sederet tombol ikon di atas tempo, AUTO, dan CLICK; di bawahnya empat sel loop, masing-masing pad bundar dalam persegi dengan empat tombol sudut, dengan ubin setelan dan tombol level berbentuk speaker di bawahnya; sel 1 memutar dengan cincin gelombang hijau, sel 2 merekam, sel 3 di-mute, sel 4 kosong.">
         <figcaption>Transport di atas, empat sel di bawah: pad, empat tombol sudut, ubin setelan</figcaption>
       </figure>
       <p>Setiap sel disusun dengan cara yang sama: <b>pad</b> bundar di tengah sebuah persegi,
@@ -116,16 +118,19 @@
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="pads"><span class="n">04.2</span>Sel loop</h2>
       <p>Pad menggambar bentuk gelombang loop <em>sebagai cincin</em> — satu putaran lingkaran
-        sama dengan satu putaran siklus — dengan berkas yang menandai posisi putar. Bagian yang
-        keras membuat cincin lebih tebal, jadi kamu bisa membaca posisimu di loop dari seberang
-        ruangan. Pad juga <b>menyala dari tepinya ke dalam</b> saat loop berbunyi, makin keras
-        makin dalam.</p>
+        sama dengan satu putaran loop milik sel itu sendiri — dengan berkas yang menandai posisi
+        putar. Bagian yang keras membuat cincin lebih tebal, jadi kamu bisa membaca posisimu di
+        loop dari seberang ruangan. Pad juga <b>menyala dari tepinya ke dalam</b> saat loop
+        berbunyi, makin keras makin dalam.</p>
       <p>Selama loop pertama direkam, belum ada siklus, jadi cincin berperilaku berbeda: seluruh
         lingkaran memetakan semua yang sudah direkam <em>sejauh ini</em>, berkasnya diam di posisi
         jam 12 — itulah write head-nya — dan bagian tengah menghitung detik yang telah berlalu.
         Begitu loop menutup, berkas mulai menjalankan siklus. Sel yang merekam ke dalam siklus yang
         sedang berjalan menggambar gelombangnya sebagai busur yang terus memanjang.</p>
-
+      <p>Bagian tengah juga menunjukkan cara loop diputar bila itu tidak biasa: <b class="ui">BALIK</b>
+        untuk loop terbalik, kecepatannya (<b>×½</b>, <b>×2</b>…), <b>1×</b> untuk loop yang
+        diputar sekali, dan <b>L2</b>, <b>L3</b>… untuk lapisan di atas take. Fade yang sedang
+        berjalan menunjukkan arahnya dan sudah sejauh mana.</p>
       <h3>Mengetuk pad</h3>
       <p>Hanya lingkarannya yang menerima ketukan. Satu ketukan menaikkan sel satu tingkat pada
         tangga status:</p>
@@ -140,22 +145,21 @@
         alih-alih langsung merekam — cincin merah putus-putus mengelilingi sel — dan mengetuk pad
         yang armed membatalkan status itu. Itulah satu-satunya perubahan yang dibuat AUTO pada
         tangga status ini.</p>
-
       <h3>Tombol sudut</h3>
       <div class="tw">
         <table>
           <thead><tr><th>Sudut</th><th>Tombol</th><th>Fungsinya</th></tr></thead>
           <tbody>
             <tr><td>Kiri atas</td><td><b class="ui">Mute</b></td>
-                <td>Membisukan loop sementara loop tetap berjalan; menyala kuning selama aktif.</td></tr>
+              <td>Membisukan loop sementara loop tetap berjalan; menyala kuning selama aktif.</td></tr>
             <tr><td>Kanan atas</td><td><b class="ui">Solo</b></td>
-                <td>Membisukan sel lain yang sedang diputar; tekan lagi untuk mengembalikannya.
-                  Men-solo sel lain memindahkan solo ke sana.</td></tr>
+              <td>Membisukan sel lain yang sedang diputar; tekan lagi untuk mengembalikannya.
+                Men-solo sel lain memindahkan solo ke sana.</td></tr>
             <tr><td>Kiri bawah</td><td><b class="ui">Undo</b></td>
-                <td>Membatalkan overdub terakhir sel ini, atau menghapus take-nya — lihat
-                  <a href="#undo">Undo dan hapus</a>.</td></tr>
+              <td>Memundurkan sel ini satu lapisan per ketukan, sampai ke take — lihat
+                <a href="#undo">Undo dan hapus</a>.</td></tr>
             <tr><td>Kanan bawah</td><td><b class="ui">Putar</b> / <b class="ui">Berhenti</b></td>
-                <td>Menghentikan atau memulai loop ini saja.</td></tr>
+              <td>Menghentikan atau memulai loop ini saja.</td></tr>
           </tbody>
         </table>
       </div>
@@ -165,7 +169,6 @@
         mengikuti siklus, dan menekan <b class="ui">Putar</b> mengembalikannya tepat pada ketukan,
         tidak pernah dari awalnya. Saat seluruh looper berhenti, <b class="ui">Putar</b> sebuah sel
         memulai looper dengan sel itu saja; tombol putar di transport mengembalikan semua sel.</p>
-
       <h3>Status</h3>
       <div class="tw">
         <table>
@@ -181,41 +184,85 @@
           </tbody>
         </table>
       </div>
-
-      <h3>Tekan lama</h3>
-      <p>Tekan lama pad — atau di mana saja pada sel — untuk membuka menu sel:
-        <b class="ui">Input · …</b>, <b class="ui">Output · …</b>, <b class="ui">Preset loop · …</b>,
-        <b class="ui">Edit loop…</b>, <b class="ui">Panjang · bebas</b> atau
-        <b class="ui">Panjang · N bar</b>, <b class="ui">Overdub · N</b>; loop sebagai file —
-        <b class="ui">Ekspor loop sebagai WAV…</b>, <b class="ui">Ekspor semua loop…</b>,
-        <b class="ui">Muat loop dari file…</b> (lihat <a href="#saving">di bawah</a>); dan di bagian
-        bawah <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — begitulah cara footswitch
-        dipetakan ke satu sel.</p>
+      <h3>MIDI learn</h3>
+      <p>Setiap bagian sel melakukan learn lewat tekan lamanya sendiri, dan hanya untuk dirinya
+        sendiri: pad menawarkan <b class="ui">MIDI Learn: tap loop track 1</b> (2, 3, 4) — begitulah
+        cara footswitch dipetakan ke satu sel — dan setiap tombol sudut menawarkan aksinya sendiri,
+        <b>Loop 1 · Mute</b>, <b>Loop 1 · Solo</b>, <b>Loop 1 · Undo</b>,
+        <b>Loop 1 · Play / stop</b>. Hal yang sama berlaku untuk setiap baris dan chip di
+        <a href="#editor">editor loop</a>. Level sel di-learn dari knob
+        <b class="ui">Level</b> di editor: tekanan pada tombol level itu sendiri menggeser level.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
       <h2 id="transport"><span class="n">04.3</span>Transport</h2>
-      <p>Kartu transport memuat kata <b class="ui">LOOPER</b> — merah selama looper berisi sesuatu
-        — dan, dalam posisi tegak, dua baris:</p>
+      <p>Transport tidak punya judul — tab-nya sudah menamai halaman ini. Dalam posisi tegak ia
+        terdiri dari dua baris: sederet tombol ikon, dan di bawahnya tempo, <b class="ui">AUTO</b>
+        dan <b class="ui">CLICK</b>. Saat dimiringkan, bagian-bagian yang sama berdiri dalam satu
+        kolom: tempo dengan tombol kecepatan di sebelahnya, AUTO dan CLICK, lalu tombol-tombol
+        dua-dua di bagian bawah. Kartu menyala selama loop pertama direkam.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Tombol</th><th>Fungsinya</th></tr></thead>
+          <tbody>
+            <tr><td>Preset</td><td><b class="ui">Preset looper</b> — setup sel-sel; lihat
+              <a href="#saving">apa yang disimpan</a>.</td></tr>
+            <tr><td>Pustaka (buku-buku)</td><td>Loop yang tersimpan, serta loop masuk dan keluar
+              sebagai file — lihat <a href="#saving">pustaka</a>.</td></tr>
+            <tr><td>Bounce</td><td><b class="ui">GABUNGKAN LOOP</b>: loop yang kamu pilih menjadi satu,
+              di-mix seperti yang kamu dengar sekarang. <b class="ui">Biarkan ekor berbunyi melewati titik loop</b>
+              dan <b class="ui">Simpan loop sumber</b> (yang memerlukan sel kosong sebagai tujuan
+              bounce). Samar selama belum ada loop audio.</td></tr>
+            <tr><td>Setelan (roda gigi)</td><td>Apa yang berlaku untuk semua loop sekaligus — lihat
+              di bawah.</td></tr>
+            <tr><td>Kecepatan</td><td>Kecepatan semua loop audio — lihat di bawah.</td></tr>
+            <tr><td>Tukar</td><td><b class="ui">Tukar loop yang main dan yang berhenti</b>: setiap sel yang
+              berbunyi memudar keluar sementara setiap sel yang berhenti memudar masuk, selama
+              panjang crossfade. Menyala hanya saat sebagian sel diputar dan sebagian berhenti.</td></tr>
+            <tr><td>Putar / berhenti</td><td><b class="ui">Putar loop</b> /
+              <b class="ui">Hentikan loop</b>, nonaktif sampai ada siklus.</td></tr>
+            <tr><td>Tempat sampah</td><td><b class="ui">Hapus semua loop</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tidak ada undo di transport: undo selalu menyebut sel-nya. Tekan lama sebuah tombol
+        adalah MIDI learn-nya — tombol putar untuk <b class="ui">MIDI Learn: looper jalan / berhenti</b>,
+        tempat sampah untuk <b class="ui">MIDI Learn: hapus semua loop</b>, dan seterusnya.</p>
+      <h3>Roda gigi</h3>
+      <p>Roda gigi membuka menu berisi apa yang berlaku untuk semua loop:</p>
       <ul style="--nc:var(--gate)">
-        <li>Tombol <b>preset</b> — lihat <a href="#saving">apa yang disimpan</a>.</li>
-        <li><b class="ui">Putar loop</b> / <b class="ui">Hentikan loop</b>, nonaktif sampai ada
-          siklus.</li>
-        <li>Tombol <b>undo</b> — lihat <a href="#undo">Undo dan hapus</a>.</li>
-        <li>Tombol tempat sampah, <b class="ui">Hapus semua loop</b>.</li>
-        <li>Di bawahnya, tempo, <b class="ui">AUTO</b> dan <b class="ui">CLICK</b>.</li>
+        <li><b class="ui">Semua loop mengikuti tempo</b> /
+          <b class="ui">Tak ada loop yang mengikuti tempo</b> — loop yang mengikuti diputar pada tempo yang
+          diatur dengan pitch tetap terjaga.</li>
+        <li><b class="ui">Balik semua loop</b> / <b class="ui">Semua loop maju</b>.</li>
+        <li><b class="ui">Peredam gema</b> — sakelar yang sama seperti di Pengaturan → Audio;
+          lihat <a href="#live">ruangan</a>.</li>
+        <li><b class="ui">Panjang crossfade</b> — durasi fade untuk penukaran: 1 ketukan, 1 birama,
+          2 birama, atau 4 birama; 1 birama kecuali kamu mengubahnya. Fade milik sel tetap memakai
+          panjangnya sendiri.</li>
       </ul>
-      <p>Saat dimiringkan, tombol-tombol yang sama berdiri dalam satu kolom: tempo, AUTO, dan CLICK
-        di atas, putar, undo, dan tempat sampah di bawah. Kartu menyala selama loop pertama
-        direkam.</p>
-      <p>Tekan lama tombol putar untuk <b class="ui">MIDI Learn: looper jalan / berhenti</b>, atau tombol
-        tempat sampah untuk <b class="ui">MIDI Learn: hapus semua loop</b>.</p>
+      <p>Item-item menu ini di-learn dari Pengaturan → <b class="ui">Kontrol</b>, tempat aksi
+        <b>Every loop follows the tempo on/off</b>, <b>Every loop reversed on/off</b> dan
+        <b>Echo cancelling</b> berada di grup Looper.</p>
+      <h3>Tombol kecepatan</h3>
+      <p>Speedometer memegang kecepatan semua loop audio. <b>Tahan</b> dan sebuah skala dari
+        <b>×½</b> sampai <b>×8</b> muncul dengan penggesernya tepat di bawah jarimu; <b>seret</b>
+        ke atas atau ke bawah dan setiap loop mengambil setiap kecepatan yang dilewati penggeser,
+        terdengar langsung; <b>lepaskan</b> dan skalanya hilang. <b>Dua ketukan cepat</b>
+        mengembalikan semua loop ke ×1. Selama loop tidak di ×1, tombolnya menyala, dengan
+        kecepatan di sudutnya. Tekanannya adalah miliknya sendiri, jadi ia tidak punya MIDI learn;
+        <b>Next speed</b> sebuah sel dipetakan di Pengaturan → Control.</p>
       <div class="note">
         <div class="t">Kontrol footswitch</div>
         <p>Peta MIDI bawaan menutupi looper tanpa penyetelan: <b class="ui">CC 85–88</b> mengetuk
           sel 1 sampai 4, <b class="ui">CC 89</b> menjalankan dan menghentikan, <b class="ui">CC 90</b>
           membersihkan. CC 89 adalah sakelar sungguhan — lihat
-          <a href="/docs/id/control.html">MIDI &amp; kontrol</a>.</p>
+          <a href="/docs/id/control.html">MIDI &amp; kontrol</a>. Untuk papan berisi beberapa
+          switch, panggil <b class="ui">Deck loop empat sakelar</b> dari preset di halaman Control
+          (ia menggantikan peta): <b>CC 80–83</b> mengetuk sel 1–4, <b>CC 84</b> jalan/berhenti,
+          <b>CC 86</b> hapus semua, <b>CC 87</b> AUTO, <b>CC 88–91</b> putar/berhenti sel 1–4,
+          <b>CC 92–95</b> undo sel 1–4, <b>CC 96</b> click, <b>CC 97</b> penukaran, dan
+          <b>CC 11</b> level sel 1.</p>
       </div>
     </section>
 
@@ -224,7 +271,6 @@
       <p><b class="ui">AUTO</b> — chip tongkat sihir di sebelah <b class="ui">CLICK</b> —
         mengerjakan dua hal: memulai dan menghentikan take untukmu, dan begitu master loop
         menutup, ia menghitung di mana garis birama sebenarnya berada.</p>
-
       <h3>Arming, bukan merekam langsung</h3>
       <p>Dengan AUTO aktif, mengetuk pad kosong membuatnya armed: cincin merah putus-putus
         mengelilingi sel. Apa yang terjadi selanjutnya tergantung apakah sudah ada siklus atau
@@ -235,7 +281,8 @@
           <b class="ui">Sinyal yang memulai auto-loop</b>, −40 dB kecuali kamu menggesernya; makin
           rendah makin peka. Senar yang tersenggol atau suara ruangan tetap berada di bawahnya.
           Kamu bisa mengangkat gitar, mengambil posisi nyaman, dan take
-          dimulai saat kamu bermain — bukan saat kamu mengetuk.</li>
+          dimulai saat kamu bermain — bukan saat kamu mengetuk. Jika ada MIDI clock yang masuk,
+          take dimulai pada downbeat clock berikutnya.</li>
         <li><b>Sudah ada siklus yang berjalan.</b> Rekaman dimulai pada <b>batas siklus
           berikutnya</b>, sehingga take dimulai tepat pada birama. Jendela toleransi singkat
           memaafkan attack yang datang sedikit terlambat, jadi memukul downbeat sedikit di
@@ -254,7 +301,6 @@
         cuma menyenggol senar.</p>
       <p>Setelah setiap loop menutup, AUTO <b>meng-arm sel kosong berikutnya dengan
         sendirinya</b>, jadi kamu bisa membangun keempat trek tanpa menyentuh layar lagi.</p>
-
       <h3>Snapping batas</h3>
       <p>Begitu master loop menutup, NAMper menganalisis input bersih — sinyal sebelum efekmu —
         dan mencari attack. Ia mencocokkan grid birama padanya, lalu:</p>
@@ -268,12 +314,14 @@
           cepat tidak terbaca sebagai 240 BPM dan yang lambat tidak terbaca sebagai 45.</li>
       </ol>
       <p>Di layar, semua ini terjadi dalam satu momen: cincin digambar ulang, panjangnya snap
-        ke angka yang bersih, dan pembacaan BPM — kosong sampai saat ini — terisi. Dari situ,
+        ke angka yang bersih, pembacaan BPM — kosong sampai saat ini — terisi, dan ubin
+        <b class="ui">LEN</b> sel FREE menampilkan hasil take-nya, <b>AUTO · 4</b>. Dari situ,
         click, ubin LEN, quantize sampler, dan jam birama setlist semuanya punya grid untuk
         bekerja.</p>
-      <p>Dengan <b class="ui">CLICK</b> aktif, tempo <b>terkunci</b> pada tempo yang sudah
-        diatur dan hanya fasenya yang disesuaikan. Itulah mode yang dipakai saat kamu bermain
-        mengikuti click atau backing track dan tempo tidak boleh bergeser.</p>
+      <p>Dengan <b class="ui">CLICK</b> aktif — atau lagu yang sudah di-cue, atau MIDI clock yang
+        masuk — tempo <b>terkunci</b> pada tempo yang sudah diatur dan hanya fasenya yang
+        disesuaikan. Itulah mode yang dipakai saat kamu bermain mengikuti click atau backing track
+        dan tempo tidak boleh bergeser.</p>
       <div class="note tip">
         <div class="t">Drone dan rubato</div>
         <p>Jika tidak ada grid yang bisa ditemukan — pad yang berkelanjutan, intro dengan tempo
@@ -299,7 +347,14 @@
         300</b>) dengan <b class="ui">BPM</b> di sebelahnya, tombol <b class="ui">TAP</b> besar
         yang menampilkan <b class="ui">lagi…</b> setelah ketukan pertamamu, ditambah
         <b class="ui">Hapus (AUTO deteksi ulang)</b> dan <b class="ui">Selesai</b>. Hapus (Clear) jika
-        kamu ingin AUTO menghitung tempo dari permainanmu.</p>
+        kamu ingin AUTO menghitung tempo dari permainanmu. Sheet ini juga menyebut siapa yang
+        memegang tempo: <b class="ui">dari clock</b>, <b class="ui">dari lagu</b>,
+        <b class="ui">dari loop</b> atau <b class="ui">diatur manual</b>.</p>
+      <p>Urutan prioritasnya seperti itu. MIDI clock yang masuk mengalahkan lagu yang di-cue, lagu
+        mengalahkan loop yang ditutup dalam AUTO, dan tempo yang kamu ketik adalah yang paling
+        lemah: ia selalu diterapkan, dan lagu atau loop AUTO berikutnya mengambil alih tempo lagi.
+        Sumber yang lebih lemah tidak pernah menimpa yang lebih kuat — loop yang direkam di bawah
+        sebuah lagu malah di-snap ke tempo lagu itu.</p>
       <p>Sheet yang sama bisa diakses dari header <b class="ui a">Rig</b>: chip metronom
         mengaktifkan/menonaktifkan click dengan <b>ketukan</b> dan membuka
         <b class="ui">SETEL TEMPO</b> dengan <b>tekan lama</b>.</p>
@@ -308,6 +363,11 @@
         tindakan netral. Level click dan output bus click ada di Settings →
         <b class="ui">METRONOM</b>, tempat ia bisa punya pasangan output sendiri untuk
         monitoring in-ear.</p>
+      <p>Take pertama dengan <b class="ui">LEN</b> yang diatur dalam birama membaca clock dengan
+        cara yang sama. Tanpa clock yang berjalan — click mati, tanpa lagu, tanpa MIDI clock —
+        kamu memainkannya bebas dan jumlah biramanya <b>menetapkan tempo</b> saat take menutup.
+        Dengan clock, take menutup setelah jumlah birama itu dan langsung berlanjut ke overdub,
+        sampai kamu mengetuk.</p>
       <div class="note warn">
         <div class="t">Tidak ada count-in</div>
         <p>Mengetuk record langsung memulai rekaman. Jika kamu ingin satu birama click sebelum
@@ -318,63 +378,92 @@
 
     <section class="blk" style="--nc:var(--eq)">
       <h2 id="editor"><span class="n">04.6</span>Editor loop</h2>
-      <p>Buka lewat ubin edit (<b class="ui">Edit loop N</b>) di antara setelan sebuah sel, atau
-        tekan lama sel → <b class="ui">Edit loop…</b>. Ubin edit juga berfungsi pada <b>sel yang
-        kosong atau armed</b>, jadi preset yang dipakai untuk merekam take — dan, pada sel MIDI,
-        grid-nya — bisa diatur sebelum kamu bermain. Sheet ini berjudul <b class="ui">LOOP N</b>
-        dengan label panjang yang langsung update.</p>
+      <p>Buka lewat ubin edit (slider, <b class="ui">Edit loop N</b>) di antara setelan sebuah
+        sel. Ubin ini juga berfungsi pada <b>sel yang kosong atau armed</b>, jadi grid, preset yang
+        dipakai untuk merekam take, dan, pada sel MIDI, quantize-nya bisa diatur sebelum kamu
+        bermain. Sheet ini berjudul <b class="ui">LOOP N</b> dengan label panjang yang langsung
+        update, dan tingginya menyesuaikan isinya.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-editor.png" width="600" height="1303"
-             alt="Sheet editor loop di atas looper: bentuk gelombang dengan grid birama dan ketukan, handle start dan end yang bisa diseret, baris RECORD THROUGH, baris tombol START dan LENGTH TEMPO KEPT, knob Level dan Pan, serta tombol Mute, Undo, dan Clear.">
-        <figcaption>Editor loop: grid, handle, tombol nudge, dan baris bawah</figcaption>
+          alt="Sheet editor loop di atas looper: bentuk gelombang dengan grid birama dan ketukan serta penggaris birama di bawahnya, lalu satu baris per setelan — GRID, LENGTH dengan Follow tempo, ÷2 dan ×2, PLAYBACK dengan Reverse dan Play once, TRANSPOSE, FADE, OVERDUB DECAY, MULTIPLY — lalu INPUT, OUTPUT dan ASSIGN RIG PRESET, dan di bagian bawah knob Level dan Pan serta tombol pustaka, sampler, Mute, Undo, dan Clear.">
+        <figcaption>Editor loop: bentuk gelombang dan penggarisnya, satu baris per setelan, tombol-tombol di bagian bawah</figcaption>
       </figure>
       <p>Labelnya menampilkan sesuatu seperti <b class="ui">8.00 dtk · 4.0 bar</b>. Menyeret
-        handle end menambahkan tempo yang akan dihasilkan panjang tersebut; menyeret handle
-        start mengubahnya menjadi <b class="ui">start +0.50 beats</b>.</p>
-      <p>Bentuk gelombang membawa <b>overlay grid</b> birama dan ketukan — tanda ketukan dan
-        garis birama bernomor, berjangkar di awal loop. Audio setelah ujung loop digambar
-        redup: tetap ada tapi diam, yang memungkinkan kamu mendorong handle end keluar lagi
-        nanti.</p>
-
-      <h3>Kedua handle</h3>
+        handle end menambahkan tempo yang akan dihasilkan panjang tersebut; menyeret start
+        mengubahnya menjadi <b class="ui">start +0.50 ketukan</b>.</p>
+      <h3>Bentuk gelombang dan penggaris</h3>
+      <p>Bentuk gelombang membawa <b>grid birama dan ketukan</b> — tanda ketukan dan garis birama
+        bernomor, berjangkar di awal loop, serta satu garis pada setiap langkah grid sel saat grid
+        aktif. Audio setelah ujung loop digambar redup: tetap ada tapi diam, yang memungkinkan kamu
+        memperpanjang loop lagi nanti.</p>
       <ul style="--nc:var(--eq)">
-        <li><b>Start</b> (<b class="ui">Pegangan awal loop</b>) merotasi fase: loop dimulai
-          lebih lambat dan bagian yang dilewati berputar ke ujung. Panjang dan tempo tidak
-          berubah. Ini perbaikan untuk loop yang mulai setengah ketuk terlalu awal.</li>
-        <li><b>End</b> (<b class="ui">Pegangan akhir loop</b>) mengubah ukuran loop, dan hanya
-          berfungsi <b>pada sel yang mendefinisikan siklus</b>. Jumlah birama dipertahankan
-          dan tempo yang diatur mengikuti, jadi merentangkan loop memperlambat seluruh set.
-          Sheet-nya menyebutkan hal yang sama: <b class="ui">Seret tepinya untuk menggeser awal dan mengubah panjang loop — mengubah panjang akan menyetel ulang tempo set.</b></li>
+        <li><b>Seret bentuk gelombang</b> untuk menggeser start per ketukan penuh (per langkah
+          grid saat grid aktif); <b>handle start</b> menggesernya bebas. Loop dimulai lebih lambat
+          dan bagian yang dilewati berputar ke ujung; panjang dan tempo tidak berubah. Ini
+          perbaikan untuk loop yang mulai setengah ketuk terlalu awal.</li>
+        <li><b>Penggaris</b> di bawah bentuk gelombang memegang panjang loop sebagai handle: seret
+          dan loop memanjang atau memendek per ketukan <b>dengan tempo tetap</b>. Panjang yang
+          melewati rekaman berisi keheningan.</li>
+        <li><b>Handle end</b> mengubah ukuran loop dan <b>menyetel ulang tempo set</b>, dengan
+          jumlah birama dipertahankan — rentangkan loop dan seluruh set melambat. Handle ini ada
+          pada loop pertama, atau satu-satunya loop.</li>
       </ul>
-      <p>Sel kosong tidak menampilkan audio dan tidak ada yang bisa diseret.</p>
-
-      <h3>Record through</h3>
-      <p>Baris <b class="ui">REKAM LEWAT</b> menyebut preset yang dipakai sel untuk merekam —
-        rig live, kecuali kamu memilih yang lain. Ketuk untuk memilih preset; tanda <b>×</b>-nya
-        mengembalikan sel ke <b class="ui">Rig yang aktif</b>. Lihat
-        <a href="#preset">preset loop</a>.</p>
-
-      <h3>Baris tombol</h3>
-      <p>Di bawah bentuk gelombang, <b class="ui">MULAI</b> memberi empat nudge fase —
-        <b class="ui">-BAR</b>, <b class="ui">-KETUK</b>, <b class="ui">+KETUK</b>,
-        <b class="ui">+BAR</b> — untuk saat jempolmu kurang presisi dibanding grid. Tombol-tombol
-        ini hanya menggeser start.</p>
-      <p><b class="ui">PANJANG · TEMPO TETAP</b> memberi enam: keempat tombol yang sama ditambah
-        <b class="ui">÷2</b> dan <b class="ui">×2</b>. Membagi dua mengubah take
-        delapan-birama yang tidak sengaja menjadi loop empat-birama yang memang kamu maksud;
-        menggandakan memberi ruang untuk overdub frasa yang membentang dua kali siklus.</p>
-      <div class="note">
-        <div class="t">Kenapa tombol length berwarna abu-abu</div>
-        <p>Keenam tombol <b class="ui">PANJANG · TEMPO TETAP</b> nonaktif kecuali sel yang
-          sedang kamu edit adalah sel yang mendefinisikan siklus, dan sheet-nya menjelaskan
-          alasannya: <b class="ui">Hanya trek yang menentukan siklus yang bisa mengubah panjangnya.</b> Jika panjangnya salah pada sel follower, loop yang perlu diedit adalah
-          loop master.</p>
+      <p>Panjang sel lainnya bergerak dalam <b>kelipatan loop pertama</b> — ¼, ½, ×2, ×4, ×8 —
+        sehingga tetap sefase: penggaris berhenti pada kelipatan itu, dan sheet-nya
+        menyebutkannya.</p>
+      <h3>Satu baris per setelan</h3>
+      <p>Di bawah bentuk gelombang, setiap setelan adalah satu baris: namanya, nilainya pada
+        sebuah chip, dan pilihannya di balik satu ketukan.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Baris</th><th>Yang diatur</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">KISI</b></td><td>Mati, 1 birama, 1/2 … 1/16: ke mana start dan
+              penutupan yang diketuk tangan dibulatkan, dan ke mana tepi serta penggaris
+              di-snap.</td></tr>
+            <tr><td><b class="ui">PANJANG</b></td><td>Panjangnya, dipilih langsung — hingga 64 birama
+              pada tempo set untuk loop pertama, kelipatan loop pertama untuk sel lain — dan tiga
+              chip: <b class="ui">Ikuti tempo</b> (loop diputar pada tempo set, pitch-nya tetap),
+              <b>÷2</b> dan <b>×2</b>.</td></tr>
+            <tr><td><b class="ui">PUTAR</b></td><td>Kecepatan, ×½ sampai ×8, dan dua chip:
+              <b class="ui">Terbalik</b> dan <b class="ui">Putar sekali</b>.</td></tr>
+            <tr><td><b class="ui">TRANSPOS</b></td><td>Tombol yang ditahan dan diseret, seperti
+              level: skala dari −12 sampai +12 semitone muncul di bawah jarimu dan loop bergeser
+              satu semitone setiap kali, terdengar langsung; dua ketukan cepat mengembalikannya ke 0.
+              Hasilnya dirender dari take seperti saat direkam, jadi selalu bisa kembali
+              persis.</td></tr>
+            <tr><td><b class="ui">FADE</b></td><td>Panjang fade milik sel, dan sebuah chip:
+              <b class="ui">Fade out</b> selama sel berbunyi (sel berhenti, tepat waktu), selain itu
+              <b class="ui">Fade in</b>.</td></tr>
+            <tr><td><b class="ui">DECAY OVERDUB</b></td><td>100, 90, 75, 50, atau 25 %: seberapa
+              banyak lapisan di bawahnya yang dipertahankan sebuah overdub.</td></tr>
+            <tr><td><b class="ui">KALIKAN</b></td><td><b class="ui">Mati</b>, ×2, ×4, atau ×8 —
+              take diulang menjadi loop yang lebih panjang, <b>tanpa merusaknya</b>. Selama belum
+              ada yang dimainkan di atas pengulangan itu, pengulangannya digambar redup, dan
+              menurunkan atau mematikan faktornya mengembalikan take persis seperti semula. Setelah
+              overdub, aplikasi bertanya dulu (<b class="ui">Turunkan</b>): apa yang di-dub melewati
+              pengulangan pertama akan hilang.</td></tr>
+            <tr><td><b class="ui">INPUT</b>, <b class="ui">OUTPUT</b></td><td>Sama seperti
+              <a href="#routing">ubin IN dan OUT</a>.</td></tr>
+            <tr><td><b class="ui">TETAPKAN PRESET RIG</b></td><td>Preset yang dipakai sel untuk
+              merekam — lihat <a href="#preset">preset loop</a>.</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p>Baris bawah memuat knob <b class="ui">Level</b> (0 hingga 1.5), knob
-        <b class="ui">Pan</b> yang menampilkan <b class="ui">C</b>, <b class="ui">L50</b> atau
-        <b class="ui">R50</b>, dan tombol <b class="ui">Mute</b>, <b class="ui">Undo</b> (overdub
-        terakhir) serta <b class="ui">Hapus</b>, yang menghapus isi sel dan menutup sheet.</p>
-      <p>Tidak ada reverse. Loop hanya diputar maju.</p>
+      <p>Tekan lama sebuah baris me-learn apa yang ia langkahi (<b>Next grid</b>,
+        <b>Next speed</b>…); chip di baris itu me-learn aksinya sendiri. Baris transpose me-learn
+        lewat namanya, karena tekanan pada tombolnya adalah milik tombol itu.</p>
+      <h3>Bagian bawah sheet</h3>
+      <p>Knob <b class="ui">Level</b> (hingga +12 dB) dan knob <b class="ui">Pan</b>
+        (<b class="ui">C</b>, <b class="ui">L50</b>, <b class="ui">R50</b>…), lalu tombol-tombol:</p>
+      <ul style="--nc:var(--eq)">
+        <li><b class="ui">Simpan ke pustaka</b> — take sel ini sendiri ke dalam
+          <a href="#saving">pustaka</a>; tombolnya menampilkan tanda centang setelah masuk.</li>
+        <li>Tombol sampler — <b class="ui">Ke sampler</b> menaruh take pada pad yang kamu pilih;
+          <b class="ui">Dari sampler</b> membawa sampel sebuah pad ke sel ini.</li>
+        <li><b class="ui">Mute</b>, <b class="ui">Undo</b> (dengan sisa langkahnya) dan
+          <b class="ui">Hapus</b>, yang menghapus isi sel dan menutup sheet.</li>
+      </ul>
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
@@ -385,16 +474,18 @@
         Bagian drum yang direkam dengan cara ini nyaris tidak memakan apa pun, tetap bisa diedit
         pukulan demi pukulan, dan mengikuti kit apa pun yang sedang dimuat — ganti kit-nya dan
         bagian yang sama memainkan suara yang baru.</p>
+      <p>Sel ini juga merekam <b>gerakan kontrol</b> bersama pukulannya: preset, scene, knob, atau
+        morph, seperti yang dibuat pedal atau host selama sel merekam, lalu diputar ulang apa
+        adanya. Gerakan yang dibuat di layar tidak direkam, dan gerakan saja tidak pernah memulai
+        take.</p>
       <p>Sel MIDI menggambar satu garis kecil per pukulan di cincinnya alih-alih gelombang, dan
         pad-nya berkedip setiap kali berkas melewati sebuah pukulan. Ubin <b class="ui">OUT</b>-nya
         berubah menjadi <b class="ui">QNT</b> — pad sudah pergi ke mana pun sampler pergi.</p>
-
       <h3>Quantize saat merekam</h3>
       <p>Ubin <b class="ui">QNT</b> berputar antara <b class="ui">MATI</b>, <b class="ui">1/4</b>,
         <b class="ui">1/8</b>, <b class="ui">1/16</b> dan <b class="ui">1/32</b>. Ubin ini
         menggeser apa yang <em>tercetak</em>, tidak pernah apa yang kamu dengar: pukulan yang kamu
         mainkan selalu langsung berbunyi, dan yang mendarat di grid adalah salinan rekamannya.</p>
-
       <h3>Editor MIDI</h3>
       <p>Editor sel MIDI punya lencana <b class="ui">MIDI</b> merah muda dan, sebagai pengganti
         bentuk gelombang, sebuah <b>roll</b>: satu baris per pad yang dimuat kit, satu kolom per
@@ -402,7 +493,7 @@
         selalu memenuhi lebar roll; grid yang lebih halus hanya menggambar lebih banyak garis.</p>
       <figure>
         <img class="phone" src="/docs/assets/loop-events.png" width="600" height="1303"
-             alt="Editor sel loop MIDI: header LOOP 1 dengan lencana MIDI merah muda, knob Quantize, chip GRID 1/4 sampai 1/32 dan jumlah pukulan, roll dengan satu baris per pad sampler dan delapan pukulan di baris pertama, serta penggaris dengan handle END di bawahnya.">
+          alt="Editor sel loop MIDI: header LOOP 1 dengan lencana MIDI merah muda, knob Quantize, chip GRID 1/4 sampai 1/32, jumlah pukulan dan MAX VELOCITY, roll dengan satu baris per pad sampler dan delapan pukulan di baris pertama, penggaris dengan handle END di bawahnya, serta baris START dan LENGTH.">
         <figcaption>Editor sel MIDI: quantize, chip grid, dan roll</figcaption>
       </figure>
       <ul style="--nc:var(--pitch)">
@@ -419,22 +510,29 @@
         diterapkan pada aslinya, tidak pernah pada hasil terakhir: putar knob turun dan pukulan
         berjalan kembali ke tempat kamu memainkannya; pada <b class="ui">MATI</b> timing-nya kembali
         milikmu. Bandingkan 1/8 dan 1/16 sesering yang kamu mau. Editan tangan di roll menjadi take
-        mainan yang baru. Baris itu juga menghitung isi take — <b class="ui">8 ketukan</b>.</p>
+        mainan yang baru. Baris itu juga menghitung isi take — <b class="ui">8 ketukan</b> — dan
+        <b class="ui">VELOCITY MAKS</b> memainkan setiap pukulan dengan velocity penuh, seberapa pun
+        kerasnya dimainkan.</p>
+      <p>Di bawah roll, <b class="ui">MULAI</b> menggeser take sebesar <b class="ui">-BAR</b>,
+        <b class="ui">-KETUK</b>, <b class="ui">+KETUK</b> dan <b class="ui">+BAR</b>, dan
+        <b class="ui">PANJANG</b> bekerja seperti pada sel audio.</p>
       <p>Tanpa kit yang dimuat, roll menampilkan <b class="ui">Muat kit di tab Sample untuk mengedit rekaman ini di grid.</b></p>
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
       <h2 id="undo"><span class="n">04.8</span>Undo dan hapus</h2>
-      <p>Sudut <b class="ui">Undo</b> setiap sel melakukan hal yang wajar untuk sel itu. Jika sel
-        memegang overdub terakhir, ia membatalkan overdub itu — dan menekannya lagi mengembalikan
-        overdub, jadi ia sekaligus berfungsi sebagai tombol compare. Jika tidak, ia <b>menghapus
-        take sel itu</b>.</p>
-      <p>Undo overdub <b>hanya sedalam satu sesi</b> dan <b>berbagi antar sel</b>: overdub kedua,
-        di sel mana pun, menggantikan apa yang disimpan undo. Overdub sel 2, dan undo yang kamu
-        simpan untuk sel 1 pun hilang — sudut sel 1 kemudian malah menghapus take-nya.</p>
-      <p id="undo-transport">Tombol undo di transport melakukan hal yang sama tanpa memilih sel:
-        ia membatalkan overdub terakhir jika ada, dan jika tidak, menghapus take yang terakhir
-        ditutup. Tombol tempat sampah, <b class="ui">Hapus semua loop</b>, mengosongkan looper.</p>
+      <p>Undo selalu milik sebuah sel. Sudut <b class="ui">Undo</b> setiap sel — dan tombol
+        <b class="ui">Undo</b> di editornya — <b>mundur satu lapisan per ketukan</b>: pertama
+        overdub yang sedang berjalan, lalu lapisan di atas take satu per satu, sampai ke take itu
+        sendiri. Ia tidak pernah maju lagi dan tidak pernah melewati take: di take, tombolnya
+        samar. Tombol di editor menunjukkan berapa langkah yang tersisa, dan bagian tengah sel
+        menunjukkan lapisan tempatnya berada (<b>L3</b>, <b>L2</b>…). Ketukan yang lebih cepat dari
+        layar tetap dihitung satu per satu. Pada sel MIDI, undo membatalkan overdub terakhirnya.</p>
+      <p id="undo-transport">Tidak ada lagi undo di transport, dan tidak ada aksi MIDI untuk
+        "undo apa pun yang terakhir": pedal meng-undo sel yang disebut namanya
+        (<b>Loop 1 · Undo</b>…). Menghapus adalah hal terpisah. <b class="ui">Hapus</b> di editor
+        mengosongkan satu sel; tombol tempat sampah, <b class="ui">Hapus semua loop</b>,
+        mengosongkan looper.</p>
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
@@ -443,9 +541,7 @@
         nilainya. <b class="ui">IN</b> dan <b class="ui">OUT</b> menentukan dari mana suara loop
         berasal dan ke mana ia pergi, <b class="ui">LEN</b> dan <b class="ui">DUB</b> berapa lama
         dan berapa kali putaran; ubin <b class="ui">PRESET</b> muncul saat sel punya preset sendiri;
-        ubin edit membuka <a href="#editor">editor loop</a>, dan knob-nya adalah level sel
-        (<b class="ui">Level trek loop N</b>, 0 hingga 1.5).</p>
-
+        ubin edit membuka <a href="#editor">editor loop</a>, dan speaker-nya adalah level sel.</p>
       <h3>IN</h3>
       <p>Menu <b class="ui">IN</b> menawarkan <b class="ui">Post FX (rig)</b> — gitar yang
         sudah diproses, yang biasanya memang kamu inginkan. Dengan beberapa rig, ini menjadi
@@ -460,7 +556,6 @@
         rig lain diam selama take dan kembali sesudahnya. Buat rig khusus untuk satu bagian loop —
         oktaf bass, suara pad — dan ia tidak pernah bocor ke permainanmu. Ubinnya menampilkan
         <b class="ui">Khusus · &lt;rig&gt;</b>.</p>
-
       <h3>OUT</h3>
       <p>Menu <b class="ui">OUT</b> menawarkan <b class="ui">Mix utama</b> (ubin
         <b class="ui">UTAMA</b>), satu entri per pasangan output hardware tambahan —
@@ -472,21 +567,33 @@
         yang bersih, kirim ke rig dengan delay dan filter, lalu sapukan filter selagi loop
         berjalan. Rig yang menjadi sumber rekaman sel tidak ditawarkan — itu akan jadi jalur
         feedback.</p>
-
       <h3>LEN dan DUB</h3>
-      <p>Ubin <b class="ui">LEN</b> berputar antara 0, 1, 2, 4, dan 8 birama. Pada 0
-        tampilannya <b class="ui">BEBAS</b>; selain itu <b class="ui">N BAR</b>, dan take dipatok
-        pada jumlah birama tersebut. Jika belum ada tempo yang diatur, menunya menampilkan
-        <b class="ui">Belum ada tempo — rekam loop pertama dengan AUTO menyala</b>.</p>
+      <p>Ketukan pada ubin <b class="ui">LEN</b> melangkah dari <b class="ui">BEBAS</b>, lalu 1, 2,
+        4, 8, 16, 32, dan 64 birama (<b class="ui">4 BAR</b>…), dan take dipatok pada jumlah birama
+        tersebut pada tempo set. <b>Tekan lama</b> menampilkan semua pilihan:
+        <b class="ui">BEBAS</b>, setiap jumlah birama dari 1 sampai 64 di bawah
+        <b class="ui">Birama</b>, dan <b class="ui">Dari loop pertama</b> — ×¼, ×½, ×2, ×4, ×8 dari
+        loop pertama, yang sama sekali tidak memerlukan tempo. Take FREE, setelah ditutup,
+        menampilkan hasilnya: <b>AUTO · 4</b>. Panjang yang tidak membagi siklus di-snap ke
+        kelipatan loop pertama yang terdekat.</p>
       <p>Ubin <b class="ui">DUB</b> berputar antara 0, 1, 2, dan 4 putaran overdub otomatis —
         sel kembali diputar biasa dengan sendirinya setelah sejumlah putaran tersebut.</p>
-
+      <h3>Tombol level</h3>
+      <p>Speaker adalah level sel: terisi dari kiri sejauh level-nya keras, dicoret saat hening.
+        <b>Tahan</b> dan fader sel muncul dengan tutupnya di bawah jarimu; <b>seret</b> ke atas
+        atau ke bawah untuk mengatur level, terdengar langsung; <b>lepaskan</b> dan fader-nya
+        hilang — satu ketukan membiarkannya tampil sejenak, cukup lama untuk dibaca. <b>Dua ketukan
+        cepat</b> mengembalikan level ke <b>0 dB</b>. Level naik hingga <b>+12 dB</b>, seperti
+        setiap level di aplikasi. Tidak ada hal lain yang terbuka selama kamu menahannya; MIDI
+        learn level ada di knob <b class="ui">Level</b> di editor. Lewat CC, level mengikuti skala
+        dB fader: CC 0 adalah hening, 0 dB ada di sekitar CC 106, puncaknya +12 dB.</p>
       <h3 id="preset">Preset loop</h3>
-      <p>Sebuah sel bisa merekam lewat suaranya sendiri, terpisah dari input-nya. Tekan lama sel →
-        <b class="ui">Preset loop · …</b> menawarkan <b class="ui">Rig yang aktif</b> (default:
-        memainkan apa pun yang sedang aktif), <b class="ui">Adegan A rig saat ini</b> sampai D,
-        dan <b class="ui">Pilih preset…</b> — preset milik lagu yang sedang di panggung lebih
-        dulu, lalu setiap bank, dengan kategori dan pencarian.</p>
+      <p>Sebuah sel bisa merekam lewat suaranya sendiri, terpisah dari input-nya. Baris
+        <b class="ui">TETAPKAN PRESET RIG</b> di editor menawarkan <b class="ui">Rig yang aktif</b>
+        (default: memainkan apa pun yang sedang aktif), <b class="ui">Adegan A rig saat ini</b>
+        sampai D, dan <b class="ui">Pilih preset…</b> — preset milik lagu yang sedang di panggung
+        lebih dulu, lalu setiap bank, dengan kategori dan pencarian. Begitu sel punya preset, ubin
+        <b class="ui">PRESET</b>-nya membuka pemilih yang sama.</p>
       <p>Preset itu aktif saat sel mulai merekam, memulai overdub, atau di-arm, dan saat take
         selesai rig yang tadi kamu pakai kembali — kecuali kamu memilih preset lain sementara itu,
         yang kemudian tetap aktif. Rekam bagian ritme dengan preset clean lalu solo di atasnya
@@ -494,29 +601,76 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="saving"><span class="n">04.10</span>Apa yang disimpan</h2>
+      <h2 id="saving"><span class="n">04.10</span>Pustaka dan apa yang disimpan</h2>
+      <p>Ada dua tempat yang menyimpan loop, dan keduanya menyimpan hal yang berbeda.</p>
       <p>Tombol preset membuka <b class="ui">Preset looper</b>, dan preset ini menyimpan
-        <b>setup-nya</b>: IN, OUT, LEN, DUB, pan, preset loop, dan quantize setiap sel, plus flag
-        AUTO — serta take sel MIDI, yang ukurannya kecil. Sebuah template yang kamu panggil di
-        awal lagu; take audio tidak ikut.</p>
+        <b>setup-nya</b>: setelan setiap sel — IN, OUT, LEN, DUB, pan, preset-nya, quantize,
+        kecepatan, reverse, fade, transpose, dan lainnya — plus flag AUTO, serta take sel MIDI,
+        yang ukurannya kecil. Sebuah template yang kamu panggil di awal lagu; take audio tidak
+        ikut.</p>
+      <h3>Pustaka</h3>
+      <p>Tombol pustaka (buku-buku) membuka <b class="ui">LOOP</b>, yang menyimpan loop <b>beserta
+        audionya</b>. <b class="ui">Simpan loop</b> menyimpan looper apa adanya — setiap take,
+        setelan sel, level, dan tempo — dengan nama yang kamu ketik (atau <b>Loop 1</b>,
+        <b>Loop 2</b>…); <b class="ui">Simpan ke pustaka</b> di editor menyimpan take satu sel.
+        Setiap loop tersimpan menampilkan tanggal, panjang, tempo, dan berapa sel yang
+        dimuatnya.</p>
+      <p>Ketuk loop tersimpan untuk membuka menunya:</p>
+      <ul style="--nc:var(--power)">
+        <li><b class="ui">Muat ke</b> <b>Loop 1</b>…<b>Loop 4</b> — take-nya di-mix seperti saat
+          terdengar ke dalam sel yang kamu pilih; sel lain tetap.</li>
+        <li><b class="ui">Semua loop, seperti disimpan</b> — menggantikan isi looper (bertanya dulu jika
+          looper berisi sesuatu): setelan, tempo, level, dan take.</li>
+        <li><b class="ui">Ganti nama</b>, <b class="ui">Bagikan…</b>, <b class="ui">Ekspor sebagai WAV…</b>
+          dan <b class="ui">Hapus</b>.</li>
+      </ul>
       <h3>Loop sebagai file</h3>
-      <p>Menu tekan-lama sebuah sel mengekspor loop-nya — <b class="ui">Ekspor loop sebagai WAV…</b> —
-        sebagai WAV stereo 32-bit float pada sample rate sesi, dan <b class="ui">Ekspor semua loop…</b>
-        mengekspor semua loop sekaligus. Setiap file dimulai pada downbeat siklus, jadi file-file itu
-        langsung sejajar saat kamu memasukkannya bersama ke DAW.</p>
-      <p><b class="ui">Muat loop dari file…</b> memasukkan file audio apa pun ke sel dan langsung
-        memutarnya. Ke looper yang masih kosong, file itu menjadi loop persis apa adanya, tanpa
-        snapping batas, dan membawa tempo-nya sendiri: dibaca dari nama seperti
-        <em>Loop 2 - 96.5 BPM</em> — nama yang diberikan saat ekspor — atau dihitung dari
-        panjangnya. Sel MIDI tidak punya audio, jadi tidak menawarkan keduanya.</p>
+      <p>Dua tombol di bagian bawah pustaka bekerja pada pustaka itu sendiri.
+        <b>Impor</b> (<b class="ui">Impor ke pustaka</b>) menerima loop NAMper dan file
+        audio; masing-masing masuk sebagai loop tersimpan, untuk dimuat ke sebuah sel dari daftar.
+        File audio membawa tempo-nya jika namanya menyebutkannya — <em>Loop 2 - 96.5 BPM</em>,
+        nama yang diberikan saat ekspor. <b>Ekspor</b> (<b class="ui">Ekspor pustaka</b>)
+        mengirim loop yang ditampilkan — semuanya, atau hasil pencarian —
+        <b class="ui">Sebagai loop NAMper</b> atau <b class="ui">Sebagai file WAV</b>: setiap take menjadi
+        file sendiri, dinamai sesuai loop, sel, dan tempo-nya, siap dimasukkan ke DAW.</p>
+      <p>Pengaturan → <b class="ui">Panggung</b> → <b class="ui">LOOPER</b> menampilkan berapa
+        banyak loop yang tersimpan dan berapa ruang yang dipakainya.</p>
       <div class="note">
-        <div class="t">Preset membawa setup, file membawa suara</div>
-        <p>Preset looper tidak pernah menyimpan audio rekaman — terlalu besar; hanya take MIDI dari
-          pad yang ikut di dalamnya. Untuk menyimpan sebuah loop, ekspor
-          loop itu; untuk menyimpan seluruh penampilan, gunakan perekam di tab
-          <a href="/docs/id/mix.html#recorder">Mix</a>, yang merekam mix output ditambah stem input
-          kering yang terpisah.</p>
+        <div class="t">Preset membawa setup, pustaka membawa suara</div>
+        <p>Preset looper tidak pernah menyimpan audio rekaman — hanya take MIDI dari pad yang ikut
+          di dalamnya. Untuk menyimpan sebuah loop, simpan ke pustaka; untuk menyimpan seluruh
+          penampilan, gunakan perekam di tab <a href="/docs/id/mix.html#recorder">Mix</a>, yang
+          merekam mix output ditambah stem input kering yang terpisah.</p>
       </div>
+    </section>
+
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="live"><span class="n">04.11</span>Lagu, ruangan, dan clock</h2>
+      <h3>Bagian lagu</h3>
+      <p>Tidak ada mode lagu di looper: aransemen lagu tinggal di otomasinya pada tab
+        <a href="/docs/id/perform.html">Perform</a>, yang punya lajur looper — rekam, arm, mute,
+        solo, putar dan hentikan sebuah sel, undo, fade, dan penukaran. Sel yang <b>dimulai oleh
+        otomasi lagu</b> masuk <b>dari awalnya pada garis birama berikutnya</b>: sebuah bagian.
+        Sel yang kamu mulai dengan tangan masuk di tengah siklus, tepat waktu, seperti biasa.
+        Biarkan satu sel terus diputar di bawah bagian-bagian itu dan ia menjadi dasar aransemen
+        band.</p>
+      <h3>Peredam gema</h3>
+      <p>Mikrofon ponsel di ruangan mendengar apa yang diputar aplikasi — loop, pad, backing track,
+        dan click — dan lapisan baru akan merekamnya lagi: paling baik jadi keruh, paling buruk
+        loop yang terus menumpuk dirinya sendiri. <b class="ui">Peredam gema</b>, aktif secara
+        default, menghapus gema itu dari apa yang ditulis sel yang sedang merekam, overdub, atau
+        armed, dan tidak di tempat lain: apa yang kamu dengar live tidak pernah disentuh dan tidak
+        mendapat latensi. Ia mempelajari ruangan dari loop yang diputar sendirian sesaat; tanpa
+        gema di mikrofon, take persis sama dengan input. Sakelarnya ada di Pengaturan →
+        <b class="ui">Audio</b> dan di roda gigi transport.</p>
+      <h3>MIDI clock</h3>
+      <p>Pengaturan → <b class="ui">Kontrol</b> → <b class="ui">MIDI clock</b> mengatur clock ke dua
+        arah. <b class="ui">Ikuti MIDI clock</b> menjadikan tempo clock sebagai tempo set — di
+        atas lagu, loop, atau tanganmu — dan sel yang armed mulai merekam pada downbeat
+        berikutnya; pilih sumbernya dan offset untuk pengirim yang terlalu cepat atau terlambat.
+        <b class="ui">Kirim MIDI clock</b> mengirim 24 tick per ketukan ke tujuan yang kamu pilih,
+        dari jam audio yang juga menjalankan click: start dikirim di awal loop, stop saat loop
+        berhenti.</p>
     </section>
 
     <nav class="pager">
