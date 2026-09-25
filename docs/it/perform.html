@@ -99,7 +99,7 @@
       <p>Se un file non può essere letto ottieni <b class="ui r">Impossibile importare &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="La scheda Perform: la card del player con NAMper (full) caricato a 146 BPM in D#m, i tasti di aggiunta, registrazione e testo sulla riga del nome, sotto di essa i tasti del transport e AUTO LYRICS, la forma d'onda, e sotto la forma d'onda la corsia Preset del brano con i nomi dei preset e delle scene che richiama, poi la striscia del testo e il fader della base con il chip DIRECT; più sotto la card DEMO SET con AUTO NEXT attivo, e i pulsanti da palco del brano.">
+             alt="La scheda Perform: la card del player con NAMper (full) caricato a 146 BPM in D#m, i tasti di aggiunta, registrazione e testo sulla riga del nome, sotto di essa i tasti del transport e AUTO TESTO, la forma d'onda, e sotto la forma d'onda la corsia Preset del brano con i nomi dei preset che richiama e la sua corsia Scena con le lettere delle scene, la lente dello zoom in alto a sinistra, poi la striscia del testo e il fader della base con il chip DIRECT; più sotto la card DEMO SET con AUTO AVANTI attivo, e i pulsanti da palco del brano, con acceso quello che suona.">
         <figcaption>La scheda Perform: il player con l'automazione del brano, il set, i pulsanti da palco</figcaption>
       </figure>
       <div class="note tip">
@@ -189,8 +189,10 @@
         <li><b>Una scaletta dal vivo, nessun brano scelto</b> — i brani del set. Il primo tocco ne
           sceglie uno, e i suoi suoni prendono il posto sui pulsanti.</li>
         <li><b>Un brano scelto</b> — le voci del brano stesso, ognuna un preset con la scena che
-          porta, nell'ordine del brano. Quella che suona è accesa, e un pulsante mostra solo le scene
-          che il suo preset contiene.</li>
+          porta, nell'ordine del brano. Quella che suona è accesa — la luce segue ciò che suona: il
+          pulsante che corrisponde al preset e alla scena attivi, dopo l'automazione, uno
+          spostamento o un cambio di scena — e un pulsante mostra solo le scene che il suo preset
+          contiene.</li>
       </ul>
       <p>Un pulsante commuta nell'istante in cui il dito si posa, non quando si solleva, così un
         colpo rapido fra due battute non va mai perso. Ce ne sono quattro oppure otto: il chip del
@@ -315,7 +317,8 @@
         libere.</p>
       <p>Sostituisce i marcatori delle versioni precedenti. Ciò che faceva un marcatore — richiamare
         un preset e la sua scena in un certo momento — ora è un punto sulla corsia <b class="ui">Preset</b> del
-        brano, e i vecchi marcatori di un brano vi vengono trasferiti una volta sola, da soli.</p>
+        brano dove cambia il preset e un punto sulla sua corsia <b class="ui">Scena</b> dove cambia la
+        scena, e i vecchi marcatori di un brano vi vengono trasferiti una volta sola, da soli.</p>
 
       <h3>Registrare</h3>
       <p>Il <strong>tasto di registrazione</strong> — il cerchio accanto al tasto di aggiunta sulla
@@ -329,7 +332,9 @@
           <thead><tr><th>Cosa viene scritto</th><th>Da dove</th></tr></thead>
           <tbody>
             <tr><td>Una manopola, l'on/off di un blocco, una scena, il morph delle scene</td><td>Lo
-              schermo, un pedale, un host di plug-in. Uno sweep tiene un punto ogni 20 ms</td></tr>
+              schermo, un pedale, un host di plug-in. Uno sweep tiene al massimo un punto ogni 20 ms, e nessuno per uno
+              spostamento sotto 1/500 dell'escursione della manopola, così una mano ferma non scrive
+              nulla</td></tr>
             <tr><td>Un preset di rig con la scena su cui arriva, un preset del looper, un kit di
               pad</td><td>Un tocco sulle voci del brano — i pulsanti da palco, il pannello del set,
               un pedale</td></tr>
@@ -347,11 +352,17 @@
         dell'automazione stessa.</p>
       <div class="note tip">
         <div class="t">Registrazione al tocco</div>
-        <p>Una corsia viene sovrascritta solo mentre la muovi, e per 0,6 s dopo che la mano si
+        <p>La corsia di una manopola, di un fader o del morph viene sovrascritta solo mentre la muovi, e per 0,6 s dopo che la mano si
           stacca. Il resto di quella corsia, e ogni corsia che non tocchi, resta com'era e continua
           a suonare — così un secondo passaggio può sistemare una manopola nel ritornello senza
           rifare il brano.</p>
       </div>
+      <p>Una corsia a gradini — un preset, una scena, l'on/off di un blocco, un preset del looper, un
+        kit — viene <strong>presa in carico</strong> dalla tua prima pressione su di essa finché la
+        registrazione non si ferma: il brano si ferma o viene spostato, oppure spegni il tasto di
+        registrazione. Ciò che conteneva in quel tratto lascia il posto a ciò che premi ora invece di
+        accumularsi accanto. Prima della tua prima pressione e dopo la fine della registrazione la
+        corsia resta com'era, quindi spegnere il tasto di registrazione è il punch-out.</p>
       <p>La riproduzione non ha bisogno di interruttori: l'automazione suona ogni volta che suona
         il brano. Un avvio o uno spostamento ricostruisce lo stato del brano — preset, scene,
         interruttori, manopole, fader — così il suono è giusto ovunque tu entri. I colpi dei pad e
@@ -365,7 +376,7 @@
         <li><b>Una manopola, un fader o il morph</b> disegna la sua curva, sul proprio
           intervallo.</li>
         <li><b>Una corsia a gradini</b> disegna una tacca a ogni punto con accanto le sue parole:
-          <b class="ui">Preset</b> il nome del preset e la scena su cui arriva, <b class="ui">Scena</b> la lettera, la corsia
+          <b class="ui">Preset</b> il nome del preset, <b class="ui">Scena</b> la lettera, la corsia
           <b class="ui">On/off</b> di un blocco <b class="ui">Attivo</b> o <b class="ui">Off</b>, <b class="ui">Preset looper</b> e <b class="ui">Kit sampler</b> i loro nomi.</li>
         <li><b class="ui">Pad</b> mostra quale pad viene colpito; <b class="ui">Looper</b> l'azione e la sua cella —
           <b class="ui">Stop/Play</b> 2, <b class="ui">Mute</b> 3.</li>
@@ -373,20 +384,36 @@
       <p>Le parole di un punto occupano lo spazio fino al punto successivo, e vengono troncate
         dove i punti si affollano. Con più di quattro corsie le righe scorrono.</p>
 
+      <h3>Zoom</h3>
+      <p>Uno sweep di un secondo su un brano di quattro minuti è un gradino alla larghezza
+        dell'intero brano. <strong>Pizzica</strong> le corsie, o tocca la lente in alto a sinistra
+        (<b class="ui">Zoom</b>: 1×, 4×, 16×, poi di nuovo l'intero brano), e mostrano un tratto del
+        brano attorno alla testina — seguendola mentre il brano suona, con la testina disegnata come
+        una linea. Toccare e trascinare i punti funziona sulla vista ingrandita come su quella
+        intera.</p>
+
       <h3>Modificare un punto</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Tocca</strong> una corsia e si apre il suo punto più vicino. In cima c'è quando
+        <li><strong>Tocca</strong> una corsia a gradini — un preset, una scena, un interruttore, i pad,
+          il looper — e si apre il suo punto più vicino. In cima c'è quando
           accade: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
           <b class="ui">+BAR</b>, oppure <b class="ui">Alla testina</b>. Sotto, che cosa è — il preset del
-          brano e la sua <b class="ui">SCENA</b>, una scena, <b class="ui">Attivo</b> o <b class="ui">Off</b>, un pad con <b class="ui">Colpo</b> o <b class="ui">Stop</b> e la sua
-          <b class="ui">VELOCITY</b>, l'<b class="ui">AZIONE</b> e la <b class="ui">CELLA</b> del looper. Il <b class="ui">VALORE</b> di una manopola, di un fader
-          o del morph ha uno slider e un campo: digita il numero nelle unità del parametro, viene
-          tenuto nel suo intervallo, e l'intervallo è mostrato sotto. Il tasto del cestino elimina
-          il punto.</li>
+          brano, una scena, <b class="ui">Attivo</b> o <b class="ui">Off</b>, un pad con <b class="ui">Colpo</b> o <b class="ui">Stop</b> e la sua
+          <b class="ui">VELOCITY</b>, l'<b class="ui">AZIONE</b> e la <b class="ui">CELLA</b> del looper. Il tasto del cestino elimina il punto.</li>
         <li><strong>Trascina</strong> un punto lungo la sua corsia per spostarlo. Quando il tempo
           del brano è noto, si posa sui movimenti del brano.</li>
-        <li><strong>Tieni premuta</strong> una corsia per <b class="ui">Elimina questa corsia</b>.</li>
+        <li>Una <strong>curva</strong> — una manopola, un fader, il morph — non si modifica punto per
+          punto: registrala di nuovo per cambiarla.</li>
       </ul>
+
+      <h3>Gli eventi di una corsia</h3>
+      <p><strong>Tieni premuta</strong> una corsia e i suoi eventi compaiono come elenco, in ordine di
+        tempo: di ognuno il tempo e che cosa è. Su una corsia a gradini, tocca un evento per aprirlo
+        come sopra, o il suo tasto del cestino per eliminarlo. Una curva mostra quanti
+        <b class="ui">PUNTI</b> ha, il <b class="ui">TEMPO NEL BRANO</b> che copre e l'intervallo dei suoi
+        <b class="ui">VALORI</b> — <b class="ui">Una curva cambia solo quando la si registra di nuovo.</b>
+        <b class="ui">Elimina questa corsia</b> in fondo rimuove l'intera corsia, dopo aver chiesto
+        conferma.</p>
 
       <h3>Aggiungere un punto a mano</h3>
       <p>Il <strong>tasto di aggiunta</strong> (<b class="ui">Aggiungi all’automazione</b>) mette un punto alla
@@ -408,7 +435,8 @@
         </table>
       </div>
       <p>Una scelta mette il punto con il valore che ha ora e lo apre lì nel foglio, per digitare o
-        far scorrere il valore e spostare il tempo. Una corsia che il brano ancora non ha viene
+        far scorrere il valore — il <b class="ui">VALORE</b> di una manopola o di un fader ha uno slider e un
+        campo nelle unità del parametro, tenuto nel suo intervallo — e spostare il tempo. Una corsia che il brano ancora non ha viene
         creata apposta. Entrambi i tasti dell'automazione sono attenuati finché il brano non ha una
         timeline — nessuna base e nessuna <b class="ui">Durata</b>.</p>
       <figure>
@@ -563,7 +591,7 @@
         <table>
           <thead><tr><th>Stem</th><th>Cosa contiene</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>Il master: rig, looper, pad del sampler e backing track insieme</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>Il master: rig, looper, pad del sampler e backing track insieme — il click resta fuori</td></tr>
             <tr><td><b class="ui">input</b></td><td>L'ingresso pulito della scheda audio, con qualunque numero di canali fornisca la tua interfaccia</td></tr>
             <tr><td><b class="ui">base</b></td><td>Il backing track da solo, quando ce n'è uno collegato</td></tr>
           </tbody>

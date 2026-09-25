@@ -152,8 +152,8 @@
               <td>Mutes the other playing cells; press again to bring them back. Soloing another
                 cell hands the solo over.</td></tr>
             <tr><td>Bottom left</td><td><b class="ui">Undo</b></td>
-              <td>Steps this cell back one layer per tap, down to the take — see
-                <a href="#undo">Undo and clear</a>.</td></tr>
+              <td>Steps this cell back one layer per tap, down to the take and past it: at
+                <b>L1</b> it clears the cell — see <a href="#undo">Undo and clear</a>.</td></tr>
             <tr><td>Bottom right</td><td><b class="ui">Play</b> / <b class="ui">Stop</b></td>
               <td>Stops or starts this loop alone.</td></tr>
           </tbody>
@@ -214,7 +214,8 @@
               cell fades out while every stopped one fades in, over the crossfade length. Lit only
               while some cells play and some are stopped.</td></tr>
             <tr><td>Play / stop</td><td><b class="ui">Play loops</b> /
-              <b class="ui">Stop loops</b>, disabled until there is a cycle.</td></tr>
+              <b class="ui">Stop loops</b>, disabled until there is a cycle. It swaps its icon;
+              its colour stays.</td></tr>
             <tr><td>Trash</td><td><b class="ui">Clear all loops</b>.</td></tr>
           </tbody>
         </table>
@@ -497,14 +498,15 @@
       <h2 id="undo"><span class="n">04.8</span>Undo and clear</h2>
       <p>Undo always belongs to a cell. Each cell's <b class="ui">Undo</b> corner — and the
         <b class="ui">Undo</b> key in its editor — <b>steps back one layer per tap</b>: first the
-        overdub going on now, then the layers on top of the take one by one, down to the take
-        itself. It never goes forward again and never past the take: at the take the key is faint.
-        The editor's key shows how many steps are left, and the cell's centre shows the layer it is
-        on (<b>L3</b>, <b>L2</b>…). Taps faster than the screen each count. On a MIDI cell undo
+        overdub going on now, then the layers on top of the take one by one, then the take
+        itself: at <b>L1</b> an undo clears the cell. It never goes forward again. The key is live
+        as soon as the cell holds a take. The editor's key shows how many steps are left, the take
+        counted among them — a take with two overdubs shows 3 — and the cell's centre shows the
+        layer it is on (<b>L3</b>, <b>L2</b>…). Taps faster than the screen each count. On a MIDI cell undo
         takes back its last overdub.</p>
       <p id="undo-transport">There is no undo in the transport any more, and no MIDI action for
         "undo whatever was last": a pedal undoes a named cell (<b>Loop 1 · Undo</b>…). Clearing is
-        separate. The editor's <b class="ui">Clear</b> empties one cell; the trash key,
+        separate. The editor's <b class="ui">Clear</b> empties one cell at once; the trash key,
         <b class="ui">Clear all loops</b>, empties the looper.</p>
     </section>
 
@@ -549,8 +551,8 @@
       <p>The <b class="ui">DUB</b> tile cycles 0, 1, 2 and 4 automatic overdub passes — the cell
         drops back to playing by itself after that many laps.</p>
       <h3>The level key</h3>
-      <p>The speaker is the cell's level: filled from the left as far as the level is loud, struck
-        through at silence. <b>Hold it</b> and the cell's fader comes up with its cap under your
+      <p>The speaker is the cell's level: filled from the left in the cell's colour as far as the
+        level is loud — 0 dB fills about half — and struck through at silence. <b>Hold it</b> and the cell's fader comes up with its cap under your
         finger; <b>drag</b> up or down to set the level, heard as you go; <b>let go</b> and the
         fader is gone — a tap leaves it up a moment, long enough to read. <b>Two quick taps</b> put
         the level back at <b>0 dB</b>. Levels go up to <b>+12 dB</b>, as every level in the app
@@ -593,6 +595,10 @@
         <li><b class="ui">Rename</b>, <b class="ui">Share…</b>, <b class="ui">Export as WAV…</b>
           and <b class="ui">Delete</b>.</li>
       </ul>
+      <p>Each saved loop also has a <b>preview</b> key, <b class="ui">Preview the loop</b>, with a
+        ring for its progress: the takes, mixed at their levels, loop beside the engine while the
+        cells and the transport are left alone. One preview plays at a time; it stops when the sheet
+        closes, when another starts, or when the loop is loaded.</p>
       <h3>Loops as files</h3>
       <p>The two keys at the foot of the library act on the library itself.
         <b>Import</b> (<b class="ui">Import into the library</b>) takes NAMper loops and audio
@@ -609,7 +615,7 @@
         <p>A looper preset never holds recorded audio — only a MIDI take of the pads travels
           inside it. To keep a loop, save it to the library; to keep a whole performance, use the
           recorder on the <a href="/docs/mix.html#recorder">Mix</a> tab, which records the output
-          mix plus a separate dry input stem.</p>
+          mix (without the click) plus a separate dry input stem.</p>
       </div>
     </section>
 
@@ -625,7 +631,8 @@
       <h3>Echo cancelling</h3>
       <p>A phone's mic in the room hears what the app plays — the loops, the pads, the backing
         track and the click — and a new layer would record them again: mud at best, at worst a loop
-        that builds on itself. <b class="ui">Echo cancelling</b>, on by default, takes that echo out
+        that builds on itself. <b class="ui">Echo cancelling</b>, off by default — switch it on when
+        the phone's own mic hears the room — takes that echo out
         of what a recording, overdubbing or armed cell writes, and nowhere else: what you hear live
         is never touched and gains no latency. It learns the room from the loops playing on their
         own for a moment; with no echo at the mic the take is exactly the input. The switch is in
@@ -634,9 +641,18 @@
       <p>Settings → <b class="ui">Control</b> → <b class="ui">MIDI clock</b> sets the clock both
         ways. <b class="ui">Follow a MIDI clock</b> makes the clock's tempo the set's — above a
         song, a loop or your hand — and an armed cell starts recording on its next downbeat; pick
-        the source and an offset for a sender that runs early or late. <b class="ui">Send MIDI
-        clock</b> sends 24 ticks a beat to the destination you pick, off the audio clock the click
-        runs on: start goes out on the loop's top, stop when it stops.</p>
+        the source and an offset for a sender that runs early or late. A running loop keeps its bar
+        lines on the clock's through a long set: a millisecond of drift is taken back a sample at a
+        time, too little to hear. The sender's <b>Stop</b> stops the song, the loops and the
+        click. <b class="ui">Send MIDI clock</b> sends 24 ticks a beat to the destination you pick,
+        off the audio clock the click runs on: start goes out on the loop's top, stop when it
+        stops.</p>
+      <p>Besides the connected devices, the destination can be <b class="ui">NAMper (other
+        apps)</b> — a clock source a drum machine or synth app on the same device picks — or the
+        <b class="ui">Network session</b>: a Mac on the same Wi-Fi connects to the phone in Audio
+        MIDI Setup → MIDI Network Setup, and the phone is listed there only while the session is
+        picked. On the iPhone and iPad the network session can be the clock's source too; on
+        Android the network carries the clock out only.</p>
     </section>
 
     <nav class="pager">

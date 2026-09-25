@@ -158,8 +158,8 @@
               <td>Coupe les autres cellules en lecture ; appuie de nouveau pour les faire
                 revenir. Mettre une autre cellule en solo lui passe le solo.</td></tr>
             <tr><td>En bas à gauche</td><td><b class="ui">Annuler</b></td>
-              <td>Fait reculer cette cellule d'une couche par appui, jusqu'à la prise — voir
-                <a href="#undo">Annuler et effacer</a>.</td></tr>
+              <td>Fait reculer cette cellule d'une couche par appui, jusqu'à la prise et au-delà :
+                sur <b>L1</b>, elle efface la cellule — voir <a href="#undo">Annuler et effacer</a>.</td></tr>
             <tr><td>En bas à droite</td><td><b class="ui">Lecture</b> / <b class="ui">Stop</b></td>
               <td>Arrête ou lance cette loop seule.</td></tr>
           </tbody>
@@ -229,7 +229,7 @@
               d'autres sont arrêtées.</td></tr>
             <tr><td>Lecture / stop</td><td><b class="ui">Lancer les boucles</b> /
               <b class="ui">Arrêter les boucles</b>, désactivés tant qu'il n'y a pas de
-              cycle.</td></tr>
+              cycle. L'icône change ; la couleur reste.</td></tr>
             <tr><td>Corbeille</td><td><b class="ui">Effacer toutes les boucles</b>.</td></tr>
           </tbody>
         </table>
@@ -538,15 +538,16 @@
       <p>L'annulation appartient toujours à une cellule. La touche d'angle <b class="ui">Annuler</b>
         de chaque cellule — et la touche <b class="ui">Annuler</b> de son éditeur — <b>recule d'une
         couche par appui</b> : d'abord l'overdub en cours, puis les couches par-dessus la prise une
-        par une, jusqu'à la prise elle-même. Elle ne revient jamais en avant et ne va jamais au-delà
-        de la prise : sur la prise, la touche est en transparence. La touche de l'éditeur affiche le
-        nombre de pas restants, et le centre de la cellule la couche où elle se trouve
+        par une, puis la prise elle-même : sur <b>L1</b>, une annulation efface la cellule. Elle ne
+        revient jamais en avant. La touche est active dès que la cellule contient une prise. La
+        touche de l'éditeur affiche le nombre de pas restants, la prise comptée parmi eux — une
+        prise avec deux overdubs affiche 3 —, et le centre de la cellule la couche où elle se trouve
         (<b>L3</b>, <b>L2</b>…). Des appuis plus rapides que l'écran comptent chacun. Sur une
         cellule MIDI, l'annulation retire son dernier overdub.</p>
       <p id="undo-transport">Il n'y a plus d'annulation dans le transport, ni d'action MIDI
         « annuler ce qui a été fait en dernier » : une pédale annule une cellule nommée
         (<b>Loop 1 · Undo</b>…). Effacer, c'est autre chose. Le <b class="ui">Effacer</b> de
-        l'éditeur vide une cellule ; la touche corbeille, <b class="ui">Effacer toutes les boucles</b>,
+        l'éditeur vide une cellule d'un coup ; la touche corbeille, <b class="ui">Effacer toutes les boucles</b>,
         vide le looper.</p>
     </section>
 
@@ -595,8 +596,9 @@
       <p>La tuile <b class="ui">DUB</b> parcourt 0, 1, 2 et 4 passes d'overdub automatiques — la
         cellule repasse d'elle-même en lecture après ce nombre de tours.</p>
       <h3>La touche de niveau</h3>
-      <p>Le haut-parleur est le niveau de la cellule : rempli depuis la gauche à mesure que le
-        niveau monte, barré au silence. <b>Maintiens-le</b> et le fader de la cellule apparaît, son
+      <p>Le haut-parleur est le niveau de la cellule : rempli depuis la gauche, dans la couleur de la
+        cellule, à mesure que le niveau monte — 0 dB en remplit à peu près la moitié — et barré au
+        silence. <b>Maintiens-le</b> et le fader de la cellule apparaît, son
         capuchon sous ton doigt ; <b>glisse</b> vers le haut ou le bas pour régler le niveau, en
         l'entendant au fur et à mesure ; <b>relâche</b> et le fader disparaît — un simple appui le
         laisse affiché un instant, le temps de le lire. <b>Deux appuis rapides</b> remettent le
@@ -644,6 +646,10 @@
         <li><b class="ui">Renommer</b>, <b class="ui">Partager…</b>, <b class="ui">Exporter en WAV…</b>
           et <b class="ui">Supprimer</b>.</li>
       </ul>
+      <p>Chaque loop sauvegardée a aussi une touche d'<b>écoute</b>, <b class="ui">Écouter la boucle</b>,
+        avec un anneau pour sa progression : les prises, mixées à leurs niveaux, tournent en boucle à
+        côté du moteur sans toucher aux cellules ni au transport. Une seule écoute joue à la fois ;
+        elle s'arrête quand la fiche se ferme, quand une autre démarre ou quand la loop est chargée.</p>
       <h3>Les loops en fichiers</h3>
       <p>Les deux touches en bas de la bibliothèque agissent sur la bibliothèque elle-même.
         <b>Importer</b> (<b class="ui">Importer dans la bibliothèque</b>) accepte des loops NAMper et des
@@ -661,7 +667,7 @@
         <p>Un preset de looper ne contient jamais d'audio enregistré — seule une prise MIDI des
           pads voyage dedans. Pour garder une loop, sauvegarde-la dans la bibliothèque ; pour garder
           une performance entière, utilise l'enregistreur de l'onglet
-          <a href="/docs/fr/mix.html#recorder">Mix</a>, qui enregistre le mix de sortie plus une piste
+          <a href="/docs/fr/mix.html#recorder">Mix</a>, qui enregistre le mix de sortie (sans le clic) plus une piste
           d'entrée sèche séparée.</p>
       </div>
     </section>
@@ -680,7 +686,8 @@
       <p>Le micro d'un téléphone dans la pièce entend ce que joue l'app — les loops, les pads, le
         backing track et le clic — et une nouvelle couche les enregistrerait à nouveau : de la
         bouillie au mieux, au pire une loop qui s'amplifie d'elle-même.
-        <b class="ui">Annulation d'écho</b>, activé par défaut, retire cet écho de ce qu'écrit une
+        <b class="ui">Annulation d'écho</b>, désactivé par défaut — active-le quand le
+        micro du téléphone lui-même entend la pièce —, retire cet écho de ce qu'écrit une
         cellule en enregistrement, en overdub ou armée, et nulle part ailleurs : ce que tu entends en
         direct n'est jamais touché et ne gagne aucune latence. Il apprend la pièce à partir des loops
         qui jouent seules un instant ; sans écho au micro, la prise est exactement l'entrée.
@@ -691,9 +698,19 @@
         les deux sens. <b class="ui">Suivre une horloge MIDI</b> fait du tempo de l'horloge celui du
         set — au-dessus d'un morceau, d'une loop ou de ta main — et une cellule armée commence à
         enregistrer sur son prochain temps fort ; choisis la source et un décalage pour un émetteur
-        en avance ou en retard. <b class="ui">Envoyer l’horloge MIDI</b> envoie 24 ticks par temps vers la
+        en avance ou en retard. Une loop qui tourne garde ses barres de mesure sur celles de
+        l'horloge pendant tout un long set : une milliseconde de dérive est rattrapée un échantillon
+        à la fois, trop peu pour s'entendre. Le <b>Stop</b> de l'émetteur arrête le morceau, les
+        loops et le clic. <b class="ui">Envoyer l’horloge MIDI</b> envoie 24 ticks par temps vers la
         destination choisie, depuis l'horloge audio qui fait tourner le clic : le start part au début
         de la loop, le stop quand elle s'arrête.</p>
+      <p>En plus des appareils connectés, la destination peut être <b class="ui">NAMper (autres
+        apps)</b> — une source d'horloge que choisit une app de boîte à rythmes ou de synthé sur le
+        même appareil — ou la <b class="ui">Session réseau</b> : un Mac sur le même Wi-Fi se
+        connecte au téléphone dans Audio MIDI Setup → MIDI Network Setup, et le téléphone n'y
+        apparaît que tant que la session est choisie. Sur l'iPhone et l'iPad, la session réseau
+        peut aussi être la source de l'horloge ; sur Android, le réseau ne fait que sortir
+        l'horloge.</p>
     </section>
 
     <nav class="pager">

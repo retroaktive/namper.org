@@ -157,8 +157,8 @@
               <td>Schaltet die anderen spielenden Zellen stumm; ein erneuter Druck holt sie zurück.
                 Wird eine andere Zelle auf Solo gestellt, geht das Solo auf sie über.</td></tr>
             <tr><td>Unten links</td><td><b class="ui">Undo</b></td>
-              <td>Setzt diese Zelle pro Tipp um eine Schicht zurück, bis hinunter zum Take — siehe
-                <a href="#undo">Undo und Löschen</a>.</td></tr>
+              <td>Setzt diese Zelle pro Tipp um eine Schicht zurück, bis zum Take und darüber hinaus:
+                Bei <b>L1</b> leert es die Zelle — siehe <a href="#undo">Undo und Löschen</a>.</td></tr>
             <tr><td>Unten rechts</td><td><b class="ui">Play</b> / <b class="ui">Stopp</b></td>
               <td>Stoppt oder startet nur diese Loop.</td></tr>
           </tbody>
@@ -222,7 +222,8 @@
               Zelle blendet aus, während jede gestoppte einblendet, über die Crossfade-Länge.
               Leuchtet nur, solange einige Zellen spielen und andere gestoppt sind.</td></tr>
             <tr><td>Play / Stopp</td><td><b class="ui">Loops abspielen</b> /
-              <b class="ui">Loops stoppen</b>, deaktiviert, bis ein Zyklus existiert.</td></tr>
+              <b class="ui">Loops stoppen</b>, deaktiviert, bis ein Zyklus existiert. Sie wechselt
+              ihr Symbol; ihre Farbe bleibt.</td></tr>
             <tr><td>Papierkorb</td><td><b class="ui">Alle Loops löschen</b>.</td></tr>
           </tbody>
         </table>
@@ -533,15 +534,16 @@
       <p>Undo gehört immer zu einer Zelle. Die Ecke <b class="ui">Undo</b> jeder Zelle — und die
         Taste <b class="ui">Undo</b> in ihrem Editor — <b>geht pro Tipp eine Schicht zurück</b>:
         zuerst das gerade laufende Overdub, dann die Schichten über dem Take eine nach der anderen,
-        bis hinunter zum Take selbst. Sie geht nie wieder vorwärts und nie über den Take hinaus:
-        Beim Take ist die Taste blass. Die Taste im Editor zeigt, wie viele Schritte bleiben, und
+        dann der Take selbst: Bei <b>L1</b> leert ein Undo die Zelle. Sie geht nie wieder vorwärts.
+        Die Taste ist aktiv, sobald die Zelle einen Take enthält. Die Taste im Editor zeigt, wie
+        viele Schritte bleiben, den Take mitgezählt — ein Take mit zwei Overdubs zeigt 3 —, und
         die Mitte der Zelle zeigt die Schicht, auf der sie steht (<b>L3</b>, <b>L2</b>…). Tipps,
         die schneller sind als der Bildschirm, zählen trotzdem einzeln. Bei einer MIDI-Zelle nimmt
         Undo das letzte Overdub zurück.</p>
       <p id="undo-transport">Im Transport gibt es kein Undo mehr, und keine MIDI-Aktion für
         „mach rückgängig, was zuletzt war“: Ein Pedal macht eine benannte Zelle rückgängig
         (<b>Loop 1 · Undo</b>…). Löschen ist davon getrennt. <b class="ui">Löschen</b> im Editor
-        leert eine Zelle; die Papierkorb-Taste, <b class="ui">Alle Loops löschen</b>, leert den
+        leert eine Zelle sofort; die Papierkorb-Taste, <b class="ui">Alle Loops löschen</b>, leert den
         Looper.</p>
     </section>
 
@@ -590,8 +592,8 @@
       <p>Die <b class="ui">DUB</b>-Kachel durchläuft 0, 1, 2 und 4 automatische Overdub-Durchläufe —
         die Zelle fällt nach so vielen Runden von selbst zurück ins Abspielen.</p>
       <h3>Die Pegeltaste</h3>
-      <p>Der Lautsprecher ist der Pegel der Zelle: von links gefüllt, so weit der Pegel laut ist,
-        durchgestrichen bei Stille. <b>Halte ihn</b>, und der Fader der Zelle erscheint mit seiner
+      <p>Der Lautsprecher ist der Pegel der Zelle: von links in der Farbe der Zelle gefüllt, so weit
+        der Pegel laut ist — 0 dB füllt ungefähr die Hälfte —, und durchgestrichen bei Stille. <b>Halte ihn</b>, und der Fader der Zelle erscheint mit seiner
         Kappe unter deinem Finger; <b>zieh</b> nach oben oder unten, um den Pegel einzustellen,
         hörbar während du ziehst; <b>lass los</b>, und der Fader ist weg — ein Tipp lässt ihn kurz
         stehen, lange genug zum Ablesen. <b>Zwei schnelle Tipps</b> setzen den Pegel zurück auf
@@ -637,6 +639,11 @@
         <li><b class="ui">Umbenennen</b>, <b class="ui">Teilen…</b>, <b class="ui">Als WAV exportieren…</b>
           und <b class="ui">Löschen</b>.</li>
       </ul>
+      <p>Jede gespeicherte Loop hat außerdem eine <b>Vorhör</b>-Taste, <b class="ui">Loop vorhören</b>,
+        mit einem Ring für den Fortschritt: Die Takes, gemischt mit ihren Pegeln, laufen neben der
+        Engine im Kreis, während die Zellen und der Transport unberührt bleiben. Es läuft immer nur
+        ein Vorhören; es stoppt, wenn das Sheet schließt, wenn ein anderes startet oder wenn die
+        Loop geladen wird.</p>
       <h3>Loops als Dateien</h3>
       <p>Die beiden Tasten unten in der Bibliothek wirken auf die Bibliothek selbst.
         <b>Import</b> (<b class="ui">In die Bibliothek importieren</b>) nimmt NAMper-Loops und
@@ -654,7 +661,7 @@
         <p>Ein Looper-Preset enthält nie aufgenommenes Audio — nur ein MIDI-Take der Pads reist
           darin mit. Um eine Loop zu behalten, speichere sie in der Bibliothek; um eine ganze
           Performance zu behalten, nimm den Recorder im
-          <a href="/docs/de/mix.html#recorder">Mix</a>-Tab, der den Ausgangsmix plus einen separaten
+          <a href="/docs/de/mix.html#recorder">Mix</a>-Tab, der den Ausgangsmix (ohne den Click) plus einen separaten
           trockenen Eingangs-Stem aufnimmt.</p>
       </div>
     </section>
@@ -674,7 +681,8 @@
       <p>Das Mikrofon eines Telefons im Raum hört, was die App spielt — die Loops, die Pads, den
         Backing Track und den Click —, und eine neue Schicht würde sie erneut aufnehmen: bestenfalls
         Matsch, schlimmstenfalls eine Loop, die sich selbst aufschaukelt.
-        <b class="ui">Echounterdrückung</b>, standardmäßig an, nimmt dieses Echo aus dem heraus, was
+        <b class="ui">Echounterdrückung</b>, standardmäßig aus — schalte sie ein, wenn das
+        eigene Mikrofon des Telefons den Raum hört —, nimmt dieses Echo aus dem heraus, was
         eine aufnehmende, overdubbende oder scharfgeschaltete Zelle schreibt, und nirgendwo sonst:
         Was du live hörst, wird nie angetastet und bekommt keine Latenz dazu. Es lernt den Raum,
         während die Loops einen Moment für sich allein spielen; ohne Echo am Mikrofon ist der Take
@@ -685,9 +693,19 @@
         in beide Richtungen ein. <b class="ui">Einer MIDI-Clock folgen</b> macht das Tempo der Clock
         zum Tempo des Sets — über einem Song, einer Loop oder deiner Hand —, und eine
         scharfgeschaltete Zelle beginnt die Aufnahme auf ihrem nächsten Downbeat; wähle die Quelle
-        und einen Versatz für einen Sender, der zu früh oder zu spät läuft. <b class="ui">MIDI-Clock senden</b> sendet 24 Ticks pro Beat an das Ziel deiner Wahl, abgeleitet von der Audio-Clock,
+        und einen Versatz für einen Sender, der zu früh oder zu spät läuft. Eine laufende Loop hält
+        ihre Taktstriche über ein langes Set hinweg auf denen der Clock: Eine Millisekunde Drift wird
+        Sample für Sample zurückgenommen, zu wenig, um es zu hören. Das <b>Stop</b> des Senders
+        stoppt den Song, die Loops und den Click. <b class="ui">MIDI-Clock senden</b> sendet 24 Ticks pro Beat an das Ziel deiner Wahl, abgeleitet von der Audio-Clock,
         auf der auch der Click läuft: Start geht am Anfang der Loop raus, Stopp, wenn sie
         stoppt.</p>
+      <p>Neben den angeschlossenen Geräten kann das Ziel <b class="ui">NAMper (andere
+        Apps)</b> sein — eine Clock-Quelle, die eine Drumcomputer- oder Synth-App auf demselben
+        Gerät auswählt — oder die <b class="ui">Netzwerk-Session</b>: Ein Mac im selben WLAN
+        verbindet sich in Audio MIDI Setup → MIDI Network Setup mit dem Telefon, und das Telefon
+        erscheint dort nur, solange die Session ausgewählt ist. Auf iPhone und iPad kann die
+        Netzwerk-Session auch die Quelle der Clock sein; unter Android trägt das Netzwerk die Clock
+        nur nach außen.</p>
     </section>
 
     <nav class="pager">

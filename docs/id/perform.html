@@ -100,7 +100,7 @@
       <p>Jika file tidak bisa dibaca, kamu akan melihat <b class="ui r">&lt;name&gt; tidak bisa diimpor.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="Tab Perform: kartu player dengan NAMper (full) termuat pada 146 BPM dalam D#m, tombol tambah, rekam, dan lirik di baris namanya, tombol transport dan AUTO LYRICS di bawahnya, bentuk gelombang, dan di bawah bentuk gelombang jalur Preset lagu yang menamai preset dan scene yang dibawanya, lalu strip lirik dan fader backing dengan chip DIRECT; di bawahnya kartu DEMO SET dengan AUTO NEXT aktif, dan tombol panggung lagu itu.">
+             alt="Tab Perform: kartu player dengan NAMper (full) termuat pada 146 BPM dalam D#m, tombol tambah, rekam, dan lirik di baris namanya, tombol transport dan AUTO LIRIK di bawahnya, bentuk gelombang, dan di bawah bentuk gelombang jalur Preset lagu yang menamai preset yang dibawanya dan jalur Scene-nya dengan huruf scene, kaca pembesar zoom di kiri atasnya, lalu strip lirik dan fader backing dengan chip LANGSUNG; di bawahnya kartu DEMO SET dengan AUTO NEXT aktif, dan tombol panggung lagu itu, yang sedang berbunyi menyala.">
         <figcaption>Tab Perform: player dengan otomasi lagu, set, tombol panggung</figcaption>
       </figure>
       <div class="note tip">
@@ -189,8 +189,9 @@
         <li><b>Ada setlist yang live, belum ada lagu dipilih</b> — lagu-lagu di set itu. Ketukan
           pertama memilih salah satunya, dan suara-suaranya mengisi tombol.</li>
         <li><b>Sebuah lagu dipilih</b> — entri milik lagu itu sendiri, masing-masing sebuah preset
-          dengan scene yang dibawanya, sesuai urutan lagu. Yang sedang berbunyi menyala, dan sebuah
-          tombol hanya menampilkan scene yang dimiliki preset-nya.</li>
+          dengan scene yang dibawanya, sesuai urutan lagu. Yang sedang berbunyi menyala — cahayanya mengikuti apa yang
+          berbunyi: tombol yang cocok dengan preset dan scene yang aktif, setelah otomasi, seek, atau
+          pergantian scene — dan sebuah tombol hanya menampilkan scene yang dimiliki preset-nya.</li>
       </ul>
       <p>Tombol berganti begitu jari menyentuh, bukan saat diangkat, jadi tekanan cepat di antara
         dua birama tidak pernah hilang. Jumlahnya empat atau delapan: chip jumlah di header
@@ -312,7 +313,8 @@
         bebas tangan.</p>
       <p>Otomasi menggantikan penanda di versi-versi sebelumnya. Apa yang dulu dilakukan penanda —
         memanggil preset dan scene-nya pada satu momen — kini adalah satu titik di jalur <b class="ui">Preset</b>
-        lagu, dan penanda lama sebuah lagu dipindahkan ke sini sekali, dengan sendirinya.</p>
+        lagu tempat preset berganti dan satu titik di jalur <b class="ui">Scene</b>-nya tempat scene
+        berganti, dan penanda lama sebuah lagu dipindahkan ke sini sekali, dengan sendirinya.</p>
 
       <h3>Merekam</h3>
       <p><strong>Tombol rekam</strong> — lingkaran di samping tombol tambah pada kartu player,
@@ -325,7 +327,9 @@
           <thead><tr><th>Apa yang ditulis</th><th>Dari</th></tr></thead>
           <tbody>
             <tr><td>Knob, nyala/mati sebuah blok, scene, morph scene</td><td>Layar, pedal, host
-              plug-in. Sapuan menyimpan satu titik tiap 20 ms</td></tr>
+              plug-in. Sapuan menyimpan paling banyak satu titik tiap 20 ms, dan tidak
+              ada untuk gerakan di bawah 1/500 rentang knob, jadi tangan yang diam tidak menulis
+              apa-apa</td></tr>
             <tr><td>Preset rig beserta scene tempat ia mendarat, preset looper, kit pad</td><td>Ketukan
               pada entri lagu — tombol panggung, panel set, pedal</td></tr>
             <tr><td>Pukulan dan henti pad, beserta kekuatannya</td><td>Layar, tombol, pedal</td></tr>
@@ -339,11 +343,17 @@
         bukan gerakan dan tidak ditulis, begitu juga pemutaran otomasi itu sendiri.</p>
       <div class="note tip">
         <div class="t">Perekaman sentuh</div>
-        <p>Sebuah jalur hanya ditimpa selama kamu menggerakkannya, dan selama 0,6 dtk setelah
+        <p>Jalur knob, fader, atau morph hanya ditimpa selama kamu menggerakkannya, dan selama 0,6 dtk setelah
           tanganmu lepas. Sisa jalur itu, dan setiap jalur yang tidak kamu sentuh, tetap seperti
           semula dan terus berjalan — jadi putaran kedua bisa membetulkan satu knob di refrain tanpa
           mengulang seluruh lagu.</p>
       </div>
+      <p>Jalur bertingkat — preset, scene, nyala/mati sebuah blok, preset looper, kit —
+        <strong>diambil alih</strong> sejak tekanan pertamamu padanya sampai perekaman berhenti: lagu
+        berhenti atau dipindah, atau kamu mematikan tombol rekam. Apa yang ada di rentang itu memberi
+        tempat bagi apa yang kamu tekan sekarang alih-alih menumpuk di sampingnya. Sebelum tekanan
+        pertamamu dan setelah perekaman berhenti, jalur tetap seperti semula, jadi mematikan tombol
+        rekam adalah punch-out.</p>
       <p>Pemutaran tidak butuh sakelar: otomasi berjalan setiap kali lagu diputar. Mulai atau seek
         mengejar keadaan lagu — preset, scene, sakelar, knob, fader — jadi suaranya tepat di mana
         pun kamu masuk. Pukulan pad dan aksi looper adalah event: hanya terpicu saat lagu
@@ -355,7 +365,7 @@
       <ul style="--nc:var(--drive)">
         <li><b>Knob, fader, atau morph</b> menggambar kurvanya, pada rentangnya sendiri.</li>
         <li><b>Jalur bertingkat</b> menggambar tanda di setiap titik dengan kata-katanya di samping:
-          <b class="ui">Preset</b> nama preset dan scene tempat ia mendarat, <b class="ui">Scene</b> hurufnya, jalur <b class="ui">Nyala/mati</b>
+          <b class="ui">Preset</b> nama preset, <b class="ui">Scene</b> hurufnya, jalur <b class="ui">Nyala/mati</b>
           sebuah blok <b class="ui">Aktif</b> atau <b class="ui">Mati</b>, <b class="ui">Preset looper</b> dan <b class="ui">Kit sampler</b> namanya.</li>
         <li><b class="ui">Pad</b> menunjukkan pad mana yang dipukul; <b class="ui">Looper</b> aksinya dan selnya —
           <b class="ui">Henti/Putar</b> 2, <b class="ui">Mute</b> 3.</li>
@@ -363,20 +373,34 @@
       <p>Kata-kata sebuah titik memakai ruang sampai titik berikutnya, dan dipotong di tempat titik
         berdesakan. Dengan lebih dari empat jalur, barisnya bisa digulir.</p>
 
+      <h3>Zoom</h3>
+      <p>Sapuan satu detik pada lagu empat menit hanyalah satu anak tangga selebar seluruh lagu.
+        <strong>Cubit</strong> jalur-jalurnya, atau ketuk kaca pembesar di kiri atasnya
+        (<b class="ui">Zoom</b>: 1×, 4×, 16×, lalu kembali ke seluruh lagu), dan jalur menampilkan
+        potongan lagu di sekitar playhead — mengikutinya selama lagu diputar, dengan playhead
+        digambar sebagai garis. Mengetuk dan menyeret titik bekerja di tampilan yang diperbesar sama
+        seperti di tampilan penuh.</p>
+
       <h3>Mengedit titik</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Ketuk</strong> sebuah jalur dan titik terdekatnya terbuka. Di atas adalah kapan
+        <li><strong>Ketuk</strong> jalur bertingkat — preset, scene, sakelar, pad, looper — dan titik
+          terdekatnya terbuka. Di atas adalah kapan
           ia terjadi: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
-          <b class="ui">+BAR</b>, atau <b class="ui">Ke playhead</b>. Di bawahnya, apa isinya — preset lagu dan
-          <b class="ui">SCENE</b>-nya, sebuah scene, <b class="ui">Aktif</b> atau <b class="ui">Mati</b>, pad dengan <b class="ui">Pukul</b> atau <b class="ui">Berhenti</b> dan
-          <b class="ui">VELOCITY</b>-nya, <b class="ui">AKSI</b> dan <b class="ui">SEL</b> looper. <b class="ui">NILAI</b> sebuah knob, fader, atau morph punya
-          slider dan kolom: ketik angkanya dalam satuan parameter itu sendiri, nilainya dijaga
-          dalam rentangnya, dan rentang itu ditampilkan di bawahnya. Tombol tempat sampah menghapus
-          titik.</li>
+          <b class="ui">+BAR</b>, atau <b class="ui">Ke playhead</b>. Di bawahnya, apa isinya — preset lagu, sebuah scene, <b class="ui">Aktif</b> atau <b class="ui">Mati</b>, pad dengan <b class="ui">Pukul</b> atau <b class="ui">Berhenti</b> dan
+          <b class="ui">VELOCITY</b>-nya, <b class="ui">AKSI</b> dan <b class="ui">SEL</b> looper. Tombol tempat sampah menghapus titik.</li>
         <li><strong>Seret</strong> sebuah titik di sepanjang jalurnya untuk memindahkannya. Bila
           tempo lagu diketahui, titik itu mendarat di ketukan lagu.</li>
-        <li><strong>Tahan</strong> sebuah jalur untuk <b class="ui">Hapus jalur ini</b>.</li>
+        <li>Sebuah <strong>kurva</strong> — knob, fader, morph — tidak diedit titik demi titik:
+          rekam ulang untuk mengubahnya.</li>
       </ul>
+
+      <h3>Event sebuah jalur</h3>
+      <p><strong>Tahan</strong> sebuah jalur dan event-nya muncul sebagai daftar, urut waktu: waktu
+        masing-masing dan apa isinya. Pada jalur bertingkat, ketuk sebuah event untuk membukanya
+        seperti di atas, atau tombol tempat sampahnya untuk menghapusnya. Kurva menunjukkan berapa
+        <b class="ui">TITIK</b> yang dimilikinya, <b class="ui">WAKTU DI LAGU</b> yang dicakupnya, dan
+        rentang <b class="ui">NILAI</b>-nya — <b class="ui">Kurva hanya berubah saat direkam ulang.</b>
+        <b class="ui">Hapus jalur ini</b> di bagian bawah menghapus seluruh jalur, setelah bertanya.</p>
 
       <h3>Menambah titik secara manual</h3>
       <p><strong>Tombol tambah</strong> (<b class="ui">Tambahkan ke otomasi</b>) menaruh satu titik di playhead
@@ -398,7 +422,8 @@
         </table>
       </div>
       <p>Satu pilihan menaruh titik dengan nilai yang dimilikinya saat ini dan membukanya langsung
-        di lembar itu, untuk mengetik atau menggeser nilainya dan memindahkan waktunya. Jalur yang
+        di lembar itu, untuk mengetik atau menggeser nilainya — <b class="ui">NILAI</b> sebuah knob atau fader punya slider dan
+        kolom dalam satuan parameter itu sendiri, dijaga dalam rentangnya — dan memindahkan waktunya. Jalur yang
         belum dimiliki lagu dibuatkan untuknya. Kedua tombol otomasi redup selama lagu tidak punya
         timeline — tanpa backing track dan tanpa <b class="ui">Durasi</b>.</p>
       <figure>
@@ -549,7 +574,7 @@
         <table>
           <thead><tr><th>Stem</th><th>Isinya</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>Master: rig, looper, sampler pad, dan backing bersamaan</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>Master: rig, looper, sampler pad, dan backing bersamaan — click tidak ikut</td></tr>
             <tr><td><b class="ui">input</b></td><td>Input sound card kering, pada jumlah kanal apa pun yang diberikan interface-mu</td></tr>
             <tr><td><b class="ui">minus one</b></td><td>Backing track saja, saat ada yang terpasang</td></tr>
           </tbody>

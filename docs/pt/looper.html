@@ -154,8 +154,8 @@
               <td>Silencia as outras células que estão tocando; aperte de novo para trazê-las de
                 volta. Solar outra célula passa o solo para ela.</td></tr>
             <tr><td>Inferior esquerdo</td><td><b class="ui">Desfazer</b></td>
-              <td>Volta esta célula uma camada por toque, até a gravação — veja
-                <a href="#undo">Desfazer e limpar</a>.</td></tr>
+              <td>Volta esta célula uma camada por toque, até a gravação e além dela: em
+                <b>L1</b> esvazia a célula — veja <a href="#undo">Desfazer e limpar</a>.</td></tr>
             <tr><td>Inferior direito</td><td><b class="ui">Play</b> / <b class="ui">Parar</b></td>
               <td>Para ou inicia só este loop.</td></tr>
           </tbody>
@@ -218,7 +218,8 @@
               soa desaparece em fade enquanto toda célula parada entra em fade, ao longo da duração do
               crossfade. Acesa só enquanto algumas células tocam e outras estão paradas.</td></tr>
             <tr><td>Play / parar</td><td><b class="ui">Tocar loops</b> /
-              <b class="ui">Parar loops</b>, desativado até que exista um ciclo.</td></tr>
+              <b class="ui">Parar loops</b>, desativado até que exista um ciclo. Troca de ícone; a cor
+              continua a mesma.</td></tr>
             <tr><td>Lixeira</td><td><b class="ui">Limpar todos os loops</b>.</td></tr>
           </tbody>
         </table>
@@ -511,14 +512,15 @@
       <h2 id="undo"><span class="n">04.8</span>Desfazer e limpar</h2>
       <p>O desfazer sempre pertence a uma célula. O canto <b class="ui">Desfazer</b> de cada célula — e
         a tecla <b class="ui">Desfazer</b> no seu editor — <b>volta uma camada por toque</b>: primeiro
-        o overdub em andamento, depois as camadas sobre a gravação uma a uma, até a própria gravação.
-        Ele nunca avança de novo e nunca passa da gravação: na gravação a tecla fica esmaecida. A tecla
-        do editor mostra quantos passos restam, e o centro da célula mostra em qual camada ela está
+        o overdub em andamento, depois as camadas sobre a gravação uma a uma, depois a própria
+        gravação: em <b>L1</b> um desfazer esvazia a célula. Ele nunca avança de novo. A tecla fica
+        ativa assim que a célula tem uma gravação. A tecla do editor mostra quantos passos restam,
+        contando a gravação — uma gravação com dois overdubs mostra 3 — e o centro da célula mostra em qual camada ela está
         (<b>L3</b>, <b>L2</b>…). Toques mais rápidos que a tela contam cada um. Numa célula MIDI o
         desfazer tira o seu último overdub.</p>
       <p id="undo-transport">Não há mais desfazer no transporte, nem uma ação MIDI para "desfazer o
         que foi por último": um pedal desfaz uma célula nomeada (<b>Loop 1 · Undo</b>…). Limpar é
-        outra coisa. O <b class="ui">Limpar</b> do editor esvazia uma célula; a tecla de lixeira,
+        outra coisa. O <b class="ui">Limpar</b> do editor esvazia uma célula de uma vez; a tecla de lixeira,
         <b class="ui">Limpar todos os loops</b>, esvazia o looper.</p>
     </section>
 
@@ -564,8 +566,8 @@
       <p>O bloco <b class="ui">DUB</b> percorre 0, 1, 2 e 4 passadas automáticas de overdub — a célula
         volta a apenas tocar sozinha depois desse número de voltas.</p>
       <h3>A tecla de nível</h3>
-      <p>O alto-falante é o nível da célula: preenchido da esquerda até onde o nível está alto,
-        riscado no silêncio. <b>Segure-o</b> e o fader da célula aparece com o seu cursor sob o seu
+      <p>O alto-falante é o nível da célula: preenchido da esquerda, na cor da célula, até onde o
+        nível está alto — 0 dB preenche cerca de metade — e riscado no silêncio. <b>Segure-o</b> e o fader da célula aparece com o seu cursor sob o seu
         dedo; <b>arraste</b> para cima ou para baixo para ajustar o nível, ouvindo enquanto isso;
         <b>solte</b> e o fader some — um toque o deixa à vista por um instante, o bastante para ler.
         <b>Dois toques rápidos</b> devolvem o nível a <b>0 dB</b>. Os níveis vão até <b>+12 dB</b>, como
@@ -609,6 +611,10 @@
         <li><b class="ui">Renomear</b>, <b class="ui">Compartilhar…</b>, <b class="ui">Exportar como WAV…</b>
           e <b class="ui">Apagar</b>.</li>
       </ul>
+      <p>Cada loop salvo tem também uma tecla de <b>prévia</b>, <b class="ui">Ouvir o loop</b>, com
+        um anel que mostra o progresso: as gravações, mixadas nos seus níveis, tocam em loop ao lado
+        do motor enquanto as células e o transporte ficam como estão. Toca uma prévia de cada vez; ela
+        para quando a folha fecha, quando outra começa ou quando o loop é carregado.</p>
       <h3>Loops como arquivos</h3>
       <p>As duas teclas no pé da biblioteca agem sobre a própria biblioteca.
         <b>Importar</b> (<b class="ui">Importar para a biblioteca</b>) recebe loops do NAMper e arquivos
@@ -624,7 +630,7 @@
         <div class="t">Presets levam a configuração, a biblioteca leva o som</div>
         <p>Um preset do looper nunca guarda áudio gravado — só uma gravação MIDI dos pads viaja dentro
           dele. Para guardar um loop, salve-o na biblioteca; para guardar uma performance inteira, use
-          o gravador da aba <a href="/docs/pt/mix.html#recorder">Mix</a>, que grava o mix de saída mais
+          o gravador da aba <a href="/docs/pt/mix.html#recorder">Mix</a>, que grava o mix de saída (sem o clique) mais
           uma trilha seca separada da entrada.</p>
       </div>
     </section>
@@ -641,7 +647,8 @@
       <h3>Cancelamento de eco</h3>
       <p>O microfone de um celular na sala ouve o que o app toca — os loops, os pads, a base e o
         clique — e uma nova camada os gravaria de novo: na melhor das hipóteses, uma sujeira; na pior,
-        um loop que se realimenta. <b class="ui">Cancelamento de eco</b>, ligado por padrão, tira esse eco
+        um loop que se realimenta. <b class="ui">Cancelamento de eco</b>, desligado por padrão — ligue-o quando o
+        microfone do próprio celular ouve a sala — tira esse eco
         do que uma célula gravando, em overdub ou armada escreve, e de nenhum outro lugar: o que você
         ouve ao vivo nunca é tocado e não ganha latência. Ele aprende a sala com os loops tocando
         sozinhos por um instante; sem eco no microfone, a gravação é exatamente a entrada. A chave fica
@@ -651,9 +658,17 @@
         dois sentidos. <b class="ui">Seguir um clock MIDI</b> faz do tempo do clock o tempo do set —
         acima de uma música, de um loop ou da sua mão — e uma célula armada começa a gravar no próximo
         tempo forte dele; escolha a fonte e um deslocamento para um emissor que adianta ou atrasa.
-        <b class="ui">Enviar clock MIDI</b> envia 24 pulsos por tempo para o destino que você escolher,
-        a partir do relógio de áudio em que o clique roda: o start sai no começo do loop, o stop quando
-        ele para.</p>
+        Um loop rodando mantém as suas barras de compasso nas do clock ao longo de um set comprido: um
+        milissegundo de deriva é recuperado uma amostra por vez, pouco demais para ouvir. O
+        <b>Stop</b> do emissor para a música, os loops e o clique. <b class="ui">Enviar clock
+        MIDI</b> envia 24 pulsos por tempo para o destino que você escolher, a partir do relógio de
+        áudio em que o clique roda: o start sai no começo do loop, o stop quando ele para.</p>
+      <p>Além dos dispositivos conectados, o destino pode ser <b class="ui">NAMper (outros
+        apps)</b> — uma fonte de clock que uma drum machine ou um app de synth no mesmo aparelho
+        escolhe — ou a <b class="ui">Sessão de rede</b>: um Mac na mesma Wi-Fi se conecta ao celular
+        em Audio MIDI Setup → MIDI Network Setup, e o celular só aparece lá
+        enquanto a sessão estiver escolhida. No iPhone e no iPad a sessão de rede também pode ser a
+        fonte do clock; no Android a rede só leva o clock para fora.</p>
     </section>
 
     <nav class="pager">

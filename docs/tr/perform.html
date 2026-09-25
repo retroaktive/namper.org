@@ -100,7 +100,7 @@
         görürsün.</p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="Perform sekmesi: 146 BPM ve D#m'de yüklü NAMper (full) ile player kartı, isim satırında ekle, kaydet ve şarkı sözü tuşları, altında transport tuşları ve AUTO LYRICS, dalga formu, dalga formunun altında şarkının getirdiği preset'leri ve sahneleri adlandıran Preset şeridi, ardından şarkı sözü şeridi ve DIRECT çipiyle altyapı fader'ı; altında AUTO NEXT açık DEMO SET kartı ve şarkının sahne düğmeleri.">
+             alt="Perform sekmesi: 146 BPM ve D#m'de yüklü NAMper (full) ile player kartı, isim satırında ekle, kaydet ve şarkı sözü tuşları, altında transport tuşları ve OTO SÖZ, dalga formu, dalga formunun altında şarkının getirdiği preset'leri adlandıran Preset şeridi ve sahne harfleriyle Sahne şeridi, sol üstlerinde yakınlaştırma büyüteci, ardından şarkı sözü şeridi ve DOĞRUDAN çipiyle altyapı fader'ı; altında OTO GEÇİŞ açık DEMO SET kartı ve şarkının sahne düğmeleri, çalanı yanık.">
         <figcaption>Perform sekmesi: şarkının otomasyonuyla player, set, sahne düğmeleri</figcaption>
       </figure>
       <div class="note tip">
@@ -190,8 +190,9 @@
         <li><b>Canlı bir setlist var, şarkı seçilmedi</b> — setin şarkıları. İlk dokunuş birini
           seçer ve onun sesleri düğmelere yerleşir.</li>
         <li><b>Bir şarkı seçildi</b> — şarkının kendi girdileri, her biri taşıdığı sahneyle
-          birlikte bir preset, şarkının sırasıyla. Çalan yanar; bir düğme yalnızca preset'inin
-          tuttuğu sahneleri gösterir.</li>
+          birlikte bir preset, şarkının sırasıyla. Çalan yanar — ışık çalanı izler: otomasyondan, bir
+          sarmadan ya da bir sahne değişiminden sonra canlı preset'e ve sahneye uyan düğme — ve bir
+          düğme yalnızca preset'inin tuttuğu sahneleri gösterir.</li>
       </ul>
       <p>Düğme parmak kalktığında değil, dokunduğu anda geçiş yapar; böylece iki ölçü arasındaki
         hızlı bir dokunuş hiç kaybolmaz. Dört ya da sekiz düğme vardır: başlıktaki sayı çipi bunu
@@ -308,7 +309,8 @@
         oynatılan bir fader — ve şarkı her çaldığında hepsini yeniden yapar. Temiz kıta, crunch
         nakarat, solo için açılan delay: bir kez çalınır, sonra eller serbest.</p>
       <p>Önceki sürümlerin işaretçilerinin yerini alır. Bir işaretçinin yaptığı — bir anda bir
-        preset'i ve sahnesini getirmek — artık şarkının <b class="ui">Preset</b> şeridinde bir noktadır, ve bir
+        preset'i ve sahnesini getirmek — artık şarkının <b class="ui">Preset</b> şeridinde preset'in değiştiği yerde bir
+        nokta ve <b class="ui">Sahne</b> şeridinde sahnenin değiştiği yerde bir noktadır, ve bir
         şarkının eski işaretçileri bir kereliğine, kendiliğinden buraya taşınır.</p>
 
       <h3>Kayıt</h3>
@@ -322,7 +324,9 @@
           <thead><tr><th>Ne yazılır</th><th>Nereden</th></tr></thead>
           <tbody>
             <tr><td>Bir düğme, bir bloğun açık/kapalısı, bir sahne, sahne morph'u</td><td>Ekran,
-              bir pedal, bir plug-in host'u. Bir süpürme her 20 ms'de bir nokta tutar</td></tr>
+              bir pedal, bir plug-in host'u. Bir süpürme en fazla her 20 ms'de bir nokta tutar, düğmenin
+              aralığının 1/500'ünden küçük bir hareket için hiç tutmaz; böylece sabit duran bir el
+              hiçbir şey yazmaz</td></tr>
             <tr><td>Oturduğu sahneyle bir rig preset'i, bir looper preset'i, bir pad kiti</td><td>Şarkının
               girdilerine bir dokunuş — sahne düğmeleri, set paneli, bir pedal</td></tr>
             <tr><td>Pad vuruşları ve durdurmaları, şiddetleriyle</td><td>Ekran, bir tuş, bir
@@ -337,11 +341,16 @@
         süresi — bir hareket değildir ve yazılmaz; otomasyonun kendi çalınışı da yazılmaz.</p>
       <div class="note tip">
         <div class="t">Dokunarak kayıt</div>
-        <p>Bir şerit yalnızca sen onu oynatırken, ve elin kalktıktan sonraki 0,6 s boyunca üzerine
+        <p>Bir düğmenin, bir fader'ın ya da morph'un şeridi yalnızca sen onu oynatırken, ve elin kalktıktan sonraki 0,6 s boyunca üzerine
           yazılır. O şeridin geri kalanı ve dokunmadığın her şerit olduğu gibi kalır ve çalmaya
           devam eder — böylece ikinci bir geçiş, şarkıyı baştan yapmadan nakarattaki tek bir
           düğmeyi düzeltebilir.</p>
       </div>
+      <p>Bir basamak şeridi — bir preset, bir sahne, bir bloğun açık/kapalısı, bir looper preset'i,
+        bir kit — üzerine ilk basışından kayıt durana kadar <strong>devralınır</strong>: şarkı durur
+        ya da sarılır, veya kayıt tuşunu kapatırsın. O aralıkta tuttukları, yanında birikmek yerine
+        şimdi bastığına yer açar. İlk basışından önce ve kayıt durduktan sonra şerit olduğu gibi
+        kalır; yani kayıt tuşunu kapatmak punch-out'tur.</p>
       <p>Çalma için anahtar gerekmez: otomasyon, şarkı her çaldığında çalışır. Bir başlatma ya da
         sarma şarkının durumunu yakalar — preset, sahneler, anahtarlar, düğmeler, fader'lar —
         böylece nereden girersen gir ses doğrudur. Pad vuruşları ve looper eylemleri olaydır:
@@ -354,7 +363,7 @@
       <ul style="--nc:var(--drive)">
         <li><b>Bir düğme, bir fader ya da morph</b> kendi aralığında eğrisini çizer.</li>
         <li><b>Bir basamak şeridi</b> her noktada yanında sözcükleriyle bir çentik çizer:
-          <b class="ui">Preset</b> preset'in adını ve oturduğu sahneyi, <b class="ui">Sahne</b> harfi, bir bloğun <b class="ui">Açık/kapalı</b>
+          <b class="ui">Preset</b> preset'in adını, <b class="ui">Sahne</b> harfi, bir bloğun <b class="ui">Açık/kapalı</b>
           şeridi <b class="ui">Açık</b> ya da <b class="ui">Kapalı</b>, <b class="ui">Looper hazır ayarı</b> ve <b class="ui">Sampler kiti</b> adlarını.</li>
         <li><b class="ui">Pad’ler</b> hangi pad'e vurulduğunu gösterir; <b class="ui">Looper</b> eylemi ve hücresini —
           <b class="ui">Dur/Çal</b> 2, <b class="ui">Sustur</b> 3.</li>
@@ -362,20 +371,34 @@
       <p>Bir noktanın sözcükleri bir sonraki noktaya kadar yer kaplar, noktaların sıklaştığı yerde
         kısalır. Dörtten fazla şerit olduğunda satırlar kayar.</p>
 
+      <h3>Yakınlaştırma</h3>
+      <p>Dört dakikalık bir şarkıda bir saniyelik süpürme, bütün şarkının genişliğinde bir
+        basamaktır. Şeritleri <strong>iki parmakla sıkıştır</strong> ya da sol üstlerindeki
+        büyütece dokun (<b class="ui">Yakınlaştırma</b>: 1×, 4×, 16×, sonra yeniden bütün şarkı);
+        şeritler şarkının çalma konumu çevresindeki bir parçasını gösterir — şarkı çalarken onu
+        izleyerek, çalma konumu bir çizgi olarak çizilir. Noktalara dokunmak ve onları sürüklemek
+        yakınlaştırılmış görünümde de bütün görünümdeki gibi çalışır.</p>
+
       <h3>Bir noktayı düzenlemek</h3>
       <ul style="--nc:var(--drive)">
-        <li>Bir şeride <strong>dokun</strong>, en yakın noktası açılır. En üstte ne zaman olduğu:
+        <li>Bir basamak şeridine — bir preset, bir sahne, bir anahtar, pad'ler, looper — <strong>dokun</strong>,
+          en yakın noktası açılır. En üstte ne zaman olduğu:
           <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
-          <b class="ui">+BAR</b> ya da <b class="ui">Çalma konumuna</b>. Altında ne olduğu — şarkının preset'i ve
-          <b class="ui">SAHNE</b>'si, bir sahne, <b class="ui">Açık</b> ya da <b class="ui">Kapalı</b>, <b class="ui">Vuruş</b> ya da <b class="ui">Durdur</b> ile bir pad ve
-          <b class="ui">VELOCITY</b>'si, looper'ın <b class="ui">EYLEM</b>'i ve <b class="ui">HÜCRE</b>'si. Bir düğmenin, bir fader'ın ya da
-          morph'un <b class="ui">DEĞER</b>'inde bir kaydırıcı ve bir alan vardır: sayıyı parametrenin kendi
-          biriminde yaz, aralığında tutulur ve aralık altında gösterilir. Çöp kutusu tuşu noktayı
-          siler.</li>
+          <b class="ui">+BAR</b> ya da <b class="ui">Çalma konumuna</b>. Altında ne olduğu — şarkının preset'i, bir sahne, <b class="ui">Açık</b> ya da <b class="ui">Kapalı</b>, <b class="ui">Vuruş</b> ya da <b class="ui">Durdur</b> ile bir pad ve
+          <b class="ui">VELOCITY</b>'si, looper'ın <b class="ui">EYLEM</b>'i ve <b class="ui">HÜCRE</b>'si. Çöp kutusu tuşu noktayı siler.</li>
         <li>Taşımak için bir noktayı şeridi boyunca <strong>sürükle</strong>. Şarkının temposu
           biliniyorsa şarkının vuruşlarına oturur.</li>
-        <li>Bir şeridi <strong>basılı tut</strong>: <b class="ui">Bu şeridi sil</b>.</li>
+        <li>Bir <strong>eğri</strong> — bir düğme, bir fader, morph — nokta nokta düzenlenmez:
+          değiştirmek için yeniden kaydet.</li>
       </ul>
+
+      <h3>Bir şeridin olayları</h3>
+      <p>Bir şeridi <strong>basılı tut</strong>, olayları zaman sırasıyla bir liste olarak gelir:
+        her birinin zamanı ve ne olduğu. Bir basamak şeridinde bir olaya dokunarak onu yukarıdaki
+        gibi aç ya da çöp kutusu tuşuyla sil. Bir eğri <b class="ui">NOKTALAR</b> sayısını,
+        kapsadığı <b class="ui">ŞARKIDAKİ ZAMAN</b>'ı ve <b class="ui">DEĞERLER</b> aralığını gösterir —
+        <b class="ui">Bir eğri yalnızca yeniden kaydedildiğinde değişir.</b>
+        Alttaki <b class="ui">Bu şeridi sil</b> sorduktan sonra bütün şeridi kaldırır.</p>
 
       <h3>Elle nokta eklemek</h3>
       <p><strong>Ekle tuşu</strong> (<b class="ui">Otomasyona ekle</b>) hiçbir şey kaydetmeden çalma
@@ -396,8 +419,9 @@
           </tbody>
         </table>
       </div>
-      <p>Bir seçim noktayı şu anki değeriyle koyar ve değeri yazmak ya da kaydırmak ve zamanı
-        taşımak için onu hemen orada, sayfada açar. Şarkıda henüz olmayan bir şerit onun için
+      <p>Bir seçim noktayı şu anki değeriyle koyar ve değeri yazmak ya da kaydırmak — bir düğmenin ya da bir fader'ın
+        <b class="ui">DEĞER</b>'inde parametrenin kendi biriminde bir kaydırıcı ve bir alan vardır,
+        aralığında tutulur — ve zamanı taşımak için onu hemen orada, sayfada açar. Şarkıda henüz olmayan bir şerit onun için
         oluşturulur. Şarkının zaman çizelgesi yokken — altyapı da <b class="ui">Uzunluk</b> da yokken — iki otomasyon
         tuşu da soluk kalır.</p>
       <figure>
@@ -545,7 +569,7 @@
         <table>
           <thead><tr><th>Stem</th><th>Ne içerir</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>Master: rig, looper, sampler pad'leri ve altyapı birlikte</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>Master: rig, looper, sampler pad'leri ve altyapı birlikte — click dışarıda kalır</td></tr>
             <tr><td><b class="ui">input</b></td><td>Kuru ses kartı girişi, arayüzünün sağladığı kanal sayısında</td></tr>
             <tr><td><b class="ui">altyapı</b></td><td>Sadece altyapı, bir tane bağlıysa</td></tr>
           </tbody>

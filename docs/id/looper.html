@@ -156,8 +156,8 @@
               <td>Membisukan sel lain yang sedang diputar; tekan lagi untuk mengembalikannya.
                 Men-solo sel lain memindahkan solo ke sana.</td></tr>
             <tr><td>Kiri bawah</td><td><b class="ui">Undo</b></td>
-              <td>Memundurkan sel ini satu lapisan per ketukan, sampai ke take — lihat
-                <a href="#undo">Undo dan hapus</a>.</td></tr>
+              <td>Memundurkan sel ini satu lapisan per ketukan, sampai ke take dan melewatinya: di
+                <b>L1</b> ia mengosongkan sel — lihat <a href="#undo">Undo dan hapus</a>.</td></tr>
             <tr><td>Kanan bawah</td><td><b class="ui">Putar</b> / <b class="ui">Berhenti</b></td>
               <td>Menghentikan atau memulai loop ini saja.</td></tr>
           </tbody>
@@ -220,7 +220,8 @@
               berbunyi memudar keluar sementara setiap sel yang berhenti memudar masuk, selama
               panjang crossfade. Menyala hanya saat sebagian sel diputar dan sebagian berhenti.</td></tr>
             <tr><td>Putar / berhenti</td><td><b class="ui">Putar loop</b> /
-              <b class="ui">Hentikan loop</b>, nonaktif sampai ada siklus.</td></tr>
+              <b class="ui">Hentikan loop</b>, nonaktif sampai ada siklus. Ikonnya berganti; warnanya
+              tetap.</td></tr>
             <tr><td>Tempat sampah</td><td><b class="ui">Hapus semua loop</b>.</td></tr>
           </tbody>
         </table>
@@ -523,15 +524,16 @@
       <h2 id="undo"><span class="n">04.8</span>Undo dan hapus</h2>
       <p>Undo selalu milik sebuah sel. Sudut <b class="ui">Undo</b> setiap sel — dan tombol
         <b class="ui">Undo</b> di editornya — <b>mundur satu lapisan per ketukan</b>: pertama
-        overdub yang sedang berjalan, lalu lapisan di atas take satu per satu, sampai ke take itu
-        sendiri. Ia tidak pernah maju lagi dan tidak pernah melewati take: di take, tombolnya
-        samar. Tombol di editor menunjukkan berapa langkah yang tersisa, dan bagian tengah sel
+        overdub yang sedang berjalan, lalu lapisan di atas take satu per satu, lalu take itu
+        sendiri: di <b>L1</b> sebuah undo mengosongkan sel. Ia tidak pernah maju lagi. Tombolnya
+        aktif begitu sel berisi take. Tombol di editor menunjukkan berapa langkah yang tersisa, take
+        ikut dihitung — take dengan dua overdub menunjukkan 3 — dan bagian tengah sel
         menunjukkan lapisan tempatnya berada (<b>L3</b>, <b>L2</b>…). Ketukan yang lebih cepat dari
         layar tetap dihitung satu per satu. Pada sel MIDI, undo membatalkan overdub terakhirnya.</p>
       <p id="undo-transport">Tidak ada lagi undo di transport, dan tidak ada aksi MIDI untuk
         "undo apa pun yang terakhir": pedal meng-undo sel yang disebut namanya
         (<b>Loop 1 · Undo</b>…). Menghapus adalah hal terpisah. <b class="ui">Hapus</b> di editor
-        mengosongkan satu sel; tombol tempat sampah, <b class="ui">Hapus semua loop</b>,
+        mengosongkan satu sel seketika; tombol tempat sampah, <b class="ui">Hapus semua loop</b>,
         mengosongkan looper.</p>
     </section>
 
@@ -579,7 +581,8 @@
       <p>Ubin <b class="ui">DUB</b> berputar antara 0, 1, 2, dan 4 putaran overdub otomatis —
         sel kembali diputar biasa dengan sendirinya setelah sejumlah putaran tersebut.</p>
       <h3>Tombol level</h3>
-      <p>Speaker adalah level sel: terisi dari kiri sejauh level-nya keras, dicoret saat hening.
+      <p>Speaker adalah level sel: terisi dari kiri dengan warna sel sejauh level-nya keras — 0 dB
+        mengisi sekitar setengahnya — dan dicoret saat hening.
         <b>Tahan</b> dan fader sel muncul dengan tutupnya di bawah jarimu; <b>seret</b> ke atas
         atau ke bawah untuk mengatur level, terdengar langsung; <b>lepaskan</b> dan fader-nya
         hilang — satu ketukan membiarkannya tampil sejenak, cukup lama untuk dibaca. <b>Dua ketukan
@@ -624,6 +627,11 @@
         <li><b class="ui">Ganti nama</b>, <b class="ui">Bagikan…</b>, <b class="ui">Ekspor sebagai WAV…</b>
           dan <b class="ui">Hapus</b>.</li>
       </ul>
+      <p>Setiap loop tersimpan juga punya tombol <b>pratinjau</b>, <b class="ui">Dengarkan loop</b>,
+        dengan cincin yang menunjukkan kemajuannya: take-nya, di-mix pada level masing-masing,
+        diputar berulang di samping engine sementara sel dan transport dibiarkan. Hanya satu pratinjau
+        diputar pada satu waktu; ia berhenti saat sheet ditutup, saat pratinjau lain dimulai, atau saat
+        loop dimuat.</p>
       <h3>Loop sebagai file</h3>
       <p>Dua tombol di bagian bawah pustaka bekerja pada pustaka itu sendiri.
         <b>Impor</b> (<b class="ui">Impor ke pustaka</b>) menerima loop NAMper dan file
@@ -640,7 +648,7 @@
         <p>Preset looper tidak pernah menyimpan audio rekaman — hanya take MIDI dari pad yang ikut
           di dalamnya. Untuk menyimpan sebuah loop, simpan ke pustaka; untuk menyimpan seluruh
           penampilan, gunakan perekam di tab <a href="/docs/id/mix.html#recorder">Mix</a>, yang
-          merekam mix output ditambah stem input kering yang terpisah.</p>
+          merekam mix output (tanpa click) ditambah stem input kering yang terpisah.</p>
       </div>
     </section>
 
@@ -657,8 +665,8 @@
       <h3>Peredam gema</h3>
       <p>Mikrofon ponsel di ruangan mendengar apa yang diputar aplikasi — loop, pad, backing track,
         dan click — dan lapisan baru akan merekamnya lagi: paling baik jadi keruh, paling buruk
-        loop yang terus menumpuk dirinya sendiri. <b class="ui">Peredam gema</b>, aktif secara
-        default, menghapus gema itu dari apa yang ditulis sel yang sedang merekam, overdub, atau
+        loop yang terus menumpuk dirinya sendiri. <b class="ui">Peredam gema</b>, nonaktif secara
+        default — nyalakan saat mikrofon ponsel sendiri mendengar ruangan — menghapus gema itu dari apa yang ditulis sel yang sedang merekam, overdub, atau
         armed, dan tidak di tempat lain: apa yang kamu dengar live tidak pernah disentuh dan tidak
         mendapat latensi. Ia mempelajari ruangan dari loop yang diputar sendirian sesaat; tanpa
         gema di mikrofon, take persis sama dengan input. Sakelarnya ada di Pengaturan →
@@ -668,9 +676,18 @@
         arah. <b class="ui">Ikuti MIDI clock</b> menjadikan tempo clock sebagai tempo set — di
         atas lagu, loop, atau tanganmu — dan sel yang armed mulai merekam pada downbeat
         berikutnya; pilih sumbernya dan offset untuk pengirim yang terlalu cepat atau terlambat.
+        Loop yang sedang berjalan menjaga garis biramanya pada garis birama clock sepanjang set yang
+        panjang: drift satu milidetik ditarik kembali satu sampel demi satu sampel, terlalu kecil untuk
+        terdengar. <b>Stop</b> dari pengirim menghentikan lagu, loop, dan click.
         <b class="ui">Kirim MIDI clock</b> mengirim 24 tick per ketukan ke tujuan yang kamu pilih,
         dari jam audio yang juga menjalankan click: start dikirim di awal loop, stop saat loop
         berhenti.</p>
+      <p>Selain perangkat yang terhubung, tujuannya bisa <b class="ui">NAMper (aplikasi lain)</b> —
+        sumber clock yang dipilih drum machine atau aplikasi synth di perangkat yang sama — atau
+        <b class="ui">Sesi jaringan</b>: Mac di Wi-Fi yang sama terhubung ke ponsel lewat Audio MIDI
+        Setup → MIDI Network Setup, dan ponsel hanya muncul di sana selama sesi itu dipilih. Di iPhone
+        dan iPad sesi jaringan juga bisa menjadi sumber clock; di Android jaringan hanya membawa clock
+        keluar.</p>
     </section>
 
     <nav class="pager">

@@ -155,8 +155,8 @@
               <td>Silenzia le altre celle in riproduzione; premilo di nuovo per riportarle. Mettere
                 in solo un'altra cella gli passa il solo.</td></tr>
             <tr><td>In basso a sinistra</td><td><b class="ui">Annulla</b></td>
-              <td>Riporta indietro questa cella di uno strato a ogni tocco, fino alla take — vedi
-                <a href="#undo">Annulla e cancella</a>.</td></tr>
+              <td>Riporta indietro questa cella di uno strato a ogni tocco, fino alla take e oltre: su
+                <b>L1</b> svuota la cella — vedi <a href="#undo">Annulla e cancella</a>.</td></tr>
             <tr><td>In basso a destra</td><td><b class="ui">Play</b> / <b class="ui">Stop</b></td>
               <td>Ferma o avvia solo questo loop.</td></tr>
           </tbody>
@@ -219,7 +219,8 @@
               suona sfuma in uscita mentre ogni cella ferma sfuma in entrata, sulla durata del
               crossfade. Acceso solo quando alcune celle suonano e altre sono ferme.</td></tr>
             <tr><td>Play / stop</td><td><b class="ui">Avvia loop</b> /
-              <b class="ui">Ferma loop</b>, disattivato finché non c'è un ciclo.</td></tr>
+              <b class="ui">Ferma loop</b>, disattivato finché non c'è un ciclo. Cambia icona; il
+              colore resta.</td></tr>
             <tr><td>Cestino</td><td><b class="ui">Cancella tutti i loop</b>.</td></tr>
           </tbody>
         </table>
@@ -517,15 +518,16 @@
       <h2 id="undo"><span class="n">04.8</span>Annulla e cancella</h2>
       <p>L'annullamento appartiene sempre a una cella. L'angolo <b class="ui">Annulla</b> di ogni
         cella — e il tasto <b class="ui">Annulla</b> nel suo editor — <b>torna indietro di uno strato
-        a ogni tocco</b>: prima l'overdub in corso, poi gli strati sopra la take uno alla volta, fino
-        alla take stessa. Non va mai di nuovo avanti e mai oltre la take: sulla take il tasto è
-        tenue. Il tasto dell'editor mostra quanti passi restano, e il centro della cella mostra lo
-        strato su cui si trova (<b>L3</b>, <b>L2</b>…). I tocchi più veloci dello schermo contano
+        a ogni tocco</b>: prima l'overdub in corso, poi gli strati sopra la take uno alla volta, poi
+        la take stessa: su <b>L1</b> un annulla svuota la cella. Non va mai di nuovo avanti. Il
+        tasto è attivo appena la cella contiene una take. Il tasto dell'editor mostra quanti passi
+        restano, take compresa — una take con due overdub mostra 3 — e il centro della cella mostra
+        lo strato su cui si trova (<b>L3</b>, <b>L2</b>…). I tocchi più veloci dello schermo contano
         uno per uno. Su una cella MIDI annulla toglie l'ultimo overdub.</p>
       <p id="undo-transport">Nel transport non c'è più annulla, e nessuna azione MIDI per
         "annulla qualunque cosa sia stata l'ultima": un pedale annulla una cella precisa
         (<b>Loop 1 · Undo</b>…). Cancellare è un'altra cosa. Il <b class="ui">Cancella</b>
-        dell'editor svuota una cella; il tasto cestino, <b class="ui">Cancella tutti i loop</b>,
+        dell'editor svuota una cella all'istante; il tasto cestino, <b class="ui">Cancella tutti i loop</b>,
         svuota il looper.</p>
     </section>
 
@@ -573,8 +575,8 @@
       <p>La tessera <b class="ui">DUB</b> cicla tra 0, 1, 2 e 4 passate di overdub automatiche — la
         cella torna a riprodursi da sola dopo quel numero di giri.</p>
       <h3>Il tasto del livello</h3>
-      <p>L'altoparlante è il livello della cella: riempito da sinistra quanto è alto il livello,
-        barrato quando è a zero. <b>Tienilo premuto</b> e compare il fader della cella con il cursore
+      <p>L'altoparlante è il livello della cella: riempito da sinistra, nel colore della cella,
+        quanto è alto il livello — 0 dB ne riempie circa metà — e barrato quando è a zero. <b>Tienilo premuto</b> e compare il fader della cella con il cursore
         sotto il dito; <b>trascina</b> su o giù per impostare il livello, e lo senti subito;
         <b>lascia</b> e il fader sparisce — un tocco lo lascia visibile un momento, il tempo di
         leggerlo. <b>Due tocchi rapidi</b> riportano il livello a <b>0 dB</b>. I livelli arrivano a
@@ -619,6 +621,11 @@
         <li><b class="ui">Rinomina</b>, <b class="ui">Condividi…</b>, <b class="ui">Esporta come WAV…</b>
           e <b class="ui">Elimina</b>.</li>
       </ul>
+      <p>Ogni loop salvato ha anche un tasto di <b>anteprima</b>, <b class="ui">Ascolta il loop</b>,
+        con un anello che ne mostra l'avanzamento: le take, mixate ai loro livelli, girano in loop
+        accanto al motore mentre le celle e il transport restano come sono. Suona un'anteprima alla
+        volta; si ferma quando il pannello si chiude, quando ne parte un'altra o quando il loop viene
+        caricato.</p>
       <h3>I loop come file</h3>
       <p>I due tasti in fondo alla libreria agiscono sulla libreria stessa.
         <b>Importa</b> (<b class="ui">Importa nella libreria</b>) accetta loop NAMper e file audio;
@@ -635,7 +642,7 @@
         <p>Un preset del looper non contiene mai audio registrato — al suo interno viaggia solo una
           take MIDI dei pad. Per conservare un loop, salvalo nella libreria; per conservare
           un'intera esibizione, usa il registratore nella scheda
-          <a href="/docs/it/mix.html#recorder">Mix</a>, che registra il mix di uscita più uno stem
+          <a href="/docs/it/mix.html#recorder">Mix</a>, che registra il mix di uscita (senza il click) più uno stem
           separato dell'ingresso pulito.</p>
       </div>
     </section>
@@ -654,7 +661,8 @@
       <p>Il microfono di un telefono nella stanza sente ciò che suona l'app — i loop, i pad, la base
         e il click — e un nuovo strato li registrerebbe di nuovo: nel migliore dei casi un
         impasto confuso, nel peggiore un loop che si alimenta da solo.
-        <b class="ui">Cancellazione dell'eco</b>, attivo di default, toglie quell'eco da ciò che scrive una
+        <b class="ui">Cancellazione dell'eco</b>, disattivato di default — attivalo quando il
+        microfono del telefono sente la stanza — toglie quell'eco da ciò che scrive una
         cella in registrazione, in overdub o armata, e da nessun'altra parte: ciò che senti dal vivo
         non viene mai toccato e non guadagna latenza. Impara la stanza dai loop che suonano da soli
         per un momento; senza eco al microfono la take è esattamente l'ingresso. L'interruttore sta
@@ -664,9 +672,17 @@
         entrambe le direzioni. <b class="ui">Segui un clock MIDI</b> rende il tempo del clock quello
         del set — sopra un brano, un loop o la tua mano — e una cella armata inizia a registrare sul
         suo prossimo battere; scegli la sorgente e un offset per un mittente che va in anticipo o in
-        ritardo. <b class="ui">Invia clock MIDI</b> invia 24 tick per beat alla destinazione che
-        scegli, dal clock audio su cui gira il click: lo start parte all'inizio del loop, lo stop
-        quando si ferma.</p>
+        ritardo. Un loop in corsa tiene le sue stanghette su quelle del clock per tutto un lungo set:
+        un millisecondo di deriva viene recuperato un campione alla volta, troppo poco per sentirlo.
+        Lo <b>Stop</b> del mittente ferma il brano, i loop e il click. <b class="ui">Invia clock
+        MIDI</b> invia 24 tick per beat alla destinazione che scegli, dal clock audio su cui gira il
+        click: lo start parte all'inizio del loop, lo stop quando si ferma.</p>
+      <p>Oltre ai dispositivi collegati, la destinazione può essere <b class="ui">NAMper (altre
+        app)</b> — una sorgente di clock che una drum machine o un'app synth sullo stesso
+        dispositivo può scegliere — oppure la <b class="ui">Sessione di rete</b>: un Mac sulla stessa
+        Wi-Fi si collega al telefono in Audio MIDI Setup → MIDI Network Setup, e il
+        telefono vi compare solo finché la sessione è scelta. Su iPhone e iPad la sessione di rete
+        può anche essere la sorgente del clock; su Android la rete porta il clock solo in uscita.</p>
     </section>
 
     <nav class="pager">

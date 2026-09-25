@@ -260,8 +260,9 @@
 
       <div class="note warn">
         <div class="t">宿主中的 MIDI</div>
-        <p>Mac 上的 VST3 和 CLAP 接收宿主发来的 MIDI——控制器、音符和程序切换会像在应用里一样
-          送达音色组的控制映射。Audio Unit 没有 MIDI 输入：请改用宿主的自动化来控制它。</p>
+        <p>VST3、CLAP 和 Audio Unit 都接收宿主发来的 MIDI——控制器、音符和程序切换会像在应用里一样
+          送达音色组的控制映射。每条消息都保留自己的位置：它落在宿主安排的那个采样点上，而不是缓冲区的开头；
+          同一个缓冲区里的一次按下和一次松开是两条消息。</p>
       </div>
       <div class="note tip">
         <div class="t">两者结合使用</div>

@@ -155,8 +155,8 @@
               <td>Çalan diğer hücreleri susturur; onları geri getirmek için tekrar bas. Başka bir
                 hücreyi solo yapmak soloyu ona devreder.</td></tr>
             <tr><td>Sol alt</td><td><b class="ui">Geri al</b></td>
-              <td>Bu hücreyi her dokunuşta bir katman geri götürür, kayda kadar — bkz.
-                <a href="#undo">Geri alma ve temizleme</a>.</td></tr>
+              <td>Bu hücreyi her dokunuşta bir katman geri götürür, kayda kadar ve ötesine:
+                <b>L1</b>'de hücreyi temizler — bkz. <a href="#undo">Geri alma ve temizleme</a>.</td></tr>
             <tr><td>Sağ alt</td><td><b class="ui">Çal</b> / <b class="ui">Durdur</b></td>
               <td>Yalnızca bu loop'u durdurur ya da başlatır.</td></tr>
           </tbody>
@@ -218,7 +218,8 @@
               kararırken duran her hücre crossfade süresi boyunca açılır. Yalnızca bazı hücreler
               çalıp bazıları dururken yanar.</td></tr>
             <tr><td>Çal / durdur</td><td><b class="ui">Loop’ları çal</b> /
-              <b class="ui">Loop’ları durdur</b>, bir döngü oluşana kadar devre dışı.</td></tr>
+              <b class="ui">Loop’ları durdur</b>, bir döngü oluşana kadar devre dışı. Simgesi değişir;
+              rengi aynı kalır.</td></tr>
             <tr><td>Çöp kutusu</td><td><b class="ui">Tüm loop’ları temizle</b>.</td></tr>
           </tbody>
         </table>
@@ -513,14 +514,15 @@
       <h2 id="undo"><span class="n">04.8</span>Geri alma ve temizleme</h2>
       <p>Geri al her zaman bir hücreye aittir. Her hücrenin <b class="ui">Geri al</b> köşesi — ve
         editöründeki <b class="ui">Geri al</b> tuşu — <b>her dokunuşta bir katman geri gider</b>:
-        önce o an süren overdub, sonra kaydın üzerindeki katmanlar tek tek, kaydın kendisine
-        kadar. Asla yeniden ileri gitmez ve kaydın ötesine geçmez: kayda gelince tuş soluklaşır.
-        Editördeki tuş kaç adım kaldığını, hücrenin merkezi ise hangi katmanda olduğunu gösterir
+        önce o an süren overdub, sonra kaydın üzerindeki katmanlar tek tek, sonra kaydın
+        kendisi: <b>L1</b>'de bir geri alma hücreyi temizler. Asla yeniden ileri gitmez. Hücrede bir
+        kayıt olur olmaz tuş etkindir. Editördeki tuş, kayıt da dahil kaç adım kaldığını gösterir —
+        iki overdub'lı bir kayıt 3 gösterir — hücrenin merkezi ise hangi katmanda olduğunu gösterir
         (<b>L3</b>, <b>L2</b>…). Ekrandan hızlı dokunuşların her biri sayılır. Bir MIDI hücresinde
         geri al son overdub'ı geri alır.</p>
       <p id="undo-transport">Transport'ta artık geri al yok, "en son ne yapıldıysa geri al" diye
         bir MIDI eylemi de yok: bir pedal adı belli bir hücreyi geri alır (<b>Loop 1 · Undo</b>…).
-        Temizleme ayrıdır. Editördeki <b class="ui">Temizle</b> tek bir hücreyi boşaltır; çöp
+        Temizleme ayrıdır. Editördeki <b class="ui">Temizle</b> tek bir hücreyi bir anda boşaltır; çöp
         kutusu tuşu, <b class="ui">Tüm loop’ları temizle</b>, looper'ı boşaltır.</p>
     </section>
 
@@ -566,8 +568,8 @@
       <p><b class="ui">DUB</b> karosu 0, 1, 2 ve 4 otomatik overdub geçişi arasında döner — hücre,
         bu kadar tur attıktan sonra kendiliğinden tekrar çalmaya döner.</p>
       <h3>Seviye tuşu</h3>
-      <p>Hoparlör hücrenin seviyesidir: seviye ne kadar yüksekse soldan o kadar dolar, sessizlikte
-        üstü çizilir. <b>Basılı tut</b>, hücrenin fader'ı başlığı parmağının altında olacak
+      <p>Hoparlör hücrenin seviyesidir: seviye ne kadar yüksekse soldan hücrenin renginde o kadar
+        dolar — 0 dB yaklaşık yarısını doldurur — ve sessizlikte üstü çizilir. <b>Basılı tut</b>, hücrenin fader'ı başlığı parmağının altında olacak
         şekilde belirir; seviyeyi ayarlamak için yukarı ya da aşağı <b>sürükle</b>, anında
         duyarsın; <b>bırak</b>, fader kaybolur — bir dokunuş onu okuyabileceğin kadar bir an açık
         bırakır. <b>İki hızlı dokunuş</b> seviyeyi <b>0 dB</b>'ye döndürür. Seviyeler, uygulamadaki
@@ -611,6 +613,10 @@
         <li><b class="ui">Yeniden adlandır</b>, <b class="ui">Paylaş…</b>, <b class="ui">WAV olarak dışa aktar…</b>
           ve <b class="ui">Sil</b>.</li>
       </ul>
+      <p>Kaydedilmiş her loop'un bir de <b>önizleme</b> tuşu vardır, <b class="ui">Döngüyü dinle</b>;
+        ilerlemesini bir halka gösterir: kayıtlar, kendi seviyelerinde miksedilerek motorun yanında
+        döngüde çalar, hücrelere ve transport'a dokunulmaz. Aynı anda tek bir önizleme çalar; sayfa
+        kapanınca, başka biri başlayınca ya da loop yüklenince durur.</p>
       <h3>Dosya olarak loop'lar</h3>
       <p>Kütüphanenin altındaki iki tuş kütüphanenin kendisine etki eder.
         <b>İçe aktar</b> (<b class="ui">Kitaplığa içe aktar</b>) NAMper loop'larını ve ses
@@ -628,7 +634,7 @@
         <p>Bir looper preset'i asla kaydedilmiş ses tutmaz — içinde yalnızca pad'lerin MIDI kaydı
           taşınır. Bir loop'u saklamak için onu kütüphaneye kaydet; bütün bir performansı saklamak
           için <a href="/docs/tr/mix.html#recorder">Miks</a> sekmesindeki kaydediciyi kullan; bu,
-          çıkış miksini ve ayrı bir kuru giriş kaydını kaydeder.</p>
+          çıkış miksini (click olmadan) ve ayrı bir kuru giriş kaydını kaydeder.</p>
       </div>
     </section>
 
@@ -645,8 +651,8 @@
       <h3>Yankı giderme</h3>
       <p>Odadaki bir telefon mikrofonu uygulamanın çaldığını duyar — loop'ları, pad'leri, altyapıyı
         ve click'i — ve yeni bir katman bunları yeniden kaydeder: en iyi ihtimalle çamur, en kötü
-        ihtimalle kendi üzerine büyüyen bir loop. Varsayılan olarak açık olan
-        <b class="ui">Yankı giderme</b>, bu yankıyı kaydeden, overdub yapan ya da tetikte olan
+        ihtimalle kendi üzerine büyüyen bir loop. Varsayılan olarak kapalı olan
+        <b class="ui">Yankı giderme</b> — telefonun kendi mikrofonu odayı duyuyorsa aç — bu yankıyı kaydeden, overdub yapan ya da tetikte olan
         bir hücrenin yazdığından çıkarır, başka hiçbir yerden değil: canlı duyduğuna asla
         dokunulmaz ve gecikme eklenmez. Odayı, loop'ların bir an tek başına çalmasından öğrenir;
         mikrofonda yankı yoksa kayıt tam olarak giriştir. Anahtar Ayarlar →
@@ -656,8 +662,16 @@
         ayarlar. <b class="ui">MIDI saatini izle</b> saatin temposunu setin temposu yapar — bir
         şarkının, bir loop'un ya da elinin üstünde — ve tetikte bir hücre bir sonraki ilk vuruşta
         kayda başlar; kaynağı ve erken ya da geç çalışan bir gönderici için bir ofset seç.
-        <b class="ui">MIDI saati gönder</b>, click'in çalıştığı ses saatinden, seçtiğin hedefe vuruş
-        başına 24 tik gönderir: başlat loop'un başında gider, durdur loop durduğunda.</p>
+        Çalan bir loop, uzun bir set boyunca ölçü çizgilerini saatinkilerde tutar: bir milisaniyelik
+        kayma, duyulamayacak kadar az, her seferinde bir örnek olarak geri alınır. Göndericinin
+        <b>Stop</b>'u şarkıyı, loop'ları ve click'i durdurur. <b class="ui">MIDI saati gönder</b>,
+        click'in çalıştığı ses saatinden, seçtiğin hedefe vuruş başına 24 tik gönderir: başlat
+        loop'un başında gider, durdur loop durduğunda.</p>
+      <p>Bağlı cihazların yanında hedef <b class="ui">NAMper (diğer uygulamalar)</b> de olabilir —
+        aynı cihazdaki bir davul makinesinin ya da synth uygulamasının seçtiği bir saat kaynağı — ya da
+        <b class="ui">Ağ oturumu</b>: aynı Wi-Fi'daki bir Mac, Audio MIDI Setup → MIDI Network Setup
+        içinde telefona bağlanır ve telefon orada yalnızca oturum seçiliyken listelenir. iPhone ve
+        iPad'de ağ oturumu saatin kaynağı da olabilir; Android'de ağ saati yalnızca dışarı taşır.</p>
     </section>
 
     <nav class="pager">

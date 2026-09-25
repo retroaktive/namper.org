@@ -293,9 +293,10 @@
 
       <div class="note warn">
         <div class="t">Le MIDI dans un hôte</div>
-        <p>Le VST3 et le CLAP du Mac reçoivent le MIDI de l'hôte — contrôleurs, notes et program
-          changes atteignent la carte de contrôle du rig comme dans l'appli. L'Audio Unit n'a pas
-          d'entrée MIDI : pilote-le plutôt avec l'automation de l'hôte.</p>
+        <p>Le VST3, le CLAP et l'Audio Unit reçoivent le MIDI de l'hôte — contrôleurs, notes et
+          program changes atteignent la carte de contrôle du rig comme dans l'appli. Chaque message
+          garde sa place : il tombe sur l'échantillon où l'hôte l'a posé, pas au début du buffer, et
+          un appui et un relâchement dans un même buffer font deux messages.</p>
       </div>
       <div class="note tip">
         <div class="t">Utiliser les deux</div>

@@ -99,7 +99,7 @@
       <p>Se um arquivo não puder ser lido, você recebe <b class="ui r">Não foi possível importar &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="A aba Perform: o cartão do player com NAMper (full) carregada a 146 BPM em D#m, as teclas de adicionar, gravar e letra na linha do nome, embaixo dela as teclas de transporte e AUTO LYRICS, a forma de onda, e sob a forma de onda a faixa Preset da música com os nomes dos presets e das cenas que ela traz, depois a faixa da letra e o fader do backing com o chip DIRECT; abaixo, o cartão DEMO SET com AUTO NEXT ligado, e os botões de palco da música.">
+             alt="A aba Perform: o cartão do player com NAMper (full) carregada a 146 BPM em D#m, as teclas de adicionar, gravar e letra na linha do nome, embaixo dela as teclas de transporte e LETRA AUTO, a forma de onda, e sob a forma de onda a faixa Preset da música com os nomes dos presets que ela traz e a sua faixa Cena com as letras das cenas, a lupa do zoom no canto superior esquerdo delas, depois a faixa da letra e o fader do backing com o chip DIRETO; abaixo, o cartão DEMO SET com AVANÇO AUTO ligado, e os botões de palco da música, com o que está tocando aceso.">
         <figcaption>A aba Perform: o player com a automação da música, o set, os botões de palco</figcaption>
       </figure>
       <div class="note tip">
@@ -189,8 +189,9 @@
         <li><b>Um setlist ao vivo, nenhuma música escolhida</b> — as músicas do set. O primeiro
           toque escolhe uma, e os sons dela assumem os botões.</li>
         <li><b>Uma música escolhida</b> — os itens da própria música, cada um um preset com a cena
-          que ele traz, na ordem da música. O que está tocando fica aceso, e um botão mostra só as
-          cenas que o seu preset tem.</li>
+          que ele traz, na ordem da música. O que está tocando fica aceso — a luz segue o que toca: o
+          botão que corresponde ao preset e à cena no ar, depois da automação, de um salto ou de uma
+          troca de cena — e um botão mostra só as cenas que o seu preset tem.</li>
       </ul>
       <p>Um botão troca no instante em que o dedo encosta, não quando ele sobe, então um toque
         rápido entre dois compassos nunca se perde. São quatro ou oito: o chip de quantidade no
@@ -314,7 +315,8 @@
         Verso limpo, refrão com crunch, o delay abrindo para o solo: tocado uma vez, depois sem
         tirar as mãos das cordas.</p>
       <p>Ela substitui os marcadores das versões anteriores. O que um marcador fazia — chamar um
-        preset e a sua cena num momento — agora é um ponto na faixa <b class="ui">Preset</b> da música, e os
+        preset e a sua cena num momento — agora é um ponto na faixa <b class="ui">Preset</b> da música onde o preset
+        muda e um ponto na sua faixa <b class="ui">Cena</b> onde a cena muda, e os
         marcadores antigos de uma música são trazidos para cá uma vez, sozinhos.</p>
 
       <h3>Gravação</h3>
@@ -329,8 +331,9 @@
           <thead><tr><th>O que é gravado</th><th>De onde</th></tr></thead>
           <tbody>
             <tr><td>Um knob, o liga/desliga de um bloco, uma cena, o morph de cenas</td><td>A tela,
-              um pedal, um host de plug-in. Um movimento contínuo guarda um ponto a cada
-              20 ms</td></tr>
+              um pedal, um host de plug-in. Um movimento contínuo guarda no máximo um ponto a cada
+              20 ms, e nenhum para um movimento menor que 1/500 da faixa do knob, então uma mão
+              parada não grava nada</td></tr>
             <tr><td>Um preset de rig com a cena em que ele cai, um preset de looper, um kit de
               pads</td><td>Um toque nos itens da música — os botões de palco, o painel do set, um
               pedal</td></tr>
@@ -347,11 +350,17 @@
         não.</p>
       <div class="note tip">
         <div class="t">Gravação por toque</div>
-        <p>Uma faixa só é sobrescrita enquanto você a mexe, e por 0,6 s depois que a mão sai. O
+        <p>A faixa de um knob, de um fader ou do morph só é sobrescrita enquanto você a mexe, e por 0,6 s depois que a mão sai. O
           resto dessa faixa, e toda faixa em que você não mexe, continua como estava e segue
           tocando — então uma segunda passada pode acertar um knob no refrão sem refazer a
           música.</p>
       </div>
+      <p>Uma faixa de degraus — um preset, uma cena, o liga/desliga de um bloco, um preset de looper,
+        um kit — é <strong>assumida</strong> a partir do seu primeiro toque nela até a gravação parar:
+        a música para ou é movida, ou você desliga a tecla de gravar. O que ela tinha nesse trecho dá
+        lugar ao que você toca agora em vez de se acumular ao lado. Antes do seu primeiro toque e
+        depois que a gravação para, a faixa fica como estava, então desligar a tecla de gravar é o
+        punch-out.</p>
       <p>A reprodução não precisa de chave: a automação roda sempre que a música toca. Um início ou
         um salto persegue o estado da música — preset, cenas, chaves, knobs, faders — então o som
         está certo onde quer que você entre. Batidas de pad e ações do looper são eventos: só
@@ -365,7 +374,7 @@
         <li><b>Um knob, um fader ou o morph</b> desenha a sua curva, na sua própria faixa de
           valores.</li>
         <li><b>Uma faixa de degraus</b> desenha uma marca em cada ponto com as palavras ao lado:
-          <b class="ui">Preset</b> o nome do preset e a cena em que ele cai, <b class="ui">Cena</b> a letra, a faixa <b class="ui">Liga/desliga</b> de
+          <b class="ui">Preset</b> o nome do preset, <b class="ui">Cena</b> a letra, a faixa <b class="ui">Liga/desliga</b> de
           um bloco <b class="ui">Ligado</b> ou <b class="ui">Off</b>, <b class="ui">Preset de looper</b> e <b class="ui">Kit de sampler</b> os seus nomes.</li>
         <li><b class="ui">Pads</b> mostra qual pad é tocado; <b class="ui">Looper</b> a ação e a sua célula — <b class="ui">Parar/Tocar</b> 2,
           <b class="ui">Mute</b> 3.</li>
@@ -373,19 +382,34 @@
       <p>As palavras de um ponto ocupam o espaço até o próximo ponto, e são cortadas onde os pontos
         se amontoam. Com mais de quatro faixas, as linhas rolam.</p>
 
+      <h3>Zoom</h3>
+      <p>Um movimento de um segundo numa música de quatro minutos é um degrau na largura da música
+        inteira. <strong>Faça pinça</strong> nas faixas, ou toque na lupa no canto superior esquerdo
+        delas (<b class="ui">Zoom</b>: 1×, 4×, 16×, depois de volta à música inteira), e elas mostram
+        um trecho da música em volta do cursor — seguindo-o enquanto a música toca, com o cursor
+        desenhado como uma linha. Tocar e arrastar pontos funciona na visão ampliada como na
+        inteira.</p>
+
       <h3>Editar um ponto</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Toque</strong> numa faixa e o ponto mais próximo se abre. No topo fica quando ele
+        <li><strong>Toque</strong> numa faixa de degraus — um preset, uma cena, uma chave, os pads, o
+          looper — e o ponto mais próximo se abre. No topo fica quando ele
           acontece: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
-          <b class="ui">+BAR</b>, ou <b class="ui">Para o cursor</b>. Embaixo, o que ele é — o preset da música e
-          a sua <b class="ui">CENA</b>, uma cena, <b class="ui">Ligado</b> ou <b class="ui">Off</b>, um pad com <b class="ui">Batida</b> ou <b class="ui">Parar</b> e a sua <b class="ui">VELOCIDADE</b>, a
-          <b class="ui">AÇÃO</b> e a <b class="ui">CÉLULA</b> do looper. O <b class="ui">VALOR</b> de um knob, de um fader ou do morph tem um
-          slider e um campo: digite o número nas unidades do próprio parâmetro, ele fica preso à
-          sua faixa de valores, e a faixa aparece embaixo. A tecla de lixeira apaga o ponto.</li>
+          <b class="ui">+BAR</b>, ou <b class="ui">Para o cursor</b>. Embaixo, o que ele é — o preset da música, uma cena, <b class="ui">Ligado</b> ou <b class="ui">Off</b>, um pad com <b class="ui">Batida</b> ou <b class="ui">Parar</b> e a sua <b class="ui">VELOCIDADE</b>, a
+          <b class="ui">AÇÃO</b> e a <b class="ui">CÉLULA</b> do looper. A tecla de lixeira apaga o ponto.</li>
         <li><strong>Arraste</strong> um ponto ao longo da faixa para movê-lo. Quando o andamento da
           música é conhecido, ele cai nos tempos da música.</li>
-        <li><strong>Segure</strong> uma faixa para <b class="ui">Apagar esta faixa</b>.</li>
+        <li>Uma <strong>curva</strong> — um knob, um fader, o morph — não é editada ponto por ponto:
+          grave-a de novo para mudá-la.</li>
       </ul>
+
+      <h3>Os eventos de uma faixa</h3>
+      <p><strong>Segure</strong> uma faixa e os seus eventos aparecem numa lista, em ordem de tempo:
+        de cada um, o tempo e o que ele é. Numa faixa de degraus, toque num evento para abri-lo como
+        acima, ou na sua tecla de lixeira para apagá-lo. Uma curva mostra quantos
+        <b class="ui">PONTOS</b> tem, o <b class="ui">TEMPO NA MÚSICA</b> que cobre e a faixa dos seus
+        <b class="ui">VALORES</b> — <b class="ui">Uma curva só muda quando é gravada de novo.</b>
+        <b class="ui">Apagar esta faixa</b> embaixo remove a faixa inteira, depois de perguntar.</p>
 
       <h3>Adicionar um ponto à mão</h3>
       <p>A <strong>tecla de adicionar</strong> (<b class="ui">Adicionar à automação</b>) põe um ponto na posição de
@@ -407,7 +431,8 @@
         </table>
       </div>
       <p>Uma escolha põe o ponto com o valor que ele tem agora e o abre ali mesmo na folha, para
-        digitar ou deslizar o valor e mover o tempo. Uma faixa que a música ainda não tem é criada
+        digitar ou deslizar o valor — o <b class="ui">VALOR</b> de um knob ou de um fader tem um slider e um
+        campo nas unidades do próprio parâmetro, preso à sua faixa — e mover o tempo. Uma faixa que a música ainda não tem é criada
         para ele. As duas teclas de automação ficam apagadas enquanto a música não tem linha do
         tempo — nenhum backing e nenhuma <b class="ui">Duração</b>.</p>
       <figure>
@@ -559,7 +584,7 @@
         <table>
           <thead><tr><th>Stem</th><th>O que ele guarda</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>O master: rig, looper, pads do sampler e backing juntos</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>O master: rig, looper, pads do sampler e backing juntos — o clique fica de fora</td></tr>
             <tr><td><b class="ui">input</b></td><td>A entrada seca da placa de som, no número de canais que sua interface entregar</td></tr>
             <tr><td><b class="ui">backing</b></td><td>O backing track sozinho, quando um está anexado</td></tr>
           </tbody>

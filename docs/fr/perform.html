@@ -100,7 +100,7 @@
       <p>Si un fichier ne peut pas être lu, tu obtiens <b class="ui r">Impossible d'importer &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="L'onglet Perform : la carte lecteur avec NAMper (full) chargé à 146 BPM en D#m, les touches d'ajout, d'enregistrement et de paroles sur la ligne du nom, en dessous les touches de transport et AUTO LYRICS, la forme d'onde et, sous elle, la piste Preset du morceau qui nomme les presets et scènes qu'il rappelle, puis la bande des paroles et le fader du playback avec la puce DIRECT ; en dessous la carte DEMO SET avec AUTO NEXT activé, et les boutons de scène du morceau.">
+             alt="L'onglet Perform : la carte lecteur avec NAMper (full) chargé à 146 BPM en D#m, les touches d'ajout, d'enregistrement et de paroles sur la ligne du nom, en dessous les touches de transport et AUTO LYRICS, la forme d'onde et, sous elle, la piste Preset du morceau qui nomme les presets qu'il rappelle et sa piste Scene avec les lettres des scènes, la loupe du zoom en haut à gauche, puis la bande des paroles et le fader du playback avec la puce DIRECT ; en dessous la carte DEMO SET avec AUTO NEXT activé, et les boutons de scène du morceau, celui qui joue allumé.">
         <figcaption>L'onglet Perform : le lecteur avec l'automation du morceau, le set, les boutons de scène</figcaption>
       </figure>
       <div class="note tip">
@@ -193,8 +193,10 @@
         <li><b>Une setlist en scène, aucun morceau choisi</b> — les morceaux du set. Le premier
           appui en choisit un, et ses sons prennent les boutons.</li>
         <li><b>Un morceau choisi</b> — les entrées du morceau lui-même, chacune un preset avec la
-          scène qu'il porte, dans l'ordre du morceau. Celle qui joue est allumée, et un bouton
-          n'affiche que les scènes que contient son preset.</li>
+          scène qu'il porte, dans l'ordre du morceau. Celle qui joue est allumée — la lumière suit ce
+          qui joue : le bouton qui correspond au preset et à la scène en cours, après l'automation,
+          un déplacement ou un changement de scène — et un bouton n'affiche que les scènes que
+          contient son preset.</li>
       </ul>
       <p>Un bouton bascule dès que le doigt se pose, pas quand il se lève, si bien qu'un coup rapide
         entre deux mesures n'est jamais perdu. Il y en a quatre ou huit : la puce de nombre dans
@@ -323,7 +325,8 @@
         refrain saturé, le delay qui s'ouvre pour le solo : joué une fois, puis mains libres.</p>
       <p>Elle remplace les marqueurs des versions précédentes. Ce que faisait un marqueur —
         rappeler un preset et sa scène à un instant donné — est désormais un point sur la piste
-        <b class="ui">Preset</b> du morceau, et les anciens marqueurs d'un morceau y sont transférés
+        <b class="ui">Preset</b> du morceau là où le preset change et un point sur sa piste
+        <b class="ui">Scène</b> là où la scène change, et les anciens marqueurs d'un morceau y sont transférés
         une fois, tout seuls.</p>
 
       <h3>Enregistrement</h3>
@@ -339,7 +342,9 @@
           <thead><tr><th>Ce qui est écrit</th><th>Depuis</th></tr></thead>
           <tbody>
             <tr><td>Un potard, la marche/arrêt d'un bloc, une scène, le morph de scènes</td><td>L'écran,
-              une pédale, un hôte de plugin. Un balayage garde un point toutes les 20 ms</td></tr>
+              une pédale, un hôte de plugin. Un balayage garde au plus un point toutes les
+              20 ms, et aucun pour un mouvement de moins de 1/500 de la plage du potard, si bien
+              qu'une main immobile n'écrit rien</td></tr>
             <tr><td>Un preset de rig avec la scène sur laquelle il arrive, un preset de looper, un kit
               de pads</td><td>Un tap sur les entrées du morceau — les boutons de scène, le panneau du
               set, une pédale</td></tr>
@@ -358,11 +363,18 @@
         elle-même.</p>
       <div class="note tip">
         <div class="t">Enregistrement au toucher</div>
-        <p>Une piste n'est réécrite que pendant que tu la bouges, et 0,6 s après que ta main l'a
+        <p>La piste d'un potard, d'un fader ou du morph n'est réécrite que pendant que tu la bouges, et 0,6 s après que ta main l'a
           lâchée. Le reste de cette piste, et toutes les pistes que tu ne touches pas, restent comme
           elles étaient et continuent de jouer — un second passage peut donc corriger un potard dans
           le refrain sans refaire le morceau.</p>
       </div>
+      <p>Une piste par paliers — un preset, une scène, la marche/arrêt d'un bloc, un preset de
+        looper, un kit — est <strong>reprise en main</strong> dès ton premier appui dessus jusqu'à
+        l'arrêt de l'enregistrement : le morceau s'arrête ou est déplacé, ou tu coupes la touche
+        d'enregistrement. Ce qu'elle contenait sur ce passage cède la place à ce que tu appuies
+        maintenant au lieu de s'empiler à côté. Avant ton premier appui et après l'arrêt de
+        l'enregistrement, la piste reste comme elle était : couper la touche d'enregistrement, c'est
+        le punch-out.</p>
       <p>La lecture ne demande aucun interrupteur : l'automation tourne dès que le morceau joue. Un
         départ ou un déplacement rattrape l'état du morceau — preset, scènes, interrupteurs,
         potards, faders — pour que le son soit juste où que tu entres. Les frappes de pads et les
@@ -375,7 +387,7 @@
       <ul style="--nc:var(--drive)">
         <li><b>Un potard, un fader ou le morph</b> dessine sa courbe sur sa propre plage.</li>
         <li><b>Une piste par paliers</b> trace un repère à chaque point avec ses mots à côté :
-          <b class="ui">Preset</b> le nom du preset et la scène sur laquelle il arrive,
+          <b class="ui">Preset</b> le nom du preset,
           <b class="ui">Scène</b> la lettre, la piste <b class="ui">on/off</b> d'un bloc
           <b class="ui">Activé</b> ou <b class="ui">Off</b>, <b class="ui">Preset de looper</b> et
           <b class="ui">Kit de sampler</b> leurs noms.</li>
@@ -385,22 +397,40 @@
       <p>Les mots d'un point occupent la place jusqu'au point suivant, et sont coupés là où les
         points se serrent. Au-delà de quatre pistes, les rangées défilent.</p>
 
+      <h3>Zoom</h3>
+      <p>Un balayage d'une seconde dans un morceau de quatre minutes n'est qu'une marche à la
+        largeur du morceau entier. <strong>Pince</strong> les pistes, ou touche la loupe en haut à
+        gauche (<b class="ui">Zoom</b> : 1×, 4×, 16×, puis retour au morceau entier), et elles
+        montrent un passage du morceau autour de la tête de lecture — en la suivant pendant que le
+        morceau joue, la tête de lecture tracée comme une ligne. Toucher et faire glisser les points
+        marche sur la vue zoomée comme sur la vue entière.</p>
+
       <h3>Modifier un point</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Touche</strong> une piste et son point le plus proche s'ouvre. En haut, le moment
+        <li><strong>Touche</strong> une piste par paliers — un preset, une scène, un interrupteur, les
+          pads, le looper — et son point le plus proche s'ouvre. En haut, le moment
           où il a lieu : <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
           <b class="ui">+BAR</b> ou <b class="ui">À la tête de lecture</b>. En dessous, ce qu'il est
-          — le preset du morceau et sa <b class="ui">SCÈNE</b>, une scène, <b class="ui">Activé</b>
+          — le preset du morceau, une scène, <b class="ui">Activé</b>
           ou <b class="ui">Off</b>, un pad avec <b class="ui">Frappe</b> ou <b class="ui">Stop</b>
           et sa <b class="ui">VÉLOCITÉ</b>, l'<b class="ui">ACTION</b> et la
-          <b class="ui">CELLULE</b> du looper. La <b class="ui">VALEUR</b> d'un potard, d'un fader
-          ou du morph a un curseur et un champ : tape le nombre dans les unités propres du
-          paramètre, il est maintenu dans sa plage, et la plage est affichée dessous. La touche
-          corbeille supprime le point.</li>
+          <b class="ui">CELLULE</b> du looper. La touche corbeille supprime le point.</li>
         <li><strong>Fais glisser</strong> un point le long de sa piste pour le déplacer. Quand le
           tempo du morceau est connu, il se cale sur les temps du morceau.</li>
-        <li><strong>Maintiens</strong> une piste pour <b class="ui">Supprimer cette piste</b>.</li>
+        <li>Une <strong>courbe</strong> — un potard, un fader, le morph — ne se modifie pas point
+          par point : enregistre-la à nouveau pour la changer.</li>
       </ul>
+
+      <h3>Les événements d'une piste</h3>
+      <p><strong>Maintiens</strong> une piste et ses événements s'affichent en liste, dans l'ordre
+        du temps : pour chacun, son moment et ce qu'il est. Sur une piste par paliers, touche un
+        événement pour l'ouvrir comme ci-dessus, ou sa touche corbeille pour le supprimer. Une
+        courbe montre combien de <b class="ui">POINTS</b> elle a, le
+        <b class="ui">TEMPS DANS LE MORCEAU</b> qu'elle couvre et la plage de ses
+        <b class="ui">VALEURS</b> —
+        <b class="ui">Une courbe ne change que si on l'enregistre à nouveau.</b>
+        <b class="ui">Supprimer cette piste</b>, tout en bas, retire la piste entière, après
+        confirmation.</p>
 
       <h3>Ajouter un point à la main</h3>
       <p>La <strong>touche d'ajout</strong> (<b class="ui">Ajouter à l’automation</b>) pose un point
@@ -424,7 +454,9 @@
         </table>
       </div>
       <p>Un choix pose le point avec sa valeur actuelle et l'ouvre aussitôt dans la fiche, pour
-        taper ou glisser la valeur et déplacer le temps. Une piste que le morceau n'a pas encore est
+        taper ou glisser la valeur — la <b class="ui">VALEUR</b> d'un potard ou d'un fader a un
+        curseur et un champ dans les unités propres du paramètre, maintenue dans sa plage — et
+        déplacer le temps. Une piste que le morceau n'a pas encore est
         créée pour lui. Les deux touches d'automation sont grisées tant que le morceau n'a pas de
         timeline — ni backing track ni <b class="ui">Durée</b>.</p>
       <figure>
@@ -582,7 +614,7 @@
         <table>
           <thead><tr><th>Stem</th><th>Ce qu'il contient</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>Le master : rig, looper, pads du sampler et backing ensemble</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>Le master : rig, looper, pads du sampler et backing ensemble — le clic en est exclu</td></tr>
             <tr><td><b class="ui">input</b></td><td>L'entrée carte son à sec, avec le nombre de canaux que fournit ton interface</td></tr>
             <tr><td><b class="ui">backing</b></td><td>Le backing track seul, quand il y en a un</td></tr>
           </tbody>

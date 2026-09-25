@@ -100,7 +100,7 @@
       <p>Si un archivo no se puede leer obtienes <b class="ui r">No se pudo importar &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="La pestaña Perform: la tarjeta del reproductor con NAMper (full) cargada a 146 BPM en D#m, las teclas de añadir, grabar y letra en la fila del nombre, debajo las teclas de transporte y AUTO LYRICS, la forma de onda y, bajo ella, el carril Preset de la canción con los presets y escenas que trae, luego la tira de la letra y el fader de la base con el chip DIRECT; debajo la tarjeta DEMO SET con AUTO NEXT activado y los botones de escenario de la canción.">
+             alt="La pestaña Perform: la tarjeta del reproductor con NAMper (full) cargada a 146 BPM en D#m, las teclas de añadir, grabar y letra en la fila del nombre, debajo las teclas de transporte y AUTO LYRICS, la forma de onda y, bajo ella, el carril Preset de la canción con los presets que trae y su carril Scene con las letras de las escenas, la lupa del zoom en su esquina superior izquierda, luego la tira de la letra y el fader de la base con el chip DIRECT; debajo la tarjeta DEMO SET con AUTO NEXT activado y los botones de escenario de la canción, con el que suena iluminado.">
         <figcaption>La pestaña Perform: el reproductor con la automatización de la canción, el set, los botones de escenario</figcaption>
       </figure>
       <div class="note tip">
@@ -189,8 +189,10 @@
         <li><b>Un setlist en directo, ningún tema elegido</b> — los temas del set. El primer toque
           elige uno, y sus sonidos pasan a ocupar los botones.</li>
         <li><b>Un tema elegido</b> — las entradas propias del tema, cada una un preset con la escena
-          que lleva, en el orden del tema. La que suena está iluminada, y un botón muestra solo las
-          escenas que contiene su preset.</li>
+          que lleva, en el orden del tema. La que suena está iluminada — la luz sigue a lo que suena:
+          el botón que coincide con el preset y la escena en vivo, tras la automatización, una
+          búsqueda o un cambio de escena — y un botón muestra solo las escenas que contiene su
+          preset.</li>
       </ul>
       <p>Un botón cambia en el momento en que el dedo toca, no cuando se levanta, así que un golpe
         rápido entre dos compases nunca se pierde. Hay cuatro u ocho: el chip de cantidad de la
@@ -317,7 +319,8 @@
         solo.</p>
       <p>Sustituye a los marcadores de versiones anteriores. Lo que hacía un marcador — traer un
         preset con su escena en un momento dado — es ahora un punto en el carril
-        <b class="ui">Preset</b> de la canción, y los marcadores antiguos de una canción se pasan
+        <b class="ui">Preset</b> de la canción donde cambia el preset y un punto en su carril
+        <b class="ui">Escena</b> donde cambia la escena, y los marcadores antiguos de una canción se pasan
         ahí una sola vez, solos.</p>
 
       <h3>Grabación</h3>
@@ -332,7 +335,9 @@
           <thead><tr><th>Qué se escribe</th><th>Desde</th></tr></thead>
           <tbody>
             <tr><td>Una perilla, el encendido de un bloque, una escena, el morph de escenas</td><td>La
-              pantalla, un pedal, un host de plugins. Un barrido guarda un punto cada 20 ms</td></tr>
+              pantalla, un pedal, un host de plugins. Un barrido guarda como mucho un punto cada 20 ms,
+              y ninguno por un movimiento de menos de 1/500 del rango de la perilla, así que una mano
+              quieta no escribe nada</td></tr>
             <tr><td>Un preset de rig con la escena en la que cae, un preset de looper, un kit de
               pads</td><td>Un toque en las entradas de la canción — los botones de escenario, el panel
               del set, un pedal</td></tr>
@@ -350,11 +355,17 @@
         automatización.</p>
       <div class="note tip">
         <div class="t">Grabación por toque</div>
-        <p>Un carril solo se sobrescribe mientras lo mueves, y durante 0,6 s después de que sueltes
+        <p>El carril de una perilla, de un fader o del morph solo se sobrescribe mientras lo mueves, y durante 0,6 s después de que sueltes
           la mano. El resto de ese carril, y todos los carriles que no tocas, se quedan como
           estaban y siguen sonando — así que una segunda pasada puede arreglar una perilla del
           estribillo sin rehacer la canción.</p>
       </div>
+      <p>Un carril por pasos — un preset, una escena, el encendido de un bloque, un preset de
+        looper, un kit — <strong>pasa a tus manos</strong> desde tu primera pulsación en él hasta que
+        la grabación se detiene: la canción se para o se mueve, o apagas la tecla de grabar. Lo que
+        tenía en ese tramo cede el sitio a lo que pulsas ahora en vez de amontonarse al lado. Antes
+        de tu primera pulsación y después de que la grabación se detiene el carril se queda como
+        estaba, así que apagar la tecla de grabar es el punch-out.</p>
       <p>La reproducción no necesita interruptor: la automatización corre siempre que suena la
         canción. Un inicio o una búsqueda persiguen el estado de la canción — preset, escenas,
         interruptores, perillas, faders — para que el sonido sea el correcto entres donde entres.
@@ -368,7 +379,7 @@
         <li><b>Una perilla, un fader o el morph</b> dibuja su curva a lo largo de su propio
           rango.</li>
         <li><b>Un carril por pasos</b> dibuja una marca en cada punto con sus palabras al lado:
-          <b class="ui">Preset</b> el nombre del preset y la escena en la que cae,
+          <b class="ui">Preset</b> el nombre del preset,
           <b class="ui">Escena</b> la letra, el carril <b class="ui">on/off</b> de un bloque
           <b class="ui">Activado</b> u <b class="ui">Off</b>, <b class="ui">Preset de looper</b> y
           <b class="ui">Kit de sampler</b> sus nombres.</li>
@@ -378,21 +389,39 @@
       <p>Las palabras de un punto ocupan el espacio hasta el siguiente punto, y se recortan donde
         los puntos se amontonan. Con más de cuatro carriles, las filas se desplazan.</p>
 
+      <h3>Zoom</h3>
+      <p>Un barrido de un segundo en una canción de cuatro minutos es un escalón al ancho de toda la
+        canción. <strong>Pellizca</strong> los carriles, o toca la lupa de su esquina superior
+        izquierda (<b class="ui">Zoom</b>: 1×, 4×, 16×, y de vuelta a toda la canción), y muestran un
+        tramo de la canción alrededor del cabezal — siguiéndolo mientras la canción suena, con el
+        cabezal dibujado como una línea. Tocar y arrastrar puntos funciona en la vista ampliada
+        igual que en la completa.</p>
+
       <h3>Editar un punto</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Toca</strong> un carril y se abre su punto más cercano. Arriba está cuándo
+        <li><strong>Toca</strong> un carril por pasos — un preset, una escena, un interruptor, los
+          pads, el looper — y se abre su punto más cercano. Arriba está cuándo
           ocurre: <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
           <b class="ui">+BAR</b> o <b class="ui">Al cabezal</b>. Debajo, qué es — el preset de la
-          canción y su <b class="ui">ESCENA</b>, una escena, <b class="ui">Activado</b> u
+          canción, una escena, <b class="ui">Activado</b> u
           <b class="ui">Off</b>, un pad con <b class="ui">Golpe</b> o <b class="ui">Detener</b> y su
           <b class="ui">VELOCIDAD</b>, la <b class="ui">ACCIÓN</b> y la <b class="ui">CELDA</b> del
-          looper. El <b class="ui">VALOR</b> de una perilla, un fader o el morph tiene un deslizador
-          y un campo: escribe el número en las unidades propias del parámetro, se mantiene dentro
-          de su rango, y el rango aparece debajo. La tecla de la papelera borra el punto.</li>
+          looper. La tecla de la papelera borra el punto.</li>
         <li><strong>Arrastra</strong> un punto a lo largo de su carril para moverlo. Cuando se conoce
           el tempo de la canción, cae en los pulsos de la canción.</li>
-        <li><strong>Mantén pulsado</strong> un carril para <b class="ui">Borrar este carril</b>.</li>
+        <li>Una <strong>curva</strong> — una perilla, un fader, el morph — no se edita punto por
+          punto: vuelve a grabarla para cambiarla.</li>
       </ul>
+
+      <h3>Los eventos de un carril</h3>
+      <p><strong>Mantén pulsado</strong> un carril y sus eventos aparecen en una lista, por orden de
+        tiempo: de cada uno, su tiempo y qué es. En un carril por pasos, toca un evento para abrirlo
+        como arriba, o su tecla de papelera para borrarlo. Una curva muestra cuántos
+        <b class="ui">PUNTOS</b> tiene, el <b class="ui">TIEMPO EN LA CANCIÓN</b> que abarca y el
+        rango de sus <b class="ui">VALORES</b> —
+        <b class="ui">Una curva solo cambia cuando se vuelve a grabar.</b>
+        <b class="ui">Borrar este carril</b>, abajo del todo, quita el carril entero, tras
+        preguntar.</p>
 
       <h3>Añadir un punto a mano</h3>
       <p>La <strong>tecla de añadir</strong> (<b class="ui">Añadir a la automatización</b>) pone un
@@ -415,7 +444,9 @@
         </table>
       </div>
       <p>Una elección pone el punto con el valor que tiene ahora y lo abre ahí mismo en la hoja,
-        para escribir o deslizar el valor y mover el tiempo. Si la canción aún no tiene ese carril,
+        para escribir o deslizar el valor — el <b class="ui">VALOR</b> de una perilla o de un fader
+        tiene un deslizador y un campo en las unidades propias del parámetro, dentro de su rango — y
+        mover el tiempo. Si la canción aún no tiene ese carril,
         se crea. Las dos teclas de automatización están atenuadas mientras la canción no tiene
         línea de tiempo — ni pista de acompañamiento ni <b class="ui">Duración</b>.</p>
       <figure>
@@ -566,7 +597,7 @@
         <table>
           <thead><tr><th>Stem</th><th>Qué contiene</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>El master: rig, looper, pads del sampler y acompañamiento juntos</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>El master: rig, looper, pads del sampler y acompañamiento juntos — el click queda fuera</td></tr>
             <tr><td><b class="ui">input</b></td><td>La entrada seca de la tarjeta de sonido, con el número de canales que entregue tu interfaz</td></tr>
             <tr><td><b class="ui">backing</b></td><td>La pista de acompañamiento sola, cuando hay una conectada</td></tr>
           </tbody>

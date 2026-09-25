@@ -99,7 +99,7 @@
       <p>If a file cannot be read you get <b class="ui r">Could not import &lt;name&gt;.</b></p>
       <figure>
         <img class="phone" src="/docs/assets/perform.png" width="600" height="1303"
-             alt="The Perform tab: the player card with NAMper (full) loaded at 146 BPM in D#m, the add, record and lyrics keys on its name row, the transport keys and AUTO LYRICS under it, the waveform, and under the waveform the song's Preset lane naming the presets and scenes it brings up, then the lyrics strip and the backing fader with the DIRECT chip; below it the DEMO SET card with AUTO NEXT on, and the song's stage buttons.">
+             alt="The Perform tab: the player card with NAMper (full) loaded at 146 BPM in D#m, the add, record and lyrics keys on its name row, the transport keys and AUTO LYRICS under it, the waveform, and under the waveform the song's Preset lane naming the presets it brings up and its Scene lane with the scene letters, the zoom magnifier at their top left, then the lyrics strip and the backing fader with the DIRECT chip; below it the DEMO SET card with AUTO NEXT on, and the song's stage buttons, the one that plays lit.">
         <figcaption>The Perform tab: the player with the song's automation, the set, the stage buttons</figcaption>
       </figure>
       <div class="note tip">
@@ -185,8 +185,9 @@
         <li><b>A setlist live, no song picked</b> — the set's songs. The first tap picks one, and
           its sounds take the buttons.</li>
         <li><b>A song picked</b> — the song's own entries, each a preset with the scene it carries,
-          in the song's order. The one playing is lit, and a button shows only the scenes its
-          preset holds.</li>
+          in the song's order. The one playing is lit — the light follows what plays: the button
+          that matches the live preset and scene, after the automation, a seek or a scene change —
+          and a button shows only the scenes its preset holds.</li>
       </ul>
       <p>A button switches the moment the finger lands, not when it lifts, so a quick stab between
         two bars is never lost. There are four or eight of them: the count chip in the header
@@ -305,7 +306,8 @@
         does it again every time the song plays. Clean verse, crunch chorus, the delay opening up
         for the solo: played once, then hands-free.</p>
       <p>It replaces the markers of earlier versions. What a marker did — bring a preset and its
-        scene up at a moment — is now a point on the song's <b class="ui">Preset</b> lane, and a
+        scene up at a moment — is now a point on the song's <b class="ui">Preset</b> lane where the
+        preset changes and a point on its <b class="ui">Scene</b> lane where the scene changes, and a
         song's old markers are moved in once, by themselves.</p>
 
       <h3>Recording</h3>
@@ -320,7 +322,8 @@
           <thead><tr><th>What is written</th><th>From</th></tr></thead>
           <tbody>
             <tr><td>A knob, a block's on/off, a scene, the scene morph</td><td>The screen, a pedal,
-              a plug-in host. A sweep keeps a point every 20 ms</td></tr>
+              a plug-in host. A sweep keeps a point every 20 ms at most, and none for a move under 1/500
+              of the knob's range, so a hand held still writes nothing</td></tr>
             <tr><td>A rig preset with the scene it lands on, a looper preset, a pad kit</td><td>A tap
               on the song's entries — the stage buttons, the set panel, a pedal</td></tr>
             <tr><td>Pad hits and stops, with how hard</td><td>The screen, a key, a pedal</td></tr>
@@ -334,10 +337,16 @@
         and is not written, and neither is the automation's own playback.</p>
       <div class="note tip">
         <div class="t">Touch recording</div>
-        <p>A lane is overwritten only while you move it, and for 0.6 s after your hand comes off.
-          The rest of that lane, and every lane you do not touch, stays as it was and keeps playing
-          — so a second pass can fix one knob in the chorus without redoing the song.</p>
+        <p>A knob's, a fader's or the morph's lane is overwritten only while you move it, and for
+          0.6 s after your hand comes off. The rest of that lane, and every lane you do not touch,
+          stays as it was and keeps playing — so a second pass can fix one knob in the chorus
+          without redoing the song.</p>
       </div>
+      <p>A lane of steps — a preset, a scene, a block's on/off, a looper preset, a kit — is
+        <strong>taken over</strong> from your first press on it until the recording stops: the song
+        stops or is moved, or you tap the record key off. What it held in that stretch gives way to
+        what you press now instead of piling up beside it. Before your first press and after the
+        recording stops the lane stays as it was, so tapping the record key off is the punch-out.</p>
       <p>Playback needs no switch: the automation runs whenever the song plays. A start or a
         seek chases the song's state — preset, scenes, switches, knobs, faders — so the sound is
         right wherever you drop in. Pad hits and looper actions are events: they fire only when the
@@ -349,7 +358,7 @@
       <ul style="--nc:var(--drive)">
         <li><b>A knob, a fader or the morph</b> draws its curve, across its own range.</li>
         <li><b>A step lane</b> draws a tick at each point with its words beside it:
-          <b class="ui">Preset</b> the preset's name and the scene it lands on,
+          <b class="ui">Preset</b> the preset's name,
           <b class="ui">Scene</b> the letter, a block's <b class="ui">on/off</b> lane
           <b class="ui">On</b> or <b class="ui">Off</b>, <b class="ui">Looper preset</b> and
           <b class="ui">Sampler kit</b> their names.</li>
@@ -359,21 +368,36 @@
       <p>A point's words take the room up to the next point, and are cut short where points crowd.
         With more than four lanes the rows scroll.</p>
 
+      <h3>Zoom</h3>
+      <p>A one-second sweep on a four-minute song is a step at the width of the whole song.
+        <strong>Pinch</strong> the lanes, or tap the magnifier at their top left
+        (<b class="ui">Zoom</b>: 1×, 4×, 16×, then back to the whole song), and they show a stretch of
+        the song around the playhead — following it as the song plays, the playhead drawn as a line.
+        Tapping and dragging points work on the zoomed view as on the whole one.</p>
+
       <h3>Editing a point</h3>
       <ul style="--nc:var(--drive)">
-        <li><strong>Tap</strong> a lane and its nearest point opens. At the top is when it happens:
+        <li><strong>Tap</strong> a lane of steps — a preset, a scene, a switch, the pads, the looper —
+          and its nearest point opens. At the top is when it happens:
           <b class="ui">−BAR</b>, <b class="ui">−BEAT</b>, <b class="ui">+BEAT</b>,
           <b class="ui">+BAR</b>, or <b class="ui">To the playhead</b>. Under it, what it is — the
-          song's preset and its <b class="ui">SCENE</b>, a scene, <b class="ui">On</b> or
+          song's preset, a scene, <b class="ui">On</b> or
           <b class="ui">Off</b>, a pad with <b class="ui">Hit</b> or <b class="ui">Stop</b> and its
           <b class="ui">VELOCITY</b>, the looper's <b class="ui">ACTION</b> and
-          <b class="ui">CELL</b>. A knob's, a fader's or the morph's <b class="ui">VALUE</b> has a
-          slider and a field: type the number in the parameter's own units, it is held to its
-          range, and the range is shown under it. The trash key deletes the point.</li>
+          <b class="ui">CELL</b>. The trash key deletes the point.</li>
         <li><strong>Drag</strong> a point along its lane to move it. When the song's tempo is known,
           it lands on the song's beats.</li>
-        <li><strong>Hold</strong> a lane for <b class="ui">Delete this lane</b>.</li>
+        <li>A <strong>curve</strong> — a knob, a fader, the morph — is not edited point by point:
+          record it again to change it.</li>
       </ul>
+
+      <h3>A lane's events</h3>
+      <p><strong>Hold</strong> a lane and its events come up as a list, in time order: each one's
+        time and what it is. On a lane of steps, tap an event to open it as above, or its trash key
+        to delete it. A curve shows how many <b class="ui">POINTS</b> it has, the
+        <b class="ui">SONG TIME</b> it covers and the range of its <b class="ui">VALUES</b> —
+        <b class="ui">A curve changes only when it is recorded again.</b>
+        <b class="ui">Delete this lane</b> at the bottom removes the whole lane, after asking.</p>
 
       <h3>Adding a point by hand</h3>
       <p>The <strong>add key</strong> (<b class="ui">Add to the automation</b>) puts a point down at
@@ -396,7 +420,8 @@
         </table>
       </div>
       <p>A choice puts the point down with the value it has now and opens it right there in the
-        sheet, to type or slide the value and move the time. A lane the song does not have yet is
+        sheet, to type or slide the value — a knob's or a fader's <b class="ui">VALUE</b> has a slider
+        and a field in the parameter's own units, held to its range — and move the time. A lane the song does not have yet is
         made for it. Both automation keys are dimmed while the song has no timeline — no backing
         track and no <b class="ui">Length</b>.</p>
       <figure>
@@ -546,7 +571,7 @@
         <table>
           <thead><tr><th>Stem</th><th>What it holds</th></tr></thead>
           <tbody>
-            <tr><td><b class="ui">mix</b></td><td>The master: rig, looper, sampler pads and backing together</td></tr>
+            <tr><td><b class="ui">mix</b></td><td>The master: rig, looper, sampler pads and backing together — the click is left out</td></tr>
             <tr><td><b class="ui">input</b></td><td>The dry sound-card input, at whatever channel count your interface delivers</td></tr>
             <tr><td><b class="ui">backing</b></td><td>The backing track alone, when one is attached</td></tr>
           </tbody>
