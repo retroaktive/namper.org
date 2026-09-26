@@ -240,7 +240,7 @@ try{var t=localStorage.getItem('theme');
         </div>
         <div class="cta">
           <a class="badge" id="asbadge" href="https://apps.apple.com/app/id6803518334"><img src="/assets/badge/appstore-en-us.svg" alt="Download on the App Store" width="139" height="46"></a>
-          <span class="btn primary" data-i="cta_play">GOOGLE&nbsp;PLAY&nbsp;·&nbsp;COMING&nbsp;SOON</span>
+          <a class="badge" id="gpbadge" href="https://play.google.com/store/apps/details?id=com.retroaktive.namper"><img src="/assets/badge/gplay-en.png" alt="Get it on Google Play" height="46"></a>
           <a class="btn primary" href="https://gitlab.com/retroaktive/namper-downloads/-/releases/permalink/latest/downloads/binaries/NAMper.pkg" data-i="cta_mac">DOWNLOAD&nbsp;FOR&nbsp;MAC</a>
           <a class="btn docs" href="/docs/" data-i="cta_docs">READ&nbsp;THE&nbsp;DOCS</a>
           <a class="btn" href="https://t.me/namperapp" data-i="cta_tg">TELEGRAM&nbsp;COMMUNITY</a>
@@ -548,6 +548,10 @@ const I18N={"ru": {"h1": "Твой телефон — это<br>полноцен
     const img=document.querySelector('#asbadge img');
     if(img){img.src='/assets/badge/appstore-'+(BADGE[l]||'en-us')+'.svg';
       img.alt=(t&&t.cta_store?t.cta_store:'Download on the App Store').replace(/&nbsp;/g,' ');}
+    const gp=document.querySelector('#gpbadge img');
+    const GP={en:'en',ru:'ru',de:'de',es:'es',fr:'fr',it:'it',pt:'pt-br',ja:'ja',ko:'ko',zh:'zh-cn','zh-hant':'zh-tw',tr:'tr',id:'id',vi:'vi',th:'th',hi:'hi',fil:'fil'};
+    if(gp){gp.src='/assets/badge/gplay-'+(GP[l]||'en')+'.png';
+      const a=gp.parentNode; a.href='https://play.google.com/store/apps/details?id=com.retroaktive.namper&hl='+(l==='zh-hant'?'zh-TW':l==='zh'?'zh-CN':l==='pt'?'pt-BR':l);}
   }
   document.querySelectorAll('#langs a').forEach(a=>
     a.addEventListener('click',()=>{localStorage.setItem('lang',a.dataset.l);apply(a.dataset.l)}));
