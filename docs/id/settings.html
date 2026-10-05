@@ -99,10 +99,13 @@
         dulu ke <b class="ui a">Rig</b>.</p>
       <p>Setelan berupa daftar isi, bukan satu lembar panjang: satu baris <b class="ui">Tentang</b> dan
         enam halaman, masing-masing satu ketukan, supaya yang kamu cari ada di halaman tentang hal
-        itu. Satu sakelar tetap ada di daftar isinya sendiri, di bawah
-        <b class="ui">PRESET PABRIK</b>: <b class="ui">Amp bawaan</b> atau
-        <b class="ui">Capture TONE3000</b>, mana dari keduanya yang dimainkan bank pabrik. Tidak
-        ada halaman TONE3000: sign in terjadi di blok yang membutuhkan capture.</p>
+        itu. Satu pilihan tetap ada di daftar isinya sendiri, di bawah
+        <b class="ui">PRESET PABRIK</b>: <b class="ui">Amp bawaan</b>,
+        <b class="ui">Capture TONE3000</b>, atau HyperReal (chip dengan tanda HyperReal, dan itu
+        defaultnya) — amp mana yang dimainkan bank pabrik; lihat
+        <a href="/docs/id/rig.html#hyperreal-factory">HyperReal di bank pabrik</a>. Kalau
+        prosesor tidak sanggup membawa HyperReal, bank kembali ke amp bawaan dan pilihan ini
+        menunjukkannya. Tidak ada halaman TONE3000: sign in terjadi di blok yang membutuhkan capture.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Halaman</th><th>Isinya</th></tr></thead>
@@ -188,6 +191,8 @@
                 <td>Membuka setiap pasangan output, sehingga sebuah branch, rig, atau click bisa punya pasangannya sendiri. Perangkat stereo tidak membutuhkan ini.</td></tr>
             <tr><td><b class="ui">Model NAM ringan</b></td><td>Switch</td><td>Off</td>
                 <td>Capture A2 dari TONE3000 membawa sub-model yang lebih ringan; ini menjalankan setiap capture di atasnya — sebagian kecil saja dari beban DSP, detail sedikit berkurang. Capture yang tidak punya sub-model tidak terpengaruh. Langsung berlaku.</td></tr>
+            <tr><td><b class="ui">Pemodel amp di thread tersendiri</b></td><td>Switch</td><td>On</td>
+                <td>Amp <a href="/docs/id/rig.html#hyperreal">HyperReal</a> berjalan di satu inti prosesor sendiri, dua buffer di belakang audio: ruang untuk beberapa amp sekaligus, dengan harga dua buffer latensi tambahan itu. Kalau thread-nya tidak sanggup mengejar, amp kembali sendiri ke thread audio. Mengganti sakelar ini memuat ulang amp yang sedang berbunyi. iPhone, iPad, dan Android; Mac dan plug-in tidak punya sakelar seperti ini.</td></tr>
             <tr><td><b class="ui">Ekor saat berpindah</b></td><td>Switch</td><td>On</td>
                 <td>Blok yang ditinggalkan saat berganti preset tetap berbunyi sampai habis — pengulangan delay, peluruhan reverb — hingga delapan detik alih-alih berhenti saat berganti, dan delay, reverb, FX loop, atau plugin yang di-bypass oleh scene tetap berbunyi sampai habis di atas sinyal kering (freeze adalah suara yang ditahan, bukan ekor: ia berhenti). Sedikit tambahan DSP selama detik-detik itu.</td></tr>
             <tr><td><b class="ui">Sejajarkan rig</b></td><td>Switch</td><td>Off</td>

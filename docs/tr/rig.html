@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig ve sinyal zinciri — NAMper Dokümantasyonu</title>
-<meta name="description" content="Bir rig kurmak: blok paleti ve tüm bloklar, yedi EQ modeli, NAM amfi profilleri ve TONE3000, capture bankaları, kabin ve reverb impulsları, preset bankaları, sahneler ve MIDI PC slotları, birden çok rig, paralel dallar ve master bölümü.">
+<meta name="description" content="Bir rig kurmak: blok paleti ve tüm bloklar, yedi EQ modeli, NAM amfi profilleri ve TONE3000, capture bankaları, devrelerinden hesaplanan HyperReal amfileri, kabin ve reverb impulsları, preset bankaları, sahneler ve MIDI PC slotları, birden çok rig, paralel dallar ve master bölümü.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Rig ve sinyal zinciri — NAMper Dokümantasyonu">
-<meta property="og:description" content="Bloklar, EQ modelleri, NAM profilleri, TONE3000, kabin IR'leri, preset'ler, birden çok rig, paralel dallar ve master bölümü.">
+<meta property="og:description" content="Bloklar, EQ modelleri, NAM profilleri, TONE3000, HyperReal amfileri, kabin IR'leri, preset'ler, birden çok rig, paralel dallar ve master bölümü.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/tr/rig.html">
 <meta property="og:type" content="article">
@@ -81,6 +81,7 @@
         <li><a href="#eq">Yedi EQ modeli</a></li>
         <li><a href="#nam">NAM capture'ları</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#hyperreal">HyperReal amfileri</a></li>
         <li><a href="#cabs">Kabinler ve IR'ler</a></li>
         <li><a href="#presets">Preset'ler</a></li>
         <li><a href="#rigs">Birden çok rig</a></li>
@@ -298,8 +299,8 @@
                 <b class="ui">Overdrive</b>: <b class="ui">Lamba</b>, <b class="ui">Blues</b>, <b class="ui">Şeffaf</b> ·
                 <b class="ui">Distortion</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
                 <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Oktav fuzz</b></td></tr>
-            <tr><td><b class="ui">Amfi</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bas</b>, <b class="ui">Akustik</b></td></tr>
+            <tr><td><b class="ui">Amfi</b></td><td><b class="ui">Dahili</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">Model</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bas</b>, <b class="ui">Akustik</b> · <b class="ui">Modeler</b>'da <a href="#hyperreal">HyperReal kataloğunun</a> on dört amfisi</td></tr>
             <tr><td><b class="ui">Satüratör</b></td><td><b class="ui">Tür</b></td>
               <td><b class="ui">Lamba</b>, <b class="ui">Bant</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Tür</b></td>
@@ -339,7 +340,7 @@
           </tbody>
         </table>
       </div>
-      <p><b class="ui">Amfi</b> bloğunun <b class="ui">Dahili</b> tarafı NAMper’ın kendi lambalı amfisidir; beklediğiniz düğmelerle: <b class="ui">Gain</b>, <b class="ui">Bas</b>, <b class="ui">Orta</b>, <b class="ui">Tiz</b>, <b class="ui">Presence</b> ve <b class="ui">Master</b>, artı <b class="ui">Model</b> çiplerinde yedi voicing. Ne indirme ister ne hesap — çevrimdışıyken konseri o taşır; yanındaki <b class="ui">NAM</b> çipi yerine bir yakalama koyar, aşağıya bakın.</p>
+      <p><b class="ui">Amfi</b> bloğunun <b class="ui">Dahili</b> tarafı NAMper’ın kendi lambalı amfisidir; beklediğiniz düğmelerle: <b class="ui">Gain</b>, <b class="ui">Bas</b>, <b class="ui">Orta</b>, <b class="ui">Tiz</b>, <b class="ui">Presence</b> ve <b class="ui">Master</b>, artı <b class="ui">Model</b> çiplerinde yedi voicing. Ne indirme ister ne hesap — çevrimdışıyken konseri o taşır; yanındaki <b class="ui">NAM</b> çipi yerine bir yakalama, <b class="ui">Modeler</b> çipi ise devresinden hesaplanan bir amfi koyar — aşağıda <a href="#nam">NAM capture'ları</a> ve <a href="#hyperreal">HyperReal amfileri</a>'ne bakın.</p>
       <p><b class="ui">Satüratör</b>, eski Tube Sat ve Tape Sat’in gittiği yer: tek blok, tür çiplerinde <b class="ui">Lamba</b>, <b class="ui">Bant</b> ya da bir outboard cihazın <b class="ui">NAM</b> yakalaması. <b class="ui">Ensemble</b>, tek bir enstrümanın panoramaya yayılmış birkaç çalgıcı gibi duyulmasıdır — LFO yok, akort kayması yok ve mono toplam girişin kendisidir; mod çiplerinde <b class="ui">Velvet</b> ya da <b class="ui">Allpass</b>.</p>
 
       <h3>Drive, dinamikler ve zaman</h3>
@@ -391,7 +392,7 @@
       </div>
 
       <h3>Mix, tempo senkronu ve kuyruklar</h3>
-      <p><b>Her blokta bir Mix vardır.</b> Bir karışım üzerine kurulu olanlar onu kendi yüzlerinde taşır — bir delay'in <b class="ui">Miks</b>'i, bir harmonizerin <b class="ui">Dry</b>'ı, bir freeze'in <b class="ui">Seviye</b>'ı; diğer her blok, barındırılan bir eklenti dahil, son düğmesi olarak bir <b class="ui">Miks</b> düğmesi alır: blok kendi girişiyle karıştırılır, böylece bir tremolo yarı yarıya kesebilir, bir amfi de biraz doğrudan sinyal taşıyabilir. Kuru ses bloğa uyacak şekilde geciktirilir, böylece hiçbir şey comb-filter yapmaz; sahneler, preset'ler ve MIDI de onu diğer her düğme gibi ele alır.</p>
+      <p><b>Hemen her blokta bir Mix vardır.</b> Bir karışım üzerine kurulu olanlar onu kendi yüzlerinde taşır — bir delay'in <b class="ui">Miks</b>'i, bir harmonizerin <b class="ui">Dry</b>'ı, bir freeze'in <b class="ui">Seviye</b>'ı; <b class="ui">Amfi</b> dışındaki her blok, barındırılan bir eklenti dahil, son düğmesi olarak bir <b class="ui">Miks</b> düğmesi alır: blok kendi girişiyle karıştırılır, böylece bir tremolo yarı yarıya kesebilir, bir drive da biraz doğrudan sinyal taşıyabilir. Kuru ses bloğa uyacak şekilde geciktirilir, böylece hiçbir şey comb-filter yapmaz; sahneler, preset'ler ve MIDI de onu diğer her düğme gibi ele alır.</p>
       <p><b>Tempo senkronu bir anahtardır.</b> Delay, tremolo, slicer, phaser, flanger, chorus ve rotary'nin her birinde bir <b class="ui">Sync</b> anahtarı vardır. Açıkken hız ya da zaman düğmesi setin temposunu takip eden nota bölümlerine döner (1/1'den 1/16'ya, delay'de noktalı ve triole); kapalıyken yine düz Hz ya da ms olur.</p>
       <p><b>Kuyruklar sönümlenir.</b> Bir sahnenin ya da footswitch'in bypass ettiği bir delay, reverb, FX loop ya da barındırılan eklenti, sessizleşene kadar kuru sesin üzerinde çınlamaya devam eder; bir preset değişimi de eski rig'in kuyruklarını kesmek yerine sekiz saniyeye kadar çalmaya bırakır. Bunun anahtarı Ayarlar → <b class="ui">Ses</b> içindeki <b class="ui">Geçişte kuyruklar</b>'tir, varsayılan olarak açıktır. Tutulan bir ses kuyruk değildir: bypass edilen bir <b class="ui">Freeze</b> ya da kapatılan Cloud freeze'i 10 ms'de söner ve biter.</p>
       <div class="note tip">
@@ -463,12 +464,14 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAM capture'ları</h2>
-      <p><b class="ui">Amfi</b> bloğu, iki kaynağı olan tek bir bloktur. Sayfasının üstündeki iki
+      <p><b class="ui">Amfi</b> bloğu, üç kaynağı olan tek bir bloktur. Sayfasının üstündeki üç
         çip aralarında seçim yapar: <b class="ui">Dahili</b>, yukarıda listelenen yedi modelle
         NAMper'ın kendi amfi simülasyonudur; <b class="ui">NAM</b> ise gerçek bir amfinin
-        <b class="ui">.nam</b> capture'ını çalıştıran Neural Amp Modeler oynatıcısıdır. İkisi de
-        aynı blokta yaşar, yani bir preset hem üzerine kurulduğu modeli <em>hem de</em> etrafında
-        seslendirildiği capture'ı taşır; aralarında geçiş yapmak tek dokunuştur.</p>
+        <b class="ui">.nam</b> capture'ını çalıştıran Neural Amp Modeler oynatıcısıdır, <b class="ui">Modeler</b> ise
+        HyperReal'dir, devresinden hesaplanan bir amfi (<a href="#hyperreal">aşağıda</a>). Üçü de
+        aynı blokta yaşar, yani bir preset üzerine kurulduğu modeli, etrafında seslendirildiği
+        capture'ı <em>hem de</em> HyperReal amfisini taşır; aralarında geçiş yapmak tek dokunuştur —
+        çalan ses, sıradaki girerken söner; ne tık olur ne boşluk.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
              alt="Rig sekmesi: sinyal zinciri kartının üstünde yatay IN ve OUT göstergeleri, altında blokların zinciri ve çaldığı capture'ın adını taşıyan Amfi bloğu.">
@@ -575,7 +578,7 @@
         <b class="ui">Yükleniyor…</b> yazar ve devre dışı kalır.</p>
       <p>Giriş yapmak, yapıştırılmış bir API anahtarı değil, sıradan bir web girişidir; ve
         tarayıcında tone3000.com'a zaten giriş yaptıysan uygulama o oturumu yeniden kullanır.
-        NAMper bunu açılışta hiç istemez — fabrika preset'leri dahili amfilerde ve paketlenmiş
+        NAMper bunu açılışta hiç istemez — fabrika preset'leri HyperReal amfilerinde (ya da dahili olanlarda) ve paketlenmiş
         kabinlerde çalar, giriş ise capture isteyen bir blokta <b class="ui">TONE3000’e göz at</b>'a
         ilk bastığında olur. Ayarlar'da artık <b class="ui">TONE3000</b> sayfası yok.</p>
       <p>Kataloğun ne sunduğu, onu açan bloğa bağlıdır. Bir <b class="ui">Amfi</b> bloğundan
@@ -593,13 +596,17 @@
         için <b class="ui">{n} modelin tümünü bankaya indir</b>. Her şey uygulamanın
         <b class="ui">tones/</b> klasörüne iner ve kütüphaneye katılır.</p>
 
-      <h3>Fabrika preset'leri: capture'larla ya da dahili</h3>
-      <p>Ayarlar dizininin kendisi tek bir anahtar taşır, <b class="ui">FABRİKA PRESETLERİ</b>
-        başlığı altında: <b class="ui">Dahili amfiler</b> ya da
-        <b class="ui">TONE3000 kayıtları</b>. Dört fabrika rig'i, herkese açık
-        dört capture'ın etrafında seslendirildi — bir Fender Deluxe Reverb, bir Marshall Plexi, bir
-        Victory Kraken ve bir VOX AC30 — ve anahtar, bankanın bu ikisinden hangisini çalacağına
-        karar verir. NAMper bu seçimi bir kez sunar: kendi capture'ını ilk seçtiğinde.</p>
+      <h3>Fabrika preset'leri: HyperReal, capture'lar ya da dahili</h3>
+      <p>Ayarlar dizininin kendisi, <b class="ui">FABRİKA PRESETLERİ</b> başlığı altında, fabrika
+        bankasının hangi amfileri çalacağına dair tek bir seçim taşır: <b class="ui">Dahili amfiler</b>,
+        <b class="ui">TONE3000 kayıtları</b> ya da HyperReal (HyperReal işaretini taşıyan çip).
+        Varsayılan HyperReal'dir — bkz.
+        <a href="#hyperreal-factory">Fabrika bankasında HyperReal</a>. Fabrika rig'leri herkese açık dört
+        capture'ın etrafında seslendirildi — bir Amerikan temiz combo, bir İngiliz crunch head,
+        bir modern yüksek gain'li head ve bir İngiliz chime combo — ve <b class="ui">TONE3000 kayıtları</b>
+        bankayı onların üzerine koyar: giriş yapmanı ister ve dördünü bir kez indirir. Hangisini seçersen
+        seç, her <b class="ui">Amfi</b> bloğu yine tek dokunuşla başka bir kaynağa geçer. NAMper
+        capture'ları ayrıca bir kez sunar: kendi capture'ını ilk seçtiğinde.</p>
 
       <h3>Çevrimdışı çalmak</h3>
       <p>Zaten indirilmiş olan her şey ağ hiç olmadan çalışmaya devam eder. Capture'ı önbelleğe
@@ -627,8 +634,109 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="hyperreal"><span class="n">02.6</span>HyperReal amfileri</h2>
+      <p>HyperReal, NAMper'ın bir amfiyi şemasından, parça parça hesaplamasıdır: her lamba katı kendi
+        lambasıyla, ton stack, faz çevirici, güç lambaları, çıkış trafosu, onların sürdüğü
+        hoparlör ve altlarında çöken güç kaynağı; hepsi amfinin üretildiği parçaların
+        değerleriyle. Düğmeleri devrenin kendi potlarını çevirir, anahtarları devrenin kendisini
+        değiştirir; böylece amfi, çalışına ve kontrollerine devre nasıl karşılık verirse öyle karşılık
+        verir. Hiçbir şey indirilmez ve hesap gerekmez: katalog uygulamanın içinde gelir; telefonda,
+        tablette, Mac'te ve eklentilerde.</p>
+      <p><b class="ui">Amfi</b> bloğunda üçüncü çiptir, <b class="ui">Modeler</b>.
+        Dokunduğunda blok bir HyperReal amfisi çalar; çip o zaman amfinin adını bir okla birlikte
+        taşır ve ona dokunmak kataloğu listeler. Çiplerin altında HyperReal işareti ve amfinin kendi
+        kontrolleri durur, amfi üzerindeki adlarıyla — <b class="ui">Volume</b>, <b class="ui">Treble</b>,
+        <b class="ui">Middle</b>, <b class="ui">Bass</b>, <b class="ui">Presence</b> ve o devrenin sahip olduğu
+        her şey, on altıya kadar. Bir anahtar konumlarını çip olarak gösterir, açık/kapalı olan
+        (<b class="ui">Bright</b>, <b class="ui">Pull fat</b>) bir toggle olarak. Amfiyi değiştirdiğinde
+        öncekiyle ortak düğmeler konumlarını korur; yeni amfi, eskisi çalmaya devam ederken
+        karışarak girer, böylece geçişte ses kesilmez.</p>
+      <p>Her amfinin arkasında düz bir çıkış ses düzeyi, son düğmesi vardır (<b class="ui">Master</b> ya da
+        <b class="ui">Output</b>). Bloğun <b class="ui">Otomatik seviye</b>si açıkken bu düğme
+        Otomatik seviyenindir ve gösterilmez: amfi, gain'inin, master'ının ve anahtarlarının her konumunda
+        seviyelenir, dahili amfi ve capture'lar gibi; yani gain'i çevirmek sesin karakterini
+        değiştirir, ses düzeyini değil. <b class="ui">Otomatik seviye</b>yi kapat, düğme belirir
+        ve amfi devresinin yaptığı kadar yüksek olur.</p>
+      <p>Düğmeler sıradan düğmelerdir: uzun basış <b class="ui">MIDI Öğren</b> sunar, sahneler ve
+        morph pedalı onları oynatır, bir eklenti hostunda da Amfi'nin <b class="ui">Modeler 1</b>…<b class="ui">Modeler 16</b>
+        parametreleri onlara amfinin sırasıyla ulaşır.</p>
+      <div class="note">
+        <div class="t">Üçünün en ağırı</div>
+        <p>Bir devre, bir capture'dan ya da dahili amfiden çok daha fazla işlemci harcar. iPhone, iPad
+          ve Android'de kendi işlemci çekirdeğini alır —
+          <b class="ui">Amfi modelleyici kendi iş parçacığında</b>, <a href="/docs/tr/settings.html#audio">Ayarlar → Ses</a> içinde.
+          <b class="ui">DSP yükü</b> çipi kırmızıya dönerse ilk çare daha büyük bir buffer ya da bir amfi
+          eksiltmektir.</p>
+      </div>
+
+      <h3>Katalog</h3>
+      <p>On dört amfi — ellilerin sonundan doksanlara lambalı amfiler, iki transistörlü ve
+        iki bas amfisi. Adlar NAMper'ın kendisine aittir.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Amfi</th><th>Ne olduğu</th><th>Anahtarlar</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tweed Deluxe 57</b></td><td>Ellilerin sonundan küçük bir tweed combo: iki 6V6, 5Y3 lambalı redresör, 15 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Tweed 59</b></td><td>Ellilerin sonundan büyük tweed: iki 5881, GZ34 redresör, 45 W</td><td><b class="ui">Channel</b>: bright, normal ya da ikisi köprülü</td></tr>
+            <tr><td><b class="ui">Black Twin 65</b></td><td>Altmışların ortasından Amerikan temiz combo: dört 6L6GC, 85 W</td><td><b class="ui">Bright</b></td></tr>
+            <tr><td><b class="ui">Brit 45 62</b></td><td>Altmışların başından İngiliz head: iki 6L6, GZ34 redresör, 30 W</td><td><b class="ui">Channel</b>: bright, normal ya da köprülü</td></tr>
+            <tr><td><b class="ui">Brit Top 63</b></td><td>Treble-boost ton stack'li altmışlardan İngiliz chime combo: dört EL84, GZ34 redresör</td><td>—</td></tr>
+            <tr><td><b class="ui">Brit Super 68</b></td><td>Altmışların sonundan İngiliz 100 W head: dört EL34</td><td><b class="ui">Input</b>: high treble, normal ya da köprülü</td></tr>
+            <tr><td><b class="ui">Brit 800</b></td><td>Seksenlerin başından master volume'lü İngiliz head: dört EL34, 100 W</td><td><b class="ui">Input</b>: high ya da low</td></tr>
+            <tr><td><b class="ui">Cali Overdrive</b></td><td>Seksenlerden Kaliforniya overdrive'lı özel bir amfi: temiz bir kanal ve kendi drive'ı, tonu ve seviyesi olan bir overdrive; iki EL34</td><td><b class="ui">Overdrive</b></td></tr>
+            <tr><td><b class="ui">Cali Mark IV</b></td><td>Doksanlardan beş bantlı grafik EQ'lu Kaliforniya lead kanalı: dört 6L6GC</td><td><b class="ui">Pull fat</b>, <b class="ui">Pull bright</b>, <b class="ui">Presence shift</b>, <b class="ui">Power</b>: pentot ya da triyot</td></tr>
+            <tr><td><b class="ui">Cali Rect</b></td><td>Doksanlardan Kaliforniya yüksek gain'li head: dört 6L6GC, 100 W</td><td><b class="ui">Rectifier</b>: lamba ya da diyot</td></tr>
+            <tr><td><b class="ui">Block Letter 51</b></td><td>Pre ve post gain'li doksanlardan yüksek gain'li bir head: dört 6L6GC, 120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Jazz Clean 77</b></td><td>Seksenlerden transistörlü temiz amfi, kendi distortion'ı olan op-amp'li bir preamfi</td><td>—</td></tr>
+            <tr><td><b class="ui">Bass Tower 70</b></td><td>300 W lambalı bir bas head: altı 6550</td><td><b class="ui">Ultra hi</b>, <b class="ui">Midrange select</b>: 220, 800 ya da 3000 Hz</td></tr>
+            <tr><td><b class="ui">Rack Bass 800</b></td><td>Seksenlerden DI'sında biten transistörlü bir bas preamfisi — hoparlör yok</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Bir amfinin çıkışı, kabin olmadan hoparlörü üzerindeki gerilimdir: gerçek bir head'in
+        ardına koyacağın gibi onun ardına bir <b class="ui">Kabin</b> koy. Yeni seçilen bir amfi
+        <b class="ui">Brit 800</b> ile başlar.</p>
+
+      <h3>Devre</h3>
+      <p>Amfinin adının yanındaki devre simgeli küçük bir düğme (ekran okuyucu için <b class="ui">Devre</b>) amfinin devresini açar;
+        başlığında HyperReal işareti ve amfinin adı durur; <b class="ui">Bitti</b> onu kapatır. Başlığın
+        altında anahtarlar olduğu gibi ve iki görünüm vardır: <b class="ui">Bloklar</b> ve
+        <b class="ui">Şema</b>. İkisi de anahtarlar nasıl ayarlıysa ona göre çizilir; bloktaki bir
+        anahtarı çevirmek devreyi yeniden çizer.</p>
+      <ul>
+        <li><b class="ui">Bloklar</b>, katları sinyalin geçtiği sırayla dizer, ekran boyunca
+          satırlara kırarak: giriş, her lamba katı, ton stack, faz çevirici,
+          güç lambaları, trafo, hoparlör. Her düğme çevirdiği katın üzerinde durur, negatif
+          geri besleme yoldan ayrıldığı yerden geri döndüğü yere çizilen bir çizgidir ve her katın
+          altında onu besleyen besleme düğümü vardır, parçalarıyla birlikte — en alttaki
+          <b class="ui">Besleme</b> düğüm harflerini açıklar.</li>
+        <li><b class="ui">Şema</b> aynı devreyi değerleriyle parçalar olarak çizer — lambalar,
+          dirençler, kondansatörler, düğme adlarının altındaki potlar, trafo ve hoparlör,
+          hepsinin altında da besleme zinciri; lambalı bir redresör lamba olarak çizilir.</li>
+      </ul>
+      <p>Çizim, çalarken canlıdır. Bir lamba katı seviyesini gösterir — <b class="ui">Bloklar</b>'da tabanı boyunca
+        bir çubuk, <b class="ui">Şema</b>'da lambanın üzerinde bir parıltı — ve kat clip yaparken
+        kırmızıya döner; bir besleme düğümü, lambalar ondan çektikçe kaç volt çöktüğünü gösterir.
+        <b class="ui">Ne olduğunu görmek için bir kata dokunun.</b> — bir dokunuş o katın parçalarını içeren bir kart açar.</p>
+
+      <h3 id="hyperreal-factory">Fabrika bankasında HyperReal</h3>
+      <p>Ayarlar'da <b class="ui">FABRİKA PRESETLERİ</b> altında başka bir şey seçmediysen, fabrika
+        preset'leri HyperReal çalar: her gitar ve bas rig'i, üzerine yazıldığı voicing'e uyan HyperReal
+        amfisini taşır — clean, tweed, İngiliz, chime, modern, bas — ya da kendine özgü birini,
+        ardında kabinle; kabini olmayan bas rig'leri ise
+        <b class="ui">Rack Bass 800</b>'ü alır, DI'sında biten bir preamfi. Akustik rig'ler dahili amfiyi korur. Bir fabrika rig'i
+        amfisinin kanalını da ayarlayabilir: <b class="ui">Lone Star Lead</b>,
+        <b class="ui">Cali Overdrive</b>'ı overdrive'ı açık olarak çalar.</p>
+      <p>İşlemci bir devreyi taşıyamazsa — bir fabrika preset'i HyperReal çalarken DSP yükü
+        birkaç saniye sınırında kalırsa — banka kendiliğinden dahili amfilere geri döner
+        ve bu seçimi korur, böylece sıradaki preset aynı şekilde tökezlemez; Ayarlar bunu gösterir
+        ve yer açıldığında (daha büyük bir buffer, daha az rig) yeniden HyperReal'i seçebilirsin.
+        Eklentiler aynı üç seçeneği geri dönüş olmadan sunar.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>Kabinler ve IR'ler</h2>
+      <h2 id="cabs"><span class="n">02.7</span>Kabinler ve IR'ler</h2>
       <p><b class="ui">Kabin</b> bloğu bir impuls yanıtı çalar — mikrofonla yakalanmış bir hoparlör kabini. Sayfası bir yakalama bloğununki gibi kurulmuştur: üstte impulsun adı ve <b class="ui">@author</b>, tonun sayfasına bir ok ve yanında <b class="ui">IR’yi kaldır</b>, solda kapak ve sağda impuls yüklemenin üç yolu — <b class="ui">TONE3000’e göz at</b>, <b class="ui">Kitaplık</b> ve <b class="ui">Dosya yükle</b>. Altında bloğun kendi düğmesi, <b class="ui">Seviye</b>, −12 ile +12 dB arası.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
@@ -686,7 +794,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>Preset'ler</h2>
+      <h2 id="presets"><span class="n">02.8</span>Preset'ler</h2>
       <p>Bir rig preset'i tüm zinciri saklar — bloklar, modeller, düğme konumları, sahneler, amfi
         profili, kabin. Preset'ler dört adet 128'lik bankada, MIDI program-change slotlarında
         yaşar: <b class="ui">Fabrika</b> ve Kullanıcı 1–3. <b class="ui">PRESET’LER</b> kartındaki
@@ -806,7 +914,7 @@
         <b class="ui">Ambient</b>, her biri gerçek bir capture etrafında seslendirilmiş — ardından
         tarzları ve dönemleri gezen temalı rig'ler, akustik enstrümanlar, bir bas bankası, bir vokal
         bankası ve yardımcı zincirler. Yeni bloklar da burada rol alır: ambient rig'lerde swell'ler
-        ve freeze'ler, çiftlenmiş bir vokal, bir on iki telli, bir synth bas ve vokal şeritleri. Her fabrika rig'i ilk saniyeden dahili amfiler ve paketteki
+        ve freeze'ler, çiftlenmiş bir vokal, bir on iki telli, bir synth bas ve vokal şeritleri. Her fabrika rig'i ilk saniyeden, indirilecek hiçbir şey olmadan — dahili amfileri seçmediysen <a href="#hyperreal-factory">HyperReal amfileriyle</a> — ve paketteki
         kabinlerle çalar ve her biri yöneticide <b class="ui">FABRİKA</b> olarak işaretlenir.
         Yöneticinin içe/dışa aktarma menüsündeki <b class="ui">Fabrika preset’lerini gizle</b> bankayı
         banka menüsünden çıkarır; aynı anahtar onu geri getirir. Ayarlar →
@@ -835,7 +943,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>Birden çok rig</h2>
+      <h2 id="rigs"><span class="n">02.9</span>Birden çok rig</h2>
       <p>NAMper aynı anda dörde kadar rig çalıştırır — bir gitar ve bir vokal, bir gitar ve bir
         bas, ya da tek bir arayüz üzerinden dört müzisyen. <b class="ui">SİNYAL ZİNCİRİ</b>
         başlığındaki <b class="ui">RIG</b> <b class="ui">+</b> menüsünden bir tane ekle.</p>
@@ -890,7 +998,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>Paralel dallar</h2>
+      <h2 id="branches"><span class="n">02.10</span>Paralel dallar</h2>
       <p>Bir rig tek bir hatla sınırlı değildir. Her rig dörde kadar zincir tutabilir — ana
         zincir artı üç dal — böylece bir sinyali bölebilir, yarıları farklı işleyebilir ve
         onları geri karıştırabilirsin. Zincirin altındaki dal simgeli düğmeyle bir tane
@@ -946,7 +1054,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>Master bölümü</h2>
+      <h2 id="master"><span class="n">02.11</span>Master bölümü</h2>
       <p><b class="ui">MASTER</b> şeridi her şeyin buluştuğu yerdir: her rig, looper ve iki gönderim
         dönüşü donanım çıkışından önce orada toplanır. Master'a ne yaparsan hepsine yapmış olursun.
         Eskiden Rig sekmesinin dibindeydi; artık <a href="/docs/tr/mix.html">Mix</a> sekmesinde,

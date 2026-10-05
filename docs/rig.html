@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig &amp; signal chain — NAMper Documentation</title>
-<meta name="description" content="Building a rig: the blocks palette and every block, the seven EQ models, NAM captures and TONE3000, capture banks, cab and reverb impulses, preset banks, scenes and MIDI PC slots, multiple rigs, parallel branches and the master section.">
+<meta name="description" content="Building a rig: the blocks palette and every block, the seven EQ models, NAM captures and TONE3000, capture banks, HyperReal amps computed from their circuits, cab and reverb impulses, preset banks, scenes and MIDI PC slots, multiple rigs, parallel branches and the master section.">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="Rig &amp; signal chain — NAMper Documentation">
-<meta property="og:description" content="Blocks, EQ models, NAM captures, TONE3000, banks, cab and reverb impulses, presets, multiple rigs, parallel branches and the master section.">
+<meta property="og:description" content="Blocks, EQ models, NAM captures, TONE3000, banks, HyperReal amps, cab and reverb impulses, presets, multiple rigs, parallel branches and the master section.">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/rig.html">
 <meta property="og:type" content="article">
@@ -81,6 +81,7 @@
         <li><a href="#eq">The seven EQ models</a></li>
         <li><a href="#nam">NAM captures</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#hyperreal">HyperReal amps</a></li>
         <li><a href="#cabs">Cabs and IRs</a></li>
         <li><a href="#presets">Presets</a></li>
         <li><a href="#rigs">Multiple rigs</a></li>
@@ -292,8 +293,8 @@
                 <b class="ui">Overdrive</b>: <b class="ui">Tube</b>, <b class="ui">Blues</b>, <b class="ui">Transparent</b> ·
                 <b class="ui">Distortion</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
                 <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Octave fuzz</b></td></tr>
-            <tr><td><b class="ui">Amplifier</b></td><td><b class="ui">Built-in</b> · <b class="ui">NAM</b> · <b class="ui">Model</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b></td></tr>
+            <tr><td><b class="ui">Amplifier</b></td><td><b class="ui">Built-in</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">Model</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b> · on <b class="ui">Modeler</b>, the fourteen amps of the <a href="#hyperreal">HyperReal catalogue</a></td></tr>
             <tr><td><b class="ui">Saturator</b></td><td><b class="ui">Type</b></td>
               <td><b class="ui">Tube</b>, <b class="ui">Tape</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Type</b></td>
@@ -333,7 +334,7 @@
           </tbody>
         </table>
       </div>
-      <p>The <b class="ui">Amplifier</b> block's <b class="ui">Built-in</b> side is NAMper's own tube amp, with the knobs you expect: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, <b class="ui">Presence</b> and <b class="ui">Master</b>, and seven voicings on the <b class="ui">Model</b> chips. It needs no download and no account, which is why it carries the show when you are offline; the <b class="ui">NAM</b> chip beside it swaps in a capture — see below.</p>
+      <p>The <b class="ui">Amplifier</b> block's <b class="ui">Built-in</b> side is NAMper's own tube amp, with the knobs you expect: <b class="ui">Gain</b>, <b class="ui">Bass</b>, <b class="ui">Mid</b>, <b class="ui">Treble</b>, <b class="ui">Presence</b> and <b class="ui">Master</b>, and seven voicings on the <b class="ui">Model</b> chips. It needs no download and no account, which is why it carries the show when you are offline; the <b class="ui">NAM</b> chip beside it swaps in a capture, and the <b class="ui">Modeler</b> chip an amp computed from its circuit — see <a href="#nam">NAM captures</a> and <a href="#hyperreal">HyperReal amps</a> below.</p>
       <p><b class="ui">Saturator</b> is where the old Tube Sat and Tape Sat went: one block, <b class="ui">Tube</b>, <b class="ui">Tape</b> or a <b class="ui">NAM</b> capture of an outboard box on its type chips. <b class="ui">Ensemble</b> is one instrument heard as several players across the panorama — no LFO, nothing detuned, and the mono sum is the input; <b class="ui">Velvet</b> or <b class="ui">Allpass</b> on its mode chips.</p>
 
       <h3>Drive, dynamics and time</h3>
@@ -385,7 +386,7 @@
       </div>
 
       <h3>Mix, tempo sync and tails</h3>
-      <p><b>Every block has a Mix.</b> The ones built around a blend carry it on their own face — a delay's <b class="ui">Mix</b>, a harmoniser's <b class="ui">Dry</b>, a freeze's <b class="ui">Level</b>; every other block, a hosted plugin included, gets a <b class="ui">Mix</b> knob as its last knob: the block blended with its own input, so a tremolo can half-chop and an amp can carry a little direct signal. The dry is delayed to match the block, so nothing comb-filters, and scenes, presets and MIDI treat it like any other knob.</p>
+      <p><b>Almost every block has a Mix.</b> The ones built around a blend carry it on their own face — a delay's <b class="ui">Mix</b>, a harmoniser's <b class="ui">Dry</b>, a freeze's <b class="ui">Level</b>; every other block but the <b class="ui">Amplifier</b>, a hosted plugin included, gets a <b class="ui">Mix</b> knob as its last knob: the block blended with its own input, so a tremolo can half-chop and a drive can carry a little direct signal. The dry is delayed to match the block, so nothing comb-filters, and scenes, presets and MIDI treat it like any other knob.</p>
       <p><b>Tempo sync is a switch.</b> The delay, the tremolo, the slicer, the phaser, the flanger, the chorus and the rotary each have a <b class="ui">Sync</b> switch. On, the rate or time knob turns into note divisions (1/1 to 1/16, dotted and triplet on the delay) that follow the set tempo; off, it is plain Hz or ms again.</p>
       <p><b>Tails ring out.</b> A delay, a reverb, an FX loop or a hosted plugin that a scene or a footswitch bypasses keeps ringing over the dry until it is quiet, and a preset switch lets the old rig's tails play on for up to eight seconds instead of cutting them. The switch for this is <b class="ui">Tails on a switch</b> in Settings → <b class="ui">Audio</b>, on by default. A held sound is not a tail: a <b class="ui">Freeze</b> bypassed, or the Cloud's freeze switched off, fades out in 10 ms and is gone.</p>
       <div class="note tip">
@@ -457,12 +458,14 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAM captures</h2>
-      <p>The <b class="ui">Amplifier</b> block is one block with two sources. Two chips at the top of its
+      <p>The <b class="ui">Amplifier</b> block is one block with three sources. Three chips at the top of its
         sheet choose between them: <b class="ui">Built-in</b> is NAMper's own amp simulation with
         the seven voicings listed above, <b class="ui">NAM</b> is the Neural Amp Modeler player
-        running a <b class="ui">.nam</b> capture of a real amplifier. Both live in the same block,
-        so a preset carries the voicing it was built on <em>and</em> the capture it was voiced
-        around, and switching between them is one tap.</p>
+        running a <b class="ui">.nam</b> capture of a real amplifier, and <b class="ui">Modeler</b>
+        is HyperReal, an amp computed from its circuit (<a href="#hyperreal">below</a>). All three
+        live in the same block, so a preset carries the voicing it was built on, the capture it was
+        voiced around <em>and</em> its HyperReal amp, and switching between them is one tap — the
+        sound that plays fades out as the next fades in, with no click and no gap.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
              alt="The Rig tab: the IN and OUT meters across the top of the signal chain card, and the chain of blocks below with the Amplifier block naming the capture it plays.">
@@ -565,7 +568,7 @@
         disabled.</p>
       <p>Signing in is an ordinary web sign-in, not a pasted API key, and if you are already logged
         in to tone3000.com in the browser the app reuses that session. NAMper never asks for it at
-        launch — the factory presets play on the built-in amps and the bundled cabinets, and the
+        launch — the factory presets play on HyperReal amps (or the built-in ones) and the bundled cabinets, and the
         sign-in happens the first time you press <b class="ui">Browse TONE3000</b> in a block that
         takes a capture. Settings has no <b class="ui">TONE3000</b> page.</p>
       <p>What the catalogue offers depends on the block that opened it. From an <b class="ui">Amplifier</b>
@@ -581,13 +584,16 @@
         <b class="ui">Download all {n} models into the bank</b>. Everything lands in the app's
         <b class="ui">tones/</b> folder and joins the library.</p>
 
-      <h3>The factory presets, on captures or built-in</h3>
-      <p>The Settings index carries one switch, under <b class="ui">FACTORY PRESETS</b>:
-        <b class="ui">Built-in amps</b> or <b class="ui">TONE3000 captures</b>. The four factory
-        rigs were voiced around four
-        public captures — a Fender Deluxe Reverb, a Marshall Plexi, a Victory Kraken and a VOX AC30
-        — and the switch decides which of the two the bank plays. NAMper offers the choice once,
-        the first time you pick a capture of your own.</p>
+      <h3>The factory presets: HyperReal, captures or built-in</h3>
+      <p>The Settings index carries one choice, under <b class="ui">FACTORY PRESETS</b>, of the amps
+        the factory bank plays: <b class="ui">Built-in amps</b>, <b class="ui">TONE3000 captures</b>
+        or HyperReal (the chip wearing the HyperReal mark). HyperReal is the default — see
+        <a href="#hyperreal-factory">HyperReal in the factory bank</a>. The factory rigs were voiced
+        around four public captures — an American clean combo, a British crunch head, a modern
+        high-gain head and a British chime combo — and <b class="ui">TONE3000 captures</b> puts the
+        bank on them: it asks you to sign in and downloads the four once. Whichever you pick, each
+        <b class="ui">Amplifier</b> block still switches to another source with one tap. NAMper also
+        offers the captures once, the first time you pick a capture of your own.</p>
 
       <h3>Playing offline</h3>
       <p>Anything already downloaded keeps working with no network at all. An <b class="ui">Amplifier</b>
@@ -614,8 +620,109 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="hyperreal"><span class="n">02.6</span>HyperReal amps</h2>
+      <p>HyperReal is NAMper computing an amplifier from its schematic, part by part: every tube
+        stage with its own tube, the tone stack, the phase inverter, the power tubes, the output
+        transformer, the speaker they drive and the power supply that sags under them, with the
+        values of the parts the amp was built with. Its knobs turn the circuit's own pots and its
+        switches change the circuit itself, so it answers your picking and its controls the way the
+        circuit does. Nothing is downloaded and no account is needed: the catalogue ships inside
+        the app, on the phone, the tablet, the Mac and in the plug-ins.</p>
+      <p>In the <b class="ui">Amplifier</b> block it is the third chip, <b class="ui">Modeler</b>.
+        Tap it and the block plays a HyperReal amp; the chip then wears the amp's name with an arrow,
+        and a tap on it lists the catalogue. Under the chips sit the HyperReal mark and the amp's own
+        controls, named as on the amp — <b class="ui">Volume</b>, <b class="ui">Treble</b>,
+        <b class="ui">Middle</b>, <b class="ui">Bass</b>, <b class="ui">Presence</b> and whatever
+        else that circuit has, up to sixteen. A switch shows its positions as chips, an on/off one
+        (<b class="ui">Bright</b>, <b class="ui">Pull fat</b>) as a toggle. Change the amp and the
+        knobs it shares with the last one keep their positions; the new amp blends in while the old
+        one plays on, so the change does not drop out.</p>
+      <p>Every amp has a plain output volume after it, its last knob (<b class="ui">Master</b> or
+        <b class="ui">Output</b>). While the block's <b class="ui">Auto level</b> is on, that knob is
+        Auto level's and is not shown: the amp is levelled at every position of its gain, its master
+        and its switches, the way the built-in amp and the captures are, so turning the gain shapes
+        the sound and not the volume. Switch <b class="ui">Auto level</b> off and the knob appears
+        and the amp is as loud as its circuit makes it.</p>
+      <p>The knobs are ordinary knobs: a long press offers <b class="ui">MIDI Learn</b>, scenes and
+        the morph pedal move them, and in a plug-in host the Amplifier's <b class="ui">Modeler 1</b>…<b class="ui">Modeler 16</b>
+        parameters reach them in the amp's order.</p>
+      <div class="note">
+        <div class="t">The heaviest of the three</div>
+        <p>A circuit costs far more processor than a capture or the built-in amp. On iPhone, iPad
+          and Android it gets a processor core of its own —
+          <b class="ui">Amp modeler on its own thread</b> in <a href="/docs/settings.html#audio">Settings → Audio</a>.
+          If the <b class="ui">DSP load</b> chip runs red, a larger buffer or one amp fewer is the
+          first remedy.</p>
+      </div>
+
+      <h3>The catalogue</h3>
+      <p>Fourteen amps — tube amps from the late fifties to the nineties, two solid-state ones and
+        two for bass. The names are NAMper's own.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Amp</th><th>What it is</th><th>Switches</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tweed Deluxe 57</b></td><td>A small late-fifties tweed combo: two 6V6, a 5Y3 tube rectifier, 15 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Tweed 59</b></td><td>The big late-fifties tweed: two 5881, a GZ34 rectifier, 45 W</td><td><b class="ui">Channel</b>: bright, normal or both jumped</td></tr>
+            <tr><td><b class="ui">Black Twin 65</b></td><td>A mid-sixties American clean combo: four 6L6GC, 85 W</td><td><b class="ui">Bright</b></td></tr>
+            <tr><td><b class="ui">Brit 45 62</b></td><td>An early-sixties British head: two 6L6, a GZ34 rectifier, 30 W</td><td><b class="ui">Channel</b>: bright, normal or jumped</td></tr>
+            <tr><td><b class="ui">Brit Top 63</b></td><td>A sixties British chime combo with the treble-boost tone stack: four EL84, a GZ34 rectifier</td><td>—</td></tr>
+            <tr><td><b class="ui">Brit Super 68</b></td><td>A late-sixties British 100 W head: four EL34</td><td><b class="ui">Input</b>: high treble, normal or jumped</td></tr>
+            <tr><td><b class="ui">Brit 800</b></td><td>An early-eighties British master-volume head: four EL34, 100 W</td><td><b class="ui">Input</b>: high or low</td></tr>
+            <tr><td><b class="ui">Cali Overdrive</b></td><td>An eighties Californian overdrive special: a clean channel and an overdrive with its own drive, tone and level; two EL34</td><td><b class="ui">Overdrive</b></td></tr>
+            <tr><td><b class="ui">Cali Mark IV</b></td><td>A nineties Californian lead channel with a five-band graphic EQ: four 6L6GC</td><td><b class="ui">Pull fat</b>, <b class="ui">Pull bright</b>, <b class="ui">Presence shift</b>, <b class="ui">Power</b>: pentode or triode</td></tr>
+            <tr><td><b class="ui">Cali Rect</b></td><td>A nineties Californian high-gain head: four 6L6GC, 100 W</td><td><b class="ui">Rectifier</b>: tube or diode</td></tr>
+            <tr><td><b class="ui">Block Letter 51</b></td><td>A nineties high-gain head with a pre and a post gain: four 6L6GC, 120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Jazz Clean 77</b></td><td>An eighties solid-state clean amp, an op-amp preamp with its own distortion</td><td>—</td></tr>
+            <tr><td><b class="ui">Bass Tower 70</b></td><td>A 300 W tube bass head: six 6550</td><td><b class="ui">Ultra hi</b>, <b class="ui">Midrange select</b>: 220, 800 or 3000 Hz</td></tr>
+            <tr><td><b class="ui">Rack Bass 800</b></td><td>An eighties solid-state bass preamp that ends at its DI — no speaker</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>An amp's output is the voltage on its speaker with no cabinet: put a
+        <b class="ui">Cabinet</b> after it, as you would after a real head. A newly chosen amp starts
+        on <b class="ui">Brit 800</b>.</p>
+
+      <h3>The circuit</h3>
+      <p>Beside the amp's name a small button with a circuit icon (<b class="ui">Circuit</b> to a screen reader) opens the amp's circuit,
+        headed by the HyperReal mark and the amp's name; <b class="ui">Done</b> closes it. Under the
+        heading are the switches as they stand and two views, <b class="ui">Blocks</b> and
+        <b class="ui">Schematic</b>. Both are drawn for the switches as they are set, so flipping a
+        switch in the block redraws the circuit.</p>
+      <ul>
+        <li><b class="ui">Blocks</b> lays the stages out in the order the signal passes them, wrapped
+          onto rows across the screen: the input, each tube stage, the tone stack, the phase inverter,
+          the power tubes, the transformer, the speaker. Each knob sits on the stage it turns, the
+          negative feedback is a line from where it leaves the path to where it comes back, and under
+          every stage is the supply node that feeds it, with its parts — <b class="ui">Supply</b> at
+          the foot explains the node letters.</li>
+        <li><b class="ui">Schematic</b> draws the same circuit as parts with their values — tubes,
+          resistors, capacitors, the pots under their knob names, the transformer and the speaker,
+          and the supply chain under it all; a tube rectifier is drawn as a tube.</li>
+      </ul>
+      <p>The drawing is live while you play. A tube stage shows its level — a bar along its floor
+        on <b class="ui">Blocks</b>, a glow on the tube on <b class="ui">Schematic</b> — and turns red
+        while the stage clips; a supply node shows how many volts it sags as the tubes draw on it.
+        <b class="ui">Tap a stage to see what it is.</b> — a tap opens a card with that stage's parts.</p>
+
+      <h3 id="hyperreal-factory">HyperReal in the factory bank</h3>
+      <p>Unless you have picked otherwise under <b class="ui">FACTORY PRESETS</b> in Settings, the
+        factory presets play HyperReal: every guitar and bass rig carries the HyperReal amp that
+        matches the voicing it was written on — clean, tweed, British, chime, modern, bass — or one of
+        its own, with the cabinet after it; the bass rigs, which have no cabinet, take
+        <b class="ui">Rack Bass 800</b>, a preamp that ends at its DI. The acoustic rigs keep the built-in amp. A factory rig may
+        set its amp's channel too: <b class="ui">Lone Star Lead</b> plays
+        <b class="ui">Cali Overdrive</b> with its overdrive on.</p>
+      <p>If the processor cannot carry a circuit — the DSP load stays at its limit for a few seconds
+        while a factory preset plays HyperReal — the bank steps back to the built-in amps by itself
+        and keeps that choice, so the next preset does not stumble the same way; Settings shows it,
+        and you can pick HyperReal again once there is room (a larger buffer, fewer rigs). The
+        plug-ins offer the same three choices without the step back.</p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>Cabs and IRs</h2>
+      <h2 id="cabs"><span class="n">02.7</span>Cabs and IRs</h2>
       <p>The <b class="ui">Cabinet</b> block plays an impulse response — a speaker cabinet captured with a microphone. Its sheet is built like a capture block's: the impulse's name across the top with the <b class="ui">@author</b>, an arrow to the tone's page and <b class="ui">Clear IR</b> beside it, the cover art on the left, and three ways to load one on the right — <b class="ui">Browse TONE3000</b>, <b class="ui">Library</b> and <b class="ui">Load file</b>. Under them sits the block's own knob, <b class="ui">Level</b>, −12 to +12 dB.</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
@@ -673,7 +780,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>Presets</h2>
+      <h2 id="presets"><span class="n">02.8</span>Presets</h2>
       <p>A rig preset stores the whole chain — blocks, models, knob positions, scenes, the amp
         profile, the cab. Presets live on MIDI program-change slots in four banks of 128:
         <b class="ui">Factory</b> and User 1–3. Save one from the <b class="ui">+</b> on the
@@ -790,8 +897,9 @@
         <b class="ui">Ambient</b>, each voiced around a real capture — followed by themed rigs that
         walk through styles and eras, acoustic instruments, a bass bank, a vocal bank and utility
         chains. The newer blocks play their part in it: swells and freezes in the ambient rigs,
-        a doubled vocal, a twelve-string, a synth bass and vocal strips. Every factory rig plays on the built-in amps and the bundled
-        cabinets from the first second, and each is marked <b class="ui">FACTORY</b> in the
+        a doubled vocal, a twelve-string, a synth bass and vocal strips. Every factory rig plays from
+        the first second with nothing to download — on <a href="#hyperreal-factory">HyperReal amps</a>
+        unless you pick the built-in ones — and the bundled cabinets, and each is marked <b class="ui">FACTORY</b> in the
         manager. <b class="ui">Hide factory presets</b> in the manager's import/export menu takes
         the bank out of the bank menu; the same switch brings it back. Settings →
         <b class="ui">RESET</b> → <b class="ui">Reset to factory presets</b> clears your own presets;
@@ -819,7 +927,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>Multiple rigs</h2>
+      <h2 id="rigs"><span class="n">02.9</span>Multiple rigs</h2>
       <p>NAMper runs up to four rigs at once — a guitar and a vocal, a guitar and a bass, or four
         players through one interface. Add one from the <b class="ui">RIG</b> <b class="ui">+</b>
         menu in the <b class="ui">SIGNAL CHAIN</b> header.</p>
@@ -873,7 +981,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>Parallel branches</h2>
+      <h2 id="branches"><span class="n">02.10</span>Parallel branches</h2>
       <p>A rig is not limited to one line. Each rig can hold up to four chains — the main one plus
         three branches — so you can split a signal, treat the halves differently and mix them back
         together. Create one with the branch-icon button under the chain
@@ -929,7 +1037,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>The master section</h2>
+      <h2 id="master"><span class="n">02.11</span>The master section</h2>
       <p>The <b class="ui">MASTER</b> strip is where everything meets: every rig, the looper and
         both send returns sum there before the hardware output. Whatever you do to the master, you
         do to all of it. It used to sit at the foot of the Rig tab; it lives on the

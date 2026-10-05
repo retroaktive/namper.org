@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>リグとシグナルチェーン — NAMper ドキュメント</title>
-<meta name="description" content="リグを組み立てる: ブロックパレットと全ブロック、7種類のEQモデル、NAMアンププロファイルとTONE3000、キャビIR、プリセットバンク、シーンとMIDI PCスロット、複数のリグ、パラレルブランチ、マスターセクションについて。">
+<meta name="description" content="リグを組み立てる: ブロックパレットと全ブロック、7種類のEQモデル、NAMアンププロファイルとTONE3000、回路から計算するHyperRealアンプ、キャビIR、プリセットバンク、シーンとMIDI PCスロット、複数のリグ、パラレルブランチ、マスターセクションについて。">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
 <link rel="apple-touch-icon" href="/assets/icon-180.png?v=3">
 <meta property="og:title" content="リグとシグナルチェーン — NAMper ドキュメント">
-<meta property="og:description" content="ブロック、EQモデル、NAMプロファイル、TONE3000、キャビIR、プリセット、複数のリグ、パラレルブランチ、マスターセクションについて。">
+<meta property="og:description" content="ブロック、EQモデル、NAMプロファイル、TONE3000、HyperRealアンプ、キャビIR、プリセット、複数のリグ、パラレルブランチ、マスターセクションについて。">
 <meta property="og:image" content="https://namper.org/assets/og.png">
 <meta property="og:url" content="https://namper.org/docs/ja/rig.html">
 <meta property="og:type" content="article">
@@ -82,6 +82,7 @@
         <li><a href="#eq">7種類のEQモデル</a></li>
         <li><a href="#nam">NAMキャプチャ</a></li>
         <li><a href="#tone3000">TONE3000</a></li>
+        <li><a href="#hyperreal">HyperRealアンプ</a></li>
         <li><a href="#cabs">キャビとIR</a></li>
         <li><a href="#presets">プリセット</a></li>
         <li><a href="#rigs">複数のリグ</a></li>
@@ -293,8 +294,8 @@
                 <b class="ui">オーバードライブ</b>: <b class="ui">チューブ</b>, <b class="ui">ブルース</b>, <b class="ui">トランスペアレント</b> ·
                 <b class="ui">ディストーション</b>: <b class="ui">ディスト</b>, <b class="ui">メタル</b> ·
                 <b class="ui">ファズ</b>: <b class="ui">ファズ Ge</b>, <b class="ui">ファズ Si</b>, <b class="ui">オクターブファズ</b></td></tr>
-            <tr><td><b class="ui">アンプ</b></td><td><b class="ui">内蔵</b> · <b class="ui">NAM</b> · <b class="ui">モデル</b></td>
-              <td><b class="ui">クリーン</b>, <b class="ui">ツイード</b>, <b class="ui">ブリット</b>, <b class="ui">チャイム</b>, <b class="ui">モダン</b>, <b class="ui">ベース</b>, <b class="ui">アコースティック</b></td></tr>
+            <tr><td><b class="ui">アンプ</b></td><td><b class="ui">内蔵</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">モデル</b></td>
+              <td><b class="ui">クリーン</b>, <b class="ui">ツイード</b>, <b class="ui">ブリット</b>, <b class="ui">チャイム</b>, <b class="ui">モダン</b>, <b class="ui">ベース</b>, <b class="ui">アコースティック</b> · <b class="ui">Modeler</b>では、<a href="#hyperreal">HyperRealカタログ</a>の14種類のアンプ</td></tr>
             <tr><td><b class="ui">サチュレーター</b></td><td><b class="ui">タイプ</b></td>
               <td><b class="ui">チューブ</b>, <b class="ui">テープ</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">ローファイ</b></td><td><b class="ui">タイプ</b></td>
@@ -334,7 +335,7 @@
           </tbody>
         </table>
       </div>
-      <p><b class="ui">アンプ</b>ブロックの<b class="ui">内蔵</b>側はNAMper自身の真空管アンプで、おなじみのノブ — <b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">ミッド</b>、<b class="ui">トレブル</b>、<b class="ui">プレゼンス</b>、<b class="ui">マスター</b> — と、<b class="ui">モデル</b>チップに7つのボイシングを備えます。ダウンロードもアカウントも不要なので、オフラインでもステージを支えます。隣の<b class="ui">NAM</b>チップはキャプチャに差し替えます — 後述。</p>
+      <p><b class="ui">アンプ</b>ブロックの<b class="ui">内蔵</b>側はNAMper自身の真空管アンプで、おなじみのノブ — <b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">ミッド</b>、<b class="ui">トレブル</b>、<b class="ui">プレゼンス</b>、<b class="ui">マスター</b> — と、<b class="ui">モデル</b>チップに7つのボイシングを備えます。ダウンロードもアカウントも不要なので、オフラインでもステージを支えます。隣の<b class="ui">NAM</b>チップはキャプチャに、<b class="ui">Modeler</b>チップは回路から計算されたアンプに差し替えます — 後述の<a href="#nam">NAMキャプチャ</a>と<a href="#hyperreal">HyperRealアンプ</a>を参照してください。</p>
       <p><b class="ui">サチュレーター</b>は旧Tube Sat／Tape Satの行き先です。ひとつのブロックで、タイプチップに<b class="ui">チューブ</b>、<b class="ui">テープ</b>、またはアウトボード機材の<b class="ui">NAM</b>キャプチャ。<b class="ui">アンサンブル</b>はひとつの楽器がパノラマに広がる複数の奏者として聞こえるブロック — LFOなし、デチューンなし、モノ合計は入力そのもの。モードチップは<b class="ui">ベルベット</b>か<b class="ui">オールパス</b>。</p>
 
       <h3>ドライブ、ダイナミクス、タイム系</h3>
@@ -388,7 +389,7 @@
 
 
       <h3>Mix、テンポ同期、テール</h3>
-      <p><b>すべてのブロックにMixがあります。</b>ブレンドを前提に作られたブロックは、それを自分の画面に持っています — ディレイの<b class="ui">ミックス</b>、ハーモナイザーの<b class="ui">ドライ</b>、フリーズの<b class="ui">レベル</b>。それ以外のブロックは、ホストされたプラグインも含めて、最後のつまみとして<b class="ui">ミックス</b>を持ちます: ブロックを自分の入力とブレンドするもので、トレモロを半分だけ刻ませたり、アンプに少しダイレクト音を足したりできます。ドライはブロックに合わせて遅延されるのでコムフィルターは生じず、シーン、プリセット、MIDIでもほかのつまみと同じように扱えます。</p>
+      <p><b>ほとんどのブロックにMixがあります。</b>ブレンドを前提に作られたブロックは、それを自分の画面に持っています — ディレイの<b class="ui">ミックス</b>、ハーモナイザーの<b class="ui">ドライ</b>、フリーズの<b class="ui">レベル</b>。<b class="ui">アンプ</b>を除くそれ以外のブロックは、ホストされたプラグインも含めて、最後のつまみとして<b class="ui">ミックス</b>を持ちます: ブロックを自分の入力とブレンドするもので、トレモロを半分だけ刻ませたり、ドライブに少しダイレクト音を足したりできます。ドライはブロックに合わせて遅延されるのでコムフィルターは生じず、シーン、プリセット、MIDIでもほかのつまみと同じように扱えます。</p>
       <p><b>テンポ同期はスイッチです。</b>ディレイ、トレモロ、スライサー、フェイザー、フランジャー、コーラス、ロータリーにはそれぞれ<b class="ui">同期</b>スイッチがあります。オンにすると、レートやタイムのつまみがセットのテンポに従う音符の分割(1/1〜1/16、ディレイでは付点と3連も)に変わり、オフにすると普通のHzやmsに戻ります。</p>
       <p><b>テールは鳴り切ります。</b>シーンやフットスイッチがバイパスしたディレイ、リバーブ、FXループ、ホストされたプラグインは、静かになるまでドライの上で鳴り続けます。プリセットを切り替えても、前のリグのテールは断ち切られず最大8秒まで鳴り続けます。このスイッチは設定 → <b class="ui">オーディオ</b>の<b class="ui">切り替え時のテール</b>で、デフォルトでオンです。保持された音はテールではありません: バイパスした<b class="ui">フリーズ</b>や、オフにしたCloudのフリーズは、10 msでフェードアウトして消えます。</p>
       <div class="note tip">
@@ -462,12 +463,14 @@
 
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAMキャプチャ</h2>
-      <p><b class="ui">アンプ</b>ブロックは、1つのブロックに2つの音源を持ちます。シート上部の
-        2つのチップでどちらを鳴らすかを選びます: <b class="ui">内蔵</b>は上に挙げた7つの
+      <p><b class="ui">アンプ</b>ブロックは、1つのブロックに3つの音源を持ちます。シート上部の
+        3つのチップでどれを鳴らすかを選びます: <b class="ui">内蔵</b>は上に挙げた7つの
         ボイシングを持つNAMper独自のアンプシミュレーション、<b class="ui">NAM</b>は実機アンプの
-        <b class="ui">.nam</b>キャプチャを再生するNeural Amp Modelerのプレーヤーです。
-        どちらも同じブロックの中にあるので、プリセットは組み上げたボイシング<em>と</em>
-        それに合わせて作り込んだキャプチャの両方を持ち歩き、切り替えはワンタップです。</p>
+        <b class="ui">.nam</b>キャプチャを再生するNeural Amp Modelerのプレーヤー、
+        <b class="ui">Modeler</b>はHyperReal、つまり回路から計算されたアンプです(<a href="#hyperreal">後述</a>)。
+        3つとも同じブロックの中にあるので、プリセットは組み上げたボイシング、
+        それに合わせて作り込んだキャプチャ<em>と</em>HyperRealアンプを持ち歩き、切り替えはワンタップです —
+        鳴っている音は、次の音がフェードインする間にフェードアウトするので、クリックも途切れもありません。</p>
       <figure>
         <img class="phone" src="/docs/assets/rig.png" width="600" height="1303"
              alt="Rigタブ: シグナルチェーンカードの上部に横向きのINとOUTメーター、その下に並ぶブロックのチェーン。アンプブロックには再生中のキャプチャ名が表示されている。">
@@ -577,7 +580,7 @@
       <p>サインインは通常のWebサインインであり、APIキーを貼り付ける方式ではありません。
         ブラウザですでにtone3000.comにログイン済みであれば、アプリはそのセッションを
         再利用します。NAMperが起動時にサインインを求めることはありません — ファクトリー
-        プリセットは内蔵アンプとバンドルされたキャビで鳴り、サインインは
+        プリセットはHyperRealアンプ(または内蔵アンプ)とバンドルされたキャビで鳴り、サインインは
         キャプチャを必要とするブロックで<b class="ui">TONE3000をブラウズ</b>を
         初めて押したときに行います。設定に<b class="ui">TONE3000</b>のページはもうありません。</p>
       <p>カタログが何を出すかは、それを開いたブロックによって決まります。
@@ -595,13 +598,16 @@
         <b class="ui">{n}個のモデルをすべてバンクへダウンロード</b>です。すべては
         アプリの<b class="ui">tones/</b>フォルダに保存され、ライブラリに加わります。</p>
 
-      <h3>ファクトリープリセットは、キャプチャでも内蔵でも</h3>
-      <p>設定の目次そのものに、<b class="ui">ファクトリープリセット</b>の見出しでスイッチが1つあります:
-        <b class="ui">内蔵アンプ</b>か<b class="ui">TONE3000のキャプチャ</b>か。4つの
-        ファクトリーリグは4つの公開キャプチャ — Fender Deluxe Reverb、Marshall Plexi、
-        Victory Kraken、VOX AC30 — を基に作り込まれており、このスイッチがバンクが
-        どちらを鳴らすかを決めます。NAMperがこの選択を提示するのは、自分でキャプチャを
-        初めて選んだときの1回だけです。</p>
+      <h3>ファクトリープリセット: HyperReal、キャプチャ、内蔵</h3>
+      <p>設定の目次そのものに、<b class="ui">ファクトリープリセット</b>の見出しで、ファクトリーバンクが
+        鳴らすアンプの選択が1つあります: <b class="ui">内蔵アンプ</b>、<b class="ui">TONE3000のキャプチャ</b>、
+        またはHyperReal(HyperRealのマークが付いたチップ)。HyperRealが初期設定です —
+        <a href="#hyperreal-factory">ファクトリーバンクのHyperReal</a>を参照してください。ファクトリーリグは
+        4つの公開キャプチャ — アメリカンなクリーンコンボ、ブリティッシュなクランチヘッド、モダンなハイゲインヘッド、
+        ブリティッシュなチャイムコンボ — を基に作り込まれており、<b class="ui">TONE3000のキャプチャ</b>を選ぶと
+        バンクはそれらで鳴ります。サインインを求められ、4つを一度ダウンロードします。どれを選んでも、
+        各<b class="ui">アンプ</b>ブロックはワンタップで別の音源に切り替えられます。NAMperは、自分でキャプチャを
+        初めて選んだときにも、一度だけキャプチャを提案します。</p>
 
       <h3>オフラインで演奏する</h3>
       <p>すでにダウンロード済みのものは、ネットワークがまったくなくても動作し続けます。
@@ -632,8 +638,107 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="hyperreal"><span class="n">02.6</span>HyperRealアンプ</h2>
+      <p>HyperRealは、NAMperがアンプをその回路図から部品ひとつひとつ計算して再現するものです。
+        真空管ステージのそれぞれに専用の真空管、トーンスタック、位相反転段、出力管、出力トランス、
+        それらが駆動するスピーカー、そして負荷で電圧が垂れる電源まで、実機に使われた部品の
+        値のまま組み上げます。つまみは回路そのもののポットを回し、スイッチは回路そのものを
+        切り替えるので、ピッキングやコントロールへの反応は実際の回路と同じように返ってきます。
+        ダウンロードもアカウントも不要です。カタログはアプリに同梱されており、スマートフォン、
+        タブレット、Mac、そしてプラグインの中で使えます。</p>
+      <p><b class="ui">アンプ</b>ブロックでは3つめのチップ、<b class="ui">Modeler</b>がそれです。
+        タップするとブロックはHyperRealアンプを鳴らし、チップはアンプ名と矢印の表示に変わり、
+        そこをタップするとカタログが開きます。チップの下にはHyperRealのマークと、アンプ自身の
+        コントロールが並びます。名前は実機の表記どおり — <b class="ui">Volume</b>、<b class="ui">Treble</b>、
+        <b class="ui">Middle</b>、<b class="ui">Bass</b>、<b class="ui">Presence</b>、そのほかその回路にあるもの全部で、
+        最大16個です。スイッチはポジションをチップで、オン/オフ型
+        (<b class="ui">Bright</b>、<b class="ui">Pull fat</b>)はトグルで表示します。アンプを変えても、
+        前のアンプと共通のつまみは位置を保ちます。新しいアンプは古いアンプが鳴り続ける間に
+        ブレンドされるので、切り替えで音が途切れることはありません。</p>
+      <p>どのアンプにも、最後のつまみとして飾りのない出力ボリューム(<b class="ui">Master</b>または
+        <b class="ui">Output</b>)が後ろに付いています。ブロックの<b class="ui">オートレベル</b>がオンの間、
+        そのつまみはオートレベルのものとして非表示になります。アンプはゲイン、マスター、スイッチの
+        あらゆるポジションでレベルが整えられ、内蔵アンプやキャプチャと同じ扱いなので、ゲインを回すと
+        変わるのは音色であって音量ではありません。<b class="ui">オートレベル</b>をオフにするとつまみが現れ、
+        アンプは回路が出すそのままの音量で鳴ります。</p>
+      <p>つまみは通常のつまみです。長押しすると<b class="ui">MIDIラーン</b>が出て、シーンやモーフペダルで
+        動かせ、プラグインホストではアンプの<b class="ui">Modeler 1</b>…<b class="ui">Modeler 16</b>
+        パラメータがアンプの並び順でそれらに対応します。</p>
+      <div class="note">
+        <div class="t">3つの中でいちばん重い</div>
+        <p>回路はキャプチャや内蔵アンプよりはるかに多くのプロセッサを使います。iPhone、iPad、
+          Androidでは専用のプロセッサコアが割り当てられます —
+          <b class="ui">アンプモデラーを専用スレッドで実行</b>は<a href="/docs/ja/settings.html#audio">設定 → オーディオ</a>にあります。
+          <b class="ui">DSP負荷</b>チップが赤くなったら、まずバッファを大きくするか、アンプを1つ減らしてください。</p>
+      </div>
+
+      <h3>カタログ</h3>
+      <p>14種類のアンプ — 50年代後半から90年代の真空管アンプ、トランジスタアンプ2種、
+        ベース用2種です。名前はNAMper独自のものです。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>アンプ</th><th>内容</th><th>スイッチ</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Tweed Deluxe 57</b></td><td>50年代後半の小型ツイードコンボ: 6V6 2本、5Y3真空管整流、15 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Tweed 59</b></td><td>50年代後半の大型ツイード: 5881 2本、GZ34整流、45 W</td><td><b class="ui">Channel</b>: ブライト、ノーマル、または両方をジャンパー接続</td></tr>
+            <tr><td><b class="ui">Black Twin 65</b></td><td>60年代中期のアメリカンなクリーンコンボ: 6L6GC 4本、85 W</td><td><b class="ui">Bright</b></td></tr>
+            <tr><td><b class="ui">Brit 45 62</b></td><td>60年代前半のブリティッシュヘッド: 6L6 2本、GZ34整流、30 W</td><td><b class="ui">Channel</b>: ブライト、ノーマル、またはジャンパー接続</td></tr>
+            <tr><td><b class="ui">Brit Top 63</b></td><td>トレブルブースト式トーンスタックを備えた60年代のブリティッシュなチャイムコンボ: EL84 4本、GZ34整流</td><td>—</td></tr>
+            <tr><td><b class="ui">Brit Super 68</b></td><td>60年代後半のブリティッシュ100 Wヘッド: EL34 4本</td><td><b class="ui">Input</b>: ハイトレブル、ノーマル、またはジャンパー接続</td></tr>
+            <tr><td><b class="ui">Brit 800</b></td><td>80年代前半のブリティッシュなマスターボリューム付きヘッド: EL34 4本、100 W</td><td><b class="ui">Input</b>: ハイまたはロー</td></tr>
+            <tr><td><b class="ui">Cali Overdrive</b></td><td>80年代のカリフォルニア製オーバードライブ特化アンプ: クリーンチャンネルと、専用のドライブ・トーン・レベルを持つオーバードライブ; EL34 2本</td><td><b class="ui">Overdrive</b></td></tr>
+            <tr><td><b class="ui">Cali Mark IV</b></td><td>5バンドのグラフィックEQを備えた90年代のカリフォルニア製リードチャンネル: 6L6GC 4本</td><td><b class="ui">Pull fat</b>, <b class="ui">Pull bright</b>, <b class="ui">Presence shift</b>, <b class="ui">Power</b>: 五極管または三極管</td></tr>
+            <tr><td><b class="ui">Cali Rect</b></td><td>90年代のカリフォルニア製ハイゲインヘッド: 6L6GC 4本、100 W</td><td><b class="ui">Rectifier</b>: 真空管またはダイオード</td></tr>
+            <tr><td><b class="ui">Block Letter 51</b></td><td>プリゲインとポストゲインを持つ90年代のハイゲインヘッド: 6L6GC 4本、120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Jazz Clean 77</b></td><td>80年代のトランジスタ式クリーンアンプ、独自の歪みを持つオペアンププリアンプ</td><td>—</td></tr>
+            <tr><td><b class="ui">Bass Tower 70</b></td><td>300 Wの真空管ベースヘッド: 6550 6本</td><td><b class="ui">Ultra hi</b>, <b class="ui">Midrange select</b>: 220、800、または3000 Hz</td></tr>
+            <tr><td><b class="ui">Rack Bass 800</b></td><td>DIで終わる80年代のトランジスタ式ベースプリアンプ — スピーカーなし</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>アンプの出力は、キャビネットなしのスピーカー端の電圧です。本物のヘッドの後ろと同じように、
+        後ろに<b class="ui">キャビネット</b>を置いてください。新しく選んだアンプは
+        <b class="ui">Brit 800</b>から始まります。</p>
+
+      <h3>回路</h3>
+      <p>アンプ名の横にある回路アイコンの小さなボタン(スクリーンリーダーでは<b class="ui">回路</b>)で、アンプの回路が開きます。
+        見出しにはHyperRealのマークとアンプ名が表示され、<b class="ui">完了</b>で閉じます。見出しの下には
+        現在のスイッチの状態と、<b class="ui">ブロック</b>と<b class="ui">回路図</b>の2つのビューがあります。
+        どちらもスイッチの現在の設定に合わせて描かれるので、ブロック側でスイッチを切り替えると
+        回路も描き直されます。</p>
+      <ul>
+        <li><b class="ui">ブロック</b>は、信号が通る順にステージを並べ、画面幅で折り返して行にします:
+          入力、各真空管ステージ、トーンスタック、位相反転段、出力管、トランス、スピーカー。
+          各つまみはそれが回すステージの上にあり、負帰還は信号経路から出る点から戻る点までの線で、
+          すべてのステージの下にはそれに給電する電源ノードと、その部品が並びます —
+          末尾の<b class="ui">電源</b>がノードの文字を説明します。</li>
+        <li><b class="ui">回路図</b>は同じ回路を、値付きの部品として描きます — 真空管、抵抗、コンデンサ、
+          つまみ名の付いたポット、トランスとスピーカー、そのすべての下に電源の連なり。
+          真空管整流は真空管として描かれます。</li>
+      </ul>
+      <p>描画は演奏中にリアルタイムで動きます。真空管ステージはそのレベルを表示し — <b class="ui">ブロック</b>では
+        ステージの底に沿ったバー、<b class="ui">回路図</b>では真空管の光 — ステージがクリップしている間は
+        赤くなります。電源ノードは、真空管が電流を引くにつれて何ボルト垂れるかを示します。
+        <b class="ui">ステージをタップすると内容が表示されます。</b> — タップするとそのステージの部品のカードが開きます。</p>
+
+      <h3 id="hyperreal-factory">ファクトリーバンクのHyperReal</h3>
+      <p>設定の<b class="ui">ファクトリープリセット</b>で別のものを選んでいない限り、ファクトリープリセットは
+        HyperRealで鳴ります。ギターとベースのリグはどれも、作られたボイシング — クリーン、ツイード、ブリティッシュ、
+        チャイム、モダン、ベース — に合うHyperRealアンプ、またはそのリグ独自のアンプを持ち、後ろにキャビネットが付きます。
+        キャビネットのないベースリグは、DIで終わるプリアンプ<b class="ui">Rack Bass 800</b>を使います。
+        アコースティックのリグは内蔵アンプのままです。ファクトリーリグがアンプのチャンネルまで
+        設定することもあります。<b class="ui">Lone Star Lead</b>は
+        <b class="ui">Cali Overdrive</b>をオーバードライブ有効で鳴らします。</p>
+      <p>プロセッサが回路を支えきれない場合 — ファクトリープリセットがHyperRealで鳴っている間にDSP負荷が数秒間
+        上限に張り付いた場合 — バンクは自動で内蔵アンプに戻り、その選択を保持します。次のプリセットが
+        同じようにつまずかないようにするためです。設定にそれが表示され、余裕ができたら
+        (大きいバッファ、少ないリグ)もう一度HyperRealを選べます。
+        プラグインでは同じ3つの選択肢を、戻る動作なしで利用できます。</p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="cabs"><span class="n">02.6</span>キャビとIR</h2>
+      <h2 id="cabs"><span class="n">02.7</span>キャビとIR</h2>
       <p><b class="ui">キャビネット</b> ブロックはインパルスレスポンス — マイクで収録したスピーカーキャビネット — を再生します。シートはキャプチャブロックと同じ構成です: 上部にインパルス名と <b class="ui">@author</b>、トーンのページへの矢印とその横の <b class="ui">IRをクリア</b>、左にカバー、右に読み込む3つの方法 — <b class="ui">TONE3000をブラウズ</b>、<b class="ui">ライブラリ</b>、<b class="ui">ファイルを読み込む</b>。その下にブロック自身のノブ <b class="ui">レベル</b>(−12〜+12 dB)。</p>
       <figure>
         <img class="phone" src="/docs/assets/cab.png" width="600" height="1303"
@@ -692,7 +797,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="presets"><span class="n">02.7</span>プリセット</h2>
+      <h2 id="presets"><span class="n">02.8</span>プリセット</h2>
       <p>リグプリセットはチェーン全体を保存します — ブロック、モデル、つまみの位置、シーン、
         アンププロファイル、キャビ。プリセットは、128個ずつ4つのバンクに分かれたMIDIプログラム
         チェンジのスロットに置かれます: <b class="ui">ファクトリー</b>とユーザー 1〜3です。
@@ -816,7 +921,8 @@
         時代をたどるテーマ別のリグ、アコースティック楽器、ベースバンク、ボーカルバンク、
         ユーティリティチェーンが並びます。新しいブロックもそこで活躍しています: アンビエント系の
         リグのスウェルとフリーズ、ダブリングしたボーカル、12弦、シンセベース、ボーカル
-        ストリップ。どのファクトリーリグも最初の瞬間から内蔵アンプと同梱キャビネットで鳴り、
+        ストリップ。どのファクトリーリグも最初の瞬間から、ダウンロードなしで —
+        内蔵アンプを選ばない限り<a href="#hyperreal-factory">HyperRealアンプ</a>で — 同梱キャビネットとともに鳴り、
         マネージャー内ではそれぞれ<b class="ui">ファクトリー</b>と表示されます。マネージャーの
         インポート/エクスポートメニューにある<b class="ui">ファクトリープリセットを隠す</b>で、バンクメニューから
         このバンクを外せます。同じスイッチで元に戻ります。設定 → <b class="ui">RESET</b> →
@@ -846,7 +952,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="rigs"><span class="n">02.8</span>複数のリグ</h2>
+      <h2 id="rigs"><span class="n">02.9</span>複数のリグ</h2>
       <p>NAMperは最大4つのリグを同時に動かせます — ギターとボーカル、ギターとベース、
         あるいは1台のインターフェースを通した4人のプレイヤー、といった具合です。
         <b class="ui">シグナルチェーン</b>ヘッダー内の<b class="ui">リグ</b> <b class="ui">+</b>
@@ -905,7 +1011,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="branches"><span class="n">02.9</span>パラレルブランチ</h2>
+      <h2 id="branches"><span class="n">02.10</span>パラレルブランチ</h2>
       <p>リグは1本のラインに限定されません。各リグは最大4本のチェーン — メインの1本と
         3本のブランチ — を持てるため、信号を分岐させ、それぞれを別々に処理してから
         再びミックスできます。チェーン下部にあるブランチアイコンのボタン
@@ -966,7 +1072,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="master"><span class="n">02.10</span>マスターセクション</h2>
+      <h2 id="master"><span class="n">02.11</span>マスターセクション</h2>
       <p><b class="ui">マスター</b>ストリップはすべてが集まる場所です。各リグ、ルーパー、2つの
         センドリターンがハードウェア出力の前でここに合流します。マスターに対する操作は、全体に
         対する操作です。以前はRigタブの下にありましたが、いまは<a href="/docs/ja/mix.html">Mix</a>
