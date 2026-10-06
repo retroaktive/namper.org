@@ -144,7 +144,8 @@
             <tr><td>Reset a knob</td><td>Double-tap it</td></tr>
             <tr><td>MIDI-learn a control</td><td>Long-press any knob or chip row →
               <b class="ui">MIDI Learn “&lt;label&gt;”</b>. The control outlines itself and shows
-              <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel learn</b> backs out</td></tr>
+              <b class="ui">MOVE A MIDI CONTROL…</b>; <b class="ui">Cancel learn</b> backs out. Once the
+              control has a binding, the same menu offers <b class="ui">Remove MIDI binding</b></td></tr>
           </tbody>
         </table>
       </div>
@@ -199,7 +200,7 @@
               <b class="ui">Warmth</b> and <b class="ui">Output</b>.</td></tr>
             <tr><td><b class="ui">12-string</b></td><td>The courses doubled: an octave string for
               what lies below <b class="ui">Split</b> and a unison string a few cents sharp over the
-              whole.
+              whole. The octave string comes in some 40 ms after the pick.
               <b class="ui">Octave</b>, <b class="ui">Unison</b>, <b class="ui">Detune</b>,
               <b class="ui">Tone</b>.</td></tr>
             <tr><td><b class="ui">Synth</b></td><td>A monophonic synth that follows the string: a
@@ -294,7 +295,7 @@
                 <b class="ui">Distortion</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
                 <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Octave fuzz</b></td></tr>
             <tr><td><b class="ui">Amplifier</b></td><td><b class="ui">Built-in</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">Model</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b> · on <b class="ui">Modeler</b>, the fourteen amps of the <a href="#hyperreal">HyperReal catalogue</a></td></tr>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Modern</b>, <b class="ui">Bass</b>, <b class="ui">Acoustic</b> · on <b class="ui">Modeler</b>, the fifteen amps of the <a href="#hyperreal">HyperReal catalogue</a></td></tr>
             <tr><td><b class="ui">Saturator</b></td><td><b class="ui">Type</b></td>
               <td><b class="ui">Tube</b>, <b class="ui">Tape</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Type</b></td>
@@ -535,7 +536,7 @@
              alt="The NAM Profiles sheet: a search field and three downloaded tones — two amps and one carrying three models, the one that is the block&#39;s bank, marked with a checkmark.">
         <figcaption>The library on the amp&#39;s side: everything you have downloaded, offline</figcaption>
       </figure>
-      <p>The <b class="ui">Library</b> button opens a sheet titled <b class="ui">NAM Profiles</b> — everything you have downloaded, available offline. It has five sides, one per kind of block: <b class="ui">Amp</b> and <b class="ui">Drive</b> for captures, <b class="ui">Outboard</b> for the saturator and the compressor, <b class="ui">Cab</b> for cabinet impulses and <b class="ui">Reverb</b> for the reverb's — spaces, outboard boxes and experiments. A block only takes one of the five, so they are never listed together: the block you opened the library from picks the side and keeps it, and with no block to aim at, chips across the top name the five with a count each. The impulses shipped with the app sit on their sides under <b class="ui">Built-in</b>, next to the ones you download.</p>
+      <p>The <b class="ui">Library</b> button opens a sheet named after its side — <b class="ui">NAM Profiles</b> for the amp's captures, <b class="ui">Cabinets</b> or <b class="ui">Spaces</b> for the impulses — with everything you have downloaded, available offline. It has five sides, one per kind of block: <b class="ui">Amp</b> and <b class="ui">Drive</b> for captures, <b class="ui">Outboard</b> for the saturator and the compressor, <b class="ui">Cab</b> for cabinet impulses and <b class="ui">Reverb</b> for the reverb's — spaces, outboard boxes and experiments. A block only takes one of the five, so they are never listed together: the block you opened the library from picks the side and keeps it, and with no block to aim at, chips across the top name the five with a count each. The impulses shipped with the app sit on their sides under <b class="ui">Built-in</b>, next to the ones you download.</p>
       <p>Inside a side, tones are grouped by what was captured: <b class="ui">Built-in</b> first, then <b class="ui">Amplifiers</b>, <b class="ui">Pedals</b>, <b class="ui">Outboard</b>, <b class="ui">Experimental</b>, <b class="ui">Cabinets</b>, <b class="ui">Spaces</b> and <b class="ui">Other</b>. Each row is a tone, not a file: cover art, title, <b class="ui">@author</b> and how many models it ships. A tap loads it — a tone with one model plays alone, a tone with several becomes the block's bank — and the tone lands where it belongs: an amp in the <b class="ui">Amplifier</b> block, a pedal in the <b class="ui">Drive</b> before it, an outboard box in the <b class="ui">Saturator</b>, a cabinet in the <b class="ui">Cabinet</b> after it, a space in the <b class="ui">Reverb</b>.</p>
       <p>The chevron opens the tone's models. In the tone that <em>is</em> the block's bank each
         model carries a checkmark: it keeps that model in the <b class="ui">Model</b> knob's sweep,
@@ -556,7 +557,7 @@
 
     <section class="blk" style="--nc:var(--cloud)">
       <h3 id="capture-own">Capture your own gear</h3>
-      <p><b class="ui">Capture a NAM profile…</b> in the library's toolbar makes a capture of your own amp, pedal or whole rig on the device, with nothing but an audio interface. It is the reamp loop every NAM capture is made from: the signal leaves the interface on one output, goes through the gear and comes back on one input. The <b class="ui">Capture</b> window picks that output and that input by the interface's own channel names; while it is open the live rig is cut, so a looped-back rig cannot feed itself and howl. Set the send level, and <b class="ui">Check levels</b> plays the head of the signal with two meters and a note on how much to move the send — the return should peak near −6 dBFS and never clip. If the input already carries sound the send did not cause — the gear feeding back through the loop, or a host playing its track through the plug-in — the note says so: turn the gear's input or the send down, or stop playback, and check again.</p>
+      <p><b class="ui">Capture a NAM profile…</b> in the library's toolbar — on the captures' sides, not on the cabinets' or the spaces' — makes a capture of your own amp, pedal or whole rig on the device, with nothing but an audio interface. It is the reamp loop every NAM capture is made from: the signal leaves the interface on one output, goes through the gear and comes back on one input. The <b class="ui">Capture</b> window picks that output and that input by the interface's own channel names; while it is open the live rig is cut, so a looped-back rig cannot feed itself and howl. Set the send level, and <b class="ui">Check levels</b> plays the head of the signal with two meters and a note on how much to move the send — the return should peak near −6 dBFS and never clip. If the input already carries sound the send did not cause — the gear feeding back through the loop, or a host playing its track through the plug-in — the note says so: turn the gear's input or the send down, or stop playback, and check again.</p>
       <p><b class="ui">Start capture (190 s)</b> plays the NAM trainer's own standardized signal, <b>v3_0_0.wav</b>, so a take made here trains here and in any other NAM trainer as well. The take is looked at before anything is trained: the blips near the start locate the round trip, two copies of the same stretch at both ends measure the drift between two clocks, and a take where nothing came back, the return clipped or the loop changed nothing is refused. <b class="ui">Train</b> runs on the device — Nano, Feather (the default), Lite or Standard, for as many epochs as you set — and shows the epoch and the ESR on audio the trainer never saw (0.02 is a good capture). The result lands in the library as your own tone, tagged with its gear, and <b class="ui">Share .nam file</b> hands it to any NAM player.</p>
       <p>Would rather train elsewhere? <b class="ui">Share the recording</b> (on the Mac, <b class="ui">Save the recording…</b>) hands over one file, the return as a 48 kHz, 24-bit WAV — all TONE3000's trainer and the NAM trainer need, since they already have the standardized signal.</p>
 
@@ -634,8 +635,10 @@
         and a tap on it lists the catalogue. Under the chips sit the HyperReal mark and the amp's own
         controls, named as on the amp — <b class="ui">Volume</b>, <b class="ui">Treble</b>,
         <b class="ui">Middle</b>, <b class="ui">Bass</b>, <b class="ui">Presence</b> and whatever
-        else that circuit has, up to sixteen. A switch shows its positions as chips, an on/off one
-        (<b class="ui">Bright</b>, <b class="ui">Pull fat</b>) as a toggle. Change the amp and the
+        else that circuit has, up to sixteen. A switch shows its positions as chips — Cali Mark IV's
+        <b class="ui">Pull fat</b> and <b class="ui">Pull bright</b> as <b class="ui">On</b> and
+        <b class="ui">Off</b> — and a few on/off switches (<b class="ui">Bright</b>,
+        <b class="ui">Presence shift</b>, <b class="ui">Ultra hi</b>) as a toggle. Change the amp and the
         knobs it shares with the last one keep their positions; the new amp blends in while the old
         one plays on, so the change does not drop out.</p>
       <figure>
@@ -662,7 +665,7 @@
       </div>
 
       <h3>The catalogue</h3>
-      <p>Fourteen amps — tube amps from the late fifties to the nineties, two solid-state ones and
+      <p>Fifteen amps — tube amps from the late fifties to the nineties, two solid-state ones and
         two for bass. The names are NAMper's own.</p>
       <div class="tw">
         <table>
@@ -671,6 +674,7 @@
             <tr><td><b class="ui">Tweed Deluxe 57</b></td><td>A small late-fifties tweed combo: two 6V6, a 5Y3 tube rectifier, 15 W</td><td>—</td></tr>
             <tr><td><b class="ui">Tweed 59</b></td><td>The big late-fifties tweed: two 5881, a GZ34 rectifier, 45 W</td><td><b class="ui">Channel</b>: bright, normal or both jumped</td></tr>
             <tr><td><b class="ui">Black Twin 65</b></td><td>A mid-sixties American clean combo: four 6L6GC, 85 W</td><td><b class="ui">Bright</b></td></tr>
+            <tr><td><b class="ui">Black Deluxe 65</b></td><td>A mid-sixties American combo, the small one, with no middle knob: two 6V6, a GZ34 tube rectifier, 22 W into one 12-inch speaker</td><td>—</td></tr>
             <tr><td><b class="ui">Brit 45 62</b></td><td>An early-sixties British head: two 6L6, a GZ34 rectifier, 30 W</td><td><b class="ui">Channel</b>: bright, normal or jumped</td></tr>
             <tr><td><b class="ui">Brit Top 63</b></td><td>A sixties British chime combo with the treble-boost tone stack: four EL84, a GZ34 rectifier</td><td>—</td></tr>
             <tr><td><b class="ui">Brit Super 68</b></td><td>A late-sixties British 100 W head: four EL34</td><td><b class="ui">Input</b>: high treble, normal or jumped</td></tr>

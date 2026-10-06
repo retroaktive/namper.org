@@ -141,7 +141,7 @@
             <tr><td>Tulisan <b class="ui">NAMper</b></td>
                 <td>Membuka lembar About — versi, kotak tip, kredit, dan kartu <b class="ui">BANTUAN &amp; TAUTAN</b> berisi dokumentasi, situs, komunitas Telegram, dukungan, dan kebijakan privasi. Baris <b class="ui">Tentang</b> di puncak Setelan membuka lembar yang sama.</td></tr>
             <tr><td>Chip <b class="ui">Beban DSP</b></td>
-                <td>Beban prosesor dalam persen, <b class="ui">—</b> saat berhenti. Hijau di bawah 60%, kuning hingga 85%, merah di atasnya.</td></tr>
+                <td>Seberapa dekat thread waktu nyata tersibuk NAMper dengan tenggatnya, dalam persen — angka yang sama dengan baris <b class="ui">Beban DSP</b> di halaman <a href="#audio">Audio</a>, yang menjabarkannya dalam kata-kata; <b class="ui">—</b> saat berhenti. Hijau di bawah 60%, kuning hingga 85%, merah di atasnya.</td></tr>
             <tr><td>Roda gigi</td><td>Pengaturan — halaman ini.</td></tr>
             <tr><td>Chip <b class="ui">PILIH</b></td>
                 <td>Nada dasar saat ini, atau kata <b class="ui">PILIH</b> saat belum diatur. Membuka <b class="ui">SETEL NADA DASAR</b>.</td></tr>
@@ -162,7 +162,10 @@
         baris-baris ini memberitahumu apa yang sebenarnya diterima NAMper dari sistem, cara
         tercepat untuk mencari tahu kenapa sebuah interface berperilaku aneh. Di Mac, halaman yang
         sama juga tempat memilih interface — perangkat input dan output, pasangan output — lihat
-        <a href="/docs/id/mac.html#interface">Mac</a>.</p>
+        <a href="/docs/id/mac.html#interface">Mac</a>. Kalau interface terputus, engine berhenti
+        sejenak dan menyala lagi dengan sendirinya saat interface kembali, dengan pengaturan yang
+        sama dan loop tetap tersimpan; sementara itu iPhone atau iPad diam, Mac berbunyi lewat
+        perangkat sistem, dan ponsel Android lewat perangkatnya sendiri.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Bagian atas halaman Audio: baris antarmuka, pelindung feedback, bilah beban DSP dengan tiga baris teks di bawahnya, lalu chip sample rate, kanal input dan buffer, serta trim input.">
@@ -183,7 +186,7 @@
             <tr><td><b class="ui">Pelindung feedback</b></td><td>Switch</td><td>On</td>
                 <td>Mem-mute output selagi mic bawaan memutar lewat speaker ponsel itu sendiri. <a href="/docs/id/setup.html#feedback-guard">Baca yang satu ini baik-baik</a>.</td></tr>
             <tr><td><b class="ui">Beban DSP</b></td><td>Readout + bar</td><td>—</td>
-                <td>Beban prosesor, ditampilkan hanya selagi engine berjalan.</td></tr>
+                <td>Angka chip di header, ditampilkan hanya selagi engine berjalan, dan di bawah bilahnya dalam kata-kata: ruang sisa sebelum suara putus-putus, dengan nama thread waktu nyata tersibuk (atau bahwa thread itu meleset dari tenggatnya — bersiaplah suara putus-putus); bagian NAMper dari satu inti dan dari seluruh perangkat; dan, kecil, setiap thread waktu nyata terhadap tenggatnya sendiri.</td></tr>
             <tr><td><b class="ui">Sample rate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Mengatur rate engine; diingat per rute. Mengubahnya me-restart engine. Di Android chip-nya <b class="ui">Auto</b>, 44.1k, 48k, dan 96k. <a href="/docs/id/setup.html#rate">Selengkapnya</a>.</td></tr>
             <tr><td><b class="ui">Kanal input</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -198,6 +201,8 @@
                 <td>Capture A2 dari TONE3000 membawa sub-model yang lebih ringan; ini menjalankan setiap capture di atasnya — sebagian kecil saja dari beban DSP, detail sedikit berkurang. Capture yang tidak punya sub-model tidak terpengaruh. Langsung berlaku.</td></tr>
             <tr><td><b class="ui">Pemodel amp di thread tersendiri</b></td><td>Switch</td><td>On</td>
                 <td>Amp <a href="/docs/id/rig.html#hyperreal">HyperReal</a> berjalan di satu inti prosesor sendiri, dua buffer di belakang audio: ruang untuk beberapa amp sekaligus, dengan harga dua buffer latensi tambahan itu. Kalau thread-nya tidak sanggup mengejar, amp kembali sendiri ke thread audio. Mengganti sakelar ini memuat ulang amp yang sedang berbunyi. iPhone, iPad, dan Android; Mac dan plug-in tidak punya sakelar seperti ini.</td></tr>
+            <tr><td><b class="ui">Kualitas pemodel amp</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> di Mac</td>
+                <td>Seberapa halus amp HyperReal dihitung: <b class="ui">Live</b> lebih ringan bagi prosesor, <b class="ui">Studio</b> lebih halus dan lebih berat. Mengubahnya mengompilasi ulang amp yang sedang berbunyi, tanpa restart. Kalau amp Studio membuat thread tersibuk melewati tenggatnya selama dua detik, amp berjalan dalam Live dan barisnya bertuliskan <b class="ui">Studio (berjalan sebagai Live: perangkat ini tidak sanggup)</b> sampai kamu memilih kualitas lagi. Plug-in tidak punya baris ini.</td></tr>
             <tr><td><b class="ui">Ekor saat berpindah</b></td><td>Switch</td><td>On</td>
                 <td>Blok yang ditinggalkan saat berganti preset tetap berbunyi sampai habis — pengulangan delay, peluruhan reverb — hingga delapan detik alih-alih berhenti saat berganti, dan delay, reverb, FX loop, atau plugin yang di-bypass oleh scene tetap berbunyi sampai habis di atas sinyal kering (freeze adalah suara yang ditahan, bukan ekor: ia berhenti). Sedikit tambahan DSP selama detik-detik itu.</td></tr>
             <tr><td><b class="ui">Sejajarkan rig</b></td><td>Switch</td><td>Off</td>

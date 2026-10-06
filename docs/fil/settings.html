@@ -137,7 +137,7 @@
             <tr><td>Ang wordmark na <b class="ui">NAMper</b></td>
                 <td>Binubuksan ang About sheet — bersyon, ang tip jar, mga pasasalamat, at ang <b class="ui">TULONG AT MGA LINK</b> card na may dokumentasyon, website, komunidad sa Telegram, suporta at patakaran sa privacy. Ang hilerang <b class="ui">Tungkol Dito</b> sa itaas ng Mga Setting ay binubuksan ang parehong sheet.</td></tr>
             <tr><td><b class="ui">DSP load</b> chip</td>
-                <td>Load ng processor bilang porsiyento, <b class="ui">—</b> kapag nakahinto. Berde kapag mababa sa 60 %, amber hanggang 85 %, pula kapag lampas.</td></tr>
+                <td>Kung gaano kalapit sa deadline nito ang pinakaabalang real-time thread ng NAMper, bilang porsiyento — kaparehong numero ng row na <b class="ui">Load ng DSP</b> sa pahinang <a href="#audio">Audio</a>, na nagpapaliwanag nito; <b class="ui">—</b> kapag nakahinto. Berde kapag mababa sa 60 %, amber hanggang 85 %, pula kapag lampas.</td></tr>
             <tr><td>Gear</td><td>Settings — ang pahinang ito.</td></tr>
             <tr><td><b class="ui">PILI</b> chip</td>
                 <td>Ang kasalukuyang key, o ang salitang <b class="ui">PILI</b> kapag walang nakatakda. Binubuksan ang <b class="ui">ITAKDA ANG KEY</b>.</td></tr>
@@ -153,7 +153,7 @@
 
     <section class="blk" style="--nc:var(--power)">
       <h2 id="audio"><span class="n">09.2</span>Audio interface</h2>
-      <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa system, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface. Sa Mac, ang parehong pahina rin ang pumipili ng interface — ang mga input at output device, ang output pair — tingnan ang <a href="/docs/fil/mac.html#interface">Mac</a>.</p>
+      <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa system, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface. Sa Mac, ang parehong pahina rin ang pumipili ng interface — ang mga input at output device, ang output pair — tingnan ang <a href="/docs/fil/mac.html#interface">Mac</a>. Kapag nawala sandali ang interface, humihinto muna ang engine at kusang nagsisimula ulit pagbalik nito, sa parehong mga setting at buo pa ang mga loop; samantala, tahimik ang iPhone o iPad, tumutugtog ang Mac sa device ng system at ang Android phone sa sarili nitong device.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Ang itaas ng pahinang Audio: ang mga hanay ng interface, ang feedback guard, ang bar ng DSP load na may tatlong linya ng teksto sa ilalim, pagkatapos ang mga chip ng sample rate, input channel at buffer at ang mga input trim.">
@@ -174,7 +174,7 @@
             <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
                 <td>Minu-mute ang output habang dumadaan ang built-in na mic sa sariling speaker ng telepono. <a href="/docs/fil/setup.html#feedback-guard">Basahin itong mabuti</a>.</td></tr>
             <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
-                <td>Load ng processor, ipinapakita lang habang tumatakbo ang engine.</td></tr>
+                <td>Ang numero ng chip sa header, ipinapakita lang habang tumatakbo ang engine, at sa ilalim ng bar nito sa mga salita: ang natitirang puwang bago magka-dropout, kasama ang pangalan ng pinakaabalang real-time thread (o na lumalampas na ito sa deadline nito — asahan ang mga dropout); ang bahagi ng NAMper sa isang core at sa buong device; at, nang maliit, bawat real-time thread laban sa sarili nitong deadline.</td></tr>
             <tr><td><b class="ui">Sample rate</b></td><td>Mga chip: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Itinatakda ang rate ng engine; naaalala kada route. Ang pagpapalit nito ay nagre-restart sa engine. Sa Android, ang mga chip ay <b class="ui">Auto</b>, 44.1k, 48k at 96k. <a href="/docs/fil/setup.html#rate">Higit pa</a>.</td></tr>
             <tr><td><b class="ui">Mga input channel</b></td><td>Mga chip: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -189,6 +189,8 @@
                 <td>May kasamang mas magaan na sub-model ang mga A2 capture ng TONE3000; pinapatakbo nito ang bawat capture doon — isang maliit na bahagi lang ng DSP load, bahagyang mas kaunting detalye. Hindi apektado ang mga capture na walang nito. Agad na umeepekto.</td></tr>
             <tr><td><b class="ui">Amp modeler sa sarili nitong thread</b></td><td>Switch</td><td>On</td>
                 <td>Ang isang <a href="/docs/fil/rig.html#hyperreal">HyperReal</a> amp ay tumatakbo sa sarili nitong processor core, dalawang buffer sa likod ng audio: espasyo para sa ilang amp nang sabay, kapalit ng dalawang buffer na dagdag na latency. Kung hindi makasabay ang thread, kusang bumabalik ang amp sa audio thread. Ang paglipat nito ay nagre-reload ng mga amp na tumutugtog. iPhone, iPad at Android; walang ganitong switch ang Mac at ang mga plug-in.</td></tr>
+            <tr><td><b class="ui">Kalidad ng amp modeler</b></td><td>Mga chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> sa Mac</td>
+                <td>Kung gaano kapino kinukuwenta ang isang HyperReal amp: mas magaan sa processor ang <b class="ui">Live</b>, mas pino at mas mabigat ang <b class="ui">Studio</b>. Ang pagbabago ay nagre-recompile ng mga amp na tumutugtog, nang walang restart. Kung ang isang Studio amp ay nagpapalampas sa deadline ng pinakaabalang thread nang dalawang segundo, tatakbo sa Live ang mga amp at mababasa sa row ang <b class="ui">Studio (tumatakbo sa Live: hindi kaya ng device na ito)</b> hanggang pumili ka ulit ng kalidad. Walang ganitong row ang mga plug-in.</td></tr>
             <tr><td><b class="ui">Tails sa paglipat</b></td><td>Switch</td><td>On</td>
                 <td>Patuloy na tumutunog ang mga block na naiiwan ng pagpapalit ng preset — ang mga ulit ng delay, ang pagkupas ng reverb — nang hanggang walong segundo sa halip na huminto sa pagpapalit, at ang delay, reverb, FX loop o plugin na bina-bypass ng isang scene ay patuloy na tumutunog sa ibabaw ng dry (hawak na tunog ang freeze, hindi tail: humihinto ito). Kaunti pang DSP sa mga segundong iyon.</td></tr>
             <tr><td><b class="ui">Ihanay ang mga rig</b></td><td>Switch</td><td>Off</td>

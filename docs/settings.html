@@ -139,7 +139,7 @@
             <tr><td>The <b class="ui">NAMper</b> wordmark</td>
                 <td>Opens the About sheet — version, the tip jar, credits, and the <b class="ui">HELP &amp; LINKS</b> card with the documentation, the website, the Telegram community, support and the privacy policy. The <b class="ui">About</b> row at the top of Settings opens the same sheet.</td></tr>
             <tr><td><b class="ui">DSP load</b> chip</td>
-                <td>Processor load as a percentage, <b class="ui">—</b> when stopped. Green under 60 %, amber to 85 %, red above.</td></tr>
+                <td>How close NAMper's busiest real-time thread is to its deadline, as a percentage — the same number as the <b class="ui">DSP load</b> row on the <a href="#audio">Audio</a> page, which spells it out; <b class="ui">—</b> when stopped. Green under 60 %, amber to 85 %, red above.</td></tr>
             <tr><td>Gear</td><td>Settings — this page.</td></tr>
             <tr><td><b class="ui">KEY</b> chip</td>
                 <td>The current key, or the word <b class="ui">KEY</b> when unset. Opens <b class="ui">SET KEY</b>.</td></tr>
@@ -159,7 +159,10 @@
         settings need a relaunch to take effect. The first four rows are read-only: they tell you
         what NAMper actually got from the system, which is the fastest way to find out why an interface is
         not behaving. On a Mac the same page also chooses the interface — the input and output
-        devices, the output pair — see <a href="/docs/mac.html#interface">Mac</a>.</p>
+        devices, the output pair — see <a href="/docs/mac.html#interface">Mac</a>. If the interface
+        drops out, the engine pauses and starts again by itself when it comes back, at the same
+        settings and with the loops kept; meanwhile an iPhone or iPad stays silent, a Mac plays
+        through the system's device and an Android phone through its own.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="The top of the Audio page: the interface rows, the feedback guard, the DSP load bar with three lines of text under it, then the sample rate, input channel and buffer chips and the input trims.">
@@ -180,7 +183,7 @@
             <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
                 <td>Mutes the output while the built-in mic plays through the phone's own speaker. <a href="/docs/setup.html#feedback-guard">Read this one properly</a>.</td></tr>
             <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
-                <td>Processor load, shown only while the engine runs.</td></tr>
+                <td>The header chip's number, shown only while the engine runs, and under its bar in words: the headroom before dropouts, naming the busiest real-time thread (or that it is missing its deadline — expect dropouts); NAMper's share of one core and of the whole device; and, small, each real-time thread against its own deadline.</td></tr>
             <tr><td><b class="ui">Sample rate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Sets the engine rate; remembered per route. Changing it restarts the engine. On Android the chips are <b class="ui">Auto</b>, 44.1k, 48k and 96k. <a href="/docs/setup.html#rate">More</a>.</td></tr>
             <tr><td><b class="ui">Input channels</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -195,6 +198,8 @@
                 <td>TONE3000's A2 captures carry a lighter sub-model; this runs every capture on it — a fraction of the DSP load, a shade less detail. Captures without one are unaffected. Takes effect at once.</td></tr>
             <tr><td><b class="ui">Amp modeler on its own thread</b></td><td>Switch</td><td>On</td>
                 <td>A <a href="/docs/rig.html#hyperreal">HyperReal</a> amp runs on a processor core of its own, two buffers behind the audio: room for several amps at once, for those two buffers of extra latency. If the thread cannot keep up, the amp goes back to the audio thread by itself. Switching it reloads the amps that play. iPhone, iPad and Android; the Mac and the plug-ins have no such switch.</td></tr>
+            <tr><td><b class="ui">Amp modeler quality</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> on the Mac</td>
+                <td>How finely a HyperReal amp is computed: <b class="ui">Live</b> is lighter on the processor, <b class="ui">Studio</b> finer and heavier. A change recompiles the amps that play, with no restart. If a Studio amp keeps the busiest thread past its deadline for two seconds, the amps run in Live and the row reads <b class="ui">Studio (running Live: this device cannot keep up)</b> until you pick a quality again. The plug-ins have no such row.</td></tr>
             <tr><td><b class="ui">Tails on a switch</b></td><td>Switch</td><td>On</td>
                 <td>The blocks a preset switch leaves behind ring out — a delay's repeats, a reverb's decay — for up to eight seconds instead of stopping at the switch, and a delay, reverb, FX loop or plugin that a scene bypasses rings out over the dry (a freeze is held sound, not a tail: it stops). A little more DSP for those seconds.</td></tr>
             <tr><td><b class="ui">Align the rigs</b></td><td>Switch</td><td>Off</td>

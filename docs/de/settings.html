@@ -143,7 +143,7 @@
             <tr><td>Der Schriftzug <b class="ui">NAMper</b></td>
                 <td>Öffnet das About-Blatt — Version, das Trinkgeldglas, Danksagungen und die Karte <b class="ui">HILFE &amp; LINKS</b> mit Dokumentation, Website, der Telegram-Community, Support und Datenschutzerklärung. Die Zeile <b class="ui">Über</b> ganz oben in den Einstellungen öffnet dasselbe Blatt.</td></tr>
             <tr><td><b class="ui">DSP-Last</b>-Chip</td>
-                <td>Prozessorlast in Prozent, <b class="ui">—</b>, wenn gestoppt. Grün unter 60 %, gelb bis 85 %, rot darüber.</td></tr>
+                <td>Wie nah NAMpers am stärksten belasteter Echtzeit-Thread an seiner Deadline ist, in Prozent — dieselbe Zahl wie in der Zeile <b class="ui">DSP-Last</b> auf der Seite <a href="#audio">Audio</a>, die sie ausbuchstabiert; <b class="ui">—</b>, wenn gestoppt. Grün unter 60 %, gelb bis 85 %, rot darüber.</td></tr>
             <tr><td>Zahnrad</td><td>Einstellungen — diese Seite.</td></tr>
             <tr><td><b class="ui">TASTE</b>-Chip</td>
                 <td>Die aktuelle Tonart, oder das Wort <b class="ui">TASTE</b>, wenn nicht gesetzt. Öffnet <b class="ui">TONART SETZEN</b>.</td></tr>
@@ -164,7 +164,10 @@
         lesbar: Sie sagen dir, was NAMper tatsächlich vom System bekommen hat — der schnellste Weg
         herauszufinden, warum sich ein Interface nicht richtig verhält. Auf dem Mac wählt dieselbe
         Seite auch das Interface aus — Eingabe- und Ausgabegerät, das Ausgangspaar —, siehe
-        <a href="/docs/de/mac.html#interface">Mac</a>.</p>
+        <a href="/docs/de/mac.html#interface">Mac</a>. Fällt das Interface aus, pausiert die
+        Engine und startet von selbst wieder, sobald es zurück ist — mit denselben Einstellungen und
+        mit den Loops; in der Zwischenzeit bleibt ein iPhone oder iPad still, ein Mac spielt über
+        das Systemgerät und ein Android-Telefon über sein eigenes.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Der Anfang der Audio-Seite: die Zeilen des Interfaces, der Rückkopplungsschutz, der DSP-Balken mit drei Textzeilen darunter, dann die Chips für Abtastrate, Eingangskanäle und Puffer und die Eingangspegel.">
@@ -185,7 +188,7 @@
             <tr><td><b class="ui">Rückkopplungsschutz</b></td><td>Schalter</td><td>An</td>
                 <td>Schaltet den Ausgang stumm, während das eingebaute Mikrofon über den eigenen Lautsprecher des Telefons abspielt. <a href="/docs/de/setup.html#feedback-guard">Lies dir das genau durch</a>.</td></tr>
             <tr><td><b class="ui">DSP-Last</b></td><td>Anzeige + Balken</td><td>—</td>
-                <td>Prozessorlast, nur angezeigt, während die Engine läuft.</td></tr>
+                <td>Die Zahl des Chips in der Kopfzeile, nur angezeigt, während die Engine läuft, und unter ihrem Balken in Worten: die Reserve bis zu Aussetzern, mit dem Namen des am stärksten belasteten Echtzeit-Threads (oder dass er seine Deadline verpasst — rechne mit Aussetzern); NAMpers Anteil an einem Kern und am ganzen Gerät; und klein jeder Echtzeit-Thread gegen seine eigene Deadline.</td></tr>
             <tr><td><b class="ui">Samplerate</b></td><td>Chips: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Legt die Engine-Rate fest; wird pro Route gemerkt. Ändern startet die Engine neu. Auf Android sind die Chips <b class="ui">Auto</b>, 44.1k, 48k und 96k. <a href="/docs/de/setup.html#rate">Mehr</a>.</td></tr>
             <tr><td><b class="ui">Eingangskanäle</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -200,6 +203,8 @@
                 <td>TONE3000-A2-Captures tragen ein leichteres Untermodell; damit laufen alle Captures darauf — ein Bruchteil der DSP-Last, eine Spur weniger Detail. Captures ohne eines bleiben unberührt. Wirkt sofort.</td></tr>
             <tr><td><b class="ui">Amp-Modeler in eigenem Thread</b></td><td>Schalter</td><td>An</td>
                 <td>Ein <a href="/docs/de/rig.html#hyperreal">HyperReal</a>-Amp läuft auf einem eigenen Prozessorkern, zwei Buffer hinter dem Audio: Platz für mehrere Amps zugleich, für diese zwei Buffer zusätzliche Latenz. Kommt der Thread nicht mit, geht der Amp von selbst zurück auf den Audio-Thread. Das Umschalten lädt die spielenden Amps neu. iPhone, iPad und Android; der Mac und die Plugins haben keinen solchen Schalter.</td></tr>
+            <tr><td><b class="ui">Qualität des Amp-Modelers</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> auf dem Mac</td>
+                <td>Wie fein ein HyperReal-Amp berechnet wird: <b class="ui">Live</b> schont den Prozessor, <b class="ui">Studio</b> ist feiner und schwerer. Eine Änderung kompiliert die spielenden Amps neu, ohne Neustart. Hält ein Studio-Amp den am stärksten belasteten Thread zwei Sekunden lang über seiner Deadline, laufen die Amps in Live, und die Zeile zeigt <b class="ui">Studio (läuft als Live: dieses Gerät kommt nicht mit)</b>, bis du erneut eine Qualität wählst. Die Plugins haben keine solche Zeile.</td></tr>
             <tr><td><b class="ui">Ausklingen beim Umschalten</b></td><td>Schalter</td><td>An</td>
                 <td>Die Blöcke, die ein Preset-Wechsel zurücklässt, klingen aus — die Wiederholungen eines Delays, die Fahne eines Reverbs — bis zu acht Sekunden lang, statt beim Umschalten abzubrechen, und ein Delay, Reverb, FX-Loop oder Plugin, das eine Szene auf Bypass schaltet, klingt über dem trockenen Signal aus (ein Freeze ist gehaltener Klang, kein Ausklang: Er hört auf). Für diese Sekunden etwas mehr DSP-Last.</td></tr>
             <tr><td><b class="ui">Rigs angleichen</b></td><td>Schalter</td><td>Aus</td>

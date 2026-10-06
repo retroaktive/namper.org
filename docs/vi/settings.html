@@ -140,7 +140,7 @@
             <tr><td>Dòng chữ <b class="ui">NAMper</b></td>
                 <td>Mở bảng About — phiên bản, hộp ủng hộ, lời cảm ơn và thẻ <b class="ui">TRỢ GIÚP &amp; LIÊN KẾT</b> với tài liệu, trang web, cộng đồng Telegram, hỗ trợ và chính sách riêng tư. Dòng <b class="ui">Giới thiệu</b> ở đầu Cài đặt mở đúng bảng đó.</td></tr>
             <tr><td>Chip <b class="ui">Tải DSP</b></td>
-                <td>Tải xử lý tính theo phần trăm, <b class="ui">—</b> khi đã dừng. Xanh lá dưới 60%, hổ phách tới 85%, đỏ ở trên.</td></tr>
+                <td>Luồng thời gian thực bận nhất của NAMper đang sát hạn chót của nó tới đâu, tính theo phần trăm — cùng con số với hàng <b class="ui">Tải DSP</b> trên trang <a href="#audio">Âm thanh</a>, nơi nó được diễn giải bằng lời; <b class="ui">—</b> khi đã dừng. Xanh lá dưới 60%, hổ phách tới 85%, đỏ ở trên.</td></tr>
             <tr><td>Bánh răng</td><td>Settings — chính trang này.</td></tr>
             <tr><td>Chip <b class="ui">CHỌN</b></td>
                 <td>Giọng hiện tại, hoặc chữ <b class="ui">CHỌN</b> khi chưa đặt. Mở <b class="ui">ĐẶT GIỌNG</b>.</td></tr>
@@ -160,7 +160,10 @@
         đặt cần khởi động lại app mới có hiệu lực. Bốn hàng đầu tiên chỉ đọc: chúng cho bạn biết
         NAMper thực sự nhận được gì từ hệ thống, cách nhanh nhất để tìm ra vì sao một interface không
         hoạt động đúng. Trên Mac, chính trang này cũng là nơi chọn interface — thiết bị vào và ra,
-        cặp output — xem <a href="/docs/vi/mac.html#interface">Mac</a>.</p>
+        cặp output — xem <a href="/docs/vi/mac.html#interface">Mac</a>. Nếu interface rớt kết nối,
+        engine tạm dừng rồi tự chạy lại khi nó quay về, với cùng cài đặt và giữ nguyên các loop;
+        trong lúc đó iPhone hay iPad im lặng, máy Mac phát qua thiết bị của hệ thống còn điện thoại
+        Android phát qua chính nó.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Phần đầu trang Âm thanh: các dòng giao diện, chống hú, thanh tải DSP với ba dòng chữ bên dưới, rồi các chip tần số lấy mẫu, kênh vào và bộ đệm cùng mức chỉnh đầu vào.">
@@ -181,7 +184,7 @@
             <tr><td><b class="ui">Chống hú</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Tắt tiếng output khi mic tích hợp phát qua chính loa của điện thoại. <a href="/docs/vi/setup.html#feedback-guard">Đọc kỹ mục này</a>.</td></tr>
             <tr><td><b class="ui">Tải DSP</b></td><td>Chỉ số + thanh</td><td>—</td>
-                <td>Tải xử lý, chỉ hiện khi engine đang chạy.</td></tr>
+                <td>Con số của chip trên thanh đầu trang, chỉ hiện khi engine đang chạy, và bên dưới thanh của nó là lời giải thích: khoảng dư trước khi mất tiếng, kèm tên luồng thời gian thực bận nhất (hoặc báo rằng nó đang trễ hạn chót — hãy chờ tiếng bị rớt); phần của NAMper trên một lõi và trên toàn thiết bị; và, chữ nhỏ, từng luồng thời gian thực so với hạn chót của riêng nó.</td></tr>
             <tr><td><b class="ui">Sample rate</b></td><td>Chip: <b class="ui">Tự động</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Tự động</b></td>
                 <td>Đặt sample rate của engine; nhớ theo từng route. Thay đổi nó sẽ khởi động lại engine. Trên Android các chip là <b class="ui">Tự động</b>, 44.1k, 48k và 96k. <a href="/docs/vi/setup.html#rate">Thêm</a>.</td></tr>
             <tr><td><b class="ui">Kênh đầu vào</b></td><td>Chip: <b class="ui">Tự động</b>, 1…n</td><td><b class="ui">Tự động</b></td>
@@ -196,6 +199,8 @@
                 <td>Các capture A2 của TONE3000 mang theo một sub-model nhẹ hơn; bật cái này thì mọi bản capture đều chạy trên nó — chỉ tốn một phần nhỏ tải DSP, chi tiết bớt đi một chút. Capture nào không có sub-model thì không bị ảnh hưởng. Có hiệu lực ngay.</td></tr>
             <tr><td><b class="ui">Bộ mô phỏng amp trên luồng riêng</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Một amp <a href="/docs/vi/rig.html#hyperreal">HyperReal</a> chạy trên một lõi xử lý riêng, chậm hơn âm thanh hai buffer: đủ chỗ cho nhiều amp cùng lúc, đổi lại hai buffer độ trễ thêm. Nếu luồng đó không theo kịp, amp tự quay về luồng âm thanh. Đổi công tắc sẽ nạp lại các amp đang phát. iPhone, iPad và Android; máy Mac và các plug-in không có công tắc này.</td></tr>
+            <tr><td><b class="ui">Chất lượng bộ mô phỏng amp</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> trên Mac</td>
+                <td>Một amp HyperReal được tính toán tinh tới đâu: <b class="ui">Live</b> nhẹ hơn cho bộ xử lý, <b class="ui">Studio</b> tinh hơn và nặng hơn. Đổi lựa chọn sẽ biên dịch lại các amp đang phát, không cần khởi động lại. Nếu một amp Studio giữ luồng bận nhất vượt hạn chót suốt hai giây, các amp chuyển sang chạy Live và hàng này hiện <b class="ui">Studio (đang chạy Live: thiết bị này không theo kịp)</b> cho tới khi bạn chọn lại chất lượng. Các plug-in không có hàng này.</td></tr>
             <tr><td><b class="ui">Đuôi âm khi chuyển</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Các block mà một lần đổi preset bỏ lại sẽ ngân tiếp — tiếng lặp của delay, đuôi tắt dần của reverb — tới tám giây thay vì dừng ngay lúc đổi, và một delay, reverb, FX loop hoặc plugin bị một scene bypass sẽ ngân tiếp đè lên tín hiệu dry (freeze là âm được giữ, không phải đuôi âm: nó dừng). Tốn thêm chút DSP trong những giây đó.</td></tr>
             <tr><td><b class="ui">Căn chỉnh các rig</b></td><td>Công tắc</td><td>Tắt</td>

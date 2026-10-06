@@ -142,7 +142,7 @@
             <tr><td>Le logo <b class="ui">NAMper</b></td>
                 <td>Ouvre la fiche About — version, cagnotte, remerciements, et la carte <b class="ui">AIDE ET LIENS</b> avec la documentation, le site, la communauté Telegram, le support et la politique de confidentialité. La ligne <b class="ui">À propos</b> en haut des réglages ouvre la même fiche.</td></tr>
             <tr><td>Puce <b class="ui">Charge DSP</b></td>
-                <td>Charge processeur en pourcentage, <b class="ui">—</b> à l'arrêt. Vert en dessous de 60 %, ambre jusqu'à 85 %, rouge au-delà.</td></tr>
+                <td>À quel point le thread temps réel le plus chargé de NAMper approche de son échéance, en pourcentage — le même chiffre que la ligne <b class="ui">Charge DSP</b> de la page <a href="#audio">Audio</a>, qui le détaille ; <b class="ui">—</b> à l'arrêt. Vert en dessous de 60 %, ambre jusqu'à 85 %, rouge au-delà.</td></tr>
             <tr><td>Engrenage</td><td>Réglages — cette page.</td></tr>
             <tr><td>Puce <b class="ui">CHOIX</b></td>
                 <td>La tonalité actuelle, ou le mot <b class="ui">CHOIX</b> quand rien n'est réglé. Ouvre <b class="ui">TONALITÉ</b>.</td></tr>
@@ -163,7 +163,10 @@
         en lecture seule : elles t'indiquent ce que NAMper a réellement obtenu du système, ce qui est
         le moyen le plus rapide de comprendre pourquoi une interface se comporte mal. Sur Mac, la
         même page choisit aussi l'interface — les périphériques d'entrée et de sortie, la paire de
-        sortie — voir <a href="/docs/fr/mac.html#interface">Mac</a>.</p>
+        sortie — voir <a href="/docs/fr/mac.html#interface">Mac</a>. Si l'interface décroche, le
+        moteur se met en pause et redémarre tout seul à son retour, avec les mêmes réglages et en
+        gardant les boucles ; entre-temps, un iPhone ou un iPad reste muet, un Mac joue par le
+        périphérique du système et un téléphone Android par le sien.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Le haut de la page Audio : les lignes de l&#39;interface, la protection contre le larsen, la barre de charge DSP avec trois lignes de texte dessous, puis les puces de fréquence, de canaux d&#39;entrée et de tampon, et les gains d&#39;entrée.">
@@ -184,7 +187,7 @@
             <tr><td><b class="ui">Protection anti-larsen</b></td><td>Interrupteur</td><td>Activé</td>
                 <td>Coupe la sortie pendant que le micro intégré joue par le haut-parleur du téléphone. <a href="/docs/fr/setup.html#feedback-guard">Lis bien celui-là</a>.</td></tr>
             <tr><td><b class="ui">Charge DSP</b></td><td>Affichage + barre</td><td>—</td>
-                <td>Charge processeur, affichée seulement pendant que le moteur tourne.</td></tr>
+                <td>Le chiffre de la puce de l'en-tête, affiché seulement pendant que le moteur tourne, et sous sa barre en toutes lettres : la marge avant les décrochages, en nommant le thread temps réel le plus chargé (ou en signalant qu'il manque son échéance — attends-toi à des décrochages) ; la part de NAMper sur un cœur et sur tout l'appareil ; et, en petit, chaque thread temps réel face à sa propre échéance.</td></tr>
             <tr><td><b class="ui">Fréquence d'échantillonnage</b></td><td>Puces : <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Règle la fréquence du moteur ; mémorisée par route. La modifier relance le moteur. Sur Android, les puces sont <b class="ui">Auto</b>, 44.1k, 48k et 96k. <a href="/docs/fr/setup.html#rate">Plus de détails</a>.</td></tr>
             <tr><td><b class="ui">Canaux d'entrée</b></td><td>Puces : <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -199,6 +202,8 @@
                 <td>Les captures A2 de TONE3000 embarquent un sous-modèle plus léger ; ceci fait tourner chaque capture dessus — une fraction de la charge DSP, un soupçon de détail en moins. Les captures qui n'en ont pas ne sont pas concernées. Prend effet immédiatement.</td></tr>
             <tr><td><b class="ui">Modélisation d'ampli sur son propre thread</b></td><td>Interrupteur</td><td>Activé</td>
                 <td>Un ampli <a href="/docs/fr/rig.html#hyperreal">HyperReal</a> tourne sur un cœur de processeur à lui, deux buffers derrière l'audio : de la place pour plusieurs amplis à la fois, au prix de ces deux buffers de latence en plus. Si le thread ne suit pas, l'ampli revient de lui-même sur le thread audio. Le changer recharge les amplis qui jouent. iPhone, iPad et Android ; le Mac et les plugins n'ont pas cet interrupteur.</td></tr>
+            <tr><td><b class="ui">Qualité de la modélisation d'ampli</b></td><td>Puces : <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b> ; <b class="ui">Studio</b> sur Mac</td>
+                <td>La finesse avec laquelle un ampli HyperReal est calculé : <b class="ui">Live</b> est plus léger pour le processeur, <b class="ui">Studio</b> plus fin et plus lourd. Un changement recompile les amplis qui jouent, sans redémarrage. Si un ampli en Studio maintient le thread le plus chargé au-delà de son échéance pendant deux secondes, les amplis passent en Live et la ligne affiche <b class="ui">Studio (tourne en Live : cet appareil ne suit pas)</b> jusqu'à ce que tu choisisses à nouveau une qualité. Les plugins n'ont pas cette ligne.</td></tr>
             <tr><td><b class="ui">Queues au changement</b></td><td>Interrupteur</td><td>Activé</td>
                 <td>Les blocs qu'un changement de preset laisse derrière lui continuent de sonner — les répétitions d'un delay, la décroissance d'une réverb — jusqu'à huit secondes au lieu de s'arrêter au changement, et un delay, une réverb, une boucle d'effets ou un plugin qu'une scène bypasse continue de sonner par-dessus le signal sec (un freeze est un son tenu, pas une queue : il s'arrête). Un peu plus de DSP pendant ces secondes.</td></tr>
             <tr><td><b class="ui">Aligner les rigs</b></td><td>Interrupteur</td><td>Désactivé</td>

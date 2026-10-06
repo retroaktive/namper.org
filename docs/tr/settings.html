@@ -140,7 +140,7 @@
             <tr><td><b class="ui">NAMper</b> logosu</td>
                 <td>About sayfasını açar — sürüm, bahşiş kavanozu, teşekkürler ve belgeler, site, Telegram topluluğu, destek ve gizlilik politikasını içeren <b class="ui">YARDIM VE BAĞLANTILAR</b> kartı. Ayarların en üstündeki <b class="ui">Hakkında</b> satırı da aynı sayfayı açar.</td></tr>
             <tr><td><b class="ui">DSP yükü</b> çipi</td>
-                <td>İşlemci yükünü yüzde olarak gösterir, durduğunda <b class="ui">—</b>. %60'ın altında yeşil, %85'e kadar kehribar, üzerinde kırmızı.</td></tr>
+                <td>NAMper'ın en yoğun gerçek zamanlı iş parçacığının zaman sınırına ne kadar yakın olduğunu yüzde olarak gösterir — <b class="ui">DSP yükü</b> satırıyla aynı sayı; o satır <a href="#audio">Ses</a> sayfasında bunu sözcüklerle açıklar; durduğunda <b class="ui">—</b>. %60'ın altında yeşil, %85'e kadar kehribar, üzerinde kırmızı.</td></tr>
             <tr><td>Dişli</td><td>Ayarlar — bu sayfa.</td></tr>
             <tr><td><b class="ui">SEÇİM</b> çipi</td>
                 <td>Mevcut tonu, ayarlanmamışsa <b class="ui">SEÇİM</b> yazısını gösterir. <b class="ui">TON BELİRLE</b>'i açar.</td></tr>
@@ -160,7 +160,10 @@
         için yeniden başlatma gerektiren tek karttır. İlk dört satır salt okunurdur: NAMper'ın
         sistemden gerçekte ne aldığını söylerler, bu da bir arayüzün neden düzgün davranmadığını
         bulmanın en hızlı yoludur. Mac'te aynı sayfa arayüzü de seçer — giriş ve çıkış aygıtlarını,
-        çıkış çiftini — bkz. <a href="/docs/tr/mac.html#interface">Mac</a>.</p>
+        çıkış çiftini — bkz. <a href="/docs/tr/mac.html#interface">Mac</a>. Arayüzün bağlantısı
+        koparsa motor duraklar ve arayüz geri geldiğinde aynı ayarlarla, loop'lar korunarak
+        kendiliğinden yeniden başlar; bu arada iPhone ya da iPad sessiz kalır, Mac sistemin
+        aygıtından, Android telefon ise kendi hoparlöründen çalar.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Ses sayfasının üstü: arayüz satırları, geri besleme koruması, altında üç satır metinle DSP yükü çubuğu, ardından örnekleme hızı, giriş kanalı ve tampon çipleri ile giriş kazançları.">
@@ -181,7 +184,7 @@
             <tr><td><b class="ui">Geri besleme koruması</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Yerleşik mikrofon telefonun kendi hoparlöründen çalarken çıkışı susturur. <a href="/docs/tr/setup.html#feedback-guard">Bunu düzgünce oku</a>.</td></tr>
             <tr><td><b class="ui">DSP yükü</b></td><td>Gösterge + çubuk</td><td>—</td>
-                <td>İşlemci yükü, sadece motor çalışırken gösterilir.</td></tr>
+                <td>Başlıktaki çipin sayısı, sadece motor çalışırken gösterilir; çubuğunun altında da sözcüklerle: kesintilerden önceki pay ve en yoğun gerçek zamanlı iş parçacığının adı (ya da zaman sınırını kaçırdığı — kesintiler bekle); NAMper'ın bir çekirdekteki ve tüm cihazdaki payı; ve küçük harflerle her gerçek zamanlı iş parçacığı, kendi zaman sınırına göre.</td></tr>
             <tr><td><b class="ui">Örnekleme hızı</b></td><td>Çipler: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Motor hızını ayarlar; yönlendirme başına hatırlanır. Değiştirmek motoru yeniden başlatır. Android'de çipler <b class="ui">Auto</b>, 44.1k, 48k ve 96k'dır. <a href="/docs/tr/setup.html#rate">Daha fazlası</a>.</td></tr>
             <tr><td><b class="ui">Giriş kanalları</b></td><td>Çipler: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -196,6 +199,8 @@
                 <td>TONE3000’in A2 capture’ları daha hafif bir alt model taşır; bu, her capture’ı onun üzerinde çalıştırır — DSP yükünün küçük bir kısmı, bir tık daha az ayrıntı. Alt modeli olmayan capture’lar etkilenmez. Anında etkili olur.</td></tr>
             <tr><td><b class="ui">Amfi modelleyici kendi iş parçacığında</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Bir <a href="/docs/tr/rig.html#hyperreal">HyperReal</a> amfisi kendi işlemci çekirdeğinde, sesin iki buffer gerisinde çalışır: aynı anda birkaç amfiye yer, karşılığında iki buffer fazladan gecikme. İş parçacığı yetişemezse amfi kendiliğinden ses iş parçacığına geri döner. Anahtarı değiştirmek çalan amfileri yeniden yükler. iPhone, iPad ve Android; Mac'te ve eklentilerde böyle bir anahtar yoktur.</td></tr>
+            <tr><td><b class="ui">Amfi modelleyici kalitesi</b></td><td>Çipler: <b class="ui">Canlı</b>, <b class="ui">Studio</b></td><td><b class="ui">Canlı</b>; Mac'te <b class="ui">Studio</b></td>
+                <td>Bir HyperReal amfisinin ne kadar ince hesaplandığı: <b class="ui">Canlı</b> işlemciyi daha az yorar, <b class="ui">Studio</b> daha ince ve daha ağırdır. Değiştirmek çalan amfileri yeniden derler, yeniden başlatma olmadan. Bir Studio amfisi en yoğun iş parçacığını iki saniye boyunca zaman sınırının ötesinde tutarsa amfiler Canlı'da çalışır ve satır, sen yeniden bir kalite seçene kadar <b class="ui">Studio (Canlı olarak çalışıyor: bu cihaz yetişemiyor)</b> yazar. Eklentilerde bu satır yoktur.</td></tr>
             <tr><td><b class="ui">Geçişte kuyruklar</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Bir preset değişiminin geride bıraktığı bloklar — bir delay’in tekrarları, bir reverb’ün sönümü — değişimde kesilmek yerine sekiz saniyeye kadar çalmaya devam eder; bir sahnenin bypass ettiği delay, reverb, FX loop ya da eklenti de kuru sesin üzerinde sönümlenir (freeze tutulan bir sestir, kuyruk değil: durur). O birkaç saniye için biraz daha fazla DSP.</td></tr>
             <tr><td><b class="ui">Rig'leri hizala</b></td><td>Anahtar</td><td>Kapalı</td>

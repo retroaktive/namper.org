@@ -140,7 +140,7 @@
             <tr><td>La scritta <b class="ui">NAMper</b></td>
                 <td>Apre la scheda About — versione, barattolo delle mance, ringraziamenti e la scheda <b class="ui">AIUTO E LINK</b> con documentazione, sito, comunità Telegram, supporto e informativa sulla privacy. La riga <b class="ui">Informazioni</b> in cima alle impostazioni apre la stessa scheda.</td></tr>
             <tr><td>Chip <b class="ui">Carico DSP</b></td>
-                <td>Carico del processore in percentuale, <b class="ui">—</b> quando è fermo. Verde sotto il 60%, ambra fino all'85%, rosso oltre.</td></tr>
+                <td>Quanto il thread in tempo reale più impegnato di NAMper è vicino alla sua scadenza, in percentuale — lo stesso numero della riga <b class="ui">Carico DSP</b> nella pagina <a href="#audio">Audio</a>, che lo spiega a parole; <b class="ui">—</b> quando è fermo. Verde sotto il 60%, ambra fino all'85%, rosso oltre.</td></tr>
             <tr><td>Ingranaggio</td><td>Impostazioni — questa pagina.</td></tr>
             <tr><td>Chip <b class="ui">CHIP</b></td>
                 <td>La tonalità attuale, oppure la parola <b class="ui">CHIP</b> quando non è impostata. Apre <b class="ui">IMPOSTA TONALITÀ</b>.</td></tr>
@@ -160,7 +160,10 @@
         richiedono un riavvio per avere effetto. Le prime quattro righe sono di sola lettura: ti
         dicono cosa NAMper ha effettivamente ottenuto dal sistema, il modo più veloce per scoprire perché
         un'interfaccia non si comporta bene. Su Mac la stessa pagina sceglie anche l'interfaccia — i
-        dispositivi di ingresso e di uscita, la coppia di uscita — vedi <a href="/docs/it/mac.html#interface">Mac</a>.</p>
+        dispositivi di ingresso e di uscita, la coppia di uscita — vedi <a href="/docs/it/mac.html#interface">Mac</a>. Se l'interfaccia
+        si scollega, il motore va in pausa e riparte da solo quando torna, con le stesse
+        impostazioni e i loop conservati; nel frattempo un iPhone o un iPad resta muto, un Mac suona
+        dal dispositivo di sistema e un telefono Android dal proprio.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="La parte alta della pagina Audio: le righe dell&#39;interfaccia, la protezione dal feedback, la barra del carico DSP con tre righe di testo sotto, poi i chip di frequenza, canali d&#39;ingresso e buffer e i trim d&#39;ingresso.">
@@ -181,7 +184,7 @@
             <tr><td><b class="ui">Protezione feedback</b></td><td>Interruttore</td><td>Attivo</td>
                 <td>Silenzia l'uscita mentre il microfono integrato suona attraverso l'altoparlante del telefono. <a href="/docs/it/setup.html#feedback-guard">Leggi bene questa voce</a>.</td></tr>
             <tr><td><b class="ui">Carico DSP</b></td><td>Lettura + barra</td><td>—</td>
-                <td>Carico del processore, mostrato solo mentre il motore è in esecuzione.</td></tr>
+                <td>Il numero del chip nell'intestazione, mostrato solo mentre il motore è in esecuzione, e sotto la sua barra a parole: il margine prima dei dropout, con il nome del thread in tempo reale più impegnato (o l'avviso che sta mancando la sua scadenza — aspettati dropout); la quota di NAMper di un core e dell'intero dispositivo; e, in piccolo, ogni thread in tempo reale rispetto alla propria scadenza.</td></tr>
             <tr><td><b class="ui">Frequenza di campionamento</b></td><td>Chip: <b class="ui">Auto</b>, 44.1k, 48k, 88.2k, 96k, 176.4k, 192k</td><td><b class="ui">Auto</b></td>
                 <td>Imposta la frequenza del motore; viene ricordata per ogni route. Cambiarla riavvia il motore. Su Android i chip sono <b class="ui">Auto</b>, 44.1k, 48k e 96k. <a href="/docs/it/setup.html#rate">Altro</a>.</td></tr>
             <tr><td><b class="ui">Canali di ingresso</b></td><td>Chip: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
@@ -196,6 +199,8 @@
                 <td>Le catture A2 di TONE3000 portano con sé un sotto-modello più leggero; questo fa girare ogni cattura su di esso — una frazione del carico DSP, un filo di dettaglio in meno. Le catture che non ce l'hanno non vengono toccate. Ha effetto subito.</td></tr>
             <tr><td><b class="ui">Modellatore di ampli su un thread dedicato</b></td><td>Interruttore</td><td>Attivo</td>
                 <td>Un ampli <a href="/docs/it/rig.html#hyperreal">HyperReal</a> gira su un core del processore tutto suo, due buffer dietro all'audio: spazio per più ampli insieme, al prezzo di quei due buffer di latenza in più. Se il thread non regge il passo, l'ampli torna da solo sul thread audio. Cambiarlo ricarica gli ampli che suonano. iPhone, iPad e Android; il Mac e i plug-in non hanno un interruttore simile.</td></tr>
+            <tr><td><b class="ui">Qualità del modellatore di ampli</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> sul Mac</td>
+                <td>Con quanta finezza viene calcolato un ampli HyperReal: <b class="ui">Live</b> pesa meno sul processore, <b class="ui">Studio</b> è più fine e più pesante. Un cambio ricompila gli ampli che suonano, senza riavvio. Se un ampli in Studio tiene il thread più impegnato oltre la sua scadenza per due secondi, gli ampli passano a Live e la riga mostra <b class="ui">Studio (va in Live: questo dispositivo non regge)</b> finché non scegli di nuovo una qualità. I plug-in non hanno questa riga.</td></tr>
             <tr><td><b class="ui">Code al cambio</b></td><td>Interruttore</td><td>Attivo</td>
                 <td>I blocchi che un cambio di preset si lascia alle spalle continuano a suonare — le ripetizioni di un delay, la coda di un riverbero — fino a otto secondi invece di fermarsi al cambio, e un delay, un riverbero, un FX loop o un plugin che una scena mette in bypass sfuma sopra il segnale pulito (un freeze è suono tenuto, non una coda: si ferma). Un po' più di DSP per quei secondi.</td></tr>
             <tr><td><b class="ui">Allinea i rig</b></td><td>Interruttore</td><td>Non attivo</td>
