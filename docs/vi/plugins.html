@@ -126,6 +126,17 @@
         nên block vẫn giữ nguyên vị trí trong chuỗi và trạng thái bypass của nó. Dùng nó khi bạn
         muốn một delay khác trong cùng một slot thay vì phải tháo cả chuỗi ra.</p>
 
+      <h3>Tham số của plugin thành điều khiển của NAMper</h3>
+      <p>Thứ mở ra là giao diện riêng của plugin. Bên cạnh <b class="ui">Thay plugin</b>, nút thứ hai liệt kê
+        mọi tham số mà plugin cho host thấy, dưới dạng điều khiển của chính NAMper: theo các nhóm của plugin,
+        có ô tìm kiếm khi danh sách dài, và một ngôi sao trên mỗi cái — những cái được gắn sao gom lại dưới
+        <b class="ui">Yêu thích</b> ở trên cùng và cũng nằm ngay dưới giao diện của plugin, nên ba núm bạn
+        hay với tới chỉ cách một lần chạm. Nhấn giữ một tham số sẽ có <b class="ui">Học MIDI</b>, như trên núm
+        của một block, và hành động <b class="ui">Tham số plugin (CC)</b> của bản đồ điều khiển cũng tới được chính
+        các tham số đó. Nút MIDI ở hàng trạng thái (<b class="ui">MIDI tới plugin: bật</b> /
+        <b class="ui">MIDI tới plugin: tắt</b>) quyết định thông điệp từ controller của bạn đến được chính plugin
+        — một wah nhận MIDI — hay dừng lại ở bản đồ của NAMper.</p>
+
       <h3>Khi một plugin không có giao diện riêng</h3>
       <p>Hầu hết plugin vẽ giao diện riêng của chúng và NAMper nhúng nó trực tiếp, đúng như tác
         giả đã thiết kế. Một số không có giao diện nào cả. Với những cái đó, NAMper tự vẽ một
@@ -232,8 +243,10 @@
         <li><b>Cài đặt</b> chứa giao diện sáng/tối và các theme, dùng chung với app; tài khoản
           TONE3000, đăng nhập và đăng xuất ngay trong plugin; các công tắc DSP —
           <b class="ui">Mô hình NAM nhẹ</b>, <b class="ui">Amp stereo</b>,
-          <b class="ui">Đuôi âm khi chuyển</b>, <b class="ui">Căn chỉnh các rig</b>; và lối vào bản đồ
-          điều khiển của app. Audio interface là của host, nên nó không có ở đó.</li>
+          <b class="ui">Đuôi âm khi chuyển</b>, <b class="ui">Căn chỉnh các rig</b>; một thẻ <b class="ui">MIDI RA</b> — các
+          kênh, scene dưới dạng program change hay control change, phần vọng về controller (tắt trong
+          plugin, nơi đầu ra thường đi vào một track), phạm vi bend; host định tuyến những gì đi ra — và
+          lối vào bản đồ điều khiển của app. Audio interface là của host, nên nó không có ở đó.</li>
       </ul>
       <p>Những gì thuộc về cả một app chứ không phải một track thì được để ngoài: looper, sampler,
         các track loop, nhạc nền và block <b class="ui">Send</b> bị ẩn bên trong host. Ngõ vào của
@@ -281,7 +294,10 @@
         <p>VST3, CLAP và Audio Unit nhận MIDI từ host — controller, nốt và program change đến bản đồ
           điều khiển của rig giống như trong app. Mỗi thông điệp giữ đúng vị trí của nó: nó rơi vào
           đúng sample mà host đặt, không phải đầu buffer, và một lần nhấn và thả trong cùng một buffer
-          là hai thông điệp.</p>
+          là hai thông điệp. Host không đưa MIDI nào cho hiệu ứng — GarageBand trên một track audio —
+          cũng được lo: Audio Unit tự đọc các thiết bị MIDI, nên <b class="ui">Học MIDI</b> và bản đồ hoạt động ở
+          đó như trong app, và khi host gửi MIDI của riêng nó (AUM, Cubasis) thì plugin chỉ nghe host. Tempo
+          của host là tempo của rig: delay hay tremolo đồng bộ sẽ đi theo bài hát.</p>
       </div>
       <div class="note tip">
         <div class="t">Dùng cả hai cùng lúc</div>

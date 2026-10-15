@@ -125,6 +125,17 @@
         sudah ada, jadi blok itu tetap di posisinya dalam rantai beserta status bypass-nya. Pakai
         ini kalau kamu mau delay lain di slot yang sama, alih-alih membongkar seluruh rantai.</p>
 
+      <h3>Parameter plugin sebagai kontrol NAMper</h3>
+      <p>Yang terbuka adalah tampilan plugin itu sendiri. Di samping <b class="ui">Ganti plugin</b> ada tombol kedua yang
+        mencantumkan setiap parameter yang ditunjukkan plugin kepada host, sebagai kontrol NAMper sendiri: dalam grup
+        milik plugin, dengan kolom pencarian bila daftarnya panjang, dan bintang di masing-masing — yang dibintangi
+        berkumpul di bawah <b class="ui">Favorit</b> di bagian atas dan juga duduk di bawah tampilan plugin, jadi tiga knob
+        yang sering kamu raih tinggal satu ketukan. Tekan lama salah satunya menawarkan <b class="ui">MIDI Learn</b>, seperti
+        pada knob blok, dan aksi <b class="ui">Parameter plugin (CC)</b> di peta kontrol menjangkau parameter yang sama.
+        Tombol MIDI di baris status (<b class="ui">MIDI ke plugin: nyala</b> /
+        <b class="ui">MIDI ke plugin: mati</b>) menentukan apakah pesan kontrolermu sampai ke plugin itu
+        sendiri — wah yang menerima MIDI — atau berhenti di peta NAMper.</p>
+
       <h3>Saat plugin tidak punya tampilan sendiri</h3>
       <p>Kebanyakan plugin menggambar antarmukanya sendiri dan NAMper menampilkannya langsung,
         persis seperti yang dirancang pembuatnya. Sebagian tidak punya tampilan sama sekali. Untuk
@@ -229,8 +240,10 @@
         <li><b>Pengaturan</b> berisi tampilan dan tema, yang dibagi dengan aplikasi; akun TONE3000,
           yang bisa masuk dan keluar di dalam plugin; sakelar DSP —
           <b class="ui">Model NAM ringan</b>, <b class="ui">Amp stereo</b>,
-          <b class="ui">Ekor saat berpindah</b>, <b class="ui">Sejajarkan rig</b>; dan pintu ke peta
-          kontrol aplikasi. Antarmuka audio milik host, jadi tidak ada di sana.</li>
+          <b class="ui">Ekor saat berpindah</b>, <b class="ui">Sejajarkan rig</b>; kartu <b class="ui">MIDI KELUAR</b> — kanal,
+          scene sebagai program change atau control change, gema ke kontroler (mati di dalam plugin, tempat
+          output sering menuju sebuah track), rentang bend; host yang merutekan apa yang keluar — dan pintu ke
+          peta kontrol aplikasi. Antarmuka audio milik host, jadi tidak ada di sana.</li>
       </ul>
       <p>Yang menjadi milik seluruh aplikasi dan bukan milik satu track tetap di luar: looper,
         sampler, track loop, backing track, dan blok <b class="ui">Send</b> disembunyikan di dalam
@@ -281,7 +294,11 @@
         <p>VST3, CLAP, dan Audio Unit menerima MIDI dari host — controller, not, dan program change
           sampai ke peta kontrol rig seperti di aplikasi. Setiap pesan tetap di tempatnya: ia jatuh
           pada sampel tempat host meletakkannya, bukan di awal buffer, dan tekan serta lepas di dalam
-          satu buffer adalah dua pesan.</p>
+          satu buffer adalah dua pesan. Host yang sama sekali tidak memberi MIDI ke efek — GarageBand di
+          track audio — tetap tertangani: Audio Unit membaca perangkat MIDI sendiri, jadi <b class="ui">MIDI Learn</b>
+          dan peta bekerja di sana seperti di aplikasi, dan begitu host mengirim MIDI-nya sendiri (AUM, Cubasis)
+          plugin hanya mendengarkan host. Tempo host adalah tempo rig: delay atau tremolo yang tersinkron
+          mengikuti lagu.</p>
       </div>
       <div class="note tip">
         <div class="t">Memakai keduanya</div>

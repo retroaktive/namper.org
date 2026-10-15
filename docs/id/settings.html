@@ -117,7 +117,7 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI dan pemicu input, bisa dipetakan ke apa saja — halaman sendiri: <a href="/docs/id/control.html">MIDI &amp; kontrol</a>.</td></tr>
             <tr><td><b class="ui">Panggung</b></td>
-                <td>Klik, tempo dan nada dasar set, ukuran teks lirik, apakah lirik terbuka sendiri, serta level auto-loop looper — <a href="#set">Set</a>, <a href="#lyrics">Lirik</a>, <a href="#metronome">Metronom</a>, dan <a href="#looper">Looper</a> di bawah.</td></tr>
+                <td>Berapa scene yang dimiliki sebuah rig (<b class="ui">SCENE</b> → <b class="ui">Jumlah adegan</b>, 1 sampai 16, satu pengaturan untuk semua preset — lihat <a href="/docs/id/rig.html#presets">scene</a>), klik, tempo dan nada dasar set, ukuran teks lirik, apakah lirik terbuka sendiri, serta level auto-loop looper — <a href="#set">Set</a>, <a href="#lyrics">Lirik</a>, <a href="#metronome">Metronom</a>, dan <a href="#looper">Looper</a> di bawah.</td></tr>
             <tr><td><b class="ui">Tampilan</b></td>
                 <td>Terang, gelap, atau mengikuti sistem, serta tema — <a href="#appearance">di bawah</a>.</td></tr>
             <tr><td><b class="ui">Prompt &amp; tur</b></td>
@@ -201,7 +201,7 @@
                 <td>Capture A2 dari TONE3000 membawa sub-model yang lebih ringan; ini menjalankan setiap capture di atasnya — sebagian kecil saja dari beban DSP, detail sedikit berkurang. Capture yang tidak punya sub-model tidak terpengaruh. Langsung berlaku.</td></tr>
             <tr><td><b class="ui">Pemodel amp di thread tersendiri</b></td><td>Switch</td><td>On</td>
                 <td>Amp <a href="/docs/id/rig.html#hyperreal">HyperReal</a> berjalan di satu inti prosesor sendiri, dua buffer di belakang audio: ruang untuk beberapa amp sekaligus, dengan harga dua buffer latensi tambahan itu. Kalau thread-nya tidak sanggup mengejar, amp kembali sendiri ke thread audio. Mengganti sakelar ini memuat ulang amp yang sedang berbunyi. iPhone, iPad, dan Android; Mac dan plug-in tidak punya sakelar seperti ini.</td></tr>
-            <tr><td><b class="ui">Kualitas pemodel amp</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> di Mac</td>
+            <tr><td><b class="ui">Kualitas pemodel amp</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b></td>
                 <td>Seberapa halus amp HyperReal dihitung: <b class="ui">Live</b> lebih ringan bagi prosesor, <b class="ui">Studio</b> lebih halus dan lebih berat. Mengubahnya mengompilasi ulang amp yang sedang berbunyi, tanpa restart. Kalau amp Studio membuat thread tersibuk melewati tenggatnya selama dua detik, amp berjalan dalam Live dan barisnya bertuliskan <b class="ui">Studio (berjalan sebagai Live: perangkat ini tidak sanggup)</b> sampai kamu memilih kualitas lagi. Plug-in tidak punya baris ini.</td></tr>
             <tr><td><b class="ui">Ekor saat berpindah</b></td><td>Switch</td><td>On</td>
                 <td>Blok yang ditinggalkan saat berganti preset tetap berbunyi sampai habis — pengulangan delay, peluruhan reverb — hingga delapan detik alih-alih berhenti saat berganti, dan delay, reverb, FX loop, atau plugin yang di-bypass oleh scene tetap berbunyi sampai habis di atas sinyal kering (freeze adalah suara yang ditahan, bukan ekor: ia berhenti). Sedikit tambahan DSP selama detik-detik itu.</td></tr>
@@ -415,11 +415,20 @@
       <p>Keduanya adalah chip header pada tab <b class="ui a">Rig</b>. Pengaturan hanya
         melaporkannya, di kartu <a href="#set"><b class="ui">SET</b></a>.</p>
       <h3>MIDI</h3>
-      <p>Sama sekali <strong>tidak ada pengaturan MIDI global</strong>: tidak ada pemilih
-        channel, tidak ada toggle program-change, tidak ada clock sync. MIDI di NAMper
-        bersifat omni dan selalu aktif — setiap channel diterima, setiap source tersambung
+      <p>MIDI <em>masuk</em> sama sekali <strong>tidak punya pengaturan global</strong>: tidak ada pemilih
+        channel, tidak ada clock sync yang perlu disiapkan. Ia bersifat omni dan selalu aktif — setiap channel
+        diterima (sebuah baris pemetaan bisa disuruh mendengarkan satu saja), setiap source tersambung
         otomatis, dan aplikasi ini menerbitkan destinasi virtualnya sendiri bernama
         <b class="ui">NAMper</b>.</p>
+      <p>MIDI <em>keluar</em> punya sebuah kartu, di halaman MIDI clock di dasar halaman
+        <b class="ui">Kontrol</b>: <b class="ui">MIDI KELUAR</b>, mati sampai kamu menyalakannya. Ia mengirim program change
+        sebuah preset, milik sebuah scene, dan sel MIDI looper sebagai not, ke <b class="ui">Tujuan</b> clock —
+        <b class="ui">Kanal not</b> dan <b class="ui">Kanal preset</b>; <b class="ui">Adegan sebagai</b>
+        <b class="ui">Program change</b> atau <b class="ui">Control Change</b>, pada <b class="ui">Kanal adegan</b> (dan
+        <b class="ui">CC adegan</b>); <b class="ui">Gema ke kontroler</b>, yang mengirim gerakan yang dibuat di aplikasi kembali
+        ke CC yang dipetakan agar fader bermotor dan switch yang menyala ikut mengikuti; <b class="ui">Kanal synth</b> untuk
+        not blok Synth beserta <b class="ui">Rentang bend</b>-nya; dan <b class="ui">Matikan semua not</b> untuk not yang
+        tertinggal berbunyi.</p>
       <div class="note">
         <div class="t">Tidak ada yang perlu dikonfigurasi</div>
           <p>Kalau sebuah pedal tidak melakukan apa-apa, masalahnya ada di pemetaan, bukan di setelan.

@@ -116,7 +116,7 @@
             <tr><td><b class="ui">Controllo</b></td>
                 <td>MIDI e trigger d'ingresso, assegnabili a qualsiasi cosa — pagina propria: <a href="/docs/it/control.html">MIDI e controllo</a>.</td></tr>
             <tr><td><b class="ui">Palco</b></td>
-                <td>Il click, il tempo e la tonalità del set, la dimensione del testo e se il testo si apre da solo, e i livelli del loop automatico del looper — <a href="#set">Set</a>, <a href="#lyrics">Testi</a>, <a href="#metronome">Metronomo</a> e <a href="#looper">Looper</a> qui sotto.</td></tr>
+                <td>Quante scene ha un rig (<b class="ui">SCENE</b> → <b class="ui">Numero di scene</b>, da 1 a 16, un'unica impostazione per tutti i preset — vedi <a href="/docs/it/rig.html#presets">scene</a>), il click, il tempo e la tonalità del set, la dimensione del testo e se il testo si apre da solo, e i livelli del loop automatico del looper — <a href="#set">Set</a>, <a href="#lyrics">Testi</a>, <a href="#metronome">Metronomo</a> e <a href="#looper">Looper</a> qui sotto.</td></tr>
             <tr><td><b class="ui">Aspetto</b></td>
                 <td>Chiaro, scuro o come dice il sistema, e i temi — <a href="#appearance">qui sotto</a>.</td></tr>
             <tr><td><b class="ui">Avvisi e tour</b></td>
@@ -199,7 +199,7 @@
                 <td>Le catture A2 di TONE3000 portano con sé un sotto-modello più leggero; questo fa girare ogni cattura su di esso — una frazione del carico DSP, un filo di dettaglio in meno. Le catture che non ce l'hanno non vengono toccate. Ha effetto subito.</td></tr>
             <tr><td><b class="ui">Modellatore di ampli su un thread dedicato</b></td><td>Interruttore</td><td>Attivo</td>
                 <td>Un ampli <a href="/docs/it/rig.html#hyperreal">HyperReal</a> gira su un core del processore tutto suo, due buffer dietro all'audio: spazio per più ampli insieme, al prezzo di quei due buffer di latenza in più. Se il thread non regge il passo, l'ampli torna da solo sul thread audio. Cambiarlo ricarica gli ampli che suonano. iPhone, iPad e Android; il Mac e i plug-in non hanno un interruttore simile.</td></tr>
-            <tr><td><b class="ui">Qualità del modellatore di ampli</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> sul Mac</td>
+            <tr><td><b class="ui">Qualità del modellatore di ampli</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b></td>
                 <td>Con quanta finezza viene calcolato un ampli HyperReal: <b class="ui">Live</b> pesa meno sul processore, <b class="ui">Studio</b> è più fine e più pesante. Un cambio ricompila gli ampli che suonano, senza riavvio. Se un ampli in Studio tiene il thread più impegnato oltre la sua scadenza per due secondi, gli ampli passano a Live e la riga mostra <b class="ui">Studio (va in Live: questo dispositivo non regge)</b> finché non scegli di nuovo una qualità. I plug-in non hanno questa riga.</td></tr>
             <tr><td><b class="ui">Code al cambio</b></td><td>Interruttore</td><td>Attivo</td>
                 <td>I blocchi che un cambio di preset si lascia alle spalle continuano a suonare — le ripetizioni di un delay, la coda di un riverbero — fino a otto secondi invece di fermarsi al cambio, e un delay, un riverbero, un FX loop o un plugin che una scena mette in bypass sfuma sopra il segnale pulito (un freeze è suono tenuto, non una coda: si ferma). Un po' più di DSP per quei secondi.</td></tr>
@@ -412,11 +412,20 @@
       <p>Entrambi sono chip di intestazione sulla scheda <b class="ui a">Rig</b>. Impostazioni li
         riporta soltanto, nella card <a href="#set"><b class="ui">SET</b></a>.</p>
       <h3>MIDI</h3>
-      <p>Non esiste <strong>alcuna impostazione MIDI globale</strong>: nessun selettore di canale,
-        nessun interruttore di cambio programma, nessuna sincronizzazione di clock. Il MIDI in
-        NAMper è omni e sempre attivo — ogni canale viene accettato, ogni sorgente si connette
+      <p>Il MIDI <em>in ingresso</em> non ha <strong>alcuna impostazione globale</strong>: nessun selettore di canale,
+        nessuna sincronizzazione di clock da configurare. È omni e sempre attivo — ogni canale viene accettato (a una
+        riga di mappatura si può dire di ascoltarne uno solo), ogni sorgente si connette
         automaticamente, e l'app pubblica una propria destinazione virtuale chiamata
         <b class="ui">NAMper</b>.</p>
+      <p>Il MIDI <em>in uscita</em> ha una card, nella pagina del clock MIDI in fondo alla pagina
+        <b class="ui">Controllo</b>: <b class="ui">USCITA MIDI</b>, spenta finché non la accendi. Manda il program change di
+        un preset, quello di una scena e le celle MIDI del looper come note, alla <b class="ui">Destinazione</b> del clock —
+        <b class="ui">Canale note</b> e <b class="ui">Canale preset</b>; <b class="ui">Scena come</b>
+        <b class="ui">Cambio programma</b> o <b class="ui">Control Change</b>, sul <b class="ui">Canale scene</b> (e la
+        <b class="ui">CC scena</b>); <b class="ui">Eco ai controller</b>, che rimanda un movimento fatto nell'app al CC
+        assegnato, così i fader motorizzati e gli switch illuminati seguono; il <b class="ui">Canale synth</b> per le note
+        del blocco Synth e la sua <b class="ui">Estensione pitch bend</b>; e <b class="ui">Tutte le note spente</b> per una
+        nota rimasta appesa.</p>
       <div class="note">
         <div class="t">Niente da configurare</div>
           <p>Se un pedale non fa niente, il problema è l'assegnazione, non un'impostazione. Tutto ciò

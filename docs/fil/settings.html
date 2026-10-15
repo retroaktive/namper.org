@@ -114,7 +114,7 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI at mga input trigger, puwedeng imapa sa kahit ano — may sariling pahina: <a href="/docs/fil/control.html">MIDI at kontrol</a>.</td></tr>
             <tr><td><b class="ui">Entablado</b></td>
-                <td>Ang click, ang tempo at key ng set, ang laki ng teksto ng lyrics, kung kusang bumubukas ang lyrics, at ang mga level ng auto-loop ng looper — <a href="#set">Set</a>, <a href="#lyrics">Liriko</a>, <a href="#metronome">Metronome</a> at <a href="#looper">Looper</a> sa ibaba.</td></tr>
+                <td>Kung ilang scene mayroon ang isang rig (<b class="ui">MGA SCENE</b> → <b class="ui">Bilang ng mga eksena</b>, 1 hanggang 16, iisang setting para sa bawat preset — tingnan ang <a href="/docs/fil/rig.html#presets">mga scene</a>), ang click, ang tempo at key ng set, ang laki ng teksto ng lyrics, kung kusang bumubukas ang lyrics, at ang mga level ng auto-loop ng looper — <a href="#set">Set</a>, <a href="#lyrics">Liriko</a>, <a href="#metronome">Metronome</a> at <a href="#looper">Looper</a> sa ibaba.</td></tr>
             <tr><td><b class="ui">Hitsura</b></td>
                 <td>Maliwanag, madilim, o kung ano ang sabi ng sistema, at ang mga tema — <a href="#appearance">sa ibaba</a>.</td></tr>
             <tr><td><b class="ui">Prompts at tour</b></td>
@@ -189,7 +189,7 @@
                 <td>May kasamang mas magaan na sub-model ang mga A2 capture ng TONE3000; pinapatakbo nito ang bawat capture doon — isang maliit na bahagi lang ng DSP load, bahagyang mas kaunting detalye. Hindi apektado ang mga capture na walang nito. Agad na umeepekto.</td></tr>
             <tr><td><b class="ui">Amp modeler sa sarili nitong thread</b></td><td>Switch</td><td>On</td>
                 <td>Ang isang <a href="/docs/fil/rig.html#hyperreal">HyperReal</a> amp ay tumatakbo sa sarili nitong processor core, dalawang buffer sa likod ng audio: espasyo para sa ilang amp nang sabay, kapalit ng dalawang buffer na dagdag na latency. Kung hindi makasabay ang thread, kusang bumabalik ang amp sa audio thread. Ang paglipat nito ay nagre-reload ng mga amp na tumutugtog. iPhone, iPad at Android; walang ganitong switch ang Mac at ang mga plug-in.</td></tr>
-            <tr><td><b class="ui">Kalidad ng amp modeler</b></td><td>Mga chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> sa Mac</td>
+            <tr><td><b class="ui">Kalidad ng amp modeler</b></td><td>Mga chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b></td>
                 <td>Kung gaano kapino kinukuwenta ang isang HyperReal amp: mas magaan sa processor ang <b class="ui">Live</b>, mas pino at mas mabigat ang <b class="ui">Studio</b>. Ang pagbabago ay nagre-recompile ng mga amp na tumutugtog, nang walang restart. Kung ang isang Studio amp ay nagpapalampas sa deadline ng pinakaabalang thread nang dalawang segundo, tatakbo sa Live ang mga amp at mababasa sa row ang <b class="ui">Studio (tumatakbo sa Live: hindi kaya ng device na ito)</b> hanggang pumili ka ulit ng kalidad. Walang ganitong row ang mga plug-in.</td></tr>
             <tr><td><b class="ui">Tails sa paglipat</b></td><td>Switch</td><td>On</td>
                 <td>Patuloy na tumutunog ang mga block na naiiwan ng pagpapalit ng preset — ang mga ulit ng delay, ang pagkupas ng reverb — nang hanggang walong segundo sa halip na huminto sa pagpapalit, at ang delay, reverb, FX loop o plugin na bina-bypass ng isang scene ay patuloy na tumutunog sa ibabaw ng dry (hawak na tunog ang freeze, hindi tail: humihinto ito). Kaunti pang DSP sa mga segundong iyon.</td></tr>
@@ -351,7 +351,16 @@
       <h3>Tempo at key</h3>
       <p>Pareho silang header chip sa <b class="ui a">Rig</b> tab. Iniuulat lang sila ng Settings, sa <a href="#set"><b class="ui">SET</b></a> card.</p>
       <h3>MIDI</h3>
-      <p>Wala talagang <strong>anumang global na setting ng MIDI</strong>: walang pampili ng channel, walang toggle para sa program-change, walang clock sync. Omni at laging naka-on ang MIDI sa NAMper — tinatanggap ang bawat channel, awtomatikong kumokonekta ang bawat source, at naglalathala ang app ng sarili nitong virtual destination na tinatawag na <b class="ui">NAMper</b>.</p>
+      <p>Ang MIDI <em>in</em> ay walang <strong>global na setting</strong>: walang pampili ng channel, walang clock sync na kailangang i-set up. Omni ito at laging naka-on — tinatanggap ang bawat channel (puwedeng sabihan ang isang mapping row na makinig sa iisa), awtomatikong kumokonekta ang bawat source, at naglalathala ang app ng sarili nitong virtual destination na tinatawag na <b class="ui">NAMper</b>.</p>
+      <p>May card ang MIDI <em>out</em>, sa page ng MIDI clock sa dulo ng pahinang <b class="ui">Kontrol</b>:
+        <b class="ui">MIDI OUT</b>, naka-off hangga't hindi mo binubuksan. Ipinapadala nito ang program change ng preset, ng
+        scene, at ang mga MIDI cell ng looper bilang mga nota, sa <b class="ui">Destinasyon</b> ng clock —
+        <b class="ui">Channel ng nota</b> at <b class="ui">Channel ng preset</b>; <b class="ui">Eksena bilang</b>
+        <b class="ui">Program change</b> o <b class="ui">Control Change</b>, sa <b class="ui">Channel ng eksena</b> (at ang
+        <b class="ui">CC ng eksena</b>); <b class="ui">I-echo sa mga controller</b>, na nagbabalik ng galaw na ginawa sa app sa
+        naka-map nitong CC para sumunod ang mga motor fader at ang mga switch na may ilaw; ang <b class="ui">Channel ng synth</b> para sa mga nota
+        ng Synth block at ang <b class="ui">Saklaw ng bend</b> nito; at <b class="ui">Patayin lahat ng nota</b> para sa notang naiwang
+        tumutunog.</p>
       <div class="note">
         <div class="t">Walang kailangang i-configure</div>
           <p>Kung walang ginagawa ang isang pedal, nasa mapping ang problema at hindi sa isang setting.

@@ -113,7 +113,7 @@
             <tr><td><b class="ui">控制</b></td>
                 <td>MIDI 与输入触发，可映射到任何东西——有自己的页面：<a href="/docs/zh/control.html">MIDI 与控制</a>。</td></tr>
             <tr><td><b class="ui">舞台</b></td>
-                <td>节拍器、整套的速度与调性、歌词字号、歌词是否自己打开，以及循环乐句器的自动循环电平——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>、<a href="#metronome">节拍器</a>和 <a href="#looper">循环乐句器</a>。</td></tr>
+                <td>一个音色组有几个场景（<b class="ui">场景</b> → <b class="ui">场景数量</b>，1 到 16，所有预设共用一个设置——见<a href="/docs/zh/rig.html#presets">场景</a>）、节拍器、整套的速度与调性、歌词字号、歌词是否自己打开，以及循环乐句器的自动循环电平——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>、<a href="#metronome">节拍器</a>和 <a href="#looper">循环乐句器</a>。</td></tr>
             <tr><td><b class="ui">外观</b></td>
                 <td>浅色、深色，或者跟随系统，以及各款主题——<a href="#appearance">见下文</a>。</td></tr>
             <tr><td><b class="ui">提示与导览</b></td>
@@ -205,7 +205,7 @@
                 <td>TONE3000 的 A2 采样自带一个更轻量的子模型,开启后每个采样都会在它上面运行——DSP 负载只剩一小部分,细节略有减少。没有子模型的采样不受影响。立即生效。</td></tr>
             <tr><td><b class="ui">音箱建模使用独立线程</b></td><td>开关</td><td>开</td>
                 <td><a href="/docs/zh/rig.html#hyperreal">HyperReal</a> 音箱在自己的处理器核心上运行，落后音频两个缓冲区：可以同时容纳多台音箱，代价是多出这两个缓冲区的延迟。如果该线程跟不上，音箱会自动回到音频线程。切换它会重新加载正在播放的音箱。适用于 iPhone、iPad 和 Android；Mac 和插件没有这个开关。</td></tr>
-            <tr><td><b class="ui">音箱建模质量</b></td><td>芯片:<b class="ui">现场</b>、<b class="ui">录音室</b></td><td><b class="ui">现场</b>;Mac 上为 <b class="ui">录音室</b></td>
+            <tr><td><b class="ui">音箱建模质量</b></td><td>芯片:<b class="ui">现场</b>、<b class="ui">录音室</b></td><td><b class="ui">现场</b></td>
                 <td>HyperReal 音箱计算得多精细:<b class="ui">现场</b> 对处理器更轻,<b class="ui">录音室</b> 更精细也更重。更改会重新编译正在播放的音箱,无需重启。如果录音室模式的音箱让最忙的线程连续两秒超过截止时间,音箱就会以现场模式运行,该行显示 <b class="ui">录音室（以现场模式运行：这台设备跟不上）</b>,直到你再次选择质量。插件没有这一行。</td></tr>
             <tr><td><b class="ui">切换时保留尾音</b></td><td>开关</td><td>开</td>
                 <td>切换预设时被留下的模块会自然衰减——延迟的重复、混响的余响——最长持续八秒,而不是在切换那一刻戛然而止;被场景旁通的延迟、混响、效果回路或插件也会在干声之上余音延续(冻结是保持的声音,不是尾音:它会停下)。在这几秒里会多占用一点 DSP。</td></tr>
@@ -409,9 +409,17 @@
       <p>两者都是 <b class="ui a">音色组</b> 标签页页头上的芯片。设置里只会显示它们,位于
         <a href="#set"><b class="ui">SET</b></a> 卡片中。</p>
       <h3>MIDI</h3>
-      <p><strong>完全没有任何全局 MIDI 设置</strong>:没有通道选择器,没有节目变更开关,也没有
-        时钟同步。NAMper 中的 MIDI 始终是全通道且始终开启的——每个通道都会被接受,每个来源都会
-        自动连接,应用还会发布自己的虚拟目标端口,名为 <b class="ui">NAMper</b>。</p>
+      <p>MIDI <em>输入</em><strong>没有任何全局设置</strong>:没有通道选择器,也没有需要设置的
+        时钟同步。它始终是全通道且始终开启的——每个通道都会被接受(某一条映射行可以只听其中一个),
+        每个来源都会自动连接,应用还会发布自己的虚拟目标端口,名为 <b class="ui">NAMper</b>。</p>
+      <p>MIDI <em>输出</em>有一张卡片,位于 <b class="ui">控制</b> 页面底部的 MIDI 时钟页面上:
+        <b class="ui">MIDI 输出</b>,在你打开之前是关闭的。它会把预设的程序切换、场景的程序切换,以及循环乐句器的
+        MIDI 单元格以音符的形式,发送到时钟的 <b class="ui">目标</b>——
+        <b class="ui">音符通道</b> 和 <b class="ui">预设通道</b>;<b class="ui">场景发送为</b>
+        <b class="ui">程序切换</b> 或 <b class="ui">控制变更</b>,走 <b class="ui">场景通道</b>(以及
+        <b class="ui">场景 CC</b>);<b class="ui">回传到控制器</b>,把在应用里做的改动送回映射的 CC,
+        让电动推子和带灯开关跟着动;给合成器模块音符用的 <b class="ui">合成器通道</b> 及其 <b class="ui">弯音范围</b>;
+        还有 <b class="ui">关闭所有音符</b>,用于一个一直在响的音符。</p>
       <div class="note">
         <div class="t">无需配置任何内容</div>
           <p>如果某个踏板什么都不做，问题出在映射上，而不是某项设置。所有和 MIDI 有关的东西都在设置

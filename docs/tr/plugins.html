@@ -127,6 +127,17 @@
         zincirdeki yerini ve bypass durumunu korur. Zinciri sökmeden aynı slotta farklı bir
         delay istediğinde bunu kullan.</p>
 
+      <h3>Eklentinin parametreleri NAMper'ın kontrolleri olarak</h3>
+      <p>Açılan, eklentinin kendi görünümüdür. <b class="ui">Eklentiyi değiştir</b>'in yanındaki ikinci bir düğme, eklentinin
+        bir host'a gösterdiği her parametreyi NAMper'ın kendi kontrolleri olarak listeler: eklentinin gruplarında, liste
+        uzayınca bir arama alanıyla ve her birinde bir yıldızla — yıldızlananlar en üstte <b class="ui">Favoriler</b>
+        altında toplanır ve eklentinin kendi görünümünün altında da durur; böylece uzandığın üç düğme bir dokunuş
+        uzağındadır. Birine uzun basmak, bir bloğun düğmesindeki gibi <b class="ui">MIDI Öğren</b> sunar; kontrol
+        haritasının <b class="ui">Eklenti parametresi (CC)</b> eylemi de aynı parametrelere ulaşır.
+        Durum satırındaki MIDI düğmesi (<b class="ui">Eklentiye MIDI: açık</b> /
+        <b class="ui">Eklentiye MIDI: kapalı</b>) kontrolcünün mesajlarının eklentinin kendisine — MIDI alan bir
+        wah'a — mı ulaşacağına, yoksa NAMper'ın haritasında mı duracağına karar verir.</p>
+
       <h3>Bir eklentinin kendi görünümü olmadığında</h3>
       <p>Çoğu eklenti kendi arayüzünü çizer ve NAMper onu tam olarak yazarının tasarladığı gibi
         satır içinde gömer. Bazıları hiç görünüm sunmaz. Onlar için NAMper kendi genel listesini
@@ -232,7 +243,9 @@
         <li><b>Ayarlar</b>, uygulamayla paylaşılan görünümü ve temaları taşır; eklentinin içinde
           giriş ve çıkış yapılan TONE3000 hesabını; DSP anahtarlarını —
           <b class="ui">Hafif NAM modelleri</b>, <b class="ui">Stereo amfi</b>,
-          <b class="ui">Geçişte kuyruklar</b>, <b class="ui">Rig'leri hizala</b>; ve uygulamanın
+          <b class="ui">Geçişte kuyruklar</b>, <b class="ui">Rig'leri hizala</b>; bir <b class="ui">MIDI ÇIKIŞI</b> kartını —
+          kanallar, program change ya da control change olarak bir sahne, bir kontrolcüye yansıtma (çıkışın
+          çoğu zaman bir kanala gittiği eklentide kapalı), bend aralığı; çıkanı host yönlendirir — ve uygulamanın
           kontrol haritasına giden kapıyı. Ses arayüzü host'a aittir, bu yüzden orada yoktur.</li>
       </ul>
       <p>Bir parçaya değil de bütün bir uygulamaya ait olan şeyler dışarıda kalır: looper,
@@ -283,7 +296,10 @@
         <p>VST3, CLAP ve Audio Unit, MIDI'yi host'tan alır — kontrolcüler, notalar ve program
           değişiklikleri, uygulamada olduğu gibi rig'in kontrol haritasına ulaşır. Her mesaj yerini
           korur: buffer'ın başına değil, host'un onu koyduğu örneğe düşer; aynı buffer içindeki bir
-          basış ve bırakış iki ayrı mesajdır.</p>
+          basış ve bırakış iki ayrı mesajdır. Bir efekte hiç MIDI vermeyen bir host da — bir ses kanalındaki
+          GarageBand — kapsanır: Audio Unit MIDI cihazlarını kendisi okur, böylece <b class="ui">MIDI Öğren</b> ve harita
+          orada da uygulamadaki gibi çalışır; host kendi MIDI'sini göndermeye başladığında (AUM, Cubasis) eklenti
+          yalnızca host'u dinler. Host'un temposu rig'in temposudur: senkronize bir delay ya da tremolo şarkıyı izler.</p>
       </div>
       <div class="note tip">
         <div class="t">İkisiyle birden çalışmak</div>

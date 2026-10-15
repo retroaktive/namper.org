@@ -116,7 +116,7 @@
             <tr><td><b class="ui">Điều khiển</b></td>
                 <td>MIDI và các trigger đầu vào, ánh xạ tới bất cứ thứ gì — có trang riêng: <a href="/docs/vi/control.html">MIDI &amp; điều khiển</a>.</td></tr>
             <tr><td><b class="ui">Sân khấu</b></td>
-                <td>Click, tempo và tông của set, cỡ chữ lời bài hát và việc lời có tự mở hay không, cùng các mức auto-loop của looper — <a href="#set">Set</a>, <a href="#lyrics">Lời</a>, <a href="#metronome">Máy đập nhịp</a> và <a href="#looper">Looper</a> bên dưới.</td></tr>
+                <td>Mỗi rig có bao nhiêu scene (<b class="ui">CẢNH</b> → <b class="ui">Số cảnh</b>, từ 1 đến 16, một cài đặt chung cho mọi preset — xem <a href="/docs/vi/rig.html#presets">scene</a>), click, tempo và tông của set, cỡ chữ lời bài hát và việc lời có tự mở hay không, cùng các mức auto-loop của looper — <a href="#set">Set</a>, <a href="#lyrics">Lời</a>, <a href="#metronome">Máy đập nhịp</a> và <a href="#looper">Looper</a> bên dưới.</td></tr>
             <tr><td><b class="ui">Giao diện</b></td>
                 <td>Sáng, tối, hoặc theo hệ thống, cùng các theme — <a href="#appearance">bên dưới</a>.</td></tr>
             <tr><td><b class="ui">Nhắc nhở &amp; hướng dẫn</b></td>
@@ -199,7 +199,7 @@
                 <td>Các capture A2 của TONE3000 mang theo một sub-model nhẹ hơn; bật cái này thì mọi bản capture đều chạy trên nó — chỉ tốn một phần nhỏ tải DSP, chi tiết bớt đi một chút. Capture nào không có sub-model thì không bị ảnh hưởng. Có hiệu lực ngay.</td></tr>
             <tr><td><b class="ui">Bộ mô phỏng amp trên luồng riêng</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Một amp <a href="/docs/vi/rig.html#hyperreal">HyperReal</a> chạy trên một lõi xử lý riêng, chậm hơn âm thanh hai buffer: đủ chỗ cho nhiều amp cùng lúc, đổi lại hai buffer độ trễ thêm. Nếu luồng đó không theo kịp, amp tự quay về luồng âm thanh. Đổi công tắc sẽ nạp lại các amp đang phát. iPhone, iPad và Android; máy Mac và các plug-in không có công tắc này.</td></tr>
-            <tr><td><b class="ui">Chất lượng bộ mô phỏng amp</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> trên Mac</td>
+            <tr><td><b class="ui">Chất lượng bộ mô phỏng amp</b></td><td>Chip: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b></td>
                 <td>Một amp HyperReal được tính toán tinh tới đâu: <b class="ui">Live</b> nhẹ hơn cho bộ xử lý, <b class="ui">Studio</b> tinh hơn và nặng hơn. Đổi lựa chọn sẽ biên dịch lại các amp đang phát, không cần khởi động lại. Nếu một amp Studio giữ luồng bận nhất vượt hạn chót suốt hai giây, các amp chuyển sang chạy Live và hàng này hiện <b class="ui">Studio (đang chạy Live: thiết bị này không theo kịp)</b> cho tới khi bạn chọn lại chất lượng. Các plug-in không có hàng này.</td></tr>
             <tr><td><b class="ui">Đuôi âm khi chuyển</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Các block mà một lần đổi preset bỏ lại sẽ ngân tiếp — tiếng lặp của delay, đuôi tắt dần của reverb — tới tám giây thay vì dừng ngay lúc đổi, và một delay, reverb, FX loop hoặc plugin bị một scene bypass sẽ ngân tiếp đè lên tín hiệu dry (freeze là âm được giữ, không phải đuôi âm: nó dừng). Tốn thêm chút DSP trong những giây đó.</td></tr>
@@ -409,10 +409,19 @@
       <p>Cả hai đều là chip trên header của tab <b class="ui a">Bộ tiếng</b>. Settings chỉ hiển thị
         lại chúng, trong thẻ <a href="#set"><b class="ui">SET</b></a>.</p>
       <h3>MIDI</h3>
-      <p><strong>Không có bất kỳ cài đặt MIDI toàn cục nào cả</strong>: không có bộ chọn kênh,
-        không có công tắc program-change, không có clock sync. MIDI trong NAMper là omni và luôn
-        bật — mọi kênh đều được chấp nhận, mọi nguồn tự động kết nối, và app phát ra đích ảo
+      <p>MIDI <em>vào</em> <strong>không có cài đặt toàn cục nào</strong>: không có bộ chọn kênh,
+        không có clock sync phải thiết lập. Nó là omni và luôn bật — mọi kênh đều được chấp nhận (có thể
+        bảo một hàng ánh xạ chỉ nghe một kênh), mọi nguồn tự động kết nối, và app phát ra đích ảo
         (virtual destination) riêng của nó tên <b class="ui">NAMper</b>.</p>
+      <p>MIDI <em>ra</em> có một thẻ riêng, trên trang MIDI clock ở cuối trang <b class="ui">Điều khiển</b>:
+        <b class="ui">MIDI RA</b>, tắt cho tới khi bạn bật nó lên. Nó gửi program change của preset, của
+        scene, và các ô MIDI của looper dưới dạng nốt, tới <b class="ui">Đích</b> của clock —
+        <b class="ui">Kênh nốt</b> và <b class="ui">Kênh preset</b>; <b class="ui">Cảnh dưới dạng</b>
+        <b class="ui">Program change</b> hoặc <b class="ui">Control Change</b>, trên <b class="ui">Kênh cảnh</b> (kèm
+        <b class="ui">CC cảnh</b>); <b class="ui">Phản hồi về bộ điều khiển</b>, gửi một thao tác làm trong app ngược về CC
+        đã ánh xạ của nó để fader có motor và công tắc có đèn đi theo; <b class="ui">Kênh synth</b> cho các nốt
+        của khối Synth cùng <b class="ui">Phạm vi bend</b> của nó; và <b class="ui">Tắt mọi nốt</b> cho nốt nào còn
+        ngân lại.</p>
       <div class="note">
         <div class="t">Không có gì để cấu hình</div>
           <p>Nếu một pedal không làm gì cả thì vấn đề nằm ở ánh xạ chứ không phải ở cài đặt. Mọi thứ

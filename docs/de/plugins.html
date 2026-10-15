@@ -128,6 +128,18 @@
         Bypass-Zustand behält. Nutze es, wenn du ein anderes Delay im selben Slot willst, statt die
         Kette auseinanderzureißen.</p>
 
+      <h3>Die Parameter des Plugins als Regler von NAMper</h3>
+      <p>Geöffnet wird die eigene Ansicht des Plugins. Neben <b class="ui">Plugin ersetzen</b> listet eine zweite Taste
+        jeden Parameter, den das Plugin einem Host zeigt, als NAMpers eigene Regler: in den Gruppen des
+        Plugins, mit einem Suchfeld, sobald die Liste lang wird, und mit einem Stern an jedem — die
+        markierten sammeln sich oben unter <b class="ui">Favoriten</b> und stehen auch unter der eigenen
+        Ansicht des Plugins, sodass die drei Regler, nach denen du greifst, einen Tipp entfernt sind. Langes
+        Drücken auf einen bietet <b class="ui">MIDI Learn</b> wie bei einem Regler eines Blocks, und die Aktion
+        <b class="ui">Plug-in-Parameter (CC)</b> der Steuerbelegung erreicht dieselben Parameter.
+        Die MIDI-Taste in der Statuszeile (<b class="ui">MIDI an das Plug-in: ein</b> /
+        <b class="ui">MIDI an das Plug-in: aus</b>) entscheidet, ob die Nachrichten deines Controllers das
+        Plugin selbst erreichen — ein Wah, das MIDI annimmt — oder an NAMpers Belegung enden.</p>
+
       <h3>Wenn ein Plugin keine eigene Ansicht hat</h3>
       <p>Die meisten Plugins zeichnen ihre eigene Oberfläche, und NAMper bettet sie inline ein, genau
         wie ihr Autor sie entworfen hat. Manche liefern gar keine Ansicht mit. Für die zeichnet
@@ -240,8 +252,11 @@
         <li><b>Die Einstellungen</b> enthalten das Erscheinungsbild und die Themes, geteilt mit der
           App; das TONE3000-Konto, an- und abgemeldet direkt im Plugin; die DSP-Schalter —
           <b class="ui">Leichte NAM-Modelle</b>, <b class="ui">Stereo-Amp</b>,
-          <b class="ui">Ausklingen beim Umschalten</b>, <b class="ui">Rigs angleichen</b> — und den Zugang zur
-          Steuerbelegung der App. Das Audio-Interface gehört dem Host, deshalb fehlt es hier.</li>
+          <b class="ui">Ausklingen beim Umschalten</b>, <b class="ui">Rigs angleichen</b>; eine Karte <b class="ui">MIDI-AUSGANG</b> — die
+          Kanäle, eine Szene als Programmwechsel oder Control Change, das Echo an einen Controller (im
+          Plugin aus, wo der Ausgang oft auf eine Spur geht), der Pitch-Bend-Bereich; was hinausgeht,
+          leitet der Host — und den Zugang zur Steuerbelegung der App. Das Audio-Interface gehört dem
+          Host, deshalb fehlt es hier.</li>
       </ul>
       <p>Was zu einer ganzen App statt zu einer Spur gehört, bleibt draußen: Looper, Sampler, die
         Loop-Spuren, Backing Tracks und der Block <b class="ui">Send</b> sind in einem Host
@@ -292,7 +307,12 @@
         <p>VST3, CLAP und die Audio Unit nehmen MIDI vom Host an — Controller, Noten und
           Programmwechsel erreichen die Steuerbelegung des Rigs genau wie in der App. Jede Nachricht
           behält ihren Platz: Sie landet auf dem Sample, auf das der Host sie gelegt hat, nicht am
-          Anfang des Puffers, und Drücken und Loslassen in einem Puffer sind zwei Nachrichten.</p>
+          Anfang des Puffers, und Drücken und Loslassen in einem Puffer sind zwei Nachrichten. Auch ein Host, der einem Effekt
+          gar kein MIDI gibt — GarageBand auf einer Audiospur —, ist abgedeckt: Die Audio Unit liest
+          die MIDI-Geräte selbst, sodass <b class="ui">MIDI Learn</b> und die Belegung dort wie in der App
+          funktionieren, und sobald der Host eigenes MIDI schickt (AUM, Cubasis), hört das Plugin nur
+          noch auf den Host. Das Tempo des Hosts ist das des Rigs: Ein synchronisiertes Delay oder
+          Tremolo folgt dem Song.</p>
       </div>
       <div class="note tip">
         <div class="t">Mit beidem arbeiten</div>

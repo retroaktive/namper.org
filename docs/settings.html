@@ -116,7 +116,7 @@
             <tr><td><b class="ui">Control</b></td>
                 <td>MIDI and input triggers, mapped to anything — its own page: <a href="/docs/control.html">MIDI &amp; control</a>.</td></tr>
             <tr><td><b class="ui">Stage</b></td>
-                <td>The click, the set tempo and key, the lyrics text size and whether the words open themselves, and the looper's auto-loop levels — <a href="#set">Set</a>, <a href="#lyrics">Lyrics</a>, <a href="#metronome">Metronome</a> and <a href="#looper">Looper</a> below.</td></tr>
+                <td>How many scenes a rig has (<b class="ui">SCENES</b> → <b class="ui">Number of scenes</b>, 1 to 16, one setting for every preset — see <a href="/docs/rig.html#presets">scenes</a>), the click, the set tempo and key, the lyrics text size and whether the words open themselves, and the looper's auto-loop levels — <a href="#set">Set</a>, <a href="#lyrics">Lyrics</a>, <a href="#metronome">Metronome</a> and <a href="#looper">Looper</a> below.</td></tr>
             <tr><td><b class="ui">Appearance</b></td>
                 <td>Light, dark, or whatever the system says, and the themes — <a href="#appearance">below</a>.</td></tr>
             <tr><td><b class="ui">Prompts &amp; tour</b></td>
@@ -198,7 +198,7 @@
                 <td>TONE3000's A2 captures carry a lighter sub-model; this runs every capture on it — a fraction of the DSP load, a shade less detail. Captures without one are unaffected. Takes effect at once.</td></tr>
             <tr><td><b class="ui">Amp modeler on its own thread</b></td><td>Switch</td><td>On</td>
                 <td>A <a href="/docs/rig.html#hyperreal">HyperReal</a> amp runs on a processor core of its own, two buffers behind the audio: room for several amps at once, for those two buffers of extra latency. If the thread cannot keep up, the amp goes back to the audio thread by itself. Switching it reloads the amps that play. iPhone, iPad and Android; the Mac and the plug-ins have no such switch.</td></tr>
-            <tr><td><b class="ui">Amp modeler quality</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b>; <b class="ui">Studio</b> on the Mac</td>
+            <tr><td><b class="ui">Amp modeler quality</b></td><td>Chips: <b class="ui">Live</b>, <b class="ui">Studio</b></td><td><b class="ui">Live</b></td>
                 <td>How finely a HyperReal amp is computed: <b class="ui">Live</b> is lighter on the processor, <b class="ui">Studio</b> finer and heavier. A change recompiles the amps that play, with no restart. If a Studio amp keeps the busiest thread past its deadline for two seconds, the amps run in Live and the row reads <b class="ui">Studio (running Live: this device cannot keep up)</b> until you pick a quality again. The plug-ins have no such row.</td></tr>
             <tr><td><b class="ui">Tails on a switch</b></td><td>Switch</td><td>On</td>
                 <td>The blocks a preset switch leaves behind ring out — a delay's repeats, a reverb's decay — for up to eight seconds instead of stopping at the switch, and a delay, reverb, FX loop or plugin that a scene bypasses rings out over the dry (a freeze is held sound, not a tail: it stops). A little more DSP for those seconds.</td></tr>
@@ -412,10 +412,19 @@
       <p>Both are header chips on the <b class="ui a">Rig</b> tab. Settings only reports them, in
         the <a href="#set"><b class="ui">SET</b></a> card.</p>
       <h3>MIDI</h3>
-      <p>There are <strong>no global MIDI settings at all</strong>: no channel selector, no
-        program-change toggle, no clock sync. MIDI in NAMper is omni and always on — every channel
-        is accepted, every source connects automatically, and the app publishes its own virtual
+      <p>MIDI <em>in</em> has <strong>no global settings</strong>: no channel selector, no clock sync
+        to set up. It is omni and always on — every channel is accepted (a mapping row can be told to
+        listen to one), every source connects automatically, and the app publishes its own virtual
         destination named <b class="ui">NAMper</b>.</p>
+      <p>MIDI <em>out</em> has a card, on the MIDI clock page at the foot of the <b class="ui">Control</b>
+        page: <b class="ui">MIDI OUT</b>, off until you switch it on. It sends a preset's program change, a
+        scene's, and the looper's MIDI cells as notes, to the clock's <b class="ui">Destination</b> —
+        <b class="ui">Notes channel</b> and <b class="ui">Preset channel</b>; <b class="ui">Scene as</b> a
+        <b class="ui">Program change</b> or a <b class="ui">Control change</b>, on the <b class="ui">Scene channel</b> (and the
+        <b class="ui">Scene CC</b>); <b class="ui">Echo to controllers</b>, which sends a move made in the app back to its
+        mapped CC so motor faders and lit switches follow; the <b class="ui">Synth channel</b> for the Synth
+        block's notes and its <b class="ui">Bend range</b>; and <b class="ui">All notes off</b> for a note left
+        sounding.</p>
       <div class="note">
         <div class="t">Nothing to configure</div>
         <p>If a pedal is not doing anything, the problem is the mapping rather than a setting.

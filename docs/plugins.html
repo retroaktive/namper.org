@@ -127,6 +127,17 @@
         block, so the block keeps its place in the chain and its bypass state. Use it when you want
         a different delay in the same slot rather than tearing the chain apart.</p>
 
+      <h3>The plugin's parameters as NAMper's controls</h3>
+      <p>The plugin's own view is what opens. Beside <b class="ui">Replace plugin</b> a second button lists
+        every parameter the plugin shows a host, as NAMper's own controls: in the plugin's groups, with
+        a search field once the list is long, and a star on each — the starred ones gather under
+        <b class="ui">Favorites</b> at the top and sit under the plugin's own view as well, so the three knobs
+        you reach for are a tap away. A long press on one offers <b class="ui">MIDI Learn</b>, as on a block's
+        knob, and the control map's <b class="ui">Plug-in parameter (CC)</b> action reaches the same parameters.
+        The MIDI button in the status row (<b class="ui">MIDI to the plug-in: on</b> /
+        <b class="ui">MIDI to the plug-in: off</b>) decides whether your controller's messages reach the plugin
+        itself — a wah that takes MIDI — or stop at NAMper's map.</p>
+
       <h3>When a plugin has no view of its own</h3>
       <p>Most plugins draw their own interface and NAMper embeds it inline, exactly as its author
         designed it. Some ship no view at all. For those, NAMper draws its own generic list —
@@ -231,8 +242,11 @@
         <li><b>Settings</b> carries the appearance and the themes, shared with the app; the
           TONE3000 account, signed in and out inside the plug-in; the DSP switches —
           <b class="ui">Lite NAM models</b>, <b class="ui">Stereo amp</b>,
-          <b class="ui">Tails on a switch</b>, <b class="ui">Align the rigs</b>; and the door to the
-          app's control map. The audio interface is the host's, so it is not there.</li>
+          <b class="ui">Tails on a switch</b>, <b class="ui">Align the rigs</b>; a <b class="ui">MIDI OUT</b> card — the
+          channels, a scene as a program change or a control change, the echo to a controller (off
+          in a plug-in, where the output often goes to a track), the bend range; the host routes what
+          goes out — and the door to the app's control map. The audio interface is the host's, so it
+          is not there.</li>
       </ul>
       <p>What belongs to a whole app rather than a track stays out: the looper, the sampler, the
         loop tracks, backing tracks and the <b class="ui">Send</b> block are hidden inside a host.
@@ -281,7 +295,11 @@
         <p>The VST3, the CLAP and the Audio Unit take MIDI from the host — controllers, notes and
           program changes reach the rig's control map as they do in the app. Each message keeps its
           place: it lands on the sample the host put it on, not on the start of the buffer, and a
-          press and release inside one buffer are two messages.</p>
+          press and release inside one buffer are two messages. A host that gives an effect no MIDI
+          at all — GarageBand on an audio track — is covered: the Audio Unit reads the MIDI devices
+          itself, so <b class="ui">MIDI Learn</b> and the map work there as in the app, and once the host sends
+          MIDI of its own (AUM, Cubasis) the plug-in listens to the host alone. The host's tempo is
+          the rig's: a synced delay or tremolo follows the song.</p>
       </div>
       <div class="note tip">
         <div class="t">Working with both</div>

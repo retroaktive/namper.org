@@ -104,6 +104,17 @@
       <h3>Pagpapalit ng plugin</h3>
       <p>Ang button na may bilog na mga arrow sa sheet ay ang <b class="ui">Palitan ang plugin</b>. Ang menu nito ay ang parehong listahan ng component, at ang pagpili ng iba ay nagpapalit sa plugin sa loob ng umiiral na block, kaya pinapanatili ng block ang puwesto nito sa chain at ang bypass state nito. Gamitin ito kapag gusto mo ng ibang delay sa parehong slot sa halip na sirain ang buong chain.</p>
 
+      <h3>Ang mga parameter ng plugin bilang mga kontrol ng NAMper</h3>
+      <p>Ang sariling view ng plugin ang bumubukas. Sa tabi ng <b class="ui">Palitan ang plugin</b>, may pangalawang button na naglilista
+        ng bawat parameter na ipinapakita ng plugin sa host, bilang mga sariling kontrol ng NAMper: nasa mga grupo ng plugin, may
+        search field kapag mahaba na ang listahan, at may bituin ang bawat isa — nagtitipon ang mga may bituin sa ilalim ng
+        <b class="ui">Mga paborito</b> sa itaas at nakaupo rin sa ilalim ng sariling view ng plugin, kaya isang tap lang ang layo ng tatlong knob
+        na lagi mong inaabot. Ang matagal na pagpindot sa isa ay nag-aalok ng <b class="ui">MIDI Learn</b>, gaya sa knob ng block,
+        at naaabot din ng aksyong <b class="ui">Parameter ng plugin (CC)</b> ng control map ang parehong mga parameter.
+        Ang MIDI button sa status row (<b class="ui">MIDI sa plugin: naka-on</b> /
+        <b class="ui">MIDI sa plugin: naka-off</b>) ang nagpapasya kung aabot ang mga mensahe ng controller mo sa mismong plugin
+        — isang wah na tumatanggap ng MIDI — o hihinto sa map ng NAMper.</p>
+
       <h3>Kapag walang sariling view ang plugin</h3>
       <p>Karamihan sa mga plugin ay gumuguhit ng sariling interface at inilalagay ito ng NAMper nang direkta, eksakto kung paano ito dinisenyo ng may-akda. May ilang walang kasamang view. Para sa mga iyon, gumuguhit ang NAMper ng sarili nitong generic na listahan — hanggang 24 na parameter, bawat isa'y may label at slider. Iyan ang ipinapakita ng screenshot sa itaas: walang custom na panel ang AUDelay ng Apple, kaya mga may pangalang slider ang makukuha mo.</p>
       <div class="note">
@@ -165,7 +176,7 @@
       <p>Iisang hanay ang header: ang marka ng NAMper (binubuksan nito ang <b class="ui">Tungkol Dito</b> — ang bersyon, ang mga link ng tulong, ang mga credit, at daan papunta sa tip jar ng app), ang preset, ang mga scene, ang mga meter, ang aklatan, ang mga tool, ang mga setting at ang bypass. Sa makitid na host, nag-i-scroll pagilid ang hanay, habang nakapako sa dulo ang mga setting at ang bypass para laging abot-kamay ang switch.</p>
       <ul style="--nc:var(--gate)">
         <li><b>Ang mga tool</b> ay ang mga tool ng header ng app: ang DSP load, ang key, ang metronome kasama ang tempo nito (binubuksan o pinapatay ng tap ang click, itinatakda ng pagpindot nang matagal ang tempo) at ang tuner, na bawat isa'y bumubukas bilang panel sa ibabaw ng chain.</li>
-        <li><b>Ang Settings</b> ay may dalang itsura at mga tema, kahati ng app; ang TONE3000 account, na nagsa-sign in at sign out sa loob mismo ng plug-in; ang mga DSP switch — <b class="ui">Magaan na NAM models</b>, <b class="ui">Stereo na amp</b>, <b class="ui">Tails sa paglipat</b>, <b class="ui">Ihanay ang mga rig</b>; at ang pintuan papunta sa control map ng app. Sa host ang audio interface, kaya wala ito roon.</li>
+        <li><b>Ang Settings</b> ay may dalang itsura at mga tema, kahati ng app; ang TONE3000 account, na nagsa-sign in at sign out sa loob mismo ng plug-in; ang mga DSP switch — <b class="ui">Magaan na NAM models</b>, <b class="ui">Stereo na amp</b>, <b class="ui">Tails sa paglipat</b>, <b class="ui">Ihanay ang mga rig</b>; isang <b class="ui">MIDI OUT</b> card — ang mga channel, ang scene bilang program change o control change, ang echo sa controller (naka-off sa plug-in, kung saan madalas sa track napupunta ang output), ang bend range; ang host ang nagru-route ng lumalabas — at ang pintuan papunta sa control map ng app. Sa host ang audio interface, kaya wala ito roon.</li>
       </ul>
       <p>Nananatili sa labas ang para sa buong app sa halip na sa isang track: nakatago sa loob ng host ang looper, ang sampler, ang mga loop track, ang mga backing track at ang block na <b class="ui">Send</b>. Ang mga input ng chain ay ang input ng plug-in at ang sidechain ng host, na puwedeng gawing key ng compressor.</p>
 
@@ -196,7 +207,7 @@
 
       <div class="note warn">
         <div class="t">MIDI sa isang host</div>
-        <p>Tumatanggap ng MIDI mula sa host ang VST3, ang CLAP at ang Audio Unit — umaabot sa control map ng rig ang mga controller, note at program change gaya ng sa app. Nananatili sa lugar nito ang bawat mensahe: lumalapag ito sa sample kung saan ito inilagay ng host, hindi sa simula ng buffer, at ang pagpindot at pagbitaw sa loob ng iisang buffer ay dalawang mensahe.</p>
+        <p>Tumatanggap ng MIDI mula sa host ang VST3, ang CLAP at ang Audio Unit — umaabot sa control map ng rig ang mga controller, note at program change gaya ng sa app. Nananatili sa lugar nito ang bawat mensahe: lumalapag ito sa sample kung saan ito inilagay ng host, hindi sa simula ng buffer, at ang pagpindot at pagbitaw sa loob ng iisang buffer ay dalawang mensahe. May sagot din sa host na hindi nagbibigay ng kahit anong MIDI sa effect — ang GarageBand sa audio track: ang Audio Unit mismo ang nagbabasa ng mga MIDI device, kaya gumagana roon ang <b class="ui">MIDI Learn</b> at ang map gaya ng sa app, at kapag nagpadala na ng sarili nitong MIDI ang host (AUM, Cubasis), sa host na lang nakikinig ang plug-in. Ang tempo ng host ang tempo ng rig: sumusunod sa kanta ang naka-sync na delay o tremolo.</p>
       </div>
       <div class="note tip">
         <div class="t">Paggamit ng dalawa</div>

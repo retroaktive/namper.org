@@ -125,6 +125,18 @@
         existente, así que el bloque conserva su lugar en la cadena y su estado de bypass. Úsalo
         cuando quieras un delay diferente en la misma ranura en vez de desarmar la cadena.</p>
 
+      <h3>Los parámetros del plugin como controles de NAMper</h3>
+      <p>Lo que se abre es la vista propia del plugin. Junto a <b class="ui">Reemplazar plugin</b> un segundo botón
+        lista cada parámetro que el plugin muestra a un host, como controles propios de NAMper: en los grupos
+        del plugin, con un campo de búsqueda cuando la lista es larga, y una estrella en cada uno — los
+        marcados se reúnen en <b class="ui">Favoritos</b> arriba y aparecen también bajo la vista propia del
+        plugin, así que las tres perillas que buscas quedan a un toque. Una pulsación larga en uno ofrece
+        <b class="ui">MIDI Learn</b>, como en la perilla de un bloque, y la acción
+        <b class="ui">Parámetro de plugin (CC)</b> del mapa de control llega a los mismos parámetros.
+        El botón MIDI de la fila de estado (<b class="ui">MIDI al plugin: activado</b> /
+        <b class="ui">MIDI al plugin: desactivado</b>) decide si los mensajes de tu controlador llegan al
+        propio plugin — un wah que acepta MIDI — o se quedan en el mapa de NAMper.</p>
+
       <h3>Cuando un plugin no tiene interfaz propia</h3>
       <p>La mayoría de los plugins dibujan su propia interfaz y NAMper la incrusta tal cual,
         exactamente como la diseñó su autor. Algunos no traen ninguna vista. Para esos, NAMper
@@ -232,8 +244,11 @@
         <li><b>Ajustes</b> trae la apariencia y los temas, compartidos con la app; la cuenta de
           TONE3000, con inicio y cierre de sesión dentro del plugin; los interruptores de DSP —
           <b class="ui">Modelos NAM ligeros</b>, <b class="ui">Amplificador estéreo</b>,
-          <b class="ui">Colas al cambiar</b>, <b class="ui">Alinear los rigs</b>; y la puerta al mapa de
-          control de la app. La interfaz de audio es la del host, así que no está ahí.</li>
+          <b class="ui">Colas al cambiar</b>, <b class="ui">Alinear los rigs</b>; una tarjeta <b class="ui">SALIDA MIDI</b> — los
+          canales, una escena como cambio de programa o como control change, el eco a un controlador
+          (apagado en un plugin, donde la salida suele ir a una pista), el rango de bend; el host enruta
+          lo que sale — y la puerta al mapa de control de la app. La interfaz de audio es la del host,
+          así que no está ahí.</li>
       </ul>
       <p>Lo que pertenece a una app entera y no a una pista se queda fuera: el looper, el sampler,
         las pistas de loop, las pistas de acompañamiento y el bloque <b class="ui">Envío</b> se ocultan
@@ -284,7 +299,11 @@
         <p>El VST3, el CLAP y el Audio Unit reciben MIDI del host — los controladores, las notas y
           los cambios de programa llegan al mapa de control del rig igual que en la app. Cada mensaje
           conserva su sitio: cae en la muestra en la que el host lo puso, no al principio del buffer,
-          y pulsar y soltar dentro de un mismo buffer son dos mensajes.</p>
+          y pulsar y soltar dentro de un mismo buffer son dos mensajes. Un host que no da ningún MIDI
+          a un efecto — GarageBand en una pista de audio — está cubierto: el Audio Unit lee él mismo
+          los dispositivos MIDI, así que <b class="ui">MIDI Learn</b> y el mapa funcionan ahí como en la
+          app, y en cuanto el host envía MIDI propio (AUM, Cubasis) el plugin escucha solo al host. El
+          tempo del host es el del rig: un delay o un trémolo sincronizado sigue a la canción.</p>
       </div>
       <div class="note tip">
         <div class="t">Trabajar con ambos</div>

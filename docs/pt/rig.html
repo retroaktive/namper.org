@@ -105,7 +105,7 @@
             <tr><td><b class="ui">Delay e reverb</b></td><td><b class="ui">Delay</b>, <b class="ui">Freeze</b>, <b class="ui">Reverb</b></td></tr>
             <tr><td><b class="ui">Drive</b></td><td><b class="ui">Drive</b>, <b class="ui">Lo-fi</b>, <b class="ui">Saturador</b></td></tr>
             <tr><td><b class="ui">Dinâmica</b></td><td><b class="ui">Compressor</b>, <b class="ui">De-Esser</b>, <b class="ui">Gate</b>, <b class="ui">Limitador</b>, <b class="ui">Multibanda</b>, <b class="ui">Swell</b>, <b class="ui">Transiente</b>, <b class="ui">Voz</b></td></tr>
-            <tr><td><b class="ui">EQ e filtro</b></td><td><b class="ui">Equalizador</b>, <b class="ui">Wah</b></td></tr>
+            <tr><td><b class="ui">EQ e filtro</b></td><td><b class="ui">Corte</b>, <b class="ui">Equalizador</b>, <b class="ui">Wah</b></td></tr>
             <tr><td><b class="ui">Modulação</b></td><td><b class="ui">Chorus</b>, <b class="ui">Doubler</b>, <b class="ui">Ensemble</b>, <b class="ui">Flanger</b>, <b class="ui">Phaser</b>, <b class="ui">Rotary</b>, <b class="ui">Slicer</b>, <b class="ui">Trêmolo</b></td></tr>
             <tr><td><b class="ui">Pitch</b></td><td><b class="ui">12 cordas</b>, <b class="ui">Autotune</b>, <b class="ui">Harmonia</b>, <b class="ui">Oitavador</b>, <b class="ui">Pitch</b>, <b class="ui">Sintetizador</b>, <b class="ui">Vocoder</b></td></tr>
             <tr><td><b class="ui">Utilitários</b></td><td><b class="ui">FB Guard</b>, <b class="ui">Loop FX</b>, <b class="ui">Envio</b>, <b class="ui">Volume</b></td></tr>
@@ -117,7 +117,8 @@
         delas, estão em ordem alfabética. Um bloco que tem presets abre um submenu em vez de cair
         direto na cadeia: <b class="ui">Configurações padrão</b>, os presets de fábrica e salvos daquele
         bloco, e em <b class="ui">De presets de rig</b> o mesmo bloco tirado de um preset de rig — o
-        drive de um rig, o delay de outro.</p>
+        drive de um rig, o delay de outro. Um preset de bloco traz junto o seu circuito, os seus impulsos e
+        o seu nível automático, e dá nome ao bloco.</p>
       <figure>
         <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
              alt="A aba Rig com uma cadeia ambient: um Swell antes do amplificador, depois o gabinete, um Ensemble, um delay, um Freeze e um reverb, cada bloco um quadro na cadeia.">
@@ -143,6 +144,9 @@
               Ou pressione e segure → <b class="ui">Mover para a esquerda</b> /
               <b class="ui">Mover para a direita</b> para mover um passo</td></tr>
             <tr><td>Remover</td><td>Pressione e segure → <b class="ui">Remover</b></td></tr>
+            <tr><td>Dar nome a um bloco</td><td>Pressione e segure → <b class="ui">Nomear…</b>: o chip mostra o seu nome no lugar de
+              <b class="ui">DRIVE 2</b>. Um bloco ajustado a partir de um preset de bloco pega sozinho o nome desse preset —
+              “Solo Boost” onde estava <b class="ui">DRIVE 2</b></td></tr>
             <tr><td>Zerar um botão</td><td>Toque duas vezes nele</td></tr>
             <tr><td>Fazer MIDI-learn em um controle</td><td>Pressione e segure qualquer botão ou
               linha de chip → <b class="ui">MIDI Learn “&lt;label&gt;”</b>. O controle se destaca
@@ -292,16 +296,16 @@
           <tbody>
             <tr><td><b class="ui">Gate</b></td><td><b class="ui">Modelo</b></td>
               <td><b class="ui">Clássico</b>, <b class="ui">Smart</b>, <b class="ui">3 Bandas</b>, <b class="ui">Denoise</b></td></tr>
-            <tr><td><b class="ui">Compressor</b></td><td><b class="ui">Modelo</b> · <b class="ui">Sidechain</b></td>
-              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · sidechain
+            <tr><td><b class="ui">Compressor</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">Modelo</b> · <b class="ui">Sidechain</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">Opto</b>, <b class="ui">FET</b>, <b class="ui">Pedal</b> · no <b class="ui">HyperReal</b>, o <a href="#hyperreal-pedals"><b class="ui">Twin-Mu Limiter</b></a> · sidechain
                 <b class="ui">OFF</b>, <b class="ui">IN 1</b>…<b class="ui">IN 4</b>, <b class="ui">SMP</b></td></tr>
-            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modelo</b></td>
+            <tr><td><b class="ui">Drive</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">Modelo</b></td>
               <td><b class="ui">Boost</b>: <b class="ui">Boost limpo</b>, <b class="ui">Boost de agudos</b> ·
                 <b class="ui">Overdrive</b>: <b class="ui">Válvula</b>, <b class="ui">Blues</b>, <b class="ui">Transparente</b> ·
                 <b class="ui">Distorção</b>: <b class="ui">Dist</b>, <b class="ui">Metal</b> ·
-                <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Fuzz de oitava</b></td></tr>
-            <tr><td><b class="ui">Amplificador</b></td><td><b class="ui">Integrado</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">Modelo</b></td>
-              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Moderno</b>, <b class="ui">Graves</b>, <b class="ui">Acústico</b> · no <b class="ui">Modeler</b>, os quinze amps do <a href="#hyperreal">catálogo HyperReal</a></td></tr>
+                <b class="ui">Fuzz</b>: <b class="ui">Fuzz Ge</b>, <b class="ui">Fuzz Si</b>, <b class="ui">Fuzz de oitava</b> · no <b class="ui">HyperReal</b>, os <a href="#hyperreal-pedals">sete pedais</a></td></tr>
+            <tr><td><b class="ui">Amplificador</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">Modelo</b></td>
+              <td><b class="ui">Clean</b>, <b class="ui">Tweed</b>, <b class="ui">Brit</b>, <b class="ui">Chime</b>, <b class="ui">Moderno</b>, <b class="ui">Graves</b>, <b class="ui">Acústico</b> · no <b class="ui">HyperReal</b>, os dezoito amps do <a href="#hyperreal">catálogo HyperReal</a></td></tr>
             <tr><td><b class="ui">Saturador</b></td><td><b class="ui">Tipo</b></td>
               <td><b class="ui">Válvula</b>, <b class="ui">Fita</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">Tipo</b></td>
@@ -341,11 +345,11 @@
           </tbody>
         </table>
       </div>
-      <p>O lado <b class="ui">Integrado</b> do bloco <b class="ui">Amplificador</b> é o amplificador valvulado do próprio NAMper, com os knobs que você espera: <b class="ui">Ganho</b>, <b class="ui">Graves</b>, <b class="ui">Média</b>, <b class="ui">Agudos</b>, <b class="ui">Presença</b> e <b class="ui">Master</b>, e sete voicings nos chips <b class="ui">Modelo</b>. Não precisa de download nem de conta — por isso é ele que segura o show sem internet; o chip <b class="ui">NAM</b> ao lado troca por uma captura, e o chip <b class="ui">Modeler</b> por um amp calculado a partir do seu circuito — veja <a href="#nam">Capturas NAM</a> e <a href="#hyperreal">Amps HyperReal</a> abaixo.</p>
+      <p>O lado <b class="ui">Basic</b> do bloco <b class="ui">Amplificador</b> é o amplificador valvulado do próprio NAMper, com os knobs que você espera: <b class="ui">Ganho</b>, <b class="ui">Graves</b>, <b class="ui">Média</b>, <b class="ui">Agudos</b>, <b class="ui">Presença</b> e <b class="ui">Master</b>, e sete voicings nos chips <b class="ui">Modelo</b>. Não precisa de download nem de conta — por isso é ele que segura o show sem internet; o chip <b class="ui">NAM</b> ao lado troca por uma captura, e o chip <b class="ui">HyperReal</b> por um amp calculado a partir do seu circuito — veja <a href="#nam">Capturas NAM</a> e <a href="#hyperreal">Amps HyperReal</a> abaixo.</p>
       <p><b class="ui">Saturador</b> é para onde foram os antigos Tube Sat e Tape Sat: um bloco, com <b class="ui">Válvula</b>, <b class="ui">Fita</b> ou uma captura <b class="ui">NAM</b> de um equipamento externo nos chips de tipo. <b class="ui">Ensemble</b> é um instrumento ouvido como vários músicos pelo panorama — sem LFO, nada desafinado, e a soma mono é a entrada; <b class="ui">Velvet</b> ou <b class="ui">Allpass</b> nos chips de modo.</p>
 
       <h3>Drive, dinâmica e tempo</h3>
-      <p>O lado integrado do bloco <b class="ui">Drive</b> traz dez circuitos em quatro famílias, escolhidos numa lista, e cada família tem os seus próprios knobs: um boost <b class="ui">Ganho</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nível</b> e <b class="ui">Mix</b> (a guitarra limpa misturada de volta); um overdrive <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Nível</b>, <b class="ui">Mix</b>; uma distorção <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nível</b>; um fuzz <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Bias</b> (o ponto de operação), <b class="ui">Tensão</b> (a bateria — passado o meio ela cede e corta) e <b class="ui">Nível</b>. O menu ADICIONAR lista um só Drive, e a cadeia chama o bloco pelo seu circuito, então uma pilha aparece como TREBLE BOOST, TUBE, FUZZ GE.</p>
+      <p>O lado <b class="ui">Basic</b> do bloco <b class="ui">Drive</b> traz dez circuitos em quatro famílias, escolhidos numa lista, e cada família tem os seus próprios knobs: um boost <b class="ui">Ganho</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nível</b> e <b class="ui">Mix</b> (a guitarra limpa misturada de volta); um overdrive <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Nível</b>, <b class="ui">Mix</b>; uma distorção <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Graves</b>, <b class="ui">Agudos</b>, <b class="ui">Nível</b>; um fuzz <b class="ui">Ganho</b>, <b class="ui">Tone</b>, <b class="ui">Bias</b> (o ponto de operação), <b class="ui">Tensão</b> (a bateria — passado o meio ela cede e corta) e <b class="ui">Nível</b>. O menu ADICIONAR lista um só Drive, e a cadeia chama o bloco pelo seu circuito, então uma pilha aparece como TREBLE BOOST, TUBE, FUZZ GE.</p>
       <p>Toda face do <b class="ui">Compressor</b> agora também traz <b class="ui">Knee</b>, <b class="ui">Mix</b> (menos que tudo é compressão paralela) e <b class="ui">HPF</b>, um passa-altas só no detector, para que os graves não façam o resto bombear.</p>
       <p>O <b class="ui">Delay</b> ganhou uma segunda repetição numa proporção do tempo — <b class="ui">Tap 2</b> com o seu <b class="ui">Nível do tap</b>, para delays duplos e rítmicos — além de <b class="ui">Reverso</b>, <b class="ui">Mod</b> nas repetições, <b class="ui">Corte grave</b> e <b class="ui">Corte agudo</b> dentro do laço de realimentação (cada repetição mais escura ou mais fina que a anterior) e <b class="ui">Duck</b>, que segura as repetições enquanto você toca e as solta nas pausas.</p>
       <div class="figrow">
@@ -406,8 +410,8 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>Os sete modelos de EQ</h2>
-      <p>Existe um bloco <b class="ui">Equalizador</b>, e dentro dele sete equalizadores completamente
+      <h2 id="eq"><span class="n">02.3</span>Os seis modelos de EQ</h2>
+      <p>Existe um bloco <b class="ui">Equalizador</b>, e dentro dele seis equalizadores completamente
         diferentes. Trocar o modelo troca o conjunto de botões e também o som, então escolha o que
         combina com a tarefa — um ajuste rápido de tom, um corte cirúrgico, ou uma prateleira estilo
         masterização.</p>
@@ -420,12 +424,13 @@
                 aguda em 3 kHz. São os mesmos filtros do antigo EQ de três bandas, então rigs
                 antigos soam sem mudança.</td>
               <td><b class="ui">Graves</b>, <b class="ui">Média</b>, <b class="ui">Agudos</b>, cada um ±12 dB</td></tr>
-            <tr><td><b class="ui">Parâm.</b></td>
-              <td>Paramétrico completo — as mesmas três bandas, mas cada frequência se move e o
-                médio ganha um controle de Q.</td>
-              <td><b class="ui">Baixa</b>, <b class="ui">Média</b>, <b class="ui">Alta</b>,
-                <b class="ui">Freq Baixa</b> 40–400, <b class="ui">Freq Média</b> 200–5000,
-                <b class="ui">Freq Alta</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">Paramétrico</b></td>
+              <td>Quantas bandas você precisar, num gráfico: cada uma um sino, uma prateleira, um corte de 6 a
+                48 dB por oitava, um notch, um passa-banda ou um tilt, nos dois canais, no esquerdo, no direito,
+                no mid ou no side — e dinâmica se você pedir, movendo-se contra o próprio nível ou um sidechain.
+                A curva é desenhada sobre um analisador ao vivo do que entra e do que sai; agora todo modelo
+                mostra a sua curva.</td>
+              <td>As bandas no gráfico, cada uma com frequência, ganho e largura</td></tr>
             <tr><td><b class="ui">Passivo</b></td>
               <td>O truque clássico de EQ passivo de programa: um boost em prateleira grave mais um
                 corte em prateleira ligeiramente mais alta, para que você reforce e atenue ao mesmo
@@ -440,10 +445,6 @@
               <td><b class="ui">HPF</b> 0–300, <b class="ui">Baixa</b>, <b class="ui">Freq Baixa</b>,
                 <b class="ui">Média</b>, <b class="ui">Freq Média</b>, <b class="ui">Q</b>,
                 <b class="ui">Alta</b>, <b class="ui">Freq Alta</b></td></tr>
-            <tr><td><b class="ui">Bax</b></td>
-              <td>Baxandall — duas prateleiras muito largas e muito suaves. A que você usa quando
-                quer o som todo um pouco mais escuro ou um pouco mais brilhante.</td>
-              <td><b class="ui">Graves</b>, <b class="ui">Agudos</b></td></tr>
             <tr><td><b class="ui">Gráfico 7</b></td>
               <td>O gráfico de pedal: sete bandas de oitava de 100 Hz a 6,4 kHz, um fader para cada.
                 Toque duas vezes num fader para zerá-lo.</td>
@@ -459,6 +460,15 @@
              alt="A folha do bloco Equalizador com o modelo Passive selecionado, mostrando seus oito botões: Lo Boost, Lo Atten, Lo Freq, Hi Boost, Hi Freq, Width, Hi Atten e Atten Hz, com medidores IN e OUT no topo.">
         <figcaption>O bloco Equalizador no modelo Passive</figcaption>
       </figure>
+      <p>O <b class="ui">Equalizador</b> tem duas fontes, como o amp tem três: <b class="ui">Basic</b> são os seis modelos
+        acima, <b class="ui">HyperReal</b> o <a href="#hyperreal-pedals"><b class="ui">Tube Program EQ</b></a>, um
+        equalizador de programa passivo calculado a partir do seu circuito, amplificador valvulado de recuperação e tudo.</p>
+      <h3 id="cut">O bloco Corte</h3>
+      <p>O bloco <b class="ui">Corte</b>, na mesma seção da paleta, é um corte de graves e um corte de agudos e nada
+        mais — a frente de uma cadeia de voz, o fim de um rig de baixo. <b class="ui">Corte grave</b> vai de 20 Hz a
+        2 kHz, <b class="ui">Corte agudo</b> de 1 a 20 kHz, cada um com a sua inclinação em chips — <b class="ui">6 dB</b>,
+        <b class="ui">12 dB</b>, <b class="ui">24 dB</b> ou <b class="ui">48 dB</b> por oitava — e <b class="ui">Reso</b> realça
+        os cantos.</p>
       <p>Toda folha de bloco, esta incluída, tem medidores horizontais <b class="ui">IN</b> e
         <b class="ui">OUT</b>. Em um EQ vale a pena observá-los: alguns decibéis de boost em três
         bandas somam rápido, e os medidores dizem se o próximo bloco está sendo atingido mais forte
@@ -468,10 +478,10 @@
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>Capturas NAM</h2>
       <p>O bloco <b class="ui">Amplificador</b> é um bloco só com três fontes. Três chips no topo da sua
-        folha escolhem entre elas: <b class="ui">Integrado</b> é a simulação de amplificador própria
+        folha escolhem entre elas: <b class="ui">Basic</b> é a simulação de amplificador própria
         do NAMper, com as sete vozes listadas acima, e <b class="ui">NAM</b> é o player do Neural
-        Amp Modeler tocando uma captura <b class="ui">.nam</b> de um amplificador real, e <b class="ui">Modeler</b>
-        é o HyperReal, um amp calculado a partir do seu circuito (<a href="#hyperreal">abaixo</a>). As três
+        Amp Modeler tocando uma captura <b class="ui">.nam</b> de um amplificador real, e <b class="ui">HyperReal</b>
+        é um amp calculado a partir do seu circuito (<a href="#hyperreal">abaixo</a>). As três
         vivem no mesmo bloco, então um preset carrega a voz sobre a qual foi construído, a
         captura em torno da qual foi afinado <em>e</em> o seu amp HyperReal, e trocar entre elas é um toque —
         o som que está tocando some em fade enquanto o próximo entra, sem clique e sem buraco.</p>
@@ -513,6 +523,9 @@
         pressione e segure para <b class="ui">MIDI Learn</b>: um único CC percorre o banco inteiro
         a partir da sua pedaleira, e a troca é feita em crossfade em vez de corte, então nada
         estala nem some.</p>
+      <p>A linha <b class="ui">Banco: 6</b> também é um menu: todos os modelos do banco por extenso, numerados, o que
+        está tocando marcado — escolha na lista quando um nome é comprido demais para o botão ou o que você quer
+        está a cinco passos de distância.</p>
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
@@ -549,6 +562,7 @@
         <figcaption>A biblioteca no lado do amplificador: tudo o que você baixou, offline</figcaption>
       </figure>
       <p>O botão <b class="ui">Biblioteca</b> abre uma folha com o nome do seu lado — <b class="ui">Perfis NAM</b> para as capturas do amp, <b class="ui">Caixas</b> ou <b class="ui">Ambientes</b> para os impulsos — com tudo o que você baixou, disponível offline. Ela tem cinco lados, um para cada tipo de bloco: <b class="ui">Amp</b> e <b class="ui">Drive</b> para capturas, <b class="ui">Outboard</b> para o saturador e o compressor, <b class="ui">Cab</b> para impulsos de caixa e <b class="ui">Reverb</b> para os do reverb — espaços, outboard e experimentos. Um bloco só aceita um dos cinco, por isso nunca aparecem juntos: o bloco de onde você abriu a biblioteca escolhe o lado e o mantém, e quando não há bloco para mirar, chips no topo nomeiam os cinco com a contagem de cada um. Os impulsos que vêm com o app ficam nos seus lados, em <b class="ui">Integrado</b>, ao lado dos que você baixa.</p>
+      <p>Quando não há bloco para mirar, a fileira de lados começa com uma chave <b class="ui">NAM</b> | <b class="ui">HyperReal</b>. <b class="ui">NAM</b> são as capturas e os impulsos nos seus lados; <b class="ui">HyperReal</b> são os circuitos — os do catálogo, marcados como <b class="ui">Integrado</b>, e os arquivos de amp que você importou (<a href="#hyperreal-mods">abaixo</a>) — em prateleiras por tipo, cada um com a sua família e o ano embaixo do nome e nenhum nome de fabricante em lugar nenhum. A partir de um <b class="ui">Amplificador</b> a biblioteca segue a aba de onde foi aberta: a aba <b class="ui">NAM</b> abre as capturas, a aba <b class="ui">HyperReal</b> os circuitos.</p>
       <p>Dentro de um lado, os tones são agrupados pelo que foi capturado: primeiro <b class="ui">Integrado</b>, depois <b class="ui">Amplificadores</b>, <b class="ui">Pedais</b>, <b class="ui">Outboard</b>, <b class="ui">Experimental</b>, <b class="ui">Caixas</b>, <b class="ui">Ambientes</b> e <b class="ui">Outros</b>. Cada linha é um tone, não um arquivo: capa, título, <b class="ui">@author</b> e quantos modelos ele traz. Um toque o carrega (um tone com um modelo toca sozinho; um com vários vira o banco do bloco) e o tone cai onde pertence: um amp no bloco <b class="ui">Amplificador</b>, um pedal no <b class="ui">Drive</b> antes dele, um equipamento de outboard no <b class="ui">Saturador</b>, uma caixa na <b class="ui">Caixa</b> depois, um espaço no <b class="ui">Reverb</b>.</p>
       <p>A seta abre os modelos do tom. No tom que <em>é</em> o banco do bloco cada modelo traz uma
         marca de seleção: ela mantém aquele modelo na varredura do botão <b class="ui">Modelo</b>, e
@@ -562,8 +576,8 @@
         numa linha, para ter <b class="ui">Abrir no TONE3000</b>,
         <b class="ui">Compartilhar arquivo .nam</b> / <b class="ui">Compartilhar arquivo IR</b> e
         <b class="ui">Apagar</b>. A barra de ferramentas tem <b class="ui">Importar arquivos…</b> —
-        um seletor com multi-seleção que aceita capturas <b class="ui">.nam</b> e impulsos
-        <b class="ui">.wav</b> — junto com <b class="ui">Exportar tudo (N arquivos)</b> e
+        um seletor com multi-seleção que aceita capturas <b class="ui">.nam</b>, impulsos
+        <b class="ui">.wav</b> e arquivos de amp HyperReal — junto com <b class="ui">Exportar tudo (N arquivos)</b> e
         <b class="ui">Atualizar tudo</b>.</p>
       <p>Vazio, o lado <b class="ui">NAM</b> mostra <b class="ui">Os perfis que você baixa do TONE3000 ficam guardados aqui.</b>; os lados de impulsos sempre têm pelo menos os embutidos. Se um modelo não puder ser lido aparece <b class="ui r">Não foi possível carregar o
         modelo de amp {filename}.</b>, quase sempre um arquivo movido ou apagado por baixo do rig.</p>
@@ -650,7 +664,7 @@
         circuito, então ele responde à sua palhetada e aos seus controles como o circuito
         responde. Nada é baixado e nenhuma conta é necessária: o catálogo vem dentro do app, no
         celular, no tablet, no Mac e nos plug-ins.</p>
-      <p>No bloco <b class="ui">Amplificador</b> ele é o terceiro chip, <b class="ui">Modeler</b>.
+      <p>No bloco <b class="ui">Amplificador</b> ele é o terceiro chip, <b class="ui">HyperReal</b>.
         Toque nele e o bloco toca um amp HyperReal; o chip passa então a mostrar o nome do amp com
         uma seta, e um toque nele lista o catálogo. Sob os chips ficam a marca HyperReal e os
         controles do próprio amp, com os nomes que ele tem — <b class="ui">Volume</b>, <b class="ui">Treble</b>,
@@ -664,12 +678,12 @@
       <figure>
         <img class="phone" src="/docs/assets/amp-modeler.png" width="600" height="1303"
              alt="O bloco Amplificador na terceira fonte: os chips Integrado, NAM e Cali Mark IV com o botão do circuito ao lado, a marca HyperReal, as chaves do amplificador como chips e um interruptor, e seus botões.">
-        <figcaption>A fonte <b class="ui">Modeler</b>: o nome do amplificador no chip, a marca HyperReal, suas chaves e botões</figcaption>
+        <figcaption>A fonte <b class="ui">HyperReal</b>: o nome do amplificador no chip, a marca HyperReal, suas chaves e botões</figcaption>
       </figure>
       <p>Todo amp tem depois de si um simples volume de saída, o seu último knob (<b class="ui">Master</b> ou
         <b class="ui">Output</b>). Enquanto o <b class="ui">Nível automático</b> do bloco está ligado, esse knob é
         do Nível automático e não aparece: o amp é nivelado em cada posição do seu ganho, do seu master
-        e das suas chaves, como o amp integrado e as capturas, então girar o ganho molda
+        e das suas chaves, como o amp <b class="ui">Basic</b> e as capturas, então girar o ganho molda
         o som e não o volume. Desligue o <b class="ui">Nível automático</b> e o knob aparece
         e o amp fica tão alto quanto o seu circuito o faz.</p>
       <p>Os knobs são knobs comuns: um toque longo oferece <b class="ui">MIDI Learn</b>, as cenas e
@@ -677,7 +691,7 @@
         do Amplificador os alcançam na ordem do amp.</p>
       <div class="note">
         <div class="t">O mais pesado dos três</div>
-        <p>Um circuito custa muito mais processador do que uma captura ou o amp integrado. No iPhone, no iPad
+        <p>Um circuito custa muito mais processador do que uma captura ou o amp <b class="ui">Basic</b>. No iPhone, no iPad
           e no Android ele ganha um núcleo do processador só seu —
           <b class="ui">Modelador de amp em thread própria</b> em <a href="/docs/pt/settings.html#audio">Ajustes → Áudio</a>.
           Se o chip <b class="ui">Carga de DSP</b> ficar vermelho, um buffer maior ou um amp a menos é o
@@ -685,8 +699,8 @@
       </div>
 
       <h3>O catálogo</h3>
-      <p>Quinze amps — amps valvulados do fim dos anos cinquenta aos noventa, dois transistorizados e
-        dois para baixo. Os nomes são do próprio NAMper.</p>
+      <p>Dezoito amps — amps valvulados do fim dos anos cinquenta aos anos dois mil, dois transistorizados
+        e dois para baixo. Os nomes são do próprio NAMper.</p>
       <div class="tw">
         <table>
           <thead><tr><th>Amp</th><th>O que é</th><th>Chaves</th></tr></thead>
@@ -703,6 +717,9 @@
             <tr><td><b class="ui">Cali Mark IV</b></td><td>Um canal lead californiano dos anos noventa com equalizador gráfico de cinco bandas: quatro 6L6GC</td><td><b class="ui">Pull fat</b>, <b class="ui">Pull bright</b>, <b class="ui">Presence shift</b>, <b class="ui">Power</b>: pentodo ou triodo</td></tr>
             <tr><td><b class="ui">Cali Rect</b></td><td>Um cabeçote californiano de alto ganho dos anos noventa: quatro 6L6GC, 100 W</td><td><b class="ui">Rectifier</b>: válvula ou diodo</td></tr>
             <tr><td><b class="ui">Block Letter 51</b></td><td>Um cabeçote de alto ganho dos anos noventa com um pré e um pós-ganho: quatro 6L6GC, 120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Solo 100</b></td><td>Um cabeçote de alto ganho do fim dos anos oitenta no seu canal de overdrive, aquele de que descende toda uma linhagem de cabeçotes modificados: quatro 6L6GC, 100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Vier 4</b></td><td>Um cabeçote alemão de quatro canais dos anos noventa no seu canal lead, com master, presence e depth globais: quatro EL34, 100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Ultra Sonic</b></td><td>Um cabeçote de alto ganho dos anos dois mil no seu canal de alto ganho: quatro EL34, 120 W</td><td>—</td></tr>
             <tr><td><b class="ui">Jazz Clean 77</b></td><td>Um amp limpo transistorizado dos anos oitenta, um pré com amplificadores operacionais e distorção própria</td><td>—</td></tr>
             <tr><td><b class="ui">Bass Tower 70</b></td><td>Um cabeçote valvulado de baixo de 300 W: seis 6550</td><td><b class="ui">Ultra hi</b>, <b class="ui">Midrange select</b>: 220, 800 ou 3000 Hz</td></tr>
             <tr><td><b class="ui">Rack Bass 800</b></td><td>Um pré de baixo transistorizado dos anos oitenta que termina no seu DI — sem alto-falante</td><td>—</td></tr>
@@ -717,6 +734,31 @@
       <p>A saída de um amp é a tensão no seu alto-falante, sem caixa: ponha uma
         <b class="ui">Caixa</b> depois dele, como você faria depois de um cabeçote de verdade. Um amp recém-escolhido começa
         em <b class="ui">Brit 800</b>.</p>
+
+      <h3 id="hyperreal-pedals">Pedais e outboard HyperReal</h3>
+      <p>HyperReal não é só amps. O <b class="ui">Drive</b>, o <b class="ui">Compressor</b> e o
+        <b class="ui">Equalizador</b> têm um chip <b class="ui">HyperReal</b> próprio ao lado de <b class="ui">Basic</b> (e
+        <b class="ui">NAM</b>), e sob ele um pedal ou um equipamento de estúdio calculado a partir do seu esquema do mesmo jeito —
+        o amplificador operacional, os diodos de clipping, os transistores, as válvulas e os transformadores do original,
+        com os knobs que o original tem. O chip mostra o nome do circuito, um toque nele lista
+        os outros, e o botão do circuito ao lado abre o esquema, ao vivo, como faz para um amp.
+        Um pedal custa menos que um amp; o fuzz de germânio é o mais caro deles.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Circuito</th><th>Bloco</th><th>O que é</th><th>Knobs</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Green Drive</b></td><td><b class="ui">Drive</b></td><td>O overdrive verde do fim dos anos setenta: um amplificador operacional com clipping suave de silício na sua malha de realimentação</td><td><b class="ui">Overdrive</b>, <b class="ui">Tone</b>, <b class="ui">Nível</b></td></tr>
+            <tr><td><b class="ui">Yellow Drive</b></td><td><b class="ui">Drive</b></td><td>O overdrive amarelo do início dos anos oitenta, com clipping assimétrico</td><td><b class="ui">Drive</b>, <b class="ui">Tone</b>, <b class="ui">Nível</b></td></tr>
+            <tr><td><b class="ui">Gold Drive</b></td><td><b class="ui">Drive</b></td><td>O overdrive boutique dos anos noventa: o limpo e o saturado misturados num único ganho duplo</td><td><b class="ui">Ganho</b>, <b class="ui">Agudos</b>, <b class="ui">Saída</b></td></tr>
+            <tr><td><b class="ui">Tangerine Distortion</b></td><td><b class="ui">Drive</b></td><td>A distorção laranja do fim dos anos setenta, o primeiro circuito no seu chip original</td><td><b class="ui">Dist</b>, <b class="ui">Tone</b>, <b class="ui">Nível</b></td></tr>
+            <tr><td><b class="ui">Rodent Dist</b></td><td><b class="ui">Drive</b></td><td>A distorção roedora dos anos oitenta: um amplificador operacional levado ao limite, o filtro depois dos clippers</td><td><b class="ui">Distorção</b>, <b class="ui">Filtro</b>, <b class="ui">Volume</b></td></tr>
+            <tr><td><b class="ui">Ram Fuzz</b></td><td><b class="ui">Drive</b></td><td>O grande fuzz de sustain de quatro transistores, a reedição de 2000</td><td><b class="ui">Volume</b>, <b class="ui">Tone</b>, <b class="ui">Sustain</b></td></tr>
+            <tr><td><b class="ui">Ge Feedback Fuzz</b></td><td><b class="ui">Drive</b></td><td>Um fuzz de germânio dos anos noventa que se realimenta: dois transistores de germânio atrás de um de silício, o gating e a oscilação nos seus knobs</td><td><b class="ui">Volume</b>, <b class="ui">Gate</b>, <b class="ui">Comp</b>, <b class="ui">Drive</b>, <b class="ui">Stab</b></td></tr>
+            <tr><td><b class="ui">Tube Program EQ</b></td><td><b class="ui">Equalizador</b></td><td>O equalizador de programa passivo de 1956 com o seu amplificador valvulado de recuperação: boost e corte ao mesmo tempo para um grave fechado</td><td><b class="ui">Low Freq</b>, <b class="ui">Low Boost</b>, <b class="ui">Low Atten</b>, <b class="ui">High Freq</b>, <b class="ui">High Boost</b>, <b class="ui">Bandwidth</b>, <b class="ui">Atten Sel</b>, <b class="ui">High Atten</b></td></tr>
+            <tr><td><b class="ui">Twin-Mu Limiter</b></td><td><b class="ui">Compressor</b></td><td>O limiter de mu variável de 1959, um canal, com o sidechain resolvido à parte do caminho do sinal</td><td><b class="ui">Entrada</b>, <b class="ui">Limiar</b>, <b class="ui">Time Constant</b>, <b class="ui">DC Threshold</b>, <b class="ui">Zero</b></td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3>O circuito</h3>
       <p>Ao lado do nome do amp, um pequeno botão com um ícone de circuito (<b class="ui">Circuito</b> para um leitor de tela) abre o circuito do amp,
@@ -749,6 +791,26 @@
         em <b class="ui">Blocos</b>, um brilho na válvula em <b class="ui">Esquema</b> — e fica vermelho
         enquanto o estágio satura; um nó de alimentação mostra quantos volts ele cede conforme as válvulas puxam dele.
         <b class="ui">Toque em um estágio para ver o que ele é.</b> — um toque abre um cartão com as peças daquele estágio.</p>
+
+      <h3 id="hyperreal-mods">Mods e os seus próprios arquivos de amp</h3>
+      <p>O circuito é seu para mudar. Na tela do circuito uma peça abre um stepper — menos, o
+        valor, mais — por todos os valores que o amp pode assumir: um resistor, um capacitor ou um indutor
+        na série padrão, uma década para cada lado do valor original, uma tensão em passos redondos, a
+        impedância de um alto-falante nos taps do transformador; o valor original fica marcado, cada passo é
+        verificado e ouvido na hora, e um estágio valvulado aceita outra válvula do mesmo jeito. O menu de mods do
+        cabeçalho mostra <b class="ui">Original</b>, <b class="ui">Modificado</b> ou o nome de um mod salvo:
+        <b class="ui">Salvar como novo mod…</b> guarda as mudanças atuais como um conjunto com nome para este amp,
+        <b class="ui">Update</b> grava-as por cima do conjunto de onde vieram, <b class="ui">Renomear…</b> e
+        <b class="ui">Apagar</b> fazem o que dizem. Os conjuntos vivem na biblioteca, onde o plug-in também os vê; um
+        preset carrega os mods que toca, então continua inteiro sem a biblioteca.</p>
+      <p>Um arquivo de amp seu — um documento JSON no formato próprio do HyperReal, um amplificador descrito
+        do jeito que o seu esquema o descreve: os estágios, as peças com os seus valores, os potenciômetros, as
+        chaves, a fonte e a carga do alto-falante — é importado para a biblioteca ao lado das capturas, pelo
+        <b class="ui">Importar arquivos…</b> da biblioteca, pelo app Arquivos ou por uma folha de compartilhamento. Ele é
+        verificado na entrada, e um arquivo que não carrega ou não compila é recusado com o motivo, então um arquivo
+        ruim nunca chega ao palco. A biblioteca o lista no lado <b class="ui">HyperReal</b> com o catálogo; um
+        preset que o toca o nomeia, e se o arquivo sumiu o preset toca o amp <b class="ui">Basic</b>
+        e avisa.</p>
 
       <h3 id="hyperreal-factory">HyperReal no banco de fábrica</h3>
       <p>A menos que você tenha escolhido outra coisa em <b class="ui">PRESETS DE FÁBRICA</b> nos Ajustes, os
@@ -792,7 +854,12 @@
           <thead><tr><th>Lado da biblioteca</th><th>Respostas ao impulso inclusas</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">Cab</b></td>
-              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+              <td>Dez da Shift Line — lacrados no app, tocam mas não são exportados, e cada um traz a
+                legenda <b class="ui">IR by Shift Line</b> com um link para o seu pacote: <b class="ui">Open 112 Clean</b>,
+                <b class="ui">Open 212 Chime</b>, <b class="ui">Open 212 Silver</b>, <b class="ui">Tweed 410</b>,
+                <b class="ui">British 212</b> e <b class="ui">Modern 412</b> para guitarra, <b class="ui">Bass 115</b>,
+                <b class="ui">Bass 215</b>, <b class="ui">Bass 410</b> e <b class="ui">Bass 810</b> para baixo. E os seis que
+                já estavam lá: <b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
@@ -804,6 +871,9 @@
           </tbody>
         </table>
       </div>
+      <p>Os presets de fábrica tocam nos gabinetes Shift Line, cada amp no gabinete para o qual o seu tipo
+        foi feito — os tweeds nos de fundo aberto, os cabeçotes britânicos e modernos nos 2×12 e 4×12
+        fechados, os rigs de baixo nos gabinetes de baixo.</p>
       <div class="note">
         <div class="t">Nem todo amplificador precisa de cab</div>
         <p>Muitas capturas do TONE3000 são tiradas da saída do alto-falante, com gabinete e
@@ -953,9 +1023,12 @@
         <b class="ui">Apagar TODOS os presets do usuário? Os quatro rigs de fábrica voltam.</b></p>
 
       <h3>Cenas e o pedal de morph</h3>
-      <p>Cada rig tem quatro cenas, <b class="ui">A</b>–<b class="ui">D</b>: bypass e posições dos
-        knobs de cada bloco, com a cadeia e os modelos carregados intocados, então trocar de cena não
-        tem falha. A cena acesa acompanha as suas edições — um knob girado enquanto
+      <p>Cada rig tem quantas cenas você definir — de uma a dezesseis, de <b class="ui">A</b> em diante — guardando
+        bypass e posições dos knobs de cada bloco, com a cadeia e os modelos carregados intocados, então trocar de
+        cena não tem falha. O número é um ajuste só para todos os presets:
+        <b class="ui">Número de cenas</b> em <b class="ui">CENAS</b> na página <b class="ui">Palco</b> dos Ajustes, ou um
+        toque longo num chip de cena; diminua e as cenas além dele ficam ocultas, não perdidas. Voltar
+        a um preset cai na cena em que você o deixou, enquanto o app estiver rodando. A cena acesa acompanha as suas edições — um knob girado enquanto
         <b class="ui">A</b> está no ar pertence a <b class="ui">A</b> dali em diante, então um ajuste
         nunca se perde ao trocar.</p>
       <p>Um pedal de expressão também pode fazer <b>morph</b> entre duas cenas. Em Ajustes →
@@ -990,7 +1063,7 @@
         <b class="ui">Rig vazio</b>. Abaixo disso, <b class="ui">De um preset</b> lista seus
         presets salvos por nome — ou abre uma folha pesquisável
         <b class="ui">NOVO RIG DE UM PRESET</b> assim que houver mais de oito deles.</p>
-      <p>Um modelo não é uma cadeia pelada. Cada um chega com suas quatro cenas preenchidas e um ramo
+      <p>Um modelo não é uma cadeia pelada. Cada um chega com suas cenas preenchidas e um ramo
         ao lado da cadeia: na guitarra, a linha molhada de delay e reverb
         (Clean · Crunch · Lead · Ambient); no baixo, a sujeira tirada antes do amp e remisturada
         depois, para os graves ficarem limpos (Fingers · Pick · Synth · Dub); na voz, o dobro
@@ -1011,6 +1084,9 @@
         este rig") faz um rig sobreviver às trocas de preset, que é como você mantém uma cadeia de
         vocal intacta enquanto troca sons de guitarra por um footswitch. Um botão de lixeira
         (<b class="ui">Remover rig</b>) aparece assim que houver mais de um rig.</p>
+      <p>Um preset entra na frente e os rigs fixados vão para trás dele; os rigs não fixados saem,
+        um ou vários, então um preset de um rig depois de um de quatro deixa um rig, não quatro.
+        <b class="ui">Novo setup</b> no pé do menu <b class="ui">+ RIG</b> limpa tudo e deixa um único rig vazio.</p>
       <p>O layout segue o aparelho: em paisagem os rigs se empilham como linhas com cada cadeia
         correndo da esquerda para a direita; em retrato eles ficam lado a lado com as cadeias
         correndo de cima para baixo.</p>

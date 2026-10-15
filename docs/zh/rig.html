@@ -102,7 +102,7 @@
             <tr><td><b class="ui">延迟与混响</b></td><td><b class="ui">延迟</b>, <b class="ui">冻结</b>, <b class="ui">混响</b></td></tr>
             <tr><td><b class="ui">过载</b></td><td><b class="ui">过载</b>, <b class="ui">Lo-fi</b>, <b class="ui">饱和器</b></td></tr>
             <tr><td><b class="ui">动态</b></td><td><b class="ui">压缩器</b>, <b class="ui">去齿音</b>, <b class="ui">门限</b>, <b class="ui">限制器</b>, <b class="ui">多段</b>, <b class="ui">渐强</b>, <b class="ui">瞬态</b>, <b class="ui">人声</b></td></tr>
-            <tr><td><b class="ui">均衡与滤波</b></td><td><b class="ui">均衡器</b>, <b class="ui">哇音</b></td></tr>
+            <tr><td><b class="ui">均衡与滤波</b></td><td><b class="ui">切除</b>, <b class="ui">均衡器</b>, <b class="ui">哇音</b></td></tr>
             <tr><td><b class="ui">调制</b></td><td><b class="ui">合唱</b>, <b class="ui">加倍</b>, <b class="ui">合奏</b>, <b class="ui">镶边</b>, <b class="ui">移相</b>, <b class="ui">旋转</b>, <b class="ui">切片器</b>, <b class="ui">震音</b></td></tr>
             <tr><td><b class="ui">音高</b></td><td><b class="ui">十二弦</b>, <b class="ui">自动修音</b>, <b class="ui">和声</b>, <b class="ui">八度</b>, <b class="ui">音高</b>, <b class="ui">合成器</b>, <b class="ui">声码器</b></td></tr>
             <tr><td><b class="ui">实用工具</b></td><td><b class="ui">FB抑制</b>, <b class="ui">效果环路</b>, <b class="ui">发送</b>, <b class="ui">音量</b></td></tr>
@@ -113,7 +113,8 @@
       <p>音箱和它的箱体排在最前；其余每个分类，以及分类内的模块，都按字母顺序排列。带有预设的模块
         不会直接落进信号链，而是打开一个子菜单：<b class="ui">默认设置</b>、该模块的出厂预设和
         已保存预设，以及在 <b class="ui">来自机架预设</b> 下从某个音色组预设里单独取出的同一种模块
-        ——这个音色组的过载，那个音色组的延迟。</p>
+        ——这个音色组的过载，那个音色组的延迟。模块预设会带上它的电路、它的脉冲和
+        它的自动电平，并为模块命名。</p>
       <figure>
         <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
              alt="带有氛围信号链的 Rig 标签页：音箱之前是一个渐强模块，之后依次是箱体、合奏、延迟、冻结和混响，每个模块都是信号链中的一个方块。">
@@ -136,6 +137,9 @@
               还可以跨到另一条信号链或另一个音色组。或者长按 →
               <b class="ui">左移</b> / <b class="ui">右移</b> 一步一步移动</td></tr>
             <tr><td>移除</td><td>长按 → <b class="ui">移除</b></td></tr>
+            <tr><td>为模块命名</td><td>长按 → <b class="ui">命名…</b>：标签上显示你起的名字，取代
+              <b class="ui">DRIVE 2</b>。用模块预设设定的模块会自动采用该预设的名字——
+              原来写着 <b class="ui">DRIVE 2</b> 的地方变成“Solo Boost”</td></tr>
             <tr><td>重置旋钮</td><td>双击它</td></tr>
             <tr><td>为控件设置 MIDI 学习</td><td>长按任意旋钮或标签行 →
               <b class="ui">MIDI Learn "&lt;label&gt;"</b>。控件会高亮显示自身轮廓，
@@ -271,16 +275,16 @@
           <tbody>
             <tr><td><b class="ui">门限</b></td><td><b class="ui">模型</b></td>
               <td><b class="ui">经典</b>, <b class="ui">智能</b>, <b class="ui">3段</b>, <b class="ui">降噪</b></td></tr>
-            <tr><td><b class="ui">压缩器</b></td><td><b class="ui">模型</b> · <b class="ui">侧链</b></td>
-              <td><b class="ui">VCA</b>, <b class="ui">光电</b>, <b class="ui">FET</b>, <b class="ui">踏板</b> · 侧链
+            <tr><td><b class="ui">压缩器</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">模型</b> · <b class="ui">侧链</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">光电</b>, <b class="ui">FET</b>, <b class="ui">踏板</b> · 在 <b class="ui">HyperReal</b> 上，是 <a href="#hyperreal-pedals"><b class="ui">Twin-Mu Limiter</b></a> · 侧链
                 <b class="ui">关</b>, <b class="ui">输入1</b>…<b class="ui">输入4</b>, <b class="ui">SMP</b></td></tr>
-            <tr><td><b class="ui">过载</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">模型</b></td>
+            <tr><td><b class="ui">过载</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">模型</b></td>
               <td><b class="ui">激励</b>: <b class="ui">清音激励</b>, <b class="ui">高频激励</b> ·
                 <b class="ui">过载</b>: <b class="ui">电子管</b>, <b class="ui">布鲁斯</b>, <b class="ui">透明</b> ·
                 <b class="ui">失真</b>: <b class="ui">失真</b>, <b class="ui">金属</b> ·
-                <b class="ui">法兹</b>: <b class="ui">法兹 Ge</b>, <b class="ui">法兹 Si</b>, <b class="ui">八度法兹</b></td></tr>
-            <tr><td><b class="ui">音箱</b></td><td><b class="ui">内置</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">模型</b></td>
-              <td><b class="ui">清音</b>, <b class="ui">Tweed</b>, <b class="ui">英式</b>, <b class="ui">钟音</b>, <b class="ui">现代</b>, <b class="ui">低音</b>, <b class="ui">原声</b> · 在 <b class="ui">Modeler</b> 上，是 <a href="#hyperreal">HyperReal 目录</a> 的十五台音箱</td></tr>
+                <b class="ui">法兹</b>: <b class="ui">法兹 Ge</b>, <b class="ui">法兹 Si</b>, <b class="ui">八度法兹</b> · 在 <b class="ui">HyperReal</b> 上，是 <a href="#hyperreal-pedals">七款踏板</a></td></tr>
+            <tr><td><b class="ui">音箱</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">模型</b></td>
+              <td><b class="ui">清音</b>, <b class="ui">Tweed</b>, <b class="ui">英式</b>, <b class="ui">钟音</b>, <b class="ui">现代</b>, <b class="ui">低音</b>, <b class="ui">原声</b> · 在 <b class="ui">HyperReal</b> 上，是 <a href="#hyperreal">HyperReal 目录</a> 的十八台音箱</td></tr>
             <tr><td><b class="ui">饱和器</b></td><td><b class="ui">类型</b></td>
               <td><b class="ui">电子管</b>, <b class="ui">磁带</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">Lo-fi</b></td><td><b class="ui">类型</b></td>
@@ -320,11 +324,11 @@
           </tbody>
         </table>
       </div>
-      <p><b class="ui">音箱</b> 模块的 <b class="ui">内置</b> 一侧是 NAMper 自带的电子管放大器，旋钮一如所料：<b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">中频</b>、<b class="ui">高音</b>、<b class="ui">临场</b> 和 <b class="ui">主音量</b>，<b class="ui">模型</b> 芯片上有七种音色取向。它不需要下载也不需要账号，所以离线时靠它撑场；旁边的 <b class="ui">NAM</b> 芯片换成捕获，<b class="ui">Modeler</b> 芯片换成依电路计算出的音箱 — 见下文的 <a href="#nam">NAM 采样</a> 和 <a href="#hyperreal">HyperReal 音箱</a>。</p>
+      <p><b class="ui">音箱</b> 模块的 <b class="ui">Basic</b> 一侧是 NAMper 自带的电子管放大器，旋钮一如所料：<b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">中频</b>、<b class="ui">高音</b>、<b class="ui">临场</b> 和 <b class="ui">主音量</b>，<b class="ui">模型</b> 芯片上有七种音色取向。它不需要下载也不需要账号，所以离线时靠它撑场；旁边的 <b class="ui">NAM</b> 芯片换成捕获，<b class="ui">HyperReal</b> 芯片换成依电路计算出的音箱 — 见下文的 <a href="#nam">NAM 采样</a> 和 <a href="#hyperreal">HyperReal 音箱</a>。</p>
       <p><b class="ui">饱和器</b> 是旧的 Tube Sat 和 Tape Sat 的去处：一个模块，类型芯片上选 <b class="ui">电子管</b>、<b class="ui">磁带</b> 或外部设备的 <b class="ui">NAM</b> 捕获。<b class="ui">合奏</b> 让一件乐器听起来像分布在声场各处的几位演奏者 — 没有 LFO，没有失谐，单声道求和就是输入本身；模式芯片上选 <b class="ui">天鹅绒</b> 或 <b class="ui">全通</b>。</p>
 
       <h3>过载、动态与时间</h3>
-      <p><b class="ui">过载</b> 模块的内置一侧有分属四个家族的十种电路，从列表中选择，每个家族都有自己的一套旋钮：boost 是 <b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b> 和 <b class="ui">混合</b>（把干净的吉他声混回来）；overdrive 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">电平</b>、<b class="ui">混合</b>；distortion 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b>；fuzz 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">偏置</b>（工作点）、<b class="ui">电压</b>（电池——过了中点就会塌陷并开始断续）和 <b class="ui">电平</b>。添加菜单里只列出一个过载模块，信号链按电路来命名模块，所以一组叠在一起的效果读作 TREBLE BOOST、TUBE、FUZZ GE。</p>
+      <p><b class="ui">过载</b> 模块的 <b class="ui">Basic</b> 一侧有分属四个家族的十种电路，从列表中选择，每个家族都有自己的一套旋钮：boost 是 <b class="ui">增益</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b> 和 <b class="ui">混合</b>（把干净的吉他声混回来）；overdrive 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">电平</b>、<b class="ui">混合</b>；distortion 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">低音</b>、<b class="ui">高音</b>、<b class="ui">电平</b>；fuzz 是 <b class="ui">增益</b>、<b class="ui">音色</b>、<b class="ui">偏置</b>（工作点）、<b class="ui">电压</b>（电池——过了中点就会塌陷并开始断续）和 <b class="ui">电平</b>。添加菜单里只列出一个过载模块，信号链按电路来命名模块，所以一组叠在一起的效果读作 TREBLE BOOST、TUBE、FUZZ GE。</p>
       <p>现在每一种 <b class="ui">压缩器</b> 面板上还多了 <b class="ui">拐点</b>、<b class="ui">混合</b>（不全开就是并联压缩）和 <b class="ui">HPF</b>——一个只作用于检测器的高通，这样低频就不会带着其余部分一起抽吸。</p>
       <p><b class="ui">延迟</b> 新增了第二个抽头，时间按主延迟时间的比例设定——<b class="ui">抽头 2</b> 及其 <b class="ui">抽头电平</b>，用于双重延迟和节奏型延迟——另外还有 <b class="ui">反向</b>、作用于重复音的 <b class="ui">调制</b>、位于反馈回路内的 <b class="ui">低切</b> 和 <b class="ui">高切</b>（每一次重复都比上一次更暗或更薄），以及 <b class="ui">闪避</b>——你演奏时压住重复音，在间隙里再让它们浮上来。</p>
       <div class="figrow">
@@ -384,8 +388,8 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>七种均衡模型</h2>
-      <p>只有一个 <b class="ui">均衡器</b> 模块，但里面藏着七种完全不同的均衡器。切换模型
+      <h2 id="eq"><span class="n">02.3</span>六种均衡模型</h2>
+      <p>只有一个 <b class="ui">均衡器</b> 模块，但里面藏着六种完全不同的均衡器。切换模型
         会同时更换旋钮组和声音，所以要根据任务选择合适的一种——快速调音、精准切除，
         或是母带风格的搁架式均衡。</p>
       <div class="tw">
@@ -397,10 +401,11 @@
                 这与旧版三段式均衡器使用相同的滤波器，所以老音色组的声音不会改变。</td>
               <td><b class="ui">低音</b>, <b class="ui">中频</b>, <b class="ui">高音</b>，各 ±12 dB</td></tr>
             <tr><td><b class="ui">参量</b></td>
-              <td>完整参量式——同样是三个频段，但每个频率都可移动，中频还带一个 Q 控制。</td>
-              <td><b class="ui">低频</b>, <b class="ui">中频</b>, <b class="ui">高频</b>,
-                <b class="ui">低频点</b> 40–400, <b class="ui">中频点</b> 200–5000,
-                <b class="ui">高频点</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+              <td>需要多少频段就有多少，都在一张图上：每个频段可以是钟形、搁架、每倍频程 6 到 48 dB 的切除、
+                陷波、带通或倾斜，作用于双声道、左声道、右声道、中或侧——需要的话还可以是动态的，随自身电平
+                或侧链而动。曲线画在一台实时分析仪上，同时显示输入和输出；现在每个模型都显示自己的
+                曲线。</td>
+              <td>图上的各个频段，每个都有自己的频率、增益和宽度</td></tr>
             <tr><td><b class="ui">无源</b></td>
               <td>经典的无源母带均衡技巧：一个低频搁架提升加上一个频率稍高一点的切除搁架，
                 让你同时提升和衰减，得到紧实的低频——再配上一个宽幅高频钟形和顶部的高频
@@ -414,10 +419,6 @@
               <td><b class="ui">HPF</b> 0–300, <b class="ui">低频</b>, <b class="ui">低频点</b>,
                 <b class="ui">中频</b>, <b class="ui">中频点</b>, <b class="ui">Q</b>,
                 <b class="ui">高频</b>, <b class="ui">高频点</b></td></tr>
-            <tr><td><b class="ui">Bax</b></td>
-              <td>Baxandall 式——两个非常宽、非常温和的搁架。当你想让整体声音略暗
-                或略亮一点时，就用它。</td>
-              <td><b class="ui">低音</b>, <b class="ui">高音</b></td></tr>
             <tr><td><b class="ui">图示 7</b></td>
               <td>单块效果器式的图示均衡：七个倍频程频段，从 100 Hz 到 6.4 kHz，每段一个推子。
                 双击推子可将其归零。</td>
@@ -433,6 +434,15 @@
              alt="均衡器模块面板，选中 Passive 模型，显示其八个旋钮：Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten 和 Atten Hz，顶部有 IN 和 OUT 电平表。">
         <figcaption>选中 Passive 模型的均衡器模块</figcaption>
       </figure>
+      <p><b class="ui">均衡器</b> 有两种声源，就像音箱有三种一样：<b class="ui">Basic</b> 是上面这六种模型，
+        <b class="ui">HyperReal</b> 是 <a href="#hyperreal-pedals"><b class="ui">Tube Program EQ</b></a>，一台依电路计算出的无源
+        节目均衡器，连同它的电子管补偿放大器在内。</p>
+      <h3 id="cut">切除模块</h3>
+      <p>同一个面板分区里的 <b class="ui">切除</b> 模块就是一个低切加一个高切，别无其他
+        ——人声链的开头，贝斯音色组的末尾。<b class="ui">低切</b> 范围为 20 Hz 到
+        2 kHz，<b class="ui">高切</b> 为 1 到 20 kHz，各自的斜率在芯片上选——每倍频程 <b class="ui">6 dB</b>、
+        <b class="ui">12 dB</b>、<b class="ui">24 dB</b> 或 <b class="ui">48 dB</b>——<b class="ui">共振</b> 则抬高
+        转折点。</p>
       <p>每个模块面板，包括这一个，都有横向的 <b class="ui">入</b> 和
         <b class="ui">出</b> 电平表。在 EQ 上尤其值得留意：三个频段各加几个分贝很快就
         会叠加起来，电平表会告诉你下一个模块受到的冲击是否比你原本想要的更猛。</p>
@@ -441,9 +451,9 @@
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAM 采样</h2>
       <p><b class="ui">音箱</b> 是一个模块，三种声源。面板顶部的三个标签用来在它们之间切换：
-        <b class="ui">内置</b> 是 NAMper 自带的音箱模拟，上面列出的七种音色都在这里；
+        <b class="ui">Basic</b> 是 NAMper 自带的音箱模拟，上面列出的七种音色都在这里；
         <b class="ui">NAM</b> 则是 Neural Amp Modeler 播放器，运行一个真实音箱的
-        <b class="ui">.nam</b> 采样，<b class="ui">Modeler</b> 则是 HyperReal，一台依电路计算出的音箱（<a href="#hyperreal">见下文</a>）。三者住在同一个模块里，
+        <b class="ui">.nam</b> 采样，<b class="ui">HyperReal</b> 则是一台依电路计算出的音箱（<a href="#hyperreal">见下文</a>）。三者住在同一个模块里，
         所以一个预设既带着它所基于的内置音色、它围绕调校的那个采样，<em>也</em>带着它的 HyperReal 音箱，
         而在它们之间切换只需一次点击——正在发声的声音淡出，下一个同时淡入，没有爆音，也没有空隙。</p>
       <figure>
@@ -479,6 +489,8 @@
         <b class="ui">模型</b> 旋钮，转动时显示 <b class="ui">1/6 · SM57</b>。它就是一个
         普通旋钮，所以长按会提供 <b class="ui">MIDI 学习</b>：一个 CC 就能从你的踏板上走遍
         整个模型库，而且切换是交叉淡入而不是硬切，所以不会有咔哒声或声音中断。</p>
+      <p><b class="ui">音色库：6</b> 这一行同样是一个菜单：音色库里的每个模型都以全名列出并编号，正在播放的那个打勾
+        ——名字太长、旋钮上显示不下，或者你想要的那个还差五步时，就从列表里选。</p>
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
@@ -512,6 +524,7 @@
         <figcaption>音箱一侧的资源库：下载过的一切，离线可用</figcaption>
       </figure>
       <p><b class="ui">资料库</b> 按钮打开一个以所在面命名的面板——音箱的采样是 <b class="ui">NAM 音色</b>，脉冲是 <b class="ui">箱体</b> 或 <b class="ui">空间</b>——里面是你下载过的一切，离线可用。它有五个面，每类模块一个：采样配置放在 <b class="ui">音箱</b> 与 <b class="ui">过载</b>，饱和与压缩放在 <b class="ui">外置设备</b>，音箱脉冲放在 <b class="ui">箱体</b>，混响脉冲（空间、外置设备与实验）放在 <b class="ui">混响</b>。一个模块只取其中一个面，因此它们从不混在一张列表里：你从哪个模块打开资源库，它就选定并保持那个面；没有模块可指向时，顶部的标签会列出五个面并各带计数。随应用附带的脉冲位于各自面的 <b class="ui">内置</b> 之下，与你下载的并排。</p>
+      <p>没有模块可指向时，这一排面以一个 <b class="ui">NAM</b> | <b class="ui">HyperReal</b> 开关开头。<b class="ui">NAM</b> 是各自面上的采样与脉冲；<b class="ui">HyperReal</b> 是电路——目录里的那些，标为 <b class="ui">内置</b>，以及你导入的音箱文件（<a href="#hyperreal-mods">见下文</a>）——按类别摆在各层架子上，每个名字下面写着它的家族和年代，任何地方都不出现厂商的名字。从 <b class="ui">音箱</b> 打开时，资料库跟随打开它的那个标签页：<b class="ui">NAM</b> 标签页打开采样，<b class="ui">HyperReal</b> 标签页打开电路。</p>
       <p>在一侧内，音色按采样对象分组：先是 <b class="ui">内置</b>，然后是 <b class="ui">音箱</b>、<b class="ui">单块</b>、<b class="ui">外置设备</b>、<b class="ui">实验性</b>、<b class="ui">箱体</b>、<b class="ui">空间</b> 和 <b class="ui">其他</b>。每一行是一个音色而非文件：封面、标题、<b class="ui">@author</b> 和它携带的模型数。轻点即加载——单模型音色单独播放，多模型音色成为模块的音色库——音色落到该去的地方：音箱头进 <b class="ui">音箱</b> 模块，踏板进它前面的 <b class="ui">过载</b>，外置设备进 <b class="ui">饱和器</b>，箱体进它后面的 <b class="ui">箱体</b>，空间进 <b class="ui">混响</b>。</p>
       <p>箭头会展开该音色的模型列表。在<em>正是</em>这个模块模型库的那个音色里，每个模型都
         带一个勾选标记：它把该模型保留在 <b class="ui">模型</b> 旋钮的扫描范围内，点击则把
@@ -523,7 +536,7 @@
         或在一行上右键，会提供 <b class="ui">在 TONE3000 打开</b>、
         <b class="ui">分享 .nam 文件</b> / <b class="ui">分享 IR 文件</b> 和
         <b class="ui">删除</b>。工具栏里有 <b class="ui">导入文件…</b>——一个支持多选、
-        接受 <b class="ui">.nam</b> 采样和 <b class="ui">.wav</b> 脉冲的文件选择器——
+        接受 <b class="ui">.nam</b> 采样、<b class="ui">.wav</b> 脉冲和 HyperReal 音箱文件的文件选择器——
         以及 <b class="ui">导出全部（N 个文件）</b> 和 <b class="ui">全部更新</b>。</p>
       <p>为空时，<b class="ui">NAM</b> 一侧显示 <b class="ui">从 TONE3000 下载的音色会汇集在这里。</b>；脉冲两侧至少总有内置项。模型无法读取时会出现 <b class="ui r">无法加载音箱模型
         {filename}。</b>——通常是文件在 rig 之下被移动或删除了。</p>
@@ -597,7 +610,7 @@
         用的正是这台音箱当年所用元件的数值。它的旋钮转动的是电路自己的电位器，它的开关改变的是电路本身，
         所以它对你的拨弦和各个控制的反应，和电路一样。无需下载，也无需账号：整个目录就内置在应用里，
         在手机、平板、Mac 和插件中都是如此。</p>
-      <p>在 <b class="ui">音箱</b> 模块里，它是第三个芯片，<b class="ui">Modeler</b>。点一下，模块就播放一台
+      <p>在 <b class="ui">音箱</b> 模块里，它是第三个芯片，<b class="ui">HyperReal</b>。点一下，模块就播放一台
         HyperReal 音箱；芯片随即显示这台音箱的名字和一个箭头，再点它就会列出整个目录。芯片下面是
         HyperReal 标志和这台音箱自己的控制，名字与音箱上一致——<b class="ui">Volume</b>、<b class="ui">Treble</b>、
         <b class="ui">Middle</b>、<b class="ui">Bass</b>、<b class="ui">Presence</b>，以及那个电路还有的其他控制，
@@ -609,24 +622,24 @@
       <figure>
         <img class="phone" src="/docs/assets/amp-modeler.png" width="600" height="1303"
              alt="第三种音源上的音箱模块:内置、NAM 与 Cali Mark IV 芯片及旁边的电路按钮、HyperReal 标志、以芯片和开关呈现的音箱开关,以及旋钮。">
-        <figcaption><b class="ui">Modeler</b> 音源:芯片上的音箱名称、HyperReal 标志、开关与旋钮</figcaption>
+        <figcaption><b class="ui">HyperReal</b> 音源:芯片上的音箱名称、HyperReal 标志、开关与旋钮</figcaption>
       </figure>
       <p>每台音箱后面都有一个单纯的输出音量，是它的最后一个旋钮（<b class="ui">Master</b> 或
         <b class="ui">Output</b>）。只要模块的 <b class="ui">自动电平</b> 开着，这个旋钮就归自动电平管，
-        不显示：音箱在其增益、主音量和开关的每一个位置上都经过电平校准，就像内置音箱和采样那样，
+        不显示：音箱在其增益、主音量和开关的每一个位置上都经过电平校准，就像 <b class="ui">Basic</b> 音箱和采样那样，
         所以转动增益改变的是音色而不是音量。关掉 <b class="ui">自动电平</b>，旋钮就会出现，
         音箱的响度就是它的电路所给出的响度。</p>
       <p>这些旋钮就是普通旋钮：长按可使用 <b class="ui">MIDI 学习</b>，场景和渐变踏板都能移动它们；在插件宿主中，
         音箱的 <b class="ui">Modeler 1</b>…<b class="ui">Modeler 16</b> 参数按音箱自己的顺序对应这些旋钮。</p>
       <div class="note">
         <div class="t">三者中最吃资源的一个</div>
-        <p>电路比采样或内置音箱消耗多得多的处理器。在 iPhone、iPad 和 Android 上，它会获得一个独占的处理器核心——
+        <p>电路比采样或 <b class="ui">Basic</b> 音箱消耗多得多的处理器。在 iPhone、iPad 和 Android 上，它会获得一个独占的处理器核心——
           <b class="ui">音箱建模使用独立线程</b>，位于 <a href="/docs/zh/settings.html#audio">设置 → 音频</a>。
           如果 <b class="ui">DSP 负载</b> 芯片变红，第一个办法是加大缓冲区，或少用一台音箱。</p>
       </div>
 
       <h3>目录</h3>
-      <p>十五台音箱——从五十年代末到九十年代的电子管音箱，两台晶体管音箱，还有两台贝斯音箱。
+      <p>十八台音箱——从五十年代末到两千年代的电子管音箱，两台晶体管音箱，还有两台贝斯音箱。
         名字都是 NAMper 自己起的。</p>
       <div class="tw">
         <table>
@@ -644,6 +657,9 @@
             <tr><td><b class="ui">Cali Mark IV</b></td><td>九十年代的加州主音通道，带五段图示均衡：四只 6L6GC</td><td><b class="ui">Pull fat</b>、<b class="ui">Pull bright</b>、<b class="ui">Presence shift</b>、<b class="ui">Power</b>：五极管或三极管</td></tr>
             <tr><td><b class="ui">Cali Rect</b></td><td>九十年代的加州高增益音箱头：四只 6L6GC，100 W</td><td><b class="ui">Rectifier</b>：电子管或二极管</td></tr>
             <tr><td><b class="ui">Block Letter 51</b></td><td>九十年代的高增益音箱头，带前级和后级增益：四只 6L6GC，120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Solo 100</b></td><td>八十年代末的高增益音箱头，用它的过载通道——一整支改装热血音箱头的血脉都源于它：四只 6L6GC，100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Vier 4</b></td><td>九十年代的德国四通道音箱头，用它的主音通道，带全局主音量、临场和深度：四只 EL34，100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Ultra Sonic</b></td><td>两千年代的高增益音箱头，用它的高增益通道：四只 EL34，120 W</td><td>—</td></tr>
             <tr><td><b class="ui">Jazz Clean 77</b></td><td>八十年代的晶体管清音音箱，运放前级，带自己的失真</td><td>—</td></tr>
             <tr><td><b class="ui">Bass Tower 70</b></td><td>300 W 电子管贝斯音箱头：六只 6550</td><td><b class="ui">Ultra hi</b>、<b class="ui">Midrange select</b>：220、800 或 3000 Hz</td></tr>
             <tr><td><b class="ui">Rack Bass 800</b></td><td>八十年代的晶体管贝斯前级，止于它的 DI——没有扬声器</td><td>—</td></tr>
@@ -657,6 +673,30 @@
       </figure>
       <p>音箱的输出是它扬声器上的电压，不含箱体：就像在真正的音箱头后面一样，后面要接一个
         <b class="ui">箱体</b>。新选择的音箱从 <b class="ui">Brit 800</b> 开始。</p>
+
+      <h3 id="hyperreal-pedals">HyperReal 踏板与外置设备</h3>
+      <p>HyperReal 不只是音箱。<b class="ui">过载</b>、<b class="ui">压缩器</b> 和
+        <b class="ui">均衡器</b> 在 <b class="ui">Basic</b>（以及
+        <b class="ui">NAM</b>）旁边也有自己的 <b class="ui">HyperReal</b> 芯片，下面是一台以同样方式依原理图计算出的踏板或录音棚设备——
+        真机的运放、削波二极管、晶体管、电子管和变压器，以及真机所具有的旋钮。芯片显示电路的名字，点它会列出
+        其他电路，旁边的电路按钮会打开实时的原理图，和音箱一样。
+        踏板比音箱省资源，其中锗管法兹最吃资源。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>电路</th><th>模块</th><th>它是什么</th><th>旋钮</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Green Drive</b></td><td><b class="ui">过载</b></td><td>七十年代末的绿色过载：一个运放，反馈回路里是柔和的硅管削波</td><td><b class="ui">过载</b>, <b class="ui">音色</b>, <b class="ui">电平</b></td></tr>
+            <tr><td><b class="ui">Yellow Drive</b></td><td><b class="ui">过载</b></td><td>八十年代初的黄色过载，削波不对称</td><td><b class="ui">过载</b>, <b class="ui">音色</b>, <b class="ui">电平</b></td></tr>
+            <tr><td><b class="ui">Gold Drive</b></td><td><b class="ui">过载</b></td><td>九十年代的精品过载：干净声与削波声由同一个双联增益混合</td><td><b class="ui">增益</b>, <b class="ui">高音</b>, <b class="ui">输出</b></td></tr>
+            <tr><td><b class="ui">Tangerine Distortion</b></td><td><b class="ui">过载</b></td><td>七十年代末的橙色失真，用原装芯片的第一款电路</td><td><b class="ui">失真</b>, <b class="ui">音色</b>, <b class="ui">电平</b></td></tr>
+            <tr><td><b class="ui">Rodent Dist</b></td><td><b class="ui">过载</b></td><td>八十年代的“老鼠”失真：一个被狠狠推动的运放，滤波器在削波器之后</td><td><b class="ui">失真</b>, <b class="ui">滤波</b>, <b class="ui">音量</b></td></tr>
+            <tr><td><b class="ui">Ram Fuzz</b></td><td><b class="ui">过载</b></td><td>大号四晶体管延音法兹，2000 年的复刻版</td><td><b class="ui">音量</b>, <b class="ui">音色</b>, <b class="ui">延音</b></td></tr>
+            <tr><td><b class="ui">Ge Feedback Fuzz</b></td><td><b class="ui">过载</b></td><td>九十年代一款自我反馈的锗管法兹：两只锗晶体管跟在一只硅晶体管后面，门限效果和自激振荡都在它的旋钮上</td><td><b class="ui">音量</b>, <b class="ui">门限</b>, <b class="ui">压缩</b>, <b class="ui">过载</b>, <b class="ui">Stab</b></td></tr>
+            <tr><td><b class="ui">Tube Program EQ</b></td><td><b class="ui">均衡器</b></td><td>1956 年的无源节目均衡器，带电子管补偿放大器：同时提升和衰减，得到紧实的低频</td><td><b class="ui">Low Freq</b>, <b class="ui">Low Boost</b>, <b class="ui">Low Atten</b>, <b class="ui">High Freq</b>, <b class="ui">High Boost</b>, <b class="ui">Bandwidth</b>, <b class="ui">Atten Sel</b>, <b class="ui">High Atten</b></td></tr>
+            <tr><td><b class="ui">Twin-Mu Limiter</b></td><td><b class="ui">压缩器</b></td><td>1959 年的变μ限幅器，单声道，它的侧链与信号路径分开求解</td><td><b class="ui">输入</b>, <b class="ui">阈值</b>, <b class="ui">Time Constant</b>, <b class="ui">DC Threshold</b>, <b class="ui">Zero</b></td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3>电路</h3>
       <p>音箱名字旁有一个带电路图标的小按钮（读屏软件读作 <b class="ui">电路</b>），打开这台音箱的电路，
@@ -684,6 +724,22 @@
       <p>演奏时画面是实时的。一级电子管会显示它的电平——在 <b class="ui">模块</b> 上是沿它底部的一条横条，
         在 <b class="ui">原理图</b> 上是电子管上的辉光——该级削波时变红；电源节点显示它在电子管取电时跌落了多少伏。
         <b class="ui">轻点某一级，查看它是什么。</b> ——点一下会打开一张卡片，列出那一级的元件。</p>
+
+      <h3 id="hyperreal-mods">改装与你自己的音箱文件</h3>
+      <p>电路由你来改。在电路画面上，点一个元件会打开一个步进器——减号、数值、加号——走遍这台音箱能取的每一个值：
+        电阻、电容或电感按标准数列取值，原厂值上下各一个十倍程；电压按整数步进；
+        扬声器阻抗按变压器的抽头；原厂值有标记，每一步都经过检查并立刻能听到，电子管级也可以用同样的方式换一只别的管子。
+        标题里的改装菜单显示 <b class="ui">原厂</b>、<b class="ui">已修改</b> 或某个已保存改装的名字：<b class="ui">存为新改装…</b>
+        把当前改动保存为这台音箱的一个命名组合，<b class="ui">Update</b> 把它们写回到它们来自的那个组合，
+        <b class="ui">重命名…</b> 和 <b class="ui">删除</b> 顾名思义。这些组合存放在
+        资料库里，插件也能看到；预设会带上它所播放的改装，所以即使没有资料库它也是完整的。</p>
+      <p>你自己的音箱文件——一个 HyperReal 自有格式的 JSON 文档，按原理图的方式描述一台放大器：
+        各级、带数值的元件、电位器、开关、电源和扬声器负载——可以和采样一起导入资料库，途径是
+        资料库的 <b class="ui">导入文件…</b>、“文件”应用或共享面板。导入时会进行检查，
+        无法加载或编译的文件会被拒绝并说明原因，所以坏文件永远不会
+        上台。资料库把它和目录一起列在 <b class="ui">HyperReal</b> 一侧；播放它的
+        预设会写明它的名字，如果文件不在了，预设就播放 <b class="ui">Basic</b> 音箱
+        并告诉你。</p>
 
       <h3 id="hyperreal-factory">出厂预设库中的 HyperReal</h3>
       <p>除非你在设置的 <b class="ui">出厂预设</b> 下选了别的，出厂预设播放的就是 HyperReal：
@@ -723,7 +779,12 @@
           <thead><tr><th>资料库侧</th><th>内置脉冲响应</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">箱体</b></td>
-              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+              <td>十个来自 Shift Line——封装在应用里，可以播放但不能导出，每个都标注
+                <b class="ui">IR by Shift Line</b> 并附上它所属音色包的链接：<b class="ui">Open 112 Clean</b>、
+                <b class="ui">Open 212 Chime</b>、<b class="ui">Open 212 Silver</b>、<b class="ui">Tweed 410</b>、
+                <b class="ui">British 212</b> 和 <b class="ui">Modern 412</b> 用于吉他，<b class="ui">Bass 115</b>、
+                <b class="ui">Bass 215</b>、<b class="ui">Bass 410</b> 和 <b class="ui">Bass 810</b> 用于贝斯。以及原来就有的
+                六个：<b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
@@ -735,6 +796,8 @@
           </tbody>
         </table>
       </div>
+      <p>出厂预设播放的是 Shift Line 的箱体，每台音箱配它那一类当初所搭配的箱体——tweed 音箱配开背箱，
+        英式和现代音箱头配封闭的 2×12 和 4×12，贝斯音色组配贝斯箱体。</p>
       <div class="note">
         <div class="t">不是每个音箱都需要箱体</div>
         <p>相当多的 TONE3000 采样取自音箱的扬声器输出，本身已经包含箱体和麦克风；在这类
@@ -863,8 +926,11 @@
         对话框会警告 <b class="ui">删除所有用户预设？四个出厂音色组将恢复。</b></p>
 
       <h3>场景与渐变踏板</h3>
-      <p>每个音色组有四个场景，<b class="ui">A</b>–<b class="ui">D</b>：保存每个模块的旁通状态和旋钮
-        位置，信号链和已加载的模型不动，所以切换场景没有间断。亮着的场景会跟随你的编辑——在
+      <p>每个音色组的场景数量由你设定——一到十六个，从 <b class="ui">A</b> 开始——保存每个模块的旁通状态和旋钮
+        位置，信号链和已加载的模型不动，所以切换场景没有间断。这个数量是所有预设共用的一个设置：
+        设置里 <b class="ui">舞台</b> 页面 <b class="ui">场景</b> 下的 <b class="ui">场景数量</b>，或者
+        长按一个场景芯片；调低它，超出的场景只是被隐藏，不会丢失。只要应用还在运行，回到一个预设时
+        就会落在你离开时的那个场景上。亮着的场景会跟随你的编辑——在
         <b class="ui">A</b> 启用时转动的旋钮从此就属于 <b class="ui">A</b>，所以切走也不会丢失任何微调。</p>
       <p>表情踏板还可以在两个场景之间<b>渐变</b>。在设置 →
         <b class="ui">控制</b> 中，给某个 CC 行指定动作 <b class="ui">场景</b> →
@@ -896,7 +962,7 @@
         <b class="ui">空音色组</b>。下方的 <b class="ui">从预设</b> 会按名称列出
         你保存过的预设——一旦超过八个，会打开一个可搜索的
         <b class="ui">从预设新建音色组</b> 面板。</p>
-      <p>模板不是一条光秃秃的链。每个模板落下来时四个场景都已填好，链旁还带一条支路：吉他是延迟和
+      <p>模板不是一条光秃秃的链。每个模板落下来时场景都已填好，链旁还带一条支路：吉他是延迟和
         混响的湿声支路（Clean · Crunch · Lead · Ambient）；贝斯是在放大器之前分出、之后再汇回的
         失真支路，低频因此保持干净（Fingers · Pick · Synth · Dub）；人声是失谐的加倍声
         （Dry · Verb · Double · Wide）；原声则是一间房，用切箱体、提 presence 代替放大器
@@ -912,6 +978,9 @@
         <b class="ui">取消固定音色组</b>，说明文字是"presets keep this rig"）可以让一个音色组
         在切换预设时保持不变，这样你就能在用脚踏板切换吉他音色的同时保持人声信号链完好。
         当音色组超过一个时，会出现一个垃圾桶按钮（<b class="ui">移除音色组</b>）。</p>
+      <p>预设落在最前面，被固定的音色组挪到它后面；没有固定的音色组则会离开，不论一个还是几个，
+        所以在一个四音色组的预设之后切到单音色组的预设，留下的是一个音色组，而不是四个。
+        <b class="ui">+ 音色组</b> 菜单底部的 <b class="ui">新建配置</b> 会把一切清空，只剩一个空白音色组。</p>
       <p>布局会跟随设备方向：横屏时音色组按行堆叠，每条信号链从左到右排列；竖屏时它们
         并排放置，信号链从上到下排列。</p>
 

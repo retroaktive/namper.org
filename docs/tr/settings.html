@@ -116,7 +116,7 @@
             <tr><td><b class="ui">Kontrol</b></td>
                 <td>MIDI ve giriş tetikleyicileri, her şeye eşlenebilir — kendi sayfası: <a href="/docs/tr/control.html">MIDI ve kontrol</a>.</td></tr>
             <tr><td><b class="ui">Sahne</b></td>
-                <td>Klik, setin temposu ve tonu, şarkı sözü yazı boyutu ve sözlerin kendiliğinden açılıp açılmayacağı, ayrıca looper'ın otomatik loop seviyeleri — aşağıda <a href="#set">Set</a>, <a href="#lyrics">Sözler</a>, <a href="#metronome">Metronom</a> ve <a href="#looper">Looper</a>.</td></tr>
+                <td>Bir rig'in kaç sahnesi olduğu (<b class="ui">SAHNELER</b> → <b class="ui">Sahne sayısı</b>, 1'den 16'ya, tüm preset'ler için tek bir ayar — bkz. <a href="/docs/tr/rig.html#presets">sahneler</a>), klik, setin temposu ve tonu, şarkı sözü yazı boyutu ve sözlerin kendiliğinden açılıp açılmayacağı, ayrıca looper'ın otomatik loop seviyeleri — aşağıda <a href="#set">Set</a>, <a href="#lyrics">Sözler</a>, <a href="#metronome">Metronom</a> ve <a href="#looper">Looper</a>.</td></tr>
             <tr><td><b class="ui">Görünüm</b></td>
                 <td>Açık, koyu ya da sistem ne diyorsa, ayrıca temalar — <a href="#appearance">aşağıda</a>.</td></tr>
             <tr><td><b class="ui">Bildirimler ve tur</b></td>
@@ -199,7 +199,7 @@
                 <td>TONE3000’in A2 capture’ları daha hafif bir alt model taşır; bu, her capture’ı onun üzerinde çalıştırır — DSP yükünün küçük bir kısmı, bir tık daha az ayrıntı. Alt modeli olmayan capture’lar etkilenmez. Anında etkili olur.</td></tr>
             <tr><td><b class="ui">Amfi modelleyici kendi iş parçacığında</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Bir <a href="/docs/tr/rig.html#hyperreal">HyperReal</a> amfisi kendi işlemci çekirdeğinde, sesin iki buffer gerisinde çalışır: aynı anda birkaç amfiye yer, karşılığında iki buffer fazladan gecikme. İş parçacığı yetişemezse amfi kendiliğinden ses iş parçacığına geri döner. Anahtarı değiştirmek çalan amfileri yeniden yükler. iPhone, iPad ve Android; Mac'te ve eklentilerde böyle bir anahtar yoktur.</td></tr>
-            <tr><td><b class="ui">Amfi modelleyici kalitesi</b></td><td>Çipler: <b class="ui">Canlı</b>, <b class="ui">Studio</b></td><td><b class="ui">Canlı</b>; Mac'te <b class="ui">Studio</b></td>
+            <tr><td><b class="ui">Amfi modelleyici kalitesi</b></td><td>Çipler: <b class="ui">Canlı</b>, <b class="ui">Studio</b></td><td><b class="ui">Canlı</b></td>
                 <td>Bir HyperReal amfisinin ne kadar ince hesaplandığı: <b class="ui">Canlı</b> işlemciyi daha az yorar, <b class="ui">Studio</b> daha ince ve daha ağırdır. Değiştirmek çalan amfileri yeniden derler, yeniden başlatma olmadan. Bir Studio amfisi en yoğun iş parçacığını iki saniye boyunca zaman sınırının ötesinde tutarsa amfiler Canlı'da çalışır ve satır, sen yeniden bir kalite seçene kadar <b class="ui">Studio (Canlı olarak çalışıyor: bu cihaz yetişemiyor)</b> yazar. Eklentilerde bu satır yoktur.</td></tr>
             <tr><td><b class="ui">Geçişte kuyruklar</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Bir preset değişiminin geride bıraktığı bloklar — bir delay’in tekrarları, bir reverb’ün sönümü — değişimde kesilmek yerine sekiz saniyeye kadar çalmaya devam eder; bir sahnenin bypass ettiği delay, reverb, FX loop ya da eklenti de kuru sesin üzerinde sönümlenir (freeze tutulan bir sestir, kuyruk değil: durur). O birkaç saniye için biraz daha fazla DSP.</td></tr>
@@ -406,10 +406,18 @@
       <p>İkisi de <b class="ui a">Düzen</b> sekmesindeki başlık çipleridir. Ayarlar bunları sadece
         <a href="#set"><b class="ui">SET</b></a> kartında raporlar.</p>
       <h3>MIDI</h3>
-      <p><strong>Hiç global MIDI ayarı yoktur</strong>: kanal seçici yok, program-change
-        anahtarı yok, clock sync yok. NAMper'da MIDI omni'dir ve her zaman açıktır — her kanal
-        kabul edilir, her kaynak otomatik olarak bağlanır, ve uygulama <b class="ui">NAMper</b>
+      <p>MIDI <em>girişinin</em> <strong>hiç global ayarı yoktur</strong>: kanal seçici yok, kurulacak
+        clock sync yok. Omni'dir ve her zaman açıktır — her kanal kabul edilir (bir eşleme satırına tek bir
+        kanalı dinlemesi söylenebilir), her kaynak otomatik olarak bağlanır, ve uygulama <b class="ui">NAMper</b>
         adlı kendi sanal hedefini yayınlar.</p>
+      <p>MIDI <em>çıkışının</em> bir kartı vardır, <b class="ui">Kontrol</b> sayfasının en altındaki MIDI saati
+        sayfasında: <b class="ui">MIDI ÇIKIŞI</b>, sen açana kadar kapalı. Bir preset'in program change'ini, bir
+        sahnenin program change'ini ve looper'ın MIDI hücrelerini nota olarak saatin <b class="ui">Hedef</b>'ine gönderir —
+        <b class="ui">Nota kanalı</b> ve <b class="ui">Preset kanalı</b>; <b class="ui">Sahne türü</b>
+        <b class="ui">Program değişimi</b> ya da <b class="ui">Control Change</b>, <b class="ui">Sahne kanalı</b> üzerinde (ve
+        <b class="ui">Sahne CC'si</b>); uygulamada yapılan bir hareketi eşlenmiş CC'sine geri gönderen <b class="ui">Kontrolcülere yansıt</b>,
+        böylece motorlu fader'lar ve ışıklı switch'ler takip eder; Synth bloğunun notaları için <b class="ui">Synth kanalı</b>
+        ve onun <b class="ui">Bend aralığı</b>; ve çalmaya devam eden bir nota için <b class="ui">Tüm notaları kapat</b>.</p>
       <div class="note">
         <div class="t">Yapılandırılacak hiçbir şey yok</div>
           <p>Bir pedal hiçbir şey yapmıyorsa sorun ayarda değil eşlemededir. MIDI'yle ilgili her şey

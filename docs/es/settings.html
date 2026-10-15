@@ -116,7 +116,7 @@
             <tr><td><b class="ui">Control</b></td>
                 <td>MIDI y disparadores de entrada, asignables a cualquier cosa — página propia: <a href="/docs/es/control.html">MIDI y control</a>.</td></tr>
             <tr><td><b class="ui">Escenario</b></td>
-                <td>El clic, el tempo y la tonalidad del set, el tamaño del texto de la letra y si la letra se abre sola, y los niveles del auto-loop del looper — <a href="#set">Set</a>, <a href="#lyrics">Letras</a>, <a href="#metronome">Metrónomo</a> y <a href="#looper">Looper</a> más abajo.</td></tr>
+                <td>Cuántas escenas tiene un rig (<b class="ui">ESCENAS</b> → <b class="ui">Número de escenas</b>, de 1 a 16, un solo ajuste para todos los presets — mira <a href="/docs/es/rig.html#presets">escenas</a>), el clic, el tempo y la tonalidad del set, el tamaño del texto de la letra y si la letra se abre sola, y los niveles del auto-loop del looper — <a href="#set">Set</a>, <a href="#lyrics">Letras</a>, <a href="#metronome">Metrónomo</a> y <a href="#looper">Looper</a> más abajo.</td></tr>
             <tr><td><b class="ui">Apariencia</b></td>
                 <td>Claro, oscuro o lo que diga el sistema, y los temas — <a href="#appearance">más abajo</a>.</td></tr>
             <tr><td><b class="ui">Avisos y tour</b></td>
@@ -200,7 +200,7 @@
                 <td>Las capturas A2 de TONE3000 llevan un submodelo más ligero; esto hace que todas las capturas corran sobre él — una fracción de la carga de DSP, un pelín menos de detalle. Las capturas que no lo tienen no se ven afectadas. Surte efecto al instante.</td></tr>
             <tr><td><b class="ui">Modelador de amplis en su propio hilo</b></td><td>Interruptor</td><td>Activado</td>
                 <td>Un ampli <a href="/docs/es/rig.html#hyperreal">HyperReal</a> corre en un núcleo de procesador propio, dos búferes por detrás del audio: sitio para varios amplis a la vez, a cambio de esos dos búferes de latencia extra. Si el hilo no da abasto, el ampli vuelve solo al hilo de audio. Cambiarlo recarga los amplis que suenan. iPhone, iPad y Android; el Mac y los plugins no tienen este interruptor.</td></tr>
-            <tr><td><b class="ui">Calidad del modelador de amplis</b></td><td>Chips: <b class="ui">En vivo</b>, <b class="ui">Studio</b></td><td><b class="ui">En vivo</b>; <b class="ui">Studio</b> en el Mac</td>
+            <tr><td><b class="ui">Calidad del modelador de amplis</b></td><td>Chips: <b class="ui">En vivo</b>, <b class="ui">Studio</b></td><td><b class="ui">En vivo</b></td>
                 <td>Con qué finura se calcula un ampli HyperReal: <b class="ui">En vivo</b> es más ligero para el procesador, <b class="ui">Studio</b> más fino y más pesado. Un cambio recompila los amplis que suenan, sin reiniciar. Si un ampli en Studio mantiene el hilo más cargado más allá de su plazo durante dos segundos, los amplis pasan a En vivo y la fila muestra <b class="ui">Studio (funciona en En vivo: este dispositivo no da abasto)</b> hasta que vuelvas a elegir una calidad. Los plugins no tienen esta fila.</td></tr>
             <tr><td><b class="ui">Colas al cambiar</b></td><td>Interruptor</td><td>Activado</td>
                 <td>Los bloques que un cambio de preset deja atrás siguen sonando — las repeticiones de un delay, la cola de una reverb — hasta ocho segundos en vez de cortarse en el cambio, y un delay, una reverb, un bucle de efectos o un plugin que una escena desactiva sigue sonando sobre la señal seca (un freeze es sonido sostenido, no una cola: se detiene). Un poco más de DSP durante esos segundos.</td></tr>
@@ -410,10 +410,21 @@
       <p>Ambos son chips de cabecera en la pestaña <b class="ui a">Equipo</b>. Ajustes solo los reporta,
         en la tarjeta <a href="#set"><b class="ui">FIJAR</b></a>.</p>
       <h3>MIDI</h3>
-      <p>No hay <strong>ningún ajuste MIDI global</strong>: sin selector de canal, sin interruptor de
-        cambio de programa, sin sincronización de reloj. El MIDI en NAMper es omni y siempre está
-        activo — se acepta cada canal, cada fuente se conecta automáticamente, y la app publica su
-        propio destino virtual llamado <b class="ui">NAMper</b>.</p>
+      <p>El MIDI de <em>entrada</em> no tiene <strong>ningún ajuste global</strong>: sin selector de
+        canal, sin sincronización de reloj que configurar. Es omni y siempre está activo — se acepta
+        cada canal (a una fila de mapeo se le puede pedir que escuche solo uno), cada fuente se conecta
+        automáticamente, y la app publica su propio destino virtual llamado <b class="ui">NAMper</b>.</p>
+      <p>El MIDI de <em>salida</em> tiene una tarjeta, en la página del reloj MIDI al pie de la página
+        <b class="ui">Control</b>: <b class="ui">SALIDA MIDI</b>, apagada hasta que la enciendes. Envía el
+        cambio de programa de un preset, el de una escena y las celdas MIDI del looper como notas, al
+        <b class="ui">Destino</b> del reloj — <b class="ui">Canal de notas</b> y <b class="ui">Canal de presets</b>;
+        <b class="ui">Escena como</b> un <b class="ui">Cambio de programa</b> o un
+        <b class="ui">Control Change</b>, en el <b class="ui">Canal de escenas</b> (y el
+        <b class="ui">CC de escena</b>); <b class="ui">Eco a los controladores</b>, que devuelve un movimiento
+        hecho en la app a su CC asignado para que los faders motorizados y los interruptores iluminados
+        lo sigan; el <b class="ui">Canal del sintetizador</b> para las notas del bloque Synth y su
+        <b class="ui">Rango de pitch bend</b>; y <b class="ui">Todas las notas apagadas</b> para una nota que se
+        quedó sonando.</p>
       <div class="note">
         <div class="t">Nada que configurar</div>
           <p>Si un pedal no hace nada, el problema es la asignación y no un ajuste. Todo lo MIDI vive

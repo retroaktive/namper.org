@@ -105,7 +105,7 @@
             <tr><td><b class="ui">ディレイ＆リバーブ</b></td><td><b class="ui">ディレイ</b>, <b class="ui">フリーズ</b>, <b class="ui">リバーブ</b></td></tr>
             <tr><td><b class="ui">ドライブ</b></td><td><b class="ui">ドライブ</b>, <b class="ui">ローファイ</b>, <b class="ui">サチュレーター</b></td></tr>
             <tr><td><b class="ui">ダイナミクス</b></td><td><b class="ui">コンプレッサー</b>, <b class="ui">ディエッサー</b>, <b class="ui">ゲート</b>, <b class="ui">リミッター</b>, <b class="ui">マルチバンド</b>, <b class="ui">スウェル</b>, <b class="ui">トランジェント</b>, <b class="ui">ボーカル</b></td></tr>
-            <tr><td><b class="ui">EQ＆フィルター</b></td><td><b class="ui">イコライザー</b>, <b class="ui">ワウ</b></td></tr>
+            <tr><td><b class="ui">EQ＆フィルター</b></td><td><b class="ui">カット</b>, <b class="ui">イコライザー</b>, <b class="ui">ワウ</b></td></tr>
             <tr><td><b class="ui">モジュレーション</b></td><td><b class="ui">コーラス</b>, <b class="ui">ダブラー</b>, <b class="ui">アンサンブル</b>, <b class="ui">フランジャー</b>, <b class="ui">フェイザー</b>, <b class="ui">ロータリー</b>, <b class="ui">スライサー</b>, <b class="ui">トレモロ</b></td></tr>
             <tr><td><b class="ui">ピッチ</b></td><td><b class="ui">12弦</b>, <b class="ui">オートチューン</b>, <b class="ui">ハーモニー</b>, <b class="ui">オクターバー</b>, <b class="ui">ピッチ</b>, <b class="ui">シンセ</b>, <b class="ui">ボコーダー</b></td></tr>
             <tr><td><b class="ui">ユーティリティ</b></td><td><b class="ui">FBガード</b>, <b class="ui">FXループ</b>, <b class="ui">センド</b>, <b class="ui">ボリューム</b></td></tr>
@@ -118,7 +118,8 @@
         なくサブメニューを開きます: <b class="ui">デフォルト設定</b>、そのブロックのファクトリー
         プリセットと保存したプリセット、そして<b class="ui">リグプリセットから</b>の下には、
         リグプリセットから取り出した同じブロック — あるリグのドライブ、別のリグのディレイ —
-        が並びます。</p>
+        が並びます。ブロックプリセットは回路、インパルス、オートレベルも一緒に持ち込み、
+        ブロックに名前を付けます。</p>
       <figure>
         <img class="phone" src="/docs/assets/rig-ambient.png" width="600" height="1303"
              alt="アンビエントなチェーンを組んだリグタブ: アンプの前にスウェル、続いてキャビ、アンサンブル、ディレイ、フリーズ、リバーブ。どのブロックもチェーン内のタイル。">
@@ -142,6 +143,10 @@
               目印が表示され、別のチェーンや別のリグへも移せます。1ステップだけ動かすなら
               長押し → <b class="ui">左へ移動</b> / <b class="ui">右へ移動</b></td></tr>
             <tr><td>削除</td><td>長押し → <b class="ui">削除</b></td></tr>
+            <tr><td>ブロックに名前を付ける</td><td>長押し → <b class="ui">名前を付ける…</b>: チップには
+              <b class="ui">DRIVE 2</b>の代わりにあなたの付けた名前が出ます。ブロックプリセットから設定した
+              ブロックは、そのプリセットの名前を自動で受け取ります — <b class="ui">DRIVE 2</b>だったところに
+              「Solo Boost」</td></tr>
             <tr><td>つまみをリセット</td><td>ダブルタップ</td></tr>
             <tr><td>コントロールをMIDIラーン</td><td>任意のつまみやチップの行を長押し →
               <b class="ui">MIDIラーン“&lt;label&gt;”</b>。コントロールの輪郭が表示され、
@@ -287,16 +292,16 @@
           <tbody>
             <tr><td><b class="ui">ゲート</b></td><td><b class="ui">モデル</b></td>
               <td><b class="ui">クラシック</b>, <b class="ui">スマート</b>, <b class="ui">3バンド</b>, <b class="ui">デノイズ</b></td></tr>
-            <tr><td><b class="ui">コンプレッサー</b></td><td><b class="ui">モデル</b> · <b class="ui">サイドチェイン</b></td>
-              <td><b class="ui">VCA</b>, <b class="ui">オプト</b>, <b class="ui">FET</b>, <b class="ui">ペダル</b> · サイドチェイン
+            <tr><td><b class="ui">コンプレッサー</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">モデル</b> · <b class="ui">サイドチェイン</b></td>
+              <td><b class="ui">VCA</b>, <b class="ui">オプト</b>, <b class="ui">FET</b>, <b class="ui">ペダル</b> · <b class="ui">HyperReal</b>では<a href="#hyperreal-pedals"><b class="ui">Twin-Mu Limiter</b></a> · サイドチェイン
                 <b class="ui">オフ</b>, <b class="ui">入力1</b>…<b class="ui">入力4</b>, <b class="ui">SMP</b></td></tr>
-            <tr><td><b class="ui">ドライブ</b></td><td><b class="ui">内蔵</b> · <b class="ui">NAM</b> · <b class="ui">モデル</b></td>
+            <tr><td><b class="ui">ドライブ</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">モデル</b></td>
               <td><b class="ui">ブースト</b>: <b class="ui">クリーンブースト</b>, <b class="ui">トレブルブースト</b> ·
                 <b class="ui">オーバードライブ</b>: <b class="ui">チューブ</b>, <b class="ui">ブルース</b>, <b class="ui">トランスペアレント</b> ·
                 <b class="ui">ディストーション</b>: <b class="ui">ディスト</b>, <b class="ui">メタル</b> ·
-                <b class="ui">ファズ</b>: <b class="ui">ファズ Ge</b>, <b class="ui">ファズ Si</b>, <b class="ui">オクターブファズ</b></td></tr>
-            <tr><td><b class="ui">アンプ</b></td><td><b class="ui">内蔵</b> · <b class="ui">NAM</b> · <b class="ui">Modeler</b> · <b class="ui">モデル</b></td>
-              <td><b class="ui">クリーン</b>, <b class="ui">ツイード</b>, <b class="ui">ブリット</b>, <b class="ui">チャイム</b>, <b class="ui">モダン</b>, <b class="ui">ベース</b>, <b class="ui">アコースティック</b> · <b class="ui">Modeler</b>では、<a href="#hyperreal">HyperRealカタログ</a>の15種類のアンプ</td></tr>
+                <b class="ui">ファズ</b>: <b class="ui">ファズ Ge</b>, <b class="ui">ファズ Si</b>, <b class="ui">オクターブファズ</b> · <b class="ui">HyperReal</b>では<a href="#hyperreal-pedals">7種類のペダル</a></td></tr>
+            <tr><td><b class="ui">アンプ</b></td><td><b class="ui">Basic</b> · <b class="ui">NAM</b> · <b class="ui">HyperReal</b> · <b class="ui">モデル</b></td>
+              <td><b class="ui">クリーン</b>, <b class="ui">ツイード</b>, <b class="ui">ブリット</b>, <b class="ui">チャイム</b>, <b class="ui">モダン</b>, <b class="ui">ベース</b>, <b class="ui">アコースティック</b> · <b class="ui">HyperReal</b>では、<a href="#hyperreal">HyperRealカタログ</a>の18種類のアンプ</td></tr>
             <tr><td><b class="ui">サチュレーター</b></td><td><b class="ui">タイプ</b></td>
               <td><b class="ui">チューブ</b>, <b class="ui">テープ</b>, <b class="ui">NAM</b></td></tr>
             <tr><td><b class="ui">ローファイ</b></td><td><b class="ui">タイプ</b></td>
@@ -336,11 +341,11 @@
           </tbody>
         </table>
       </div>
-      <p><b class="ui">アンプ</b>ブロックの<b class="ui">内蔵</b>側はNAMper自身の真空管アンプで、おなじみのノブ — <b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">ミッド</b>、<b class="ui">トレブル</b>、<b class="ui">プレゼンス</b>、<b class="ui">マスター</b> — と、<b class="ui">モデル</b>チップに7つのボイシングを備えます。ダウンロードもアカウントも不要なので、オフラインでもステージを支えます。隣の<b class="ui">NAM</b>チップはキャプチャに、<b class="ui">Modeler</b>チップは回路から計算されたアンプに差し替えます — 後述の<a href="#nam">NAMキャプチャ</a>と<a href="#hyperreal">HyperRealアンプ</a>を参照してください。</p>
+      <p><b class="ui">アンプ</b>ブロックの<b class="ui">Basic</b>側はNAMper自身の真空管アンプで、おなじみのノブ — <b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">ミッド</b>、<b class="ui">トレブル</b>、<b class="ui">プレゼンス</b>、<b class="ui">マスター</b> — と、<b class="ui">モデル</b>チップに7つのボイシングを備えます。ダウンロードもアカウントも不要なので、オフラインでもステージを支えます。隣の<b class="ui">NAM</b>チップはキャプチャに、<b class="ui">HyperReal</b>チップは回路から計算されたアンプに差し替えます — 後述の<a href="#nam">NAMキャプチャ</a>と<a href="#hyperreal">HyperRealアンプ</a>を参照してください。</p>
       <p><b class="ui">サチュレーター</b>は旧Tube Sat／Tape Satの行き先です。ひとつのブロックで、タイプチップに<b class="ui">チューブ</b>、<b class="ui">テープ</b>、またはアウトボード機材の<b class="ui">NAM</b>キャプチャ。<b class="ui">アンサンブル</b>はひとつの楽器がパノラマに広がる複数の奏者として聞こえるブロック — LFOなし、デチューンなし、モノ合計は入力そのもの。モードチップは<b class="ui">ベルベット</b>か<b class="ui">オールパス</b>。</p>
 
       <h3>ドライブ、ダイナミクス、タイム系</h3>
-      <p><b class="ui">ドライブ</b>ブロックの内蔵側には、4つのファミリーに分かれた10の回路がリストから選べるように入っており、ファミリーごとに専用のつまみを持ちます: ブーストは<b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">トレブル</b>、<b class="ui">レベル</b>、<b class="ui">ミックス</b>(クリーンなギターを混ぜ戻す)。オーバードライブは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">レベル</b>、<b class="ui">ミックス</b>。ディストーションは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">ベース</b>、<b class="ui">トレブル</b>、<b class="ui">レベル</b>。ファズは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">バイアス</b>(動作点)、<b class="ui">電圧</b>(電池 — 中央を過ぎると電圧が落ち込み、音が途切れ始めます)、<b class="ui">レベル</b>。ADDメニューにはDriveが1つだけ並び、チェーンではブロックが回路の名前で表示されるので、重ねると TREBLE BOOST、TUBE、FUZZ GE のように読めます。</p>
+      <p><b class="ui">ドライブ</b>ブロックの<b class="ui">Basic</b>側には、4つのファミリーに分かれた10の回路がリストから選べるように入っており、ファミリーごとに専用のつまみを持ちます: ブーストは<b class="ui">ゲイン</b>、<b class="ui">ベース</b>、<b class="ui">トレブル</b>、<b class="ui">レベル</b>、<b class="ui">ミックス</b>(クリーンなギターを混ぜ戻す)。オーバードライブは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">レベル</b>、<b class="ui">ミックス</b>。ディストーションは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">ベース</b>、<b class="ui">トレブル</b>、<b class="ui">レベル</b>。ファズは<b class="ui">ゲイン</b>、<b class="ui">トーン</b>、<b class="ui">バイアス</b>(動作点)、<b class="ui">電圧</b>(電池 — 中央を過ぎると電圧が落ち込み、音が途切れ始めます)、<b class="ui">レベル</b>。ADDメニューにはDriveが1つだけ並び、チェーンではブロックが回路の名前で表示されるので、重ねると TREBLE BOOST、TUBE、FUZZ GE のように読めます。</p>
       <p>すべての<b class="ui">コンプレッサー</b>のモデルに、<b class="ui">ニー</b>、<b class="ui">ミックス</b>(100 %未満ならパラレルコンプレッション)、そして<b class="ui">HPF</b>も加わりました。HPFは検出回路だけにかかるハイパスで、低域がほかの帯域をポンピングさせないようにします。</p>
       <p><b class="ui">ディレイ</b>には、タイムに対する比率で鳴る2つめのタップ — デュアルディレイやリズミックなディレイのための<b class="ui">タップ2</b>とその<b class="ui">タップ音量</b> — が加わり、さらに<b class="ui">リバース</b>、リピートにかかる<b class="ui">モッド</b>、フィードバックループ内の<b class="ui">ローカット</b>と<b class="ui">ハイカット</b>(リピートごとに前より暗く、あるいは細くなります)、そして弾いている間はリピートを抑え、隙間で持ち上げる<b class="ui">ダッキング</b>も備えました。</p>
       <div class="figrow">
@@ -403,8 +408,8 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="eq"><span class="n">02.3</span>7種類のEQモデル</h2>
-      <p><b class="ui">イコライザー</b>ブロックは1つですが、その中に7つのまったく異なるイコライザーが
+      <h2 id="eq"><span class="n">02.3</span>6種類のEQモデル</h2>
+      <p><b class="ui">イコライザー</b>ブロックは1つですが、その中に6つのまったく異なるイコライザーが
         入っています。モデルを切り替えるとサウンドだけでなくつまみのセットも変わるため、
         目的に合ったものを選んでください — 手早いトーン調整、ピンポイントなカット、
         マスタリングスタイルのシェルフなど。</p>
@@ -417,12 +422,12 @@
                 ハイシェルフ。旧来の3バンドEQと同じフィルターなので、古いリグの音は
                 変わりません。</td>
               <td><b class="ui">ベース</b>, <b class="ui">ミッド</b>, <b class="ui">トレブル</b>、それぞれ±12 dB</td></tr>
-            <tr><td><b class="ui">パラメ</b></td>
-              <td>フルパラメトリック — 同じ3バンド構成ですが、すべての周波数が可変で、
-                ミッドにはQコントロールが付きます。</td>
-              <td><b class="ui">ロー</b>, <b class="ui">ミッド</b>, <b class="ui">ハイ</b>,
-                <b class="ui">低域周波数</b> 40–400, <b class="ui">中域周波数</b> 200–5000,
-                <b class="ui">高域周波数</b> 1k–12k, <b class="ui">Q</b> 0.3–4</td></tr>
+            <tr><td><b class="ui">パラメトリック</b></td>
+              <td>必要なだけのバンドをグラフの上に: それぞれベル、シェルフ、オクターブあたり6〜48 dBの
+                カット、ノッチ、バンドパス、チルトのいずれかで、両チャンネル、左、右、ミッド、サイドに
+                かけられ、望めばダイナミックにも — 自分のレベルやサイドチェインに応じて動きます。カーブは
+                入る音と出る音のライブアナライザーの上に描かれます。いまはどのモデルもカーブを表示します。</td>
+              <td>グラフ上のバンド、それぞれに周波数、ゲイン、幅</td></tr>
             <tr><td><b class="ui">パッシブ</b></td>
               <td>クラシックなパッシブ・プログラムEQの手法: ローシェルフのブーストと
                 それよりやや高い位置のカットシェルフを組み合わせ、ブーストとアッテネートを
@@ -437,10 +442,6 @@
               <td><b class="ui">HPF</b> 0–300, <b class="ui">ロー</b>, <b class="ui">低域周波数</b>,
                 <b class="ui">ミッド</b>, <b class="ui">中域周波数</b>, <b class="ui">Q</b>,
                 <b class="ui">ハイ</b>, <b class="ui">高域周波数</b></td></tr>
-            <tr><td><b class="ui">バックス</b></td>
-              <td>バクサンダル型 — 非常にワイドで非常になだらかな2つのシェルフ。サウンド
-                全体を少し暗く、あるいは少し明るくしたいときに手を伸ばすモデルです。</td>
-              <td><b class="ui">ベース</b>, <b class="ui">トレブル</b></td></tr>
             <tr><td><b class="ui">グラフィック7</b></td>
               <td>ストンプボックス型のグラフィックEQ: 100 Hzから6.4 kHzまでの7つのオクターブバンドに、
                 それぞれフェーダーが1本。フェーダーをダブルタップするとフラットに戻ります。</td>
@@ -456,6 +457,15 @@
              alt="Passiveモデルを選んだイコライザーブロックのシート。Lo Boost、Lo Atten、Lo Freq、Hi Boost、Hi Freq、Width、Hi Atten、Atten Hzの8つのノブと、上部のINとOUTメーター。">
         <figcaption>Passiveモデルを選んだイコライザーブロック</figcaption>
       </figure>
+      <p><b class="ui">イコライザー</b>には、アンプに3つあるように、2つの音源があります: <b class="ui">Basic</b>は上の6つの
+        モデル、<b class="ui">HyperReal</b>は<a href="#hyperreal-pedals"><b class="ui">Tube Program EQ</b></a> —
+        真空管のメイクアップアンプまで含めて回路から計算した、パッシブ・プログラムイコライザーです。</p>
+      <h3 id="cut">カットブロック</h3>
+      <p>同じパレットセクションの<b class="ui">カット</b>ブロックは、ローカットとハイカットだけのブロックです —
+        ボーカルチェーンの先頭、ベースリグの最後に。<b class="ui">ローカット</b>は20 Hz〜2 kHz、
+        <b class="ui">ハイカット</b>は1〜20 kHzで、それぞれのスロープをチップで選びます — オクターブあたり<b class="ui">6 dB</b>、
+        <b class="ui">12 dB</b>、<b class="ui">24 dB</b>、<b class="ui">48 dB</b> — そして<b class="ui">レゾナンス</b>が
+        カットオフの角を持ち上げます。</p>
       <p>このブロックを含め、すべてのブロックシートには横向きの<b class="ui">イン</b>・
         <b class="ui">アウト</b>メーターが付いています。EQでは特に注目する価値があります:
         3バンドそれぞれの数デシベルのブーストはすぐに積み重なるため、次のブロックに
@@ -465,10 +475,10 @@
     <section class="blk" style="--nc:var(--amp)">
       <h2 id="nam"><span class="n">02.4</span>NAMキャプチャ</h2>
       <p><b class="ui">アンプ</b>ブロックは、1つのブロックに3つの音源を持ちます。シート上部の
-        3つのチップでどれを鳴らすかを選びます: <b class="ui">内蔵</b>は上に挙げた7つの
+        3つのチップでどれを鳴らすかを選びます: <b class="ui">Basic</b>は上に挙げた7つの
         ボイシングを持つNAMper独自のアンプシミュレーション、<b class="ui">NAM</b>は実機アンプの
         <b class="ui">.nam</b>キャプチャを再生するNeural Amp Modelerのプレーヤー、
-        <b class="ui">Modeler</b>はHyperReal、つまり回路から計算されたアンプです(<a href="#hyperreal">後述</a>)。
+        <b class="ui">HyperReal</b>は回路から計算されたアンプです(<a href="#hyperreal">後述</a>)。
         3つとも同じブロックの中にあるので、プリセットは組み上げたボイシング、
         それに合わせて作り込んだキャプチャ<em>と</em>HyperRealアンプを持ち歩き、切り替えはワンタップです —
         鳴っている音は、次の音がフェードインする間にフェードアウトするので、クリックも途切れもありません。</p>
@@ -512,6 +522,9 @@
         なので長押しすると<b class="ui">MIDIラーン</b>が出ます: CCを1つ割り当てれば
         ペダルボードからバンク全体を歩けますし、切り替えはブツ切りではなくクロスフェード
         されるので、クリックノイズも音切れもありません。</p>
+      <p><b class="ui">バンク: 6</b>の行はメニューでもあります: バンクのすべてのモデルが番号付きで省略なしに並び、
+        鳴っているものにチェックが付きます — 名前が長すぎてノブに収まらないときや、欲しいモデルが
+        5つ先にあるときは、リストから選んでください。</p>
 
       <figure>
         <img class="phone" src="/docs/assets/amp-bank.png" width="600" height="1303"
@@ -547,6 +560,7 @@
         <figcaption>アンプ側のライブラリ：ダウンロードしたものすべて、オフラインで</figcaption>
       </figure>
       <p><b class="ui">ライブラリ</b> ボタンは、面の名前が付いたシートを開きます — アンプのキャプチャなら <b class="ui">NAMプロファイル</b>、インパルスなら <b class="ui">キャビネット</b> または <b class="ui">スペース</b>。ダウンロード済みのものがすべて、オフラインでも使えます。面はブロックの種類ごとに五つ。キャプチャの <b class="ui">アンプ</b> と <b class="ui">ドライブ</b>、サチュレーターとコンプレッサーの <b class="ui">アウトボード</b>、キャビネットのインパルスの <b class="ui">キャビ</b>、リバーブのインパルス（空間・アウトボード・実験もの）の <b class="ui">リバーブ</b> です。ブロックが受け取るのは五つのうち一つだけなので、同じリストに並ぶことはありません。ライブラリを開いたブロックがその面を選び、そのまま保ちます。狙うブロックがないときは、上のチップが五つの面を件数付きで示します。アプリ同梱のインパルスはそれぞれの面の <b class="ui">内蔵</b> に、ダウンロードしたものと並んで置かれます。</p>
+      <p>狙うブロックがないとき、面の行は <b class="ui">NAM</b> | <b class="ui">HyperReal</b> の切り替えから始まります。<b class="ui">NAM</b> はキャプチャとインパルスをそれぞれの面に、<b class="ui">HyperReal</b> は回路を並べます — カタログのもの(<b class="ui">内蔵</b> の印付き)と、自分で読み込んだアンプファイル(<a href="#hyperreal-mods">後述</a>)が種類ごとの棚に並び、それぞれ名前の下にファミリーと年代があり、メーカー名はどこにもありません。<b class="ui">アンプ</b> から開いたライブラリは、開いたタブに従います: <b class="ui">NAM</b> タブからはキャプチャが、<b class="ui">HyperReal</b> タブからは回路が開きます。</p>
       <p>各側の中では、トーンはキャプチャ対象で分類されます: まず <b class="ui">内蔵</b>、続いて <b class="ui">アンプ</b>、<b class="ui">ペダル</b>、<b class="ui">アウトボード</b>、<b class="ui">実験的</b>、<b class="ui">キャビネット</b>、<b class="ui">スペース</b>、<b class="ui">その他</b>。各行はファイルではなくトーンです: カバー、タイトル、<b class="ui">@author</b>、モデル数。タップで読み込み — モデルが1つのトーンは単独で鳴り、複数のトーンはブロックのバンクになります — トーンはあるべき場所に収まります: アンプは <b class="ui">アンプ</b> ブロックへ、ペダルはその前の <b class="ui">ドライブ</b> へ、アウトボードは <b class="ui">サチュレーター</b> へ、キャビネットは後ろの <b class="ui">キャビネット</b> へ、空間は <b class="ui">リバーブ</b> へ。</p>
       <p>山形のマークを開くと、そのトーンのモデルが並びます。そのブロックのバンク<em>である</em>
         トーンでは、各モデルにチェックマークが付きます: チェックはそのモデルを
@@ -559,8 +573,8 @@
         ファイルを取り直します)があります。行を長押し、または右クリックすると、
         <b class="ui">TONE3000 で開く</b>、<b class="ui">.namファイルを共有</b> /
         <b class="ui">IRファイルを共有</b>、<b class="ui">削除</b>が出ます。ツールバーには
-        <b class="ui">ファイルを読み込む…</b> — <b class="ui">.nam</b>キャプチャと
-        <b class="ui">.wav</b>インパルスを受け付ける複数選択のファイルピッカー — のほか、
+        <b class="ui">ファイルを読み込む…</b> — <b class="ui">.nam</b>キャプチャ、
+        <b class="ui">.wav</b>インパルス、HyperRealのアンプファイルを受け付ける複数選択のファイルピッカー — のほか、
         <b class="ui">すべてエクスポート（Nファイル）</b>と<b class="ui">すべて更新</b>が
         あります。</p>
       <p>空のとき、<b class="ui">NAM</b> 側は <b class="ui">TONE3000からダウンロードしたプロファイルはここに集まります。</b> と表示します。インパルス側には少なくとも内蔵のものが常にあります。モデルが読めない場合は <b class="ui r">アンプモデル {filename} を読み込めませんでした。</b> が出ます — たいていはリグの下から移動または削除されたファイルです。</p>
@@ -648,7 +662,7 @@
         切り替えるので、ピッキングやコントロールへの反応は実際の回路と同じように返ってきます。
         ダウンロードもアカウントも不要です。カタログはアプリに同梱されており、スマートフォン、
         タブレット、Mac、そしてプラグインの中で使えます。</p>
-      <p><b class="ui">アンプ</b>ブロックでは3つめのチップ、<b class="ui">Modeler</b>がそれです。
+      <p><b class="ui">アンプ</b>ブロックでは3つめのチップ、<b class="ui">HyperReal</b>がそれです。
         タップするとブロックはHyperRealアンプを鳴らし、チップはアンプ名と矢印の表示に変わり、
         そこをタップするとカタログが開きます。チップの下にはHyperRealのマークと、アンプ自身の
         コントロールが並びます。名前は実機の表記どおり — <b class="ui">Volume</b>、<b class="ui">Treble</b>、
@@ -662,12 +676,12 @@
       <figure>
         <img class="phone" src="/docs/assets/amp-modeler.png" width="600" height="1303"
              alt="3つ目のソースのアンプブロック:内蔵、NAM、Cali Mark IV のチップと横の回路ボタン、HyperReal マーク、チップとトグルで並ぶアンプのスイッチ、そしてノブ。">
-        <figcaption><b class="ui">Modeler</b> ソース:チップ上のアンプ名、HyperReal マーク、スイッチとノブ</figcaption>
+        <figcaption><b class="ui">HyperReal</b> ソース:チップ上のアンプ名、HyperReal マーク、スイッチとノブ</figcaption>
       </figure>
       <p>どのアンプにも、最後のつまみとして飾りのない出力ボリューム(<b class="ui">Master</b>または
         <b class="ui">Output</b>)が後ろに付いています。ブロックの<b class="ui">オートレベル</b>がオンの間、
         そのつまみはオートレベルのものとして非表示になります。アンプはゲイン、マスター、スイッチの
-        あらゆるポジションでレベルが整えられ、内蔵アンプやキャプチャと同じ扱いなので、ゲインを回すと
+        あらゆるポジションでレベルが整えられ、<b class="ui">Basic</b>アンプやキャプチャと同じ扱いなので、ゲインを回すと
         変わるのは音色であって音量ではありません。<b class="ui">オートレベル</b>をオフにするとつまみが現れ、
         アンプは回路が出すそのままの音量で鳴ります。</p>
       <p>つまみは通常のつまみです。長押しすると<b class="ui">MIDIラーン</b>が出て、シーンやモーフペダルで
@@ -675,14 +689,14 @@
         パラメータがアンプの並び順でそれらに対応します。</p>
       <div class="note">
         <div class="t">3つの中でいちばん重い</div>
-        <p>回路はキャプチャや内蔵アンプよりはるかに多くのプロセッサを使います。iPhone、iPad、
+        <p>回路はキャプチャや<b class="ui">Basic</b>アンプよりはるかに多くのプロセッサを使います。iPhone、iPad、
           Androidでは専用のプロセッサコアが割り当てられます —
           <b class="ui">アンプモデラーを専用スレッドで実行</b>は<a href="/docs/ja/settings.html#audio">設定 → オーディオ</a>にあります。
           <b class="ui">DSP負荷</b>チップが赤くなったら、まずバッファを大きくするか、アンプを1つ減らしてください。</p>
       </div>
 
       <h3>カタログ</h3>
-      <p>15種類のアンプ —50年代後半から90年代の真空管アンプ、トランジスタアンプ2種、
+      <p>18種類のアンプ —50年代後半から2000年代の真空管アンプ、トランジスタアンプ2種、
         ベース用2種です。名前はNAMper独自のものです。</p>
       <div class="tw">
         <table>
@@ -700,6 +714,9 @@
             <tr><td><b class="ui">Cali Mark IV</b></td><td>5バンドのグラフィックEQを備えた90年代のカリフォルニア製リードチャンネル: 6L6GC 4本</td><td><b class="ui">Pull fat</b>, <b class="ui">Pull bright</b>, <b class="ui">Presence shift</b>, <b class="ui">Power</b>: 五極管または三極管</td></tr>
             <tr><td><b class="ui">Cali Rect</b></td><td>90年代のカリフォルニア製ハイゲインヘッド: 6L6GC 4本、100 W</td><td><b class="ui">Rectifier</b>: 真空管またはダイオード</td></tr>
             <tr><td><b class="ui">Block Letter 51</b></td><td>プリゲインとポストゲインを持つ90年代のハイゲインヘッド: 6L6GC 4本、120 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Solo 100</b></td><td>80年代後半のハイゲインヘッドのオーバードライブチャンネル。ホットロッドされたヘッドの系譜がまるごとここから生まれました: 6L6GC 4本、100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Vier 4</b></td><td>90年代のドイツ製4チャンネルヘッドのリードチャンネル。グローバルなマスター、プレゼンス、デプス付き: EL34 4本、100 W</td><td>—</td></tr>
+            <tr><td><b class="ui">Ultra Sonic</b></td><td>2000年代のハイゲインヘッドのハイゲインチャンネル: EL34 4本、120 W</td><td>—</td></tr>
             <tr><td><b class="ui">Jazz Clean 77</b></td><td>80年代のトランジスタ式クリーンアンプ、独自の歪みを持つオペアンププリアンプ</td><td>—</td></tr>
             <tr><td><b class="ui">Bass Tower 70</b></td><td>300 Wの真空管ベースヘッド: 6550 6本</td><td><b class="ui">Ultra hi</b>, <b class="ui">Midrange select</b>: 220、800、または3000 Hz</td></tr>
             <tr><td><b class="ui">Rack Bass 800</b></td><td>DIで終わる80年代のトランジスタ式ベースプリアンプ — スピーカーなし</td><td>—</td></tr>
@@ -714,6 +731,31 @@
       <p>アンプの出力は、キャビネットなしのスピーカー端の電圧です。本物のヘッドの後ろと同じように、
         後ろに<b class="ui">キャビネット</b>を置いてください。新しく選んだアンプは
         <b class="ui">Brit 800</b>から始まります。</p>
+
+      <h3 id="hyperreal-pedals">HyperRealのペダルとアウトボード</h3>
+      <p>HyperRealはアンプだけではありません。<b class="ui">ドライブ</b>、<b class="ui">コンプレッサー</b>、
+        <b class="ui">イコライザー</b>にも、<b class="ui">Basic</b>(と
+        <b class="ui">NAM</b>)の横に専用の<b class="ui">HyperReal</b>チップがあり、その下には同じやり方で回路図から計算した
+        ペダルやスタジオ機材が入っています — 実機のオペアンプ、クリッピングダイオード、トランジスタ、真空管、
+        トランスをそのままに、実機と同じつまみで。チップには回路の名前が出て、タップするとほかの回路が並び、
+        横の回路ボタンはアンプと同じように回路図をリアルタイムで開きます。
+        ペダルはアンプより軽く、その中でいちばん重いのはゲルマニウムのファズです。</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>回路</th><th>ブロック</th><th>内容</th><th>つまみ</th></tr></thead>
+          <tbody>
+            <tr><td><b class="ui">Green Drive</b></td><td><b class="ui">ドライブ</b></td><td>70年代後半の緑のオーバードライブ: 帰還ループにシリコンのソフトクリッピングを持つオペアンプ</td><td><b class="ui">オーバードライブ</b>, <b class="ui">トーン</b>, <b class="ui">レベル</b></td></tr>
+            <tr><td><b class="ui">Yellow Drive</b></td><td><b class="ui">ドライブ</b></td><td>80年代前半の黄色のオーバードライブ。クリッピングは非対称</td><td><b class="ui">ドライブ</b>, <b class="ui">トーン</b>, <b class="ui">レベル</b></td></tr>
+            <tr><td><b class="ui">Gold Drive</b></td><td><b class="ui">ドライブ</b></td><td>90年代のブティック系オーバードライブ: クリーンとクリップした音を1つのデュアルゲインで混ぜる</td><td><b class="ui">ゲイン</b>, <b class="ui">トレブル</b>, <b class="ui">出力</b></td></tr>
+            <tr><td><b class="ui">Tangerine Distortion</b></td><td><b class="ui">ドライブ</b></td><td>70年代後半のオレンジのディストーション。オリジナルのチップを使った最初の回路</td><td><b class="ui">ディスト</b>, <b class="ui">トーン</b>, <b class="ui">レベル</b></td></tr>
+            <tr><td><b class="ui">Rodent Dist</b></td><td><b class="ui">ドライブ</b></td><td>80年代のげっ歯類のディストーション: 強くドライブしたオペアンプ、クリッパーの後ろにフィルター</td><td><b class="ui">ディストーション</b>, <b class="ui">フィルター</b>, <b class="ui">ボリューム</b></td></tr>
+            <tr><td><b class="ui">Ram Fuzz</b></td><td><b class="ui">ドライブ</b></td><td>トランジスタ4石の大きなサステイン系ファズ、2000年の復刻版</td><td><b class="ui">ボリューム</b>, <b class="ui">トーン</b>, <b class="ui">サステイン</b></td></tr>
+            <tr><td><b class="ui">Ge Feedback Fuzz</b></td><td><b class="ui">ドライブ</b></td><td>自分自身にフィードバックする90年代のゲルマニウムファズ: シリコン1石の後ろにゲルマニウム2石、ゲーティングと発振をつまみで</td><td><b class="ui">ボリューム</b>, <b class="ui">ゲート</b>, <b class="ui">コンプ</b>, <b class="ui">ドライブ</b>, <b class="ui">Stab</b></td></tr>
+            <tr><td><b class="ui">Tube Program EQ</b></td><td><b class="ui">イコライザー</b></td><td>真空管メイクアップアンプ付きの1956年のパッシブ・プログラムイコライザー: ブーストとカットを同時にかけてタイトな低域に</td><td><b class="ui">Low Freq</b>, <b class="ui">Low Boost</b>, <b class="ui">Low Atten</b>, <b class="ui">High Freq</b>, <b class="ui">High Boost</b>, <b class="ui">Bandwidth</b>, <b class="ui">Atten Sel</b>, <b class="ui">High Atten</b></td></tr>
+            <tr><td><b class="ui">Twin-Mu Limiter</b></td><td><b class="ui">コンプレッサー</b></td><td>1959年のバリアブルミュー・リミッター、1チャンネル。サイドチェインは信号経路とは別に解かれます</td><td><b class="ui">入力</b>, <b class="ui">スレッショルド</b>, <b class="ui">Time Constant</b>, <b class="ui">DC Threshold</b>, <b class="ui">Zero</b></td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3>回路</h3>
       <p>アンプ名の横にある回路アイコンの小さなボタン(スクリーンリーダーでは<b class="ui">回路</b>)で、アンプの回路が開きます。
@@ -745,6 +787,23 @@
         ステージの底に沿ったバー、<b class="ui">回路図</b>では真空管の光 — ステージがクリップしている間は
         赤くなります。電源ノードは、真空管が電流を引くにつれて何ボルト垂れるかを示します。
         <b class="ui">ステージをタップすると内容が表示されます。</b> — タップするとそのステージの部品のカードが開きます。</p>
+
+      <h3 id="hyperreal-mods">モッドと自分のアンプファイル</h3>
+      <p>回路は自由に変えられます。回路画面で部品をタップするとステッパー — マイナス、値、プラス — が開き、
+        そのアンプがとりうるすべての値を順にたどれます: 抵抗、コンデンサ、インダクタは標準系列で純正値の上下1桁ずつ、
+        電圧はきりのよいステップで、スピーカーのインピーダンスはトランスのタップで。純正値には印が付き、
+        どのステップも確かめられてすぐに音で聞こえます。真空管ステージも同じやり方で別の真空管に替えられます。
+        見出しのモッドメニューには<b class="ui">ストック</b>、<b class="ui">変更あり</b>、または保存したモッドの名前が出ます:
+        <b class="ui">新しいモッドとして保存…</b>は今の変更をこのアンプ用の名前付きセットとして保存し、<b class="ui">Update</b>は
+        元のセットに上書きし、<b class="ui">名称変更…</b>と<b class="ui">削除</b>は文字どおりの働きをします。セットはライブラリに
+        置かれ、プラグインからも見えます。プリセットは自分が鳴らすモッドを持ち歩くので、ライブラリがなくても欠けることはありません。</p>
+      <p>自分のアンプファイル — HyperReal独自形式のJSONドキュメントで、1台のアンプを回路図と同じように記述したもの:
+        ステージ、値付きの部品、ポット、スイッチ、電源、スピーカー負荷 — は、ライブラリの
+        <b class="ui">ファイルを読み込む…</b>から、ファイルAppから、または共有シートから、キャプチャと並べてライブラリに
+        読み込めます。読み込み時に検査され、読めないファイルやコンパイルできないファイルは理由とともに拒否されるので、
+        壊れたファイルがステージまで届くことはありません。ライブラリはそれを<b class="ui">HyperReal</b>側にカタログと並べて
+        表示します。それを鳴らすプリセットはファイルの名前を記録し、ファイルがなくなっていればプリセットは
+        <b class="ui">Basic</b>アンプで鳴り、そのことを知らせます。</p>
 
       <h3 id="hyperreal-factory">ファクトリーバンクのHyperReal</h3>
       <p>設定の<b class="ui">ファクトリープリセット</b>で別のものを選んでいない限り、ファクトリープリセットは
@@ -788,7 +847,12 @@
           <thead><tr><th>ライブラリの側</th><th>内蔵インパルスレスポンス</th></tr></thead>
           <tbody>
             <tr><td><b class="ui">キャビ</b></td>
-              <td><b class="ui">DV77 412 SM57 - Darth Genocider</b>,
+              <td>Shift Lineによる10種 — アプリに封入されていて、鳴らせますがエクスポートはできず、それぞれに
+                <b class="ui">IR by Shift Line</b>の表記とそのパックへのリンクが付きます: ギター用に<b class="ui">Open 112 Clean</b>、
+                <b class="ui">Open 212 Chime</b>、<b class="ui">Open 212 Silver</b>、<b class="ui">Tweed 410</b>、
+                <b class="ui">British 212</b>、<b class="ui">Modern 412</b>、ベース用に<b class="ui">Bass 115</b>、
+                <b class="ui">Bass 215</b>、<b class="ui">Bass 410</b>、<b class="ui">Bass 810</b>。そして以前からある
+                6種: <b class="ui">DV77 412 SM57 - Darth Genocider</b>,
                 <b class="ui">Greenback 412 SM57 - Nacho</b>,
                 <b class="ui">Greenback 412 e606 - Pesto</b>,
                 <b class="ui">Rockdriver 412 SM57 - Wumbo</b>,
@@ -800,6 +864,9 @@
           </tbody>
         </table>
       </div>
+      <p>ファクトリープリセットはShift Lineのキャビネットで鳴ります。どのアンプも、その種類が想定していた
+        キャビネットに — ツイード系はオープンバックに、ブリティッシュとモダンのヘッドはクローズドの2×12と4×12に、
+        ベースリグはベースキャビネットに。</p>
       <div class="note">
         <div class="t">すべてのアンプにキャビが必要なわけではありません</div>
         <p>TONE3000のキャプチャの多くはスピーカー出力から収録されており、キャビとマイクを
@@ -955,9 +1022,12 @@
         警告が表示されます。</p>
 
       <h3>シーンとモーフペダル</h3>
-      <p>各リグには<b class="ui">A</b>〜<b class="ui">D</b>の4つのシーンがあります: すべての
-        ブロックのバイパスとつまみの位置で、チェーンと読み込んだモデルには触れないので、切り替えは
-        途切れません。点灯しているシーンは編集に追従します — <b class="ui">A</b>が出ている間に回した
+      <p>各リグには設定した数だけ — 1〜16、<b class="ui">A</b>から順に — シーンがあり、すべての
+        ブロックのバイパスとつまみの位置を持ちます。チェーンと読み込んだモデルには触れないので、切り替えは
+        途切れません。数はすべてのプリセットに共通の1つの設定です:
+        設定の<b class="ui">ステージ</b>ページの<b class="ui">シーン</b>にある<b class="ui">シーンの数</b>、またはシーンチップの
+        長押しで変えられます。数を減らすと、それより後のシーンは隠れるだけで失われません。アプリが動いている間は、
+        プリセットに戻ると、離れたときのシーンに着地します。点灯しているシーンは編集に追従します — <b class="ui">A</b>が出ている間に回した
         つまみは以後<b class="ui">A</b>のものになるので、別のシーンに切り替えても調整が失われる
         ことはありません。</p>
       <p>エクスプレッションペダルで2つのシーンの間を<b>モーフ</b>することもできます。設定 →
@@ -993,7 +1063,7 @@
         <b class="ui">空のリグ</b>。その下の<b class="ui">プリセットから</b>には、
         保存済みのプリセットが名前で一覧表示されます — 8個を超えると、検索可能な
         <b class="ui">プリセットから新規リグ</b>シートが開きます。</p>
-      <p>テンプレートは裸のチェーンではありません。どれも4つのシーンが埋まった状態で、チェーンの横に
+      <p>テンプレートは裸のチェーンではありません。どれもシーンが埋まった状態で、チェーンの横に
         ブランチを1本連れて着地します。ギターはディレイとリバーブのウェット・ライン
         （Clean · Crunch · Lead · Ambient）、ベースはアンプの前で分岐させて後ろで混ぜ戻す歪みの
         ライン（低域はクリーンなまま／Fingers · Pick · Synth · Dub）、ボーカルはデチューンした
@@ -1015,6 +1085,9 @@
         維持できます。フットスイッチでギターの音を切り替えている間、ボーカルチェーンを
         そのまま保つのに使えます。リグが複数あるときのみ、ゴミ箱ボタン
         (<b class="ui">リグを削除</b>)が表示されます。</p>
+      <p>プリセットは前面に着地し、ピン留めしたリグはその後ろに移ります。ピン留めしていないリグは、1つでも
+        複数でも消えるので、4リグのプリセットの後に1リグのプリセットを開けば、残るリグは4つではなく1つです。
+        <b class="ui">+ RIG</b>メニューの末尾にある<b class="ui">新しいセットアップ</b>は、すべてを片付けて素のリグ1つにします。</p>
       <p>レイアウトは端末の向きに従います: 横向きではリグが行として積み重なり、各チェーンは
         左から右へ流れます。縦向きでは並んで表示され、チェーンは上から下へ流れます。</p>
 
