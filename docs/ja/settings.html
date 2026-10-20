@@ -83,6 +83,7 @@
         <li><a href="#lyrics">歌詞</a></li>
         <li><a href="#metronome">メトロノーム</a></li>
         <li><a href="#looper">ルーパー</a></li>
+        <li><a href="#packs">パック</a></li>
         <li><a href="#prompts">プロンプト</a></li>
         <li><a href="#reset">リセット</a></li>
         <li><a href="#diagnostics">診断</a></li>
@@ -96,7 +97,7 @@
         ヘッダーです。入り口はここだけで、ヘッダーがあるのもこのタブだけ。<b class="ui a">ループ</b>、
         <b class="ui a">サンプル</b>、<b class="ui a">パフォーム</b>、<b class="ui a">ミックス</b>からは、まず
         <b class="ui a">リグ</b>に戻ってください。</p>
-      <p>設定は長い1枚のシートではなく目次です。<b class="ui">情報</b>の行と6つのページが並び、
+      <p>設定は長い1枚のシートではなく目次です。<b class="ui">情報</b>の行と7つのページが並び、
         それぞれ1タップ。探しているものが、そのことについてのページに載っています。選択が1つだけ
         目次そのものに残っていて、<b class="ui">ファクトリープリセット</b>の見出しの下で
         <b class="ui">内蔵アンプ</b>、<b class="ui">TONE3000のキャプチャ</b>、またはHyperReal(HyperRealのマークが付いたチップで、
@@ -119,6 +120,8 @@
                 <td>リグのシーンの数(<b class="ui">シーン</b> → <b class="ui">シーンの数</b>、1～16、すべてのプリセットに共通の1つの設定――<a href="/docs/rig.html#presets">シーン</a>を参照)、クリック、セットのテンポとキー、歌詞の文字サイズ、歌詞が自分で開くかどうか、そしてルーパーのオートループのレベル――下記の<a href="#set">セット</a>、<a href="#lyrics">歌詞</a>、<a href="#metronome">メトロノーム</a>、<a href="#looper">ルーパー</a>。</td></tr>
             <tr><td><b class="ui">外観</b></td>
                 <td>ライト、ダーク、あるいはシステムに従う、そしてテーマ――<a href="#appearance">下記</a>。</td></tr>
+            <tr><td><b class="ui">パック</b></td>
+                <td>無料でダウンロードできる追加コンテンツ。最初のひとつはパート分離です――<a href="#packs">下記</a>。</td></tr>
             <tr><td><b class="ui">案内とツアー</b></td>
                 <td>起動時の案内とクイックツアー――<a href="#prompts">下記</a>。</td></tr>
             <tr><td><b class="ui">トラブルシューティング</b></td>
@@ -140,7 +143,7 @@
             <tr><td><b class="ui">NAMper</b>のロゴ</td>
                 <td>Aboutシートを開きます――バージョン、投げ銭、クレジット、そしてドキュメント、ウェブサイト、Telegramコミュニティ、サポート、プライバシーポリシーを載せた<b class="ui">ヘルプとリンク</b>カード。設定のいちばん上の<b class="ui">情報</b>行も同じシートを開きます。</td></tr>
             <tr><td><b class="ui">DSP負荷</b>チップ</td>
-                <td>NAMperで最も忙しいリアルタイムスレッドが締め切りにどこまで迫っているかをパーセントで表示 — 同じ数値の<b class="ui">DSP負荷</b>行が<a href="#audio">オーディオ</a>ページにあり、そこで言葉で説明されます。停止中は<b class="ui">—</b>。60 %未満は緑、85 %までアンバー、それ以上は赤。</td></tr>
+                <td>エンジンの負荷をパーセントで表示し、停止中は<b class="ui">—</b> — <b class="ui">DSP負荷</b>行と同じ値で、その行は<a href="#audio">オーディオ</a>ページにあります。iPhone、iPad、Macでは端末全体のうちNAMperが使う割合、Androidでは最も忙しいリアルタイムスレッドのライブ負荷、つまり持ち時間のうち処理が占める割合です。色は余裕 — 最も忙しいスレッドが締め切りにどこまで迫っているか — を表します: 60 %未満は緑、85 %までアンバー、それ以上は赤。アンバーのチップに小さな数値が出ても矛盾ではありません: 端末のほかの部分が空いていても、1つのスレッドだけ時間が足りなくなることがあります。タップするとCPUモニターが開きます: 最も忙しいスレッド、端末、コア、各リアルタイムスレッド。</td></tr>
             <tr><td>歯車</td><td>設定 — このページです。</td></tr>
             <tr><td><b class="ui">指定</b>チップ</td>
                 <td>現在のキー、未設定なら<b class="ui">指定</b>という文字。<b class="ui">キー設定</b>を開きます。</td></tr>
@@ -184,7 +187,7 @@
             <tr><td><b class="ui">ハウリングガード</b></td><td>スイッチ</td><td>オン</td>
                 <td>内蔵マイクが本体スピーカーを拾っている間、出力をミュートします。<a href="/docs/ja/setup.html#feedback-guard">詳しくはこちら</a>。</td></tr>
             <tr><td><b class="ui">DSP負荷</b></td><td>数値+バー</td><td>—</td>
-                <td>ヘッダーのチップと同じ数値で、エンジン動作中のみ表示されます。バーの下には言葉で:音切れまでの余裕と、最も忙しいリアルタイムスレッドの名前(締め切りに間に合っていない場合はその旨 — 音切れが起こります)、1コアと端末全体に対するNAMperの割合、そして小さな文字で、各リアルタイムスレッドとそれぞれの締め切りとの比較。</td></tr>
+                <td>ヘッダーのチップと同じ数値と色をバーで表示し、エンジン動作中のみ出ます。スレッドごと、コアごとの全体像は、チップから開くCPUモニターにあります。</td></tr>
             <tr><td><b class="ui">サンプルレート</b></td><td>チップ: <b class="ui">自動</b>、44.1k、48k、88.2k、96k、176.4k、192k</td><td><b class="ui">自動</b></td>
                 <td>エンジンのレートを設定し、ルートごとに記憶されます。変更するとエンジンが再起動します。Androidではチップは<b class="ui">自動</b>、44.1k、48k、96kです。<a href="/docs/ja/setup.html#rate">詳細</a>。</td></tr>
             <tr><td><b class="ui">入力チャンネル</b></td><td>チップ: <b class="ui">自動</b>、1…n</td><td><b class="ui">自動</b></td>
@@ -275,7 +278,7 @@
         <table>
           <thead><tr><th>値</th><th>設定方法</th></tr></thead>
           <tbody>
-            <tr><td>テンポ</td><td>Rigヘッダーのメトロノームチップを長押しするか、<b class="ui a">ループ</b>タブのテンポブロックから。ルーパーは最初のループからも検出し、バッキングトラックを選ぶとその曲のテンポが適用されます。</td></tr>
+            <tr><td>テンポ</td><td>Rigヘッダーのメトロノームチップを長押しするか、<b class="ui a">ループ</b>タブのテンポブロックから。ルーパーは最初のループからも検出し、バッキングトラックを選ぶとその曲のテンポが適用されます。拍子は同じテンポシートにあります――<a href="/docs/ja/looper.html#tempo">テンポとクリック</a>を参照。</td></tr>
             <tr><td>キー</td><td>Rigヘッダーの<b class="ui">指定</b>チップ。バッキングトラックを選ぶとその曲のキーが適用されます。</td></tr>
           </tbody>
         </table>
@@ -341,8 +344,38 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="packs"><span class="n">09.9</span>パック</h2>
+      <p>パックは、頼んだときだけNAMperがダウンロードする追加コンテンツです。最初のひとつは
+        <b class="ui">Stem splitter</b>で、<a href="/docs/ja/perform.html#parts">曲をパートに分けます</a>。
+        パックはすべて無料で、アカウントも要りません: <b class="ui">パックは無料でダウンロードできる追加コンテンツです。このデバイスに保存され、NAMper のプラグインからも使えます。</b>
+        配信元は<b>packs.namper.org</b>で、一覧はページを開くたびに読み込まれます。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/packs.png" width="600" height="1303"
+             alt="設定のパックページ: パックは無料の追加コンテンツだという一文、モバイルデータ通信でダウンロードのスイッチ、そしてサイズ、「ドラム、ベース、ボーカル、ギター、キーボード、その他に曲を分ける」という説明、ダウンロードキーの付いたStem splitterパック。">
+        <figcaption>設定 → <b class="ui">パック</b>: ダウンロードできるものと、すでにあるもの</figcaption>
+      </figure>
+      <p>各パックには名前、サイズ、何をするかの一行があり、その後に今の状態が出ます:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>状態</th><th>できること</th></tr></thead>
+          <tbody>
+            <tr><td>未ダウンロード</td><td><b class="ui">ダウンロード</b>。進行状況のバーが出て、横に<b class="ui">キャンセル</b>があります。届いたファイルはひとつずつ検証されます。</td></tr>
+            <tr><td><b class="ui">ダウンロード済み</b></td><td><b class="ui">削除</b> — <b class="ui">あとで再ダウンロードできます。</b> 新しいバージョンが出ると、横に<b class="ui">アップデート</b>が現れます。</td></tr>
+            <tr><td><b class="ui">このパックには新しい NAMper が必要です。</b></td><td>パック、またはその新しいバージョンが、もっと新しいアプリ向けに作られています。NAMperをアップデートするまで待ち、すでに持っているバージョンはそのまま使えます。</td></tr>
+            <tr><td><b class="ui">ダウンロードに失敗しました：…</b></td><td><b class="ui">再試行</b>。途中で止まったダウンロードは、止まったところから続きます。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>スマートフォンやタブレットでは、<b class="ui">モバイルデータ通信でダウンロード</b>がオンでない限り
+        パックはWi-Fiでダウンロードされ、その間iPhoneやiPadには<b class="ui">Wi-Fiを待っています</b>と
+        表示されます。Macはどのネットワークでもダウンロードします。</p>
+      <p>プラグインはパックをダウンロードしません。プラグイン自身のパックページには、アプリがダウンロード
+        したものが並び、それを使います: <b class="ui">パックは NAMper アプリでダウンロードします。プラグインはダウンロード済みのものを使います。</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.9</span>プロンプト</h2>
+      <h2 id="prompts"><span class="n">09.10</span>プロンプト</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>コントロール</th><th>デフォルト</th><th>機能</th></tr></thead>
@@ -365,7 +398,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.10</span>リセット</h2>
+      <h2 id="reset"><span class="n">09.11</span>リセット</h2>
       <p>ボタンは2つで、それぞれ確認ダイアログの先にあります。</p>
       <div class="tw">
         <table>
@@ -393,7 +426,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.11</span>診断</h2>
+      <h2 id="diagnostics"><span class="n">09.12</span>診断</h2>
       <p>NAMperはインターフェースのルーティングとピークを記録するプレーンテキストの
         エンジンログを保持しています。ログが存在する場合、このカードには
         <b class="ui">エンジンログを共有</b>と<b class="ui">エンジンログをクリア</b>が
@@ -408,7 +441,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.12</span>設定にないもの</h2>
+      <h2 id="elsewhere"><span class="n">09.13</span>設定にないもの</h2>
       <p>ここで探しても見つからないものが3つあります。</p>
       <h3>トリガークオンタイズ</h3>
       <p><b class="ui">クオンタイズ</b>つまみとそのグリッドチップは、キットやパッドごとではなく

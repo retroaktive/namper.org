@@ -82,6 +82,7 @@
         <li><a href="#lyrics">歌詞</a></li>
         <li><a href="#metronome">節拍器</a></li>
         <li><a href="#looper">循環樂句器</a></li>
+        <li><a href="#packs">擴充包</a></li>
         <li><a href="#prompts">提示</a></li>
         <li><a href="#reset">重置</a></li>
         <li><a href="#diagnostics">診斷</a></li>
@@ -95,7 +96,7 @@
         入口，而標題列只存在於這個分頁——從 <b class="ui a">循環</b>、<b class="ui a">採樣</b>、
         <b class="ui a">演出</b> 或 <b class="ui a">混合</b> 過來，請先回到
         <b class="ui a">音色組</b>。</p>
-      <p>設定是一份目錄，而不是一張長長的表單：一列 <b class="ui">關於</b> 加六個頁面，各點一下就
+      <p>設定是一份目錄，而不是一張長長的表單：一列 <b class="ui">關於</b> 加七個頁面，各點一下就
         到，你要找的東西就在講那件事的頁面上。只有一個選項留在目錄本身，位於
         <b class="ui">出廠預設</b> 標題下：<b class="ui">內建音箱</b>、<b class="ui">TONE3000 擷取</b>
         或 HyperReal（帶 HyperReal 標誌的晶片，也是預設值），決定出廠音色組播放哪種音箱；見
@@ -116,6 +117,8 @@
                 <td>一個音色組有多少場景（<b class="ui">場景</b> → <b class="ui">場景數量</b>，1 到 16，所有預設共用一項設定——見<a href="/docs/zh-hant/rig.html#presets">場景</a>）、節拍器、整套的速度與調性、歌詞字號、歌詞是否自己打開，以及循環樂句器的自動循環電平——見下文的 <a href="#set">歌單</a>、<a href="#lyrics">歌詞</a>、<a href="#metronome">節拍器</a>和 <a href="#looper">循環樂句器</a>。</td></tr>
             <tr><td><b class="ui">外觀</b></td>
                 <td>淺色、深色，或者跟隨系統，以及各款主題——<a href="#appearance">見下文</a>。</td></tr>
+            <tr><td><b class="ui">擴充包</b></td>
+                <td>可下載的額外內容，免費——第一個是分軌模型——<a href="#packs">見下文</a>。</td></tr>
             <tr><td><b class="ui">提示與導覽</b></td>
                 <td>啟動提示與快速導覽——<a href="#prompts">見下文</a>。</td></tr>
             <tr><td><b class="ui">疑難排解</b></td>
@@ -136,8 +139,7 @@
             <tr><td><b class="ui">NAMper</b> 字標</td>
                 <td>開啟 About 面板——版本、抖內、致謝，以及包含文件、網站、Telegram 社群、支援與隱私權政策的 <b class="ui">說明與連結</b> 卡片。設定最上方的 <b class="ui">關於</b> 列開啟的是同一個面板。</td></tr>
             <tr><td><b class="ui">DSP 負載</b> 晶片</td>
-                <td>以百分比顯示 NAMper 最忙的即時執行緒離它的截止時間有多近——與 <b class="ui">DSP 負載</b> 行是同一個數字,該行位於 <a href="#audio">音頻</a> 頁,那裡有文字詳解;停止時顯示 <b class="ui">—</b>。60% 以下為綠色,
-                  到 85% 為琥珀色,再往上為紅色。</td></tr>
+                <td>引擎負載的百分比，停止時顯示 <b class="ui">—</b>——與 <b class="ui">DSP 負載</b> 行是同一個讀數，該行位於 <a href="#audio">音頻</a> 頁。在 iPhone、iPad 或 Mac 上，這個數字表示 NAMper 佔用了整台裝置的多少；在 Android 上，它是最忙的即時執行緒的即時負載，即它的工作佔用了它多少時間。顏色表示餘裕——最忙的執行緒離截止時間有多近：60% 以下為綠色，到 85% 為琥珀色，再往上為紅色。琥珀色晶片上顯示一個低數字並不矛盾：一個執行緒可能時間不夠，而裝置的其餘部分卻在閒置。點按它會開啟 CPU 監視器：最忙的執行緒、裝置、各個核心以及每個即時執行緒。</td></tr>
             <tr><td>齒輪</td><td>設置——即本頁。</td></tr>
             <tr><td><b class="ui">指定</b> 晶片</td>
                 <td>當前調性,未設置時顯示 <b class="ui">指定</b> 字樣。點按打開
@@ -182,7 +184,7 @@
             <tr><td><b class="ui">嘯叫保護</b></td><td>開關</td><td>開</td>
                 <td>當內置麥克風的聲音正通過手機自身揚聲器播放時,靜音輸出。<a href="/docs/zh-hant/setup.html#feedback-guard">請務必仔細閱讀這一條</a>。</td></tr>
             <tr><td><b class="ui">DSP 負載</b></td><td>讀數 + 進度條</td><td>—</td>
-                <td>頂欄晶片上的那個數字,僅在引擎運行時顯示,進度條下方還有文字說明:出現斷音之前還剩多少餘量,並指出最忙的即時執行緒(或者它正在錯過截止時間——會出現斷音);NAMper 佔用單個核心和整台設備的份額;以及用小字列出的每個即時執行緒相對於各自截止時間的情況。</td></tr>
+                <td>頂欄晶片的數字和顏色，顯示在一條進度條上，僅在引擎運行時出現。全部細節——每個執行緒和每個核心——都在晶片開啟的 CPU 監視器裡。</td></tr>
             <tr><td><b class="ui">採樣率</b></td><td>晶片:<b class="ui">自動</b>、44.1k、
                 48k、88.2k、96k、176.4k、192k</td><td><b class="ui">自動</b></td>
                 <td>設置引擎採樣率;按路由分別記憶。更改會重啟引擎。Android 上的晶片為
@@ -274,7 +276,7 @@
           <tbody>
             <tr><td>速度</td><td>長按 Rig 頁頭的節拍器晶片,或
                 <b class="ui a">循環</b> 標籤頁中的速度模塊。循環樂句器也會從你的第一段循環中
-                檢測速度,選擇伴奏音軌則會應用該歌曲的速度。</td></tr>
+                檢測速度,選擇伴奏音軌則會應用該歌曲的速度。拍號在同一張速度表上——見<a href="/docs/zh-hant/looper.html#tempo">速度與節拍器</a>。</td></tr>
             <tr><td>調性</td><td>Rig 頁頭中的 <b class="ui">指定</b> 晶片。選擇伴奏音軌會應用
                 該歌曲的調性。</td></tr>
           </tbody>
@@ -336,8 +338,37 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="packs"><span class="n">09.9</span>擴充包</h2>
+      <p>擴充包是 NAMper 只在你要求時才下載的額外內容——<b class="ui">Stem
+        splitter</b>（用來<a href="/docs/zh-hant/perform.html#parts">把歌曲拆成分軌</a>）是第一個。所有擴充包都免費，
+        無需帳號：<b class="ui">擴充包是可免費下載的額外內容。它們保存在此裝置上，NAMper 外掛也會使用。</b>
+        它們來自 <b>packs.namper.org</b>，每次開啟這個頁面都會重新讀取清單。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/packs.png" width="600" height="1303"
+             alt="設定中的擴充包頁面：說明擴充包是免費額外內容的一行文字、「使用行動數據下載」開關，以及 Stem splitter 擴充包，帶有它的大小、一行「把歌曲拆成鼓、貝斯、人聲、吉他、鍵盤和其餘部分」，以及它的下載鍵。">
+        <figcaption>設定 → <b class="ui">擴充包</b>：可以下載的，以及已經下載的</figcaption>
+      </figure>
+      <p>每個擴充包都顯示名稱、大小和一行功能說明，然後是它所處的狀態：</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>狀態</th><th>你可以做什麼</th></tr></thead>
+          <tbody>
+            <tr><td>未下載</td><td><b class="ui">下載</b>。進度條顯示進度，旁邊是 <b class="ui">取消</b>；每個檔案下載到位時都會校驗。</td></tr>
+            <tr><td><b class="ui">已下載</b></td><td><b class="ui">刪除</b>——<b class="ui">之後可以重新下載。</b>有新版本時，旁邊會出現 <b class="ui">更新</b>。</td></tr>
+            <tr><td><b class="ui">此擴充包需要更新版本的 NAMper。</b></td><td>這個擴充包或它的新版本是為更新的應用程式製作的。它會一直等到你更新 NAMper；你已有的版本照常可用。</td></tr>
+            <tr><td><b class="ui">下載失敗：…</b></td><td><b class="ui">重試</b>。中途停下的下載會從停下的地方繼續。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>在手機或平板上，除非開啟 <b class="ui">使用行動數據下載</b>，擴充包只透過 Wi-Fi 下載；在此期間
+        iPhone 或 iPad 顯示 <b class="ui">正在等待 Wi-Fi</b>。Mac 透過任何網路都能下載。</p>
+      <p>外掛不下載擴充包。它們自己的擴充包頁面列出應用程式已下載的內容並加以使用：
+        <b class="ui">擴充包在 NAMper App 中下載，外掛會使用已下載的擴充包。</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.9</span>提示</h2>
+      <h2 id="prompts"><span class="n">09.10</span>提示</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控制項</th><th>默認值</th><th>作用</th></tr></thead>
@@ -361,7 +392,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.10</span>重置</h2>
+      <h2 id="reset"><span class="n">09.11</span>重置</h2>
       <p>兩個按鈕,每個都帶有確認步驟。</p>
       <div class="tw">
         <table>
@@ -387,7 +418,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.11</span>診斷</h2>
+      <h2 id="diagnostics"><span class="n">09.12</span>診斷</h2>
       <p>NAMper 會保留一份純文本的引擎日誌,記錄接口路由和峰值。當日誌存在時,這張卡片提供
         <b class="ui">分享引擎日誌</b> 和 <b class="ui">清除引擎日誌</b>;不存在時,
         顯示 <b class="ui">暫無引擎日誌（記錄接口路由與峰值）。</b></p>
@@ -399,7 +430,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.12</span>不在設置裡的內容</h2>
+      <h2 id="elsewhere"><span class="n">09.13</span>不在設置裡的內容</h2>
       <p>有三樣東西,大家常常在這裡找,卻找不到。</p>
       <h3>觸發量化</h3>
       <p><b class="ui">量化</b> 旋鈕及其網格晶片位於 <b class="ui a">採樣</b> 標籤頁頁頭,

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>演出與歌詞 — NAMper 文檔</title>
-<meta name="description" content="伴奏音軌、舞臺按鈕、曲目單及其歌曲、時間線上的歌曲自動化、帶錨點的全屏歌詞提詞器、多軌錄音以及 DAWproject 導出。">
+<meta name="description" content="伴奏音軌、把歌曲拆成各個分軌、舞臺按鈕、曲目單及其歌曲、時間線上的歌曲自動化、帶錨點的全屏歌詞提詞器、多軌錄音以及 DAWproject 導出。">
 <link rel="icon" type="image/svg+xml" href="/assets/icon.svg?v=3">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png?v=3">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png?v=3">
@@ -77,6 +77,7 @@
       <ul>
         <li><a href="#tracks">伴奏音軌</a></li>
         <li><a href="#player">播放器卡片</a></li>
+        <li><a href="#parts">歌曲的分軌</a></li>
         <li><a href="#stage">舞臺按鈕</a></li>
         <li><a href="#setlist">歌單與歌曲</a></li>
         <li><a href="#sections">一首歌會叫出什麼</a></li>
@@ -137,6 +138,7 @@
             <tr><td><b class="ui">錄製自動化</b></td><td>點按:歌曲播放時把你的操作寫進歌曲。按住:這個開關以及
               <b class="ui">清除歌曲的自動化</b></td></tr>
             <tr><td><b class="ui">歌詞</b></td><td>打開提詞器,或加載歌詞文件</td></tr>
+            <tr><td><b class="ui">分軌</b></td><td>疊層圖示，卡片上的最後一個鍵：把音軌拆成各個分軌並分別調整——<a href="#parts">見下文</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -164,8 +166,34 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--amp)">
+      <h2 id="parts"><span class="n">06.3</span>歌曲的分軌</h2>
+      <p><b class="ui">分軌</b> 鍵——疊層圖示，播放器卡片上的最後一個——會把選中的伴奏音軌拆成
+        <b class="ui">鼓</b>、<b class="ui">貝斯</b>、<b class="ui">人聲</b>、<b class="ui">吉他</b>、<b class="ui">鍵盤</b> 和
+        <b class="ui">其他</b>，這樣你就可以去掉吉他、壓低人聲或者只留下鼓來跟著彈。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/parts.png" width="600" height="1303"
+             alt="尚未分離的音軌上，演出分頁上的分軌面板：音軌名稱、一行說明分離的作用、擴充包的大小，以及「下載分軌模型」鍵。">
+        <figcaption>首次開啟的 <b class="ui">分軌</b> 面板：提供分軌模型擴充包</figcaption>
+      </figure>
+      <p><b class="ui">分軌</b> 在裝置上離線執行——一首歌需要幾分鐘，進度顯示在面板上，期間音軌照常播放。
+        在手機或平板上，請讓 NAMper 一直留在前景直到完成：應用程式在背景時拆分會暫停等待。</p>
+      <p>第一次使用時，面板會提供分軌模型這個免費擴充包：
+        <b class="ui">下載分軌模型</b>。它和其他擴充包一樣——
+        <a href="/docs/zh-hant/settings.html#packs">設定 → 擴充包</a> 可以查看、更新和刪除它。</p>
+      <p>拆分完成後，每個分軌都有一個靜音鍵、一個獨奏鍵（再按一次即可聽到全部）和一個 −60 到 +6 dB
+        的電平。<b class="ui">播放歌曲分軌</b> 在各個分軌與原樣的整條音軌之間切換；歌曲的自動化、歌詞和標記
+        在兩種情況下都會跟隨。</p>
+      <p>分軌跟著音軌保存，<b class="ui">刪除分軌</b> 會移除它們——
+        <b class="ui">音軌保持不變，可以再次分軌。</b>以同一名稱再次導入音軌時，它原來的分軌會被丟棄。</p>
+      <div class="note">
+        <div class="t">模型的最佳猜測</div>
+        <p>一個分軌裡可能夾帶一點別的分軌的聲音，六個分軌裡鍵盤最不可靠。音軌本身永遠不會被改動。</p>
+      </div>
+    </section>
+
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="stage"><span class="n">06.3</span>舞臺按鈕</h2>
+      <h2 id="stage"><span class="n">06.4</span>舞臺按鈕</h2>
       <p>演出標籤頁的下半部分屬於幾個大按鈕——演奏到一半,手不用看就能拍中的那種。按鈕上放什麼,
         取決於是否有歌單處於 <b class="ui">現場</b> 狀態:</p>
       <ul style="--nc:var(--pitch)">
@@ -195,7 +223,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--amp)">
-      <h2 id="setlist"><span class="n">06.4</span>歌單與歌曲</h2>
+      <h2 id="setlist"><span class="n">06.5</span>歌單與歌曲</h2>
       <p><strong>歌單</strong>就是一串歌；同一時間只有一份處於 <b class="ui">現場</b>，而處於演出中
         的那份歌單擁有預設條和 MIDI：程序切換 <em>n</em> 按下第 <em>n</em> 個舞臺按鈕。一首
         <strong>歌</strong>由名稱、它要叫出的東西的有序清單，以及一條<em>可有可無</em>的伴奏（連同
@@ -229,7 +257,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="sections"><span class="n">06.5</span>一首歌會調出什麼</h2>
+      <h2 id="sections"><span class="n">06.6</span>一首歌會調出什麼</h2>
       <p>編輯按鈕開啟歌曲編輯器：<b class="ui">歌曲名稱</b> 欄位、第一項為 <b class="ui">無伴奏歌曲</b> 的伴奏選擇器、<a href="#lyrics">歌詞</a>列、歌曲調出內容的清單，以及底部的 <b class="ui">刪除歌曲</b>。</p>
       <p>沒有伴奏的歌曲還會多出一行 <b class="ui">時長</b>——它執行的時間軸。設定之後，走帶就用時鐘而
         不是音訊來計時：<a href="#lyrics">歌詞在上面捲動</a>，它的自動化在上面播放，長度走完歌曲也就結束，於是
@@ -275,7 +303,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="automation"><span class="n">06.6</span>歌曲自動化</h2>
+      <h2 id="automation"><span class="n">06.7</span>歌曲自動化</h2>
       <p>歌曲會記住它播放時你做過的事——轉了一個旋鈕、切換了一個模組、叫出了一個場景或預設、敲了一個
         打擊墊、按了一個循環器鍵、推了一個推桿——都記在它自己的時間軸上，並在每次播放時再做一遍。
         乾淨的主歌、破音的副歌、solo 時打開的延遲：演奏一次，之後就不用再動手。</p>
@@ -394,7 +422,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="lyrics"><span class="n">06.7</span>歌詞與提詞器</h2>
+      <h2 id="lyrics"><span class="n">06.8</span>歌詞與提詞器</h2>
       <p>NAMper 會替你記住歌詞。給一條音軌配上一個純文本文件,它就會變成一個全屏提詞器,在歌曲
         開始時自動打開,並按你教給它的節奏滾動。</p>
 
@@ -483,7 +511,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="presets"><span class="n">06.8</span>演出預設</h2>
+      <h2 id="presets"><span class="n">06.9</span>演出預設</h2>
       <p>曲目單頁頭的 <b class="ui">預設</b> 晶片會打開 <b class="ui">演出預設</b>。
         一個已保存的演出預設承載<strong>整份曲目單</strong>:每個段落及其步驟和小節數、
         <b class="ui">自動切換</b> 狀態,以及每條帶歌詞音軌的歌詞——文本、窗口和錨點。</p>
@@ -498,7 +526,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--power)">
-      <h2 id="recording"><span class="n">06.9</span>錄製</h2>
+      <h2 id="recording"><span class="n">06.10</span>錄製</h2>
       <p><a href="/docs/zh-hant/mix.html#recorder">混合</a> 標籤頁上的錄音機會把整場演出捕捉為<strong>三條對齊的音軌</strong>。如果引擎尚未
         運行,會拒絕執行並顯示 <b class="ui r">音頻已關閉——錄音前請點按電源按鈕。</b></p>
       <div class="tw">
@@ -522,7 +550,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--cloud)">
-      <h2 id="projects"><span class="n">06.10</span>錄音工程</h2>
+      <h2 id="projects"><span class="n">06.11</span>錄音工程</h2>
       <p><b class="ui">錄音</b> 卡片會把同一次錄製的各條音軌歸組為一個<strong>工程</strong>,
         依據是它們共同的 <b class="ui">Perf &lt;date&gt;</b> 名稱。按最新排序,並只顯示最新的五個
         工程——更早的錄音仍保存在磁碟的 <b class="ui">recordings/</b> 中,可通過文件 App
@@ -538,7 +566,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="dawproject"><span class="n">06.11</span>DAWproject 導出</h2>
+      <h2 id="dawproject"><span class="n">06.12</span>DAWproject 導出</h2>
       <p><strong>工程行</strong>上的分享按鈕——而不是單條音軌上的——會通過常規的 iOS 分享菜單,
         把整次錄製導出為一個 <b class="ui">.dawproject</b> 文件:保存到文件 App、通過 AirDrop
         發送到 Mac,或者放進雲端文件夾。DAWproject 是一種開放的交換格式,任何支持讀取它的 DAW
@@ -548,8 +576,8 @@
         <strong>24 位 WAV</strong>。</p>
       <div class="note warn">
         <div class="t">導出不會包含的內容</div>
-        <p>沒有速度,也沒有拍號——時間線以<strong>秒</strong>為單位,而不是小節。沒有曲目單,沒有插件狀態,也沒有自動化。這只是你所演奏音頻的一份乾淨多軌記錄,速度需要你
-          在對方那一端自行設定。</p>
+        <p>沒有按速度錄製的錄音不帶速度：時間線以<strong>秒</strong>為單位，而不是小節，速度需要你
+          在對方那一端自行設定。按速度錄製的錄音則帶上速度和拍號，DAW 裡的小節會與你的演奏對齊。曲目單不會隨之導出。</p>
       </div>
     </section>
 

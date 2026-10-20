@@ -82,6 +82,7 @@
         <li><a href="#lyrics">歌词</a></li>
         <li><a href="#metronome">节拍器</a></li>
         <li><a href="#looper">循环乐句器</a></li>
+        <li><a href="#packs">扩展包</a></li>
         <li><a href="#prompts">提示</a></li>
         <li><a href="#reset">重置</a></li>
         <li><a href="#diagnostics">诊断</a></li>
@@ -95,7 +96,7 @@
         入口，而标题栏只存在于这个标签页——从 <b class="ui a">循环</b>、<b class="ui a">采样</b>、
         <b class="ui a">演出</b> 或 <b class="ui a">混合</b> 过来，请先回到
         <b class="ui a">音色组</b>。</p>
-      <p>设置是一份目录，而不是一张长长的表单：一行 <b class="ui">关于</b> 加六个页面，各点一下就
+      <p>设置是一份目录，而不是一张长长的表单：一行 <b class="ui">关于</b> 加七个页面，各点一下就
         到，你要找的东西就在讲那件事的页面上。只有一个选项留在目录本身，位于
         <b class="ui">出厂预设</b> 标题下：<b class="ui">内置音箱</b>、<b class="ui">TONE3000 采样</b>
         或 HyperReal（带 HyperReal 标志的芯片，也是默认值），决定出厂音色组播放哪种音箱；见
@@ -116,6 +117,8 @@
                 <td>一个音色组有几个场景（<b class="ui">场景</b> → <b class="ui">场景数量</b>，1 到 16，所有预设共用一个设置——见<a href="/docs/zh/rig.html#presets">场景</a>）、节拍器、整套的速度与调性、歌词字号、歌词是否自己打开，以及循环乐句器的自动循环电平——见下文的 <a href="#set">歌单</a>、<a href="#lyrics">歌词</a>、<a href="#metronome">节拍器</a>和 <a href="#looper">循环乐句器</a>。</td></tr>
             <tr><td><b class="ui">外观</b></td>
                 <td>浅色、深色，或者跟随系统，以及各款主题——<a href="#appearance">见下文</a>。</td></tr>
+            <tr><td><b class="ui">扩展包</b></td>
+                <td>可下载的额外内容，免费——第一个是分轨模型——<a href="#packs">见下文</a>。</td></tr>
             <tr><td><b class="ui">提示与导览</b></td>
                 <td>启动提示和快速导览——<a href="#prompts">见下文</a>。</td></tr>
             <tr><td><b class="ui">故障排查</b></td>
@@ -136,8 +139,7 @@
             <tr><td><b class="ui">NAMper</b> 字标</td>
                 <td>打开 About 面板——版本、打赏、致谢，以及包含文档、网站、Telegram 社区、支持和隐私政策的 <b class="ui">帮助与链接</b> 卡片。设置最上方的 <b class="ui">关于</b> 行打开的是同一个面板。</td></tr>
             <tr><td><b class="ui">DSP 负载</b> 芯片</td>
-                <td>以百分比显示 NAMper 最忙的实时线程离它的截止时间有多近——与 <b class="ui">DSP 负载</b> 行是同一个数字,该行位于 <a href="#audio">音频</a> 页,那里有文字详解;停止时显示 <b class="ui">—</b>。60% 以下为绿色,
-                  到 85% 为琥珀色,再往上为红色。</td></tr>
+                <td>引擎负载的百分比，停止时显示 <b class="ui">—</b>——与 <b class="ui">DSP 负载</b> 行是同一个读数，该行位于 <a href="#audio">音频</a> 页。在 iPhone、iPad 或 Mac 上，这个数字表示 NAMper 占用了整台设备的多少；在 Android 上，它是最忙的实时线程的实时负载，即它的工作占用了它多少时间。颜色表示余量——最忙的线程离截止时间有多近：60% 以下为绿色，到 85% 为琥珀色，再往上为红色。琥珀色芯片上显示一个低数字并不矛盾：一个线程可能时间不够，而设备的其余部分却在空闲。点按它会打开 CPU 监视器：最忙的线程、设备、各个核心以及每个实时线程。</td></tr>
             <tr><td>齿轮</td><td>设置——即本页。</td></tr>
             <tr><td><b class="ui">指定</b> 芯片</td>
                 <td>当前调性,未设置时显示 <b class="ui">指定</b> 字样。点按打开
@@ -182,7 +184,7 @@
             <tr><td><b class="ui">啸叫保护</b></td><td>开关</td><td>开</td>
                 <td>当内置麦克风的声音正通过手机自身扬声器播放时,静音输出。<a href="/docs/zh/setup.html#feedback-guard">请务必仔细阅读这一条</a>。</td></tr>
             <tr><td><b class="ui">DSP 负载</b></td><td>读数 + 进度条</td><td>—</td>
-                <td>顶栏芯片上的那个数字,仅在引擎运行时显示,进度条下方还有文字说明:出现断音之前还剩多少余量,并指出最忙的实时线程(或者它正在错过截止时间——会出现断音);NAMper 占用单个核心和整台设备的份额;以及用小字列出的每个实时线程相对于各自截止时间的情况。</td></tr>
+                <td>顶栏芯片的数字和颜色，显示在一条进度条上，仅在引擎运行时出现。全部细节——每个线程和每个核心——都在芯片打开的 CPU 监视器里。</td></tr>
             <tr><td><b class="ui">采样率</b></td><td>芯片:<b class="ui">自动</b>、44.1k、
                 48k、88.2k、96k、176.4k、192k</td><td><b class="ui">自动</b></td>
                 <td>设置引擎采样率;按路由分别记忆。更改会重启引擎。Android 上的芯片为
@@ -274,7 +276,7 @@
           <tbody>
             <tr><td>速度</td><td>长按 Rig 页头的节拍器芯片,或
                 <b class="ui a">循环</b> 标签页中的速度模块。循环乐句器也会从你的第一段循环中
-                检测速度,选择伴奏音轨则会应用该歌曲的速度。</td></tr>
+                检测速度,选择伴奏音轨则会应用该歌曲的速度。拍号在同一张速度表上——见<a href="/docs/zh/looper.html#tempo">速度与节拍器</a>。</td></tr>
             <tr><td>调性</td><td>Rig 页头中的 <b class="ui">指定</b> 芯片。选择伴奏音轨会应用
                 该歌曲的调性。</td></tr>
           </tbody>
@@ -336,8 +338,37 @@
       </div>
     </section>
 
+    <section class="blk" style="--nc:var(--cloud)">
+      <h2 id="packs"><span class="n">09.9</span>扩展包</h2>
+      <p>扩展包是 NAMper 只在你要求时才下载的额外内容——<b class="ui">Stem
+        splitter</b>（用来<a href="/docs/zh/perform.html#parts">把歌曲拆成分轨</a>）是第一个。所有扩展包都免费，
+        无需账户：<b class="ui">扩展包是可免费下载的额外内容。它们保存在此设备上，NAMper 插件也会使用。</b>
+        它们来自 <b>packs.namper.org</b>，每次打开这个页面都会重新读取列表。</p>
+      <figure>
+        <img class="phone" src="/docs/assets/packs.png" width="600" height="1303"
+             alt="设置中的扩展包页面：说明扩展包是免费额外内容的一行文字、“使用蜂窝数据下载”开关，以及 Stem splitter 扩展包，带有它的大小、一行“把歌曲拆成鼓、贝斯、人声、吉他、键盘和其余部分”，以及它的下载键。">
+        <figcaption>设置 → <b class="ui">扩展包</b>：可以下载的，以及已经下载的</figcaption>
+      </figure>
+      <p>每个扩展包都显示名称、大小和一行功能说明，然后是它所处的状态：</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>状态</th><th>你可以做什么</th></tr></thead>
+          <tbody>
+            <tr><td>未下载</td><td><b class="ui">下载</b>。进度条显示进度，旁边是 <b class="ui">取消</b>；每个文件下载到位时都会校验。</td></tr>
+            <tr><td><b class="ui">已下载</b></td><td><b class="ui">删除</b>——<b class="ui">之后可以重新下载。</b>有新版本时，旁边会出现 <b class="ui">更新</b>。</td></tr>
+            <tr><td><b class="ui">此扩展包需要更新版本的 NAMper。</b></td><td>这个扩展包或它的新版本是为更新的应用制作的。它会一直等到你更新 NAMper；你已有的版本照常可用。</td></tr>
+            <tr><td><b class="ui">下载失败：…</b></td><td><b class="ui">重试</b>。中途停下的下载会从停下的地方继续。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>在手机或平板上，除非打开 <b class="ui">使用蜂窝数据下载</b>，扩展包只通过 Wi-Fi 下载；在此期间
+        iPhone 或 iPad 显示 <b class="ui">正在等待 Wi-Fi</b>。Mac 通过任何网络都能下载。</p>
+      <p>插件不下载扩展包。它们自己的扩展包页面列出应用已下载的内容并加以使用：
+        <b class="ui">扩展包在 NAMper 应用中下载，插件会使用已下载的扩展包。</b></p>
+    </section>
+
     <section class="blk" style="--nc:var(--gate)">
-      <h2 id="prompts"><span class="n">09.9</span>提示</h2>
+      <h2 id="prompts"><span class="n">09.10</span>提示</h2>
       <div class="tw">
         <table>
           <thead><tr><th>行</th><th>控件</th><th>默认值</th><th>作用</th></tr></thead>
@@ -361,7 +392,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--drive)">
-      <h2 id="reset"><span class="n">09.10</span>重置</h2>
+      <h2 id="reset"><span class="n">09.11</span>重置</h2>
       <p>两个按钮,每个都带有确认步骤。</p>
       <div class="tw">
         <table>
@@ -387,7 +418,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--eq)">
-      <h2 id="diagnostics"><span class="n">09.11</span>诊断</h2>
+      <h2 id="diagnostics"><span class="n">09.12</span>诊断</h2>
       <p>NAMper 会保留一份纯文本的引擎日志,记录接口路由和峰值。当日志存在时,这张卡片提供
         <b class="ui">分享引擎日志</b> 和 <b class="ui">清除引擎日志</b>;不存在时,
         显示 <b class="ui">暂无引擎日志（记录接口路由与峰值）。</b></p>
@@ -399,7 +430,7 @@
     </section>
 
     <section class="blk" style="--nc:var(--pitch)">
-      <h2 id="elsewhere"><span class="n">09.12</span>不在设置里的内容</h2>
+      <h2 id="elsewhere"><span class="n">09.13</span>不在设置里的内容</h2>
       <p>有三样东西,大家常常在这里找,却找不到。</p>
       <h3>触发量化</h3>
       <p><b class="ui">量化</b> 旋钮及其网格芯片位于 <b class="ui a">采样</b> 标签页页头,
