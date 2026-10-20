@@ -320,7 +320,8 @@
           <tbody>
             <tr><td>Arabirimler</td><td>Class-compliant USB-C arabirimler, USB-C kulaklık setleri ve
               kablolu kulaklıklar kutudan çıktığı gibi çalışır; uygulama sistem yolunu tıpkı
-              iOS'taki gibi izler. Bluetooth çıkışı aynı gecikme uyarısını alır.</td></tr>
+              iOS'taki gibi izler. Bluetooth çıkışı aynı gecikme uyarısını alır. Bir USB arabirim
+              NAMper'ın kendi <a href="#usb-driver">doğrudan USB sürücüsünde</a> de çalışabilir.</td></tr>
             <tr><td>Gecikme</td><td>Telefona, iPhone'dakinden çok daha fazla bağlıdır. Motor düşük
               gecikmeli yolu ister ve <b class="ui">Buffer</b> çipleri arayüzün kendi burst'ünün
               katlarıdır (çoğu telefonda 96, 192 ve 384 frame), dolayısıyla her seçim donanımın
@@ -348,6 +349,47 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Doğrudan USB sürücüsü (beta)</h3>
+      <p>Android'in kendi ses sistemi bir USB arabirimi telefon üreticisinin ayarladığı şekilde
+        çalıştırır; bu da birçok telefonda fazladan gecikme, paylaşılan (daha yavaş) bir yol ya da
+        yalnızca tek yönde çalan bir arabirim demektir. Ayarlar → <b class="ui">Ses</b> →
+        <b class="ui">Doğrudan USB sürücüsü (beta)</b>, NAMper'ın class-compliant bir arabirimle
+        telefonun ses sistemini atlayarak kendisi konuşmasını sağlar: daha düşük gecikme, ve
+        telefonun iki yönde çalıştıramadığı arabirimler de çalışır. Varsayılan olarak kapalıdır.</p>
+      <ul>
+        <li>İlk seferde Android, NAMper'ın arabirimi kullanıp kullanamayacağını sorar.
+          <b>Her zaman</b> kutusunu işaretle; arabirimi yeniden taktığında doğrudan sürücüye gider.</li>
+        <li>NAMper sürücü üzerinden çalarken diğer uygulamalar arabirimi duymaz; sesi kapatmak
+          arabirimi sisteme geri verir.</li>
+        <li>Ses sayfasının en üstündeki <b class="ui">Çalma yolu</b>, sesin şu anda nereden
+          geçtiğini söyler: arabirimin adı ve kuyruğuyla doğrudan sürücü, sistem (paylaşılan ya da
+          özel) veya <b class="ui">Arayüz bekleniyor…</b>. Anahtar senin istediğindir; bu satır
+          elde ettiğindir.</li>
+        <li>Sürücü açıkken çıkarılan bir arabirim beklenir: geri tak, sürücü onu araya telefonun
+          hoparlörü girmeden yeniden alır. Sürücü bir arabirimi çalıştıramazsa onu sistem çalar
+          ve nedeni anahtarın altında yazar.</li>
+        <li><b class="ui">Buffer</b>, rig'in hesaplandığı bloktur (96, 192 ya da 384 frame);
+          <b class="ui">USB kuyruğu</b> ise kabloda yolda olan ses miktarıdır —
+          <b class="ui">Auto</b> düşükten başlar, her kesintide bir milisaniye ekler ve bu
+          arabirimin neye ihtiyaç duyduğunu hatırlar; sabit bir değer hiç değişmez. Bunlar iki
+          ayrı ayardır: ağır bir rig daha büyük bir buffer, kesintiye yatkın bir kablo daha uzun
+          bir kuyruk ister.</li>
+      </ul>
+      <p>Gecikmeyi tam olarak bilmek için ölç: Ayarlar → <b class="ui">Ses</b> →
+        <b class="ui">Gecikmeyi ölç…</b>. Arabirimin bir çıkışını bir kabloyla bir girişine bağla,
+        monitörleri kıs ve <b class="ui">Başlat</b>'a bas: NAMper birkaç saniye boyunca kısa bipler
+        çalar ve geri dönüş sürelerini ölçer. Kablonun takılı olduğu <b class="ui">Çıkış</b> ve
+        <b class="ui">Giriş</b>'i seç ya da <b class="ui">Tümü</b> ve <b class="ui">Auto</b>'da
+        bırak. Sonuç o arabirim için saklanır, <b class="ui">Gidiş-dönüş gecikmesi</b> satırı onu
+        <b class="ui">ölçüldü</b> olarak gösterir ve looper overdub'ları buna göre hizalar
+        (<a href="/docs/tr/looper.html#latency">daha fazlası</a>); <b class="ui">Sıfırla</b>
+        tahmine geri döner. Giriş tam ölçekte duruyorsa bipler onun içinde boğulur: giriş kazancını
+        kıs ve arabirimin doğrudan monitörlemesini kapat — loop kablosu takılıyken o, girişi
+        doğrudan kabloya geri gönderir.</p>
+      <p>Sürücü beta aşamasında. Bir arabirim onunla sorun çıkarırsa tanılamayı
+        (Ayarlar → <b class="ui">Sorun giderme</b> → <b class="ui">Motor günlüğünü paylaş</b>)
+        telefonu ve arabirimi belirterek support@namper.org adresine gönder: rapor sürücünün
+        satırını içerir.</p>
     </section>
 
     <nav class="pager">

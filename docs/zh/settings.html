@@ -164,6 +164,9 @@
         <a href="/docs/zh/mac.html#interface">Mac</a>。如果接口掉线,引擎会暂停,
         等接口回来后以相同的设置自行重新启动,循环也都保留;在此期间 iPhone 或 iPad 保持静音,
         Mac 通过系统设备播放,Android 手机则通过它自己的扬声器播放。</p>
+      <p>在 Android 上,这个页面分成五张卡片:<b class="ui">音频接口</b>(插着什么,以及声音的
+        <b class="ui">当前通路</b>)、<b class="ui">连接</b>(直连 USB 驱动、采样率、通道、缓冲区)、
+        <b class="ui">输入</b>、<b class="ui">延迟</b> 和 <b class="ui">处理器</b>。下面各行是一样的。</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="音频页顶部:接口各行、防啸叫保护、DSP 负载条及其下方三行文字,然后是采样率、输入声道和缓冲区芯片以及输入增益。">
@@ -180,7 +183,11 @@
             <tr><td><b class="ui">输出</b></td><td>只读</td><td>—</td>
                 <td>当前路由提供的输出通道数。</td></tr>
             <tr><td><b class="ui">引擎</b></td><td>只读</td><td>—</td>
-                <td><b class="ui">运行中</b> 或 <b class="ui">已停止</b>。</td></tr>
+                <td><b class="ui">运行中</b> 或 <b class="ui">已停止</b>。在 Android 上由
+                <b class="ui">当前通路</b> 代替:直连驱动、系统(共享或独占)、<b class="ui">正在等待声卡…</b>
+                或已停止。</td></tr>
+            <tr><td><b class="ui">直连 USB 驱动（测试版）</b></td><td>开关</td><td>关</td>
+                <td>Android:NAMper 绕过手机的音频系统,自己驱动免驱动(class-compliant)USB 接口。<a href="/docs/zh/setup.html#usb-driver">详情</a>。</td></tr>
             <tr><td><b class="ui">啸叫保护</b></td><td>开关</td><td>开</td>
                 <td>当内置麦克风的声音正通过手机自身扬声器播放时,静音输出。<a href="/docs/zh/setup.html#feedback-guard">请务必仔细阅读这一条</a>。</td></tr>
             <tr><td><b class="ui">DSP 负载</b></td><td>读数 + 进度条</td><td>—</td>
@@ -195,8 +202,10 @@
                 <td>限制 NAMper 打开的输入通道数。除非有特殊需要,否则保持
                   <b class="ui">自动</b>。</td></tr>
             <tr><td><b class="ui">缓冲区</b></td><td>芯片:64、128、256、512</td><td><b class="ui">128</b></td>
-                <td>块大小,附带实时的 <b class="ui">frames · ms</b> 读数。这是唯一的延迟控制项。在 Android 上,芯片是接口突发(burst)的整数倍。
+                <td>块大小,附带实时的 <b class="ui">frames · ms</b> 读数。在 Android 上,芯片是接口突发(burst)的整数倍;使用直连 USB 驱动时则为 96、192 和 384。
                   <a href="/docs/zh/setup.html#rate">详情</a>。</td></tr>
+            <tr><td><b class="ui">USB 队列</b></td><td>芯片:<b class="ui">自动</b>、3、4、6、8 ms</td><td><b class="ui">自动</b></td>
+                <td>Android,仅限直连 USB 驱动:线缆上正在传输的音频量。<b class="ui">自动</b> 从低值起步,每次掉音加一毫秒,并记住接口需要多少。与缓冲区相互独立。</td></tr>
             <tr><td><b class="ui">输入微调增益</b></td><td>每路输入各一个滑块,−12…+24 dB</td><td>0 dB</td>
                 <td>为没有增益旋钮的接口提供增益。用力弹奏:<b class="ui">入</b> 电平表应达到
                   上三分之一区域。</td></tr>
@@ -211,6 +220,8 @@
                 <td>HyperReal 音箱计算得多精细:<b class="ui">现场</b> 对处理器更轻,<b class="ui">录音室</b> 更精细也更重。更改会重新编译正在播放的音箱,无需重启。如果录音室模式的音箱让最忙的线程连续两秒超过截止时间,音箱就会以现场模式运行,该行显示 <b class="ui">录音室（以现场模式运行：这台设备跟不上）</b>,直到你再次选择质量。插件没有这一行。</td></tr>
             <tr><td><b class="ui">切换时保留尾音</b></td><td>开关</td><td>开</td>
                 <td>切换预设时被留下的模块会自然衰减——延迟的重复、混响的余响——最长持续八秒,而不是在切换那一刻戛然而止;被场景旁通的延迟、混响、效果回路或插件也会在干声之上余音延续(冻结是保持的声音,不是尾音:它会停下)。在这几秒里会多占用一点 DSP。</td></tr>
+            <tr><td><b class="ui">往返延迟</b></td><td>读数 + <b class="ui">测量延迟…</b>、<b class="ui">重置</b></td><td>—</td>
+                <td>Android:从输出到输入的延迟,循环乐句器按它对齐叠录;用回环线<b class="ui">实测</b>,或根据音频流<b class="ui">估计</b>;按接口分别保存。<a href="/docs/zh/setup.html#usb-driver">如何测量</a>。</td></tr>
             <tr><td><b class="ui">对齐各机架</b></td><td>开关</td><td>关</td>
                 <td>在调音台汇总不同输入上的音色组时,把它们都延迟到其中最慢的那个,让吉他和麦克风同时到达。关闭时,每个音色组保持各自的延迟;同一路输入上的各条路径无论开关与否都始终对齐。</td></tr>
           </tbody>

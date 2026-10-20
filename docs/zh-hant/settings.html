@@ -164,6 +164,9 @@
         <a href="/docs/zh-hant/mac.html#interface">Mac</a>。如果接口掉線,引擎會暫停,
         等接口回來後以相同的設置自行重新啟動,循環也都保留;在此期間 iPhone 或 iPad 保持靜音,
         Mac 通過系統設備播放,Android 手機則通過它自己的揚聲器播放。</p>
+      <p>在 Android 上,這個頁面分成五張卡片:<b class="ui">音頻接口</b>(插著什麼,以及聲音的
+        <b class="ui">目前通路</b>)、<b class="ui">連線</b>(直連 USB 驅動程式、採樣率、通道、緩衝區)、
+        <b class="ui">輸入</b>、<b class="ui">延遲</b> 和 <b class="ui">處理器</b>。下面各行是一樣的。</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="音訊頁頂部:介面各列、防嘯叫保護、DSP 負載條及其下方三行文字,接著是取樣率、輸入聲道和緩衝區晶片以及輸入增益。">
@@ -180,7 +183,11 @@
             <tr><td><b class="ui">輸出</b></td><td>只讀</td><td>—</td>
                 <td>當前路由提供的輸出通道數。</td></tr>
             <tr><td><b class="ui">引擎</b></td><td>只讀</td><td>—</td>
-                <td><b class="ui">運行中</b> 或 <b class="ui">已停止</b>。</td></tr>
+                <td><b class="ui">運行中</b> 或 <b class="ui">已停止</b>。在 Android 上由
+                <b class="ui">目前通路</b> 代替:直連驅動程式、系統(共享或獨佔)、<b class="ui">正在等待介面…</b>
+                或已停止。</td></tr>
+            <tr><td><b class="ui">直連 USB 驅動程式（測試版）</b></td><td>開關</td><td>關</td>
+                <td>Android:NAMper 繞過手機的音頻系統,自己驅動免驅動(class-compliant)USB 接口。<a href="/docs/zh-hant/setup.html#usb-driver">詳情</a>。</td></tr>
             <tr><td><b class="ui">嘯叫保護</b></td><td>開關</td><td>開</td>
                 <td>當內置麥克風的聲音正通過手機自身揚聲器播放時,靜音輸出。<a href="/docs/zh-hant/setup.html#feedback-guard">請務必仔細閱讀這一條</a>。</td></tr>
             <tr><td><b class="ui">DSP 負載</b></td><td>讀數 + 進度條</td><td>—</td>
@@ -195,8 +202,10 @@
                 <td>限制 NAMper 打開的輸入通道數。除非有特殊需要,否則保持
                   <b class="ui">自動</b>。</td></tr>
             <tr><td><b class="ui">緩衝區</b></td><td>晶片:64、128、256、512</td><td><b class="ui">128</b></td>
-                <td>塊大小,附帶實時的 <b class="ui">frames · ms</b> 讀數。這是唯一的延遲控制項。在 Android 上,晶片是接口突發(burst)的整數倍。
+                <td>塊大小,附帶實時的 <b class="ui">frames · ms</b> 讀數。在 Android 上,晶片是接口突發(burst)的整數倍;使用直連 USB 驅動程式時則為 96、192 和 384。
                   <a href="/docs/zh-hant/setup.html#rate">詳情</a>。</td></tr>
+            <tr><td><b class="ui">USB 佇列</b></td><td>晶片:<b class="ui">自動</b>、3、4、6、8 ms</td><td><b class="ui">自動</b></td>
+                <td>Android,僅限直連 USB 驅動程式:線纜上正在傳輸的音頻量。<b class="ui">自動</b> 從低值起步,每次掉音加一毫秒,並記住接口需要多少。與緩衝區相互獨立。</td></tr>
             <tr><td><b class="ui">輸入微調增益</b></td><td>每路輸入各一個滑塊,−12…+24 dB</td><td>0 dB</td>
                 <td>為沒有增益旋鈕的接口提供增益。用力彈奏:<b class="ui">入</b> 電平表應達到
                   上三分之一區域。</td></tr>
@@ -211,6 +220,8 @@
                 <td>HyperReal 音箱計算得多精細:<b class="ui">現場</b> 對處理器較輕,<b class="ui">錄音室</b> 更精細也更重。更改會重新編譯正在播放的音箱,無需重啟。如果錄音室模式的音箱讓最忙的執行緒連續兩秒超過截止時間,音箱就會以現場模式運行,該行顯示 <b class="ui">錄音室（以現場模式執行：這台裝置跟不上）</b>,直到你再次選擇品質。外掛沒有這一行。</td></tr>
             <tr><td><b class="ui">切換時保留尾音</b></td><td>開關</td><td>開</td>
                 <td>切換預設時被留下的模塊會自然衰減——延遲的重複、混響的餘響——最長持續八秒,而不是在切換那一刻戛然而止;被場景旁通的延遲、混響、效果迴路或插件也會在乾聲之上餘音延續(凍結是保持的聲音,不是尾音:它會停下)。在這幾秒裡會多佔用一點 DSP。</td></tr>
+            <tr><td><b class="ui">往返延遲</b></td><td>讀數 + <b class="ui">測量延遲…</b>、<b class="ui">重設</b></td><td>—</td>
+                <td>Android:從輸出到輸入的延遲,循環樂句器按它對齊疊錄;用回環線<b class="ui">實測</b>,或根據音頻流<b class="ui">估計</b>;按接口分別保存。<a href="/docs/zh-hant/setup.html#usb-driver">如何測量</a>。</td></tr>
             <tr><td><b class="ui">對齊各機架</b></td><td>開關</td><td>關</td>
                 <td>在調音臺彙總不同輸入上的音色組時,把它們都延遲到其中最慢的那個,讓吉他和麥克風同時到達。關閉時,每個音色組保持各自的延遲;同一路輸入上的各條路徑無論開關與否都始終對齊。</td></tr>
           </tbody>

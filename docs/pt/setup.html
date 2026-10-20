@@ -328,7 +328,8 @@
           <tbody>
             <tr><td>Interfaces</td><td>Interfaces USB-C class-compliant, headsets USB-C e fones com fio
               funcionam de cara; o app segue a rota do sistema exatamente como no iOS. A saída
-              Bluetooth recebe o mesmo aviso de latência.</td></tr>
+              Bluetooth recebe o mesmo aviso de latência. Uma interface USB também pode rodar no
+              <a href="#usb-driver">driver USB direto</a> do próprio NAMper.</td></tr>
             <tr><td>Latência</td><td>Depende do celular muito mais do que num iPhone. O motor pede o
               caminho de baixa latência, e os chips de <b class="ui">Buffer</b> são múltiplos do burst
               da própria interface (96, 192 e 384 frames na maioria dos celulares), então qualquer
@@ -354,6 +355,47 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">O driver USB direto (beta)</h3>
+      <p>O sistema de áudio do Android roda uma interface USB do jeito que o fabricante do celular
+        configurou, e em muitos celulares isso significa latência extra, um caminho compartilhado
+        (mais lento) ou uma interface que só funciona num sentido. Ajustes → <b class="ui">Áudio</b> →
+        <b class="ui">Driver USB direto (beta)</b> faz o NAMper falar ele mesmo com uma interface
+        class-compliant, passando por fora do sistema de áudio do celular: latência menor, e
+        funcionam até as interfaces que o celular não consegue rodar nos dois sentidos. Vem
+        desligado.</p>
+      <ul>
+        <li>Na primeira vez, o Android pergunta se o NAMper pode usar a interface. Marque
+          <b>sempre</b> e, ao conectá-la de novo, ela vai direto para o driver.</li>
+        <li>Enquanto o NAMper toca pelo driver, os outros apps não ouvem a interface; desligar o
+          áudio a devolve ao sistema.</li>
+        <li><b class="ui">Tocando por</b>, no topo da página Áudio, diz por onde o som passa agora:
+          o driver direto com o nome da interface e a sua fila, o sistema (compartilhado ou
+          exclusivo) ou <b class="ui">Aguardando a interface…</b>. O interruptor é o que você
+          pediu; esta linha é o que você recebeu.</li>
+        <li>Se a interface for desconectada com o driver ligado, o NAMper espera por ela: conecte
+          de novo e o driver a retoma, sem passar pelo alto-falante do celular. Se o driver não
+          consegue rodar uma interface, o sistema a toca e o motivo aparece embaixo do
+          interruptor.</li>
+        <li><b class="ui">Buffer</b> é o bloco em que o rig é calculado (96, 192 ou 384 frames), e
+          <b class="ui">Fila USB</b> é quanto áudio está em trânsito no cabo —
+          <b class="ui">Auto</b> começa baixo, soma um milissegundo a cada falha e lembra do que
+          esta interface precisa; um valor fixo nunca muda. São dois ajustes diferentes: um rig
+          pesado pede um buffer maior, um cabo propenso a falhas uma fila mais longa.</li>
+      </ul>
+      <p>Para saber a latência com exatidão, meça: Ajustes → <b class="ui">Áudio</b> →
+        <b class="ui">Medir latência…</b>. Ligue uma saída da interface a uma entrada com um cabo,
+        abaixe os monitores e toque em <b class="ui">Iniciar</b>: o NAMper toca bipes curtos por
+        alguns segundos e cronometra a volta deles. Escolha a <b class="ui">Saída</b> e a
+        <b class="ui">Entrada</b> em que o cabo está, ou deixe <b class="ui">Todos</b> e
+        <b class="ui">Auto</b>. O resultado fica guardado para aquela interface, a linha
+        <b class="ui">Latência total</b> o mostra como <b class="ui">medido</b> e o looper alinha
+        os overdubs por ele (<a href="/docs/pt/looper.html#latency">mais</a>);
+        <b class="ui">Redefinir</b> volta à estimativa. Se a entrada estiver no fundo de escala, os
+        bipes se afogam nela: abaixe o ganho de entrada e desligue o monitoramento direto da
+        interface — com um cabo de loop ele manda a entrada de volta direto para o cabo.</p>
+      <p>O driver está em beta. Se uma interface se comportar mal nele, mande o diagnóstico
+        (Ajustes → <b class="ui">Solução de problemas</b> → <b class="ui">Compartilhar log do motor</b>) para
+        support@namper.org com o celular e a interface: o relatório traz a linha do driver.</p>
     </section>
 
     <nav class="pager">

@@ -329,7 +329,8 @@
           <tbody>
             <tr><td>Interfaces</td><td>Class-compliant USB-C-Interfaces, USB-C-Headsets und kabelgebundene
               Kopfhörer laufen out of the box; die App folgt der System-Route genau wie auf iOS.
-              Bluetooth-Ausgabe bekommt dieselbe Latenzwarnung.</td></tr>
+              Bluetooth-Ausgabe bekommt dieselbe Latenzwarnung. Ein USB-Interface kann auch über
+              NAMpers eigenen <a href="#usb-driver">direkten USB-Treiber</a> laufen.</td></tr>
             <tr><td>Latenz</td><td>Hängt viel stärker vom Phone ab als auf einem iPhone. Die Engine
               fordert den Low-Latency-Pfad an, und die <b class="ui">Buffer</b>-Chips sind Vielfache
               des eigenen Bursts des Interfaces (96, 192 und 384 Frames auf den meisten Phones), sodass
@@ -355,6 +356,50 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Der direkte USB-Treiber (Beta)</h3>
+      <p>Das Audiosystem von Android betreibt ein USB-Interface so, wie der Hersteller des Phones es
+        eingerichtet hat, und auf vielen Phones heißt das: zusätzliche Latenz, ein geteilter
+        (langsamerer) Pfad oder ein Interface, das nur in eine Richtung spielt. Einstellungen →
+        <b class="ui">Audio</b> → <b class="ui">Direkter USB-Treiber (Beta)</b> lässt NAMper selbst mit
+        einem Class-compliant-Interface sprechen, am Audiosystem des Phones vorbei: weniger Latenz,
+        und Interfaces, die das Phone nicht in beide Richtungen betreiben kann, funktionieren. Ab Werk
+        ist er aus.</p>
+      <ul>
+        <li>Beim ersten Mal fragt Android, ob NAMper das Interface verwenden darf. Hak
+          <b>immer</b> an, dann geht es beim nächsten Einstecken direkt an den Treiber.</li>
+        <li>Solange NAMper über den Treiber spielt, hören andere Apps das Interface nicht; schaltest du
+          das Audio aus, bekommt das System es zurück.</li>
+        <li><b class="ui">Wiedergabe über</b> oben auf der Audio-Seite zeigt, worüber der Ton gerade
+          läuft: den direkten Treiber mit dem Namen des Interfaces und seiner Warteschlange, das System
+          (geteilt oder exklusiv) oder <b class="ui">Warte auf das Interface…</b>. Der Schalter ist,
+          was du verlangt hast; diese Zeile ist, was du bekommen hast.</li>
+        <li>Wird ein Interface bei eingeschaltetem Treiber abgezogen, wird darauf gewartet: steck es
+          wieder ein, und der Treiber übernimmt es erneut, ohne dass dazwischen der Lautsprecher des
+          Phones spielt. Kann der Treiber ein Interface nicht betreiben, spielt es das System, und der
+          Grund steht unter dem Schalter.</li>
+        <li><b class="ui">Buffer</b> ist der Block, in dem das Rig berechnet wird (96, 192 oder 384
+          Frames), und <b class="ui">USB-Warteschlange</b> ist, wie viel Audio gerade im Kabel
+          unterwegs ist — <b class="ui">Auto</b> beginnt niedrig, legt bei jedem Aussetzer eine
+          Millisekunde drauf und merkt sich, was dieses Interface braucht; ein fester Wert bewegt sich
+          nie. Das sind zwei verschiedene Einstellungen: ein schweres Rig will einen größeren Buffer,
+          ein aussetzeranfälliges Kabel eine längere Warteschlange.</li>
+      </ul>
+      <p>Willst du die Latenz genau wissen, miss sie: Einstellungen → <b class="ui">Audio</b> →
+        <b class="ui">Latenz messen…</b>. Verbinde einen Ausgang des Interfaces per Kabel mit einem
+        Eingang, dreh die Monitore runter und drück <b class="ui">Start</b>: NAMper spielt ein paar
+        Sekunden lang kurze Pieptöne und stoppt, wie lange sie zurück brauchen. Wähl den
+        <b class="ui">Ausgang</b> und <b class="ui">Eingang</b>, an denen das Kabel steckt, oder lass
+        <b class="ui">Alle</b> und <b class="ui">Auto</b>. Das Ergebnis wird für dieses Interface
+        gespeichert, die Zeile <b class="ui">Latenz</b> zeigt es als <b class="ui">gemessen</b>, und
+        der Looper richtet Overdubs danach aus (<a href="/docs/de/looper.html#latency">mehr</a>);
+        <b class="ui">Zurücksetzen</b> kehrt zur Schätzung zurück. Steht der Eingang am Vollausschlag,
+        gehen die Pieptöne darin unter: dreh den Eingangs-Gain runter und schalte das Direct
+        Monitoring des Interfaces aus — mit einem Loop-Kabel schickt es den Eingang direkt zurück ins
+        Kabel.</p>
+      <p>Der Treiber ist eine Beta. Benimmt sich ein Interface damit seltsam, schick die Diagnose
+        (Einstellungen → <b class="ui">Fehlersuche</b> → <b class="ui">Engine-Log teilen</b>) an
+        support@namper.org, zusammen mit Phone und Interface: der Bericht enthält die Zeile des
+        Treibers.</p>
     </section>
 
     <nav class="pager">

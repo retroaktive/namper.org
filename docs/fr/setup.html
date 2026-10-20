@@ -334,7 +334,8 @@
           <tbody>
             <tr><td>Interfaces</td><td>Les interfaces USB-C class-compliant, les casques USB-C et les
               casques filaires marchent d'emblée ; l'appli suit la route système exactement comme sur
-              iOS. La sortie Bluetooth reçoit le même avertissement de latence.</td></tr>
+              iOS. La sortie Bluetooth reçoit le même avertissement de latence. Une interface USB peut
+              aussi tourner sur le <a href="#usb-driver">pilote USB direct</a> de NAMper.</td></tr>
             <tr><td>Latence</td><td>Dépend du téléphone bien plus que sur un iPhone. Le moteur demande le
               chemin à faible latence, et les puces <b class="ui">Buffer</b> sont des multiples de la
               rafale (burst) propre à l'interface (96, 192 et 384 frames sur la plupart des téléphones),
@@ -361,6 +362,49 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Le pilote USB direct (bêta)</h3>
+      <p>Le système audio d'Android pilote une interface USB comme le fabricant du téléphone l'a
+        configuré, et sur beaucoup de téléphones cela veut dire de la latence en plus, un chemin
+        partagé (plus lent) ou une interface qui ne fonctionne que dans un sens. Réglages →
+        <b class="ui">Audio</b> → <b class="ui">Pilote USB direct (bêta)</b> laisse NAMper parler
+        lui-même à une interface class-compliant, en contournant le système audio du téléphone :
+        moins de latence, et les interfaces que le téléphone ne sait pas faire tourner dans les deux
+        sens fonctionnent. Il est désactivé par défaut.</p>
+      <ul>
+        <li>La première fois, Android demande si NAMper peut utiliser l'interface. Coche
+          <b>toujours</b> et, au prochain branchement, elle ira directement au pilote.</li>
+        <li>Tant que NAMper joue par le pilote, les autres applis n'entendent pas l'interface ;
+          couper l'audio la rend au système.</li>
+        <li><b class="ui">Lecture via</b>, en haut de la page Audio, dit par où passe le son en ce
+          moment : le pilote direct avec le nom de l'interface et sa file, le système (partagé ou
+          exclusif), ou <b class="ui">En attente de l'interface…</b>. L'interrupteur, c'est ce que tu
+          as demandé ; cette ligne, c'est ce que tu as obtenu.</li>
+        <li>Une interface débranchée pilote activé est attendue : rebranche-la et le pilote la
+          reprend, sans passer par le haut-parleur du téléphone entre-temps. Si le pilote ne peut pas
+          faire tourner une interface, c'est le système qui la joue, et la raison est écrite sous
+          l'interrupteur.</li>
+        <li><b class="ui">Buffer</b> est le bloc dans lequel le rig est calculé (96, 192 ou 384
+          frames), et <b class="ui">File USB</b> la quantité d'audio en transit dans le câble —
+          <b class="ui">Auto</b> part bas, ajoute une milliseconde à chaque décrochage et retient ce
+          dont cette interface a besoin ; une valeur fixe ne bouge jamais. Ce sont deux réglages
+          différents : un rig lourd veut un buffer plus grand, un câble sujet aux décrochages une
+          file plus longue.</li>
+      </ul>
+      <p>Pour connaître la latence exactement, mesure-la : Réglages → <b class="ui">Audio</b> →
+        <b class="ui">Mesurer la latence…</b>. Relie par un câble une sortie de l'interface à une
+        entrée, baisse les moniteurs et appuie sur <b class="ui">Démarrer</b> : NAMper joue de courts
+        bips pendant quelques secondes et chronomètre leur retour. Choisis la <b class="ui">Sortie</b>
+        et l'<b class="ui">Entrée</b> où est branché le câble, ou laisse <b class="ui">Tous</b> et
+        <b class="ui">Auto</b>. Le résultat est gardé pour cette interface, la ligne
+        <b class="ui">Latence aller-retour</b> l'affiche comme <b class="ui">mesuré</b>, et le looper
+        aligne les overdubs dessus (<a href="/docs/fr/looper.html#latency">plus</a>) ;
+        <b class="ui">Réinitialiser</b> revient à l'estimation. Si l'entrée est à pleine échelle, les
+        bips s'y noient : baisse le gain d'entrée, et coupe le monitoring direct de l'interface — avec
+        un câble en boucle, il renvoie l'entrée droit dans le câble.</p>
+      <p>Le pilote est en bêta. Si une interface se comporte mal avec lui, envoie le diagnostic
+        (Réglages → <b class="ui">Dépannage</b> → <b class="ui">Partager le journal du moteur</b>) à
+        support@namper.org avec le téléphone et l'interface : le rapport contient la ligne du
+        pilote.</p>
     </section>
 
     <nav class="pager">

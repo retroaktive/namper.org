@@ -170,6 +170,10 @@
         moteur se met en pause et redémarre tout seul à son retour, avec les mêmes réglages et en
         gardant les boucles ; entre-temps, un iPhone ou un iPad reste muet, un Mac joue par le
         périphérique du système et un téléphone Android par le sien.</p>
+      <p>Sur Android, la page est regroupée en cinq cartes : <b class="ui">INTERFACE AUDIO</b> (ce qui
+        est branché et par où passe le son : <b class="ui">Lecture via</b>), <b class="ui">CONNEXION</b>
+        (le pilote USB direct, la fréquence, les canaux, le buffer), <b class="ui">ENTRÉE</b>,
+        <b class="ui">LATENCE</b> et <b class="ui">PROCESSEUR</b>. Les lignes ci-dessous sont les mêmes.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Le haut de la page Audio : les lignes de l&#39;interface, la protection contre le larsen, la barre de charge DSP avec trois lignes de texte dessous, puis les puces de fréquence, de canaux d&#39;entrée et de tampon, et les gains d&#39;entrée.">
@@ -186,7 +190,11 @@
             <tr><td><b class="ui">Sorties</b></td><td>Lecture seule</td><td>—</td>
                 <td>Combien de canaux de sortie la route actuelle propose.</td></tr>
             <tr><td><b class="ui">Moteur</b></td><td>Lecture seule</td><td>—</td>
-                <td><b class="ui">en marche</b> ou <b class="ui">arrêté</b>.</td></tr>
+                <td><b class="ui">en marche</b> ou <b class="ui">arrêté</b>. Sur Android,
+                <b class="ui">Lecture via</b> prend sa place : le pilote direct, le système (partagé
+                ou exclusif), <b class="ui">En attente de l'interface…</b> ou arrêté.</td></tr>
+            <tr><td><b class="ui">Pilote USB direct (bêta)</b></td><td>Interrupteur</td><td>Désactivé</td>
+                <td>Android : NAMper fait tourner lui-même une interface USB class-compliant, en contournant le système audio du téléphone. <a href="/docs/fr/setup.html#usb-driver">Plus de détails</a>.</td></tr>
             <tr><td><b class="ui">Protection anti-larsen</b></td><td>Interrupteur</td><td>Activé</td>
                 <td>Coupe la sortie pendant que le micro intégré joue par le haut-parleur du téléphone. <a href="/docs/fr/setup.html#feedback-guard">Lis bien celui-là</a>.</td></tr>
             <tr><td><b class="ui">Charge DSP</b></td><td>Affichage + barre</td><td>—</td>
@@ -196,7 +204,9 @@
             <tr><td><b class="ui">Canaux d'entrée</b></td><td>Puces : <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>Plafonne le nombre de canaux d'entrée que NAMper ouvre. Laisse sur <b class="ui">Auto</b> sauf raison particulière.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Puces : 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Taille de bloc, avec un affichage <b class="ui">frames · ms</b> en direct. Le seul contrôle de latence qui existe. Sur Android, les puces sont des multiples de la rafale (burst) de l'interface. <a href="/docs/fr/setup.html#rate">Plus de détails</a>.</td></tr>
+                <td>Taille de bloc, avec un affichage <b class="ui">frames · ms</b> en direct. Sur Android, les puces sont des multiples de la rafale (burst) de l'interface ; sur le pilote USB direct, ce sont 96, 192 et 384. <a href="/docs/fr/setup.html#rate">Plus de détails</a>.</td></tr>
+            <tr><td><b class="ui">File USB</b></td><td>Puces : <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, sur le pilote USB direct seulement : l'audio en transit dans le câble. <b class="ui">Auto</b> part bas, ajoute une milliseconde à chaque décrochage et retient ce dont l'interface a besoin. Indépendante du buffer.</td></tr>
             <tr><td><b class="ui">Trim d'entrée</b></td><td>Un curseur par entrée, −12…+24 dB</td><td>0 dB</td>
                 <td>Gain pour les interfaces sans potentiomètre de gain. Joue fort : le vumètre <b class="ui">IN</b> doit atteindre son tiers supérieur.</td></tr>
             <tr><td><b class="ui">Utiliser toutes les sorties de l'interface</b></td><td>Interrupteur</td><td>Désactivé</td>
@@ -209,6 +219,8 @@
                 <td>La finesse avec laquelle un ampli HyperReal est calculé : <b class="ui">Live</b> est plus léger pour le processeur, <b class="ui">Studio</b> plus fin et plus lourd. Un changement recompile les amplis qui jouent, sans redémarrage. Si un ampli en Studio maintient le thread le plus chargé au-delà de son échéance pendant deux secondes, les amplis passent en Live et la ligne affiche <b class="ui">Studio (tourne en Live : cet appareil ne suit pas)</b> jusqu'à ce que tu choisisses à nouveau une qualité. Les plugins n'ont pas cette ligne.</td></tr>
             <tr><td><b class="ui">Queues au changement</b></td><td>Interrupteur</td><td>Activé</td>
                 <td>Les blocs qu'un changement de preset laisse derrière lui continuent de sonner — les répétitions d'un delay, la décroissance d'une réverb — jusqu'à huit secondes au lieu de s'arrêter au changement, et un delay, une réverb, une boucle d'effets ou un plugin qu'une scène bypasse continue de sonner par-dessus le signal sec (un freeze est un son tenu, pas une queue : il s'arrête). Un peu plus de DSP pendant ces secondes.</td></tr>
+            <tr><td><b class="ui">Latence aller-retour</b></td><td>Affichage + <b class="ui">Mesurer la latence…</b>, <b class="ui">Réinitialiser</b></td><td>—</td>
+                <td>Android : la latence de la sortie à l'entrée sur laquelle le looper aligne les overdubs, <b class="ui">mesuré</b> avec un câble en boucle ou <b class="ui">estimé</b> d'après les flux ; gardée par interface. <a href="/docs/fr/setup.html#usb-driver">Comment la mesurer</a>.</td></tr>
             <tr><td><b class="ui">Aligner les rigs</b></td><td>Interrupteur</td><td>Désactivé</td>
                 <td>Les rigs sur des entrées différentes sont retardés au niveau du plus lent d'entre eux là où la console les additionne, pour qu'une guitare et un micro arrivent ensemble. Désactivé, chaque rig garde sa propre latence ; les chemins d'une même entrée restent alignés dans tous les cas.</td></tr>
           </tbody>

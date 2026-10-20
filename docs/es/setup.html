@@ -324,7 +324,8 @@
           <tbody>
             <tr><td>Interfaces</td><td>Las interfaces USB-C class-compliant, los auriculares USB-C y los
               auriculares con cable funcionan de entrada; la app sigue la ruta del sistema igual que en
-              iOS. La salida Bluetooth recibe el mismo aviso de latencia.</td></tr>
+              iOS. La salida Bluetooth recibe el mismo aviso de latencia. Una interfaz USB también
+              puede funcionar con el <a href="#usb-driver">controlador USB directo</a> propio de NAMper.</td></tr>
             <tr><td>Latencia</td><td>Depende del teléfono mucho más que en un iPhone. El motor pide la
               ruta de baja latencia, y los chips de <b class="ui">Búfer</b> son múltiplos de la ráfaga
               (burst) propia de la interfaz (96, 192 y 384 frames en la mayoría de los teléfonos), así
@@ -351,6 +352,47 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">El controlador USB directo (beta)</h3>
+      <p>El sistema de audio de Android maneja una interfaz USB tal como la configuró el fabricante
+        del teléfono, y en muchos teléfonos eso significa latencia extra, una ruta compartida (más
+        lenta) o una interfaz que solo suena en un sentido. Ajustes → <b class="ui">Audio</b> →
+        <b class="ui">Controlador USB directo (beta)</b> permite que NAMper hable él mismo con una
+        interfaz class-compliant, saltándose el sistema de audio del teléfono: menos latencia, y
+        funcionan interfaces que el teléfono no puede usar en ambos sentidos. Viene desactivado.</p>
+      <ul>
+        <li>La primera vez, Android pregunta si NAMper puede usar la interfaz. Marca
+          <b>siempre</b> y, al volver a conectarla, irá directa al controlador.</li>
+        <li>Mientras NAMper suena por el controlador, las demás apps no oyen la interfaz; al apagar
+          el audio, se la devuelve al sistema.</li>
+        <li><b class="ui">Suena por</b>, arriba en la página Audio, dice por dónde sale el sonido
+          ahora mismo: el controlador directo con el nombre de la interfaz y su cola, el sistema
+          (compartido o exclusivo) o <b class="ui">Esperando la interfaz…</b>. El interruptor es lo
+          que pediste; esta fila es lo que obtuviste.</li>
+        <li>Si desconectas una interfaz con el controlador activado, se la espera: vuelve a
+          conectarla y el controlador la retoma, sin que suene el altavoz del teléfono entretanto. Si
+          el controlador no puede manejar una interfaz, la reproduce el sistema y el motivo aparece
+          bajo el interruptor.</li>
+        <li><b class="ui">Búfer</b> es el bloque en que se calcula el rig (96, 192 o 384 frames), y
+          <b class="ui">Cola USB</b> es cuánto audio va en camino por el cable —
+          <b class="ui">Auto</b> empieza bajo, suma un milisegundo con cada corte y recuerda lo que
+          necesita esta interfaz; un valor fijo no se mueve nunca. Son dos ajustes distintos: un rig
+          pesado pide un búfer mayor, un cable propenso a cortes una cola más larga.</li>
+      </ul>
+      <p>Para conocer la latencia con exactitud, mídela: Ajustes → <b class="ui">Audio</b> →
+        <b class="ui">Medir latencia…</b>. Conecta con un cable una salida de la interfaz a una
+        entrada, baja los monitores y pulsa <b class="ui">Iniciar</b>: NAMper toca pitidos cortos
+        durante unos segundos y cronometra su vuelta. Elige la <b class="ui">Salida</b> y la
+        <b class="ui">Entrada</b> donde está el cable, o deja <b class="ui">Todos</b> y
+        <b class="ui">Auto</b>. El resultado se guarda para esa interfaz, la fila
+        <b class="ui">Latencia total</b> lo muestra como <b class="ui">medido</b>, y el looper alinea
+        los overdubs según él (<a href="/docs/es/looper.html#latency">más</a>);
+        <b class="ui">Restablecer</b> vuelve a la estimación. Si la entrada está a fondo de escala,
+        los pitidos se ahogan en ella: baja la ganancia de entrada y apaga la monitorización directa
+        de la interfaz — con un cable en bucle manda la entrada de vuelta al cable.</p>
+      <p>El controlador está en beta. Si una interfaz se porta mal con él, envía el diagnóstico
+        (Ajustes → <b class="ui">Solución de problemas</b> → <b class="ui">Compartir registro del motor</b>)
+        a support@namper.org indicando el teléfono y la interfaz: el informe incluye la línea del
+        controlador.</p>
     </section>
 
     <nav class="pager">

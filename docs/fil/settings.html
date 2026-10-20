@@ -157,6 +157,7 @@
     <section class="blk" style="--nc:var(--power)">
       <h2 id="audio"><span class="n">09.2</span>Audio interface</h2>
       <p>Ang <b class="ui">AUDIO INTERFACE</b> card ang pinakamahaba, at ito lang ang may mga setting na kailangang buksan muli ang app bago magkabisa. Read-only ang unang apat na row: sinasabi nila kung ano talaga ang nakuha ng NAMper mula sa system, at iyon ang pinakamabilis na paraan para malaman kung bakit hindi maayos ang isang interface. Sa Mac, ang parehong pahina rin ang pumipili ng interface — ang mga input at output device, ang output pair — tingnan ang <a href="/docs/fil/mac.html#interface">Mac</a>. Kapag nawala sandali ang interface, humihinto muna ang engine at kusang nagsisimula ulit pagbalik nito, sa parehong mga setting at buo pa ang mga loop; samantala, tahimik ang iPhone o iPad, tumutugtog ang Mac sa device ng system at ang Android phone sa sarili nitong device.</p>
+      <p>Sa Android, nakapangkat ang pahina sa limang card: <b class="ui">AUDIO INTERFACE</b> (kung ano ang nakasaksak at kung saan <b class="ui">Tumutugtog sa</b> ang tunog), <b class="ui">KONEKSYON</b> (ang direktang USB driver, ang rate, ang mga channel, ang buffer), <b class="ui">INPUT</b>, <b class="ui">LATENCY</b> at <b class="ui">PROCESSOR</b>. Pareho ang mga row sa ibaba.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Ang itaas ng pahinang Audio: ang mga hanay ng interface, ang feedback guard, ang bar ng DSP load na may tatlong linya ng teksto sa ilalim, pagkatapos ang mga chip ng sample rate, input channel at buffer at ang mga input trim.">
@@ -173,7 +174,9 @@
             <tr><td><b class="ui">Mga Output</b></td><td>Read-only</td><td>—</td>
                 <td>Ilang output channel ang inaalok ng kasalukuyang route.</td></tr>
             <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">tumatakbo</b> o <b class="ui">huminto</b>.</td></tr>
+                <td><b class="ui">tumatakbo</b> o <b class="ui">huminto</b>. Sa Android, <b class="ui">Tumutugtog sa</b> ang pumapalit dito: ang direktang driver, ang system (shared o exclusive), <b class="ui">Hinihintay ang interface…</b> o huminto.</td></tr>
+            <tr><td><b class="ui">Direktang USB driver (beta)</b></td><td>Switch</td><td>Off</td>
+                <td>Android: ang NAMper mismo ang nagpapatakbo ng isang class-compliant na USB interface, nang hindi dumadaan sa audio system ng telepono. <a href="/docs/fil/setup.html#usb-driver">Higit pa</a>.</td></tr>
             <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
                 <td>Minu-mute ang output habang dumadaan ang built-in na mic sa sariling speaker ng telepono. <a href="/docs/fil/setup.html#feedback-guard">Basahin itong mabuti</a>.</td></tr>
             <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
@@ -183,7 +186,9 @@
             <tr><td><b class="ui">Mga input channel</b></td><td>Mga chip: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>Nililimitahan kung ilang input channel ang binubuksan ng NAMper. Iwan sa <b class="ui">Auto</b> maliban kung may dahilan ka.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Mga chip: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Laki ng block, may live na <b class="ui">frames · ms</b> readout. Ito lang ang kontrol sa latency. Sa Android ang mga chip ay mga multiple ng burst ng interface. <a href="/docs/fil/setup.html#rate">Higit pa</a>.</td></tr>
+                <td>Laki ng block, may live na <b class="ui">frames · ms</b> readout. Sa Android ang mga chip ay mga multiple ng burst ng interface; sa direktang USB driver, 96, 192 at 384 ang mga ito. <a href="/docs/fil/setup.html#rate">Higit pa</a>.</td></tr>
+            <tr><td><b class="ui">USB queue</b></td><td>Mga chip: <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, sa direktang USB driver lang: ang audio na nasa biyahe sa cable. Nagsisimula nang mababa ang <b class="ui">Auto</b>, nagdadagdag ng isang millisecond sa bawat dropout at inaalala kung ano ang kailangan ng interface. Hiwalay sa buffer.</td></tr>
             <tr><td><b class="ui">Input trim</b></td><td>Isang slider kada input, −12…+24 dB</td><td>0 dB</td>
                 <td>Gain para sa mga interface na walang gain knob. Tumugtog nang malakas: dapat umabot ang <b class="ui">IN</b> meter sa itaas nitong ikatlo.</td></tr>
             <tr><td><b class="ui">Gamitin lahat ng output ng interface</b></td><td>Switch</td><td>Off</td>
@@ -196,6 +201,8 @@
                 <td>Kung gaano kapino kinukuwenta ang isang HyperReal amp: mas magaan sa processor ang <b class="ui">Live</b>, mas pino at mas mabigat ang <b class="ui">Studio</b>. Ang pagbabago ay nagre-recompile ng mga amp na tumutugtog, nang walang restart. Kung ang isang Studio amp ay nagpapalampas sa deadline ng pinakaabalang thread nang dalawang segundo, tatakbo sa Live ang mga amp at mababasa sa row ang <b class="ui">Studio (tumatakbo sa Live: hindi kaya ng device na ito)</b> hanggang pumili ka ulit ng kalidad. Walang ganitong row ang mga plug-in.</td></tr>
             <tr><td><b class="ui">Tails sa paglipat</b></td><td>Switch</td><td>On</td>
                 <td>Patuloy na tumutunog ang mga block na naiiwan ng pagpapalit ng preset — ang mga ulit ng delay, ang pagkupas ng reverb — nang hanggang walong segundo sa halip na huminto sa pagpapalit, at ang delay, reverb, FX loop o plugin na bina-bypass ng isang scene ay patuloy na tumutunog sa ibabaw ng dry (hawak na tunog ang freeze, hindi tail: humihinto ito). Kaunti pang DSP sa mga segundong iyon.</td></tr>
+            <tr><td><b class="ui">Kabuuang latency</b></td><td>Readout + <b class="ui">Sukatin ang latency…</b>, <b class="ui">I-reset</b></td><td>—</td>
+                <td>Android: ang latency mula output hanggang input na ginagamit ng looper para i-align ang mga overdub, <b class="ui">nasukat</b> gamit ang loop cable o <b class="ui">tantiya</b> mula sa mga stream; itinatabi kada interface. <a href="/docs/fil/setup.html#usb-driver">Paano sukatin</a>.</td></tr>
             <tr><td><b class="ui">Ihanay ang mga rig</b></td><td>Switch</td><td>Off</td>
                 <td>Inaantala ang mga rig na nasa magkakaibang input hanggang sa pinakamabagal sa kanila kung saan pinagsasama sila ng desk, kaya sabay na dumarating ang gitara at ang mic. Kapag off, kanya-kanyang latency ang bawat rig; laging magkatugma ang mga path ng iisang input alinman ang piliin.</td></tr>
           </tbody>

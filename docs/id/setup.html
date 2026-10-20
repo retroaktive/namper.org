@@ -320,7 +320,8 @@
           <tbody>
             <tr><td>Interface</td><td>Interface USB-C class-compliant, headset USB-C, dan headphone kabel
               langsung bekerja; aplikasi mengikuti rute sistem persis seperti di iOS. Output
-              Bluetooth mendapat peringatan latensi yang sama.</td></tr>
+              Bluetooth mendapat peringatan latensi yang sama. Interface USB juga bisa berjalan di
+              <a href="#usb-driver">driver USB langsung</a> milik NAMper sendiri.</td></tr>
             <tr><td>Latensi</td><td>Jauh lebih bergantung pada ponselnya dibanding di iPhone. Mesin
               meminta jalur latensi rendah, dan chip <b class="ui">Buffer</b> adalah kelipatan burst
               milik interface itu sendiri (96, 192, dan 384 frame di kebanyakan ponsel), jadi setiap
@@ -347,6 +348,48 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Driver USB langsung (beta)</h3>
+      <p>Sistem audio Android menjalankan interface USB sesuai cara pembuat ponsel mengaturnya, dan
+        di banyak ponsel itu berarti latensi tambahan, jalur bersama (yang lebih lambat), atau
+        interface yang hanya bisa berbunyi satu arah. Settings → <b class="ui">Audio</b> →
+        <b class="ui">Driver USB langsung (beta)</b> membuat NAMper berbicara sendiri dengan
+        interface class-compliant, melewati sistem audio ponsel: latensi lebih rendah, dan
+        interface yang tidak bisa dijalankan ponsel dua arah pun bekerja. Defaultnya mati.</p>
+      <ul>
+        <li>Pada kali pertama, Android bertanya apakah NAMper boleh memakai interface itu. Centang
+          <b>selalu</b>, dan saat dicolokkan lagi interface langsung masuk ke driver.</li>
+        <li>Selama NAMper berbunyi lewat driver, aplikasi lain tidak mendengar interface itu;
+          mematikan audio mengembalikannya ke sistem.</li>
+        <li><b class="ui">Diputar lewat</b>, di bagian atas halaman Audio, menunjukkan lewat mana
+          suara sedang berjalan: driver langsung beserta nama interface dan antreannya, sistem
+          (bersama atau eksklusif), atau <b class="ui">Menunggu interface…</b>. Sakelar adalah apa
+          yang kamu minta; baris ini adalah apa yang kamu dapat.</li>
+        <li>Interface yang dicabut saat driver menyala akan ditunggu: colokkan kembali dan driver
+          mengambilnya lagi, tanpa speaker ponsel di antaranya. Kalau driver tidak bisa
+          menjalankan sebuah interface, sistem yang memutarnya dan alasannya tertulis di bawah
+          sakelar.</li>
+        <li><b class="ui">Buffer</b> adalah blok tempat rig dihitung (96, 192, atau 384 frame), dan
+          <b class="ui">Antrean USB</b> adalah seberapa banyak audio yang sedang dalam perjalanan di
+          kabel — <b class="ui">Auto</b> mulai dari rendah, menambah satu milidetik setiap kali ada
+          dropout, dan mengingat kebutuhan interface ini; nilai tetap tidak pernah berubah.
+          Keduanya pengaturan yang berbeda: rig yang berat butuh buffer lebih besar, kabel yang
+          rawan dropout butuh antrean lebih panjang.</li>
+      </ul>
+      <p>Untuk tahu latensinya dengan tepat, ukurlah: Settings → <b class="ui">Audio</b> →
+        <b class="ui">Ukur latensi…</b>. Sambungkan sebuah output interface ke sebuah input dengan
+        kabel, kecilkan monitor, lalu tekan <b class="ui">Mulai</b>: NAMper memutar bunyi bip
+        pendek selama beberapa detik dan mengukur waktu kembalinya. Pilih <b class="ui">Output</b>
+        dan <b class="ui">Input</b> tempat kabel terpasang, atau biarkan <b class="ui">Semua</b> dan
+        <b class="ui">Auto</b>. Hasilnya disimpan untuk interface itu, baris
+        <b class="ui">Latensi total</b> menampilkannya sebagai <b class="ui">terukur</b>, dan
+        looper menyejajarkan overdub dengannya (<a href="/docs/id/looper.html#latency">selengkapnya</a>);
+        <b class="ui">Atur ulang</b> kembali ke perkiraan. Kalau input berada di skala penuh, bunyi
+        bip tenggelam di dalamnya: kecilkan gain input, dan matikan direct monitoring interface —
+        dengan kabel loop, fitur itu mengirim input langsung kembali ke kabel.</p>
+      <p>Driver ini masih beta. Kalau sebuah interface bermasalah dengannya, kirim diagnostik
+        (Settings → <b class="ui">Pemecahan masalah</b> → <b class="ui">Bagikan log mesin</b>) ke
+        support@namper.org beserta nama ponsel dan interface-nya: laporannya memuat baris
+        driver.</p>
     </section>
 
     <nav class="pager">

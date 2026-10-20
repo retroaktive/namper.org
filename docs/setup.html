@@ -322,7 +322,8 @@
           <tbody>
             <tr><td>Interfaces</td><td>Class-compliant USB-C interfaces, USB-C headsets and wired
               headphones work out of the box; the app follows the system route just as it does on
-              iOS. Bluetooth output gets the same latency warning.</td></tr>
+              iOS. Bluetooth output gets the same latency warning. A USB interface can also run on
+              NAMper's own <a href="#usb-driver">direct USB driver</a>.</td></tr>
             <tr><td>Latency</td><td>Depends on the phone far more than it does on an iPhone. The
               engine asks for the low-latency path, and the <b class="ui">Buffer</b> chips are
               multiples of the interface's own burst (96, 192 and 384 frames on most phones), so
@@ -349,6 +350,44 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">The direct USB driver (beta)</h3>
+      <p>Android's own audio system runs a USB interface the way the phone's maker set it up, and
+        on many phones that means extra latency, a shared (slower) path, or an interface that only
+        plays one way. Settings → <b class="ui">Audio</b> → <b class="ui">Direct USB driver (beta)</b>
+        lets NAMper talk to a class-compliant interface itself, past the phone's audio system:
+        lower latency, and interfaces the phone cannot run both ways work. It is off by default.</p>
+      <ul>
+        <li>The first time, Android asks whether NAMper may use the interface. Tick
+          <b>always</b> and plugging it in again goes straight to the driver.</li>
+        <li>While NAMper plays through the driver, other apps don't hear the interface; turning the
+          audio off gives it back to the system.</li>
+        <li><b class="ui">Playing through</b>, at the top of the Audio page, says what the sound
+          goes through right now: the direct driver with the interface's name and its queue, the
+          system (shared or exclusive), or <b class="ui">Waiting for the interface…</b>. The switch
+          is what you asked for; this row is what you got.</li>
+        <li>An interface pulled out with the driver on is waited for: plug it back and the driver
+          takes it again, without the phone's speaker in between. If the driver cannot run an
+          interface, the system plays it and the reason is written under the switch.</li>
+        <li><b class="ui">Buffer</b> is the block the rig is computed in (96, 192 or 384 frames),
+          and <b class="ui">USB queue</b> is how much audio is in flight on the cable —
+          <b class="ui">Auto</b> starts low, adds a millisecond at each dropout and remembers what
+          this interface needs; a fixed value never moves. They are two different settings: a
+          heavy rig wants a bigger buffer, a dropout-prone cable a longer queue.</li>
+      </ul>
+      <p>To know the latency exactly, measure it: Settings → <b class="ui">Audio</b> →
+        <b class="ui">Measure latency…</b>. Connect an output of the interface to an input with a
+        cable, turn the monitors down and press <b class="ui">Start</b>: NAMper plays short beeps
+        for a few seconds and times their way back. Pick the <b class="ui">Output</b> and
+        <b class="ui">Input</b> the cable is on, or leave <b class="ui">All</b> and
+        <b class="ui">Auto</b>. The result is kept for that interface, the
+        <b class="ui">Round trip</b> row shows it as <b class="ui">measured</b>, and the looper
+        lines overdubs up by it (<a href="/docs/looper.html#latency">more</a>);
+        <b class="ui">Reset</b> goes back to the estimate. If the input sits at full scale the beeps
+        drown in it: turn the input gain down, and the interface's direct monitoring off — with a
+        loop cable it sends the input straight back into the cable.</p>
+      <p>The driver is a beta. If an interface misbehaves on it, send the diagnostics
+        (Settings → <b class="ui">Troubleshooting</b> → <b class="ui">Share engine log</b>) to
+        support@namper.org with the phone and the interface: the report carries the driver's line.</p>
     </section>
 
     <nav class="pager">

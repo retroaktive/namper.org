@@ -169,6 +169,10 @@
         sejenak dan menyala lagi dengan sendirinya saat interface kembali, dengan pengaturan yang
         sama dan loop tetap tersimpan; sementara itu iPhone atau iPad diam, Mac berbunyi lewat
         perangkat sistem, dan ponsel Android lewat perangkatnya sendiri.</p>
+      <p>Di Android halaman ini dikelompokkan dalam lima kartu: <b class="ui">AUDIO INTERFACE</b> (apa
+        yang tercolok dan <b class="ui">Diputar lewat</b>, jalur yang sedang dilalui suara), <b class="ui">KONEKSI</b>
+        (driver USB langsung, rate, channel, buffer), <b class="ui">INPUT</b>,
+        <b class="ui">LATENSI</b>, dan <b class="ui">PROSESOR</b>. Baris-baris di bawah tetap sama.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Bagian atas halaman Audio: baris antarmuka, pelindung feedback, bilah beban DSP dengan tiga baris teks di bawahnya, lalu chip sample rate, kanal input dan buffer, serta trim input.">
@@ -185,7 +189,11 @@
             <tr><td><b class="ui">Output</b></td><td>Read-only</td><td>—</td>
                 <td>Berapa banyak channel output yang ditawarkan rute saat ini.</td></tr>
             <tr><td><b class="ui">Mesin</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">berjalan</b> atau <b class="ui">berhenti</b>.</td></tr>
+                <td><b class="ui">berjalan</b> atau <b class="ui">berhenti</b>. Di Android tempatnya
+                digantikan <b class="ui">Diputar lewat</b>: driver langsung, sistem
+                (bersama atau eksklusif), <b class="ui">Menunggu interface…</b>, atau berhenti.</td></tr>
+            <tr><td><b class="ui">Driver USB langsung (beta)</b></td><td>Switch</td><td>Off</td>
+                <td>Android: NAMper menjalankan sendiri interface USB class-compliant, melewati sistem audio ponsel. <a href="/docs/id/setup.html#usb-driver">Selengkapnya</a>.</td></tr>
             <tr><td><b class="ui">Pelindung feedback</b></td><td>Switch</td><td>On</td>
                 <td>Mem-mute output selagi mic bawaan memutar lewat speaker ponsel itu sendiri. <a href="/docs/id/setup.html#feedback-guard">Baca yang satu ini baik-baik</a>.</td></tr>
             <tr><td><b class="ui">Beban DSP</b></td><td>Readout + bar</td><td>—</td>
@@ -195,7 +203,9 @@
             <tr><td><b class="ui">Kanal input</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>Membatasi berapa banyak channel input yang dibuka NAMper. Biarkan pada <b class="ui">Auto</b> kecuali kamu punya alasan tertentu.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Ukuran block, dengan pembacaan langsung <b class="ui">frames · ms</b>. Satu-satunya kontrol latency yang ada. Di Android chip-nya adalah kelipatan burst interface. <a href="/docs/id/setup.html#rate">Selengkapnya</a>.</td></tr>
+                <td>Ukuran block, dengan pembacaan langsung <b class="ui">frames · ms</b>. Di Android chip-nya adalah kelipatan burst interface; di driver USB langsung chip-nya 96, 192, dan 384. <a href="/docs/id/setup.html#rate">Selengkapnya</a>.</td></tr>
+            <tr><td><b class="ui">Antrean USB</b></td><td>Chips: <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, hanya di driver USB langsung: audio yang sedang dalam perjalanan di kabel. <b class="ui">Auto</b> mulai dari rendah, menambah satu milidetik setiap kali ada dropout, dan mengingat kebutuhan interface. Terpisah dari buffer.</td></tr>
             <tr><td><b class="ui">Trim input</b></td><td>One slider per input, −12…+24 dB</td><td>0 dB</td>
                 <td>Gain untuk interface tanpa knob gain. Mainkan dengan keras: meter <b class="ui">IN</b> seharusnya mencapai sepertiga bagian atasnya.</td></tr>
             <tr><td><b class="ui">Pakai semua output interface</b></td><td>Switch</td><td>Off</td>
@@ -208,6 +218,8 @@
                 <td>Seberapa halus amp HyperReal dihitung: <b class="ui">Live</b> lebih ringan bagi prosesor, <b class="ui">Studio</b> lebih halus dan lebih berat. Mengubahnya mengompilasi ulang amp yang sedang berbunyi, tanpa restart. Kalau amp Studio membuat thread tersibuk melewati tenggatnya selama dua detik, amp berjalan dalam Live dan barisnya bertuliskan <b class="ui">Studio (berjalan sebagai Live: perangkat ini tidak sanggup)</b> sampai kamu memilih kualitas lagi. Plug-in tidak punya baris ini.</td></tr>
             <tr><td><b class="ui">Ekor saat berpindah</b></td><td>Switch</td><td>On</td>
                 <td>Blok yang ditinggalkan saat berganti preset tetap berbunyi sampai habis — pengulangan delay, peluruhan reverb — hingga delapan detik alih-alih berhenti saat berganti, dan delay, reverb, FX loop, atau plugin yang di-bypass oleh scene tetap berbunyi sampai habis di atas sinyal kering (freeze adalah suara yang ditahan, bukan ekor: ia berhenti). Sedikit tambahan DSP selama detik-detik itu.</td></tr>
+            <tr><td><b class="ui">Latensi total</b></td><td>Readout + <b class="ui">Ukur latensi…</b>, <b class="ui">Atur ulang</b></td><td>—</td>
+                <td>Android: latensi dari output ke input yang dipakai looper untuk menyejajarkan overdub, <b class="ui">terukur</b> dengan kabel loop atau <b class="ui">perkiraan</b> dari stream; disimpan per interface. <a href="/docs/id/setup.html#usb-driver">Cara mengukurnya</a>.</td></tr>
             <tr><td><b class="ui">Sejajarkan rig</b></td><td>Switch</td><td>Off</td>
                 <td>Rig di input yang berbeda ditunda mengikuti yang paling lambat di titik mixer menjumlahkannya, sehingga gitar dan mik tiba bersamaan. Kalau Off, tiap rig mempertahankan latensinya sendiri; jalur-jalur dari satu input selalu sejajar dalam kedua kasus.</td></tr>
           </tbody>

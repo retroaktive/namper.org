@@ -167,6 +167,10 @@
         engine tạm dừng rồi tự chạy lại khi nó quay về, với cùng cài đặt và giữ nguyên các loop;
         trong lúc đó iPhone hay iPad im lặng, máy Mac phát qua thiết bị của hệ thống còn điện thoại
         Android phát qua chính nó.</p>
+      <p>Trên Android trang này được chia thành năm thẻ: <b class="ui">AUDIO INTERFACE</b> (thứ
+        đang cắm vào và âm thanh đang <b class="ui">Phát qua</b> đâu), <b class="ui">KẾT NỐI</b>
+        (driver USB trực tiếp, sample rate, các kênh, buffer), <b class="ui">ĐẦU VÀO</b>,
+        <b class="ui">ĐỘ TRỄ</b> và <b class="ui">BỘ XỬ LÝ</b>. Các hàng bên dưới vẫn như nhau.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Phần đầu trang Âm thanh: các dòng giao diện, chống hú, thanh tải DSP với ba dòng chữ bên dưới, rồi các chip tần số lấy mẫu, kênh vào và bộ đệm cùng mức chỉnh đầu vào.">
@@ -183,7 +187,11 @@
             <tr><td><b class="ui">Đầu ra</b></td><td>Chỉ đọc</td><td>—</td>
                 <td>Route hiện tại cung cấp bao nhiêu kênh output.</td></tr>
             <tr><td><b class="ui">Engine</b></td><td>Chỉ đọc</td><td>—</td>
-                <td><b class="ui">đang chạy</b> hoặc <b class="ui">đã dừng</b>.</td></tr>
+                <td><b class="ui">đang chạy</b> hoặc <b class="ui">đã dừng</b>. Trên Android
+                <b class="ui">Phát qua</b> thay chỗ nó: driver trực tiếp, hệ thống
+                (dùng chung hoặc độc quyền), <b class="ui">Đang chờ interface…</b> hoặc đã dừng.</td></tr>
+            <tr><td><b class="ui">Trình điều khiển USB trực tiếp (beta)</b></td><td>Công tắc</td><td>Tắt</td>
+                <td>Android: NAMper tự chạy interface USB class-compliant, bỏ qua hệ thống âm thanh của điện thoại. <a href="/docs/vi/setup.html#usb-driver">Thêm</a>.</td></tr>
             <tr><td><b class="ui">Chống hú</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Tắt tiếng output khi mic tích hợp phát qua chính loa của điện thoại. <a href="/docs/vi/setup.html#feedback-guard">Đọc kỹ mục này</a>.</td></tr>
             <tr><td><b class="ui">Tải DSP</b></td><td>Chỉ số + thanh</td><td>—</td>
@@ -193,7 +201,9 @@
             <tr><td><b class="ui">Kênh đầu vào</b></td><td>Chip: <b class="ui">Tự động</b>, 1…n</td><td><b class="ui">Tự động</b></td>
                 <td>Giới hạn số kênh input mà NAMper mở. Cứ để <b class="ui">Tự động</b> trừ khi bạn có lý do khác.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Chip: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Kích thước block, với chỉ số <b class="ui">frames · ms</b> cập nhật trực tiếp. Đây là control latency duy nhất có. Trên Android các chip là bội số của burst của interface. <a href="/docs/vi/setup.html#rate">Thêm</a>.</td></tr>
+                <td>Kích thước block, với chỉ số <b class="ui">frames · ms</b> cập nhật trực tiếp. Trên Android các chip là bội số của burst của interface; trên driver USB trực tiếp chúng là 96, 192 và 384. <a href="/docs/vi/setup.html#rate">Thêm</a>.</td></tr>
+            <tr><td><b class="ui">Hàng đợi USB</b></td><td>Chip: <b class="ui">Tự động</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Tự động</b></td>
+                <td>Android, chỉ trên driver USB trực tiếp: lượng audio đang trên đường truyền trong cáp. <b class="ui">Tự động</b> bắt đầu thấp, thêm một mili giây mỗi lần rớt tiếng và nhớ interface cần bao nhiêu. Tách biệt với buffer.</td></tr>
             <tr><td><b class="ui">Trim đầu vào</b></td><td>Một slider cho mỗi input, −12…+24 dB</td><td>0 dB</td>
                 <td>Gain cho các interface không có núm gain. Chơi mạnh tay: đồng hồ <b class="ui">VÀO</b> nên đạt tới một phần ba trên cùng.</td></tr>
             <tr><td><b class="ui">Dùng mọi ngõ ra của interface</b></td><td>Công tắc</td><td>Tắt</td>
@@ -206,6 +216,8 @@
                 <td>Một amp HyperReal được tính toán tinh tới đâu: <b class="ui">Live</b> nhẹ hơn cho bộ xử lý, <b class="ui">Studio</b> tinh hơn và nặng hơn. Đổi lựa chọn sẽ biên dịch lại các amp đang phát, không cần khởi động lại. Nếu một amp Studio giữ luồng bận nhất vượt hạn chót suốt hai giây, các amp chuyển sang chạy Live và hàng này hiện <b class="ui">Studio (đang chạy Live: thiết bị này không theo kịp)</b> cho tới khi bạn chọn lại chất lượng. Các plug-in không có hàng này.</td></tr>
             <tr><td><b class="ui">Đuôi âm khi chuyển</b></td><td>Công tắc</td><td>Bật</td>
                 <td>Các block mà một lần đổi preset bỏ lại sẽ ngân tiếp — tiếng lặp của delay, đuôi tắt dần của reverb — tới tám giây thay vì dừng ngay lúc đổi, và một delay, reverb, FX loop hoặc plugin bị một scene bypass sẽ ngân tiếp đè lên tín hiệu dry (freeze là âm được giữ, không phải đuôi âm: nó dừng). Tốn thêm chút DSP trong những giây đó.</td></tr>
+            <tr><td><b class="ui">Độ trễ vòng</b></td><td>Chỉ số + <b class="ui">Đo độ trễ…</b>, <b class="ui">Đặt lại</b></td><td>—</td>
+                <td>Android: độ trễ từ output tới input mà looper dùng để căn các lớp overdub, <b class="ui">đã đo</b> bằng cáp vòng hoặc <b class="ui">ước tính</b> từ các stream; lưu theo từng interface. <a href="/docs/vi/setup.html#usb-driver">Cách đo</a>.</td></tr>
             <tr><td><b class="ui">Căn chỉnh các rig</b></td><td>Công tắc</td><td>Tắt</td>
                 <td>Các rig trên những input khác nhau được làm trễ theo rig chậm nhất ở chỗ bàn trộn cộng chúng lại, để guitar và mic vào cùng lúc. Tắt đi thì mỗi rig giữ độ trễ riêng của nó; các đường tín hiệu của cùng một input thì dù thế nào cũng luôn khớp nhau.</td></tr>
           </tbody>

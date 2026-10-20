@@ -167,6 +167,10 @@
         koparsa motor duraklar ve arayüz geri geldiğinde aynı ayarlarla, loop'lar korunarak
         kendiliğinden yeniden başlar; bu arada iPhone ya da iPad sessiz kalır, Mac sistemin
         aygıtından, Android telefon ise kendi hoparlöründen çalar.</p>
+      <p>Android'de sayfa beş karta ayrılır: <b class="ui">SES ARABİRİMİ</b> (takılı olan ve sesin
+        nereden geçtiği, <b class="ui">Çalma yolu</b>), <b class="ui">BAĞLANTI</b> (doğrudan USB
+        sürücüsü, hız, kanallar, buffer), <b class="ui">GİRİŞ</b>, <b class="ui">GECİKME</b> ve
+        <b class="ui">İŞLEMCİ</b>. Aşağıdaki satırlar aynıdır.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="Ses sayfasının üstü: arayüz satırları, geri besleme koruması, altında üç satır metinle DSP yükü çubuğu, ardından örnekleme hızı, giriş kanalı ve tampon çipleri ile giriş kazançları.">
@@ -183,7 +187,11 @@
             <tr><td><b class="ui">Çıkışlar</b></td><td>Salt okunur</td><td>—</td>
                 <td>Mevcut yönlendirmenin sunduğu çıkış kanalı sayısı.</td></tr>
             <tr><td><b class="ui">Motor</b></td><td>Salt okunur</td><td>—</td>
-                <td><b class="ui">çalışıyor</b> ya da <b class="ui">durdu</b>.</td></tr>
+                <td><b class="ui">çalışıyor</b> ya da <b class="ui">durdu</b>. Android'de yerini
+                <b class="ui">Çalma yolu</b> alır: doğrudan sürücü, sistem (paylaşılan ya da özel),
+                <b class="ui">Arayüz bekleniyor…</b> ya da durdu.</td></tr>
+            <tr><td><b class="ui">Doğrudan USB sürücüsü (beta)</b></td><td>Anahtar</td><td>Kapalı</td>
+                <td>Android: NAMper class-compliant bir USB arabirimi telefonun ses sistemini atlayarak kendisi çalıştırır. <a href="/docs/tr/setup.html#usb-driver">Daha fazlası</a>.</td></tr>
             <tr><td><b class="ui">Geri besleme koruması</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Yerleşik mikrofon telefonun kendi hoparlöründen çalarken çıkışı susturur. <a href="/docs/tr/setup.html#feedback-guard">Bunu düzgünce oku</a>.</td></tr>
             <tr><td><b class="ui">DSP yükü</b></td><td>Gösterge + çubuk</td><td>—</td>
@@ -193,7 +201,9 @@
             <tr><td><b class="ui">Giriş kanalları</b></td><td>Çipler: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>NAMper'ın açtığı giriş kanalı sayısına üst sınır koyar. Bir sebebin yoksa <b class="ui">Auto</b>'da bırak.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Çipler: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Blok boyutu, canlı bir <b class="ui">frames · ms</b> göstergesiyle. Var olan tek gecikme kontrolü. Android'de çipler arayüzün burst'ünün katlarıdır. <a href="/docs/tr/setup.html#rate">Daha fazlası</a>.</td></tr>
+                <td>Blok boyutu, canlı bir <b class="ui">frames · ms</b> göstergesiyle. Android'de çipler arayüzün burst'ünün katlarıdır; doğrudan USB sürücüsünde 96, 192 ve 384'tür. <a href="/docs/tr/setup.html#rate">Daha fazlası</a>.</td></tr>
+            <tr><td><b class="ui">USB kuyruğu</b></td><td>Çipler: <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, yalnızca doğrudan USB sürücüsünde: kabloda yolda olan ses. <b class="ui">Auto</b> düşükten başlar, her kesintide bir milisaniye ekler ve arabirimin neye ihtiyaç duyduğunu hatırlar. Buffer'dan ayrıdır.</td></tr>
             <tr><td><b class="ui">Giriş trim</b></td><td>Giriş başına bir kaydırıcı, −12…+24 dB</td><td>0 dB</td>
                 <td>Bir kazanç düğmesi olmayan arayüzler için kazanç. Sert çal: <b class="ui">IN</b> göstergesi üst üçte birine ulaşmalı.</td></tr>
             <tr><td><b class="ui">Tüm arabirim çıkışlarını kullan</b></td><td>Anahtar</td><td>Kapalı</td>
@@ -206,6 +216,8 @@
                 <td>Bir HyperReal amfisinin ne kadar ince hesaplandığı: <b class="ui">Canlı</b> işlemciyi daha az yorar, <b class="ui">Studio</b> daha ince ve daha ağırdır. Değiştirmek çalan amfileri yeniden derler, yeniden başlatma olmadan. Bir Studio amfisi en yoğun iş parçacığını iki saniye boyunca zaman sınırının ötesinde tutarsa amfiler Canlı'da çalışır ve satır, sen yeniden bir kalite seçene kadar <b class="ui">Studio (Canlı olarak çalışıyor: bu cihaz yetişemiyor)</b> yazar. Eklentilerde bu satır yoktur.</td></tr>
             <tr><td><b class="ui">Geçişte kuyruklar</b></td><td>Anahtar</td><td>Açık</td>
                 <td>Bir preset değişiminin geride bıraktığı bloklar — bir delay’in tekrarları, bir reverb’ün sönümü — değişimde kesilmek yerine sekiz saniyeye kadar çalmaya devam eder; bir sahnenin bypass ettiği delay, reverb, FX loop ya da eklenti de kuru sesin üzerinde sönümlenir (freeze tutulan bir sestir, kuyruk değil: durur). O birkaç saniye için biraz daha fazla DSP.</td></tr>
+            <tr><td><b class="ui">Gidiş-dönüş gecikmesi</b></td><td>Gösterge + <b class="ui">Gecikmeyi ölç…</b>, <b class="ui">Sıfırla</b></td><td>—</td>
+                <td>Android: looper'ın overdub'ları hizaladığı, çıkıştan girişe olan gecikme; bir loop kablosuyla <b class="ui">ölçüldü</b> ya da akışlardan <b class="ui">tahmini</b>; arabirim başına saklanır. <a href="/docs/tr/setup.html#usb-driver">Nasıl ölçülür</a>.</td></tr>
             <tr><td><b class="ui">Rig'leri hizala</b></td><td>Anahtar</td><td>Kapalı</td>
                 <td>Farklı girişlerdeki rig’ler, mikserin onları topladığı yerde en yavaş olanlarına göre geciktirilir; böylece bir gitar ve bir mikrofon aynı anda gelir. Kapalıyken her rig kendi gecikmesini korur; tek bir girişin yolları her iki durumda da hep hizalıdır.</td></tr>
           </tbody>

@@ -333,7 +333,8 @@
           <tbody>
             <tr><td>Interfacce</td><td>Le interfacce USB-C class-compliant, gli auricolari USB-C e le
               cuffie cablate funzionano subito; l'app segue la route di sistema esattamente come su
-              iOS. L'uscita Bluetooth riceve lo stesso avviso sulla latenza.</td></tr>
+              iOS. L'uscita Bluetooth riceve lo stesso avviso sulla latenza. Un'interfaccia USB può
+              anche girare sul <a href="#usb-driver">driver USB diretto</a> di NAMper.</td></tr>
             <tr><td>Latenza</td><td>Dipende dal telefono molto più che su un iPhone. Il motore chiede
               il percorso a bassa latenza, e i chip <b class="ui">Buffer</b> sono multipli del burst
               proprio dell'interfaccia (96, 192 e 384 frame sulla maggior parte dei telefoni), quindi
@@ -359,6 +360,47 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Il driver USB diretto (beta)</h3>
+      <p>Il sistema audio di Android gestisce un'interfaccia USB come l'ha configurata il produttore
+        del telefono, e su molti telefoni questo significa latenza in più, un percorso condiviso (più
+        lento) o un'interfaccia che suona in una sola direzione. Impostazioni → <b class="ui">Audio</b> →
+        <b class="ui">Driver USB diretto (beta)</b> fa parlare NAMper direttamente con un'interfaccia
+        class-compliant, scavalcando il sistema audio del telefono: latenza più bassa, e funzionano
+        anche le interfacce che il telefono non riesce a far andare in entrambe le direzioni. È
+        disattivato di default.</p>
+      <ul>
+        <li>La prima volta Android chiede se NAMper può usare l'interfaccia. Spunta
+          <b>sempre</b> e, quando la ricolleghi, passa direttamente al driver.</li>
+        <li>Mentre NAMper suona attraverso il driver, le altre app non sentono l'interfaccia; spegnere
+          l'audio la restituisce al sistema.</li>
+        <li><b class="ui">Riproduzione tramite</b>, in cima alla pagina Audio, dice da dove passa il
+          suono in questo momento: il driver diretto con il nome dell'interfaccia e la sua coda, il
+          sistema (condiviso o esclusivo) oppure <b class="ui">In attesa dell'interfaccia…</b>.
+          L'interruttore è ciò che hai chiesto; questa riga è ciò che hai ottenuto.</li>
+        <li>Se stacchi l'interfaccia con il driver attivo, NAMper la aspetta: ricollegala e il driver
+          la riprende, senza passare dall'altoparlante del telefono. Se il driver non riesce a far
+          girare un'interfaccia, la suona il sistema e il motivo compare sotto l'interruttore.</li>
+        <li><b class="ui">Buffer</b> è il blocco in cui viene calcolato il rig (96, 192 o 384 frame),
+          e <b class="ui">Coda USB</b> è quanto audio è in viaggio sul cavo —
+          <b class="ui">Auto</b> parte bassa, aggiunge un millisecondo a ogni dropout e ricorda di
+          cosa ha bisogno questa interfaccia; un valore fisso non cambia mai. Sono due impostazioni
+          diverse: un rig pesante vuole un buffer più grande, un cavo soggetto a dropout una coda più
+          lunga.</li>
+      </ul>
+      <p>Per conoscere la latenza con esattezza, misurala: Impostazioni → <b class="ui">Audio</b> →
+        <b class="ui">Misura la latenza…</b>. Collega con un cavo un'uscita dell'interfaccia a un
+        ingresso, abbassa i monitor e premi <b class="ui">Avvia</b>: NAMper suona brevi bip per
+        qualche secondo e cronometra il loro ritorno. Scegli l'<b class="ui">Uscita</b> e
+        l'<b class="ui">Ingresso</b> su cui sta il cavo, oppure lascia <b class="ui">Tutti</b> e
+        <b class="ui">Auto</b>. Il risultato viene conservato per quell'interfaccia, la riga
+        <b class="ui">Latenza totale</b> lo mostra come <b class="ui">misurato</b> e il looper vi
+        allinea gli overdub (<a href="/docs/it/looper.html#latency">altro</a>);
+        <b class="ui">Ripristina</b> torna alla stima. Se l'ingresso è a fondo scala i bip ci
+        annegano dentro: abbassa il gain d'ingresso e spegni il monitoraggio diretto
+        dell'interfaccia — con un cavo di loop rimanda l'ingresso dritto nel cavo.</p>
+      <p>Il driver è in beta. Se un'interfaccia si comporta male, invia la diagnostica
+        (Impostazioni → <b class="ui">Risoluzione problemi</b> → <b class="ui">Condividi log del motore</b>) a
+        support@namper.org indicando il telefono e l'interfaccia: il report contiene la riga del driver.</p>
     </section>
 
     <nav class="pager">

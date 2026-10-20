@@ -323,7 +323,8 @@
           <tbody>
             <tr><td>Interface</td><td>Interface USB-C class-compliant, tai nghe USB-C và tai nghe
               có dây dùng được ngay; app đi theo route của hệ thống y như trên iOS. Đầu ra
-              Bluetooth nhận cùng cảnh báo latency.</td></tr>
+              Bluetooth nhận cùng cảnh báo latency. Interface USB cũng có thể chạy trên
+              <a href="#usb-driver">driver USB trực tiếp</a> của riêng NAMper.</td></tr>
             <tr><td>Latency</td><td>Phụ thuộc vào điện thoại nhiều hơn hẳn so với iPhone. Engine
               xin đường low-latency, và các chip <b class="ui">Buffer</b> là bội số của burst riêng
               của interface (96, 192 và 384 frame trên hầu hết điện thoại), nên lựa chọn nào cũng là
@@ -350,6 +351,45 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Driver USB trực tiếp (beta)</h3>
+      <p>Hệ thống âm thanh của Android chạy interface USB theo cách hãng điện thoại đã thiết lập,
+        và trên nhiều máy điều đó nghĩa là latency cao hơn, một đường dùng chung (chậm hơn), hoặc
+        interface chỉ phát được một chiều. Cài đặt → <b class="ui">Âm thanh</b> →
+        <b class="ui">Trình điều khiển USB trực tiếp (beta)</b> cho NAMper tự làm việc với interface
+        class-compliant, bỏ qua hệ thống âm thanh của điện thoại: latency thấp hơn, và những
+        interface mà điện thoại không chạy được hai chiều sẽ hoạt động. Mặc định tắt.</p>
+      <ul>
+        <li>Lần đầu, Android hỏi NAMper có được dùng interface không. Đánh dấu
+          <b>luôn luôn</b> thì lần cắm sau sẽ vào thẳng driver.</li>
+        <li>Khi NAMper phát qua driver, các app khác không nghe được interface; tắt âm thanh sẽ trả
+          nó lại cho hệ thống.</li>
+        <li><b class="ui">Phát qua</b>, ở đầu trang Âm thanh, cho biết âm thanh đang đi qua đâu:
+          driver trực tiếp kèm tên interface và hàng đợi của nó, hệ thống (dùng chung hoặc độc
+          quyền), hoặc <b class="ui">Đang chờ interface…</b>. Công tắc là thứ bạn yêu cầu; dòng
+          này là thứ bạn nhận được.</li>
+        <li>Interface bị rút ra khi driver đang bật sẽ được chờ: cắm lại là driver nhận lại nó,
+          không chen loa điện thoại vào giữa. Nếu driver không chạy được một interface, hệ thống sẽ
+          phát nó và lý do được ghi dưới công tắc.</li>
+        <li><b class="ui">Buffer</b> là block mà rig được tính trong đó (96, 192 hoặc 384 frame),
+          còn <b class="ui">Hàng đợi USB</b> là lượng audio đang trên đường truyền trong cáp —
+          <b class="ui">Tự động</b> bắt đầu thấp, thêm một mili giây mỗi lần rớt tiếng và nhớ
+          interface này cần bao nhiêu; giá trị cố định thì không bao giờ đổi. Đây là hai cài đặt
+          khác nhau: rig nặng cần buffer lớn hơn, cáp hay rớt tiếng cần hàng đợi dài hơn.</li>
+      </ul>
+      <p>Muốn biết latency chính xác, hãy đo: Cài đặt → <b class="ui">Âm thanh</b> →
+        <b class="ui">Đo độ trễ…</b>. Nối một đầu ra của interface vào một đầu vào bằng cáp, vặn
+        nhỏ loa monitor và nhấn <b class="ui">Bắt đầu</b>: NAMper phát những tiếng bíp ngắn trong
+        vài giây và đo thời gian chúng quay về. Chọn <b class="ui">Đầu ra</b> và
+        <b class="ui">Đầu vào</b> mà cáp đang cắm, hoặc để <b class="ui">Tất cả</b> và
+        <b class="ui">Tự động</b>. Kết quả được lưu cho interface đó, dòng
+        <b class="ui">Độ trễ vòng</b> hiển thị nó là <b class="ui">đã đo</b>, và looper căn các lớp
+        overdub theo nó (<a href="/docs/vi/looper.html#latency">thêm</a>);
+        <b class="ui">Đặt lại</b> quay về giá trị ước tính. Nếu đầu vào chạm full scale thì tiếng
+        bíp bị chìm: giảm gain đầu vào, và tắt direct monitoring của interface — với cáp vòng, nó
+        gửi đầu vào thẳng ngược lại vào cáp.</p>
+      <p>Driver đang ở bản beta. Nếu một interface chạy không đúng trên nó, hãy gửi chẩn đoán
+        (Cài đặt → <b class="ui">Khắc phục sự cố</b> → <b class="ui">Chia sẻ nhật ký engine</b>) tới
+        support@namper.org kèm tên điện thoại và interface: báo cáo có dòng của driver.</p>
     </section>
 
     <nav class="pager">

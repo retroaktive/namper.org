@@ -166,6 +166,10 @@
         일시 정지했다가 인터페이스가 돌아오면 같은 설정으로, 루프도 그대로 둔 채 저절로 다시
         시작합니다. 그동안 iPhone이나 iPad는 소리가 나지 않고, Mac은 시스템 기기로, Android 폰은
         폰 자체로 소리를 냅니다.</p>
+      <p>Android에서는 이 페이지가 다섯 개의 카드로 나뉩니다: <b class="ui">오디오 인터페이스</b>
+        (무엇이 연결되어 있고 소리가 어떤 <b class="ui">재생 경로</b>를 거치는지), <b class="ui">연결</b>
+        (다이렉트 USB 드라이버, 레이트, 채널, 버퍼), <b class="ui">입력</b>,
+        <b class="ui">지연 시간</b>, <b class="ui">프로세서</b>. 아래 행들은 그대로입니다.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="오디오 페이지 위쪽: 인터페이스 행, 피드백 가드, 아래에 세 줄의 설명이 있는 DSP 부하 막대, 이어서 샘플레이트·입력 채널·버퍼 칩과 입력 트림.">
@@ -182,7 +186,11 @@
             <tr><td><b class="ui">출력</b></td><td>읽기 전용</td><td>—</td>
                 <td>현재 라우트가 제공하는 출력 채널 수.</td></tr>
             <tr><td><b class="ui">엔진</b></td><td>읽기 전용</td><td>—</td>
-                <td><b class="ui">실행 중</b> 또는 <b class="ui">정지됨</b>.</td></tr>
+                <td><b class="ui">실행 중</b> 또는 <b class="ui">정지됨</b>. Android에서는
+                <b class="ui">재생 경로</b>가 이 자리를 대신합니다: 다이렉트 드라이버, 시스템
+                (공유 또는 독점), <b class="ui">인터페이스 대기 중…</b> 또는 정지됨.</td></tr>
+            <tr><td><b class="ui">다이렉트 USB 드라이버 (베타)</b></td><td>스위치</td><td>꺼짐</td>
+                <td>Android: NAMper가 휴대폰의 오디오 시스템을 거치지 않고 클래스 컴플라이언트 USB 인터페이스를 직접 돌립니다. <a href="/docs/ko/setup.html#usb-driver">더 알아보기</a>.</td></tr>
             <tr><td><b class="ui">피드백 가드</b></td><td>스위치</td><td>켜짐</td>
                 <td>내장 마이크 소리가 휴대폰 자체 스피커로 나가는 동안 출력을 뮤트합니다. <a href="/docs/ko/setup.html#feedback-guard">이 항목은 꼭 제대로 읽어보세요</a>.</td></tr>
             <tr><td><b class="ui">DSP 부하</b></td><td>표시 + 막대</td><td>—</td>
@@ -192,7 +200,9 @@
             <tr><td><b class="ui">입력 채널</b></td><td>칩: <b class="ui">자동</b>, 1…n</td><td><b class="ui">자동</b></td>
                 <td>NAMper가 여는 입력 채널 수의 상한을 정합니다. 특별한 이유가 없다면 <b class="ui">자동</b>로 두세요.</td></tr>
             <tr><td><b class="ui">버퍼</b></td><td>칩: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>블록 크기이며, 실시간 <b class="ui">frames · ms</b> 표시가 함께 있습니다. 유일한 레이턴시 컨트롤입니다. Android에서는 칩이 인터페이스 버스트의 배수입니다. <a href="/docs/ko/setup.html#rate">더 알아보기</a>.</td></tr>
+                <td>블록 크기이며, 실시간 <b class="ui">frames · ms</b> 표시가 함께 있습니다. Android에서는 칩이 인터페이스 버스트의 배수이고, 다이렉트 USB 드라이버에서는 96, 192, 384입니다. <a href="/docs/ko/setup.html#rate">더 알아보기</a>.</td></tr>
+            <tr><td><b class="ui">USB 대기열</b></td><td>칩: <b class="ui">자동</b>, 3, 4, 6, 8 ms</td><td><b class="ui">자동</b></td>
+                <td>Android, 다이렉트 USB 드라이버에서만: 케이블 위에서 전송 중인 오디오의 양. <b class="ui">자동</b>은 낮게 시작해 끊길 때마다 1밀리초씩 늘리고 인터페이스에 필요한 값을 기억합니다. 버퍼와는 별개입니다.</td></tr>
             <tr><td><b class="ui">입력 트림</b></td><td>입력마다 슬라이더 하나, −12…+24 dB</td><td>0 dB</td>
                 <td>게인 노브가 없는 인터페이스를 위한 게인입니다. 세게 연주해 <b class="ui">인</b> 미터가 상단 3분의 1에 닿도록 맞추세요.</td></tr>
             <tr><td><b class="ui">인터페이스의 모든 출력 사용</b></td><td>스위치</td><td>꺼짐</td>
@@ -205,6 +215,8 @@
                 <td>HyperReal 앰프를 얼마나 정밀하게 계산할지 정합니다: <b class="ui">라이브</b>는 프로세서 부담이 가볍고, <b class="ui">스튜디오</b>는 더 정밀하고 무겁습니다. 바꾸면 재생 중인 앰프를 재시작 없이 다시 컴파일합니다. 스튜디오 앰프 때문에 가장 바쁜 스레드가 2초 동안 마감 시간을 넘기면 앰프는 라이브로 동작하고, 이 행에는 품질을 다시 고를 때까지 <b class="ui">스튜디오 (라이브로 동작 중: 이 기기가 따라가지 못합니다)</b>가 표시됩니다. 플러그인에는 이 행이 없습니다.</td></tr>
             <tr><td><b class="ui">전환 시 테일</b></td><td>스위치</td><td>켜짐</td>
                 <td>프리셋을 바꿀 때 남겨진 블록 — 딜레이의 반복음, 리버브의 잔향 — 이 전환 순간에 끊기지 않고 최대 8초 동안 울리며, 씬이 바이패스한 딜레이, 리버브, FX 루프, 플러그인도 드라이 위로 여운을 남깁니다(프리즈는 붙잡힌 소리일 뿐 테일이 아니므로 멈춥니다). 그 몇 초 동안 DSP를 조금 더 씁니다.</td></tr>
+            <tr><td><b class="ui">왕복 지연</b></td><td>표시 + <b class="ui">지연 시간 측정…</b>, <b class="ui">재설정</b></td><td>—</td>
+                <td>Android: 루퍼가 오버더빙을 맞추는 데 쓰는 출력에서 입력까지의 레이턴시로, 루프 케이블로 <b class="ui">측정됨</b> 또는 스트림에서 <b class="ui">추정</b>된 값이며 인터페이스별로 저장됩니다. <a href="/docs/ko/setup.html#usb-driver">측정 방법</a>.</td></tr>
             <tr><td><b class="ui">리그 정렬</b></td><td>스위치</td><td>꺼짐</td>
                 <td>서로 다른 입력의 리그들을 데스크에서 합쳐지는 지점에서 가장 느린 리그에 맞춰 지연시켜, 기타와 마이크가 함께 도착하게 합니다. 꺼져 있으면 각 리그는 자기 레이턴시를 유지합니다. 한 입력에서 갈라진 경로들은 어느 쪽이든 항상 맞춰집니다.</td></tr>
           </tbody>

@@ -166,6 +166,10 @@
         drops out, the engine pauses and starts again by itself when it comes back, at the same
         settings and with the loops kept; meanwhile an iPhone or iPad stays silent, a Mac plays
         through the system's device and an Android phone through its own.</p>
+      <p>On Android the page is grouped in five cards: <b class="ui">AUDIO INTERFACE</b> (what is
+        plugged in and what the sound is <b class="ui">Playing through</b>), <b class="ui">CONNECTION</b>
+        (the direct USB driver, the rate, the channels, the buffer), <b class="ui">INPUT</b>,
+        <b class="ui">LATENCY</b> and <b class="ui">PROCESSOR</b>. The rows below are the same.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="The top of the Audio page: the interface rows, the feedback guard, the DSP load bar with three lines of text under it, then the sample rate, input channel and buffer chips and the input trims.">
@@ -182,7 +186,11 @@
             <tr><td><b class="ui">Outputs</b></td><td>Read-only</td><td>—</td>
                 <td>How many output channels the current route offers.</td></tr>
             <tr><td><b class="ui">Engine</b></td><td>Read-only</td><td>—</td>
-                <td><b class="ui">running</b> or <b class="ui">stopped</b>.</td></tr>
+                <td><b class="ui">running</b> or <b class="ui">stopped</b>. On Android
+                <b class="ui">Playing through</b> takes its place: the direct driver, the system
+                (shared or exclusive), <b class="ui">Waiting for the interface…</b> or stopped.</td></tr>
+            <tr><td><b class="ui">Direct USB driver (beta)</b></td><td>Switch</td><td>Off</td>
+                <td>Android: NAMper runs a class-compliant USB interface itself, past the phone's audio system. <a href="/docs/setup.html#usb-driver">More</a>.</td></tr>
             <tr><td><b class="ui">Feedback guard</b></td><td>Switch</td><td>On</td>
                 <td>Mutes the output while the built-in mic plays through the phone's own speaker. <a href="/docs/setup.html#feedback-guard">Read this one properly</a>.</td></tr>
             <tr><td><b class="ui">DSP load</b></td><td>Readout + bar</td><td>—</td>
@@ -192,7 +200,9 @@
             <tr><td><b class="ui">Input channels</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>Caps how many input channels NAMper opens. Leave on <b class="ui">Auto</b> unless you have a reason.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Block size, with a live <b class="ui">frames · ms</b> readout. The only latency control there is. On Android the chips are multiples of the interface's burst. <a href="/docs/setup.html#rate">More</a>.</td></tr>
+                <td>Block size, with a live <b class="ui">frames · ms</b> readout. On Android the chips are multiples of the interface's burst; on the direct USB driver they are 96, 192 and 384. <a href="/docs/setup.html#rate">More</a>.</td></tr>
+            <tr><td><b class="ui">USB queue</b></td><td>Chips: <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, on the direct USB driver only: the audio in flight on the cable. <b class="ui">Auto</b> starts low, adds a millisecond at each dropout and remembers what the interface needs. Apart from the buffer.</td></tr>
             <tr><td><b class="ui">Input trim</b></td><td>One slider per input, −12…+24 dB</td><td>0 dB</td>
                 <td>Gain for interfaces without a gain knob. Play hard: the <b class="ui">IN</b> meter should reach its top third.</td></tr>
             <tr><td><b class="ui">Use all interface outputs</b></td><td>Switch</td><td>Off</td>
@@ -205,6 +215,8 @@
                 <td>How finely a HyperReal amp is computed: <b class="ui">Live</b> is lighter on the processor, <b class="ui">Studio</b> finer and heavier. A change recompiles the amps that play, with no restart. If a Studio amp keeps the busiest thread past its deadline for two seconds, the amps run in Live and the row reads <b class="ui">Studio (running Live: this device cannot keep up)</b> until you pick a quality again. The plug-ins have no such row.</td></tr>
             <tr><td><b class="ui">Tails on a switch</b></td><td>Switch</td><td>On</td>
                 <td>The blocks a preset switch leaves behind ring out — a delay's repeats, a reverb's decay — for up to eight seconds instead of stopping at the switch, and a delay, reverb, FX loop or plugin that a scene bypasses rings out over the dry (a freeze is held sound, not a tail: it stops). A little more DSP for those seconds.</td></tr>
+            <tr><td><b class="ui">Round trip</b></td><td>Readout + <b class="ui">Measure latency…</b>, <b class="ui">Reset</b></td><td>—</td>
+                <td>Android: the latency from output to input the looper lines overdubs up by, <b class="ui">measured</b> with a loop cable or <b class="ui">estimated</b> from the streams; kept per interface. <a href="/docs/setup.html#usb-driver">How to measure</a>.</td></tr>
             <tr><td><b class="ui">Align the rigs</b></td><td>Switch</td><td>Off</td>
                 <td>Rigs on different inputs are delayed to the slowest of them where the desk sums them, so a guitar and a mic land together. Off, each rig keeps its own latency; the paths of one input always line up either way.</td></tr>
           </tbody>

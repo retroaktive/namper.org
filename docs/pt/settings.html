@@ -168,6 +168,10 @@
         sozinho quando ela retorna, com os mesmos ajustes e os loops preservados; enquanto isso um
         iPhone ou iPad fica em silêncio, um Mac toca pelo dispositivo do sistema e um telefone
         Android pelo seu próprio.</p>
+      <p>No Android a página é agrupada em cinco cartões: <b class="ui">INTERFACE DE ÁUDIO</b> (o que
+        está conectado e <b class="ui">Tocando por</b>, por onde o som passa), <b class="ui">CONEXÃO</b>
+        (o driver USB direto, a taxa, os canais, o buffer), <b class="ui">ENTRADA</b>,
+        <b class="ui">LATÊNCIA</b> e <b class="ui">PROCESSADOR</b>. As linhas abaixo são as mesmas.</p>
       <figure>
         <img class="phone" src="/docs/assets/settings-audio.png" width="600" height="1303"
              alt="O topo da página Áudio: as linhas da interface, a proteção contra microfonia, a barra de carga DSP com três linhas de texto embaixo, depois os chips de taxa, canais de entrada e buffer e os ajustes de entrada.">
@@ -184,7 +188,11 @@
             <tr><td><b class="ui">Saídas</b></td><td>Somente leitura</td><td>—</td>
                 <td>Quantos canais de saída a rota atual oferece.</td></tr>
             <tr><td><b class="ui">Motor</b></td><td>Somente leitura</td><td>—</td>
-                <td><b class="ui">rodando</b> ou <b class="ui">parado</b>.</td></tr>
+                <td><b class="ui">rodando</b> ou <b class="ui">parado</b>. No Android
+                <b class="ui">Tocando por</b> ocupa o seu lugar: o driver direto, o sistema
+                (compartilhado ou exclusivo), <b class="ui">Aguardando a interface…</b> ou parado.</td></tr>
+            <tr><td><b class="ui">Driver USB direto (beta)</b></td><td>Interruptor</td><td>Desligado</td>
+                <td>Android: o NAMper roda ele mesmo uma interface USB class-compliant, por fora do sistema de áudio do celular. <a href="/docs/pt/setup.html#usb-driver">Mais</a>.</td></tr>
             <tr><td><b class="ui">Proteção antimicrofonia</b></td><td>Interruptor</td><td>Ligado</td>
                 <td>Silencia a saída enquanto o microfone embutido toca pelo próprio alto-falante do telefone. <a href="/docs/pt/setup.html#feedback-guard">Leia esta com atenção</a>.</td></tr>
             <tr><td><b class="ui">Carga de DSP</b></td><td>Marcador + barra</td><td>—</td>
@@ -194,7 +202,9 @@
             <tr><td><b class="ui">Canais de entrada</b></td><td>Chips: <b class="ui">Auto</b>, 1…n</td><td><b class="ui">Auto</b></td>
                 <td>Limita quantos canais de entrada o NAMper abre. Deixe em <b class="ui">Auto</b> a menos que você tenha um motivo.</td></tr>
             <tr><td><b class="ui">Buffer</b></td><td>Chips: 64, 128, 256, 512</td><td><b class="ui">128</b></td>
-                <td>Tamanho do bloco, com um marcador ao vivo de <b class="ui">frames · ms</b>. O único controle de latência que existe. No Android os chips são múltiplos do burst da interface. <a href="/docs/pt/setup.html#rate">Mais</a>.</td></tr>
+                <td>Tamanho do bloco, com um marcador ao vivo de <b class="ui">frames · ms</b>. No Android os chips são múltiplos do burst da interface; no driver USB direto são 96, 192 e 384. <a href="/docs/pt/setup.html#rate">Mais</a>.</td></tr>
+            <tr><td><b class="ui">Fila USB</b></td><td>Chips: <b class="ui">Auto</b>, 3, 4, 6, 8 ms</td><td><b class="ui">Auto</b></td>
+                <td>Android, só no driver USB direto: o áudio em trânsito no cabo. <b class="ui">Auto</b> começa baixo, soma um milissegundo a cada falha e lembra do que a interface precisa. Separada do buffer.</td></tr>
             <tr><td><b class="ui">Trim de entrada</b></td><td>Um controle deslizante por entrada, −12…+24 dB</td><td>0 dB</td>
                 <td>Ganho para interfaces sem um botão de ganho. Toque forte: o medidor <b class="ui">IN</b> deve alcançar o terço superior.</td></tr>
             <tr><td><b class="ui">Usar todas as saídas da interface</b></td><td>Interruptor</td><td>Desligado</td>
@@ -207,6 +217,8 @@
                 <td>Com que finura um amp HyperReal é calculado: <b class="ui">Ao vivo</b> pesa menos no processador, <b class="ui">Studio</b> é mais fino e mais pesado. Uma troca recompila os amps que estão tocando, sem reiniciar. Se um amp em Studio mantiver a thread mais ocupada além do prazo por dois segundos, os amps passam a rodar em Ao vivo e a linha mostra <b class="ui">Studio (rodando em Ao vivo: este aparelho não dá conta)</b> até você escolher uma qualidade de novo. Os plug-ins não têm essa linha.</td></tr>
             <tr><td><b class="ui">Caudas na troca</b></td><td>Interruptor</td><td>Ligado</td>
                 <td>Os blocos que uma troca de preset deixa para trás soam até o fim — as repetições de um delay, o decaimento de um reverb — por até oito segundos em vez de parar na troca, e um delay, reverb, FX loop ou plugin que uma cena coloca em bypass continua soando por cima do sinal seco (um freeze é som sustentado, não cauda: ele para). Um pouco mais de DSP durante esses segundos.</td></tr>
+            <tr><td><b class="ui">Latência total</b></td><td>Marcador + <b class="ui">Medir latência…</b>, <b class="ui">Redefinir</b></td><td>—</td>
+                <td>Android: a latência da saída até a entrada pela qual o looper alinha os overdubs, <b class="ui">medido</b> com um cabo de loop ou <b class="ui">estimado</b> pelos streams; guardada por interface. <a href="/docs/pt/setup.html#usb-driver">Como medir</a>.</td></tr>
             <tr><td><b class="ui">Alinhar os rigs</b></td><td>Interruptor</td><td>Desligado</td>
                 <td>Rigs em entradas diferentes são atrasados até o mais lento deles no ponto em que a mesa os soma, para que uma guitarra e um microfone cheguem juntos. Desligado, cada rig mantém sua própria latência; os caminhos de uma mesma entrada ficam sempre alinhados de qualquer jeito.</td></tr>
           </tbody>

@@ -225,7 +225,7 @@
         <table>
           <thead><tr><th>Paksa</th><th>Sa Android</th></tr></thead>
           <tbody>
-            <tr><td>Mga interface</td><td>Gumagana agad ang mga class-compliant na USB-C interface, USB-C headset at wired na headphone; sumusunod ang app sa system route gaya ng ginagawa nito sa iOS. Pareho ring babala sa latency ang nakukuha ng Bluetooth output.</td></tr>
+            <tr><td>Mga interface</td><td>Gumagana agad ang mga class-compliant na USB-C interface, USB-C headset at wired na headphone; sumusunod ang app sa system route gaya ng ginagawa nito sa iOS. Pareho ring babala sa latency ang nakukuha ng Bluetooth output. Puwede ring tumakbo ang isang USB interface sa sariling <a href="#usb-driver">direktang USB driver</a> ng NAMper.</td></tr>
             <tr><td>Latency</td><td>Mas nakadepende sa telepono kaysa sa iPhone. Humihingi ang engine ng low-latency na daan, at ang mga <b class="ui">Buffer</b> chip ay mga multiple ng sariling burst ng interface (96, 192 at 384 frames sa karamihan ng telepono), kaya bawat pagpipilian ay isang kayang patakbuhin talaga ng hardware.</td></tr>
             <tr><td>Sample rate</td><td>Ang mga chip ay <b class="ui">Auto</b>, <b class="ui">44.1k</b>, <b class="ui">48k</b> at <b class="ui">96k</b>.</td></tr>
             <tr><td>Background audio</td><td>Habang tumatakbo ang engine, may tahimik na notification na nagpapanatiling buhay sa audio sa likod ng ibang app. Humihingi ng pahintulot sa notification ang Android 13 at mas bago sa unang pagkakataon.</td></tr>
@@ -238,6 +238,17 @@
           </tbody>
         </table>
       </div>
+      <h3 id="usb-driver">Ang direktang USB driver (beta)</h3>
+      <p>Pinapatakbo ng sariling audio system ng Android ang isang USB interface ayon sa pagkaka-set up ng gumawa ng telepono, at sa maraming telepono, ibig sabihin noon ay dagdag na latency, isang shared (mas mabagal) na daan, o isang interface na isang direksyon lang tumutugtog. Ang Settings → <b class="ui">Audio</b> → <b class="ui">Direktang USB driver (beta)</b> ay hinahayaan ang NAMper na direktang kausapin ang isang class-compliant na interface, nang hindi dumadaan sa audio system ng telepono: mas mababang latency, at gumagana ang mga interface na hindi kayang patakbuhin ng telepono sa magkabilang direksyon. Naka-off ito bilang default.</p>
+      <ul>
+        <li>Sa unang pagkakataon, itatanong ng Android kung puwedeng gamitin ng NAMper ang interface. I-tick ang <b>palagi</b> at kapag isinaksak mo ulit, diretso na ito sa driver.</li>
+        <li>Habang tumutugtog ang NAMper sa driver, hindi naririnig ng ibang app ang interface; kapag pinatay ang audio, ibinabalik ito sa system.</li>
+        <li>Ang <b class="ui">Tumutugtog sa</b>, sa itaas ng pahinang Audio, ay nagsasabi kung saan dumadaan ang tunog ngayon: ang direktang driver kasama ang pangalan ng interface at ang queue nito, ang system (shared o exclusive), o <b class="ui">Hinihintay ang interface…</b>. Ang switch ang hiningi mo; ang row na ito ang nakuha mo.</li>
+        <li>Hinihintay ang interface na hinugot habang naka-on ang driver: isaksak ito ulit at kukunin ulit ito ng driver, nang hindi dumadaan sa speaker ng telepono. Kung hindi kayang patakbuhin ng driver ang isang interface, ang system ang magpapatugtog nito at nakasulat ang dahilan sa ilalim ng switch.</li>
+        <li>Ang <b class="ui">Buffer</b> ay ang block kung saan kinukuwenta ang rig (96, 192 o 384 frames), at ang <b class="ui">USB queue</b> ay kung gaano karaming audio ang nasa biyahe sa cable — nagsisimula nang mababa ang <b class="ui">Auto</b>, nagdadagdag ng isang millisecond sa bawat dropout at inaalala kung ano ang kailangan ng interface na ito; hindi gumagalaw ang nakapirming value. Dalawang magkaibang setting ito: mas malaking buffer ang kailangan ng mabigat na rig, mas mahabang queue ang kailangan ng cable na madalas mag-dropout.</li>
+      </ul>
+      <p>Para malaman nang eksakto ang latency, sukatin ito: Settings → <b class="ui">Audio</b> → <b class="ui">Sukatin ang latency…</b>. Ikonekta ang isang output ng interface sa isang input gamit ang cable, hinaan ang mga monitor at pindutin ang <b class="ui">Simulan</b>: nagpapatugtog ang NAMper ng maiikling beep nang ilang segundo at sinusukat ang oras ng pagbalik nila. Piliin ang <b class="ui">Output</b> at <b class="ui">Input</b> kung saan nakakabit ang cable, o iwan sa <b class="ui">Lahat</b> at <b class="ui">Auto</b>. Itinatabi ang resulta para sa interface na iyon, ipinapakita ito ng row na <b class="ui">Kabuuang latency</b> bilang <b class="ui">nasukat</b>, at dito ibinabatay ng looper ang pag-align ng mga overdub (<a href="/docs/fil/looper.html#latency">higit pa</a>); ibinabalik ng <b class="ui">I-reset</b> sa tantiya. Kung nasa full scale ang input, malulunod ang mga beep: hinaan ang input gain, at i-off ang direct monitoring ng interface — sa isang loop cable, ibinabalik nito ang input nang diretso sa cable.</p>
+      <p>Beta pa ang driver. Kung hindi maayos ang isang interface dito, ipadala ang diagnostics (Settings → <b class="ui">Pag-troubleshoot</b> → <b class="ui">Ibahagi ang engine log</b>) sa support@namper.org kasama ang telepono at ang interface: dala ng report ang linya ng driver.</p>
     </section>
 
     <nav class="pager">
